@@ -145,7 +145,7 @@
       "output": "DescribeKeyPairsResponse"
     },
     "DescribeRegions": {
-      "document": "This API is used to query regions.",
+      "document": "(Suspended) This API is used to query the information of regions. Due to platform policy, the update of this API has been temporarily stopped. Please try the new one as described in https://intl.cloud.tencent.com/document/product/1278/55255?from_cn_redirect=1",
       "input": "DescribeRegionsRequest",
       "name": "Queries the list of regions",
       "output": "DescribeRegionsResponse"
@@ -193,7 +193,7 @@
       "output": "DisassociateSecurityGroupsResponse"
     },
     "ImportImage": {
-      "document": "This API is used to import images. Imported images can be used to create instances. ",
+      "document": "The API is used to import an image. The image imported can be used to create instances. Currently, this API can import images in formats like RAW, VHD, QCOW2, and VMDK.",
       "input": "ImportImageRequest",
       "name": "Imports images",
       "output": "ImportImageResponse"
@@ -265,7 +265,7 @@
       "output": "ModifyImageSharePermissionResponse"
     },
     "ModifyInstancesAttribute": {
-      "document": "This API is used to modify the attributes of an instance. Currently you can only use the API to modify the name and the associated security groups of the instance.\n\n* Instance names are used only for users' convenience. Tencent Cloud does not use the name for ticket submission or instance management.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* When you change the security groups associated with an instance, the original security groups will be disassociated.",
+      "document": "The API is used to modify the attributes of an instance. Currently, you can only use the API to modify the name and the associated security groups of the instance.\n\n* **Instance names** are used only for users' convenience. Tencent Cloud does not use these names for online support or instance management.\n* Batch operations are supported. The maximum number of Batch instances in each request is 100.\n* When you modify the security groups associated with an instance, the original security groups will be disassociated.\n* You can use the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) API to query the instance operation result. If the 'LatestOperationState' in the response is **SUCCESS**, the operation is successful.",
       "input": "ModifyInstancesAttributeRequest",
       "name": "Modifies instance attributes",
       "output": "ModifyInstancesAttributeResponse"
@@ -1857,7 +1857,8 @@
       "members": [
         {
           "default": "",
-          "document": "Filters.\n\n<li> `zone` - String - Optional - Filter results by availability zone.</li>\n\n<li>`instance-family` - String - Optional - Filter results by instance model family, such as `S1`, `I1`, and `M1`.</li>\n\n<li>`instance-type` - String - Optional - Filter results by model. Different instance models have different configurations. You can call `DescribeInstanceTypeConfigs` to query the latest configuration list or refer to the documentation on instance types. If this parameter is not specified, `S1.SMALL1` will be used by default.</li>\n\n<li>`instance-charge-type` - String - Optional - Filter results by instance billing method. `POSTPAID_BY_HOUR`: pay-as-you-go | `CDHPAID`: you are only billed for CDH instances, not the CVMs running on the CDH instances.</li>",
+          "document": "<li> instance-charge-type-String-required: no-(filter) billing mode of instances. (POSTPAID_BY_HOUR: pay-as-you-go billing by hour | SPOTPAID: spot billing, which is suitable for a [spot instance] (https://intl.cloud.Tencent.com/document/product/213/17817) | CDHPAID: CDH billing, that is, billing only for CDH, but not for the instances on CDH. )  </li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -5616,7 +5617,7 @@
       "members": [
         {
           "default": "",
-          "document": "The instance [billing method](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). Valid values: <br><li>`POSTPAID_BY_HOUR`: hourly, pay-as-you-go<br><li>`CDHPAID`: you are only billed for CDH instances, not the CVMs running on the CDH instances.<br>Default value: POSTPAID_BY_HOUR.",
+          "document": "Instance [billing type](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). <br><li>POSTPAID_BY_HOUR: pay-as-you-go billing by hour <br><li>CDHPAID: Dedicated CVM (associated with a dedicated host. Resource usage of the dedicated host is free of charge.) <br><li>SPOTPAID: [spot instance] (https://intl.cloud.tencent.com/document/product/213/17817)<br> Default value: POSTPAID_BY_HOUR.",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InstanceChargeType",
@@ -5751,7 +5752,7 @@
         },
         {
           "default": "",
-          "document": "Host name of the CVM. <br><li>Periods (.) or hyphens (-) cannot be the start or end of a host name or appear consecutively in a host name.<br><li>For Windows instances, the host name must be 2-15 characters long and can contain uppercase and lowercase letters, numbers, and hyphens (-). It cannot contain periods (.) or contain only numbers. <br><li>For other instances, such as Linux instances, the host name must be 2-60 characters long. It supports multiple periods (.) and allows uppercase and lowercase letters, numbers, and hyphens (-) between any two periods (.).",
+          "document": "Instance hostname. <br><li>Dots (.) and dashes (-) can not be used as the first or last character of HostName nor used consecutively. <br<li>Windows instances: 2 to 15 characters, including English letters (case-insensitive), numbers and dashes (-). Dots and numeric-only names are not allowed. <br><li>Other instances (Linux, etc.): 2 to 60 characters, including English letters (case-insensitive), numbers, dashes (-) and dots. Note that consecutive dots are not allowed.<br><li>Batch naming: use `{R:x}` for batch naming if multiple instances are purchased. `x` is the serial number of the instance. It’s generated by [x, x+n-1], where `n` refers to the number of instances purchased. For example, if `server{R:3}` is input, if you purchase one instance, the hostname is `server3`. If you purchase two instances, the hostnames are `server3` and `server4` respectively. You can specify multiple pattern strings `{R:x}`. </li><br><li>Purchasing multiple instances: If no pattern string is specified, you shall add suffixes `1, 2...n` to the instance hostname. `n` represents the number of purchased instances. For example, if the instance hostname is `server`,  when two instances are purchased, the hostnames of instances purchased are respectively `server1` and `server2`.",
           "example": "MyHostName",
           "member": "string",
           "name": "HostName",
@@ -6076,7 +6077,8 @@
       "members": [
         {
           "default": "",
-          "document": "List of image IDs. You can obtain the image IDs in two ways: <br><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response. <br><li>Look for the information in the [Image Console](https://console.cloud.tencent.com/cvm/image). <br>The specified images must meet the following requirements: <br><li>The images must be in the `NORMAL` state. <br><li>The image size must be smaller than 50 GB. <br>For more information on image states, see [here](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#image_state).",
+          "document": "List of image IDs. You can obtain the image IDs in two ways: <br><li>Call the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) API and find the value of `ImageId` in the response. <br><li>Find the image IDs in the [Image Console](https://console.cloud.tencent.com/cvm/image). <br>The specified images must meet the following requirement: <br><li>the images must be in the `NORMAL` state. <br>For more information on image status, see [Image Data Table](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#Image).",
+          "example": "[\"img-o3ycss2p\\r\\n\"]",
           "member": "string",
           "name": "ImageIds",
           "required": true,
@@ -6085,6 +6087,7 @@
         {
           "default": "",
           "document": "List of destination regions for synchronization. A destination region must meet the following requirements: <br><li>It cannot be the source region. <br><li>It must be valid. <br><li>Currently some regions do not support image synchronization. <br>For specific regions, see [Region](https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1).",
+          "example": "[\"ap-guangzhou\\r\\n\"]",
           "member": "string",
           "name": "DestinationRegions",
           "required": true,

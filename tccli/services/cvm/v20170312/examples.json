@@ -245,9 +245,9 @@
     "DescribeZoneInstanceConfigInfos": [
       {
         "document": "This example shows you how to query a list of instance configurations using availability zone and billing method as filters.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeZoneInstanceConfigInfos\r\n&Filters.0.Name=zone\r\n&Filters.0.Values.0=ap-guangzhou-2\r\n&Filters.1.Name=instance-charge-type\r\n&Filters.1.Values.0=POSTPAID_BY_HOUR\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceTypeQuotaSet\": [\n            {\n                \"Status\": \"SELL\",\n                \"Zone\": \"ap-guangzhou-2\",\n                \"NetworkCard\": 0,\n                \"Price\": {\n                    \"UnitPrice\": 0.15,\n                    \"UnitPriceThirdStep\": 0.05,\n                    \"Discount\": \"100.000000\",\n                    \"UnitPriceDiscountThirdStep\": 0.05,\n                    \"UnitPriceSecondStep\": 0.07,\n                    \"UnitPriceDiscount\": 0.15,\n                    \"UnitPriceDiscountSecondStep\": 0.07,\n                    \"ChargeUnit\": \"HOUR\"\n                },\n                \"InstanceFamily\": \"S2\",\n                \"Externals\": {},\n                \"InstanceType\": \"S2.SMALL1\",\n                \"TypeName\": \"Standard S2\",\n                \"InstanceChargeType\": \"POSTPAID_BY_HOUR\",\n                \"Memory\": 1,\n                \"LocalDiskTypeList\": [],\n                \"Cpu\": 1,\n                \"SoldOutReason\": \"\",\n                \"StorageBlockAmount\": 0,\n                \"CpuType\": \"Intel Xeon E5-2680 v4\",\n                \"InstancePps\": 20,\n                \"InstanceBandwidth\": 1.5,\n                \"Gpu\": 0,\n                \"Fpga\": 0,\n                \"Remark\": \"\"\n            }\n        ],\n        \"RequestId\": \"c28559ca-d3cf-40f0-9664-2ab303484efa\"\n    }\n}",
-        "title": "Querying the instance configurations in an availability zone"
+        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeZoneInstanceConfigInfos\n&Filters.0.Name=zone\n&Filters.0.Values.0=ap-guangzhou-2\n&Filters.1.Name=instance-charge-type\n&Filters.1.Values.0=POSTPAID_BY_HOUR\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"InstanceTypeQuotaSet\": [\n            {\n                \"Status\": \"SELL\",\n                \"Zone\": \"ap-guangzhou-2\",\n                \"NetworkCard\": 0,\n                \"Price\": {\n                    \"DiscountPrice\": 59.0,\n                    \"OriginalPriceThreeYear\": 0.0,\n                    \"DiscountOneYear\": 0.0,\n                    \"UnitPrice\": 0.0,\n                    \"UnitPriceThirdStep\": 0.0,\n                    \"OriginalPriceFiveYear\": 0.0,\n                    \"Discount\": 0.0,\n                    \"DiscountFiveYear\": 0.0,\n                    \"UnitPriceDiscountThirdStep\": 0.0,\n                    \"UnitPriceSecondStep\": 0.0,\n                    \"OriginalPrice\": 59.0,\n                    \"DiscountThreeYear\": 0.0,\n                    \"UnitPriceDiscountSecondStep\": 0.0,\n                    \"UnitPriceDiscount\": 0.0,\n                    \"DiscountPriceFiveYear\": 0.0,\n                    \"OriginalPriceOneYear\": 708.0,\n                    \"ChargeUnit\": \"xx\",\n                    \"DiscountPriceThreeYear\": 0.0,\n                    \"DiscountPriceOneYear\": 587.64\n                },\n                \"InstanceFamily\": \"S2\",\n                \"Externals\": {},\n                \"InstanceType\": \"S2.SMALL1\",\n                \"TypeName\": \"Standard S2\",\n                \"InstanceChargeType\": \"POSTPAID_BY_HOUR\",\n                \"Memory\": 1,\n                \"LocalDiskTypeList\": [],\n                \"Cpu\": 1,\n                \"SoldOutReason\": \"\",\n                \"StorageBlockAmount\": 0,\n                \"CpuType\": \"Intel Xeon E5-2680 v4\",\n                \"InstancePps\": 20,\n                \"InstanceBandwidth\": 1.5,\n                \"Gpu\": 0,\n                \"Fpga\": 0,\n                \"Remark\": \"\"\n            }\n        ],\n        \"RequestId\": \"c28559ca-d3cf-40f0-9664-2ab303484efa\"\n    }\n}",
+        "title": "Obtaining the list of instance configurations in an availability zone"
       }
     ],
     "DescribeZones": [
@@ -283,7 +283,7 @@
     "ImportImage": [
       {
         "document": "This example shows you how to import an image.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ImportImage\r\n&OsType=CentOS\r\n&OsVersion=6\r\n&ImageName=sample\r\n&ImageDescription=sampleimage\r\n&ImageUrl=http://111-1251233127.cosd.myqcloud.com/Windows%20Server%202008%20R2%20x64a.vmdk\r\n&Architecture=x86_64\r\n&<Common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=ImportImage\n&OsType=CentOS\n&OsVersion=6\n&ImageName=sample\n&ImageDescription=sampleimage\n&ImageUrl=http://111-1251233127.cosd.myqcloud.com/Windows%20Server%202008%20R2%20x64a.vmdk\n&Architecture=x86_64\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"71e69b56-32be-4412-ab45-49eded6a87be\"\n    }\n}",
         "title": "Importing an image"
       }
@@ -391,7 +391,7 @@
     "ModifyInstancesAttribute": [
       {
         "document": "This example shows you how to rename two instances.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyInstancesAttribute\r\n&InstanceIds.0=ins-r8hr2upy\r\n&InstanceIds.1=ins-5d8a23rs\r\n&InstanceName=Mysql_Server\r\n&<Common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyInstancesAttribute\n&InstanceIds.0=ins-r8hr2upy\n&InstanceIds.1=ins-5d8a23rs\n&InstanceName=Mysql_Server\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Renaming instances"
       }
@@ -533,7 +533,7 @@
     "SyncImages": [
       {
         "document": "This example shows you how to sync an image `img-o3ycss2p` to the Guangzhou region.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=SyncImages\r\n&ImageIds.0=img-o3ycss2p\r\n&DestinationRegions.0=ap-guangzhou\r\n&<Common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=SyncImages\n&ImageIds.0=img-o3ycss2p\n&DestinationRegions.0=ap-guangzhou\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"71e69b56-32be-4412-ab45-49eded6a87be\"\n    }\n}",
         "title": "Syncing an image"
       }

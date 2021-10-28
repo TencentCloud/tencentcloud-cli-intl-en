@@ -420,7 +420,7 @@
         },
         {
           "default": "",
-          "document": "Name of rule type.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "document": "Name of rule type.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
           "name": "PatternTypeTitle",
@@ -4444,6 +4444,52 @@
       ],
       "usage": "out"
     },
+    "SaleInfo": {
+      "document": "Sales information of Standard Edition",
+      "members": [
+        {
+          "default": "",
+          "document": "Manually set flag.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "Flag",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CKafka version (v1.1.1/2.4.2/0.10.2）\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1.1.1",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is Pro Edition or Standard Edition.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "standard",
+          "member": "string",
+          "name": "Platform",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it has been sold out. `true`: sold out.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "SoldOut",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "SubscribedInfo": {
       "document": "Subscribed message entity",
       "members": [
@@ -5168,6 +5214,7 @@
         {
           "default": "",
           "document": "Zone ID",
+          "example": "100001",
           "member": "string",
           "name": "ZoneId",
           "required": true,
@@ -5177,6 +5224,7 @@
         {
           "default": "",
           "document": "Whether it is an internal application.",
+          "example": "1",
           "member": "int64",
           "name": "IsInternalApp",
           "required": true,
@@ -5186,6 +5234,7 @@
         {
           "default": "",
           "document": "Application ID",
+          "example": "1231312",
           "member": "int64",
           "name": "AppId",
           "required": true,
@@ -5195,6 +5244,7 @@
         {
           "default": "",
           "document": "Flag",
+          "example": "1",
           "member": "bool",
           "name": "Flag",
           "required": true,
@@ -5204,6 +5254,7 @@
         {
           "default": "",
           "document": "Zone name",
+          "example": "一区",
           "member": "string",
           "name": "ZoneName",
           "required": true,
@@ -5213,6 +5264,7 @@
         {
           "default": "",
           "document": "Zone status",
+          "example": "1",
           "member": "int64",
           "name": "ZoneStatus",
           "required": true,
@@ -5222,6 +5274,7 @@
         {
           "default": "",
           "document": "Extra flag",
+          "example": "1",
           "member": "string",
           "name": "Exflag",
           "required": true,
@@ -5231,11 +5284,22 @@
         {
           "default": "",
           "document": "JSON object. The key is the model. The value `true` means “sold out”, and `false` means “not sold out”.",
+          "example": "1",
           "member": "string",
           "name": "SoldOut",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information on whether Standard Edition has been sold out.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "SaleInfo",
+          "name": "SalesInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
