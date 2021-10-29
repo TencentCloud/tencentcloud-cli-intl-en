@@ -337,6 +337,33 @@ def doDeleteRolePermissionsBoundary(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeUserSAMLConfig(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeUserSAMLConfigRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeUserSAMLConfig(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDeletePolicyVersion(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -391,7 +418,7 @@ def doDetachRolePolicy(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doGetPolicy(args, parsed_globals):
+def doCreateUserSAMLConfig(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -407,9 +434,36 @@ def doGetPolicy(args, parsed_globals):
     client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetPolicyRequest()
+    model = models.CreateUserSAMLConfigRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.GetPolicy(model)
+    rsp = client.CreateUserSAMLConfig(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeRoleList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeRoleListRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeRoleList(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -499,7 +553,7 @@ def doUpdateUser(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeRoleList(args, parsed_globals):
+def doGetPolicy(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -515,9 +569,9 @@ def doDescribeRoleList(args, parsed_globals):
     client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeRoleListRequest()
+    model = models.GetPolicyRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeRoleList(model)
+    rsp = client.GetPolicy(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1498,6 +1552,33 @@ def doListGroupsForUser(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doUpdateUserSAMLConfig(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.UpdateUserSAMLConfigRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.UpdateUserSAMLConfig(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doGetSecurityLastUsed(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1764,13 +1845,15 @@ ACTION_MAP = {
     "ListAttachedRolePolicies": doListAttachedRolePolicies,
     "DeletePolicy": doDeletePolicy,
     "DeleteRolePermissionsBoundary": doDeleteRolePermissionsBoundary,
+    "DescribeUserSAMLConfig": doDescribeUserSAMLConfig,
     "DeletePolicyVersion": doDeletePolicyVersion,
     "DetachRolePolicy": doDetachRolePolicy,
-    "GetPolicy": doGetPolicy,
+    "CreateUserSAMLConfig": doCreateUserSAMLConfig,
+    "DescribeRoleList": doDescribeRoleList,
     "CreateSAMLProvider": doCreateSAMLProvider,
     "DeleteSAMLProvider": doDeleteSAMLProvider,
     "UpdateUser": doUpdateUser,
-    "DescribeRoleList": doDescribeRoleList,
+    "GetPolicy": doGetPolicy,
     "GetCustomMFATokenInfo": doGetCustomMFATokenInfo,
     "ListAccessKeys": doListAccessKeys,
     "DeleteGroup": doDeleteGroup,
@@ -1807,6 +1890,7 @@ ACTION_MAP = {
     "AttachUserPolicy": doAttachUserPolicy,
     "ListPolicyVersions": doListPolicyVersions,
     "ListGroupsForUser": doListGroupsForUser,
+    "UpdateUserSAMLConfig": doUpdateUserSAMLConfig,
     "GetSecurityLastUsed": doGetSecurityLastUsed,
     "AttachGroupPolicy": doAttachGroupPolicy,
     "UpdateGroup": doUpdateGroup,

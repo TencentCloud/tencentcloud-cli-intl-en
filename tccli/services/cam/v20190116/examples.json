@@ -96,6 +96,14 @@
         "title": "Creating service role"
       }
     ],
+    "CreateUserSAMLConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateUserSAMLConfig\n<Common request parameters>\n\n{\n    \"SAMLMetadataDocument\": \"metadataDocumentDemo\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Creating user SAML configurations"
+      }
+    ],
     "DeleteGroup": [
       {
         "document": "",
@@ -154,10 +162,10 @@
     ],
     "DeleteUser": [
       {
-        "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=DeleteUser\r\n&Name=test124\r\n&<Common request parameters>",
+        "document": "This example shows you how to delete a sub-user.",
+        "input": "https://cam.tencentcloudapi.com/?Action=DeleteUser\n&Name=test124\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
-        "title": "Deleting sub-user"
+        "title": "Deleting sub-users"
       }
     ],
     "DeleteUserPermissionsBoundary": [
@@ -206,6 +214,14 @@
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSubAccounts\n<Common request parameters>\n\n{\n    \"FilterSubAccountUin\": [\n        \"200000548558\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"SubAccounts\": [\n            {\n                \"Remark\": \"xx\",\n                \"Uid\": 1,\n                \"Uin\": 1,\n                \"UserType\": 1,\n                \"CreateTime\": \"2020-09-22 00:00:00\",\n                \"Name\": \"xx\"\n            },\n            {\n                \"Remark\": \"xx\",\n                \"Name\": \"xx\",\n                \"Uin\": 1,\n                \"UserType\": 1,\n                \"CreateTime\": \"2020-09-22 00:00:00\",\n                \"Uid\": 1\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying sub-users through sub-user UIN list"
+      }
+    ],
+    "DescribeUserSAMLConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserSAMLConfig\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"SAMLMetadata\": \"\",\n        \"Status\": 0,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Querying user SAML configurations"
       }
     ],
     "DetachGroupPolicy": [
@@ -516,6 +532,14 @@
         "input": "https://cam.tencentcloudapi.com/?Action=UpdateUser\r\n&Name=test124\r\n&Remark=test\r\n&ConsoleLogin=1\r\n&Password=test123456\r\n&NeedResetPassword=0\r\n&PhoneNum=10086\r\n&CountryCode=86\r\n&Email=123%40qq.com\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
         "title": "Updating sub-user"
+      }
+    ],
+    "UpdateUserSAMLConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateUserSAMLConfig\n<Common request parameters>\n\n{\n    \"Operate\": \"updateSAML\",\n    \"SAMLMetadataDocument\": \"metadataDocumentDemo\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Modifying user SAML configurations"
       }
     ]
   },

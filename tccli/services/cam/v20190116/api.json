@@ -72,6 +72,12 @@
       "name": "Creates a service-linked role",
       "output": "CreateServiceLinkedRoleResponse"
     },
+    "CreateUserSAMLConfig": {
+      "document": "This API is used to create user SAML configurations.",
+      "input": "CreateUserSAMLConfigRequest",
+      "name": "Creates user SAML configurations",
+      "output": "CreateUserSAMLConfigResponse"
+    },
     "DeleteGroup": {
       "document": "This API is used to delete a user group.",
       "input": "DeleteGroupRequest",
@@ -155,6 +161,12 @@
       "input": "DescribeSubAccountsRequest",
       "name": "Queries sub-users through sub-user UIN list",
       "output": "DescribeSubAccountsResponse"
+    },
+    "DescribeUserSAMLConfig": {
+      "document": "This API is used to query user SAML configurations.",
+      "input": "DescribeUserSAMLConfigRequest",
+      "name": "Queries user SAML configurations",
+      "output": "DescribeUserSAMLConfigResponse"
     },
     "DetachGroupPolicy": {
       "document": "This API (DetachGroupPolicy) is used to unassociate a policy and a user group.",
@@ -383,6 +395,12 @@
       "input": "UpdateUserRequest",
       "name": "Updates a sub-user",
       "output": "UpdateUserResponse"
+    },
+    "UpdateUserSAMLConfig": {
+      "document": "This API is used to modify user SAML configurations.",
+      "input": "UpdateUserSAMLConfigRequest",
+      "name": "Modifies user SAML configurations",
+      "output": "UpdateUserSAMLConfigResponse"
     }
   },
   "metadata": {
@@ -1262,6 +1280,33 @@
       ],
       "type": "object"
     },
+    "CreateUserSAMLConfigRequest": {
+      "document": "CreateUserSAMLConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SAML metadata document, which must be Base64 encoded.",
+          "example": "metadataDocumentDemo",
+          "member": "string",
+          "name": "SAMLMetadataDocument",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserSAMLConfigResponse": {
+      "document": "CreateUserSAMLConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteGroupRequest": {
       "document": "DeleteGroup request structure.",
       "members": [
@@ -1737,6 +1782,41 @@
           "name": "SubAccounts",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserSAMLConfigRequest": {
+      "document": "DescribeUserSAMLConfig request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeUserSAMLConfigResponse": {
+      "document": "DescribeUserSAMLConfig response structure.",
+      "members": [
+        {
+          "document": "SAML metadata document.",
+          "example": "metadataDocumentDemo",
+          "member": "string",
+          "name": "SAMLMetadata",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Status. `0`: not set, `11`: enabled, `2`: disabled.",
+          "example": "11",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4590,6 +4670,42 @@
     },
     "UpdateUserResponse": {
       "document": "UpdateUser response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateUserSAMLConfigRequest": {
+      "document": "UpdateUserSAMLConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Type of the modification operation. `enable`: enable, `disable`: disable, `updateSAML`: modify metadata document.",
+          "example": "enable",
+          "member": "string",
+          "name": "Operate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Metadata document, which must be Base64 encoded. This parameter is required only when the value of `Operate` is `updateSAML`.",
+          "example": "metadataDocumentDemo",
+          "member": "string",
+          "name": "SAMLMetadataDocument",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateUserSAMLConfigResponse": {
+      "document": "UpdateUserSAMLConfig response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
