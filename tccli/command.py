@@ -3,6 +3,7 @@
 import sys
 import copy
 import tccli.services as Services
+import tccli.options_define as Options_define
 from collections import OrderedDict
 from tccli.utils import Utils
 from tccli.argument import CLIArgument, CustomArgument, ListArgument, BooleanArgument
@@ -13,6 +14,7 @@ from tccli.help_command import CLIHelpCommand, ServiceHelpCommand, ActionHelpCom
 from tccli.configure import ConfigureCommand
 from tccli.generatecliskeleton import GenerateCliSkeletonArgument
 from tccli.cli_input_json import CliInputJSONArgument
+from tccli.cli_unfold_argument import CliUnfoldArgument
 
 
 class BaseCommand(object):
@@ -31,6 +33,9 @@ class CLICommand(BaseCommand):
     def __call__(self, args=None):
         if args is None:
             args = sys.argv[1:]
+
+        if len(args) > 0 and args[0] == "as":
+            args[0] = "autoscaling"
 
         command_map = self._get_command_map()
         parser = self._create_parser(command_map)
@@ -195,9 +200,11 @@ class ActionCommand(BaseCommand):
         self._action_name = action_name
         self._action_model = action_model
         self._action_caller = action_caller
+        self._call_mode = None
         self.generate_cli_skeleton_argument = GenerateCliSkeletonArgument(service_name, version, action_name)
         self.cli_input_argument = CliInputJSONArgument()
-
+        self.cli_unfold_argument = CliUnfoldArgument()
+        self.profile = "default"
 
     @property
     def argument_map(self):
@@ -206,13 +213,25 @@ class ActionCommand(BaseCommand):
         return self._argument_map
 
     def _get_param_model(self):
-        return self._cli_data.get_param_info(self._service_name, self._version, self._action_name)
+        if self._call_mode == Options_define.CliUnfoldArgument:
+            return self._cli_data.get_unfold_param_info(
+                self._service_name, self._version, self._action_name, profile=self.profile, param_array=True
+            )
+        else:
+            return self._cli_data.get_param_info(self._service_name, self._version, self._action_name)
 
     def _build_parameter_map(self):
         argument_map = OrderedDict()
+
+        if self._call_mode in [Options_define.GenerateCliSkeleton, Options_define.CliInputJson]:
+            return argument_map
+
         arg_model = self._get_param_model()
         for arg_name, arg_info in arg_model.items():
-            arg_class = self.ARG_TYPES.get(arg_info["type"], self.DEFAULT_ARG_CLASS)
+            if self._call_mode == Options_define.CliUnfoldArgument:
+                arg_class = self.ARG_TYPES.get(arg_info["type"], self.DEFAULT_ARG_CLASS)
+            else:
+                arg_class = self.ARG_TYPES.get(arg_info["type"], self.DEFAULT_ARG_CLASS)
             arg_object = arg_class(
                 name=arg_name,
                 argument_model=arg_info,
@@ -228,6 +247,8 @@ class ActionCommand(BaseCommand):
         return argument_map
 
     def __call__(self, args, parsed_globals):
+
+        self._call_mode = self._get_call_mode(parsed_globals)
 
         # before-building-argument-table-parser
         self.generate_cli_skeleton_argument.override_required_args(self.argument_map, args)
@@ -246,7 +267,16 @@ class ActionCommand(BaseCommand):
         if remaining:
             raise UnknownArgumentError(
                 "Unknown options: %s" % ', '.join(remaining))
-        action_parameters = self._build_action_parameters(parsed_args, self.argument_map)
+
+        if self._call_mode == Options_define.GenerateCliSkeleton:
+            return self.generate_cli_skeleton_argument.generate_skeleton(parsed_globals)
+
+        if self._call_mode == Options_define.CliInputJson:
+            action_parameters = self.cli_input_argument.add_to_call_parameters(parsed_globals)
+        elif self._call_mode == Options_define.CliUnfoldArgument:
+            action_parameters = self.cli_unfold_argument.build_action_parameters(parsed_args)
+        else:
+            action_parameters = self._build_action_parameters(parsed_args, self.argument_map)
         
         # calling-command
         override = self.generate_cli_skeleton_argument.generate_skeleton(
@@ -273,6 +303,16 @@ class ActionCommand(BaseCommand):
                 value = parsed_args[name]
                 argument_object.add_to_params(action_params, value)
         return action_params
+
+    def _get_call_mode(self, parsed_globals):
+        if getattr(parsed_globals, Options_define.GenerateCliSkeleton.replace('-','_'), None):
+            return Options_define.GenerateCliSkeleton
+
+        if getattr(parsed_globals, Options_define.CliInputJson.replace('-','_'), None):
+            return Options_define.CliInputJson
+
+        if getattr(parsed_globals, Options_define.CliUnfoldArgument.replace('-', '_'), None):
+            return Options_define.CliUnfoldArgument
 
     def _create_action_parser(self, argument_map):
         parser = ArgMapArgParser(argument_map)

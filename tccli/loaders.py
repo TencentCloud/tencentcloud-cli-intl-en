@@ -1,6 +1,8 @@
 
 import os
+import copy
 import json
+from tccli.utils import Utils
 from tccli import __version__
 from tccli.services import SERVICE_VERSIONS
 from collections import OrderedDict
@@ -23,6 +25,9 @@ PARAM_TYPE_MAP = {
     'list': 'Array'
 }
 
+HELPER_MAP = {
+    "--cli-unfold-argument": "complex type parameters are expanded with dots",
+}
 
 class Loader(object):
     def get_services_path(self):
@@ -90,6 +95,10 @@ class Loader(object):
             "timeout": {
                 "type": "int",
                 "help": "specify a request timeout"
+            },
+            'cli-unfold-argument': {
+                'help': HELPER_MAP['--cli-unfold-argument'],
+                'action': 'store_true'
             }
         }
 
@@ -152,13 +161,16 @@ class Loader(object):
                 version_actions[version] = actions
         return version_actions
 
-    def get_service_all_action_param(self, service):
+    def get_service_all_action_param(self, service, model=None):
         version_actions = self.get_service_all_version_actions(service)
         version_action_params = {}
         for version in version_actions:
             version_action_params[version] = {}
             for action in version_actions[version]:
-                params = self.get_param_info(service, version, action).keys()
+                if model == "cli-unfold-argument":
+                    params = self.get_unfold_param_info(service, version, action).keys()
+                else:
+                    params = self.get_param_info(service, version, action).keys()
                 version_action_params[version][action] = params
         action_params = {}
         for version in version_action_params:
@@ -194,7 +206,8 @@ class Loader(object):
                                        "output, it validates the command inputs and returns a "
                                        "sample output JSON for that command.",
             "--cli-input-json": "Reads arguments from the JSON string provided. The JSON string "
-                                "follows the format provided by --generate-cli-skeleton. "
+                                "follows the format provided by --generate-cli-skeleton. ",
+            "--cli-unfold-argument": "complex type parameters are expanded with dots"
         }
 
     def _filling_param_info(self, param_info, para, param_type, member):
@@ -249,6 +262,94 @@ class Loader(object):
                 else:
                     param_skeleton[para["name"]] = PARAM_TYPE_MAP[para["member"]]
         return param_skeleton
+
+    def get_unfold_param_info(self, service, version, action, profile="default", param_array=False):
+        service_model = self.get_service_model(service, version)
+        object_model = service_model["objects"]
+        all_param_list = []
+        for para in object_model[action+"Request"]["members"]:
+            param_list = []
+            self._get_unfold_param_info(object_model, all_param_list, param_list, para)
+
+        if param_array:
+            all_param_list = self._add_array_item(all_param_list, profile)
+        return self._filling_unfold_param_info(all_param_list, service, version, action)
+
+    def _add_array_item(self, param_list, profile):
+        is_conf_exist, conf_path = Utils.file_existed(os.path.join(os.path.expanduser("~"), ".tccli"),
+                                                      profile + ".configure")
+        if is_conf_exist:
+            array_count = Utils.load_json_msg(conf_path).get("arrayCount", 10)
+        else:
+            array_count = 10
+        all_param_list = param_list
+        for para in param_list:
+            for idx, item in enumerate(para):
+                if item == '0':
+                    for i in range(1, int(array_count)):
+                        tmp = copy.deepcopy(para)
+                        tmp[idx] = str(i)
+                        all_param_list.append(tmp)
+        return all_param_list
+
+    def _recur_get_unfold_param_info(self, param_model, object_model, return_param_list, param_list):
+        for para in param_model:
+            self._get_unfold_param_info(object_model, return_param_list, param_list, para)
+        if param_list.pop().isdigit():
+            param_list.pop()
+
+    def _get_unfold_param_info(self, object_model, return_param_list, param_list, para):
+        param_list.append(para["name"])
+        if para["type"] == "list" and para["member"] not in BASE_TYPE:
+            param_list.append('0')
+        if para["member"] not in BASE_TYPE:
+            self._recur_get_unfold_param_info(object_model[para["member"]]["members"],
+                                              object_model, return_param_list, param_list)
+        else:
+            tmp = copy.deepcopy(param_list)
+            return_param_list.append(tmp)
+
+            if param_list.pop().isdigit():
+                param_list.pop()
+
+    def _filling_unfold_param_info(self, param_list, service, version, action):
+        unfold_param = {}
+        param_info = self.get_param_info(service, version, action)
+        for param in param_list:
+            unfold_param[".".join(param)] = {}
+
+            tmp_param = [item for item in param if not item.isdigit()]
+            res = param_info[tmp_param[0]]
+
+            param_type = res["type"]
+            type_name = res["type_name"]
+            required = res["required"]
+            document = res["document"]
+
+            for idx, item in enumerate(tmp_param[1:]):
+                if res["type"] == "Array":
+                    res = res["members"][0][item]
+                else:
+                    res = res["members"][item]
+
+                if required == "Required" and res["required"] == "Optional":
+                    required = "Optional"
+
+                if idx == len(tmp_param) - 2:
+                    param_type = res["type"]
+                    type_name = res["type_name"] if res["type"] == "Array" \
+                        else res["type_name"]
+                    document = res["document"]
+                    break
+
+            if len([item for item in param if item.isdigit() and int(item) > 0]) > 0:
+                required = "Optional"
+
+            unfold_param[".".join(param)]["type"] = param_type
+            unfold_param[".".join(param)]["type_name"] = type_name
+            unfold_param[".".join(param)]["required"] = required
+            unfold_param[".".join(param)]["document"] = document
+        return unfold_param
 
     def _recur_generate_param_skeleton(self, param_model, name):
         return self._generate_param_skeleton(param_model[name]["members"], param_model)
