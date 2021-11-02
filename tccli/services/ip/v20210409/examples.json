@@ -3,7 +3,7 @@
     "CreateAccount": [
       {
         "document": "",
-        "input": "https://ip.tencentcloudapi.com/?Action=CreateAccount\n&AccountType=business\n&Mail=account@qq.com\n&Password=111111\n&ConfirmPassword=111111\n&PhoneNum=18888888888\n&CountryCode=86\n&Area=CN\n&Extended=11111111\n&<Common request parameters>",
+        "input": "https://ip.tencentcloudapi.com/?Action=CreateAccount\n&AccountType=business\n&Mail=account@qq.com\n&Password=111111\n&ConfirmPassword=111111\n&PhoneNum=18888888888\n&CountryCode=852\n&Area=HK\n&Extended=11111111\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Uin\": \"200000123456\",\n        \"RequestId\": \"a9e390a7-a1af-42cd-8178-13bd046337a7\"\n    }\n}",
         "title": "Creating a customer account and binding it to the partner account"
       }

@@ -125,8 +125,8 @@
         },
         {
           "default": "",
-          "document": "Country code, which can be obtained via the `GetCountryCodes` API, such as `86`.",
-          "example": "86",
+          "document": "Country code, which can be obtained via the `GetCountryCodes` API, such as 852.",
+          "example": "852",
           "member": "string",
           "name": "CountryCode",
           "required": true,
@@ -135,7 +135,7 @@
         {
           "default": "",
           "document": "ISO2 standard country code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field.",
-          "example": "CN",
+          "example": "HK",
           "member": "string",
           "name": "Area",
           "required": true,
