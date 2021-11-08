@@ -480,12 +480,6 @@
       "name": "Modifies the replication delay of a delayed RO replica",
       "output": "ModifyRoReplicationDelayResponse"
     },
-    "ModifyRoType": {
-      "document": "This API is used to change a general RO replica to delayed RO replica.",
-      "input": "ModifyRoTypeRequest",
-      "name": "Changes the type of a RO replica",
-      "output": "ModifyRoTypeResponse"
-    },
     "ModifyTimeWindow": {
       "document": "This API (ModifyTimeWindow) is used to update the maintenance time window of a TencentDB instance.",
       "input": "ModifyTimeWindowRequest",
@@ -985,6 +979,16 @@
           "example": "automatic",
           "member": "string",
           "name": "Way",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Manual backup alias",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ManualBackupName",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1581,6 +1585,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+          "example": "\"\"",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1589,6 +1594,7 @@
         {
           "default": "",
           "document": "Backup method of target instance. Value range: logical (logical cold backup), physical (physical cold backup).",
+          "example": "\"\"",
           "member": "string",
           "name": "BackupMethod",
           "required": true,
@@ -1597,10 +1603,20 @@
         {
           "default": "",
           "document": "Information of the table to be backed up. If this parameter is not set, the entire instance will be backed up by default. It can be set only in logical backup (i.e., BackupMethod = logical). The specified table must exist; otherwise, backup may fail.\nFor example, if you want to backup tb1 and tb2 in db1 and the entire db2, you should set the parameter as [{\"Db\": \"db1\", \"Table\": \"tb1\"}, {\"Db\": \"db1\", \"Table\": \"tb2\"}, {\"Db\": \"db2\"} ].",
+          "example": "无",
           "member": "BackupItem",
           "name": "BackupDBTableList",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Manual backup alias",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ManualBackupName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1788,6 +1804,15 @@
           "name": "DeployGroupId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.",
+          "example": "true",
+          "member": "bool",
+          "name": "DryRun",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -1817,6 +1842,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+          "example": "cdb-ids6j1b3",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1824,7 +1850,8 @@
         },
         {
           "default": "",
-          "document": "Filename. The file should have already been uploaded to Tencent Cloud.",
+          "document": "Filename. The file must be a .sql file uploaded to Tencent Cloud.",
+          "example": "test.sql",
           "member": "string",
           "name": "FileName",
           "required": true,
@@ -1833,6 +1860,7 @@
         {
           "default": "",
           "document": "TencentDB username",
+          "example": "xxxxx",
           "member": "string",
           "name": "User",
           "required": true,
@@ -1841,6 +1869,7 @@
         {
           "default": "",
           "document": "Password of a TencentDB instance user account",
+          "example": "xxxxxxxxxx",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -1849,6 +1878,7 @@
         {
           "default": "",
           "document": "Name of the target database. If this parameter is not passed in, no database is specified.",
+          "example": "\"\"",
           "member": "string",
           "name": "DbName",
           "required": false,
@@ -2166,6 +2196,24 @@
           "name": "CageId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The array of alarm policy names, such as [\"policy-uyoee9wg\"]. If the `AlarmPolicyList` parameter is specified, this parameter is invalid.",
+          "example": "[]",
+          "member": "string",
+          "name": "AlarmPolicyIdList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.",
+          "example": "true",
+          "member": "bool",
+          "name": "DryRun",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -7496,56 +7544,6 @@
     },
     "ModifyRoReplicationDelayResponse": {
       "document": "ModifyRoReplicationDelay response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyRoTypeRequest": {
-      "document": "ModifyRoType request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance ID",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The original type of an RO replica. Valid values: `NORMAL` (do not support delayed replication), `DELAY_REPLICATION` (support delayed replication).",
-          "member": "string",
-          "name": "SrcRoInstType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The target type of an RO replica. Valid values: `NORMAL` (do not support delayed replication), `DELAY_REPLICATION` (support delayed replication).",
-          "member": "string",
-          "name": "DstRoInstType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Replication delay in seconds. This parameter is required when a regular RO replica is switched to a delayed one. Value range: 1 to 259200.",
-          "member": "int64",
-          "name": "ReplicationDelay",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyRoTypeResponse": {
-      "document": "ModifyRoType response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

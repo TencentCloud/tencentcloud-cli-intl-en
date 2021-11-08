@@ -1472,7 +1472,7 @@
         },
         {
           "default": "",
-          "document": "This parameter can be set to `CustomDRMKeys` or left empty.\nCustomDRMKeys means encryption keys customized by users.",
+          "document": "Valid values: `CustomDRMKeys` (default value), `SDMCDRM`\n`CustomDRMKeys` means encryption keys customized by users.\n`SDMCDRM` means the DRM key management system of SDMC.",
           "example": "CustomDRMKeys",
           "member": "string",
           "name": "Scheme",
@@ -1482,7 +1482,7 @@
         },
         {
           "default": "",
-          "document": "If `Scheme` is set to `CustomDRMKeys`, this parameter is required and should be specified by the user.",
+          "document": "If `Scheme` is set to `CustomDRMKeys`, this parameter is required.\nIf `Scheme` is set to `SDMCDRM`, this parameter is optional. It supports digits, letters, hyphens, and underscores and must contain 1 to 36 characters. If it is not specified, the value of `ChannelId` will be used.",
           "example": "contentid",
           "member": "string",
           "name": "ContentId",
@@ -1498,6 +1498,16 @@
           "name": "Keys",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "SDMC key configuration. This parameter is used when `Scheme` is set to `SDMCDRM`.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "SDMCSettingsInfo",
+          "name": "SDMCSettings",
+          "required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -2333,6 +2343,72 @@
       ],
       "usage": "out"
     },
+    "SDMCSettingsInfo": {
+      "document": "SDMC DRM configuration information. This parameter is valid only when `Scheme` is set to `SDMCDRM`.",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID in the SDMC DRM system",
+          "example": "01234567890123456789",
+          "member": "string",
+          "name": "Uid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tracks of the SDMC DRM system. This parameter is valid for DASH output groups.\n`1`: audio\n`2`: SD\n`4`: HD\n`8`: UHD1\n`16`: UHD2\n\nDefault value: `31` (audio + SD + HD + UHD1 + UHD2)",
+          "example": "31",
+          "member": "int64",
+          "name": "Tracks",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key ID in the SDMC DRM system; required",
+          "example": "ad51223edcb45b52ac54e1cb456aed12",
+          "member": "string",
+          "name": "SecretId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key in the SDMC DRM system; required",
+          "example": "ad51223edcb45b52ac54e1cb456aed12",
+          "member": "string",
+          "name": "SecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key request URL of the SDMC DRM system, which is `https://uat.multidrm.tv/cpix/2.2/getcontentkey` by default",
+          "example": "https://uat.multidrm.tv/cpix/2.2/getcontentkey",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Token name in an SDMC key request URL, which is `token` by default",
+          "example": "token",
+          "member": "string",
+          "name": "TokenName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "Scte35SettingsInfo": {
       "document": "SCTE-35 configuration information.",
       "members": [
@@ -2663,6 +2739,16 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time-shift configuration information\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "TimeShiftSettingsInfo",
+          "name": "TimeShiftSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -2774,6 +2860,42 @@
       ],
       "usage": "out"
     },
+    "TimeShiftSettingsInfo": {
+      "document": "Time-shift configuration. This parameter is valid only for HLS_ARCHIVE and DASH_ARCHIVE output groups.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable time shifting. Valid values: `OPEN`; `CLOSE`\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "OPEN",
+          "member": "string",
+          "name": "State",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Domain name bound for time shifting\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "www.domain.com",
+          "member": "string",
+          "name": "PlayDomain",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Allowable time-shift period (s). Value range: [600, 1209600]. Default value: 300\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "600",
+          "member": "int64",
+          "name": "StartoverWindow",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "TimingSettingsReq": {
       "document": "Event trigger time settings",
       "members": [
@@ -2819,6 +2941,26 @@
           "example": "2021-06-25T00:00:00Z",
           "member": "string",
           "name": "Time",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This parameter cannot be empty if `EventType` is `TIMED_RECORD`.\nIt indicates the start time for recording in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the current time.",
+          "example": "2021-06-25T00:00:00Z",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This parameter cannot be empty if `EventType` is `TIMED_RECORD`.\nIt indicates the end time for recording in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the start time for recording.",
+          "example": "2021-06-25T00:00:00Z",
+          "member": "string",
+          "name": "EndTime",
           "required": false,
           "type": "string",
           "value_allowed_null": false

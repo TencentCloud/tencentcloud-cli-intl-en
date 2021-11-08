@@ -1,5 +1,11 @@
 {
   "actions": {
+    "AssignClientCredit": {
+      "document": "This API is used for a partner to set credit for a customer, such as increasing or lowering the credit and setting it to 0.\n1. The credit is valid permanently and will not be zeroed regularly.\n2. The customer's service will be suspended when its available credit sets to 0, so caution should be exercised with this operation.\n3. To prevent the customer from making new purchases without affecting their use of previously purchased products, the partner can set their available credit to 0 after obtaining the non-stop feature privilege from the channel manager.\n4. The set credit is an increase to the current available credit and cannot exceed the remaining allocable credit. Setting the credit to a negative value indicates to repossess it. The available credit can be set to 0 at the minimum.",
+      "input": "AssignClientCreditRequest",
+      "name": "Sets customer's credit",
+      "output": "AssignClientCreditResponse"
+    },
     "CreateAccount": {
       "document": "This API is used to create a Tencent Cloud account in the International Partner platform for a customer. After registration, the customer will be automatically bound to the partner account.\n\nNotes:<br>\n1. To create the Tencent Cloud account, the partner should enter and verify the customer’s email address and mobile number.<br>\n2. The customer needs to complete personal information after the first login.",
       "input": "CreateAccountRequest",
@@ -11,6 +17,24 @@
       "input": "GetCountryCodesRequest",
       "name": "Obtains country and region codes",
       "output": "GetCountryCodesResponse"
+    },
+    "QueryAgentCredit": {
+      "document": "This API is used for a partner to query its own total credit, available credit, and used credit in USD.",
+      "input": "QueryAgentCreditRequest",
+      "name": "Queries partner's credit",
+      "output": "QueryAgentCreditResponse"
+    },
+    "QueryClientList": {
+      "document": "This API is used for a partner to query a customer's credit and basic information.",
+      "input": "QueryClientListRequest",
+      "name": "Queries customer's credit",
+      "output": "QueryClientListResponse"
+    },
+    "QueryCreditHistory": {
+      "document": "This API is used to query all the credit allocation records of a single customer.",
+      "input": "QueryCreditHistoryRequest",
+      "name": "Queries customer's credit allocation records",
+      "output": "QueryCreditHistoryResponse"
     }
   },
   "metadata": {
@@ -19,6 +43,42 @@
     "serviceShortName": "ip"
   },
   "objects": {
+    "AssignClientCreditRequest": {
+      "document": "AssignClientCredit request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Specific value of the credit allocated to the customer",
+          "example": "100.00",
+          "member": "float",
+          "name": "QuotaNum",
+          "required": true,
+          "type": "float"
+        },
+        {
+          "default": "",
+          "document": "Customer UIN",
+          "example": "1234",
+          "member": "uint64",
+          "name": "ClientUin",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "AssignClientCreditResponse": {
+      "document": "AssignClientCredit response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CountryCodeItem": {
       "document": "Country/region code list",
       "members": [
@@ -199,6 +259,300 @@
         }
       ],
       "type": "object"
+    },
+    "QueryAgentCreditRequest": {
+      "document": "QueryAgentCredit request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "QueryAgentCreditResponse": {
+      "document": "QueryAgentCredit response structure.",
+      "members": [
+        {
+          "document": "Allocated credit",
+          "example": "1",
+          "member": "float",
+          "name": "AssignedCreditAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total credit",
+          "example": "1",
+          "member": "float",
+          "name": "CustomerCreditAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Remaining credit",
+          "example": "1",
+          "member": "float",
+          "name": "RemainingCreditAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryClientListItem": {
+      "document": "Reseller's customer list",
+      "members": [
+        {
+          "default": "",
+          "document": "Name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "111",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Phone\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "13211111111",
+          "member": "string",
+          "name": "Mobile",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Email\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx@xx.xx",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Overdue payment flag\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "string",
+          "name": "Arrears",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Binding time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "123",
+          "member": "string",
+          "name": "AssociationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Expiration time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "123",
+          "member": "string",
+          "name": "RecentExpiry",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Customer UIN\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "123",
+          "member": "uint64",
+          "name": "ClientUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Credit granted to customer\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "12345.67",
+          "member": "float",
+          "name": "CreditAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Customer's remaining credit\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "12340.67",
+          "member": "float",
+          "name": "RestCreditAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "QueryClientListRequest": {
+      "document": "QueryClientList request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "QueryClientListResponse": {
+      "document": "QueryClientList response structure.",
+      "members": [
+        {
+          "document": "Queries the list of customers\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "{...}",
+          "member": "QueryClientListItem",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of customers",
+          "example": "12",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryCreditHistoryRequest": {
+      "document": "QueryCreditHistory request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Customer UIN",
+          "example": "123456",
+          "member": "uint64",
+          "name": "ClientUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number",
+          "example": "0",
+          "member": "uint64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of data entries per page",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageRow",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryCreditHistoryResponse": {
+      "document": "QueryCreditHistory response structure.",
+      "members": [
+        {
+          "document": "Total number of records\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of record details\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "{..}",
+          "member": "QueryUinCreditHistoryData",
+          "name": "History",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryUinCreditHistoryData": {
+      "document": "Queries reseller's credit allocation records and returns individual records",
+      "members": [
+        {
+          "default": "",
+          "document": "Credit allocatee UIN",
+          "example": "123456",
+          "member": "uint64",
+          "name": "CreditAssignUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Allocation time",
+          "example": "123456",
+          "member": "string",
+          "name": "AssginTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operator",
+          "example": "123456",
+          "member": "string",
+          "name": "Operator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Allocated credit value",
+          "example": "123456.78",
+          "member": "float",
+          "name": "CreditAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     }
   },
   "version": "1.0"

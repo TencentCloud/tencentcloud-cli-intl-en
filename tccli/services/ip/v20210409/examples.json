@@ -1,5 +1,13 @@
 {
   "actions": {
+    "AssignClientCredit": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssignClientCredit\n<Common request parameters>\n\n{\n    \"QuotaNum\": 0.0,\n    \"ClientUin\": 1234\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Setting customer's credit"
+      }
+    ],
     "CreateAccount": [
       {
         "document": "",
@@ -14,6 +22,30 @@
         "input": "https://ip.tencentcloudapi.com/?Action=GetCountryCodes\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"EnName\": \"Albania\",\n                \"Name\": \"阿尔巴尼亚\",\n                \"Code\": \"355\"\n            },\n            {\n                \"EnName\": \"Algeria\",\n                \"Name\": \"阿尔及利亚\",\n                \"Code\": \"213\"\n            }\n        ],\n        \"RequestId\": \"a9e390a7-a1af-42cd-8178-13bd046337a7\"\n    }\n}",
         "title": "Obtaining country and region codes"
+      }
+    ],
+    "QueryAgentCredit": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryAgentCredit\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RemainingCreditAmount\": 0.0,\n        \"CustomerCreditAmount\": 0.0,\n        \"RequestId\": \"xx\",\n        \"AssignedCreditAmount\": 0.0\n    }\n}",
+        "title": "Querying partner's credit"
+      }
+    ],
+    "QueryClientList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryClientList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 0,\n        \"Data\": [\n            {\n                \"ClientUin\": 1,\n                \"Name\": \"xx\",\n                \"Mobile\": \"xx\",\n                \"RecentExpiry\": \"xx\",\n                \"CreditAmount\": 0.0,\n                \"RestCreditAmount\": 0.0,\n                \"AssociationTime\": \"xx\",\n                \"Type\": \"xx\",\n                \"Email\": \"xx\",\n                \"Arrears\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying waiting list"
+      }
+    ],
+    "QueryCreditHistory": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryCreditHistory\n<Common request parameters>\n\n{\n    \"ClientUin\": 0,\n    \"PageRow\": 0,\n    \"Page\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"RequestId\": \"xx\",\n        \"History\": [\n            {\n                \"Operator\": \"xx\",\n                \"CreditAmount\": 0.0,\n                \"AssginTime\": \"xx\",\n                \"CreditAssignUin\": \"xx\"\n            }\n        ]\n    }\n}",
+        "title": "Querying customer's credit allocation information"
       }
     ]
   },
