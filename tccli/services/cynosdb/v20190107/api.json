@@ -120,6 +120,12 @@
       "name": "Modifies backup configuration",
       "output": "ModifyBackupConfigResponse"
     },
+    "ModifyClusterParam": {
+      "document": "This API is used to modify the parameters of a cluster.",
+      "input": "ModifyClusterParamRequest",
+      "name": "Modifies the parameters of a cluster",
+      "output": "ModifyClusterParamResponse"
+    },
     "ModifyDBInstanceSecurityGroups": {
       "document": "This API is used to modify the security groups bound to an instance.",
       "input": "ModifyDBInstanceSecurityGroupsRequest",
@@ -1335,6 +1341,16 @@
           "name": "MaxStorageSize",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network information of the cluster",
+          "example": "无",
+          "member": "NetAddr",
+          "name": "NetAddrs",
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -3427,6 +3443,51 @@
       ],
       "type": "object"
     },
+    "ModifyClusterParamRequest": {
+      "document": "ModifyClusterParam request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbpg-ins-jhi2gdi0",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of parameters to be modified",
+          "example": "无",
+          "member": "ParamItem",
+          "name": "ParamList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterParamResponse": {
+      "document": "ModifyClusterParam response structure.",
+      "members": [
+        {
+          "document": "Async request ID used to query the result",
+          "example": "56317d06-8078-4e5c-b675-9e048995c820",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyDBInstanceSecurityGroupsRequest": {
       "document": "ModifyDBInstanceSecurityGroups request structure.",
       "members": [
@@ -3518,6 +3579,62 @@
         }
       ],
       "type": "object"
+    },
+    "NetAddr": {
+      "document": "Network information",
+      "members": [
+        {
+          "default": "",
+          "document": "Private network IP\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Private network port number\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "3306",
+          "member": "int64",
+          "name": "Vport",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network domain name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "WanDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network port number\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "3306",
+          "member": "int64",
+          "name": "WanPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Network type. Valid values: `ro` (read-only), `rw` or `ha` (read-write)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "rw",
+          "member": "string",
+          "name": "NetType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "ObjectTask": {
       "document": "Task information",

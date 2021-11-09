@@ -672,6 +672,7 @@
         {
           "default": "",
           "document": "Message retention period\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "Retention",
           "required": true,
@@ -681,6 +682,7 @@
         {
           "default": "",
           "document": "Minimum number of sync replications\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "MinInsyncReplicas",
           "required": true,
@@ -690,6 +692,7 @@
         {
           "default": "",
           "document": "Log cleanup mode. Default value: delete.\ndelete: logs will be deleted by save time; compact: logs will be compressed by key; compact, delete: logs will be compressed by key and deleted by save time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "delete",
           "member": "string",
           "name": "CleanUpPolicy",
           "required": true,
@@ -699,6 +702,7 @@
         {
           "default": "",
           "document": "Segment rolling duration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "SegmentMs",
           "required": true,
@@ -708,6 +712,7 @@
         {
           "default": "",
           "document": "0: false, 1: true.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "UncleanLeaderElectionEnable",
           "required": true,
@@ -717,6 +722,7 @@
         {
           "default": "",
           "document": "Number of bytes for segment rolling\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "SegmentBytes",
           "required": true,
@@ -726,8 +732,19 @@
         {
           "default": "",
           "document": "Maximum number of message bytes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "MaxMessageBytes",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Message retention file size.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "-1",
+          "member": "int64",
+          "name": "RetentionBytes",
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -1130,7 +1147,7 @@
         },
         {
           "default": "",
-          "document": "Topic name string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`)",
+          "document": "Topic name, which is a string of up to 128 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.",
           "example": "xxx",
           "member": "string",
           "name": "TopicName",
@@ -1244,6 +1261,15 @@
           "name": "AclRuleName",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Message retention file size in bytes, which is an optional parameter. Default value: -1. Currently, the min value that can be entered is 1,048,576 B.",
+          "example": "-1",
+          "member": "int64",
+          "name": "RetentionBytes",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -4165,6 +4191,15 @@
           "name": "AclRuleName",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Message retention file size in bytes, which is an optional parameter. Default value: -1. Currently, the min value that can be entered is 1,048,576 B.",
+          "example": "-1",
+          "member": "int64",
+          "name": "RetentionBytes",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
