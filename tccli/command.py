@@ -186,7 +186,7 @@ class ActionCommand(BaseCommand):
     #     'Boolean': BooleanArgument
     # }
     ARG_TYPES = {
-
+        'Array': ListArgument
     }
     DEFAULT_ARG_CLASS = CLIArgument
 
