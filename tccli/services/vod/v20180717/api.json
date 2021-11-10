@@ -5689,6 +5689,16 @@
         },
         {
           "default": "",
+          "document": "Progress of a media file composing task. Value range: [0, 100]",
+          "example": "0",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Input of media file composing task.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ComposeMediaTaskInput",
@@ -5719,20 +5729,20 @@
         },
         {
           "default": "",
-          "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this parameter. It can contain up to 1000 characters.",
+          "document": "ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is not carried or is left empty, no deduplication will be performed.",
           "example": "example",
           "member": "string",
-          "name": "SessionContext",
+          "name": "SessionId",
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is not carried or is left empty, no deduplication will be performed.",
+          "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this parameter. It can contain up to 1000 characters.",
           "example": "example",
           "member": "string",
-          "name": "SessionId",
+          "name": "SessionContext",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7490,7 +7500,7 @@
         },
         {
           "default": "",
-          "document": "Region to enable acceleration. Valid values:\n<li>`Chinese Mainland`</li>\n<li>`Outside Chinese Mainland`</li>\n<li>`Global`</li>\nIf `AccelerateArea` is not set, VOD will enable acceleration in `Chinese Mainland` or `Outside Chinese Mainland` according to the region set under the user’s Tencent Cloud account. To enable acceleration in Chinese mainland for a domain name, please finish [ICP filing](https://intl.cloud.tencent.com/document/product/243/18905?from_cn_redirect=1) for it first.",
+          "document": "Region to enable acceleration. Valid values:\n<li>`Chinese Mainland`</li>\n<li>`Outside Chinese Mainland`</li>\n<li>`Global`</li>\nIf `AccelerateArea` is not specified, VOD will enable acceleration in or outside Chinese mainland based on the regional information a user has configured with Tencent Cloud.",
           "example": "无",
           "member": "string",
           "name": "AccelerateArea",
@@ -10768,6 +10778,16 @@
         },
         {
           "default": "",
+          "document": "Progress of a video editing task. Value range: [0, 100]",
+          "example": "0",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Input of video editing task.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "EditMediaTaskInput",
@@ -10788,20 +10808,20 @@
         },
         {
           "default": "",
-          "document": "If a video processing flow is specified when a video editing task is initiated, this field will be the ID of the task flow.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "12530xxx-procedurev2-xxx",
-          "member": "string",
-          "name": "ProcedureTaskId",
+          "document": "Metadata of a source video",
+          "example": "无",
+          "member": "MediaMetaData",
+          "name": "MetaData",
           "required": true,
-          "type": "string",
+          "type": "object",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "example",
+          "document": "If a video processing flow is specified when a video editing task is initiated, this field will be the ID of the task flow.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "12530xxx-procedurev2-xxx",
           "member": "string",
-          "name": "SessionContext",
+          "name": "ProcedureTaskId",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10818,12 +10838,12 @@
         },
         {
           "default": "",
-          "document": "Metadata of a source video",
-          "example": "无",
-          "member": "MediaMetaData",
-          "name": "MetaData",
+          "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "example",
+          "member": "string",
+          "name": "SessionContext",
           "required": true,
-          "type": "object",
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -16022,7 +16042,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable or disable domain name acceleration for the selected region. Valid values:\n<li>`Enabled`: enable</li>\n<li>`Disabled`: disable</li>\nTo enable acceleration in Chinese mainland for a domain name, please finish [ICP filing](https://intl.cloud.tencent.com/document/product/243/18905?from_cn_redirect=1) for it first.",
+          "document": "Whether to enable or disable domain name acceleration for the selected region. Valid values:\n<li>`Enabled`: enable</li>\n<li>`Disabled`: disable</li>",
           "example": "无",
           "member": "string",
           "name": "Status",

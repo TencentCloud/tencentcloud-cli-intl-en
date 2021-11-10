@@ -48,29 +48,29 @@
       "name": "Queries image parameters",
       "output": "DescribePictureResponse"
     },
-    "DescribeRealtimeNetwork": {
-      "document": "This API is used to query the network conditions of an `SDKAppID`, including upstream and downstream packet loss, in the last 24 hours on a per-minute basis. The query period must be 1-60 minutes.",
-      "input": "DescribeRealtimeNetworkRequest",
-      "name": "Queries real-time network status",
-      "output": "DescribeRealtimeNetworkResponse"
-    },
-    "DescribeRealtimeQuality": {
-      "document": "This API is used to query the quality metrics of an `SDKAppID` in the last 24 hours on a per-minute basis, including room entry success rate, instant playback rate of the first frame, and audio/video lag rate. The query period must be 1-60 minutes.",
-      "input": "DescribeRealtimeQualityRequest",
-      "name": "Queries real-time quality data",
-      "output": "DescribeRealtimeQualityResponse"
-    },
-    "DescribeRealtimeScale": {
-      "document": " This API is used to query the scale of an `SDKAppID` in the last 24 hours on a per-minute basis. The query period must be 1-60 minutes.",
-      "input": "DescribeRealtimeScaleRequest",
-      "name": "Queries real-time scale",
-      "output": "DescribeRealtimeScaleResponse"
+    "DescribeRecordStatistic": {
+      "document": "This API is used to query billable on-cloud recording durations.\n\n- If the period queried is 1 day or shorter, the statistics returned are on a 5-minute basis. If the period queried is longer than 1 day, the statistics returned are on a daily basis.\n- The period queried in a request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- In the daily pay-as-you-go mode, bills for a day are generated the next morning. Therefore, we recommend you query the statistics after 9 AM the next day.",
+      "input": "DescribeRecordStatisticRequest",
+      "name": "Queries billable on-cloud recording durations",
+      "output": "DescribeRecordStatisticResponse"
     },
     "DescribeRoomInformation": {
       "document": "This API is used to query the room list of an `SDKAppID` in the last 14 days. It returns 10 calls by default and can return up to 100 calls per query.\n**Note**: You can use this API to query or check historical data, but not for real-time key business logic.",
       "input": "DescribeRoomInformationRequest",
       "name": "Queries room list",
       "output": "DescribeRoomInformationResponse"
+    },
+    "DescribeTrtcInteractiveTime": {
+      "document": "This API is used to query billable audio/video interaction durations.\n- If the period queried is 1 day or shorter, the statistics returned are on a 5-minute basis. If the period queried is longer than 1 day, the statistics returned are on a daily basis.\n- The period queried in a request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- In the daily pay-as-you-go mode, bills for a day are generated the next morning. Therefore, we recommend you query the statistics after 9 AM the next day.",
+      "input": "DescribeTrtcInteractiveTimeRequest",
+      "name": "Queries billable audio/video interaction durations",
+      "output": "DescribeTrtcInteractiveTimeResponse"
+    },
+    "DescribeTrtcMcuTranscodeTime": {
+      "document": "This API is used to query billable relaying and transcoding durations.\n- If the period queried is 1 day or shorter, the statistics returned are on a 5-minute basis. If the period queried is longer than 1 day, the statistics returned are on a daily basis.\n- The period queried in a request cannot be longer than 31 days.\n- If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.\n- In the daily pay-as-you-go mode, bills for a day are generated the next morning. Therefore, we recommend you query the statistics after 9 AM the next day.",
+      "input": "DescribeTrtcMcuTranscodeTimeRequest",
+      "name": "Queries billable relaying and transcoding durations",
+      "output": "DescribeTrtcMcuTranscodeTimeResponse"
     },
     "DescribeUserInformation": {
       "document": "This API is used to query the user list of a specified time range (up to 4 hours) in the last 14 days. Data of 6 users is displayed on each page by default, and data of up to 100 users can be displayed on each page (`PageSize` set to 100 or smaller).\n**Note**: You can use this API to query or check historical data, but not for real-time key business logic.",
@@ -804,165 +804,43 @@
       ],
       "type": "object"
     },
-    "DescribeRealtimeNetworkRequest": {
-      "document": "DescribeRealtimeNetwork request structure.",
+    "DescribeRecordStatisticRequest": {
+      "document": "DescribeRecordStatistic request structure.",
       "members": [
         {
           "default": "",
-          "document": "Query start time in the format of UNIX timestamp, such as 1588031999s, which is a point in time in the last 24 hours.",
-          "member": "uint64",
+          "document": "Query start date in the format of YYYY-MM-DD",
+          "member": "date",
           "name": "StartTime",
           "required": true,
-          "type": "int"
+          "type": "string"
         },
         {
           "default": "",
-          "document": "Query end time in the format of local UNIX timestamp, such as 1588031999s.",
-          "member": "uint64",
+          "document": "Query end date in the format of YYYY-MM-DD\nThe period queried in a request cannot be longer than 31 days.",
+          "member": "date",
           "name": "EndTime",
           "required": true,
-          "type": "int"
+          "type": "string"
         },
         {
           "default": "",
-          "document": "User `sdkappid`",
-          "member": "string",
+          "document": "Application ID, which is optional. If it is specified, duration statistics for the specified application are returned; otherwise, the total durations of all applications are returned.",
+          "member": "uint64",
           "name": "SdkAppId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Type of data to query\nsendLossRateRaw: upstream packet loss rate;\nrecvLossRateRaw: downstream packet loss rate.",
-          "member": "string",
-          "name": "DataType",
           "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeRealtimeNetworkResponse": {
-      "document": "DescribeRealtimeNetwork response structure.",
-      "members": [
-        {
-          "document": "Data returned by query",
-          "member": "RealtimeData",
-          "name": "Data",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeRealtimeQualityRequest": {
-      "document": "DescribeRealtimeQuality request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 24 hours.",
-          "member": "uint64",
-          "name": "StartTime",
-          "required": true,
           "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Query end time in the format of local UNIX timestamp, such as 1588031999s.",
-          "member": "uint64",
-          "name": "EndTime",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "User `sdkappid`",
-          "member": "string",
-          "name": "SdkAppId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Type of data to query\nenterTotalSuccPercent: room entry success rate;\nfistFreamInSecRate: instant playback rate of the first frame;\nblockPercent: video lag rate;\naudioBlockPercent: audio lag rate.",
-          "member": "string",
-          "name": "DataType",
-          "required": false,
-          "type": "list"
         }
       ],
       "type": "object"
     },
-    "DescribeRealtimeQualityResponse": {
-      "document": "DescribeRealtimeQuality response structure.",
+    "DescribeRecordStatisticResponse": {
+      "document": "DescribeRecordStatistic response structure.",
       "members": [
         {
-          "document": "Type of returned data",
-          "member": "RealtimeData",
-          "name": "Data",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeRealtimeScaleRequest": {
-      "document": "DescribeRealtimeScale request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Query start time in the format of local UNIX timestamp, such as 1588031999s, which is a point in time in the last 24 hours.",
-          "member": "uint64",
-          "name": "StartTime",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Query end time in the format of local UNIX timestamp, such as 1588031999s.",
-          "member": "uint64",
-          "name": "EndTime",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "User `sdkappid`",
-          "member": "string",
-          "name": "SdkAppId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Type of data to query\n`UserNum: number of users in call;\nRoomNum: number of rooms.",
-          "member": "string",
-          "name": "DataType",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeRealtimeScaleResponse": {
-      "document": "DescribeRealtimeScale response structure.",
-      "members": [
-        {
-          "document": "Returned data array",
-          "member": "RealtimeData",
-          "name": "Data",
+          "document": "Duration statistics of the queried application(s)",
+          "member": "SdkAppIdRecordUsage",
+          "name": "SdkAppIdUsages",
           "type": "list",
           "value_allowed_null": false
         },
@@ -1049,6 +927,114 @@
           "document": "Room information list",
           "member": "RoomState",
           "name": "RoomList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTrtcInteractiveTimeRequest": {
+      "document": "DescribeTrtcInteractiveTime request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Query start date in the format of YYYY-MM-DD",
+          "example": "2020-09-07",
+          "member": "date",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query end date in the format of YYYY-MM-DD\nThe period queried in a request cannot be longer than 31 days.",
+          "example": "2020-09-08",
+          "member": "date",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Application ID, which is optional. If it is specified, duration statistics for the specified application are returned; otherwise, the total durations of all applications are returned.",
+          "example": "1400123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTrtcInteractiveTimeResponse": {
+      "document": "DescribeTrtcInteractiveTime response structure.",
+      "members": [
+        {
+          "document": "Duration statistics of the queried application(s)",
+          "example": "无",
+          "member": "OneSdkAppIdUsagesInfo",
+          "name": "Usages",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTrtcMcuTranscodeTimeRequest": {
+      "document": "DescribeTrtcMcuTranscodeTime request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Query start date in the format of YYYY-MM-DD",
+          "example": "2020-09-07",
+          "member": "date",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query end date in the format of YYYY-MM-DD\nThe period queried in a request cannot be longer than 31 days.",
+          "example": "2020-09-08",
+          "member": "date",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Application ID, which is optional. If it is specified, duration statistics for the specified application are returned; otherwise, the total durations of all applications are returned.",
+          "example": "1400123456",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTrtcMcuTranscodeTimeResponse": {
+      "document": "DescribeTrtcMcuTranscodeTime response structure.",
+      "members": [
+        {
+          "document": "Duration statistics of the queried application(s)",
+          "example": "无",
+          "member": "OneSdkAppIdTranscodeTimeUsagesInfo",
+          "name": "Usages",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1603,6 +1589,72 @@
       ],
       "type": "object"
     },
+    "OneSdkAppIdTranscodeTimeUsagesInfo": {
+      "document": "Relaying and transcoding duration statistics",
+      "members": [
+        {
+          "default": "",
+          "document": "Array of relaying and transcoding durations",
+          "member": "SdkAppIdTrtcMcuTranscodeTimeUsage",
+          "name": "SdkAppIdTranscodeTimeUsages",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of records returned",
+          "member": "uint64",
+          "name": "TotalNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the application queried. Its value may be an application ID or `total`, which indicates that the total durations of all applications are queried.",
+          "member": "string",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "OneSdkAppIdUsagesInfo": {
+      "document": "Array of billable audio/video interaction durations of a specific application (`SdkAppId`) and array length",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of records returned for the `SdkAppId`",
+          "member": "uint64",
+          "name": "TotalNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Array of durations",
+          "member": "SdkAppIdTrtcUsage",
+          "name": "SdkAppIdTrtcTimeUsages",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application ID",
+          "member": "string",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "OutputParams": {
       "document": "MCU On-Cloud MixTranscoding output parameters",
       "members": [
@@ -1887,25 +1939,52 @@
       ],
       "usage": "out"
     },
-    "RealtimeData": {
-      "document": "Returned data of seconds-level monitoring",
+    "RecordUsage": {
+      "document": "Recording duration statistics",
       "members": [
         {
           "default": "",
-          "document": "Returned data",
-          "member": "TimeValue",
-          "name": "Content",
+          "document": "Time point for the statistics, e.g., `2020-09-07` or `2020-09-07 00:05:05`",
+          "member": "string",
+          "name": "TimeKey",
           "required": true,
-          "type": "list",
-          "value_allowed_null": true
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Data type field",
-          "member": "string",
-          "name": "DataType",
+          "document": "SD video duration (s)",
+          "member": "uint64",
+          "name": "Class1VideoTime",
           "required": true,
-          "type": "string",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HD video duration (s)",
+          "member": "uint64",
+          "name": "Class2VideoTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "FHD video duration (s)",
+          "member": "uint64",
+          "name": "Class3VideoTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audio duration (s)",
+          "member": "uint64",
+          "name": "AudioTime",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -2093,6 +2172,141 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SdkAppIdRecordUsage": {
+      "document": "Recording duration statistics of a specific application (`SdkAppId`)",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID",
+          "member": "string",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Durations for the period queried",
+          "member": "RecordUsage",
+          "name": "Usages",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SdkAppIdTrtcMcuTranscodeTimeUsage": {
+      "document": "Billable relaying and transcoding duration statistics\nIf the period queried is 1 day or shorter, the statistics returned are on a 5-minute basis. If the period queried is longer than 1 day, the statistics returned are on a daily basis.",
+      "members": [
+        {
+          "default": "",
+          "document": "Time point for the statistics. e.g., `2020-09-07` or `2020-09-07 00:05:05`",
+          "member": "string",
+          "name": "TimeKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audio duration (s)",
+          "member": "uint64",
+          "name": "AudioTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SD video duration (s)",
+          "member": "uint64",
+          "name": "VideoTimeSd",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HD video duration (s)",
+          "member": "uint64",
+          "name": "VideoTimeHd",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "FHD video duration (s)",
+          "member": "uint64",
+          "name": "VideoTimeFhd",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SdkAppIdTrtcUsage": {
+      "document": "Audio/Video interaction duration statistics\nIf the period queried is 1 day or shorter, the statistics returned are on a 5-minute basis. If the period queried is longer than 1 day, the statistics returned are on a daily basis.",
+      "members": [
+        {
+          "default": "",
+          "document": "Time point for the statistics. e.g., `2020-09-07` or `2020-09-07 00:05:05`",
+          "member": "string",
+          "name": "TimeKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audio duration (s)",
+          "member": "uint64",
+          "name": "AudioTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audio/Video duration (s)\nThis parameter is returned only for users who signed up before October 11, 2019 and have not switched to the [new billing standards](https://intl.cloud.tencent.com/document/product/647/17157?from_cn_redirect=1).",
+          "member": "uint64",
+          "name": "AudioVideoTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SD video duration (s)",
+          "member": "uint64",
+          "name": "VideoTimeSd",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HD video duration (s)",
+          "member": "uint64",
+          "name": "VideoTimeHd",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "FHD video duration (s)",
+          "member": "uint64",
+          "name": "VideoTimeHdp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
