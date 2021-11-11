@@ -1513,12 +1513,44 @@
       ],
       "usage": "both"
     },
+    "EventSettingsDestinationReq": {
+      "document": "Destination address information in event settings",
+      "members": [
+        {
+          "default": "",
+          "document": "URL of the COS bucket to save recording files",
+          "example": "http://cos-domain/path",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "EventSettingsDestinationResp": {
+      "document": "Destination address information in event settings",
+      "members": [
+        {
+          "default": "",
+          "document": "URL of the COS bucket where recording files are saved",
+          "example": "http://cos-domain/path",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "EventSettingsReq": {
       "document": "Configuration information of an event in the plan",
       "members": [
         {
           "default": "",
-          "document": "Only `INPUT_SWITCH` is supported currently. If you do not specify this parameter, `INPUT_SWITCH` will be used.",
+          "document": "Valid values: `INPUT_SWITCH`, `TIMED_RECORD`. If it is not specified, `INPUT_SWITCH` will be used.",
           "example": "INPUT_SWITCH",
           "member": "string",
           "name": "EventType",
@@ -1534,6 +1566,36 @@
           "name": "InputAttachment",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the output group to attach. This parameter is required if `EventType` is `TIMED_RECORD`.",
+          "example": "OutputGroupName",
+          "member": "string",
+          "name": "OutputGroupName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the manifest file for timed recording, which must end with `.m3u8` for HLS and `.mpd` for DASH. This parameter is required if `EventType` is `TIMED_RECORD`.",
+          "example": "manifest.m3u8",
+          "member": "string",
+          "name": "ManifestName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL of the COS bucket to save recording files. This parameter is required if `EventType` is `TIMED_RECORD`. It may contain 1 or 2 URLs. The first URL corresponds to pipeline 0 and the second pipeline 1.",
+          "example": "无",
+          "member": "EventSettingsDestinationReq",
+          "name": "Destinations",
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -1560,6 +1622,36 @@
           "name": "InputAttachment",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the output group attached. This parameter is not empty if `EventType` is `TIMED_RECORD`.",
+          "example": "OutputGroupName",
+          "member": "string",
+          "name": "OutputGroupName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the manifest file for timed recording, which ends with `.m3u8` for HLS and `.mpd` for DASH. This parameter is not empty if `EventType` is `TIMED_RECORD`.",
+          "example": "manifest.m3u8",
+          "member": "string",
+          "name": "ManifestName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL of the COS bucket where recording files are saved. This parameter is not empty if `EventType` is `TIMED_RECORD`. It may contain 1 or 2 URLs. The first URL corresponds to pipeline 0 and the second pipeline 1.",
+          "example": "无",
+          "member": "EventSettingsDestinationResp",
+          "name": "Destinations",
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -2901,7 +2993,7 @@
       "members": [
         {
           "default": "",
-          "document": "Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`",
+          "document": "Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`. This parameter is required if `EventType` is `INPUT_SWITCH`.",
           "example": "FIXED_TIME",
           "member": "string",
           "name": "StartType",
@@ -2911,10 +3003,30 @@
         },
         {
           "default": "",
-          "document": "Required if `StartType` is `FIXED_TIME`\nUTC time, such as `2020-01-01T12:00:00Z`",
+          "document": "This parameter is required if `EventType` is `INPUT_SWITCH` and `StartType` is `FIXED_TIME`.\nIt must be in UTC format, e.g., `2020-01-01T12:00:00Z`.",
           "example": "2021-06-25T00:00:00Z",
           "member": "string",
           "name": "Time",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This parameter is required if `EventType` is `TIMED_RECORD`.\nIt specifies the recording start time in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the current time.",
+          "example": "2021-06-25T00:00:00Z",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This parameter is required if `EventType` is `TIMED_RECORD`.\nIt specifies the recording end time in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the recording start time.",
+          "example": "2021-06-25T00:00:00Z",
+          "member": "string",
+          "name": "EndTime",
           "required": false,
           "type": "string",
           "value_allowed_null": false

@@ -1,9 +1,9 @@
 {
   "actions": {
     "AddDelayLiveStream": {
-      "document": "This API is used to set the delay time for a stream.\nNote: if you want to set delayed playback before pushing, you need to do so 5 minutes in advance.\nCurrently, this API only supports stream granularity, and the feature supporting domain name and application granularities will be available in the future.\nUse case: for important live streams, you can set delayed playback in advance to avoid contingency issues.\n",
+      "document": "This API is used to set a delay in playing the images of large live streaming events, in case of emergencies.\n\nNote: if you are to set the delay before stream push, set it at least 5 minutes before the push. This API supports configuration only by stream.",
       "input": "AddDelayLiveStreamRequest",
-      "name": "Delays playback.",
+      "name": "Sets a live streaming delay",
       "output": "AddDelayLiveStreamResponse"
     },
     "AddLiveDomain": {
@@ -301,7 +301,7 @@
       "output": "DescribeLiveDomainsResponse"
     },
     "DescribeLiveForbidStreamList": {
-      "document": "This API is used to get the forbidden stream list.",
+      "document": "This API is used to get the list of disabled streams.\n\nNote: this API is used for query only and should not be relied too much upon in important business scenarios.",
       "input": "DescribeLiveForbidStreamListRequest",
       "name": "Gets the list of forbidden streams.",
       "output": "DescribeLiveForbidStreamListResponse"
@@ -355,13 +355,13 @@
       "output": "DescribeLiveSnapshotTemplatesResponse"
     },
     "DescribeLiveStreamEventList": {
-      "document": "This API is used to query streaming events.<br>\n\nNote: This API can filter by IsFilter and return the push history.",
+      "document": "This API is used to query stream push/interruption events.<br>\n\nNotes:\n1. This API is used to query stream push/interruption records, and should not be relied too much upon in important business scenarios.\n2. You can use the `IsFilter` parameter of this API to filter and get required push records.",
       "input": "DescribeLiveStreamEventListRequest",
       "name": "Queries streaming events.",
       "output": "DescribeLiveStreamEventListResponse"
     },
     "DescribeLiveStreamOnlineList": {
-      "document": "This API is used to return a list of live streams. It queries the information of live streams after they are pushed successfully.\nNote: this API can query up to 20,000 streams. If you want to query more than 20,000 streams, please contact after-sales service.",
+      "document": "This API is used to get the list of ongoing live streams. It queries the information of live streams after they are pushed successfully. \n\nNotes:\n1. This API is used to query the list of active live streams only, and should not be relied too much upon in important business scenarios.\n2. This API can query up to 20,000 streams. To query more streams, please contact our after-sales service team.\n",
       "input": "DescribeLiveStreamOnlineListRequest",
       "name": "Queries live streams.",
       "output": "DescribeLiveStreamOnlineListResponse"
@@ -379,7 +379,7 @@
       "output": "DescribeLiveStreamPushInfoListResponse"
     },
     "DescribeLiveStreamState": {
-      "document": "This API is used to return the stream status such as active, inactive, or forbidden.",
+      "document": "This API is used to get the stream status, such as active, inactive, or disabled.\nNote: this API is used to query the stream status, and should not be relied too much upon in important business scenarios.\n\nNotes:\n1. You should not rely on the results returned by this API to initiate/interrupt live streams.\n2. The application can get and store the status of live rooms via [Stream Push and Interruption Event Notification](https://intl.cloud.tencent.com/document/product/267/47025?from_cn_redirect=1).\n3. You can use the [DescribeLiveStreamOnlineList](https://intl.cloud.tencent.com/document/product/267/20472?from_cn_redirect=1) API to regularly (with the interval larger than 1 minute) check the status of live rooms monitored by the application.\n4. If you find that a stream is inactive using the stream status query API, you can use other above-mentioned methods to check its status.\n5. If access or resolution errors occur when you use the API to query, you can regard the stream as active, and do not perform operations on the application.",
       "input": "DescribeLiveStreamStateRequest",
       "name": "Queries stream status.",
       "output": "DescribeLiveStreamStateResponse"
@@ -577,9 +577,9 @@
       "output": "ModifyLiveTranscodeTemplateResponse"
     },
     "ResumeDelayLiveStream": {
-      "document": "This API is used to resume a delayed playback.",
+      "document": "This API is used to cancel the delay setting and recover the real-time display of the live streaming image.",
       "input": "ResumeDelayLiveStreamRequest",
-      "name": "Resumes a delayed playback.",
+      "name": "Cancels the live streaming delay",
       "output": "ResumeDelayLiveStreamResponse"
     },
     "ResumeLiveStream": {
@@ -1644,7 +1644,8 @@
       "members": [
         {
           "default": "",
-          "document": "ID of stream mix session (from applying for stream mix to canceling stream mix).",
+          "document": "ID of a stream mix session (from applying for the stream mix to cancelling it). This parameter can contain up to 80 bytes of letters, digits, and underscores.",
+          "example": "test_room",
           "member": "string",
           "name": "MixStreamSessionId",
           "required": true,
@@ -1653,6 +1654,7 @@
         {
           "default": "",
           "document": "Input stream list for stream mix.",
+          "example": "无",
           "member": "CommonMixInputParam",
           "name": "InputStreamList",
           "required": true,
@@ -1661,6 +1663,7 @@
         {
           "default": "",
           "document": "Output stream parameter for stream mix.",
+          "example": "无",
           "member": "CommonMixOutputParams",
           "name": "OutputParams",
           "required": true,
@@ -1669,6 +1672,7 @@
         {
           "default": "",
           "document": "Input template ID. If this parameter is set, the output will be generated according to the default template layout, and there is no need to enter the custom position parameters.\nIf this parameter is left empty, 0 will be used by default.\nFor two input sources, 10, 20, 30, 40, and 50 are supported.\nFor three input sources, 310, 390, and 391 are supported.\nFor four input sources, 410 is supported.\nFor five input sources, 510 and 590 are supported.\nFor six input sources, 610 is supported.",
+          "example": "40",
           "member": "int64",
           "name": "MixStreamTemplateId",
           "required": false,
@@ -1677,6 +1681,7 @@
         {
           "default": "",
           "document": "Special control parameter for stream mix. If there are no special needs, leave it empty.",
+          "example": "无",
           "member": "CommonMixControlParams",
           "name": "ControlParams",
           "required": false,
@@ -4099,6 +4104,7 @@
         {
           "default": "",
           "document": "Filter by domain name status. 0: disabled, 1: enabled.",
+          "example": "1",
           "member": "uint64",
           "name": "DomainStatus",
           "required": false,
@@ -4107,6 +4113,7 @@
         {
           "default": "",
           "document": "Filter by domain name type. 0: push. 1: playback",
+          "example": "1",
           "member": "uint64",
           "name": "DomainType",
           "required": false,
@@ -4115,6 +4122,7 @@
         {
           "default": "",
           "document": "Number of entries per page. Value range: 10-100. Default value: 10.",
+          "example": "10",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -4123,6 +4131,7 @@
         {
           "default": "",
           "document": "Page number to get. Value range: 1-100000. Default value: 1.",
+          "example": "1",
           "member": "uint64",
           "name": "PageNum",
           "required": false,
@@ -4131,6 +4140,7 @@
         {
           "default": "",
           "document": "0: LVB, 1: LCB. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "IsDelayLive",
           "required": false,
@@ -4139,10 +4149,20 @@
         {
           "default": "",
           "document": "Domain name prefix.",
+          "example": "qq",
           "member": "string",
           "name": "DomainPrefix",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Playback region. This parameter is valid only when `DomainType` is set to `1`.\n`1`: Chinese mainland\n`2`: global\n`3`: outside Chinese mainland",
+          "example": "1",
+          "member": "uint64",
+          "name": "PlayType",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -4209,7 +4229,7 @@
         },
         {
           "default": "",
-          "document": "The stream name to search for",
+          "document": "Stream name for query",
           "example": "stream_2021",
           "member": "string",
           "name": "StreamName",
@@ -5768,6 +5788,7 @@
         {
           "default": "",
           "document": "Start time in UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`.",
+          "example": "2019-11-07T16:00:00Z",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -5776,6 +5797,7 @@
         {
           "default": "",
           "document": "End time in UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`. Data for the last year can be queried.",
+          "example": "2019-11-09T15:59:00Z",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -5784,6 +5806,7 @@
         {
           "default": "",
           "document": "Region information. Valid values: Mainland, Oversea. The former is to query data within Mainland China, while the latter outside Mainland China. If this parameter is left empty, data of all regions will be queried.",
+          "example": "Mainland",
           "member": "string",
           "name": "Zone",
           "required": false,
@@ -5792,6 +5815,7 @@
         {
           "default": "",
           "document": "Push domain name (data at the domain name level after November 1, 2019 can be queried).",
+          "example": "[\"push.live.com\"]",
           "member": "string",
           "name": "PushDomains",
           "required": false,
@@ -5799,7 +5823,8 @@
         },
         {
           "default": "",
-          "document": "Data dimension. The data has a delay of one and a half hours. Valid values: 1. Minute (5-minute granularity, which supports a maximum query time range of 31 days); 2. Day (1-day granularity, which is the default value and supports a maximum query time range of 186 days).",
+          "document": "Data granularity. There is a 1.5-hour delay in data reporting. Valid values: `Minute` (5-minute granularity; query period of up to 31 days); `Day` (1-day granularity based on UTC+8:00; query period of up to 186 days)",
+          "example": "Minute",
           "member": "string",
           "name": "Granularity",
           "required": false,
@@ -6007,6 +6032,7 @@
         {
           "default": "",
           "document": "Stream name.",
+          "example": "abcd",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -6015,6 +6041,7 @@
         {
           "default": "",
           "document": "Start time point in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "2019-06-21 12:00:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -6022,7 +6049,8 @@
         },
         {
           "default": "",
-          "document": "End time point in the format of `yyyy-mm-dd HH:MM:SS`. The maximum time span is 6 hours. Data for the last 6 days can be queried.",
+          "document": "End time in the format of yyyy-mm-dd HH:MM:SS. You can query data in the past 7 days. You’re advised to set the query period to up to 3 hours.",
+          "example": "2019-06-21 12:01:02",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -6031,6 +6059,7 @@
         {
           "default": "",
           "document": "Push domain name.",
+          "example": "abc",
           "member": "string",
           "name": "PushDomain",
           "required": false,
@@ -6039,6 +6068,7 @@
         {
           "default": "",
           "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.",
+          "example": "abc",
           "member": "string",
           "name": "AppName",
           "required": false,
