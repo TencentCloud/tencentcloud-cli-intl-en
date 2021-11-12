@@ -1,32 +1,40 @@
 {
   "actions": {
+    "BatchSendEmail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BatchSendEmail\n<Common request parameters>\n\n{\n    \"Attachments\": [\n        {\n            \"Content\": \"Attachment content\",\n            \"FileName\": \"File name\"\n        }\n    ],\n    \"TimedParam\": {\n        \"BeginTime\": \"2021-09-10 11:10:11\"\n    },\n    \"FromEmailAddress\": \"abc@bbc.com\",\n    \"ReplyToAddresses\": \"abc@bbc.com\",\n    \"Simple\": {\n        \"Text\": \"text\",\n        \"Html\": \"html\"\n    },\n    \"ReceiverId\": 123,\n    \"Template\": {\n        \"TemplateData\": \"{\\\"name\\\":\\\"123\\\"}\",\n        \"TemplateID\": 1\n    },\n    \"CycleParam\": {\n        \"IntervalTime\": 1,\n        \"BeginTime\": \"2021-09-10 11:10:11\"\n    },\n    \"Subject\": \"Email subject\",\n    \"TaskType\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"TaskId\": 123\n    }\n}",
+        "title": "Adding a batch sending task"
+      }
+    ],
     "CreateEmailAddress": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEmailAddress\n<Common request parameters>\n\n{\"EmailAddress\":\"service@mail.qcloud.com\",\"EmailSenderName\":\"Tencent Cloud\"}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\r\n  }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEmailAddress\n<Common request parameters>\n\n{\n    \"EmailAddress\": \"service@mail.qcloud.com\",\n    \"EmailSenderName\": \"Tencent Cloud email notification\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
         "title": "Creating a sender address"
       }
     ],
     "CreateEmailIdentity": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEmailIdentity\n<Common request parameters>\n\n{\"EmailIdentity\":\"mail.qcloud.com\"}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\r\n    \"IdentityType\": \"DOMAIN\",\r\n    \"VerifiedForSendingStatus\": false,\r\n    \"Attributes\": [\r\n      {\r\n        \"Type\": \"TXT\",\r\n        \"SendDomain\": \"mail.qcloud.com\",\r\n        \"ExpectedValue\": \"v=spf1 include:qcloudmail.com ~all\",\r\n        \"CurrentValue\": \"\",\r\n        \"Status\": false\r\n      },\r\n      {\r\n        \"Type\": \"TXT\",\r\n        \"SendDomain\": \"mail._domainkey.mail.qcloud.com\",\r\n        \"ExpectedValue\": \"k=rsa;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDeMVIzrCa3T14JsNY0IRv5/2V1/v2itlviLQBwXsa7shBD6TrBkswsFUToPyMRWC9tbR/5ey0nRBH0ZVxp+lsmTxid2Y2z+FApQ6ra2VsXfbJP3HE6wAO0YTVEJt1TmeczhEd2Jiz/fcabIISgXEdSpTYJhb0ct0VJRxcg4c8c7wIDAQAB\",\r\n        \"CurrentValue\": \"\",\r\n        \"Status\": false\r\n      }\r\n    ]\r\n  }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEmailIdentity\n<Common request parameters>\n\n{\n    \"EmailIdentity\": \"mail.qcloud.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"IdentityType\": \"DOMAIN\",\n        \"VerifiedForSendingStatus\": false,\n        \"Attributes\": [\n            {\n                \"Type\": \"TXT\",\n                \"SendDomain\": \"mail.qcloud.com\",\n                \"ExpectedValue\": \"v=spf1 include:qcloudmail.com ~all\",\n                \"CurrentValue\": \"\",\n                \"Status\": false\n            },\n            {\n                \"Type\": \"TXT\",\n                \"SendDomain\": \"mail._domainkey.mail.qcloud.com\",\n                \"ExpectedValue\": \"k=rsa;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDeMVIzrCa3T14JsNY0IRv5/2V1/v2itlviLQBwXsa7shBD6TrBkswsFUToPyMRWC9tbR/5ey0nRBH0ZVxp+lsmTxid2Y2z+FApQ6ra2VsXfbJP3HE6wAO0YTVEJt1TmeczhEd2Jiz/fcabIISgXEdSpTYJhb0ct0VJRxcg4c8c7wIDAQAB\",\n                \"CurrentValue\": \"\",\n                \"Status\": false\n            }\n        ]\n    }\n}",
         "title": "Creating a sender domain"
       }
     ],
     "CreateEmailTemplate": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEmailTemplate\n<Common request parameters>\n\n{\"TemplateContent\":{\"Html\":\"PGh0bWw+dGhpcyBpcyBhIGV4YW1wbGUge3tjb2RlfX08L2h0bWw+\"},\"TemplateName\":\"TestName\"}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\r\n  }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEmailTemplate\n<Common request parameters>\n\n{\n    \"TemplateContent\": {\n        \"Html\": \"PGh0bWw+dGhpcyBpcyBhIGV4YW1wbGUge3tjb2RlfX08L2h0bWw+\"\n    },\n    \"TemplateName\": \"TestName\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
         "title": "Creating an HTML email template"
       },
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEmailTemplate\n<Common request parameters>\n\n{\"TemplateContent\":{\"Text\":\"dGhpcyBpcyBhIGV4YW1wbGUge3tjb2RlfX0=\"},\"TemplateName\":\"TestName\"}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\r\n  }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEmailTemplate\n<Common request parameters>\n\n{\n    \"TemplateContent\": {\n        \"Text\": \"dGhpcyBpcyBhIGV4YW1wbGUge3tjb2RlfX0=\"\n    },\n    \"TemplateName\": \"TestName\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
         "title": "Creating a TEXT email template"
       }
     ],
@@ -34,77 +42,77 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBlackList\n<Common request parameters>\n\n{\n    \"EmailAddressList\": [\n        \"23423434@qq.com\"\n    ]\n}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
         "title": "Unblocklisting a recipient"
       }
     ],
     "DeleteEmailAddress": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteEmailAddress\n<Common request parameters>\n\n{\"EmailAddress\":\"service@mail.qcloud.com\"}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\r\n  }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteEmailAddress\n<Common request parameters>\n\n{\n    \"EmailAddress\": \"service@mail.qcloud.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
         "title": "Deleting a sender address"
       }
     ],
     "DeleteEmailIdentity": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteEmailIdentity\n<Common request parameters>\n\n{\"EmailIdentity\":\"mail.qcloud.com\"}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\r\n  }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteEmailIdentity\n<Common request parameters>\n\n{\n    \"EmailIdentity\": \"mail.qcloud.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
         "title": "Deleting a sender domain"
       }
     ],
     "DeleteEmailTemplate": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteEmailTemplate\n<Common request parameters>\n\n{\"TemplateID\":10086}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\r\n  }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteEmailTemplate\n<Common request parameters>\n\n{\n    \"TemplateID\": 10086\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
         "title": "Deleting an email template"
       }
     ],
     "GetEmailIdentity": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetEmailIdentity\n<Common request parameters>\n\n{\"EmailIdentity\":\"mail.qcloud.com\"}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\r\n    \"IdentityType\": \"DOMAIN\",\r\n    \"VerifiedForSendingStatus\": false,\r\n    \"Attributes\": [\r\n      {\r\n        \"Type\": \"TXT\",\r\n        \"SendDomain\": \"mail.qcloud.com\",\r\n        \"ExpectedValue\": \"v=spf1 include:qcloudmail.com ~all\",\r\n        \"CurrentValue\": \"\",\r\n        \"Status\": false\r\n      },\r\n      {\r\n        \"Type\": \"TXT\",\r\n        \"SendDomain\": \"mail._domainkey.mail.qcloud.com\",\r\n        \"ExpectedValue\": \"k=rsa;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDeMVIzrCa3T14JsNY0IRv5/2V1/v2itlviLQBwXsa7shBD6TrBkswsFUToPyMRWC9tbR/5ey0nRBH0ZVxp+lsmTxid2Y2z+FApQ6ra2VsXfbJP3HE6wAO0YTVEJt1TmeczhEd2Jiz/fcabIISgXEdSpTYJhb0ct0VJRxcg4c8c7wIDAQAB\",\r\n        \"CurrentValue\": \"\",\r\n        \"Status\": false\r\n      }\r\n    ]\r\n  }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetEmailIdentity\n<Common request parameters>\n\n{\n    \"EmailIdentity\": \"mail.qcloud.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"IdentityType\": \"DOMAIN\",\n        \"VerifiedForSendingStatus\": false,\n        \"Attributes\": [\n            {\n                \"Type\": \"TXT\",\n                \"SendDomain\": \"mail.qcloud.com\",\n                \"ExpectedValue\": \"v=spf1 include:qcloudmail.com ~all\",\n                \"CurrentValue\": \"\",\n                \"Status\": false\n            },\n            {\n                \"Type\": \"TXT\",\n                \"SendDomain\": \"mail._domainkey.mail.qcloud.com\",\n                \"ExpectedValue\": \"k=rsa;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDeMVIzrCa3T14JsNY0IRv5/2V1/v2itlviLQBwXsa7shBD6TrBkswsFUToPyMRWC9tbR/5ey0nRBH0ZVxp+lsmTxid2Y2z+FApQ6ra2VsXfbJP3HE6wAO0YTVEJt1TmeczhEd2Jiz/fcabIISgXEdSpTYJhb0ct0VJRxcg4c8c7wIDAQAB\",\n                \"CurrentValue\": \"\",\n                \"Status\": false\n            }\n        ]\n    }\n}",
         "title": "Getting the configuration details of a domain"
       }
     ],
     "GetEmailTemplate": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetEmailTemplate\n<Common request parameters>\n\n{\"TemplateID\":10091}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\r\n    \"TemplateContent\":{\"Html\":\"PGh0bWw+dGhpcyBpcyBhIGV4YW1wbGUge3tjb2RlfX08L2h0bWw+\",\"Text\":\"dGhpcyBpcyBhIGV4YW1wbGU=\"}\r\n  }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetEmailTemplate\n<Common request parameters>\n\n{\n    \"TemplateID\": 10091\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"TemplateContent\": {\n            \"Html\": \"PGh0bWw+dGhpcyBpcyBhIGV4YW1wbGUge3tjb2RlfX08L2h0bWw+\",\n            \"Text\": \"dGhpcyBpcyBhIGV4YW1wbGU=\"\n        }\n    }\n}",
         "title": "Getting template content"
       }
     ],
     "GetSendEmailStatus": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetSendEmailStatus\n<Common request parameters>\n\n{\n    \"Limit\": 10, \n    \"Offset\": 0, \n    \"RequestDate\": \"2020-09-22\", \n    \"MessageId\": \"qcloudses-30-4123414323-date-20210101094334-syNARhMTbKI1\"\n}",
-        "output": "{\r\n  \"Response\": {\r\n\"EmailStatusList\": [\r\n            {\r\n                \"UserOpened\": true, \r\n                \"UserUnsubscribed\": true, \r\n                \"RequestTime\": 1609831698, \r\n                \"UserComplainted\": true, \r\n                \"ToEmailAddress\": \"example@cloud.com\", \r\n                \"FromEmailAddress\": \"noreply@tencent.com\", \r\n                \"UserClicked\": true, \r\n                \"DeliverTime\": 1609831698, \r\n                \"DeliverMessage\": \"\", \r\n                \"MessageId\": \"qcloudses-30-4123414323-date-20210101094334-syNARhMTbKI1\", \r\n                \"SendStatus\": 0, \r\n                \"DeliverStatus\": 0\r\n            }\r\n        ], \r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\r\n    }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetSendEmailStatus\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"RequestDate\": \"2020-09-22\",\n    \"MessageId\": \"qcloudses-30-4123414323-date-20210101094334-syNARhMTbKI1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"EmailStatusList\": [\n            {\n                \"UserOpened\": true,\n                \"UserUnsubscribed\": true,\n                \"RequestTime\": 1609831698,\n                \"UserComplainted\": true,\n                \"ToEmailAddress\": \"example@cloud.com\",\n                \"FromEmailAddress\": \"noreply@tencent.com\",\n                \"UserClicked\": true,\n                \"DeliverTime\": 1609831698,\n                \"DeliverMessage\": \"\",\n                \"MessageId\": \"qcloudses-30-4123414323-date-20210101094334-syNARhMTbKI1\",\n                \"SendStatus\": 0,\n                \"DeliverStatus\": 0\n            }\n        ],\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
         "title": "Querying the sending result by `MessageId`"
       },
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetSendEmailStatus\n<Common request parameters>\n\n{\n    \"Limit\": 10, \n    \"Offset\": 0, \n    \"RequestDate\": \"2020-09-22\", \n    \"ToEmailAddress\": \"example@cloud.com\"\n}",
-        "output": "{\r\n  \"Response\": {\r\n\"EmailStatusList\": [\r\n            {\r\n                \"UserOpened\": true, \r\n                \"UserUnsubscribed\": true, \r\n                \"RequestTime\": 1609831698, \r\n                \"UserComplainted\": true, \r\n                \"ToEmailAddress\": \"example@cloud.com\", \r\n                \"FromEmailAddress\": \"noreply@tencent.com\", \r\n                \"UserClicked\": true, \r\n                \"DeliverTime\": 1609831698, \r\n                \"DeliverMessage\": \"\", \r\n                \"MessageId\": \"qcloudses-30-4123414323-date-20210101094334-syNARhMTbKI1\", \r\n                \"SendStatus\": 0, \r\n                \"DeliverStatus\": 0\r\n            }\r\n        ], \r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\r\n    }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetSendEmailStatus\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"RequestDate\": \"2020-09-22\",\n    \"ToEmailAddress\": \"example@cloud.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"EmailStatusList\": [\n            {\n                \"UserOpened\": true,\n                \"UserUnsubscribed\": true,\n                \"RequestTime\": 1609831698,\n                \"UserComplainted\": true,\n                \"ToEmailAddress\": \"example@cloud.com\",\n                \"FromEmailAddress\": \"noreply@tencent.com\",\n                \"UserClicked\": true,\n                \"DeliverTime\": 1609831698,\n                \"DeliverMessage\": \"\",\n                \"MessageId\": \"qcloudses-30-4123414323-date-20210101094334-syNARhMTbKI1\",\n                \"SendStatus\": 0,\n                \"DeliverStatus\": 0\n            }\n        ],\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
         "title": "Querying the sending result by recipient"
       }
     ],
     "GetStatisticsReport": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetStatisticsReport\n<Common request parameters>\n\n{\"Domain\":\"qcloud.com\",\"StartDate\":\"2020-10-01\",\"EndDate\":\"2020-10-03\",\"ReceivingMailboxType\":\"gmail.com\"}",
-        "output": "{\r\n  \"Response\": {\r\n  \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\r\n\r\n   \"DailyVolumes\": [ \r\n      {\r\n      \"SendDate\": \"2020-10-01\",\r\n      \"RequestCount\": 1000,\r\n      \"AcceptedCount\": 999,\r\n      \"DeliveredCount\": 998,\r\n      \"OpenedCount\": 300,\r\n      \"ClickedCount\": 199,\r\n      \"BounceCount\": 5,\r\n      \"UnsubscribeCount\": 1\r\n      }\r\n   ],\r\n   \"OverallVolume\": { \r\n      \"SendDate\": \"2020-10-01\",\r\n      \"RequestCount\": 1000,\r\n      \"AcceptedCount\": 999,\r\n      \"DeliveredCount\": 998,\r\n      \"OpenedCount\": 300,\r\n      \"ClickedCount\": 199,\r\n      \"BounceCount\": 5,\r\n      \"UnsubscribeCount\": 1\r\n      }\r\n   }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetStatisticsReport\n<Common request parameters>\n\n{\n    \"Domain\": \"qcloud.com\",\n    \"StartDate\": \"2020-10-01\",\n    \"EndDate\": \"2020-10-03\",\n    \"ReceivingMailboxType\": \"gmail.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"DailyVolumes\": [\n            {\n                \"SendDate\": \"2020-10-01\",\n                \"RequestCount\": 1000,\n                \"AcceptedCount\": 999,\n                \"DeliveredCount\": 998,\n                \"OpenedCount\": 300,\n                \"ClickedCount\": 199,\n                \"BounceCount\": 5,\n                \"UnsubscribeCount\": 1\n            }\n        ],\n        \"OverallVolume\": {\n            \"SendDate\": \"2020-10-01\",\n            \"RequestCount\": 1000,\n            \"AcceptedCount\": 999,\n            \"DeliveredCount\": 998,\n            \"OpenedCount\": 300,\n            \"ClickedCount\": 199,\n            \"BounceCount\": 5,\n            \"UnsubscribeCount\": 1\n        }\n    }\n}",
         "title": "Getting statistics"
       }
     ],
     "ListBlackEmailAddress": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListBlackEmailAddress\n<Common request parameters>\n\n{\n    \"StartDate\": \"2020-09-22\", \n    \"EndDate\": \"2020-09-22\", \n    \"Limit\": 10, \n    \"Offset\": 0\n}",
-        "output": "{\r\n    \"Response\": {\r\n        \"BlackList\": [\r\n            {\r\n                \"BounceTime\": \"2020-09-22 00:00:00\", \r\n                \"EmailAddress\": \"432843@qq.com\"\r\n            },\r\n           {\r\n                \"BounceTime\": \"2020-10-22 12:10:00\", \r\n                \"EmailAddress\": \"43fdaf2843@gmail.com\"\r\n            }\r\n        ], \r\n        \"TotalCount\": 2, \r\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\r\n    }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListBlackEmailAddress\n<Common request parameters>\n\n{\n    \"StartDate\": \"2020-09-22\",\n    \"EndDate\": \"2020-09-22\",\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"BlackList\": [\n            {\n                \"BounceTime\": \"2020-09-22 00:00:00\",\n                \"EmailAddress\": \"432843@qq.com\"\n            },\n            {\n                \"BounceTime\": \"2020-10-22 12:10:00\",\n                \"EmailAddress\": \"43fdaf2843@gmail.com\"\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
         "title": "Getting blocklisted email addresses"
       }
     ],
@@ -112,7 +120,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListEmailAddress\n<Common request parameters>\n\n{}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\r\n    \"EmailSenders\": [\r\n      {\r\n        \"EmailAddress\": \"service@mail.qcloud.com\",\r\n        \"EmailSenderName\": \"Tencent Cloud email notification\",\r\n        \"CreatedTimestamp\": 1602143617\r\n      },\r\n      {\r\n        \"EmailAddress\": \"verify@mail.qcloud.com\",\r\n        \"EmailSenderName\": \"Tencent Cloud verification code\",\r\n        \"CreatedTimestamp\": 1602143617\r\n      }\r\n    ]\r\n  }\r\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"EmailSenders\": [\n            {\n                \"EmailAddress\": \"service@mail.qcloud.com\",\n                \"EmailSenderName\": \"Tencent Cloud email notification\",\n                \"CreatedTimestamp\": 1602143617\n            },\n            {\n                \"EmailAddress\": \"verify@mail.qcloud.com\",\n                \"EmailSenderName\": \"Tencent Cloud verification code\",\n                \"CreatedTimestamp\": 1602143617\n            }\n        ]\n    }\n}",
         "title": "Getting the list of sender addresses"
       }
     ],
@@ -120,51 +128,51 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListEmailIdentities\n<Common request parameters>\n\n{}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\r\n    \"EmailIdentities\": [\r\n      {\r\n        \"IdentityName\": \"mail.qcloud.com\",\r\n        \"IdentityType\": \"DOMAIN\",\r\n        \"SendingEnabled\": false\r\n      }\r\n    ]\r\n  }\r\n}",
-        "title": "Getting the sender domain list"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"EmailIdentities\": [\n            {\n                \"IdentityName\": \"mail.qcloud.com\",\n                \"IdentityType\": \"DOMAIN\",\n                \"SendingEnabled\": false\n            }\n        ]\n    }\n}",
+        "title": "Getting the list of sender domains"
       }
     ],
     "ListEmailTemplates": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListEmailTemplates\n<Common request parameters>\n\n{\n    \"Limit\": 0, \n    \"Offset\": 10\n}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\r\n    \"TotalCount\": 1, \r\n    \"TemplatesMetadata\": [ \r\n      { \r\n        \"TemplateID\": 10091,\r\n         \"CreatedTimestamp\": 1607512575,\r\n         \"TemplateName\": \"Test Template\",\r\n          \"ReviewReason\": \"Approved\", \r\n         \"TemplateStatus\": 0\r\n      }\r\n   ]\r\n  }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListEmailTemplates\n<Common request parameters>\n\n{\n    \"Limit\": 0,\n    \"Offset\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"TotalCount\": 1,\n        \"TemplatesMetadata\": [\n            {\n                \"TemplateID\": 10091,\n                \"CreatedTimestamp\": 1607512575,\n                \"TemplateName\": \"Test Template\",\n                \"ReviewReason\": \"Approved\",\n                \"TemplateStatus\": 0\n            }\n        ]\n    }\n}",
         "title": "Getting the template list"
       }
     ],
     "SendEmail": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SendEmail\n<Common request parameters>\n\n{\"FromEmailAddress\":\"QCLOUDTEAM <noreply@mail.qcloud.com>\",\"ReplyToAddresses\":\"qcloud@tencent.com\",\"Destination\":[\"user@example.com\"],\"Simple\":{\"Text\":\"aGVsbG8gd29ybGQ=\"},\"Subject\":\"YourTestSubject\"}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\r\n    \"MessageId\": \"qcloud-ses-messageid\"\r\n    }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SendEmail\n<Common request parameters>\n\n{\n    \"FromEmailAddress\": \"QCLOUDTEAM <noreply@mail.qcloud.com>\",\n    \"ReplyToAddresses\": \"qcloud@tencent.com\",\n    \"Destination\": [\n        \"user@example.com\"\n    ],\n    \"Simple\": {\n        \"Text\": \"aGVsbG8gd29ybGQ=\"\n    },\n    \"Subject\": \"YourTestSubject\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"MessageId\": \"qcloud-ses-messageid\"\n    }\n}",
         "title": "Sending a plain text email"
       },
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SendEmail\n<Common request parameters>\n\n{\n  \"FromEmailAddress\": \"QCLOUDTEAM <noreply@mail.qcloud.com>\",\n  \"ReplyToAddresses\": \"qcloud@tencent.com\",\n  \"Destination\": [\n    \"user@example.com\"\n  ],\n  \"Simple\": {\n    \"Html\": \"PGh0bWw+PGRpdj5IZWxsb1dvcmxkPC9kaXY+PC9odG1sPg==\",\n    \"Text\": \"aGVsbG8gd29ybGQ=\"\n  },\n  \"Subject\": \"YourTestSubject\"\n}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\r\n    \"MessageId\": \"qcloud-ses-messageid\"\r\n    }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SendEmail\n<Common request parameters>\n\n{\n    \"FromEmailAddress\": \"QCLOUDTEAM <noreply@mail.qcloud.com>\",\n    \"ReplyToAddresses\": \"qcloud@tencent.com\",\n    \"Destination\": [\n        \"user@example.com\"\n    ],\n    \"Simple\": {\n        \"Html\": \"PGh0bWw+PGRpdj5IZWxsb1dvcmxkPC9kaXY+PC9odG1sPg==\",\n        \"Text\": \"aGVsbG8gd29ybGQ=\"\n    },\n    \"Subject\": \"YourTestSubject\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"MessageId\": \"qcloud-ses-messageid\"\n    }\n}",
         "title": "Sending a rich text email"
       },
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SendEmail\n<Common request parameters>\n\n{\"FromEmailAddress\":\"QCLOUDTEAM <noreply@mail.qcloud.com>\",\"ReplyToAddresses\":\"qcloud@tencent.com\",\"Destination\":[\"user@example.com\"],\"Template\":{\"TemplateID\":\"100091\",\"TemplateData\":\"{\\\"code\\\":\\\"1234\\\"}\"},\"Subject\": \"YourTestSubject\"}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\r\n    \"MessageId\": \"qcloud-ses-messageid\"\r\n    }\r\n}",
-        "title": "Sending a template email"
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SendEmail\n<Common request parameters>\n\n{\n    \"FromEmailAddress\": \"QCLOUDTEAM <noreply@mail.qcloud.com>\",\n    \"ReplyToAddresses\": \"qcloud@tencent.com\",\n    \"Destination\": [\n        \"user@example.com\"\n    ],\n    \"Template\": {\n        \"TemplateID\": \"100091\",\n        \"TemplateData\": \"{\\\"code\\\":\\\"1234\\\"}\"\n    },\n    \"Subject\": \"YourTestSubject\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"MessageId\": \"qcloud-ses-messageid\"\n    }\n}",
+        "title": "Sending an email using a template"
       }
     ],
     "UpdateEmailIdentity": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateEmailIdentity\n<Common request parameters>\n\n{\"EmailIdentity\":\"mail.qcloud.com\"}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\r\n    \"IdentityType\": \"DOMAIN\",\r\n    \"VerifiedForSendingStatus\": false,\r\n    \"Attributes\": [\r\n      {\r\n        \"Type\": \"TXT\",\r\n        \"SendDomain\": \"mail.qcloud.com\",\r\n        \"ExpectedValue\": \"v=spf1 include:qcloudmail.com ~all\",\r\n        \"CurrentValue\": \"\",\r\n        \"Status\": false\r\n      },\r\n      {\r\n        \"Type\": \"TXT\",\r\n        \"SendDomain\": \"mail._domainkey.mail.qcloud.com\",\r\n        \"ExpectedValue\": \"k=rsa;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDeMVIzrCa3T14JsNY0IRv5/2V1/v2itlviLQBwXsa7shBD6TrBkswsFUToPyMRWC9tbR/5ey0nRBH0ZVxp+lsmTxid2Y2z+FApQ6ra2VsXfbJP3HE6wAO0YTVEJt1TmeczhEd2Jiz/fcabIISgXEdSpTYJhb0ct0VJRxcg4c8c7wIDAQAB\",\r\n        \"CurrentValue\": \"\",\r\n        \"Status\": false\r\n      }\r\n    ]\r\n  }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateEmailIdentity\n<Common request parameters>\n\n{\n    \"EmailIdentity\": \"mail.qcloud.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"IdentityType\": \"DOMAIN\",\n        \"VerifiedForSendingStatus\": false,\n        \"Attributes\": [\n            {\n                \"Type\": \"TXT\",\n                \"SendDomain\": \"mail.qcloud.com\",\n                \"ExpectedValue\": \"v=spf1 include:qcloudmail.com ~all\",\n                \"CurrentValue\": \"\",\n                \"Status\": false\n            },\n            {\n                \"Type\": \"TXT\",\n                \"SendDomain\": \"mail._domainkey.mail.qcloud.com\",\n                \"ExpectedValue\": \"k=rsa;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDeMVIzrCa3T14JsNY0IRv5/2V1/v2itlviLQBwXsa7shBD6TrBkswsFUToPyMRWC9tbR/5ey0nRBH0ZVxp+lsmTxid2Y2z+FApQ6ra2VsXfbJP3HE6wAO0YTVEJt1TmeczhEd2Jiz/fcabIISgXEdSpTYJhb0ct0VJRxcg4c8c7wIDAQAB\",\n                \"CurrentValue\": \"\",\n                \"Status\": false\n            }\n        ]\n    }\n}",
         "title": "Verifying DNS configuration"
       }
     ],
     "UpdateEmailTemplate": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateEmailTemplate\n<Common request parameters>\n\n{\"TemplateID\": 10091,\"TemplateName\": \"xx\", \"TemplateContent\": {\n      \"Html\": \"PGh0bWw+dGhpcyBpcyBhIGV4YW1wbGUge3tjb2RlfX08L2h0bWw+\",\n      \"Text\": \"dGhpcyBpcyBhIGV4YW1wbGU=\"\n    }}",
-        "output": "{\r\n  \"Response\": {\r\n    \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\r\n  }\r\n}",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateEmailTemplate\n<Common request parameters>\n\n{\n    \"TemplateID\": 10091,\n    \"TemplateName\": \"xx\",\n    \"TemplateContent\": {\n        \"Html\": \"PGh0bWw+dGhpcyBpcyBhIGV4YW1wbGUge3tjb2RlfX08L2h0bWw+\",\n        \"Text\": \"dGhpcyBpcyBhIGV4YW1wbGU=\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
         "title": "Updating template content"
       }
     ]
