@@ -1,9 +1,9 @@
 {
   "actions": {
-    "AssignClientCredit": [
+    "AllocateCustomerCredit": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssignClientCredit\n<Common request parameters>\n\n{\n    \"QuotaNum\": 0.0,\n    \"ClientUin\": 1234\n}",
+        "input": "POST / HTTP/1.1\nHost: ip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AllocateCustomerCredit\n<Common request parameters>\n\n{\n    \"ClientUin\": 1,\n    \"AddedCredit\": 0.0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Setting customer's credit"
       }
@@ -24,28 +24,28 @@
         "title": "Obtaining country and region codes"
       }
     ],
-    "QueryAgentCredit": [
+    "QueryCreditAllocationHistory": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryAgentCredit\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"RemainingCreditAmount\": 0.0,\n        \"CustomerCreditAmount\": 0.0,\n        \"RequestId\": \"xx\",\n        \"AssignedCreditAmount\": 0.0\n    }\n}",
-        "title": "Querying partner's credit"
+        "input": "POST / HTTP/1.1\nHost: ip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryCreditAllocationHistory\n<Common request parameters>\n\n{\n    \"ClientUin\": 1,\n    \"Page\": 1,\n    \"PageSize\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"RequestId\": \"xx\",\n        \"History\": [\n            {\n                \"Operator\": \"xx\",\n                \"Credit\": 0.0,\n                \"AllocatedTime\": \"xx\"\n            }\n        ]\n    }\n}",
+        "title": "Querying customer's credit allocation information"
       }
     ],
-    "QueryClientList": [
+    "QueryCustomersCredit": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryClientList\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"Total\": 0,\n        \"Data\": [\n            {\n                \"ClientUin\": 1,\n                \"Name\": \"xx\",\n                \"Mobile\": \"xx\",\n                \"RecentExpiry\": \"xx\",\n                \"CreditAmount\": 0.0,\n                \"RestCreditAmount\": 0.0,\n                \"AssociationTime\": \"xx\",\n                \"Type\": \"xx\",\n                \"Email\": \"xx\",\n                \"Arrears\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: ip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryCustomersCredit\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Data\": [\n            {\n                \"ClientUin\": 1,\n                \"Name\": \"xx\",\n                \"Mobile\": \"xx\",\n                \"RecentExpiry\": \"xx\",\n                \"RemainingCredit\": 0.0,\n                \"Credit\": 0.0,\n                \"AssociationTime\": \"xx\",\n                \"Type\": \"xx\",\n                \"Email\": \"xx\",\n                \"Arrears\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying waiting list"
       }
     ],
-    "QueryCreditHistory": [
+    "QueryPartnerCredit": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryCreditHistory\n<Common request parameters>\n\n{\n    \"ClientUin\": 0,\n    \"PageRow\": 0,\n    \"Page\": 0\n}",
-        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"RequestId\": \"xx\",\n        \"History\": [\n            {\n                \"Operator\": \"xx\",\n                \"CreditAmount\": 0.0,\n                \"AssginTime\": \"xx\",\n                \"CreditAssignUin\": \"xx\"\n            }\n        ]\n    }\n}",
-        "title": "Querying customer's credit allocation information"
+        "input": "POST / HTTP/1.1\nHost: ip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryPartnerCredit\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RemainingCredit\": 0.0,\n        \"RequestId\": \"xx\",\n        \"TotalCredit\": 0.0,\n        \"AllocatedCredit\": 0.0\n    }\n}",
+        "title": "Querying partner's credit"
       }
     ]
   },

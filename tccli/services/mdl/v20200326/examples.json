@@ -56,6 +56,14 @@
         "title": "Sample request"
       }
     ],
+    "DeleteStreamLivePlan": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamLivePlan\n<Common request parameters>\n\n{\n    \"ChannelId\": \"AAAAA\",\n    \"EventName\": \"EventName\",\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"AAAAA\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "DescribeStreamLiveChannel": [
       {
         "document": "",

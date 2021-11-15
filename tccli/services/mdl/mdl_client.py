@@ -418,7 +418,7 @@ def doDescribeStreamLiveInputs(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doStartStreamLiveChannel(args, parsed_globals):
+def doDeleteStreamLivePlan(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -434,9 +434,9 @@ def doStartStreamLiveChannel(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.StartStreamLiveChannelRequest()
+    model = models.DeleteStreamLivePlanRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.StartStreamLiveChannel(model)
+    rsp = client.DeleteStreamLivePlan(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -661,6 +661,33 @@ def doCreateStreamLiveInputSecurityGroup(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doStartStreamLiveChannel(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.StartStreamLiveChannelRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.StartStreamLiveChannel(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 CLIENT_MAP = {
     "v20200326": mdl_client_v20200326,
 
@@ -687,7 +714,7 @@ ACTION_MAP = {
     "DescribeStreamLiveChannels": doDescribeStreamLiveChannels,
     "DescribeStreamLivePlans": doDescribeStreamLivePlans,
     "DescribeStreamLiveInputs": doDescribeStreamLiveInputs,
-    "StartStreamLiveChannel": doStartStreamLiveChannel,
+    "DeleteStreamLivePlan": doDeleteStreamLivePlan,
     "DescribeStreamLiveInput": doDescribeStreamLiveInput,
     "ModifyStreamLiveInput": doModifyStreamLiveInput,
     "DescribeStreamLiveInputSecurityGroup": doDescribeStreamLiveInputSecurityGroup,
@@ -696,6 +723,7 @@ ACTION_MAP = {
     "StopStreamLiveChannel": doStopStreamLiveChannel,
     "DeleteStreamLiveInputSecurityGroup": doDeleteStreamLiveInputSecurityGroup,
     "CreateStreamLiveInputSecurityGroup": doCreateStreamLiveInputSecurityGroup,
+    "StartStreamLiveChannel": doStartStreamLiveChannel,
 
 }
 

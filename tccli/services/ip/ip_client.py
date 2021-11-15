@@ -13,33 +13,6 @@ from tencentcloud.ip.v20210409 import ip_client as ip_client_v20210409
 from tencentcloud.ip.v20210409 import models as models_v20210409
 
 
-def doQueryCreditHistory(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IpClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.QueryCreditHistoryRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.QueryCreditHistory(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doCreateAccount(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -59,6 +32,60 @@ def doCreateAccount(args, parsed_globals):
     model = models.CreateAccountRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.CreateAccount(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doQueryPartnerCredit(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IpClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.QueryPartnerCreditRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.QueryPartnerCredit(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doAllocateCustomerCredit(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IpClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.AllocateCustomerCreditRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.AllocateCustomerCredit(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -94,7 +121,7 @@ def doGetCountryCodes(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doQueryClientList(args, parsed_globals):
+def doQueryCreditAllocationHistory(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -110,9 +137,9 @@ def doQueryClientList(args, parsed_globals):
     client = mod.IpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.QueryClientListRequest()
+    model = models.QueryCreditAllocationHistoryRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.QueryClientList(model)
+    rsp = client.QueryCreditAllocationHistory(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -121,7 +148,7 @@ def doQueryClientList(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doQueryAgentCredit(args, parsed_globals):
+def doQueryCustomersCredit(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -137,36 +164,9 @@ def doQueryAgentCredit(args, parsed_globals):
     client = mod.IpClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.QueryAgentCreditRequest()
+    model = models.QueryCustomersCreditRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.QueryAgentCredit(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doAssignClientCredit(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.IpClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AssignClientCreditRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.AssignClientCredit(model)
+    rsp = client.QueryCustomersCredit(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -186,12 +186,12 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
-    "QueryCreditHistory": doQueryCreditHistory,
     "CreateAccount": doCreateAccount,
+    "QueryPartnerCredit": doQueryPartnerCredit,
+    "AllocateCustomerCredit": doAllocateCustomerCredit,
     "GetCountryCodes": doGetCountryCodes,
-    "QueryClientList": doQueryClientList,
-    "QueryAgentCredit": doQueryAgentCredit,
-    "AssignClientCredit": doAssignClientCredit,
+    "QueryCreditAllocationHistory": doQueryCreditAllocationHistory,
+    "QueryCustomersCredit": doQueryCustomersCredit,
 
 }
 

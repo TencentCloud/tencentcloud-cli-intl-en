@@ -42,6 +42,12 @@
       "name": "Deletes an input security group",
       "output": "DeleteStreamLiveInputSecurityGroupResponse"
     },
+    "DeleteStreamLivePlan": {
+      "document": "This API is used to delete a StreamLive event.",
+      "input": "DeleteStreamLivePlanRequest",
+      "name": "Deletes a StreamLive event",
+      "output": "DeleteStreamLivePlanResponse"
+    },
     "DescribeStreamLiveChannel": {
       "document": "This API is used to query a StreamLive channel.",
       "input": "DescribeStreamLiveChannelRequest",
@@ -899,6 +905,42 @@
     },
     "DeleteStreamLiveInputSecurityGroupResponse": {
       "document": "DeleteStreamLiveInputSecurityGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamLivePlanRequest": {
+      "document": "DeleteStreamLivePlan request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the channel whose event is to be deleted",
+          "example": "AAAAAA",
+          "member": "string",
+          "name": "ChannelId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the event to delete",
+          "example": "EventName",
+          "member": "string",
+          "name": "EventName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamLivePlanResponse": {
+      "document": "DeleteStreamLivePlan response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
