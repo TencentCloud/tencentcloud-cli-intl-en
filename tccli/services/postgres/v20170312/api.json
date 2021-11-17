@@ -84,6 +84,12 @@
       "name": "Queries instance details",
       "output": "DescribeDBInstanceAttributeResponse"
     },
+    "DescribeDBInstanceParameters": {
+      "document": "This API is used to get the list of modifiable parameters of an instance.",
+      "input": "DescribeDBInstanceParametersRequest",
+      "name": "Gets the list of modifiable parameters of an instance",
+      "output": "DescribeDBInstanceParametersResponse"
+    },
     "DescribeDBInstances": {
       "document": "This API is used to query the details of one or more instances.",
       "input": "DescribeDBInstancesRequest",
@@ -91,9 +97,9 @@
       "output": "DescribeDBInstancesResponse"
     },
     "DescribeDBSlowlogs": {
-      "document": "This API is used to get slow query logs.",
+      "document": "This API was used to get slow query logs. Since it was deprecated on September 1, 2021, it has no longer returned data. Please use the [DescribeSlowQueryList](https://intl.cloud.tencent.com/document/product/409/60540?from_cn_redirect=1) API instead to get slow query logs.",
       "input": "DescribeDBSlowlogsRequest",
-      "name": "Gets slow query logs",
+      "name": "Gets slow query logs (deprecated)",
       "output": "DescribeDBSlowlogsResponse"
     },
     "DescribeDBXlogs": {
@@ -113,6 +119,12 @@
       "input": "DescribeOrdersRequest",
       "name": "Gets order information",
       "output": "DescribeOrdersResponse"
+    },
+    "DescribeParamsEvent": {
+      "document": "This API is used to get the details of parameter modification events.",
+      "input": "DescribeParamsEventRequest",
+      "name": "Gets the details of parameter modification events",
+      "output": "DescribeParamsEventResponse"
     },
     "DescribeProductConfig": {
       "document": "This API is used to query the purchasable specification configuration.",
@@ -139,13 +151,13 @@
       "output": "DescribeServerlessDBInstancesResponse"
     },
     "DescribeSlowQueryAnalysis": {
-      "document": "This API is used to analyze slow query statements with abstract parameter values and return aggregated statistical analysis results.",
+      "document": "This API is used to count and analyze slow query statements during the specified period of time and return aggregated statistical analysis results which are classified by statement with abstract parameter values.",
       "input": "DescribeSlowQueryAnalysisRequest",
-      "name": "Analyzes slow queries",
+      "name": "Gets the statistical analysis list of slow queries",
       "output": "DescribeSlowQueryAnalysisResponse"
     },
     "DescribeSlowQueryList": {
-      "document": "This API is used to get the slow query list.",
+      "document": "This API is used to get the slow queries during the specified period of time.",
       "input": "DescribeSlowQueryListRequest",
       "name": "Gets the slow query list",
       "output": "DescribeSlowQueryListResponse"
@@ -209,6 +221,12 @@
       "input": "ModifyDBInstanceNameRequest",
       "name": "Renames instance",
       "output": "ModifyDBInstanceNameResponse"
+    },
+    "ModifyDBInstanceParameters": {
+      "document": "This API is used to modify parameters in batches.",
+      "input": "ModifyDBInstanceParametersRequest",
+      "name": "Modifies parameters in batches",
+      "output": "ModifyDBInstanceParametersResponse"
     },
     "ModifyDBInstanceReadOnlyGroup": {
       "document": "This API is used to modify the RO group of an instance.",
@@ -285,7 +303,7 @@
     "UpgradeDBInstance": {
       "document": "This API is used to upgrade instance configurations.",
       "input": "UpgradeDBInstanceRequest",
-      "name": "Upgrades instance configurations",
+      "name": "Upgrades instance configuration (deprecated)",
       "output": "UpgradeDBInstanceResponse"
     }
   },
@@ -2315,6 +2333,60 @@
       ],
       "type": "object"
     },
+    "DescribeDBInstanceParametersRequest": {
+      "document": "DescribeDBInstanceParameters request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "postgres-xxx",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the parameter to be queried. If `ParamName` is left empty or not passed in, the list of all parameters will be returned.",
+          "example": "wal_level",
+          "member": "string",
+          "name": "ParamName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstanceParametersResponse": {
+      "document": "DescribeDBInstanceParameters response structure.",
+      "members": [
+        {
+          "document": "Total number of the parameters in the returned list",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Details of the returned parameter list",
+          "example": "无",
+          "member": "ParamInfo",
+          "name": "Detail",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBInstancesRequest": {
       "document": "DescribeDBInstances request structure.",
       "members": [
@@ -2621,6 +2693,51 @@
           "document": "Order array",
           "member": "PgDeal",
           "name": "Deals",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeParamsEventRequest": {
+      "document": "DescribeParamsEvent request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "”postgres-xxx\"",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeParamsEventResponse": {
+      "document": "DescribeParamsEvent response structure.",
+      "members": [
+        {
+          "document": "Total number of modified parameters",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Details of parameter modification events",
+          "example": "无",
+          "member": "EventItem",
+          "name": "EventItems",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3282,6 +3399,128 @@
       ],
       "usage": "out"
     },
+    "EventInfo": {
+      "document": "Parameter modification event information",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "wal_level",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Original parameter value\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "replica",
+          "member": "string",
+          "name": "OldValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "New parameter value in this modification event\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "logical",
+          "member": "string",
+          "name": "NewValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Start time of parameter modification\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2021-08-01 02:03:04",
+          "member": "string",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Start time when the modified parameter takes effect\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2021-08-01 02:03:34",
+          "member": "string",
+          "name": "EffectiveTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Modification status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "success",
+          "member": "string",
+          "name": "State",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Operator (generally, the value is the UIN of a sub-user)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "123344",
+          "member": "string",
+          "name": "Operator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Event log\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "EventLog",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "EventItem": {
+      "document": "Modification details of one parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "wal_level",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of modification events\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "EventCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Modification event details\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "EventInfo",
+          "name": "EventDetail",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "Filter": {
       "document": "Key-value pair filter for conditional filtering queries, such as filter ID and name\n* If more than one filter exists, the logical relationship between these filters is `AND`.\n* If multiple values exist in one filter, the logical relationship between these values is `OR`.",
       "members": [
@@ -3654,6 +3893,42 @@
     },
     "ModifyDBInstanceNameResponse": {
       "document": "ModifyDBInstanceName response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceParametersRequest": {
+      "document": "ModifyDBInstanceParameters request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "postgres-xx",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Parameters to be modified and their new values",
+          "example": "无",
+          "member": "ParamEntry",
+          "name": "ParamList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceParametersResponse": {
+      "document": "ModifyDBInstanceParameters response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4100,6 +4375,208 @@
         }
       ],
       "type": "object"
+    },
+    "ParamEntry": {
+      "document": "Parameters to be modified in batches",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name",
+          "example": "wal_level",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The new value to which the parameter will be modified. When this parameter is used as an input parameter, its value must be a string, such as `0.1` (decimal), `1000` (integer), and `replica` (enum).",
+          "example": "replica",
+          "member": "string",
+          "name": "ExpectedValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ParamInfo": {
+      "document": "Parameter details",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Parameter name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "wal_level",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Value type of the parameter. Valid values: `integer`, `real` (floating-point), `bool`, `enum`, `mutil_enum` (this type of parameter can be set to multiple enumerated values)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "integer",
+          "member": "string",
+          "name": "ParamValueType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Value unit of the parameter. If the parameter has no unit, this field will return an empty string.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ms",
+          "member": "string",
+          "name": "Unit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Default value of the parameter, which is returned as a string\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "replica",
+          "member": "string",
+          "name": "DefaultValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Current value of the parameter, which is returned as a string\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "replica",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Value range of the enum parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[replica,logical]",
+          "member": "string",
+          "name": "EnumValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The maximum value of the `integer` or `real` parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "float",
+          "name": "Max",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The minimum value of the `integer` or `real` parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1000",
+          "member": "float",
+          "name": "Min",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Parameter description in Chinese\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "此参数决定记录到日志的信息，不允许设置为minimal",
+          "member": "string",
+          "name": "ParamDescriptionCH",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Parameter description in English\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "Set the level of information written to the WAL.",
+          "member": "string",
+          "name": "ParamDescriptionEN",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to restart the instance for the modified parameter to take effect. Valid values: `true` (yes), `false` (no)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "NeedReboot",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Parameter category in Chinese\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "WAL",
+          "member": "string",
+          "name": "ClassificationCN",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Parameter category in English\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "Write-Ahead Log",
+          "member": "string",
+          "name": "ClassificationEN",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the parameter is related to specifications. Valid values: `true` (yes), `false` (no)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "SpecRelated",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is a key parameter. Valid values: `true` (yes, and modifying it may affect instance performance), `false` (no)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "Advanced",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The last modified time of the parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2021-08-01 02:03:04",
+          "member": "string",
+          "name": "LastModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "PgDeal": {
       "document": "Order details",

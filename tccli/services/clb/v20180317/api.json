@@ -186,6 +186,12 @@
       "name": "Querying configuration details",
       "output": "DescribeCustomizedConfigListResponse"
     },
+    "DescribeLBListeners": {
+      "document": "This API is used to query CLB instances bound to the CVM or ENI.",
+      "input": "DescribeLBListenersRequest",
+      "name": "Queries CLB instances bound to the CVM or ENI",
+      "output": "DescribeLBListenersResponse"
+    },
     "DescribeListeners": {
       "document": "This API is used to get the list of listeners by CLB ID, listener protocol, or listener port. If no filter is specified, all listeners for the CLB instance will be returned.",
       "input": "DescribeListenersRequest",
@@ -1907,7 +1913,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Creates an LCU-supported CLB instance\n<ul><li>To create an LCU-supported CLB, this field is required and the value is `SLA`. LCU-supports CLBs adopt the pay-as-you-go model and their performance is guaranteed.</li>\n<li>It’s not required for a shared CLB instance.</li></ul>",
           "example": "无",
           "member": "string",
           "name": "SlaType",
@@ -1967,6 +1973,15 @@
           "name": "EipAddressId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to allow CLB traffic to the target group. `true`: allows CLB traffic to the target group and verifies security groups only on CLB; `false`: denies CLB traffic to the target group and verifies security groups on both CLB and backend instances.",
+          "example": "true",
+          "member": "bool",
+          "name": "LoadBalancerPassToTarget",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -2010,6 +2025,15 @@
           "name": "SnatIps",
           "required": true,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Number of SNAT IPs to be added. This parameter is used in conjunction with `SnatIps`. Note that if `Ip` is specified in `SnapIps`, this parameter is not available.",
+          "example": "2",
+          "member": "uint64",
+          "name": "Number",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -3105,6 +3129,42 @@
       ],
       "type": "object"
     },
+    "DescribeLBListenersRequest": {
+      "document": "DescribeLBListeners request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of private network IPs to be queried.",
+          "example": "无",
+          "member": "LbRsItem",
+          "name": "Backends",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLBListenersResponse": {
+      "document": "DescribeLBListeners response structure.",
+      "members": [
+        {
+          "document": "Listener rule associated with the real server.",
+          "example": "无",
+          "member": "LBItem",
+          "name": "LoadBalancers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeListenersRequest": {
       "document": "DescribeListeners request structure.",
       "members": [
@@ -4057,6 +4117,7 @@
         {
           "default": "",
           "document": "Whether to enable health check. 1: enable; 0: disable.",
+          "example": "0",
           "member": "int64",
           "name": "HealthSwitch",
           "required": false,
@@ -4066,6 +4127,7 @@
         {
           "default": "",
           "document": "Health check response timeout period in seconds (applicable only to layer-4 listeners). Value range: 2-60. Default value: 2. This parameter should be less than the check interval.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
           "member": "int64",
           "name": "TimeOut",
           "required": false,
@@ -4075,6 +4137,7 @@
         {
           "default": "",
           "document": "Health check interval in seconds. Value range: 5-300. Default value: 5.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5",
           "member": "int64",
           "name": "IntervalTime",
           "required": false,
@@ -4084,6 +4147,7 @@
         {
           "default": "",
           "document": "Health threshold. Default value: 3, indicating that if a forward is found healthy three consecutive times, it is considered to be normal. Value range: 2-10\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3",
           "member": "int64",
           "name": "HealthNum",
           "required": false,
@@ -4093,6 +4157,7 @@
         {
           "default": "",
           "document": "Unhealthy threshold. Default value: 3, indicating that if a forward is found unhealthy three consecutive times, it is considered to be exceptional. Value range: 2-10\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3",
           "member": "int64",
           "name": "UnHealthNum",
           "required": false,
@@ -4102,6 +4167,7 @@
         {
           "default": "",
           "document": "Health check status code (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners). Value range: 1-31. Default value: 31.\n1 means that the return value of 1xx after detection means healthy, 2 for returning 2xx for healthy, 4 for returning 3xx for healthy, 8 for returning 4xx for healthy, and 16 for returning 5xx for healthy. If you want multiple return codes to represent healthy, sum up the corresponding values. Note: The HTTP health check mode of TCP listeners only supports specifying one kind of health check status code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "504",
           "member": "int64",
           "name": "HttpCode",
           "required": false,
@@ -4111,6 +4177,7 @@
         {
           "default": "",
           "document": "Health check path (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "/xxx",
           "member": "string",
           "name": "HttpCheckPath",
           "required": false,
@@ -4120,6 +4187,7 @@
         {
           "default": "",
           "document": "Health check domain name (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "www.xxxx.com",
           "member": "string",
           "name": "HttpCheckDomain",
           "required": false,
@@ -4129,6 +4197,7 @@
         {
           "default": "",
           "document": "Health check method (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners). Value range: HEAD, GET. Default value: HEAD.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "HEAD",
           "member": "string",
           "name": "HttpCheckMethod",
           "required": false,
@@ -4138,6 +4207,7 @@
         {
           "default": "",
           "document": "Health check port (a custom check parameter), which is the port of the real server by default. Unless you want to specify a port, it is recommended to leave it empty. (Applicable only to TCP/UDP listeners.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "8000",
           "member": "int64",
           "name": "CheckPort",
           "required": false,
@@ -4147,6 +4217,7 @@
         {
           "default": "",
           "document": "Health check protocol (a custom check parameter), which is required if the value of CheckType is CUSTOM. This parameter represents the input format of the health check. Value range: HEX, TEXT. If the value is HEX, the characters of SendContext and RecvContext can only be selected from 0123456789ABCDEF and the length must be an even number. (Applicable only to TCP/UDP listeners.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "TEXT",
           "member": "string",
           "name": "ContextType",
           "required": false,
@@ -4156,6 +4227,7 @@
         {
           "default": "",
           "document": "Health check protocol (a custom check parameter), which is required if the value of CheckType is CUSTOM. This parameter represents the content of the request sent by the health check. Only ASCII visible characters are allowed, and the maximum length is 500. (Applicable only to TCP/UDP listeners.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "SendContext",
           "required": false,
@@ -4165,6 +4237,7 @@
         {
           "default": "",
           "document": "Health check protocol (a custom check parameter), which is required if the value of CheckType is CUSTOM. This parameter represents the result returned by the health check. Only ASCII visible characters are allowed, and the maximum length is 500. (Applicable only to TCP/UDP listeners.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "RecvContext",
           "required": false,
@@ -4174,6 +4247,7 @@
         {
           "default": "",
           "document": "Health check protocol (a custom check parameter). Value range: TCP, HTTP, CUSTOM (applicable only to TCP/UDP listeners, where UDP listeners only support CUSTOM. If custom health check is used, this parameter is required).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "HTTP",
           "member": "string",
           "name": "CheckType",
           "required": false,
@@ -4183,10 +4257,21 @@
         {
           "default": "",
           "document": "Health check protocol (a custom check parameter), which is required if the value of CheckType is HTTP. This parameter represents the HTTP version of the real server. Value range: HTTP/1.0, HTTP/1.1. (Applicable only to TCP listeners.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "HTTP/1.1",
           "member": "string",
           "name": "HttpVersion",
           "required": false,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies the source IP for health check. `0`: use the CLB VIP as the source IP; `1`: IP range starting with 100.64 serving as the source IP. Default: `0`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceIpType",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -4248,6 +4333,123 @@
         }
       ],
       "usage": "both"
+    },
+    "LBItem": {
+      "document": "Querying the binding relation of the CLB instance",
+      "members": [
+        {
+          "default": "",
+          "document": "String ID of the CLB instance.",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VIP of the CLB instance.",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Listener rule.",
+          "member": "ListenerItem",
+          "name": "Listeners",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region of the CLB instance",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LbRsItem": {
+      "document": "Querying the input data types",
+      "members": [
+        {
+          "default": "",
+          "document": "VPC ID",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private network IP to be queried, which can be of the CVM or ENI.",
+          "member": "string",
+          "name": "PrivateIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "LbRsTargets": {
+      "document": "Querying the output data types",
+      "members": [
+        {
+          "default": "",
+          "document": "Private network IP type, which can be `cvm` or `eni`.",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private network IP of the real server.",
+          "member": "string",
+          "name": "PrivateIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port bound to the real server.",
+          "member": "int64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID of the real server.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "VpcId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Weight of the real server.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Weight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "Listener": {
       "document": "Listener information",
@@ -4541,6 +4743,66 @@
           "name": "Rules",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ListenerItem": {
+      "document": "Querying the listener type",
+      "members": [
+        {
+          "default": "",
+          "document": "Listener ID.",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Listener protocol.",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Listener port.",
+          "member": "int64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Bound rule.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "RulesItems",
+          "name": "Rules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Object bound to the layer-4 listener.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "LbRsTargets",
+          "name": "Targets",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "End port of the listener.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "EndPort",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -5841,6 +6103,15 @@
           "name": "DeregisterTargetRst",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Session persistence type. `NORMAL`: default session persistence type (L4/L7 session persistence); `QUIC_CID`: session persistence by QUIC connection ID. The `QUIC_CID` value can only be configured in UDP listeners.",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "SessionType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -7107,6 +7378,48 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RulesItems": {
+      "document": "Object bound to the layer-7 listener rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule ID.",
+          "member": "string",
+          "name": "LocationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain name.",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Uri",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Object bound to the real server.",
+          "member": "LbRsTargets",
+          "name": "Targets",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

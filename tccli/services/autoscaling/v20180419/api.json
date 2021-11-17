@@ -43,7 +43,7 @@
       "output": "CreateLifecycleHookResponse"
     },
     "CreateNotificationConfiguration": {
-      "document": "This API (CreateNotificationConfiguration) is used to create a notification.",
+      "document": "This API is used to create a notification policy.\nWhen the notification is sent to a CMQ topic or queue, the following contents are included:\n```\n{\n    \"Service\": \"Tencent Cloud Auto Scaling\",\n    \"CreatedTime\": \"2021-10-11T10:15:11Z\", // Activity creation time\n    \"AppId\": \"100000000\",\n    \"ActivityId\": \"asa-fznnvrja\", // Scaling activity ID\n    \"AutoScalingGroupId\": \"asg-pc2oqu2z\", // Scaling group ID\n    \"ActivityType\": \"SCALE_OUT\",  // Scaling activity type\n    \"StatusCode\": \"SUCCESSFUL\",   // Scaling activity result\n    \"Description\": \"Activity was launched in response to a difference between desired capacity and actual capacity,\n    scale out 1 instance(s).\", // Scaling activity description\n    \"StartTime\": \"2021-10-11T10:15:11Z\",  // Activity starting time\n    \"EndTime\": \"2021-10-11T10:15:32Z\",    // Activity ending time\n    \"DetailedStatusMessageSet\": [ // A collection of failed attempts during the scaling process (Failed attempts are allowed in a successful scaling activity)\n        {\n            \"Code\": \"InvalidInstanceType\",\n            \"Zone\": \"ap-guangzhou-2\",\n            \"InstanceId\": \"\",\n            \"InstanceChargeType\": \"POSTPAID_BY_HOUR\",\n            \"SubnetId\": \"subnet-4t5mgeuu\",\n            \"Message\": \"The specified instance type `S5.LARGE8` is invalid in `subnet-4t5mgeuu`, `ap-guangzhou-2`.\",\n            \"InstanceType\": \"S5.LARGE8\",\n        }\n    ]\n}\n```",
       "input": "CreateNotificationConfigurationRequest",
       "name": "Creates a notification",
       "output": "CreateNotificationConfigurationResponse"
@@ -199,13 +199,13 @@
       "output": "ModifyLaunchConfigurationAttributesResponse"
     },
     "ModifyLoadBalancers": {
-      "document": "This API (ModifyLoadBalancers) is used to modify the load balancers of an auto scaling group.\n\n* This API can specify a new load balancer configuration for the auto scaling group. The new configuration overwrites the original load balancer configuration.\n* If you want to clear the load balancer for the auto scaling group, specify only the auto scaling group ID but not the specific load balancer when calling this API.\n* This API modifies the load balancer of the auto scaling group and generate a scaling activity to asynchronously modify the load balancers of existing instances.",
+      "document": "This API is used to modify the cloud load balancers of a scaling group.\n\n* This API can specify a new cloud load balancer configuration for the scaling group. The new configuration overwrites the original load balancer configuration.\n* To clear the cloud load balancer of the scaling group, specify only the scaling group ID but not the specific cloud load balancer.\n* This API modifies the cloud load balancer of the scaling group and generate a scaling activity to asynchronously modify the cloud load balancers of existing instances.",
       "input": "ModifyLoadBalancersRequest",
       "name": "Modifies the load balancers of an auto scaling group",
       "output": "ModifyLoadBalancersResponse"
     },
     "ModifyNotificationConfiguration": {
-      "document": "This API (ModifyNotificationConfiguration) is used to modify a notification.",
+      "document": "This API is used to modify a notification policy.\n* The receiver type of the notification policy cannot be modified.",
       "input": "ModifyNotificationConfigurationRequest",
       "name": "Modifies a notification",
       "output": "ModifyNotificationConfigurationResponse"
@@ -241,9 +241,9 @@
       "output": "ScaleOutInstancesResponse"
     },
     "SetInstancesProtection": {
-      "document": "This API (SetInstancesProtection) is used to enable scale-in protection for an instance.\nWhen an instance has scale-in protection enabled, it will not be removed when scaling is triggered by replacement of unhealthy instances, alarm trigger policy, threshold change, etc.",
+      "document": "This API is used to enable scale-in protection for an instance.\nWhen scale-in protection is enabled, the instance will not be removed in scale-in activities triggered by replacement of unhealthy instances, alarm threshold reached, change of desired quantity, etc.",
       "input": "SetInstancesProtectionRequest",
-      "name": "Sets scale-in protection for the instance",
+      "name": "Enables scale-in protection for an instance",
       "output": "SetInstancesProtectionResponse"
     },
     "StartAutoScalingInstances": {
@@ -834,6 +834,7 @@
         {
           "default": "",
           "document": "Auto scaling group ID.",
+          "example": "asg-19kw47wk",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -843,6 +844,7 @@
         {
           "default": "",
           "document": "List of user group IDs.",
+          "example": "[\"12529\"]",
           "member": "string",
           "name": "NotificationUserGroupIds",
           "required": true,
@@ -852,6 +854,7 @@
         {
           "default": "",
           "document": "List of notification events.",
+          "example": "[\"SCALE_OUT_SUCCESSFUL\"]",
           "member": "string",
           "name": "NotificationTypes",
           "required": true,
@@ -861,8 +864,39 @@
         {
           "default": "",
           "document": "Event notification ID.",
+          "example": "asn-6r4waxc4",
           "member": "string",
           "name": "AutoScalingNotificationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Notification receiver type.",
+          "example": "USER_GROUP",
+          "member": "string",
+          "name": "TargetType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CMQ queue name.",
+          "example": "test-queue",
+          "member": "string",
+          "name": "QueueName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CMQ topic name.",
+          "example": "test-topic",
+          "member": "string",
+          "name": "TopicName",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1130,7 +1164,7 @@
         },
         {
           "default": "",
-          "document": "Project ID",
+          "document": "Project ID of an instance in a scaling group. The default project is used if it’s left blank.",
           "example": "1",
           "member": "uint64",
           "name": "ProjectId",
@@ -1139,7 +1173,7 @@
         },
         {
           "default": "",
-          "document": "List of CLBs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.",
+          "document": "List of application CLBs. Up to 50 CLBs are allowed. You cannot specify `loadBalancerIds` and `ForwardLoadBalancers` at the same time.",
           "example": "无",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancers",
@@ -1317,7 +1351,7 @@
         },
         {
           "default": "",
-          "document": "ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the returned values of [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1). If this is left empty, default project is used.",
+          "document": "Project ID of the launch configuration. The default project is used if it’s left blank.\nNote that this project ID is not the same as the project ID of the scaling group. ",
           "example": "无",
           "member": "uint64",
           "name": "ProjectId",
@@ -1611,6 +1645,7 @@
         {
           "default": "",
           "document": "Auto scaling group ID.",
+          "example": "asg-12wjuh0s",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -1619,6 +1654,7 @@
         {
           "default": "",
           "document": "Notification type, i.e., the set of types of notifications to be subscribed to. Value range:\n<li>SCALE_OUT_SUCCESSFUL: scale-out succeeded</li>\n<li>SCALE_OUT_FAILED: scale-out failed</li>\n<li>SCALE_IN_SUCCESSFUL: scale-in succeeded</li>\n<li>SCALE_IN_FAILED: scale-in failed</li>\n<li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>\n<li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>",
+          "example": "[\"SCALE_OUT_SUCCESSFUL\\n\",\"SCALE_OUT_FAILED\\n\"]",
           "member": "string",
           "name": "NotificationTypes",
           "required": true,
@@ -1627,10 +1663,38 @@
         {
           "default": "",
           "document": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.",
+          "example": "[\"1678\\n\"]",
           "member": "string",
           "name": "NotificationUserGroupIds",
-          "required": true,
+          "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Notification receiver type. Values: `USER_GROUP`，`CMQ_QUEUE`，`CMQ_TOPIC`. Default: `USER_GROUP`.",
+          "example": "USER_GROUP",
+          "member": "string",
+          "name": "TargetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CMQ queue name. This field is required when `TargetType` is `CMQ_QUEUE`.",
+          "example": "queue",
+          "member": "string",
+          "name": "QueueName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CMQ topic name. This field is required when `TargetType` is `CMQ_TOPIC`.",
+          "example": "topic",
+          "member": "string",
+          "name": "TopicName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2372,6 +2436,7 @@
         {
           "default": "",
           "document": "Queries by one or more lifecycle hook IDs in the format of `ash-8azjzxcl`. The maximum quantity per request is 100. This parameter does not support specifying both `LifecycleHookIds` and `Filters` at the same time.",
+          "example": "无",
           "member": "string",
           "name": "LifecycleHookIds",
           "required": false,
@@ -2379,7 +2444,8 @@
         },
         {
           "default": "",
-          "document": "Filter.\n<li> lifecycle-hook-id - String - Required: No - (Filter) Filter by lifecycle hook ID.</li>\n<li> lifecycle-hook-name - String - Required: No - (Filter) Filter by lifecycle hook name.</li>\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\nFilter.\n<li> lifecycle-hook-id - String - Required: No - (Filter) Filter by lifecycle hook ID.</li>\n<li> lifecycle-hook-name - String - Required: No - (Filter) Filter by lifecycle hook name.</li>\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `LifecycleHookIds` and `Filters` at the same time.",
+          "document": "Filters.\n<li> `lifecycle-hook-id` - String - Required: No - (Filter) Filter by lifecycle hook ID.</li>\n<li> `lifecycle-hook-name` - String - Required: No - (Filter) Filter by lifecycle hook name.</li>\n<li> `auto-scaling-group-id` - String - Required: No - (Filter) Filter by scaling group ID.</li>\nUp to 10 filters can be included in a request and up to 5 values for each filter. It cannot be specified with `LifecycleHookIds` at the same time.",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2388,6 +2454,7 @@
         {
           "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "无",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -2396,6 +2463,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "无",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -4155,6 +4223,15 @@
           "name": "InstanceNameSettings",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable additional services, such as security services and monitoring service.",
+          "example": "无",
+          "member": "EnhancedService",
+          "name": "EnhancedService",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -4177,6 +4254,7 @@
         {
           "default": "",
           "document": "Auto scaling group ID",
+          "example": "asg-12wjuh0s",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -4185,6 +4263,7 @@
         {
           "default": "",
           "document": "List of classic CLB IDs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.",
+          "example": "[\"lb-crhgatrf\\n\"]",
           "member": "string",
           "name": "LoadBalancerIds",
           "required": false,
@@ -4192,7 +4271,8 @@
         },
         {
           "default": "",
-          "document": "List of CLBs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.",
+          "document": "List of application CLBs. Up to 50 CLBs are allowed. You cannot specify `loadBalancerIds` and `ForwardLoadBalancers` at the same time.",
+          "example": "无",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancers",
           "required": false,
@@ -4201,6 +4281,7 @@
         {
           "default": "",
           "document": "CLB verification policy. Valid values: \"ALL\" and \"DIFF\". Default value: \"ALL\"\n<br><li> ALL. Verification is successful only when all CLBs are valid. Otherwise, verification fails.\n<br><li> DIFF. Only the changes in the CLB parameters are verified. If valid, the verification is successful. Otherwise, verification fails.",
+          "example": "无",
           "member": "string",
           "name": "LoadBalancersCheckPolicy",
           "required": false,
@@ -4234,6 +4315,7 @@
         {
           "default": "",
           "document": "ID of the notification to be modified.",
+          "example": "asn-2sestqbr",
           "member": "string",
           "name": "AutoScalingNotificationId",
           "required": true,
@@ -4242,6 +4324,7 @@
         {
           "default": "",
           "document": "Notification type, i.e., the set of types of notifications to be subscribed to. Value range:\n<li>SCALE_OUT_SUCCESSFUL: scale-out succeeded</li>\n<li>SCALE_OUT_FAILED: scale-out failed</li>\n<li>SCALE_IN_SUCCESSFUL: scale-in succeeded</li>\n<li>SCALE_IN_FAILED: scale-in failed</li>\n<li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>\n<li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>",
+          "example": "[\"SCALE_IN_SUCCESSFUL\\n\",\"SCALE_IN_FAILED\\n\"]",
           "member": "string",
           "name": "NotificationTypes",
           "required": false,
@@ -4250,10 +4333,29 @@
         {
           "default": "",
           "document": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.",
+          "example": "[\"1678\\n\"]",
           "member": "string",
           "name": "NotificationUserGroupIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "CMQ queue name.",
+          "example": "queue",
+          "member": "string",
+          "name": "QueueName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CMQ topic name.",
+          "example": "topic",
+          "member": "string",
+          "name": "TopicName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4836,6 +4938,7 @@
         {
           "default": "",
           "document": "Auto scaling group ID.",
+          "example": "asg-2umy3jbd",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -4844,6 +4947,7 @@
         {
           "default": "",
           "document": "Instance ID.",
+          "example": "[\"ins-b2d33ywt\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -4851,7 +4955,8 @@
         },
         {
           "default": "",
-          "document": "Whether the instance needs to be protected from scale-in.",
+          "document": "Whether to enable scale-in protection for this instance",
+          "example": "true",
           "member": "bool",
           "name": "ProtectedFromScaleIn",
           "required": true,
@@ -5219,7 +5324,7 @@
         },
         {
           "default": "",
-          "document": "Project ID of the instance. This parameter can be obtained from the `projectId` field in the returned values of [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1). If this is left empty, default project is used.",
+          "document": "Project ID of the instance. Leave it blank as the default.",
           "example": "1222",
           "member": "int64",
           "name": "ProjectId",

@@ -65,17 +65,17 @@
     "CreateClusterEndpoint": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=CreateClusterEndpoint\r\n&ClusterId=cls-xxxxxxxx\r\n&SubnetId=subnet-xxxxxx\r\n&<Common request parameters>",
+        "input": "https://tke.tencentcloudapi.com/?Action=CreateClusterEndpoint\n&ClusterId=cls-xxxxxxxx\n&SubnetId=subnet-xxxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Enabling network access for a cluster"
+        "title": "Creating a cluster access port"
       }
     ],
     "CreateClusterEndpointVip": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=CreateClusterEndpointVip\r\n&ClusterId=cls-xxxxxxxx\r\n&<Common request parameters>",
+        "input": "https://tke.tencentcloudapi.com/?Action=CreateClusterEndpointVip\n&ClusterId=cls-xxxxxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestFlowId\": \"100000\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Enabling public network access for a managed cluster"
+        "title": "Creating a public network access port for a managed cluster"
       }
     ],
     "CreateClusterInstances": [
@@ -431,7 +431,7 @@
     "ModifyClusterEndpointSP": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=ModifyClusterEndpointSP\r\n&ClusterId=cls-xxxxxxxx\r\n&SecurityPolicies.0=192.168.1.0/24\r\n&<Common request parameters>",
+        "input": "https://tke.tencentcloudapi.com/?Action=ModifyClusterEndpointSP\n&ClusterId=cls-xxxxxxxx\n&SecurityPolicies.0=192.168.1.0/24\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Modifying the security policy for the public network port of a managed cluster"
       }
