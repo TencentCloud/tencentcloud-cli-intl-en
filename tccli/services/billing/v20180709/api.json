@@ -1234,7 +1234,7 @@
         },
         {
           "default": "",
-          "document": "Action type to query. Valid values:\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ",
+          "document": "Action type to query. Valid values:\nPurchase\nRenewal\nModify\nRefund\nDeduction\nHourly settlement\nDaily settlement\nMonthly settlement\nOffline project deduction\nOffline deduction\nadjust-CR\nadjust-DR\nOne-off RI Fee\nSpot\nHourly RI fee\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription specification adjustment\nMonthly subscription refund",
           "example": "按量计费扣费",
           "member": "string",
           "name": "ActionType",
@@ -1350,6 +1350,7 @@
         {
           "default": "",
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
+          "example": "2018-11",
           "member": "string",
           "name": "BeginTime",
           "required": true,
@@ -1358,6 +1359,7 @@
         {
           "default": "",
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
+          "example": "2018-11",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -1366,8 +1368,18 @@
         {
           "default": "",
           "document": "Queries bill data user's UIN",
+          "example": "xxx",
           "member": "string",
           "name": "PayerUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "A bill type, which corresponds to a subtotal type of L0 bills.\nThis parameter has become valid since v3.0 bills took effect in May 2021.\nValid values:\n`consume`: consumption\n`refund`: refund\n`adjustment`: bill adjustment",
+          "example": "consume",
+          "member": "string",
+          "name": "PayType",
           "required": false,
           "type": "string"
         }
