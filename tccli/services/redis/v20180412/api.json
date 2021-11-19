@@ -1415,7 +1415,7 @@
       "document": "DescribeBackupUrl response structure.",
       "members": [
         {
-          "document": "Download address on the public network (valid for 6 hours)",
+          "document": "Public network download address (valid for six hours). This field will be deprecated soon.",
           "example": "[\"http://example.com/download/rdb/1.rdb\"]",
           "member": "string",
           "name": "DownloadUrl",
@@ -1424,7 +1424,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Download address on the private network (valid for 6 hours)",
+          "document": "Private network download address (valid for six hours). This field will be deprecated soon.",
           "example": "[\"http://example.com/download/rdb/1.rdb\"]",
           "member": "string",
           "name": "InnerDownloadUrl",
@@ -1433,7 +1433,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "File name (only valid for TencentDB for Tendis instances)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Filename. This field will be deprecated soon.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "[\"1.rdb\"]",
           "member": "string",
           "name": "Filenames",
@@ -2556,14 +2556,16 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-7ponppu3",
           "member": "string",
           "name": "InstanceId",
           "required": true,
           "type": "string"
         },
         {
-          "default": "false",
+          "default": "",
           "document": "Whether to filter out the secondary node information",
+          "example": "false",
           "member": "bool",
           "name": "FilterSlave",
           "required": false,
@@ -3666,11 +3668,13 @@
       "document": "DisableReplicaReadonly response structure.",
       "members": [
         {
-          "document": "ERROR: failure; OK: success",
-          "member": "string",
-          "name": "Status",
-          "type": "string",
-          "value_allowed_null": false
+          "document": "Task ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "15236",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3749,11 +3753,18 @@
       "document": "EnableReplicaReadonly response structure.",
       "members": [
         {
-          "document": "ERROR: erroneous; OK: correct.",
+          "document": "Valid values: `ERROR`, `OK`. This field has been deprecated.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Status",
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
+        },
+        {
+          "document": "Task ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3934,7 +3945,7 @@
         },
         {
           "default": "",
-          "document": "Number of instance shards. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, Redis 2.8 in standalone architecture, and Redis 4.0 in standard architecture.",
+          "document": "Instance shard quantity. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, Redis 2.8 standalone edition, and Redis 4.0 standard architecture.",
           "example": "1",
           "member": "int64",
           "name": "RedisShardNum",
@@ -3943,7 +3954,7 @@
         },
         {
           "default": "",
-          "document": "Number of instance replicas. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.",
+          "document": "Instance replica quantity. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, and Redis 2.8 standalone edition.",
           "example": "1",
           "member": "int64",
           "name": "RedisReplicasNum",
@@ -3952,7 +3963,7 @@
         },
         {
           "default": "",
-          "document": "Whether to support read-only replicas. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.",
+          "document": "Whether to support read-only replicas. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, and Redis 2.8 standalone edition.",
           "example": "false",
           "member": "bool",
           "name": "ReplicasReadonly",
@@ -3975,7 +3986,7 @@
       "document": "InquiryPriceCreateInstance response structure.",
       "members": [
         {
-          "document": "Price. Unit: USD\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Price in USD\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "30400",
           "member": "float",
           "name": "Price",
@@ -5435,6 +5446,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5442,7 +5454,8 @@
         },
         {
           "default": "",
-          "document": "Date. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday",
+          "document": "Date. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. However, this parameter is now invalid.",
+          "example": "[\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\"]",
           "member": "string",
           "name": "WeekDays",
           "required": true,
@@ -5451,14 +5464,16 @@
         {
           "default": "",
           "document": "Time period. Value range: 00:00-01:00, 01:00-02:00...... 23:00-00:00",
+          "example": "04:00-05:00",
           "member": "string",
           "name": "TimePeriod",
           "required": true,
           "type": "string"
         },
         {
-          "default": "1",
+          "default": "",
           "document": "Auto backup type: 1 \"scheduled rollback\"",
+          "example": "1",
           "member": "int64",
           "name": "AutoBackupType",
           "required": false,
@@ -5902,7 +5917,7 @@
         },
         {
           "default": "",
-          "document": "New name of the parameter template.",
+          "document": "New name after the parameter template is modified.",
           "example": "自定义参数模板",
           "member": "string",
           "name": "Name",
@@ -5911,7 +5926,7 @@
         },
         {
           "default": "",
-          "document": "New description of the parameter template.",
+          "document": "New description after the parameter template is modified.",
           "example": "参数模板描述",
           "member": "string",
           "name": "Description",
@@ -5920,7 +5935,7 @@
         },
         {
           "default": "",
-          "document": "List of new parameters.",
+          "document": "New parameter list after the parameter template is modified.",
           "example": "无",
           "member": "InstanceParam",
           "name": "ParamList",
@@ -7536,6 +7551,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5qlrlhux",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -7543,7 +7559,8 @@
         },
         {
           "default": "",
-          "document": "Shard size in MB",
+          "document": "Shard size in MB. This parameter cannot be passed in at the same time as `RedisShardNum`/`RedisReplicasNum`.",
+          "example": "3096",
           "member": "uint64",
           "name": "MemSize",
           "required": true,
@@ -7551,7 +7568,8 @@
         },
         {
           "default": "",
-          "document": "Number of shards. This parameter can be left blank for Redis 2.8 primary-secondary edition, CKV primary-secondary edition, and Redis 2.8 standalone edition",
+          "document": "Shard quantity. This parameter is not required by standard architecture instances and cannot be passed in at the same time as `RedisReplicasNum`/`MemSize`.",
+          "example": "3",
           "member": "uint64",
           "name": "RedisShardNum",
           "required": false,
@@ -7559,7 +7577,8 @@
         },
         {
           "default": "",
-          "document": "Number of replicas. This parameter can be left blank for Redis 2.8 primary-secondary edition, CKV primary-secondary edition, and Redis 2.8 standalone edition",
+          "document": "Replica quantity. This parameter cannot be passed in at the same time as `RedisShardNum`/`MemSize`. To modify the number of replicas in a multi-AZ instance, `NodeSet` must be passed in.",
+          "example": "2",
           "member": "uint64",
           "name": "RedisReplicasNum",
           "required": false,
@@ -7568,6 +7587,7 @@
         {
           "default": "",
           "document": "The information of the replica to be added to a multi-AZ instance, such as replica availability zone and replica type (`NodeType` should be `1`). This parameter is required only when multi-AZ instances add replicas.",
+          "example": "无",
           "member": "RedisNodeInfo",
           "name": "NodeSet",
           "required": false,
