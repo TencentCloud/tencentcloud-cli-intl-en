@@ -324,6 +324,24 @@
           "name": "EnableDetectSplit",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable PDF recognition. Default value: `false`. If you enable this feature, both images and PDF files can be recognized.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsPdf",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Number of a PDF page that needs to be recognized. Currently, only one single page can be recognized. This parameter takes effect only if a PDF file is uploaded and `IsPdf` is set to `true`. Default value: `1`",
+          "example": "1",
+          "member": "uint64",
+          "name": "PdfPageNumber",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -469,6 +487,7 @@
         {
           "default": "",
           "document": "Whether to check for authenticity.",
+          "example": "true",
           "member": "bool",
           "name": "DetectFake",
           "required": true,
@@ -477,6 +496,7 @@
         {
           "default": "",
           "document": "Whether to return identity photo.",
+          "example": "false",
           "member": "bool",
           "name": "ReturnHeadImage",
           "required": true,
@@ -484,7 +504,8 @@
         },
         {
           "default": "",
-          "document": "Base64-encoded value of image.\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.",
+          "document": "Base64 string of the image\nSupported image formats: PNG, JPG, JPEG. GIF is not supported yet.\nSupported image size: The downloaded image cannot exceed 7 MB after being Base64-encoded, and it cannot take longer than 3 seconds to download the image.",
+          "example": "无",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -493,6 +514,7 @@
         {
           "default": "",
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "https://xx/a.jpg",
           "member": "string",
           "name": "ImageUrl",
           "required": false,

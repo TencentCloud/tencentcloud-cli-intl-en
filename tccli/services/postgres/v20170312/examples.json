@@ -336,6 +336,14 @@
         "title": "ModifyDBInstanceReadOnlyGroup"
       }
     ],
+    "ModifyDBInstanceSpec": [
+      {
+        "document": "",
+        "input": "https://postgres.tencentcloudapi.com/?Action=ModifyDBInstanceSpec\n&DBInstanceId=postgres-6bwgamo3\n&Memory=2\n&Storage=200\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"DealName\": \"201806127634\",\n        \"BillId\": \"123\"\n    }\n}",
+        "title": "Modifying instance configurations"
+      }
+    ],
     "ModifyDBInstancesProject": [
       {
         "document": "",

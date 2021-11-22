@@ -632,6 +632,15 @@
           "name": "AVTemplates",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Event settings",
+          "example": "无",
+          "member": "PlanSettings",
+          "name": "PlanSettings",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2104,6 +2113,15 @@
           "name": "AVTemplates",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Event settings",
+          "example": "无",
+          "member": "PlanSettings",
+          "name": "PlanSettings",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2461,6 +2479,22 @@
       ],
       "usage": "in"
     },
+    "PlanSettings": {
+      "document": "Event settings",
+      "members": [
+        {
+          "default": "",
+          "document": "Timed recording settings\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "TimedRecordSettings",
+          "name": "TimedRecordSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "RegionInfo": {
       "document": "Region information",
       "members": [
@@ -2787,6 +2821,16 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Event settings\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "PlanSettings",
+          "name": "PlanSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3025,6 +3069,22 @@
           "name": "StartoverWindow",
           "required": false,
           "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "TimedRecordSettings": {
+      "document": "Timed recording settings",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to automatically delete finished recording events. Valid values: `CLOSE`, `OPEN`. If this parameter is left empty, `CLOSE` will be used.\nIf it is set to `OPEN`, a recording event will be deleted 7 days after it is finished.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "CLOSE",
+          "member": "string",
+          "name": "AutoClear",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],

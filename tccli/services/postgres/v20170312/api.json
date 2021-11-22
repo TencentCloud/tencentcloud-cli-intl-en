@@ -234,6 +234,12 @@
       "name": "Modifies the RO group of an instance",
       "output": "ModifyDBInstanceReadOnlyGroupResponse"
     },
+    "ModifyDBInstanceSpec": {
+      "document": "This API is used to modify instance specifications including memory and disk size.",
+      "input": "ModifyDBInstanceSpecRequest",
+      "name": "Modifies instance specifications (new)",
+      "output": "ModifyDBInstanceSpecResponse"
+    },
     "ModifyDBInstancesProject": {
       "document": "This API is used to transfer an instance to another project.",
       "input": "ModifyDBInstancesProjectRequest",
@@ -3982,6 +3988,123 @@
           "name": "FlowId",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSpecRequest": {
+      "document": "ModifyDBInstanceSpec request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of postgres-6bwgamo3.",
+          "example": "postgres-6bwgamo3",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance memory size in GiB after modification.",
+          "example": "1000",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance disk size in GiB after modification.",
+          "example": "16",
+          "member": "uint64",
+          "name": "Storage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.",
+          "example": "0",
+          "member": "uint64",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Voucher ID list. Currently, you can specify only one voucher.",
+          "example": "无",
+          "member": "string",
+          "name": "VoucherIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Campaign ID.",
+          "example": "0",
+          "member": "uint64",
+          "name": "ActivityId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Switch time after instance configurations are modified. Valid values: `0` (switch immediately), `1` (switch at a specified time). Default value: `0`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "SwitchTag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The earliest time to start a switch.",
+          "example": "12:00:00",
+          "member": "string",
+          "name": "SwitchStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The latest time to start a switch.",
+          "example": "12:30:00",
+          "member": "string",
+          "name": "SwitchEndTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSpecResponse": {
+      "document": "ModifyDBInstanceSpec response structure.",
+      "members": [
+        {
+          "document": "Order ID.",
+          "example": "201806127634",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Bill ID of frozen fees.",
+          "example": "123",
+          "member": "string",
+          "name": "BillId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
