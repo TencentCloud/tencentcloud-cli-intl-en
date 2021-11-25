@@ -175,7 +175,7 @@ def doIsolateDBInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeAccounts(args, parsed_globals):
+def doRestartDBInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -191,9 +191,9 @@ def doDescribeAccounts(args, parsed_globals):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeAccountsRequest()
+    model = models.RestartDBInstancesRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeAccounts(model)
+    rsp = client.RestartDBInstances(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -418,7 +418,7 @@ def doDescribeRollbackTaskDetail(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyDBInstanceSecurityGroups(args, parsed_globals):
+def doModifyBackupDownloadRestriction(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -434,9 +434,9 @@ def doModifyDBInstanceSecurityGroups(args, parsed_globals):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyDBInstanceSecurityGroupsRequest()
+    model = models.ModifyBackupDownloadRestrictionRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyDBInstanceSecurityGroups(model)
+    rsp = client.ModifyBackupDownloadRestriction(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -2011,7 +2011,7 @@ def doCreateDBImportJob(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doRestartDBInstances(args, parsed_globals):
+def doDescribeAccounts(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -2027,9 +2027,36 @@ def doRestartDBInstances(args, parsed_globals):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.RestartDBInstancesRequest()
+    model = models.DescribeAccountsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.RestartDBInstances(model)
+    rsp = client.DescribeAccounts(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeBackupDownloadRestriction(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeBackupDownloadRestrictionRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeBackupDownloadRestriction(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -2335,6 +2362,33 @@ def doOpenWanService(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyDBInstanceSecurityGroups(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyDBInstanceSecurityGroupsRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyDBInstanceSecurityGroups(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeSupportedPrivileges(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -2622,7 +2676,7 @@ ACTION_MAP = {
     "DescribeDataBackupOverview": doDescribeDataBackupOverview,
     "BalanceRoGroupLoad": doBalanceRoGroupLoad,
     "IsolateDBInstance": doIsolateDBInstance,
-    "DescribeAccounts": doDescribeAccounts,
+    "RestartDBInstances": doRestartDBInstances,
     "ModifyInstanceTag": doModifyInstanceTag,
     "DescribeTimeWindow": doDescribeTimeWindow,
     "DescribeBackupOverview": doDescribeBackupOverview,
@@ -2631,7 +2685,7 @@ ACTION_MAP = {
     "OfflineIsolatedInstances": doOfflineIsolatedInstances,
     "OpenDBInstanceGTID": doOpenDBInstanceGTID,
     "DescribeRollbackTaskDetail": doDescribeRollbackTaskDetail,
-    "ModifyDBInstanceSecurityGroups": doModifyDBInstanceSecurityGroups,
+    "ModifyBackupDownloadRestriction": doModifyBackupDownloadRestriction,
     "DescribeTasks": doDescribeTasks,
     "DescribeBackupConfig": doDescribeBackupConfig,
     "CloseWanService": doCloseWanService,
@@ -2690,7 +2744,8 @@ ACTION_MAP = {
     "DescribeDBImportRecords": doDescribeDBImportRecords,
     "DescribeDBSwitchRecords": doDescribeDBSwitchRecords,
     "CreateDBImportJob": doCreateDBImportJob,
-    "RestartDBInstances": doRestartDBInstances,
+    "DescribeAccounts": doDescribeAccounts,
+    "DescribeBackupDownloadRestriction": doDescribeBackupDownloadRestriction,
     "StartDelayReplication": doStartDelayReplication,
     "ModifyAccountPassword": doModifyAccountPassword,
     "DescribeUploadedFiles": doDescribeUploadedFiles,
@@ -2702,6 +2757,7 @@ ACTION_MAP = {
     "StartBatchRollback": doStartBatchRollback,
     "DescribeDeviceMonitorInfo": doDescribeDeviceMonitorInfo,
     "OpenWanService": doOpenWanService,
+    "ModifyDBInstanceSecurityGroups": doModifyDBInstanceSecurityGroups,
     "DescribeSupportedPrivileges": doDescribeSupportedPrivileges,
     "ModifyRoReplicationDelay": doModifyRoReplicationDelay,
     "DescribeBinlogs": doDescribeBinlogs,

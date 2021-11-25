@@ -1,13 +1,13 @@
 {
   "actions": {
     "AddSmsSign": {
-      "document": "1. This API is used to add an SMS signature. Please read the [Tencent Cloud SMS Signature Review Standards](https://intl.cloud.tencent.com/document/product/382/39022?from_cn_redirect=1) before starting an application.\n2. ⚠️ Note: individual users cannot use this API to apply for SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the console to apply for SMS signatures.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
+      "document": "1. This API is used to add an SMS signature. You need to read the [Tencent Cloud SMS Signature Review Standards](https://intl.cloud.tencent.com/zh/document/product/382/40658) before starting an application.\n2. ⚠️ Note: individual users cannot use this API to apply for SMS signatures. For more information, see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the console to apply for SMS signatures.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "AddSmsSignRequest",
       "name": "Adds SMS signature",
       "output": "AddSmsSignResponse"
     },
     "AddSmsTemplate": {
-      "document": "1. This API is used to add an SMS template. Please read the [Tencent Cloud SMS Body Template Review Standards](https://intl.cloud.tencent.com/document/product/382/39023?from_cn_redirect=1) before starting an application.\n2. ⚠️ Note: individual users cannot use this API to apply for SMS body templates. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to apply for SMS body templates.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
+      "document": "1. This API is used to add an SMS template. You need to read the [Tencent Cloud SMS Body Template Review Standards](https://intl.cloud.tencent.com/zh/document/product/382/40659) before starting an application.\n2. ⚠️ Note: individual users cannot use this API to apply for SMS body templates. For more information, see [Identity Verification Overview](https://intl.cloud.tencent.com/zh/document/product/378/3629). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to apply for SMS body templates.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "AddSmsTemplateRequest",
       "name": "Adds SMS template",
       "output": "AddSmsTemplateResponse"
@@ -31,7 +31,7 @@
       "output": "DeleteSmsTemplateResponse"
     },
     "DescribePhoneNumberInfo": {
-      "document": "This API is used to query mobile number information, such as the country/region code and the number in standardized E.164 format. For example, if you query the number +86018845720123, you can know that the country code is 86, and the standardized E. 164 number is +86018845720123.",
+      "document": "This API is used to query the information of a phone number, including country/region code and standardized E.164 format number.\n>- For example, if you query the number +86018845720123, you can get the country/region code 86 and the standardized E.164 number +8618845720123.",
       "input": "DescribePhoneNumberInfoRequest",
       "name": "Queries mobile number information",
       "output": "DescribePhoneNumberInfoResponse"
@@ -49,7 +49,7 @@
       "output": "DescribeSmsTemplateListResponse"
     },
     "ModifySmsSign": {
-      "document": "1. This API is used to modify an SMS signature. Please read the [Tencent Cloud SMS Signature Review Standards](https://intl.cloud.tencent.com/document/product/382/39022?from_cn_redirect=1) before making a modification.\n2. ⚠️ Note: individual users cannot use this API to modify SMS signatures. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to modify SMS signatures.\n3. Modifications can be made only if the signature status is **Pending Review** or **Rejected**. **Approved** signatures cannot be modified.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
+      "document": "1. This API is used to modify an SMS signature. You need to read the [Tencent Cloud SMS Signature Review Standards](https://intl.cloud.tencent.com/document/product/382/39022) before making a modification.\n2. ⚠️ Note: individual users cannot use this API to modify SMS signatures. For more information, see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to modify SMS signatures.\n3. Modifications can be made only if the signature status is **Pending Review** or **Rejected**. **Approved** signatures cannot be modified.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "ModifySmsSignRequest",
       "name": "Modifies SMS signature",
       "output": "ModifySmsSignResponse"
@@ -133,7 +133,7 @@
         },
         {
           "default": "",
-          "document": "Signature type. Each of these types is followed by their `DocumentType` (identity certificate type) option:\n0: company. Valid values of `DocumentType` include 0, 1, 2, and 3.\n1: app. Valid values of `DocumentType` include 0, 1, 2, 3, and 4.\n2: website. Valid values of `DocumentType` include 0, 1, 2, 3, and 5.\n3: WeChat Official Account or WeChat Mini Program. Valid values of `DocumentType` include 0, 1, 2, 3, and 6.\n4: trademark. Valid values of `DocumentType` include 7.\n5: government/public institution/other. Valid values of `DocumentType` include 2 and 3.\nNote: the identity certificate type must be selected according to the correspondence; otherwise, the review will fail.",
+          "document": "Signature type. Each of these types is followed by their `DocumentType` (identity certificate type) option:\n0: company. Valid values of `DocumentType` include 0 and 1.\n1: app. Valid values of `DocumentType` include 0, 1, 2, 3, and 4.\n2: website. Valid values of `DocumentType` include 0, 1, 2, 3, and 5.\n3: WeChat Official Account. Valid values of `DocumentType` include 0, 1, 2, 3, and 8.\n4: trademark. Valid values of `DocumentType` include 7.\n5: government/public institution/other. Valid values of `DocumentType` include 2 and 3.\n6: WeChat Mini Program. Valid values of `DocumentType` include 0, 1, 2, 3, and 6.\nNote: the identity certificate type must be selected according to the correspondence; otherwise, the review will fail.",
           "example": "0",
           "member": "uint64",
           "name": "SignType",
@@ -142,7 +142,7 @@
         },
         {
           "default": "",
-          "document": "Identity certificate type:\n0: three-in-one.\n1: business license.\n2: organization code certificate.\n3: social credit code certificate.\n4: screenshot of application backend management (for personal app).\n5: screenshot of website ICP filing backend (for personal website).\n6: screenshot of WeChat Mini Program settings page (for personal WeChat Mini Program).\n7: trademark registration certificate.\nNote: the corresponding `DocumentType` must be selected according to `SignType`.",
+          "document": "Identity certificate type:\n0: three-in-one.\n1: business license.\n2: organization code certificate.\n3: social credit code certificate.\n4: screenshot of application backend management (for personal app).\n5: screenshot of website ICP filing backend (for personal website).\n6: screenshot of WeChat Mini Program settings page (for personal WeChat Mini Program).\n7: trademark registration certificate.\n8: screenshot of WeChat Official Account settings page (for personal WeChat Official Account).",
           "example": "1",
           "member": "uint64",
           "name": "DocumentType",
@@ -737,20 +737,38 @@
       "members": [
         {
           "default": "",
-          "document": "Template ID array.\n<dx-alert infotype=\"notice\" title=\"Note\">The max array length is 100 by default.</dx-alert>",
-          "example": "1110",
-          "member": "uint64",
-          "name": "TemplateIdSet",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "default": "",
           "document": "Whether it is Global SMS:\n0: Mainland China SMS.\n1: Global SMS.",
           "example": "0",
           "member": "uint64",
           "name": "International",
           "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Array of template IDs. If the array is empty, the template list information will be queried by default (only allowed for root accounts). You need to use the `Limit` and `Offset` fields to set the query range.\n<dx-alert infotype=\"notice\" title=\"Note\">The default array length can be up to 100</dx-alert>",
+          "example": "1110",
+          "member": "uint64",
+          "name": "TemplateIdSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Upper limit. Maximum value: 100.\nNote: it is 0 by default and is enabled when `TemplateIdSet` is empty.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset.\nNote: it is 0 by default and is enabled when `TemplateIdSet` is empty.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
           "type": "int"
         }
       ],
@@ -892,7 +910,7 @@
         },
         {
           "default": "",
-          "document": "Signature type. Each of these types is followed by their `DocumentType` (identity certificate type) option:\n0: company. Valid values of `DocumentType` include 0, 1, 2, and 3.\n1: app. Valid values of `DocumentType` include 0, 1, 2, 3, and 4.\n2: website. Valid values of `DocumentType` include 0, 1, 2, 3, and 5.\n3: WeChat Official Account or WeChat Mini Program. Valid values of `DocumentType` include 0, 1, 2, 3, and 6.\n4: trademark. Valid values of `DocumentType` include 7.\n5: government/public institution/other. Valid values of `DocumentType` include 2 and 3.\nNote: the identity certificate type must be selected according to the correspondence; otherwise, the review will fail.",
+          "document": "Signature type. Each of these types is followed by their `DocumentType` (identity certificate type) option:\n0: company. Valid values of `DocumentType` include 0 and 1.\n1: app. Valid values of `DocumentType` include 0, 1, 2, 3, and 4.\n2: website. Valid values of `DocumentType` include 0, 1, 2, 3, and 5.\n3: WeChat Official Account. Valid values of `DocumentType` include 0, 1, 2, 3, and 8.\n4: trademark. Valid values of `DocumentType` include 7.\n5: government/public institution/other. Valid values of `DocumentType` include 2 and 3.\n6: WeChat Mini Program. Valid values of `DocumentType` include 0, 1, 2, 3, and 6.\nNote: the identity certificate type must be selected according to the correspondence; otherwise, the review will fail.",
           "example": "0",
           "member": "uint64",
           "name": "SignType",
@@ -901,7 +919,7 @@
         },
         {
           "default": "",
-          "document": "Identity certificate type:\n0: three-in-one.\n1: business license.\n2: organization code certificate.\n3: social credit code certificate.\n4: screenshot of application backend management (for personal app).\n5: screenshot of website ICP filing backend (for personal website).\n6: screenshot of WeChat Mini Program settings page (for personal WeChat Mini Program).\n7: trademark registration certificate.\nNote: the corresponding `DocumentType` must be selected according to `SignType`.",
+          "document": "Identity certificate type:\n0: three-in-one.\n1: business license.\n2: organization code certificate.\n3: social credit code certificate.\n4: screenshot of application backend management (for personal app).\n5: screenshot of website ICP filing backend (for personal website).\n6: screenshot of WeChat Mini Program settings page (for personal WeChat Mini Program).\n7: trademark registration certificate.\n8: screenshot of WeChat Official Account settings page (for personal WeChat Official Account).",
           "example": "1",
           "member": "uint64",
           "name": "DocumentType",
@@ -1577,7 +1595,7 @@
         },
         {
           "default": "",
-          "document": "Template ID. You must enter the ID of an approved template, which can be viewed in the [SMS console](https://console.cloud.tencent.com/smsv2). If you need to send SMS messages to global mobile numbers, you can only use a Global SMS template.",
+          "document": "Template ID. You must enter the ID of an approved template, which can be viewed on the [Mainland China SMS](https://console.cloud.tencent.com/smsv2/csms-template) or [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template) body template management page. If you need to send SMS messages to global mobile numbers, you can only use a Global SMS template.",
           "example": "1234",
           "member": "string",
           "name": "TemplateId",
@@ -1586,7 +1604,7 @@
         },
         {
           "default": "",
-          "document": "SMS signature information which is encoded in UTF-8. You must enter an approved signature (such as Tencent Cloud). The signing information can be viewed in the [SMS console](https://console.cloud.tencent.com/smsv2).\n<dx-alert infotype=\"notice\" title=\"Note\">This parameter is required for Chinese mainland SMS.</dx-alert>",
+          "document": "Content of the SMS signature, which should be encoded in UTF-8. You must enter an approved signature, such as Tencent Cloud. The signature information can be viewed on the [Mainland China SMS](https://console.cloud.tencent.com/smsv2/csms-sign) or [Global SMS](https://console.cloud.tencent.com/smsv2/isms-sign) signature management page.\n<dx-alert infotype=\"notice\" title=\"Note\">This parameter is required for Mainland China SMS.</dx-alert>",
           "example": "腾讯云",
           "member": "string",
           "name": "SignName",
@@ -1604,7 +1622,7 @@
         },
         {
           "default": "",
-          "document": "SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
+          "document": "SMS code number extension, which is not activated by default. If you need to activate it, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
           "example": "1400006666",
           "member": "string",
           "name": "ExtendCode",
@@ -1622,7 +1640,7 @@
         },
         {
           "default": "",
-          "document": "This parameter is not required for Mainland China SMS. For Global SMS, if you have applied for a separate `SenderId`, this parameter is required. By default, the public `SenderId` is used, in which case you don't need to enter this parameter.\nNote: if your monthly usage reaches the specified threshold, you can apply for an independent `SenderId`. For more information, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
+          "document": "This parameter is not required for Mainland China SMS. For Global SMS, if you have applied for a separate `SenderId`, this parameter is required. By default, the public `SenderId` is used, in which case you don't need to enter this parameter.\nNote: if your monthly usage reaches the specified threshold, you can apply for an independent `SenderId`. For more information, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
           "example": "test",
           "member": "string",
           "name": "SenderId",
@@ -1678,7 +1696,7 @@
         },
         {
           "default": "",
-          "document": "Number of billable SMS messages. For billing rules, please see [Billing Policy](https://intl.cloud.tencent.com/document/product/382/36135?from_cn_redirect=1).",
+          "document": "Number of billable SMS messages. For billing rules, see Billing Policy.",
           "example": "1",
           "member": "uint64",
           "name": "Fee",
@@ -1698,7 +1716,7 @@
         },
         {
           "default": "",
-          "document": "SMS request error code. For details, see [Error Codes](https://intl.cloud.tencent.com/document/api/382/55981?from_cn_redirect=1#6.-.E9.94.99.E8.AF.AF.E7.A0.81). `Ok` will be returned if the request is successful.",
+          "document": "SMS request error code. For specific meanings, see [Error Codes](https://intl.cloud.tencent.com/zh/document/product/382/40536#6.-error-code). `Ok` will be returned for successful delivery.",
           "example": "Ok",
           "member": "string",
           "name": "Code",

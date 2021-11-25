@@ -132,6 +132,12 @@
       "name": "Queries the configuration information of a TencentDB instance backup",
       "output": "DescribeBackupConfigResponse"
     },
+    "DescribeBackupDownloadRestriction": {
+      "document": "This API is used to query the restrictions of downloading backups in a region.",
+      "input": "DescribeBackupDownloadRestrictionRequest",
+      "name": "Queries backup download restrictions",
+      "output": "DescribeBackupDownloadRestrictionResponse"
+    },
     "DescribeBackupOverview": {
       "document": "This API is used to query the backup overview of a user. It will return the user's current total number of backups, total capacity used by backups, capacity in the free tier, and paid capacity (all capacity values are in bytes).",
       "input": "DescribeBackupOverviewRequest",
@@ -419,6 +425,12 @@
       "input": "ModifyBackupConfigRequest",
       "name": "Modifies the database backup configuration",
       "output": "ModifyBackupConfigResponse"
+    },
+    "ModifyBackupDownloadRestriction": {
+      "document": "This API is used to modify the restrictions of downloading backups in a region. You can specify which types of networks (private, or both private and public), VPCs, and IPs to download backups.",
+      "input": "ModifyBackupDownloadRestrictionRequest",
+      "name": "Modifies backup download restrictions",
+      "output": "ModifyBackupDownloadRestrictionResponse"
     },
     "ModifyDBInstanceName": {
       "document": "This API (ModifyDBInstanceName) is used to rename a TencentDB instance.",
@@ -1019,6 +1031,32 @@
         }
       ],
       "usage": "in"
+    },
+    "BackupLimitVpcItem": {
+      "document": "VPCs used to restrict backup download",
+      "members": [
+        {
+          "default": "",
+          "document": "The region where the backup download restrictions take effect. It must be the same as the common request parameter `Region` of the API.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The list of VPCs used to restrict backup download",
+          "example": "[\"vpc-XX1\", \"vpc-XX2\"]",
+          "member": "string",
+          "name": "VpcList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "BackupSummaryItem": {
       "document": "Statistical items of instance backup",
@@ -2992,6 +3030,68 @@
           "member": "CommonTimeWindow",
           "name": "BackupTimeWindow",
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupDownloadRestrictionRequest": {
+      "document": "DescribeBackupDownloadRestriction request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeBackupDownloadRestrictionResponse": {
+      "document": "DescribeBackupDownloadRestriction response structure.",
+      "members": [
+        {
+          "document": "Valid values: `NoLimit` (backups can be downloaded over both private and public networks with any IPs), `LimitOnlyIntranet` (backups can be downloaded over the private network with any private IPs), `Customize` (backups can be downloaded over specified VPCs with specified IPs). The `LimitVpc` and `LimitIp` parameters are valid only when this parameter is set to `Customize`.",
+          "example": "LimitOnlyIntranet",
+          "member": "string",
+          "name": "LimitType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Valid value: `In` (backups can only be downloaded over the VPCs specified in `LimitVpc`).",
+          "example": "In",
+          "member": "string",
+          "name": "VpcComparisonSymbol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Valid values: `In` (backups can only be downloaded with the IPs specified in `LimitIp`), `NotIn` (backups cannot be downloaded with the IPs specified in `LimitIp`).",
+          "example": "NotIn",
+          "member": "string",
+          "name": "IpComparisonSymbol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "VPCs used to restrict backup download.",
+          "example": "无",
+          "member": "BackupLimitVpcItem",
+          "name": "LimitVpc",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IPs used to restrict backup download.",
+          "example": "[\"1.2.3.4\",\"4.3.2.1\"]",
+          "member": "string",
+          "name": "LimitIp",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -7079,6 +7179,69 @@
     },
     "ModifyBackupConfigResponse": {
       "document": "ModifyBackupConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupDownloadRestrictionRequest": {
+      "document": "ModifyBackupDownloadRestriction request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Valid values: `NoLimit` (backups can be downloaded over both private and public networks with any IPs), `LimitOnlyIntranet` (backups can be downloaded over the private network with any private IPs), `Customize` (backups can be downloaded over specified VPCs with specified IPs). The `LimitVpc` and `LimitIp` parameters are valid only when this parameter is set to `Customize`.",
+          "example": "NoLimit",
+          "member": "string",
+          "name": "LimitType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid value: `In` (backups can only be downloaded over the VPCs specified in `LimitVpc`). Default value: `In`.",
+          "example": "In",
+          "member": "string",
+          "name": "VpcComparisonSymbol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `In` (backups can only be downloaded with the IPs specified in `LimitIp`), `NotIn` (backups cannot be downloaded with the IPs specified in `LimitIp`). Default value: `In`.",
+          "example": "In",
+          "member": "string",
+          "name": "IpComparisonSymbol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPCs used to restrict backup download.",
+          "example": "[{\"Region\": \"ap-guangzhou\", \"VpcList\": [\"vpc-XX1\"] } ]",
+          "member": "BackupLimitVpcItem",
+          "name": "LimitVpc",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "IPs used to restrict backup download.",
+          "example": "[\"1.2.3.4\",\"4.3.2.1\"]",
+          "member": "string",
+          "name": "LimitIp",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupDownloadRestrictionResponse": {
+      "document": "ModifyBackupDownloadRestriction response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
