@@ -142,7 +142,7 @@
         },
         {
           "default": "",
-          "document": "Identity certificate type:\n0: three-in-one.\n1: business license.\n2: organization code certificate.\n3: social credit code certificate.\n4: screenshot of application backend management (for personal app).\n5: screenshot of website ICP filing backend (for personal website).\n6: screenshot of WeChat Mini Program settings page (for personal WeChat Mini Program).\n7: trademark registration certificate.\n8: screenshot of WeChat Official Account settings page (for personal WeChat Official Account).",
+          "document": "Identity certificate type:\n0: three-in-one licence.\n1: business license.\n2: organization code certificate.\n3: social credit code certificate.\n4: screenshot of application backend management (for personal app).\n5: screenshot of website ICP filing backend (for personal website).\n6: screenshot of WeChat Mini Program settings page (for personal WeChat Mini Program).\n7: trademark registration certificate.\n8: screenshot of WeChat Official Account settings page (for personal WeChat Official Account).",
           "example": "1",
           "member": "uint64",
           "name": "DocumentType",
@@ -1595,7 +1595,7 @@
         },
         {
           "default": "",
-          "document": "Template ID. You must enter the ID of an approved template, which can be viewed on the [Mainland China SMS](https://console.cloud.tencent.com/smsv2/csms-template) or [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template) body template management page. If you need to send SMS messages to global mobile numbers, you can only use a Global SMS template.",
+          "document": "Template ID. You must enter the ID of an approved template, which can be viewed on the [Chinese Mainland SMS](https://console.cloud.tencent.com/smsv2/csms-template) or [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template) body template management page. If you need to send SMS messages to global mobile numbers, you can only use a Global SMS template.",
           "example": "1234",
           "member": "string",
           "name": "TemplateId",
@@ -1604,7 +1604,7 @@
         },
         {
           "default": "",
-          "document": "Content of the SMS signature, which should be encoded in UTF-8. You must enter an approved signature, such as Tencent Cloud. The signature information can be viewed on the [Mainland China SMS](https://console.cloud.tencent.com/smsv2/csms-sign) or [Global SMS](https://console.cloud.tencent.com/smsv2/isms-sign) signature management page.\n<dx-alert infotype=\"notice\" title=\"Note\">This parameter is required for Mainland China SMS.</dx-alert>",
+          "document": "Content of the SMS signature, which should be encoded in UTF-8. You must enter an approved signature, such as Tencent Cloud. The signature information can be viewed on the [Chinese Mainland SMS](https://console.cloud.tencent.com/smsv2/csms-sign) or [Global SMS](https://console.cloud.tencent.com/smsv2/isms-sign) signature management page.\n<dx-alert infotype=\"notice\" title=\"Note\">This parameter is required for Chinese Mainland SMS.</dx-alert>",
           "example": "腾讯云",
           "member": "string",
           "name": "SignName",
@@ -1640,7 +1640,7 @@
         },
         {
           "default": "",
-          "document": "This parameter is not required for Mainland China SMS. For Global SMS, if you have applied for a separate `SenderId`, this parameter is required. By default, the public `SenderId` is used, in which case you don't need to enter this parameter.\nNote: if your monthly usage reaches the specified threshold, you can apply for an independent `SenderId`. For more information, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
+          "document": "This parameter is not required for Chinese Mainland SMS. For Global SMS, if you have applied for a separate `SenderId`, this parameter is required. By default, the public `SenderId` is used, in which case you don't need to enter this parameter.\nNote: if your monthly usage reaches the specified threshold, you can apply for an independent `SenderId`. For more information, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
           "example": "test",
           "member": "string",
           "name": "SenderId",
