@@ -378,6 +378,15 @@
           "name": "WebNodeTypeInfo",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `https`, `http` (default)",
+          "example": "https",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1436,6 +1445,26 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster network communication protocol\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "https",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Security group ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroups",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2337,6 +2366,42 @@
           "name": "WebNodeTypeInfo",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to switch to the new network architecture",
+          "example": "无",
+          "member": "string",
+          "name": "SwitchPrivateLink",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable Cerebro",
+          "example": "无",
+          "member": "bool",
+          "name": "EnableCerebro",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Cerebro public network access status",
+          "example": "无",
+          "member": "string",
+          "name": "CerebroPublicAccess",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cerebro private network access status",
+          "example": "无",
+          "member": "string",
+          "name": "CerebroPrivateAccess",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
