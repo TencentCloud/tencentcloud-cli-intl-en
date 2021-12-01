@@ -550,7 +550,7 @@
         },
         {
           "default": "",
-          "document": "COS object path",
+          "document": "File path of code package stored in COS, which should start with “/”",
           "example": "ObjectName",
           "member": "string",
           "name": "CosObjectName",
@@ -4418,6 +4418,7 @@
         {
           "default": "",
           "document": "Name of the function for which to set the provisioned concurrency",
+          "example": "test",
           "member": "string",
           "name": "FunctionName",
           "required": true,
@@ -4426,6 +4427,7 @@
         {
           "default": "",
           "document": "Function version number. Note: the `$LATEST` version does not support provisioned concurrency",
+          "example": "1",
           "member": "string",
           "name": "Qualifier",
           "required": true,
@@ -4434,6 +4436,7 @@
         {
           "default": "",
           "document": "Provisioned concurrency amount. Note: there is an upper limit for the sum of provisioned concurrency amounts of all versions, which currently is the function's maximum concurrency quota minus 100",
+          "example": "10",
           "member": "uint64",
           "name": "VersionProvisionedConcurrencyNum",
           "required": true,
@@ -4442,10 +4445,20 @@
         {
           "default": "",
           "document": "Function namespace. Default value: `default`",
+          "example": "default",
           "member": "string",
           "name": "Namespace",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Scheduled provisioned concurrency scaling action",
+          "example": "无",
+          "member": "TriggerAction",
+          "name": "TriggerActions",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -4759,6 +4772,15 @@
           "name": "Namespace",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable graceful shutdown",
+          "example": "false",
+          "member": "bool",
+          "name": "GraceShutdown",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -4912,6 +4934,42 @@
         }
       ],
       "usage": "out"
+    },
+    "TriggerAction": {
+      "document": "Details of a scheduled provisioned concurrency scaling action",
+      "members": [
+        {
+          "default": "",
+          "document": "Scheduled action name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "TriggerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Target provisioned concurrency of the scheduled scaling action \nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TriggerProvisionedConcurrencyNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Trigger time of the scheduled action in Cron expression. Seven fields are required and should be separated with a space.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "TriggerCronConfig",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "TriggerCount": {
       "document": "`TriggerCount` describes the numbers of triggers in different types",
@@ -5686,6 +5744,7 @@
         {
           "default": "",
           "document": "Set provisioned concurrency amount.",
+          "example": "0",
           "member": "uint64",
           "name": "AllocatedProvisionedConcurrencyNum",
           "required": true,
@@ -5695,6 +5754,7 @@
         {
           "default": "",
           "document": "Currently available provisioned concurrency amount.",
+          "example": "0",
           "member": "uint64",
           "name": "AvailableProvisionedConcurrencyNum",
           "required": true,
@@ -5704,6 +5764,7 @@
         {
           "default": "",
           "document": "Provisioned concurrency setting task status. `Done`: completed; `InProgress`: in progress; `Failed`: partially or completely failed.",
+          "example": "\"\"",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -5713,6 +5774,7 @@
         {
           "default": "",
           "document": "Status description of provisioned concurrency setting task.",
+          "example": "\"\"",
           "member": "string",
           "name": "StatusReason",
           "required": true,
@@ -5722,11 +5784,22 @@
         {
           "default": "",
           "document": "Function version number",
+          "example": "\"\"",
           "member": "string",
           "name": "Qualifier",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of scheduled provisioned concurrency scaling actions\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TriggerAction",
+          "name": "TriggerActions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

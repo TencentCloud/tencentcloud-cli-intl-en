@@ -283,7 +283,7 @@
       "output": "ResetInstanceResponse"
     },
     "ResetInstancesPassword": {
-      "document": "This API is used to reset the password of the instance OS to a user-specified password.\n* You can only use this API to modify the password of the admin account. The name of the admin account varies by OS (on Windows, it is `Administrator`; on Ubuntu, it is `ubuntu`; on other systems, it is `root`).\n* Batch operations are supported. You can reset the passwords of multiple instances to the same one. The maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "document": "This API is used to reset the password of the instance OS to a user-specified password.\n* You can only use this API to modify the password of the admin account. The name of the admin account varies by OS (on Windows, it is `Administrator`; on Ubuntu, it is `ubuntu`; on other systems, it is `root`).\n* Batch operations are supported. You can reset the passwords of multiple instances to the same one. The maximum number of instances in each request is 100.\n* It’s recommended to shut down the instance first and then reset the password. If the instance is running, this API will try to shut it down normally. If the attempt fails, it will force to instance to shut down.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.\nNote: Just like powering off a physical PC, a forced shutdown may cause data loss or the corruption of file system.",
       "input": "ResetInstancesPasswordRequest",
       "name": "Resets instance password",
       "output": "ResetInstancesPasswordResponse"
@@ -301,9 +301,9 @@
       "output": "StopInstancesResponse"
     },
     "TerminateInstances": {
-      "document": "This API is used to return instances.\n\n* Instances in `SHUTDOWN` status can be terminated through this API and cannot be recovered.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "document": "This API is used to terminate one or more instances.\n\n* Instances in `SHUTDOWN` status can be terminated through this API and cannot be recovered.\n* Batch operations are supported. The allowed maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
       "input": "TerminateInstancesRequest",
-      "name": "Returns instances",
+      "name": "Terminates one or more instances",
       "output": "TerminateInstancesResponse"
     }
   },
@@ -1275,7 +1275,7 @@
         },
         {
           "default": "",
-          "document": "Filter list\n<li>blueprint-id</li>Filter by **image ID**.\nType: String\nRequired: no\n<li>blueprint-type</li>Filter by **image type**.\nValid values: `APP_OS`: application image; `PURE_OS`: system image; `PRIVATE`: custom image; `SHARED`: shared image\nType: String\nRequired: no\n<li>platform-type</li>Filter by **image platform type**.\nValid values: `LINUX_UNIX`: Linux or Unix; `WINDOWS`: Windows\nType: String\nRequired: no\n<li>blueprint-name</li>Filter by **image name**.\nType: String\nRequired: no\n\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.",
+          "document": "Filter list\n<li>blueprint-id</li>Filter by **image ID**.\nType: String\nRequired: no\n<li>blueprint-type</li>Filter by **image type**.\nValid values: `APP_OS`: application image; `PURE_OS`: system image; `PRIVATE`: custom image; `SHARED`: shared image\nType: String\nRequired: no\n<li>platform-type</li>Filter by **image platform type**.\nValid values: `LINUX_UNIX`: Linux or Unix; `WINDOWS`: Windows\nType: String\nRequired: no\n<li>blueprint-name</li>Filter by **image name**.\nType: String\nRequired: no\n<li>blueprint-state</li>Filter by **image status**.\nType: String\nRequired: no\n\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.",
           "example": " [         {             \"Name\": \"blueprint-type\",             \"",
           "member": "Filter",
           "name": "Filters",
@@ -2075,7 +2075,7 @@
         },
         {
           "default": "",
-          "document": "Filter list\n<li>blueprint-id</li>Filter by **image ID**.\nType: String\nRequired: no\n<li>blueprint-type</li>Filter by **image type**.\nValid values: `APP_OS`: application image; `PURE_OS`: system image; `PRIVATE`: custom image\nType: String\nRequired: no\n<li>platform-type</li>Filter by **image platform type**.\nValid values: `LINUX_UNIX`: Linux or Unix; `WINDOWS`: Windows\nType: String\nRequired: no\n<li>blueprint-name</li>Filter by **image name**.\nType: String\nRequired: no\n\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.",
+          "document": "Filter list\n<li>blueprint-id</li>Filter by **image ID**.\nType: String\nRequired: no\n<li>blueprint-type</li>Filter by **image type**.\nValid values: `APP_OS`: application image; `PURE_OS`: system image; `PRIVATE`: custom image\nType: String\nRequired: no\n<li>platform-type</li>Filter by **image platform type**.\nValid values: `LINUX_UNIX`: Linux or Unix; `WINDOWS`: Windows\nType: String\nRequired: no\n<li>blueprint-name</li>Filter by **image name**.\nType: String\nRequired: no\n<li>blueprint-state</li>Filter by **image status**.\nType: String\nRequired: no\n\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -3723,7 +3723,7 @@
         },
         {
           "default": "",
-          "document": "Instance login password. Different OS types have different limits on password complexity as detailed below:\nThe password of a `LINUX_UNIX` instance must contain 8–30 characters (above 12 characters preferably) in at least three of the following types and cannot begin with \"/\": <br><li>Lowercase letters: [a–z]<br><li>Uppercase letters: [A–Z]<br><li>Digits: 0–9<br><li>Special symbols: ()\\`~!@#$%^&\\*-+=\\_|{}[]:;'<>,.?/\nThe password of a `WINDOWS` instance must contain 12–30 characters in at least three of the following types and cannot begin with \"/\" or include the username: <br><li>Lowercase letters: [a–z]<br><li>Uppercase letters: [A–Z]<br><li>Digits: 0–9<br><li>Special symbols: ()\\`~!@#$%^&\\*-+=\\_|{}[]:;' <>,.?/<br><li>If both `LINUX_UNIX` and `WINDOWS` instances exist, the requirements for password complexity of `WINDOWS` instances shall prevail.",
+          "document": "Login password of the instance(s). The password requirements vary among different operating systems:\nThe password of a `LINUX_UNIX` instance must contain 8–30 characters (above 12 characters preferably) in at least three of the following types and cannot begin with \"/\": <br><li>Lowercase letters: [a–z]<br><li>Uppercase letters: [A–Z]<br><li>Digits: 0–9<br><li>Special symbols: ()\\`~!@#$%^&\\*-+=\\_|{}[]:;'<>,.?/</li>\nThe password of a `WINDOWS` instance must contain 12–30 characters in at least three of the following types and cannot begin with \"/\" or include the username: <br><li>Lowercase letters: [a–z]<br><li>Uppercase letters: [A–Z]<br><li>Digits: 0–9<br><li>Special symbols: ()\\`~!@#$%^&\\*-+=\\_|{}[]:;' <>,.?/<br><li>If both `LINUX_UNIX` and `WINDOWS` instances exist, the requirements for password complexity of `WINDOWS` instances shall prevail.",
           "example": "xxxxxxxxxxx",
           "member": "string",
           "name": "Password",

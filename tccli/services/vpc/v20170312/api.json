@@ -667,7 +667,7 @@
       "output": "DescribeIpGeolocationDatabaseUrlResponse"
     },
     "DescribeIpGeolocationInfos": {
-      "document": "This API is used to query the information of IP addresses, including their geographical locations and networks.",
+      "document": "This API is used to query the location and network information of one or more IP addresses.\nThis API is currently in beta test. To use it, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=660&source=0&data_title=%E5%BC%B9%E6%80%A7%E5%85%AC%E7%BD%91%20EIP&level3_id=662&queue=96&scene_code=16400&step=2).",
       "input": "DescribeIpGeolocationInfosRequest",
       "name": "Queries IP location",
       "output": "DescribeIpGeolocationInfosResponse"
@@ -1705,40 +1705,84 @@
       ],
       "usage": "in"
     },
+    "AddressInfo": {
+      "document": "IP address template information",
+      "members": [
+        {
+          "default": "",
+          "document": "IP address",
+          "example": "2.2.2.2",
+          "member": "string",
+          "name": "Address",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "desc",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "AddressTemplate": {
       "document": "IP address template",
       "members": [
         {
           "default": "",
           "document": "IP address template name.",
+          "example": "name",
           "member": "string",
           "name": "AddressTemplateName",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "The unique ID of the IP address template instance.",
+          "example": "ipm-3iv46d0c",
           "member": "string",
           "name": "AddressTemplateId",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "IP address information.",
+          "example": "[\"2.2.2.2\"]",
           "member": "string",
           "name": "AddressSet",
           "required": true,
-          "type": "list"
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Creation Time.",
+          "example": "2021-03-02 14:41:15",
           "member": "string",
           "name": "CreatedTime",
           "required": false,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP address information with remarks",
+          "example": "无",
+          "member": "AddressInfo",
+          "name": "AddressExtraSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3614,6 +3658,7 @@
         {
           "default": "",
           "document": "The name of the IP address template",
+          "example": "TestName",
           "member": "string",
           "name": "AddressTemplateName",
           "required": true,
@@ -3621,10 +3666,20 @@
         },
         {
           "default": "",
-          "document": "Address information, including IP, CIDR and IP address range.",
+          "document": "The address information can be presented by the IP, CIDR block or IP address range. Either Addresses or AddressesExtra is required.",
+          "example": "[\"192.168.1.0\\/24\\r\\n\",\"192.168.2.0\\/24\\r\\n\"]",
           "member": "string",
           "name": "Addresses",
-          "required": true,
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The address information can contain remarks and be presented by the IP, CIDR block or IP address range. Either Addresses or AddressesExtra is required.",
+          "example": "无",
+          "member": "AddressInfo",
+          "name": "AddressesExtra",
+          "required": false,
           "type": "list"
         }
       ],
@@ -5069,6 +5124,7 @@
         {
           "default": "",
           "document": "Template name of the protocol port",
+          "example": "TestName",
           "member": "string",
           "name": "ServiceTemplateName",
           "required": true,
@@ -5076,10 +5132,20 @@
         },
         {
           "default": "",
-          "document": "It supports single port, multiple ports, consecutive ports and all ports. Supported protocols include TCP, UDP, ICMP, and GRE.",
+          "document": "Supported ports inlcude single port, multiple ports, consecutive ports and all ports. Supported protocols include TCP, UDP, ICMP and GRE. Either Services or ServicesExtra is required.",
+          "example": "[\"TCP:8080\\r\\n\",\"UDP:99\\r\\n\"]",
           "member": "string",
           "name": "Services",
-          "required": true,
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "You can add remarks. Supported ports include single port, multiple ports, consecutive ports and all ports. Supported protocols include TCP, UDP, ICMP and GRE. Either Services or ServicesExtra is required.",
+          "example": "无",
+          "member": "ServicesInfo",
+          "name": "ServicesExtra",
+          "required": false,
           "type": "list"
         }
       ],
@@ -5663,6 +5729,7 @@
         {
           "default": "",
           "document": "VPC instance ID, which can be obtained from the `VpcId` field in the response of the [`DescribeVpcs`](https://intl.cloud.tencent.com/document/product/215/15778?from_cn_redirect=1) API.",
+          "example": "vpc-ngenl4az",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -5671,6 +5738,7 @@
         {
           "default": "",
           "document": "The VPN gateway name. The maximum length is 60 bytes.",
+          "example": "TEST_POSTPAID_VPNGW",
           "member": "string",
           "name": "VpnGatewayName",
           "required": true,
@@ -5679,6 +5747,7 @@
         {
           "default": "",
           "document": "The public network bandwidth configuration. Available bandwidth specifications: 5, 10, 20, 50, and 100. Unit: Mbps",
+          "example": "5",
           "member": "uint64",
           "name": "InternetMaxBandwidthOut",
           "required": true,
@@ -5687,6 +5756,7 @@
         {
           "default": "",
           "document": "The VPN gateway billing mode. PREPAID: prepaid means monthly subscription. POSTPAID_BY_HOUR: postpaid means pay-as-you-go. Default: POSTPAID_BY_HOUR. If prepaid mode is specified, the `InstanceChargePrepaid` parameter must be entered.",
+          "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InstanceChargeType",
           "required": false,
@@ -5695,6 +5765,7 @@
         {
           "default": "",
           "document": "Parameter settings for prepaid billing mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.",
+          "example": "无",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
           "required": false,
@@ -5703,6 +5774,7 @@
         {
           "default": "",
           "document": "The availability zone, such as `ap-guangzhou-2`.",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Zone",
           "required": false,
@@ -5710,7 +5782,8 @@
         },
         {
           "default": "",
-          "document": "VPN gateway type. Value: `CCN`, indicates CCN-type VPN gateway",
+          "document": "VPN gateway type. Values: `CCN` (CCN VPN gateway), `SSL` (SSL VPN gateway)",
+          "example": "CCN",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -5719,10 +5792,29 @@
         {
           "default": "",
           "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "CDC instance ID",
+          "example": "cluster-gbo27yc4",
+          "member": "string",
+          "name": "CdcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of connected clients allowed for the SSL VPN gateway. Valid values: [5, 10, 20, 50, 100]. This parameter is only required for SSL VPN gateways.",
+          "example": "5",
+          "member": "uint64",
+          "name": "MaxConnection",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -7229,7 +7321,8 @@
       "members": [
         {
           "default": "",
-          "document": "Filter conditions.\n<li>address-template-name - String - (Filter condition) IP address template name.</li>\n<li>address-template-id - String - (Filter condition) IP address template instance ID, such as `ipm-mdunqeb6`.</li>",
+          "document": "Filters\n<li>address-template-name - IP address template name.</li>\n<li>address-template-id - IP address template ID, such as `ipm-mdunqeb6`.</li>\n<li>address-ip - IP address.</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -7238,6 +7331,7 @@
         {
           "default": "",
           "document": "Offset. The default value is 0.",
+          "example": "0",
           "member": "string",
           "name": "Offset",
           "required": false,
@@ -7246,6 +7340,7 @@
         {
           "default": "",
           "document": "Number of values to be returned. The default value is 20. Maximum is 100.",
+          "example": "20",
           "member": "string",
           "name": "Limit",
           "required": false,
@@ -8794,7 +8889,8 @@
       "members": [
         {
           "default": "",
-          "document": "IP addresses to be queried. Both IPv4 and IPv6 addresses are supported.",
+          "document": "The list of IP addresses (only IPv4 addresses are available currently) to be queried; upper limit: 100",
+          "example": "[\"8.8.8.8\"]",
           "member": "string",
           "name": "AddressIps",
           "required": true,
@@ -8802,7 +8898,8 @@
         },
         {
           "default": "",
-          "document": "Fields of the IP addresses to be queried, including `Country`, `Province`, `City`, `Region`, `Isp`, `AsName` and `AsId`",
+          "document": "Fields of the IP addresses to be queried.",
+          "example": "无",
           "member": "IpField",
           "name": "Fields",
           "required": false,
@@ -8816,15 +8913,19 @@
       "members": [
         {
           "document": "IP address details",
+          "example": "无",
           "member": "IpGeolocationInfo",
           "name": "AddressInfo",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Number of IP addresses",
+          "example": "2",
           "member": "int64",
           "name": "Total",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -9706,7 +9807,8 @@
       "members": [
         {
           "default": "",
-          "document": "Filter conditions.\n<li>service-template-name - String - (Filter condition) Protocol port template name.</li>\n<li>service-template-id - String - (Filter condition) Protocol port template instance ID, such as `ppm-e6dy460g`.</li>",
+          "document": "Filters\n<li>service-template-name - Protocol port template name.</li>\n<li>service-template-id - Protocol port template ID, such as `ppm-e6dy460g`.</li>\n<li>service-port-Protocol port.</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -9715,6 +9817,7 @@
         {
           "default": "",
           "document": "Offset. The default value is 0.",
+          "example": "0",
           "member": "string",
           "name": "Offset",
           "required": false,
@@ -9723,6 +9826,7 @@
         {
           "default": "",
           "document": "Number of values to be returned. The default value is 20. Maximum is 100.",
+          "example": "2",
           "member": "string",
           "name": "Limit",
           "required": false,
@@ -13114,6 +13218,7 @@
         {
           "default": "",
           "document": "IP address template instance ID, such as `ipm-mdunqeb6`.",
+          "example": "ipm-mdunqeb6",
           "member": "string",
           "name": "AddressTemplateId",
           "required": true,
@@ -13122,6 +13227,7 @@
         {
           "default": "",
           "document": "IP address template name.",
+          "example": "TestName",
           "member": "string",
           "name": "AddressTemplateName",
           "required": false,
@@ -13130,8 +13236,18 @@
         {
           "default": "",
           "document": "Address information, including IP, CIDR and IP address range.",
+          "example": "无",
           "member": "string",
           "name": "Addresses",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Address information with remarks, including the IP, CIDR block or IP address range.",
+          "example": "无",
+          "member": "AddressInfo",
+          "name": "AddressesExtra",
           "required": false,
           "type": "list"
         }
@@ -13304,6 +13420,7 @@
         {
           "default": "",
           "document": "The unique ID of the bandwidth package.",
+          "example": "bwp-e40edw8y",
           "member": "string",
           "name": "BandwidthPackageId",
           "required": true,
@@ -13312,6 +13429,7 @@
         {
           "default": "",
           "document": "The name of the bandwidth package.",
+          "example": "test",
           "member": "string",
           "name": "BandwidthPackageName",
           "required": true,
@@ -13320,10 +13438,20 @@
         {
           "default": "",
           "document": "The billing mode of the bandwidth package.",
+          "example": "TOP5_POSTPAID_BY_MONTH",
           "member": "string",
           "name": "ChargeType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "When a monthly-subscribed bandwidth package is returned, whether to convert it to a pay-as-you-go bandwidth packages. Default value: `No`",
+          "example": "True",
+          "member": "bool",
+          "name": "MigrateOnRefund",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -13382,6 +13510,7 @@
         {
           "default": "",
           "document": "The CCN instance ID, such as `ccn-f49l6u0z`.",
+          "example": "ccn-gjug0kul",
           "member": "string",
           "name": "CcnId",
           "required": true,
@@ -13389,7 +13518,8 @@
         },
         {
           "default": "",
-          "document": "The name of the CCN. The maximum length is 60 characters.",
+          "document": "The name of CCN instance. Up to 60 characters allowed. It can contain up to 60 bytes. Either `CcnName` or `CcnDescription` must be specified.",
+          "example": "new+name",
           "member": "string",
           "name": "CcnName",
           "required": false,
@@ -13397,7 +13527,8 @@
         },
         {
           "default": "",
-          "document": "The description of the CCN. The maximum length is 100 characters.",
+          "document": "The description of CCN instance. Up to 100 characters allowed. It can contain up to 60 bytes. Either `CcnName` or `CcnDescription` must be specified.",
+          "example": "test",
           "member": "string",
           "name": "CcnDescription",
           "required": false,
@@ -14233,6 +14364,7 @@
         {
           "default": "",
           "document": "Protocol port template instance ID, such as `ppm-529nwwj8`.",
+          "example": "ppm-529nwwj8",
           "member": "string",
           "name": "ServiceTemplateId",
           "required": true,
@@ -14241,6 +14373,7 @@
         {
           "default": "",
           "document": "Protocol port template name.",
+          "example": "TestName",
           "member": "string",
           "name": "ServiceTemplateName",
           "required": false,
@@ -14249,8 +14382,18 @@
         {
           "default": "",
           "document": "It supports single port, multiple ports, consecutive ports and all ports. Supported protocols include TCP, UDP, ICMP, and GRE.",
+          "example": "无",
           "member": "string",
           "name": "Services",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Protocol port information with remarks. Supported ports include single port, multiple ports, consecutive ports and other ports. Supported protocols include TCP, UDP, ICMP, and GRE.",
+          "example": "无",
+          "member": "ServicesInfo",
+          "name": "ServicesExtra",
           "required": false,
           "type": "list"
         }
@@ -17065,6 +17208,7 @@
         {
           "default": "",
           "document": "The security group instance ID, such as `sg-ohuuioma`.",
+          "example": "sg-05bb4upy",
           "member": "string",
           "name": "SecurityGroupId",
           "required": true,
@@ -17074,6 +17218,7 @@
         {
           "default": "",
           "document": "Security group can be named freely, but cannot exceed 60 characters.",
+          "example": "TestGroup",
           "member": "string",
           "name": "SecurityGroupName",
           "required": true,
@@ -17083,6 +17228,7 @@
         {
           "default": "",
           "document": "The remarks for the security group. The maximum length is 100 characters.",
+          "example": "test-group-desc",
           "member": "string",
           "name": "SecurityGroupDesc",
           "required": true,
@@ -17092,6 +17238,7 @@
         {
           "default": "",
           "document": "The project id is 0 by default. You can query this in the project management page of the Qcloud console.",
+          "example": "0",
           "member": "string",
           "name": "ProjectId",
           "required": false,
@@ -17101,6 +17248,7 @@
         {
           "default": "",
           "document": "Whether it is the default security group (which cannot be deleted).",
+          "example": "false",
           "member": "bool",
           "name": "IsDefault",
           "required": false,
@@ -17110,6 +17258,7 @@
         {
           "default": "",
           "document": "Security group creation time.",
+          "example": "2017-04-18 21:02:30",
           "member": "string",
           "name": "CreatedTime",
           "required": false,
@@ -17119,11 +17268,22 @@
         {
           "default": "",
           "document": "Tag key-value pairs.",
+          "example": "[{\"Key\": \"Version\", \"Value\": \"TEST\"}]",
           "member": "Tag",
           "name": "TagSet",
           "required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group update time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2017-04-18 21:02:30",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -17369,34 +17529,52 @@
         {
           "default": "",
           "document": "Protocol port instance ID, such as `ppm-f5n1f8da`.",
+          "example": "ppm-f5n1f8da",
           "member": "string",
           "name": "ServiceTemplateId",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Template name.",
+          "example": "name",
           "member": "string",
           "name": "ServiceTemplateName",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Protocol port information.",
+          "example": "[\"tcp:80\"]",
           "member": "string",
           "name": "ServiceSet",
           "required": true,
-          "type": "list"
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Creation Time.",
+          "example": "2021-03-02 14:41:15",
           "member": "string",
           "name": "CreatedTime",
           "required": false,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protocol port template information with remarks",
+          "example": "无",
+          "member": "ServicesInfo",
+          "name": "ServiceExtraSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -17475,6 +17653,32 @@
         }
       ],
       "usage": "out"
+    },
+    "ServicesInfo": {
+      "document": "Protocol port template information",
+      "members": [
+        {
+          "default": "",
+          "document": "Protocol port",
+          "example": "tcp:80",
+          "member": "string",
+          "name": "Service",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "desc",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "SetCcnRegionBandwidthLimitsRequest": {
       "document": "SetCcnRegionBandwidthLimits request structure.",
@@ -17984,6 +18188,7 @@
         {
           "default": "",
           "document": "The ID of the ENI instance, such as `eni-m6dyj72l`.",
+          "example": "eni-afo43z61",
           "member": "string",
           "name": "NetworkInterfaceId",
           "required": true,
@@ -17992,10 +18197,20 @@
         {
           "default": "",
           "document": "The information of the specified private IPs. You can specify a maximum of 10 each time.",
+          "example": "无",
           "member": "PrivateIpAddressSpecification",
           "name": "PrivateIpAddresses",
           "required": true,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance ID of the server bound with this IP. This parameter is only applicable when you need to return an IP and unbind the related servers.",
+          "example": "ins-3456tghy",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -18458,6 +18673,7 @@
         {
           "default": "",
           "document": "Gateway instance ID.",
+          "example": "vpngw-az2xuzp5",
           "member": "string",
           "name": "VpnGatewayId",
           "required": true,
@@ -18467,6 +18683,7 @@
         {
           "default": "",
           "document": "VPC instance ID.",
+          "example": "vpc-qqa5rnd5",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -18476,6 +18693,7 @@
         {
           "default": "",
           "document": "Gateway instance name.",
+          "example": "test-gateway",
           "member": "string",
           "name": "VpnGatewayName",
           "required": true,
@@ -18485,6 +18703,7 @@
         {
           "default": "",
           "document": "Gateway instance type. Valid values: 'IPSEC', 'SSL', and 'CCN'.",
+          "example": "IPSEC",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -18494,6 +18713,7 @@
         {
           "default": "",
           "document": "Gateway instance status. 'PENDING': Creating; 'DELETING': Deleting; 'AVAILABLE': Running.",
+          "example": "AVAILABLE",
           "member": "string",
           "name": "State",
           "required": true,
@@ -18503,6 +18723,7 @@
         {
           "default": "",
           "document": "Gateway public IP.",
+          "example": "139.124.3.2",
           "member": "string",
           "name": "PublicIpAddress",
           "required": true,
@@ -18512,6 +18733,7 @@
         {
           "default": "",
           "document": "Gateway renewal type: 'NOTIFY_AND_MANUAL_RENEW': Manual renewal. 'NOTIFY_AND_AUTO_RENEW': Automatic renewal. 'NOT_NOTIFY_AND_NOT_RENEW': No renewal after expiration.",
+          "example": "NOTIFY_AND_MANUAL_RENEW",
           "member": "string",
           "name": "RenewFlag",
           "required": true,
@@ -18521,6 +18743,7 @@
         {
           "default": "",
           "document": "Gateway billing type: POSTPAID_BY_HOUR: Postpaid by hour; PREPAID: Prepaid.",
+          "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InstanceChargeType",
           "required": true,
@@ -18530,6 +18753,7 @@
         {
           "default": "",
           "document": "Outbound bandwidth of gateway.",
+          "example": "5",
           "member": "uint64",
           "name": "InternetMaxBandwidthOut",
           "required": true,
@@ -18539,6 +18763,7 @@
         {
           "default": "",
           "document": "Creation Time.",
+          "example": "2021-04-25 17:14:34",
           "member": "datetime",
           "name": "CreatedTime",
           "required": true,
@@ -18548,6 +18773,7 @@
         {
           "default": "",
           "document": "Expiration time of the prepaid gateway.",
+          "example": "2021-04-25 17:14:34",
           "member": "datetime",
           "name": "ExpiredTime",
           "required": true,
@@ -18557,6 +18783,7 @@
         {
           "default": "",
           "document": "Whether the public IP is blocked.",
+          "example": "false",
           "member": "bool",
           "name": "IsAddressBlocked",
           "required": true,
@@ -18566,6 +18793,7 @@
         {
           "default": "",
           "document": "Change of billing method. PREPAID_TO_POSTPAID: Monthly subscription prepaid to postpaid by hour.",
+          "example": "PREPAID_TO_POSTPAID",
           "member": "string",
           "name": "NewPurchasePlan",
           "required": true,
@@ -18575,6 +18803,7 @@
         {
           "default": "",
           "document": "Gateway billing status. PROTECTIVELY_ISOLATED: Instance is isolated; NORMAL: Normal.",
+          "example": "PROTECTIVELY_ISOLATED",
           "member": "string",
           "name": "RestrictState",
           "required": true,
@@ -18584,6 +18813,7 @@
         {
           "default": "",
           "document": "The availability zone, such as `ap-guangzhou-2`",
+          "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -18593,6 +18823,7 @@
         {
           "default": "",
           "document": "Gateway bandwidth quota information.",
+          "example": "null",
           "member": "VpnGatewayQuota",
           "name": "VpnGatewayQuotaSet",
           "required": true,
@@ -18602,6 +18833,7 @@
         {
           "default": "",
           "document": "Gateway instance version.",
+          "example": "1.0",
           "member": "string",
           "name": "Version",
           "required": true,
@@ -18611,10 +18843,31 @@
         {
           "default": "",
           "document": "CCN instance ID when the value of Type is CCN.",
+          "example": "ccn-gree226l",
           "member": "string",
           "name": "NetworkInstanceId",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CDC instance ID",
+          "example": "cluster-gbo27yc4",
+          "member": "string",
+          "name": "CdcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of connected clients allowed for the SSL VPN gateway.",
+          "example": "5",
+          "member": "uint64",
+          "name": "MaxConnection",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
