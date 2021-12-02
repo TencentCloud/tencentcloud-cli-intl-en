@@ -27,7 +27,7 @@
     "CloseDBExtranetAccess": [
       {
         "document": "",
-        "input": "https://mariadb.tencentcloudapi.com/?Action=CloseDBExtranetAccess\r\n&InstanceId=tdsql-avw0207d\r\n&<Common request parameters>",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=CloseDBExtranetAccess\n&InstanceId=tdsql-avw0207d\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2d1e21a2-b29a-490a-8be0-b61287d92e28\",\n        \"FlowId\": 3324\n    }\n}",
         "title": "Disabling public network access for a TencentDB instance"
       }
@@ -43,8 +43,8 @@
     "CreateAccount": [
       {
         "document": "",
-        "input": "https://mariadb.tencentcloudapi.com/?Action=CreateAccount\r\n&InstanceId=tdsql-fdpjf5zh\r\n&UserName=testuser1\r\n&Host=172.17.%\r\n&Password=1234qweri#\r\n&Description=Test account\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2cc4e4dc-c3e9-4858-ab80-03e3526cf24d\",\n        \"InstanceId\": \"tdsql-fdpjf5zh\",\n        \"UserName\": \"testuser1\",\n        \"Host\": \"172.17.%\"\n    }\n}",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=CreateAccount\n&InstanceId=tdsql-fdpjf5zh\n&UserName=testuser1\n&Host=172.17.%\n&Password=1234qweri#\n&Description=Test account\n&ReadOnly=0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2cc4e4dc-c3e9-4858-ab80-03e3526cf24d\",\n        \"InstanceId\": \"tdsql-fdpjf5zh\",\n        \"UserName\": \"testuser1\",\n        \"Host\": \"172.17.%\",\n        \"ReadOnly\": 0\n    }\n}",
         "title": "Creating an account for a TencentDB instance"
       }
     ],
@@ -91,8 +91,8 @@
     "DescribeDBLogFiles": [
       {
         "document": "",
-        "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeDBLogFiles\r\n&InstanceId=tdsql-ow728lmc\r\n&Type=1\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7212a9ec-a235-2144-98d4-59fbe6f14d79\",\n        \"InstanceId\": \"tdsql-ow728lmc\",\n        \"Type\": 1,\n        \"Total\": 1,\n        \"Files\": [\n            {\n                \"Uri\": \"/1/noshard_108/set_1468578840_203059/1468578832/859932065/000001/5ce7d1a8f26c2dfcf1de22d4e9792b11b0b0057450684d266e1bf9a8aa6ea272\",\n                \"Length\": 5253724,\n                \"Mtime\": 1468822981\n            }\n        ],\n        \"VpcPrefix\": \"http://169.254.0.27:8083\",\n        \"NormalPrefix\": \"http://10.66.255.253:8083\"\n    }\n}",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeDBLogFiles\n&InstanceId=tdsql-ow728lmc\n&Type=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7212a9ec-a235-2144-98d4-59fbe6f14d79\",\n        \"InstanceId\": \"tdsql-ow728lmc\",\n        \"Type\": 1,\n        \"Total\": 1,\n        \"Files\": [\n            {\n                \"Uri\": \"/1/noshard_108/set_1468578840_203059/1468578832/859932065/000001/5ce7d1a8f26c2dfcf1de22d4e9792b11b0b0057450684d266e1bf9a8aa6ea272\",\n                \"Length\": 5253724,\n                \"Mtime\": 1468822981,\n                \"FileName\": \"slave-log\"\n            }\n        ],\n        \"VpcPrefix\": \"http://169.254.0.27:8083\",\n        \"NormalPrefix\": \"http://10.66.255.253:8083\"\n    }\n}",
         "title": "Getting the binlog list"
       }
     ],
@@ -288,12 +288,28 @@
         "title": "Modifying database parameters"
       }
     ],
+    "ModifyDBSyncMode": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=ModifyDBSyncMode\r\n&InstanceId=tdsql-avw0207d\r\n&SyncMode=0\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"901bd41c-08a2-4001-8364-5a63f32056ae\",\n        \"FlowId\": 3521\n    }\n}",
+        "title": "Modifying the sync mode of a TencentDB instance"
+      }
+    ],
     "ModifyLogFileRetentionPeriod": [
       {
         "document": "",
         "input": "https://mariadb.tencentcloudapi.com/?Action=ModifyLogFileRetentionPeriod\r\n&InstanceId=tdsql-ige1a5k3\r\n&Days=29\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"InstanceId\": \"tdsql-ige1a5k3\",\n        \"RequestId\": \"7f642839-f40d-4faf-8d84-be7894ce048a\"\n    }\n}",
         "title": "Modifying backup log retention days"
+      }
+    ],
+    "ModifySyncTaskAttribute": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=ModifySyncTaskAttribute\n&TaskIds.0=1001\n&TaskName=Data analysis sync task\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7f642839-f40d-4faf-8d84-be7894ce048a\"\n    }\n}",
+        "title": "Sample 1. Renaming a task"
       }
     ],
     "OpenDBExtranetAccess": [

@@ -216,11 +216,23 @@
       "name": "Modifies database parameters",
       "output": "ModifyDBParametersResponse"
     },
+    "ModifyDBSyncMode": {
+      "document": "This API is used to modify the sync mode of a TencentDB instance.",
+      "input": "ModifyDBSyncModeRequest",
+      "name": "Modifies the sync mode",
+      "output": "ModifyDBSyncModeResponse"
+    },
     "ModifyLogFileRetentionPeriod": {
       "document": "This API is used to modify the number of days for retention of database backup logs.",
       "input": "ModifyLogFileRetentionPeriodRequest",
       "name": "Modifies backup log retention days",
       "output": "ModifyLogFileRetentionPeriodResponse"
+    },
+    "ModifySyncTaskAttribute": {
+      "document": "This API is used to modify sync task attributes (currently, only the task name can be modified).",
+      "input": "ModifySyncTaskAttributeRequest",
+      "name": "Modifies sync task attributes",
+      "output": "ModifySyncTaskAttributeResponse"
     },
     "OpenDBExtranetAccess": {
       "document": "This API is used to enable public network access for a TencentDB instance. After that, you can access the instance with the public domain name and port obtained through the `DescribeDCDBInstances` API.",
@@ -607,6 +619,7 @@
         {
           "default": "",
           "document": "Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.",
+          "example": "tdsql-fdpjf5zh",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -615,6 +628,7 @@
         {
           "default": "",
           "document": "Login username, which can contain 1-32 letters, digits, underscores, and hyphens.",
+          "example": "testuser1",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -623,6 +637,7 @@
         {
           "default": "",
           "document": "Host that can be logged in to, which is in the same format as the host of the MySQL account and supports wildcards, such as %, 10.%, and 10.20.%.",
+          "example": "172.17.%",
           "member": "string",
           "name": "Host",
           "required": true,
@@ -630,7 +645,8 @@
         },
         {
           "default": "",
-          "document": "Account password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.",
+          "document": "Account password. It must contain 8-32 characters in all of the following four types: lowercase letters, uppercase letters, digits, and symbols (()~!@#$%^&*-+=_|{}[]:<>,.?/), and cannot start with a slash (/).",
+          "example": "1234qweri#",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -639,6 +655,7 @@
         {
           "default": "",
           "document": "Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the secondary will be used first, and if it is unavailable, the primary will be used; 2: the secondary will be used first, and if it is unavailable, the operation will fail.",
+          "example": "0",
           "member": "int64",
           "name": "ReadOnly",
           "required": false,
@@ -647,6 +664,7 @@
         {
           "default": "",
           "document": "Account remarks, which can contain 0-256 letters, digits, and common symbols.",
+          "example": "测试帐号",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -655,6 +673,7 @@
         {
           "default": "",
           "document": "Determines whether the secondary is unavailable based on the passed-in time",
+          "example": "15",
           "member": "int64",
           "name": "DelayThresh",
           "required": false,
@@ -3013,6 +3032,7 @@
         {
           "default": "",
           "document": "Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.",
+          "example": "tdsql-ow728lmc",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3021,6 +3041,7 @@
         {
           "default": "",
           "document": "Login username.",
+          "example": "username",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -3029,6 +3050,7 @@
         {
           "default": "",
           "document": "Access host allowed for user. An account is uniquely identified by username and host.",
+          "example": "10.%",
           "member": "string",
           "name": "Host",
           "required": true,
@@ -3037,6 +3059,7 @@
         {
           "default": "",
           "document": "Database name. `\\*` indicates that global permissions will be set (i.e., `\\*.\\*`), in which case the `Type` and `Object ` parameters will be ignored. If `DbName` is not `\\*`, the input parameter `Type` is required.",
+          "example": "*",
           "member": "string",
           "name": "DbName",
           "required": true,
@@ -3044,7 +3067,8 @@
         },
         {
           "default": "",
-          "document": "Global permission. Valid values: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER, SHOW DATABASES \nDatabase permission. Valid values: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER \nTable/view permission. Valid values: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE VIEW, SHOW VIEW, TRIGGER \nStored procedure/function permission. Valid values: ALTER ROUTINE, EXECUTE \nField permission. Valid values: INSERT, REFERENCES, SELECT, UPDATE",
+          "document": "Global permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE TEMPORARY TABLES`, `LOCK TABLES`, `EXECUTE`, `CREATE VIEW`, `SHOW VIEW`, `CREATE ROUTINE`, `ALTER ROUTINE`, `EVENT`, `TRIGGER`, `SHOW DATABASES`, `REPLICATION CLIENT`, `REPLICATION SLAVE`. \nDatabase permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE TEMPORARY TABLES`, `LOCK TABLES`, `EXECUTE`, `CREATE VIEW`, `SHOW VIEW`, `CREATE ROUTINE`, `ALTER ROUTINE`, `EVENT`, `TRIGGER`. \nTable/View permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`. \nStored procedure/function permission. Valid values: `ALTER ROUTINE`, `EXECUTE`. \nField permission. Valid values: `INSERT`, `REFERENCES`, `SELECT`, `UPDATE`.",
+          "example": "[\"SELECT\",\"INSERT\"]",
           "member": "string",
           "name": "Privileges",
           "required": true,
@@ -3053,6 +3077,7 @@
         {
           "default": "",
           "document": "Type. Valid values: table, view, proc, func, \\*. If `DbName` is a specific database name and `Type` is `\\*`, the permissions of the database will be set (i.e., `db.\\*`), in which case the `Object` parameter will be ignored",
+          "example": "*",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -3061,6 +3086,7 @@
         {
           "default": "",
           "document": "Type name. For example, if `Type` is `table`, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\\*` or empty",
+          "example": "无",
           "member": "string",
           "name": "Object",
           "required": false,
@@ -3069,6 +3095,7 @@
         {
           "default": "",
           "document": "If `Type` is `table` and `ColName` is `\\*`, the permissions will be granted to the table; if `ColName` is a specific field name, the permissions will be granted to the field",
+          "example": "无",
           "member": "string",
           "name": "ColName",
           "required": false,
@@ -3270,7 +3297,7 @@
         },
         {
           "default": "",
-          "document": "Table permission. Valid values of `Privileges`: `\"SELECT\"`, `\"INSERT\"`, `\"UPDATE\"`, `\"DELETE\"`, `\"CREATE\"`, `\"DROP\"`, `\"REFERENCES\"`, `\"INDEX\"`, `\"ALTER\"`, `\"CREATE VIEW\"`, `\"SHOW VIEW\"`, `\"TRIGGER\"`.\nNote: if the parameter is left empty, no change will be made to the granted table permissions. To clear the granted table permissions, set `Privileges` to an empty array.",
+          "document": "Database table permission. Valid values of `Privileges`: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`.\nNote: if the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted table permissions, set `Privileges` to an empty array.",
           "example": "无",
           "member": "TablePrivilege",
           "name": "TablePrivileges",
@@ -3288,7 +3315,7 @@
         },
         {
           "default": "",
-          "document": "View permission. Valid values of `Privileges`: `\"SELECT\"`, `\"INSERT\"`, `\"UPDATE\"`, `\"DELETE\"`, `\"CREATE\"`, `\"DROP\"`, `\"REFERENCES\"`, `\"INDEX\"`, `\"ALTER\"`, `\"CREATE VIEW\"`, `\"SHOW VIEW\"`, `\"TRIGGER\"`.\nNote: if the parameter is left empty, no change will be made to the granted view permissions. To clear the granted view permissions, set `Privileges` to an empty array.",
+          "document": "Database view permission. Valid values of `Privileges`: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`.\nNote: if the parameter is not passed in, no change will be made to the granted view permissions. To clear the granted view permissions, set `Privileges` to an empty array.",
           "example": "无",
           "member": "ViewPrivileges",
           "name": "ViewPrivileges",
@@ -3297,7 +3324,7 @@
         },
         {
           "default": "",
-          "document": "Function permissions. Valid values of `Privileges`: `\"ALTER ROUTINE\"`, `\"EXECUTE\"`.\nNote: if the parameter is left empty, no change will be made to the granted function permissions. To clear the granted function permissions, set `Privileges` to an empty array.",
+          "document": "Database function permissions. Valid values of `Privileges`: `ALTER ROUTINE`, `EXECUTE`.\nNote: if the parameter is not passed in, no change will be made to the granted function permissions. To clear the granted function permissions, set `Privileges` to an empty array.",
           "example": "无",
           "member": "FunctionPrivilege",
           "name": "FunctionPrivileges",
@@ -3306,7 +3333,7 @@
         },
         {
           "default": "",
-          "document": "Stored procedure permission. Valid values of `Privileges`: `\"ALTER ROUTINE\"`, `\"EXECUTE\"`.\nNote: if the parameter is left empty, no change will be made to the granted stored procedure permissions. To clear the granted stored procedure permissions, set `Privileges` to an empty array.",
+          "document": "Database stored procedure permission. Valid values of `Privileges`: `ALTER ROUTINE`, `EXECUTE`.\nNote: if the parameter is not passed in, no change will be made to the granted stored procedure permissions. To clear the granted stored procedure permissions, set `Privileges` to an empty array.",
           "example": "无",
           "member": "ProcedurePrivilege",
           "name": "ProcedurePrivileges",
@@ -3551,6 +3578,47 @@
       ],
       "type": "object"
     },
+    "ModifyDBSyncModeRequest": {
+      "document": "ModifyDBSyncMode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of an instance for which to modify the sync mode. The ID is in the format of tdsql-ow728lmc.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sync mode. Valid values: `0` (async), `1` (strong sync), `2` (downgradable strong sync).",
+          "member": "int64",
+          "name": "SyncMode",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBSyncModeResponse": {
+      "document": "ModifyDBSyncMode response structure.",
+      "members": [
+        {
+          "document": "Async task ID. The task status can be queried through the `DescribeFlow` API.",
+          "member": "int64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyLogFileRetentionPeriodRequest": {
       "document": "ModifyLogFileRetentionPeriod request structure.",
       "members": [
@@ -3583,6 +3651,42 @@
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySyncTaskAttributeRequest": {
+      "document": "ModifySyncTaskAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "IDs of tasks for which to modify the attributes. The IDs can be obtained by the return value of the `DescribeSyncTasks` API. Up to 100 tasks can be operated at a time.",
+          "example": "100",
+          "member": "string",
+          "name": "TaskIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Task name. You can specify any name you like, but its length cannot exceed 100 characters.",
+          "example": "taskname",
+          "member": "string",
+          "name": "TaskName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySyncTaskAttributeResponse": {
+      "document": "ModifySyncTaskAttribute response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -4144,6 +4248,7 @@
         {
           "default": "",
           "document": "Statement checksum for querying details",
+          "example": "无",
           "member": "string",
           "name": "CheckSum",
           "required": true,
@@ -4153,6 +4258,7 @@
         {
           "default": "",
           "document": "Database name",
+          "example": "无",
           "member": "string",
           "name": "Db",
           "required": true,
@@ -4162,6 +4268,7 @@
         {
           "default": "",
           "document": "Abstracted SQL statement",
+          "example": "无",
           "member": "string",
           "name": "FingerPrint",
           "required": true,
@@ -4171,6 +4278,7 @@
         {
           "default": "",
           "document": "Average lock duration",
+          "example": "无",
           "member": "string",
           "name": "LockTimeAvg",
           "required": true,
@@ -4180,6 +4288,7 @@
         {
           "default": "",
           "document": "Maximum lock duration",
+          "example": "无",
           "member": "string",
           "name": "LockTimeMax",
           "required": true,
@@ -4189,6 +4298,7 @@
         {
           "default": "",
           "document": "Minimum lock duration",
+          "example": "无",
           "member": "string",
           "name": "LockTimeMin",
           "required": true,
@@ -4198,6 +4308,7 @@
         {
           "default": "",
           "document": "Sum of lock durations",
+          "example": "无",
           "member": "string",
           "name": "LockTimeSum",
           "required": true,
@@ -4207,6 +4318,7 @@
         {
           "default": "",
           "document": "Number of queries",
+          "example": "无",
           "member": "string",
           "name": "QueryCount",
           "required": true,
@@ -4216,6 +4328,7 @@
         {
           "default": "",
           "document": "Average query duration",
+          "example": "无",
           "member": "string",
           "name": "QueryTimeAvg",
           "required": true,
@@ -4225,6 +4338,7 @@
         {
           "default": "",
           "document": "Maximum query duration",
+          "example": "无",
           "member": "string",
           "name": "QueryTimeMax",
           "required": true,
@@ -4234,6 +4348,7 @@
         {
           "default": "",
           "document": "Minimum query duration",
+          "example": "无",
           "member": "string",
           "name": "QueryTimeMin",
           "required": true,
@@ -4243,6 +4358,7 @@
         {
           "default": "",
           "document": "Sum of query durations",
+          "example": "无",
           "member": "string",
           "name": "QueryTimeSum",
           "required": true,
@@ -4252,6 +4368,7 @@
         {
           "default": "",
           "document": "Number of scanned rows",
+          "example": "无",
           "member": "string",
           "name": "RowsExaminedSum",
           "required": true,
@@ -4261,6 +4378,7 @@
         {
           "default": "",
           "document": "Number of sent rows",
+          "example": "无",
           "member": "string",
           "name": "RowsSentSum",
           "required": true,
@@ -4270,6 +4388,7 @@
         {
           "default": "",
           "document": "Last execution time",
+          "example": "无",
           "member": "string",
           "name": "TsMax",
           "required": true,
@@ -4279,6 +4398,7 @@
         {
           "default": "",
           "document": "First execution time",
+          "example": "无",
           "member": "string",
           "name": "TsMin",
           "required": true,
@@ -4288,6 +4408,7 @@
         {
           "default": "",
           "document": "Account",
+          "example": "无",
           "member": "string",
           "name": "User",
           "required": true,
@@ -4297,11 +4418,22 @@
         {
           "default": "",
           "document": "Sample SQL\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ExampleSql",
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Host address of the account",
+          "example": "%",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
