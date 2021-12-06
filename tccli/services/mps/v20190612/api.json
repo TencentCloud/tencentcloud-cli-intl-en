@@ -9577,6 +9577,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -9586,6 +9587,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -9595,6 +9597,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -9604,6 +9607,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"xx\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -9613,6 +9617,7 @@
         {
           "default": "",
           "document": "Input for a transcoding task.",
+          "example": "NULL",
           "member": "TranscodeTaskInput",
           "name": "Input",
           "required": true,
@@ -9622,10 +9627,21 @@
         {
           "default": "",
           "document": "Output of a transcoding task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "MediaTranscodeItem",
           "name": "Output",
           "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Transcoding progress. Value range: 0-100\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "0",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

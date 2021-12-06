@@ -3347,7 +3347,7 @@
       "members": [
         {
           "default": "",
-          "document": "Custom plugin name. A plugin name contain up to 50 characters out of a-z, A-Z, 0-9, and _, which must begin with a letter and end with a letter or a number.",
+          "document": "Custom plugin name. A plugin name should contain 2-50 characters out of a-z, A-Z, 0-9, and _, which must begin with a letter and end with a letter or a number.",
           "example": "myplugin",
           "member": "string",
           "name": "PluginName",
@@ -3356,7 +3356,7 @@
         },
         {
           "default": "",
-          "document": "Plugin type. Valid value: `IPControl`.",
+          "document": "Plugin type. Valid values: `IPControl`, `TrafficControl`, `Cors`, `CustomReq`, `CustomAuth`",
           "example": "IPControl",
           "member": "string",
           "name": "PluginType",
@@ -6014,6 +6014,24 @@
           "value_allowed_null": true
         },
         {
+          "document": "Cluster type for service deployment\nNote: this field may return null, indicating that no valid values found.",
+          "example": "DEFAULT",
+          "member": "string",
+          "name": "DeploymentType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether it’s for special usage\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "DEFAULT",
+          "member": "string",
+          "name": "SpecialUse",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -6536,7 +6554,7 @@
         },
         {
           "default": "",
-          "document": "Domain name resolution status. True: success; False: failure.",
+          "document": "Domain name resolution status. `1`: normal, `0`: failed",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -8919,6 +8937,16 @@
           "example": "x x",
           "member": "string",
           "name": "SetType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster type for service deployment\nNote: this field may return null, indicating that no valid values found.",
+          "example": "xx",
+          "member": "string",
+          "name": "DeploymentType",
           "required": true,
           "type": "string",
           "value_allowed_null": true

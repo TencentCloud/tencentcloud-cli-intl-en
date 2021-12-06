@@ -1062,6 +1062,7 @@
         {
           "default": "",
           "document": "Offset",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": true,
@@ -1070,6 +1071,7 @@
         {
           "default": "",
           "document": "Quantity, maximum is 100",
+          "example": "1",
           "member": "uint64",
           "name": "Limit",
           "required": true,
@@ -1078,14 +1080,16 @@
         {
           "default": "",
           "document": "The period type. byUsedTime: By usage period; byPayTime: By payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page. ",
+          "example": "byPayTime",
           "member": "string",
           "name": "PeriodType",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
           "default": "",
           "document": "Month; format: yyyy-mm. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.",
+          "example": "2018-07",
           "member": "string",
           "name": "Month",
           "required": false,
@@ -1094,6 +1098,7 @@
         {
           "default": "",
           "document": "The start time of the period; format: Y-m-d H:i:s. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. BeginTime and EndTime must be inputted as a pair. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.",
+          "example": "2018-11-0100:00:00",
           "member": "string",
           "name": "BeginTime",
           "required": false,
@@ -1102,6 +1107,7 @@
         {
           "default": "",
           "document": "The end time of the period; format: Y-m-d H:i:s. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. BeginTime and EndTime must be inputted as a pair. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.",
+          "example": "2018-11-0123:59:59",
           "member": "string",
           "name": "EndTime",
           "required": false,
@@ -1110,6 +1116,7 @@
         {
           "default": "",
           "document": "Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.\n1 = yes, 0 = no",
+          "example": "1",
           "member": "int64",
           "name": "NeedRecordNum",
           "required": false,
@@ -1118,6 +1125,7 @@
         {
           "default": "",
           "document": "Queries information on a specified product",
+          "example": "0",
           "member": "string",
           "name": "ProductCode",
           "required": false,
@@ -1126,6 +1134,7 @@
         {
           "default": "",
           "document": "Billing mode: prePay/postPay",
+          "example": "prePay",
           "member": "string",
           "name": "PayMode",
           "required": false,
@@ -1134,6 +1143,7 @@
         {
           "default": "",
           "document": "Queries information on a specified resource",
+          "example": "ins-49zhx6z1",
           "member": "string",
           "name": "ResourceId",
           "required": false,
@@ -1141,7 +1151,8 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Action type to query. Valid values:\nPurchase\nRenewal\nModify\nRefund\nDeduction\nHourly settlement\nDaily settlement\nMonthly settlement\nOffline project deduction\nOffline deduction\nadjust-CR\nadjust-DR\nOne-off RI Fee\nSpot\nHourly RI fee\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription specification adjustment\nMonthly subscription refund",
+          "example": "按量计费日结",
           "member": "string",
           "name": "ActionType",
           "required": false,
@@ -1150,10 +1161,20 @@
         {
           "default": "",
           "document": "Project ID: ID of the project to which the resource belongs",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Business code\nNote: To query business codes used in the current month, call <a href=\"https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1\">DescribeBillSummaryByProduct</a>.",
+          "example": "p_cvm",
+          "member": "string",
+          "name": "BusinessCode",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1256,6 +1277,15 @@
           "example": "prePay",
           "member": "string",
           "name": "PayMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Business code\nNote: To query business codes used in the current month, call <a href=\"https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1\">DescribeBillSummaryByProduct</a>.",
+          "example": "p_cvm",
+          "member": "string",
+          "name": "BusinessCode",
           "required": false,
           "type": "string"
         }
