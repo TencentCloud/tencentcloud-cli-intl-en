@@ -380,6 +380,22 @@
         "title": "Querying the number of Pods in VPC-CNI mode supported by the S5 instance family in Guangzhou Zone 3"
       }
     ],
+    "DisableClusterDeletionProtection": [
+      {
+        "document": "",
+        "input": "https://tke.tencentcloudapi.com/?Action=DisableClusterDeletionProtection\r\n&ClusterId=cls-xxxxxxxx\r\n&<Common Request Parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Disabling cluster deletion protection"
+      }
+    ],
+    "EnableClusterDeletionProtection": [
+      {
+        "document": "This example shows you how to avoid accidental cluster deletion. After enabling cluster deletion protection, you cannot delete a cluster via the console or API. If you want to delete a cluster, you need to disable cluster deletion protection first.",
+        "input": "https://tke.tencentcloudapi.com/?Action=EnableClusterDeletionProtection\r\n&ClusterId=cls-xxxxxxxx\r\n&<Common Request Parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Enabling cluster deletion protection"
+      }
+    ],
     "EnableVpcCniNetworkType": [
       {
         "document": "",

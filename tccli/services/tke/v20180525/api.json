@@ -276,6 +276,18 @@
       "name": "Queries the maximum number of Pods in the VPC-CNI mode supported by the model",
       "output": "DescribeVpcCniPodLimitsResponse"
     },
+    "DisableClusterDeletionProtection": {
+      "document": "This API is used to disable cluster deletion protection.",
+      "input": "DisableClusterDeletionProtectionRequest",
+      "name": "Disables cluster deletion protection",
+      "output": "DisableClusterDeletionProtectionResponse"
+    },
+    "EnableClusterDeletionProtection": {
+      "document": "This API is used to enable cluster deletion protection.",
+      "input": "EnableClusterDeletionProtectionRequest",
+      "name": "Enables cluster deletion protection",
+      "output": "EnableClusterDeletionProtectionResponse"
+    },
     "EnableVpcCniNetworkType": {
       "document": "This API is used to enable the VPC-CNI network mode for GR clusters.",
       "input": "EnableVpcCniNetworkTypeRequest",
@@ -3941,6 +3953,58 @@
           "type": "list",
           "value_allowed_null": true
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableClusterDeletionProtectionRequest": {
+      "document": "DisableClusterDeletionProtection request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableClusterDeletionProtectionResponse": {
+      "document": "DisableClusterDeletionProtection response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableClusterDeletionProtectionRequest": {
+      "document": "EnableClusterDeletionProtection request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableClusterDeletionProtectionResponse": {
+      "document": "EnableClusterDeletionProtection response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

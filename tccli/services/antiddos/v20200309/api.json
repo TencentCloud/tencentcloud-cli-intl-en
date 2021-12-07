@@ -145,7 +145,7 @@
       "output": "DescribeBlackWhiteIpListResponse"
     },
     "DescribeCCTrend": {
-      "document": "This API is used to get CC attack data, including total peak requests (QPS) and attack requests (QPS).",
+      "document": "This API is used to get CC attack data, including total QPS peaks, attack QPS, total number of requests and number of attack requests.",
       "input": "DescribeCCTrendRequest",
       "name": "Gets CC attack data",
       "output": "DescribeCCTrendResponse"
@@ -269,6 +269,12 @@
       "input": "ModifyDomainUsrNameRequest",
       "name": "Modifies intelligent scheduling domain names",
       "output": "ModifyDomainUsrNameResponse"
+    },
+    "ModifyNewDomainRules": {
+      "document": "This API is used to modify layer-7 forwarding rules.",
+      "input": "ModifyNewDomainRulesRequest",
+      "name": "Modifies layer-7 forwarding rules",
+      "output": "ModifyNewDomainRulesResponse"
     },
     "ModifyPacketFilterConfig": {
       "document": "This API is used to modify Anti-DDoS feature filtering rules.",
@@ -568,6 +574,26 @@
           "name": "Domain",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable Sec-MCA. Valid values: `1` (enabled) and `0` (disabled).",
+          "example": "0",
+          "member": "uint64",
+          "name": "DamDDoSStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "V6Flag",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -2181,7 +2207,7 @@
         },
         {
           "default": "",
-          "document": "Metric. Valid values: `inqps`: total peak requests; `dropqps`: peak attack requests",
+          "document": "Metric. Valid values: `inqps` (total QPS peaks), `dropqps` (attack QPS peaks), `incount` (total number of requests), and `dropcount` (number of attack requests).",
           "example": "inqps",
           "member": "string",
           "name": "MetricName",
@@ -2285,7 +2311,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Metric. Valid values: `inqps`: total peak requests; `dropqps`: peak attack requests",
+          "document": "Metric. Valid values: `inqps` (total QPS peaks), `dropqps` (attack QPS peaks), `incount` (total number of requests), and `dropcount` (number of attack requests).",
           "example": "inqps",
           "member": "string",
           "name": "MetricName",
@@ -2637,6 +2663,15 @@
           "name": "FilterEipEipAddressStatus",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to obtain only Anti-DDoS instances with Sec-MCA enabled. Valid values: `1` (only obtain Anti-DDoS instances with Sec-MCA enabled) and `0` (obtain other Anti-DDoS instances).",
+          "example": "1",
+          "member": "int64",
+          "name": "FilterDamDDoSStatus",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -3934,6 +3969,42 @@
       ],
       "usage": "out"
     },
+    "L4RuleSource": {
+      "document": "List of layer-4 forwarding rules",
+      "members": [
+        {
+          "default": "",
+          "document": "IP or domain name for forwarding.",
+          "example": "无",
+          "member": "string",
+          "name": "Source",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Weight. Value range: [0,100].",
+          "example": "无",
+          "member": "uint64",
+          "name": "Weight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "8000\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Port",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "Layer4Rule": {
       "document": "Layer-4 forwarding rule",
       "members": [
@@ -4177,6 +4248,60 @@
       ],
       "type": "object"
     },
+    "ModifyNewDomainRulesRequest": {
+      "document": "ModifyNewDomainRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).",
+          "example": "bgpip",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID.",
+          "example": "bgpip-000000xe",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Domain name forwarding rule.",
+          "example": "无",
+          "member": "NewL7RuleEntry",
+          "name": "Rule",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNewDomainRulesResponse": {
+      "document": "ModifyNewDomainRules response structure.",
+      "members": [
+        {
+          "document": "Success code.",
+          "example": "无",
+          "member": "SuccessCode",
+          "name": "Success",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyPacketFilterConfigRequest": {
       "document": "ModifyPacketFilterConfig request structure.",
       "members": [
@@ -4212,6 +4337,252 @@
         }
       ],
       "type": "object"
+    },
+    "NewL7RuleEntry": {
+      "document": "Layer-7 rule.",
+      "members": [
+        {
+          "default": "",
+          "document": "Session persistence duration, in seconds.",
+          "example": "无",
+          "member": "uint64",
+          "name": "KeepTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Load balancing method. Valid value: `1` (weighed polling).",
+          "example": "无",
+          "member": "uint64",
+          "name": "LbType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of origins",
+          "example": "无",
+          "member": "L4RuleSource",
+          "name": "SourceList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).",
+          "example": "无",
+          "member": "uint64",
+          "name": "KeepEnable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Forwarding domain name.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Forwarding protocol. Valid values: `http` and `https`.",
+          "example": "无",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Forwarding method. Valid values: `1` (by domain name); `2` (by IP).",
+          "example": "无",
+          "member": "uint64",
+          "name": "SourceType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). It defaults to `0`.",
+          "example": "无",
+          "member": "uint64",
+          "name": "HttpsToHttpEnable",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule status. Valid values: `0` (the rule was successfully configured), `1` (configuring the rule), `2` (rule configuration failed), `3` (deleting the rule), `5` (failed to delete rule), `6` (rule awaiting configuration), `7` (rule awaiting deletion), and `8` (rule awaiting certificate configuration).",
+          "example": "无",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CC protection level based on HTTPS.",
+          "example": "无",
+          "member": "string",
+          "name": "CCLevel",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CC protection status based on HTTPS. Valid values: `0` (disabled) and `1` (enabled).",
+          "example": "无",
+          "member": "uint64",
+          "name": "CCEnable",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CC protection threshold based on HTTPS.",
+          "example": "无",
+          "member": "uint64",
+          "name": "CCThreshold",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region code.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Region",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule description.",
+          "example": "无",
+          "member": "string",
+          "name": "RuleName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "[Disused] When the certificate is an external certificate, the certificate content should be provided here. ",
+          "example": "无",
+          "member": "string",
+          "name": "Cert",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time.",
+          "example": "无",
+          "member": "datetime",
+          "name": "ModifyTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.",
+          "example": "无",
+          "member": "string",
+          "name": "RuleId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance IP address.",
+          "example": "无",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "[Disused] When the certificate is an external certificate, the certificate key should be provided here. ",
+          "example": "无",
+          "member": "string",
+          "name": "PrivateKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.",
+          "example": "无",
+          "member": "uint64",
+          "name": "CertType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Access port number.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "VirtualPort",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CC protection status. Valid values: `0` (disabled) and `1` (enabled).",
+          "example": "无",
+          "member": "uint64",
+          "name": "CCStatus",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "When the certificate is managed by Tencent Cloud, this field must be set to the ID of the managed certificate.",
+          "example": "无",
+          "member": "string",
+          "name": "SSLId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource ID.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "PackInfo": {
       "document": "Package information",
