@@ -579,7 +579,8 @@
       "members": [
         {
           "default": "",
-          "document": "How sub-user UIDs are associated with the ID of the user group they are added to.",
+          "document": "The association between the user group ID and the sub-user UIN/UID.",
+          "example": "无",
           "member": "GroupIdOfUidInfo",
           "name": "Info",
           "required": true,
@@ -2520,19 +2521,31 @@
       "members": [
         {
           "default": "",
-          "document": "Sub-user UID",
+          "document": "User Group ID",
+          "example": "123456",
           "member": "uint64",
-          "name": "Uid",
+          "name": "GroupId",
           "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "User Group ID",
+          "document": "Sub-user UID",
+          "example": "123456",
           "member": "uint64",
-          "name": "GroupId",
-          "required": true,
+          "name": "Uid",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sub-user UIN. For UIN and UID, at least one of them is required.",
+          "example": "100003435",
+          "member": "uint64",
+          "name": "Uin",
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         }
@@ -3733,7 +3746,8 @@
       "members": [
         {
           "default": "",
-          "document": "The UID of the user to be deleted and an array corresponding to the User Group IDs",
+          "document": "The user’s UIN/UID to be deleted and the array corresponding to the user group ID.",
+          "example": "无",
           "member": "GroupIdOfUidInfo",
           "name": "Info",
           "required": true,

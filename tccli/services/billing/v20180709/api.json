@@ -1255,7 +1255,7 @@
         },
         {
           "default": "",
-          "document": "Action type to query. Valid values:\nPurchase\nRenewal\nModify\nRefund\nDeduction\nHourly settlement\nDaily settlement\nMonthly settlement\nOffline project deduction\nOffline deduction\nadjust-CR\nadjust-DR\nOne-off RI Fee\nSpot\nHourly RI fee\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription specification adjustment\nMonthly subscription refund",
+          "document": "Action type to query. Valid values:\nPurchase\nRenewal\nModify\nRefund\nDeduction\nHourly settlement\nDaily settlement\nMonthly settlement\nOffline project deduction\nOffline deduction\nadjust-CR\nadjust-DR\nOne-off RI Fee\nSpot\nHourly RI fee\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription refund",
           "example": "按量计费扣费",
           "member": "string",
           "name": "ActionType",

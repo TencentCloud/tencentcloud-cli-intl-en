@@ -1640,7 +1640,7 @@
         {
           "default": "",
           "document": "Instance AZ such as ap-guangzhou-3, which corresponds to the `Zone` field of `ZoneSet`",
-          "example": "100003",
+          "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -1660,7 +1660,7 @@
         {
           "default": "",
           "document": "VPC ID",
-          "example": "123123",
+          "example": "vpc-xxxxxxxx",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -1670,7 +1670,7 @@
         {
           "default": "",
           "document": "SubnetId",
-          "example": "1",
+          "example": "subnet-xxxxxxxx",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -1680,7 +1680,7 @@
         {
           "default": "",
           "document": "Instance ID",
-          "example": "postgre-123",
+          "example": "postgres-xxxxxxxx",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -1690,7 +1690,7 @@
         {
           "default": "",
           "document": "Instance name",
-          "example": "postgre-123",
+          "example": "xxxx",
           "member": "string",
           "name": "DBInstanceName",
           "required": true,
@@ -1740,7 +1740,7 @@
         {
           "default": "",
           "document": "Purchasable specification ID",
-          "example": "11",
+          "example": "cdb.pg.ts1.2g",
           "member": "string",
           "name": "DBInstanceClass",
           "required": true,
@@ -1779,8 +1779,8 @@
         },
         {
           "default": "",
-          "document": "PostgreSQL kernel version",
-          "example": "12.4",
+          "document": "PostgreSQL major version",
+          "example": "12",
           "member": "string",
           "name": "DBVersion",
           "required": true,
@@ -1850,7 +1850,7 @@
         {
           "default": "",
           "document": "Instance network connection information",
-          "example": "1",
+          "example": "无",
           "member": "DBInstanceNetInfo",
           "name": "DBInstanceNetInfo",
           "required": true,
@@ -1860,7 +1860,7 @@
         {
           "default": "",
           "document": "Machine type",
-          "example": "1",
+          "example": "TS85",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -1900,7 +1900,7 @@
         {
           "default": "",
           "document": "The information of tags associated with instances.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "1",
+          "example": "无",
           "member": "Tag",
           "name": "TagList",
           "required": true,
@@ -1910,7 +1910,7 @@
         {
           "default": "",
           "document": "Primary instance information, which is returned only when the instance is read-only\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "postgre-123",
+          "example": "postgres-xxxxxxxx",
           "member": "string",
           "name": "MasterDBInstanceId",
           "required": true,
@@ -1945,6 +1945,26 @@
           "name": "OfflineTime",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database kernel version\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "v12.4_r1.0",
+          "member": "string",
+          "name": "DBKernelVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Network information list of the instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "NetworkAccess",
+          "name": "NetworkAccessList",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -3005,7 +3025,7 @@
         },
         {
           "default": "",
-          "document": "Sort by field. Valid values: `CallNum`, `CostTime`, `AvgCostTime`.",
+          "document": "Sort by field. Valid values: `CallNum`, `CostTime`, `AvgCostTime`. Default value: `CallNum`.",
           "example": "CallNum",
           "member": "string",
           "name": "OrderBy",
@@ -3014,7 +3034,7 @@
         },
         {
           "default": "",
-          "document": "Sorting order. Valid values: `asc` (ascending), `desc` (descending).",
+          "document": "Sorting order. Valid values: `asc` (ascending), `desc` (descending). Default value: `desc`.",
           "example": "desc",
           "member": "string",
           "name": "OrderByType",
@@ -3023,7 +3043,7 @@
         },
         {
           "default": "",
-          "document": "Number of entries per page. Value range: [1,100].",
+          "document": "Number of entries per page. Value range: [1,100]. Default value: `50`.",
           "example": "20",
           "member": "int64",
           "name": "Limit",
@@ -3032,7 +3052,7 @@
         },
         {
           "default": "",
-          "document": "Pagination offset. Value range: [0,INF).",
+          "document": "Pagination offset. Value range: [0,INF). Default value: `0`.",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -4067,7 +4087,7 @@
         },
         {
           "default": "",
-          "document": "The earliest time to start a switch.",
+          "document": "The earliest time to start a switch in the format of \"HH:MM:SS\", such as \"01:00:00\".",
           "example": "12:00:00",
           "member": "string",
           "name": "SwitchStartTime",
@@ -4076,7 +4096,7 @@
         },
         {
           "default": "",
-          "document": "The latest time to start a switch.",
+          "document": "The latest time to start a switch in the format of \"HH:MM:SS\", such as \"01:30:00\".",
           "example": "12:30:00",
           "member": "string",
           "name": "SwitchEndTime",
@@ -4282,6 +4302,92 @@
         }
       ],
       "type": "object"
+    },
+    "NetworkAccess": {
+      "document": "Network information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Network resource ID, instance ID or RO group ID (this field has been deprecated)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "postgres-xxxxxxxx",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Resource type. Valid values: `1` (instance), `2` (RO group) (this field has been deprecated)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ResourceType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VPC ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "vpc-xxxxxxxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IPv4 address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "11.11.1.11",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IPv6 address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2000:0000:0000:0000:0001:2345:6789:abcd",
+          "member": "string",
+          "name": "Vip6",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Access port\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "5432",
+          "member": "int64",
+          "name": "Vport",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subnet ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "subnet-xxxxxxxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Network status. Valid values: `1` (applying), `2` (in use), `3` (deleting), `4` (deleted)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "VpcStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "NormalQueryItem": {
       "document": "Information of one SlowQuery",
@@ -4550,7 +4656,7 @@
         },
         {
           "default": "",
-          "document": "Value type of the parameter. Valid values: `integer`, `real` (floating-point), `bool`, `enum`, `mutil_enum` (this type of parameter can be set to multiple enumerated values)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Value type of the parameter. Valid values: `integer`, `real` (floating-point), `bool`, `enum`, `mutil_enum` (this type of parameter can be set to multiple enumerated values).\nFor an `integer` or `real` parameter, the `Min` field represents the minimum value and the `Max` field the maximum value. \nFor a `bool` parameter, the valid values include `true` and `false`; \nFor an `enum` or `mutil_enum` parameter, the `EnumValue` field represents the valid values.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "integer",
           "member": "string",
           "name": "ParamValueType",
@@ -4833,6 +4939,7 @@
         {
           "default": "",
           "document": "RO group identifier\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "空",
           "member": "string",
           "name": "ReadOnlyGroupId",
           "required": true,
@@ -4842,6 +4949,7 @@
         {
           "default": "",
           "document": "RO group name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "空",
           "member": "string",
           "name": "ReadOnlyGroupName",
           "required": true,
@@ -4851,6 +4959,7 @@
         {
           "default": "",
           "document": "Project ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "空",
           "member": "uint64",
           "name": "ProjectId",
           "required": true,
@@ -4860,6 +4969,7 @@
         {
           "default": "",
           "document": "Primary instance ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "空",
           "member": "string",
           "name": "MasterDBInstanceId",
           "required": true,
@@ -4869,6 +4979,7 @@
         {
           "default": "",
           "document": "The minimum number of read-only replicas that must be retained in an RO group\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "空",
           "member": "int64",
           "name": "MinDelayEliminateReserve",
           "required": true,
@@ -4878,6 +4989,7 @@
         {
           "default": "",
           "document": "Delayed log size threshold",
+          "example": "空",
           "member": "int64",
           "name": "MaxReplayLatency",
           "required": true,
@@ -4887,6 +4999,7 @@
         {
           "default": "",
           "document": "Whether to remove a read-only replica from an RO group if the sync log size difference between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).",
+          "example": "空",
           "member": "int64",
           "name": "ReplayLatencyEliminate",
           "required": true,
@@ -4896,6 +5009,7 @@
         {
           "default": "",
           "document": "Delay threshold",
+          "example": "空",
           "member": "float",
           "name": "MaxReplayLag",
           "required": true,
@@ -4905,6 +5019,7 @@
         {
           "default": "",
           "document": "Whether to remove a read-only replica from an RO group if the delay between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).",
+          "example": "空",
           "member": "int64",
           "name": "ReplayLagEliminate",
           "required": true,
@@ -4914,6 +5029,7 @@
         {
           "default": "",
           "document": "VPC ID",
+          "example": "空",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -4923,6 +5039,7 @@
         {
           "default": "",
           "document": "Subnet ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "空",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -4932,6 +5049,7 @@
         {
           "default": "",
           "document": "Region ID",
+          "example": "空",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -4941,6 +5059,7 @@
         {
           "default": "",
           "document": "Availability zone ID",
+          "example": "空",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -4950,6 +5069,7 @@
         {
           "default": "",
           "document": "Status",
+          "example": "空",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4959,6 +5079,7 @@
         {
           "default": "",
           "document": "Instance details",
+          "example": "空",
           "member": "DBInstance",
           "name": "ReadOnlyDBInstanceList",
           "required": true,
@@ -4968,6 +5089,7 @@
         {
           "default": "",
           "document": "Whether to enable automatic load balancing",
+          "example": "空",
           "member": "int64",
           "name": "Rebalance",
           "required": true,
@@ -4977,11 +5099,22 @@
         {
           "default": "",
           "document": "Network information",
+          "example": "空",
           "member": "DBInstanceNetInfo",
           "name": "DBInstanceNetInfo",
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network information list of the RO group\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "空",
+          "member": "NetworkAccess",
+          "name": "NetworkAccessList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -5285,6 +5418,7 @@
         {
           "default": "",
           "document": "Instance ID, which is the unique identifier\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "postgres-1i1xmfwr",
           "member": "string",
           "name": "DBInstanceId",
           "required": false,
@@ -5294,6 +5428,7 @@
         {
           "default": "",
           "document": "Instance name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "pg10",
           "member": "string",
           "name": "DBInstanceName",
           "required": false,
@@ -5303,6 +5438,7 @@
         {
           "default": "",
           "document": "Instance status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "running",
           "member": "string",
           "name": "DBInstanceStatus",
           "required": false,
@@ -5312,6 +5448,7 @@
         {
           "default": "",
           "document": "Region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
           "required": false,
@@ -5321,6 +5458,7 @@
         {
           "default": "",
           "document": "Availability zone\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
           "required": false,
@@ -5330,6 +5468,7 @@
         {
           "default": "",
           "document": "Project ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -5339,6 +5478,7 @@
         {
           "default": "",
           "document": "VPC ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -5348,6 +5488,7 @@
         {
           "default": "",
           "document": "Subnet ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -5357,6 +5498,7 @@
         {
           "default": "",
           "document": "Character set\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "UTF8",
           "member": "string",
           "name": "DBCharset",
           "required": false,
@@ -5366,6 +5508,7 @@
         {
           "default": "",
           "document": "Database version\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "10",
           "member": "string",
           "name": "DBVersion",
           "required": false,
@@ -5375,6 +5518,7 @@
         {
           "default": "",
           "document": "Creation time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2021-10-11 17:04:24",
           "member": "string",
           "name": "CreateTime",
           "required": false,
@@ -5384,6 +5528,7 @@
         {
           "default": "",
           "document": "Instance network information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "ServerlessDBInstanceNetInfo",
           "name": "DBInstanceNetInfo",
           "required": false,
@@ -5393,6 +5538,7 @@
         {
           "default": "",
           "document": "Instance account information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "ServerlessDBAccount",
           "name": "DBAccountSet",
           "required": false,
@@ -5402,6 +5548,7 @@
         {
           "default": "",
           "document": "Information of the databases in an instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "DBDatabaseList",
           "required": false,
@@ -5411,10 +5558,21 @@
         {
           "default": "",
           "document": "The array of tags bound to an instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "Tag",
           "name": "TagList",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database kernel version\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "v10.4_r1.0",
+          "member": "string",
+          "name": "DBKernelVersion",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],

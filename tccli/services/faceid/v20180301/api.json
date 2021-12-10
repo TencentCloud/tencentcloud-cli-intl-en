@@ -18,29 +18,29 @@
       "members": [
         {
           "default": "",
-          "document": "Base64 string of the image for face comparison.\nThe size of the Base64-encoded image data can be up to 3 MB. JPG and PNG formats are supported.\nPlease use the standard Base64 encoding scheme (with the \"=\" padding). For the encoding conventions, please see RFC 4648.",
-          "example": "\"\"",
-          "member": "string",
-          "name": "ImageBase64",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Base64 string of the video for liveness detection.\nThe size of the Base64-encoded video data can be up to 8 MB. MP4, AVI, and FLV formats are supported.\nPlease use the standard Base64 encoding scheme (with the \"=\" padding). For the encoding conventions, please see RFC 4648.",
-          "example": "\"\"",
-          "member": "string",
-          "name": "VideoBase64",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "Liveness detection type. Valid values: LIP/ACTION/SILENT.\nLIP: numeric mode; ACTION: motion mode; SILENT: silent mode. You need to select a mode to input.",
           "example": "\"\"",
           "member": "string",
           "name": "LivenessType",
           "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Base64 string of the image for face comparison.\nThe size of the Base64-encoded image data can be up to 3 MB. JPG and PNG formats are supported.\nPlease use the standard Base64 encoding scheme (with the \"=\" padding). For the encoding conventions, please see RFC 4648.\n\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageBase64` will be used.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "URL of the image for face comparison. The size of the downloaded image after Base64 encoding can be up to 3 MB. JPG and PNG formats are supported.\n\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageBase64` will be used.\n\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
           "type": "string"
         },
         {
@@ -58,6 +58,24 @@
           "example": "\"\"",
           "member": "string",
           "name": "Optional",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Base64 string of the video for liveness detection.\nThe size of the Base64-encoded video data can be up to 8 MB. MP4, AVI, and FLV formats are supported.\nPlease use the standard Base64 encoding scheme (with the \"=\" padding). For the encoding conventions, please see RFC 4648.\n\nEither the `VideoUrl` or `VideoBase64` of the video must be provided. If both are provided, only `VideoBase64` will be used.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "VideoBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "URL of the video for liveness detection. The size of the downloaded video after Base64 encoding can be up to 8 MB. It takes no more than 4 seconds to download. MP4, AVI, and FLV formats are supported.\n\nEither the `VideoUrl` or `VideoBase64` of the video must be provided. If both are provided, only `VideoBase64` will be used.\n\nWe recommend you store the video in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "VideoUrl",
           "required": false,
           "type": "string"
         }

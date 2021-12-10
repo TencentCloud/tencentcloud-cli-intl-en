@@ -11,9 +11,9 @@
     "AddUserToGroup": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=AddUserToGroup\r\n&Info.0.Uid=1001408\r\n&Info.0.GroupId=2020\r\n&<Common request parameters>",
+        "input": "https://cam.tencentcloudapi.com/?Action=AddUserToGroup\n&Info.0.Uid=1001408\n&Info.0.GroupId=2020\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"47c4a570-17fa-44a3-8ff6-fe006170c104\"\n    }\n}",
-        "title": "Adding user to user group"
+        "title": "Adding a user to a user group"
       }
     ],
     "AttachGroupPolicy": [
@@ -457,9 +457,9 @@
     "RemoveUserFromGroup": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=RemoveUserFromGroup\r\n&Info.0.Uid=1001408\r\n&Info.0.GroupId=2020\r\n&<Common request parameters>",
+        "input": "https://cam.tencentcloudapi.com/?Action=RemoveUserFromGroup\n&Info.0.Uid=1001408\n&Info.0.GroupId=2020\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1fadd33e-6f57-4404-a912-bc00680b89d2\"\n    }\n}",
-        "title": "Deleting user from user group"
+        "title": "Deleting users from user groups"
       }
     ],
     "SetDefaultPolicyVersion": [
