@@ -1959,7 +1959,7 @@
         },
         {
           "default": "",
-          "document": "Network information list of the instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Network access list of the instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NetworkAccess",
           "name": "NetworkAccessList",
@@ -5108,7 +5108,7 @@
         },
         {
           "default": "",
-          "document": "Network information list of the RO group\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Network access list of the RO group\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "空",
           "member": "NetworkAccess",
           "name": "NetworkAccessList",
