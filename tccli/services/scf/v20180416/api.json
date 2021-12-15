@@ -943,6 +943,15 @@
         },
         {
           "default": "",
+          "document": "Specifies whether to [install dependency online](https://intl.cloud.tencent.com/document/product/583/37920?from_cn_redirect=1). `TRUE`: yes. Default to `FALSE`. It is only available for Node.js functions.",
+          "example": "FALSE",
+          "member": "string",
+          "name": "InstallDependency",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "CLS Logset ID to which the function logs are shipped",
           "example": "xxxxx",
           "member": "string",
@@ -1048,6 +1057,24 @@
           "name": "TraceEnable",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Protocols supported by HTTP-triggered functions. Valid value: `WS` (WebSockets)",
+          "example": "WS",
+          "member": "string",
+          "name": "ProtocolType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Parameters of the specified protocol",
+          "example": "无",
+          "member": "ProtocolParams",
+          "name": "ProtocolParams",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2737,6 +2764,24 @@
           "value_allowed_null": true
         },
         {
+          "document": "Protocols supported by HTTP-triggered functions. It supports WebSockets for now.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ProtocolType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Parameters of the specified protocol\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ProtocolParams",
+          "name": "ProtocolParams",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -4201,6 +4246,22 @@
       ],
       "usage": "out"
     },
+    "ProtocolParams": {
+      "document": "Parameters of the protocol",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameters of WebSockets protocol\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "{             IdleTimeOut: 15     }",
+          "member": "WSParams",
+          "name": "WSParams",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "PublicNetConfigIn": {
       "document": "Public network access configuration",
       "members": [
@@ -5448,6 +5509,15 @@
         },
         {
           "default": "",
+          "document": "Specifies whether to [install dependency online](https://intl.cloud.tencent.com/document/product/583/37920?from_cn_redirect=1). `TRUE`: yes. Default to `FALSE`. It is only available for Node.js functions.",
+          "example": "FALSE",
+          "member": "string",
+          "name": "InstallDependency",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "CLS logset ID to which logs are shipped",
           "example": "xxxx",
           "member": "string",
@@ -5526,6 +5596,15 @@
           "name": "InitTimeout",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Parameters of the specified protocol",
+          "example": "无",
+          "member": "ProtocolParams",
+          "name": "ProtocolParams",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -5851,6 +5930,22 @@
         }
       ],
       "usage": "in"
+    },
+    "WSParams": {
+      "document": "Parameters of the specified protocol",
+      "members": [
+        {
+          "default": "",
+          "document": "Idle timeout period in seconds. Default: 15; range: 1 to 1800\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "15",
+          "member": "uint64",
+          "name": "IdleTimeOut",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     }
   },
   "version": "1.0"
