@@ -312,6 +312,12 @@
       "name": "Modifies the attributes of a CLB instance",
       "output": "ModifyLoadBalancerAttributesResponse"
     },
+    "ModifyLoadBalancerSla": {
+      "document": "This API is used to upgrade shared CLB instances to LCU-supported CLB instances (downgrade is not allowed) and upgrade/downgrade the specification of LCU-supported instances.",
+      "input": "ModifyLoadBalancerSlaRequest",
+      "name": "Adjusts CLB instance specification",
+      "output": "ModifyLoadBalancerSlaResponse"
+    },
     "ModifyRule": {
       "document": "This API (ModifyRule) is used to modify the attributes of a forwarding rule under a layer-7 CLB listener, such as forwarding path, health check attribute, and forwarding policy.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "ModifyRuleRequest",
@@ -2019,7 +2025,7 @@
         },
         {
           "default": "",
-          "document": "Information of the SNAT IP to be added. You can apply for a specified IP or apply for an automatically assigned IP by specifying a subnet.",
+          "document": "Information of the SNAT IP to be added. You can specify a SNAT IP or use the one automatically assigned by a subnet.",
           "example": "无",
           "member": "SnatIp",
           "name": "SnatIps",
@@ -2028,7 +2034,7 @@
         },
         {
           "default": "",
-          "document": "Number of SNAT IPs to be added. This parameter is used in conjunction with `SnatIps`. Note that if `Ip` is specified in `SnapIps`, this parameter is not available.",
+          "document": "Number of SNAT IPs to be added. This parameter is used in conjunction with `SnatIps`. Note that if `Ip` is specified in `SnapIps`, this parameter is not available. It defaults to `1` and the upper limit is `10`.",
           "example": "2",
           "member": "uint64",
           "name": "Number",
@@ -6216,6 +6222,33 @@
       ],
       "type": "object"
     },
+    "ModifyLoadBalancerSlaRequest": {
+      "document": "ModifyLoadBalancerSla request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the LCU-supported CLB instance, and the target specification",
+          "example": "无",
+          "member": "SlaUpdateParam",
+          "name": "LoadBalancerSla",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLoadBalancerSlaResponse": {
+      "document": "ModifyLoadBalancerSla response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyRuleRequest": {
       "document": "ModifyRule request structure.",
       "members": [
@@ -7438,7 +7471,7 @@
         },
         {
           "default": "",
-          "document": "CLS logset ID",
+          "document": "CLS logset ID\n<li>Enter the ID of logset you need to add or update. You can acquire the ID by invoking [DescribeLogsets](https://intl.cloud.tencent.com/document/product/614/56454?from_cn_redirect=1).</li>\n<li>To delete the log set, set this parameter to `null`.</li>",
           "example": "xxxx-xx-xx-xx-xxxxxxxx",
           "member": "string",
           "name": "LogSetId",
@@ -7447,7 +7480,7 @@
         },
         {
           "default": "",
-          "document": "CLS log topic ID",
+          "document": "CLS log topic ID\n<li>Enter the ID of log topic you need to add or update. You can acquire the ID by invoking [DescribeTopics](https://intl.cloud.tencent.com/document/product/614/56454?from_cn_redirect=1).</li>\n<li>To delete the log set, set this parameter to `null`.</li>",
           "example": "xxxx-xx-xx-xx-yyyyyyyy",
           "member": "string",
           "name": "LogTopicId",
@@ -7456,7 +7489,7 @@
         },
         {
           "default": "",
-          "document": "Log type. Valid values: ACCESS (access logs; default value) and HEALTH (health check logs).",
+          "document": "Log type:\n<li>`ACCESS`: access logs</li>\n<li>`HEALTH`: health check logs</li>\nDefault: `ACCESS`",
           "example": "ACCESS",
           "member": "string",
           "name": "LogType",
@@ -7553,6 +7586,32 @@
         }
       ],
       "type": "object"
+    },
+    "SlaUpdateParam": {
+      "document": "Parameter for instance specification adjustment",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the CLB instance",
+          "example": "lb-12345678",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target instance specification",
+          "example": "SLA",
+          "member": "string",
+          "name": "SlaType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "SnatIp": {
       "document": "`SnatIp` information structure",

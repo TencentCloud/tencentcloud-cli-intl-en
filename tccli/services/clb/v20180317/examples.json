@@ -103,15 +103,15 @@
     "CreateLoadBalancerSnatIps": [
       {
         "document": "",
-        "input": "https://clb.tencentcloudapi.com/?Action=CreateLoadBalancerSnatIps\n&LoadBalancerId=lb-cuxw2rm0\n&SnatIps.0.SubnetId=subnet-12345678\n&<Common request parameters>",
+        "input": "https://clb.tencentcloudapi.com/?Action=CreateLoadBalancerSnatIps\n&LoadBalancerId=lb-cuxw****\n&SnatIps.0.SubnetId=subnet-1234****\n&Number=2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"898b431c-2745-4b27-80f6-e6e8038a0683\"\n    }\n}",
-        "title": "Adding SNAT IP"
+        "title": "Adding a SNAT IP"
       },
       {
         "document": "",
-        "input": "https://clb.tencentcloudapi.com/?Action=CreateLoadBalancerSnatIps\n&LoadBalancerId=lb-cuxw****\n&SnatIps.0.SubnetId=subnet-1234****\n&SnatIps.0.Ip=192.168.1.2\n&<common request parameters>",
+        "input": "https://clb.tencentcloudapi.com/?Action=CreateLoadBalancerSnatIps\n&LoadBalancerId=lb-cuxw****\n&SnatIps.0.SubnetId=subnet-1234****\n&SnatIps.0.Ip=192.168.1.2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"898b431c-80f6-80f6-80f6-e6e8038a0683\"\n    }\n}",
-        "title": "指定snat ip添加SnatIp"
+        "title": "Specifying a SNAT IP"
       }
     ],
     "CreateRule": [
@@ -364,6 +364,12 @@
         "input": "https://clb.tencentcloudapi.com/?Action=DescribeLoadBalancers\n&LoadBalancerType=OPEN\n&ProjectId=0\n&LoadBalancerName=test_LB\n&LoadBalancerVips.0=129.226.78.67\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"LoadBalancerSet\": [\n            {\n                \"LoadBalancerId\": \"lb-rbw529fz\",\n                \"LoadBalancerName\": \"test_LB\",\n                \"Forward\": 1,\n                \"Domain\": \"\",\n                \"LoadBalancerVips\": [\n                    \"129.226.78.67\"\n                ],\n                \"LoadBalancerType\": \"OPEN\",\n                \"Status\": 1,\n                \"CreateTime\": \"2019-07-02 18:12:52\",\n                \"StatusTime\": \"2019-07-02 18:12:53\",\n                \"ProjectId\": 0,\n                \"OpenBgp\": 0,\n                \"Snat\": false,\n                \"Isolation\": 0,\n                \"Log\": \"\",\n                \"AnycastZone\": \"\",\n                \"AddressIPVersion\": \"ipv4\",\n                \"VpcId\": \"vpc-lt9uj4mo\",\n                \"NumericalVpcId\": 117008,\n                \"TargetRegionInfo\": {\n                    \"Region\": \"ap-hongkong\",\n                    \"VpcId\": \"vpc-lt9uj12o\"\n                },\n                \"SubnetId\": \"\",\n                \"SecureGroups\": [],\n                \"Tags\": [],\n                \"VipIsp\": \"BGP\",\n                \"MasterZone\": null,\n                \"BackupZoneSet\": null,\n                \"IsolatedTime\": null,\n                \"ExpireTime\": \"2019-08-02 18:12:52\",\n                \"ChargeType\": \"POSTPAID_BY_HOUR\",\n                \"NetworkAttributes\": {\n                    \"InternetChargeType\": \"BANDWIDTH_POSTPAID_BY_HOUR\",\n                    \"InternetMaxBandwidthOut\": 10\n                },\n                \"PrepaidAttributes\": null\n            }\n        ],\n        \"RequestId\": \"eba822a4-67cb-414c-b21d-f98ba3995d12\"\n    }\n}",
         "title": "Querying CLB instances by type, project, name, and VIP"
+      },
+      {
+        "document": "",
+        "input": "https://clb.tencentcloudapi.com/?Action=DescribeLoadBalancers\n&LoadBalancerType=OPEN\n&ProjectId=0\n&LoadBalancerName=test_LB\n&Filters.0.Name=tag:test_tag_key\n&Filters.0.Values.0=test_tag_value1\n&Filters.0.Values.1=test_tag_value2\n&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"LoadBalancerSet\": [\n            {\n                \"LoadBalancerId\": \"lb-rbw5****\",\n                \"LoadBalancerName\": \"test_LB\",\n                \"Forward\": 1,\n                \"Domain\": \"\",\n                \"LoadBalancerVips\": [\n                    \"XX.XX.XX.XX\"\n                ],\n                \"LoadBalancerType\": \"OPEN\",\n                \"Status\": 1,\n                \"CreateTime\": \"2019-07-02 18:12:52\",\n                \"StatusTime\": \"2019-07-02 18:12:53\",\n                \"ProjectId\": 0,\n                \"OpenBgp\": 0,\n                \"Snat\": false,\n                \"Isolation\": 0,\n                \"Log\": \"\",\n                \"AnycastZone\": \"\",\n                \"AddressIPVersion\": \"ipv4\",\n                \"VpcId\": \"vpc-lt9uj4mo\",\n                \"NumericalVpcId\": 117008,\n                \"TargetRegionInfo\": {\n                    \"Region\": \"ap-hongkong\",\n                    \"VpcId\": \"vpc-lt9uj12o\"\n                },\n                \"SubnetId\": \"\",\n                \"SecureGroups\": [],\n                \"Tags\": [\n                    {\n                        \"TagKey\": \"test_tag_key\",\n                        \"TagValue\": \"test_tag_value1\"\n                    }\n                ],\n                \"VipIsp\": \"BGP\",\n                \"MasterZone\": null,\n                \"BackupZoneSet\": null,\n                \"IsolatedTime\": null,\n                \"ExpireTime\": \"2019-08-02 18:12:52\",\n                \"ChargeType\": \"POSTPAID_BY_HOUR\",\n                \"NetworkAttributes\": {\n                    \"InternetChargeType\": \"BANDWIDTH_POSTPAID_BY_HOUR\",\n                    \"InternetMaxBandwidthOut\": 10\n                },\n                \"PrepaidAttributes\": null\n            }\n        ],\n        \"RequestId\": \"eba822a4-67cb-414c-b21d-f98ba3995d12\"\n    }\n}",
+        "title": "根据负载均衡的标签键值对过滤查询"
       }
     ],
     "DescribeLoadBalancersDetail": [
@@ -516,6 +522,14 @@
         "input": "https://clb.tencentcloudapi.com/?Action=ModifyLoadBalancerAttributes\n&LoadBalancerId=lb-6efswuxa\n&TargetRegionInfo.Region=ap-shanghai\n&TargetRegionInfo.VpcId=vpc-abcd1234\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DealName\": null,\n        \"RequestId\": \"78a40898-8210-44c7-8bc6-f83e5087ad54\"\n    }\n}",
         "title": "Setting the cross-region attribute of CLB instance"
+      }
+    ],
+    "ModifyLoadBalancerSla": [
+      {
+        "document": "",
+        "input": "https://clb.tencentcloudapi.com/?Action=ModifyLoadBalancerSla\r\n&LoadBalancerSla.0.LoadBalancerId=lb-db2nt5l2\r\n&LoadBalancerSla.0.SlaType=sla-3\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c1157c81-f3dc-4f2a-9346-76f161d548eb\"\n    }\n}",
+        "title": "Upgrading the specification of a CLB instance"
       }
     ],
     "ModifyRule": [

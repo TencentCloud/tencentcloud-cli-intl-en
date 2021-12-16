@@ -733,6 +733,72 @@
       ],
       "usage": "out"
     },
+    "AdvanceHttps": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "on",
+          "member": "string",
+          "name": "CustomTlsStatus",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "[\"TLSv1\",\"TLSv1.1\",\"TLSv1.2\",\"TLSv1.3\"]",
+          "member": "string",
+          "name": "TlsVersion",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "\"EECDH+AES128\"",
+          "member": "string",
+          "name": "Cipher",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "off",
+          "member": "string",
+          "name": "VerifyOriginType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "ServerCert",
+          "name": "CertInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "ClientCert",
+          "name": "OriginCertInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "AdvancedAuthentication": {
       "document": "Timestamp hotlink protection advanced configuration (allowlist feature)",
       "members": [
@@ -1198,6 +1264,92 @@
       ],
       "usage": "both"
     },
+    "AdvancedCCRules": {
+      "document": "SCDN custom CC rules",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule name",
+          "example": "无",
+          "member": "string",
+          "name": "RuleName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detection duration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "DetectionTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Detection frequency threshold\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "FrequencyLimit",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable IP penalty. Valid values: `on` and `off`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PunishmentSwitch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IP penalty duration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PunishmentTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Action. Valid values: `intercept` and `redirect`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Action",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "A redirection URL used when Action is `redirect`\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RedirectUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Layer-7 rule configuration for CC frequency limiting\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ScdnSevenLayerRules",
+          "name": "Configure",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "AdvancedCache": {
       "document": "(Disused) Advanced cache validity configuration. You can use `RuleCache` instead.",
       "members": [
@@ -1230,6 +1382,118 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AdvancedScdnAclGroup": {
+      "document": "SCDN precise access control configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule name",
+          "example": "无",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specific configurations",
+          "example": "无",
+          "member": "AdvancedScdnAclRule",
+          "name": "Configure",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Action. Valid values: `intercept` and `redirect`.",
+          "example": "intercept",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the rule is activated. Valid values: `active` and `inactive`.",
+          "example": "active",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error page configuration",
+          "example": "无",
+          "member": "ScdnErrorPage",
+          "name": "ErrorPage",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AdvancedScdnAclRule": {
+      "document": "Precise access control rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Keyword. Valid values:\n`protocol`: HTTP protocol\n`httpVersion`: HTTP version\n`method`: request method\n`ip`: requester IP\n`ipAsn`: ASN of the requester IP\n`ipCountry`: country/region of the requester IP\n`ipArea`: region of the requester IP\n`xForwardFor`: X-Forward-For request header\n`directory`: path\n`index`: homepage\n`path`: full path of a file\n`file`: file extension\n`param`: request parameter\n`referer`: Referer request header\n`cookie`: Cookie request header\n`userAgent`: User-Agent request header\n`head`: custom request header",
+          "example": "无",
+          "member": "string",
+          "name": "MatchKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Logical operator. Valid values:\n`exclude`: the keyword is not included\n`include`: the keyword is included\n`notequal`: not the same as the keyword\n`equal`: the same as the keyword\n`matching`: the prefix is matched\n`null`: empty or does not exist",
+          "example": "无",
+          "member": "string",
+          "name": "LogicOperator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Match value\nWhen `MatchKey` is `protocol`,\nValues: `HTTP` and `HTTPS`.\n\nWhen `MatchKey` is `httpVersion`,\nValues: `HTTP/1.0`, `HTTP/1.1`, `HTTP/1.2`, `HTTP/2`, and `HTTP/3`.\n\nWhen `MatchKey` is `method`,\nValues: `HEAD`, `GET`, `POST`, `PUT`, `OPTIONS`, `TRACE`, `DELETE`, `PATCH` and `CONNECT`.\n\nWhen `MatchKey` is `ipCountry`, valid values include:\n`OTHER`: other countries/regions\n`VE`: Venezuela\n`UY`: Uruguay\n`SR`: Suriname\n`PY`: Paraguay\n`PE`: Peru\n`GY`: Guyana\n`EC`: Ecuador\n`CO`: Colombia\n`CL`: Chile\n`BR`: Brazil\n`BO`: Bolivia\n`AR`: Argentina\n`NZ`: New Zealand\n`WS`: Samoa\n`VU`: Vanuatu\n`TV`: Tuvalu\n`TO`: Tonga\n`TK`: Tokelau\n`PW`: Palau\n`NU`: Niue\n`NR`: Nauru\n`KI`: Kiribati\n`GU`: Guam\n`FM`: Micronesia\n`AU`: Australia\n`US`: United States\n`PR`: Puerto Rico\n`DO`: Dominican Republic\n`CR`: Costa Rica\n`AS`: American Samoa\n`AG`: Antigua and Barbuda\n`PA`: Panama\n`NI`: Nicaragua\n`MX`: Mexico\n`JM`: Jamaica\n`HT`: Haiti\n`HN`: Honduras\n`GT`: Guatemala\n`GP`: Guadeloupe\n`GL`: Greenland\n`GD`: Grenada\n`CU`: Cuba\n`CA`: Canada\n`BZ`: Belize\n`BS`: Bahamas\n`BM`: Bermuda\n`BB`: Barbados\n`AW`: Aruba\n`AI`: Anguilla\n`VA`: Vatican\n`SK`: Slovakia\n`RU`: Russia\n`GB`: United Kingdom\n`CZ`: Czech Republic\n`UA`: Ukraine\n`TR`: Turkey\n`SI`: Slovenia\n`SE`: Sweden\n`RS`: Republic of Serbia\n`RO`: Romania\n`PT`: Portugal\n`PL`: Poland\n`NO`: Norway\n`NL`: Netherlands\n`MT`: Malta\n`MK`: Macedonia\n`ME`: Montenegro\n`MD`: Moldova\n`MC`: Monaco\n`LV`: Latvia\n`LU`: Luxembourg\n`LT`: Lithuania\n`LI`: Liechtenstein\n`KZ`: Kazakhstan\n`IT`: Italy\n`IS`: Iceland\n`IE`: Ireland\n`HU`: Hungary\n`HR`: Croatia\n`GR`: Greece\n`GI`: Gibraltar\n`GG`: Guernsey\n`GE`: Georgia\n`FR`: France\n`FI`: Finland\n`ES`: Spain\n`EE`: Estonia\n`DK`: Denmark\n`DE`: Germany\n`CY`: Cyprus\n`CH`: Switzerland\n`BY`: Belarus\n`BG`: Bulgaria\n`BE`: Belgium\n`AZ`: Azerbaijan\n`AT`: Austria\n`AM`: Armenia\n`AL`: Albania\n`AD`: Andorra\n`TL`: East Timor\n`SY`: Syria\n`SA`: Saudi Arabia\n`PS`: Palestine\n`LK`: Sri Lanka\n`LK`: Sri Lanka\n`KP`: North Korea\n`KG`: Kyrgyzstan\n`HK`: Hong Kong, China\n`BN`: Brunei\n`BD`: Bangladesh\n`AE`: United Arab Emirates\n`YE`: Yemen\n`VN`: Vietnam\n`UZ`: Uzbekistan\n`TW`: Taiwan, China\n`TM`: Turkmenistan\n`TJ`: Tajikistan\n`TH`: Thailand\n`SG`: Singapore\n`QA`: Qatar\n`PK`: Pakistan\n`PH`: Philippines\n`OM`: Oman\n`NP`: Nepal\n`MY`: Malaysia\n`MV`: Maldives\n`MO`: Macao, China\n`MN`: Mongolia\n`MM`: Myanmar\n`LB`: Lebanon\n`KW`: Kuwait\n`KR`: South Korea\n`KH`: Cambodia\n`JP`: Japan\n`JO`: Jordan\n`IR`: Iran\n`IQ`: Iraq\n`IN`: India\n`IL`: Israel\n`ID`: Indonesia\n`CN`: China\n`BT`: Bhutan\n`BH`: Bahrain\n`AF`: Afghanistan\n`LY`: Libya\n`CD`: Democratic Republic of the Congo\n`RE`: La Réunion\n`SZ`: Swaziland\n`ZW`: Zimbabwe\n`ZM`: Zambia\n`YT`: Mayotte\n`UG`: Uganda\n`TZ`: Tanzania\n`TN`: Tunisia\n`TG`: Togo\n`TD`: Chad\n`SO`: Somalia\n`SN`: Senegal\n`SD`: Sudan\n`SC`: Seychelles\n`RW`: Rwanda\n`NG`: Nigeria\n`NE`: Niger\n`NA`: Namibia\n`MZ`: Mozambique\n`MW`: Malawi\n`MU`: Mauritius\n`MR`: Mauritania\n`ML`: Mali\n`MG`: Madagascar\n`MA`: Morocco\n`LS`: Lesotho\n`LR`: Liberia\n`KM`: Comoros\n`KE`: Kenya\n`GN`: Guinea\n`GM`: Gambia\n`GH`: Ghana\n`GA`: Gabon\n`ET`: Ethiopia\n`ER`: Eritrea\n`EG`: Egypt\n`DZ`: Algeria\n`DJ`: Djibouti\n`CM`: Cameroon\n`CG`: Republic of the Congo\n`BW`: Botswana\n`BJ`: Benin\n`BI`: Burundi\n`AO`: Angola\n\nWhen MatchKey is `ipArea`, valid values include:\n`OTHER`: other areas\n`AS`: Asia\n`EU`: Europe\n`AN`: Antarctica\n`AF`: Africa\n`OC`: Oceania\n`NA`: North America\n`SA`: South America\n\nWhen MatchKey is `index`,\nvalid value is `/;/index.html`.",
+          "example": "无",
+          "member": "string",
+          "name": "MatchValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to distinguish uppercase or lowercase letters. `true`: case sensitive; `false`: case insensitive.",
+          "example": "无",
+          "member": "bool",
+          "name": "CaseSensitive",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is required when `MatchKey` is `param` or `cookie`. For `param`, it indicates a key value of the request parameter if MatchKey is `param`, while a key value of the Cookie request header if MatchKey is `cookie`.",
+          "example": "无",
+          "member": "string",
+          "name": "MatchKeyParam",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1337,6 +1601,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup key, which is used to calculate a signature.\n6-32 characters. Only digits and letters are allowed. \nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "BackupSecretKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -1383,6 +1657,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup key, which is used to calculate a signature.\n6-32 characters. Only digits and letters are allowed. \nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "BackupSecretKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -1436,6 +1720,16 @@
           "example": "dec",
           "member": "string",
           "name": "TimeFormat",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Backup key, which is used to calculate a signature.\n6-32 characters. Only digits and letters are allowed. \nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "BackupSecretKey",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -1515,6 +1809,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup key, which is used to calculate a signature.\n6-32 characters. Only digits and letters are allowed. \nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "BackupSecretKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -2494,11 +2798,12 @@
       "usage": "both"
     },
     "CompressionRule": {
-      "document": "Compression rules configuration. Up to 100 entries can be set.",
+      "document": "Intelligent compression rule configuration",
       "members": [
         {
           "default": "",
           "document": "true: must be set as true, enables compression\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
           "member": "bool",
           "name": "Compress",
           "required": true,
@@ -2507,16 +2812,8 @@
         },
         {
           "default": "",
-          "document": "Compress according to the file suffix type\nSuch as: jpg, txt\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "FileExtensions",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
           "document": "The minimum file size to trigger compression (in bytes)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "256",
           "member": "int64",
           "name": "MinLength",
           "required": true,
@@ -2526,6 +2823,7 @@
         {
           "default": "",
           "document": "The maximum file size to trigger compression (in bytes)\nThe maximum value is 30 MB\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "10000",
           "member": "int64",
           "name": "MaxLength",
           "required": true,
@@ -2535,9 +2833,40 @@
         {
           "default": "",
           "document": "File compression algorithm\ngzip: specifies Gzip compression\nbrotli: specifies Brotli compression\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "gzIp",
           "member": "string",
           "name": "Algorithms",
           "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Compress according to the file suffix type\nSuch as: jpg, txt\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "jpg",
+          "member": "string",
+          "name": "FileExtensions",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rule types:\n`all`: effective for all files.\n`file`: effective for specified file suffixes.\n`directory`: effective for specified paths.\n`path`: effective for specified absolute paths.\n`contentType`: effective when the `ContentType` is specified\nIf this field is specified, `FileExtensions` does not take effect.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "all",
+          "member": "string",
+          "name": "RuleType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Content for each `CacheType`:\nFor `all`, enter a wildcard `*`.\nFor `file`, enter a suffix, e.g., `jpg` or `txt`.\nFor `directory`, enter a path, e.g., `/xxx/test/`.\nFor `path`, enter an absolute path, e.g., `/xxx/test.html`.\nFor `contentType`, enter `text/html`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "*",
+          "member": "string",
+          "name": "RulePaths",
+          "required": false,
           "type": "list",
           "value_allowed_null": true
         }
@@ -4302,7 +4631,7 @@
         },
         {
           "default": "",
-          "document": "Custom error page configuration (in beta)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Configuration of custom error page\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ErrorPage",
           "name": "ErrorPage",
@@ -4642,7 +4971,7 @@
         },
         {
           "default": "",
-          "document": "Advanced configuration set\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Advanced configuration settings\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AdvanceConfig",
           "name": "AdvanceSet",
@@ -4652,7 +4981,7 @@
         },
         {
           "default": "",
-          "document": "Offline cache\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Offline cache (only available to beta users)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OfflineCache",
           "name": "OfflineCache",
@@ -4662,7 +4991,7 @@
         },
         {
           "default": "",
-          "document": "Merging pull requests\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Merging origin-pull requests (only available to beta users)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OriginCombine",
           "name": "OriginCombine",
@@ -4706,6 +5035,26 @@
           "example": "无",
           "member": "WebSocket",
           "name": "WebSocket",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Remote authentication configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RemoteAuthentication",
+          "name": "RemoteAuthentication",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Shared CNAME configuration (only available to beta users)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ShareCname",
+          "name": "ShareCname",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -4964,9 +5313,20 @@
       "members": [
         {
           "document": "Result list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CacheOptResult",
           "name": "CacheOptResult",
+          "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Task ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1632627566746100176",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         },
         {
@@ -5527,6 +5887,7 @@
         {
           "default": "",
           "document": "IP blocklist/allowlist configuration switch\non: enabled\noff: disabled",
+          "example": "on",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -5536,6 +5897,7 @@
         {
           "default": "",
           "document": "IP blocklist/allowlist type\nwhitelist: allowlist\nblacklist: blocklist\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "blacklist",
           "member": "string",
           "name": "FilterType",
           "required": false,
@@ -5545,6 +5907,7 @@
         {
           "default": "",
           "document": "IP blocklist/allowlist list\nSupports IPs in X.X.X.X format, or /8, /16, /24 format IP ranges.\nUp to 50 allowlists or blocklists can be entered\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"1.1.1.1\"]",
           "member": "string",
           "name": "Filters",
           "required": false,
@@ -5554,10 +5917,21 @@
         {
           "default": "",
           "document": "IP blocklist/allowlist path-based configuration. This feature is only available to selected beta customers.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "null",
           "member": "IpFilterPathRule",
           "name": "FilterRules",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "HTTP code returned when the IP allowlist/blocklist verification fails\nValid values: 400-499\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "403",
+          "member": "int64",
+          "name": "ReturnCode",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -6008,6 +6382,15 @@
           "name": "Product",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Returns the first N data entries. The default value is 100 if this parameter is not specified, whereas 1000 if `Metric` is `url`.",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -6494,6 +6877,7 @@
         {
           "default": "",
           "document": "Master origin server list\nWhen modifying the origin server, you need to enter the corresponding OriginType.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"1.1.1.1\"]",
           "member": "string",
           "name": "Origins",
           "required": false,
@@ -6502,7 +6886,8 @@
         },
         {
           "default": "",
-          "document": "Master origin server type\nThe following types are supported for input parameters:\ndomain: domain name type\ncos: COS origin\nip: IP list used as origin server\nipv6: origin server list is a single IPv6 address\nip_ipv6: origin server list is multiple IPv4 addresses and an IPv6 address\nThe following types of output parameters are added:\nimage: Cloud Infinite origin\nftp: legacy FTP origin, which is no longer maintained.\nWhen modifying `Origins`, you need to enter the corresponding OriginType.\nThe IPv6 feature is not generally available yet. Please send in a whitelist application to use this feature.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Primary origin server type\nInput:\n`domain`: domain name\n`cos`: COS bucket address\n`ip`: IP address\n`ipv6`: a single IPv6 address\n`ip_ipv6`: multiple IPv4 addresses and one IPv6 address\n`ip_domain`: both IP addresses and domain names (only available to beta users)\n`ipv6_domain`: multiple IPv6 addresses and one domain name\n`ip_ipv6_domain`: multiple IPv4 and IPv6 addresses and one domain name\nOutput: \n`image`: Cloud Infinite origin\n`ftp`: FTP origin (disused)\nWhen modifying `Origins`, you need to enter the corresponding `OriginType`.\nThe IPv6 feature is now only available to beta users. Please submit an application to use this feature.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ip",
           "member": "string",
           "name": "OriginType",
           "required": false,
@@ -6512,6 +6897,7 @@
         {
           "default": "",
           "document": "Host header used when accessing the master origin server. If left empty, the acceleration domain name will be used by default.\nIf a wildcard domain name is accessed, then the sub-domain name during the access will be used by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "www.test.com",
           "member": "string",
           "name": "ServerName",
           "required": false,
@@ -6521,6 +6907,7 @@
         {
           "default": "",
           "document": "When OriginType is COS, you can specify if access to private buckets is allowed.\nNote: to enable this configuration, you need to first grant CDN access to the private bucket.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "off",
           "member": "string",
           "name": "CosPrivateAccess",
           "required": false,
@@ -6530,6 +6917,7 @@
         {
           "default": "",
           "document": "Origin-pull protocol configuration\nhttp: forced HTTP origin-pull\nfollow: protocol follow origin-pull\nhttps: forced HTTPS origin-pull. This only supports origin server port 443 for origin-pull.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "http",
           "member": "string",
           "name": "OriginPullProtocol",
           "required": false,
@@ -6539,6 +6927,7 @@
         {
           "default": "",
           "document": "Backup origin server list\nWhen modifying the backup origin server, you need to enter the corresponding BackupOriginType.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"2.2.2.2\"]",
           "member": "string",
           "name": "BackupOrigins",
           "required": false,
@@ -6547,7 +6936,8 @@
         },
         {
           "default": "",
-          "document": "Backup origin server type, which supports the following types:\ndomain: domain name type\nip: IP list used as origin server\nWhen modifying BackupOrigins, you need to enter the corresponding BackupOriginType.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Secondary origin type. Values:\n`domain`: domain name\n`ip`: IP address\nWhen modifying `BackupOrigins`, you need to enter the corresponding `BackupOriginType`.\nThe following backup origin servers are only available to beta users. Submit an application if you want to become a beta user.\n`ipv6_domain`: multiple IPv6 addresses and one domain name\n`ip_ipv6`: multiple IPv4 addresses and one IPv6 address\n`ipv6_domain`: multiple IPv6 addresses and one domain name\n`ip_ipv6_domain`: multiple IPv4 and IPv6 addresses and one domain name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ip",
           "member": "string",
           "name": "BackupOriginType",
           "required": false,
@@ -6557,6 +6947,7 @@
         {
           "default": "",
           "document": "Host header used when accessing the backup origin server. If left empty, the ServerName of master origin server will be used by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "www.test2.com",
           "member": "string",
           "name": "BackupServerName",
           "required": false,
@@ -6566,6 +6957,7 @@
         {
           "default": "",
           "document": "",
+          "example": "/",
           "member": "string",
           "name": "BasePath",
           "required": false,
@@ -6575,6 +6967,7 @@
         {
           "default": "",
           "document": "Origin URL rewrite rule configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "PathRule",
           "name": "PathRules",
           "required": false,
@@ -6584,10 +6977,21 @@
         {
           "default": "",
           "document": "Path-based origin-pull configurations\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[]",
           "member": "PathBasedOriginRule",
           "name": "PathBasedOrigin",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "null",
+          "member": "AdvanceHttps",
+          "name": "AdvanceHttps",
+          "required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -7523,11 +7927,58 @@
         {
           "default": "",
           "document": "Range GETs configuration switch\non: enabled\noff: disabled",
+          "example": "on",
           "member": "string",
           "name": "Switch",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Range GETs configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[{\"Switch\":\"on\",\"RuleType\":\"file\",\"RulePaths\":[\"jpg\"]}]",
+          "member": "RangeOriginPullRule",
+          "name": "RangeRules",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "RangeOriginPullRule": {
+      "document": "Range GETs configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies whether Range GETs is enabled",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule types:\n`file`: effective for specified file suffixes.\n`directory`: effective for specified paths.\n`path`: effective for specified absolute paths.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "file",
+          "member": "string",
+          "name": "RuleType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Content for each `RuleType`:\nFor `file`, enter a suffix, e.g., `jpg` or `txt`.\nFor `directory`, enter a path, e.g., `/xxx/test/`.\nFor `path`, enter an absolute path, e.g., `/xxx/test.html`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "jpg",
+          "member": "string",
+          "name": "RulePaths",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -7630,6 +8081,108 @@
         }
       ],
       "usage": "out"
+    },
+    "RemoteAuthentication": {
+      "document": "Configuration of remote authentication rules. Setting up multiple rules is supported.\n`RemoteAuthenticationRules` and `Server` cannot be configured at the same time.\nIf only `Server` is configured, all parameters of `RemoteAuthenticationRules` will be set to the default values. The default values are described in each configuration parameter.",
+      "members": [
+        {
+          "default": "",
+          "document": "Remote authentication switch\n`on`: enable\n`off`: disable\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Remote authentication rule configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"RemoteAuthentication\":{\"RemoteAuthenticationRule\":[{\"Server\":\"h",
+          "member": "RemoteAuthenticationRule",
+          "name": "RemoteAuthenticationRules",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Remote authentication server\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "http://auth.com/a.php",
+          "member": "string",
+          "name": "Server",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "RemoteAuthenticationRule": {
+      "document": "Remote authentication rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Remote authentication server\nThe server configured in `RemoteAutherntication` is used by default.",
+          "example": "http://auth.com",
+          "member": "string",
+          "name": "Server",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP method used by the remote authentication server. Valid values: `get`, `post`, `head`, and `all`. \n`all`: the remote authentication server follows the client request method.\nDefault: `all`",
+          "example": "get",
+          "member": "string",
+          "name": "AuthMethod",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule types:\n`all`: apply to all files\n`file`: apply to files with the specified suffixes\n`directory`: apply to the specified directories\n`path`: apply to the specified absolute paths\nDefault: `all`.",
+          "example": "all",
+          "member": "string",
+          "name": "RuleType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Content for each `RuleType`:\nFor `all`, enter a wildcard `*`.\nFor `file`, enter a suffix, e.g., `jpg` or `txt`.\nFor `directory`, enter a path, e.g., `/xxx/test/`.\nFor `path`, enter an absolute path, e.g., `/xxx/test.html`.\nFor `index`, enter a forward slash `/`.\nDefault: `*`",
+          "example": "*",
+          "member": "string",
+          "name": "RulePaths",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timeout period of the remote authentication server. Unit: ms.\nValue range: [1, 30,000]\nDefault: 20000",
+          "example": "1",
+          "member": "int64",
+          "name": "AuthTimeout",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to deny or allow the request when the remote authentication server is timed out:\n`RETURN_200`: the request is allowed when the remote authentication server is timed out.\n`RETURN_403`: the request is denied when the remote authentication server is timed out.\nDefault: `RETURN_200`",
+          "example": "RETURN_200",
+          "member": "string",
+          "name": "AuthTimeoutAction",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ReportData": {
       "document": "CDN report data",
@@ -7960,6 +8513,7 @@
         {
           "default": "",
           "document": "Whether to enable. Valid values: `on` and `off`.",
+          "example": "on",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -7968,7 +8522,8 @@
         },
         {
           "default": "",
-          "document": "ACL rule group, which is required when the access control is on.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "This field is disused. Please use `AdvancedScriptData` instead.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ScdnAclGroup",
           "name": "ScriptData",
           "required": false,
@@ -7978,10 +8533,21 @@
         {
           "default": "",
           "document": "Error page configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ScdnErrorPage",
           "name": "ErrorPage",
           "required": false,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ACL rule group, which is required when the access control is on.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AdvancedScdnAclGroup",
+          "name": "AdvancedScriptData",
+          "required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -8012,8 +8578,8 @@
         },
         {
           "default": "",
-          "document": "Rule action, which can be `refuse` or `redirect`.",
-          "example": "refuse",
+          "document": "Action. Valid values: `intercept` and `redirect`.",
+          "example": "intercept",
           "member": "string",
           "name": "Result",
           "required": true,
@@ -8048,7 +8614,8 @@
       "members": [
         {
           "default": "",
-          "document": "Match keywords. Valid values: `params`, `url`, `ip`, `referer`, and `user-agent`.",
+          "document": "Keyword",
+          "example": "protocol",
           "member": "string",
           "name": "MatchKey",
           "required": true,
@@ -8057,7 +8624,8 @@
         },
         {
           "default": "",
-          "document": "Logical operator. Valid values: `exclude`, `include`, `notequal`, `equal`, `len-less`, `len-equal`, and `len-more`.",
+          "document": "Logical operator. Valid values:",
+          "example": "exclude",
           "member": "string",
           "name": "LogiOperator",
           "required": true,
@@ -8066,7 +8634,8 @@
         },
         {
           "default": "",
-          "document": "Match value",
+          "document": "Matched value",
+          "example": "无",
           "member": "string",
           "name": "MatchValue",
           "required": true,
@@ -8202,6 +8771,7 @@
         {
           "default": "",
           "document": "Valid values: `on` and `off`.",
+          "example": "on",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -8211,8 +8781,19 @@
         {
           "default": "",
           "document": "Custom CC attack defense rule\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "ScdnCCRules",
           "name": "Rules",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Advanced custom CC attack defense rule\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "AdvancedCCRules",
+          "name": "AdvancedRules",
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -8240,7 +8821,8 @@
       "members": [
         {
           "default": "",
-          "document": "Status code",
+          "document": "Status code\n`403` is passed in when the action is `intercept`.\n`301` is passed in when the action is `redirect`.",
+          "example": "301",
           "member": "int64",
           "name": "RedirectCode",
           "required": true,
@@ -8250,11 +8832,68 @@
         {
           "default": "",
           "document": "Redirection URL",
+          "example": "http://test.com/",
           "member": "string",
           "name": "RedirectUrl",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ScdnSevenLayerRules": {
+      "document": "SCDN layer-7 rule configuration for CC frequency limiting",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether values are case sensitive",
+          "example": "true",
+          "member": "bool",
+          "name": "CaseSensitive",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule types:\n`protocol`: protocol. Valid values: `HTTP` and `HTTPS`.\n`method`: request method. Valid values: `HEAD`, `GET`, `POST`, `PUT`, `OPTIONS`, `TRACE`, `DELETE`, `PATCH` and `CONNECT`.\n`all`: domain name. The matching content is `*` and cannot be edited.\n`ip`: IP in CIDR format.\n`directory`: path starting with a slash (/). You can specify a directory or specific path using up to 128 characters.\n`index`: default homepage, which is specified by `/;/index.html` and cannot be edited.\n`path`: full path of the file, such as `/acb/test.png`. Wildcard is supported, such as `/abc/*.jpg`.\n`file`: file extension, such as `jpg`, `png` and `css`.\n`param`: request parameter. The value can contain up to 512 characters.\n`referer`: Referer. The value can contain up to 512 characters.\n`cookie`: Cookie. The value can contain up to 512 characters.\n`user-agent`: User-Agent. The value can contain up to 512 characters.\n`head`: custom header. The value can contain up to 512 characters. If the matching content is blank or does not exist, enter the matching parameter directly.",
+          "example": "all",
+          "member": "string",
+          "name": "RuleType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Logical operator, which connects the relation between RuleType and RuleValue. Valid values:\n`exclude`: the rule value is not contained. \n`include`: the rule value is contained. \n`notequal`: the rule value is not equal to the specified rule type. \n`equal`: the rule value is equal to the specified rule type. \n`matching`: the rule value matches with the prefix of the specified rule type.\n`null`: the rule value is empty or does not exist.",
+          "example": "exclude",
+          "member": "string",
+          "name": "LogicOperator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule value\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "RuleValue",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Matched parameter. Only request parameters, Cookie, and custom request headers have a value.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "Accept",
+          "member": "string",
+          "name": "RuleParam",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -8563,6 +9202,32 @@
           "document": "Certificate remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Message",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ShareCname": {
+      "document": "Shared CNAME configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies whether to enable Shared CNAME. If it is set to `off`, the default CNAME is used. If it is set to `on`, a shared CNAME is used.\n\n* ShareCname is only available to beta users. To use this feature, please submit a ticket for application.",
+          "example": "off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shared CNAME to be configured\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "mycname-12345.shared.cdn.dnsv1.com",
+          "member": "string",
+          "name": "Cname",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -9250,7 +9915,7 @@
         },
         {
           "default": "",
-          "document": "Domain name acceleration region\nmainland: acceleration inside mainland China\noverseas: acceleration outside mainland China\nglobal: global acceleration",
+          "document": "Domain name acceleration region\n`mainland`: acceleration inside the Chinese mainland\n`overseas`: acceleration outside the Chinese mainland\n`global`: global acceleration\nWhen you change it to from `mainland`/`overseas` to `global`, configurations of the domain name will be deployed to the region inside or outside the Chinese mainland. The deployment will take some time as this domain name has special settings.",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -9295,7 +9960,7 @@
         },
         {
           "default": "",
-          "document": "URL redirect configuration",
+          "document": "Configuration of URL rewriting",
           "example": "无",
           "member": "UrlRedirect",
           "name": "UrlRedirect",
@@ -9380,6 +10045,24 @@
           "example": "无",
           "member": "WebSocket",
           "name": "WebSocket",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Configuration of remote authentication",
+          "example": "无",
+          "member": "RemoteAuthentication",
+          "name": "RemoteAuthentication",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Shared CNAME configuration (only available to beta users)",
+          "example": "无",
+          "member": "ShareCname",
+          "name": "ShareCname",
           "required": false,
           "type": "object"
         }
@@ -9579,6 +10262,7 @@
         {
           "default": "",
           "document": "Redirect status code. Valid values: 301, 302",
+          "example": "no",
           "member": "int64",
           "name": "RedirectStatusCode",
           "required": true,
@@ -9588,6 +10272,7 @@
         {
           "default": "",
           "document": "URL to be matched. Only URLs are supported, while parameters are not. The exact match is used by default. In regex match, up to 5 wildcards `*` are supported. The URL can contain up to 1,024 characters.",
+          "example": "no",
           "member": "string",
           "name": "Pattern",
           "required": true,
@@ -9597,6 +10282,7 @@
         {
           "default": "",
           "document": "Target URL, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the matching path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.",
+          "example": "no",
           "member": "string",
           "name": "RedirectUrl",
           "required": true,
@@ -9606,10 +10292,21 @@
         {
           "default": "",
           "document": "Target host. It should be a standard domain name starting with `http://` or `https://`. If it is left empty, “http://[current domain name]” will be used by default.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "no",
           "member": "string",
           "name": "RedirectHost",
           "required": false,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to use full-path matching or arbitrary matching\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "FullMatch",
+          "required": false,
+          "type": "bool",
           "value_allowed_null": true
         }
       ],

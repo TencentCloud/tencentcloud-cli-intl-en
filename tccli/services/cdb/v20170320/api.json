@@ -265,7 +265,7 @@
       "output": "DescribeDeviceMonitorInfoResponse"
     },
     "DescribeErrorLogData": {
-      "document": "This API is used to query the details of instance error logs by search criteria. You can only query error logs within a month.",
+      "document": "This API is used to query the error logs of an instance over the past month by search criteria.\nNote: the HTTP response packet will be very large if it contain a single large error log, which causes the API call to time out. If this happens, we recommend you lower the value of the input parameter `Limit` to reduce the packet size so that the API can respond timely.",
       "input": "DescribeErrorLogDataRequest",
       "name": "Queries instance error log details",
       "output": "DescribeErrorLogDataResponse"
@@ -325,7 +325,7 @@
       "output": "DescribeRollbackTaskDetailResponse"
     },
     "DescribeSlowLogData": {
-      "document": "This API is used to search for slow logs of an instance by criteria. You can only view slow logs within a month.",
+      "document": "This API is used to query the slow logs of an instance over the past month by search criteria.\nNote: the HTTP response packet will be very large if it contain a single large slow log, which causes the API call to time out. If this happens, we recommend you lower the value of the input parameter `Limit` to reduce the packet size so that the API can respond timely.",
       "input": "DescribeSlowLogDataRequest",
       "name": "Queries instance slow logs",
       "output": "DescribeSlowLogDataResponse"
@@ -9423,6 +9423,7 @@
         {
           "default": "",
           "document": "SQL execution time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1637894492",
           "member": "uint64",
           "name": "Timestamp",
           "required": true,
@@ -9431,7 +9432,8 @@
         },
         {
           "default": "",
-          "document": "SQL execution duration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "SQL execution duration in seconds.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0.1",
           "member": "float",
           "name": "QueryTime",
           "required": true,
@@ -9441,6 +9443,7 @@
         {
           "default": "",
           "document": "SQL statement.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "select * from test",
           "member": "string",
           "name": "SqlText",
           "required": true,
@@ -9450,6 +9453,7 @@
         {
           "default": "",
           "document": "Client address.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "127.0.0.1",
           "member": "string",
           "name": "UserHost",
           "required": true,
@@ -9459,6 +9463,7 @@
         {
           "default": "",
           "document": "Username.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test_user",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -9468,6 +9473,7 @@
         {
           "default": "",
           "document": "Database name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test_db",
           "member": "string",
           "name": "Database",
           "required": true,
@@ -9476,7 +9482,8 @@
         },
         {
           "default": "",
-          "document": "Lock duration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Lock duration in seconds.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0.11",
           "member": "float",
           "name": "LockTime",
           "required": true,
@@ -9486,6 +9493,7 @@
         {
           "default": "",
           "document": "Number of scanned rows.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "12",
           "member": "int64",
           "name": "RowsExamined",
           "required": true,
@@ -9495,6 +9503,7 @@
         {
           "default": "",
           "document": "Number of rows in result set.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "RowsSent",
           "required": true,
@@ -9504,6 +9513,7 @@
         {
           "default": "",
           "document": "SQL template.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "select * from test",
           "member": "string",
           "name": "SqlTemplate",
           "required": true,
@@ -9513,6 +9523,7 @@
         {
           "default": "",
           "document": "SQL statement MD5.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2casbjhk1ty",
           "member": "string",
           "name": "Md5",
           "required": true,
@@ -10112,6 +10123,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.",
+          "example": "cdb-8qrg9t04",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -10120,6 +10132,7 @@
         {
           "default": "",
           "document": "Version of primary instance database engine. Value range: 5.6, 5.7",
+          "example": "5.7",
           "member": "string",
           "name": "EngineVersion",
           "required": true,
@@ -10128,6 +10141,7 @@
         {
           "default": "",
           "document": "Mode of switch to a new instance. Value range: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [switching to new instance API](https://intl.cloud.tencent.com/document/product/236/15864?from_cn_redirect=1) to trigger the process.",
+          "example": "1",
           "member": "int64",
           "name": "WaitSwitch",
           "required": false,
@@ -10136,8 +10150,18 @@
         {
           "default": "",
           "document": "Whether to upgrade kernel minor version. Valid values: 1 (upgrade kernel minor version), 0 (upgrade database engine).",
+          "example": "20201231",
           "member": "int64",
           "name": "UpgradeSubversion",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Delay threshold. Value range: 1-10",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxDelayTime",
           "required": false,
           "type": "int"
         }
@@ -10280,6 +10304,15 @@
           "example": "1",
           "member": "int64",
           "name": "FastUpgrade",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Delay threshold. Value range: 1-10. Default value: `10`.",
+          "example": "2",
+          "member": "int64",
+          "name": "MaxDelayTime",
           "required": false,
           "type": "int"
         }
