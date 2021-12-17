@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 import os
+import sys
 import json
 import tccli.options_define as OptionsDefine
 import tccli.format_output as FormatOutput
 from tccli import __version__
 from tccli.utils import Utils
-from tccli.exceptions import ConfigurationError
+from tccli.exceptions import ConfigurationError, ParamError
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.iotcloud.v20210408 import iotcloud_client as iotcloud_client_v20210408
 from tencentcloud.iotcloud.v20210408 import models as models_v20210408
 
+from tccli import six
 
 def doUpdateDeviceLogLevel(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
@@ -550,5 +552,9 @@ def parse_global_arg(parsed_globals):
     if g_param[OptionsDefine.Version] not in AVAILABLE_VERSION_LIST:
         raise Exception("available versions: %s" % " ".join(AVAILABLE_VERSION_LIST))
 
+    if six.PY2:
+        for key, value in g_param.items():
+            if isinstance(value, six.text_type):
+                g_param[key] = value.encode('utf-8')
     return g_param
 
