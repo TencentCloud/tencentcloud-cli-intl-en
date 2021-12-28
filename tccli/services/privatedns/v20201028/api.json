@@ -1,5 +1,11 @@
 {
   "actions": {
+    "CreatePrivateDNSAccount": {
+      "document": "This API is used to create a Private DNS account.",
+      "input": "CreatePrivateDNSAccountRequest",
+      "name": "Creates Private DNS account",
+      "output": "CreatePrivateDNSAccountResponse"
+    },
     "CreatePrivateZone": {
       "document": "This API is used to create a private domain.",
       "input": "CreatePrivateZoneRequest",
@@ -12,6 +18,12 @@
       "name": "Adds DNS record for private domain",
       "output": "CreatePrivateZoneRecordResponse"
     },
+    "DeletePrivateDNSAccount": {
+      "document": "This API is used to delete a Private DNS account.",
+      "input": "DeletePrivateDNSAccountRequest",
+      "name": "Deletes Private DNS account",
+      "output": "DeletePrivateDNSAccountResponse"
+    },
     "DeletePrivateZone": {
       "document": "This API is used to delete a private domain and stop DNS.",
       "input": "DeletePrivateZoneRequest",
@@ -23,6 +35,12 @@
       "input": "DeletePrivateZoneRecordRequest",
       "name": "Deletes DNS record for private domain",
       "output": "DeletePrivateZoneRecordResponse"
+    },
+    "DescribeAccountVpcList": {
+      "document": "This API is used to get the VPC list of a Private DNS account.",
+      "input": "DescribeAccountVpcListRequest",
+      "name": "Gets the VPC list of a Private DNS account",
+      "output": "DescribeAccountVpcListResponse"
     },
     "DescribeAuditLog": {
       "document": "This API is used to get the list of operation logs.",
@@ -149,6 +167,52 @@
       ],
       "usage": "both"
     },
+    "AccountVpcInfoOut": {
+      "document": "Output parameters of the associated VPC",
+      "members": [
+        {
+          "default": "",
+          "document": "VpcId: vpc-xadsafsdasd",
+          "example": "无",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region: ap-guangzhou, ap-shanghai",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID: 123456789",
+          "example": "无",
+          "member": "string",
+          "name": "Uin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC name: testname",
+          "example": "无",
+          "member": "string",
+          "name": "VpcName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "AccountVpcInfoOutput": {
       "document": "Output parameters of the associated VPC",
       "members": [
@@ -259,6 +323,33 @@
         }
       ],
       "usage": "out"
+    },
+    "CreatePrivateDNSAccountRequest": {
+      "document": "CreatePrivateDNSAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Private DNS account",
+          "example": "无",
+          "member": "PrivateDNSAccount",
+          "name": "Account",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePrivateDNSAccountResponse": {
+      "document": "CreatePrivateDNSAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CreatePrivateZoneRecordRequest": {
       "document": "CreatePrivateZoneRecord request structure.",
@@ -473,6 +564,33 @@
       ],
       "usage": "out"
     },
+    "DeletePrivateDNSAccountRequest": {
+      "document": "DeletePrivateDNSAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Private DNS account",
+          "example": "无",
+          "member": "PrivateDNSAccount",
+          "name": "Account",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePrivateDNSAccountResponse": {
+      "document": "DeletePrivateDNSAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeletePrivateZoneRecordRequest": {
       "document": "DeletePrivateZoneRecord request structure.",
       "members": [
@@ -545,6 +663,78 @@
     "DeletePrivateZoneResponse": {
       "document": "DeletePrivateZone response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountVpcListRequest": {
+      "document": "DescribeAccountVpcList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "UIN of account",
+          "example": "123456789",
+          "member": "string",
+          "name": "AccountUin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset, starting from 0",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Maximum value: `100`. Default value: `20`",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter parameters",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountVpcListResponse": {
+      "document": "DescribeAccountVpcList response structure.",
+      "members": [
+        {
+          "document": "Number of VPCs",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "VPC list",
+          "example": "无",
+          "member": "AccountVpcInfoOut",
+          "name": "VpcSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

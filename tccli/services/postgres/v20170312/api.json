@@ -850,15 +850,6 @@
         },
         {
           "default": "",
-          "document": "PostgreSQL kernel version. Valid values: `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.",
-          "example": "无",
-          "member": "string",
-          "name": "DBVersion",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "Instance storage capacity in GB",
           "example": "无",
           "member": "uint64",
@@ -928,6 +919,15 @@
           "name": "ProjectId",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "PostgreSQL major version. Valid values: `9.3`, `9.5`, `10`, `11`, `12`, `13`, `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.",
+          "example": "12.4",
+          "member": "string",
+          "name": "DBVersion",
+          "required": false,
+          "type": "string"
         },
         {
           "default": "",
@@ -1027,6 +1027,24 @@
           "name": "SecurityGroupIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "12",
+          "member": "string",
+          "name": "DBMajorVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "v12.4_r1.0",
+          "member": "string",
+          "name": "DBKernelVersion",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1699,7 +1717,7 @@
         },
         {
           "default": "",
-          "document": "Instance status. Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`",
+          "document": "Instance status. Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`, `network changing`",
           "example": "applying",
           "member": "string",
           "name": "DBInstanceStatus",
@@ -1780,7 +1798,7 @@
         {
           "default": "",
           "document": "PostgreSQL major version",
-          "example": "12",
+          "example": "12.4",
           "member": "string",
           "name": "DBVersion",
           "required": true,
@@ -1959,12 +1977,22 @@
         },
         {
           "default": "",
-          "document": "Network access list of the instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Network access list of the instance (this field has been deprecated)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NetworkAccess",
           "name": "NetworkAccessList",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "12",
+          "member": "string",
+          "name": "DBMajorVersion",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -1976,42 +2004,72 @@
         {
           "default": "",
           "document": "DNS domain name",
+          "example": "cd-postgres-xxxxxxxx.sql.tencentcdb.com",
           "member": "string",
           "name": "Address",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Ip",
+          "example": "111.111.11.11",
           "member": "string",
           "name": "Ip",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Connection port address",
+          "example": "5432",
           "member": "uint64",
           "name": "Port",
           "required": true,
-          "type": "int"
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Network type. 1: inner (private network address), 2: public (public network address)",
+          "example": "private",
           "member": "string",
           "name": "NetType",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Network connection status",
+          "document": "Network connection status. Valid values: `initing` (never enabled before), `opened` (enabled), `closed` (disabled), `opening` (enabling), `closing` (disabling)",
+          "example": "opened",
           "member": "string",
           "name": "Status",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "vpc-xxxxxxxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subnet ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "subnet-xxxxxxxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4304,11 +4362,11 @@
       "type": "object"
     },
     "NetworkAccess": {
-      "document": "Network information.",
+      "document": "Network information. (This parameter structure has been deprecated. Please use `DBInstanceNetInfo` to query network information.)",
       "members": [
         {
           "default": "",
-          "document": "Network resource ID, instance ID or RO group ID (this field has been deprecated)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Network resource ID, instance ID, or RO group ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "postgres-xxxxxxxx",
           "member": "string",
           "name": "ResourceId",
@@ -4318,7 +4376,7 @@
         },
         {
           "default": "",
-          "document": "Resource type. Valid values: `1` (instance), `2` (RO group) (this field has been deprecated)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Resource type. Valid values: `1` (instance), `2` (RO group)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "ResourceType",
@@ -5108,7 +5166,7 @@
         },
         {
           "default": "",
-          "document": "Network access list of the RO group\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Network access list of the RO group (this field has been deprecated)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "空",
           "member": "NetworkAccess",
           "name": "NetworkAccessList",

@@ -588,7 +588,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether it’s an IPv6 address. `1`: Yes; `0`: No.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "V6Flag",

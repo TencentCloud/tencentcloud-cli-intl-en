@@ -1,5 +1,13 @@
 {
   "actions": {
+    "CreatePrivateDNSAccount": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrivateDNSAccount\n<Common request parameters>\n\n{\n    \"Account\": {\n        \"Uin\": \"123456789\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5cd964e2-b5e6-8a35-9ce5a1085860c845\"\n    }\n}",
+        "title": "Creating Private DNS account"
+      }
+    ],
     "CreatePrivateZone": [
       {
         "document": "",
@@ -28,6 +36,14 @@
         "title": "Private domain - adding PTR record"
       }
     ],
+    "DeletePrivateDNSAccount": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeletePrivateDNSAccount\n<Common request parameters>\n\n{\n    \"Account\": {\n        \"Uin\": \"123456789\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5cd964e2-b5e6-8a35-9ce5a1085860c845\"\n    }\n}",
+        "title": "Deleting Private DNS account"
+      }
+    ],
     "DeletePrivateZone": [
       {
         "document": "This example shows you how to delete a private domain.",
@@ -54,6 +70,14 @@
         "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeletePrivateZoneRecord\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-xxxxxx\",\n    \"RecordIdSet\": [\n        \"10001\",\n        \"20201\",\n        \"33401\",\n        \"11111\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5cd964e2-b5e6-8a35-9ce5a1085860c845\"\n    }\n}",
         "title": "Batch deleting DNS records for private domain"
+      }
+    ],
+    "DescribeAccountVpcList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccountVpcList\n<Common request parameters>\n\n{\n    \"AccountUin\": \"123456789\",\n    \"Limit\": 200,\n    \"Offset\": 0,\n    \"Filters\": [\n        {\n            \"Name\": \"Region\",\n            \"Values\": [\n                \"ap-guangzhou\"\n            ]\n        },\n        {\n            \"Name\": \"VpcName\",\n            \"Values\": [\n                \"test\"\n            ]\n        },\n        {\n            \"Name\": \"VpcId\",\n            \"Values\": [\n                \"vpc-sdfwadf1\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"443f1f2b-9be4-4a2c-b1a6-0494c2d980ff\",\n        \"TotalCount\": 1,\n        \"VpcSet\": [\n            {\n                \"VpcId\": \"vpc-ofnocfe1\",\n                \"VpcName\": \"testname\",\n                \"Uin\": 700000136857,\n                \"Region\": \"ap-guangzhou\"\n            }\n        ]\n    }\n}",
+        "title": "Getting the VPC list of a Private DNS account"
       }
     ],
     "DescribeAuditLog": [

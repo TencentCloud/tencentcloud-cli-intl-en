@@ -1687,7 +1687,7 @@
         },
         {
           "default": "",
-          "document": "Filter list.\n<li>instance-name</li>Filter by **instance name**.\nType: String\nRequired: no\n<li>private-ip-address</li>Filter by **private IP of instance primary ENI**.\nType: String\nRequired: no\n<li>public-ip-address</li>Filter by **public IP of instance primary ENI**.\nType: String\nRequired: no\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` at the same time.",
+          "document": "Filter list\n<li>instance-name</li>Filter by the instance name\nType: String\nRequired: no\n<li>private-ip-address</li>Filter by the private IP of instance primary ENI\nType: String\nRequired: no\n<li>public-ip-address</li>Filter by the public IP of instance primary ENI\nType: String\nRequired: no\n<li>zone</li>Filter by the availability zone\nType: String\nRequired: no\n<li>instance-state</li>Filter by **instance status**.\nType: String\nRequired: no\nEach request can contain up to 10 filters, each of which can have 5 values. You cannot specify both `InstanceIds` and `Filters` at the same time.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",

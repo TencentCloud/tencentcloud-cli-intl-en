@@ -4003,6 +4003,7 @@
         {
           "default": "",
           "document": "Connection ID",
+          "example": "link-rfgt56hy",
           "member": "string",
           "name": "ProxyId",
           "required": true,
@@ -4011,6 +4012,7 @@
         {
           "default": "",
           "document": "Start time (2019-03-25 12:00:00)",
+          "example": "2019-03-25 12:00:00",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -4019,6 +4021,7 @@
         {
           "default": "",
           "document": "End time (2019-03-25 12:00:00)",
+          "example": "2019-03-26 12:00:00",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -4027,6 +4030,7 @@
         {
           "default": "",
           "document": "Statistical metric name list. Valid values: `InBandwidth` (inbound bandwidth); `OutBandwidth` (outbound bandwidth); Concurrent (concurrence); `InPackets` (inbound packets); `OutPackets` (outbound packets); `PacketLoss` (packet loss rate); `Latency` (latency); `HttpQPS` (the number of HTTP requests); `HttpsQPS` (the number of HTTPS requests).",
+          "example": "[\"Concurrent\\n\"]",
           "member": "string",
           "name": "MetricNames",
           "required": true,
@@ -4035,10 +4039,20 @@
         {
           "default": "",
           "document": "Monitoring granularity. It currently supports: 60, 300, 3,600, and 86,400. Unit: seconds.\nTime range: <= 1 day, supported minimum granularity: 60 seconds;\nTime range: <= 7 days, supported minimum granularity: 3,600 seconds;\nTime range: <= 30 days, supported minimum granularity: 86,400 seconds;",
+          "example": "300",
           "member": "uint64",
           "name": "Granularity",
           "required": true,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Specifies the ISP. Valid values: `CMCC`, `CUCC`, and `CTCC`. If it is not specified, all ISP data will be returned. Note that this field is valid only when a non-BGP connection is used.",
+          "example": "CMCC",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
