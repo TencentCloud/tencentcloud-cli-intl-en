@@ -289,7 +289,7 @@
       "output": "DescribeContentReviewTemplatesResponse"
     },
     "DescribeDailyPlayStatFileList": {
-      "document": "This API is used to query the download links of playback statistics files.\n* You can query the download links of playback statistics files in last 30 days.\n* Every day, VOD will analyze CDN request logs of the previous day and then generate a playback statistics file.\n* A playback statistics file includes playback times and traffic of media files.\n* Notes on playback times:\n    1. HLS file: VOD counts playback times when accessing M3U8 files, but not when accessing TS files.\n    2. Other files (MP4 files for example): VOD does not count playback times when the playback request carries the `range` parameter and the `start` parameter in `range` is not `0`. In other cases, VOD counts playback times.\n* Statistics on playback devices: VOD counts playback times on mobile clients when the playback request carries the `UserAgent` parameter which includes an identifier such as `Android` or `iPhone`. In other cases, VOD counts playback times on PC clients.",
+      "document": "This API is used to query the download links of playback statistics files.\n* You can query the download links of playback statistics files in the past year. The start and end dates for query cannot be more than 90 days apart.\n* Every day, VOD will analyze CDN request logs of the previous day and then generate a playback statistics file.\n* A playback statistics file includes playback times and traffic of media files.\n* Notes on playback times:\n    1. HLS file: VOD counts playback times when M3U8 files are accessed, but not when TS files are accessed.\n    2. Other files (MP4 files for example): VOD does not count playback times when the playback request carries the `range` parameter and the `start` parameter in `range` is not `0`. In other cases, VOD counts playback times.\n* Statistics on playback devices: VOD counts playback times on mobile clients when the playback request carries the `UserAgent` parameter which includes an identifier such as `Android` or `iPhone`. In other cases, VOD counts playback times on PC clients.",
       "input": "DescribeDailyPlayStatFileListRequest",
       "name": "Queries the download list of playback statistics files",
       "output": "DescribeDailyPlayStatFileListResponse"
@@ -1188,11 +1188,32 @@
       "members": [
         {
           "default": "",
-          "document": "List of intelligently generated video categories.",
+          "document": "List of intelligently generated video categories\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `ClassificationSetFileUrl`.",
+          "example": "无",
           "member": "MediaAiAnalysisClassificationItem",
           "name": "ClassificationSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for intelligently generated video categories. The file is in JSON format and has the same data structure as `ClassificationSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `ClassificationSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "ClassificationSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file for intelligently generated video categories, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "ClassificationSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -1278,11 +1299,32 @@
       "members": [
         {
           "default": "",
-          "document": "List of intelligently generated covers.",
+          "document": "List of intelligently generated thumbnails\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `CoverSetFileUrl`.",
+          "example": "无",
           "member": "MediaAiAnalysisCoverItem",
           "name": "CoverSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for intelligently generated thumbnails. The file is in JSON format and has the same data structure as `CoverSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `CoverSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "CoverSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file for intelligently generated thumbnails, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "CoverSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -1368,11 +1410,32 @@
       "members": [
         {
           "default": "",
-          "document": "List of frame-specific video tags.",
+          "document": "List of frame-specific video tags\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "example": "无",
           "member": "MediaAiAnalysisFrameTagSegmentItem",
           "name": "SegmentSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for frame-specific video tags. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file for frame-specific video tags, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -1458,11 +1521,32 @@
       "members": [
         {
           "default": "",
-          "document": "List of intelligently generated highlights.",
+          "document": "List of intelligently generated highlights\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `HighlightSetFileUrl`.",
+          "example": "无",
           "member": "MediaAiAnalysisHighlightItem",
           "name": "HighlightSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for intelligently generated highlights. The file is in JSON format and has the same data structure as `HighlightSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `HighlightSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "HighlightSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file for intelligently generated highlights, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "HighlightSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -1563,11 +1647,32 @@
       "members": [
         {
           "default": "",
-          "document": "List of intelligently generated video tags.",
+          "document": "List of intelligently generated video tags\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `TagSetFileUrl`.",
+          "example": "无",
           "member": "MediaAiAnalysisTagItem",
           "name": "TagSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for intelligently generated video tags. The file is in JSON format and has the same data structure as `TagSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `TagSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "TagSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file for intelligently generated video tags, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "TagSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3241,6 +3346,7 @@
         {
           "default": "",
           "document": "Score of ASR-detected politically sensitive information in speech between 0 and 100.",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -3250,6 +3356,7 @@
         {
           "default": "",
           "document": "Suggestion for ASR-detected politically sensitive information in speech. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "example": "无",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -3258,11 +3365,32 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain ASR-detected politically sensitive information in speech.",
+          "document": "List of video segments that contain ASR-detected politically sensitive information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "example": "无",
           "member": "MediaContentReviewAsrTextSegmentItem",
           "name": "SegmentSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for video segments that contain ASR-detected politically sensitive information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file for video segments that contain ASR-detected politically sensitive information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3289,6 +3417,7 @@
         {
           "default": "",
           "document": "Score of OCR-detected politically sensitive information in text between 0 and 100.",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -3298,6 +3427,7 @@
         {
           "default": "",
           "document": "Suggestion for OCR-detected politically sensitive information in text. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "example": "无",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -3306,11 +3436,32 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain OCR-detected politically sensitive information in text.",
+          "document": "List of video segments that contain OCR-detected politically sensitive information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "example": "无",
           "member": "MediaContentReviewOcrTextSegmentItem",
           "name": "SegmentSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for video segments that contain OCR-detected politically sensitive information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file for video segments that contain OCR-detected politically sensitive information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3337,6 +3488,7 @@
         {
           "default": "",
           "document": "Score of detected politically sensitive information in video between 0 and 100.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -3346,6 +3498,7 @@
         {
           "default": "",
           "document": "Suggestion for detected politically sensitive information. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -3355,6 +3508,7 @@
         {
           "default": "",
           "document": "Tags for the results of video politically sensitive information detection. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and this parameter is as follows:\nviolation_photo:\n<li>violation_photo: violating photo.</li>\nOther values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):\n<li>politician: political figure.</li>",
+          "example": "无",
           "member": "string",
           "name": "Label",
           "required": true,
@@ -3363,11 +3517,32 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain the detected politically sensitive information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "List of video segments that contain politically sensitive information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "example": "无",
           "member": "MediaContentReviewPoliticalSegmentItem",
           "name": "SegmentSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for video segments that contain politically sensitive information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file for video segments that contain politically sensitive information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3394,6 +3569,7 @@
         {
           "default": "",
           "document": "Score of ASR-detected porn information in speech between 0 and 100.",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -3403,6 +3579,7 @@
         {
           "default": "",
           "document": "Suggestion for ASR-detected porn information in speech. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "example": "无",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -3411,11 +3588,32 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain the ASR-detected porn information in speech.",
+          "document": "List of video segments that contain ASR-detected porn information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "example": "无",
           "member": "MediaContentReviewAsrTextSegmentItem",
           "name": "SegmentSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for video segments that contain ASR-detected porn information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file for video segments that contain ASR-detected porn information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3442,6 +3640,7 @@
         {
           "default": "",
           "document": "Score of OCR-detected porn information in text between 0 and 100.",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -3451,6 +3650,7 @@
         {
           "default": "",
           "document": "Suggestion for OCR-detected porn information in text. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "example": "无",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -3459,11 +3659,32 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain the OCR-detected porn information in text.",
+          "document": "List of video segments that contain OCR-detected porn information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "example": "无",
           "member": "MediaContentReviewOcrTextSegmentItem",
           "name": "SegmentSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for video segments that contain OCR-detected porn information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file for video segments that contain OCR-detected porn information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3490,6 +3711,7 @@
         {
           "default": "",
           "document": "Score of detected porn information in video between 0 and 100.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -3499,6 +3721,7 @@
         {
           "default": "",
           "document": "Suggestion for detected porn information. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -3508,6 +3731,7 @@
         {
           "default": "",
           "document": "Tag of detected porn information in video. Valid values:\n<li>porn: porn.</li>\n<li>sexy: sexiness.</li>\n<li>vulgar: vulgarity.</li>\n<li>intimacy: intimacy.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Label",
           "required": true,
@@ -3516,11 +3740,32 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain the detected porn information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "List of video segments that contain porn information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "example": "无",
           "member": "MediaContentReviewSegmentItem",
           "name": "SegmentSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for video segments that contain porn information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file of for video segments that contain porn information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3547,6 +3792,7 @@
         {
           "default": "",
           "document": "Score of ASR-detected prohibited information in speech between 0 and 100.",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -3556,6 +3802,7 @@
         {
           "default": "",
           "document": "Suggestion for ASR-detected prohibited information in speech. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "example": "无",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -3564,11 +3811,32 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain the ASR-detected prohibited information in speech.",
+          "document": "List of video segments that contain ASR-detected prohibited information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "example": "无",
           "member": "MediaContentReviewAsrTextSegmentItem",
           "name": "SegmentSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for video segments that contain ASR-detected prohibited information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file for video segments that contain ASR-detected prohibited information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3595,6 +3863,7 @@
         {
           "default": "",
           "document": "Score of OCR-detected prohibited information in text between 0 and 100.",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -3604,6 +3873,7 @@
         {
           "default": "",
           "document": "Suggestion for OCR-detected prohibited information in text. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "example": "无",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -3612,11 +3882,32 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain the OCR-detected prohibited information in text.",
+          "document": "List of video segments that contain OCR-detected prohibited information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "example": "无",
           "member": "MediaContentReviewOcrTextSegmentItem",
           "name": "SegmentSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for video segments that contain OCR-detected prohibited information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL for video segments that contain OCR-detected prohibited information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -4243,6 +4534,7 @@
         {
           "default": "",
           "document": "Score of OCR-detected terrorism information in text between 0 and 100.",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -4252,6 +4544,7 @@
         {
           "default": "",
           "document": "Suggestion for OCR-detected terrorism information in text. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "example": "无",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -4260,11 +4553,32 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain OCR-detected terrorism information in text.",
+          "document": "List of video segments that contain OCR-detected terrorism information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "example": "无",
           "member": "MediaContentReviewOcrTextSegmentItem",
           "name": "SegmentSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for video segments that contain OCR-detected terrorism information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file for video segments that contain OCR-detected terrorism information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -4320,12 +4634,32 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain the detected terrorism information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "List of video segments that contain terrorism information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
           "example": "[]",
           "member": "MediaContentReviewSegmentItem",
           "name": "SegmentSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "URL to the file for video segments that contain terrorism information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "example": "http://12xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the URL to the file for video segments that contain terrorism information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -10963,6 +11297,7 @@
         {
           "default": "",
           "document": "Event handler. The caller must call `ConfirmEvents` to confirm that the message has been received, and the confirmation is valid for 30 seconds. After the confirmation expires, the event can be obtained again.",
+          "example": "123",
           "member": "string",
           "name": "EventHandle",
           "required": true,
@@ -10972,6 +11307,7 @@
         {
           "default": "",
           "document": "<b>Supported event types:</b>\n<li>NewFileUpload: finished video upload</li>\n<li>ProcedureStateChanged: task flow status changed</li>\n<li>FileDeleted: finished video deletion</li>\n<li>PullComplete: finished pulling for upload</li>\n<li>EditMediaComplete: finished video editing</li>\n<li>SplitMediaComplete: finished video splitting</li>\n<li>WechatPublishComplete: finished publishing on WeChat</li>\n<li>ComposeMediaComplete: finished producing the media file</li>\n<li>WechatMiniProgramPublishComplete: finished publishing on WeChat Mini Program</li>\n<b>Support v2017 task types:</b>\n<li>TranscodeComplete: finished video transcoding</li>\n<li>ConcatComplete: finished video splicing</li>\n<li>ClipComplete: finished video clipping</li>\n<li>CreateImageSpriteComplete: finished image sprite generation</li>\n<li>CreateSnapshotByTimeOffsetComplete: finished point-in-time screencapturing</li>",
+          "example": "null",
           "member": "string",
           "name": "EventType",
           "required": true,
@@ -10981,6 +11317,7 @@
         {
           "default": "",
           "document": "Video upload completion event, which is valid if the event type is `NewFileUpload`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "FileUploadTask",
           "name": "FileUploadEvent",
           "required": true,
@@ -10990,6 +11327,7 @@
         {
           "default": "",
           "document": "Task flow status change event, which is valid if the event type is `ProcedureStateChanged`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "ProcedureTask",
           "name": "ProcedureStateChangeEvent",
           "required": true,
@@ -10999,6 +11337,7 @@
         {
           "default": "",
           "document": "File deletion event, which is valid if the event type is `FileDeleted`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "FileDeleteTask",
           "name": "FileDeleteEvent",
           "required": true,
@@ -11008,6 +11347,7 @@
         {
           "default": "",
           "document": "Video pull for upload completion event, which is valid if the event type is `PullComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "PullUploadTask",
           "name": "PullCompleteEvent",
           "required": true,
@@ -11017,6 +11357,7 @@
         {
           "default": "",
           "document": "Video editing completion event, which is valid if the event type is `EditMediaComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "EditMediaTask",
           "name": "EditMediaCompleteEvent",
           "required": true,
@@ -11026,6 +11367,7 @@
         {
           "default": "",
           "document": "Video splitting completion event, which is valid if the event type is `EditMediaComplete`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "SplitMediaTask",
           "name": "SplitMediaCompleteEvent",
           "required": true,
@@ -11035,6 +11377,7 @@
         {
           "default": "",
           "document": "Media file composing task completion event, which is valid when the event type is `ComposeMediaComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "ComposeMediaTask",
           "name": "ComposeMediaCompleteEvent",
           "required": true,
@@ -11044,6 +11387,7 @@
         {
           "default": "",
           "document": "Video clipping completion event, which is valid if the event type is `ClipComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "ClipTask2017",
           "name": "ClipCompleteEvent",
           "required": true,
@@ -11053,6 +11397,7 @@
         {
           "default": "",
           "document": "Video transcoding completion event, which is valid if the event type is `TranscodeComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "TranscodeTask2017",
           "name": "TranscodeCompleteEvent",
           "required": true,
@@ -11062,6 +11407,7 @@
         {
           "default": "",
           "document": "Image sprite generating completion event, which is valid if the event type is `CreateImageSpriteComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "CreateImageSpriteTask2017",
           "name": "CreateImageSpriteCompleteEvent",
           "required": true,
@@ -11071,6 +11417,7 @@
         {
           "default": "",
           "document": "Video splicing completion event, which is valid if the event type is `ConcatComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "ConcatTask2017",
           "name": "ConcatCompleteEvent",
           "required": true,
@@ -11080,6 +11427,7 @@
         {
           "default": "",
           "document": "Time point screencapturing completion event, which is valid when the event type is `CreateSnapshotByTimeOffsetComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "SnapshotByTimeOffsetTask2017",
           "name": "SnapshotByTimeOffsetCompleteEvent",
           "required": true,
@@ -11089,6 +11437,7 @@
         {
           "default": "",
           "document": "Release on WeChat completion event, which is valid if the event type is `WechatPublishComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "WechatPublishTask",
           "name": "WechatPublishCompleteEvent",
           "required": true,
@@ -11098,8 +11447,19 @@
         {
           "default": "",
           "document": "Release on WeChat Mini Program task completion event, which is valid if the event type is `WechatMiniProgramPublishComplete`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "WechatMiniProgramPublishTask",
           "name": "WechatMiniProgramPublishCompleteEvent",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Callback for video retrieval. This parameter is valid when the event type is `RestoreMediaComplete`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "RestoreMediaTask",
+          "name": "RestoreMediaCompleteEvent",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -14203,7 +14563,8 @@
       "members": [
         {
           "default": "",
-          "document": "Source category of media file:\n<li>Record: recording, such as LVB recording and LVB time shifting recording.</li>\n<li>Upload: upload, such as pull for upload, upload from server, and UCG upload from client.</li>\n<li>VideoProcessing: video processing, such as video splicing and video clipping.</li>\n<li>Unknown: unknown source.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Source of a media file:\n<li>`Record`: recording, such as live or time-shift recording</li>\n<li>`Upload`: upload, such as pull for upload, upload from server, and UGC upload from client</li>\n<li>`VideoProcessing`: video processing, such as video splicing and video clipping</li>\n<li>`WebPageRecord`: panoramic recording </li>\n<li>`Unknown`: unknown source</li>",
+          "example": "Record",
           "member": "string",
           "name": "SourceType",
           "required": true,
@@ -14213,6 +14574,7 @@
         {
           "default": "",
           "document": "Field passed through when a file is created.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "SourceContext",
           "required": true,
@@ -18489,6 +18851,82 @@
         }
       ],
       "usage": "in"
+    },
+    "RestoreMediaTask": {
+      "document": "Video retrieval task information",
+      "members": [
+        {
+          "default": "",
+          "document": "File ID",
+          "example": "\"\"",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Original storage class",
+          "example": "\"ARCHIVE\"",
+          "member": "string",
+          "name": "OriginalStorageClass",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target storage class. For temporary retrieval, the target storage class is the same as the original.",
+          "example": "\"STANDARD\"",
+          "member": "string",
+          "name": "TargetStorageClass",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Retrieval mode. Valid values:\n<li>Expedited</li>\n<li>Standard</li>\n<li>Bulk</li>",
+          "example": "\"Expedited\"",
+          "member": "string",
+          "name": "RestoreTier",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Validity period (days) for a temporary copy. `0` indicates permanent retrieval.",
+          "example": "5",
+          "member": "int64",
+          "name": "RestoreDay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field has been disused.",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field has been disused.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "SampleSnapshotTaskInput": {
       "document": "Input parameter type of sampling screencapturing task",

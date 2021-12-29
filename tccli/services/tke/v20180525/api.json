@@ -1109,7 +1109,7 @@
         },
         {
           "default": "",
-          "document": "Specifies whether the VPC CNI type is multi-IP ENI or or independent ENI.",
+          "document": "Specifies the ENI type. Values: `tke-route-eni` (multi-IP shared ENI); `tke-direct-eni` (independent ENI). It defaults to `tke-route-eni`.",
           "example": "tke-direct-eni",
           "member": "string",
           "name": "VpcCniType",

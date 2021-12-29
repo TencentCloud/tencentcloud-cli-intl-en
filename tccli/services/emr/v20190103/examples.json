@@ -27,7 +27,7 @@
     "InquiryPriceCreateInstance": [
       {
         "document": "",
-        "input": "https://emr.tencentcloudapi.com/?Action=InquiryPriceCreateInstance\r\n&SupportHA=0\r\n&PayMode=0\r\n&Placement.Zone=ap-guangzhou-3\r\n&Placement.ProjectId=0\r\n&Software.0=hadoop-2.7.3\r\n&Software.1=zookeeper-3.4.9\r\n&Software.2=hive-2.3.2\r\n&Software.3=knox-1.2.0\r\n&ResourceSpec.MasterResourceSpec.MemSize=16384\r\n&ResourceSpec.MasterResourceSpec.Cpu=4\r\n&ResourceSpec.MasterResourceSpec.DiskSize=100\r\n&ResourceSpec.MasterResourceSpec.DiskType=CLOUD_PREMIUM\r\n&ResourceSpec.MasterResourceSpec.Spec=CVM.S3\r\n&ResourceSpec.MasterResourceSpec.RootSize=100\r\n&ResourceSpec.MasterResourceSpec.StorageType=5\r\n&ResourceSpec.CoreResourceSpec.MemSize=16384\r\n&ResourceSpec.CoreResourceSpec.Cpu=4\r\n&ResourceSpec.CoreResourceSpec.DiskSize=100\r\n&ResourceSpec.CoreResourceSpec.DiskType=CLOUD_PREMIUM\r\n&ResourceSpec.CoreResourceSpec.Spec=CVM.S3\r\n&ResourceSpec.CoreResourceSpec.RootSize=100\r\n&ResourceSpec.CoreResourceSpec.StorageType=5\r\n&ResourceSpec.MasterCount=1\r\n&ResourceSpec.CoreCount=2\r\n&VPCSettings.VpcId=vpc-ezt5qmqz\r\n&VPCSettings.SubnetId=subnet-jhgsahx0\r\n&TimeSpan=3600\r\n&TimeUnit=s\r\n&Currency=CNY\r\n&ProductId=2\r\n&<Common request parameters>",
+        "input": "https://emr.tencentcloudapi.com/?Action=InquiryPriceCreateInstance\n&SupportHA=0\n&PayMode=0\n&Placement.Zone=ap-guangzhou-3\n&Placement.ProjectId=0\n&Software.0=hadoop-2.7.3\n&Software.1=zookeeper-3.4.9\n&Software.2=hive-2.3.2\n&Software.3=knox-1.2.0\n&ResourceSpec.MasterResourceSpec.MemSize=16384\n&ResourceSpec.MasterResourceSpec.Cpu=4\n&ResourceSpec.MasterResourceSpec.DiskSize=100\n&ResourceSpec.MasterResourceSpec.DiskType=CLOUD_PREMIUM\n&ResourceSpec.MasterResourceSpec.Spec=CVM.S3\n&ResourceSpec.MasterResourceSpec.RootSize=100\n&ResourceSpec.MasterResourceSpec.StorageType=5\n&ResourceSpec.CoreResourceSpec.MemSize=16384\n&ResourceSpec.CoreResourceSpec.Cpu=4\n&ResourceSpec.CoreResourceSpec.DiskSize=100\n&ResourceSpec.CoreResourceSpec.DiskType=CLOUD_PREMIUM\n&ResourceSpec.CoreResourceSpec.Spec=CVM.S3\n&ResourceSpec.CoreResourceSpec.RootSize=100\n&ResourceSpec.CoreResourceSpec.StorageType=5\n&ResourceSpec.MasterCount=1\n&ResourceSpec.CoreCount=2\n&VPCSettings.VpcId=vpc-ezt5qmqz\n&VPCSettings.SubnetId=subnet-jhgsahx0\n&TimeSpan=3600\n&TimeUnit=s\n&Currency=CNY\n&ProductId=2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DiscountCost\": 5.53,\n        \"OriginalCost\": 7.87,\n        \"RequestId\": \"863e0be5-ab86-4daa-84f2-f84953f18aec\",\n        \"TimeSpan\": 3600,\n        \"TimeUnit\": \"s\"\n    }\n}",
         "title": "Querying the price of creating an instance"
       }
@@ -51,7 +51,7 @@
     "InquiryPriceUpdateInstance": [
       {
         "document": "",
-        "input": "https://emr.tencentcloudapi.com/?Action=InquiryPriceUpdateInstance\r\n&TimeUnit=s\r\n&TimeSpan=3600\r\n&Placement.Zone=100003\r\n&Currency=CNY\r\n&Placement.ProjectId=0\r\n&UpdateSpec.Memory=16\r\n&UpdateSpec.CPUCores=8\r\n&UpdateSpec.ResourceId=emr-vm-a0xxx9on\r\n&PayMode=0\r\n&<Common request parameters>",
+        "input": "https://emr.tencentcloudapi.com/?Action=InquiryPriceUpdateInstance\n&TimeUnit=s\n&TimeSpan=3600\n&Placement.Zone=100003\n&Currency=CNY\n&Placement.ProjectId=0\n&UpdateSpec.Memory=16\n&UpdateSpec.CPUCores=8\n&UpdateSpec.ResourceId=emr-vm-a0xxx9on\n&PayMode=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DiscountCost\": 2.01,\n        \"OriginalCost\": 3.04,\n        \"RequestId\": \"95eb9120-0883-407c-aa5a-43b4e2c250d1\",\n        \"TimeSpan\": 3600,\n        \"TimeUnit\": \"s\"\n    }\n}",
         "title": "Querying the price of changing configuration"
       }
@@ -67,7 +67,7 @@
     "TerminateInstance": [
       {
         "document": "This example shows you how to terminate an entire cluster.",
-        "input": "https://emr.tencentcloudapi.com/?Action=TerminateInstance\r\n&InstanceId=emr-4slr7ad7\r\n&<Common request parameters>",
+        "input": "https://emr.tencentcloudapi.com/?Action=TerminateInstance\n&InstanceId=emr-4slr7ad7\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4d701c1e-8507-47e1-8c69-a8f06a236f24\"\n    }\n}",
         "title": "Terminating an instance"
       }
@@ -75,7 +75,7 @@
     "TerminateTasks": [
       {
         "document": "This example shows you how to terminate a task node.",
-        "input": "https://emr.tencentcloudapi.com/?Action=TerminateTasks\r\n&InstanceId=emr-4slr7ad7\r\n&ResourceIds.0=emr-vm-xxx33tg\r\n&<Common request parameters>",
+        "input": "https://emr.tencentcloudapi.com/?Action=TerminateTasks\n&InstanceId=emr-4slr7ad7\n&ResourceIds.0=emr-vm-xxx33tg\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4d701c1e-8507-47e1-8c69-a8f06a236f24\"\n    }\n}",
         "title": "Terminating a node"
       }

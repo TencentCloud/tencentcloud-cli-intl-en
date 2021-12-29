@@ -5439,6 +5439,32 @@
       ],
       "usage": "both"
     },
+    "ExtraLogset": {
+      "document": "Information of logsets and log topics (except those created in the Shanghai region)",
+      "members": [
+        {
+          "default": "",
+          "document": "Logset information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LogSetInfo",
+          "name": "Logset",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Log topic information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TopicInfo",
+          "name": "Topics",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "FollowRedirect": {
       "document": "301/302 automatic origin-pull follow-redirect configuration. It is disabled by default.",
       "members": [
@@ -6168,16 +6194,29 @@
       "document": "ListClsLogTopics response structure.",
       "members": [
         {
-          "document": "Logset information",
+          "document": "Information of logsets in the Shanghai region",
+          "example": "无",
           "member": "LogSetInfo",
           "name": "Logset",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "document": "Log topic information list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Information of log topics in the Shanghai region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "TopicInfo",
           "name": "Topics",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Information on logsets in regions except Shanghai\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ExtraLogset",
+          "name": "ExtraLogset",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6420,6 +6459,7 @@
         {
           "default": "",
           "document": "Developer ID",
+          "example": "1254086605",
           "member": "uint64",
           "name": "AppId",
           "required": true,
@@ -6429,6 +6469,7 @@
         {
           "default": "",
           "document": "Channel\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "cdn",
           "member": "string",
           "name": "Channel",
           "required": true,
@@ -6438,6 +6479,7 @@
         {
           "default": "",
           "document": "Logset ID",
+          "example": "4d849a88-13ef-40cd-9785-bd663ea47d7e",
           "member": "string",
           "name": "LogsetId",
           "required": true,
@@ -6447,6 +6489,7 @@
         {
           "default": "",
           "document": "Logset name",
+          "example": "cdn_logset_cn",
           "member": "string",
           "name": "LogsetName",
           "required": true,
@@ -6456,6 +6499,7 @@
         {
           "default": "",
           "document": "Whether it is the default logset",
+          "example": "1",
           "member": "uint64",
           "name": "IsDefault",
           "required": true,
@@ -6465,6 +6509,7 @@
         {
           "default": "",
           "document": "Log retention period in days",
+          "example": "7",
           "member": "uint64",
           "name": "LogsetSavePeriod",
           "required": true,
@@ -6474,6 +6519,7 @@
         {
           "default": "",
           "document": "Creation date",
+          "example": "2021-09-01 17:33:22",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -6483,11 +6529,32 @@
         {
           "default": "",
           "document": "Region",
+          "example": "上海",
           "member": "string",
           "name": "Region",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the logset has been removed from CLS\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "no",
+          "member": "string",
+          "name": "Deleted",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether English is used in this region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ap-shanghai",
+          "member": "string",
+          "name": "RegionEn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -9645,6 +9712,16 @@
           "example": "cdn",
           "member": "string",
           "name": "Channel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the log topic has been removed from CLS\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "no",
+          "member": "string",
+          "name": "Deleted",
           "required": true,
           "type": "string",
           "value_allowed_null": true
