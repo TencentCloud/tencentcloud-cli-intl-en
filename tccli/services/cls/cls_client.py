@@ -96,6 +96,33 @@ def doGetAlarmLog(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doCreateConsumer(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ClsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateConsumerRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.CreateConsumer(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doModifyTopic(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -393,7 +420,7 @@ def doCreateShipper(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyShipper(args, parsed_globals):
+def doModifyConsumer(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -409,9 +436,9 @@ def doModifyShipper(args, parsed_globals):
     client = mod.ClsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyShipperRequest()
+    model = models.ModifyConsumerRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyShipper(model)
+    rsp = client.ModifyConsumer(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -474,7 +501,7 @@ def doCreateAlarmNotice(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeConfigs(args, parsed_globals):
+def doDeleteConsumer(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -490,9 +517,9 @@ def doDescribeConfigs(args, parsed_globals):
     client = mod.ClsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeConfigsRequest()
+    model = models.DeleteConsumerRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeConfigs(model)
+    rsp = client.DeleteConsumer(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1048,6 +1075,33 @@ def doDescribeShipperTasks(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyShipper(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ClsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyShipperRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyShipper(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreateConfig(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1256,6 +1310,60 @@ def doDescribeLogContext(args, parsed_globals):
     model = models.DescribeLogContextRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DescribeLogContext(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeConsumer(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ClsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeConsumerRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeConsumer(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeConfigs(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ClsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeConfigsRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeConfigs(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1575,6 +1683,7 @@ ACTION_MAP = {
     "CreateMachineGroup": doCreateMachineGroup,
     "DescribeMachineGroups": doDescribeMachineGroups,
     "GetAlarmLog": doGetAlarmLog,
+    "CreateConsumer": doCreateConsumer,
     "ModifyTopic": doModifyTopic,
     "DescribeAsyncContextResult": doDescribeAsyncContextResult,
     "DescribeAsyncContextTasks": doDescribeAsyncContextTasks,
@@ -1586,10 +1695,10 @@ ACTION_MAP = {
     "CreateIndex": doCreateIndex,
     "DeleteConfig": doDeleteConfig,
     "CreateShipper": doCreateShipper,
-    "ModifyShipper": doModifyShipper,
+    "ModifyConsumer": doModifyConsumer,
     "DeleteAsyncSearchTask": doDeleteAsyncSearchTask,
     "CreateAlarmNotice": doCreateAlarmNotice,
-    "DescribeConfigs": doDescribeConfigs,
+    "DeleteConsumer": doDeleteConsumer,
     "ModifyAlarm": doModifyAlarm,
     "DeleteMachineGroup": doDeleteMachineGroup,
     "DeleteLogset": doDeleteLogset,
@@ -1610,6 +1719,7 @@ ACTION_MAP = {
     "ModifyConfig": doModifyConfig,
     "UploadLog": doUploadLog,
     "DescribeShipperTasks": doDescribeShipperTasks,
+    "ModifyShipper": doModifyShipper,
     "CreateConfig": doCreateConfig,
     "DescribeMachineGroupConfigs": doDescribeMachineGroupConfigs,
     "CreateAsyncContextTask": doCreateAsyncContextTask,
@@ -1618,6 +1728,8 @@ ACTION_MAP = {
     "DescribeAsyncSearchTasks": doDescribeAsyncSearchTasks,
     "DescribeAlarms": doDescribeAlarms,
     "DescribeLogContext": doDescribeLogContext,
+    "DescribeConsumer": doDescribeConsumer,
+    "DescribeConfigs": doDescribeConfigs,
     "MergePartition": doMergePartition,
     "DescribeMachines": doDescribeMachines,
     "RetryShipperTask": doRetryShipperTask,

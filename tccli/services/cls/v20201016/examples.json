@@ -21,7 +21,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAlarmNotice\n<Common request parameters>\n\n{\n    \"Name\": \"test\",\n    \"Type\": \"All\",\n    \"WebCallbacks\": [\n        {\n            \"CallbackType\": \"Http\",\n            \"Url\": \"http://www.testnotice.com/callback\",\n            \"Method\": \"POST\",\n            \"Headers\": [\n                \"Content-Type:appliction/json\"\n            ],\n            \"Body\": \"{\\\"Uin\\\":\\\"${UIN}\\\",\\\"AlarmId\\\":\\\"alarm-xxxxxxxxx\\\"}\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"AlarmNoticeId\": \"xxxx-xx-xx-xx-xxxxxxxx\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "Creating alarm notification template"
+        "title": "Creating a notification group"
       }
     ],
     "CreateAsyncContextTask": [
@@ -46,6 +46,14 @@
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateConfig\n<Common request parameters>\n\n{\n    \"Name\": \"testname\",\n    \"Path\": \"/data/nginx/log/**/access.log\",\n    \"LogType\": \"delimiter_log\",\n    \"ExtractRule\": {\n        \"TimeKey\": \"date\",\n        \"TimeFormat\": \"%Y-%m-%d %H:%M:%S\",\n        \"Delimiter\": \"|\",\n        \"LogRegex\": \".*\",\n        \"BeginRegex\": \"^\",\n        \"Keys\": [\n            \"date\",\n            \"\",\n            \"content\"\n        ],\n        \"FilterKeyRegex\": [\n            {\n                \"Key\": \"xxx\",\n                \"Regex\": \"ssss\"\n            }\n        ],\n        \"UnMatchLogKey\": \"testlog\",\n        \"UnMatchUpLoadSwitch\": true,\n        \"Backtracking\": -1\n    },\n    \"ExcludePaths\": [\n        {\n            \"Type\": \"xx\",\n            \"Value\": \"xx\"\n        }\n    ],\n    \"Output\": \"xxxxxx-xxx-xxxxxx\",\n    \"UserDefineRule\": \"xxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"ConfigId\": \"xxxx-xx-xx-xx-xxxxxxxx\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Creating collection rule configuration"
+      }
+    ],
+    "CreateConsumer": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateConsumer\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\",\n    \"Ckafka\": {\n        \"Vip\": \"10.123.123.123\",\n        \"Vport\": \"8888\",\n        \"InstanceId\": \"xxxxx\",\n        \"InstanceName\": \"myname\",\n        \"TopicId\": \"xxxxx\",\n        \"TopicName\": \"xxxxx\"\n    },\n    \"Content\": {\n        \"EnableTag\": true,\n        \"MetaFields\": [\n            \"__SOURCE__\"\n        ]\n    },\n    \"NeedContent\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\"\n    }\n}",
+        "title": "Creating a shipping task"
       }
     ],
     "CreateExport": [
@@ -109,7 +117,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAlarmNotice\n<Common request parameters>\n\n{\n    \"AlarmNoticeId\": \"notice-d7286784-46d9-4be3-b7ba-2c464e6a5ad1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "Deleting alarm notification template"
+        "title": "Deleting a notification group"
       }
     ],
     "DeleteAsyncContextTask": [
@@ -142,6 +150,14 @@
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteConfigFromMachineGroup\n<Common request parameters>\n\n{\n    \"GroupId\": \"xxx-xxx-xxxxxx\",\n    \"ConfigId\": \"xxxxxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting collection configuration applied to machine group"
+      }
+    ],
+    "DeleteConsumer": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteConsumer\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\"\n    }\n}",
+        "title": "Deleting a shipping task"
       }
     ],
     "DeleteExport": [
@@ -197,7 +213,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlarmNotices\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"AlarmNotices\": [],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "Getting the list of alarm notification templates"
+        "title": "Getting the notification group list"
       }
     ],
     "DescribeAlarms": [
@@ -205,7 +221,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlarms\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"Alarms\": [],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "Getting the list of alarm policies"
+        "title": "Getting the alarm policy list"
       }
     ],
     "DescribeAsyncContextResult": [
@@ -254,6 +270,14 @@
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConfigs\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Key\": \"configId\",\n            \"Values\": [\n                \"xxxx-xxx-xxxx\"\n            ]\n        }\n    ],\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
         "output": "{\n    \"Response\": {\n        \"Configs\": [\n            {\n                \"ConfigId\": \"xxxx-xx-xx-xx-yyyyyyyy\",\n                \"Path\": \"/abc/log/test.log\",\n                \"LogType\": \"delimiter_log\",\n                \"ExtractRule\": {\n                    \"TimeKey\": \"date\",\n                    \"TimeFormat\": \"%Y-%m-%d %H:%M:%S\",\n                    \"Delimiter\": \"|\",\n                    \"LogRegex\": \".*\",\n                    \"BeginRegex\": \"^\",\n                    \"Keys\": [\n                        \"date\",\n                        \"\",\n                        \"content\"\n                    ],\n                    \"FilterKeyRegex\": [\n                        {\n                            \"Key\": \"xx\",\n                            \"Regex\": \"xxxx\"\n                        }\n                    ],\n                    \"UnMatchLogKey\": \"testlog\",\n                    \"UnMatchUpLoadSwitch\": true,\n                    \"Backtracking\": -1\n                },\n                \"UserDefineRule\": \"xxxx\",\n                \"UpdateTime\": \"2017-08-08 12:12:12\",\n                \"CreateTime\": \"2017-08-08 12:12:12\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Getting collection configuration"
+      }
+    ],
+    "DescribeConsumer": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConsumer\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\",\n        \"Effective\": true,\n        \"Ckafka\": {\n            \"Vip\": \"10.123.123.123\",\n            \"Vport\": \"8888\",\n            \"InstanceId\": \"xxxxx\",\n            \"InstanceName\": \"myname\",\n            \"TopicId\": \"xxxxx\",\n            \"TopicName\": \"xxxxx\"\n        },\n        \"Content\": {\n            \"EnableTag\": true,\n            \"MetaFields\": [\n                \"__SOURCE__\"\n            ]\n        },\n        \"NeedContent\": true\n    }\n}",
+        "title": "Querying a shipping task"
       }
     ],
     "DescribeExports": [
@@ -332,8 +356,8 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeShippers\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Key\": \"shipperId\",\n            \"Values\": [\n                \"xxxx-xxx-xxxx\"\n            ]\n        }\n    ],\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
-        "output": "{\n    \"Response\": {\n        \"Shippers\": [\n            {\n                \"ShipperId\": \"xxxx-xx-xx-xx-yyyyyyyy\",\n                \"TopicId\": \"xxxx-xxx-xxx-xxxxx-xxxxx\",\n                \"Bucket\": \"testbucket-appid\",\n                \"Prefix\": \"test\",\n                \"ShipperName\": \"testname\",\n                \"Interval\": 300,\n                \"MaxSize\": 256,\n                \"Status\": true,\n                \"FilterRules\": [\n                    {\n                        \"Key\": \"\",\n                        \"Regex\": \"\",\n                        \"Value\": \"\"\n                    }\n                ],\n                \"Partition\": \"%Y%m%d\",\n                \"CreateTime\": \"2017-08-08 12:12:12\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "Getting the list of shipping rules"
+        "output": "{\n    \"Response\": {\n        \"Shippers\": [\n            {\n                \"ShipperId\": \"c9a96b57-9f35-4800-b5c7-6ce6173b7db5\",\n                \"TopicId\": \"ab14dfa7-e9eb-4cd4-8300-2f35145f145e\",\n                \"Bucket\": \"0052d6c8apbeijing100008449822-1254077820\",\n                \"Prefix\": \"ab14dfa7-e9eb-4cd4-8300-2f35145f145e-1601543434\",\n                \"ShipperName\": \"ap-beijing-carywu-1601543434\",\n                \"Interval\": 300,\n                \"MaxSize\": 100,\n                \"Status\": true,\n                \"FilterRules\": [],\n                \"Partition\": \"/%Y/%m/%d/%H/\",\n                \"Compress\": {\n                    \"Format\": \"gzip\"\n                },\n                \"Content\": {\n                    \"Format\": \"json\"\n                },\n                \"CreateTime\": \"2020-10-01 17:10:32\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"99bf3fb9-eb09-41e1-aac7-7e4e7ed08f5d\"\n    }\n}",
+        "title": "Querying shipping rules"
       }
     ],
     "DescribeTopics": [
@@ -373,7 +397,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAlarmNotice\n<Common request parameters>\n\n{\n    \"AlarmNoticeId\": \"notice-5b2ea996-4dae-47cc-bbad-5b12888b4c89\",\n    \"Name\": \"test\",\n    \"Type\": \"All\",\n    \"WebCallbacks\": [\n        {\n            \"CallbackType\": \"Http\",\n            \"Url\": \"http://www.testnotice.com/callback\",\n            \"Method\": \"POST\",\n            \"Headers\": [\n                \"Content-Type:appliction/json\"\n            ],\n            \"Body\": \"{\\\"Uin\\\":\\\"${UIN}\\\",\\\"AlarmId\\\":\\\"${AlarmId}\\\"}\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "Modifying alarm notification template"
+        "title": "Modifying a notification group"
       }
     ],
     "ModifyConfig": [
@@ -382,6 +406,14 @@
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyConfig\n<Common request parameters>\n\n{\n    \"ConfigId\": \"xxxxxx-xx-xx-xx-xxxxxxxx\",\n    \"Name\": \"testname\",\n    \"Path\": \"/data/nginx/log/access.log\",\n    \"LogType\": \"delimiter_log\",\n    \"ExtractRule\": {\n        \"TimeKey\": \"date\",\n        \"TimeFormat\": \"%Y-%m-%d %H:%M:%S\",\n        \"Delimiter\": \"|\",\n        \"LogRegex\": \".*\",\n        \"BeginRegex\": \"^\",\n        \"Keys\": [\n            \"date\",\n            \"\",\n            \"content\"\n        ],\n        \"FilterKeyRegex\": [\n            {\n                \"Key\": \"xxx\",\n                \"Regex\": \"xxxx\"\n            }\n        ],\n        \"UnMatchUpLoadSwitch\": true,\n        \"UnMatchLogKey\": \"testlog\",\n        \"Backtracking\": 1048576\n    },\n    \"UserDefineRule\": \"xxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Modifying collection rule configuration"
+      }
+    ],
+    "ModifyConsumer": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyConsumer\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\",\n    \"Effective\": true,\n    \"Ckafka\": {\n        \"Vip\": \"10.123.123.123\",\n        \"Vport\": \"8888\",\n        \"InstanceId\": \"xxxxx\",\n        \"InstanceName\": \"myname\",\n        \"TopicId\": \"xxxxx\",\n        \"TopicName\": \"xxxxx\"\n    },\n    \"Content\": {\n        \"EnableTag\": true,\n        \"MetaFields\": [\n            \"__SOURCE__\"\n        ]\n    },\n    \"NeedContent\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\"\n    }\n}",
+        "title": "Modifying a shipping task"
       }
     ],
     "ModifyIndex": [

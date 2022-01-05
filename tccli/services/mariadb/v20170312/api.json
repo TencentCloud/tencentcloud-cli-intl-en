@@ -126,6 +126,12 @@
       "name": "Queries the disaster recovery details of an instance",
       "output": "DescribeDcnDetailResponse"
     },
+    "DescribeFileDownloadUrl": {
+      "document": "This API is used to get the download URL of a specific backup or log file of a database.",
+      "input": "DescribeFileDownloadUrlRequest",
+      "name": "Gets the backup/log download URL",
+      "output": "DescribeFileDownloadUrlResponse"
+    },
     "DescribeFlow": {
       "document": "This API is used to query flow status.",
       "input": "DescribeFlowRequest",
@@ -2715,6 +2721,51 @@
           "name": "DcnDetails",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFileDownloadUrlRequest": {
+      "document": "DescribeFileDownloadUrl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tdsql-1234abcd",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unsigned file path",
+          "example": "/cos_backup/xxx",
+          "member": "string",
+          "name": "FilePath",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFileDownloadUrlResponse": {
+      "document": "DescribeFileDownloadUrl response structure.",
+      "members": [
+        {
+          "document": "Signed download URL",
+          "example": "http://cos.domain/xxx",
+          "member": "string",
+          "name": "PreSignedUrl",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {

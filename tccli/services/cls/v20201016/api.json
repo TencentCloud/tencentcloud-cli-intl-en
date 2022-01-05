@@ -13,9 +13,9 @@
       "output": "CreateAlarmResponse"
     },
     "CreateAlarmNotice": {
-      "document": "This API is used to create an alarm notification template.",
+      "document": "This API is used to create a notification group.",
       "input": "CreateAlarmNoticeRequest",
-      "name": "Creates alarm notification template",
+      "name": "Creates a notification group",
       "output": "CreateAlarmNoticeResponse"
     },
     "CreateAsyncContextTask": {
@@ -35,6 +35,12 @@
       "input": "CreateConfigRequest",
       "name": "Creates collection rule configuration",
       "output": "CreateConfigResponse"
+    },
+    "CreateConsumer": {
+      "document": "This API is used to create a shipping task.",
+      "input": "CreateConsumerRequest",
+      "name": "Creates a shipping task",
+      "output": "CreateConsumerResponse"
     },
     "CreateExport": {
       "document": "This API is used to create a log download task.",
@@ -79,9 +85,9 @@
       "output": "DeleteAlarmResponse"
     },
     "DeleteAlarmNotice": {
-      "document": "This API is used to delete an alarm notification template.",
+      "document": "This API is used to delete a notification group.",
       "input": "DeleteAlarmNoticeRequest",
-      "name": "Deletes alarm notification template",
+      "name": "Deletes a notification group",
       "output": "DeleteAlarmNoticeResponse"
     },
     "DeleteAsyncContextTask": {
@@ -107,6 +113,12 @@
       "input": "DeleteConfigFromMachineGroupRequest",
       "name": "Deletes collection configuration applied to machine group",
       "output": "DeleteConfigFromMachineGroupResponse"
+    },
+    "DeleteConsumer": {
+      "document": "This API is used to delete a shipping task.",
+      "input": "DeleteConsumerRequest",
+      "name": "Deletes a shipping task",
+      "output": "DeleteConsumerResponse"
     },
     "DeleteExport": {
       "document": "This API is used to delete a log download task.",
@@ -145,13 +157,13 @@
       "output": "DeleteTopicResponse"
     },
     "DescribeAlarmNotices": {
-      "document": "This API is used to get the list of alarm notification templates.",
+      "document": "This API is used to get the notification group list.",
       "input": "DescribeAlarmNoticesRequest",
-      "name": "Gets the list of alarm notification templates",
+      "name": "Gets the notification group list",
       "output": "DescribeAlarmNoticesResponse"
     },
     "DescribeAlarms": {
-      "document": "This API is used to get the list of alarm policies.",
+      "document": "This API is used to get the alarm policy list.",
       "input": "DescribeAlarmsRequest",
       "name": "Gets the list of alarm policies",
       "output": "DescribeAlarmsResponse"
@@ -191,6 +203,12 @@
       "input": "DescribeConfigsRequest",
       "name": "Gets collection rule configuration",
       "output": "DescribeConfigsResponse"
+    },
+    "DescribeConsumer": {
+      "document": "This API is used to query a shipping task.",
+      "input": "DescribeConsumerRequest",
+      "name": "Queries a shipping task",
+      "output": "DescribeConsumerResponse"
     },
     "DescribeExports": {
       "document": "This API is used to get the list of log download tasks.",
@@ -277,9 +295,9 @@
       "output": "ModifyAlarmResponse"
     },
     "ModifyAlarmNotice": {
-      "document": "This API is used to modify an alarm notification template.",
+      "document": "This API is used to modify a notification group.",
       "input": "ModifyAlarmNoticeRequest",
-      "name": "Modifies alarm notification template",
+      "name": "Modifies a notification group",
       "output": "ModifyAlarmNoticeResponse"
     },
     "ModifyConfig": {
@@ -287,6 +305,12 @@
       "input": "ModifyConfigRequest",
       "name": "Modifies collection rule configuration",
       "output": "ModifyConfigResponse"
+    },
+    "ModifyConsumer": {
+      "document": "This API is used to modify a shipping task.",
+      "input": "ModifyConsumerRequest",
+      "name": "Modifies a shipping task",
+      "output": "ModifyConsumerResponse"
     },
     "ModifyIndex": {
       "document": "This API is used to modify the index configuration.\n",
@@ -325,7 +349,7 @@
       "output": "RetryShipperTaskResponse"
     },
     "SearchLog": {
-      "document": "This API is used to search for logs.",
+      "document": "This API is used to search logs. It is subject to the default API rate limit, and the number of concurrent calls to the same log topic cannot exceed 15.",
       "input": "SearchLogRequest",
       "name": "Searches for logs",
       "output": "SearchLogResponse"
@@ -1042,6 +1066,72 @@
       ],
       "usage": "both"
     },
+    "Ckafka": {
+      "document": "Information of the CKafka instance to ship to",
+      "members": [
+        {
+          "default": "",
+          "document": "CKafka VIP",
+          "example": "“10.123.123.123”",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CKafka Vport",
+          "example": "“8888”",
+          "member": "string",
+          "name": "Vport",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CKafka instance ID",
+          "example": "“xxxxxx”",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CKafka instance name",
+          "example": "\"myname\"",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CKafka topic ID",
+          "example": "\"xxxxxxxx\"",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CKafka topic name",
+          "example": "\"xxxxxxxx\"",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "Column": {
       "document": "Column attribute of log analysis",
       "members": [
@@ -1189,6 +1279,32 @@
         }
       ],
       "usage": "out"
+    },
+    "ConsumerContent": {
+      "document": "Shipping content",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to ship tag information\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableTag",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of metadata to ship. Currently, only __SOURCE__, __FILENAME__, and __TIMESTAMP__ are supported.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "{\"__SOURCE__\", \"__FILENAME__\", \"__TIMESTAMP__\"}",
+          "member": "string",
+          "name": "MetaFields",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "ContentInfo": {
       "document": "Format configuration of shipped log content",
@@ -1649,6 +1765,60 @@
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateConsumerRequest": {
+      "document": "CreateConsumer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Log topic ID to bind",
+          "example": "\"xxx-xxx-xxx-xxx\"",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to ship log metadata. Default value: `true`",
+          "example": "false",
+          "member": "bool",
+          "name": "NeedContent",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Metadata to ship if `NeedContent` is `true`",
+          "example": "无",
+          "member": "ConsumerContent",
+          "name": "Content",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "CKafka information",
+          "example": "无",
+          "member": "Ckafka",
+          "name": "Ckafka",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateConsumerResponse": {
+      "document": "CreateConsumer response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -2389,6 +2559,33 @@
       ],
       "type": "object"
     },
+    "DeleteConsumerRequest": {
+      "document": "DeleteConsumer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Log topic ID bound to the task",
+          "example": "\"xxx-xxx-xxx-xxx\"",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteConsumerResponse": {
+      "document": "DeleteConsumer response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteExportRequest": {
       "document": "DeleteExport request structure.",
       "members": [
@@ -2619,7 +2816,7 @@
       "members": [
         {
           "default": "",
-          "document": "<br><li> name\n\nFilter by **alarm policy name**.\nType: String\n\nRequired: no\n\n<br><li> alarmId\n\nFilter by **alarm policy ID**.\nType: String\n\nRequired: no\n\n<br><li> topicId\n\nFilter by **log topic ID of monitoring object**.\n\nType: String\n\nRequired: no\n\n<br><li> enable\n\nFilter by **enablement status**.\n\nType: String\n\nRequired: no\n\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`.",
+          "document": "<br><li> name\n\nFilter by **alarm policy name**\nType: string\n\nRequired: no\n\n<br><li> alarmId\n\nFilter by **alarm policy ID**\nType: string\n\nRequired: no\n\n<br><li> topicId\n\nFilter by **log topic ID**\n\nType: string\n\nRequired: no\n\n<br><li> enable\n\nFilter by **enablement status**\n\nType: string\n\nNote: The valid values of `enable` include `1`, `t`, `T`, `TRUE`, `true`, `True`, `0`, `f`, `F`, `FALSE`, `false`, and `False`. If other values are entered, an “invalid parameter” error will be returned.\n\nRequired: no\n\nEach request can have up to 10 `Filters` and 5 `Filter.Values`.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -3071,6 +3268,69 @@
           "name": "TotalCount",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConsumerRequest": {
+      "document": "DescribeConsumer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Log topic ID bound to the task",
+          "example": "\"xxx-xxx-xxx-xxx\"",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConsumerResponse": {
+      "document": "DescribeConsumer response structure.",
+      "members": [
+        {
+          "document": "Whether the shipping task is effective",
+          "example": "true",
+          "member": "bool",
+          "name": "Effective",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether log metadata is shipped",
+          "example": "true",
+          "member": "bool",
+          "name": "NeedContent",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Metadata shipped if `NeedContent` is `true`\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "ConsumerContent",
+          "name": "Content",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "CKafka information",
+          "example": "无",
+          "member": "Ckafka",
+          "name": "Ckafka",
+          "required": true,
+          "type": "object",
           "value_allowed_null": false
         },
         {
@@ -5142,6 +5402,69 @@
       ],
       "type": "object"
     },
+    "ModifyConsumerRequest": {
+      "document": "ModifyConsumer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Log topic ID bound to the task",
+          "example": "\"xxx-xxx-xxx-xxx\"",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the shipping task",
+          "example": "false",
+          "member": "bool",
+          "name": "Effective",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to ship metadata. Default value: `false`",
+          "example": "false",
+          "member": "bool",
+          "name": "NeedContent",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Metadata to ship if `NeedContent` is `true`",
+          "example": "无",
+          "member": "ConsumerContent",
+          "name": "Content",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "CKafka information",
+          "example": "无",
+          "member": "Ckafka",
+          "name": "Ckafka",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyConsumerResponse": {
+      "document": "ModifyConsumer response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyIndexRequest": {
       "document": "ModifyIndex request structure.",
       "members": [
@@ -5837,7 +6160,7 @@
         },
         {
           "default": "",
-          "document": "This field is used to load more logs. Pass through the last `Context` value returned to get more log content. It will expire after 1 hour.",
+          "document": "This parameter is used to load more logs. Pass through the last `Context` value returned to get more log content. Up to 10,000 raw logs can be obtained in total. This parameter expires in 1 hour.",
           "example": "context",
           "member": "string",
           "name": "Context",

@@ -72,6 +72,12 @@
       "name": "Queries the list of TencentDB instances",
       "output": "DescribeDBInstancesResponse"
     },
+    "DescribeInstanceParams": {
+      "document": "This API is used to query the modifiable parameter list of an instance.",
+      "input": "DescribeInstanceParamsRequest",
+      "name": "Queries the modifiable parameter list",
+      "output": "DescribeInstanceParamsResponse"
+    },
     "DescribeSecurityGroup": {
       "document": "This API is used to query the security groups associated with an instance.",
       "input": "DescribeSecurityGroupRequest",
@@ -433,6 +439,7 @@
         {
           "default": "",
           "document": "Client IP of a connection",
+          "example": "192.168.1.1",
           "member": "string",
           "name": "IP",
           "required": true,
@@ -442,10 +449,21 @@
         {
           "default": "",
           "document": "Number of connections corresponding to a client IP",
+          "example": "9",
           "member": "uint64",
           "name": "Count",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is the Tencent Cloud IP for automated testing",
+          "example": "true",
+          "member": "bool",
+          "name": "InternalService",
+          "required": true,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -1641,6 +1659,78 @@
       ],
       "type": "object"
     },
+    "DescribeInstanceParamsRequest": {
+      "document": "DescribeInstanceParams request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "cmgo-********",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceParamsResponse": {
+      "document": "DescribeInstanceParams response structure.",
+      "members": [
+        {
+          "document": "The collection of enum parameters",
+          "example": "无",
+          "member": "InstanceEnumParam",
+          "name": "InstanceEnumParam",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The collection of integer parameters",
+          "example": "无",
+          "member": "InstanceIntegerParam",
+          "name": "InstanceIntegerParam",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The collection of text parameters",
+          "example": "无",
+          "member": "InstanceTextParam",
+          "name": "InstanceTextParam",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The collection of string parameters used to represent time ranges",
+          "example": "无",
+          "member": "InstanceMultiParam",
+          "name": "InstanceMultiParam",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of modifiable parameters of the instance, such as 0",
+          "example": "2",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeSecurityGroupRequest": {
       "document": "DescribeSecurityGroup request structure.",
       "members": [
@@ -2486,6 +2576,370 @@
           "document": "Physical instance ID. For an instance that has been rolled back and replaced, its InstanceId and RealInstanceId are different. The physical instance ID is needed in such scenarios as getting monitoring data from Barad",
           "member": "string",
           "name": "RealInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceEnumParam": {
+      "document": "The collection of modifiable enum parameters of an instance.",
+      "members": [
+        {
+          "default": "",
+          "document": "Current value",
+          "example": "\"all\"",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default value",
+          "example": "\"slowOp\"",
+          "member": "string",
+          "name": "DefaultValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Acceptable values",
+          "example": "[\"off\",\"slowOp\",\"all\"]",
+          "member": "string",
+          "name": "EnumValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no)",
+          "example": "\"0\"",
+          "member": "string",
+          "name": "NeedRestart",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter name",
+          "example": "\"operationProfiling.mode\"",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter description",
+          "example": "[\"事务加锁超时时间\",\"max transaction lockrequest timeout millis\"]",
+          "member": "string",
+          "name": "Tips",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data type of the parameter",
+          "example": "\"enum\"",
+          "member": "string",
+          "name": "ValueType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the TencentDB for MongoDB console has pulled parameter information successfully. Valid values: `1` (yes), `0` (no, and displays \"Loading\" in the console)",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceIntegerParam": {
+      "document": "The collection of modifiable integer parameters of an instance.",
+      "members": [
+        {
+          "default": "",
+          "document": "Current value",
+          "example": "\"100\"",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default value",
+          "example": "\"100\"",
+          "member": "string",
+          "name": "DefaultValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum value",
+          "example": "\"65536\"",
+          "member": "string",
+          "name": "Max",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum value",
+          "example": "\"0\"",
+          "member": "string",
+          "name": "Min",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no)",
+          "example": "\"1\"",
+          "member": "string",
+          "name": "NeedRestart",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter name",
+          "example": "\"operation.profiling.slowOpThresholdMs\"",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter description",
+          "example": "[\"数据库profiler确定慢查询的阈值，单位毫秒，默认值100\",\"The Performance Advisor re\"]",
+          "member": "string",
+          "name": "Tips",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data type of the parameter",
+          "example": "\"integer\"",
+          "member": "string",
+          "name": "ValueType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the TencentDB for MongoDB console has pulled parameter information successfully. Valid values: `1` (no), `0` (yes). This field is only used in the console.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is not in use",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Unit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceMultiParam": {
+      "document": "The collection of modifiable string parameters of an instance which are used to represent time ranges.",
+      "members": [
+        {
+          "default": "",
+          "document": "Current value",
+          "example": "\"01:00\"",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default value",
+          "example": "NULL",
+          "member": "string",
+          "name": "DefaultValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Acceptable values",
+          "example": "[\"00:00\",\"23:00\" ]",
+          "member": "string",
+          "name": "EnumValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to restart the instance for the parameter to take effect",
+          "example": "\"1\"",
+          "member": "string",
+          "name": "NeedRestart",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter name",
+          "example": "\"openBalance.window\"",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the TencentDB for MongoDB console has pulled parameter information successfully",
+          "example": "\"1\"",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter description",
+          "example": "[\"负载均衡时间窗\",\"balance.window\"]",
+          "member": "string",
+          "name": "Tips",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data type of the parameter",
+          "example": "\"multi\"",
+          "member": "string",
+          "name": "ValueType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceTextParam": {
+      "document": "The collection of modifiable text parameters of an instance.",
+      "members": [
+        {
+          "default": "",
+          "document": "Current value (not in use)",
+          "example": "\"\"",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default value (not in use)",
+          "example": "\"\"",
+          "member": "string",
+          "name": "DefaultValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to restart the instance for the parameter to take effect (not in use)",
+          "example": "\"\"",
+          "member": "string",
+          "name": "NeedRestart",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter name (not in use)",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Acceptable values (not in use)",
+          "example": "\"\"",
+          "member": "string",
+          "name": "TextValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter description (not in use)",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Tips",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data type of the parameter (not in use)",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ValueType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the TencentDB for MongoDB console has pulled parameter information successfully (not in use)",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Status",
           "required": true,
           "type": "string",
           "value_allowed_null": false

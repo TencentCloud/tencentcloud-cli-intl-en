@@ -27,15 +27,15 @@
     "CreateDBInstance": [
       {
         "document": "",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=CreateDBInstance\n&Memory=4\n&Volume=250\n&GoodsNum=1\n&Zone=ap-guangzhou-2\n&VpcId=vpc-0akbol5v\n&SubnetId=subnet-fyrtjbqw\n&ProjectId=0\n&MongoVersion=MONGO_3_WT\n&MachineCode=TGIO\n&NodeNum=3\n&Period=1\n&Password=pwd123456\n&ClusterType=REPLSET\n&ReplicateSetNum=1\n&<Common request parameters>",
+        "input": "https://mongodb.tencentcloudapi.com/?Action=CreateDBInstance\n&Memory=4\n&Volume=250\n&GoodsNum=1\n&Zone=ap-guangzhou-2\n&VpcId=vpc-0akbol5v\n&SubnetId=subnet-fyrtjbqw\n&ProjectId=0\n&MongoVersion=MONGO_40_WT\n&MachineCode=HIO10G\n&NodeNum=3\n&Period=1\n&Password=pwd123456\n&ClusterType=REPLSET\n&ReplicateSetNum=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d88095e5-50e8-4245-a0cf-993a536f9b20\",\n        \"DealId\": \"7142863\",\n        \"InstanceIds\": [\n            \"cmgo-po5f899l\"\n        ]\n    }\n}",
-        "title": "Creating a monthly-subscribed TencentDB instance"
+        "title": "Creating a monthly subscribed TencentDB instance"
       }
     ],
     "CreateDBInstanceHour": [
       {
         "document": "",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=CreateDBInstanceHour\n&Memory=4\n&Volume=250\n&ReplicateSetNum=1\n&NodeNum=2\n&MongoVersion=MONGO_3_WT\n&MachineCode=TGIO\n&GoodsNum=1\n&Zone=ap-guangzhou-3\n&Clone=1\n&ClusterType=REPLSET\n&<Common request parameters>",
+        "input": "https://mongodb.tencentcloudapi.com/?Action=CreateDBInstanceHour\n&Memory=4\n&Volume=250\n&ReplicateSetNum=1\n&NodeNum=2\n&MongoVersion=MONGO_40_WT\n&MachineCode=HIO10G\n&GoodsNum=1\n&Zone=ap-guangzhou-3\n&Clone=1\n&ClusterType=REPLSET\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eaf9b19d-5ad4-4ca2-9fc4-a319aeb9181f\",\n        \"DealId\": \"20190709160000003502416120946732\",\n        \"InstanceIds\": [\n            \"cmgo-m26c6jsf\"\n        ]\n    }\n}",
         "title": "Creating a pay-as-you-go TencentDB instance"
       }
@@ -94,6 +94,14 @@
         "input": "https://mongodb.tencentcloudapi.com/?Action=DescribeDBInstances\n&Limit=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"InstanceDetails\": [\n            {\n                \"AutoRenewFlag\": 0,\n                \"CloneInstances\": [],\n                \"ClusterType\": 0,\n                \"ClusterVer\": 1,\n                \"CpuNum\": 2,\n                \"CreateTime\": \"2019-04-02 19:29:16\",\n                \"DeadLine\": \"2019-04-04 19:29:16\",\n                \"InstanceId\": \"cmgo-rw2v134z\",\n                \"InstanceName\": \"cmgo-rw2v134z\",\n                \"InstanceStatusDesc\": \"Rolling back \",\n                \"InstanceType\": 2,\n                \"InstanceVer\": 4,\n                \"MachineType\": \"HIO10G\",\n                \"MaintenanceEnd\": \"05:00:00\",\n                \"MaintenanceStart\": \"04:00:00\",\n                \"Memory\": 4096,\n                \"MongoVersion\": \"MONGO_3_WT\",\n                \"NetType\": 1,\n                \"PayMode\": 0,\n                \"ProjectId\": 0,\n                \"Protocol\": 0,\n                \"ReadonlyInstances\": [],\n                \"RealInstanceId\": \"cmgo-da0pc0dr\",\n                \"Region\": \"ap-guangzhou\",\n                \"RelatedInstance\": {\n                    \"InstanceId\": \"\",\n                    \"Region\": \"\"\n                },\n                \"ReplicaSets\": [\n                    {\n                        \"Memory\": 4096,\n                        \"OplogSize\": 10240,\n                        \"RealReplicaSetId\": \"cmgo-rw2v134z_0\",\n                        \"ReplicaSetId\": \"cmgo-rw2v134z_0\",\n                        \"ReplicaSetName\": \"cmgo-rw2v134z_0\",\n                        \"SecondaryNum\": 2,\n                        \"UsedVolume\": 0,\n                        \"Volume\": 102400\n                    }\n                ],\n                \"ReplicationSetNum\": 1,\n                \"SecondaryNum\": 2,\n                \"StandbyInstances\": [],\n                \"Status\": 1,\n                \"SubnetId\": \"subnet-b0lagkxi\",\n                \"Tags\": [],\n                \"UsedVolume\": 0,\n                \"Vip\": \"\",\n                \"Volume\": 102400,\n                \"VpcId\": \"vpc-orgohlut\",\n                \"Vport\": 27017,\n                \"Zone\": \"ap-guangzhou-3\"\n            }\n        ],\n        \"RequestId\": \"302530d2-ee57-495e-89d0-51e03b11815e\",\n        \"TotalCount\": 19\n    }\n}",
         "title": "Querying the list of instances"
+      }
+    ],
+    "DescribeInstanceParams": [
+      {
+        "document": "This example shows you how to query the modifiable parameter list of a MongoDB instance.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceParams\n<Common request parameters>\n\n{\n    \"InstanceId\": \"jyjcw8yv\"\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceEnumParam\": [\n            {\n                \"Status\": 1,\n                \"CurrentValue\": \"xx\",\n                \"DefaultValue\": \"xx\",\n                \"NeedRestart\": \"xx\",\n                \"EnumValue\": [\n                    \"xx\"\n                ],\n                \"ParamName\": \"xx\",\n                \"Tips\": [\n                    \"xx\"\n                ],\n                \"ValueType\": \"xx\"\n            }\n        ],\n        \"InstanceTextParam\": [\n            {\n                \"Status\": \"xx\",\n                \"CurrentValue\": \"xx\",\n                \"DefaultValue\": \"xx\",\n                \"NeedRestart\": \"xx\",\n                \"ParamName\": \"xx\",\n                \"Tips\": [\n                    \"xx\"\n                ],\n                \"TextValue\": \"xx\",\n                \"ValueType\": \"xx\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"InstanceIntegerParam\": [\n            {\n                \"Status\": 1,\n                \"CurrentValue\": \"xx\",\n                \"Min\": \"xx\",\n                \"Max\": \"xx\",\n                \"DefaultValue\": \"xx\",\n                \"NeedRestart\": \"xx\",\n                \"ParamName\": \"xx\",\n                \"Tips\": [\n                    \"xx\"\n                ],\n                \"ValueType\": \"xx\",\n                \"Unit\": \"xx\"\n            }\n        ],\n        \"InstanceMultiParam\": [\n            {\n                \"Status\": 1,\n                \"CurrentValue\": \"xx\",\n                \"DefaultValue\": \"xx\",\n                \"NeedRestart\": \"xx\",\n                \"EnumValue\": [\n                    \"xx\"\n                ],\n                \"ParamName\": \"xx\",\n                \"Tips\": [\n                    \"xx\"\n                ],\n                \"ValueType\": \"xx\"\n            }\n        ]\n    }\n}",
+        "title": "InstanceEnumParam"
       }
     ],
     "DescribeSecurityGroup": [
@@ -155,9 +163,9 @@
     "InquirePriceRenewDBInstances": [
       {
         "document": "",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=InquirePriceRenewDBInstances\r\n&InstanceIds.0=cmgo-8oij5631\r\n&InstanceChargePrepaid.Period=1\r\n&<Common request parameters>",
+        "input": "https://mongodb.tencentcloudapi.com/?Action=InquirePriceRenewDBInstances\n&InstanceIds.0=cmgo-8oij5631\n&InstanceChargePrepaid.Period=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"DiscountPrice\": 455.6,\n            \"OriginalPrice\": 670,\n            \"UnitPrice\": 0\n        },\n        \"RequestId\": \"d08f2a0f-4a69-451e-8ddb-753340d5fb34\"\n    }\n}",
-        "title": "Querying renewal prices of instances"
+        "title": "Querying the renewal price of an instance"
       }
     ],
     "IsolateDBInstance": [
