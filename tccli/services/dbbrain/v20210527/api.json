@@ -60,6 +60,12 @@
       "name": "Gets diagnosis event details",
       "output": "DescribeDBDiagEventResponse"
     },
+    "DescribeDBDiagEvents": {
+      "document": "This API is used to obtain the diagnosis event list in a specified time period by risk level, instance ID, etc.",
+      "input": "DescribeDBDiagEventsRequest",
+      "name": "Obtains diagnosis event list",
+      "output": "DescribeDBDiagEventsResponse"
+    },
     "DescribeDBDiagHistory": {
       "document": "This API is used to get the list of instance diagnosis events.",
       "input": "DescribeDBDiagHistoryRequest",
@@ -917,6 +923,96 @@
           "name": "EndTime",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBDiagEventsRequest": {
+      "document": "DescribeDBDiagEvents request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time in the format of “2021-05-27 00:00:00”. The earliest time that can be queried is 30 days before the current time.",
+          "example": "2021-05-27 00:00:00",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time in the format of \"2021-05-27 01:00:00\". The interval between the end time and the start time can be up to 7 days.",
+          "example": "2021-05-27 01:00:00",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Risk level list. Valid values in descending order of severity: `1` (critical), `2` (serious), `3` (alarm), `4` (warning), `5` (healthy).",
+          "example": "[1, 2, 3, 4]",
+          "member": "int64",
+          "name": "Severities",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance ID list.",
+          "example": "[\"cdb-test\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 50.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBDiagEventsResponse": {
+      "document": "DescribeDBDiagEvents response structure.",
+      "members": [
+        {
+          "document": "Total number of diagnosis events.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Diagnosis event list.",
+          "example": "无",
+          "member": "DiagHistoryEventItem",
+          "name": "Items",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -1797,7 +1893,7 @@
         },
         {
           "default": "",
-          "document": "End time, such as \"2019-09-10 12:13:14\". The interval between the end time and the start time can be up to 7 days.",
+          "document": "End time in the format of \"2019-09-11 10:13:14\". The interval between the end time and the start time can be up to 7 days.",
           "example": "2019-01-01 01:00:00",
           "member": "datetime",
           "name": "EndTime",

@@ -26,10 +26,10 @@
     ],
     "CreateFileSystem": [
       {
-        "document": "This example shows how to create a file system.",
+        "document": "This example shows you how to create a file system.",
         "input": "https://chdfs.tencentcloudapi.com/?Action=CreateFileSystem\n&FileSystemName=test\n&Description=test\n&CapacityQuota=1073741824\n&SuperUsers.0=hadoop\n&PosixAcl=true\n&RootInodeUser=hadoop\n&RootInodeGroup=supergroup\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"FileSystem\": {\n            \"AppId\": 1251006373,\n            \"FileSystemName\": \"test\",\n            \"Description\": \"test\",\n            \"Region\": \"ap-guangzhou\",\n            \"FileSystemId\": \"f4mhaqkciq0\",\n            \"CreateTime\": \"2019-07-30T16:51:41+08:00\",\n            \"BlockSize\": 4194304,\n            \"CapacityQuota\": 1073741824,\n            \"SuperUsers\": [\n                \"hadoop\"\n            ],\n            \"PosixAcl\": true,\n            \"Status\": 1\n        },\n        \"RequestId\": \"ecba2ede-de08-41d5-99cc-b5444912b7f2\"\n    }\n}",
-        "title": "Creating file system"
+        "output": "{\n    \"Response\": {\n        \"FileSystem\": {\n            \"AppId\": 1251006373,\n            \"FileSystemName\": \"test\",\n            \"Description\": \"test\",\n            \"Region\": \"ap-guangzhou\",\n            \"FileSystemId\": \"f4mhaqkciq0\",\n            \"CreateTime\": \"2019-07-30T16:51:41+08:00\",\n            \"BlockSize\": 4194304,\n            \"CapacityQuota\": 1073741824,\n            \"SuperUsers\": [\n                \"hadoop\"\n            ],\n            \"PosixAcl\": true,\n            \"Status\": 1,\n            \"EnableRanger\": false,\n            \"RangerServiceAddresses\": [\n                \"127.0.0.1:8080\"\n            ]\n        },\n        \"RequestId\": \"ecba2ede-de08-41d5-99cc-b5444912b7f2\"\n    }\n}",
+        "title": "Creating a file system"
       }
     ],
     "CreateLifeCycleRules": [
@@ -122,18 +122,18 @@
     ],
     "DescribeFileSystem": [
       {
-        "document": "This example shows how to view the details of a file system.",
+        "document": "This example shows you how to view the details of a file system.",
         "input": "https://chdfs.tencentcloudapi.com/?Action=DescribeFileSystem\n&FileSystemId=f4mhaqkciq0\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"FileSystem\": {\n            \"AppId\": 1251006373,\n            \"FileSystemName\": \"test\",\n            \"Description\": \"\",\n            \"Region\": \"ap-guangzhou\",\n            \"FileSystemId\": \"f4mhaqkciq0\",\n            \"CreateTime\": \"2019-07-30T17:03:20+08:00\",\n            \"BlockSize\": 4194304,\n            \"CapacityQuota\": 1073741824,\n            \"SuperUsers\": [\n                \"hadoop\"\n            ],\n            \"PosixAcl\": true,\n            \"Status\": 2\n        },\n        \"CapacityUsed\": 0,\n        \"ArchiveCapacityUsed\": 0,\n        \"RequestId\": \"22e36f95-9295-4132-a75e-09a08d2e13fc\"\n    }\n}",
-        "title": "Viewing file system details"
+        "output": "{\n    \"Response\": {\n        \"FileSystem\": {\n            \"AppId\": 1251006373,\n            \"FileSystemName\": \"test\",\n            \"Description\": \"\",\n            \"Region\": \"ap-guangzhou\",\n            \"FileSystemId\": \"f4mhaqkciq0\",\n            \"CreateTime\": \"2019-07-30T17:03:20+08:00\",\n            \"BlockSize\": 4194304,\n            \"CapacityQuota\": 1073741824,\n            \"SuperUsers\": [\n                \"hadoop\"\n            ],\n            \"PosixAcl\": true,\n            \"Status\": 2,\n            \"EnableRanger\": false,\n            \"RangerServiceAddresses\": [\n                \"127.0.0.1:8080\"\n            ]\n        },\n        \"CapacityUsed\": 0,\n        \"ArchiveCapacityUsed\": 0,\n        \"StandardCapacityUsed\": 0,\n        DegradeCapacityUsed\": 0,\n        \"RequestId\": \"22e36f95-9295-4132-a75e-09a08d2e13fc\"\n    }\n}",
+        "title": "Viewing details of a file system"
       }
     ],
     "DescribeFileSystems": [
       {
-        "document": "This example shows how to view the list of file systems.",
+        "document": "This example shows you how to view the list of file systems.",
         "input": "https://chdfs.tencentcloudapi.com/?Action=DescribeFileSystems\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"FileSystems\": [\n            {\n                \"AppId\": 1251006373,\n                \"FileSystemName\": \"test\",\n                \"Description\": \"\",\n                \"Region\": \"ap-guangzhou\",\n                \"FileSystemId\": \"f4mnvilzmdd\",\n                \"CreateTime\": \"2019-07-30T17:03:20+08:00\",\n                \"BlockSize\": 4194304,\n                \"CapacityQuota\": 1073741824,\n                \"SuperUsers\": [\n                    \"hadoop\"\n                ],\n                \"PosixAcl\": true,\n                \"Status\": 2\n            }\n        ],\n        \"RequestId\": \"a6d1c90a-a86a-45e2-b031-0de50f1ffc35\"\n    }\n}",
-        "title": "Viewing file system list"
+        "output": "{\n    \"Response\": {\n        \"FileSystems\": [\n            {\n                \"AppId\": 1251006373,\n                \"FileSystemName\": \"test\",\n                \"Description\": \"\",\n                \"Region\": \"ap-guangzhou\",\n                \"FileSystemId\": \"f4mnvilzmdd\",\n                \"CreateTime\": \"2019-07-30T17:03:20+08:00\",\n                \"BlockSize\": 4194304,\n                \"CapacityQuota\": 1073741824,\n                \"SuperUsers\": [\n                    \"hadoop\"\n                ],\n                \"PosixAcl\": true,\n                \"Status\": 2,\n                \"EnableRanger\": false,\n                \"RangerServiceAddresses\": [\n                    \"127.0.0.1:8080\"\n                ]\n            }\n        ],\n        \"RequestId\": \"a6d1c90a-a86a-45e2-b031-0de50f1ffc35\"\n    }\n}",
+        "title": "Viewing the list of file systems"
       }
     ],
     "DescribeLifeCycleRules": [

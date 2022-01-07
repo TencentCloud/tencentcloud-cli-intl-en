@@ -425,6 +425,7 @@
         {
           "default": "",
           "document": "File system name",
+          "example": "test",
           "member": "string",
           "name": "FileSystemName",
           "required": true,
@@ -433,6 +434,7 @@
         {
           "default": "",
           "document": "File system capacity (in bytes), which can range from 1 GB to 1 PB and must be an integer multiple of 1 GB",
+          "example": "1073741824",
           "member": "uint64",
           "name": "CapacityQuota",
           "required": true,
@@ -441,6 +443,7 @@
         {
           "default": "",
           "document": "Whether to verify POSIX ACL",
+          "example": "true",
           "member": "bool",
           "name": "PosixAcl",
           "required": true,
@@ -449,6 +452,7 @@
         {
           "default": "",
           "document": "File system description, which is an empty string by default",
+          "example": "test",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -457,6 +461,7 @@
         {
           "default": "",
           "document": "List of superuser names, which is an empty array by default",
+          "example": "[\"hadoop\"]",
           "member": "string",
           "name": "SuperUsers",
           "required": false,
@@ -465,6 +470,7 @@
         {
           "default": "",
           "document": "Username of the root directory Inode, which is `hadoop` by default",
+          "example": "hadoop",
           "member": "string",
           "name": "RootInodeUser",
           "required": false,
@@ -473,10 +479,29 @@
         {
           "default": "",
           "document": "Group name of the root directory Inode, which is `supergroup` by default",
+          "example": "supergroup",
           "member": "string",
           "name": "RootInodeGroup",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable verification of Ranger service addresses",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableRanger",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "List of Ranger service addresses (empty array by default)",
+          "example": "[\"127.0.0.1:8080\"]",
+          "member": "string",
+          "name": "RangerServiceAddresses",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -882,22 +907,46 @@
       "members": [
         {
           "document": "File system",
+          "example": "无",
           "member": "FileSystem",
           "name": "FileSystem",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "document": "Used capacity (in bytes), including STANDARD storage and ARCHIVE storage\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Used capacity of the file system, in bytes\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "0",
           "member": "uint64",
           "name": "CapacityUsed",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "document": "Used ARCHIVE storage capacity (in bytes)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Used ARCHIVE capacity of COS, in bytes\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "uint64",
           "name": "ArchiveCapacityUsed",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Used STANDARD capacity of COS, in bytes\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "StandardCapacityUsed",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Used STANDARD_IA capacity of COS, in bytes\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "0",
+          "member": "uint64",
+          "name": "DegradeCapacityUsed",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -1161,6 +1210,7 @@
         {
           "default": "",
           "document": "Resource owner `AppId`",
+          "example": "1000000",
           "member": "uint64",
           "name": "AppId",
           "required": true,
@@ -1170,6 +1220,7 @@
         {
           "default": "",
           "document": "File system name",
+          "example": "test",
           "member": "string",
           "name": "FileSystemName",
           "required": true,
@@ -1179,6 +1230,7 @@
         {
           "default": "",
           "document": "File system description",
+          "example": "test",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -1188,6 +1240,7 @@
         {
           "default": "",
           "document": "Region",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -1197,6 +1250,7 @@
         {
           "default": "",
           "document": "File system ID",
+          "example": "f4mhaqkciq0",
           "member": "string",
           "name": "FileSystemId",
           "required": true,
@@ -1206,6 +1260,7 @@
         {
           "default": "",
           "document": "Creation time",
+          "example": "1629099694",
           "member": "datetime_iso",
           "name": "CreateTime",
           "required": true,
@@ -1215,6 +1270,7 @@
         {
           "default": "",
           "document": "File system block size (in bytes)",
+          "example": "4194304",
           "member": "uint64",
           "name": "BlockSize",
           "required": true,
@@ -1224,6 +1280,7 @@
         {
           "default": "",
           "document": "File system capacity (in bytes)",
+          "example": "1073741824",
           "member": "uint64",
           "name": "CapacityQuota",
           "required": true,
@@ -1233,6 +1290,7 @@
         {
           "default": "",
           "document": "File system status (1: creating; 2: created successfully; 3: failed to create)",
+          "example": "2",
           "member": "uint64",
           "name": "Status",
           "required": true,
@@ -1242,6 +1300,7 @@
         {
           "default": "",
           "document": "List of superuser names",
+          "example": "[\"hadoop\"]",
           "member": "string",
           "name": "SuperUsers",
           "required": true,
@@ -1251,11 +1310,32 @@
         {
           "default": "",
           "document": "POSIX permission control",
+          "example": "true",
           "member": "bool",
           "name": "PosixAcl",
           "required": true,
           "type": "bool",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable verification of Ranger service addresses\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableRanger",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of Ranger service addresses\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "[\"127.0.0.1:8080\"]",
+          "member": "string",
+          "name": "RangerServiceAddresses",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1401,6 +1481,7 @@
         {
           "default": "",
           "document": "File system ID",
+          "example": "f4mhaqkciq0",
           "member": "string",
           "name": "FileSystemId",
           "required": true,
@@ -1409,6 +1490,7 @@
         {
           "default": "",
           "document": "File system name",
+          "example": "test",
           "member": "string",
           "name": "FileSystemName",
           "required": false,
@@ -1417,6 +1499,7 @@
         {
           "default": "",
           "document": "File system description",
+          "example": "test",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -1425,6 +1508,7 @@
         {
           "default": "",
           "document": "File system capacity (in bytes), which can range from 1 GB to 1 PB and must be an integer multiple of 1 GB\nNote: the file system capacity after change cannot be smaller than the currently used capacity",
+          "example": "1073741824",
           "member": "uint64",
           "name": "CapacityQuota",
           "required": false,
@@ -1433,6 +1517,7 @@
         {
           "default": "",
           "document": "List of superuser names, which can be an empty array",
+          "example": "[\"hadoop\"]",
           "member": "string",
           "name": "SuperUsers",
           "required": false,
@@ -1441,10 +1526,29 @@
         {
           "default": "",
           "document": "Whether to verify POSIX ACL",
+          "example": "true",
           "member": "bool",
           "name": "PosixAcl",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable verification of Ranger service addresses",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableRanger",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "List of Ranger service addresses, which can be an empty array",
+          "example": "[\"127.0.0.1:8080\"]",
+          "member": "string",
+          "name": "RangerServiceAddresses",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1649,7 +1753,7 @@
         },
         {
           "default": "",
-          "document": "Restoration task type (1: standard; 2: expedited; 3: bulk)",
+          "document": "Restoration task type (`1`: standard; `2`: expedited; `3`: bulk, with only the expedited type available currently)",
           "example": "1",
           "member": "uint64",
           "name": "Type",
@@ -1729,7 +1833,7 @@
         },
         {
           "default": "",
-          "document": "Transition type (1: archive; 2: deletion)",
+          "document": "Transition type (`1`: transition to ARCHIVE; `2`: delete; `3`: transition to STANDARD_IA)",
           "example": "1",
           "member": "uint64",
           "name": "Type",
