@@ -193,6 +193,7 @@
         {
           "default": "",
           "document": "Snapshot ID, which can be queried via [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1).",
+          "example": "snap-3xvkxxmp",
           "member": "string",
           "name": "SnapshotId",
           "required": true,
@@ -201,10 +202,29 @@
         {
           "default": "",
           "document": "ID of the original cloud disk corresponding to the snapshot, which can be queried via the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1).",
+          "example": "disk-ouxaxxt2",
           "member": "string",
           "name": "DiskId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to shut down a CVM automatically before a rollback",
+          "example": "False",
+          "member": "bool",
+          "name": "AutoStopInstance",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to start up a CVM automatically after a rollback",
+          "example": "False",
+          "member": "bool",
+          "name": "AutoStartInstance",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -307,6 +327,42 @@
         }
       ],
       "type": "object"
+    },
+    "AutoMountConfiguration": {
+      "document": "This parameter describes the configuration of automatically initializing and mounting the cloud disk to the CVM when purchasing a new cloud disk.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance to which the cloud disk is attached.",
+          "example": "[\"ins-abcdefgh\"]",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Path to the mount point in the CVM",
+          "example": "[\"/mnt/datadisk0\"]",
+          "member": "string",
+          "name": "MountPoint",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system type. Supported: ext4 and xfs.",
+          "example": "ext4",
+          "member": "string",
+          "name": "FileSystemType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "AutoSnapshotPolicy": {
       "document": "This describes the detailed information of the scheduled snapshot policy.",
@@ -646,6 +702,15 @@
           "name": "DeleteSnapshot",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "When a cloud disk is created, automatically initialize it and attach it to the specified mount point",
+          "example": "无",
+          "member": "AutoMountConfiguration",
+          "name": "AutoMountConfiguration",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"

@@ -644,22 +644,14 @@
       {
         "document": "",
         "input": "https://cdb.tencentcloudapi.com/?Action=ModifyRoGroupInfo\n&RoGroupId=cdbrg-iup41a4t\n&RoGroupInfo.RoOfflineDelay=1\n&RoGroupInfo.RoMaxDelayTime=10\n&RoGroupInfo.MinRoInGroup=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"AsyncRequestId\": \"xx\"\n    }\n}",
         "title": "Configuring the instance removal policy for an RO group"
       },
       {
         "document": "",
         "input": "https://cdb.tencentcloudapi.com/?Action=ModifyRoGroupInfo\n&RoGroupId=cdbrg-iup41a4t\n&RoGroupInfo.WeightMode=custom\n&RoWeightValues.0.InstanceId=cdbr0-iup41a4t\n&RoWeightValues.0.Weight=30\n&RoWeightValues.1.InstanceId=cdbr0-test1234\n&RoWeightValues.1.Weight=70\n&IsBalanceRoLoad=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FBQWER\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"AsyncRequestId\": \"xx\"\n    }\n}",
         "title": "Rebalancing the weights of instances in an RO group"
-      }
-    ],
-    "ModifyRoReplicationDelay": [
-      {
-        "document": "This example shows you how to modify the replication delay of a delayed RO replica.",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRoReplicationDelay\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdbro-test\",\n    \"ReplicationDelay\": 259200\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"28a67cf3-4589-8534-2be0-17475fa5c892\"\n    }\n}",
-        "title": "Modifying the replication delay of a delayed RO replica"
       }
     ],
     "ModifyTimeWindow": [
@@ -718,12 +710,12 @@
         "title": "Rolling back database tables"
       }
     ],
-    "StartDelayReplication": [
+    "StartReplication": [
       {
-        "document": "This example shows you how to start delayed replication on a delayed read-only replica.",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartDelayReplication\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdbro-test\",\n    \"DelayReplicationType\": \"DUE_TIME\",\n    \"DueTime\": 1600400231\n}",
-        "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": \"818e3462-93b8a8a8-a4911f89-2896ed4d\",\n        \"RequestId\": \"28a67cf3-4589-8534-2be0-17475fa5c892\"\n    }\n}",
-        "title": "Starting delayed replication"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartReplication\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"AsyncRequestId\": \"xx\"\n    }\n}",
+        "title": "Starting the data replication to a read-only instance"
       }
     ],
     "StopDBImportJob": [
@@ -734,12 +726,12 @@
         "title": "Stopping a data import task"
       }
     ],
-    "StopDelayReplication": [
+    "StopReplication": [
       {
-        "document": "This example shows you how to stop delayed replication on a delayed RO replica.",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopDelayReplication\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdbro-test\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"28a67cf3-4589-8534-2be0-17475fa5c892\"\n    }\n}",
-        "title": "Stopping delayed replication"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopReplication\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"AsyncRequestId\": \"xx\"\n    }\n}",
+        "title": "Stopping the data replication to a read-only instance"
       }
     ],
     "StopRollback": [

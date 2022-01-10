@@ -481,16 +481,10 @@
       "output": "ModifyParamTemplateResponse"
     },
     "ModifyRoGroupInfo": {
-      "document": "This API is used to update the information of a TencentDB RO group, such as configuring an instance removal policy in case of excessive delay and setting read weights of RO instances.",
+      "document": "This API is used to update the information of a TencentDB RO group, such as configuring a read-only instance removal policy in case of excessive delay, setting read weights of read-only instances, and setting the replication delay.",
       "input": "ModifyRoGroupInfoRequest",
       "name": "Updates RO instance group",
       "output": "ModifyRoGroupInfoResponse"
-    },
-    "ModifyRoReplicationDelay": {
-      "document": "This API is used to modify the replication delay of a delayed RO replica.",
-      "input": "ModifyRoReplicationDelayRequest",
-      "name": "Modifies the replication delay of a delayed RO replica",
-      "output": "ModifyRoReplicationDelayResponse"
     },
     "ModifyTimeWindow": {
       "document": "This API (ModifyTimeWindow) is used to update the maintenance time window of a TencentDB instance.",
@@ -534,11 +528,11 @@
       "name": "Rolls back database tables",
       "output": "StartBatchRollbackResponse"
     },
-    "StartDelayReplication": {
-      "document": "This API is used to start delayed replication on a delayed RO replica.",
-      "input": "StartDelayReplicationRequest",
-      "name": "Starts delayed replication",
-      "output": "StartDelayReplicationResponse"
+    "StartReplication": {
+      "document": "This API is used to start the data replication from the source instance to the read-only instance.",
+      "input": "StartReplicationRequest",
+      "name": "Starts replication",
+      "output": "StartReplicationResponse"
     },
     "StopDBImportJob": {
       "document": "This API (StopDBImportJob) is used to stop a data import task.",
@@ -546,11 +540,11 @@
       "name": "Stops a data import task",
       "output": "StopDBImportJobResponse"
     },
-    "StopDelayReplication": {
-      "document": "This API is used to stop delayed replication on a delayed RO replica.",
-      "input": "StopDelayReplicationRequest",
-      "name": "Stops delayed replication",
-      "output": "StopDelayReplicationResponse"
+    "StopReplication": {
+      "document": "This API is used to stop the data replication from the source instance to the read-only instance.",
+      "input": "StopReplicationRequest",
+      "name": "Stops replication",
+      "output": "StopReplicationResponse"
     },
     "StopRollback": {
       "document": "This API is used to cancel a rollback task in progress, and returns an async task ID. You can use the `DescribeAsyncRequestInfo` API to query the result of cancellation.",
@@ -7667,6 +7661,15 @@
           "name": "IsBalanceRoLoad",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This field has been deprecated.",
+          "example": "1000",
+          "member": "int64",
+          "name": "ReplicationDelayTime",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -7675,39 +7678,14 @@
       "document": "ModifyRoGroupInfo response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "Async task ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "dadaddasda-23adcasdasd-asdaasc",
           "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyRoReplicationDelayRequest": {
-      "document": "ModifyRoReplicationDelay request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance ID",
-          "member": "string",
-          "name": "InstanceId",
+          "name": "AsyncRequestId",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": true
         },
-        {
-          "default": "",
-          "document": "Replication delay in seconds. Value range: 1 to 259200.",
-          "member": "int64",
-          "name": "ReplicationDelay",
-          "required": true,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyRoReplicationDelayResponse": {
-      "document": "ModifyRoReplicationDelay response structure.",
-      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -8306,6 +8284,7 @@
         {
           "default": "",
           "document": "Read-only group mode. Valid values: `alone` (the system assigns a read-only group automatically), `allinone` (a new read-only group will be created), `join` (an existing read-only group will be used).",
+          "example": "''",
           "member": "string",
           "name": "RoGroupMode",
           "required": true,
@@ -8315,6 +8294,7 @@
         {
           "default": "",
           "document": "Read-only group ID.",
+          "example": "cdbrg-92zkeaq2",
           "member": "string",
           "name": "RoGroupId",
           "required": false,
@@ -8324,6 +8304,7 @@
         {
           "default": "",
           "document": "Read-only group name.",
+          "example": "your_group_name",
           "member": "string",
           "name": "RoGroupName",
           "required": false,
@@ -8333,6 +8314,7 @@
         {
           "default": "",
           "document": "Whether to enable the function of isolating an instance that exceeds the latency threshold. If it is enabled, when the latency between the read-only instance and the primary instance exceeds the latency threshold, the read-only instance will be isolated. Valid values: 1 (enabled), 0 (not enabled)",
+          "example": "0",
           "member": "int64",
           "name": "RoOfflineDelay",
           "required": false,
@@ -8342,6 +8324,7 @@
         {
           "default": "",
           "document": "Latency threshold",
+          "example": "1",
           "member": "int64",
           "name": "RoMaxDelayTime",
           "required": false,
@@ -8351,6 +8334,7 @@
         {
           "default": "",
           "document": "Minimum number of instances to be retained. If the number of the purchased read-only instances is smaller than the set value, they will not be removed.",
+          "example": "1",
           "member": "int64",
           "name": "MinRoInGroup",
           "required": false,
@@ -8360,6 +8344,7 @@
         {
           "default": "",
           "document": "Read/write weight distribution mode. Valid values: `system` (weights are assigned by the system automatically), `custom` (weights are customized)",
+          "example": "system",
           "member": "string",
           "name": "WeightMode",
           "required": false,
@@ -8369,6 +8354,7 @@
         {
           "default": "",
           "document": "Weight value.",
+          "example": "0",
           "member": "int64",
           "name": "Weight",
           "required": false,
@@ -8378,6 +8364,7 @@
         {
           "default": "",
           "document": "Details of read-only instances in read-only group",
+          "example": "[]",
           "member": "RoInstanceInfo",
           "name": "RoInstances",
           "required": false,
@@ -8387,6 +8374,7 @@
         {
           "default": "",
           "document": "Private IP of read-only group.",
+          "example": "10.89.90.66",
           "member": "string",
           "name": "Vip",
           "required": false,
@@ -8396,6 +8384,7 @@
         {
           "default": "",
           "document": "Private network port number of read-only group.",
+          "example": "3306",
           "member": "int64",
           "name": "Vport",
           "required": false,
@@ -8405,6 +8394,7 @@
         {
           "default": "",
           "document": "VPC ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "vpc-ja6ts123",
           "member": "string",
           "name": "UniqVpcId",
           "required": false,
@@ -8414,6 +8404,7 @@
         {
           "default": "",
           "document": "Subnet ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "subnet-njh2bc99",
           "member": "string",
           "name": "UniqSubnetId",
           "required": false,
@@ -8423,6 +8414,7 @@
         {
           "default": "",
           "document": "Read-only group region.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-beijing",
           "member": "string",
           "name": "RoGroupRegion",
           "required": false,
@@ -8432,10 +8424,21 @@
         {
           "default": "",
           "document": "Read-only group AZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-beijing-3",
           "member": "string",
           "name": "RoGroupZone",
           "required": false,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Replication delay.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1000",
+          "member": "int64",
+          "name": "DelayReplicationTime",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -8447,6 +8450,7 @@
         {
           "default": "",
           "document": "RO group name.",
+          "example": "test_rogroup",
           "member": "string",
           "name": "RoGroupName",
           "required": false,
@@ -8456,6 +8460,7 @@
         {
           "default": "",
           "document": "Maximum delay threshold for RO instances in seconds. Minimum value: 1. Please note that this value will take effect only if an instance removal policy is enabled in the RO group.",
+          "example": "10",
           "member": "int64",
           "name": "RoMaxDelayTime",
           "required": false,
@@ -8465,6 +8470,7 @@
         {
           "default": "",
           "document": "Whether to enable instance removal. Valid values: 1 (enabled), 0 (not enabled). Please note that if instance removal is enabled, the delay threshold parameter (`RoMaxDelayTime`) must be set.",
+          "example": "1",
           "member": "int64",
           "name": "RoOfflineDelay",
           "required": false,
@@ -8474,6 +8480,7 @@
         {
           "default": "",
           "document": "Minimum number of instances to be retained, which can be set to any value less than or equal to the number of RO instances in the RO group. Please note that if this value is set to be greater than the number of RO instances, no removal will be performed, and if it is set to 0, all instances with an excessive delay will be removed.",
+          "example": "1",
           "member": "int64",
           "name": "MinRoInGroup",
           "required": false,
@@ -8483,10 +8490,21 @@
         {
           "default": "",
           "document": "Weighting mode. Supported values include `system` (automatically assigned by the system) and `custom` (defined by user). Please note that if the `custom` mode is selected, the RO instance weight configuration parameter (RoWeightValues) must be set.",
+          "example": "system",
           "member": "string",
           "name": "WeightMode",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Replication delay.",
+          "example": "100",
+          "member": "int64",
+          "name": "ReplicationDelayTime",
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -9626,51 +9644,30 @@
       ],
       "type": "object"
     },
-    "StartDelayReplicationRequest": {
-      "document": "StartDelayReplication request structure.",
+    "StartReplicationRequest": {
+      "document": "StartReplication request structure.",
       "members": [
         {
           "default": "",
-          "document": "Instance ID",
+          "document": "Read-Only instance ID.",
+          "example": "cdb-test",
           "member": "string",
           "name": "InstanceId",
           "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Delayed replication mode. Valid values: `DEFAULT` (replicate according to the specified replication delay), `GTID` (replicate according to the specified GTID), `DUE_TIME` (replicate according to the specified point in time).",
-          "member": "string",
-          "name": "DelayReplicationType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Specified point in time. Default value: 0. The maximum value cannot be later than the current time.",
-          "member": "int64",
-          "name": "DueTime",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Specified GITD. This parameter is required when the delayed replication mode is `GTID`.",
-          "member": "string",
-          "name": "Gtid",
-          "required": false,
           "type": "string"
         }
       ],
       "type": "object"
     },
-    "StartDelayReplicationResponse": {
-      "document": "StartDelayReplication response structure.",
+    "StartReplicationResponse": {
+      "document": "StartReplication response structure.",
       "members": [
         {
-          "document": "Delayed replication task ID. This parameter will be returned if `DelayReplicationType` is not `DEFAULT`. It can be used to view the status of the delayed replication task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Async task ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "AsyncRequestId",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -9709,12 +9706,13 @@
       ],
       "type": "object"
     },
-    "StopDelayReplicationRequest": {
-      "document": "StopDelayReplication request structure.",
+    "StopReplicationRequest": {
+      "document": "StopReplication request structure.",
       "members": [
         {
           "default": "",
-          "document": "Instance ID",
+          "document": "Read-Only instance ID.",
+          "example": "cdb-test",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -9723,9 +9721,18 @@
       ],
       "type": "object"
     },
-    "StopDelayReplicationResponse": {
-      "document": "StopDelayReplication response structure.",
+    "StopReplicationResponse": {
+      "document": "StopReplication response structure.",
       "members": [
+        {
+          "document": "Async task ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -10315,6 +10322,24 @@
           "name": "MaxDelayTime",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to migrate the source node across AZs. Valid values: `0` (no), `1`(yes). Default value: `0`. If it is `1`, you can modify the source node AZ.",
+          "example": "1",
+          "member": "int64",
+          "name": "CrossCluster",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "New AZ of the source node. This field is only valid when `CrossCluster` is `1`. Only migration across AZs in the same region is supported.",
+          "example": "\"ap-guangzhou-1\"",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"

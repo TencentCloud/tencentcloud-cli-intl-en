@@ -1373,6 +1373,7 @@
         {
           "default": "",
           "document": "Cluster operating system. CentOS 7.2x86_64 or Ubuntu 16.04.1 LTSx86_64. Default value: Ubuntu 16.04.1 LTSx86_64",
+          "example": "tlinux2.4x86_64",
           "member": "string",
           "name": "ClusterOs",
           "required": false,
@@ -1382,6 +1383,7 @@
         {
           "default": "",
           "document": "Cluster version. The default value is 1.10.5.",
+          "example": "v1.18.4",
           "member": "string",
           "name": "ClusterVersion",
           "required": false,
@@ -1391,6 +1393,7 @@
         {
           "default": "",
           "document": "Cluster name",
+          "example": "clstest",
           "member": "string",
           "name": "ClusterName",
           "required": false,
@@ -1400,6 +1403,7 @@
         {
           "default": "",
           "document": "Cluster description",
+          "example": "test cluster",
           "member": "string",
           "name": "ClusterDescription",
           "required": false,
@@ -1409,6 +1413,7 @@
         {
           "default": "",
           "document": "VPC ID, in the format of vpc-xxx, which is required when you create an empty managed cluster.",
+          "example": "vpc-xxx",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -1418,6 +1423,7 @@
         {
           "default": "",
           "document": "ID of the project to which the new resources in the cluster belong.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -1427,6 +1433,7 @@
         {
           "default": "",
           "document": "Tag description list. This parameter is used to bind a tag to a resource instance. Currently, a tag can only be bound to cluster instances.",
+          "example": "无",
           "member": "TagSpecification",
           "name": "TagSpecification",
           "required": false,
@@ -1436,6 +1443,7 @@
         {
           "default": "",
           "document": "Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)",
+          "example": "GENERAL",
           "member": "string",
           "name": "OsCustomizeType",
           "required": false,
@@ -1445,10 +1453,21 @@
         {
           "default": "",
           "document": "Whether to enable the node’s default security group (default: `No`, Aphla feature)",
+          "example": "false",
           "member": "bool",
           "name": "NeedWorkSecurityGroup",
           "required": false,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "When the Cilium Overlay add-on is selected, TKE will take two IPs from the subnet to create the private network CLB.",
+          "example": "subnet-xx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2108,6 +2127,7 @@
         {
           "default": "",
           "document": "Container networking configuration information for the cluster",
+          "example": "无",
           "member": "ClusterCIDRSettings",
           "name": "ClusterCIDRSettings",
           "required": true,
@@ -2116,6 +2136,7 @@
         {
           "default": "",
           "document": "Cluster type. Managed cluster: MANAGED_CLUSTER; self-deployed cluster: INDEPENDENT_CLUSTER.",
+          "example": "MANAGED_CLUSTER",
           "member": "string",
           "name": "ClusterType",
           "required": true,
@@ -2124,6 +2145,7 @@
         {
           "default": "",
           "document": "Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1).",
+          "example": "无",
           "member": "RunInstancesForNode",
           "name": "RunInstancesForNode",
           "required": false,
@@ -2132,6 +2154,7 @@
         {
           "default": "",
           "document": "Basic configuration information of the cluster",
+          "example": "无",
           "member": "ClusterBasicSettings",
           "name": "ClusterBasicSettings",
           "required": false,
@@ -2140,6 +2163,7 @@
         {
           "default": "",
           "document": "Advanced configuration information of the cluster",
+          "example": "无",
           "member": "ClusterAdvancedSettings",
           "name": "ClusterAdvancedSettings",
           "required": false,
@@ -2148,6 +2172,7 @@
         {
           "default": "",
           "document": "Advanced configuration information of the node",
+          "example": "无",
           "member": "InstanceAdvancedSettings",
           "name": "InstanceAdvancedSettings",
           "required": false,
@@ -2155,7 +2180,8 @@
         },
         {
           "default": "",
-          "document": "Configuration information of an existing instance",
+          "document": "The configuration information for existing instances. All instances must be in the same VPC. Up to 100 instances are allowed in one VPC. Spot instances are not supported.",
+          "example": "无",
           "member": "ExistedInstancesForNode",
           "name": "ExistedInstancesForNode",
           "required": false,
@@ -2164,6 +2190,7 @@
         {
           "default": "",
           "document": "CVM type and the corresponding data disk mounting configuration information.",
+          "example": "无",
           "member": "InstanceDataDiskMountSetting",
           "name": "InstanceDataDiskMountSettings",
           "required": false,
@@ -2172,6 +2199,7 @@
         {
           "default": "",
           "document": "Information of the add-on to be installed",
+          "example": "无",
           "member": "ExtensionAddon",
           "name": "ExtensionAddons",
           "required": false,

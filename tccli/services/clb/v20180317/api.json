@@ -30,6 +30,12 @@
       "name": "Binds CVM instances or ENIs in batches",
       "output": "BatchRegisterTargetsResponse"
     },
+    "CloneLoadBalancer": {
+      "document": "This API is used to generate a CLB instance that has the same rules and binding relations as the specified CLB instance.",
+      "input": "CloneLoadBalancerRequest",
+      "name": "Clones a CLB instance",
+      "output": "CloneLoadBalancerResponse"
+    },
     "CreateClsLogSet": {
       "document": "This API is used to create a CLB exclusive logset for storing CLB logs.",
       "input": "CreateClsLogSetRequest",
@@ -203,6 +209,12 @@
       "input": "DescribeLoadBalancerListByCertIdRequest",
       "name": "Queries a CLB instance by the certificate ID",
       "output": "DescribeLoadBalancerListByCertIdResponse"
+    },
+    "DescribeLoadBalancerOverview": {
+      "document": "Queries the total number of CLB instances and the number of CLB instances in different status (running, isolated and about to expire).",
+      "input": "DescribeLoadBalancerOverviewRequest",
+      "name": "Queries the CLB instance status statistics",
+      "output": "DescribeLoadBalancerOverviewResponse"
     },
     "DescribeLoadBalancerTraffic": {
       "document": "This API is used to query CLB instances with high traffic under the current account, and return the top 10 results. For queries using a sub-account, only the CLB instances authorized to the sub-account will be returned.",
@@ -1471,6 +1483,195 @@
         }
       ],
       "usage": "in"
+    },
+    "CloneLoadBalancerRequest": {
+      "document": "CloneLoadBalancer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CLB instance ID",
+          "example": "lb-xxxxx",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Clones the name of the CLB instance. The name must be 1-60 characters containing letters, numbers, \"-\" or \"_\".\nNote: if the name of a new CLB instance already exists, a default name will be generated automatically.",
+          "example": "test-name",
+          "member": "string",
+          "name": "LoadBalancerName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the project to which a CLB instance belongs, which can be obtained through the DescribeProject API. If this parameter is not passed in, the default project will be used.",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sets the primary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB.\nNote: A primary AZ is the default AZ that carries traffic. When it fails, the optimal secondary AZ is chosen automatically to take its place. ",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "MasterZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sets the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB instances.\nNote: A secondary AZ carries traffic when the primary AZ fails. ",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "SlaveZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies an AZ ID for creating a CLB instance, such as `ap-guangzhou-1`, which is applicable only to public network CLB instances.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CLB network billing mode. This parameter is applicable only to public network CLB instances.",
+          "example": "无",
+          "member": "InternetAccessible",
+          "name": "InternetAccessible",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "This parameter is applicable only to public network CLB instances. Valid values: CMCC (China Mobile), CTCC (China Telecom), CUCC (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode.",
+          "example": "CMCC",
+          "member": "string",
+          "name": "VipIsp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Applies for CLB instances for a specified VIP",
+          "example": "139.X.X.X",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tags a CLB instance when purchasing it",
+          "example": "无",
+          "member": "TagInfo",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Dedicated cluster information",
+          "example": "无",
+          "member": "ExclusiveCluster",
+          "name": "ExclusiveCluster",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Bandwidth package ID. If this parameter is specified, the network billing mode (`InternetAccessible.InternetChargeType`) will only support bill-by-bandwidth package (`BANDWIDTH_PACKAGE`).",
+          "example": "bwp-pnbe****",
+          "member": "string",
+          "name": "BandwidthPackageId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to support binding cross-VPC IPs or cross-region IPs",
+          "example": "true",
+          "member": "bool",
+          "name": "SnatPro",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Creates `SnatIp` when the binding IPs of other VPCs feature is enabled",
+          "example": "无",
+          "member": "SnatIp",
+          "name": "SnatIps",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "ID of the public network CLB dedicated cluster",
+          "example": "无",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "sla-1",
+          "member": "string",
+          "name": "SlaType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag of the STGW dedicated cluster",
+          "example": "test",
+          "member": "string",
+          "name": "ClusterTag",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Availability zones for nearby access of private network CLB instances to distribute traffic",
+          "example": "无",
+          "member": "string",
+          "name": "Zones",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Unique ID of an EIP, which can only be used when binding the EIP of a private network CLB instance (e.g., `eip-11112222`)",
+          "example": "eip-1111****",
+          "member": "string",
+          "name": "EipAddressId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloneLoadBalancerResponse": {
+      "document": "CloneLoadBalancer response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ClusterItem": {
       "document": "Dedicated cluster information",
@@ -3276,6 +3477,59 @@
       ],
       "type": "object"
     },
+    "DescribeLoadBalancerOverviewRequest": {
+      "document": "DescribeLoadBalancerOverview request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeLoadBalancerOverviewResponse": {
+      "document": "DescribeLoadBalancerOverview response structure.",
+      "members": [
+        {
+          "document": "Total number of CLB instances",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of CLB instances that are running",
+          "example": "0",
+          "member": "int64",
+          "name": "RunningCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of CLB instances that are isolated",
+          "example": "0",
+          "member": "int64",
+          "name": "IsolationCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of CLB instances that are about to expire",
+          "example": "0",
+          "member": "int64",
+          "name": "WillExpireCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeLoadBalancerTrafficRequest": {
       "document": "DescribeLoadBalancerTraffic request structure.",
       "members": [
@@ -3334,7 +3588,7 @@
         },
         {
           "default": "",
-          "document": "List of fields to be returned. The `LoadBalancerId` and `LoadBalancerName` are returned by default.",
+          "document": "List of fields. Only fields specified will be returned. If it’s left blank, `null` is returned. The fields `LoadBalancerId` and `LoadBalancerName` are added by default. For details about fields, see <a href=\"https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#LoadBalancerDetail\">LoadBalancerDetail</a>.",
           "example": "无",
           "member": "string",
           "name": "Fields",
@@ -5325,6 +5579,26 @@
           "name": "HealthLogTopicId",
           "required": false,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "cluster-1234xxxx",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CLB attribute\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "DeleteProtect",
+          "member": "string",
+          "name": "AttributeFlags",
+          "required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
