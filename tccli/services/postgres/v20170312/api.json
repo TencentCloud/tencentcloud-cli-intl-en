@@ -649,15 +649,6 @@
         },
         {
           "default": "",
-          "document": "PostgreSQL kernel version. Valid values: `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.",
-          "example": "无",
-          "member": "string",
-          "name": "DBVersion",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "Instance capacity size in GB.",
           "example": "无",
           "member": "uint64",
@@ -700,6 +691,15 @@
           "name": "ProjectId",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "PostgreSQL version number. If it is specified, an instance running the latest kernel of PostgreSQL `DBVersion` will be created.",
+          "example": "12.4",
+          "member": "string",
+          "name": "DBVersion",
+          "required": false,
+          "type": "string"
         },
         {
           "default": "",
@@ -799,6 +799,24 @@
           "name": "SecurityGroupIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "PostgreSQL major version number. Valid values: `10`, `11`, `12`, `13`. If it is specified, an instance running the latest kernel of PostgreSQL `DBMajorVersion` will be created.",
+          "example": "12",
+          "member": "string",
+          "name": "DBMajorVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "PostgreSQL kernel version number. If it is specified, an instance running kernel `DBKernelVersion` will be created.",
+          "example": "v12.4_r1.0",
+          "member": "string",
+          "name": "DBKernelVersion",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -922,7 +940,7 @@
         },
         {
           "default": "",
-          "document": "PostgreSQL major version. Valid values: `9.3`, `9.5`, `10`, `11`, `12`, `13`, `9.3.5`, `9.5.4`, `10.4`, `11.8`, `12.4`.",
+          "document": "PostgreSQL version number. If it is specified, an instance running the latest kernel of PostgreSQL `DBVersion` will be created.",
           "example": "12.4",
           "member": "string",
           "name": "DBVersion",
@@ -1030,7 +1048,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "PostgreSQL major version number. Valid values: `10`, `11`, `12`, `13`. If it is specified, an instance running the latest kernel of PostgreSQL `DBMajorVersion` will be created.",
           "example": "12",
           "member": "string",
           "name": "DBMajorVersion",
@@ -1039,12 +1057,21 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "PostgreSQL kernel version number. If it is specified, an instance running kernel `DBKernelVersion` will be created.",
           "example": "v12.4_r1.0",
           "member": "string",
           "name": "DBKernelVersion",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "DBNode",
+          "name": "DBNodeSet",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1797,7 +1824,7 @@
         },
         {
           "default": "",
-          "document": "PostgreSQL major version",
+          "document": "PostgreSQL version number",
           "example": "12.4",
           "member": "string",
           "name": "DBVersion",
@@ -1987,12 +2014,22 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "PostgreSQL major version number\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "12",
           "member": "string",
           "name": "DBMajorVersion",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "DBNode",
+          "name": "DBNodeSet",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -2073,6 +2110,32 @@
         }
       ],
       "usage": "out"
+    },
+    "DBNode": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "Primary, Standby",
+          "member": "string",
+          "name": "Role",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "DeleteReadOnlyGroupRequest": {
       "document": "DeleteReadOnlyGroup request structure.",
@@ -5566,7 +5629,7 @@
         {
           "default": "",
           "document": "Database version\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "10",
+          "example": "10.4",
           "member": "string",
           "name": "DBVersion",
           "required": false,
@@ -5629,6 +5692,16 @@
           "example": "v10.4_r1.0",
           "member": "string",
           "name": "DBKernelVersion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database major version number\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "string",
+          "name": "DBMajorVersion",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -5797,6 +5870,7 @@
         {
           "default": "",
           "document": "Specification ID",
+          "example": "1",
           "member": "string",
           "name": "SpecCode",
           "required": true,
@@ -5805,7 +5879,8 @@
         },
         {
           "default": "",
-          "document": "PostgreSQL kernel version number",
+          "document": "PostgerSQL version number",
+          "example": "1",
           "member": "string",
           "name": "Version",
           "required": true,
@@ -5815,6 +5890,7 @@
         {
           "default": "",
           "document": "Full version name corresponding to kernel number",
+          "example": "1",
           "member": "string",
           "name": "VersionName",
           "required": true,
@@ -5824,6 +5900,7 @@
         {
           "default": "",
           "document": "Number of CPU cores",
+          "example": "1",
           "member": "uint64",
           "name": "Cpu",
           "required": true,
@@ -5833,6 +5910,7 @@
         {
           "default": "",
           "document": "Memory size in MB",
+          "example": "1",
           "member": "uint64",
           "name": "Memory",
           "required": true,
@@ -5842,6 +5920,7 @@
         {
           "default": "",
           "document": "Maximum storage capacity in GB supported by this specification",
+          "example": "1",
           "member": "uint64",
           "name": "MaxStorage",
           "required": true,
@@ -5851,6 +5930,7 @@
         {
           "default": "",
           "document": "Minimum storage capacity in GB supported by this specification",
+          "example": "1",
           "member": "uint64",
           "name": "MinStorage",
           "required": true,
@@ -5860,6 +5940,7 @@
         {
           "default": "",
           "document": "Estimated QPS for this specification",
+          "example": "1",
           "member": "uint64",
           "name": "Qps",
           "required": true,
@@ -5869,6 +5950,7 @@
         {
           "default": "",
           "document": "Billing ID for this specification",
+          "example": "1",
           "member": "uint64",
           "name": "Pid",
           "required": true,
@@ -5878,11 +5960,32 @@
         {
           "default": "",
           "document": "Machine type",
+          "example": "1",
           "member": "string",
           "name": "Type",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "PostgreSQL major version number\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "MajorVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "PostgreSQL kernel version number\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "KernelVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

@@ -15,60 +15,6 @@ from tencentcloud.dts.v20180330 import models as models_v20180330
 
 from tccli import six
 
-def doDeleteSyncJob(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.DtsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteSyncJobRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DeleteSyncJob(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeSyncJobs(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.DtsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeSyncJobsRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeSyncJobs(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doActivateSubscribe(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -88,60 +34,6 @@ def doActivateSubscribe(args, parsed_globals):
     model = models.ActivateSubscribeRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.ActivateSubscribe(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doModifySyncJob(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.DtsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifySyncJobRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ModifySyncJob(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doCreateSyncJob(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.DtsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateSyncJobRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.CreateSyncJob(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -177,33 +69,6 @@ def doModifySubscribeObjects(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doStartSyncJob(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.DtsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.StartSyncJobRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.StartSyncJob(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDeleteMigrateJob(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -231,7 +96,7 @@ def doDeleteMigrateJob(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeAsyncRequestInfo(args, parsed_globals):
+def doDescribeMigrateCheckJob(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -247,36 +112,9 @@ def doDescribeAsyncRequestInfo(args, parsed_globals):
     client = mod.DtsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeAsyncRequestInfoRequest()
+    model = models.DescribeMigrateCheckJobRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeAsyncRequestInfo(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doSwitchDrToMaster(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.DtsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.SwitchDrToMasterRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.SwitchDrToMaster(model)
+    rsp = client.DescribeMigrateCheckJob(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -385,33 +223,6 @@ def doDescribeSubscribes(args, parsed_globals):
     model = models.DescribeSubscribesRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DescribeSubscribes(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeSyncCheckJob(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.DtsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeSyncCheckJobRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeSyncCheckJob(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -547,33 +358,6 @@ def doModifySubscribeName(args, parsed_globals):
     model = models.ModifySubscribeNameRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.ModifySubscribeName(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doCreateSyncCheckJob(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.DtsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateSyncCheckJobRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.CreateSyncCheckJob(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -771,7 +555,7 @@ def doDescribeSubscribeConf(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMigrateCheckJob(args, parsed_globals):
+def doDescribeAsyncRequestInfo(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -787,9 +571,9 @@ def doDescribeMigrateCheckJob(args, parsed_globals):
     client = mod.DtsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMigrateCheckJobRequest()
+    model = models.DescribeAsyncRequestInfoRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeMigrateCheckJob(model)
+    rsp = client.DescribeAsyncRequestInfo(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -836,27 +620,19 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
-    "DeleteSyncJob": doDeleteSyncJob,
-    "DescribeSyncJobs": doDescribeSyncJobs,
     "ActivateSubscribe": doActivateSubscribe,
-    "ModifySyncJob": doModifySyncJob,
-    "CreateSyncJob": doCreateSyncJob,
     "ModifySubscribeObjects": doModifySubscribeObjects,
-    "StartSyncJob": doStartSyncJob,
     "DeleteMigrateJob": doDeleteMigrateJob,
-    "DescribeAsyncRequestInfo": doDescribeAsyncRequestInfo,
-    "SwitchDrToMaster": doSwitchDrToMaster,
+    "DescribeMigrateCheckJob": doDescribeMigrateCheckJob,
     "StopMigrateJob": doStopMigrateJob,
     "DescribeRegionConf": doDescribeRegionConf,
     "DescribeMigrateJobs": doDescribeMigrateJobs,
     "DescribeSubscribes": doDescribeSubscribes,
-    "DescribeSyncCheckJob": doDescribeSyncCheckJob,
     "CreateMigrateJob": doCreateMigrateJob,
     "ModifySubscribeVipVport": doModifySubscribeVipVport,
     "CreateMigrateCheckJob": doCreateMigrateCheckJob,
     "ModifySubscribeConsumeTime": doModifySubscribeConsumeTime,
     "ModifySubscribeName": doModifySubscribeName,
-    "CreateSyncCheckJob": doCreateSyncCheckJob,
     "CreateSubscribe": doCreateSubscribe,
     "ResetSubscribe": doResetSubscribe,
     "StartMigrateJob": doStartMigrateJob,
@@ -864,7 +640,7 @@ ACTION_MAP = {
     "OfflineIsolatedSubscribe": doOfflineIsolatedSubscribe,
     "IsolateSubscribe": doIsolateSubscribe,
     "DescribeSubscribeConf": doDescribeSubscribeConf,
-    "DescribeMigrateCheckJob": doDescribeMigrateCheckJob,
+    "DescribeAsyncRequestInfo": doDescribeAsyncRequestInfo,
     "CompleteMigrateJob": doCompleteMigrateJob,
 
 }

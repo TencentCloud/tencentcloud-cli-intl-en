@@ -27,27 +27,21 @@
     "CreateMigrateJob": [
       {
         "document": "This example shows you how to fully migrate the data from a public network MySQL instance in Guangzhou to the instance cdb-e78e0nnv in Shanghai and perform a full data consistency check.",
-        "input": "https://dts.tencentcloudapi.com/?Action=CreateMigrateJob\r\n&JobName=usertest                               // DTS task name\r\n&SrcDatabaseType=mysql                          // Source instance type: MySQL\r\n&SrcAccessType=extranet                         // Migration over the public network\r\n&DstDatabaseType=mysql                          // Target instance type: MySQL\r\n&DstAccessType=cdb                                   // Target instance access type: TencentDB for MySQL\r\n&MigrateOption.RunMode=1                        // Immediate execution\r\n&MigrateOption.MigrateType=2  \t                // Full\r\n&MigrateOption.MigrateObject=1  \t            // Entire instance migration\r\n&MigrateOption.ConsistencyType=2    \t\t    // Full data consistency check\r\n&MigrateOption.IsOverrideRoot=0            \t\t// Do not overwrite the root of the target database\r\n&SrcInfo.Ip=14.17.22.36                         // Source instance public IP\r\n&SrcInfo.Port=10301                             // Source instance public port\r\n&SrcInfo.User=root                              // Source instance username\r\n&SrcInfo.Supplier=others                        // Non-Alibaba Cloud instance migration\r\n&SrcInfo.Password=123456                        // Source instance password\r\n&SrcInfo.Region=ap-guangzhou             \t    // Source instance region: Guangzhou\r\n&DstInfo.InstanceId=cdb-e78e0nnv            \t// Target instance ID\r\n&DstInfo.Region=ap-shanghai                     // Target region: Shanghai\r\n&DstInfo.ReadOnly=1                             // The target instance is read-only\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMigrateJob\n<Common request parameters>\n\n{\n    \"JobName\": \"Set an identifiable name\",\n    \"SrcDatabaseType\": \"mysql\",\n    \"SrcAccessType\": \"extranet\",\n    \"SrcInfo\": {\n        \"Supplier\": \"others\",\n        \"Ip\": \"14.17.22.36\",\n        \"Region\": \"ap-guangzhou\",\n        \"User\": \"root\",\n        \"Password\": \"yourPassword\",\n        \"Port\": 3306\n    },\n    \"DstDatabaseType\": \"mysql\",\n    \"DstAccessType\": \"cdb\",\n    \"DstInfo\": {\n        \"InstanceId\": \"cdb-e78e0nnv\",\n        \"Region\": \"ap-shanghai\",\n        \"ReadOnly\": 0,\n        \"User\": \"root\",\n        \"Password\": \"yourPassword\"\n    },\n    \"DatabaseInfo\": \"[]\",\n    \"Tags\": [\n        {\n            \"TagKey\": \"Owner\",\n            \"TagValue\": \"bob\"\n        }\n    ],\n    \"MigrateOption\": {\n        \"ExternParams\": \"{}\",\n        \"MigrateObject\": 1,\n        \"RunMode\": 1,\n        \"ExpectTime\": \"2020-09-22 00:00:00\",\n        \"ConsistencyType\": 2,\n        \"MigrateType\": 2,\n        \"IsOverrideRoot\": 0\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"dts-1kl0iy0v\",\n        \"RequestId\": \"2201c42a-714f-4faa-915b-a51cc09f5cec\"\n    }\n}",
-        "title": "Creating public network-based data migration task"
+        "title": "Creating a data migration task over public network"
       },
       {
-        "document": "This example shows you how to fully and incrementally migrate a Direct Connect-based MySQL instance in Guangzhou to the instance cdb-d0dqi8nv in Shanghai and spot check the data consistency.",
-        "input": "https://dts.tencentcloudapi.com/?Action=CreateMigrateJob\r\n&JobName=usertest                                    // DTS task name\r\n&SrcDatabaseType=mysql                          \t // Source instance type: MySQL\r\n&SrcAccessType=dcg                                   // Migration over the public network\r\n&DstDatabaseType=mysql                 \t\t         // Target instance type: MySQL\r\n&DstAccessType=cdb                                   // Target instance type: TencentDB for MySQL\r\n&MigrateOption.RunMode=1              \t\t         // Immediate execution\r\n&MigrateOption.MigrateType=3                 \t\t // Full + incremental migration\r\n&MigrateOption.MigrateObject=1         \t\t\t     // Entire instance migration\r\n&MigrateOption.ConsistencyType=3       \t\t\t\t // Spot check\r\n&MigrateOption.ConsistencyParams.SelectRowsPerTable=10    // Randomly select 20% of tables and 10% of entries in each table for data content verification\r\n&MigrateOption.ConsistencyParams.TablesSelectAll=20\r\n&MigrateOption.ConsistencyParams.TablesSelectCount=30     // Randomly select 30% of tables for entry quantity verification, i.e., `Select count(*)`\r\n&MigrateOption.IsOverrideRoot=0             \t\t// Do not overwrite the root of the target database\r\n&SrcInfo.UniqDcgId=dcg-cyrjcc09              \t\t// Direct Connect gateway ID\r\n&SrcInfo.VpcId=vpc-72jblfaa                       \t// VPC ID\r\n&SrcInfo.SubnetId=subnet-7raec42a           \t\t// Subnet ID\r\n&SrcInfo.Ip=192.168.120.136                         // Source instance IP\r\n&SrcInfo.Port=3307                                  // Source instance port\r\n&SrcInfo.User=root                                  // Source instance username\r\n&SrcInfo.Supplier=others                            // Non-Alibaba Cloud instance migration\r\n&SrcInfo.Password=123456                            // Source instance password\r\n&SrcInfo.Region=ap-guangzhou                  \t\t// Source instance region: Guangzhou\r\n&DstInfo.InstanceId=cdb-d0dqi8nv       \t\t\t    // Target instance ID\r\n&DstInfo.Region=ap-shanghai                     \t\t// Target region: Shanghai\r\n&DstInfo.ReadOnly=1                                 // The target instance is read-only\r\n&<Common request parameters>",
+        "document": "This example shows you how to fully and incrementally migrate a Direct Connect-enabled MySQL instance in Guangzhou to the instance cdb-d0dqi8nv in Shanghai.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMigrateJob\n<Common request parameters>\n\n{\n    \"JobName\": \"Set an identifiable name\",\n    \"SrcDatabaseType\": \"mysql\",\n    \"SrcAccessType\": \"dcg\",\n    \"SrcInfo\": {\n        \"Supplier\": \"others\",\n        \"UniqDcgId\": \"dcg-cyrjcc09\",\n        \"VpcId\": \"vpc-72jblfaa\",\n        \"SubnetId\": \"subnet-7raec42a\",\n        \"Ip\": \"192.168.120.136\",\n        \"Region\": \"ap-guangzhou\",\n        \"User\": \"root\",\n        \"Password\": \"yourPassword\",\n        \"Port\": 3306\n    },\n    \"DstDatabaseType\": \"mysql\",\n    \"DstAccessType\": \"cdb\",\n    \"DstInfo\": {\n        \"InstanceId\": \"cdb-d0dqi8nv\",\n        \"Region\": \"ap-shanghai\",\n        \"ReadOnly\": 0,\n        \"User\": \"root\",\n        \"Password\": \"yourPassword\"\n    },\n    \"DatabaseInfo\": \"[{\\\"Database\\\":\\\"test\\\",\\\"Table\\\":[\\\"user\\\",\\\"log\\\"]}]\",\n    \"Tags\": [\n        {\n            \"TagKey\": \"Owner\",\n            \"TagValue\": \"bob\"\n        }\n    ],\n    \"MigrateOption\": {\n        \"ExternParams\": \"{}\",\n        \"MigrateObject\": 1,\n        \"RunMode\": 1,\n        \"ExpectTime\": \"2020-09-22 00:00:00\",\n        \"ConsistencyType\": 2,\n        \"MigrateType\": 2,\n        \"IsOverrideRoot\": 0\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"dts-o3s1vxsp\",\n        \"RequestId\": \"915bc42a-714f-4faa-915b-a51cc09f5714\"\n    }\n}",
-        "title": "Creating Direct Connect-based data migration task"
+        "title": "Creating a data migration task over Direct Connect"
       },
       {
         "document": "This example shows you how to perform structural migration of selected tables from one MySQL instance to another MySQL instance on Tencent Cloud without performing data consistency check.",
-        "input": "https://dts.tencentcloudapi.com/?Action=CreateMigrateJob\r\n&JobName=usertest                                    // DTS task name\r\n&SrcDatabaseType=mysql                           \t // Source instance type: MySQL\r\n&SrcAccessType=cdb                                   // TencentDB migration\r\n&DstDatabaseType=mysql                               // Target instance type: MySQL\r\n&DstAccessType=cdb                                   // Target instance type: TencentDB for MySQL\r\n&MigrateOption.RunMode=1                  \t\t\t // Immediate execution\r\n&MigrateOption.MigrateType=1                 \t\t // Structural migration\r\n&MigrateOption.MigrateObject=2              \t\t // Migration of specified tables\r\n&DatabaseInfo=[{\"Database\":\"test\",\"Table\":[\"user\",\"log\"]}]    // Table to be migrated\r\n&MigrateOption.ConsistencyType=5          \t\t\t // No check\r\n&SrcInfo.InstanceId=cdb-powiqx8q            \t\t // Source instance ID\r\n&SrcInfo.User=root                                   // Source instance username\r\n&SrcInfo.Supplier=others                             // Non-Alibaba Cloud instance migration\r\n&SrcInfo.Password=123456                          \t // Source instance password\r\n&SrcInfo.Region=ap-guangzhou                  \t\t // Source instance region: Guangzhou\r\n&DstInfo.InstanceId=cdb-d0dqi8nv             \t\t // Target instance ID\r\n&DstInfo.Region=ap-shanghai                     \t // Target region: Shanghai\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMigrateJob\n<Common request parameters>\n\n{\n    \"JobName\": \"Set an identifiable name\",\n    \"SrcDatabaseType\": \"mysql\",\n    \"SrcAccessType\": \"cdb\",\n    \"SrcInfo\": {\n        \"Supplier\": \"others\",\n        \"InstanceId\": \"cdb-ieow93923\",\n        \"User\": \"root\",\n        \"Password\": \"yourPassword\"\n    },\n    \"DstDatabaseType\": \"mysql\",\n    \"DstAccessType\": \"cdb\",\n    \"DstInfo\": {\n        \"InstanceId\": \"cdb-e78e0nnv\",\n        \"Region\": \"ap-shanghai\",\n        \"ReadOnly\": 0,\n        \"User\": \"root\",\n        \"Password\": \"yourPassword\"\n    },\n    \"DatabaseInfo\": \"[]\",\n    \"Tags\": [\n        {\n            \"TagKey\": \"Owner\",\n            \"TagValue\": \"bob\"\n        }\n    ],\n    \"MigrateOption\": {\n        \"ExternParams\": \"{}\",\n        \"MigrateObject\": 1,\n        \"RunMode\": 1,\n        \"ExpectTime\": \"2020-09-22 00:00:00\",\n        \"ConsistencyType\": 5,\n        \"MigrateType\": 2,\n        \"IsOverrideRoot\": 0\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"dts-46i7easd\",\n        \"RequestId\": \"bc94c57b-9d69-11e9-84cb-256e968056b0\"\n    }\n}",
-        "title": "Creating TencentDB migration task"
-      },
-      {
-        "document": "This example shows you how to migrate an RDS 5.6 instance fully and incrementally over the public network.",
-        "input": "https://dts.tencentcloudapi.com/?Action=CreateMigrateJob\r\n&JobName=usertest                                    // DTS task name\r\n&SrcDatabaseType=mysql                           \t // Source instance type: MySQL\r\n&SrcAccessType=extranet                              // Migration over the public network\r\n&DstDatabaseType=mysql                               // Target instance type: MySQL\r\n&DstAccessType=cdb                                   // Target instance type: TencentDB for MySQL\r\n&MigrateOption.RunMode=1                  \t\t\t // Immediate execution\r\n&MigrateOption.MigrateType=3                 \t\t // Full + incremental migration\r\n&MigrateOption.MigrateObject=1              \t\t // Entire instance\r\n&MigrateOption.ConsistencyType=5          \t\t\t // No check\r\n&SrcInfo.AccessKey=cdb-powiqx8q            \t\t\t // Alibaba Cloud AccessKey\r\n&SrcInfo.RdsInstanceId=rm-uf546i98x6ngqjnjx\t\t \t // Alibaba Cloud RDS instance ID\r\n&SrcInfo.Ip=106.13.216.14\r\n&SrcInfo.Port=3306\r\n&SrcInfo.User=root                                   // Source instance username\r\n&SrcInfo.Supplier=aliyun                             // Alibaba Cloud instance migration\r\n&SrcInfo.Password=123456                          \t // Source instance password\r\n&SrcInfo.Region=ap-guangzhou                  \t\t // Source instance region: Guangzhou\r\n&DstInfo.InstanceId=cdb-d0dqi8nv             \t\t // Target instance ID\r\n&DstInfo.Region=ap-shanghai                     \t // Target region: Shanghai\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"JobId\": \"dts-p01oy6qp\",\n        \"RequestId\": \"2fcd891c-32f4-bf82-a8c0-16c99d75e175\"\n    }\n}",
-        "title": "Creating public network-based migration task for RDS"
+        "title": "Creating a database migration task"
       }
     ],
     "CreateSubscribe": [
@@ -58,36 +52,12 @@
         "title": "Creating data subscription instance"
       }
     ],
-    "CreateSyncCheckJob": [
-      {
-        "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=CreateSyncCheckJob\r\n&JobId=sync-blj8wnt1\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"46b45da1-3e8e-4ef2-8de8-b1bffa027385\"\n    }\n}",
-        "title": "Initiating disaster recovery sync task verification"
-      }
-    ],
-    "CreateSyncJob": [
-      {
-        "document": "After purchasing a disaster recovery instance for your source instance, you need to create a disaster recovery sync task first before proceeding to next steps.",
-        "input": "https://dts.tencentcloudapi.com/?Action=CreateSyncJob\r\n&JobName=testname\r\n&SrcDatabaseType=mysql\r\n&SrcAccessType=cdb\r\n&DstDatabaseType=mysql\r\n&DstAccessType=cdb\r\n&SyncOption.SyncObject=1\r\n&SrcInfo.Region=ap-shanghai\r\n&SrcInfo.InstanceId=cdb-e28hhsjt\r\n&DstInfo.Region=ap-shanghai\r\n&DstInfo.InstanceId=cdb-mdgezf4d\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"JobId\": \"sync-blj8wnt1\",\n        \"RequestId\": \"f26f7628-7dad-457d-993e-2f03f0ff518d\"\n    }\n}",
-        "title": "Creating disaster recovery sync task"
-      }
-    ],
     "DeleteMigrateJob": [
       {
         "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=DeleteMigrateJob\r\n&JobId=dts-1kl0iy0v\r\n&<Common request parameters>",
+        "input": "https://dts.tencentcloudapi.com/?Action=DeleteMigrateJob\n&JobId=dts-1kl0iy0v\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e15f9b4c-9841-40d2-a28b-dea284a17315\"\n    }\n}",
-        "title": "Deleting data migration task"
-      }
-    ],
-    "DeleteSyncJob": [
-      {
-        "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=DeleteSyncJob\r\n&JobId=sync-1r4qpcb1\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e15f9b4c-9841-40d2-a28b-dea284a17315\"\n    }\n}",
-        "title": "Deleting sync task"
+        "title": "Deleting a data migration task"
       }
     ],
     "DescribeAsyncRequestInfo": [
@@ -144,26 +114,10 @@
         "title": "Querying data subscription instance list"
       }
     ],
-    "DescribeSyncCheckJob": [
-      {
-        "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=DescribeSyncCheckJob\r\n&JobId=sync-blj8wnt1\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Status\": \"finished\",\n        \"ErrorCode\": 0,\n        \"ErrorMessage\": \"Disaster recovery check succeeded\",\n        \"StepInfo\": [\n            {\n                \"StepNo\": 1,\n                \"StepName\": \"Check the parameters\",\n                \"StepCode\": 0,\n                \"StepMessage\": \"Verification succeeded\"\n            },\n            {\n                \"StepNo\": 2,\n                \"StepName\": \"Check the source instance\",\n                \"StepCode\": 0,\n                \"StepMessage\": \"Verification succeeded\"\n            },\n            {\n                \"StepNo\": 3,\n                \"StepName\": \"Check the target instance\",\n                \"StepCode\": 0,\n                \"StepMessage\": \"Verification succeeded\"\n            },\n            {\n                \"StepNo\": 4,\n                \"StepName\": \"Check the instance status\",\n                \"StepCode\": 0,\n                \"StepMessage\": \"Verification succeeded\"\n            },\n            {\n                \"StepNo\": 5,\n                \"StepName\": \"Check the instance specification\",\n                \"StepCode\": 0,\n                \"StepMessage\": \"Verification succeeded\"\n            },\n            {\n                \"StepNo\": 6,\n                \"StepName\": \"Check the instance version\",\n                \"StepCode\": 0,\n                \"StepMessage\": \"Verification succeeded\"\n            },\n            {\n                \"StepNo\": 7,\n                \"StepName\": \"Check whether the target instance is empty\",\n                \"StepCode\": 0,\n                \"StepMessage\": \"Verification succeeded\"\n            },\n            {\n                \"StepNo\": 8,\n                \"StepName\": \"Check whether encryption is enabled\",\n                \"StepCode\": 0,\n                \"StepMessage\": \"Verification succeeded\"\n            },\n            {\n                \"StepNo\": 9,\n                \"StepName\": \"Check the synced table information of the instance\",\n                \"StepCode\": 0,\n                \"StepMessage\": \"Verification succeeded\"\n            },\n            {\n                \"StepNo\": 10,\n                \"StepName\": \"Check the cold backup data of the instance\",\n                \"StepCode\": 0,\n                \"StepMessage\": \"Verification succeeded\"\n            }\n        ],\n        \"CheckFlag\": 1,\n        \"RequestId\": \"b3951c71-1da4-4b8f-9de5-ad71ab1e2917\"\n    }\n}",
-        "title": "Querying the verification result of disaster recovery sync task"
-      }
-    ],
-    "DescribeSyncJobs": [
-      {
-        "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=DescribeSyncJobs\r\n&Order=CreateTime\r\n&OrderSeq=DESC\r\n&Offset=0\r\n&Limit=2\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"JobList\": [\n            {\n                \"JobId\": \"sync-blj8wnt1\",\n                \"JobName\": \"okJobName1\",\n                \"SyncOption\": {\n                    \"SyncObject\": 1,\n                    \"RunMode\": 1,\n                    \"SyncType\": 3,\n                    \"ConsistencyType\": 1\n                },\n                \"SrcAccessType\": \"cdb\",\n                \"SrcDatabaseType\": \"mysql\",\n                \"SrcInfo\": {\n                    \"InstanceId\": \"cdb-e28hhsjt\",\n                    \"Region\": \"ap-shanghai\"\n                },\n                \"DstAccessType\": \"cdb\",\n                \"DstDatabaseType\": \"mysql\",\n                \"DstInfo\": {\n                    \"InstanceId\": \"cdb-mdgezf4d\",\n                    \"Region\": \"ap-shanghai\"\n                },\n                \"Detail\": {\n                    \"StepAll\": 0,\n                    \"StepNow\": 0,\n                    \"Progress\": \"0\",\n                    \"CurrentStepProgress\": \"\",\n                    \"MasterSlaveDistance\": 0,\n                    \"SecondsBehindMaster\": 0,\n                    \"StepInfo\": []\n                },\n                \"Status\": 4,\n                \"DatabaseInfo\": \"Array\",\n                \"CreateTime\": \"2018-06-22 21:59:16\",\n                \"StartTime\": \"0000-00-00 00:00:00\",\n                \"EndTime\": \"0000-00-00 00:00:00\"\n            },\n            {\n                \"JobId\": \"sync-2hoficf5\",\n                \"JobName\": \"test_create_sync_jobName_0622_2100\",\n                \"SyncOption\": {\n                    \"SyncObject\": 2,\n                    \"RunMode\": 1,\n                    \"SyncType\": 3,\n                    \"ConsistencyType\": 1\n                },\n                \"SrcAccessType\": \"cdb\",\n                \"SrcDatabaseType\": \"mysql\",\n                \"SrcInfo\": {\n                    \"InstanceId\": \"cdb-6ygku747\",\n                    \"Region\": \"ap-guangzhou\"\n                },\n                \"DstAccessType\": \"cdb\",\n                \"DstDatabaseType\": \"mysql\",\n                \"DstInfo\": {\n                    \"InstanceId\": \"cdb-ddlroj4d\",\n                    \"Region\": \"ap-shanghai\"\n                },\n                \"Detail\": {\n                    \"StepAll\": 0,\n                    \"StepNow\": 0,\n                    \"Progress\": \"\",\n                    \"CurrentStepProgress\": \"\",\n                    \"MasterSlaveDistance\": 0,\n                    \"SecondsBehindMaster\": 0,\n                    \"StepInfo\": []\n                },\n                \"Status\": 1,\n                \"DatabaseInfo\": \"Array\",\n                \"CreateTime\": \"2018-06-22 20:37:28\",\n                \"StartTime\": \"0000-00-00 00:00:00\",\n                \"EndTime\": \"0000-00-00 00:00:00\"\n            }\n        ],\n        \"RequestId\": \"1ae80092-45be-4cf2-b313-026b6380463e\"\n    }\n}",
-        "title": "Querying disaster recovery sync tasks"
-      }
-    ],
     "IsolateSubscribe": [
       {
         "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=IsolateSubscribe\r\n&SubscribeId=subs-ieuwi83j2e\r\n&<Common request parameters>",
+        "input": "https://dts.tencentcloudapi.com/?Action=IsolateSubscribe\n&SubscribeId=subs-ieuwi83j2e\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
         "title": "Isolating subscription object"
       }
@@ -208,14 +162,6 @@
         "title": "Modifying the IP and port number of data subscription instance"
       }
     ],
-    "ModifySyncJob": [
-      {
-        "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action==ModifySyncJob\r\n&JobId=sync-blj8wnt1\r\n&JobName=testname3\r\n&DatabaseInfo=[{\"Database\": \"db1\"}, {\"Database\": \"db2\"}]\r\n&SyncOption.SyncObject=2\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e3ebe70b-e294-4c15-9377-9e82ef73f342\"\n    }\n}",
-        "title": "Modifying disaster recovery sync task"
-      }
-    ],
     "OfflineIsolatedSubscribe": [
       {
         "document": "This example shows you how to deactivate an isolated subscription instance.",
@@ -240,28 +186,12 @@
         "title": "Starting migration task"
       }
     ],
-    "StartSyncJob": [
-      {
-        "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=StartSyncJob\r\n&JobId=sync-blj8wnt1\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bab78b9b-ce8a-4645-bfb2-5b03397d6ea0\"\n    }\n}",
-        "title": "Starting disaster recovery sync task"
-      }
-    ],
     "StopMigrateJob": [
       {
         "document": "",
         "input": "https://dts.tencentcloudapi.com/?Action=StopMigrateJob\r\n&JobId=dts-1kl0iy0v\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"22f6b9ca-e94d-4a4d-b48f-a5133e791374\"\n    }\n}",
         "title": "Canceling data migration task"
-      }
-    ],
-    "SwitchDrToMaster": [
-      {
-        "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=SwitchDrToMaster\r\n&DatabaseType=mysql\r\n&DstInfo.Region=ap-shanghai\r\n&DstInfo.InstanceId=cdb-mdgezf4d\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": \"8826bbe9-27ee6768-9bc0a6ae-82962686\",\n        \"RequestId\": \"0ec651b0-755a-4342-991e-184698c00a31\"\n    }\n}",
-        "title": "Promoting disaster recovery instance to primary instance"
       }
     ]
   },

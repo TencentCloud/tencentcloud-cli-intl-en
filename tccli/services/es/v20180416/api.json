@@ -30,6 +30,12 @@
       "name": "Queries ES cluster instances",
       "output": "DescribeInstancesResponse"
     },
+    "DescribeViews": {
+      "document": "This API is used to query view data from three dimensions: cluster, node, and Kibana.",
+      "input": "DescribeViewsRequest",
+      "name": "Queries cluster views",
+      "output": "DescribeViewsResponse"
+    },
     "GetRequestTargetNodeTypes": {
       "document": "This API is used to get the node types used to receive client requests.",
       "input": "GetRequestTargetNodeTypesRequest",
@@ -91,6 +97,232 @@
     "serviceShortName": "es"
   },
   "objects": {
+    "ClusterView": {
+      "document": "Cluster view data",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster health status",
+          "example": "1",
+          "member": "float",
+          "name": "Health",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the cluster is visible",
+          "example": "1",
+          "member": "float",
+          "name": "Visible",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the cluster encounters circuit breaking",
+          "example": "1",
+          "member": "float",
+          "name": "Break",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Average disk usage",
+          "example": "0.7",
+          "member": "float",
+          "name": "AvgDiskUsage",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Average memory usage",
+          "example": "0.1",
+          "member": "float",
+          "name": "AvgMemUsage",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Average CPU usage",
+          "example": "0.1",
+          "member": "float",
+          "name": "AvgCpuUsage",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total disk size of the cluster",
+          "example": "0.1",
+          "member": "uint64",
+          "name": "TotalDiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Types of nodes to receive client requests",
+          "example": "[\"hot\"]",
+          "member": "string",
+          "name": "TargetNodeTypes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of online nodes",
+          "example": "10",
+          "member": "int64",
+          "name": "NodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number of nodes",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of data nodes",
+          "example": "7",
+          "member": "int64",
+          "name": "DataNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of indices",
+          "example": "100",
+          "member": "int64",
+          "name": "IndexNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of documents",
+          "example": "100000",
+          "member": "int64",
+          "name": "DocNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Used disk size (in bytes)",
+          "example": "10000",
+          "member": "int64",
+          "name": "DiskUsedInBytes",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of shards",
+          "example": "10000",
+          "member": "int64",
+          "name": "ShardNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of primary shards",
+          "example": "1000",
+          "member": "int64",
+          "name": "PrimaryShardNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of relocating shards",
+          "example": "1",
+          "member": "int64",
+          "name": "RelocatingShardNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of initializing shards",
+          "example": "1",
+          "member": "int64",
+          "name": "InitializingShardNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of unassigned shards",
+          "example": "0",
+          "member": "int64",
+          "name": "UnassignedShardNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total COS storage of an enterprise cluster, in GB",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCosStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the COS bucket that stores searchable snapshots of an enterprise cluster\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "es-3p7lkxxx-1021",
+          "member": "string",
+          "name": "SearchableSnapshotCosBucket",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "COS app ID of the searchable snapshots of an enterprise cluster\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "1221",
+          "member": "string",
+          "name": "SearchableSnapshotCosAppId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "CosBackup": {
       "document": "Auto-backup to COS for ES",
       "members": [
@@ -396,10 +628,21 @@
       "members": [
         {
           "document": "Instance ID",
+          "example": "es-xxxxxx",
           "member": "string",
           "name": "InstanceId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "Order ID\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "123",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -610,6 +853,7 @@
         {
           "default": "",
           "document": "AZ of the cluster instance. If this is not passed in, all AZs are used by default",
+          "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
           "required": false,
@@ -618,6 +862,7 @@
         {
           "default": "",
           "document": "List of cluster instance IDs",
+          "example": "es-abcdefgh",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -626,6 +871,7 @@
         {
           "default": "",
           "document": "List of cluster instance names",
+          "example": "测试",
           "member": "string",
           "name": "InstanceNames",
           "required": false,
@@ -634,6 +880,7 @@
         {
           "default": "",
           "document": "Pagination start value. Default value: 0",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -642,6 +889,7 @@
         {
           "default": "",
           "document": "Number of entries per page. Default value: 20",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -650,6 +898,7 @@
         {
           "default": "",
           "document": "Sort by field <li>1: instance ID </li><li>2: instance name </li><li>3: AZ </li><li>4: creation time </li>If `orderKey` is not passed in, sort by creation time in descending order",
+          "example": "1",
           "member": "uint64",
           "name": "OrderByKey",
           "required": false,
@@ -658,6 +907,7 @@
         {
           "default": "",
           "document": "Sorting order <li>0: ascending </li><li>1: descending </li>If orderByKey is passed in but orderByType is not, ascending order is used by default",
+          "example": "0",
           "member": "uint64",
           "name": "OrderByType",
           "required": false,
@@ -666,6 +916,7 @@
         {
           "default": "",
           "document": "Node tag information list",
+          "example": "无",
           "member": "TagInfo",
           "name": "TagList",
           "required": false,
@@ -674,8 +925,18 @@
         {
           "default": "",
           "document": "VPC VIP list",
+          "example": "10.2.3.4",
           "member": "string",
           "name": "IpList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of availability zones",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "ZoneList",
           "required": false,
           "type": "list"
         }
@@ -698,6 +959,60 @@
           "name": "InstanceList",
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeViewsRequest": {
+      "document": "DescribeViews request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster instance ID",
+          "example": "es-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeViewsResponse": {
+      "document": "DescribeViews response structure.",
+      "members": [
+        {
+          "document": "Cluster view\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "ClusterView",
+          "member": "ClusterView",
+          "name": "ClusterView",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Node view\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "NodesView",
+          "member": "NodeView",
+          "name": "NodesView",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Kibana view\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "KibanasView",
+          "member": "KibanaView",
+          "name": "KibanasView",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1238,7 +1553,7 @@
         },
         {
           "default": "",
-          "document": "Warm node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Warm node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "ES.S1.SMALL2",
           "member": "string",
           "name": "WarmNodeType",
@@ -1248,7 +1563,7 @@
         },
         {
           "default": "",
-          "document": "Number of warm nodes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Number of warm nodes\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "3",
           "member": "uint64",
           "name": "WarmNodeNum",
@@ -1258,7 +1573,7 @@
         },
         {
           "default": "",
-          "document": "Number of warm node CPU cores\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Number of warm node CPU cores\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "2",
           "member": "uint64",
           "name": "WarmCpuNum",
@@ -1268,7 +1583,7 @@
         },
         {
           "default": "",
-          "document": "Warm node memory size in GB\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Warm node memory size (in GB)\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "4",
           "member": "uint64",
           "name": "WarmMemSize",
@@ -1278,7 +1593,7 @@
         },
         {
           "default": "",
-          "document": "Warm node disk type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Warm node disk type\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "CLOUD_PREMIUM",
           "member": "string",
           "name": "WarmDiskType",
@@ -1288,7 +1603,7 @@
         },
         {
           "default": "",
-          "document": "Warm node disk size in GB\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Warm node disk size (in GB)\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "100",
           "member": "uint64",
           "name": "WarmDiskSize",
@@ -1465,6 +1780,126 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cold node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "ES.S1.SMALL2",
+          "member": "string",
+          "name": "ColdNodeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of cold nodes\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "3",
+          "member": "uint64",
+          "name": "ColdNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of cold node CPU cores\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "2",
+          "member": "uint64",
+          "name": "ColdCpuNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cold node memory size (in GB)\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "20",
+          "member": "uint64",
+          "name": "ColdMemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cold node disk type\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "CLOUD_PREMIUM",
+          "member": "string",
+          "name": "ColdDiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cold node disk size (in GB)\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "100",
+          "member": "uint64",
+          "name": "ColdDiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Frozen node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "ES.S1.SMALL2",
+          "member": "string",
+          "name": "FrozenNodeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of frozen nodes\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "3",
+          "member": "uint64",
+          "name": "FrozenNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of frozen node CPU cores\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "2",
+          "member": "uint64",
+          "name": "FrozenCpuNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Frozen node memory size (GB)\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "20",
+          "member": "uint64",
+          "name": "FrozenMemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Frozen node disk type\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "CLOUD_SSD",
+          "member": "string",
+          "name": "FrozenDiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Frozen node disk size (in GB)\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "100",
+          "member": "uint64",
+          "name": "FrozenDiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1596,6 +2031,84 @@
           "name": "KibanaNodeDiskSize",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "KibanaView": {
+      "document": "Kibana view data",
+      "members": [
+        {
+          "default": "",
+          "document": "Kibana node IP",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node disk size",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disk usage",
+          "member": "float",
+          "name": "DiskUsage",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node memory size",
+          "member": "int64",
+          "name": "MemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Memory usage",
+          "member": "float",
+          "name": "MemUsage",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of node CPUs",
+          "member": "int64",
+          "name": "CpuNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CPU usage",
+          "member": "float",
+          "name": "CpuUsage",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Availability zone",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -1788,6 +2301,182 @@
         }
       ],
       "usage": "both"
+    },
+    "NodeView": {
+      "document": "Node view data",
+      "members": [
+        {
+          "default": "",
+          "document": "Node ID",
+          "example": "NodeId",
+          "member": "string",
+          "name": "NodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node IP",
+          "example": "NodeIp",
+          "member": "string",
+          "name": "NodeIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the node is visible",
+          "example": "Visible",
+          "member": "float",
+          "name": "Visible",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the node encounters circuit breaking",
+          "example": "Break",
+          "member": "float",
+          "name": "Break",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node disk size",
+          "example": "DiskSize",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disk usage",
+          "example": "DiskUsage",
+          "member": "float",
+          "name": "DiskUsage",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node memory size (in GB)",
+          "example": "MemSize",
+          "member": "int64",
+          "name": "MemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Memory usage",
+          "example": "MemUsage",
+          "member": "float",
+          "name": "MemUsage",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of node CPUs",
+          "example": "CpuNum",
+          "member": "int64",
+          "name": "CpuNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CPU usage",
+          "example": "CpuUsage",
+          "member": "float",
+          "name": "CpuUsage",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Availability zone",
+          "example": "Zone",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node role",
+          "example": "NodeRole",
+          "member": "string",
+          "name": "NodeRole",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node HTTP IP",
+          "example": "NodeHttpIp",
+          "member": "string",
+          "name": "NodeHttpIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "JVM memory usage",
+          "example": "JvmMemUsage",
+          "member": "float",
+          "name": "JvmMemUsage",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of node shards",
+          "example": "ShardNum",
+          "member": "int64",
+          "name": "ShardNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID list of node disks",
+          "example": "DiskIds",
+          "member": "string",
+          "name": "DiskIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether a hidden availability zone",
+          "example": "Hidden",
+          "member": "bool",
+          "name": "Hidden",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "Operation": {
       "document": "ES cluster operation details",
@@ -2410,6 +3099,15 @@
       "document": "UpdateInstance response structure.",
       "members": [
         {
+          "document": "Order ID\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "123",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -2424,6 +3122,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "es-xxxxxxxx",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2432,6 +3131,7 @@
         {
           "default": "",
           "document": "List of names of the plugins to be installed",
+          "example": "[\"analysis-qq\\n\",\"sql\\n\"]",
           "member": "string",
           "name": "InstallPluginList",
           "required": false,
@@ -2440,6 +3140,7 @@
         {
           "default": "",
           "document": "List of names of the plugins to be uninstalled",
+          "example": "[\"analysis-qq\\n\",\"sql\\n\"]",
           "member": "string",
           "name": "RemovePluginList",
           "required": false,
@@ -2448,6 +3149,7 @@
         {
           "default": "",
           "document": "Whether to force restart",
+          "example": "true",
           "member": "bool",
           "name": "ForceRestart",
           "required": false,
@@ -2456,10 +3158,20 @@
         {
           "default": "",
           "document": "Whether to reinstall",
+          "example": "true",
           "member": "bool",
           "name": "ForceUpdate",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "0: system plugin",
+          "example": "0",
+          "member": "uint64",
+          "name": "PluginType",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2633,6 +3345,15 @@
     "UpgradeLicenseResponse": {
       "document": "UpgradeLicense response structure.",
       "members": [
+        {
+          "document": "Order ID\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "123",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

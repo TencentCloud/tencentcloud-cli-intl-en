@@ -6,6 +6,18 @@
       "name": "Creates ACL policies in batches",
       "output": "BatchCreateAclResponse"
     },
+    "BatchModifyGroupOffsets": {
+      "document": "This API is used to batch modify consumer group offsets.",
+      "input": "BatchModifyGroupOffsetsRequest",
+      "name": "Modifies consumer group offsets in batches",
+      "output": "BatchModifyGroupOffsetsResponse"
+    },
+    "BatchModifyTopicAttributes": {
+      "document": "This API is used to batch set topic attributes.",
+      "input": "BatchModifyTopicAttributesRequest",
+      "name": "Sets topic attributes in batches",
+      "output": "BatchModifyTopicAttributesResponse"
+    },
     "CreateAcl": {
       "document": "This API is used to add an ACL policy.",
       "input": "CreateAclRequest",
@@ -109,7 +121,7 @@
       "output": "DescribeGroupOffsetsResponse"
     },
     "DescribeInstanceAttributes": {
-      "document": "This API is used to get instance attributes.",
+      "document": "This API is used to get instance attributes. ",
       "input": "DescribeInstanceAttributesRequest",
       "name": "Gets instance attributes",
       "output": "DescribeInstanceAttributesResponse"
@@ -587,6 +599,276 @@
         }
       ],
       "type": "object"
+    },
+    "BatchModifyGroupOffsetsRequest": {
+      "document": "BatchModifyGroupOffsets request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Consumer group name.",
+          "example": "1",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name.",
+          "example": "ckafka-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Partition information.",
+          "example": "1",
+          "member": "Partitions",
+          "name": "Partitions",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Name of the specified topic. Default value: names of all topics.",
+          "example": "1",
+          "member": "string",
+          "name": "TopicName",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchModifyGroupOffsetsResponse": {
+      "document": "BatchModifyGroupOffsets response structure.",
+      "members": [
+        {
+          "document": "Returned result.",
+          "example": "无",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchModifyTopicAttributesRequest": {
+      "document": "BatchModifyTopicAttributes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "ckafka-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic attribute list",
+          "example": "无",
+          "member": "BatchModifyTopicInfo",
+          "name": "Topic",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchModifyTopicAttributesResponse": {
+      "document": "BatchModifyTopicAttributes response structure.",
+      "members": [
+        {
+          "document": "Returned result.",
+          "example": "无",
+          "member": "BatchModifyTopicResultDTO",
+          "name": "Result",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchModifyTopicInfo": {
+      "document": "Topic parameters that can be modified in batches",
+      "members": [
+        {
+          "default": "",
+          "document": "Topic name.",
+          "example": "topic",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of partitions.",
+          "example": "0",
+          "member": "int64",
+          "name": "PartitionNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks.",
+          "example": "1",
+          "member": "string",
+          "name": "Note",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of replicas.",
+          "example": "1",
+          "member": "int64",
+          "name": "ReplicaNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Message deletion policy. Valid values: `delete`, `compact`.",
+          "example": "compact",
+          "member": "string",
+          "name": "CleanUpPolicy",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The minimum number of replicas specified by `min.insync.replicas` when the producer sets `request.required.acks` to `-1`.",
+          "example": "1",
+          "member": "int64",
+          "name": "MinInsyncReplicas",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to allow a non-ISR replica to be the leader.",
+          "example": "false",
+          "member": "bool",
+          "name": "UncleanLeaderElectionEnable",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Message retention period in topic dimension in milliseconds. Value range: 1 minute to 90 days.",
+          "example": "1",
+          "member": "int64",
+          "name": "RetentionMs",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Message retention size in topic dimension. Value range: 1 MB - 1024 GB.",
+          "example": "1",
+          "member": "int64",
+          "name": "RetentionBytes",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Segment rolling duration in milliseconds. Value range: 1-90 days.",
+          "example": "1",
+          "member": "int64",
+          "name": "SegmentMs",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Message size per batch. Value range: 1 KB - 12 MB.",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxMessageBytes",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "BatchModifyTopicResultDTO": {
+      "document": "Results of the batch modified topic attributes",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ckafka-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Topic name.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Status code.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ReturnCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Message status.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ClusterInfo": {
       "document": "Cluster information entity",
@@ -1270,6 +1552,15 @@
           "name": "RetentionBytes",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tag list.",
+          "example": "1",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2665,11 +2956,11 @@
       "type": "object"
     },
     "DynamicDiskConfig": {
-      "document": "",
+      "document": "Dynamic disk expansion configuration",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Whether to enable dynamic disk expansion configuration. `0`: disable, `1`: enable.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"Enable\": 1",
           "member": "int64",
           "name": "Enable",
@@ -2679,7 +2970,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Percentage of dynamic disk expansion each time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"StepForwardPercentage\": 15",
           "member": "int64",
           "name": "StepForwardPercentage",
@@ -2689,7 +2980,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Disk quota threshold (in percentage) for triggering the automatic disk expansion event.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"DiskQuotaPercentage\": 70",
           "member": "int64",
           "name": "DiskQuotaPercentage",
@@ -2699,7 +2990,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Max disk space in GB.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"MaxDiskSpace\": 1000",
           "member": "int64",
           "name": "MaxDiskSpace",
@@ -3499,7 +3790,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Dynamic disk expansion policy.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "复杂类型",
           "member": "DynamicDiskConfig",
           "name": "DynamicDiskConfig",
@@ -4087,6 +4378,15 @@
           "name": "PublicNetwork",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Dynamic disk expansion policy configuration.",
+          "example": "无",
+          "member": "DynamicDiskConfig",
+          "name": "DynamicDiskConfig",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -4295,6 +4595,15 @@
           "name": "RetentionBytes",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tag list.",
+          "example": "1",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -4372,6 +4681,32 @@
         }
       ],
       "usage": "out"
+    },
+    "Partitions": {
+      "document": "Partition information",
+      "members": [
+        {
+          "default": "",
+          "document": "Partition.",
+          "example": "0",
+          "member": "int64",
+          "name": "Partition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Partition consumption offset.",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "Price": {
       "document": "Message price entity",
@@ -5440,6 +5775,7 @@
         {
           "default": "",
           "document": "Zone list",
+          "example": "1",
           "member": "ZoneInfo",
           "name": "ZoneList",
           "required": true,
@@ -5449,6 +5785,7 @@
         {
           "default": "",
           "document": "Maximum number of instances to be purchased",
+          "example": "1",
           "member": "int64",
           "name": "MaxBuyInstanceNum",
           "required": true,
@@ -5458,6 +5795,7 @@
         {
           "default": "",
           "document": "Maximum bandwidth in MB/S",
+          "example": "1",
           "member": "int64",
           "name": "MaxBandwidth",
           "required": true,
@@ -5467,6 +5805,7 @@
         {
           "default": "",
           "document": "Pay-as-you-go unit price",
+          "example": "1",
           "member": "Price",
           "name": "UnitPrice",
           "required": true,
@@ -5476,6 +5815,7 @@
         {
           "default": "",
           "document": "Pay-as-you-go unit message price",
+          "example": "1",
           "member": "Price",
           "name": "MessagePrice",
           "required": true,
@@ -5485,6 +5825,7 @@
         {
           "default": "",
           "document": "Cluster information dedicated to a user\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "ClusterInfo",
           "name": "ClusterInfo",
           "required": true,
@@ -5494,6 +5835,7 @@
         {
           "default": "",
           "document": "Purchase of Standard Edition configurations\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "Standard",
           "required": true,
@@ -5503,6 +5845,7 @@
         {
           "default": "",
           "document": "Purchase of Standard S2 Edition configurations\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "StandardS2",
           "required": true,
@@ -5512,6 +5855,7 @@
         {
           "default": "",
           "document": "Purchase of Pro Edition configurations\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "Profession",
           "required": true,
@@ -5521,8 +5865,29 @@
         {
           "default": "",
           "document": "Purchase of Physical Dedicated Edition configurations\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "Physical",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network bandwidth.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "PublicNetwork",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network bandwidth configuration.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "PublicNetworkLimit",
           "required": true,
           "type": "string",
           "value_allowed_null": true
