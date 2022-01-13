@@ -734,11 +734,11 @@
       "usage": "out"
     },
     "AdvanceHttps": {
-      "document": "",
+      "document": "Custom HTTPS forwarding configuration",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Custom TLS data switch\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "on",
           "member": "string",
           "name": "CustomTlsStatus",
@@ -748,7 +748,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Specifies the TLS version. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "[\"TLSv1\",\"TLSv1.1\",\"TLSv1.2\",\"TLSv1.3\"]",
           "member": "string",
           "name": "TlsVersion",
@@ -758,7 +758,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Custom encryption suite\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"EECDH+AES128\"",
           "member": "string",
           "name": "Cipher",
@@ -768,7 +768,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Origin authentication type\n`off`: disable authentication\n`oneWay`: authenticate the origin \n`twoWay`: two-way authentication\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "off",
           "member": "string",
           "name": "VerifyOriginType",
@@ -778,7 +778,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Information of the origin-pull certificate\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ServerCert",
           "name": "CertInfo",
@@ -788,7 +788,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Information of the origin server certificate\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ClientCert",
           "name": "OriginCertInfo",
@@ -7053,7 +7053,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Advanced HTTPS forwarding configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "AdvanceHttps",
           "name": "AdvanceHttps",
