@@ -18,6 +18,12 @@
       "name": "Associates CCN instance",
       "output": "AttachCcnResponse"
     },
+    "AttachDisks": {
+      "document": "This API is used to attach one or more cloud disks.",
+      "input": "AttachDisksRequest",
+      "name": "Attaches cloud disks",
+      "output": "AttachDisksResponse"
+    },
     "CreateBlueprint": {
       "document": "This API is used to create an image.",
       "input": "CreateBlueprintRequest",
@@ -78,6 +84,12 @@
       "name": "Queries image information",
       "output": "DescribeBlueprintsResponse"
     },
+    "DescribeBundleDiscount": {
+      "document": "This API is used to query the discount information of a package.",
+      "input": "DescribeBundleDiscountRequest",
+      "name": "Queries package discount",
+      "output": "DescribeBundleDiscountResponse"
+    },
     "DescribeBundles": {
       "document": "This API is used to query the information of a package.",
       "input": "DescribeBundlesRequest",
@@ -89,6 +101,36 @@
       "input": "DescribeCcnAttachedInstancesRequest",
       "name": "Queries the information of instances associated with CCN",
       "output": "DescribeCcnAttachedInstancesResponse"
+    },
+    "DescribeDiskConfigs": {
+      "document": "This API is used to query the cloud disk configuration.",
+      "input": "DescribeDiskConfigsRequest",
+      "name": "Queries cloud disk configuration",
+      "output": "DescribeDiskConfigsResponse"
+    },
+    "DescribeDiskDiscount": {
+      "document": "This API is used to query the discount information of a cloud disk.",
+      "input": "DescribeDiskDiscountRequest",
+      "name": "Queries the discount information of cloud disk",
+      "output": "DescribeDiskDiscountResponse"
+    },
+    "DescribeDisks": {
+      "document": "This API is used to query the information of one or more cloud disks.",
+      "input": "DescribeDisksRequest",
+      "name": "Queries cloud disks",
+      "output": "DescribeDisksResponse"
+    },
+    "DescribeDisksDeniedActions": {
+      "document": "This API is used to query the list of operation limits of one or more cloud disks.",
+      "input": "DescribeDisksDeniedActionsRequest",
+      "name": "Queries the list of operation limits of cloud disks",
+      "output": "DescribeDisksDeniedActionsResponse"
+    },
+    "DescribeDisksReturnable": {
+      "document": "This API is used to query whether the specified cloud disk can be returned.",
+      "input": "DescribeDisksReturnableRequest",
+      "name": "Queries whether the specified cloud disk can be returned",
+      "output": "DescribeDisksReturnableResponse"
     },
     "DescribeFirewallRules": {
       "document": "This API is used to query the firewall rules of an instance.",
@@ -131,6 +173,12 @@
       "input": "DescribeInstancesDeniedActionsRequest",
       "name": "Views the list of operation limits of instances",
       "output": "DescribeInstancesDeniedActionsResponse"
+    },
+    "DescribeInstancesDiskNum": {
+      "document": "This API is used to query the number of cloud disks attached to instances.",
+      "input": "DescribeInstancesDiskNumRequest",
+      "name": "Queries the number of cloud disks attached to instances",
+      "output": "DescribeInstancesDiskNumResponse"
     },
     "DescribeInstancesReturnable": {
       "document": "This API is used to query whether the specified instance can be returned.",
@@ -192,6 +240,12 @@
       "name": "Unassociates CCN instance",
       "output": "DetachCcnResponse"
     },
+    "DetachDisks": {
+      "document": "This API is used to detach one or more cloud disks.",
+      "input": "DetachDisksRequest",
+      "name": "Detaching cloud disks",
+      "output": "DetachDisksResponse"
+    },
     "DisassociateInstancesKeyPairs": {
       "document": "This API is used to unbind an instance from the specified key pair.\n\n* Only instances on LINUX_UNIX in [RUNNING, STOPPED] status are supported. Instances in `RUNNING` status will be forcibly shut down before unbinding.\n* After a key pair is unassociated from an instance, you can log in to the instance with password.\n* If no password was set, you cannot log in to the instance with SSH after unbinding. You can call the ResetInstancesPassword API to set a login password.\n* Batch operations are supported. The maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
       "input": "DisassociateInstancesKeyPairsRequest",
@@ -210,11 +264,23 @@
       "name": "Queries the price of created image",
       "output": "InquirePriceCreateBlueprintResponse"
     },
+    "InquirePriceCreateDisks": {
+      "document": "This API is used to query the price of purchasing cloud disks.",
+      "input": "InquirePriceCreateDisksRequest",
+      "name": "Query the price of purchasing cloud disks.",
+      "output": "InquirePriceCreateDisksResponse"
+    },
     "InquirePriceCreateInstances": {
       "document": "This API is used to query the price of a created instance.",
       "input": "InquirePriceCreateInstancesRequest",
       "name": "Queries the price of created instance",
       "output": "InquirePriceCreateInstancesResponse"
+    },
+    "InquirePriceRenewDisks": {
+      "document": "This API is used to query the price of renewing cloud disks.",
+      "input": "InquirePriceRenewDisksRequest",
+      "name": "Queries the price of renewing cloud disks",
+      "output": "InquirePriceRenewDisksResponse"
     },
     "InquirePriceRenewInstances": {
       "document": "This API is used to query the price of renewed instance.",
@@ -227,6 +293,18 @@
       "input": "ModifyBlueprintAttributeRequest",
       "name": "Modifies image attribute",
       "output": "ModifyBlueprintAttributeResponse"
+    },
+    "ModifyDisksAttribute": {
+      "document": "This API is used to modify cloud disk attributes.",
+      "input": "ModifyDisksAttributeRequest",
+      "name": "Modifies cloud disk attributes",
+      "output": "ModifyDisksAttributeResponse"
+    },
+    "ModifyDisksRenewFlag": {
+      "document": "This API is used to modify the configuration of auto-renewal of cloud disks.",
+      "input": "ModifyDisksRenewFlagRequest",
+      "name": "Modifies the configuration of auto-renewal of cloud disks",
+      "output": "ModifyDisksRenewFlagResponse"
     },
     "ModifyFirewallRuleDescription": {
       "document": "This API is used to modify the description of a single firewall rule.\n\n* `FirewallVersion` is used to specify the version of the firewall to be manipulated. If the `FirewallVersion` value passed in is not equal to the current latest version of the firewall, a failure will be returned. If `FirewallVersion` is not passed in, the description of the specified rule will be modified directly.\n\nIn the `FirewallRule` parameter:\n* Valid values of the `Protocol` field include `TCP`, `UDP`, `ICMP`, and `ALL`.\n* For the `Port` field, you can enter only `ALL`, a single port number, several port numbers separated by commas, or a port range indicated by two port numbers separated by a minus sign. If `Port` is a range, the port number on the left of the minus sign must be smaller than the one on the right. If `Protocol` is not `TCP` or `UDP`, `Port` can only be empty or `ALL`. The length of the `Port` field cannot exceed 64 characters.\n* For the `CidrBlock` field, you can enter any string that conforms to the CIDR format standard. Multi-Tenant network isolation rules take precedence over private network rules in the firewall.\n* For the `Action` field, you can enter only `ACCEPT` or `DROP`.\n* The length of the `FirewallRuleDescription` field cannot exceed 64 characters.",
@@ -279,7 +357,7 @@
     "ResetInstance": {
       "document": "This API is used to reinstall the image on the specified instance.\n\n* If you specify a `BlueprintId`, the specified image is used; otherwise, the image used by the current instance is used.\n* The system disk will be formatted and reset. Therefore, make sure that no important files are stored on the system disk.\n* Currently, this API does not support switching the operating system between `LINUX_UNIX` and `WINDOWS` for instances.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
       "input": "ResetInstanceRequest",
-      "name": "Resets application",
+      "name": "Reinstalls system",
       "output": "ResetInstanceResponse"
     },
     "ResetInstancesPassword": {
@@ -299,6 +377,12 @@
       "input": "StopInstancesRequest",
       "name": "Shuts down instances",
       "output": "StopInstancesResponse"
+    },
+    "TerminateDisks": {
+      "document": "This API is used to terminate one or more cloud disk.",
+      "input": "TerminateDisksRequest",
+      "name": "Terminates cloud disks",
+      "output": "TerminateDisksResponse"
     },
     "TerminateInstances": {
       "document": "This API is used to terminate one or more instances.\n\n* Instances in `SHUTDOWN` status can be terminated through this API and cannot be recovered.\n* Batch operations are supported. The allowed maximum number of instances in each request is 100.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
@@ -402,6 +486,87 @@
     },
     "AttachCcnResponse": {
       "document": "AttachCcn response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachDetail": {
+      "document": "Attachment information ",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "\"lhins-anxwfvxh\"",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of elastic cloud disks attached to the instance",
+          "example": "1",
+          "member": "int64",
+          "name": "AttachedDiskCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Upper limit of attached elastic cloud disks",
+          "example": "5",
+          "member": "int64",
+          "name": "MaxAttachCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AttachDisksRequest": {
+      "document": "AttachDisks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of cloud disk IDs.",
+          "example": "[\"lhdisk-5vmz00i3\"]",
+          "member": "string",
+          "name": "DiskIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "lhins-qg08np8l",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether Auto-Renewal is enabled ",
+          "example": "NOTIFY_AND_AUTO_RENEW",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachDisksResponse": {
+      "document": "AttachDisks response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1039,6 +1204,62 @@
       ],
       "type": "object"
     },
+    "DataDiskPrice": {
+      "document": "Data disk price",
+      "members": [
+        {
+          "default": "",
+          "document": "Cloud disk ID.",
+          "example": "lhdisk-f3vgfci1",
+          "member": "string",
+          "name": "DiskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud disk unit price.",
+          "example": "0.8",
+          "member": "float",
+          "name": "OriginalDiskPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total cloud disk price.",
+          "example": "0.8",
+          "member": "float",
+          "name": "OriginalPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discount.",
+          "example": "0.5",
+          "member": "float",
+          "name": "Discount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discounted total price.",
+          "example": "0.4",
+          "member": "float",
+          "name": "DiscountPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DeleteBlueprintsRequest": {
       "document": "DeleteBlueprints request structure.",
       "members": [
@@ -1315,6 +1536,51 @@
       ],
       "type": "object"
     },
+    "DescribeBundleDiscountRequest": {
+      "document": "DescribeBundleDiscount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Package ID.",
+          "example": "bundle_bw_small1_1",
+          "member": "string",
+          "name": "BundleId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBundleDiscountResponse": {
+      "document": "DescribeBundleDiscount response structure.",
+      "members": [
+        {
+          "document": "Currency: CNY, USD.",
+          "example": "CNY",
+          "member": "string",
+          "name": "Currency",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Discount tier details. The information of each tier includes the duration, discounted quantity, total price, discounted price, and discount details (user discount, official website discount, or final discount).",
+          "example": "无",
+          "member": "DiscountDetail",
+          "name": "DiscountDetail",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBundlesRequest": {
       "document": "DescribeBundles request structure.",
       "members": [
@@ -1412,6 +1678,285 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDiskConfigsRequest": {
+      "document": "DescribeDiskConfigs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Filter list.\n<li>zone</li>Filter by availability zone.\nType: String\nRequired: no",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDiskConfigsResponse": {
+      "document": "DescribeDiskConfigs response structure.",
+      "members": [
+        {
+          "document": "List of cloud disk configurations.",
+          "example": "无",
+          "member": "DiskConfig",
+          "name": "DiskConfigSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDiskDiscountRequest": {
+      "document": "DescribeDiskDiscount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cloud disk type. Valid values: \"CLOUD_PREMIUM\".",
+          "example": "CLOUD_PREMIUM",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cloud disk size.",
+          "example": "50",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDiskDiscountResponse": {
+      "document": "DescribeDiskDiscount response structure.",
+      "members": [
+        {
+          "document": "Currency: CNY, USD.",
+          "example": "CNY",
+          "member": "string",
+          "name": "Currency",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Discount tier details. The information of each tier includes the duration, discounted quantity, total price, discounted price, and discount details (user discount, official website discount, or final discount).",
+          "example": "无",
+          "member": "DiscountDetail",
+          "name": "DiscountDetail",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDisksDeniedActionsRequest": {
+      "document": "DescribeDisksDeniedActions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of cloud disk IDs.",
+          "example": "[\"lhdisk-eobj8huv\"]",
+          "member": "string",
+          "name": "DiskIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDisksDeniedActionsResponse": {
+      "document": "DescribeDisksDeniedActions response structure.",
+      "members": [
+        {
+          "document": "List of operation limits of cloud disks.",
+          "example": "无",
+          "member": "DiskDeniedActions",
+          "name": "DiskDeniedActionSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDisksRequest": {
+      "document": "DescribeDisks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of cloud disk IDs.",
+          "example": "[\"lhdisk-p1zflrif\"]",
+          "member": "string",
+          "name": "DiskIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter list.\ndisk-id\nFilter by **cloud disk ID**.\nType: String\nRequired: no\ninstance-id\nFilter by **instance ID**.\nType: String\nRequired: no\ndisk-name\nFilter by **cloud disk name**.\nType: String\nRequired: no\nzone\nFilter by **availability zone**.\nType: String\nRequired: no\ndisk-usage\nFilter by **cloud disk type**.\nType: String\nRequired: no\ndisk-state\nFilter by **cloud disk status**.\nType: String\nRequired: no\nEach request can contain up to 10 filters, each of which can have 5 values. You cannot specify both `DiskIds` and `Filters` at the same time.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The field by which the cloud disks are sorted. Valid values: \"CREATED_TIME\" (creation time), \"EXPIRED_TIME\" (expiration time), \"DISK_SIZE\" (size of cloud disks). Default value: \"CREATED_TIME\".",
+          "example": "CREATED_FIELD",
+          "member": "string",
+          "name": "OrderField",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order of the output cloud disks. Valid values: \"ASC\" (ascending order), \"DESC\" (descending order). Default value: \"DESC\".",
+          "example": "ASC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDisksResponse": {
+      "document": "DescribeDisks response structure.",
+      "members": [
+        {
+          "document": "List of cloud disk information.",
+          "example": "无",
+          "member": "Disk",
+          "name": "DiskSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of eligible cloud disks.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDisksReturnableRequest": {
+      "document": "DescribeDisksReturnable request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of cloud disk IDs.",
+          "example": "[\"lhdisk-eobj8huv\"]",
+          "member": "string",
+          "name": "DiskIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDisksReturnableResponse": {
+      "document": "DescribeDisksReturnable response structure.",
+      "members": [
+        {
+          "document": "List of returnable cloud disks.",
+          "example": "无",
+          "member": "DiskReturnable",
+          "name": "DiskReturnableSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of eligible cloud disks.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1662,6 +2207,51 @@
           "name": "InstanceDeniedActionSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesDiskNumRequest": {
+      "document": "DescribeInstancesDiskNum request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of instance IDs.",
+          "example": "[\"lhins-anxwfvxh\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesDiskNumResponse": {
+      "document": "DescribeInstancesDiskNum response structure.",
+      "members": [
+        {
+          "document": "Information of all attached disks",
+          "example": "无",
+          "member": "AttachDetail",
+          "name": "AttachDetailSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of attached cloud disks",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -2285,6 +2875,33 @@
       ],
       "type": "object"
     },
+    "DetachDisksRequest": {
+      "document": "DetachDisks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of cloud disk IDs.",
+          "example": "[\"lhdisk-eobj8huv\"]",
+          "member": "string",
+          "name": "DiskIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachDisksResponse": {
+      "document": "DetachDisks response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DisassociateInstancesKeyPairsRequest": {
       "document": "DisassociateInstancesKeyPairs request structure.",
       "members": [
@@ -2320,6 +2937,472 @@
         }
       ],
       "type": "object"
+    },
+    "DiscountDetail": {
+      "document": "Package discount details (only returned for price query APIs called in the console).",
+      "members": [
+        {
+          "default": "",
+          "document": "Billing duration.",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing unit.",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total price.",
+          "member": "float",
+          "name": "TotalCost",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discounted total price.",
+          "member": "float",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discount.",
+          "member": "int64",
+          "name": "Discount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discount details.",
+          "member": "PolicyDetail",
+          "name": "PolicyDetail",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Disk": {
+      "document": "Disk information",
+      "members": [
+        {
+          "default": "",
+          "document": "Disk ID",
+          "example": "lhdisk-p1zflrif",
+          "member": "string",
+          "name": "DiskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "lhins-anxwfvxh",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Availability zone",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disk name",
+          "example": "disk-name",
+          "member": "string",
+          "name": "DiskName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disk type",
+          "example": "DATA_DISK",
+          "member": "string",
+          "name": "DiskUsage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disk media type",
+          "example": "CLOUD_SSD",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disk payment type",
+          "example": "PREPAID",
+          "member": "string",
+          "name": "DiskChargeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disk size",
+          "example": "20",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Renewal flag",
+          "example": "NOTIFY_AND_MANUAL_RENEW",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disk status",
+          "example": "UNATTACHED",
+          "member": "string",
+          "name": "DiskState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the disk is attached to an instance",
+          "example": "False",
+          "member": "bool",
+          "name": "Attached",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to release the disk along with the instance",
+          "example": "False",
+          "member": "bool",
+          "name": "DeleteWithInstance",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last operation",
+          "example": "CreateDisks",
+          "member": "string",
+          "name": "LatestOperation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last operation status",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "LatestOperationState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last request ID",
+          "example": "b786faac-d27b-4f70-a52e-3ae725e0f639",
+          "member": "string",
+          "name": "LatestOperationRequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2021-08-25T08:50:57Z",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration date\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-08-25T08:50:57Z",
+          "member": "datetime_iso",
+          "name": "ExpiredTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Isolation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-08-25T08:50:57Z",
+          "member": "datetime_iso",
+          "name": "IsolatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DiskChargePrepaid": {
+      "document": "Parameter settings for the monthly subscribed cloud disk",
+      "members": [
+        {
+          "default": "",
+          "document": "Purchase duration.",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether Auto-Renewal is enabled ",
+          "example": "NOTIFY_AND_AUTO_RENEW",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Purchase duration unit. Default value: \"m\" (month)",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "DiskConfig": {
+      "document": "Cloud disk configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Availability zone.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud disk type.",
+          "example": "CLOUD_SSD",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud disk sale status.",
+          "example": "AVAILABLE",
+          "member": "string",
+          "name": "DiskSalesState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum cloud disk size.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaxDiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum cloud disk size.",
+          "example": "10",
+          "member": "int64",
+          "name": "MinDiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud disk increment.",
+          "example": "10",
+          "member": "int64",
+          "name": "DiskStepSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DiskDeniedActions": {
+      "document": "List of operation limits of disks.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cloud disk ID.",
+          "example": "lhdisk-eobj8huv",
+          "member": "string",
+          "name": "DiskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of operation limits.",
+          "example": "无",
+          "member": "DeniedAction",
+          "name": "DeniedActions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DiskPrice": {
+      "document": "Cloud disk price",
+      "members": [
+        {
+          "default": "",
+          "document": "Cloud disk unit price.",
+          "example": "1.1",
+          "member": "float",
+          "name": "OriginalDiskPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total cloud disk price.",
+          "example": "2.2",
+          "member": "float",
+          "name": "OriginalPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discount.",
+          "example": "0.8",
+          "member": "float",
+          "name": "Discount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Discounted total price.",
+          "example": "2.1",
+          "member": "float",
+          "name": "DiscountPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DiskReturnable": {
+      "document": "Details of the returnable cloud disk",
+      "members": [
+        {
+          "default": "",
+          "document": "Cloud disk ID.",
+          "example": "lhdisk-eobj8huv",
+          "member": "string",
+          "name": "DiskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the cloud disk can be returned.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsReturnable",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code of cloud disk return failure.",
+          "example": "0",
+          "member": "int64",
+          "name": "ReturnFailCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error message of cloud disk return failure.",
+          "example": "无",
+          "member": "string",
+          "name": "ReturnFailMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "Filter": {
       "document": ">Key-Value pair filter for conditional filtering queries, such as filtering name\n> * If there are multiple `Filter` parameters, the relationship among them is the logical `AND`.\n> * If there are multiple `Values` for the same `Filter`, the relationship among the `Values` is the logical `OR`.\n>\n> Taking the `Filter` in the `DescribeInstances` API as an example, you can use the following filters to query the instance whose name (`instance-name`) is `test` ***and*** private IP (`private-ip-address`) is 10.10.10.10:\n```\nFilters.0.Name=instance-name\n&Filters.0.Values.0=test\n&Filters.1.Name=private-ip-address\n&Filters.1.Values.0=10.10.10.10\n```",
@@ -2583,6 +3666,69 @@
       ],
       "type": "object"
     },
+    "InquirePriceCreateDisksRequest": {
+      "document": "InquirePriceCreateDisks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cloud disk size in GB.",
+          "example": "30",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Cloud disk media type. Valid values: \"CLOUD_PREMIUM\" (premium cloud storage), \"CLOUD_SSD\" (SSD cloud disk).",
+          "example": "CLOUD_SSD",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Parameter settings for purchasing the monthly subscribed cloud disk.",
+          "example": "无",
+          "member": "DiskChargePrepaid",
+          "name": "DiskChargePrepaid",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Number of cloud disks. Default value: 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "DiskCount",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceCreateDisksResponse": {
+      "document": "InquirePriceCreateDisks response structure.",
+      "members": [
+        {
+          "document": "Cloud disk price.",
+          "example": "无",
+          "member": "DiskPrice",
+          "name": "DiskPrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "InquirePriceCreateInstancesRequest": {
       "document": "InquirePriceCreateInstances request structure.",
       "members": [
@@ -2646,6 +3792,51 @@
       ],
       "type": "object"
     },
+    "InquirePriceRenewDisksRequest": {
+      "document": "InquirePriceRenewDisks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of cloud disk IDs.",
+          "example": "[\"lhdisk-eobj8huv\"]",
+          "member": "string",
+          "name": "DiskIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Parameter settings for renewing the monthly subscribed cloud disk.",
+          "example": "无",
+          "member": "RenewDiskChargePrepaid",
+          "name": "RenewDiskChargePrepaid",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceRenewDisksResponse": {
+      "document": "InquirePriceRenewDisks response structure.",
+      "members": [
+        {
+          "document": "Cloud disk price.",
+          "example": "无",
+          "member": "DiskPrice",
+          "name": "DiskPrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "InquirePriceRenewInstancesRequest": {
       "document": "InquirePriceRenewInstances request structure.",
       "members": [
@@ -2666,6 +3857,24 @@
           "name": "InstanceChargePrepaid",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to renew the data disk",
+          "example": "false",
+          "member": "bool",
+          "name": "RenewDataDisk",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether the data disk has the same expiration time as the instance",
+          "example": "false",
+          "member": "bool",
+          "name": "AlignInstanceExpiredTime",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -2681,6 +3890,15 @@
           "required": true,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "List of data disk price information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DataDiskPrice",
+          "name": "DataDiskPriceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2942,6 +4160,16 @@
           "name": "Zone",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The list of tags associated with the instance",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -3292,6 +4520,78 @@
       ],
       "usage": "out"
     },
+    "ModifyDisksAttributeRequest": {
+      "document": "ModifyDisksAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of cloud disk IDs.",
+          "example": "[\"lhdisk-p1zflrif\"]",
+          "member": "string",
+          "name": "DiskIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Cloud disk name.",
+          "example": "disk-name",
+          "member": "string",
+          "name": "DiskName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDisksAttributeResponse": {
+      "document": "ModifyDisksAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDisksRenewFlagRequest": {
+      "document": "ModifyDisksRenewFlag request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of cloud disk IDs.",
+          "example": "[\"lhdisk-eobj8huv\"]",
+          "member": "string",
+          "name": "DiskIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether Auto-Renewal is enabled ",
+          "example": "NOTIFY_AND_AUTO_RENEW",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDisksRenewFlagResponse": {
+      "document": "ModifyDisksRenewFlag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyFirewallRuleDescriptionRequest": {
       "document": "ModifyFirewallRuleDescription request structure.",
       "members": [
@@ -3526,6 +4826,39 @@
       ],
       "type": "object"
     },
+    "PolicyDetail": {
+      "document": "Discount details.",
+      "members": [
+        {
+          "default": "",
+          "document": "User discount.",
+          "member": "int64",
+          "name": "UserDiscount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public discount.",
+          "member": "int64",
+          "name": "CommonDiscount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Final discount.",
+          "member": "int64",
+          "name": "FinalDiscount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "Price": {
       "document": "Price information",
       "members": [
@@ -3612,6 +4945,52 @@
         }
       ],
       "usage": "out"
+    },
+    "RenewDiskChargePrepaid": {
+      "document": "Parameter settings for renewing the monthly subscribed cloud disk",
+      "members": [
+        {
+          "default": "",
+          "document": "Purchase duration.",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether Auto-Renewal is enabled ",
+          "example": "NOTIFY_AND_AUTO_RENEW",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Duration unit. Default value: \"m\" (month).",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the current instance.",
+          "example": "无",
+          "member": "string",
+          "name": "CurInstanceDeadline",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "ResetAttachCcnRequest": {
       "document": "ResetAttachCcn request structure.",
@@ -4062,6 +5441,59 @@
         }
       ],
       "usage": "out"
+    },
+    "Tag": {
+      "document": "Information on tags",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TerminateDisksRequest": {
+      "document": "TerminateDisks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of cloud disk IDs.",
+          "example": "[\"lhdisk-p1zflrif\"]",
+          "member": "string",
+          "name": "DiskIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateDisksResponse": {
+      "document": "TerminateDisks response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "TerminateInstancesRequest": {
       "document": "TerminateInstances request structure.",
