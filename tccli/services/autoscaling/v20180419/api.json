@@ -6,6 +6,12 @@
       "name": "Adds CVM instances to an auto scaling group",
       "output": "AttachInstancesResponse"
     },
+    "AttachLoadBalancers": {
+      "document": "This API is used to add CLBs to a security group.",
+      "input": "AttachLoadBalancersRequest",
+      "name": "Adds one or more CLBs",
+      "output": "AttachLoadBalancersResponse"
+    },
     "ClearLaunchConfigurationAttributes": {
       "document": "This API is used to clear specific attributes of the launch configuration.",
       "input": "ClearLaunchConfigurationAttributesRequest",
@@ -108,6 +114,12 @@
       "name": "Queries scaling activities",
       "output": "DescribeAutoScalingActivitiesResponse"
     },
+    "DescribeAutoScalingAdvices": {
+      "document": "This API is used to query suggestions for scaling group configurations.",
+      "input": "DescribeAutoScalingAdvicesRequest",
+      "name": "Queries suggestions for scaling group configurations",
+      "output": "DescribeAutoScalingAdvicesResponse"
+    },
     "DescribeAutoScalingGroupLastActivities": {
       "document": "This API is used to query the latest activity history of an auto scaling group.",
       "input": "DescribeAutoScalingGroupLastActivitiesRequest",
@@ -162,6 +174,12 @@
       "name": "Detaches CVM instances from an auto scaling group",
       "output": "DetachInstancesResponse"
     },
+    "DetachLoadBalancers": {
+      "document": "This API is used to unbind one or more CLBs from a scaling group. This API will not terminate CLBs.",
+      "input": "DetachLoadBalancersRequest",
+      "name": "Unbinds one or more CLBs",
+      "output": "DetachLoadBalancersResponse"
+    },
     "DisableAutoScalingGroup": {
       "document": "This API (DisableAutoScalingGroup) is used to disable the specified auto scaling group.",
       "input": "DisableAutoScalingGroupRequest",
@@ -197,6 +215,12 @@
       "input": "ModifyLaunchConfigurationAttributesRequest",
       "name": "Modifies launch configuration attributes",
       "output": "ModifyLaunchConfigurationAttributesResponse"
+    },
+    "ModifyLoadBalancerTargetAttributes": {
+      "document": "This API is used to modify the target rule attributes of the CLB in the scaling group.",
+      "input": "ModifyLoadBalancerTargetAttributesRequest",
+      "name": "Modifies the target rule attributes of the CLB",
+      "output": "ModifyLoadBalancerTargetAttributesResponse"
     },
     "ModifyLoadBalancers": {
       "document": "This API is used to modify the cloud load balancers of a scaling group.\n\n* This API can specify a new cloud load balancer configuration for the scaling group. The new configuration overwrites the original load balancer configuration.\n* To clear the cloud load balancer of the scaling group, specify only the scaling group ID but not the specific cloud load balancer.\n* This API modifies the cloud load balancer of the scaling group and generate a scaling activity to asynchronously modify the cloud load balancers of existing instances.",
@@ -447,6 +471,42 @@
       ],
       "usage": "out"
     },
+    "Advice": {
+      "document": "Suggestions for scaling group configurations.",
+      "members": [
+        {
+          "default": "",
+          "document": "Problem Description",
+          "example": "DiskSoldOut",
+          "member": "string",
+          "name": "Problem",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Problem Details",
+          "example": "无",
+          "member": "string",
+          "name": "Detail",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recommended resolutions",
+          "example": "无",
+          "member": "string",
+          "name": "Solution",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "AttachInstancesRequest": {
       "document": "AttachInstances request structure.",
       "members": [
@@ -487,6 +547,86 @@
         }
       ],
       "type": "object"
+    },
+    "AttachLoadBalancersRequest": {
+      "document": "AttachLoadBalancers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Scaling group ID",
+          "example": "asg-12wjuh0s",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of classic CLB IDs. Up to 20 classic CLBs can be bound to a security group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
+          "example": "[\"lb-crhgatrf\\n\"]",
+          "member": "string",
+          "name": "LoadBalancerIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of application CLBs. Up to 50 application CLBs can be bound to a security group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
+          "example": "无",
+          "member": "ForwardLoadBalancer",
+          "name": "ForwardLoadBalancers",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AttachLoadBalancersResponse": {
+      "document": "AttachLoadBalancers response structure.",
+      "members": [
+        {
+          "document": "Scaling activity ID",
+          "example": "asa-67izy66g",
+          "member": "string",
+          "name": "ActivityId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AutoScalingAdvice": {
+      "document": "Suggestions for scaling group configurations.",
+      "members": [
+        {
+          "default": "",
+          "document": "Scaling group ID",
+          "example": "asg-pc2oqu2z",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "A collection of suggestions for scaling group configurations.",
+          "example": "无",
+          "member": "Advice",
+          "name": "Advices",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "AutoScalingGroup": {
       "document": "Auto scaling group",
@@ -1671,7 +1811,7 @@
         },
         {
           "default": "",
-          "document": "Notification receiver type. Values: `USER_GROUP`，`CMQ_QUEUE`，`CMQ_TOPIC`. Default: `USER_GROUP`.",
+          "document": "Notification receiver type. Valid values:\n<br><li>USER_GROUP:User group\n<br><li>CMQ_QUEUE:CMQ queue\n<br><li>CMQ_TOPIC:CMQ topic\n<br><li>TDMQ_CMQ_TOPIC:TDMQ CMQ topic\n<br><li>TDMQ_CMQ_QUEUE:TDMQ CMQ queue\n\nDefault value: `USER_GROUP`.",
           "example": "USER_GROUP",
           "member": "string",
           "name": "TargetType",
@@ -1680,7 +1820,7 @@
         },
         {
           "default": "",
-          "document": "CMQ queue name. This field is required when `TargetType` is `CMQ_QUEUE`.",
+          "document": "CMQ queue name. This parameter is required when `TargetType` is `CMQ_QUEUE` or `TDMQ_CMQ_QUEUE`.",
           "example": "queue",
           "member": "string",
           "name": "QueueName",
@@ -1689,7 +1829,7 @@
         },
         {
           "default": "",
-          "document": "CMQ topic name. This field is required when `TargetType` is `CMQ_TOPIC`.",
+          "document": "CMQ topic name. This parameter is required when `TargetType` is `CMQ_TOPIC` or `TDMQ_CMQ_TOPIC`.",
           "example": "topic",
           "member": "string",
           "name": "TopicName",
@@ -2205,6 +2345,42 @@
       ],
       "type": "object"
     },
+    "DescribeAutoScalingAdvicesRequest": {
+      "document": "DescribeAutoScalingAdvices request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of scaling groups to be queried. Upper limit: 100.",
+          "example": "[\"asg-2pvrsyog\", \"asg-4wtj6aeq\"]",
+          "member": "string",
+          "name": "AutoScalingGroupIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAutoScalingAdvicesResponse": {
+      "document": "DescribeAutoScalingAdvices response structure.",
+      "members": [
+        {
+          "document": "A collection of suggestions for scaling group configurations.",
+          "example": "无",
+          "member": "AutoScalingAdvice",
+          "name": "AutoScalingAdviceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAutoScalingGroupLastActivitiesRequest": {
       "document": "DescribeAutoScalingGroupLastActivities request structure.",
       "members": [
@@ -2308,6 +2484,7 @@
         {
           "default": "",
           "document": "ID of the CVM instance to be queried. This parameter does not support specifying both InstanceIds and Filters at the same time.",
+          "example": "[\"ins-1fswxz1m\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -2316,6 +2493,7 @@
         {
           "default": "",
           "document": "Filter.\n<li> instance-id - String - Required: No - (Filter) Filter by instance ID.</li>\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `InstanceIds` and `Filters` at the same time.",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2324,6 +2502,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2331,7 +2510,8 @@
         },
         {
           "default": "",
-          "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "document": "Number of returned results. The default value is 20. The maximum is 2000. For more information on `Limit`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "20",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -2731,6 +2911,60 @@
       ],
       "type": "object"
     },
+    "DetachLoadBalancersRequest": {
+      "document": "DetachLoadBalancers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Scaling group ID",
+          "example": "asg-12wjuh0s",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of classic CLB IDs. Up to 20 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
+          "example": "[\"lb-crhgatrf\\n\"]",
+          "member": "string",
+          "name": "LoadBalancerIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of application CLB IDs. Up to 50 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
+          "example": "无",
+          "member": "ForwardLoadBalancerIdentification",
+          "name": "ForwardLoadBalancerIdentifications",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DetachLoadBalancersResponse": {
+      "document": "DetachLoadBalancers response structure.",
+      "members": [
+        {
+          "document": "Scaling activity ID",
+          "example": "asa-67izy66g",
+          "member": "string",
+          "name": "ActivityId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DetailedStatusMessage": {
       "document": "Detailed description of scaling activity status",
       "members": [
@@ -3006,6 +3240,42 @@
         }
       ],
       "usage": "both"
+    },
+    "ForwardLoadBalancerIdentification": {
+      "document": "Application CLB IDs",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the CLB",
+          "example": "lb-ceqnq5xk",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application CLB listener ID",
+          "example": "lbl-lqf523ih",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of a forwarding rule. This parameter is required for layer-7 listeners.",
+          "example": "loc-0xbavbfi",
+          "member": "string",
+          "name": "LocationId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "HostNameSettings": {
       "document": "CVM HostName settings",
@@ -4232,6 +4502,15 @@
           "name": "EnhancedService",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.",
+          "example": "无",
+          "member": "string",
+          "name": "CamRoleName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4239,6 +4518,51 @@
     "ModifyLaunchConfigurationAttributesResponse": {
       "document": "ModifyLaunchConfigurationAttributes response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLoadBalancerTargetAttributesRequest": {
+      "document": "ModifyLoadBalancerTargetAttributes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Scaling group ID",
+          "example": "asg-12wjuh0s",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of application CLBs to modify.Up to 50 CLBs allowed.",
+          "example": "无",
+          "member": "ForwardLoadBalancer",
+          "name": "ForwardLoadBalancers",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLoadBalancerTargetAttributesResponse": {
+      "document": "ModifyLoadBalancerTargetAttributes response structure.",
+      "members": [
+        {
+          "document": "Scaling activity ID",
+          "example": "asa-67izy66g",
+          "member": "string",
+          "name": "ActivityId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -4341,7 +4665,7 @@
         },
         {
           "default": "",
-          "document": "CMQ queue name.",
+          "document": "CMQ or TDMQ CMQ queue name.",
           "example": "queue",
           "member": "string",
           "name": "QueueName",
@@ -4350,7 +4674,7 @@
         },
         {
           "default": "",
-          "document": "CMQ topic name.",
+          "document": "CMQ or TDMQ CMQ toipc name.",
           "example": "topic",
           "member": "string",
           "name": "TopicName",
@@ -4533,7 +4857,8 @@
       "members": [
         {
           "default": "",
-          "document": "Target type. Value range: `CMQ_QUEUE`, `CMQ_TOPIC`.\n<li> CMQ_QUEUE: CMQ_QUEUE: CMQ queue model.</li>\n<li> CMQ_TOPIC: CMQ topic model.</li>",
+          "document": "Target type. Valid values: `CMQ_QUEUE`, `CMQ_TOPIC`, `TDMQ_CMQ_QUEUE` and `TDMQ_CMQ_TOPIC`.\n<li> CMQ_QUEUE: Tencent Cloud message queue - queue model.</li>\n<li> CMQ_TOPIC: Tencent Cloud message queue - topic model.</li>\n<li> TDMQ_CMQ_QUEUE: Tencent Cloud TDMQ message queue - queue model.</li>\n<li> TDMQ_CMQ_TOPIC: Tencent Cloud TDMQ message queue - topic model.</li>",
+          "example": "TDMQ_CMQ_QUEUE",
           "member": "string",
           "name": "TargetType",
           "required": true,
@@ -4542,7 +4867,8 @@
         },
         {
           "default": "",
-          "document": "Queue name. If `TargetType` is `CMQ_QUEUE`, this parameter is required.",
+          "document": "Queue name. This parameter is required when `TargetType` is `CMQ_QUEUE` or `TDMQ_CMQ_QUEUE`.",
+          "example": "test-queue",
           "member": "string",
           "name": "QueueName",
           "required": false,
@@ -4551,7 +4877,8 @@
         },
         {
           "default": "",
-          "document": "Topic name. If `TargetType` is `CMQ_TOPIC`, this parameter is required.",
+          "document": "Topic name. This parameter is required when `TargetType` is `CMQ_TOPIC` or `TDMQ_CMQ_TOPIC`.",
+          "example": "test-topic",
           "member": "string",
           "name": "TopicName",
           "required": false,

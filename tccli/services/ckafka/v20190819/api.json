@@ -215,6 +215,12 @@
       "input": "ModifyTopicAttributesRequest",
       "name": "Sets topic attributes",
       "output": "ModifyTopicAttributesResponse"
+    },
+    "SendMessage": {
+      "document": "This API is used to send messages through the HTTP access layer.",
+      "input": "SendMessageRequest",
+      "name": "Sends messages through the HTTP access layer",
+      "output": "SendMessageResponse"
     }
   },
   "metadata": {
@@ -536,6 +542,32 @@
         }
       ],
       "usage": "out"
+    },
+    "BatchContent": {
+      "document": "Message content that can be sent in batches",
+      "members": [
+        {
+          "default": "",
+          "document": "Message body that is sent.",
+          "example": "message-content",
+          "member": "string",
+          "name": "Body",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Message sending key name.",
+          "example": "messag-ke9g8d929h",
+          "member": "string",
+          "name": "Key",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "BatchCreateAclRequest": {
       "document": "BatchCreateAcl request structure.",
@@ -4954,6 +4986,51 @@
         }
       ],
       "usage": "out"
+    },
+    "SendMessageRequest": {
+      "document": "SendMessage request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Datahub access ID.",
+          "example": "datahubId",
+          "member": "string",
+          "name": "DataHubId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Message content that is sent.",
+          "example": "无",
+          "member": "BatchContent",
+          "name": "Message",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "SendMessageResponse": {
+      "document": "SendMessage response structure.",
+      "members": [
+        {
+          "document": "Message ID list.",
+          "example": "无",
+          "member": "string",
+          "name": "MessageId",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "SubscribedInfo": {
       "document": "Subscribed message entity",

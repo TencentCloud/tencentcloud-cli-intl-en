@@ -150,6 +150,33 @@ def doModifyScheduledAction(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyLoadBalancerTargetAttributes(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.AutoscalingClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyLoadBalancerTargetAttributesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyLoadBalancerTargetAttributes(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeNotificationConfigurations(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -285,6 +312,33 @@ def doUpgradeLaunchConfiguration(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDetachLoadBalancers(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.AutoscalingClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DetachLoadBalancersRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DetachLoadBalancers(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doAttachInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -366,6 +420,33 @@ def doDeleteScheduledAction(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doAttachLoadBalancers(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.AutoscalingClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.AttachLoadBalancersRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.AttachLoadBalancers(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDetachInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -439,6 +520,33 @@ def doCreateScheduledAction(args, parsed_globals):
     model = models.CreateScheduledActionRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.CreateScheduledAction(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeAutoScalingAdvices(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.AutoscalingClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeAutoScalingAdvicesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeAutoScalingAdvices(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1246,17 +1354,21 @@ ACTION_MAP = {
     "ClearLaunchConfigurationAttributes": doClearLaunchConfigurationAttributes,
     "ModifyScalingPolicy": doModifyScalingPolicy,
     "ModifyScheduledAction": doModifyScheduledAction,
+    "ModifyLoadBalancerTargetAttributes": doModifyLoadBalancerTargetAttributes,
     "DescribeNotificationConfigurations": doDescribeNotificationConfigurations,
     "DeleteAutoScalingGroup": doDeleteAutoScalingGroup,
     "ScaleOutInstances": doScaleOutInstances,
     "StartAutoScalingInstances": doStartAutoScalingInstances,
     "UpgradeLaunchConfiguration": doUpgradeLaunchConfiguration,
+    "DetachLoadBalancers": doDetachLoadBalancers,
     "AttachInstances": doAttachInstances,
     "DescribeScalingPolicies": doDescribeScalingPolicies,
     "DeleteScheduledAction": doDeleteScheduledAction,
+    "AttachLoadBalancers": doAttachLoadBalancers,
     "DetachInstances": doDetachInstances,
     "ScaleInInstances": doScaleInInstances,
     "CreateScheduledAction": doCreateScheduledAction,
+    "DescribeAutoScalingAdvices": doDescribeAutoScalingAdvices,
     "RemoveInstances": doRemoveInstances,
     "DeleteScalingPolicy": doDeleteScalingPolicy,
     "CompleteLifecycleAction": doCompleteLifecycleAction,

@@ -43,7 +43,7 @@
       "output": "AssignPrivateIpAddressesResponse"
     },
     "AssociateAddress": {
-      "document": "This API is used to bind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short) to the specified private IP of an instance or ENI.\n* The EIP is essentially bound to the primary private IP of the primary ENI on a CVM instance.\n* The EIP binding will automatically unbind and release the public IP previously bound to the CVM instance.\n* To bind another EIP to the private IP of the specified ENI (not the primary private IP of the primary ENI), you must first unbind the EIP.\n* To bind an EIP to a NAT Gateway, use the [`AssociateNatGatewayAddress`](https://intl.cloud.tencent.com/document/product/215/36722?from_cn_redirect=1) API.\n* EIP that is in arrears or blocked cannot be bound.\n* Only EIP in the UNBIND status can be bound.",
+      "document": "This API is used to bind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short) to the specified private IP of an instance or ENI.\n* Binding an EIP to a CVM instance is actually binding the EIP to the primary private IP of the primary ENI on the CVM instance.\n* When an EIP is bound, the public IP previously bound to the CVM instance will be unbound and released automatically.\n* To bind another EIP to the private IP of the specified ENI, you must first unbind the EIP.\n* To bind an EIP to a NAT Gateway, use the API [AssociateNatGatewayAddress](https://intl.cloud.tencent.com/document/product/215/36722?from_cn_redirect=1).\n* An EIP cannot be bound if it’s overdue or blocked\n* Only EIP in the `UNBIND` status can be bound.",
       "input": "AssociateAddressRequest",
       "name": "Binds an Elastic IP",
       "output": "AssociateAddressResponse"
@@ -1327,7 +1327,7 @@
       "output": "SetCcnRegionBandwidthLimitsResponse"
     },
     "TransformAddress": {
-      "document": "This API (TransformAddress) is used to switch common public IPs into [Elastic IPs](https://intl.cloud.tencent.comhttps://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1?from_cn_redirect=1).\n* The platform limits the number of times that a user can unbind an EIP and reassign public IPs in each region per day. For more information, see [EIP product introduction](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1)). The preceding quota can be obtained through the [DescribeAddressQuota](https://intl.cloud.tencent.com/document/api/213/1378?from_cn_redirect=1) API.",
+      "document": "This API is used to convert a common public IP into an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).\n* Tencent Cloud limits the number of times that a user can unbind EIPs and reassign public IPs in each region per day. For more information, see product introduction of [Elastic IP](https://intl.cloud.tencent.com/document/product/213/5733?from_cn_redirect=1). The preceding quota can be obtained through the API [DescribeAddressQuota](https://intl.cloud.tencent.com/document/product/215/16701).",
       "input": "TransformAddressRequest",
       "name": "Switches an ordinary IP to an EIP",
       "output": "TransformAddressResponse"
@@ -2294,7 +2294,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable direct access when binding a specified EIP. For more information, see [EIP Direct Access](https://intl.cloud.tencent.com/document/product/1199/41709?from_cn_redirect=1). Valid values: `True` and `False`; default value: `False`. You can set this parameter to `True` when binding an EIP to a CVM instance or an EKS elastic cluster. This parameter is currently in beta. To use it, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&level3_id=1071&queue=96&scene_code=34639&step=2).",
+          "document": "Specify whether to configure direct access when binding EIPs. For details, see [EIP Direct Access](https://intl.cloud.tencent.com/document/product/213/12540). Valid values: `True` and `False` (default). This parameter can be set to `True` when binding EIPs to a CVM instance or EKS cluster. It is in a beta test. To try it out, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&level3_id=1071&queue=96&scene_code=34639&step=2).",
           "example": "False",
           "member": "bool",
           "name": "EipDirectConnection",
@@ -4211,6 +4211,15 @@
           "name": "Zone",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of DC highly available placement group",
+          "example": "ha_gourp_1",
+          "member": "string",
+          "name": "HaZoneGroupId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5698,6 +5707,42 @@
           "example": "STATIC",
           "member": "string",
           "name": "RouteType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Negotiation type. Valid values: `active` (default value), `passive` and `flowTrigger`.",
+          "example": "active",
+          "member": "string",
+          "name": "NegotiationType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable DPD. Valid values: `0` (disable) and `1` (enable)",
+          "example": "1",
+          "member": "int64",
+          "name": "DpdEnable",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "DPD timeout period. Default: 30; unit: second. If the request is not responded within this period, the peer end is considered not exists. This parameter is valid when the value of `DpdEnable` is 1. ",
+          "example": "30",
+          "member": "string",
+          "name": "DpdTimeout",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The action after DPD timeout. Valid values: `clear` (disconnect) and `restart` (try again). It’s valid when `DpdEnable` is `1`. ",
+          "example": "clear",
+          "member": "string",
+          "name": "DpdAction",
           "required": false,
           "type": "string"
         }
@@ -7389,7 +7434,7 @@
         },
         {
           "default": "",
-          "document": "Each request can have up to 10 `Filters` and 5 `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:\n<li> address-id - String - Required: No - (Filter condition) Filter by the unique EIP ID, such as `eip-11112222`.</li>\n<li> address-name - String - Required: No - (Filter condition) Filter by the EIP name. Fuzzy filtering is not supported.</li>\n<li> address-ip - String - Required: No - (Filter condition) Filter by EIP.</li>\n<li> address-status - String - Required: No - (Filter condition) Filter by the EIP state. Valid values: `CREATING`, `BINDING`, `BIND`, `UNBINDING`, `UNBIND`, `OFFLINING`, and `BIND_ENI`.</li>\n<li> instance-id - String - Required: No - (Filter condition) Filter by the ID of the instance bound to the EIP, such as `ins-11112222`.</li>\n<li> private-ip-address - String - Required: No - (Filter condition) Filter by the private IP address bound to the EIP.</li>\n<li> network-interface-id - String - Required: No - (Filter condition) Filter by ID of the ENI bound to the EIP, such as `eni-11112222`.</li>\n<li> is-arrears - String - Required: No - (Filter condition) Whether the EIP is overdue (TRUE: the EIP is overdue | FALSE: the billing status of the EIP is normal).</li>\n<li> address-type - String - Required: No - (Filter condition) Filter by the IP type. Valid values: `EIP`, `AnycastEIP`, and `HighQualityEIP`.</li>\n<li> address-isp - String - Required: No - (Filter condition) Filter by the ISP type. Valid values: `BGP`, `CMCC`, `CUCC`, and `CTCC`.</li>\n<li> dedicated-cluster-id - String - Required: No - (Filter condition) Filter by the unique CDC ID, such as `cluster-11112222`.</li>\n<li> tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>\n<li> tag-value - String - Required: No - (Filter condition) Filter by tag value.</li>\n<li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>",
+          "document": "Each request can have up to 10 `Filters` and 100 `Filter.Values`. Detailed filter conditions:\n<li> address-id - String - Optional - Filter by unique EIP ID, such as `eip-11112222`.</li>\n<li> address-name - String - Optional - Filter by EIP name. Fuzzy filtering is not supported.</li>\n<li> address-ip - String - Optional - Filter by EIP address.</li>\n<li> address-status - String - Optional - Filter by EIP status. Valid values: `CREATING`, `BINDING`, `BIND`, `UNBINDING`, `UNBIND`, `OFFLINING`, and `BIND_ENI`.</li>\n<li> instance-id - String - Optional - Filter by the ID of the instance bound to the EIP, such as `ins-11112222`.</li>\n<li> private-ip-address - String - Optional - Filter by the private IP address bound to the EIP.</li>\n<li> network-interface-id - String - Optional - Filter by ID of the ENI bound to the EIP, such as `eni-11112222`.</li>\n<li> is-arrears - String - Optional - Filter by the fact whether the EIP is overdue (TRUE: the EIP is overdue | FALSE: the billing status of the EIP is normal).</li>\n<li> address-type - String - Optional - Filter by IP type. Valid values: `WanIP`, `EIP`, `AnycastEIP`, and `HighQualityEIP`. Default value: `EIP`.</li>\n<li> address-isp - String - Optional - Filter by ISP type. Valid values: `BGP`, `CMCC`, `CUCC`, and `CTCC`.</li>\n<li> dedicated-cluster-id - String - Optional - Filter by unique CDC ID, such as `cluster-11112222`.</li>\n<li> tag-key - String - Optional - Filter by tag key.</li>\n<li> tag-value - String - Optional - Filter by tag value.</li>\n<li> tag:tag-key - String - Optional - Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -9618,10 +9663,20 @@
         {
           "default": "",
           "document": "The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups.",
+          "example": "sg-ohuuioma",
           "member": "string",
           "name": "SecurityGroupId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter conditions. `SecurityGroupId` and `Filters` cannot be specified at the same time.\n<li>security-group-id - String - Security group ID.</li>\n<li>ip - String - IP. IPV4 and IPV6 fuzzy matching is supported.</li>\n<li>address-module - String - IP address or address group template ID.</li>\n<li>service-module - String - Protocol port or port group template ID.</li>\n<li>protocol-type - String - Protocol supported by the security group policy. Valid values: `TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE`, `ALL`.</li>\n<li>port - String - Optional - Protocol port. Fuzzy matching is supported. Query all ports when the protocol value is `ALL`.</li>\n<li>poly - String - Protocol policy. Valid values: `ALL` (means \"all policies\"), `ACCEPT` (means \"allow\") and `DROP` (means \"reject\").</li>\n<li>direction - String - Protocol rule. Valid values: `ALL` (means \"all rules\"), `INBOUND`(means \"inbound rules\") and `OUTBOUND` (means \"outbound rules\").</li>\n<li>description - String - Protocol description. Fuzzy matching is supported in this filter condition.</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -11072,6 +11127,56 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The status of gateway traffic monitoring\n0: disable\n1: enable\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "EnableFlowDetails",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The last time when the gateway traffic monitoring is enabled/disabled\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2020-02-01 12:00:00",
+          "member": "string",
+          "name": "FlowDetailsUpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether gateway traffic monitoring is supported\n0: No\n1: Yes\nNote: this field may return `null`, indicating that no valid values can be found.",
+          "example": "1",
+          "member": "uint64",
+          "name": "NewAfc",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Direct connect gateway access network types:\n<li>`VXLAN` - VXLAN type.</li>\n<li>`MPLS` - MPLS type.</li>\n<li>`Hybrid` - Hybrid type.</li>\nNote: this field may return `null`, indicating that no valid values can be found.",
+          "example": "VXLAN",
+          "member": "string",
+          "name": "AccessNetworkType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "AZ list of direct connect gateway with cross-AZ placement groups\nNote: this field may return `null`, indicating that no valid values can be found.",
+          "example": "[\"ap-guangzhou-1\"]",
+          "member": "string",
+          "name": "HaZoneList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -11082,6 +11187,7 @@
         {
           "default": "",
           "document": "Route ID.",
+          "example": "dcr-xxxxxxx",
           "member": "string",
           "name": "RouteId",
           "required": true,
@@ -11091,6 +11197,7 @@
         {
           "default": "",
           "document": "IDC IP range.",
+          "example": "192.168.1.0/24",
           "member": "string",
           "name": "DestinationCidrBlock",
           "required": true,
@@ -11100,10 +11207,31 @@
         {
           "default": "",
           "document": "The `AS-Path` attribute of `BGP`.",
+          "example": "['2342', '342']",
           "member": "string",
           "name": "ASPath",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "example": "备注",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last updated time",
+          "example": "2021-01-01 00:00:00",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -14713,6 +14841,7 @@
         {
           "default": "",
           "document": "The ID of the VPN tunnel instance, such as `vpnx-f49l6u0z`.",
+          "example": "vpnx-i0f4fo4m",
           "member": "string",
           "name": "VpnConnectionId",
           "required": true,
@@ -14721,6 +14850,7 @@
         {
           "default": "",
           "document": "VPN tunnel can be named freely, but the maximum length is 60 characters.",
+          "example": "new_name",
           "member": "string",
           "name": "VpnConnectionName",
           "required": false,
@@ -14729,6 +14859,7 @@
         {
           "default": "",
           "document": "The pre-shared key.",
+          "example": "tencent",
           "member": "string",
           "name": "PreShareKey",
           "required": false,
@@ -14737,6 +14868,7 @@
         {
           "default": "",
           "document": "The SPD policy group, for example: {\"10.0.0.5/24\":[\"172.123.10.5/16\"]}. 10.0.0.5/24 is the VPC internal IP range, and 172.123.10.5/16 is the IDC IP range. The user specifies the IP range in the VPC that can communicate with the IP range in the IDC.",
+          "example": "无",
           "member": "SecurityPolicyDatabase",
           "name": "SecurityPolicyDatabases",
           "required": false,
@@ -14745,6 +14877,7 @@
         {
           "default": "",
           "document": "IKE (Internet Key Exchange) configuration. IKE comes with a self-protection mechanism. The network security protocol is configured by the user.",
+          "example": "无",
           "member": "IKEOptionsSpecification",
           "name": "IKEOptionsSpecification",
           "required": false,
@@ -14753,6 +14886,7 @@
         {
           "default": "",
           "document": "IPSec configuration. The IPSec secure session configuration is provided by Tencent Cloud.",
+          "example": "无",
           "member": "IPSECOptionsSpecification",
           "name": "IPSECOptionsSpecification",
           "required": false,
@@ -14761,6 +14895,7 @@
         {
           "default": "",
           "document": "Whether to enable the tunnel health check.",
+          "example": "无",
           "member": "bool",
           "name": "EnableHealthCheck",
           "required": false,
@@ -14769,6 +14904,7 @@
         {
           "default": "",
           "document": "Local IP address for the tunnel health check",
+          "example": "无",
           "member": "string",
           "name": "HealthCheckLocalIp",
           "required": false,
@@ -14777,8 +14913,45 @@
         {
           "default": "",
           "document": "Peer IP address for the tunnel health check",
+          "example": "无",
           "member": "string",
           "name": "HealthCheckRemoteIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Negotiation type. Valid values: `active` (default value), `passive` and `flowTrigger`.",
+          "example": "active",
+          "member": "string",
+          "name": "NegotiationType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable DPD. Valid values: `0` (disable) and `1` (enable)",
+          "example": "1",
+          "member": "int64",
+          "name": "DpdEnable",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "DPD timeout period. Default: 30; unit: second. If the request is not responded within this period, the peer end is considered not exists. This parameter is valid when the value of `DpdEnable` is 1. ",
+          "example": "30",
+          "member": "string",
+          "name": "DpdTimeout",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The action after DPD timeout. Valid values: `clear` (disconnect) and `restart` (try again). It’s valid when `DpdEnable` is `1`. ",
+          "example": "clear",
+          "member": "string",
+          "name": "DpdAction",
           "required": false,
           "type": "string"
         }
@@ -18059,7 +18232,8 @@
       "members": [
         {
           "default": "",
-          "document": "The ID of the instance with a common public IP to be operated on, such as `ins-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/9389?from_cn_redirect=1) API.",
+          "document": "The ID of the instance with a common public IP to be operated on, such as `ins-11112222`. You can query the instance ID by logging into the [CVM console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of the API [DescribeInstances](https://intl.cloud.tencent.com/document/product/213/33256).",
+          "example": "ins-3ea0qeu6",
           "member": "string",
           "name": "InstanceId",
           "required": true,

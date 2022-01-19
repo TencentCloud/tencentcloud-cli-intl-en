@@ -205,15 +205,15 @@
       "output": "GetParametersForImportResponse"
     },
     "GetPublicKey": {
-      "document": "This API is used to get the information of the public key that is encrypted with the asymmetric cryptographic algorithm and of which the `KeyUsage` is `ASYMMETRIC_DECRYPT_RSA_2048` or `ASYMMETRIC_DECRYPT_SM2`. This public key can be used to encrypt data locally, and the data encrypted with it can only be decrypted with the corresponding private key through KMS. The public key can only be obtained from the asymmetric key in `Enabled` state.",
+      "document": "This API is used to get the public key of an asymmetric KMS key (which must be enabled). With the public key, you can encrypt messages and verify signatures.",
       "input": "GetPublicKeyRequest",
       "name": "Gets the information of the public key that is encrypted with the asymmetric cryptographic algorithm",
       "output": "GetPublicKeyResponse"
     },
     "GetRegions": {
-      "document": "This API is used to obtain the list of supported regions.",
+      "document": "This API is used to return all regions support KMS service.",
       "input": "GetRegionsRequest",
-      "name": "Obtains the list of supported regions.",
+      "name": "Return all regions support KMS service",
       "output": "GetRegionsResponse"
     },
     "GetServiceStatus": {
@@ -265,7 +265,7 @@
       "output": "ScheduleKeyDeletionResponse"
     },
     "SignByAsymmetricKey": {
-      "document": "This API is used to generate a signature with an asymmetric key.\nNote: only the keys with `KeyUsage= ASYMMETRIC_SIGN_VERIFY_SM2` can be used for signature generation.",
+      "document": "This API is used to generate a signature with an asymmetric key.\nNote that only when KeyUsage is `ASYMMETRIC_SIGN_VERIFY_${ALGORITHM}` (e.g., `ASYMMETRIC_SIGN_VERIFY_SM2` and `ASYMMETRIC_SIGN_VERIFY_ECC`), the key can be used for signing.",
       "input": "SignByAsymmetricKeyRequest",
       "name": "Generates a signature",
       "output": "SignByAsymmetricKeyResponse"
@@ -562,6 +562,7 @@
         {
           "default": "",
           "document": "Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1-60 letters, digits, `-`, and `_`, and must begin with a letter or digit. The `kms-` prefix is used for Tencent Cloud products.",
+          "example": "test",
           "member": "string",
           "name": "Alias",
           "required": true,
@@ -570,6 +571,7 @@
         {
           "default": "",
           "document": "CMK description of up to 1,024 bytes in length",
+          "example": "test",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -577,7 +579,8 @@
         },
         {
           "default": "",
-          "document": "Key purpose. Valid values: `ENCRYPT_DECRYPT` (default value; creating a symmetric key for encryption and decryption), `ASYMMETRIC_DECRYPT_RSA_2048` (creating an RSA2048 asymmetric key for encryption and decryption), `ASYMMETRIC_DECRYPT_SM2` (creating an SM2 asymmetric key for encryption and decryption), and `ASYMMETRIC_SIGN_VERIFY_SM2` (creating an SM2 asymmetric key for signature verification).",
+          "document": "Defines the purpose of the key. The valid values are as follows: `ENCRYPT_DECRYPT` (default): creates a symmetric encryption/decryption key; `ASYMMETRIC_DECRYPT_RSA_2048`: creates an asymmetric encryption/decryption 2048-bit RSA key; `ASYMMETRIC_DECRYPT_SM2`: creates an asymmetric encryption/decryption SM2 key; `ASYMMETRIC_SIGN_VERIFY_SM2`: creates an asymmetric SM2 key for signature verification; `ASYMMETRIC_SIGN_VERIFY_ECC`: creates an asymmetric 2048-bit RSA key for signature verification; `ASYMMETRIC_SIGN_VERIFY_ECDSA384`: creates an asymmetric ECDSA384 key for signature verification. You can get a full list of supported key purposes and algorithms using the ListAlgorithms API.",
+          "example": "ASYMMETRIC_DECRYPT_SM2",
           "member": "string",
           "name": "KeyUsage",
           "required": false,
@@ -586,6 +589,7 @@
         {
           "default": "",
           "document": "Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents.",
+          "example": "1",
           "member": "uint64",
           "name": "Type",
           "required": false,
@@ -594,6 +598,7 @@
         {
           "default": "",
           "document": "Tag list",
+          "example": "tags",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -761,6 +766,7 @@
         {
           "default": "",
           "document": "The ciphertext data to be decrypted.",
+          "example": "Ade234dasdeEWdGVzdCUyMHBsYWlJJlIHL",
           "member": "string",
           "name": "CiphertextBlob",
           "required": true,
@@ -769,8 +775,27 @@
         {
           "default": "",
           "document": "JSON string of key-value pair. If this parameter is specified for `Encrypt`, the same parameter needs to be provided when the `Decrypt` API is called. The maximum length is 1,024 bytes.",
+          "example": "无",
           "member": "string",
           "name": "EncryptionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "PEM-encoded public key (2048-bit RSA/SM2 key), which can be used to encrypt the `Plaintext` returned. If this field is left empty, the `Plaintext` will not be encrypted.",
+          "example": "无",
+          "member": "string",
+          "name": "EncryptionPublicKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Asymmetric encryption algorithm. Valid values: `SM2(C1C3C2)`, `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, a SM2 public key will be used by default.",
+          "example": "SM2",
+          "member": "string",
+          "name": "EncryptionAlgorithm",
           "required": false,
           "type": "string"
         }
@@ -782,15 +807,19 @@
       "members": [
         {
           "document": "Globally unique CMK ID",
+          "example": "23e80852-1e38-11e9-b129-5cb9019b4b01",
           "member": "string",
           "name": "KeyId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Decrypted plaintext. This field is Base64-encoded. In order to get the original plaintext, the Base64-decoding is needed",
+          "document": "If `EncryptionPublicKey` is left empty, a Base64-encoded ciphertext will be returned. To get the plaintext, you need to decode the ciphertext first.\nIf `EncryptionPublicKey` is specified, this field will return the Base64-encoded ciphertext encrypted with the specified public key. To get the plaintext, you need to decode the ciphertext and upload the corresponding private key.",
+          "example": "dGVzdCUyMHBsYWluJTIwdGV4dA==",
           "member": "string",
           "name": "Plaintext",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1482,16 +1511,20 @@
       "document": "Encrypt response structure.",
       "members": [
         {
-          "document": "Base64-encoded encrypted ciphertext",
+          "document": "Base64-encoded ciphertext, which is the encrypted information of the ciphertext and key. To get the plaintext, you need to pass in this field to the Decrypt API.",
+          "example": "ss",
           "member": "string",
           "name": "CiphertextBlob",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Globally unique ID of the CMK used for encryption",
+          "example": "9999aed0-4956-11e9-bc70-5254005e86b4",
           "member": "string",
           "name": "KeyId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1510,6 +1543,7 @@
         {
           "default": "",
           "document": "Globally unique CMK ID",
+          "example": "23e80852-1e38-11e9-b129-5cb9019b4b01",
           "member": "string",
           "name": "KeyId",
           "required": true,
@@ -1518,6 +1552,7 @@
         {
           "default": "",
           "document": "Specifies the encryption algorithm and size of the `DataKey`. Valid values: AES_128, AES_256. Either `KeySpec` or `NumberOfBytes` must be specified.",
+          "example": "AES_256",
           "member": "string",
           "name": "KeySpec",
           "required": false,
@@ -1526,6 +1561,7 @@
         {
           "default": "",
           "document": "Length of the `DataKey`. If both `NumberOfBytes` and `KeySpec` are specified, `NumberOfBytes` will prevail. Minimum value: 1; maximum value: 1024. Either `KeySpec` or `NumberOfBytes` must be specified.",
+          "example": "无",
           "member": "uint64",
           "name": "NumberOfBytes",
           "required": false,
@@ -1534,8 +1570,27 @@
         {
           "default": "",
           "document": "JSON string of key-value pair. If this field is used, the same string should be entered when the returned `DataKey` is decrypted.",
+          "example": "无",
           "member": "string",
           "name": "EncryptionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "PEM-encoded public key (2048-bit RSA/SM2 key), which can be used to encrypt the `Plaintext` returned. If this field is left empty, the `Plaintext` will not be encrypted.",
+          "example": "无",
+          "member": "string",
+          "name": "EncryptionPublicKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Asymmetric encryption algorithm. Valid values: `SM2(C1C3C2)`, `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used with `EncryptionPublicKey` for encryption. If it is left empty, a SM2 public key will be used by default.",
+          "example": "SM2",
+          "member": "string",
+          "name": "EncryptionAlgorithm",
           "required": false,
           "type": "string"
         }
@@ -1547,22 +1602,28 @@
       "members": [
         {
           "document": "Globally unique CMK ID",
+          "example": "23e80852-1e38-11e9-b129-5cb9019b4b01",
           "member": "string",
           "name": "KeyId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Plaintext of the generated data key. The plaintext is Base64-encoded and can be used locally after having it Base64-decoded.",
+          "document": "If `EncryptionPublicKey` is left empty, a Base64-encoded ciphertext will be returned. To get the plaintext, you need to decode the ciphertext first.\nIf `EncryptionPublicKey` is specified, this field will return the Base64-encoded ciphertext encrypted with the specified public key. To get the plaintext, you need to decode the ciphertext and upload the corresponding private key.",
+          "example": "uW9wqntw+FAgnfsIrxOpOA==",
           "member": "string",
           "name": "Plaintext",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Ciphertext of the data key, which should be kept by yourself. KMS does not host user data keys. You can call the `Decrypt` API to get the plaintext of the data key from `CiphertextBlob`.",
+          "example": "g2F8eQk44QrTbfj09TL17AZyFPgs8BTtZe2j27Wuw1YzTBCxnd0T/gwFQSasmtzxZi6mmvD7DCjCE+LxJmdhXQ==-k-fKVP3WIlGpg8m9LMW4jEkQ==-k-h/nUfRbaTUY7/KWXwuSK1Py+ZFRTK5WQiUz6yQE5XBFUN3UwPOUbl8P3A3caow2rlqTjUw==",
           "member": "string",
           "name": "CiphertextBlob",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1912,6 +1973,7 @@
         {
           "default": "",
           "document": "Globally unique CMK ID",
+          "example": "6cdf26d1-44ff-11eb-841c-5254006d0810",
           "member": "string",
           "name": "KeyId",
           "required": true,
@@ -1921,6 +1983,7 @@
         {
           "default": "",
           "document": "Alias that makes a key more recognizable and understandable",
+          "example": "test",
           "member": "string",
           "name": "Alias",
           "required": true,
@@ -1930,6 +1993,7 @@
         {
           "default": "",
           "document": "Key creation time",
+          "example": "11",
           "member": "uint64",
           "name": "CreateTime",
           "required": true,
@@ -1939,6 +2003,7 @@
         {
           "default": "",
           "document": "CMK description",
+          "example": "desc",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -1948,6 +2013,7 @@
         {
           "default": "",
           "document": "CMK status. Valid values: Enabled, Disabled, PendingDelete, PendingImport, Archived.",
+          "example": "PendingDelete",
           "member": "string",
           "name": "KeyState",
           "required": true,
@@ -1956,7 +2022,8 @@
         },
         {
           "default": "",
-          "document": "CMK purpose. Valid values: `ENCRYPT_DECRYPT`, `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, and `ASYMMETRIC_SIGN_VERIFY_SM2`.",
+          "document": "CMK purpose. Valid values: `ENCRYPT_DECRYPT`, `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, `ASYMMETRIC_SIGN_VERIFY_SM2`, `ASYMMETRIC_SIGN_VERIFY_RSA_2048`, and `ASYMMETRIC_SIGN_VERIFY_ECC`.",
+          "example": "ASYMMETRIC_DECRYPT_RSA_2048",
           "member": "string",
           "name": "KeyUsage",
           "required": true,
@@ -1966,6 +2033,7 @@
         {
           "default": "",
           "document": "CMK type. 2: FIPS-compliant; 4: SM-CRYPTO",
+          "example": "3",
           "member": "int64",
           "name": "Type",
           "required": true,
@@ -1975,6 +2043,7 @@
         {
           "default": "",
           "document": "Creator",
+          "example": "12345678",
           "member": "uint64",
           "name": "CreatorUin",
           "required": true,
@@ -1984,6 +2053,7 @@
         {
           "default": "",
           "document": "Whether key rotation is enabled",
+          "example": "true",
           "member": "bool",
           "name": "KeyRotationEnabled",
           "required": true,
@@ -1993,6 +2063,7 @@
         {
           "default": "",
           "document": "CMK creator. The value of this parameter is `user` if the CMK is created by the user, or the corresponding service name if it is created automatically by an authorized Tencent Cloud service.",
+          "example": "user",
           "member": "string",
           "name": "Owner",
           "required": true,
@@ -2002,6 +2073,7 @@
         {
           "default": "",
           "document": "Time of next rotation if key rotation is enabled",
+          "example": "1234567",
           "member": "uint64",
           "name": "NextRotateTime",
           "required": true,
@@ -2011,6 +2083,7 @@
         {
           "default": "",
           "document": "Scheduled deletion time",
+          "example": "123456",
           "member": "uint64",
           "name": "DeletionDate",
           "required": true,
@@ -2020,6 +2093,7 @@
         {
           "default": "",
           "document": "CMK key material type. TENCENT_KMS: created by KMS; EXTERNAL: imported by user.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "EXTERNAL",
           "member": "string",
           "name": "Origin",
           "required": true,
@@ -2029,6 +2103,7 @@
         {
           "default": "",
           "document": "It's valid when `Origin` is `EXTERNAL`, indicating the expiration date of key material. 0 means valid forever.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "12345",
           "member": "uint64",
           "name": "ValidTo",
           "required": true,
@@ -2038,6 +2113,7 @@
         {
           "default": "",
           "document": "Resource ID in the format of `creatorUin/$creatorUin/$keyId`.",
+          "example": "creatorUin/12345/6cdf26d1-44ff-11eb-841c-5254006d0810",
           "member": "string",
           "name": "ResourceId",
           "required": true,
@@ -2091,6 +2167,7 @@
         {
           "default": "",
           "document": "This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the \"No. Offset value\" element of the array arranged in a certain order. The default value is 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -2099,6 +2176,7 @@
         {
           "default": "",
           "document": "This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200.",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -2107,6 +2185,7 @@
         {
           "default": "",
           "document": "Filters by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service.",
+          "example": "0",
           "member": "uint64",
           "name": "Role",
           "required": false,
@@ -2115,6 +2194,7 @@
         {
           "default": "",
           "document": "Sorts by CMK creation time. 0: descending; 1: ascending",
+          "example": "0",
           "member": "uint64",
           "name": "OrderType",
           "required": false,
@@ -2123,6 +2203,7 @@
         {
           "default": "",
           "document": "Filters by CMK status. 0: all CMKs; 1: CMKs in `Enabled` status only; 2: CMKs in `Disabled` status only; 3: CMKs in `PendingDelete` status only (i.e., keys with schedule deletion enabled); 4: CMKs in `PendingImport` status only; 5: CMKs in `Archived` status only.",
+          "example": "0",
           "member": "uint64",
           "name": "KeyState",
           "required": false,
@@ -2131,6 +2212,7 @@
         {
           "default": "",
           "document": "Performs a fuzzy query by `KeyId` or `Alias`",
+          "example": "test",
           "member": "string",
           "name": "SearchKeyAlias",
           "required": false,
@@ -2139,6 +2221,7 @@
         {
           "default": "",
           "document": "Filters by CMK type. \"TENCENT_KMS\" indicates to filter CMKs whose key materials are created by KMS; \"EXTERNAL\" indicates to filter CMKs of `EXTERNAL` type whose key materials are imported by users; \"ALL\" or empty indicates to filter CMKs of both types. This value is case-sensitive.",
+          "example": "ALL",
           "member": "string",
           "name": "Origin",
           "required": false,
@@ -2146,7 +2229,8 @@
         },
         {
           "default": "",
-          "document": "Filter by the `KeyUsage` field of CMKs. Valid values: `ALL` (filtering all CMKs), `ENCRYPT_DECRYPT` (it will be used when the parameter is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, and `ASYMMETRIC_SIGN_VERIFY_SM2`.",
+          "document": "Filters by the `KeyUsage` field value. Valid values: `ALL` (all CMKs), `ENCRYPT_DECRYPT` (used when this field is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, `ASYMMETRIC_SIGN_VERIFY_SM2`, `ASYMMETRIC_SIGN_VERIFY_RSA_2048`, and `ASYMMETRIC_SIGN_VERIFY_ECC`.",
+          "example": "ASYMMETRIC_SIGN_VERIFY_RSA_2048",
           "member": "string",
           "name": "KeyUsage",
           "required": false,
@@ -2155,6 +2239,7 @@
         {
           "default": "",
           "document": "Tag filter condition",
+          "example": "test",
           "member": "TagFilter",
           "name": "TagFilters",
           "required": false,
@@ -2410,7 +2495,8 @@
       "members": [
         {
           "default": "",
-          "document": "Signature algorithm. Supported algorithm: SM2DSA.",
+          "document": "Signature algorithm. The valid values include `SM2DSA`, `ECC_P256_R1`, `RSA_PSS_SHA_256`, and `RSA_PKCS1_SHA_256`, etc. You can get a full list of supported algorithms using the ListAlgorithms API.",
+          "example": "SM2DSA",
           "member": "string",
           "name": "Algorithm",
           "required": true,
@@ -2418,7 +2504,8 @@
         },
         {
           "default": "",
-          "document": "The original message or message abstract. For an original message, the length before Base64 encoding can contain up to 4,096 bytes. For a message abstract, the SM2 signature algorithm only supports 32-byte (before Base64 encoding) message abstracts.",
+          "document": "Full message or message abstract. Before Base64 encoding, an original message can contain up to 4,096 bytes while a message abstract must be 32 bytes.",
+          "example": "abc",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -2427,6 +2514,7 @@
         {
           "default": "",
           "document": "Unique ID of a key",
+          "example": "6cdf26d1-44ff-11eb-841c-5254006d0810",
           "member": "string",
           "name": "KeyId",
           "required": true,
@@ -2435,6 +2523,7 @@
         {
           "default": "",
           "document": "Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.",
+          "example": "RAW",
           "member": "string",
           "name": "MessageType",
           "required": false,
@@ -2626,6 +2715,7 @@
         {
           "default": "",
           "document": "Unique ID of a key",
+          "example": "6cdf26d1-44ff-11eb-841c-5254006d0810",
           "member": "string",
           "name": "KeyId",
           "required": true,
@@ -2634,6 +2724,7 @@
         {
           "default": "",
           "document": "Signature value, which is generated by calling the KMS signature API.",
+          "example": "MEUCICr/JCV52BqGvI0iYxdZ1eL8zzJjx39mWNv2ZWdLOMvRAiEApO6os3Wj0Tg3",
           "member": "string",
           "name": "SignatureValue",
           "required": true,
@@ -2641,7 +2732,8 @@
         },
         {
           "default": "",
-          "document": "The original message or message abstract. For an original message, the length before Base64 encoding can contain up to 4,096 bytes. For a message abstract, the SM2 signature algorithm only supports 32-byte (before Base64 encoding) message abstracts.",
+          "document": "Full message or message abstract. Before Base64 encoding, an original message can contain up to 4,096 bytes while a message abstract must be 32 bytes.",
+          "example": "abc",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -2649,7 +2741,8 @@
         },
         {
           "default": "",
-          "document": "Signature algorithm. Supported algorithm: SM2DSA.",
+          "document": "Signature algorithm. The valid values include `SM2DSA`, `ECC_P256_R1`, `RSA_PSS_SHA_256`, and `RSA_PKCS1_SHA_256`, etc. You can get a full list of supported algorithms using the ListAlgorithms API.",
+          "example": "SM2DSA",
           "member": "string",
           "name": "Algorithm",
           "required": true,
@@ -2658,6 +2751,7 @@
         {
           "default": "",
           "document": "Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.",
+          "example": "RAW",
           "member": "string",
           "name": "MessageType",
           "required": false,
@@ -2670,9 +2764,11 @@
       "document": "VerifyByAsymmetricKey response structure.",
       "members": [
         {
-          "document": "Whether the signature is valid.",
+          "document": "Whether the signature is valid. `true`: the signature is valid; `false`: the signature is invalid.",
+          "example": "true",
           "member": "bool",
           "name": "SignatureValid",
+          "required": true,
           "type": "bool",
           "value_allowed_null": false
         },
