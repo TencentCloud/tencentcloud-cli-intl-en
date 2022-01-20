@@ -2098,6 +2098,15 @@
           "name": "OsCustomizeType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Resource tag",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -5376,6 +5385,24 @@
           "name": "ExtraArgs",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Resource tag",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "Unschedulable",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -5679,6 +5706,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Resource tag\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -5862,6 +5899,16 @@
           "name": "Annotations",
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alarm rule status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "RuleState",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

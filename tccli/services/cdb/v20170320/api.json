@@ -367,7 +367,7 @@
       "output": "DescribeTimeWindowResponse"
     },
     "DescribeUploadedFiles": {
-      "document": "This API is used to query the list of user-imported SQL files.",
+      "document": "This API is used to query the list of SQL files imported by users. The common request parameter `Region` must be `ap-shanghai`.",
       "input": "DescribeUploadedFilesRequest",
       "name": "Queries the list of imported SQL files (deprecated)",
       "output": "DescribeUploadedFilesResponse"
@@ -1845,6 +1845,15 @@
           "name": "DryRun",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Financial cage ID.",
+          "example": "cage-test",
+          "member": "string",
+          "name": "CageId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2226,6 +2235,15 @@
           "example": "cage-test",
           "member": "string",
           "name": "CageId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).",
+          "example": "HIGH_STABILITY",
+          "member": "string",
+          "name": "ParamTemplateType",
           "required": false,
           "type": "string"
         },
@@ -4751,7 +4769,17 @@
     },
     "DescribeParamTemplatesRequest": {
       "document": "DescribeParamTemplates request structure.",
-      "members": [],
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "[\"5.5\"]",
+          "member": "string",
+          "name": "EngineVersions",
+          "required": false,
+          "type": "list"
+        }
+      ],
       "type": "object"
     },
     "DescribeParamTemplatesResponse": {

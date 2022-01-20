@@ -67,7 +67,7 @@
       "output": "CreateLiveRecordRuleResponse"
     },
     "CreateLiveRecordTemplate": {
-      "document": "After a recording template is created and a template ID is successfully returned, you need to call the [CreateLiveRecordRule](https://intl.cloud.tencent.com/document/product/267/32615?from_cn_redirect=1) API and bind the template ID to the stream.\n<br>Recording-related document: [LVB Recording](https://intl.cloud.tencent.com/document/product/267/32739?from_cn_redirect=1).",
+      "document": "This API is used to create a recording template. You can create up to 50 templates. To use a template, you need to call the [CreateLiveRecordRule](https://intl.cloud.tencent.com/document/product/267/32615?from_cn_redirect=1) API to bind the template ID returned by this API to a stream.\n<br>More on recording: [Live Recording](https://intl.cloud.tencent.com/document/product/267/32739?from_cn_redirect=1)",
       "input": "CreateLiveRecordTemplateRequest",
       "name": "Creates a recording template",
       "output": "CreateLiveRecordTemplateResponse"
@@ -379,7 +379,7 @@
       "output": "DescribeLiveStreamPushInfoListResponse"
     },
     "DescribeLiveStreamState": {
-      "document": "This API is used to get the stream status, such as active, inactive, or disabled.\nNote: this API is used to query the stream status, and should not be relied too much upon in important business scenarios.\n\nNotes:\n1. You should not rely on the results returned by this API to initiate/interrupt live streams.\n2. The application can get and store the status of live rooms via [Stream Push and Interruption Event Notification](https://intl.cloud.tencent.com/document/product/267/47025?from_cn_redirect=1).\n3. You can use the [DescribeLiveStreamOnlineList](https://intl.cloud.tencent.com/document/product/267/20472?from_cn_redirect=1) API to regularly (with the interval larger than 1 minute) check the status of live rooms monitored by the application.\n4. If you find that a stream is inactive using the stream status query API, you can use other above-mentioned methods to check its status.\n5. If access or resolution errors occur when you use the API to query, you can regard the stream as active, and do not perform operations on the application.",
+      "document": "This API is used to get the stream status, which may be active, inactive, or disabled.\n\nNotes:\nThis API allows you to query the status of a stream in real time. Given external factors such as network jitter, note the following when you determine whether a host is online:\n1. If possible, use your own logic of stream starting/stopping in a room, such as streaming signaling on the client and the online heartbeat of a host, to determine whether the host is online.\n2. If your application does not provide the room management feature, use the following methods to determine whether a host is online:\n2.1 Use the [live stream callback](https://intl.cloud.tencent.com/document/product/267/20388?from_cn_redirect=1).\n2.2 Call [DescribeLiveStreamOnlineList](https://intl.cloud.tencent.com/document/api/267/20472?from_cn_redirect=1) on a regular basis (interval > 1 min).\n2.3 Call this API.\n2.4 A host is considered to be online if the result returned by any of the above methods indicates so. If an API call times out or a parsing error occurs, to minimize the impact on your business, CSS will also consider the host online.",
       "input": "DescribeLiveStreamStateRequest",
       "name": "Queries stream status.",
       "output": "DescribeLiveStreamStateResponse"
@@ -561,7 +561,7 @@
     "ModifyLiveRecordTemplate": {
       "document": "This API is used to modify the recording template configuration.",
       "input": "ModifyLiveRecordTemplateRequest",
-      "name": "Modifies the recording template configuration",
+      "name": "Modifies a recording template",
       "output": "ModifyLiveRecordTemplateResponse"
     },
     "ModifyLiveSnapshotTemplate": {
@@ -595,7 +595,7 @@
       "output": "StopLiveRecordResponse"
     },
     "StopRecordTask": {
-      "document": "This API is used to end a recording prematurely and terminate an ongoing recording task. After the task is successfully terminated, it will not restart.",
+      "document": "This API is used to terminate an ongoing recording task and generate a recording file.",
       "input": "StopRecordTaskRequest",
       "name": "Terminates recording task (API)",
       "output": "StopRecordTaskResponse"
@@ -1455,7 +1455,8 @@
       "members": [
         {
           "default": "",
-          "document": "Input layer. Value range: [1,16].\n1) For `image_layer` of background stream (i.e., main host video image or canvas), enter 1.\n2) For audio stream mix, this parameter is also required.",
+          "document": "Input layer. Value range: [1,16]\n(1) For the background stream, i.e., the room owner’s image or the canvas, set this parameter to `1`.\n(2) This parameter is required for audio-only stream mixing as well.\nNote that two inputs cannot have the same `ImageLayer` value.",
+          "example": "1",
           "member": "int64",
           "name": "ImageLayer",
           "required": true,
@@ -1465,6 +1466,7 @@
         {
           "default": "",
           "document": "Input type. Value range: [0,5].\nIf this parameter is left empty, 0 will be used by default.\n0: the input stream is audio/video.\n2: the input stream is image.\n3: the input stream is canvas. \n4: the input stream is audio.\n5: the input stream is pure video.",
+          "example": "0",
           "member": "int64",
           "name": "InputType",
           "required": false,
@@ -1473,16 +1475,8 @@
         },
         {
           "default": "",
-          "document": "Output width of input video image. Value range:\nPixel: [0,2000]\nPercentage: [0.01,0.99]\nIf this parameter is left empty, the input stream width will be used by default.\nIf percentage is used, the expected output is (percentage * background width).",
-          "member": "float",
-          "name": "ImageWidth",
-          "required": false,
-          "type": "float",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
           "document": "Output height of input video image. Value range:\nPixel: [0,2000]\nPercentage: [0.01,0.99]\nIf this parameter is left empty, the input stream height will be used by default.\nIf percentage is used, the expected output is (percentage * background height).",
+          "example": "720",
           "member": "float",
           "name": "ImageHeight",
           "required": false,
@@ -1491,7 +1485,18 @@
         },
         {
           "default": "",
+          "document": "Output width of input video image. Value range:\nPixel: [0,2000]\nPercentage: [0.01,0.99]\nIf this parameter is left empty, the input stream width will be used by default.\nIf percentage is used, the expected output is (percentage * background width).",
+          "example": "1024",
+          "member": "float",
+          "name": "ImageWidth",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "X-axis offset of input in output video image. Value range:\nPixel: [0,2000]\nPercentage: [0.01,0.99]\nIf this parameter is left empty, 0 will be used by default.\nHorizontal offset from the top-left corner of main host background video image. \nIf percentage is used, the expected output is (percentage * background width).",
+          "example": "0",
           "member": "float",
           "name": "LocationX",
           "required": false,
@@ -1501,6 +1506,7 @@
         {
           "default": "",
           "document": "Y-axis offset of input in output video image. Value range:\nPixel: [0,2000]\nPercentage: [0.01,0.99]\nIf this parameter is left empty, 0 will be used by default.\nVertical offset from the top-left corner of main host background video image. \nIf percentage is used, the expected output is (percentage * background width)",
+          "example": "0",
           "member": "float",
           "name": "LocationY",
           "required": false,
@@ -1510,6 +1516,7 @@
         {
           "default": "",
           "document": "When `InputType` is 3 (canvas), this value indicates the canvas color.\nCommonly used colors include:\nRed: 0xcc0033.\nYellow: 0xcc9900.\nGreen: 0xcccc33.\nBlue: 0x99CCFF.\nBlack: 0x000000.\nWhite: 0xFFFFFF.\nGray: 0x999999",
+          "example": "0xFFFFFF",
           "member": "string",
           "name": "Color",
           "required": false,
@@ -1519,6 +1526,7 @@
         {
           "default": "",
           "document": "When `InputType` is 2 (image), this value is the watermark ID.",
+          "example": "0",
           "member": "int64",
           "name": "WatermarkId",
           "required": false,
@@ -2275,7 +2283,7 @@
         },
         {
           "default": "",
-          "document": "Screencapturing interval in seconds. Default value: 10s.\nValue range: 5-300s.",
+          "document": "Screencapturing interval (s). Default value: 10\nValue range: 2-300",
           "example": "10",
           "member": "int64",
           "name": "SnapshotInterval",
@@ -2485,7 +2493,7 @@
         },
         {
           "default": "",
-          "document": "Height. Default value: 0.\nValue range: [0,3000]\nThe value must be a multiple of 2, and 0 is the original height.",
+          "document": "Height. Default value: 0\nValue range: 0-3000\nThe value must be a multiple of 2. The original height is `0`.\nThis parameter is required for a top speed codec template (when `AiTransCode` is `1`).",
           "example": "无",
           "member": "int64",
           "name": "Height",
@@ -3436,6 +3444,7 @@
         {
           "default": "",
           "document": "Start time point in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "2019-02-0100:00:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -3444,6 +3453,7 @@
         {
           "default": "",
           "document": "End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 3 years can be queried.",
+          "example": "2019-02-0100:10:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -3452,6 +3462,7 @@
         {
           "default": "",
           "document": "LVB playback domain name. If this parameter is left empty, full data will be queried.",
+          "example": "[\"5000.playdomain.com\\n\"]",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -3460,6 +3471,7 @@
         {
           "default": "",
           "document": "Valid values:\nMainland: query data for Mainland China,\nOversea: query data for regions outside Mainland China,\nDefault: query data for all regions.\nNote: LEB only supports querying data for all regions.",
+          "example": "Mainland",
           "member": "string",
           "name": "MainlandOrOversea",
           "required": false,
@@ -3468,6 +3480,7 @@
         {
           "default": "",
           "document": "Data granularity. Valid values:\n5: 5-minute granularity (the query time span should be within 1 day),\n60: 1-hour granularity (the query time span should be within one month),\n1440: 1-day granularity (the query time span should be within one month).\nDefault value: 5.",
+          "example": "5",
           "member": "uint64",
           "name": "Granularity",
           "required": false,
@@ -3476,10 +3489,20 @@
         {
           "default": "",
           "document": "Service name. Valid values: LVB, LEB. The sum of LVB and LEB usage will be returned if this parameter is left empty.",
+          "example": "LEB",
           "member": "string",
           "name": "ServiceName",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region. Valid values:\nChina Mainland\nAsia Pacific I\nAsia Pacific II\nAsia Pacific III\nEurope\nNorth America\nSouth America\nMiddle East\nAfrica",
+          "example": "[\"China Mainland\"]",
+          "member": "string",
+          "name": "RegionNames",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -8234,6 +8257,7 @@
         {
           "default": "",
           "document": "Stream name.",
+          "example": "test1",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -8243,6 +8267,7 @@
         {
           "default": "",
           "document": "Push path.",
+          "example": "live",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -8252,6 +8277,7 @@
         {
           "default": "",
           "document": "Push client IP.",
+          "example": "127.0.0.1",
           "member": "string",
           "name": "ClientIp",
           "required": true,
@@ -8261,6 +8287,7 @@
         {
           "default": "",
           "document": "IP of the server that receives the stream.",
+          "example": "127.0.0.1",
           "member": "string",
           "name": "ServerIp",
           "required": true,
@@ -8270,6 +8297,7 @@
         {
           "default": "",
           "document": "Pushed video frame rate in Hz.",
+          "example": "100",
           "member": "uint64",
           "name": "VideoFps",
           "required": true,
@@ -8278,7 +8306,8 @@
         },
         {
           "default": "",
-          "document": "Pushed video bitrate in bps.",
+          "document": "Video bitrate (Kbps) for publishing",
+          "example": "100",
           "member": "uint64",
           "name": "VideoSpeed",
           "required": true,
@@ -8288,6 +8317,7 @@
         {
           "default": "",
           "document": "Pushed audio frame rate in Hz.",
+          "example": "40",
           "member": "uint64",
           "name": "AudioFps",
           "required": true,
@@ -8296,7 +8326,8 @@
         },
         {
           "default": "",
-          "document": "Pushed audio bitrate in bps.",
+          "document": "Audio bitrate (Kbps) for publishing",
+          "example": "40",
           "member": "uint64",
           "name": "AudioSpeed",
           "required": true,
@@ -8306,6 +8337,7 @@
         {
           "default": "",
           "document": "Push domain name.",
+          "example": "5000.pushdomain.com",
           "member": "string",
           "name": "PushDomain",
           "required": true,
@@ -8315,6 +8347,7 @@
         {
           "default": "",
           "document": "Push start time.",
+          "example": "2019-02-01 00:00:00",
           "member": "string",
           "name": "BeginPushTime",
           "required": true,
@@ -8324,6 +8357,7 @@
         {
           "default": "",
           "document": "Audio codec,\nExample: AAC.",
+          "example": "AAC",
           "member": "string",
           "name": "Acodec",
           "required": true,
@@ -8333,6 +8367,7 @@
         {
           "default": "",
           "document": "Video codec,\nExample: H.264.",
+          "example": "H264",
           "member": "string",
           "name": "Vcodec",
           "required": true,
@@ -8342,6 +8377,7 @@
         {
           "default": "",
           "document": "Resolution.",
+          "example": "350*350",
           "member": "string",
           "name": "Resolution",
           "required": true,
@@ -8351,6 +8387,7 @@
         {
           "default": "",
           "document": "Sample rate.",
+          "example": "48000",
           "member": "uint64",
           "name": "AsampleRate",
           "required": true,
@@ -8360,6 +8397,7 @@
         {
           "default": "",
           "document": "Audio bitrate in `metadata` in Kbps.",
+          "example": "22",
           "member": "uint64",
           "name": "MetaAudioSpeed",
           "required": true,
@@ -8369,6 +8407,7 @@
         {
           "default": "",
           "document": "Video bitrate in `metadata` in Kbps.",
+          "example": "4885",
           "member": "uint64",
           "name": "MetaVideoSpeed",
           "required": true,
@@ -8378,6 +8417,7 @@
         {
           "default": "",
           "document": "Frame rate in `metadata`.",
+          "example": "30",
           "member": "uint64",
           "name": "MetaFps",
           "required": true,

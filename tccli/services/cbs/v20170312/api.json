@@ -740,6 +740,7 @@
         {
           "default": "",
           "document": "ID of the cloud disk, for which a snapshot needs to be created. It can be queried via the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1).",
+          "example": "disk-l7mxexxc",
           "member": "string",
           "name": "DiskId",
           "required": true,
@@ -748,6 +749,7 @@
         {
           "default": "",
           "document": "Snapshot name. If it is left empty, the new snapshot name is \"Not named\" by default.",
+          "example": "test",
           "member": "string",
           "name": "SnapshotName",
           "required": false,
@@ -755,7 +757,8 @@
         },
         {
           "default": "",
-          "document": "Expiration time of the snapshot. The snapshot will be automatically deleted upon expiration.",
+          "document": "Expiration time of the snapshot. It must be in UTC ISO-8601 format, eg. 2022-01-08T09:47:55+00:00. The snapshot will be automatically deleted when it expires",
+          "example": "2022-01-08T09:47:55+00:00",
           "member": "datetime_iso",
           "name": "Deadline",
           "required": false,
@@ -1773,6 +1776,16 @@
           "name": "CreateTime",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Delete the associated non-permanently reserved snapshots upon deletion of the source cloud disk. `0`: No (default). `1`: Yes. To check whether a snapshot is permanently reserved, refer to the `IsPermanent` field returned by the `DescribeSnapshots` API. ",
+          "example": "0",
+          "member": "int64",
+          "name": "DeleteSnapshot",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -3076,10 +3089,20 @@
         {
           "default": "",
           "document": "List of cloud disk IDs required to be returned.",
+          "example": "[\"disk-l7mxexxc\"]",
           "member": "string",
           "name": "DiskIds",
           "required": true,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Delete the associated non-permanently reserved snapshots upon deletion of the source cloud disk. `0`: No (default). `1`: Yes. To check whether a snapshot is permanently reserved, refer to the `IsPermanent` field returned by the `DescribeSnapshots` API. ",
+          "example": "0",
+          "member": "int64",
+          "name": "DeleteSnapshot",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"

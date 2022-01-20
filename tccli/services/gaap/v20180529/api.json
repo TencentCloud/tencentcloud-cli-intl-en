@@ -181,7 +181,7 @@
       "output": "DescribeAccessRegionsResponse"
     },
     "DescribeAccessRegionsByDestRegion": {
-      "document": "This API (DescribeAccessRegionsByDestRegion) is used to query the list of the available acceleration regions based on the origin server region.",
+      "document": "This API is used to query the available accelerator region based on the origin server region.",
       "input": "DescribeAccessRegionsByDestRegionRequest",
       "name": "Queries available acceleration regions based on the origin server region.",
       "output": "DescribeAccessRegionsByDestRegionResponse"
@@ -647,6 +647,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "3",
+          "member": "int64",
+          "name": "FeatureBitmap",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1219,12 +1229,21 @@
         },
         {
           "default": "",
-          "document": "Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).",
+          "document": "Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (game accelerator connection group), and `CrossBorder` (cross-border connection group).",
           "example": "Thunder",
           "member": "string",
           "name": "PackageType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "Http3Supported",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2065,12 +2084,30 @@
         },
         {
           "default": "",
-          "document": "Network type. Valid values: `normal` (default), `cn2`",
+          "document": "Network type. `normal`: general BGP; `cn2`: dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland).",
           "example": "normal",
           "member": "string",
           "name": "NetworkType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).",
+          "example": "Thunder",
+          "member": "string",
+          "name": "PackageType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "Http3Supported",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2837,7 +2874,7 @@
         },
         {
           "default": "",
-          "document": "Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).",
+          "document": "Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).",
           "example": "Thunder",
           "member": "string",
           "name": "PackageType",
@@ -3620,7 +3657,7 @@
         },
         {
           "default": "",
-          "document": "Filter condition   \nThe upper limit for `Filters` in each request is 10 and 5 for `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` with this parameter. \nProjectId - String - Required: No - Filter by project ID.   \nAccessRegion - String - Required: No - Filter by access region.    \nRealServerRegion - String - Required: No - Filter by origin server region.\nGroupId - String - Required: No - Filter by connection group ID.\nIPAddressVersion - String - Required: No - Filter by IP version.",
+          "document": "Filter condition   \nThe upper limit for `Filters` in each request is 10 and 5 for `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` with this parameter. \nProjectId - String - Required: No - Filter by project ID.   \nAccessRegion - String - Required: No - Filter by access region.    \nRealServerRegion - String - Required: No - Filter by origin server region.\nGroupId - String - Required: No - Filter by connection group ID.\nIPAddressVersion - String - Required: No - Filter by IP version.\nPackageType - String - Required: No - Filter by package type of connection groups.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -4298,7 +4335,7 @@
         },
         {
           "default": "",
-          "document": "Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).",
+          "document": "Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).",
           "example": "Thunder",
           "member": "string",
           "name": "PackageType",
@@ -5650,12 +5687,21 @@
         },
         {
           "default": "",
-          "document": "Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).",
+          "document": "Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), and `CrossBorder` (cross-MLC-border connection).",
           "example": "Thunder",
           "member": "string",
           "name": "PackageType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "Http3Supported",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -7476,7 +7522,7 @@
         },
         {
           "default": "",
-          "document": "Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), \nand `CrossBorder` (cross-MLC-border connection).\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "Thunder",
           "member": "string",
           "name": "PackageType",
@@ -7502,6 +7548,16 @@
           "name": "IPList",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "Http3Supported",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

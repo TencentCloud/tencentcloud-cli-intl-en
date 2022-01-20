@@ -693,9 +693,9 @@
     "ForbidLiveDomain": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=ForbidLiveDomain\r\n&DomainName=5000.livepush.com\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=ForbidLiveDomain\n&DomainName=5000.livepush.com\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Disabling domain name"
+        "title": "Disabling a domain name"
       }
     ],
     "ForbidLiveStream": [
