@@ -264,6 +264,12 @@
       "name": "Gets the list of policies associated with a role",
       "output": "ListAttachedRolePoliciesResponse"
     },
+    "ListAttachedUserAllPolicies": {
+      "document": "This API is used to list policies associated with the user (including those inherited from the user group).",
+      "input": "ListAttachedUserAllPoliciesRequest",
+      "name": "Lists policies associated with the user (including those inherited from the user group)",
+      "output": "ListAttachedUserAllPoliciesResponse"
+    },
     "ListAttachedUserPolicies": {
       "document": "This API (ListAttachedUserPolicies) is used to query the list of policies associated with a sub-account.",
       "input": "ListAttachedUserPoliciesRequest",
@@ -949,6 +955,119 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AttachedUserPolicy": {
+      "document": "Details of policies associated with the user",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID.",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Policy name.",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Policy description.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time.",
+          "member": "string",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Policy type (`1`: custom policy; `2`: preset policy).",
+          "member": "string",
+          "name": "StrategyType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation mode (`1`: create by product feature or project permission; other values: create by policy syntax).",
+          "member": "string",
+          "name": "CreateMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information on policies inherited from the user group.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "AttachedUserPolicyGroupInfo",
+          "name": "Groups",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the product has been deprecated (`0`: no; `1`: yes).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "Deactived",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of deprecated products.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DeactivedDetail",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AttachedUserPolicyGroupInfo": {
+      "document": "Information on policies associated with the user via the user group.",
+      "members": [
+        {
+          "default": "",
+          "document": "Group ID.",
+          "example": "10012",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Group name.",
+          "example": "group_one",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2874,6 +2993,96 @@
           "document": "Total number of policies associated with the role",
           "member": "uint64",
           "name": "TotalNum",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAttachedUserAllPoliciesRequest": {
+      "document": "ListAttachedUserAllPolicies request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Target user ID.",
+          "example": "1234565",
+          "member": "uint64",
+          "name": "TargetUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of policies displayed on each page. Value range: 1-200.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Rp",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number. Value range: 1-200.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "`0`: return policies that are directly associated and inherited from the user group; `1`: return policies that are directly associated; `2`: return policies inherited from the user group.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AttachType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Policy type.",
+          "example": "1",
+          "member": "uint64",
+          "name": "StrategyType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Keyword for searching.",
+          "example": "searchKey",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAttachedUserAllPoliciesResponse": {
+      "document": "ListAttachedUserAllPolicies response structure.",
+      "members": [
+        {
+          "document": "Policy list.",
+          "example": "无",
+          "member": "AttachedUserPolicy",
+          "name": "PolicyList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of policies.",
+          "example": "11",
+          "member": "uint64",
+          "name": "TotalNum",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },

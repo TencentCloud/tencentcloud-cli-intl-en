@@ -6565,6 +6565,7 @@
         {
           "default": "",
           "document": "Timestamp hotlink protection configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Authentication",
           "name": "Authentication",
           "required": false,
@@ -6574,6 +6575,7 @@
         {
           "default": "",
           "document": "Bandwidth cap configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "BandwidthAlert",
           "name": "BandwidthAlert",
           "required": false,
@@ -6583,6 +6585,7 @@
         {
           "default": "",
           "document": "Cache rules configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Cache",
           "name": "Cache",
           "required": false,
@@ -6592,6 +6595,7 @@
         {
           "default": "",
           "document": "Cache configurations.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CacheKey",
           "name": "CacheKey",
           "required": false,
@@ -6601,6 +6605,7 @@
         {
           "default": "",
           "document": "Smart compression configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Compression",
           "name": "Compression",
           "required": false,
@@ -6610,6 +6615,7 @@
         {
           "default": "",
           "document": "Download speed limit configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "DownstreamCapping",
           "name": "DownstreamCapping",
           "required": false,
@@ -6619,6 +6625,7 @@
         {
           "default": "",
           "document": "Error code redirect configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ErrorPage",
           "name": "ErrorPage",
           "required": false,
@@ -6628,6 +6635,7 @@
         {
           "default": "",
           "document": "301 and 302 automatic origin-pull follow-redirect configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "FollowRedirect",
           "name": "FollowRedirect",
           "required": false,
@@ -6637,6 +6645,7 @@
         {
           "default": "",
           "document": "Access protocol forced redirect configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ForceRedirect",
           "name": "ForceRedirect",
           "required": false,
@@ -6646,6 +6655,7 @@
         {
           "default": "",
           "document": "HTTPS configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Https",
           "name": "Https",
           "required": false,
@@ -6655,6 +6665,7 @@
         {
           "default": "",
           "document": "IP blocklist/allowlist configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "IpFilter",
           "name": "IpFilter",
           "required": false,
@@ -6664,6 +6675,7 @@
         {
           "default": "",
           "document": "IP access limit configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "IpFreqLimit",
           "name": "IpFreqLimit",
           "required": false,
@@ -6673,6 +6685,7 @@
         {
           "default": "",
           "document": "Browser cache rules configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MaxAge",
           "name": "MaxAge",
           "required": false,
@@ -6682,6 +6695,7 @@
         {
           "default": "",
           "document": "Origin server configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Origin",
           "name": "Origin",
           "required": false,
@@ -6691,6 +6705,7 @@
         {
           "default": "",
           "document": "Cross-border optimization configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "OriginPullOptimization",
           "name": "OriginPullOptimization",
           "required": false,
@@ -6700,6 +6715,7 @@
         {
           "default": "",
           "document": "Range GETs configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "RangeOriginPull",
           "name": "RangeOriginPull",
           "required": false,
@@ -6709,6 +6725,7 @@
         {
           "default": "",
           "document": "Hotlink protection configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Referer",
           "name": "Referer",
           "required": false,
@@ -6718,6 +6735,7 @@
         {
           "default": "",
           "document": "Origin-pull request header configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "RequestHeader",
           "name": "RequestHeader",
           "required": false,
@@ -6727,6 +6745,7 @@
         {
           "default": "",
           "document": "Origin server response header configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ResponseHeader",
           "name": "ResponseHeader",
           "required": false,
@@ -6736,6 +6755,7 @@
         {
           "default": "",
           "document": "Follows origin server cache header configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ResponseHeaderCache",
           "name": "ResponseHeaderCache",
           "required": false,
@@ -6745,6 +6765,7 @@
         {
           "default": "",
           "document": "SEO configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Seo",
           "name": "Seo",
           "required": false,
@@ -6754,6 +6775,7 @@
         {
           "default": "",
           "document": "Domain name service type. `web`: static acceleration; `download`: download acceleration; `media`: streaming media acceleration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ServiceType",
           "required": false,
@@ -6763,6 +6785,7 @@
         {
           "default": "",
           "document": "Status code cache configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "StatusCodeCache",
           "name": "StatusCodeCache",
           "required": false,
@@ -6772,8 +6795,29 @@
         {
           "default": "",
           "document": "Video dragging configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "VideoSeek",
           "name": "VideoSeek",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Private access for S3 origin\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AwsPrivateAccess",
+          "name": "AwsPrivateAccess",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Private access for OSS origin\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OssPrivateAccess",
+          "name": "OssPrivateAccess",
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7223,6 +7267,7 @@
         {
           "default": "",
           "document": "Timestamp hotlink protection configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Authentication",
           "name": "Authentication",
           "required": false,
@@ -7232,6 +7277,7 @@
         {
           "default": "",
           "document": "Bandwidth cap configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "BandwidthAlert",
           "name": "BandwidthAlert",
           "required": false,
@@ -7241,6 +7287,7 @@
         {
           "default": "",
           "document": "Cache rules configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Cache",
           "name": "Cache",
           "required": false,
@@ -7250,6 +7297,7 @@
         {
           "default": "",
           "document": "Cache configurations.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CacheKey",
           "name": "CacheKey",
           "required": false,
@@ -7259,6 +7307,7 @@
         {
           "default": "",
           "document": "Smart compression configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Compression",
           "name": "Compression",
           "required": false,
@@ -7268,6 +7317,7 @@
         {
           "default": "",
           "document": "Download speed limit configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "DownstreamCapping",
           "name": "DownstreamCapping",
           "required": false,
@@ -7277,6 +7327,7 @@
         {
           "default": "",
           "document": "Error code redirect configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ErrorPage",
           "name": "ErrorPage",
           "required": false,
@@ -7286,6 +7337,7 @@
         {
           "default": "",
           "document": "301 and 302 automatic origin-pull follow-redirect configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "FollowRedirect",
           "name": "FollowRedirect",
           "required": false,
@@ -7295,6 +7347,7 @@
         {
           "default": "",
           "document": "Access protocol forced redirect configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ForceRedirect",
           "name": "ForceRedirect",
           "required": false,
@@ -7304,6 +7357,7 @@
         {
           "default": "",
           "document": "HTTPS configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Https",
           "name": "Https",
           "required": false,
@@ -7313,6 +7367,7 @@
         {
           "default": "",
           "document": "IP blocklist/allowlist configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "IpFilter",
           "name": "IpFilter",
           "required": false,
@@ -7322,6 +7377,7 @@
         {
           "default": "",
           "document": "IP access limit configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "IpFreqLimit",
           "name": "IpFreqLimit",
           "required": false,
@@ -7331,6 +7387,7 @@
         {
           "default": "",
           "document": "Browser cache rules configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MaxAge",
           "name": "MaxAge",
           "required": false,
@@ -7340,6 +7397,7 @@
         {
           "default": "",
           "document": "Origin server configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Origin",
           "name": "Origin",
           "required": false,
@@ -7349,6 +7407,7 @@
         {
           "default": "",
           "document": "Cross-border optimization configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "OriginPullOptimization",
           "name": "OriginPullOptimization",
           "required": false,
@@ -7358,6 +7417,7 @@
         {
           "default": "",
           "document": "Range GETs configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "RangeOriginPull",
           "name": "RangeOriginPull",
           "required": false,
@@ -7367,6 +7427,7 @@
         {
           "default": "",
           "document": "Hotlink protection configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Referer",
           "name": "Referer",
           "required": false,
@@ -7376,6 +7437,7 @@
         {
           "default": "",
           "document": "Origin-pull request header configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "RequestHeader",
           "name": "RequestHeader",
           "required": false,
@@ -7385,6 +7447,7 @@
         {
           "default": "",
           "document": "Origin server response header configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ResponseHeader",
           "name": "ResponseHeader",
           "required": false,
@@ -7394,6 +7457,7 @@
         {
           "default": "",
           "document": "Follows origin server cache header configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ResponseHeaderCache",
           "name": "ResponseHeaderCache",
           "required": false,
@@ -7403,6 +7467,7 @@
         {
           "default": "",
           "document": "SEO configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Seo",
           "name": "Seo",
           "required": false,
@@ -7412,6 +7477,7 @@
         {
           "default": "",
           "document": "Domain name service type. `web`: static acceleration; `download`: download acceleration; `media`: streaming media acceleration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ServiceType",
           "required": false,
@@ -7421,6 +7487,7 @@
         {
           "default": "",
           "document": "Status code cache configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "StatusCodeCache",
           "name": "StatusCodeCache",
           "required": false,
@@ -7430,8 +7497,29 @@
         {
           "default": "",
           "document": "Video dragging configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "VideoSeek",
           "name": "VideoSeek",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Private access for S3 origin\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AwsPrivateAccess",
+          "name": "AwsPrivateAccess",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Private access for OSS origin\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OssPrivateAccess",
+          "name": "OssPrivateAccess",
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -9212,7 +9300,8 @@
       "members": [
         {
           "default": "",
-          "document": "Server certificate ID\nThis is auto-generated when the certificate is being hosted by the SSL Certificate Service\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Server certificate ID, which is auto-generated when the certificate is added to Tencent Cloud SSL Certificates\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "LE-dsfdsf",
           "member": "string",
           "name": "CertId",
           "required": false,
@@ -9222,6 +9311,7 @@
         {
           "default": "",
           "document": "Server certificate name\nThis is auto-generated when the certificate is being hosted by the SSL Certificate Service\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "aa.com",
           "member": "string",
           "name": "CertName",
           "required": false,
@@ -9231,6 +9321,7 @@
         {
           "default": "",
           "document": "Server certificate information\nThis is required when uploading an external certificate, which should contain the complete certificate chain.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "不展示",
           "member": "string",
           "name": "Certificate",
           "required": false,
@@ -9240,6 +9331,7 @@
         {
           "default": "",
           "document": "Server key information\nThis is required when uploading an external certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "不展示",
           "member": "string",
           "name": "PrivateKey",
           "required": false,
@@ -9249,6 +9341,7 @@
         {
           "default": "",
           "document": "Certificate expiration time\nCan be left blank when used as an input parameter\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-12-01 09:48:19",
           "member": "datetime",
           "name": "ExpireTime",
           "required": false,
@@ -9258,6 +9351,7 @@
         {
           "default": "",
           "document": "Certificate issuance time\nCan be left blank when used as an input parameter\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-12-01 09:48:19",
           "member": "datetime",
           "name": "DeployTime",
           "required": false,
@@ -9267,6 +9361,7 @@
         {
           "default": "",
           "document": "Certificate remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "备注",
           "member": "string",
           "name": "Message",
           "required": false,

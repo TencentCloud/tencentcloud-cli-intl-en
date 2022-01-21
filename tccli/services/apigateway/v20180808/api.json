@@ -2626,6 +2626,42 @@
       ],
       "usage": "in"
     },
+    "CosConfig": {
+      "document": "COS-type API configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies how the backend COS bucket is called by the API. The frontend request method and Action can be:\nGET：GetObject\nPUT：PutObject\nPOST：PostObject、AppendObject\nHEAD： HeadObject\nDELETE： DeleteObject\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "GetObject",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Backend COS bucket of the API\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "BucketName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the backend COS signature for the API. It defaults to `false`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "Authorization",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "CreateAPIDocRequest": {
       "document": "CreateAPIDoc request structure.",
       "members": [
@@ -9042,6 +9078,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API backend COS configuration. It’s required if the `ServiceType` is ·`COS`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "{\"Key\":\"/cos.txt\",\"Action\":\"GetObject\",\"BucketName\":\"test\",\"Auth",
+          "member": "CosConfig",
+          "name": "CosConfig",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"

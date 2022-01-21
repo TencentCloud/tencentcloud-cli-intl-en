@@ -151,6 +151,7 @@
         {
           "default": "",
           "document": "Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL",
+          "example": "云服务器CVM",
           "member": "string",
           "name": "BusinessCodeName",
           "required": true,
@@ -160,6 +161,7 @@
         {
           "default": "",
           "document": "Sub-product name: sub-categories of Tencent Cloud services, such as CVM-Standard S1",
+          "example": "云服务器CVM-标准型S1",
           "member": "string",
           "name": "ProductCodeName",
           "required": true,
@@ -169,6 +171,7 @@
         {
           "default": "",
           "document": "Billing mode",
+          "example": "按量计费",
           "member": "string",
           "name": "PayModeName",
           "required": true,
@@ -178,6 +181,7 @@
         {
           "default": "",
           "document": "Project: project of a resource",
+          "example": "默认项目",
           "member": "string",
           "name": "ProjectName",
           "required": true,
@@ -187,6 +191,7 @@
         {
           "default": "",
           "document": "Region: region of a resource, e.g. South China (Guangzhou)",
+          "example": "华南地区（广州）",
           "member": "string",
           "name": "RegionName",
           "required": true,
@@ -196,6 +201,7 @@
         {
           "default": "",
           "document": "Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3",
+          "example": "广州三区",
           "member": "string",
           "name": "ZoneName",
           "required": true,
@@ -205,6 +211,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "ins-rb7bmkwx",
           "member": "string",
           "name": "ResourceId",
           "required": true,
@@ -214,6 +221,7 @@
         {
           "default": "",
           "document": "Instance name",
+          "example": "emr-Core.3_emr-4g83a3k3",
           "member": "string",
           "name": "ResourceName",
           "required": true,
@@ -223,6 +231,7 @@
         {
           "default": "",
           "document": "Transaction type",
+          "example": "包年包月新购",
           "member": "string",
           "name": "ActionTypeName",
           "required": true,
@@ -232,6 +241,7 @@
         {
           "default": "",
           "document": "Order ID",
+          "example": "20211202400008418120371",
           "member": "string",
           "name": "OrderId",
           "required": true,
@@ -241,6 +251,7 @@
         {
           "default": "",
           "document": "Transaction ID",
+          "example": "20211202400008418120371",
           "member": "string",
           "name": "BillId",
           "required": true,
@@ -250,6 +261,7 @@
         {
           "default": "",
           "document": "Payment time",
+          "example": "2021-12-02 12:45:12",
           "member": "datetime",
           "name": "PayTime",
           "required": true,
@@ -259,6 +271,7 @@
         {
           "default": "",
           "document": "Service start time",
+          "example": "2021-12-02 12:45:05",
           "member": "datetime",
           "name": "FeeBeginTime",
           "required": true,
@@ -268,6 +281,7 @@
         {
           "default": "",
           "document": "Service end time",
+          "example": "2021-12-03 12:45:05",
           "member": "datetime",
           "name": "FeeEndTime",
           "required": true,
@@ -277,6 +291,7 @@
         {
           "default": "",
           "document": "Component list",
+          "example": "[           {             \"ComponentCodeName\": \"实例\",            ",
           "member": "BillDetailComponent",
           "name": "ComponentSet",
           "required": true,
@@ -286,6 +301,7 @@
         {
           "default": "",
           "document": "Payer's UIN",
+          "example": "909619400",
           "member": "string",
           "name": "PayerUin",
           "required": true,
@@ -295,6 +311,7 @@
         {
           "default": "",
           "document": "User's UIN",
+          "example": "909619400",
           "member": "string",
           "name": "OwnerUin",
           "required": true,
@@ -304,6 +321,7 @@
         {
           "default": "",
           "document": "Operator's UIN",
+          "example": "909619400",
           "member": "string",
           "name": "OperateUin",
           "required": true,
@@ -313,6 +331,7 @@
         {
           "default": "",
           "document": "Tag information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[           {             \"TagKey\": \"jemmahuang\",             \"T",
           "member": "BillTagInfo",
           "name": "Tags",
           "required": true,
@@ -321,7 +340,8 @@
         },
         {
           "default": "",
-          "document": "Product code\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Product code\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "p_cdn",
           "member": "string",
           "name": "BusinessCode",
           "required": true,
@@ -330,7 +350,8 @@
         },
         {
           "default": "",
-          "document": "Subproduct code\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Subproduct code\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "sp_cvm_sa2",
           "member": "string",
           "name": "ProductCode",
           "required": true,
@@ -339,7 +360,8 @@
         },
         {
           "default": "",
-          "document": "Transaction type/code (optional)",
+          "document": "Transaction type\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "postpay_deduct_h",
           "member": "string",
           "name": "ActionType",
           "required": true,
@@ -349,6 +371,7 @@
         {
           "default": "",
           "document": "",
+          "example": "1",
           "member": "string",
           "name": "RegionId",
           "required": true,
@@ -358,6 +381,7 @@
         {
           "default": "",
           "document": "Project ID: ID of the project to which the resource belongs",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -559,7 +583,7 @@
         },
         {
           "default": "",
-          "document": "Sub-product name: sub-categories of Tencent Cloud services, such as CVM-Standard S1; if no subproduct name is obtained, '-' is returned.",
+          "document": "Subproduct name, which is the subcategory of a Tencent Cloud product, such as CVM-Standard S1. If no subproduct name can be obtained, `-` is returned.",
           "example": "实时音视频-音视频通话",
           "member": "string",
           "name": "ProductCodeName",
@@ -849,7 +873,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Product code",
           "example": "p_rav",
           "member": "string",
           "name": "BusinessCode",
@@ -859,7 +883,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Subproduct code",
           "example": "sp_rav_audio_video",
           "member": "string",
           "name": "ProductCode",
@@ -909,7 +933,7 @@
       "members": [
         {
           "default": "",
-          "document": "Product code\nNote: This field may return null, indicating that no valid value was found.",
+          "document": "Product code\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "p_cdn",
           "member": "string",
           "name": "BusinessCode",
@@ -1169,7 +1193,7 @@
         },
         {
           "default": "",
-          "document": "Business code\nNote: To query business codes used in the current month, call <a href=\"https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1\">DescribeBillSummaryByProduct</a>.",
+          "document": "Product code\nNote: To query the product codes used in the current month, call <a href=\"https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1\">DescribeBillSummaryByProduct</a>.",
           "example": "p_cvm",
           "member": "string",
           "name": "BusinessCode",
@@ -1282,7 +1306,7 @@
         },
         {
           "default": "",
-          "document": "Business code\nNote: To query business codes used in the current month, call <a href=\"https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1\">DescribeBillSummaryByProduct</a>.",
+          "document": "Product code\nNote: To query the product codes used in the current month, call <a href=\"https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1\">DescribeBillSummaryByProduct</a>.",
           "example": "p_cvm",
           "member": "string",
           "name": "BusinessCode",
