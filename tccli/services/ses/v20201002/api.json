@@ -24,6 +24,18 @@
       "name": "Creates an email template",
       "output": "CreateEmailTemplateResponse"
     },
+    "CreateReceiver": {
+      "document": "This API is used to create a recipient group, which is the list of target email addresses for batch sending emails. After creating a group, you need to upload recipient email addresses. Then, you can create a sending task and select the group to batch send emails.",
+      "input": "CreateReceiverRequest",
+      "name": "Creates a recipient group",
+      "output": "CreateReceiverResponse"
+    },
+    "CreateReceiverDetail": {
+      "document": "This API is used to add recipient email addresses (up to 100,000 at a time) to a recipient group. This will be processed asynchronously. You can upload recipient email addresses only once. If the data volume is large, it may take some time to upload. You can check the recipient group to learn the upload status and upload quantity.",
+      "input": "CreateReceiverDetailRequest",
+      "name": "Adds recipient email addresses",
+      "output": "CreateReceiverDetailResponse"
+    },
     "DeleteBlackList": {
       "document": "This API is used to unblocklist email addresses. If you confirm that a blocklisted recipient address is valid and active, you can remove it from Tencent Cloud’s address blocklist database.",
       "input": "DeleteBlackListRequest",
@@ -61,7 +73,7 @@
       "output": "GetEmailTemplateResponse"
     },
     "GetSendEmailStatus": {
-      "document": "This API is used to get email sending status. Only data within 90 days can be queried.",
+      "document": "This API is used to get email sending status. Only data within 30 days can be queried.",
       "input": "GetSendEmailStatusRequest",
       "name": "Gets the email sending status",
       "output": "GetSendEmailStatusResponse"
@@ -95,6 +107,18 @@
       "input": "ListEmailTemplatesRequest",
       "name": "Gets the list of email templates",
       "output": "ListEmailTemplatesResponse"
+    },
+    "ListReceivers": {
+      "document": "This API is used to query recipient groups. It supports pagination, fuzzy query, and query by status.",
+      "input": "ListReceiversRequest",
+      "name": "Queries recipient groups",
+      "output": "ListReceiversResponse"
+    },
+    "ListSendTasks": {
+      "document": "This API is used to query batch email sending tasks (including immediate, scheduled, and recurring tasks) by page. You can query task data including the number of emails requested to be sent, the number of sent emails, the number of cached emails, and task status.",
+      "input": "ListSendTasksRequest",
+      "name": "Queries email sending tasks",
+      "output": "ListSendTasksResponse"
     },
     "SendEmail": {
       "document": "This API is used to send a TEXT or HTML email triggered for authentication or transaction. By default, you can send emails using a template only. To send custom content, please contact your sales rep to enable this feature.",
@@ -179,7 +203,7 @@
         },
         {
           "default": "",
-          "document": "Task type. Valid values: `1`: batch; `2`: scheduled; `3`: recurring",
+          "document": "Task type. `1`: immediate; `2`: scheduled; `3`: recurring",
           "example": "1",
           "member": "uint64",
           "name": "TaskType",
@@ -239,6 +263,15 @@
           "name": "TimedParam",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Unsubscribe option. `1`: provides an unsubscribe link; `0`: does not provide an unsubscribe link",
+          "example": "1",
+          "member": "string",
+          "name": "Unsubscribe",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -394,6 +427,87 @@
     "CreateEmailTemplateResponse": {
       "document": "CreateEmailTemplate response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateReceiverDetailRequest": {
+      "document": "CreateReceiverDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Recipient group ID",
+          "example": "123",
+          "member": "uint64",
+          "name": "ReceiverId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Email address",
+          "example": "[\"xxx@abc.com\"]",
+          "member": "string",
+          "name": "Emails",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateReceiverDetailResponse": {
+      "document": "CreateReceiverDetail response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateReceiverRequest": {
+      "document": "CreateReceiver request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Recipient group name",
+          "example": "收件人列表",
+          "member": "string",
+          "name": "ReceiversName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Recipient group description",
+          "example": "收件人列表描述",
+          "member": "string",
+          "name": "Desc",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateReceiverResponse": {
+      "document": "CreateReceiver response structure.",
+      "members": [
+        {
+          "document": "Recipient group ID, by which recipient email addresses are uploaded",
+          "example": "123",
+          "member": "uint64",
+          "name": "ReceiverId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -564,6 +678,7 @@
         {
           "default": "",
           "document": "Template ID",
+          "example": "10086",
           "member": "uint64",
           "name": "TemplateID",
           "required": true,
@@ -1035,12 +1150,231 @@
       ],
       "type": "object"
     },
+    "ListReceiversRequest": {
+      "document": "ListReceivers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset, starting from 0. The value is an integer.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of records to query. The value is an integer not exceeding 100.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Group status (`1`: to be uploaded; `2` uploading; `3` uploaded). To query groups in all states, do not pass in this parameter.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Group name keyword for fuzzy query",
+          "example": "列表名关键字",
+          "member": "string",
+          "name": "KeyWord",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListReceiversResponse": {
+      "document": "ListReceivers response structure.",
+      "members": [
+        {
+          "document": "Total number",
+          "example": "123",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data record",
+          "example": "无",
+          "member": "ReceiverData",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListSendTasksRequest": {
+      "document": "ListSendTasks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset, starting from 0. The value is an integer. `0` means to skip 0 entries.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of records to query. The value is an integer not exceeding 100.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Task status. `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending error; `10`: sent. To query tasks in all states, do not pass in this parameter.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Recipient group ID",
+          "example": "123",
+          "member": "uint64",
+          "name": "ReceiverId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Task type. `1`: immediate; `2`: scheduled; `3`: recurring. To query tasks of all types, do not pass in this parameter.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TaskType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListSendTasksResponse": {
+      "document": "ListSendTasks response structure.",
+      "members": [
+        {
+          "document": "Total number",
+          "example": "123",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Data record",
+          "example": "无",
+          "member": "SendTaskData",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReceiverData": {
+      "document": "Recipient group data type",
+      "members": [
+        {
+          "default": "",
+          "document": "Recipient group ID",
+          "example": "123",
+          "member": "uint64",
+          "name": "ReceiverId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recipient group name",
+          "example": "收件人列表",
+          "member": "string",
+          "name": "ReceiversName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number of recipient email addresses",
+          "example": "1",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recipient group description\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "收件人列表描述",
+          "member": "string",
+          "name": "Desc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Group status (`1`: to be uploaded; `2` uploading; `3` uploaded)\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ReceiversStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time, such as 2021-09-28 16:40:35",
+          "example": "2021-09-28 16:40:35",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SendEmailRequest": {
       "document": "SendEmail request structure.",
       "members": [
         {
           "default": "",
-          "document": "Sender address. Enter a sender address, for example, noreply@mail.qcloud.com. To display the sender name, enter the address in the following format: \nSender <email address>, for example:\nTencent Cloud team <noreply@mail.qcloud.com>",
+          "document": "Sender address. Enter a sender address, for example, noreply@mail.qcloud.com.\nTo display the sender name, enter the address in the following format: \nSender <email address>",
           "example": "noreply@mail.qcloud.com",
           "member": "string",
           "name": "FromEmailAddress",
@@ -1100,6 +1434,15 @@
           "name": "Attachments",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Unsubscribe option. `1`: provides an unsubscribe link; `0`: does not provide an unsubscribe link",
+          "example": "1",
+          "member": "string",
+          "name": "Unsubscribe",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1239,6 +1582,172 @@
       ],
       "usage": "out"
     },
+    "SendTaskData": {
+      "document": "Email sending task data",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sender address",
+          "example": "123@abc.com",
+          "member": "string",
+          "name": "FromEmailAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recipient group ID",
+          "example": "123",
+          "member": "uint64",
+          "name": "ReceiverId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task status. `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending error; `10`: sent",
+          "example": "1",
+          "member": "uint64",
+          "name": "TaskStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task type. `1`: immediate; `2`: scheduled; `3`: recurring",
+          "example": "1",
+          "member": "uint64",
+          "name": "TaskType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of emails requested to be sent",
+          "example": "1",
+          "member": "uint64",
+          "name": "RequestCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of emails sent",
+          "example": "1",
+          "member": "uint64",
+          "name": "SendCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of emails cached",
+          "example": "1",
+          "member": "uint64",
+          "name": "CacheCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task creation time",
+          "example": "2021-09-09 12:12:13",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task update time",
+          "example": "2021-09-09 12:12:13",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Email subject",
+          "example": "邮件主题",
+          "member": "string",
+          "name": "Subject",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Template and template data\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "Template",
+          "name": "Template",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Parameters of a recurring task\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "CycleEmailParam",
+          "name": "CycleParam",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Parameters of a scheduled task\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "TimedEmailParam",
+          "name": "TimedParam",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task exception information\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "余额不足",
+          "member": "string",
+          "name": "ErrMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Recipient group name",
+          "example": "收件人列表名称",
+          "member": "string",
+          "name": "ReceiversName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "Simple": {
       "document": "Email content, which can be plain text (TEXT), pure code (HTML), or a combination of TEXT and HTML (recommended).",
       "members": [
@@ -1269,6 +1778,7 @@
         {
           "default": "",
           "document": "Template ID. If you don’t have any template, please create one.",
+          "example": "123",
           "member": "uint64",
           "name": "TemplateID",
           "required": true,
@@ -1277,7 +1787,8 @@
         },
         {
           "default": "",
-          "document": "Variable parameters in the template. Please use `json.dump` to format the JSON object into a string type. The object is a set of key-value pairs. Each key denotes a variable, which is represented by {{key}}. The key will be replaced with the corresponding value (represented by {{value}}) when sending the email.",
+          "document": "Variable parameters in the template. Please use `json.dump` to format the JSON object into a string type. The object is a set of key-value pairs. Each key denotes a variable, which is represented by {{key}}. The key will be replaced with the corresponding value (represented by {{value}}) when sending the email.\nNote: The parameter value cannot be data of a complex type such as HTML.\nExample: {\"name\":\"xxx\",\"age\":\"xx\"}",
+          "example": "{\"name\":\"xxx\",\"age\":\"xx\"}",
           "member": "string",
           "name": "TemplateData",
           "required": true,

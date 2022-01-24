@@ -13,7 +13,7 @@
       "output": "AssociateSecurityGroupsResponse"
     },
     "ChangeReplicaToMaster": {
-      "document": "This API is used to promote a replica node group of a multi-AZ deployed instance to master node group.",
+      "document": "This API is used to promote a replica node group of a multi-AZ deployed instance to master node group or a replica node of a single-AZ deployed instance to master node.",
       "input": "ChangeReplicaToMasterRequest",
       "name": "Promotes a replica node group to master node group",
       "output": "ChangeReplicaToMasterResponse"
@@ -5325,6 +5325,15 @@
           "name": "Password",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node information of a single-AZ deployed instance",
+          "example": "null",
+          "member": "int64",
+          "name": "ShardIds",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"

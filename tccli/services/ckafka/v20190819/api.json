@@ -129,7 +129,7 @@
     "DescribeInstances": {
       "document": "This API is used to get the list of CKafka instances under a user account.",
       "input": "DescribeInstancesRequest",
-      "name": "Gets instance list",
+      "name": "Obtains instance list information",
       "output": "DescribeInstancesResponse"
     },
     "DescribeInstancesDetail": {
@@ -2373,6 +2373,7 @@
         {
           "default": "",
           "document": "(Filter) filter by instance ID",
+          "example": "instance-will-s",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -2381,6 +2382,7 @@
         {
           "default": "",
           "document": "(Filter) filter by instance name. Fuzzy search is supported",
+          "example": "tre",
           "member": "string",
           "name": "SearchWord",
           "required": false,
@@ -2389,6 +2391,7 @@
         {
           "default": "",
           "document": "(Filter) instance status. 0: creating, 1: running, 2: deleting. If this parameter is left empty, all instances will be returned by default",
+          "example": "[\"0\\r\\n\",\"1\\r\\n\",\"2\\r\\n\"]",
           "member": "int64",
           "name": "Status",
           "required": false,
@@ -2396,7 +2399,8 @@
         },
         {
           "default": "",
-          "document": "Offset. If this parameter is left empty, 0 will be used by default",
+          "document": "Offset. If this parameter is left empty, `0` will be used by default.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2404,7 +2408,8 @@
         },
         {
           "default": "",
-          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20",
+          "document": "Number of returned results. If this parameter is left empty, `10` will be used by default. The maximum value is `20`.",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -2413,6 +2418,7 @@
         {
           "default": "",
           "document": "Tag key match.",
+          "example": "1",
           "member": "string",
           "name": "TagKey",
           "required": false,
@@ -2420,11 +2426,21 @@
         },
         {
           "default": "",
-          "document": "Filter",
+          "document": "Filter.",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been deprecated and replaced with `InstanceIdList`.",
+          "example": "[instance-will-s]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2502,6 +2518,15 @@
           "example": "1",
           "member": "string",
           "name": "TagKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID.",
+          "example": "vpc-xxx",
+          "member": "string",
+          "name": "VpcId",
           "required": false,
           "type": "string"
         }
@@ -4137,6 +4162,36 @@
           "name": "RebalanceTime",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of partitions in the current instance.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PartitionNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network bandwidth type.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "PublicNetworkChargeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network bandwidth.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "PublicNetwork",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

@@ -24,12 +24,28 @@
         "title": "Creating URL for health report"
       }
     ],
+    "CreateKillTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dbbrain.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateKillTask\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-8jawylhf\",\n    \"Product\": \"mysql\",\n    \"Duration\": -1\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": 1,\n        \"RequestId\": \"09299b00-b878-11eb-b0b4-959ba47770cf\"\n    }\n}",
+        "title": "Creating session killing tasks"
+      }
+    ],
     "CreateMailProfile": [
       {
         "document": "",
         "input": "https://dbbrain.tencentcloudapi.com/?Action=CreateMailProfile\n&Product=mysql\n&ProfileLevel=Instance\n&ProfileName=scheduler_cdb-test\n&ProfileType= scheduler_mail_configuration\n&BindInstanceIds.0=cdb-test\n&ProfileInfo.Language=zh\n&ProfileInfo.MailConfiguration.SendMail=1\n&ProfileInfo.MailConfiguration.Region.0=ap-guangzhou\n&ProfileInfo.MailConfiguration.HealthStatus.0=HEALTH\n&ProfileInfo.MailConfiguration.ContactPerson.0=1\n&ProfileInfo.MailConfiguration.ContactGroup.0=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"77db16d7-bbe8-48a7-868b-ed776a96f1ab\"\n    }\n}",
         "title": "Creating email sending template for scheduled task emails/database inspection emails"
+      }
+    ],
+    "CreateProxySessionKillTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dbbrain.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProxySessionKillTask\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-8jawylhf\",\n    \"Product\": \"redis\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": 123456,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Creating an async task of killing all proxy node connection sessions according to instance ID"
       }
     ],
     "CreateSchedulerMailProfile": [

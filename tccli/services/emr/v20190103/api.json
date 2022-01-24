@@ -919,6 +919,32 @@
       ],
       "usage": "in"
     },
+    "CustomServiceDefine": {
+      "document": "Shared self-built component parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Custom parameter key",
+          "example": "zookeeper.quorum",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom parameter value",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Value",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "DescribeClusterNodesRequest": {
       "document": "DescribeClusterNodes request structure.",
       "members": [
@@ -1340,6 +1366,52 @@
       ],
       "usage": "out"
     },
+    "ExternalService": {
+      "document": "Shared component information",
+      "members": [
+        {
+          "default": "",
+          "document": "Shared component type, which can be EMR or CUSTOM",
+          "example": "EMR",
+          "member": "string",
+          "name": "ShareType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom parameters",
+          "example": "无",
+          "member": "CustomServiceDefine",
+          "name": "CustomServiceDefineList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shared component name",
+          "example": "zookeeper",
+          "member": "string",
+          "name": "Service",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shared component cluster",
+          "example": "emr-123",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "HostVolumeContext": {
       "document": "Pod `HostPath` mounting method description",
       "members": [
@@ -1483,6 +1555,15 @@
           "name": "SceneName",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Shared component information",
+          "example": "无",
+          "member": "ExternalService",
+          "name": "ExternalService",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"

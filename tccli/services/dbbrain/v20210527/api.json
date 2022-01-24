@@ -18,11 +18,23 @@
       "name": "Creates URL for health report",
       "output": "CreateDBDiagReportUrlResponse"
     },
+    "CreateKillTask": {
+      "document": "This API is used to create session killing tasks.",
+      "input": "CreateKillTaskRequest",
+      "name": "Creates session killing tasks",
+      "output": "CreateKillTaskResponse"
+    },
     "CreateMailProfile": {
       "document": "This API is used to create the email configuration. The input parameter `ProfileType` represents the type of the email configuration. Valid values: `dbScan_mail_configuration` (email configuration of database inspection report) and `scheduler_mail_configuration` (email sending configuration of scheduled task health report). Please always select Guangzhou for `Region`, regardless of the region where the instance resides.",
       "input": "CreateMailProfileRequest",
       "name": "Creates email configuration",
       "output": "CreateMailProfileResponse"
+    },
+    "CreateProxySessionKillTask": {
+      "document": "This API is used to create an async task of killing all proxy node connection sessions and is currently supported only for Redis. The async task ID is the returned value, which can be passed to the API `DescribeProxySessionKillTasks` as a parameter to query the execution status of the session killing task.",
+      "input": "CreateProxySessionKillTaskRequest",
+      "name": "Creates a task of killing proxy node sessions",
+      "output": "CreateProxySessionKillTaskResponse"
     },
     "CreateSchedulerMailProfile": {
       "document": "This API is used to create the regular generation time of health reports and the regular email sending configuration. Please pass in the regular generation time of health reports as a parameter (Monday to Sunday) to set the regular generation time, and save the corresponding regular email sending configuration.",
@@ -430,6 +442,114 @@
       ],
       "type": "object"
     },
+    "CreateKillTaskRequest": {
+      "document": "CreateKillTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance associated with the session killing task.",
+          "example": "cdb-test1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task duration in seconds. Pass in `-1` to stop the task manually.",
+          "example": "10",
+          "member": "int64",
+          "name": "Duration",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Client IP, which is a task filter.",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Host",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database name, which is a task filter. Multiple database names are separated by comma.",
+          "example": "test,test1",
+          "member": "string",
+          "name": "DB",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Related command, which is a task filter. Multiple commands are separated by comma.",
+          "example": "Time,Table Dump",
+          "member": "string",
+          "name": "Command",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task filter. Filtering by single filter prefix is supported.",
+          "example": "select",
+          "member": "string",
+          "name": "Info",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User type, which is a task filter.",
+          "example": "root",
+          "member": "string",
+          "name": "User",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Session duration in seconds, which is a task filter.",
+          "example": "10",
+          "member": "int64",
+          "name": "Time",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
+          "example": "mysql",
+          "member": "string",
+          "name": "Product",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateKillTaskResponse": {
+      "document": "CreateKillTask response structure.",
+      "members": [
+        {
+          "document": "Task status. `1` is returned if the session killing task is successfully created.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateMailProfileRequest": {
       "document": "CreateMailProfile request structure.",
       "members": [
@@ -493,6 +613,51 @@
     "CreateMailProfileResponse": {
       "document": "CreateMailProfile response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProxySessionKillTaskRequest": {
+      "document": "CreateProxySessionKillTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "crs-test1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Service type. Valid value: `redis` (TencentDB for Redis).",
+          "example": "redis",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProxySessionKillTaskResponse": {
+      "document": "CreateProxySessionKillTask response structure.",
+      "members": [
+        {
+          "document": "Async task ID that is returned after the session killing task is created.",
+          "example": "123456",
+          "member": "int64",
+          "name": "AsyncRequestId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -1511,7 +1676,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Total number of email templates.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Total number of the configured emails.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
