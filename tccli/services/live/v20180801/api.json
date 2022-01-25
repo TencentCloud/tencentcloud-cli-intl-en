@@ -408,6 +408,12 @@
       "name": "Gets the list of transcoding templates",
       "output": "DescribeLiveTranscodeTemplatesResponse"
     },
+    "DescribeLiveTranscodeTotalInfo": {
+      "document": "This API is used to query your total usage of the transcoding service in the last 30 days.\nNotes:\nIf the start time and end time are on the same day, the data returned will be on a 5-minute basis.\nIf not or if the data of specified domains is queried, the data returned will be on an hourly basis.",
+      "input": "DescribeLiveTranscodeTotalInfoRequest",
+      "name": "Queries total usage of the transcoding service",
+      "output": "DescribeLiveTranscodeTotalInfoResponse"
+    },
     "DescribeLiveWatermark": {
       "document": "This API is used to get the information of a single watermark.",
       "input": "DescribeLiveWatermarkRequest",
@@ -5229,6 +5235,69 @@
       ],
       "type": "object"
     },
+    "DescribeLiveTranscodeTotalInfoRequest": {
+      "document": "DescribeLiveTranscodeTotalInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time (Beijing time)\nFormat: yyyy-mm-dd HH:MM:SS",
+          "example": "2019-03-01 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time (Beijing time)\nFormat: yyyy-mm-dd HH:MM:SS",
+          "example": "2019-03-01 12:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of push domains to query. If this parameter is left empty, the data of all domains is queried.\nIf this parameter is specified, the data returned will be on an hourly basis.",
+          "example": "[\"test.com\"]",
+          "member": "string",
+          "name": "PushDomains",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Valid values:\n`Mainland`: queries transcoding data in the Chinese mainland\n`Oversea`: queries transcoding data outside the Chinese mainland\nBy default, the data both in and outside the Chinese mainland is queried.",
+          "example": "Mainland",
+          "member": "string",
+          "name": "MainlandOrOversea",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLiveTranscodeTotalInfoResponse": {
+      "document": "DescribeLiveTranscodeTotalInfo response structure.",
+      "members": [
+        {
+          "document": "List of transcoding data\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "TranscodeTotalInfo",
+          "name": "DataInfoList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeLiveWatermarkRequest": {
       "document": "DescribeLiveWatermark request structure.",
       "members": [
@@ -5982,6 +6051,7 @@
         {
           "default": "",
           "document": "Start time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS",
+          "example": "2019-03-01 00:00:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -5989,7 +6059,8 @@
         },
         {
           "default": "",
-          "document": "End time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS.\nThe difference between the start time and end time cannot be greater than 24 hours. Data in the last 30 days can be queried.",
+          "document": "End time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS\nThe start time and end time cannot be more than 24 hours apart and must be within the last 15 days.",
+          "example": "2019-03-01 00:03:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -5998,6 +6069,7 @@
         {
           "default": "",
           "document": "Playback domain name,\nIf this parameter is left empty, data of live streams of all playback domain names will be queried.",
+          "example": "5000.playdomain.com",
           "member": "string",
           "name": "PlayDomain",
           "required": false,
@@ -6006,6 +6078,7 @@
         {
           "default": "",
           "document": "Stream name (exact match).\nIf this parameter is left empty, full playback data will be queried.",
+          "example": "stream1",
           "member": "string",
           "name": "StreamName",
           "required": false,
@@ -6014,6 +6087,7 @@
         {
           "default": "",
           "document": "Push address. Its value is the same as the `AppName` in playback address. It supports exact match, and takes effect only when `StreamName` is passed at the same time.\nIf it is left empty, the full playback data will be queried.\nNote: to query by `AppName`, you need to submit a ticket first. After your application succeeds, it will take about 5 business days (subject to the time in the reply) for the configuration to take effect.",
+          "example": "live",
           "member": "string",
           "name": "AppName",
           "required": false,
@@ -6022,6 +6096,7 @@
         {
           "default": "",
           "document": "Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.",
+          "example": "LVB",
           "member": "string",
           "name": "ServiceName",
           "required": false,
@@ -9697,6 +9772,48 @@
         {
           "default": "",
           "document": "Resolution.",
+          "member": "string",
+          "name": "Resolution",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TranscodeTotalInfo": {
+      "document": "Total usage of the transcoding service",
+      "members": [
+        {
+          "default": "",
+          "document": "Usage time (Beijing time)\nExample: 2019-03-01 00:00:00",
+          "member": "string",
+          "name": "Time",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Transcoding duration in minutes",
+          "member": "uint64",
+          "name": "Duration",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Codec, with modules\nExamples:\n`liveprocessor_H264`: live transcoding-H264\n`liveprocessor_H265`: live transcoding-H265\n`topspeed_H264`: top speed codec-H264\n`topspeed_H265`: top speed codec-H265",
+          "member": "string",
+          "name": "ModuleCodec",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resolution\nExample: 540*480",
           "member": "string",
           "name": "Resolution",
           "required": true,
