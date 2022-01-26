@@ -121,7 +121,7 @@
       "output": "RestoreSecretResponse"
     },
     "RotateProductSecret": {
-      "document": "This API is used to rotate a Tencent Cloud service credential. It is only applicable to Tencent Cloud service credentials in `Enabled` status but not Tencent Cloud service credentials in other status or user-defined credentials.",
+      "document": "This API is used to rotate secrets for Tencent Cloud services or Tencent Cloud API key pairs.\nNote that only the secrets with the \"Enabled\" status can be rotated.",
       "input": "RotateProductSecretRequest",
       "name": "Rotates Tencent Cloud service credential",
       "output": "RotateProductSecretResponse"
@@ -891,7 +891,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Whether to enable rotation. True: yes; False: no.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to enable rotation. `True`: enable rotation; `False`: disable rotation.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "True",
           "member": "bool",
           "name": "RotationStatus",
@@ -933,6 +933,15 @@
           "name": "AssociatedInstanceIDs",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "UIN of the Tencent Cloud API key. This field is valid when the secret type is Tencent Cloud API key secret.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "12345",
+          "member": "uint64",
+          "name": "TargetUin",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         },
         {
@@ -1241,16 +1250,29 @@
       "members": [
         {
           "document": "`true`: The service is activated; `false`: The service is not activated.",
+          "example": "1",
           "member": "bool",
           "name": "ServiceEnabled",
+          "required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
           "document": "Invalid service type. `0`: not purchased; `1`: normal; `2`: suspended due to arrears; `3`: resource released",
+          "example": "1",
           "member": "int64",
           "name": "InvalidType",
+          "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "`true`: allow SSM to manage Tencent Cloud API key secrets.\n`false`: forbid SSM to manage Tencent Cloud API key secrets.",
+          "example": "true",
+          "member": "bool",
+          "name": "AccessKeyEscrowEnabled",
+          "required": true,
+          "type": "bool",
           "value_allowed_null": false
         },
         {
@@ -1361,7 +1383,7 @@
         },
         {
           "default": "",
-          "document": "`0` (default): user-defined secret.\n`1`: Tencent Cloud services secret.\n`2`: SSH key secret.",
+          "document": "`0` (default): user-defined secret.\n`1`: Tencent Cloud services secret.\n`2`: SSH key secret.\n`3`: Tencent Cloud API key secret.",
           "example": "1",
           "member": "uint64",
           "name": "SecretType",
@@ -1582,7 +1604,7 @@
       "document": "RotateProductSecret response structure.",
       "members": [
         {
-          "document": "Async rotation task ID.",
+          "document": "Asynchronous rotation task ID. This field is valid when `SecretType` is `1` (i.e., the secret type is Tencent Cloud services secret, such as MySQL/TDSQL credentials).",
           "example": "1",
           "member": "int64",
           "name": "FlowID",
@@ -1704,7 +1726,7 @@
         },
         {
           "default": "",
-          "document": "0: user-defined credential; 1: Tencent Cloud service credential.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "`0`: user-defined secret.\n`1`: Tencent Cloud services secret.\n`2`: SSH key secret.\n`3`: Tencent Cloud API key secret.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "CloudProduct",
           "member": "int64",
           "name": "SecretType",
@@ -1750,6 +1772,16 @@
           "name": "AssociatedInstanceIDs",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "UIN of the Tencent Cloud API key. This field is valid when the secret type is Tencent Cloud API key secret.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TargetUin",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
