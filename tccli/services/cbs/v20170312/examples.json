@@ -170,6 +170,14 @@
         "title": "Querying the snapshot overview information of the current user"
       }
     ],
+    "InitializeDisks": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InitializeDisks\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"disk-ixya2wzy\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"aafa71a0-ed62-0fac-3ebf-5a1f808d1085\"\n    }\n}",
+        "title": "Reinitializing cloud disks"
+      }
+    ],
     "InquirePriceModifyDiskExtraPerformance": [
       {
         "document": "",

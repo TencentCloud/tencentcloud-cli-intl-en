@@ -285,6 +285,33 @@ def doDeleteAutoSnapshotPolicies(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doCreateAutoSnapshotPolicy(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CbsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateAutoSnapshotPolicyRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.CreateAutoSnapshotPolicy(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeDisks(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -528,7 +555,7 @@ def doDescribeSnapshotSharePermission(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateAutoSnapshotPolicy(args, parsed_globals):
+def doInitializeDisks(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -544,9 +571,9 @@ def doCreateAutoSnapshotPolicy(args, parsed_globals):
     client = mod.CbsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateAutoSnapshotPolicyRequest()
+    model = models.InitializeDisksRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateAutoSnapshotPolicy(model)
+    rsp = client.InitializeDisks(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -846,6 +873,7 @@ ACTION_MAP = {
     "InquiryPriceCreateDisks": doInquiryPriceCreateDisks,
     "DescribeDiskOperationLogs": doDescribeDiskOperationLogs,
     "DeleteAutoSnapshotPolicies": doDeleteAutoSnapshotPolicies,
+    "CreateAutoSnapshotPolicy": doCreateAutoSnapshotPolicy,
     "DescribeDisks": doDescribeDisks,
     "CreateDisks": doCreateDisks,
     "ModifyDiskAttributes": doModifyDiskAttributes,
@@ -855,7 +883,7 @@ ACTION_MAP = {
     "BindAutoSnapshotPolicy": doBindAutoSnapshotPolicy,
     "DescribeSnapshots": doDescribeSnapshots,
     "DescribeSnapshotSharePermission": doDescribeSnapshotSharePermission,
-    "CreateAutoSnapshotPolicy": doCreateAutoSnapshotPolicy,
+    "InitializeDisks": doInitializeDisks,
     "TerminateDisks": doTerminateDisks,
     "DescribeDiskConfigQuota": doDescribeDiskConfigQuota,
     "UnbindAutoSnapshotPolicy": doUnbindAutoSnapshotPolicy,

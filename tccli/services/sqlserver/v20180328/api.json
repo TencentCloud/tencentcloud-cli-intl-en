@@ -5110,6 +5110,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "mssql-p2yli7gv",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5118,6 +5119,7 @@
         {
           "default": "",
           "document": "ID of the new VPC",
+          "example": "vpc-ilki4qdp",
           "member": "string",
           "name": "NewVpcId",
           "required": true,
@@ -5126,6 +5128,7 @@
         {
           "default": "",
           "document": "ID of the new subnet",
+          "example": "subnet-lru6dhh8",
           "member": "string",
           "name": "NewSubnetId",
           "required": true,
@@ -5134,10 +5137,20 @@
         {
           "default": "",
           "document": "Retention period (in hours) of the original VIP. Value range: `0-168`. Default value: `0`, indicating the original VIP is released immediately.",
+          "example": "12",
           "member": "int64",
           "name": "OldIpRetainTime",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "New VIP",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"

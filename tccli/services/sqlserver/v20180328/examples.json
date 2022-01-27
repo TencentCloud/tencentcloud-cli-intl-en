@@ -11,7 +11,7 @@
     "CreateAccount": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=CreateAccount\r\n&InstanceId=mssql-njj2mtpl\r\n&Accounts.0.UserName=testuser\r\n&Accounts.0.Password=testpassword\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=CreateAccount\n&InstanceId=mssql-njj2mtpl\n&Accounts.0.UserName=testuser\n&Accounts.0.Password=testpassword\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a61e500-aa33-454c-9ec2-da2a368c39ab\",\n        \"FlowId\": \"30321\"\n    }\n}",
         "title": "Creating an instance account"
       }
@@ -107,8 +107,8 @@
     "DescribeAccounts": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeAccounts\r\n&InstanceId=mssql-j8kv137v\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5729760c-db94-4c71-a1ee-ebd43adae189\",\n        \"InstanceId\": \"mssql-632eyp63\",\n        \"Accounts\": [\n            {\n                \"Name\": \"wang\",\n                \"Remark\": \"wang test account\",\n                \"CreateTime\": \"2018-07-27 22:24:54\",\n                \"Status\": 2,\n                \"UpdateTime\": \"2018-07-27 22:25:25\",\n                \"PassTime\": \"2018-07-27 22:25:25\",\n                \"Dbs\": [],\n                \"InternalStatus\": \"enable\"\n            },\n            {\n                \"Name\": \"test\",\n                \"Remark\": \"N/A\",\n                \"CreateTime\": \"2018-08-07 15:28:00\",\n                \"Status\": 2,\n                \"UpdateTime\": \"2018-08-07 15:28:00\",\n                \"PassTime\": \"0000-00-00 00:00:00\",\n                \"Dbs\": [],\n                \"InternalStatus\": \"enable\"\n            }\n        ]\n    }\n}",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeAccounts\n&InstanceId=mssql-j8kv137v\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5729760c-db94-4c71-a1ee-ebd43adae189\",\n        \"InstanceId\": \"mssql-632eyp63\",\n        \"TotalCount\": 1,\n        \"Accounts\": [\n            {\n                \"CreateTime\": \"2021-09-16 14:33:04\",\n                \"Dbs\": [],\n                \"InternalStatus\": \"enable\",\n                \"IsAdmin\": true,\n                \"Name\": \"xiaowei\",\n                \"PassTime\": \"2021-09-16 14:33:55\",\n                \"Remark\": \"--\",\n                \"Status\": 2,\n                \"UpdateTime\": \"2021-09-16 14:33:55\"\n            }\n        ]\n    }\n}",
         "title": "Pulling the list of instance accounts"
       }
     ],
@@ -189,7 +189,7 @@
     "DescribeDBs": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeDBs\r\n&InstanceIdSet.0=mssql-njj2mtpl\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeDBs\n&InstanceIdSet.0=mssql-njj2mtpl\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5062de55-d048-4d3b-92f9-b98b6f244360\",\n        \"TotalCount\": 1,\n        \"DBInstances\": [\n            {\n                \"InstanceId\": \"mssql-632eyp63\",\n                \"DBDetails\": [\n                    {\n                        \"Name\": \"ceshi1\",\n                        \"Charset\": \"Chinese_PRC_CI_AS\",\n                        \"Remark\": \"Test db1\",\n                        \"CreateTime\": \"2018-07-02 20:12:24\",\n                        \"Status\": 2,\n                        \"Accounts\": [\n                            {\n                                \"UserName\": \"victorwind\",\n                                \"Privilege\": \"ReadWrite\"\n                            }\n                        ],\n                        \"InternalStatus\": \"ONLINE\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
         "title": "Querying the list of databases"
       }
@@ -325,7 +325,7 @@
     "ModifyAccountPrivilege": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyAccountPrivilege\r\n&InstanceId=mssql-njj2mtpl\r\n&Accounts.0.UserName=testuser\r\n&Accounts.0.DBPrivileges.0.DBName=testdb\r\n&Accounts.0.DBPrivileges.0.Privilege=ReadOnly\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyAccountPrivilege\n&InstanceId=mssql-njj2mtpl\n&Accounts.0.UserName=testuser\n&Accounts.0.DBPrivileges.0.DBName=testdb\n&Accounts.0.DBPrivileges.0.Privilege=ReadOnly\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a61e500-aa33-454c-9ec2-da2a368c39ab\",\n        \"FlowId\": \"30321\"\n    }\n}",
         "title": "Modifying instance account permissions"
       }
@@ -365,9 +365,15 @@
     "ModifyDBInstanceNetwork": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBInstanceNetwork\n&InstanceId=mssql-p2yli7gv\n&NewVpcId=vpc-ilki4qdp\n&NewSubnetId=subnet-lru6dhh8\n&OldIpRetainTime=12\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBInstanceNetwork\n&InstanceId=mssql-p2yli7gv\n&NewVpcId=vpc-ilki4qdp\n&NewSubnetId=subnet-lru6dhh8\n&Vip=127.0.0.1\n&OldIpRetainTime=12\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"20db6661-2a85-49d9-8a37-976b931649fb\",\n        \"FlowId\": 100125\n    }\n}",
-        "title": "Changing instance network"
+        "title": "Modifying the instance network by specifying a new IP"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceNetwork\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mssql-e720ieef\",\n    \"NewVpcId\": \"vpc-kw88teud\",\n    \"NewSubnetId\": \"subnet-8z5n8tcg\",\n    \"OldIpRetainTime\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 1011581,\n        \"RequestId\": \"bdac237c-b9b7-4050-9284-97898cca5883\"\n    }\n}",
+        "title": "Modifying the instance network"
       }
     ],
     "ModifyDBInstanceProject": [
