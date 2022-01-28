@@ -36,6 +36,12 @@
       "name": "Creates account",
       "output": "CreateAccountResponse"
     },
+    "CreateHourDBInstance": {
+      "document": "This API is used to create pay-as-you-go instances.",
+      "input": "CreateHourDBInstanceRequest",
+      "name": "Creates pay-as-you-go instances",
+      "output": "CreateHourDBInstanceResponse"
+    },
     "DeleteAccount": {
       "document": "This API is used to delete a TencentDB account, which is uniquely identified by username and host.",
       "input": "DeleteAccountRequest",
@@ -251,6 +257,12 @@
       "input": "ResetAccountPasswordRequest",
       "name": "Resets account password",
       "output": "ResetAccountPasswordResponse"
+    },
+    "SwitchDBInstanceHA": {
+      "document": "This API is used to start a primary-replica switch of instances.",
+      "input": "SwitchDBInstanceHARequest",
+      "name": "Starts a primary-replica switch of instances",
+      "output": "SwitchDBInstanceHAResponse"
     }
   },
   "metadata": {
@@ -718,6 +730,204 @@
           "name": "ReadOnly",
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateHourDBInstanceRequest": {
+      "document": "CreateHourDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "AZs to deploy instance nodes. You can specify up to two AZs. If each shard has one primary node and two replica nodes, two of the three will be deployed in the first AZ you have specified.",
+          "example": "[\"ap-guangzhou-1\"]",
+          "member": "string",
+          "name": "Zones",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Number of nodes.",
+          "example": "2",
+          "member": "int64",
+          "name": "NodeCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Memory size in GB.",
+          "example": "2",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Storage size in GB.",
+          "example": "10",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of instances to purchase.",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID. If this parameter is not passed in, the default project will be used.",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Unique ID of the network. If this parameter is not passed in, the classic network will be used.",
+          "example": "vpc-n2vdqxdx",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique ID of the subnet. If `VpcId` is specified, this parameter is required.",
+          "example": "subnet-j2ezrypg",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database engine version. Valid values:\n10.0.10: MariaDB 10.0.10;\n10.1.9: MariaDB 10.1.9;\n5.7.17: Percona 5.7.17.\nIf this parameter is left empty, `10.1.9` will be used.",
+          "example": "5.7.17",
+          "member": "string",
+          "name": "DbVersionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom name of the instance.",
+          "example": "实例名称",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group ID. If this parameter is not passed in, no security groups will be associated when the instance is created.",
+          "example": "[\"sg-123456\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether IPv6 is supported.",
+          "example": "0",
+          "member": "int64",
+          "name": "Ipv6Flag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Array of tag key-value pairs.",
+          "example": "无",
+          "member": "ResourceTag",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "If you create a disaster recovery instance, you need to use this parameter to specify the region of the associated primary instance so that the disaster recovery instance can sync data with the primary instance over the Data Communication Network (DCN).",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "DcnRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "If you create a disaster recovery instance, you need to use this parameter to specify the ID of the associated primary instance so that the disaster recovery instance can sync data with the primary instance over the Data Communication Network (DCN).",
+          "example": "tdsql-123456",
+          "member": "string",
+          "name": "DcnInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of parameters. Valid values: `character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; 0: case-sensitive; 1: case-insensitive); `innodb_page_size` (InnoDB data page size; default size: 16 KB); `sync_mode` (sync mode; 0: async; 1: strong sync; 2: downgradable strong sync; default value: 2).",
+          "example": "无",
+          "member": "DBParamValue",
+          "name": "InitParams",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "ID of the instance whose backup data will be rolled back to the new instance you create.",
+          "example": "tdsql-dup8gl6t",
+          "member": "string",
+          "name": "RollbackInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rollback time.",
+          "example": "2021-11-22 00:00:00",
+          "member": "string",
+          "name": "RollbackTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateHourDBInstanceResponse": {
+      "document": "CreateHourDBInstance response structure.",
+      "members": [
+        {
+          "document": "Order ID, which is used in the `DescribeOrders` API.\n The parameter can be used to either query order details or call the user account APIs to make another payment when this payment fails.",
+          "example": "20200409111543",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IDs of the instances you have purchased in this order. If no instance IDs are returned, you can query them with the `DescribeOrders` API. You can also use the `DescribeDBInstances` API to check whether an instance has been created successfully.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"tdsql-dup8gl6t\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1331,6 +1541,16 @@
           "name": "InstanceType",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance tag information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "暂无",
+          "member": "ResourceTag",
+          "name": "ResourceTags",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -2940,9 +3160,20 @@
       "members": [
         {
           "document": "Security group details",
+          "example": "无",
           "member": "SecurityGroup",
           "name": "Groups",
+          "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of security groups.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4140,6 +4371,30 @@
       ],
       "type": "object"
     },
+    "ResourceTag": {
+      "document": "Tag object, including tag key and tag value",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "ResourceUsageMonitorSet": {
       "document": "Set of database resource usage monitoring metrics",
       "members": [
@@ -4488,6 +4743,47 @@
         }
       ],
       "usage": "out"
+    },
+    "SwitchDBInstanceHARequest": {
+      "document": "SwitchDBInstanceHA request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of tdsql-ow728lmc",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target AZ. The node with the lowest delay in the target AZ will be automatically promoted to primary node.",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchDBInstanceHAResponse": {
+      "document": "SwitchDBInstanceHA response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "member": "int64",
+          "name": "FlowId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "TablePrivilege": {
       "document": "Table permission",
