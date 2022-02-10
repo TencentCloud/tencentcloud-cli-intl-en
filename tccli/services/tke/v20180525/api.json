@@ -222,6 +222,12 @@
       "name": "Queries the key information of a cluster.",
       "output": "DescribeClusterSecurityResponse"
     },
+    "DescribeClusterStatus": {
+      "document": "This API is used to query the information of clusters under the current account.",
+      "input": "DescribeClusterStatusRequest",
+      "name": "Queries the information of clusters under the current account",
+      "output": "DescribeClusterStatusResponse"
+    },
     "DescribeClusters": {
       "document": "This API is used to query clusters list.",
       "input": "DescribeClustersRequest",
@@ -1696,6 +1702,122 @@
           "name": "Subnets",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ClusterStatus": {
+      "document": "Cluster status information",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "\"cls-xxxx\"",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster status",
+          "example": "\"Running\"",
+          "member": "string",
+          "name": "ClusterState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status of nodes in the cluster",
+          "example": " \"AllNormal\"",
+          "member": "string",
+          "name": "ClusterInstanceState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Indicates whether the monitoring service is enabled for the cluster",
+          "example": "false",
+          "member": "bool",
+          "name": "ClusterBMonitor",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of cluster nodes being created. \"-1\" indicates that the request to obtain the node status timed out. \"-2\" indicates that the request failed.",
+          "example": "1",
+          "member": "int64",
+          "name": "ClusterInitNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of running nodes in the cluster. \"-1\" indicates that the request to obtain the node status timed out. \"-2\" indicates that the request failed.",
+          "example": "3",
+          "member": "int64",
+          "name": "ClusterRunningNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of abnormal nodes in the cluster.  \"-1\" indicates that the request to obtain the node status timed out. \"-2\" indicates that the request failed.",
+          "example": "0",
+          "member": "int64",
+          "name": "ClusterFailedNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of shutdown nodes in the cluster.  \"-1\" indicates that the request to obtain the node status timed out. \"-2\" indicates that the request failed.\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "0",
+          "member": "int64",
+          "name": "ClusterClosedNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of nodes being shut down in the cluster.  \"-1\" indicates that the request to obtain the node status timed out. \"-2\" indicates that the request failed.\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "0",
+          "member": "int64",
+          "name": "ClusterClosingNodeNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Indicates whether to enable cluster deletion protection\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "false",
+          "member": "bool",
+          "name": "ClusterDeletionProtection",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Indicates whether the cluster is auditable\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "false",
+          "member": "bool",
+          "name": "ClusterAuditEnabled",
+          "required": true,
+          "type": "bool",
           "value_allowed_null": true
         }
       ],
@@ -3456,6 +3578,51 @@
           "name": "JnsGwEndpoint",
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterStatusRequest": {
+      "document": "DescribeClusterStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID list. All clusters are pulled if it is left empty.",
+          "example": "[\"cls-xxxxxxx\"]",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterStatusResponse": {
+      "document": "DescribeClusterStatus response structure.",
+      "members": [
+        {
+          "document": "Cluster status list",
+          "example": "无",
+          "member": "ClusterStatus",
+          "name": "ClusterStatusSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of clusters",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -5397,7 +5564,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Sets whether the added node is schedulable. 0 (default): schedulable; other values: unschedulable. After node initialization is completed, you can run `kubectl uncordon nodename` to enable this node for scheduling.",
           "example": "0",
           "member": "int64",
           "name": "Unschedulable",

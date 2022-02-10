@@ -6,6 +6,12 @@
       "name": "Adds a read-only replica to an RO group",
       "output": "AddDBInstanceToReadOnlyGroupResponse"
     },
+    "CloneDBInstance": {
+      "document": "This API is used to clone an instance by specifying a backup set or a point in time.",
+      "input": "CloneDBInstanceRequest",
+      "name": "Clones an instance",
+      "output": "CloneDBInstanceResponse"
+    },
     "CloseDBExtranetAccess": {
       "document": "This API is used to disable the public network link to an instance.",
       "input": "CloseDBExtranetAccessRequest",
@@ -65,6 +71,24 @@
       "input": "DescribeAccountsRequest",
       "name": "Gets instance user list",
       "output": "DescribeAccountsResponse"
+    },
+    "DescribeAvailableRecoveryTime": {
+      "document": "This API is used to query the available restoration time of an instance.",
+      "input": "DescribeAvailableRecoveryTimeRequest",
+      "name": "Queries the available restoration time of an instance",
+      "output": "DescribeAvailableRecoveryTimeResponse"
+    },
+    "DescribeBackupPlans": {
+      "document": "This API is used to query all backup plans of an instance.",
+      "input": "DescribeBackupPlansRequest",
+      "name": "Queries backup plans",
+      "output": "DescribeBackupPlansResponse"
+    },
+    "DescribeCloneDBInstanceSpec": {
+      "document": "This API is used to query the minimum specification required by a cloned instance, including `SpecCode` and disk specification.",
+      "input": "DescribeCloneDBInstanceSpecRequest",
+      "name": "Queries the purchasable specification of a cloned instance",
+      "output": "DescribeCloneDBInstanceSpecResponse"
     },
     "DescribeDBBackups": {
       "document": "This API is used to query the instance backup list.",
@@ -215,6 +239,18 @@
       "input": "ModifyAccountRemarkRequest",
       "name": "Modifies account remarks",
       "output": "ModifyAccountRemarkResponse"
+    },
+    "ModifyBackupPlan": {
+      "document": "This API is used to modify the backup plan of an instance, such as modifying the backup start time. By default, a full backup starts at midnight every day and the generated backup files will be retained for seven days.",
+      "input": "ModifyBackupPlanRequest",
+      "name": "Modifies a backup plan",
+      "output": "ModifyBackupPlanResponse"
+    },
+    "ModifyDBInstanceDeployment": {
+      "document": "This API is used to modify the AZs where the nodes of a source instance reside.",
+      "input": "ModifyDBInstanceDeploymentRequest",
+      "name": "Modifies the instance deployment mode",
+      "output": "ModifyDBInstanceDeploymentResponse"
     },
     "ModifyDBInstanceName": {
       "document": "This API is used to rename a TencentDB for PostgreSQL instance.",
@@ -559,6 +595,250 @@
         }
       ],
       "usage": "out"
+    },
+    "BackupPlan": {
+      "document": "Backup plan",
+      "members": [
+        {
+          "default": "",
+          "document": "Backup cycle",
+          "example": "[\\\"monday\\\",\\\"thursday\\\",\\\"friday\\\"]",
+          "member": "string",
+          "name": "BackupPeriod",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Retention period of basic backups",
+          "example": "3",
+          "member": "uint64",
+          "name": "BaseBackupRetentionPeriod",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The earliest time to start a backup",
+          "example": "01:00:00",
+          "member": "string",
+          "name": "MinBackupStartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The latest time to start a backup",
+          "example": "02:00:00",
+          "member": "string",
+          "name": "MaxBackupStartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CloneDBInstanceRequest": {
+      "document": "CloneDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the original instance to be cloned.",
+          "example": "postgres-abcd1234",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.",
+          "example": "无",
+          "member": "string",
+          "name": "SpecCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance storage capacity in GB.",
+          "example": "10",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Valid period in months of the purchased instance. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.",
+          "example": "1",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "VPC ID.",
+          "example": "无",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of a subnet in the VPC specified by `VpcId`.",
+          "example": "无",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the purchased instance.",
+          "example": "ins-name-clone-1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).",
+          "example": "PREPAID",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group ID.",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Project ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The information of tags to be bound with the purchased instance. This parameter is left empty by default.",
+          "example": "无",
+          "member": "Tag",
+          "name": "TagList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "This parameter is required if you purchase a multi-AZ deployed instance.",
+          "example": "无",
+          "member": "DBNode",
+          "name": "DBNodeSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.",
+          "example": "无",
+          "member": "int64",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Voucher ID list.",
+          "example": "无",
+          "member": "string",
+          "name": "VoucherIds",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Campaign ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "ActivityId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Basic backup set ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BackupSetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Restoration point in time.",
+          "example": "无",
+          "member": "string",
+          "name": "RecoveryTargetTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloneDBInstanceResponse": {
+      "document": "CloneDBInstance response structure.",
+      "members": [
+        {
+          "document": "Order ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Bill ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "BillId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CloseDBExtranetAccessRequest": {
       "document": "CloseDBExtranetAccess request structure.",
@@ -1066,7 +1346,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Instance node information, which is required if you purchase a multi-AZ deployed instance.",
           "example": "无",
           "member": "DBNode",
           "name": "DBNodeSet",
@@ -1570,6 +1850,7 @@
         {
           "default": "",
           "document": "Unique backup file ID",
+          "example": "无",
           "member": "int64",
           "name": "Id",
           "required": true,
@@ -1579,6 +1860,7 @@
         {
           "default": "",
           "document": "File generation start time",
+          "example": "无",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -1588,6 +1870,7 @@
         {
           "default": "",
           "document": "File generation end time",
+          "example": "无",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -1597,6 +1880,7 @@
         {
           "default": "",
           "document": "File size in KB",
+          "example": "无",
           "member": "int64",
           "name": "Size",
           "required": true,
@@ -1606,6 +1890,7 @@
         {
           "default": "",
           "document": "Policy (0: instance backup, 1: multi-database backup)",
+          "example": "无",
           "member": "int64",
           "name": "Strategy",
           "required": true,
@@ -1615,6 +1900,7 @@
         {
           "default": "",
           "document": "Type (0: scheduled)",
+          "example": "无",
           "member": "int64",
           "name": "Way",
           "required": true,
@@ -1624,6 +1910,7 @@
         {
           "default": "",
           "document": "Backup mode (1: full)",
+          "example": "无",
           "member": "int64",
           "name": "Type",
           "required": true,
@@ -1633,6 +1920,7 @@
         {
           "default": "",
           "document": "Status (1: creating, 2: success, 3: failure)",
+          "example": "无",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -1642,6 +1930,7 @@
         {
           "default": "",
           "document": "DB list",
+          "example": "无",
           "member": "string",
           "name": "DbList",
           "required": true,
@@ -1651,6 +1940,7 @@
         {
           "default": "",
           "document": "Download address on private network",
+          "example": "无",
           "member": "string",
           "name": "InternalAddr",
           "required": true,
@@ -1660,11 +1950,22 @@
         {
           "default": "",
           "document": "Download address on public network",
+          "example": "无",
           "member": "string",
           "name": "ExternalAddr",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup set ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2024,7 +2325,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Instance node information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DBNode",
           "name": "DBNodeSet",
@@ -2112,11 +2413,11 @@
       "usage": "out"
     },
     "DBNode": {
-      "document": "",
+      "document": "Instance node information including node type and AZ.",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Node type. Valid values:\n`Primary`;\n`Standby`.",
           "example": "Primary, Standby",
           "member": "string",
           "name": "Role",
@@ -2126,7 +2427,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "AZ where the node resides, such as ap-guangzhou-1.",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
@@ -2268,6 +2569,150 @@
           "member": "AccountInfo",
           "name": "Details",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAvailableRecoveryTimeRequest": {
+      "document": "DescribeAvailableRecoveryTime request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "postgres-abcd1234",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAvailableRecoveryTimeResponse": {
+      "document": "DescribeAvailableRecoveryTime response structure.",
+      "members": [
+        {
+          "document": "The earliest restoration time (UTC+8).",
+          "example": "2022-01-01 12:00:00",
+          "member": "string",
+          "name": "RecoveryBeginTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The latest restoration time (UTC+8).",
+          "example": "2022-01-02 12:00:00",
+          "member": "string",
+          "name": "RecoveryEndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupPlansRequest": {
+      "document": "DescribeBackupPlans request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "postgres-xxxxxxxx",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupPlansResponse": {
+      "document": "DescribeBackupPlans response structure.",
+      "members": [
+        {
+          "document": "The set of instance backup plans",
+          "example": "无",
+          "member": "BackupPlan",
+          "name": "Plans",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCloneDBInstanceSpecRequest": {
+      "document": "DescribeCloneDBInstanceSpec request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "postgres-abcd1234",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Basic backup set ID. Either this parameter or `RecoveryTargetTime` must be passed in. If both are passed in, only this parameter takes effect.",
+          "example": "f22057d2-46c0-5808-ab8a-d0c3385afabc",
+          "member": "string",
+          "name": "BackupSetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Restoration time (UTC+8). Either this parameter or `BackupSetId` must be passed in.",
+          "example": "2022-01-01 12:00:00",
+          "member": "string",
+          "name": "RecoveryTargetTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCloneDBInstanceSpecResponse": {
+      "document": "DescribeCloneDBInstanceSpec response structure.",
+      "members": [
+        {
+          "document": "Code of the minimum specification available for purchase.",
+          "example": "无",
+          "member": "string",
+          "name": "MinSpecCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The minimum disk capacity in GB available for purchase.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MinStorage",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4006,6 +4451,132 @@
     },
     "ModifyAccountRemarkResponse": {
       "document": "ModifyAccountRemark response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupPlanRequest": {
+      "document": "ModifyBackupPlan request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "postgres-xxxxxxxx",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The earliest time to start a backup",
+          "example": "01:00:00",
+          "member": "string",
+          "name": "MinBackupStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The latest time to start a backup",
+          "example": "02:00:00",
+          "member": "string",
+          "name": "MaxBackupStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup retention period in days. Value range: 3-7",
+          "example": "7",
+          "member": "uint64",
+          "name": "BaseBackupRetentionPeriod",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Backup cycle, which means on which days each week the instance will be backed up. The parameter value should be the lowercase names of the days of the week.",
+          "example": "[\"monday\", \"tuesday\", \"wednesday\"]",
+          "member": "string",
+          "name": "BackupPeriod",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupPlanResponse": {
+      "document": "ModifyBackupPlan response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceDeploymentRequest": {
+      "document": "ModifyDBInstanceDeployment request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "postgres-abcd1234",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance node information.",
+          "example": "无",
+          "member": "DBNode",
+          "name": "DBNodeSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Switch time. Valid values: `0` (switch immediately), `1` (switch at a specified time). Default value: `0`.",
+          "example": "1",
+          "member": "int64",
+          "name": "SwitchTag",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The earliest time to start a switch in the format of \"HH:MM:SS\", such as \"01:00:00\".",
+          "example": "12:00:00",
+          "member": "string",
+          "name": "SwitchStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The latest time to start a switch in the format of \"HH:MM:SS\", such as \"01:30:00\".",
+          "example": "12:30:00",
+          "member": "string",
+          "name": "SwitchEndTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceDeploymentResponse": {
+      "document": "ModifyDBInstanceDeployment response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -6193,6 +6764,7 @@
         {
           "default": "",
           "document": "AZ abbreviation",
+          "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -6202,6 +6774,7 @@
         {
           "default": "",
           "document": "AZ name",
+          "example": "广州一区",
           "member": "string",
           "name": "ZoneName",
           "required": true,
@@ -6211,6 +6784,7 @@
         {
           "default": "",
           "document": "AZ number",
+          "example": "100001",
           "member": "uint64",
           "name": "ZoneId",
           "required": true,
@@ -6219,7 +6793,8 @@
         },
         {
           "default": "",
-          "document": "Availability status. UNAVAILABLE: unavailable, AVAILABLE: available",
+          "document": "Availability status. Valid values: `UNAVAILABLE`, `AVAILABLE`, `SELLOUT`",
+          "example": "AVAILABLE",
           "member": "string",
           "name": "ZoneState",
           "required": true,
@@ -6229,11 +6804,22 @@
         {
           "default": "",
           "document": "Whether the AZ supports IPv6 address access",
+          "example": "1",
           "member": "uint64",
           "name": "ZoneSupportIpv6",
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZs that can be used as standby when this AZ is primary\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou-1,ap-guangzhou-2",
+          "member": "string",
+          "name": "StandbyZoneSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

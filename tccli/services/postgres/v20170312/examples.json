@@ -8,6 +8,14 @@
         "title": "Adding the \"postgres-k95qzetn\" instance to the \"pgrogrp-test\" RO group"
       }
     ],
+    "CloneDBInstance": [
+      {
+        "document": "",
+        "input": "https://postgres.tencentcloudapi.com/?Action=CloneDBInstance\n&DBInstanceId=postgres-abcd1234\n&SpecCode=cdb.pg.z1.2g\n&Storage=10\n&Period=1\n&InstanceChargeType=prepaid\n&AutoVoucher=0\n&AutoRenewFlag=1\n&DBNodeSet.0.Role=Primary\n&DBNodeSet.0.Zone=ap-guangzhou-3\n&DBNodeSet.1.Role=Standby\n&DBNodeSet.1.Zone=ap-guangzhou-3\n&RecoveryTargetTime=2021-12-25 01:27:35\n&VpcId=vpc-2ot3acw1\n&SubnetId=subnet-ppv9iw34\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"DealName\": \"20211225711000768276461\",\n        \"BillId\": \"20211225711000768276471\"\n    }\n}",
+        "title": "Cloning an instance"
+      }
+    ],
     "CloseDBExtranetAccess": [
       {
         "document": "",
@@ -40,8 +48,8 @@
         "title": "Creating a PostgreSQL 12.4 instance"
       },
       {
-        "document": "This example shows you how to create an instance running the latest kernel of PostgreSQL 12.",
-        "input": "https://postgres.tencentcloudapi.com/?Action=CreateInstances\n&SpecCode=cdb.pg.z1.2g\n&Storage=10\n&InstanceCount=1\n&Period=1\n&InstanceChargeType=prepaid\n&Zone=ap-guangzhou-2\n&DBMajorVersion=12\n&AutoVoucher=0\n&AutoRenewFlag=1\n&Charset=UTF8\n&AdminName=test2313\n&AdminPassword= xxxxxxx\n&<Common request parameters>",
+        "document": "This example shows you how to create a multi-AZ deployed instance running the latest kernel of PostgreSQL 12.",
+        "input": "https://postgres.tencentcloudapi.com/?Action=CreateInstances\n&SpecCode=cdb.pg.z1.2g\n&Storage=10\n&InstanceCount=1\n&Period=1\n&InstanceChargeType=prepaid\n&Zone=ap-guangzhou-2\n&DBMajorVersion=12\n&AutoVoucher=0\n&AutoRenewFlag=1\n&Charset=UTF8\n&AdminName=test2313\n&AdminPassword= xxxxxxx\n&DBNodeSet.0.Role=Primary\n&DBNodeSet.0.Zone=ap-guangzhou-2\n&DBNodeSet.1.Role=Standby\n&DBNodeSet.1.Zone=ap-guangzhou-3\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"DealNames\": [\n            \"20180119110001\"\n        ],\n        \"DBInstanceIdSet\": [\n            \"postgres-xxxxx\"\n        ],\n        \"BillId\": \"123\"\n    }\n}",
         "title": "Creating an instance running the latest kernel of PostgreSQL 12"
       },
@@ -106,6 +114,30 @@
         "title": "Getting the user list of the \"postgres-apzvwncr\" instance"
       }
     ],
+    "DescribeAvailableRecoveryTime": [
+      {
+        "document": "",
+        "input": "https://postgres.tencentcloudapi.com/?Action=DescribeAvailableRecoveryTime\n&DBInstanceId=postgres-apzvwncr\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"RecoveryBeginTime\": \"2021-12-24 03:41:50\",\n        \"RecoveryEndTime\": \"2021-12-25 17:43:27\"\n    }\n}",
+        "title": "Querying the available restoration time of an instance"
+      }
+    ],
+    "DescribeBackupPlans": [
+      {
+        "document": "This example shows you how to query all backup plans of the \"postgres-xxxxxxxx\" instance.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupPlans\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-xxxxxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Plans\": [\n            {\n                \"BackupPeriod\": \"[\\\"monday\\\",\\\"thursday\\\",\\\"friday\\\"]\",\n                \"BaseBackupRetentionPeriod\": 3,\n                \"MaxBackupStartTime\": \"10:00:00\",\n                \"MinBackupStartTime\": \"08:00:00\"\n            }\n        ],\n        \"RequestId\": \"\"\n    }\n}",
+        "title": "Querying all backup plans of an instance"
+      }
+    ],
+    "DescribeCloneDBInstanceSpec": [
+      {
+        "document": "",
+        "input": "https://postgres.tencentcloudapi.com/?Action=DescribeCloneDBInstanceSpec\n&DBInstanceId=postgres-apzvwncr\n&RecoveryTargetTime=2021-12-24 03:41:50\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"MinSpecCode\": \"cdb.pg.sh1.2g\",\n        \"MinStorage\": 10\n    }\n}",
+        "title": "Querying the minimum specification required by a cloned instance"
+      }
+    ],
     "DescribeDBBackups": [
       {
         "document": "",
@@ -126,7 +158,7 @@
       {
         "document": "",
         "input": "https://postgres.tencentcloudapi.com/?Action=DescribeDBInstanceAttribute\n&DBInstanceId=postgres-xxxxxxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"DBInstance\": {\n            \"Region\": \"ap-guangzhou\",\n            \"Zone\": \"ap-guangzhou-2\",\n            \"AppId\": 100000000,\n            \"Uid\": 1000001,\n            \"ProjectId\": 0,\n            \"VpcId\": \"vpc-xxxxxxxx\",\n            \"SubnetId\": \"subnet-xxxxxxxx\",\n            \"DBInstanceId\": \"postgres-xxxxxxxx\",\n            \"MasterDBInstanceId\": \"postgres-xxxxxxxx\",\n            \"Type\": 1,\n            \"DBInstanceName\": \"Not named\",\n            \"DBInstanceStatus\": \"running\",\n            \"DBInstanceMemory\": 4,\n            \"DBInstanceStorage\": 20,\n            \"DBInstanceCpu\": 2,\n            \"DBInstanceClass\": \"cdb.pg.z1.4g\",\n            \"DBInstanceType\": \"primary\",\n            \"DBInstanceVersion\": \"standard\",\n            \"DBInstanceNetInfo\": [\n                {\n                    \"Address\": \"\",\n                    \"Ip\": \"10.10.10.220\",\n                    \"Port\": 5432,\n                    \"Status\": \"opened\",\n                    \"NetType\": \"private\",\n                    \"VpcId\": \"vpc-xxxxxxxx\",\n                    \"SubnetId\": \"subnet-xxxxxxxx\"\n                },\n                {\n                    \"Address\": \"\",\n                    \"Ip\": \"\",\n                    \"Port\": 0,\n                    \"Status\": \"initing\",\n                    \"NetType\": \"public\",\n                    \"VpcId\": \"\",\n                    \"SubnetId\": \"\"\n                }\n            ],\n            \"DBCharset\": \"UTF8\",\n            \"DBVersion\": \"10\",\n            \"DBKernelVersion\": \"v10.4_r1.0\",\n            \"CreateTime\": \"2017-12-28 19:23:19\",\n            \"UpdateTime\": \"2018-01-18 15:54:32\",\n            \"ExpireTime\": \"2018-01-28 19:23:23\",\n            \"IsolatedTime\": \"0000-00-00 00:00:00\",\n            \"OfflineTime\": \"2019-12-28 19:23:19\",\n            \"PayType\": \"prepaid\",\n            \"AutoRenew\": 1,\n            \"ReadOnlyInstanceNum\": 1,\n            \"StatusInReadonlyGroup\": \"running\",\n            \"SupportIpv6\": 0,\n            \"TagList\": [\n                {\n                    \"TagKey\": \"tag1\",\n                    \"TagValue\": \"v1\"\n                }\n            ],\n            \"NetworkAccessList\": []\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"DBInstance\": {\n            \"Region\": \"ap-guangzhou\",\n            \"Zone\": \"ap-guangzhou-2\",\n            \"AppId\": 100000000,\n            \"Uid\": 1000001,\n            \"ProjectId\": 0,\n            \"VpcId\": \"vpc-xxxxxxxx\",\n            \"SubnetId\": \"subnet-xxxxxxxx\",\n            \"DBInstanceId\": \"postgres-xxxxxxxx\",\n            \"MasterDBInstanceId\": \"postgres-xxxxxxxx\",\n            \"Type\": 1,\n            \"DBInstanceName\": \"Not named\",\n            \"DBInstanceStatus\": \"running\",\n            \"DBInstanceMemory\": 4,\n            \"DBInstanceStorage\": 20,\n            \"DBInstanceCpu\": 2,\n            \"DBInstanceClass\": \"cdb.pg.z1.4g\",\n            \"DBInstanceType\": \"primary\",\n            \"DBInstanceVersion\": \"standard\",\n            \"DBInstanceNetInfo\": [\n                {\n                    \"Address\": \"\",\n                    \"Ip\": \"10.10.10.220\",\n                    \"Port\": 5432,\n                    \"Status\": \"opened\",\n                    \"NetType\": \"private\",\n                    \"VpcId\": \"vpc-xxxxxxxx\",\n                    \"SubnetId\": \"subnet-xxxxxxxx\"\n                },\n                {\n                    \"Address\": \"\",\n                    \"Ip\": \"\",\n                    \"Port\": 0,\n                    \"Status\": \"initing\",\n                    \"NetType\": \"public\",\n                    \"VpcId\": \"\",\n                    \"SubnetId\": \"\"\n                }\n            ],\n            \"DBCharset\": \"UTF8\",\n            \"DBVersion\": \"10.4\",\n            \"DBMajorVersion\": \"10\",\n            \"DBKernelVersion\": \"v10.4_r1.0\",\n            \"CreateTime\": \"2017-12-28 19:23:19\",\n            \"UpdateTime\": \"2018-01-18 15:54:32\",\n            \"ExpireTime\": \"2018-01-28 19:23:23\",\n            \"IsolatedTime\": \"0000-00-00 00:00:00\",\n            \"OfflineTime\": \"2019-12-28 19:23:19\",\n            \"PayType\": \"prepaid\",\n            \"AutoRenew\": 1,\n            \"ReadOnlyInstanceNum\": 1,\n            \"StatusInReadonlyGroup\": \"running\",\n            \"SupportIpv6\": 0,\n            \"TagList\": [\n                {\n                    \"TagKey\": \"tag1\",\n                    \"TagValue\": \"v1\"\n                }\n            ],\n            \"NetworkAccessList\": [],\n            \"DBNodeSet\": [\n                {\n                    \"Role\": \"Primary\",\n                    \"Zone\": \"ap-guangzhou-2\"\n                },\n                {\n                    \"Role\": \"Standby\",\n                    \"Zone\": \"ap-guangzhou-3\"\n                }\n            ]\n        }\n    }\n}",
         "title": "Querying instance details"
       }
     ],
@@ -244,8 +276,8 @@
       {
         "document": "",
         "input": "https://postgres.tencentcloudapi.com/?Action=DescribeZones\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"59c438d4-95ab-4865-993d-dc388d2660d8\",\n        \"TotalCount\": 3,\n        \"ZoneSet\": [\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"ZoneName\": \"Guangzhou Zone 2\",\n                \"ZoneId\": 100002,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0\n            },\n            {\n                \"Zone\": \"ap-guangzhou-3\",\n                \"ZoneName\": \"Guangzhou Zone 3\",\n                \"ZoneId\": 100003,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0\n            },\n            {\n                \"Zone\": \"ap-guangzhou-4\",\n                \"ZoneName\": \"Guangzhou Zone 4\",\n                \"ZoneId\": 100004,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0\n            }\n        ]\n    }\n}",
-        "title": "Querying AZs in a specified region"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"59c438d4-95ab-4865-993d-dc388d2660d8\",\n        \"TotalCount\": 3,\n        \"ZoneSet\": [\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"ZoneName\": \"Guangzhou Zone 2\",\n                \"ZoneId\": 100002,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0,\n                \"StandbyZoneSet\": [\n                    \"ap-guangzhou-2\",\n                    \"ap-guangzhou-3\"\n                ]\n            },\n            {\n                \"Zone\": \"ap-guangzhou-3\",\n                \"ZoneName\": \"Guangzhou Zone 3\",\n                \"ZoneId\": 100003,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0,\n                \"StandbyZoneSet\": [\n                    \"ap-guangzhou-2\",\n                    \"ap-guangzhou-3\"\n                ]\n            },\n            {\n                \"Zone\": \"ap-guangzhou-4\",\n                \"ZoneName\": \"Guangzhou Zone 4\",\n                \"ZoneId\": 100004,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0,\n                \"StandbyZoneSet\": [\n                    \"ap-guangzhou-4\"\n                ]\n            }\n        ]\n    }\n}",
+        "title": "Querying availability zones in a specified region"
       }
     ],
     "DestroyDBInstance": [
@@ -316,6 +348,28 @@
         "input": "https://postgres.tencentcloudapi.com/?Action=ModifyAccountRemark\n&DBInstanceId=postgres-6bwgamo3\n&UserName=test\n&Remark=testModifyRemark\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Modifying account remarks"
+      }
+    ],
+    "ModifyBackupPlan": [
+      {
+        "document": "This example shows you how to modify the backup plan of the \"postgres-xxxxxxxx\" instance. According to the new backup plan, the instance will be backed up during 01:00:00-02:00:00 AM and the backup files will be retained for three days.",
+        "input": "https://postgres.tencentcloudapi.com/?Action=ModifyBackupPlan\n&DBInstanceId=postgres-xxxxxxxx\n&BackupPeriod.0=monday\n&BackupPeriod.1=tuesday\n&BaseBackupRetentionPeriod=3\n&MinBackupStartTime=01:00:00\n&MaxBackupStartTime=02:00:00\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a61e500-aa33-454c-9ec2-da2a368c39ab\"\n    }\n}",
+        "title": "Modifying the backup plan of an instance"
+      }
+    ],
+    "ModifyDBInstanceDeployment": [
+      {
+        "document": "This example shows you how to modify the node deployment of the \"postgres-abcd1234\" instance so that the primary node resides in Guangzhou Zone 1 and the standby node in Guangzhou Zone 2.",
+        "input": "https://postgres.tencentcloudapi.com/?Action=ModifyDBInstanceDeployment\n&DBInstanceId=postgres-abcd1234\n&DBNodeSet.0.Role=Primary\n&DBNodeSet.0.Zone=ap-guangzhou-1\n&DBNodeSet.1.Role=Standby\n&DBNodeSet.1.Zone=ap-guangzhou-2\n&SwitchTag=1\n&SwitchStartTime=12:00:00\n&SwitchEndTime=12:30:00\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
+        "title": "Changing the instance deployment mode to multi-AZ deployment"
+      },
+      {
+        "document": "This example shows you how to modify the node deployment of the \"postgres-abcd1234\" instance so that both primary and standby nodes reside in Guangzhou Zone 3.",
+        "input": "https://postgres.tencentcloudapi.com/?Action=ModifyDBInstanceDeployment\n&DBInstanceId=postgres-abcd1234\n&DBNodeSet.0.Role=Primary\n&DBNodeSet.0.Zone=ap-guangzhou-3\n&DBNodeSet.1.Role=Standby\n&DBNodeSet.1.Zone=ap-guangzhou-3\n&SwitchTag=1\n&SwitchStartTime=12:00:00\n&SwitchEndTime=12:30:00\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
+        "title": "Changing the instance deployment mode to single-AZ deployment"
       }
     ],
     "ModifyDBInstanceName": [

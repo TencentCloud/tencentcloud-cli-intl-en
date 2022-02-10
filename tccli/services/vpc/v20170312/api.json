@@ -1600,7 +1600,7 @@
         },
         {
           "default": "",
-          "document": "The resource type of the EIP. This includes `CalcIP`, `WanIP`, `EIP`, and `AnycastEIP`. Among these, `CalcIP` indicates the device IP, `WanIP` indicates the common public IP, `EIP` indicates Elastic IP, and `AnycastEip` indicates accelerated EIP.",
+          "document": "EIP resource type. Valid values: `CalcIP` (device IP), `WanIP` (public network IP), `EIP` (elastic IP) and `AnycastEIP` (accelerated EIP).",
           "example": "EIP",
           "member": "string",
           "name": "AddressType",
@@ -1660,7 +1660,7 @@
         },
         {
           "default": "",
-          "document": "Network billing mode of EIP. The EIP for the bill-by-CVM account will return `null`.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "document": "Network billing mode of EIP. The EIP for the bill-by-CVM account will return `null`.\nNote: this field may return `null`, indicating that no valid value was found.\nIncluding:\n<li><strong>BANDWIDTH_PREPAID_BY_MONTH</strong></li>\n<p style=\"padding-left: 30px;\">Prepaid by monthly-subscribed bandwidth.</p>\n<li><strong>TRAFFIC_POSTPAID_BY_HOUR</strong></li>\n<p style=\"padding-left: 30px;\">Pay-as-you-go billing by hourly traffic.</p>\n<li><strong>BANDWIDTH_POSTPAID_BY_HOUR</strong></li>\n<p style=\"padding-left: 30px;\">Pay-as-you-go billing by hourly bandwidth.</p>\n<li><strong>BANDWIDTH_PACKAGE</strong></li>\n<p style=\"padding-left: 30px;\">Bandwidth package.</p>\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "TRAFFIC_POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InternetChargeType",
@@ -4284,15 +4284,6 @@
         },
         {
           "default": "",
-          "document": "The storage ID of the flow log.",
-          "example": "99991111-2222-4444-9999-222266663333",
-          "member": "string",
-          "name": "CloudLogId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "The VPC ID or unique ID of the resource. We recommend using the unique ID. This parameter is required unless the `ResourceType` is set to `CCN`.",
           "example": "vpc-12345678",
           "member": "string",
@@ -4311,12 +4302,39 @@
         },
         {
           "default": "",
+          "document": "The storage ID of the flow log.",
+          "example": "99991111-2222-4444-9999-222266663333",
+          "member": "string",
+          "name": "CloudLogId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]",
           "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Consumer types: `cls` and `ckafka`",
+          "example": "cls",
+          "member": "string",
+          "name": "StorageType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Information of the flow log consumer, which is required when the consumer type is `ckafka`.",
+          "example": "无",
+          "member": "FlowLogStorage",
+          "name": "FlowLogStorage",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -11961,7 +11979,7 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the VPC instance",
+          "document": "ID of the VPC instance.",
           "example": "vpc-12345678",
           "member": "string",
           "name": "VpcId",
@@ -12001,7 +12019,7 @@
         },
         {
           "default": "",
-          "document": "The unique ID of the resource.",
+          "document": "The unique ID of the resource",
           "example": "eni-12345678",
           "member": "string",
           "name": "ResourceId",
@@ -12021,7 +12039,7 @@
         },
         {
           "default": "",
-          "document": "The storage ID of the flow log.",
+          "document": "The storage ID of the flow log",
           "example": "99991111-2222-4444-9999-222266663333",
           "member": "string",
           "name": "CloudLogId",
@@ -12031,7 +12049,7 @@
         },
         {
           "default": "",
-          "document": "The storage ID status of the flow log.",
+          "document": "Flow log storage ID status.",
           "example": "空",
           "member": "string",
           "name": "CloudLogState",
@@ -12061,16 +12079,72 @@
         },
         {
           "default": "",
-          "document": "Tag list, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]",
+          "document": "Tag list, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
           "example": "无",
           "member": "Tag",
           "name": "TagSet",
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable. `true`: yes; `false`: no.",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Consumer end types: cls and ckafka\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "cls",
+          "member": "string",
+          "name": "StorageType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Information of the consumer, which is returned when the consumer type is `ckafka`.\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "FlowLogStorage",
+          "name": "FlowLogStorage",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
+    },
+    "FlowLogStorage": {
+      "document": "Flow log storage information",
+      "members": [
+        {
+          "default": "",
+          "document": "Storage instance ID, which is required when `StorageType` is `ckafka`.",
+          "example": "ckafka-aso1kaoq",
+          "member": "string",
+          "name": "StorageId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Topic ID, which is required when `StorageType` is `ckafka`.\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "topic-asow02oa",
+          "member": "string",
+          "name": "StorageTopic",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "GatewayFlowMonitorDetail": {
       "document": "The gateway traffic monitoring details",

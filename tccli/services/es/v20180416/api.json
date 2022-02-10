@@ -939,6 +939,15 @@
           "name": "ZoneList",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Health status filter list",
+          "example": "无",
+          "member": "int64",
+          "name": "HealthStatus",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1897,6 +1906,16 @@
           "example": "100",
           "member": "uint64",
           "name": "FrozenDiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster health status. `-1`: Unknown; `0`: Green; `1`: Yellow; `2`: Red\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "-1",
+          "member": "int64",
+          "name": "HealthStatus",
           "required": true,
           "type": "int",
           "value_allowed_null": true

@@ -12,6 +12,12 @@
       "name": "Creates tag immutability rule",
       "output": "CreateImmutableTagRulesResponse"
     },
+    "CreateInstanceToken": {
+      "document": "This API is used to create a temporary or long-term instance access credential.",
+      "input": "CreateInstanceTokenRequest",
+      "name": "Creates the instance access credential",
+      "output": "CreateInstanceTokenResponse"
+    },
     "CreateMultipleSecurityPolicy": {
       "document": "This API is used to create multiple public network access allowlist policies of the TCR instance.",
       "input": "CreateMultipleSecurityPolicyRequest",
@@ -166,6 +172,87 @@
     "CreateImmutableTagRulesResponse": {
       "document": "CreateImmutableTagRules response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceTokenRequest": {
+      "document": "CreateInstanceToken request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-ak9876",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Access credential type. Values: `longterm` and `temp` (default, valid for one hour)",
+          "example": "temp",
+          "member": "string",
+          "name": "TokenType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description of the long-term access credential",
+          "example": "test",
+          "member": "string",
+          "name": "Desc",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceTokenResponse": {
+      "document": "CreateInstanceToken response structure.",
+      "members": [
+        {
+          "document": "Username\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "12345678",
+          "member": "string",
+          "name": "Username",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Access credential",
+          "example": "XXXX",
+          "member": "string",
+          "name": "Token",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Expiration timestamp of access credential. It is a string of numbers without unit.",
+          "example": "33987631",
+          "member": "int64",
+          "name": "ExpTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Token ID of long-term access credential. It is not available to temporary access credential.\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "xx",
+          "member": "string",
+          "name": "TokenId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

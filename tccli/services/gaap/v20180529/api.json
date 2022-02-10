@@ -650,7 +650,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Feature bitmap. Valid values:\n`0`: disable the feature;\n`1`: enable the feature.\nEach bit in the bitmap represents a feature:\n1st bit: layer-4 acceleration;\n2nd bit: layer-7 acceleration;\n3rd bit: HTTP3 access;\n4th bit: IPv6;\n5th bit: dedicated BGP access;\n6th bit: non-BGP access;\n7th bit: QoS acceleration.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "3",
           "member": "int64",
           "name": "FeatureBitmap",
@@ -1238,7 +1238,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Specifies whether to enable HTTP3. Valid values: `0` (disable HTTP3); `1` (enable HTTP3). Note: If HTTP3 is enabled for a connection, TCP/UDP access will not be allowed. After the connection is created, you cannot change your HTTP3 setting.",
           "example": "0",
           "member": "int64",
           "name": "Http3Supported",
@@ -1644,6 +1644,7 @@
         {
           "default": "",
           "document": "Listener ID.",
+          "example": "0",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -1652,6 +1653,7 @@
         {
           "default": "",
           "document": "Domain name to be created. Each listener supports up to 100 domain names.",
+          "example": "a.a.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -1660,6 +1662,7 @@
         {
           "default": "",
           "document": "Server certificate, which is used for the HTTPS interaction between client and GAAP.",
+          "example": "abc",
           "member": "string",
           "name": "CertificateId",
           "required": false,
@@ -1668,6 +1671,7 @@
         {
           "default": "",
           "document": "Client CA certificate, which is used for the HTTPS interaction between client and GAAP.\nThis field is required only when the mutual authentication method is adopted.",
+          "example": "xx",
           "member": "string",
           "name": "ClientCertificateId",
           "required": false,
@@ -1676,10 +1680,20 @@
         {
           "default": "",
           "document": "Client CA certificate, which is used for the HTTPS interaction between the client and GAAP.\nThis field or the `ClientCertificateId` field is required for mutual authentication only.",
+          "example": "xx",
           "member": "string",
           "name": "PolyClientCertificateIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable HTTP3. Valid values:\n`0`: disable HTTP3;\n`1`: enable HTTP3.\nHTTP3 is not enabled by default. You can enable it with this field SetDomainHttp3.",
+          "example": "0",
+          "member": "int64",
+          "name": "Http3Supported",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1759,6 +1773,7 @@
         {
           "default": "",
           "document": "Listener name",
+          "example": "listener-1",
           "member": "string",
           "name": "ListenerName",
           "required": true,
@@ -1767,6 +1782,7 @@
         {
           "default": "",
           "document": "Listener port, which is based on the listeners of same transport layer protocol (TCP or UDP). The port must be unique.",
+          "example": "443",
           "member": "uint64",
           "name": "Port",
           "required": true,
@@ -1775,6 +1791,7 @@
         {
           "default": "",
           "document": "Server certificate ID",
+          "example": "N4Al2mhF",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -1783,6 +1800,7 @@
         {
           "default": "",
           "document": "Protocol types of the forwarding from acceleration connection to origin server: HTTP | HTTPS",
+          "example": "HTTP",
           "member": "string",
           "name": "ForwardProtocol",
           "required": true,
@@ -1791,6 +1809,7 @@
         {
           "default": "",
           "document": "Connection ID, which cannot be set together with `GroupId` at the same time. A listener will be created for the corresponding connection.",
+          "example": "link-cuxw2rm0",
           "member": "string",
           "name": "ProxyId",
           "required": false,
@@ -1799,6 +1818,7 @@
         {
           "default": "",
           "document": "Authentication type, where:\n0: one-way authentication;\n1: mutual authentication.\nThe one-way authentication is used by default.",
+          "example": "0",
           "member": "uint64",
           "name": "AuthType",
           "required": false,
@@ -1807,6 +1827,7 @@
         {
           "default": "",
           "document": "Client CA certificate ID, which is required only when the mutual authentication is adopted.",
+          "example": "xx",
           "member": "string",
           "name": "ClientCertificateId",
           "required": false,
@@ -1815,6 +1836,7 @@
         {
           "default": "",
           "document": "IDs of multiple new client CA certificates. This field or the `ClientCertificateId` field is required for mutual authentication only.",
+          "example": "[]",
           "member": "string",
           "name": "PolyClientCertificateIds",
           "required": false,
@@ -1823,10 +1845,20 @@
         {
           "default": "",
           "document": "Connection group ID, which cannot be set together with `ProxyId` at the same time. A listener will be created for the corresponding connection group.",
+          "example": "xx",
           "member": "string",
           "name": "GroupId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable HTTP3. Valid values:\n`0`: disable HTTP3;\n`1`: enable HTTP3.\nNote: If HTTP3 is enabled for a connection, the listener will use the port that is originally accessed to UDP, and a UDP listener with the same port cannot be created.\nAfter the connection is created, you cannot change your HTTP3 setting.",
+          "example": "0",
+          "member": "int64",
+          "name": "Http3Supported",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1948,6 +1980,15 @@
           "name": "PackageType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable HTTP3. Valid values:\n`0`: disable HTTP3;\n`1`: enable HTTP3.\nNote that if HTTP3 is enabled for a connection, TCP/UDP access will not be allowed.\nAfter the connection is created, you cannot change your HTTP3 setting.",
+          "example": "0",
+          "member": "int64",
+          "name": "Http3Supported",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2102,7 +2143,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Specifies whether to enable HTTP3. Valid values: `0` (disable HTTP3); `1` (enable HTTP3). Note: If HTTP3 is enabled for a connection, TCP/UDP access will not be allowed. After the connection is created, you cannot change your HTTP3 setting.",
           "example": "0",
           "member": "int64",
           "name": "Http3Supported",
@@ -3416,6 +3457,7 @@
         {
           "default": "",
           "document": "Filter condition. Connection ID.",
+          "example": "link-n9ha8jzl",
           "member": "string",
           "name": "ProxyId",
           "required": false,
@@ -3424,6 +3466,7 @@
         {
           "default": "",
           "document": "Filter condition. Exact query by listener IDs.",
+          "example": "xx",
           "member": "string",
           "name": "ListenerId",
           "required": false,
@@ -3432,6 +3475,7 @@
         {
           "default": "",
           "document": "Filter condition. Exact query by listener names.",
+          "example": "xx",
           "member": "string",
           "name": "ListenerName",
           "required": false,
@@ -3440,6 +3484,7 @@
         {
           "default": "",
           "document": "Filter condition. Exact query by listener ports.",
+          "example": "80",
           "member": "uint64",
           "name": "Port",
           "required": false,
@@ -3448,6 +3493,7 @@
         {
           "default": "",
           "document": "Offset. The default value is 0",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -3456,6 +3502,7 @@
         {
           "default": "",
           "document": "Quantity limit. The default value is 20.",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -3464,6 +3511,7 @@
         {
           "default": "",
           "document": "Filter condition. It supports fuzzy query by ports or listener names.",
+          "example": "xx",
           "member": "string",
           "name": "SearchValue",
           "required": false,
@@ -3472,10 +3520,20 @@
         {
           "default": "",
           "document": "Connection group ID as a filter",
+          "example": "xx",
           "member": "string",
           "name": "GroupId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable HTTP3. Valid values:\n`0`: disable HTTP3;\n`1`: enable HTTP3.\nNote: If HTTP3 is enabled for a connection, the listener will use the port that is originally accessed to UDP, and a UDP listener with the same port cannot be created.\nAfter the connection is created, you cannot change your HTTP3 setting.",
+          "example": "0",
+          "member": "int64",
+          "name": "Http3Supported",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -5297,6 +5355,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable HTTP3. Valid values:\n`0`: disable HTTP3;\n`1`: enable HTTP3.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Http3Supported",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -5696,7 +5764,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Specifies whether to enable HTTP3. Valid values: `0` (disable HTTP3); `1` (enable HTTP3). Note: If HTTP3 is enabled for a connection, TCP/UDP access will not be allowed. After the connection is created, you cannot change your HTTP3 setting.",
           "example": "0",
           "member": "int64",
           "name": "Http3Supported",
@@ -7105,12 +7173,22 @@
         },
         {
           "default": "",
-          "document": "Package type of connection groups. Valid values: `Thunder` (general connection group) and `Accelerator` (game accelerator connection group).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (game accelerator connection group), and `CrossBorder` (cross-MLC-border connection group).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "Thunder",
           "member": "string",
           "name": "PackageType",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable HTTP3. Valid values:\n`0`: disable;\n`1`: enable.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Http3Supported",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -7122,6 +7200,7 @@
         {
           "default": "",
           "document": "Connection group ID",
+          "example": "lg-xx",
           "member": "string",
           "name": "GroupId",
           "required": true,
@@ -7131,6 +7210,7 @@
         {
           "default": "",
           "document": "Connection group domain name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "lg-xx.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -7140,6 +7220,7 @@
         {
           "default": "",
           "document": "Connection group name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"test\"",
           "member": "string",
           "name": "GroupName",
           "required": true,
@@ -7149,6 +7230,7 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "10000",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -7158,6 +7240,7 @@
         {
           "default": "",
           "document": "Target region",
+          "example": "无",
           "member": "RegionDetail",
           "name": "RealServerRegionInfo",
           "required": true,
@@ -7167,6 +7250,7 @@
         {
           "default": "",
           "document": "Connection group status.\nWhere:\n0: running;\n1: creating;\n4: terminating;\n11: connection migrating.",
+          "example": "0",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -7176,6 +7260,7 @@
         {
           "default": "",
           "document": "Tag list.",
+          "example": "无",
           "member": "TagPair",
           "name": "TagSet",
           "required": true,
@@ -7185,6 +7270,7 @@
         {
           "default": "",
           "document": "Connection group version\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
           "member": "string",
           "name": "Version",
           "required": true,
@@ -7194,6 +7280,7 @@
         {
           "default": "",
           "document": "Creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "12345",
           "member": "uint64",
           "name": "CreateTime",
           "required": true,
@@ -7203,8 +7290,19 @@
         {
           "default": "",
           "document": "Whether the connection group contains a Microsoft connection\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "uint64",
           "name": "ProxyType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable HTTP3. Valid values:\n`0`: disable HTTP3;\n`1`: enable HTTP3.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Http3Supported",
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -7552,7 +7650,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Specifies whether to enable HTTP3. Valid values:\n`0`: disable HTTP3;\n`1`: enable HTTP3.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "Http3Supported",
@@ -7818,6 +7916,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Feature bitmap. Valid values:\n`0`: the feature is not supported;\n`1`: the feature is supported.\nEach bit in the bitmap represents a feature:\n1st bit: layer-4 acceleration;\n2nd bit: layer-7 acceleration;\n3rd bit: HTTP3 access;\n4th bit: IPv6;\n5th bit: dedicated BGP access;\n6th bit: non-BGP access;\n7th bit: QoS acceleration.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "3",
+          "member": "uint64",
+          "name": "FeatureBitmap",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

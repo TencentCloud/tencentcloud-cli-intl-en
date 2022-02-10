@@ -69,6 +69,33 @@ def doDescribeOrders(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeProductConfig(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeProductConfigRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeProductConfig(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeDBSlowlogs(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -115,6 +142,33 @@ def doDestroyDBInstance(args, parsed_globals):
     model = models.DestroyDBInstanceRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DestroyDBInstance(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeBackupPlans(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeBackupPlansRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeBackupPlans(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -366,6 +420,33 @@ def doModifyReadOnlyGroupConfig(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyBackupPlan(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyBackupPlanRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyBackupPlan(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCloseServerlessDBExtranetAccess(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -555,6 +636,33 @@ def doModifyDBInstanceName(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyDBInstanceDeployment(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyDBInstanceDeploymentRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyDBInstanceDeployment(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreateDBInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -609,7 +717,7 @@ def doDescribeReadOnlyGroups(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateServerlessDBInstance(args, parsed_globals):
+def doRenewInstance(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -625,9 +733,9 @@ def doCreateServerlessDBInstance(args, parsed_globals):
     client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateServerlessDBInstanceRequest()
+    model = models.RenewInstanceRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateServerlessDBInstance(model)
+    rsp = client.RenewInstance(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -636,7 +744,7 @@ def doCreateServerlessDBInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDBInstances(args, parsed_globals):
+def doDescribeDBInstanceParameters(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -652,9 +760,9 @@ def doDescribeDBInstances(args, parsed_globals):
     client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDBInstancesRequest()
+    model = models.DescribeDBInstanceParametersRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeDBInstances(model)
+    rsp = client.DescribeDBInstanceParameters(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -825,7 +933,7 @@ def doCreateReadOnlyGroup(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeProductConfig(args, parsed_globals):
+def doDescribeAvailableRecoveryTime(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -841,9 +949,9 @@ def doDescribeProductConfig(args, parsed_globals):
     client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeProductConfigRequest()
+    model = models.DescribeAvailableRecoveryTimeRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeProductConfig(model)
+    rsp = client.DescribeAvailableRecoveryTime(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -987,6 +1095,60 @@ def doCloseDBExtranetAccess(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeCloneDBInstanceSpec(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCloneDBInstanceSpecRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeCloneDBInstanceSpec(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCloneDBInstance(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CloneDBInstanceRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.CloneDBInstance(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doAddDBInstanceToReadOnlyGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1122,7 +1284,7 @@ def doDescribeServerlessDBInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doRenewInstance(args, parsed_globals):
+def doCreateServerlessDBInstance(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1138,9 +1300,9 @@ def doRenewInstance(args, parsed_globals):
     client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.RenewInstanceRequest()
+    model = models.CreateServerlessDBInstanceRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.RenewInstance(model)
+    rsp = client.CreateServerlessDBInstance(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1176,7 +1338,7 @@ def doDescribeDatabases(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDBInstanceParameters(args, parsed_globals):
+def doDescribeDBInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1192,9 +1354,9 @@ def doDescribeDBInstanceParameters(args, parsed_globals):
     client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDBInstanceParametersRequest()
+    model = models.DescribeDBInstancesRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeDBInstanceParameters(model)
+    rsp = client.DescribeDBInstances(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1249,6 +1411,33 @@ def doUpgradeDBInstance(args, parsed_globals):
     model = models.UpgradeDBInstanceRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.UpgradeDBInstance(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateInstances(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateInstancesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.CreateInstances(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1392,33 +1581,6 @@ def doOpenServerlessDBExtranetAccess(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateInstances(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.PostgresClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateInstancesRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.CreateInstances(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 CLIENT_MAP = {
     "v20170312": postgres_client_v20170312,
 
@@ -1432,8 +1594,10 @@ MODELS_MAP = {
 ACTION_MAP = {
     "ModifyDBInstancesProject": doModifyDBInstancesProject,
     "DescribeOrders": doDescribeOrders,
+    "DescribeProductConfig": doDescribeProductConfig,
     "DescribeDBSlowlogs": doDescribeDBSlowlogs,
     "DestroyDBInstance": doDestroyDBInstance,
+    "DescribeBackupPlans": doDescribeBackupPlans,
     "DescribeDBBackups": doDescribeDBBackups,
     "ResetAccountPassword": doResetAccountPassword,
     "DescribeDBErrlogs": doDescribeDBErrlogs,
@@ -1443,6 +1607,7 @@ ACTION_MAP = {
     "OpenDBExtranetAccess": doOpenDBExtranetAccess,
     "InitDBInstances": doInitDBInstances,
     "ModifyReadOnlyGroupConfig": doModifyReadOnlyGroupConfig,
+    "ModifyBackupPlan": doModifyBackupPlan,
     "CloseServerlessDBExtranetAccess": doCloseServerlessDBExtranetAccess,
     "DeleteReadOnlyGroup": doDeleteReadOnlyGroup,
     "ModifyAccountRemark": doModifyAccountRemark,
@@ -1450,38 +1615,41 @@ ACTION_MAP = {
     "SetAutoRenewFlag": doSetAutoRenewFlag,
     "DescribeDBInstanceAttribute": doDescribeDBInstanceAttribute,
     "ModifyDBInstanceName": doModifyDBInstanceName,
+    "ModifyDBInstanceDeployment": doModifyDBInstanceDeployment,
     "CreateDBInstances": doCreateDBInstances,
     "DescribeReadOnlyGroups": doDescribeReadOnlyGroups,
-    "CreateServerlessDBInstance": doCreateServerlessDBInstance,
-    "DescribeDBInstances": doDescribeDBInstances,
+    "RenewInstance": doRenewInstance,
+    "DescribeDBInstanceParameters": doDescribeDBInstanceParameters,
     "DescribeZones": doDescribeZones,
     "IsolateDBInstances": doIsolateDBInstances,
     "DeleteServerlessDBInstance": doDeleteServerlessDBInstance,
     "ModifyDBInstanceParameters": doModifyDBInstanceParameters,
     "InquiryPriceUpgradeDBInstance": doInquiryPriceUpgradeDBInstance,
     "CreateReadOnlyGroup": doCreateReadOnlyGroup,
-    "DescribeProductConfig": doDescribeProductConfig,
+    "DescribeAvailableRecoveryTime": doDescribeAvailableRecoveryTime,
     "ModifyDBInstanceSpec": doModifyDBInstanceSpec,
     "DescribeRegions": doDescribeRegions,
     "DescribeSlowQueryList": doDescribeSlowQueryList,
     "ModifyDBInstanceReadOnlyGroup": doModifyDBInstanceReadOnlyGroup,
     "CloseDBExtranetAccess": doCloseDBExtranetAccess,
+    "DescribeCloneDBInstanceSpec": doDescribeCloneDBInstanceSpec,
+    "CloneDBInstance": doCloneDBInstance,
     "AddDBInstanceToReadOnlyGroup": doAddDBInstanceToReadOnlyGroup,
     "InquiryPriceRenewDBInstance": doInquiryPriceRenewDBInstance,
     "DescribeAccounts": doDescribeAccounts,
     "DisIsolateDBInstances": doDisIsolateDBInstances,
     "DescribeServerlessDBInstances": doDescribeServerlessDBInstances,
-    "RenewInstance": doRenewInstance,
+    "CreateServerlessDBInstance": doCreateServerlessDBInstance,
     "DescribeDatabases": doDescribeDatabases,
-    "DescribeDBInstanceParameters": doDescribeDBInstanceParameters,
+    "DescribeDBInstances": doDescribeDBInstances,
     "DescribeSlowQueryAnalysis": doDescribeSlowQueryAnalysis,
     "UpgradeDBInstance": doUpgradeDBInstance,
+    "CreateInstances": doCreateInstances,
     "RemoveDBInstanceFromReadOnlyGroup": doRemoveDBInstanceFromReadOnlyGroup,
     "CreateReadOnlyDBInstance": doCreateReadOnlyDBInstance,
     "DescribeParamsEvent": doDescribeParamsEvent,
     "RebalanceReadOnlyGroup": doRebalanceReadOnlyGroup,
     "OpenServerlessDBExtranetAccess": doOpenServerlessDBExtranetAccess,
-    "CreateInstances": doCreateInstances,
 
 }
 

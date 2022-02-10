@@ -308,6 +308,14 @@
         "title": "Querying secret information of a cluster"
       }
     ],
+    "DescribeClusterStatus": [
+      {
+        "document": "",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterStatus\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ClusterStatusSet\": [\n            {\n                \"ClusterClosingNodeNum\": 0,\n                \"ClusterAuditEnabled\": true,\n                \"ClusterDeletionProtection\": true,\n                \"ClusterId\": \"xx\",\n                \"ClusterBMonitor\": true,\n                \"ClusterInitNodeNum\": 0,\n                \"ClusterState\": \"xx\",\n                \"ClusterClosedNodeNum\": 0,\n                \"ClusterInstanceState\": \"xx\",\n                \"ClusterRunningNodeNum\": 0,\n                \"ClusterFailedNodeNum\": 0\n            }\n        ],\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\n    }\n}",
+        "title": "Obtaining the current cluster status"
+      }
+    ],
     "DescribeClusters": [
       {
         "document": "",

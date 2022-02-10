@@ -16,6 +16,20 @@
         "title": "Creating a rule"
       }
     ],
+    "CreateInstanceToken": [
+      {
+        "document": "This example shows you how to obtain a temporary instance access credential, of which the valid period is one hour.",
+        "input": "https://tcr.tencentcloudapi.com/?Action=CreateInstanceToken\n&RegistryId=tcr-ak9876\n&TokenType=temp\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Username\": 12345678,\n        \"Token\": \"XXXX\",\n        \"ExpTime\": \"33987631\",\n        \"RequestId\": \"xx\",\n        \"TokenId\": \"xx\"\n    }\n}",
+        "title": "Obtaining a temporary instance access credential"
+      },
+      {
+        "document": "This example shows you how to obtain a long-term instance access credential, which can be used to grant permissions to third-party applications.",
+        "input": "https://tcr.tencentcloudapi.com/?Action=CreateInstanceToken\n&RegistryId=tcr-ak9876\n&TokenType=longterm\n&Desc=for-tke-cluster\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Username\": 12345678,\n        \"Token\": \"XXXX\",\n        \"ExpTime\": \"33987631\",\n        \"RequestId\": \"xx\",\n        \"TokenId\": \"1456976\"\n    }\n}",
+        "title": "Obtaining a long-term instance access credential"
+      }
+    ],
     "CreateMultipleSecurityPolicy": [
       {
         "document": "",
