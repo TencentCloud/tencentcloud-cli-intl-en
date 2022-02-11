@@ -2999,6 +2999,7 @@
         {
           "default": "",
           "document": "Service namespace. Tencent Cloud services have different namespaces. For more information on service namespaces, see the monitoring metric documentation of each service. For example, see [CVM Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6843?from_cn_redirect=1) for the namespace of CVM",
+          "example": "QCE/CVM",
           "member": "string",
           "name": "Namespace",
           "required": true,
@@ -3007,10 +3008,20 @@
         {
           "default": "",
           "document": "Metric name. Tencent Cloud services have different metric names. For more information on metric names, see the monitoring metric documentation of each service. For example, see [CVM Monitoring Metrics](https://intl.cloud.tencent.com/document/product/248/6843?from_cn_redirect=1) for the metric names of CVM",
+          "example": "AccOuttraffic",
           "member": "string",
           "name": "MetricName",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by dimension. This parameter is optional.",
+          "example": "[\"InstanceId\"]",
+          "member": "string",
+          "name": "Dimensions",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"

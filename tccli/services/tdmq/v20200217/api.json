@@ -252,11 +252,17 @@
       "name": "Gets the list of namespaces",
       "output": "DescribeEnvironmentsResponse"
     },
-    "DescribeProducers": {
-      "document": "This API is used to get the list of producers. Only online producers will be displayed.",
-      "input": "DescribeProducersRequest",
-      "name": "Gets the list of producers",
-      "output": "DescribeProducersResponse"
+    "DescribePublisherSummary": {
+      "document": "This API is used to obtain message production overview information.",
+      "input": "DescribePublisherSummaryRequest",
+      "name": "Obtains message production overview",
+      "output": "DescribePublisherSummaryResponse"
+    },
+    "DescribePublishers": {
+      "document": "This API is used to obtain the list of producer information.",
+      "input": "DescribePublishersRequest",
+      "name": "Obtains the list of producer information",
+      "output": "DescribePublishersResponse"
     },
     "DescribeRocketMQCluster": {
       "document": "This API is used to get the information of a specific RocketMQ cluster.",
@@ -646,7 +652,7 @@
         },
         {
           "default": "",
-          "document": "Cluster status. 0: creating; 1: normal; 2: deleting; 3: deleted; 5. creation failed; 6: deletion failed",
+          "document": "Cluster status. 0: creating; 1: normal; 2: terminating; 3: deleted; 4. isolated; 5. creation failed; 6: deletion failed",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -1181,6 +1187,36 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster status. 0: creating; 1: normal; 2: terminating; 3: deleted; 4. isolated; 5. creation failed; 6: deletion failed\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The maximum number of unacknowledged messages.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "100000",
+          "member": "int64",
+          "name": "MaxUnackedMsgNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum size of heaped messages in bytes.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "104857600",
+          "member": "int64",
+          "name": "MaxMsgBacklogSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1483,75 +1519,6 @@
       ],
       "usage": "out"
     },
-    "Connection": {
-      "document": "Producer connection instance",
-      "members": [
-        {
-          "default": "",
-          "document": "Producer address.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "Address",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Topic partition.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "int64",
-          "name": "Partitions",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Producer version.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "ClientVersion",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Producer name.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "ProducerName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Producer ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "ProducerId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Average message size in bytes.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "AverageMsgSize",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Production rate in bytes/sec.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "MsgThroughputIn",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "Consumer": {
       "document": " Consumer",
       "members": [
@@ -1686,7 +1653,7 @@
         },
         {
           "default": "",
-          "document": "List of cluster tags",
+          "document": "Cluster tag list (deprecated).",
           "example": "NULL",
           "member": "Tag",
           "name": "Tags",
@@ -4175,86 +4142,176 @@
       ],
       "type": "object"
     },
-    "DescribeProducersRequest": {
-      "document": "DescribeProducers request structure.",
+    "DescribePublisherSummaryRequest": {
+      "document": "DescribePublisherSummary request structure.",
       "members": [
         {
           "default": "",
-          "document": "Environment (namespace) name.",
-          "example": "default",
+          "document": "Cluster ID.",
+          "example": "pulsar-xxxx",
           "member": "string",
-          "name": "EnvironmentId",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name.",
+          "example": "test",
+          "member": "string",
+          "name": "Namespace",
           "required": true,
           "type": "string"
         },
         {
           "default": "",
           "document": "Topic name.",
-          "example": "U_TOPIC_nfa_game_push_retry_kb",
+          "example": "test",
           "member": "string",
-          "name": "TopicName",
+          "name": "Topic",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePublisherSummaryResponse": {
+      "document": "DescribePublisherSummary response structure.",
+      "members": [
+        {
+          "document": "Production rate (messages/sec).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0.1",
+          "member": "float",
+          "name": "MsgRateIn",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Production rate (byte/sec).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0.1",
+          "member": "float",
+          "name": "MsgThroughputIn",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of producers.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "PublisherCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Message storage size in bytes.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "123",
+          "member": "int64",
+          "name": "StorageSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePublishersRequest": {
+      "document": "DescribePublishers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID.",
+          "example": "pulsar-xxxxx",
+          "member": "string",
+          "name": "ClusterId",
           "required": true,
           "type": "string"
         },
         {
           "default": "",
-          "document": "Offset. If this parameter is left empty, 0 will be used by default.",
+          "document": "Namespace name.",
+          "example": "test",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name.",
+          "example": "test",
+          "member": "string",
+          "name": "Topic",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Parameter filter. The `ProducerName` and `Address` fields are supported.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset for query. Default value: `0`.",
           "example": "0",
-          "member": "uint64",
+          "member": "int64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
           "default": "",
-          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.",
+          "document": "The number of query results displayed per page. Default value: `20`.",
           "example": "10",
-          "member": "uint64",
+          "member": "int64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
           "default": "",
-          "document": "Fuzzy match by producer name.",
-          "example": "test",
-          "member": "string",
-          "name": "ProducerName",
+          "document": "Sort by field.",
+          "example": "无",
+          "member": "Sort",
+          "name": "Sort",
           "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Pulsar cluster ID",
-          "example": "pulsar-xxxx",
-          "member": "string",
-          "name": "ClusterId",
-          "required": false,
-          "type": "string"
+          "type": "object"
         }
       ],
       "type": "object"
     },
-    "DescribeProducersResponse": {
-      "document": "DescribeProducers response structure.",
+    "DescribePublishersResponse": {
+      "document": "DescribePublishers response structure.",
       "members": [
         {
-          "document": "Array set of producers.",
-          "example": "无",
-          "member": "Producer",
-          "name": "ProducerSets",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Total number of records.",
-          "example": "1",
-          "member": "uint64",
+          "document": "Total number of query results.",
+          "example": "100",
+          "member": "int64",
           "name": "TotalCount",
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "List of producer information.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Publisher",
+          "name": "Publishers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -6209,48 +6266,6 @@
       ],
       "usage": "out"
     },
-    "Producer": {
-      "document": "Producer",
-      "members": [
-        {
-          "default": "",
-          "document": "Environment (namespace) name.",
-          "member": "string",
-          "name": "EnvironmentId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Topic name.",
-          "member": "string",
-          "name": "TopicName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of connections.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "int64",
-          "name": "CountConnect",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Set of connections.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "Connection",
-          "name": "ConnectionSets",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "PublishCmqMsgRequest": {
       "document": "PublishCmqMsg request structure.",
       "members": [
@@ -6313,6 +6328,102 @@
         }
       ],
       "type": "object"
+    },
+    "Publisher": {
+      "document": "Producer information",
+      "members": [
+        {
+          "default": "",
+          "document": "Producer ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ProducerId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Producer name.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "ProducerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Producer address.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "10.0.0.1:1234",
+          "member": "string",
+          "name": "Address",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Client version.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2.7.2",
+          "member": "string",
+          "name": "ClientVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Message production rate (message/sec).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "21.233",
+          "member": "float",
+          "name": "MsgRateIn",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Message production throughput rate (byte/sec).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "21.3655",
+          "member": "float",
+          "name": "MsgThroughputIn",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Average message size in bytes.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1233",
+          "member": "float",
+          "name": "AverageMsgSize",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Connection time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ConnectedSince",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Serial number of the topic partition connected to the producer.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Partition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "ReceiveMessageRequest": {
       "document": "ReceiveMessage request structure.",
@@ -7413,6 +7524,32 @@
         }
       ],
       "type": "object"
+    },
+    "Sort": {
+      "document": "Sort by field",
+      "members": [
+        {
+          "default": "",
+          "document": "Sorting field.",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Ascending order: `ASC`; descending order: `DESC`.",
+          "example": "ASC",
+          "member": "string",
+          "name": "Order",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "Subscription": {
       "document": "Subscriber",

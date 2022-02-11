@@ -42,6 +42,33 @@ def doDeleteCmqTopic(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeRoles(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TdmqClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeRolesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeRoles(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeRocketMQClusters(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -493,6 +520,33 @@ def doDeleteCmqQueue(args, parsed_globals):
     model = models.DeleteCmqQueueRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DeleteCmqQueue(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribePublishers(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TdmqClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribePublishersRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribePublishers(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1203,33 +1257,6 @@ def doDeleteRoles(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeProducers(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TdmqClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeProducersRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeProducers(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doReceiveMessage(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1581,7 +1608,7 @@ def doModifyCmqSubscriptionAttribute(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeRoles(args, parsed_globals):
+def doDescribePublisherSummary(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1597,9 +1624,9 @@ def doDescribeRoles(args, parsed_globals):
     client = mod.TdmqClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeRolesRequest()
+    model = models.DescribePublisherSummaryRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeRoles(model)
+    rsp = client.DescribePublisherSummary(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1971,6 +1998,7 @@ MODELS_MAP = {
 
 ACTION_MAP = {
     "DeleteCmqTopic": doDeleteCmqTopic,
+    "DescribeRoles": doDescribeRoles,
     "DescribeRocketMQClusters": doDescribeRocketMQClusters,
     "DeleteEnvironments": doDeleteEnvironments,
     "DescribeBindVpcs": doDescribeBindVpcs,
@@ -1988,6 +2016,7 @@ ACTION_MAP = {
     "DescribeCmqDeadLetterSourceQueues": doDescribeCmqDeadLetterSourceQueues,
     "DescribeCmqSubscriptionDetail": doDescribeCmqSubscriptionDetail,
     "DeleteCmqQueue": doDeleteCmqQueue,
+    "DescribePublishers": doDescribePublishers,
     "CreateRocketMQCluster": doCreateRocketMQCluster,
     "CreateCmqTopic": doCreateCmqTopic,
     "DeleteRocketMQGroup": doDeleteRocketMQGroup,
@@ -2014,7 +2043,6 @@ ACTION_MAP = {
     "DescribeSubscriptions": doDescribeSubscriptions,
     "CreateEnvironment": doCreateEnvironment,
     "DeleteRoles": doDeleteRoles,
-    "DescribeProducers": doDescribeProducers,
     "ReceiveMessage": doReceiveMessage,
     "DescribeTopics": doDescribeTopics,
     "DescribeCmqTopics": doDescribeCmqTopics,
@@ -2028,7 +2056,7 @@ ACTION_MAP = {
     "ModifyRole": doModifyRole,
     "ModifyEnvironmentAttributes": doModifyEnvironmentAttributes,
     "ModifyCmqSubscriptionAttribute": doModifyCmqSubscriptionAttribute,
-    "DescribeRoles": doDescribeRoles,
+    "DescribePublisherSummary": doDescribePublisherSummary,
     "UnbindCmqDeadLetter": doUnbindCmqDeadLetter,
     "ModifyRocketMQNamespace": doModifyRocketMQNamespace,
     "CreateRocketMQNamespace": doCreateRocketMQNamespace,
