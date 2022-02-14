@@ -24,6 +24,12 @@
       "name": "Binds a cloud resource",
       "output": "CreateResourceResponse"
     },
+    "DeleteApplication": {
+      "document": "This API is used to delete an application.\n  - Stop the application if it’s running\n  - Delete resources associated with this application\n  - Delele the application",
+      "input": "DeleteApplicationRequest",
+      "name": "Deletes an application",
+      "output": "DeleteApplicationResponse"
+    },
     "DeleteIngress": {
       "document": "This API is used to delete an ingress rule.",
       "input": "DeleteIngressRequest",
@@ -90,11 +96,29 @@
       "name": "Creates or updates an ingress rule",
       "output": "ModifyIngressResponse"
     },
+    "RestartApplication": {
+      "document": "This API is used to restart an application.",
+      "input": "RestartApplicationRequest",
+      "name": "Restarts an application",
+      "output": "RestartApplicationResponse"
+    },
     "RestartApplicationPod": {
       "document": "This API is used to restart an application pod.",
       "input": "RestartApplicationPodRequest",
       "name": "Restarts an application pod",
       "output": "RestartApplicationPodResponse"
+    },
+    "RollingUpdateApplicationByVersion": {
+      "document": "This API is used to configure the rolling update policy for an application.",
+      "input": "RollingUpdateApplicationByVersionRequest",
+      "name": "Configures the rolling update policy for an application",
+      "output": "RollingUpdateApplicationByVersionResponse"
+    },
+    "StopApplication": {
+      "document": "This API is used to stop an application.",
+      "input": "StopApplicationRequest",
+      "name": "Stops an application",
+      "output": "StopApplicationResponse"
     }
   },
   "metadata": {
@@ -640,6 +664,69 @@
         }
       ],
       "usage": "both"
+    },
+    "DeleteApplicationRequest": {
+      "document": "DeleteApplication request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Service ID",
+          "example": "1",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment ID",
+          "example": "1",
+          "member": "string",
+          "name": "EnvironmentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Retain as default",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to delete this application automatically when there is no running version.",
+          "example": "false",
+          "member": "bool",
+          "name": "DeleteApplicationIfNoRunningVersion",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteApplicationResponse": {
+      "document": "DeleteApplication response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "example": "1",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DeleteIngressRequest": {
       "document": "DeleteIngress request structure.",
@@ -2583,6 +2670,177 @@
       ],
       "type": "object"
     },
+    "RestartApplicationRequest": {
+      "document": "RestartApplication request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "1",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Retain as default",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Environment ID",
+          "example": "1",
+          "member": "string",
+          "name": "EnvironmentId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RestartApplicationResponse": {
+      "document": "RestartApplication response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "example": "1",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RollingUpdateApplicationByVersionRequest": {
+      "document": "RollingUpdateApplicationByVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "1",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment ID",
+          "example": "1",
+          "member": "string",
+          "name": "EnvironmentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Update version. For image-based deployment, it is the value. For deployment with JAR/WAR files, it is `Version`.",
+          "example": "v1",
+          "member": "string",
+          "name": "DeployVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "JAR/WAR package name. It’s only required for deployment with JAR/WAR files.",
+          "example": "xxx",
+          "member": "string",
+          "name": "PackageName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Request source. Options: `IntelliJ`, `Coding`",
+          "example": "IntelliJ",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "AUTO",
+          "member": "string",
+          "name": "DeployStrategyType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalBatchCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "60",
+          "member": "int64",
+          "name": "BatchInterval",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "BetaBatchNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "MinAvailable",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "RollingUpdateApplicationByVersionResponse": {
+      "document": "RollingUpdateApplicationByVersion response structure.",
+      "members": [
+        {
+          "document": "Version ID",
+          "example": "1",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "RunVersionPod": {
       "document": "Application pod",
       "members": [
@@ -2688,6 +2946,60 @@
         }
       ],
       "usage": "out"
+    },
+    "StopApplicationRequest": {
+      "document": "StopApplication request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "1",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Retain as default",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Environment ID",
+          "example": "1",
+          "member": "string",
+          "name": "EnvironmentId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopApplicationResponse": {
+      "document": "StopApplication response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "example": "1",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "StorageConf": {
       "document": "Storage volume configuration",

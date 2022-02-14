@@ -553,7 +553,7 @@
       "output": "ParseStreamingManifestResponse"
     },
     "ProcessMedia": {
-      "document": "This API is used to initiate a processing task for an audio/video media file in VOD, including:\n1. Video transcoding (with watermark);\n2. Animated image generating;\n3. Time point screencapturing;\n4. Sampled screencapturing;\n5. Image sprite generating;\n6. Cover generating by screencapturing;\n7. Adaptive bitrate streaming (with encryption);\n8. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);\n9. Intelligent content analysis (tag, category, cover, and frame-specific tag);\n10. Intelligent content recognition (opening and closing credits, face, full text, text keyword, full speech, speech keyword, and object).",
+      "document": "This API is used to initiate a media processing task on a VOD file. The task may include:\n1. Video transcoding (with watermark)\n2. Animated image generating\n3. Time point screenshot\n4. Sampled screenshot\n5. Image sprite generating\n6. Taking a screenshot to use as the thumbnail\n7. Adaptive bitrate streaming and encryption\n8. Intelligent recognition of pornographic, terrorism, and politically sensitive content\n9. Intelligent content analysis for labeling, categorization, thumbnail generation, or frame-specific labeling\n10. Recognition of opening and closing credits, faces, full text, text keywords, full speech, speech keywords, and objects\n\nIf event notifications are used, the event type is [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).",
       "input": "ProcessMediaRequest",
       "name": "Processes a video",
       "output": "ProcessMediaResponse"
@@ -889,6 +889,7 @@
         {
           "default": "",
           "document": "Adaptive bitrate streaming specification.",
+          "example": "10",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -898,6 +899,7 @@
         {
           "default": "",
           "document": "Container format. Valid values: hls, dash.",
+          "example": "HLS",
           "member": "string",
           "name": "Package",
           "required": true,
@@ -907,6 +909,7 @@
         {
           "default": "",
           "document": "Encryption type.",
+          "example": "SimpleAES",
           "member": "string",
           "name": "DrmType",
           "required": true,
@@ -916,10 +919,21 @@
         {
           "default": "",
           "document": "Playback address.",
+          "example": "http://xxx.myqcloud.com/xxx.mp4",
           "member": "string",
           "name": "Url",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File size (bytes)\n<li>If the file is an HLS file, the value of this parameter is the sum of the size of the M3U8 and TS files.</li>\n<li>If the file is a DASH file, the value of this parameter is the sum of the size of the MPD and segment files.</li>\n<li><font color=red>Note</font>: For adaptive bitrate streaming files generated before 2022-01-10T16:00:00Z, the value of this parameter is `0`.</li>",
+          "example": "100",
+          "member": "int64",
+          "name": "Size",
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -1739,11 +1753,11 @@
       "usage": "out"
     },
     "AiContentReviewResult": {
-      "document": "Content audit result",
+      "document": "Intelligent recognition result",
       "members": [
         {
           "default": "",
-          "document": "Task type. Valid values:\n<li>`Porn`: porn information recognition in images</li>\n<li>`Terrorism`: terrorism information recognition in images</li>\n<li>`Political`: politically sensitive information recognition in images</li>\n<li>`Porn.Asr`: ASR-based porn information recognition in speech</li>\n<li>`Porn.Ocr`: OCR-based porn information recognition in text</li>\n<li>`Political.Asr`: ASR-based politically sensitive information recognition in speech</li>\n<li>`Political.Ocr`: OCR-based politically sensitive information recognition in text</li>\n<li>`Terrorism.Ocr`: OCR-based terrorism information recognition in text</li>\n<li>`Prohibited.Asr`: ASR-based prohibited information recognition in speech</li>\n<li>`Prohibited.Ocr`: OCR-based prohibited information recognition in text</li>",
+          "document": "Task type. Valid values:\n<li>`Porn`: recognition of pornographic content in images</li>\n<li>`Terrorism`: recognition of terrorism content in images</li>\n<li>`Political`: recognition of politically sensitive content in images</li>\n<li>`Porn.Asr`: ASR-based recognition of pornographic content</li>\n<li>`Porn.Ocr`: OCR-based recognition of pornographic content</li>\n<li>`Political.Asr`: ASR-based recognition of politically sensitive content</li>\n<li>`Political.Ocr`: OCR-based recognition of politically sensitive content</li>\n<li>`Terrorism.Ocr`: OCR-based recognition of terrorism content</li>\n<li>`Prohibited.Asr`: ASR-based recognition of banned content</li>\n<li>`Prohibited.Ocr`: OCR-based recognition of banned content</li>",
           "example": "无",
           "member": "string",
           "name": "Type",
@@ -1753,7 +1767,7 @@
         },
         {
           "default": "",
-          "document": "Query result of intelligent porn information detection in video image task in video content audit, which is valid when task type is `Porn`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Result for intelligent recognition of pornographic content in images. This parameter is valid when `Type` is `Porn`.\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "无",
           "member": "AiReviewTaskPornResult",
           "name": "PornTask",
@@ -1763,7 +1777,7 @@
         },
         {
           "default": "",
-          "document": "Query result of intelligent terrorism information detection in video image task in video content audit, which is valid when task type is `Terrorism`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Result for intelligent recognition of terrorism content in images. This parameter is valid when `Type` is `Terrorism`.\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "无",
           "member": "AiReviewTaskTerrorismResult",
           "name": "TerrorismTask",
@@ -1773,7 +1787,7 @@
         },
         {
           "default": "",
-          "document": "Query result of intelligent politically sensitive information detection in video image task in video content audit, which is valid when task type is `Political`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Result for intelligent recognition of politically sensitive content in images. This parameter is valid when `Type` is `Political`.\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "无",
           "member": "AiReviewTaskPoliticalResult",
           "name": "PoliticalTask",
@@ -1783,7 +1797,7 @@
         },
         {
           "default": "",
-          "document": "Query result of ASR-based porn information detection in speech task in video content audit, which is valid when task type is `Porn.Asr`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Result for ASR-based recognition of pornographic content. This parameter is valid when `Type` is `Porn.Asr`.\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "无",
           "member": "AiReviewTaskPornAsrResult",
           "name": "PornAsrTask",
@@ -1793,7 +1807,7 @@
         },
         {
           "default": "",
-          "document": "Query result of OCR-based porn information detection in text task in video content audit, which is valid when task type is `Porn.Ocr`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Result for OCR-based recognition of pornographic content. This parameter is valid when `Type` is `Porn.Ocr`.\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "无",
           "member": "AiReviewTaskPornOcrResult",
           "name": "PornOcrTask",
@@ -1803,7 +1817,7 @@
         },
         {
           "default": "",
-          "document": "Query result of ASR-based politically sensitive information detection in speech task in video content audit, which is valid when task type is `Political.Asr`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Result for ASR-based recognition of politically sensitive content. This parameter is valid when `Type` is `Political.Asr`.\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "无",
           "member": "AiReviewTaskPoliticalAsrResult",
           "name": "PoliticalAsrTask",
@@ -1813,7 +1827,7 @@
         },
         {
           "default": "",
-          "document": "Query result of OCR-based politically sensitive information detection in text task in video content audit, which is valid when task type is `Political.Ocr`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Result for OCR-based recognition of politically sensitive content. This parameter is valid when `Type` is `Political.Ocr`.\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "无",
           "member": "AiReviewTaskPoliticalOcrResult",
           "name": "PoliticalOcrTask",
@@ -1823,7 +1837,7 @@
         },
         {
           "default": "",
-          "document": "Query result of OCR-based terrorism information detection in text task in video content audit, which is valid when task type is `Terrorism.Ocr`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Result for OCR-based recognition of terrorism content. This parameter is valid when `Type` is `Terrorism.Ocr`.\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "无",
           "member": "AiReviewTaskTerrorismOcrResult",
           "name": "TerrorismOcrTask",
@@ -1833,20 +1847,20 @@
         },
         {
           "default": "",
-          "document": "Query result of ASR-based prohibited information detection in speech task in video content audit, which is valid when task type is `Prohibited.Asr`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Result for OCR-based recognition of banned content. This parameter is valid when `Type` is `Prohibited.Ocr`.\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "无",
-          "member": "AiReviewTaskProhibitedAsrResult",
-          "name": "ProhibitedAsrTask",
+          "member": "AiReviewTaskProhibitedOcrResult",
+          "name": "ProhibitedOcrTask",
           "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Query result of OCR-based prohibited information detection in text task in video content audit, which is valid when task type is `Prohibited.Ocr`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Result for ASR-based recognition of banned content. This parameter is valid when `Type` is `Prohibited.Asr`.\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "无",
-          "member": "AiReviewTaskProhibitedOcrResult",
-          "name": "ProhibitedOcrTask",
+          "member": "AiReviewTaskProhibitedAsrResult",
+          "name": "ProhibitedAsrTask",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -1855,11 +1869,12 @@
       "usage": "out"
     },
     "AiContentReviewTaskInput": {
-      "document": "Task type of intelligent content audit",
+      "document": "Type of intelligent recognition task",
       "members": [
         {
           "default": "",
-          "document": "Video content audit template ID.",
+          "document": "Intelligent recognition template ID",
+          "example": "无",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -3326,11 +3341,12 @@
       "usage": "out"
     },
     "AiReviewPoliticalAsrTaskInput": {
-      "document": "Input parameter type of ASR-based politically sensitive information detection in speech task in content audit",
+      "document": "Input parameters for ASR-based recognition of politically sensitive content",
       "members": [
         {
           "default": "",
-          "document": "Politically sensitive information detection template ID.",
+          "document": "ID of the template for recognition of politically sensitive content",
+          "example": "无",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -3341,11 +3357,11 @@
       "usage": "out"
     },
     "AiReviewPoliticalAsrTaskOutput": {
-      "document": "ASR-detected politically sensitive information in speech",
+      "document": "Output for ASR-based recognition of politically sensitive content",
       "members": [
         {
           "default": "",
-          "document": "Score of ASR-detected politically sensitive information in speech between 0 and 100.",
+          "document": "Confidence score for the ASR-detected politically sensitive content. Value range: 0-100",
           "example": "无",
           "member": "float",
           "name": "Confidence",
@@ -3355,7 +3371,7 @@
         },
         {
           "default": "",
-          "document": "Suggestion for ASR-detected politically sensitive information in speech. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "document": "Processing suggestion for the ASR-detected politically sensitive content. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
           "example": "无",
           "member": "string",
           "name": "Suggestion",
@@ -3365,7 +3381,7 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain ASR-detected politically sensitive information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "document": "List of video segments that contain ASR-detected politically sensitive content\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
           "example": "无",
           "member": "MediaContentReviewAsrTextSegmentItem",
           "name": "SegmentSet",
@@ -3375,7 +3391,7 @@
         },
         {
           "default": "",
-          "document": "URL to the file for video segments that contain ASR-detected politically sensitive information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "document": "URL to the file for video segments that contain ASR-detected politically sensitive content. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
           "example": "http://12xxx",
           "member": "string",
           "name": "SegmentSetFileUrl",
@@ -3385,7 +3401,7 @@
         },
         {
           "default": "",
-          "document": "Expiration time of the URL to the file for video segments that contain ASR-detected politically sensitive information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "document": "Expiration time of the URL to the file for video segments that contain ASR-detected politically sensitive content, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
           "example": "2018-10-01T10:00:00Z",
           "member": "string",
           "name": "SegmentSetFileUrlExpireTime",
@@ -3397,11 +3413,12 @@
       "usage": "out"
     },
     "AiReviewPoliticalOcrTaskInput": {
-      "document": "Input parameter type of OCR-based politically sensitive information detection in text task in content audit",
+      "document": "Input parameters for OCR-based recognition of politically sensitive content",
       "members": [
         {
           "default": "",
-          "document": "Politically sensitive information detection template ID.",
+          "document": "ID of the template for recognition of politically sensitive content",
+          "example": "无",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -3412,11 +3429,11 @@
       "usage": "out"
     },
     "AiReviewPoliticalOcrTaskOutput": {
-      "document": "OCR-detected politically sensitive information in text",
+      "document": "Output for OCR-based recognition of politically sensitive content",
       "members": [
         {
           "default": "",
-          "document": "Score of OCR-detected politically sensitive information in text between 0 and 100.",
+          "document": "Confidence score for the OCR-detected politically sensitive content. Value range: 0-100",
           "example": "无",
           "member": "float",
           "name": "Confidence",
@@ -3426,7 +3443,7 @@
         },
         {
           "default": "",
-          "document": "Suggestion for OCR-detected politically sensitive information in text. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "document": "Processing suggestion for the OCR-detected politically sensitive content. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
           "example": "无",
           "member": "string",
           "name": "Suggestion",
@@ -3436,7 +3453,7 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain OCR-detected politically sensitive information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "document": "List of video segments that contain OCR-detected politically sensitive content\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
           "example": "无",
           "member": "MediaContentReviewOcrTextSegmentItem",
           "name": "SegmentSet",
@@ -3446,7 +3463,7 @@
         },
         {
           "default": "",
-          "document": "URL to the file for video segments that contain OCR-detected politically sensitive information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "document": "URL to the file for video segments that contain OCR-detected politically sensitive content. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
           "example": "http://12xxx",
           "member": "string",
           "name": "SegmentSetFileUrl",
@@ -3456,7 +3473,7 @@
         },
         {
           "default": "",
-          "document": "Expiration time of the URL to the file for video segments that contain OCR-detected politically sensitive information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "document": "Expiration time of the URL to the file for video segments that contain OCR-detected politically sensitive content, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
           "example": "2018-10-01T10:00:00Z",
           "member": "string",
           "name": "SegmentSetFileUrlExpireTime",
@@ -3468,11 +3485,12 @@
       "usage": "out"
     },
     "AiReviewPoliticalTaskInput": {
-      "document": "Input parameter type of politically sensitive information detection task in content audit",
+      "document": "Input parameters for intelligent recognition of politically sensitive content",
       "members": [
         {
           "default": "",
-          "document": "Politically sensitive information detection template ID.",
+          "document": "ID of the template for recognition of politically sensitive content",
+          "example": "无",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -3483,11 +3501,11 @@
       "usage": "out"
     },
     "AiReviewPoliticalTaskOutput": {
-      "document": "Politically sensitive information",
+      "document": "Output for intelligent recognition of politically sensitive content",
       "members": [
         {
           "default": "",
-          "document": "Score of detected politically sensitive information in video between 0 and 100.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Confidence score for the detected politically sensitive content. Value range: 0-100",
           "example": "无",
           "member": "float",
           "name": "Confidence",
@@ -3497,7 +3515,7 @@
         },
         {
           "default": "",
-          "document": "Suggestion for detected politically sensitive information. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Processing suggestion for the detected politically sensitive content\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
           "example": "无",
           "member": "string",
           "name": "Suggestion",
@@ -3507,7 +3525,7 @@
         },
         {
           "default": "",
-          "document": "Tags for the results of video politically sensitive information detection. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and this parameter is as follows:\nviolation_photo:\n<li>violation_photo: violating photo.</li>\nOther values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):\n<li>politician: political figure.</li>",
+          "document": "Labels for the detected politically sensitive content. The relationship between the values of this parameter and those of the `LabelSet` parameter in [PoliticalImgReviewTemplateInfo](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) is as follows:\nviolation_photo:\n<li>`violation_photo`: banned images</li>\nOther values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):\n<li>`politician`: politically sensitive people</li>",
           "example": "无",
           "member": "string",
           "name": "Label",
@@ -3517,7 +3535,7 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain politically sensitive information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "document": "List of video segments that contain detected politically sensitive content\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
           "example": "无",
           "member": "MediaContentReviewPoliticalSegmentItem",
           "name": "SegmentSet",
@@ -3527,7 +3545,7 @@
         },
         {
           "default": "",
-          "document": "URL to the file for video segments that contain politically sensitive information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "document": "URL to the file for video segments that contain detected politically sensitive content. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
           "example": "http://12xxx",
           "member": "string",
           "name": "SegmentSetFileUrl",
@@ -3537,7 +3555,7 @@
         },
         {
           "default": "",
-          "document": "Expiration time of the URL to the file for video segments that contain politically sensitive information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "document": "Expiration time of the URL to the file for video segments that contain politically sensitive content, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
           "example": "2018-10-01T10:00:00Z",
           "member": "string",
           "name": "SegmentSetFileUrlExpireTime",
@@ -3549,11 +3567,12 @@
       "usage": "out"
     },
     "AiReviewPornAsrTaskInput": {
-      "document": "Input parameter type of ASR-based porn information detection in speech task in content audit",
+      "document": "Input parameters for ASR-based recognition of pornographic content",
       "members": [
         {
           "default": "",
-          "document": "Porn information detection template ID.",
+          "document": "ID of the template for recognition of pornographic content",
+          "example": "无",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -3564,11 +3583,11 @@
       "usage": "out"
     },
     "AiReviewPornAsrTaskOutput": {
-      "document": "ASR-detected porn information in speech",
+      "document": "Output for ASR-based recognition of pornographic content",
       "members": [
         {
           "default": "",
-          "document": "Score of ASR-detected porn information in speech between 0 and 100.",
+          "document": "Confidence score for the ASR-detected pornographic content",
           "example": "无",
           "member": "float",
           "name": "Confidence",
@@ -3578,7 +3597,7 @@
         },
         {
           "default": "",
-          "document": "Suggestion for ASR-detected porn information in speech. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "document": "Processing suggestion for the ASR-detected pornographic content\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
           "example": "无",
           "member": "string",
           "name": "Suggestion",
@@ -3588,7 +3607,7 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain ASR-detected porn information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "document": "List of video segments that contain ASR-detected pornographic content\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
           "example": "无",
           "member": "MediaContentReviewAsrTextSegmentItem",
           "name": "SegmentSet",
@@ -3598,7 +3617,7 @@
         },
         {
           "default": "",
-          "document": "URL to the file for video segments that contain ASR-detected porn information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "document": "URL to the file for video segments that contain ASR-detected pornographic content. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
           "example": "http://12xxx",
           "member": "string",
           "name": "SegmentSetFileUrl",
@@ -3608,7 +3627,7 @@
         },
         {
           "default": "",
-          "document": "Expiration time of the URL to the file for video segments that contain ASR-detected porn information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "document": "Expiration time of the URL to the file for video segments that contain ASR-detected pornographic content, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
           "example": "2018-10-01T10:00:00Z",
           "member": "string",
           "name": "SegmentSetFileUrlExpireTime",
@@ -3620,11 +3639,12 @@
       "usage": "out"
     },
     "AiReviewPornOcrTaskInput": {
-      "document": "Input parameter type of OCR-based porn information detection in text task in content audit",
+      "document": "Input parameters for OCR-based recognition of pornographic content",
       "members": [
         {
           "default": "",
-          "document": "Porn information detection template ID.",
+          "document": "ID of the template for recognition of pornographic content",
+          "example": "无",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -3635,11 +3655,11 @@
       "usage": "out"
     },
     "AiReviewPornOcrTaskOutput": {
-      "document": "OCR-detected porn information in text",
+      "document": "Output for OCR-based recognition of pornographic content",
       "members": [
         {
           "default": "",
-          "document": "Score of OCR-detected porn information in text between 0 and 100.",
+          "document": "Confidence score for the OCR-detected pornographic content",
           "example": "无",
           "member": "float",
           "name": "Confidence",
@@ -3649,7 +3669,7 @@
         },
         {
           "default": "",
-          "document": "Suggestion for OCR-detected porn information in text. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "document": "Processing suggestion for the OCR-detected pornographic content\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
           "example": "无",
           "member": "string",
           "name": "Suggestion",
@@ -3659,7 +3679,7 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain OCR-detected porn information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "document": "List of video segments that contain OCR-detected pornographic content\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
           "example": "无",
           "member": "MediaContentReviewOcrTextSegmentItem",
           "name": "SegmentSet",
@@ -3669,7 +3689,7 @@
         },
         {
           "default": "",
-          "document": "URL to the file for video segments that contain OCR-detected porn information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "document": "URL to the file for video segments that contain OCR-detected pornographic content. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
           "example": "http://12xxx",
           "member": "string",
           "name": "SegmentSetFileUrl",
@@ -3679,7 +3699,7 @@
         },
         {
           "default": "",
-          "document": "Expiration time of the URL to the file for video segments that contain OCR-detected porn information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "document": "Expiration time of the URL to the file for video segments that contain OCR-detected pornographic content, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
           "example": "2018-10-01T10:00:00Z",
           "member": "string",
           "name": "SegmentSetFileUrlExpireTime",
@@ -3691,11 +3711,12 @@
       "usage": "out"
     },
     "AiReviewPornTaskInput": {
-      "document": "Input parameter type of porn information detection task in content audit",
+      "document": "Input parameters for intelligent recognition of pornographic content",
       "members": [
         {
           "default": "",
-          "document": "Porn information detection template ID.",
+          "document": "ID of the template for recognition of pornographic content",
+          "example": "无",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -3706,11 +3727,11 @@
       "usage": "in"
     },
     "AiReviewPornTaskOutput": {
-      "document": "Result information of porn information detection",
+      "document": "Output for intelligent recognition of pornographic content",
       "members": [
         {
           "default": "",
-          "document": "Score of detected porn information in video between 0 and 100.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Confidence score for the detected pornographic content. Value range: 0-100",
           "example": "无",
           "member": "float",
           "name": "Confidence",
@@ -3720,7 +3741,7 @@
         },
         {
           "default": "",
-          "document": "Suggestion for detected porn information. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Processing suggestion for the detected pornographic content. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
           "example": "无",
           "member": "string",
           "name": "Suggestion",
@@ -3730,7 +3751,7 @@
         },
         {
           "default": "",
-          "document": "Tag of detected porn information in video. Valid values:\n<li>porn: porn.</li>\n<li>sexy: sexiness.</li>\n<li>vulgar: vulgarity.</li>\n<li>intimacy: intimacy.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Labels for the detected pornographic content. Valid values:\n<li>porn</li>\n<li>sexy</li>\n<li>vulgar</li>\n<li>intimacy</li>",
           "example": "无",
           "member": "string",
           "name": "Label",
@@ -3740,7 +3761,7 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain porn information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "document": "List of video segments that contain detected pornographic content\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
           "example": "无",
           "member": "MediaContentReviewSegmentItem",
           "name": "SegmentSet",
@@ -3750,7 +3771,7 @@
         },
         {
           "default": "",
-          "document": "URL to the file for video segments that contain porn information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "document": "URL to the file for video segments that contain detected pornographic content. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
           "example": "http://12xxx",
           "member": "string",
           "name": "SegmentSetFileUrl",
@@ -3760,7 +3781,7 @@
         },
         {
           "default": "",
-          "document": "Expiration time of the URL to the file of for video segments that contain porn information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "document": "Expiration time of the URL to the file for video segments that contain detected pornographic content, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
           "example": "2018-10-01T10:00:00Z",
           "member": "string",
           "name": "SegmentSetFileUrlExpireTime",
@@ -3772,11 +3793,12 @@
       "usage": "out"
     },
     "AiReviewProhibitedAsrTaskInput": {
-      "document": "Input parameter type of ASR-based prohibited information detection in speech task in content audit",
+      "document": "Input parameters for ASR-based recognition of banned content",
       "members": [
         {
           "default": "",
           "document": "Prohibited information detection template ID.",
+          "example": "无",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -3843,11 +3865,12 @@
       "usage": "out"
     },
     "AiReviewProhibitedOcrTaskInput": {
-      "document": "Input parameter type of OCR-based prohibited information detection in text task in content audit",
+      "document": "Input parameters for OCR-based recognition of banned content",
       "members": [
         {
           "default": "",
           "document": "Prohibited information detection template ID.",
+          "example": "无",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -3914,11 +3937,12 @@
       "usage": "out"
     },
     "AiReviewTaskPoliticalAsrResult": {
-      "document": "Result type of ASR-based politically sensitive information detection in speech task in content audit",
+      "document": "Result for ASR-based recognition of politically sensitive content",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -3928,6 +3952,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "无",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -3937,6 +3962,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "无",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3946,6 +3972,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -3954,7 +3981,8 @@
         },
         {
           "default": "",
-          "document": "Input of ASR-based politically sensitive information detection in speech task in content audit.",
+          "document": "Input for ASR-based recognition of politically sensitive content",
+          "example": "无",
           "member": "AiReviewPoliticalAsrTaskInput",
           "name": "Input",
           "required": true,
@@ -3963,7 +3991,8 @@
         },
         {
           "default": "",
-          "document": "Output of ASR-based politically sensitive information detection in speech task in content audit.",
+          "document": "Output for ASR-based recognition of politically sensitive content",
+          "example": "无",
           "member": "AiReviewPoliticalAsrTaskOutput",
           "name": "Output",
           "required": true,
@@ -3974,11 +4003,12 @@
       "usage": "out"
     },
     "AiReviewTaskPoliticalOcrResult": {
-      "document": "Result type of OCR-based politically sensitive information detection in text task in content audit",
+      "document": "Result for OCR-based recognition of politically sensitive content",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -3988,6 +4018,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "无",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -3997,6 +4028,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "无",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -4006,6 +4038,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -4014,7 +4047,8 @@
         },
         {
           "default": "",
-          "document": "Input of OCR-based politically sensitive information detection in text task in content audit.",
+          "document": "Input for OCR-based recognition of politically sensitive content",
+          "example": "无",
           "member": "AiReviewPoliticalOcrTaskInput",
           "name": "Input",
           "required": true,
@@ -4023,7 +4057,8 @@
         },
         {
           "default": "",
-          "document": "Output of OCR-based politically sensitive information detection in text task in content audit.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Output for OCR-based recognition of politically sensitive content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "AiReviewPoliticalOcrTaskOutput",
           "name": "Output",
           "required": true,
@@ -4034,11 +4069,12 @@
       "usage": "out"
     },
     "AiReviewTaskPoliticalResult": {
-      "document": "Result type of politically sensitive information detection task in content audit",
+      "document": "Result for intelligent recognition of politically sensitive content",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4048,6 +4084,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "无",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -4057,6 +4094,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "无",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -4066,6 +4104,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -4074,7 +4113,8 @@
         },
         {
           "default": "",
-          "document": "Input of politically sensitive information detection task in content audit.",
+          "document": "Input for intelligent recognition of politically sensitive content",
+          "example": "无",
           "member": "AiReviewPoliticalTaskInput",
           "name": "Input",
           "required": true,
@@ -4083,7 +4123,8 @@
         },
         {
           "default": "",
-          "document": "Output of politically sensitive information detection task in content audit.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Output for intelligent recognition of politically sensitive content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "AiReviewPoliticalTaskOutput",
           "name": "Output",
           "required": true,
@@ -4094,11 +4135,12 @@
       "usage": "out"
     },
     "AiReviewTaskPornAsrResult": {
-      "document": "Result type of ASR-based porn information detection in speech task in content audit",
+      "document": "Result for ASR-based recognition of pornographic content",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4108,6 +4150,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "无",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -4117,6 +4160,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "无",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -4126,6 +4170,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -4134,7 +4179,8 @@
         },
         {
           "default": "",
-          "document": "Input of ASR-based porn information detection in speech task in content audit.",
+          "document": "Input for ASR-based recognition of pornographic content",
+          "example": "无",
           "member": "AiReviewPornAsrTaskInput",
           "name": "Input",
           "required": true,
@@ -4143,7 +4189,8 @@
         },
         {
           "default": "",
-          "document": "Output of ASR-based porn information detection in speech task in content audit.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Output for ASR-based recognition of pornographic content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "AiReviewPornAsrTaskOutput",
           "name": "Output",
           "required": true,
@@ -4154,11 +4201,12 @@
       "usage": "out"
     },
     "AiReviewTaskPornOcrResult": {
-      "document": "Result type of OCR-based porn information detection in text task in content audit",
+      "document": "Result for OCR-based recognition of pornographic content",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4168,6 +4216,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "无",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -4177,6 +4226,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "无",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -4186,6 +4236,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -4194,7 +4245,8 @@
         },
         {
           "default": "",
-          "document": "Input of OCR-based porn information detection in text task in content audit.",
+          "document": "Input for OCR-based recognition of pornographic content",
+          "example": "无",
           "member": "AiReviewPornOcrTaskInput",
           "name": "Input",
           "required": true,
@@ -4203,7 +4255,8 @@
         },
         {
           "default": "",
-          "document": "Output of OCR-based porn information detection in text task in content audit.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Output for OCR-based recognition of pornographic content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "AiReviewPornOcrTaskOutput",
           "name": "Output",
           "required": true,
@@ -4214,11 +4267,12 @@
       "usage": "out"
     },
     "AiReviewTaskPornResult": {
-      "document": "Result type of porn information detection task in content audit",
+      "document": "Result for intelligent recognition of pornographic content",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4228,6 +4282,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "无",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -4237,6 +4292,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "无",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -4246,6 +4302,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -4254,7 +4311,8 @@
         },
         {
           "default": "",
-          "document": "Input of porn information detection task in content audit.",
+          "document": "Input for intelligent recognition of pornographic content",
+          "example": "无",
           "member": "AiReviewPornTaskInput",
           "name": "Input",
           "required": true,
@@ -4263,7 +4321,8 @@
         },
         {
           "default": "",
-          "document": "Output of porn information detection task in content audit.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Output for intelligent recognition of pornographic content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "AiReviewPornTaskOutput",
           "name": "Output",
           "required": true,
@@ -4274,11 +4333,12 @@
       "usage": "out"
     },
     "AiReviewTaskProhibitedAsrResult": {
-      "document": "Result type of ASR-based prohibited information detection in speech task in content audit",
+      "document": "Result for ASR-based recognition of banned content",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4288,6 +4348,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "无",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -4297,6 +4358,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "无",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -4306,6 +4368,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "无",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -4314,7 +4377,8 @@
         },
         {
           "default": "",
-          "document": "Input of ASR-based prohibited information detection in speech task in content audit",
+          "document": "Input for ASR-based recognition of banned content",
+          "example": "无",
           "member": "AiReviewProhibitedAsrTaskInput",
           "name": "Input",
           "required": true,
@@ -4323,7 +4387,8 @@
         },
         {
           "default": "",
-          "document": "Output of ASR-based prohibited information detection in speech task in content audit\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Output for ASR-based recognition of banned content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "AiReviewProhibitedAsrTaskOutput",
           "name": "Output",
           "required": true,
@@ -4334,11 +4399,12 @@
       "usage": "out"
     },
     "AiReviewTaskProhibitedOcrResult": {
-      "document": "Result type of OCR-based prohibited information detection in text task in content audit",
+      "document": "Result for OCR-based recognition of banned content",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4348,6 +4414,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "无",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -4357,6 +4424,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "无",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -4366,6 +4434,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "无",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -4374,7 +4443,8 @@
         },
         {
           "default": "",
-          "document": "Input of OCR-based prohibited information detection in text task in content audit",
+          "document": "Input for OCR-based recognition of banned content",
+          "example": "无",
           "member": "AiReviewProhibitedOcrTaskInput",
           "name": "Input",
           "required": true,
@@ -4383,7 +4453,8 @@
         },
         {
           "default": "",
-          "document": "Output of OCR-based prohibited information detection in text task in content audit\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Output for OCR-based recognition of banned content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "AiReviewProhibitedOcrTaskOutput",
           "name": "Output",
           "required": true,
@@ -4394,11 +4465,12 @@
       "usage": "out"
     },
     "AiReviewTaskTerrorismOcrResult": {
-      "document": "Result type of OCR-based terrorism information detection in text task in content audit",
+      "document": "Result for OCR-based recognition of terrorism content",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4408,6 +4480,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "无",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -4417,6 +4490,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "无",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -4426,6 +4500,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "无",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -4434,7 +4509,8 @@
         },
         {
           "default": "",
-          "document": "Input of OCR-based terrorism information detection in text task in content audit.",
+          "document": "Input for OCR-based recognition of terrorism content",
+          "example": "无",
           "member": "AiReviewTerrorismOcrTaskInput",
           "name": "Input",
           "required": true,
@@ -4443,7 +4519,8 @@
         },
         {
           "default": "",
-          "document": "Output of OCR-based terrorism information detection in text task in content audit.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Output for OCR-based recognition of terrorism content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "AiReviewTerrorismOcrTaskOutput",
           "name": "Output",
           "required": true,
@@ -4454,11 +4531,12 @@
       "usage": "out"
     },
     "AiReviewTaskTerrorismResult": {
-      "document": "Result type of terrorism information detection task in content audit",
+      "document": "Result for intelligent recognition of terrorism content",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4468,6 +4546,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "无",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -4477,6 +4556,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "无",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -4486,6 +4566,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -4494,7 +4575,8 @@
         },
         {
           "default": "",
-          "document": "Input of terrorism information detection task in content audit.",
+          "document": "Input for intelligent recognition of terrorism content",
+          "example": "无",
           "member": "AiReviewTerrorismTaskInput",
           "name": "Input",
           "required": true,
@@ -4503,7 +4585,8 @@
         },
         {
           "default": "",
-          "document": "Output of terrorism information detection task in content audit.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Output for intelligent recognition of terrorism content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "AiReviewTerrorismTaskOutput",
           "name": "Output",
           "required": true,
@@ -4514,11 +4597,12 @@
       "usage": "out"
     },
     "AiReviewTerrorismOcrTaskInput": {
-      "document": "Input parameter type of OCR-based terrorism information detection in text task in content audit",
+      "document": "Input parameters for OCR-based recognition of terrorism content",
       "members": [
         {
           "default": "",
-          "document": "Terrorism information detection template ID.",
+          "document": "ID of the template for recognition of terrorism content",
+          "example": "无",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -4529,11 +4613,11 @@
       "usage": "out"
     },
     "AiReviewTerrorismOcrTaskOutput": {
-      "document": "OCR-detected terrorism information in text",
+      "document": "Output for OCR-based recognition of terrorism content",
       "members": [
         {
           "default": "",
-          "document": "Score of OCR-detected terrorism information in text between 0 and 100.",
+          "document": "Confidence score for the OCR-detected terrorism content. Value range: 0-100",
           "example": "无",
           "member": "float",
           "name": "Confidence",
@@ -4543,7 +4627,7 @@
         },
         {
           "default": "",
-          "document": "Suggestion for OCR-detected terrorism information in text. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "document": "Processing suggestion for the OCR-detected terrorism content\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
           "example": "无",
           "member": "string",
           "name": "Suggestion",
@@ -4553,7 +4637,7 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain OCR-detected terrorism information\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "document": "List of video segments that contain OCR-detected terrorism content\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
           "example": "无",
           "member": "MediaContentReviewOcrTextSegmentItem",
           "name": "SegmentSet",
@@ -4563,7 +4647,7 @@
         },
         {
           "default": "",
-          "document": "URL to the file for video segments that contain OCR-detected terrorism information. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
+          "document": "URL to the file for video segments that contain OCR-detected terrorism content. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time specified by `SegmentSetFileUrlExpireTime`.",
           "example": "http://12xxx",
           "member": "string",
           "name": "SegmentSetFileUrl",
@@ -4573,7 +4657,7 @@
         },
         {
           "default": "",
-          "document": "Expiration time of the URL to the file for video segments that contain OCR-detected terrorism information, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
+          "document": "Expiration time of the URL to the file for video segments that contain OCR-detected terrorism content, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format)",
           "example": "2018-10-01T10:00:00Z",
           "member": "string",
           "name": "SegmentSetFileUrlExpireTime",
@@ -4585,11 +4669,12 @@
       "usage": "out"
     },
     "AiReviewTerrorismTaskInput": {
-      "document": "Input parameter type of terrorism information detection task in content audit",
+      "document": "Input parameters for intelligent recognition of terrorism content",
       "members": [
         {
           "default": "",
-          "document": "Terrorism information detection template ID.",
+          "document": "ID of the template for recognition of terrorism content",
+          "example": "无",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -6295,11 +6380,12 @@
       "type": "object"
     },
     "ContentReviewTemplateItem": {
-      "document": "Content audit template details",
+      "document": "Intelligent recognition template details",
       "members": [
         {
           "default": "",
-          "document": "Unique ID of content audit template.",
+          "document": "Unique ID of an intelligent recognition template",
+          "example": "无",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -6308,7 +6394,8 @@
         },
         {
           "default": "",
-          "document": "Content audit template name. Length limit: 64 characters.",
+          "document": "Name of an intelligent recognition template. Max 64 characters",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -6317,7 +6404,8 @@
         },
         {
           "default": "",
-          "document": "Content audit template description. Length limit: 256 characters.",
+          "document": "Description of an intelligent recognition template. Max 256 characters",
+          "example": "无",
           "member": "string",
           "name": "Comment",
           "required": true,
@@ -6326,7 +6414,8 @@
         },
         {
           "default": "",
-          "document": "Porn information detection control parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameters for recognition of pornographic content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "PornConfigureInfo",
           "name": "PornConfigure",
           "required": true,
@@ -6335,7 +6424,8 @@
         },
         {
           "default": "",
-          "document": "Terrorism information detection control parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameters for recognition of terrorism content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "TerrorismConfigureInfo",
           "name": "TerrorismConfigure",
           "required": true,
@@ -6344,7 +6434,8 @@
         },
         {
           "default": "",
-          "document": "Politically sensitive information detection control parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameters for recognition of politically sensitive content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "PoliticalConfigureInfo",
           "name": "PoliticalConfigure",
           "required": true,
@@ -6354,6 +6445,7 @@
         {
           "default": "",
           "document": "Control parameter of prohibited information detection. Prohibited information includes:\n<li>Abusive;</li>\n<li>Drug-related.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ProhibitedConfigureInfo",
           "name": "ProhibitedConfigure",
           "required": true,
@@ -6362,7 +6454,8 @@
         },
         {
           "default": "",
-          "document": "Custom content audit control parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Custom recognition parameters\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "UserDefineConfigureInfo",
           "name": "UserDefineConfigure",
           "required": true,
@@ -6371,7 +6464,8 @@
         },
         {
           "default": "",
-          "document": "Switch controlling whether to add audit result to review list (for human review).\n<li>ON: yes;</li>\n<li>OFF: no.</li>",
+          "document": "Whether to subject the recognition result to human review\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "ReviewWallSwitch",
           "required": true,
@@ -6381,6 +6475,7 @@
         {
           "default": "",
           "document": "Frame capturing interval in seconds. If this parameter is left empty, 1 second will be used by default. Minimum value: 0.5 seconds.",
+          "example": "无",
           "member": "float",
           "name": "ScreenshotInterval",
           "required": true,
@@ -6390,6 +6485,7 @@
         {
           "default": "",
           "document": "Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -6399,6 +6495,7 @@
         {
           "default": "",
           "document": "Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -7322,6 +7419,7 @@
         {
           "default": "",
           "document": "Task flow name (up to 20 characters).",
+          "example": "我的一个任务流",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -7330,6 +7428,7 @@
         {
           "default": "",
           "document": "Template description. Length limit: 256 characters.",
+          "example": "无",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -7338,6 +7437,7 @@
         {
           "default": "",
           "document": "Parameter of video processing task.",
+          "example": "无",
           "member": "MediaProcessTaskInput",
           "name": "MediaProcessTask",
           "required": false,
@@ -7345,7 +7445,8 @@
         },
         {
           "default": "",
-          "document": "Parameter of AI-based content audit task.",
+          "document": "Intelligent recognition task",
+          "example": "无",
           "member": "AiContentReviewTaskInput",
           "name": "AiContentReviewTask",
           "required": false,
@@ -7354,6 +7455,7 @@
         {
           "default": "",
           "document": "Parameter of AI-based content analysis task.",
+          "example": "无",
           "member": "AiAnalysisTaskInput",
           "name": "AiAnalysisTask",
           "required": false,
@@ -7362,6 +7464,7 @@
         {
           "default": "",
           "document": "Type parameter of AI-based content recognition task.",
+          "example": "无",
           "member": "AiRecognitionTaskInput",
           "name": "AiRecognitionTask",
           "required": false,
@@ -7370,6 +7473,7 @@
         {
           "default": "",
           "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "example": "无",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -9451,6 +9555,7 @@
         {
           "default": "",
           "document": "Start date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "2020-09-07T00:00:00+08:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -9459,6 +9564,7 @@
         {
           "default": "",
           "document": "End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be on or after the start date.",
+          "example": "2020-09-09T23:59:59+08:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -9466,7 +9572,8 @@
         },
         {
           "default": "",
-          "document": "This API is used to query video processing task types. Valid values:\n<li>Transcoding: basic transcoding</li>\n<li>Transcoding-TESHD: TESHD transcoding</li>\n<li>Editing: video editing</li>\n<li>AdaptiveBitrateStreaming: adaptive bitrate streaming</li>\n<li>ContentAudit: content moderation</li>\n<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing. This value is not recommended.</li>",
+          "document": "Type of media processing task. Valid values:\n<li>`Transcoding`: basic transcoding</li>\n<li>`Transcoding-TESHD`: TESHD transcoding</li>\n<li>`Editing`: video editing</li>\n<li>`AdaptiveBitrateStreaming`: adaptive bitrate streaming</li>\n<li>`ContentAudit`: content moderation</li>\n<li>`RemoveWatermark`: watermark removal</li>\n<li>`Transcode`: transcoding, including basic transcoding, TESHD transcoding, and video editing. This value is not recommended.</li>",
+          "example": "Transcoding-TESHD",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -9475,6 +9582,7 @@
         {
           "default": "",
           "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "example": "无",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -11565,7 +11673,7 @@
         },
         {
           "default": "",
-          "document": "Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results of the default figures will be returned. Valid values:\n<li>entertainment: entertainment celebrity;</li>\n<li>sport: sports celebrity;</li>\n<li>politician: politically sensitive figure.</li>",
+          "document": "Default face filter labels, which specify the types of faces to return. If this parameter is left empty, the recognition results for all labels are returned. Valid values:\n<li>`entertainment`: people in the entertainment industry</li>\n<li>`sport`: sports celebrities</li>\n<li>`politician`: politically sensitive people</li>",
           "example": "无",
           "member": "string",
           "name": "DefaultLibraryLabelSet",
@@ -11621,7 +11729,7 @@
         },
         {
           "default": "",
-          "document": "Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or a blank value is entered, all results of the default figures will be returned. Valid values:\n<li>entertainment: entertainment celebrity;</li>\n<li>sport: sports celebrity;</li>\n<li>politician: politically sensitive figure.</li>",
+          "document": "Default face filter labels, which specify the types of faces to return. If this parameter is left empty or an empty value is entered, the recognition results for all labels are returned. Valid values:\n<li>`entertainment`: people in the entertainment industry</li>\n<li>`sport`: sports celebrities</li>\n<li>`politician`: politically sensitive people</li>",
           "example": "无",
           "member": "string",
           "name": "DefaultLibraryLabelSet",
@@ -12979,11 +13087,12 @@
       "usage": "out"
     },
     "MediaContentReviewAsrTextSegmentItem": {
-      "document": "Suspected segment identified during ASR-based speech audit in content audit",
+      "document": "Video segment containing ASR-detected suspicious content",
       "members": [
         {
           "default": "",
           "document": "Start time offset of suspected segment in seconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "float",
           "name": "StartTimeOffset",
           "required": true,
@@ -12993,6 +13102,7 @@
         {
           "default": "",
           "document": "End time offset of suspected segment in seconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "float",
           "name": "EndTimeOffset",
           "required": true,
@@ -13002,6 +13112,7 @@
         {
           "default": "",
           "document": "Confidence of suspected segment.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -13010,7 +13121,8 @@
         },
         {
           "default": "",
-          "document": "Suggestion for suspected segment audit. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Processing suggestion for the detected suspicious content. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
+          "example": "无",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -13020,6 +13132,7 @@
         {
           "default": "",
           "document": "List of suspected keywords.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "KeywordSet",
           "required": true,
@@ -13030,11 +13143,12 @@
       "usage": "out"
     },
     "MediaContentReviewOcrTextSegmentItem": {
-      "document": "Suspected segment identified during OCR-based text audit in content audit",
+      "document": "Video segment containing OCR-detected suspicious content",
       "members": [
         {
           "default": "",
           "document": "Start time offset of suspected segment in seconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "float",
           "name": "StartTimeOffset",
           "required": true,
@@ -13044,6 +13158,7 @@
         {
           "default": "",
           "document": "End time offset of suspected segment in seconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "float",
           "name": "EndTimeOffset",
           "required": true,
@@ -13053,6 +13168,7 @@
         {
           "default": "",
           "document": "Confidence of suspected segment.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -13061,7 +13177,8 @@
         },
         {
           "default": "",
-          "document": "Suggestion for suspected segment audit. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Processing suggestion for the detected suspicious content. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
+          "example": "无",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -13071,6 +13188,7 @@
         {
           "default": "",
           "document": "List of suspected keywords.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "KeywordSet",
           "required": true,
@@ -13080,6 +13198,7 @@
         {
           "default": "",
           "document": "Zone coordinates (at the pixel level) of suspected text: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "AreaCoordSet",
           "required": true,
@@ -13089,6 +13208,7 @@
         {
           "default": "",
           "document": "URL of a suspected image (which will not be permanently stored\nand will be deleted after `PicUrlExpireTime`).",
+          "example": "无",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -13098,6 +13218,7 @@
         {
           "default": "",
           "document": "Expiration time of suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
           "member": "string",
           "name": "PicUrlExpireTime",
           "required": true,
@@ -13108,11 +13229,12 @@
       "usage": "out"
     },
     "MediaContentReviewPoliticalSegmentItem": {
-      "document": "Suspected politically sensitive segment identified in content audit",
+      "document": "Video segment containing detected politically sensitive content",
       "members": [
         {
           "default": "",
           "document": "Start time offset of a suspected segment in seconds.",
+          "example": "无",
           "member": "float",
           "name": "StartTimeOffset",
           "required": true,
@@ -13122,6 +13244,7 @@
         {
           "default": "",
           "document": "End time offset of a suspected segment in seconds.",
+          "example": "无",
           "member": "float",
           "name": "EndTimeOffset",
           "required": true,
@@ -13130,7 +13253,8 @@
         },
         {
           "default": "",
-          "document": "Score of a suspected politically sensitive segment.",
+          "document": "Confidence score for the detected politically sensitive content",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -13139,7 +13263,8 @@
         },
         {
           "default": "",
-          "document": "Suggestion for politically sensitive information detection of a suspected segment. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "document": "Processing suggestion for the detected politically sensitive content. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
+          "example": "无",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -13148,7 +13273,8 @@
         },
         {
           "default": "",
-          "document": "Name of a politically sensitive figure or violating photo.",
+          "document": "Name of the politically sensitive content or banned images",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -13157,7 +13283,8 @@
         },
         {
           "default": "",
-          "document": "Tags for the results of politically sensitive information detection of suspected video segments. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and this parameter is as follows:\nviolation_photo:\n<li>violation_photo: violating photo.</li>\npolitician:\n<li>nation_politician: head of state/government;</li>\n<li>province_politician: province/state leader;</li>\n<li>bureau_politician: ministry leader;</li>\n<li>county_politician: county/city leader;</li>\n<li>rural_politician: town leader;</li>\n<li>sensitive_politician: politically sensitive figure;</li>\n<li>foreign_politician: head of a foreign country/government.</li>\nentertainment:\n<li>sensitive_entertainment: sensitive entertainment celebrity.</li>\nsport:\n<li>sensitive_sport: sensitive sports figure.</li>\nentrepreneur:\n<li>sensitive_entrepreneur: sensitive business figure.</li>\nscholar:\n<li>sensitive_scholar: sensitive educator.</li>\ncelebrity:\n<li>sensitive_celebrity: sensitive well-known figure;</li>\n<li>historical_celebrity: well-known historical figures.</li>\nmilitary:\n<li>sensitive_military: militarily sensitive figure.</li>",
+          "document": "Labels for the detected politically sensitive content. The relationship between the values of this parameter and those of the `LabelSet` parameter in [PoliticalImgReviewTemplateInfo](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) is as follows:\nviolation_photo:\n<li>`violation_photo`: banned images</li>\npolitician:\n<li>`nation_politician`: state leader of China</li>\n<li>`province_politician`: provincial officials</li>\n<li>`bureau_politician`: bureau-level officials</li>\n<li>`county_politician`: county-level officials</li>\n<li>`rural_politician`: township-level officials</li>\n<li>`sensitive_politician`: politically sensitive people</li>\n<li>`foreign_politician`: state leaders of other countries</li>\nentertainment:\n<li>`sensitive_entertainment`: banned people in the entertainment industry</li>\nsport:\n<li>`sensitive_sport`: banned sports celebrities</li>\nentrepreneur:\n<li>`sensitive_entrepreneur`: banned businesspeople</li>\nscholar:\n<li>sensitive_scholar: banned scholars</li>\ncelebrity:\n<li>sensitive_celebrity: banned celebrities</li>\n<li>historical_celebrity: banned historical figures</li>\nmilitary:\n<li>sensitive_military: banned people in military</li>",
+          "example": "无",
           "member": "string",
           "name": "Label",
           "required": true,
@@ -13167,6 +13294,7 @@
         {
           "default": "",
           "document": "URL of a suspected image (which will not be permanently stored\n and will be deleted after `PicUrlExpireTime`).",
+          "example": "无",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -13175,7 +13303,8 @@
         },
         {
           "default": "",
-          "document": "Zone coordinates (at the pixel level) of a politically sensitive figure or violating photo: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.",
+          "document": "Coordinates (pixel) of the detected politically sensitive content or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.",
+          "example": "无",
           "member": "int64",
           "name": "AreaCoordSet",
           "required": true,
@@ -13185,6 +13314,7 @@
         {
           "default": "",
           "document": "This field has been disused. Please use `PicUrlExpireTime`.",
+          "example": "无",
           "member": "int64",
           "name": "PicUrlExpireTimeStamp",
           "required": true,
@@ -13194,6 +13324,7 @@
         {
           "default": "",
           "document": "Expiration time of suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
           "member": "string",
           "name": "PicUrlExpireTime",
           "required": true,
@@ -13204,11 +13335,12 @@
       "usage": "out"
     },
     "MediaContentReviewSegmentItem": {
-      "document": "Suspected porn/terrorism segment identified in content audit",
+      "document": "Video segment containing detected pornographic or terrorism content",
       "members": [
         {
           "default": "",
           "document": "Start time offset of a suspected segment in seconds.",
+          "example": "无",
           "member": "float",
           "name": "StartTimeOffset",
           "required": true,
@@ -13218,6 +13350,7 @@
         {
           "default": "",
           "document": "End time offset of a suspected segment in seconds.",
+          "example": "无",
           "member": "float",
           "name": "EndTimeOffset",
           "required": true,
@@ -13226,7 +13359,8 @@
         },
         {
           "default": "",
-          "document": "Score of a suspected porn segment.",
+          "document": "Confidence score for the detected pornographic content",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -13235,7 +13369,8 @@
         },
         {
           "default": "",
-          "document": "Tag of porn information detection result of a suspected segment.",
+          "document": "Label for the detected pornographic content",
+          "example": "无",
           "member": "string",
           "name": "Label",
           "required": true,
@@ -13244,7 +13379,8 @@
         },
         {
           "default": "",
-          "document": "Suggestion for porn information detection of a suspected segment. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "document": "Processing suggestion for the detected pornographic content. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
+          "example": "无",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -13254,6 +13390,7 @@
         {
           "default": "",
           "document": "URL of a suspected image (which will not be permanently stored\n and will be deleted after `PicUrlExpireTime`).",
+          "example": "无",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -13263,6 +13400,7 @@
         {
           "default": "",
           "document": "This field has been disused. Please use `PicUrlExpireTime`.",
+          "example": "无",
           "member": "int64",
           "name": "PicUrlExpireTimeStamp",
           "required": true,
@@ -13272,6 +13410,7 @@
         {
           "default": "",
           "document": "Expiration time of suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
           "member": "string",
           "name": "PicUrlExpireTime",
           "required": true,
@@ -13686,11 +13825,12 @@
       "usage": "out"
     },
     "MediaMiniProgramReviewElem": {
-      "document": "Summary metadata of WeChat Mini Program audit.",
+      "document": " ",
       "members": [
         {
           "default": "",
           "document": "Audit type. \n<li>Porn: porn image,</li>\n<li>Porn.Ocr: porn text,</li>\n<li>Porn.Asr: porn speech,</li>\n<li>Terrorism: terrorism image,</li>\n<li>Political: politically sensitive image,</li>\n<li>Political.Ocr: politically sensitive text</li>\n<li>Political.Asr: politically sensitive speech</li>",
+          "example": "无",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -13700,6 +13840,7 @@
         {
           "default": "",
           "document": "Audit suggestion.\n<li>pass: normal,</li>\n<li>block: violating,</li>\n<li>review: suspected of violation.</li>",
+          "example": "无",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -13709,6 +13850,7 @@
         {
           "default": "",
           "document": "Confidence of audit result between 0 and 100.",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -13719,11 +13861,12 @@
       "usage": "out"
     },
     "MediaMiniProgramReviewInfo": {
-      "document": "WeChat Mini Program audit information",
+      "document": " ",
       "members": [
         {
           "default": "",
           "document": "Audit information list.",
+          "example": "无",
           "member": "MediaMiniProgramReviewInfoItem",
           "name": "MiniProgramReviewList",
           "required": true,
@@ -13734,11 +13877,12 @@
       "usage": "out"
     },
     "MediaMiniProgramReviewInfoItem": {
-      "document": "WeChat Mini Program audit information unit",
+      "document": " ",
       "members": [
         {
           "default": "",
           "document": "Template ID, which is the ID of the transcoding template corresponding to the video published on WeChat Mini Program. 0 represents the source video.",
+          "example": "无",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -13748,6 +13892,7 @@
         {
           "default": "",
           "document": "Video metadata.",
+          "example": "无",
           "member": "MediaMetaData",
           "name": "MetaData",
           "required": false,
@@ -13757,6 +13902,7 @@
         {
           "default": "",
           "document": "Video playback address for WeChat Mini Program audit\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -13766,6 +13912,7 @@
         {
           "default": "",
           "document": "Status of video release on WeChat Mini Program\n<li>Pass: succeeded.</li>\n<li>Rejected: rejected.</li>",
+          "example": "无",
           "member": "string",
           "name": "ReviewResult",
           "required": true,
@@ -13775,6 +13922,7 @@
         {
           "default": "",
           "document": "WeChat Mini Program audit element.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaMiniProgramReviewElem",
           "name": "ReviewSummary",
           "required": true,
@@ -17076,11 +17224,12 @@
       "usage": "out"
     },
     "PoliticalAsrReviewTemplateInfo": {
-      "document": "Control parameter of politically sensitive information detection in speech task",
+      "document": "Parameters for ASR-based recognition of politically sensitive content",
       "members": [
         {
           "default": "",
-          "document": "Switch of politically sensitive information detection in speech task. Valid values:\n<li>ON: enables politically sensitive information detection in speech task;</li>\n<li>OFF: disables politically sensitive information detection in speech task.</li>",
+          "document": "Whether to enable ASR-based recognition of politically sensitive content. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -17088,19 +17237,21 @@
           "value_allowed_null": false
         },
         {
-          "default": "100",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
-          "name": "BlockConfidence",
+          "name": "ReviewConfidence",
           "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "75",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
-          "name": "ReviewConfidence",
+          "name": "BlockConfidence",
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -17109,11 +17260,12 @@
       "usage": "both"
     },
     "PoliticalAsrReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of politically sensitive information detection in speech task.",
+      "document": "Parameters for ASR-based recognition of politically sensitive content",
       "members": [
         {
           "default": "",
-          "document": "Switch of politically sensitive information detection in speech task. Valid values:\n<li>ON: enables politically sensitive information detection in speech task;</li>\n<li>OFF: disables politically sensitive information detection in speech task.</li>",
+          "document": "Whether to enable ASR-based recognition of politically sensitive content. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -17122,7 +17274,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -17131,7 +17284,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -17142,11 +17296,12 @@
       "usage": "in"
     },
     "PoliticalConfigureInfo": {
-      "document": "Control parameter of politically sensitive information detection task",
+      "document": "Parameters for recognition of politically sensitive content",
       "members": [
         {
           "default": "",
-          "document": "Control parameter of politically sensitive information detection in video image.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameters for recognition of politically sensitive content in images\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "PoliticalImgReviewTemplateInfo",
           "name": "ImgReviewInfo",
           "required": false,
@@ -17155,7 +17310,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of politically sensitive information detection in speech.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameters for ASR-based recognition of politically sensitive content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "PoliticalAsrReviewTemplateInfo",
           "name": "AsrReviewInfo",
           "required": false,
@@ -17164,7 +17320,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of politically sensitive information detection in text.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameters for OCR-based recognition of politically sensitive content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "PoliticalOcrReviewTemplateInfo",
           "name": "OcrReviewInfo",
           "required": false,
@@ -17175,11 +17332,12 @@
       "usage": "both"
     },
     "PoliticalConfigureInfoForUpdate": {
-      "document": "Control parameter of politically sensitive information detection task.",
+      "document": "Parameters for recognition of politically sensitive content",
       "members": [
         {
           "default": "",
-          "document": "Control parameter of politically sensitive information detection in video image.",
+          "document": "Parameters for recognition of politically sensitive content in images",
+          "example": "无",
           "member": "PoliticalImgReviewTemplateInfoForUpdate",
           "name": "ImgReviewInfo",
           "required": false,
@@ -17188,7 +17346,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of politically sensitive information detection in speech.",
+          "document": "Parameters for ASR-based recognition of politically sensitive content",
+          "example": "无",
           "member": "PoliticalAsrReviewTemplateInfoForUpdate",
           "name": "AsrReviewInfo",
           "required": false,
@@ -17197,7 +17356,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of politically sensitive information detection in text.",
+          "document": "Parameters for OCR-based recognition of politically sensitive content",
+          "example": "无",
           "member": "PoliticalOcrReviewTemplateInfoForUpdate",
           "name": "OcrReviewInfo",
           "required": false,
@@ -17208,11 +17368,12 @@
       "usage": "in"
     },
     "PoliticalImgReviewTemplateInfo": {
-      "document": "Control parameter of politically sensitive information detection in video image task",
+      "document": "Parameters for recognition of politically sensitive content in images",
       "members": [
         {
           "default": "",
-          "document": "Switch of politically sensitive information detection in video image task. Valid values:\n<li>ON: enables politically sensitive information detection in video image task;</li>\n<li>OFF: disables politically sensitive information detection in video image task.</li>",
+          "document": "Whether to enable recognition of politically sensitive content in images. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -17221,7 +17382,8 @@
         },
         {
           "default": "",
-          "document": "Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:\n<li>violation_photo: violating photo;</li>\n<li>politician: political figure;</li>\n<li>entertainment: entertainment celebrity;</li>\n<li>sport: sports figure;</li>\n<li>entrepreneur: business figure;</li>\n<li>scholar: educator;</li>\n<li>celebrity: well-known figure;</li>\n<li>military: military figure.</li>",
+          "document": "Filter labels for recognition of politically sensitive content in images. Results containing the specified labels are returned. If no labels are specified, all results are returned. Valid values:\n<li>`violation_photo`: banned images</li>\n<li>`politician`: politically sensitive people</li>\n<li>`entertainment`: people in the entertainment industry</li>\n<li>`sport`: sportspeople</li>\n<li>`entrepreneur`: businesspeople</li>\n<li>`scholar`: scholars</li>\n<li>`celebrity`: celebrities</li>\n<li>`military`: people in military</li>",
+          "example": "无",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -17230,7 +17392,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `97` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -17239,7 +17402,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `95` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -17250,11 +17414,12 @@
       "usage": "both"
     },
     "PoliticalImgReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of politically sensitive information detection in video image task.",
+      "document": "Parameters for recognition of politically sensitive content in images",
       "members": [
         {
           "default": "",
-          "document": "Switch of politically sensitive information detection in video image task. Valid values:\n<li>ON: enables politically sensitive information detection in video image task;</li>\n<li>OFF: disables politically sensitive information detection in video image task.</li>",
+          "document": "Whether to enable recognition of politically sensitive content in images. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -17263,7 +17428,8 @@
         },
         {
           "default": "",
-          "document": "Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:\n<li>violation_photo: violating photo;</li>\n<li>politician: political figure;</li>\n<li>entertainment: entertainment celebrity;</li>\n<li>sport: sports figure;</li>\n<li>entrepreneur: business figure;</li>\n<li>scholar: educator;</li>\n<li>celebrity: well-known figure;</li>\n<li>military: military figure.</li>",
+          "document": "Filter labels for recognition of politically sensitive content in images. Results containing the specified labels are returned. If no labels are specified, all results are returned. Valid values:\n<li>`violation_photo`: banned images</li>\n<li>`politician`: politically sensitive people</li>\n<li>`entertainment`: people in the entertainment industry</li>\n<li>`sport`: sportspeople</li>\n<li>`entrepreneur`: businesspeople</li>\n<li>`scholar`: scholars</li>\n<li>`celebrity`: celebrities</li>\n<li>`military`: people in military</li>",
+          "example": "无",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -17272,7 +17438,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -17281,7 +17448,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -17292,11 +17460,12 @@
       "usage": "in"
     },
     "PoliticalOcrReviewTemplateInfo": {
-      "document": "Control parameter of politically sensitive information detection in text task",
+      "document": "Parameters for OCR-based recognition of politically sensitive content",
       "members": [
         {
           "default": "",
-          "document": "Switch of politically sensitive information detection in text task. Valid values:\n<li>ON: enables politically sensitive information detection in text task;</li>\n<li>OFF: disables politically sensitive information detection in text task.</li>",
+          "document": "Whether to enable OCR-based recognition of politically sensitive content. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -17304,8 +17473,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "100",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -17313,8 +17483,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "75",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -17325,11 +17496,12 @@
       "usage": "both"
     },
     "PoliticalOcrReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of politically sensitive information detection in text task.",
+      "document": "Parameters for OCR-based recognition of politically sensitive content",
       "members": [
         {
           "default": "",
-          "document": "Switch of politically sensitive information detection in text task. Valid values:\n<li>ON: enables politically sensitive information detection in text task;</li>\n<li>OFF: disables politically sensitive information detection in text task.</li>",
+          "document": "Whether to enable OCR-based recognition of politically sensitive content. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -17338,7 +17510,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -17347,7 +17520,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -17358,11 +17532,12 @@
       "usage": "in"
     },
     "PornAsrReviewTemplateInfo": {
-      "document": "Control parameter of porn information detection in speech task",
+      "document": "Parameters for ASR-based recognition of pornographic content",
       "members": [
         {
           "default": "",
-          "document": "Switch of porn information detection in speech task. Valid values:\n<li>ON: enables porn information detection in speech task;</li>\n<li>OFF: disables porn information detection in speech task.</li>",
+          "document": "Whether to enable ASR-based recognition of pornographic content. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -17370,8 +17545,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "100",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -17379,8 +17555,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "75",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -17391,11 +17568,12 @@
       "usage": "both"
     },
     "PornAsrReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of porn detection in speech task.",
+      "document": "Parameters for ASR-based recognition of pornographic content",
       "members": [
         {
           "default": "",
-          "document": "Switch of porn detection in speech task. Valid values:\n<li>ON: enables porn detection in speech task;</li>\n<li>OFF: disables porn detection in speech task.</li>",
+          "document": "Whether to enable ASR-based recognition of pornographic content. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -17404,7 +17582,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -17413,7 +17592,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -17424,11 +17604,12 @@
       "usage": "in"
     },
     "PornConfigureInfo": {
-      "document": "Control parameter of porn information detection task",
+      "document": "Parameters for recognition of pornographic content",
       "members": [
         {
           "default": "",
-          "document": "Control parameter of porn information detection in video image.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameters for recognition of pornographic content in images\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "PornImgReviewTemplateInfo",
           "name": "ImgReviewInfo",
           "required": false,
@@ -17437,7 +17618,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of porn information detection in speech.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameters for ASR-based recognition of pornographic content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "PornAsrReviewTemplateInfo",
           "name": "AsrReviewInfo",
           "required": false,
@@ -17446,7 +17628,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of porn information detection in text.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameters for OCR-based recognition of pornographic content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "PornOcrReviewTemplateInfo",
           "name": "OcrReviewInfo",
           "required": false,
@@ -17457,11 +17640,12 @@
       "usage": "both"
     },
     "PornConfigureInfoForUpdate": {
-      "document": "Control parameter of porn detection task.",
+      "document": "Parameters for recognition of pornographic content",
       "members": [
         {
           "default": "",
-          "document": "Control parameter of porn detection in video image.",
+          "document": "Parameters for recognition of pornographic content in images",
+          "example": "无",
           "member": "PornImgReviewTemplateInfoForUpdate",
           "name": "ImgReviewInfo",
           "required": false,
@@ -17470,7 +17654,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of porn detection in speech.",
+          "document": "Parameters for ASR-based recognition of pornographic content",
+          "example": "无",
           "member": "PornAsrReviewTemplateInfoForUpdate",
           "name": "AsrReviewInfo",
           "required": false,
@@ -17479,7 +17664,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of porn detection in text.",
+          "document": "Parameters for OCR-based recognition of pornographic content",
+          "example": "无",
           "member": "PornOcrReviewTemplateInfoForUpdate",
           "name": "OcrReviewInfo",
           "required": false,
@@ -17490,11 +17676,12 @@
       "usage": "in"
     },
     "PornImgReviewTemplateInfo": {
-      "document": "Control parameter of porn information detection in video image task",
+      "document": "Parameters for recognition of pornographic content in images",
       "members": [
         {
           "default": "",
-          "document": "Switch of porn information detection in video image task. Valid values:\n<li>ON: enables porn information detection in video image task;</li>\n<li>OFF: disables porn information detection in video image task.</li>",
+          "document": "Whether to enable recognition of pornographic content in images. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -17503,7 +17690,8 @@
         },
         {
           "default": "",
-          "document": "Filter tag for porn information detection in video image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:\n<li>porn: porn;</li>\n<li>vulgar: vulgarity;</li>\n<li>intimacy: intimacy;</li>\n<li>sexy: sexiness.</li>",
+          "document": "Filter labels for recognition of pornographic content in images. Results containing the specified labels are returned. If no labels are specified, all results are returned. Valid values:\n<li>porn</li>\n<li>vulgar</li>\n<li>intimacy</li>\n<li>sexy</li>",
+          "example": "无",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -17511,8 +17699,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "90",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `90` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -17520,8 +17709,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "0",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 0 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `0` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -17532,11 +17722,12 @@
       "usage": "both"
     },
     "PornImgReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of porn detection in video image task.",
+      "document": "Parameters for recognition of pornographic content in images",
       "members": [
         {
           "default": "",
-          "document": "Switch of porn detection in video image task. Valid values:\n<li>ON: enables porn detection in video image task;</li>\n<li>OFF: disables porn detection in video image task.</li>",
+          "document": "Whether to enable recognition of pornographic content in images. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -17545,7 +17736,8 @@
         },
         {
           "default": "",
-          "document": "Filter tag for porn detection in video image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:\n<li>porn: porn;</li>\n<li>vulgar: vulgarity;</li>\n<li>intimacy: intimacy;</li>\n<li>sexy: sexiness.</li>",
+          "document": "Filter labels for recognition of pornographic content in images. Results containing the specified labels are returned. If no labels are specified, all results are returned. Valid values:\n<li>porn</li>\n<li>vulgar</li>\n<li>intimacy</li>\n<li>sexy</li>",
+          "example": "无",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -17554,7 +17746,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -17563,7 +17756,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -17574,11 +17768,12 @@
       "usage": "in"
     },
     "PornOcrReviewTemplateInfo": {
-      "document": "Control parameter of porn information detection in text task",
+      "document": "Parameters for OCR-based recognition of pornographic content",
       "members": [
         {
           "default": "",
-          "document": "Switch of porn information detection in text task. Valid values:\n<li>ON: enables porn information detection in text task;</li>\n<li>OFF: disables porn information detection in text task.</li>",
+          "document": "Whether to enable OCR-based recognition of pornographic content. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -17586,8 +17781,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "100",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -17595,8 +17791,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "75",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -17607,11 +17804,12 @@
       "usage": "both"
     },
     "PornOcrReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of porn detection in text task.",
+      "document": "Parameters for OCR-based recognition of pornographic content",
       "members": [
         {
           "default": "",
-          "document": "Switch of porn detection in text task. Valid values:\n<li>ON: enables porn detection in text task;</li>\n<li>OFF: disables porn detection in text task.</li>",
+          "document": "Whether to enable OCR-based recognition of pornographic content. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -17621,6 +17819,7 @@
         {
           "default": "",
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -17630,6 +17829,7 @@
         {
           "default": "",
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -17645,6 +17845,7 @@
         {
           "default": "",
           "document": "Video processing task ID.",
+          "example": "无",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -17654,6 +17855,7 @@
         {
           "default": "",
           "document": "Task flow status. Valid values:\n<li>PROCESSING: processing;</li>\n<li>FINISH: completed.</li>",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -17663,6 +17865,7 @@
         {
           "default": "",
           "document": "Disused. Please use `ErrCode` of each specific task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -17672,6 +17875,7 @@
         {
           "default": "",
           "document": "Disused. Please use `Message` of each specific task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -17681,6 +17885,7 @@
         {
           "default": "",
           "document": "Media file ID.\n<li>If the task flow is initiated by [ProcessMedia](https://cloud.tencent.com/document/product/266/33427), this field means the `FileId` in [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo);</li>\n<li>If the task flow is initiated by [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426), this field means the `Id` in [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo).</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "FileId",
           "required": true,
@@ -17690,6 +17895,7 @@
         {
           "default": "",
           "document": "Media filename\n<li>If the task flow is initiated by [ProcessMedia](https://cloud.tencent.com/document/product/266/33427), this field means the `BasicInfo.Name` in [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo);</li>\n<li>If the task flow is initiated by [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426), this field means the `Name` in [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo).</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "FileName",
           "required": true,
@@ -17699,6 +17905,7 @@
         {
           "default": "",
           "document": "Media file address\n<li>If the task flow is initiated by [ProcessMedia](https://cloud.tencent.com/document/product/266/33427), this field means the `BasicInfo.MediaUrl` in [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo);</li>\n<li>If the task flow is initiated by [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426), this field means the `Url` in [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo).</li>",
+          "example": "无",
           "member": "string",
           "name": "FileUrl",
           "required": true,
@@ -17708,6 +17915,7 @@
         {
           "default": "",
           "document": "Source video metadata.",
+          "example": "无",
           "member": "MediaMetaData",
           "name": "MetaData",
           "required": true,
@@ -17717,42 +17925,47 @@
         {
           "default": "",
           "document": "Execution status and result of video processing task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaProcessTaskResult",
           "name": "MediaProcessResultSet",
           "required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Execution status and result of video content audit task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Status and result of an intelligent recognition task",
+          "example": "无",
           "member": "AiContentReviewResult",
           "name": "AiContentReviewResultSet",
           "required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Execution status and result of video content analysis task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiAnalysisResult",
           "name": "AiAnalysisResultSet",
           "required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Execution status and result of video content recognition task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiRecognitionResult",
           "name": "AiRecognitionResultSet",
           "required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Task flow priority. Value range: [-10, 10].\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "TasksPriority",
           "required": true,
@@ -17762,6 +17975,7 @@
         {
           "default": "",
           "document": "Notification mode for change in task flow status.\n<li>Finish: an event notification will be initiated only after the task flow is completely executed;</li>\n<li>Change: an event notification will be initiated as soon as the status of a subtask in the task flow changes; </li>\n<li>None: no callback for the task flow will be accepted.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "TasksNotifyMode",
           "required": true,
@@ -17771,6 +17985,7 @@
         {
           "default": "",
           "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "SessionContext",
           "required": true,
@@ -17780,6 +17995,7 @@
         {
           "default": "",
           "document": "The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "SessionId",
           "required": true,
@@ -17795,6 +18011,7 @@
         {
           "default": "",
           "document": "Task flow name.",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -17804,6 +18021,7 @@
         {
           "default": "",
           "document": "Type of a task flow template. Valid values:\n<li>Preset: preset task flow template;</li>\n<li>Custom: custom task flow template.</li>",
+          "example": "无",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -17813,6 +18031,7 @@
         {
           "default": "",
           "document": "Template description. Length limit: 256 characters.",
+          "example": "无",
           "member": "string",
           "name": "Comment",
           "required": true,
@@ -17822,6 +18041,7 @@
         {
           "default": "",
           "document": "Parameter of video processing task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaProcessTaskInput",
           "name": "MediaProcessTask",
           "required": true,
@@ -17830,7 +18050,8 @@
         },
         {
           "default": "",
-          "document": "Parameter of AI-based content audit task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Intelligent recognition task\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "AiContentReviewTaskInput",
           "name": "AiContentReviewTask",
           "required": true,
@@ -17840,6 +18061,7 @@
         {
           "default": "",
           "document": "Parameter of AI-based content analysis task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiAnalysisTaskInput",
           "name": "AiAnalysisTask",
           "required": true,
@@ -17849,6 +18071,7 @@
         {
           "default": "",
           "document": "Type parameter of AI-based content recognition task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiRecognitionTaskInput",
           "name": "AiRecognitionTask",
           "required": true,
@@ -17858,6 +18081,7 @@
         {
           "default": "",
           "document": "Parameter of a release on WeChat Mini Program task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "WechatMiniProgramPublishTaskInput",
           "name": "MiniProgramPublishTask",
           "required": true,
@@ -17867,6 +18091,7 @@
         {
           "default": "",
           "document": "Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -17876,6 +18101,7 @@
         {
           "default": "",
           "document": "Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -18085,6 +18311,7 @@
         {
           "default": "",
           "document": "Media file ID, i.e., the globally unique ID of a file in VOD assigned by the VOD backend after successful upload. This field can be obtained through the [video upload completion event notification](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) or [VOD Console](https://console.cloud.tencent.com/vod/media).",
+          "example": "5285485487985271487",
           "member": "string",
           "name": "FileId",
           "required": true,
@@ -18093,6 +18320,7 @@
         {
           "default": "",
           "document": "Parameter of video processing task.",
+          "example": "无",
           "member": "MediaProcessTaskInput",
           "name": "MediaProcessTask",
           "required": false,
@@ -18100,7 +18328,8 @@
         },
         {
           "default": "",
-          "document": "Type parameter of video content audit task.",
+          "document": "Parameters for intelligent recognition",
+          "example": "无",
           "member": "AiContentReviewTaskInput",
           "name": "AiContentReviewTask",
           "required": false,
@@ -18109,6 +18338,7 @@
         {
           "default": "",
           "document": "Video content analysis task parameter.",
+          "example": "无",
           "member": "AiAnalysisTaskInput",
           "name": "AiAnalysisTask",
           "required": false,
@@ -18117,6 +18347,7 @@
         {
           "default": "",
           "document": "Type parameter of video content recognition task.",
+          "example": "无",
           "member": "AiRecognitionTaskInput",
           "name": "AiRecognitionTask",
           "required": false,
@@ -18125,6 +18356,7 @@
         {
           "default": "",
           "document": "Task flow priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.",
+          "example": "无",
           "member": "int64",
           "name": "TasksPriority",
           "required": false,
@@ -18133,6 +18365,7 @@
         {
           "default": "",
           "document": "Notification mode for task flow status change. Valid values: Finish, Change, None. If this parameter is left empty, `Finish` will be used.",
+          "example": "无",
           "member": "string",
           "name": "TasksNotifyMode",
           "required": false,
@@ -18141,6 +18374,7 @@
         {
           "default": "",
           "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
+          "example": "无",
           "member": "string",
           "name": "SessionContext",
           "required": false,
@@ -18149,6 +18383,7 @@
         {
           "default": "",
           "document": "Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.",
+          "example": "无",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -18157,6 +18392,7 @@
         {
           "default": "",
           "document": "Reserved field for special purposes.",
+          "example": "无",
           "member": "string",
           "name": "ExtInfo",
           "required": false,
@@ -18165,6 +18401,7 @@
         {
           "default": "",
           "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "example": "无",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -18198,6 +18435,7 @@
         {
           "default": "",
           "document": "Switch of prohibited information detection in speech task. Valid values:\n<li>ON: enables prohibited information detection in speech task;</li>\n<li>OFF: disables prohibited information detection in speech task.</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -18206,7 +18444,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -18215,7 +18454,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -18231,6 +18471,7 @@
         {
           "default": "",
           "document": "Switch of prohibited information detection in speech task. Valid values:\n<li>ON: enables prohibited information detection in speech task;</li>\n<li>OFF: disables prohibited information detection in speech task.</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -18239,7 +18480,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -18248,7 +18490,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -18312,6 +18555,7 @@
         {
           "default": "",
           "document": "Switch of prohibited information detection in text task. Valid values:\n<li>ON: enables prohibited information detection in text task;</li>\n<li>OFF: disables prohibited information detection in text task.</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -18320,7 +18564,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -18329,7 +18574,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -18345,6 +18591,7 @@
         {
           "default": "",
           "document": "Switch of prohibited information detection in text task. Valid values:\n<li>ON: enables prohibited information detection in text task;</li>\n<li>OFF: disables prohibited information detection in text task.</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -18353,7 +18600,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -18362,7 +18610,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -20398,7 +20647,8 @@
       "members": [
         {
           "default": "",
-          "document": "Task type.\n<li>Transcoding: basic transcoding</li>\n<li>Transcoding-TESHD: TESHD transcoding</li>\n<li>Editing: video editing</li>\n<li>AdaptiveBitrateStreaming: adaptive bitrate streaming</li>\n<li>ContentAudit: content moderation</li>\n<li>Transcode: transcoding types, including basic transcoding, TESHD transcoding and video editing. This value is not recommended.</li>",
+          "document": "Task type\n<li>`Transcoding`: basic transcoding</li>\n<li>`Transcoding-TESHD`: TESHD transcoding</li>\n<li>`Editing`: video editing</li>\n<li>`AdaptiveBitrateStreaming`: adaptive bitrate streaming</li>\n<li>`ContentAudit`: content moderation</li>\n<li>`RemoveWatermark`: watermark removal</li>\n<li>`Transcode`: transcoding, including basic transcoding, TESHD transcoding, and video editing. This value is not recommended.</li>",
+          "example": "无",
           "member": "string",
           "name": "TaskType",
           "required": true,
@@ -20408,6 +20658,7 @@
         {
           "default": "",
           "document": "Task statistics overview (usage unit: second).",
+          "example": "无",
           "member": "TaskStatDataItem",
           "name": "Summary",
           "required": true,
@@ -20416,7 +20667,8 @@
         },
         {
           "default": "",
-          "document": "Detailed statistics of tasks with different specifications.\nTranscoding specification:\n<li>Remuxing: remuxing</li>\n<li>Audio: audio transcoding</li>\n<li>Standard.H264.SD: H.264 SD transcoding</li>\n<li>Standard.H264.HD: H.264 HD transcoding</li>\n<li>Standard.H264.FHD: H.264 FHD transcoding</li>\n<li>Standard.H264.2K: H.264 2K transcoding</li>\n<li>Standard.H264.4K: H.264 4K transcoding</li>\n<li>Standard.H265.SD: H.265 SD transcoding</li>\n<li>Standard.H265.HD: H.265 HD transcoding</li>\n<li>Standard.H265.FHD: H.265 FHD transcoding</li>\n<li>Standard.H265.2K: H.265 2K transcoding</li>\n<li>Standard.H265.4K: H.265 4K transcoding</li>\n<li>TESHD-10.H264.SD: H.264 SD TESHD transcoding</li>\n<li>TESHD-10.H264.HD: H.264 HD TESHD transcoding</li>\n<li>TESHD-10.H264.FHD: H.264 FHD TESHD transcoding</li>\n<li>TESHD-10.H264.2K: H.264 2K TESHD transcoding</li>\n<li>TESHD-10.H264.4K: H.264 4K TESHD transcoding</li>\n<li>TESHD-10.H265.SD: H.265 SD TESHD transcoding</li>\n<li>TESHD-10.H265.HD: H.265 HD TESHD transcoding</li>\n<li>TESHD-10.H265.FHD: H.265 FHD TESHD transcoding</li>\n<li>TESHD-10.H265.2K: H.265 2K TESHD transcoding</li>\n<li>TESHD-10.H265.4K: H.265 4K TESHD transcoding</li>\n<li>Edit.Audio: audio editing</li>\n<li>Edit.H264.SD: H.264 SD video editing</li>\n<li>Edit.H264.HD: H.264 HD video editing</li>\n<li>Edit.H264.FHD: H.264 FHD video editing</li>\n<li>Edit.H264.2K: H.264 2K video editing</li>\n<li>Edit.H264.4K: H.264 4K video editing</li>\n<li>Edit.H265.SD: H.265 SD video editing</li>\n<li>Edit.H265.HD: H.265 HD video editing</li>\n<li>Edit.H265.FHD: H.265 FHD video editing</li>\n<li>Edit.H265.2K: H.265 2K video editing</li>\n<li>Edit.H265.4K: H.265 4K video editing</li>",
+          "document": "Detailed statistics of different tasks\nTranscoding statistics:\n<li>Remuxing</li>\n<li>Audio</li>\n<li>Standard.H264.SD</li>\n<li>Standard.H264.HD</li>\n<li>Standard.H264.FHD</li>\n<li>Standard.H264.2K</li>\n<li>Standard.H264.4K</li>\n<li>Standard.H265.SD</li>\n<li>Standard.H265.HD</li>\n<li>Standard.H265.FHD</li>\n<li>Standard.H265.2K</li>\n<li>Standard.H265.4K</li>\n<li>TESHD-10.H264.SD</li>\n<li>TESHD-10.H264.HD</li>\n<li>TESHD-10.H264.FHD</li>\n<li>TESHD-10.H264.2K</li>\n<li>TESHD-10.H264.4K</li>\n<li>TESHD-10.H265.SD</li>\n<li>TESHD-10.H265.HD</li>\n<li>TESHD-10.H265.FHD</li>\n<li>TESHD-10.H265.2K</li>\n<li>TESHD-10.H265.4K</li>\n<li>Edit.Audio</li>\n<li>Edit.H264.SD</li>\n<li>Edit.H264.HD</li>\n<li>Edit.H264.FHD</li>\n<li>Edit.H264.2K</li>\n<li>Edit.H264.4K</li>\n<li>Edit.H265.SD</li>\n<li>Edit.H265.HD</li>\n<li>Edit.H265.FHD</li>\n<li>Edit.H265.2K</li>\n<li>Edit.H265.4K</li>\nWatermark removal:\n<li>`480P`: 640 × 480 and below</li>\n<li>`720P`: 1280 × 720 and below</li>\n<li>`1080P`: 1920 × 1080 and below</li>\n<li>`2K`: 2560 × 1440 and below</li>\n<li>`4K`: 3840 × 2160 and below</li>\n<li>`8K`: 7680 × 4320 and below</li>",
+          "example": "无",
           "member": "SpecificationDataItem",
           "name": "Details",
           "required": true,
@@ -20502,11 +20754,12 @@
       "usage": "out"
     },
     "TerrorismConfigureInfo": {
-      "document": "Control parameter of terrorism information detection task",
+      "document": "Parameters for recognition of terrorism content",
       "members": [
         {
           "default": "",
-          "document": "Control parameter of terrorism information detection in video image task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameters for recognition of terrorism content in images\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "TerrorismImgReviewTemplateInfo",
           "name": "ImgReviewInfo",
           "required": false,
@@ -20515,7 +20768,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of terrorism information detection in text task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameters for OCR-based recognition of terrorism content\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "TerrorismOcrReviewTemplateInfo",
           "name": "OcrReviewInfo",
           "required": true,
@@ -20526,11 +20780,12 @@
       "usage": "out"
     },
     "TerrorismConfigureInfoForUpdate": {
-      "document": "Control parameter of terrorism information detection task.",
+      "document": "Parameters for recognition of terrorism content",
       "members": [
         {
           "default": "",
-          "document": "Control parameter of terrorism information detection in video image task.",
+          "document": "Parameters for recognition of terrorism content in images",
+          "example": "无",
           "member": "TerrorismImgReviewTemplateInfoForUpdate",
           "name": "ImgReviewInfo",
           "required": false,
@@ -20539,7 +20794,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of terrorism information detection in text task.",
+          "document": "Parameters for OCR-based recognition of terrorism content",
+          "example": "无",
           "member": "TerrorismOcrReviewTemplateInfoForUpdate",
           "name": "OcrReviewInfo",
           "required": false,
@@ -20550,11 +20806,11 @@
       "usage": "in"
     },
     "TerrorismImgReviewTemplateInfo": {
-      "document": "Control parameter of terrorism information detection in video image task",
+      "document": "Parameters for recognition of terrorism content in images",
       "members": [
         {
           "default": "",
-          "document": "Switch of terrorism information detection in video image task. Valid values:\n<li>ON: enables terrorism information detection in video image task;</li>\n<li>OFF: disables terrorism information detection in video image task.</li>",
+          "document": "Whether to enable recognition of terrorism content in images. Valid values:\n<li>ON</li>\n<li>OFF</li>",
           "example": "ON",
           "member": "string",
           "name": "Switch",
@@ -20564,7 +20820,7 @@
         },
         {
           "default": "",
-          "document": "Filter tags for terrorism information detection in images. If a moderation result contains a selected tag, it will be returned. If no filter tag is specified, all moderation results will be returned. Valid values:\n<li>`guns`: weapons and guns</li>\n<li>`crowd`: crowds</li>\n<li>`bloody`: bloody images</li>\n<li>`police`: police forces</li>\n<li>`banners`: terrorism flags</li>\n<li>`militant`: militants</li>\n<li>`explosion`: explosions and fires</li>\n<li>`terrorists`: terrorists</li>\n<li>`scenario`: terrorism images</li>",
+          "document": "Filter labels for recognition of terrorism content in images. Results containing the specified labels are returned. If no labels are specified, all results are returned. Valid values:\n<li>`guns`: weapons and guns</li>\n<li>`crowd`: crowd</li>\n<li>`bloody`: bloody scenes</li>\n<li>`police`: police force</li>\n<li>`banners`: terrorism flags</li>\n<li>`militant`: militants</li>\n<li>`explosion`: explosions and fires</li>\n<li>`terrorists`: terrorists</li>\n<li>`scenario`: terrorism images</li>",
           "example": "guns",
           "member": "string",
           "name": "LabelSet",
@@ -20574,7 +20830,7 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `90` will be used by default. Value range: 0-100",
           "example": "95",
           "member": "int64",
           "name": "BlockConfidence",
@@ -20584,7 +20840,7 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 80 will be used by default. Value range: 0-100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `80` will be used by default. Value range: 0-100",
           "example": "80",
           "member": "int64",
           "name": "ReviewConfidence",
@@ -20596,11 +20852,11 @@
       "usage": "both"
     },
     "TerrorismImgReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of terrorism information detection in video image task.",
+      "document": "Parameters for recognition of terrorism content in images",
       "members": [
         {
           "default": "",
-          "document": "Switch of terrorism information detection in video image task. Valid values:\n<li>ON: enables terrorism information detection in video image task;</li>\n<li>OFF: disables terrorism information detection in video image task.</li>",
+          "document": "Whether to enable recognition of terrorism content in images. Valid values:\n<li>ON</li>\n<li>OFF</li>",
           "example": "ON",
           "member": "string",
           "name": "Switch",
@@ -20610,7 +20866,7 @@
         },
         {
           "default": "",
-          "document": "Filter tags for terrorism information detection in images. If a moderation result contains a selected tag, it will be returned. If no filter tag is specified, all moderation results will be returned. Valid values:\n<li>`guns`: weapons and guns</li>\n<li>`crowd`: crowds</li>\n<li>`bloody`: bloody images</li>\n<li>`police`: police forces</li>\n<li>`banners`: terrorism flags</li>\n<li>`militant`: militants</li>\n<li>`explosion`: explosions and fires</li>\n<li>`terrorists`: terrorists</li>\n<li>`scenario`: terrorism images</li>",
+          "document": "Filter labels for recognition of terrorism content in images. Results containing the specified labels are returned. If no labels are specified, all results are returned. Valid values:\n<li>`guns`: weapons and guns</li>\n<li>`crowd`: crowd</li>\n<li>`bloody`: bloody scenes</li>\n<li>`police`: police force</li>\n<li>`banners`: terrorism flags</li>\n<li>`militant`: militants</li>\n<li>`explosion`: explosions and fires</li>\n<li>`terrorists`: terrorists</li>\n<li>`scenario`: terrorism images</li>",
           "example": "bloody",
           "member": "string",
           "name": "LabelSet",
@@ -20620,7 +20876,7 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100",
           "example": "95",
           "member": "int64",
           "name": "BlockConfidence",
@@ -20630,7 +20886,7 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100",
           "example": "80",
           "member": "int64",
           "name": "ReviewConfidence",
@@ -20642,11 +20898,12 @@
       "usage": "in"
     },
     "TerrorismOcrReviewTemplateInfo": {
-      "document": "Control parameter of terrorism information detection in text task",
+      "document": "Parameters for OCR-based recognition of terrorism content",
       "members": [
         {
           "default": "",
-          "document": "Switch of terrorism information detection in text task. Valid values:\n<li>ON: enables terrorism information detection in text task;</li>\n<li>OFF: disables terrorism information detection in text task.</li>",
+          "document": "Whether to enable OCR-based recognition of terrorism content. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -20655,7 +20912,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -20664,7 +20922,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -20675,11 +20934,12 @@
       "usage": "both"
     },
     "TerrorismOcrReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of terrorism information detection in text task",
+      "document": "Parameters for OCR-based recognition of terrorism content",
       "members": [
         {
           "default": "",
-          "document": "Switch of terrorism information detection in text task. Valid values:\n<li>ON: enables terrorism information detection in text task;</li>\n<li>OFF: disables terrorism information detection in text task.</li>",
+          "document": "Whether to enable OCR-based recognition of terrorism content. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -20688,7 +20948,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -20697,7 +20958,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -21177,11 +21439,12 @@
       "usage": "both"
     },
     "UserDefineAsrTextReviewTemplateInfo": {
-      "document": "Control parameter of custom speech audit task",
+      "document": "Parameters for custom ASR-based recognition",
       "members": [
         {
           "default": "",
-          "document": "Switch of custom speech audit task. Valid values:\n<li>ON: enables custom speech audit task;</li>\n<li>OFF: disables custom speech audit task.</li>",
+          "document": "Whether to enable custom ASR-based recognition. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -21190,7 +21453,8 @@
         },
         {
           "default": "",
-          "document": "Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
+          "document": "Filter labels for custom ASR-based recognition. Results containing the specified labels are returned. If no labels are specified, all results are returned. To filter by labels, specify the labels when adding keywords for custom ASR-based recognition.\nUp to 10 labels are allowed, each containing no more than 16 characters.",
+          "example": "无",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -21198,8 +21462,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "100",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -21207,8 +21472,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "75",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -21219,11 +21485,12 @@
       "usage": "both"
     },
     "UserDefineAsrTextReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of custom speech audit task",
+      "document": "Parameters for custom ASR-based recognition",
       "members": [
         {
           "default": "",
-          "document": "Switch of custom speech audit task. Valid values:\n<li>ON: enables custom speech audit task;</li>\n<li>OFF: disables custom speech audit task.</li>",
+          "document": "Whether to enable custom ASR-based recognition. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -21232,7 +21499,8 @@
         },
         {
           "default": "",
-          "document": "Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
+          "document": "Filter labels for custom ASR-based recognition. Results containing the specified labels are returned. If no labels are specified, all results are returned. To filter by labels, specify the labels when adding keywords for custom ASR-based recognition.\nUp to 10 labels are allowed, each containing no more than 16 characters.",
+          "example": "无",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -21241,7 +21509,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -21250,7 +21519,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -21261,11 +21531,12 @@
       "usage": "in"
     },
     "UserDefineConfigureInfo": {
-      "document": "Control parameter of custom audit task",
+      "document": "Parameters for custom recognition",
       "members": [
         {
           "default": "",
-          "document": "Control parameter of custom figure audit.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameters for custom facial recognition\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "UserDefineFaceReviewTemplateInfo",
           "name": "FaceReviewInfo",
           "required": false,
@@ -21274,7 +21545,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of custom speech audit.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameters for custom ASR-based recognition\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "UserDefineAsrTextReviewTemplateInfo",
           "name": "AsrReviewInfo",
           "required": false,
@@ -21283,7 +21555,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of custom text audit.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameters for custom OCR-based recognition\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
           "member": "UserDefineOcrTextReviewTemplateInfo",
           "name": "OcrReviewInfo",
           "required": false,
@@ -21294,11 +21567,12 @@
       "usage": "both"
     },
     "UserDefineConfigureInfoForUpdate": {
-      "document": "Control parameter of custom audit task.",
+      "document": "Parameters for custom recognition",
       "members": [
         {
           "default": "",
-          "document": "Control parameter of custom figure audit.",
+          "document": "Parameters for custom facial recognition",
+          "example": "无",
           "member": "UserDefineFaceReviewTemplateInfoForUpdate",
           "name": "FaceReviewInfo",
           "required": false,
@@ -21307,7 +21581,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of custom speech audit.",
+          "document": "Parameters for custom ASR-based recognition",
+          "example": "无",
           "member": "UserDefineAsrTextReviewTemplateInfoForUpdate",
           "name": "AsrReviewInfo",
           "required": false,
@@ -21316,7 +21591,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of custom text audit.",
+          "document": "Parameters for custom OCR-based recognition",
+          "example": "无",
           "member": "UserDefineOcrTextReviewTemplateInfoForUpdate",
           "name": "OcrReviewInfo",
           "required": false,
@@ -21327,11 +21603,12 @@
       "usage": "in"
     },
     "UserDefineFaceReviewTemplateInfo": {
-      "document": "Control parameter of custom figure audit task",
+      "document": "Parameters for custom facial recognition",
       "members": [
         {
           "default": "",
-          "document": "Switch of custom figure audit task. Valid values:\n<li>ON: enables custom figure audit task;</li>\n<li>OFF: disables custom figure audit task.</li>",
+          "document": "Whether to enable custom facial recognition. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -21340,7 +21617,8 @@
         },
         {
           "default": "",
-          "document": "Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
+          "document": "Filter labels for custom facial recognition. Results containing the specified labels are returned. If no labels are specified, all results are returned. To filter by labels, specify the labels when adding custom facial libraries.\nUp to 10 labels are allowed, each containing no more than 16 characters.",
+          "example": "无",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -21348,8 +21626,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "97",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `97` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -21357,8 +21636,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "95",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `95` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -21369,11 +21649,12 @@
       "usage": "both"
     },
     "UserDefineFaceReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of custom figure audit task.",
+      "document": "Parameters for custom facial recognition",
       "members": [
         {
           "default": "",
-          "document": "Switch of custom figure audit task. Valid values:\n<li>ON: enables custom figure audit task;</li>\n<li>OFF: disables custom figure audit task.</li>",
+          "document": "Whether to enable custom facial recognition. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -21382,7 +21663,8 @@
         },
         {
           "default": "",
-          "document": "Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
+          "document": "Filter labels for custom facial recognition. Results containing the specified labels are returned. If no labels are specified, all results are returned. To filter by labels, specify the labels when adding custom facial libraries.\nUp to 10 labels are allowed, each containing no more than 16 characters.",
+          "example": "无",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -21391,7 +21673,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -21400,7 +21683,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -21411,11 +21695,12 @@
       "usage": "in"
     },
     "UserDefineOcrTextReviewTemplateInfo": {
-      "document": "Control parameter of custom text audit task",
+      "document": "Parameters for custom OCR-based recognition",
       "members": [
         {
           "default": "",
-          "document": "Switch of custom text audit task. Valid values:\n<li>ON: enables custom text audit task;</li>\n<li>OFF: disables custom text audit task.</li>",
+          "document": "Whether to enable custom OCR-based recognition. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -21424,7 +21709,8 @@
         },
         {
           "default": "",
-          "document": "Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
+          "document": "Filter labels for custom OCR-based recognition. Results containing the specified labels are returned. If no labels are specified, all results are returned. To filter by labels, specify the labels when adding keywords for custom OCR-based recognition.\nUp to 10 labels are allowed, each containing no more than 16 characters.",
+          "example": "无",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -21432,8 +21718,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "100",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. If this parameter is left empty, `100` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -21441,8 +21728,9 @@
           "value_allowed_null": false
         },
         {
-          "default": "75",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.",
+          "default": "",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. If this parameter is left empty, `75` will be used by default. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -21453,11 +21741,12 @@
       "usage": "both"
     },
     "UserDefineOcrTextReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of custom text audit task.",
+      "document": "Parameters for custom OCR-based recognition",
       "members": [
         {
           "default": "",
-          "document": "Switch of custom text audit task. Valid values:\n<li>ON: enables custom text audit task;</li>\n<li>OFF: disables custom text audit task.</li>",
+          "document": "Whether to enable custom OCR-based recognition. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -21466,7 +21755,8 @@
         },
         {
           "default": "",
-          "document": "Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
+          "document": "Filter labels for custom OCR-based recognition. Results containing the specified labels are returned. If no labels are specified, all results are returned. To filter by labels, specify the labels when adding keywords for custom OCR-based recognition.\nUp to 10 labels are allowed, each containing no more than 16 characters.",
+          "example": "无",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -21475,7 +21765,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0–100.",
+          "document": "Confidence score threshold for determining that something should be blocked. If this threshold is reached, VOD will suggest that the content be blocked. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -21484,7 +21775,8 @@
         },
         {
           "default": "",
-          "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0–100.",
+          "document": "Confidence score threshold for human review. If this threshold is reached, human review is needed. Value range: 0-100",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -22017,6 +22309,7 @@
         {
           "default": "",
           "document": "Task ID.",
+          "example": "无",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -22026,6 +22319,7 @@
         {
           "default": "",
           "document": "Task status. Valid values:\nWAITING: waiting;\nPROCESSING: processing;\nFINISH: completed.",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -22035,6 +22329,7 @@
         {
           "default": "",
           "document": "Error code\n<li>0: success;</li>\n<li>Other values: failure.</li>",
+          "example": "无",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -22044,6 +22339,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "无",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -22053,6 +22349,7 @@
         {
           "default": "",
           "document": "ID of published video file.",
+          "example": "无",
           "member": "string",
           "name": "FileId",
           "required": true,
@@ -22062,6 +22359,7 @@
         {
           "default": "",
           "document": "ID of the transcoding template corresponding to the published video. 0 represents the source video.",
+          "example": "无",
           "member": "uint64",
           "name": "SourceDefinition",
           "required": true,
@@ -22071,6 +22369,7 @@
         {
           "default": "",
           "document": "Status of video release on WeChat Mini Program. Valid values:\n<li>Pass: successfully published;</li>\n<li>Failed: failed to publish;</li>\n<li>Rejected: rejected.</li>",
+          "example": "无",
           "member": "string",
           "name": "PublishResult",
           "required": true,

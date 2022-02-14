@@ -43,19 +43,19 @@
     "ScanVoice": [
       {
         "document": "This example shows you how to submit a speech detection task for an audio file where the callback address is empty and the `DescribeScanResultList` API needs to be called to poll the detection result.",
-        "input": "https://gme.tencentcloudapi.com/?Action=ScanVoice\r\n&BizId=1400000000\r\n&Scenes.0=default\r\n&Live=false\r\n&Callback=\r\n&Tasks.0.DataId=1400000000_test_data_id\r\n&Tasks.0.Url=http://xxx/audio_store/xxxx.mp3\r\n&<Common request parameters>",
+        "input": "https://gme.tencentcloudapi.com/?Action=ScanVoice\n&BizId=1400000000\n&Scenes.0=default\n&Live=false\n&Callback=https://0.0.0.0/user_callback\n&Tasks.0.DataId=1400000000_test_data_id\n&Tasks.0.Url=http://xxx/audio_store/xxxx.mp3\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataId\": \"1400000000_test_data_id\",\n                \"TaskId\": \"xxx-xxx-xxx\"\n            }\n        ],\n        \"RequestId\": \"xxx-xxx-xxx\"\n    }\n}",
-        "title": "Submitting an audio file detection task - 2"
+        "title": "Submitting audio file detection task-2"
       },
       {
         "document": "This example shows you how to submit a speech detection task for an audio stream where the callback address is empty and the `DescribeScanResultList` API needs to be called to poll the detection result.",
-        "input": "https://gme.tencentcloudapi.com/?Action=ScanVoice\r\n&BizId=1400000000\r\n&Scenes.0=default\r\n&Live=true\r\n&Callback=\r\n&Tasks.0.DataId=1400000000_test_data_id\r\n&Tasks.0.Url=https://xxxx\r\n&<Common request parameters>",
+        "input": "https://gme.tencentcloudapi.com/?Action=ScanVoice\n&BizId=1400000000\n&Scenes.0=default\n&Live=true\n&Callback=https://0.0.0.0/user_callback\n&Tasks.0.DataId=1400000000_test_data_id\n&Tasks.0.Url=https://xxxx\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataId\": \"1400000000_test_data_id\",\n                \"TaskId\": \"xxx-xxx-xxx\"\n            }\n        ],\n        \"RequestId\": \"xxx-xxx-xxx\"\n    }\n}",
         "title": "Submitting audio stream detection task"
       },
       {
         "document": "This example shows you how to submit a speech detection task for an audio file where the callback address (`Callback`) is set to get the detection result.",
-        "input": "https://gme.tencentcloudapi.com/?Action=ScanVoice\r\n&BizId=1400000000\r\n&Scenes.0=default\r\n&Live=false\r\n&Callback=https://0.0.0.0/user_callback\r\n&Tasks.0.DataId=1400000000_test_data_id\r\n&Tasks.0.Url=http://xxxx/audio_store/xxxx.mp3\r\n&<Common request parameters>",
+        "input": "https://gme.tencentcloudapi.com/?Action=ScanVoice\n&BizId=1400000000\n&Scenes.0=default\n&Live=false\n&Callback=https://0.0.0.0/user_callback\n&Tasks.0.DataId=1400000000_test_data_id\n&Tasks.0.Url=http://xxxx/audio_store/xxxx.mp3\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataId\": \"1400000000_test_data_id\",\n                \"TaskId\": \"xxx-xxx-xxx\"\n            }\n        ],\n        \"RequestId\": \"xxx-xxx-xxx\"\n    }\n}",
         "title": "Submitting audio file detection task"
       }
