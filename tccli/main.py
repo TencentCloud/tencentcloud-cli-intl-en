@@ -6,7 +6,7 @@ _locale._getdefaultlocale = (lambda *args: ['zh_CN', 'utf8'])
 import io
 import os
 import sys
-import tccli.six as six
+import six
 import signal
 import logging
 base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
