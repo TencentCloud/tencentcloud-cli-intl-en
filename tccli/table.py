@@ -3,9 +3,7 @@ import sys
 import struct
 
 from . import colorama
-from . import six
-
-PY2 = sys.version_info[0] == 2
+import six
 
 
 def determine_terminal_width(default_width=80):
@@ -300,7 +298,7 @@ class MultiTable(object):
                 else:
                     left_edge = ''
                 stylized = self._styler.style_row_element(element)
-                if PY2:
+                if six.PY2:
                     import platform
                     if 'Windows' in platform.system():
                         stylized = stylized.encode('GBK')
