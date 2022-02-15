@@ -277,7 +277,7 @@
         "document": "",
         "input": "https://postgres.tencentcloudapi.com/?Action=DescribeZones\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"59c438d4-95ab-4865-993d-dc388d2660d8\",\n        \"TotalCount\": 3,\n        \"ZoneSet\": [\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"ZoneName\": \"Guangzhou Zone 2\",\n                \"ZoneId\": 100002,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0,\n                \"StandbyZoneSet\": [\n                    \"ap-guangzhou-2\",\n                    \"ap-guangzhou-3\"\n                ]\n            },\n            {\n                \"Zone\": \"ap-guangzhou-3\",\n                \"ZoneName\": \"Guangzhou Zone 3\",\n                \"ZoneId\": 100003,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0,\n                \"StandbyZoneSet\": [\n                    \"ap-guangzhou-2\",\n                    \"ap-guangzhou-3\"\n                ]\n            },\n            {\n                \"Zone\": \"ap-guangzhou-4\",\n                \"ZoneName\": \"Guangzhou Zone 4\",\n                \"ZoneId\": 100004,\n                \"ZoneState\": \"AVAILABLE\",\n                \"ZoneSupportIpv6\": 0,\n                \"StandbyZoneSet\": [\n                    \"ap-guangzhou-4\"\n                ]\n            }\n        ]\n    }\n}",
-        "title": "Querying availability zones in a specified region"
+        "title": "Querying AZs in a specified region"
       }
     ],
     "DestroyDBInstance": [

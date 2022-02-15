@@ -215,6 +215,12 @@
       "input": "ResetAccountPasswordRequest",
       "name": "Resets account password",
       "output": "ResetAccountPasswordResponse"
+    },
+    "SwitchDBInstanceHA": {
+      "document": "This API is used to start a source-replica switch of instances.",
+      "input": "SwitchDBInstanceHARequest",
+      "name": "Starts a source-replica switch of instances",
+      "output": "SwitchDBInstanceHAResponse"
     }
   },
   "metadata": {
@@ -3976,6 +3982,51 @@
         }
       ],
       "usage": "out"
+    },
+    "SwitchDBInstanceHARequest": {
+      "document": "SwitchDBInstanceHA request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of tdsql-ow728lmc",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target AZ. The node with the lowest delay in the target AZ will be automatically promoted to source node.",
+          "example": "无",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchDBInstanceHAResponse": {
+      "document": "SwitchDBInstanceHA response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "无",
+          "member": "uint64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "TableColumn": {
       "document": "Database column information",

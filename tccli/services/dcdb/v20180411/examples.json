@@ -287,6 +287,14 @@
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7b1680d-db03-4f20-8684-a865ce7bcd38\"\n    }\n}",
         "title": "Modifying the password of a TencentDB account"
       }
+    ],
+    "SwitchDBInstanceHA": [
+      {
+        "document": "",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=SwitchDBInstanceHA\n&InstanceId=tdsql-f35wr6wj\n&Zone=ap-guangzhou-1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"FlowId\": 145623\n    }\n}",
+        "title": "Sample request"
+      }
     ]
   },
   "version": "1.0"

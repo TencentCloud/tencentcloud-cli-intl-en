@@ -745,7 +745,7 @@
       "members": [
         {
           "default": "",
-          "document": "AZs to deploy instance nodes. You can specify up to two AZs. If each shard has one primary node and two replica nodes, two of the three will be deployed in the first AZ you have specified.",
+          "document": "AZs to deploy instance nodes. You can specify up to two AZs.",
           "example": "[\"ap-guangzhou-1\"]",
           "member": "string",
           "name": "Zones",
