@@ -6,6 +6,12 @@
       "name": "Adds a maintenance time window",
       "output": "AddTimeWindowResponse"
     },
+    "ApplyCDBProxy": {
+      "document": "This API is used to create a database proxy group for a source instance.",
+      "input": "ApplyCDBProxyRequest",
+      "name": "Creates a database proxy group",
+      "output": "ApplyCDBProxyResponse"
+    },
     "AssociateSecurityGroups": {
       "document": "This API (AssociateSecurityGroups) is used to bind security groups to instances in batches.",
       "input": "AssociateSecurityGroupsRequest",
@@ -17,6 +23,12 @@
       "input": "BalanceRoGroupLoadRequest",
       "name": "Rebalances the loads of instances in RO group",
       "output": "BalanceRoGroupLoadResponse"
+    },
+    "CloseCDBProxy": {
+      "document": "This API is used to disable database proxy.",
+      "input": "CloseCDBProxyRequest",
+      "name": "Disables database proxy",
+      "output": "CloseCDBProxyResponse"
     },
     "CloseWanService": {
       "document": "This API (CloseWanService) is used to disable public network access for TencentDB instance, which will make public IP addresses inaccessible.",
@@ -168,6 +180,12 @@
       "name": "Queries binlog backup file list",
       "output": "DescribeBinlogsResponse"
     },
+    "DescribeCDBProxy": {
+      "document": "This API is used to query the information of database proxy.",
+      "input": "DescribeCDBProxyRequest",
+      "name": "Queries the information of database proxy",
+      "output": "DescribeCDBProxyResponse"
+    },
     "DescribeCloneList": {
       "document": "This API is used to query the clone task list of an instance.",
       "input": "DescribeCloneListRequest",
@@ -282,6 +300,12 @@
       "name": "Queries the list of configurable parameters for an instance",
       "output": "DescribeInstanceParamsResponse"
     },
+    "DescribeLocalBinlogConfig": {
+      "document": "This API is used to query the retention policy of local binlog of an instance.",
+      "input": "DescribeLocalBinlogConfigRequest",
+      "name": "Queries the retention policy of local binlog",
+      "output": "DescribeLocalBinlogConfigResponse"
+    },
     "DescribeParamTemplateInfo": {
       "document": "This API is used to query parameter template details. The common request parameter `Region` can only be set to `ap-guangzhou`.",
       "input": "DescribeParamTemplateInfoRequest",
@@ -289,7 +313,7 @@
       "output": "DescribeParamTemplateInfoResponse"
     },
     "DescribeParamTemplates": {
-      "document": "This API (DescribeParamTemplates) is used to query the list of parameter templates",
+      "document": "This API is used to query the parameter template list. The common request parameter `Region` can only be set to `ap-guangzhou`.",
       "input": "DescribeParamTemplatesRequest",
       "name": "Queries the list of parameter templates",
       "output": "DescribeParamTemplatesResponse"
@@ -299,6 +323,18 @@
       "input": "DescribeProjectSecurityGroupsRequest",
       "name": "Queries the security group information of a project",
       "output": "DescribeProjectSecurityGroupsResponse"
+    },
+    "DescribeProxyConnectionPoolConf": {
+      "document": "This API is used to query the connection pool configuration of database proxy.",
+      "input": "DescribeProxyConnectionPoolConfRequest",
+      "name": "Queries the connection pool configuration of database proxy",
+      "output": "DescribeProxyConnectionPoolConfResponse"
+    },
+    "DescribeProxyCustomConf": {
+      "document": "This API is used to query the proxy configuration.",
+      "input": "DescribeProxyCustomConfRequest",
+      "name": "Queries the proxy configuration",
+      "output": "DescribeProxyCustomConfResponse"
     },
     "DescribeRoGroups": {
       "document": "This API is used to query the information of all RO groups of a TencentDB instance.",
@@ -432,6 +468,30 @@
       "name": "Modifies backup download restrictions",
       "output": "ModifyBackupDownloadRestrictionResponse"
     },
+    "ModifyCDBProxy": {
+      "document": "This API is used to configure read/write separation of database proxy.",
+      "input": "ModifyCDBProxyRequest",
+      "name": "Configures read/write separation of database proxy",
+      "output": "ModifyCDBProxyResponse"
+    },
+    "ModifyCDBProxyConnectionPool": {
+      "document": "This API is used to configure the connection pool of database proxy. You can use the `DescribeProxyConnectionPoolConf` API to query the supported connection pool configurations.",
+      "input": "ModifyCDBProxyConnectionPoolRequest",
+      "name": "Configures the connection pool of database proxy",
+      "output": "ModifyCDBProxyConnectionPoolResponse"
+    },
+    "ModifyCDBProxyDesc": {
+      "document": "This API is used to modify the description of database proxy.",
+      "input": "ModifyCDBProxyDescRequest",
+      "name": "Modifies the description of database proxy",
+      "output": "ModifyCDBProxyDescResponse"
+    },
+    "ModifyCDBProxyVipVPort": {
+      "document": "This API is used to modify the VIP or port of database proxy.",
+      "input": "ModifyCDBProxyVipVPortRequest",
+      "name": "Modifies the VIP or port of database proxy",
+      "output": "ModifyCDBProxyVipVPortResponse"
+    },
     "ModifyDBInstanceName": {
       "document": "This API (ModifyDBInstanceName) is used to rename a TencentDB instance.",
       "input": "ModifyDBInstanceNameRequest",
@@ -467,6 +527,12 @@
       "input": "ModifyInstanceTagRequest",
       "name": "Modifies an instance tag",
       "output": "ModifyInstanceTagResponse"
+    },
+    "ModifyLocalBinlogConfig": {
+      "document": "This API is used to modify the retention policy of local binlog of an instance.",
+      "input": "ModifyLocalBinlogConfigRequest",
+      "name": "Modifies the retention policy of local binlog",
+      "output": "ModifyLocalBinlogConfigResponse"
     },
     "ModifyNameOrDescByDpId": {
       "document": "This API is used to modify the name or description of a placement group.",
@@ -510,11 +576,23 @@
       "name": "Enables public network access for an instance",
       "output": "OpenWanServiceResponse"
     },
+    "QueryCDBProxy": {
+      "document": "This API is used to query the proxy details.",
+      "input": "QueryCDBProxyRequest",
+      "name": "Queries the proxy details",
+      "output": "QueryCDBProxyResponse"
+    },
     "ReleaseIsolatedDBInstances": {
       "document": "This API is used to deisolate an isolated TencentDB instance.",
       "input": "ReleaseIsolatedDBInstancesRequest",
       "name": "Deisolates TencentDB instance",
       "output": "ReleaseIsolatedDBInstancesResponse"
+    },
+    "ReloadBalanceProxyNode": {
+      "document": "This API is used to rebalance the load on database proxy.",
+      "input": "ReloadBalanceProxyNodeRequest",
+      "name": "Rebalances the load on database proxy",
+      "output": "ReloadBalanceProxyNodeResponse"
     },
     "RestartDBInstances": {
       "document": "This API (RestartDBInstances) is used to restart TencentDB instances.\n\nNote:\n1. This API only supports restarting primary instances.\n2. The instance status must be normal, and no other async tasks are in progress.",
@@ -552,6 +630,12 @@
       "name": "Cancels a rollback task",
       "output": "StopRollbackResponse"
     },
+    "SwitchCDBProxy": {
+      "document": "This API is used to switch database proxy after the proxy configuration is modified or the proxy version is upgraded.",
+      "input": "SwitchCDBProxyRequest",
+      "name": "Switches database proxy",
+      "output": "SwitchCDBProxyResponse"
+    },
     "SwitchDBInstanceMasterSlave": {
       "document": "This API is used for source-to-replica switch.",
       "input": "SwitchDBInstanceMasterSlaveRequest",
@@ -569,6 +653,18 @@
       "input": "SwitchForUpgradeRequest",
       "name": "Switches to a new instance",
       "output": "SwitchForUpgradeResponse"
+    },
+    "UpgradeCDBProxy": {
+      "document": "This API is used to upgrade the configuration of database proxy.",
+      "input": "UpgradeCDBProxyRequest",
+      "name": "Upgrades the configuration of database proxy",
+      "output": "UpgradeCDBProxyResponse"
+    },
+    "UpgradeCDBProxyVersion": {
+      "document": "This API is used to upgrade the version of database proxy.",
+      "input": "UpgradeCDBProxyVersionRequest",
+      "name": "Upgrades the version of database proxy",
+      "output": "UpgradeCDBProxyVersionResponse"
     },
     "UpgradeDBInstance": {
       "document": "This API is used to upgrade or downgrade a TencentDB instance, which can be a primary instance, disaster recovery instance, or read-only instance.",
@@ -760,6 +856,161 @@
     "AddTimeWindowResponse": {
       "document": "AddTimeWindow response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Address": {
+      "document": "Address",
+      "members": [
+        {
+          "default": "",
+          "document": "Address\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Port\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "8080",
+          "member": "uint64",
+          "name": "VPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VPC ID\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "vpc-j1sxc77p",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "subnet-7v7ygzem",
+          "member": "string",
+          "name": "UniqSubnet",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Description\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "代理",
+          "member": "string",
+          "name": "Desc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ApplyCDBProxyRequest": {
+      "document": "ApplyCDBProxy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of the source instance",
+          "example": "cdb-sca12da",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "example": "vpc-j1sxc77p",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID",
+          "example": "subnet-7v7ygzem",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of nodes in the proxy group",
+          "example": "2",
+          "member": "uint64",
+          "name": "ProxyCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores",
+          "example": "2",
+          "member": "uint64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Memory",
+          "example": "4000",
+          "member": "uint64",
+          "name": "Mem",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Security group",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroup",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "proxy代理",
+          "member": "string",
+          "name": "Desc",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyCDBProxyResponse": {
+      "document": "ApplyCDBProxy response structure.",
+      "members": [
+        {
+          "document": "Async request ID\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "a92d-77ce-0ee2-17d99f604e64",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -1174,6 +1425,92 @@
       ],
       "type": "object"
     },
+    "BaseGroupInfo": {
+      "document": "Proxy group information",
+      "members": [
+        {
+          "default": "",
+          "document": "Proxy group ID\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "proxy-pr1rb3j9",
+          "member": "string",
+          "name": "ProxyGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of proxy nodes\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "1",
+          "member": "uint64",
+          "name": "NodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Proxy group status. Valid values: `init` (delivering), `online` (active), `offline` (inactive), `destroy` (destoryed)\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "发货中",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Availability zone\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether read/write separation is enabled\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "false",
+          "member": "bool",
+          "name": "OpenRW",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Current proxy version\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "1.0.1",
+          "member": "string",
+          "name": "CurrentProxyVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Target version to which the proxy can be upgraded\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "1.1.2",
+          "member": "string",
+          "name": "SupportUpgradeProxyVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "BinlogInfo": {
       "document": "Binlog information",
       "members": [
@@ -1338,6 +1675,51 @@
       ],
       "usage": "out"
     },
+    "CloseCDBProxyRequest": {
+      "document": "CloseCDBProxy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Proxy group ID",
+          "example": "无",
+          "member": "string",
+          "name": "ProxyGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether only to disable read/write separation. Valid values: `true`, `false`",
+          "example": "false",
+          "member": "bool",
+          "name": "OnlyCloseRW",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CloseCDBProxyResponse": {
+      "document": "CloseCDBProxy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CloseWanServiceRequest": {
       "document": "CloseWanService request structure.",
       "members": [
@@ -1477,6 +1859,42 @@
         }
       ],
       "usage": "in"
+    },
+    "ConnectionPoolInfo": {
+      "document": "Connection pool information",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether the connection pool is enabled\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "true",
+          "member": "bool",
+          "name": "ConnectionPool",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Connection pool type. Valid value: `SessionConnectionPool` (session-level connection pool)\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "SessionConnectionPool",
+          "member": "string",
+          "name": "ConnectionPoolType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Connection persistence timeout in seconds\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "10",
+          "member": "int64",
+          "name": "PoolConnectionTimeOut",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "CreateAccountsRequest": {
       "document": "CreateAccounts request structure.",
@@ -2365,6 +2783,7 @@
         {
           "default": "",
           "document": "Parameter template name.",
+          "example": "test",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -2373,6 +2792,7 @@
         {
           "default": "",
           "document": "Parameter template description.",
+          "example": "\"\"",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -2381,6 +2801,7 @@
         {
           "default": "",
           "document": "MySQL version number.",
+          "example": "5.7",
           "member": "string",
           "name": "EngineVersion",
           "required": false,
@@ -2389,6 +2810,7 @@
         {
           "default": "",
           "document": "Source parameter template ID.",
+          "example": "无",
           "member": "int64",
           "name": "TemplateId",
           "required": false,
@@ -2397,10 +2819,20 @@
         {
           "default": "",
           "document": "List of parameters.",
+          "example": "无",
           "member": "Parameter",
           "name": "ParamList",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).",
+          "example": "HIGH_STABILITY",
+          "member": "string",
+          "name": "TemplateType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2496,6 +2928,62 @@
         }
       ],
       "type": "object"
+    },
+    "CustomConfig": {
+      "document": "Proxy configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Device\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "string",
+          "name": "Device",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Type\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Device type\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "string",
+          "name": "DeviceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Memory\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "DBSwitchInfo": {
       "document": "TencentDB instance switch records",
@@ -3383,6 +3871,105 @@
           "name": "Items",
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCDBProxyRequest": {
+      "document": "DescribeCDBProxy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Proxy ID",
+          "example": "无",
+          "member": "string",
+          "name": "ProxyGroupId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCDBProxyResponse": {
+      "document": "DescribeCDBProxy response structure.",
+      "members": [
+        {
+          "document": "Basic information of the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "BaseGroupInfo",
+          "name": "BaseGroup",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Address information of the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "Address",
+          "name": "Address",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Node information of the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "ProxyNodeInfo",
+          "name": "ProxyNode",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Read/Write separation information\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "RWInfo",
+          "name": "RWInstInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Connection pool information\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "ConnectionPoolInfo",
+          "name": "ConnectionPoolInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of instances in the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Proxy information\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "ProxyGroup",
+          "name": "ProxyGroup",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4687,6 +5274,51 @@
       ],
       "type": "object"
     },
+    "DescribeLocalBinlogConfigRequest": {
+      "document": "DescribeLocalBinlogConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "cdb-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLocalBinlogConfigResponse": {
+      "document": "DescribeLocalBinlogConfig response structure.",
+      "members": [
+        {
+          "document": "Binlog retention policy of the instance.",
+          "example": "无",
+          "member": "LocalBinlogConfig",
+          "name": "LocalBinlogConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Default binlog retention policy in the region.",
+          "example": "无",
+          "member": "LocalBinlogConfigDefault",
+          "name": "LocalBinlogConfigDefault",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeParamTemplateInfoRequest": {
       "document": "DescribeParamTemplateInfo request structure.",
       "members": [
@@ -4759,6 +5391,15 @@
           "value_allowed_null": false
         },
         {
+          "document": "Parameter template type. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).",
+          "example": "HIGH_STABILITY",
+          "member": "string",
+          "name": "TemplateType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -4772,7 +5413,7 @@
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Engine version. If it is left empty, all parameter templates will be queried.",
           "example": "[\"5.5\"]",
           "member": "string",
           "name": "EngineVersions",
@@ -4842,6 +5483,141 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProxyConnectionPoolConfRequest": {
+      "document": "DescribeProxyConnectionPoolConf request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "cdb-pr1rb3j1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Paginated query offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum entries returned per page",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProxyConnectionPoolConfResponse": {
+      "document": "DescribeProxyConnectionPoolConf response structure.",
+      "members": [
+        {
+          "document": "Number of queried configurations\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "10",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Connection pool configuration details\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "PoolConf",
+          "name": "PoolConf",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProxyCustomConfRequest": {
+      "document": "DescribeProxyCustomConf request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Paginated query offset",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum entries returned per page",
+          "example": "100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProxyCustomConfResponse": {
+      "document": "DescribeProxyCustomConf response structure.",
+      "members": [
+        {
+          "document": "Number of queried proxy configurations\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Proxy configuration details\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "CustomConfig",
+          "name": "CustomConf",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Weight rule\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "Rule",
+          "name": "WeightRule",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -6703,6 +7479,58 @@
       ],
       "type": "object"
     },
+    "LocalBinlogConfig": {
+      "document": "Retention policy of local binlog",
+      "members": [
+        {
+          "default": "",
+          "document": "Retention period of local binlog. Value range: [72,168].",
+          "example": "70",
+          "member": "int64",
+          "name": "SaveHours",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Space utilization of local binlog. Value range: [30,50].",
+          "example": "30",
+          "member": "int64",
+          "name": "MaxUsage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LocalBinlogConfigDefault": {
+      "document": "Default retention policy of local binlog.",
+      "members": [
+        {
+          "default": "",
+          "document": "Retention period of local binlog. Value range: [72,168].",
+          "example": "70",
+          "member": "int64",
+          "name": "SaveHours",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Space utilization of local binlog. Value range: [30,50].",
+          "example": "30",
+          "member": "int64",
+          "name": "MaxUsage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "MasterInfo": {
       "document": "Master instance information",
       "members": [
@@ -7274,6 +8102,276 @@
       ],
       "type": "object"
     },
+    "ModifyCDBProxyConnectionPoolRequest": {
+      "document": "ModifyCDBProxyConnectionPool request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database proxy ID",
+          "example": "proxy-pr1rb3j1",
+          "member": "string",
+          "name": "ProxyGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the connection pool. Valid values: `true` (enable);\n                             `false` (disable).",
+          "example": "true",
+          "member": "bool",
+          "name": "OpenConnectionPool",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Connection pool type.\nYou can use the `DescribeProxyConnectionPoolConf` API to query the connection pool type.",
+          "example": "SessionConnectionPool",
+          "member": "string",
+          "name": "ConnectionPoolType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Connection persistence timeout in seconds",
+          "example": "100",
+          "member": "int64",
+          "name": "PoolConnectionTimeOut",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCDBProxyConnectionPoolResponse": {
+      "document": "ModifyCDBProxyConnectionPool response structure.",
+      "members": [
+        {
+          "document": "Async request ID\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "fsRSgVvBz8EKdMuNEGDMkQ",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCDBProxyDescRequest": {
+      "document": "ModifyCDBProxyDesc request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "cdb-pr1rb3j1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database proxy ID",
+          "example": "proxy-p11rb3j9",
+          "member": "string",
+          "name": "ProxyGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database proxy description",
+          "example": "test",
+          "member": "string",
+          "name": "Desc",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCDBProxyDescResponse": {
+      "document": "ModifyCDBProxyDesc response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCDBProxyRequest": {
+      "document": "ModifyCDBProxy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of the database proxy group",
+          "example": "无",
+          "member": "string",
+          "name": "ProxyGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to remove delayed read-only instances from the proxy group. Valid values: `true`, `false`",
+          "example": "false",
+          "member": "bool",
+          "name": "IsKickout",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The minimum number of read-only instances allowed by the proxy group",
+          "example": "2",
+          "member": "uint64",
+          "name": "MinCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Delay threshold. If `IsKickOut` is set to `true`, this parameter is required.",
+          "example": "2",
+          "member": "uint64",
+          "name": "MaxDelay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Assignment mode of read/write weights. Valid values: `system` (auto-assigned), `custom`",
+          "example": "system",
+          "member": "string",
+          "name": "WeightMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Read-Only weight of an instance",
+          "example": "{}",
+          "member": "RoWeight",
+          "name": "RoWeightValues",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable failover. If it is enabled, the connection address will route requests to the source instance in case of proxy failure. Valid values: `true`, `false`",
+          "example": "false",
+          "member": "bool",
+          "name": "FailOver",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically add newly created read-only instances to the proxy group. Valid values: `true`, `false`",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoAddRo",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCDBProxyResponse": {
+      "document": "ModifyCDBProxy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCDBProxyVipVPortRequest": {
+      "document": "ModifyCDBProxyVipVPort request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Proxy group ID",
+          "example": "无",
+          "member": "string",
+          "name": "ProxyGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "example": "无",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID",
+          "example": "无",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New IP",
+          "example": "无",
+          "member": "string",
+          "name": "DstIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New port",
+          "example": "无",
+          "member": "uint64",
+          "name": "DstPort",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Valid hours of the old IP",
+          "example": "无",
+          "member": "uint64",
+          "name": "ReleaseDuration",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCDBProxyVipVPortResponse": {
+      "document": "ModifyCDBProxyVipVPort response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyDBInstanceNameRequest": {
       "document": "ModifyDBInstanceName request structure.",
       "members": [
@@ -7549,6 +8647,51 @@
     },
     "ModifyInstanceTagResponse": {
       "document": "ModifyInstanceTag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLocalBinlogConfigRequest": {
+      "document": "ModifyLocalBinlogConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "cdb-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Retention period of local binlog. Value range: [72,168].",
+          "example": "100",
+          "member": "int64",
+          "name": "SaveHours",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Space utilization of local binlog. Value range: [30,50].",
+          "example": "20",
+          "member": "int64",
+          "name": "MaxUsage",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLocalBinlogConfigResponse": {
+      "document": "ModifyLocalBinlogConfig response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -8011,6 +9154,7 @@
         {
           "default": "",
           "document": "Parameter template ID",
+          "example": "1",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -8020,6 +9164,7 @@
         {
           "default": "",
           "document": "Parameter template name",
+          "example": "test",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -8029,6 +9174,7 @@
         {
           "default": "",
           "document": "Parameter template description",
+          "example": "test",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -8038,8 +9184,19 @@
         {
           "default": "",
           "document": "Instance engine version",
+          "example": "5.7",
           "member": "string",
           "name": "EngineVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter template type",
+          "example": "HIGH_STABILITY",
+          "member": "string",
+          "name": "TemplateType",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8075,6 +9232,7 @@
         {
           "default": "",
           "document": "Parameter name",
+          "example": "test",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -8083,7 +9241,8 @@
         },
         {
           "default": "",
-          "document": "Parameter type",
+          "document": "Parameter type. Valid values: `integer`, `enum`, `float`, `string`, `func`",
+          "example": "string",
           "member": "string",
           "name": "ParamType",
           "required": true,
@@ -8093,6 +9252,7 @@
         {
           "default": "",
           "document": "Default value of the parameter",
+          "example": "OFF",
           "member": "string",
           "name": "Default",
           "required": true,
@@ -8102,6 +9262,7 @@
         {
           "default": "",
           "document": "Parameter description",
+          "example": "Controls the sensitivity of linear read-ahead that InnoDB uses t",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -8111,6 +9272,7 @@
         {
           "default": "",
           "document": "Current value of the parameter",
+          "example": "56",
           "member": "string",
           "name": "CurrentValue",
           "required": true,
@@ -8120,6 +9282,7 @@
         {
           "default": "",
           "document": "Whether the database needs to be restarted for the modified parameter to take effect. Value range: 0 (no); 1 (yes)",
+          "example": "1",
           "member": "int64",
           "name": "NeedReboot",
           "required": true,
@@ -8129,6 +9292,7 @@
         {
           "default": "",
           "document": "Maximum value of the parameter",
+          "example": "64",
           "member": "int64",
           "name": "Max",
           "required": true,
@@ -8138,6 +9302,7 @@
         {
           "default": "",
           "document": "Minimum value of the parameter",
+          "example": "1",
           "member": "int64",
           "name": "Min",
           "required": true,
@@ -8147,13 +9312,469 @@
         {
           "default": "",
           "document": "Enumerated values of the parameter. It is null if the parameter is non-enumerated",
+          "example": "[]",
           "member": "string",
           "name": "EnumValue",
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum parameter value, which is valid only when `ParamType` is set to `func`",
+          "example": "64",
+          "member": "string",
+          "name": "MaxFunc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum parameter value, which is valid only when `ParamType` is set to `func`",
+          "example": "1",
+          "member": "string",
+          "name": "MinFunc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
+      "usage": "out"
+    },
+    "PoolConf": {
+      "document": "Connection pool configuration of database proxy",
+      "members": [
+        {
+          "default": "",
+          "document": "Connection pool type. Valid value: `SessionConnectionPool` (session-level connection pool)\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "SessionConnectionPool",
+          "member": "string",
+          "name": "ConnectionPoolType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum value of connection persistence timeout in seconds\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "10",
+          "member": "int64",
+          "name": "MaxPoolConnectionTimeOut",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Minimum value of connection persistence timeout in seconds\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "0",
+          "member": "int64",
+          "name": "MinPoolConnectionTimeOut",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ProxyGroup": {
+      "document": "Database proxy group information",
+      "members": [
+        {
+          "default": "",
+          "document": "Basic information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "BaseGroupInfo",
+          "name": "BaseGroup",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Address information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "Address",
+          "name": "Address",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Connection pool information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "ConnectionPoolInfo",
+          "name": "ConnectionPoolInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "ProxyNodeInfo",
+          "name": "ProxyNode",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Routing information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "RWInfo",
+          "name": "RWInstInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ProxyGroups": {
+      "document": "Database proxy group information",
+      "members": [
+        {
+          "default": "",
+          "document": "Basic information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "BaseGroupInfo",
+          "name": "BaseGroup",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Address information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "Address",
+          "name": "Address",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Connection pool information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "ConnectionPoolInfo",
+          "name": "ConnectionPoolInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "ProxyNodeInfo",
+          "name": "ProxyNode",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Routing information of the proxy\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "RWInfos",
+          "name": "RWInstInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ProxyNodeInfo": {
+      "document": "Node information of the proxy",
+      "members": [
+        {
+          "default": "",
+          "document": "Proxy node ID\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "string",
+          "name": "ProxyNodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Current number of connections to the node\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "uint64",
+          "name": "ProxyNodeConnections",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CPU\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "uint64",
+          "name": "ProxyNodeCpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Memory\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "uint64",
+          "name": "ProxyNodeMem",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node status:\ninit (applying)\nonline (active)\noffline (inactive)\ndestroy (destroyed)\nrecovering (recovering from fault)\nerror (failed)\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "string",
+          "name": "ProxyStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "QueryCDBProxyRequest": {
+      "document": "QueryCDBProxy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Proxy ID",
+          "example": "无",
+          "member": "string",
+          "name": "ProxyGroupId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryCDBProxyResponse": {
+      "document": "QueryCDBProxy response structure.",
+      "members": [
+        {
+          "document": "Number of instances in the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Proxy information\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "ProxyGroups",
+          "name": "ProxyGroup",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RWInfo": {
+      "document": "Read/Write separation information of the proxy",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of instances in the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "2",
+          "member": "uint64",
+          "name": "InstCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Assignment mode of read/write weights\nValid values: `system` (auto-assigned), `custom`\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "system",
+          "member": "string",
+          "name": "WeightMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to remove delayed read-only instances from the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsKickOut",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The minimum number of read-only instances allowed by the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "2",
+          "member": "uint64",
+          "name": "MinCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Delay threshold\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "20",
+          "member": "uint64",
+          "name": "MaxDelay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable failover\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "false",
+          "member": "bool",
+          "name": "FailOver",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically add newly created read-only instances to the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoAddRo",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Information of instances in the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "{}",
+          "member": "RWInstanceInfo",
+          "name": "RWInstInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RWInfos": {
+      "document": "Read/Write separation information of the proxy",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of instances in the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "2",
+          "member": "uint64",
+          "name": "InstCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Assignment mode of read/write weights\nValid values: `system` (auto-assigned), `custom`\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "system",
+          "member": "string",
+          "name": "WeightMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to remove delayed read-only instances from the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsKickOut",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The minimum number of read-only instances allowed by the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "2",
+          "member": "uint64",
+          "name": "MinCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Delay threshold\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "20",
+          "member": "uint64",
+          "name": "MaxDelay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable failover\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "false",
+          "member": "bool",
+          "name": "FailOver",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically add newly created read-only instances to the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoAddRo",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Information of instances in the proxy group\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "{}",
+          "member": "RWInstanceInfo",
+          "name": "RWInstInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RWInstanceInfo": {
+      "document": "Information of instances in the proxy group",
+      "members": [],
       "usage": "out"
     },
     "RegionSellConf": {
@@ -8272,6 +9893,33 @@
         }
       ],
       "usage": "out"
+    },
+    "ReloadBalanceProxyNodeRequest": {
+      "document": "ReloadBalanceProxyNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Proxy group ID",
+          "example": "无",
+          "member": "string",
+          "name": "ProxyGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReloadBalanceProxyNodeResponse": {
+      "document": "ReloadBalanceProxyNode response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "RestartDBInstancesRequest": {
       "document": "RestartDBInstances request structure.",
@@ -8820,6 +10468,11 @@
       ],
       "usage": "out"
     },
+    "RoWeight": {
+      "document": "Instance weight",
+      "members": [],
+      "usage": "in"
+    },
     "RoWeightValue": {
       "document": "RO instance weight value",
       "members": [
@@ -9050,6 +10703,32 @@
           "name": "End",
           "required": true,
           "type": "string"
+        }
+      ],
+      "usage": "out"
+    },
+    "Rule": {
+      "document": "Weight rule",
+      "members": [
+        {
+          "default": "",
+          "document": "The maximum weight\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "100",
+          "member": "uint64",
+          "name": "LessThan",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Weight\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "5",
+          "member": "uint64",
+          "name": "Weight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -9803,6 +11482,42 @@
       ],
       "type": "object"
     },
+    "SwitchCDBProxyRequest": {
+      "document": "SwitchCDBProxy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "cdb-pr1rb3j1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database proxy ID",
+          "example": "proxy-p11rb3j9",
+          "member": "string",
+          "name": "ProxyGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchCDBProxyResponse": {
+      "document": "SwitchCDBProxy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "SwitchDBInstanceMasterSlaveRequest": {
       "document": "SwitchDBInstanceMasterSlave request structure.",
       "members": [
@@ -10151,6 +11866,168 @@
         }
       ],
       "usage": "out"
+    },
+    "UpgradeCDBProxyRequest": {
+      "document": "UpgradeCDBProxy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "cdb-pr1rb3j1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database proxy ID",
+          "example": "proxy-p11rb3j",
+          "member": "string",
+          "name": "ProxyGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of proxy nodes",
+          "example": "2",
+          "member": "int64",
+          "name": "ProxyCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores per proxy node",
+          "example": "4",
+          "member": "int64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Memory per proxy node",
+          "example": "8000",
+          "member": "int64",
+          "name": "Mem",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Load rebalance mode. Valid values: `auto`, `manual`",
+          "example": "auto",
+          "member": "string",
+          "name": "ReloadBalance",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Upgrade time. Valid values: `nowTime` (upgrade immediately), `timeWindow` (upgrade during instance maintenance time)",
+          "example": "nowTime",
+          "member": "string",
+          "name": "UpgradeTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeCDBProxyResponse": {
+      "document": "UpgradeCDBProxy response structure.",
+      "members": [
+        {
+          "document": "Async request ID\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "3689c0eb-a92d-77ce-0ee2-17d99f604e64",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeCDBProxyVersionRequest": {
+      "document": "UpgradeCDBProxyVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "cdb-pr1rb3j1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database proxy ID",
+          "example": "proxy-p11rb3j9",
+          "member": "string",
+          "name": "ProxyGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Current version of database proxy",
+          "example": "1.0.1",
+          "member": "string",
+          "name": "SrcProxyVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target version of database proxy",
+          "example": "1.1.2",
+          "member": "string",
+          "name": "DstProxyVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Upgrade time. Valid values: `nowTime` (upgrade immediately), `timeWindow` (upgrade during instance maintenance time)",
+          "example": "nowTime",
+          "member": "string",
+          "name": "UpgradeTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeCDBProxyVersionResponse": {
+      "document": "UpgradeCDBProxyVersion response structure.",
+      "members": [
+        {
+          "document": "Async request ID\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "8XoY7Q4d3SdrWmAkLH27Mo",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UpgradeDBInstanceEngineVersionRequest": {
       "document": "UpgradeDBInstanceEngineVersion request structure.",
