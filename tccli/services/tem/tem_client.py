@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+import six
 import json
 import tccli.options_define as OptionsDefine
 import tccli.format_output as FormatOutput
@@ -15,7 +16,6 @@ from tencentcloud.tem.v20210701 import models as models_v20210701
 from tencentcloud.tem.v20201221 import tem_client as tem_client_v20201221
 from tencentcloud.tem.v20201221 import models as models_v20201221
 
-from tccli import six
 
 def doModifyNamespace(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)

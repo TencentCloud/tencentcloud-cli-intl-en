@@ -2672,6 +2672,15 @@
           "name": "FilterDamDDoSStatus",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filters by status of bound resources. `idle`: normal; `attacking`: being attacked; `blocking`: blocked",
+          "example": "attacking",
+          "member": "string",
+          "name": "FilterStatus",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2771,6 +2780,24 @@
           "name": "FilterLine",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filters by instance status. `idle`: normal; `attacking`: being attacked; `blocking`: blocked",
+          "example": "attacking",
+          "member": "string",
+          "name": "FilterStatus",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filters by binding status. `bounding`: the instance is bound; `failed`: the binding failed.",
+          "example": "bounding",
+          "member": "string",
+          "name": "FilterBoundStatus",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"

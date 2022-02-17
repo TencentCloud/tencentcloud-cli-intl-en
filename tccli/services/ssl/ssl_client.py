@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+import six
 import json
 import tccli.options_define as OptionsDefine
 import tccli.format_output as FormatOutput
@@ -13,7 +14,6 @@ from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.ssl.v20191205 import ssl_client as ssl_client_v20191205
 from tencentcloud.ssl.v20191205 import models as models_v20191205
 
-from tccli import six
 
 def doDescribeCertificateOperateLogs(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)

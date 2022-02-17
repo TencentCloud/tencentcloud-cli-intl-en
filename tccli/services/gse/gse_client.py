@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+import six
 import json
 import tccli.options_define as OptionsDefine
 import tccli.format_output as FormatOutput
@@ -13,7 +14,6 @@ from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.gse.v20191112 import gse_client as gse_client_v20191112
 from tencentcloud.gse.v20191112 import models as models_v20191112
 
-from tccli import six
 
 def doUpdateBucketCORSOpt(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)

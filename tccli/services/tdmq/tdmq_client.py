@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+import six
 import json
 import tccli.options_define as OptionsDefine
 import tccli.format_output as FormatOutput
@@ -13,7 +14,6 @@ from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.tdmq.v20200217 import tdmq_client as tdmq_client_v20200217
 from tencentcloud.tdmq.v20200217 import models as models_v20200217
 
-from tccli import six
 
 def doDeleteCmqTopic(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)

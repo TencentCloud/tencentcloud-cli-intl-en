@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+import six
 import json
 import tccli.options_define as OptionsDefine
 import tccli.format_output as FormatOutput
@@ -13,7 +14,6 @@ from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.antiddos.v20200309 import antiddos_client as antiddos_client_v20200309
 from tencentcloud.antiddos.v20200309 import models as models_v20200309
 
-from tccli import six
 
 def doAssociateDDoSEipAddress(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)

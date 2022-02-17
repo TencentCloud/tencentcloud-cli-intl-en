@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+import six
 import json
 import tccli.options_define as OptionsDefine
 import tccli.format_output as FormatOutput
@@ -13,7 +14,6 @@ from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.cdb.v20170320 import cdb_client as cdb_client_v20170320
 from tencentcloud.cdb.v20170320 import models as models_v20170320
 
-from tccli import six
 
 def doDescribeDBInstanceGTID(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)

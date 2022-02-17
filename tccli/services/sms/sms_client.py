@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+import six
 import json
 import tccli.options_define as OptionsDefine
 import tccli.format_output as FormatOutput
@@ -15,7 +16,6 @@ from tencentcloud.sms.v20210111 import models as models_v20210111
 from tencentcloud.sms.v20190711 import sms_client as sms_client_v20190711
 from tencentcloud.sms.v20190711 import models as models_v20190711
 
-from tccli import six
 
 def doModifySmsSign(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
