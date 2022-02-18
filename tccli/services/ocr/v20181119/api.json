@@ -741,7 +741,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Alarm code\n-9103\tAlarm for photographed document\n-9102\tAlarm for photocopied document\n-9106       Alarm for covered card",
+          "document": "Warning code\n-9103 Warning for spoofed card\n-9102 Warning for photocopied card\n-9106 Warning for covered card\n-9107 Warning for blurry image",
           "example": "[]",
           "member": "int64",
           "name": "Warn",
