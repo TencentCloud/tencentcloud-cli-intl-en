@@ -120,6 +120,12 @@
       "name": "Queries slow query log list",
       "output": "DescribeDBSlowLogsResponse"
     },
+    "DescribeDatabaseTable": {
+      "document": "This API is used to query the table information of a TencentDB instance.",
+      "input": "DescribeDatabaseTableRequest",
+      "name": "Queries table information",
+      "output": "DescribeDatabaseTableResponse"
+    },
     "DescribeDatabases": {
       "document": "This API is used to query the list of databases of a TencentDB instance.",
       "input": "DescribeDatabasesRequest",
@@ -2876,6 +2882,76 @@
       ],
       "type": "object"
     },
+    "DescribeDatabaseTableRequest": {
+      "document": "DescribeDatabaseTable request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of dcdbt-ow7t8lmc.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database name, which can be obtained through the `DescribeDatabases` API.",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Table name, which can be obtained through the `DescribeDatabaseObjects` API.",
+          "member": "string",
+          "name": "Table",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseTableResponse": {
+      "document": "DescribeDatabaseTable response structure.",
+      "members": [
+        {
+          "document": "Instance name.",
+          "member": "string",
+          "name": "InstanceId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database name.",
+          "member": "string",
+          "name": "DbName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Table name.",
+          "member": "string",
+          "name": "Table",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Column information.",
+          "member": "TableColumn",
+          "name": "Cols",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDatabasesRequest": {
       "document": "DescribeDatabases request structure.",
       "members": [
@@ -4784,6 +4860,30 @@
         }
       ],
       "type": "object"
+    },
+    "TableColumn": {
+      "document": "Database column information",
+      "members": [
+        {
+          "default": "",
+          "document": "Column name",
+          "member": "string",
+          "name": "Col",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Column type",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "TablePrivilege": {
       "document": "Table permission",
