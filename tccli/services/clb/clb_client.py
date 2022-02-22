@@ -42,6 +42,33 @@ def doRegisterTargets(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeCrossTargets(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ClbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCrossTargetsRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeCrossTargets(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doSetLoadBalancerSecurityGroups(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1149,6 +1176,33 @@ def doDescribeTargetGroups(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeRewrite(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ClbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeRewriteRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeRewrite(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doModifyRule(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1365,7 +1419,7 @@ def doDescribeTargets(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeRewrite(args, parsed_globals):
+def doMigrateClassicalLoadBalancers(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1381,9 +1435,9 @@ def doDescribeRewrite(args, parsed_globals):
     client = mod.ClbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeRewriteRequest()
+    model = models.MigrateClassicalLoadBalancersRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeRewrite(model)
+    rsp = client.MigrateClassicalLoadBalancers(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1863,6 +1917,7 @@ MODELS_MAP = {
 
 ACTION_MAP = {
     "RegisterTargets": doRegisterTargets,
+    "DescribeCrossTargets": doDescribeCrossTargets,
     "SetLoadBalancerSecurityGroups": doSetLoadBalancerSecurityGroups,
     "DescribeClassicalLBListeners": doDescribeClassicalLBListeners,
     "DescribeCustomizedConfigAssociateList": doDescribeCustomizedConfigAssociateList,
@@ -1904,6 +1959,7 @@ ACTION_MAP = {
     "DescribeLBListeners": doDescribeLBListeners,
     "DescribeTaskStatus": doDescribeTaskStatus,
     "DescribeTargetGroups": doDescribeTargetGroups,
+    "DescribeRewrite": doDescribeRewrite,
     "ModifyRule": doModifyRule,
     "DeleteRule": doDeleteRule,
     "SetLoadBalancerClsLog": doSetLoadBalancerClsLog,
@@ -1912,7 +1968,7 @@ ACTION_MAP = {
     "CreateTargetGroup": doCreateTargetGroup,
     "DescribeLoadBalancerOverview": doDescribeLoadBalancerOverview,
     "DescribeTargets": doDescribeTargets,
-    "DescribeRewrite": doDescribeRewrite,
+    "MigrateClassicalLoadBalancers": doMigrateClassicalLoadBalancers,
     "RegisterTargetsWithClassicalLB": doRegisterTargetsWithClassicalLB,
     "ModifyTargetPort": doModifyTargetPort,
     "ModifyTargetGroupAttribute": doModifyTargetGroupAttribute,

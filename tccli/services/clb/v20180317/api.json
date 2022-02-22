@@ -31,7 +31,7 @@
       "output": "BatchRegisterTargetsResponse"
     },
     "CloneLoadBalancer": {
-      "document": "This API is used to generate a CLB instance that has the same rules and binding relations as the specified CLB instance.",
+      "document": "This API is used to create a CLB instance with the same forwarding rules and binding relation as the source CLB instance. Note that this API is asynchronous, which means that changes to the source CLB after the invocation are not cloned.\n\nUse limits:\nClassic network-based CLBs, Classic CLBs, IPv6 CLBs, and NAT64 CLBs are not supported.\nMonthly-subscribed CLB instances are not supported.\nQUIC and port listeners are not supported.\nThe CLB backend server cannot be bound to a target group or an SCF function.\nThe following settings will not be cloned automatically: \"Custom Configuration\", \"Redirection Configuration\" and \"Allow Traffic by Default in Security Group\".\n\nPermissions:\nThe required permissions are as follows: `CreateLoadBalancer`, `CreateLoadBalancerListeners`, `CreateListenerRules`, `BatchRegisterTargets`, `SetLoadBalancerSecurityGroups`, `ModifyLoadBalancerAttributes`, `SetLoadBalancerClsLog`, and `DeleteLoadBalancer`. Note that `DeleteLoadBalancer` is used to roll back in case of cloning failures. If you do not have the permission, the failure data will remain.\n\nNotes:\nFor a BGP bandwidth package, you need to pass the package ID.\nTo clone a dedicated CLB cluster, specify it in the parameter, otherwise a shared CLB cluster is created.\nThis API is only available for beta users. To try it out, [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&step=1).",
       "input": "CloneLoadBalancerRequest",
       "name": "Clones a CLB instance",
       "output": "CloneLoadBalancerResponse"
@@ -180,6 +180,12 @@
       "name": "Gets the CLB exclusive logset",
       "output": "DescribeClsLogSetResponse"
     },
+    "DescribeCrossTargets": {
+      "document": "Queries information of CVMs and ENIs that use cross-region binding 2.0",
+      "input": "DescribeCrossTargetsRequest",
+      "name": "Queries information of CVMs and ENIs that use cross-region binding 2.0",
+      "output": "DescribeCrossTargetsResponse"
+    },
     "DescribeCustomizedConfigAssociateList": {
       "document": "This API is used to query the configured location, bound server or bound CLB instance. If there are domain names, the result will be filtered by domain name.",
       "input": "DescribeCustomizedConfigAssociateListRequest",
@@ -294,6 +300,12 @@
       "name": "Creates a redirection relationship between CLB forwarding rules manually",
       "output": "ManualRewriteResponse"
     },
+    "MigrateClassicalLoadBalancers": {
+      "document": "This API is used to upgrade classic CLB instances to application CLB instances.\nThis is an async API. After it is returned successfully, you can check the action result by calling `DescribeLoadBalancers`. ",
+      "input": "MigrateClassicalLoadBalancersRequest",
+      "name": "Upgrades Classic CLB instances to application CLB instances",
+      "output": "MigrateClassicalLoadBalancersResponse"
+    },
     "ModifyBlockIPList": {
       "document": "This API is used to modify the client IP blocklist of a CLB instance. One forwarding rule supports blocking up to 2,000,000 IPs. One blocklist can contain up to 2,000,000 entries.\n(This API is in beta test. To use it, please submit a ticket.)",
       "input": "ModifyBlockIPListRequest",
@@ -325,9 +337,9 @@
       "output": "ModifyLoadBalancerAttributesResponse"
     },
     "ModifyLoadBalancerSla": {
-      "document": "This API is used to upgrade shared CLB instances to LCU-supported CLB instances (downgrade is not allowed) and upgrade/downgrade the specification of LCU-supported instances.",
+      "document": "This API is used to upgrade shared CLB instances to LCU-supported CLB instances.",
       "input": "ModifyLoadBalancerSlaRequest",
-      "name": "Adjusts CLB instance specification",
+      "name": "Upgrades to LCU-supported CLB instances",
       "output": "ModifyLoadBalancerSlaResponse"
     },
     "ModifyRule": {
@@ -1507,7 +1519,7 @@
         },
         {
           "default": "",
-          "document": "ID of the project to which a CLB instance belongs, which can be obtained through the DescribeProject API. If this parameter is not passed in, the default project will be used.",
+          "document": "Project ID of the CLB instance, which can be obtained through the [`DescribeProject`](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) API. If this field is not specified, it will default to the default project.",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -1516,7 +1528,7 @@
         },
         {
           "default": "",
-          "document": "Sets the primary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB.\nNote: A primary AZ is the default AZ that carries traffic. When it fails, the optimal secondary AZ is chosen automatically to take its place. ",
+          "document": "Sets the primary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB.\nNote: A primary AZ carries traffic by default, while a secondary AZ does not. It only works when the primary AZ is faulty.",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "MasterZoneId",
@@ -1624,7 +1636,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Guaranteed performance specification.",
           "example": "sla-1",
           "member": "string",
           "name": "SlaType",
@@ -2198,10 +2210,21 @@
       "members": [
         {
           "document": "Array of unique CLB instance IDs.",
+          "example": "[\"lb-6efswuxa\"]",
           "member": "string",
           "name": "LoadBalancerIds",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "Order ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2022XXXX",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2421,6 +2444,92 @@
         }
       ],
       "type": "object"
+    },
+    "CrossTargets": {
+      "document": "Information of CVMs and ENIs that use cross-region binding 2.0",
+      "members": [
+        {
+          "default": "",
+          "document": "VPC ID of the CLB instance",
+          "example": "无",
+          "member": "string",
+          "name": "LocalVpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID of the CVM or ENI instance",
+          "example": "无",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP address of the CVM or ENI instance",
+          "example": "无",
+          "member": "string",
+          "name": "IP",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC name of the CVM or ENI instance",
+          "example": "无",
+          "member": "string",
+          "name": "VpcName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ENI ID of the CVM instance",
+          "example": "无",
+          "member": "string",
+          "name": "EniId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the CVM instance\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Name of the CVM instance\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region of the CVM or ENI instance",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "DeleteListenerRequest": {
       "document": "DeleteListener request structure.",
@@ -3163,6 +3272,69 @@
           "name": "HealthLogsetId",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCrossTargetsRequest": {
+      "document": "DescribeCrossTargets request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of real server lists returned. Default value: 20; maximum value: 100.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Starting offset of the real server list returned. Default value: 0.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter conditions to query CVMs and ENIs\n<li> `vpc-id` - String - Required: No - (Filter condition) Filter by VPC ID, such as \"vpc-12345678\".</li>\n<li> `ip` - String - Required: No - (Filter condition) Filter by real server IP, such as \"192.168.0.1\".</li>\n<li> `listener-id` - String - Required: No - (Filter condition) Filter by listener ID, such as \"lbl-12345678\".</li>\n<li> `location-id` - String - Required: No - (Filter condition) Filter by forwarding rule ID of the layer-7 listener, such as \"loc-12345678\".</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCrossTargetsResponse": {
+      "document": "DescribeCrossTargets response structure.",
+      "members": [
+        {
+          "document": "Total number of real server lists",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Real server list",
+          "example": "无",
+          "member": "CrossTargets",
+          "name": "CrossTargetSet",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -3929,6 +4101,7 @@
         {
           "default": "",
           "document": "Filter. Currently, only filtering by `TargetGroupId`, `BindIP`, or `InstanceId` is supported.",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": true,
@@ -3937,6 +4110,7 @@
         {
           "default": "",
           "document": "Number of displayed results. Default value: 20",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -3945,6 +4119,7 @@
         {
           "default": "",
           "document": "Display offset. Default value: 0",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -3957,23 +4132,29 @@
       "document": "DescribeTargetGroupInstances response structure.",
       "members": [
         {
-          "document": "Number of results in current query",
+          "document": "Number of results returned for the current query",
+          "example": "2",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Information of the bound server",
+          "example": "无",
           "member": "TargetGroupBackend",
           "name": "TargetGroupInstanceSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "Actual statistics, which are not affected by `Limit`, `Offset`, and `CAM`.",
+          "document": "The actual total number of bound instances, which is not affected by the setting of `Limit`, `Offset` and the CAM permissions.",
+          "example": "2",
           "member": "uint64",
           "name": "RealCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4240,6 +4421,15 @@
           "name": "TaskId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Order ID.",
+          "example": "2022XXXX",
+          "member": "string",
+          "name": "DealName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4249,10 +4439,21 @@
       "members": [
         {
           "document": "Current status of a task. Value range: 0 (succeeded), 1 (failed), 2 (in progress).",
+          "example": "0",
           "member": "int64",
           "name": "Status",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "Array of unique CLB instance IDs.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"lb-6efswuxa\"]",
+          "member": "string",
+          "name": "LoadBalancerIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -6078,6 +6279,42 @@
       ],
       "type": "object"
     },
+    "MigrateClassicalLoadBalancersRequest": {
+      "document": "MigrateClassicalLoadBalancers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Array of classic CLB instance IDs",
+          "example": "[\"lb-isdw5mum\\r\\n\"]",
+          "member": "string",
+          "name": "LoadBalancerIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Exclusive cluster information",
+          "example": "无",
+          "member": "ExclusiveCluster",
+          "name": "ExclusiveCluster",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "MigrateClassicalLoadBalancersResponse": {
+      "document": "MigrateClassicalLoadBalancers response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyBlockIPListRequest": {
       "document": "ModifyBlockIPList request structure.",
       "members": [
@@ -6246,7 +6483,8 @@
       "members": [
         {
           "default": "",
-          "document": "CLB instance ID",
+          "document": "CLB instance ID.",
+          "example": "lb-cuxw2rm0",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -6254,7 +6492,8 @@
         },
         {
           "default": "",
-          "document": "CLB listener ID",
+          "document": "CLB listener ID.",
+          "example": "lbl-d1ubsydq",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -6263,6 +6502,7 @@
         {
           "default": "",
           "document": "Legacy domain name under a listener.",
+          "example": "foo.net",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -6271,6 +6511,7 @@
         {
           "default": "",
           "document": "New domain name. \tLength limit: 1-120. There are three usage formats: non-regular expression, wildcard, and regular expression. A non-regular expression can only contain letters, digits, \"-\", and \".\". In a wildcard, \"*\" can only be at the beginning or the end. A regular expressions must begin with a \"~\".",
+          "example": "bar.net",
           "member": "string",
           "name": "NewDomain",
           "required": true,
@@ -6501,7 +6742,7 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the LCU-supported CLB instance, and the target specification",
+          "document": "CLB instance information",
           "example": "无",
           "member": "SlaUpdateParam",
           "name": "LoadBalancerSla",
@@ -7862,7 +8103,7 @@
       "type": "object"
     },
     "SlaUpdateParam": {
-      "document": "Parameter for instance specification adjustment",
+      "document": "Instance specification adjustment parameters",
       "members": [
         {
           "default": "",
@@ -7876,7 +8117,7 @@
         },
         {
           "default": "",
-          "document": "Target instance specification",
+          "document": "To upgrade to LCU-supported CLB instances. It must be `SLA`.",
           "example": "SLA",
           "member": "string",
           "name": "SlaType",
