@@ -1,0 +1,6900 @@
+{
+  "actions": {
+    "CreateLogExport": {
+      "document": "API domain name: `rum.tencentcloudapi.com`.\n\nThis API is used to create a log download task.\n\nDefault API request rate limit: 20 requests/sec.",
+      "input": "CreateLogExportRequest",
+      "name": "Creates log download task",
+      "output": "CreateLogExportResponse"
+    },
+    "CreateOfflineLogConfig": {
+      "document": "This API is used to create an offline log listener to report offline logs of particular users.",
+      "input": "CreateOfflineLogConfigRequest",
+      "name": "Creates offline log listener",
+      "output": "CreateOfflineLogConfigResponse"
+    },
+    "CreateProject": {
+      "document": "This API is used to create a project (owned by the specified team).",
+      "input": "CreateProjectRequest",
+      "name": "Creates project",
+      "output": "CreateProjectResponse"
+    },
+    "CreateReleaseFile": {
+      "document": "This API is used to create a file record for the specified project.",
+      "input": "CreateReleaseFileRequest",
+      "name": "Creates release file record",
+      "output": "CreateReleaseFileResponse"
+    },
+    "CreateStarProject": {
+      "document": "This API is used to add a starred project.",
+      "input": "CreateStarProjectRequest",
+      "name": "Adds starred project",
+      "output": "CreateStarProjectResponse"
+    },
+    "CreateTawInstance": {
+      "document": "This API is used to create a RUM instance.",
+      "input": "CreateTawInstanceRequest",
+      "name": "Creates RUM instance",
+      "output": "CreateTawInstanceResponse"
+    },
+    "CreateWhitelist": {
+      "document": "This API is used to create an allowlist.",
+      "input": "CreateWhitelistRequest",
+      "name": "Creates allowlist",
+      "output": "CreateWhitelistResponse"
+    },
+    "DeleteInstance": {
+      "document": "This API is used to delete an instance. The deleted instance cannot be recovered.",
+      "input": "DeleteInstanceRequest",
+      "name": "Deletes instance",
+      "output": "DeleteInstanceResponse"
+    },
+    "DeleteLogExport": {
+      "document": "API domain name: `rum.tencentcloudapi.com`.\n\nThis API is used to delete a log download task.\n\nDefault API request rate limit: 20 requests/sec.",
+      "input": "DeleteLogExportRequest",
+      "name": "Deletes log download task",
+      "output": "DeleteLogExportResponse"
+    },
+    "DeleteOfflineLogConfig": {
+      "document": "This API is used to delete an offline RUM log listener. Then, offline logs of particular users will not be reported.",
+      "input": "DeleteOfflineLogConfigRequest",
+      "name": "Deletes offline RUM log listener",
+      "output": "DeleteOfflineLogConfigResponse"
+    },
+    "DeleteOfflineLogRecord": {
+      "document": "This API is used to delete an offline log record.",
+      "input": "DeleteOfflineLogRecordRequest",
+      "name": "Deletes offline log record",
+      "output": "DeleteOfflineLogRecordResponse"
+    },
+    "DeleteProject": {
+      "document": "This API is used to delete the specified RUM project.",
+      "input": "DeleteProjectRequest",
+      "name": "Deletes RUM project",
+      "output": "DeleteProjectResponse"
+    },
+    "DeleteReleaseFile": {
+      "document": "This API is used to delete the specified sourcemap file.",
+      "input": "DeleteReleaseFileRequest",
+      "name": "Deletes release file",
+      "output": "DeleteReleaseFileResponse"
+    },
+    "DeleteStarProject": {
+      "document": "This API is used to delete a starred project for the specified user.",
+      "input": "DeleteStarProjectRequest",
+      "name": "Deletes starred project",
+      "output": "DeleteStarProjectResponse"
+    },
+    "DeleteWhitelist": {
+      "document": "This API is used to delete an allowlist.",
+      "input": "DeleteWhitelistRequest",
+      "name": "Deletes allowlist",
+      "output": "DeleteWhitelistResponse"
+    },
+    "DescribeData": {
+      "document": "This API is used to query the forwarding monitor.",
+      "input": "DescribeDataRequest",
+      "name": "Gets QueryData",
+      "output": "DescribeDataResponse"
+    },
+    "DescribeDataCustomUrl": {
+      "document": "This API is used to get the DescribeDataCustomUrl information.",
+      "input": "DescribeDataCustomUrlRequest",
+      "name": "Gets DescribeDataCustomUrl information",
+      "output": "DescribeDataCustomUrlResponse"
+    },
+    "DescribeDataEventUrl": {
+      "document": "This API is used to get the DescribeDataEventUrl information.",
+      "input": "DescribeDataEventUrlRequest",
+      "name": "Gets DescribeDataEventUrl information",
+      "output": "DescribeDataEventUrlResponse"
+    },
+    "DescribeDataFetchProject": {
+      "document": "This API is used to get the DescribeDataFetchProject information.",
+      "input": "DescribeDataFetchProjectRequest",
+      "name": "Gets DescribeDataFetchProject information",
+      "output": "DescribeDataFetchProjectResponse"
+    },
+    "DescribeDataFetchUrl": {
+      "document": "This API is used to get the DescribeDataFetchUrl information.",
+      "input": "DescribeDataFetchUrlRequest",
+      "name": "Gets DescribeDataFetchUrl information",
+      "output": "DescribeDataFetchUrlResponse"
+    },
+    "DescribeDataFetchUrlInfo": {
+      "document": "This API is used to get the DescribeDataFetchUrlInfo information.",
+      "input": "DescribeDataFetchUrlInfoRequest",
+      "name": "Gets DescribeDataFetchUrlInfo information",
+      "output": "DescribeDataFetchUrlInfoResponse"
+    },
+    "DescribeDataLogUrlInfo": {
+      "document": "This API is used to get the loginfo information.",
+      "input": "DescribeDataLogUrlInfoRequest",
+      "name": "Gets dataloginfo information",
+      "output": "DescribeDataLogUrlInfoResponse"
+    },
+    "DescribeDataLogUrlStatistics": {
+      "document": "This API is used to get the LogUrlStatistics information.",
+      "input": "DescribeDataLogUrlStatisticsRequest",
+      "name": "Gets LogUrlStatistics information",
+      "output": "DescribeDataLogUrlStatisticsResponse"
+    },
+    "DescribeDataPerformancePage": {
+      "document": "This API is used to get the PerformancePage information.",
+      "input": "DescribeDataPerformancePageRequest",
+      "name": "Gets PerformancePage information",
+      "output": "DescribeDataPerformancePageResponse"
+    },
+    "DescribeDataPerformanceProject": {
+      "document": "This API is used to get the PerformanceProject information.",
+      "input": "DescribeDataPerformanceProjectRequest",
+      "name": "Gets PerformanceProject information",
+      "output": "DescribeDataPerformanceProjectResponse"
+    },
+    "DescribeDataPvUrlInfo": {
+      "document": "This API is used to get the PvUrlInfo information.",
+      "input": "DescribeDataPvUrlInfoRequest",
+      "name": "Gets PvUrlInfo information",
+      "output": "DescribeDataPvUrlInfoResponse"
+    },
+    "DescribeDataPvUrlStatistics": {
+      "document": "This API is used to get the DescribeDataPvUrlStatistics information.",
+      "input": "DescribeDataPvUrlStatisticsRequest",
+      "name": "Gets DescribeDataPvUrlStatistics information",
+      "output": "DescribeDataPvUrlStatisticsResponse"
+    },
+    "DescribeDataReportCount": {
+      "document": "This API is used to get the number of reported data entries for a project.",
+      "input": "DescribeDataReportCountRequest",
+      "name": "Gets the number of reported data entries",
+      "output": "DescribeDataReportCountResponse"
+    },
+    "DescribeDataSetUrlStatistics": {
+      "document": "This API is used to get the DescribeDataSetUrlStatistics information.",
+      "input": "DescribeDataSetUrlStatisticsRequest",
+      "name": "Gets DescribeDataSetUrlStatistics information",
+      "output": "DescribeDataSetUrlStatisticsResponse"
+    },
+    "DescribeDataStaticProject": {
+      "document": "This API is used to get the DescribeDataStaticProject information.",
+      "input": "DescribeDataStaticProjectRequest",
+      "name": "Gets DescribeDataStaticProject information",
+      "output": "DescribeDataStaticProjectResponse"
+    },
+    "DescribeDataStaticResource": {
+      "document": "This API is used to get the DescribeDataStaticResource information.",
+      "input": "DescribeDataStaticResourceRequest",
+      "name": "Gets DescribeDataStaticResource information",
+      "output": "DescribeDataStaticResourceResponse"
+    },
+    "DescribeDataStaticUrl": {
+      "document": "This API is used to get the DescribeDataStaticUrl information.",
+      "input": "DescribeDataStaticUrlRequest",
+      "name": "Gets DescribeDataStaticUrl information",
+      "output": "DescribeDataStaticUrlResponse"
+    },
+    "DescribeDataWebVitalsPage": {
+      "document": "This API is used to get the DescribeDataWebVitalsPage information, which is about core user activities.\nIt includes the Web Vitals metric for the page loading performance.",
+      "input": "DescribeDataWebVitalsPageRequest",
+      "name": "Gets DescribeDataWebVitalsPage information",
+      "output": "DescribeDataWebVitalsPageResponse"
+    },
+    "DescribeError": {
+      "document": "This API is used to get the homepage error information.",
+      "input": "DescribeErrorRequest",
+      "name": "Gets homepage error information",
+      "output": "DescribeErrorResponse"
+    },
+    "DescribeLogExports": {
+      "document": "API domain name: `rum.tencentcloudapi.com`.\n\nThis API is used to get the list of log download tasks.\n\nDefault API request rate limit: 20 requests/sec.",
+      "input": "DescribeLogExportsRequest",
+      "name": "Gets the list of log download tasks",
+      "output": "DescribeLogExportsResponse"
+    },
+    "DescribeLogList": {
+      "document": "This API is used to get the list of logs in a project (created by an instance).",
+      "input": "DescribeLogListRequest",
+      "name": "Gets log list",
+      "output": "DescribeLogListResponse"
+    },
+    "DescribeOfflineLogConfigs": {
+      "document": "This API is used to get the configuration of the set offline log listener and return the unique user ID.",
+      "input": "DescribeOfflineLogConfigsRequest",
+      "name": "Gets the configuration of set offline log listener",
+      "output": "DescribeOfflineLogConfigsResponse"
+    },
+    "DescribeOfflineLogRecords": {
+      "document": "This API is used to get all (up to 100) offline log records.",
+      "input": "DescribeOfflineLogRecordsRequest",
+      "name": "Get all (up to 100) offline records",
+      "output": "DescribeOfflineLogRecordsResponse"
+    },
+    "DescribeOfflineLogs": {
+      "document": "This API is used to get the specified offline log.",
+      "input": "DescribeOfflineLogsRequest",
+      "name": "Gets specified offline log",
+      "output": "DescribeOfflineLogsResponse"
+    },
+    "DescribeProjectLimits": {
+      "document": "This API is used to get the list of project reporting rates.",
+      "input": "DescribeProjectLimitsRequest",
+      "name": "Gets the list of project reporting rates",
+      "output": "DescribeProjectLimitsResponse"
+    },
+    "DescribeProjects": {
+      "document": "This API is used to get the list of projects (under teams created by an instance).",
+      "input": "DescribeProjectsRequest",
+      "name": "Gets project list",
+      "output": "DescribeProjectsResponse"
+    },
+    "DescribePvList": {
+      "document": "This API is used to get the list of PVs under a project.",
+      "input": "DescribePvListRequest",
+      "name": "Gets PV list",
+      "output": "DescribePvListResponse"
+    },
+    "DescribeReleaseFileSign": {
+      "document": "This API is used to get the temporary key for uploaded file storage.",
+      "input": "DescribeReleaseFileSignRequest",
+      "name": "Gets temporary storage key",
+      "output": "DescribeReleaseFileSignResponse"
+    },
+    "DescribeReleaseFiles": {
+      "document": "This API is used to get the list of sourcemap files of a project.",
+      "input": "DescribeReleaseFilesRequest",
+      "name": "Gets the list of sourcemap files of project",
+      "output": "DescribeReleaseFilesResponse"
+    },
+    "DescribeScores": {
+      "document": "This API is used to get the list of homepage scores.",
+      "input": "DescribeScoresRequest",
+      "name": "Gets the list of homepage scores",
+      "output": "DescribeScoresResponse"
+    },
+    "DescribeTawAreas": {
+      "document": "This API is used to query region information.",
+      "input": "DescribeTawAreasRequest",
+      "name": "Queries region information",
+      "output": "DescribeTawAreasResponse"
+    },
+    "DescribeTawInstances": {
+      "document": "This API is used to query instance information.",
+      "input": "DescribeTawInstancesRequest",
+      "name": "Queries instance information",
+      "output": "DescribeTawInstancesResponse"
+    },
+    "DescribeUvList": {
+      "document": "This API is used to get the list of UVs under a project.",
+      "input": "DescribeUvListRequest",
+      "name": "Gets UV list",
+      "output": "DescribeUvListResponse"
+    },
+    "DescribeWhitelists": {
+      "document": "This API is used to get the list of allowlists.",
+      "input": "DescribeWhitelistsRequest",
+      "name": "Gets allowlist list",
+      "output": "DescribeWhitelistsResponse"
+    },
+    "ModifyInstance": {
+      "document": "This API is used to modify an instance.",
+      "input": "ModifyInstanceRequest",
+      "name": "Modifies instance",
+      "output": "ModifyInstanceResponse"
+    },
+    "ModifyProject": {
+      "document": "This API is used to modify a RUM project.",
+      "input": "ModifyProjectRequest",
+      "name": "Modifies project",
+      "output": "ModifyProjectResponse"
+    },
+    "ModifyProjectLimit": {
+      "document": "This API is used to add or modify a project limit.",
+      "input": "ModifyProjectLimitRequest",
+      "name": "Adds or modifies project limit",
+      "output": "ModifyProjectLimitResponse"
+    },
+    "ResumeInstance": {
+      "document": "This API is used to resume an instance.",
+      "input": "ResumeInstanceRequest",
+      "name": "Resumes instance",
+      "output": "ResumeInstanceResponse"
+    },
+    "StopInstance": {
+      "document": "This API is used to stop an instance.",
+      "input": "StopInstanceRequest",
+      "name": "Stops instance",
+      "output": "StopInstanceResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2021-06-22",
+    "serviceNameCN": "前端性能监控",
+    "serviceShortName": "rum"
+  },
+  "objects": {
+    "CreateLogExportRequest": {
+      "document": "CreateLogExport request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Log export start time",
+          "example": "2022-01-20 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log export end time",
+          "example": "2022-01-21 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log export search statement",
+          "example": "*",
+          "member": "string",
+          "name": "Query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of logs to be exported. Maximum value: 10 million",
+          "example": "10",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Exported log sorting order by time. Valid values: asc: ascending; desc: descending. Default value: desc",
+          "example": "desc",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Exported log data format. Valid values: json, csv. Default value: json",
+          "example": "json",
+          "member": "string",
+          "name": "Format",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLogExportResponse": {
+      "document": "CreateLogExport response structure.",
+      "members": [
+        {
+          "document": "Log export ID",
+          "example": "export-f5e4c354-2441-4ea5-848e-8fc25e0f2c24",
+          "member": "string",
+          "name": "ExportID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOfflineLogConfigRequest": {
+      "document": "CreateOfflineLogConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique project key for reporting",
+          "example": "DjkljW234R",
+          "member": "string",
+          "name": "ProjectKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique identifier of the user to be listened on (`aid` or `uin`)",
+          "example": "9580003424",
+          "member": "string",
+          "name": "UniqueID",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOfflineLogConfigResponse": {
+      "document": "CreateOfflineLogConfig response structure.",
+      "members": [
+        {
+          "document": "API response information",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProjectRequest": {
+      "document": "CreateProject request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the created project (required and up to 200 characters)",
+          "example": "测试项目名",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Business system ID",
+          "example": "taw-123",
+          "member": "string",
+          "name": "InstanceID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project sampling rate (greater than or equal to 0)",
+          "example": "10",
+          "member": "string",
+          "name": "Rate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable aggregation",
+          "example": "1",
+          "member": "uint64",
+          "name": "EnableURLGroup",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project type (valid values: \"web\", \"mp\", \"android\", \"ios\", \"node\", \"hippy\", \"weex\", \"viola\", \"rn\")",
+          "example": "web",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Repository address of the project (optional and up to 256 characters)",
+          "example": "http://github.com/xxx",
+          "member": "string",
+          "name": "Repo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Webpage address of the project (optional and up to 256 characters)",
+          "example": "http://www.qq.com/",
+          "member": "string",
+          "name": "URL",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description of the created project (optional and up to 1,000 characters)",
+          "example": "这是项目描述",
+          "member": "string",
+          "name": "Desc",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProjectResponse": {
+      "document": "CreateProject response structure.",
+      "members": [
+        {
+          "document": "Project ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "ID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Unique project key",
+          "example": "RlOmCVbPrKd4",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateReleaseFileRequest": {
+      "document": "CreateReleaseFile request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ProjectID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "File information list",
+          "example": "无",
+          "member": "ReleaseFile",
+          "name": "Files",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateReleaseFileResponse": {
+      "document": "CreateReleaseFile response structure.",
+      "members": [
+        {
+          "document": "Call result",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStarProjectRequest": {
+      "document": "CreateStarProject request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID, such as taw-123",
+          "example": "taw-123",
+          "member": "string",
+          "name": "InstanceID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStarProjectResponse": {
+      "document": "CreateStarProject response structure.",
+      "members": [
+        {
+          "document": "API response information",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTawInstanceRequest": {
+      "document": "CreateTawInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Region ID (at least greater than 0)",
+          "example": "1",
+          "member": "int64",
+          "name": "AreaId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Billing mode (1: trial; 2: prepaid; 3: postpaid)",
+          "example": "1",
+          "member": "int64",
+          "name": "ChargeType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Data retention period (at least greater than 0)",
+          "example": "30",
+          "member": "int64",
+          "name": "DataRetentionDays",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance name (up to 255 bytes)",
+          "example": "实例名称",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag list",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance description (up to 1,024 bytes)",
+          "example": "实例描述",
+          "member": "string",
+          "name": "InstanceDesc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of data entries reported per day",
+          "example": "100",
+          "member": "string",
+          "name": "CountNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Billing for data storage",
+          "example": "30",
+          "member": "string",
+          "name": "PeriodRetain",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTawInstanceResponse": {
+      "document": "CreateTawInstance response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "taw-12345678",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateWhitelistRequest": {
+      "document": "CreateWhitelist request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID, such as taw-123",
+          "example": "taw-123",
+          "member": "string",
+          "name": "InstanceID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "example": "备注",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "uin: business identifier",
+          "example": "123123",
+          "member": "string",
+          "name": "WhitelistUin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Business identifier",
+          "example": "2222",
+          "member": "string",
+          "name": "Aid",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateWhitelistResponse": {
+      "document": "CreateWhitelist response structure.",
+      "members": [
+        {
+          "document": "Message",
+          "example": "无",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceRequest": {
+      "document": "DeleteInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance to be deleted",
+          "example": "rum-abcd1234",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceResponse": {
+      "document": "DeleteInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLogExportRequest": {
+      "document": "DeleteLogExport request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Log export ID",
+          "example": "export-xxx",
+          "member": "string",
+          "name": "ExportID",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLogExportResponse": {
+      "document": "DeleteLogExport response structure.",
+      "members": [
+        {
+          "document": "Whether it is successful. If so, `success` will be returned; otherwise, `Error` rather than this parameter will be returned\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOfflineLogConfigRequest": {
+      "document": "DeleteOfflineLogConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique project key for reporting",
+          "example": "fd34af34fghf6",
+          "member": "string",
+          "name": "ProjectKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique user identifier (uin or aid)",
+          "example": "9535989045",
+          "member": "string",
+          "name": "UniqueID",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOfflineLogConfigResponse": {
+      "document": "DeleteOfflineLogConfig response structure.",
+      "members": [
+        {
+          "document": "API call information",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOfflineLogRecordRequest": {
+      "document": "DeleteOfflineLogRecord request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique project key for reporting",
+          "example": "DjkljW234R",
+          "member": "string",
+          "name": "ProjectKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offline log file ID",
+          "example": "123",
+          "member": "string",
+          "name": "FileID",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOfflineLogRecordResponse": {
+      "document": "DeleteOfflineLogRecord response structure.",
+      "members": [
+        {
+          "document": "API call information",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProjectRequest": {
+      "document": "DeleteProject request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the project to be deleted",
+          "example": "6",
+          "member": "uint64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProjectResponse": {
+      "document": "DeleteProject response structure.",
+      "members": [
+        {
+          "document": "Operation information",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteReleaseFileRequest": {
+      "document": "DeleteReleaseFile request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteReleaseFileResponse": {
+      "document": "DeleteReleaseFile response structure.",
+      "members": [
+        {
+          "document": "Response string of the API request",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStarProjectRequest": {
+      "document": "DeleteStarProject request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID, such as taw-123",
+          "example": "taw-123",
+          "member": "string",
+          "name": "InstanceID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStarProjectResponse": {
+      "document": "DeleteStarProject response structure.",
+      "members": [
+        {
+          "document": "Response message\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteWhitelistRequest": {
+      "document": "DeleteWhitelist request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "taw-123",
+          "member": "string",
+          "name": "InstanceID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List ID",
+          "example": "1",
+          "member": "string",
+          "name": "ID",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteWhitelistResponse": {
+      "document": "DeleteWhitelist response structure.",
+      "members": [
+        {
+          "document": "Success message",
+          "example": "无",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataCustomUrlRequest": {
+      "document": "DescribeDataCustomUrl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Duration calculation method",
+          "example": "avg",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Key value of the custom speed test",
+          "example": "自定义测速",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataCustomUrlResponse": {
+      "document": "DescribeDataCustomUrl response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataEventUrlRequest": {
+      "document": "DescribeDataEventUrl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataEventUrlResponse": {
+      "document": "DescribeDataEventUrl response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataFetchProjectRequest": {
+      "document": "DescribeDataFetchProject request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Duration calculation method",
+          "example": "50",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source",
+          "example": "url",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataFetchProjectResponse": {
+      "document": "DescribeDataFetchProject response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataFetchUrlInfoRequest": {
+      "document": "DescribeDataFetchUrlInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Duration calculation method",
+          "example": "avg",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source",
+          "example": "http",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataFetchUrlInfoResponse": {
+      "document": "DescribeDataFetchUrlInfo response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataFetchUrlRequest": {
+      "document": "DescribeDataFetchUrl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Duration calculation method",
+          "example": "50",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source",
+          "example": "http",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataFetchUrlResponse": {
+      "document": "DescribeDataFetchUrl response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataLogUrlInfoRequest": {
+      "document": "DescribeDataLogUrlInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Timestamp",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Timestamp",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataLogUrlInfoResponse": {
+      "document": "DescribeDataLogUrlInfo response structure.",
+      "members": [
+        {
+          "document": "Response string",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataLogUrlStatisticsRequest": {
+      "document": "DescribeDataLogUrlStatistics request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "\"analysis\", \"compare\", \"samp\", \"version\", \"ext3\",\"nettype\", \"platform\",\"isp\",\"region\",\"device\",\"browser\",\"ext1\",\"ext2\"",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment",
+          "example": "production",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataLogUrlStatisticsResponse": {
+      "document": "DescribeDataLogUrlStatistics response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataPerformancePageRequest": {
+      "document": "DescribeDataPerformancePage request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "[\"pagepv\",\"allcount\"]",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Duration calculation method",
+          "example": "50",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment variable",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataPerformancePageResponse": {
+      "document": "DescribeDataPerformancePage response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataPerformanceProjectRequest": {
+      "document": "DescribeDataPerformanceProject request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "\"allcount\", \"falls\", \"samp\", \"version\", \"ext3\",\"nettype\", \"platform\",\"isp\",\"region\",\"device\",\"browser\",\"ext1\",\"ext2\"",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Duration calculation",
+          "example": "avg",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataPerformanceProjectResponse": {
+      "document": "DescribeDataPerformanceProject response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataPvUrlInfoRequest": {
+      "document": "DescribeDataPvUrlInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataPvUrlInfoResponse": {
+      "document": "DescribeDataPvUrlInfo response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataPvUrlStatisticsRequest": {
+      "document": "DescribeDataPvUrlStatistics request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Type: \"allcount\", \"falls\", \"samp\", \"version\", \"ext3\", \"nettype\", \"platform\", \"isp\", \"region\", \"device\", \"browser\", \"ext1\", \"ext2\"",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataPvUrlStatisticsResponse": {
+      "document": "DescribeDataPvUrlStatistics response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataReportCountRequest": {
+      "document": "DescribeDataReportCount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Reporting type",
+          "example": "custom",
+          "member": "string",
+          "name": "ReportType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "rum-vzysRe1w",
+          "member": "string",
+          "name": "InstanceID",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataReportCountResponse": {
+      "document": "DescribeDataReportCount response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataRequest": {
+      "document": "DescribeData request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Query string",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataResponse": {
+      "document": "DescribeData response structure.",
+      "members": [
+        {
+          "document": "Response string",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataSetUrlStatisticsRequest": {
+      "document": "DescribeDataSetUrlStatistics request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "\"allcount\", \"falls\", \"samp\", \"version\", \"ext3\",\"nettype\", \"platform\",\"isp\",\"region\",\"device\",\"browser\",\"ext1\",\"ext2\"",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Duration calculation",
+          "example": "avg",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataSetUrlStatisticsResponse": {
+      "document": "DescribeDataSetUrlStatistics response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataStaticProjectRequest": {
+      "document": "DescribeDataStaticProject request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Duration calculation",
+          "example": "avg",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source",
+          "example": "http",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Environment",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataStaticProjectResponse": {
+      "document": "DescribeDataStaticProject response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataStaticResourceRequest": {
+      "document": "DescribeDataStaticResource request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Duration calculation method",
+          "example": "avg",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source",
+          "example": "http",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataStaticResourceResponse": {
+      "document": "DescribeDataStaticResource response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataStaticUrlRequest": {
+      "document": "DescribeDataStaticUrl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Duration calculation method",
+          "example": "avg",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source",
+          "example": "http",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataStaticUrlResponse": {
+      "document": "DescribeDataStaticUrl response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataWebVitalsPageRequest": {
+      "document": "DescribeDataWebVitalsPage request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom 2",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser engine",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source page",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log level",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "No type yet",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brand",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Platform",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 3",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom 1",
+          "example": "abc",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network type",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Model",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is outside the Chinese mainland",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OS",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Browser",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Duration calculation",
+          "example": "avg",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataWebVitalsPageResponse": {
+      "document": "DescribeDataWebVitalsPage response structure.",
+      "members": [
+        {
+          "document": "Returned value",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeErrorRequest": {
+      "document": "DescribeError request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Date",
+          "example": "20210520",
+          "member": "string",
+          "name": "Date",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeErrorResponse": {
+      "document": "DescribeError response structure.",
+      "members": [
+        {
+          "document": "Content",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Time",
+          "example": "20210520",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLogExportsRequest": {
+      "document": "DescribeLogExports request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLogExportsResponse": {
+      "document": "DescribeLogExports response structure.",
+      "members": [
+        {
+          "document": "List of log export records",
+          "example": "无",
+          "member": "LogExport",
+          "name": "LogExportSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLogListRequest": {
+      "document": "DescribeLogList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: desc, asc",
+          "example": "asc",
+          "member": "string",
+          "name": "Sort",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "searchlog  histogram",
+          "example": "searchlog",
+          "member": "string",
+          "name": "ActionType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "100",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "2021-09-26 21:01:46",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of raw logs returned in a single query. Maximum value: 100",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Context, which is used to load more logs. Pass through the last `Context` value returned to get more log content (up to 10,000 raw logs). It will expire after 1 hour",
+          "example": "无",
+          "member": "string",
+          "name": "Context",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query statement. Maximum length: 4096",
+          "example": "id:100",
+          "member": "string",
+          "name": "Query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "2021-09-26 21:01:46",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLogListResponse": {
+      "document": "DescribeLogList response structure.",
+      "members": [
+        {
+          "document": "Response string",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOfflineLogConfigsRequest": {
+      "document": "DescribeOfflineLogConfigs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique project key for reporting",
+          "example": "DjkljW234R",
+          "member": "string",
+          "name": "ProjectKey",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOfflineLogConfigsResponse": {
+      "document": "DescribeOfflineLogConfigs response structure.",
+      "members": [
+        {
+          "document": "API call information",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Array of unique user identifiers",
+          "example": "['123123']",
+          "member": "string",
+          "name": "UniqueIDSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOfflineLogRecordsRequest": {
+      "document": "DescribeOfflineLogRecords request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique project key for reporting",
+          "example": "DjkljW234R",
+          "member": "string",
+          "name": "ProjectKey",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOfflineLogRecordsResponse": {
+      "document": "DescribeOfflineLogRecords response structure.",
+      "members": [
+        {
+          "document": "API call information",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Array of record IDs",
+          "example": "[\"12\"]",
+          "member": "string",
+          "name": "RecordSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOfflineLogsRequest": {
+      "document": "DescribeOfflineLogs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique project key for reporting",
+          "example": "DjkljW234R",
+          "member": "string",
+          "name": "ProjectKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of offline log file IDs",
+          "example": "[\"123\"]",
+          "member": "string",
+          "name": "FileIDs",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOfflineLogsResponse": {
+      "document": "DescribeOfflineLogs response structure.",
+      "members": [
+        {
+          "document": "API call response",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Log list",
+          "example": "[\"123\"]",
+          "member": "string",
+          "name": "LogSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectLimitsRequest": {
+      "document": "DescribeProjectLimits request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "123",
+          "member": "int64",
+          "name": "ProjectID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectLimitsResponse": {
+      "document": "DescribeProjectLimits response structure.",
+      "members": [
+        {
+          "document": "Array of reporting rates",
+          "example": "无",
+          "member": "ProjectLimit",
+          "name": "ProjectLimitSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectsRequest": {
+      "document": "DescribeProjects request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of items per page (integer)",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number (integer)",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectsResponse": {
+      "document": "DescribeProjects response structure.",
+      "members": [
+        {
+          "document": "Total number of items in the list",
+          "example": "0",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Project list",
+          "example": "无",
+          "member": "RumProject",
+          "name": "ProjectSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePvListRequest": {
+      "document": "DescribePvList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "20201104",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "20201101",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Get day:d (leave this parameter empty if to get min)",
+          "example": "d",
+          "member": "string",
+          "name": "Dimension",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePvListResponse": {
+      "document": "DescribePvList response structure.",
+      "members": [
+        {
+          "document": "PV list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RumPvInfo",
+          "name": "ProjectPvSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReleaseFileSignRequest": {
+      "document": "DescribeReleaseFileSign request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Timeout period. If it is not set, it will be 5 minutes by default",
+          "example": "10",
+          "member": "int64",
+          "name": "Timeout",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReleaseFileSignResponse": {
+      "document": "DescribeReleaseFileSign response structure.",
+      "members": [
+        {
+          "document": "Temporary key",
+          "example": "sfdgfgfgfdf",
+          "member": "string",
+          "name": "SecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Temporary key ID",
+          "example": "dfdfdfdgfgfbf",
+          "member": "string",
+          "name": "SecretID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Temporary key token",
+          "example": "asdfdsfdsgg",
+          "member": "string",
+          "name": "SessionToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Start timestamp",
+          "example": "123787043",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Expiration timestamp",
+          "example": "23435436565",
+          "member": "int64",
+          "name": "ExpiredTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReleaseFilesRequest": {
+      "document": "DescribeReleaseFiles request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ProjectID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "File version",
+          "example": "0.0.1",
+          "member": "string",
+          "name": "FileVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReleaseFilesResponse": {
+      "document": "DescribeReleaseFiles response structure.",
+      "members": [
+        {
+          "document": "File information list",
+          "example": "无",
+          "member": "ReleaseFile",
+          "name": "Files",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeScoresRequest": {
+      "document": "DescribeScores request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "End time",
+          "example": "2022051914",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "2020011920",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeScoresResponse": {
+      "document": "DescribeScores response structure.",
+      "members": [
+        {
+          "document": "Array",
+          "example": "无",
+          "member": "ScoreInfo",
+          "name": "ScoreSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTawAreasRequest": {
+      "document": "DescribeTawAreas request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Region ID",
+          "example": "1",
+          "member": "int64",
+          "name": "AreaIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Region key",
+          "example": "area-cn-dl",
+          "member": "string",
+          "name": "AreaKeys",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Pagination limit",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Region status (1: valid; 2: invalid)",
+          "example": "1",
+          "member": "int64",
+          "name": "AreaStatuses",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset",
+          "example": "100",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTawAreasResponse": {
+      "document": "DescribeTawAreas response structure.",
+      "members": [
+        {
+          "document": "Total number of regions",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Region list",
+          "example": "无",
+          "member": "RumAreaInfo",
+          "name": "AreaSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTawInstancesRequest": {
+      "document": "DescribeTawInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Billing status",
+          "example": "无",
+          "member": "int64",
+          "name": "ChargeStatuses",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Billing type",
+          "example": "无",
+          "member": "int64",
+          "name": "ChargeTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Pagination limit",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Region ID",
+          "example": "无",
+          "member": "int64",
+          "name": "AreaIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: terminating; 8: terminated)",
+          "example": "无",
+          "member": "int64",
+          "name": "InstanceStatuses",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter parameter",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTawInstancesResponse": {
+      "document": "DescribeTawInstances response structure.",
+      "members": [
+        {
+          "document": "Instance list",
+          "example": "无",
+          "member": "RumInstanceInfo",
+          "name": "InstanceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of instances",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUvListRequest": {
+      "document": "DescribeUvList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "20201104",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "20201101",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Get day:d min:m",
+          "example": "d",
+          "member": "string",
+          "name": "Dimension",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUvListResponse": {
+      "document": "DescribeUvList response structure.",
+      "members": [
+        {
+          "document": "UV list",
+          "example": "无",
+          "member": "RumUvInfo",
+          "name": "ProjectUvSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWhitelistsRequest": {
+      "document": "DescribeWhitelists request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "taw-123",
+          "member": "string",
+          "name": "InstanceID",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWhitelistsResponse": {
+      "document": "DescribeWhitelists response structure.",
+      "members": [
+        {
+          "document": "Allowlist list",
+          "example": "无",
+          "member": "Whitelist",
+          "name": "WhitelistSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Filter": {
+      "document": "Key-Value pair filter for conditional filtering queries, such as filtering ID, name, status, etc.\n\n· If more than one filter exists, the logical relationship between these filters is `AND`.\n· If multiple values exist in one filter, the logical relationship between these values is `OR`.",
+      "members": [
+        {
+          "default": "",
+          "document": "One or more filter values.",
+          "example": "ap-guangdong,ap-shenzhen",
+          "member": "string",
+          "name": "Values",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filter name.",
+          "example": "Zone",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "LogExport": {
+      "document": "Log export record",
+      "members": [
+        {
+          "default": "",
+          "document": "Log export path",
+          "example": "https://export.xxx.xxx.xxx.com",
+          "member": "string",
+          "name": "CosPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of logs to be exported",
+          "example": "10",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log export task creation time",
+          "example": "2022-01-21 16:45:41",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log export task ID",
+          "example": "export-xxx",
+          "member": "string",
+          "name": "ExportID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log export filename",
+          "example": "log_expo",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log file size",
+          "example": "866",
+          "member": "int64",
+          "name": "FileSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log export format",
+          "example": "json",
+          "member": "string",
+          "name": "Format",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log export time sorting",
+          "example": "asc",
+          "member": "string",
+          "name": "Order",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log export query statement",
+          "example": "*",
+          "member": "string",
+          "name": "Query",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log export start time",
+          "example": "2022-01-20 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log export end time",
+          "example": "2022-01-21 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Log download status. Valid values: Queuing: queuing; Processing: exporting; Complete: completed; Failed: failed; Expired: expired (3-day validity period).",
+          "example": "Completed",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyInstanceRequest": {
+      "document": "ModifyInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance to be modified",
+          "example": "taw-12345678",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New instance name (up to 255 characters)",
+          "example": "实例名称",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New instance description (up to 1,024 characters)",
+          "example": "实例描述",
+          "member": "string",
+          "name": "InstanceDesc",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceResponse": {
+      "document": "ModifyInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProjectLimitRequest": {
+      "document": "ModifyProjectLimit request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1234",
+          "member": "int64",
+          "name": "ProjectID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project API",
+          "example": "web",
+          "member": "string",
+          "name": "ProjectInterface",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Reporting rate. 10 means 10%",
+          "example": "10",
+          "member": "int64",
+          "name": "ReportRate",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Reporting type. 1: rate; 2: number of reported data entries",
+          "example": "1",
+          "member": "int64",
+          "name": "ReportType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Primary key ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProjectLimitResponse": {
+      "document": "ModifyProjectLimit response structure.",
+      "members": [
+        {
+          "document": "Returned message\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProjectRequest": {
+      "document": "ModifyProject request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "6",
+          "member": "uint64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project name (optional, not empty, and up to 200 characters)",
+          "example": "测试项目名",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project webpage URL (optional and up to 256 characters)",
+          "example": "http://www.qq.com",
+          "member": "string",
+          "name": "URL",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project repository address (optional and up to 256 characters)",
+          "example": "http://github.com/xxx/yyy",
+          "member": "string",
+          "name": "Repo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the instance to which to move the project (optional)",
+          "example": "taw-123",
+          "member": "string",
+          "name": "InstanceID",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project sample rate (optional)",
+          "example": "10",
+          "member": "string",
+          "name": "Rate",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable aggregation (optional)",
+          "example": "0",
+          "member": "uint64",
+          "name": "EnableURLGroup",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project type (valid values: \"web\", \"mp\", \"android\", \"ios\", \"node\", \"hippy\", \"weex\", \"viola\", \"rn\")",
+          "example": "web",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project description (optional and up to 1,000 characters)",
+          "example": "这是项目描述",
+          "member": "string",
+          "name": "Desc",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProjectResponse": {
+      "document": "ModifyProject response structure.",
+      "members": [
+        {
+          "document": "Operation information",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Project ID",
+          "example": "6",
+          "member": "uint64",
+          "name": "ID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ProjectLimit": {
+      "document": "Project API restriction type",
+      "members": [
+        {
+          "default": "",
+          "document": "Primary key ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "123",
+          "member": "int64",
+          "name": "ProjectID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API",
+          "example": "web",
+          "member": "string",
+          "name": "ProjectInterface",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Reporting rate",
+          "example": "10",
+          "member": "int64",
+          "name": "ReportRate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Reporting type. 1: reporting rate; 2: reporting count limit",
+          "example": "1",
+          "member": "int64",
+          "name": "ReportType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ReleaseFile": {
+      "document": "Release file list (sourcemap)",
+      "members": [
+        {
+          "default": "",
+          "document": "File version",
+          "example": "0.0.1",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique file key",
+          "example": "DFFDSGGSDFFDS",
+          "member": "string",
+          "name": "FileKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filename",
+          "example": "a.js.map",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File hash",
+          "example": "asdfdsfdsg/f/g",
+          "member": "string",
+          "name": "FileHash",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ResumeInstanceRequest": {
+      "document": "ResumeInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance to be resumed",
+          "example": "rum-abcd1234",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResumeInstanceResponse": {
+      "document": "ResumeInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RumAreaInfo": {
+      "document": "RUM region information",
+      "members": [
+        {
+          "default": "",
+          "document": "Region ID",
+          "example": "1",
+          "member": "int64",
+          "name": "AreaId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region status (1: valid; 2: invalid)",
+          "example": "1",
+          "member": "int64",
+          "name": "AreaStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name",
+          "example": "中国大陆",
+          "member": "string",
+          "name": "AreaName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region key",
+          "example": "area-cn-dl",
+          "member": "string",
+          "name": "AreaKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RumInstanceInfo": {
+      "document": "RUM instance information",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: deleted)",
+          "example": "2",
+          "member": "int64",
+          "name": "InstanceStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region ID",
+          "example": "1",
+          "member": "int64",
+          "name": "AreaId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag list",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "taw-12345678",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ClusterId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance description",
+          "example": "测试",
+          "member": "string",
+          "name": "InstanceDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing status (1: in use; 2: expired; 3: terminated; 4: assigning; 5: assignment failed)",
+          "example": "1",
+          "member": "int64",
+          "name": "ChargeStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing type (1: free; 2: prepaid; 3: postpaid)",
+          "example": "1",
+          "member": "int64",
+          "name": "ChargeType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Update time",
+          "example": "2021-01-01 00:00:00",
+          "member": "string",
+          "name": "UpdatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data retention period (in days)",
+          "example": "30",
+          "member": "int64",
+          "name": "DataRetentionDays",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "example": "测试",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2021-01-01 00:00:00",
+          "member": "string",
+          "name": "CreatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RumProject": {
+      "document": "RUM project information",
+      "members": [
+        {
+          "default": "",
+          "document": "Project name",
+          "example": "测试项目",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creator ID",
+          "example": "123456",
+          "member": "string",
+          "name": "Creator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tam-123",
+          "member": "string",
+          "name": "InstanceID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project type",
+          "example": "log",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2020-04-26 00:00:00",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project repository address\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "http://github.com/xxx/yyy",
+          "member": "string",
+          "name": "Repo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Project URL\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "http://cloud.tencent.com/index.html",
+          "member": "string",
+          "name": "URL",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Project sample rate",
+          "example": "12",
+          "member": "string",
+          "name": "Rate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique project key (12 characters)",
+          "example": "hjkysfkey12",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable URL aggregation",
+          "example": "1",
+          "member": "int64",
+          "name": "EnableURLGroup",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "example": "tamIns",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance key",
+          "example": "tam-key",
+          "member": "string",
+          "name": "InstanceKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "这是一个项目描述",
+          "member": "string",
+          "name": "Desc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Starred status. 1: yes; 0: no\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsStar",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RumPvInfo": {
+      "document": "RUM log object",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of PVs\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "111",
+          "member": "string",
+          "name": "Pv",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time",
+          "example": "20201102",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RumUvInfo": {
+      "document": "Number of RUM UVs",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of UVs",
+          "example": "222",
+          "member": "string",
+          "name": "Uv",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "20201102",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ScoreInfo": {
+      "document": "Project score entity",
+      "members": [
+        {
+          "default": "",
+          "document": "duration",
+          "example": "1",
+          "member": "string",
+          "name": "StaticDuration",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "pv",
+          "example": "111",
+          "member": "string",
+          "name": "PagePv",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Failure",
+          "example": "1",
+          "member": "string",
+          "name": "ApiFail",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Request",
+          "example": "12",
+          "member": "string",
+          "name": "ApiNum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "fail",
+          "example": "12",
+          "member": "string",
+          "name": "StaticFail",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ProjectID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "uv",
+          "example": "12",
+          "member": "string",
+          "name": "PageUv",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of requests",
+          "example": "12",
+          "member": "string",
+          "name": "ApiDuration",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Score",
+          "example": "90",
+          "member": "string",
+          "name": "Score",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "error",
+          "example": "111",
+          "member": "string",
+          "name": "PageError",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "num",
+          "example": "12",
+          "member": "string",
+          "name": "StaticNum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "num",
+          "example": "1",
+          "member": "int64",
+          "name": "RecordNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Duration",
+          "example": "111",
+          "member": "string",
+          "name": "PageDuration",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "StopInstanceRequest": {
+      "document": "StopInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance to be stopped",
+          "example": "rum-abcd1234",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopInstanceResponse": {
+      "document": "StopInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Tag": {
+      "document": "Tag",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "example": "key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "example": "value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Whitelist": {
+      "document": "Allowlist",
+      "members": [
+        {
+          "default": "",
+          "document": "Remarks",
+          "example": "备注",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "taw-123",
+          "member": "string",
+          "name": "InstanceID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "20200527221900",
+          "member": "string",
+          "name": "Ttl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto-Increment allowlist ID",
+          "example": "12",
+          "member": "string",
+          "name": "ID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique business identifier",
+          "example": "111",
+          "member": "string",
+          "name": "WhitelistUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creator ID",
+          "example": "1111",
+          "member": "string",
+          "name": "CreateUser",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "aid",
+          "example": "222",
+          "member": "string",
+          "name": "Aid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "20200527221900",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}
