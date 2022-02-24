@@ -307,9 +307,9 @@
       "output": "ModifyProjectResponse"
     },
     "ModifyProjectLimit": {
-      "document": "This API is used to add or modify a project limit.",
+      "document": "This API is used to add or modify data reporting limit.",
       "input": "ModifyProjectLimitRequest",
-      "name": "Adds or modifies project limit",
+      "name": "Adds or modifies data reporting limit",
       "output": "ModifyProjectLimitResponse"
     },
     "ResumeInstance": {
@@ -1164,7 +1164,7 @@
         },
         {
           "default": "",
-          "document": "Type",
+          "document": "`top`: top resources view; `allcount`: performance view; `day`: 14-day data; `condition`: condition list; `pagepv`: PV view; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
           "name": "Type",
@@ -1398,7 +1398,7 @@
         },
         {
           "default": "",
-          "document": "Type",
+          "document": "`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `ckuv`: UV trend; `ckpv`: PV trend; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
           "name": "Type",
@@ -1623,7 +1623,7 @@
         },
         {
           "default": "",
-          "document": "Type",
+          "document": "`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
           "name": "Type",
@@ -2091,7 +2091,7 @@
         },
         {
           "default": "",
-          "document": "Type",
+          "document": "`allcount`: performance view; `day`: 14-day data; `count40x`: HTTP status codes 40X view; `count50x`: HTTP status codes 50X view; `count5xand4x`: HTTP status codes 40X∑50X view; `top`: top resources view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
           "name": "Type",
@@ -2379,7 +2379,7 @@
         },
         {
           "default": "",
-          "document": "\"analysis\", \"compare\", \"samp\", \"version\", \"ext3\",\"nettype\", \"platform\",\"isp\",\"region\",\"device\",\"browser\",\"ext1\",\"ext2\"",
+          "document": "`analysis`: exception analysis; `compare`: exception list comparison; `allcount`: performance view; `condition`: condition list; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
           "name": "Type",
@@ -2613,7 +2613,7 @@
         },
         {
           "default": "",
-          "document": "[\"pagepv\",\"allcount\"]",
+          "document": "`pagepv`: PV view; `allcount`: performance view; `falls`: page loading waterfall plot; `samp`: FMP, `day`: 14-day data, `nettype`: network/platform view; `performance`: top underperformed pages view; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.",
           "example": "pagepv",
           "member": "string",
           "name": "Type",
@@ -2820,7 +2820,7 @@
         },
         {
           "default": "",
-          "document": "\"allcount\", \"falls\", \"samp\", \"version\", \"ext3\",\"nettype\", \"platform\",\"isp\",\"region\",\"device\",\"browser\",\"ext1\",\"ext2\"",
+          "document": "`allcount`; performance view; `falls`: page loading waterfall plot; `samp`: FMP, `day`: 14-day data, `nettype`: network/platform view; `performance`: top underperformed pages view; `condition`: condition list; `area`: request speed distribution; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.",
           "example": "pagepv",
           "member": "string",
           "name": "Type",
@@ -3261,7 +3261,7 @@
         },
         {
           "default": "",
-          "document": "Type: \"allcount\", \"falls\", \"samp\", \"version\", \"ext3\", \"nettype\", \"platform\", \"isp\", \"region\", \"device\", \"browser\", \"ext1\", \"ext2\"",
+          "document": "`allcount`; performance view; `day`: 14-day data, `vp`: performance; `ckuv`: UV; `ckpv`: PV; `condition`: condition list; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
           "name": "Type",
@@ -3594,7 +3594,7 @@
         },
         {
           "default": "",
-          "document": "\"allcount\", \"falls\", \"samp\", \"version\", \"ext3\",\"nettype\", \"platform\",\"isp\",\"region\",\"device\",\"browser\",\"ext1\",\"ext2\"",
+          "document": "`allcount`: performance view; `data`: mini program; `component`: mini program-related components; `day`: 14-day data; `nettype`: network/platform view; `performance`: top underperformed pages view; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.",
           "example": "pagepv",
           "member": "string",
           "name": "Type",
@@ -3819,7 +3819,7 @@
         },
         {
           "default": "",
-          "document": "Type",
+          "document": "`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
           "name": "Type",
@@ -4053,7 +4053,7 @@
         },
         {
           "default": "",
-          "document": "Type",
+          "document": "`top`: top resources view; `count40x`: HTTP status codes 40X view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
           "name": "Type",
@@ -4287,7 +4287,7 @@
         },
         {
           "default": "",
-          "document": "Type",
+          "document": "`pagepv`: page view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.",
           "example": "pagepv",
           "member": "string",
           "name": "Type",

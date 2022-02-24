@@ -204,6 +204,33 @@ def doInquiryPriceRunInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyHostsAttribute(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyHostsAttributeRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyHostsAttribute(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeImages(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -250,6 +277,33 @@ def doModifyKeyPairAttribute(args, parsed_globals):
     model = models.ModifyKeyPairAttributeRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.ModifyKeyPairAttribute(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteLaunchTemplate(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteLaunchTemplateRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DeleteLaunchTemplate(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -339,7 +393,7 @@ def doInquiryPriceResetInstancesInternetMaxBandwidth(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDisassociateInstancesKeyPairs(args, parsed_globals):
+def doDeleteImages(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -355,9 +409,9 @@ def doDisassociateInstancesKeyPairs(args, parsed_globals):
     client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DisassociateInstancesKeyPairsRequest()
+    model = models.DeleteImagesRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DisassociateInstancesKeyPairs(model)
+    rsp = client.DeleteImages(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -501,7 +555,7 @@ def doDescribeInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doImportKeyPair(args, parsed_globals):
+def doDescribeLaunchTemplateVersions(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -517,9 +571,9 @@ def doImportKeyPair(args, parsed_globals):
     client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ImportKeyPairRequest()
+    model = models.DescribeLaunchTemplateVersionsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ImportKeyPair(model)
+    rsp = client.DescribeLaunchTemplateVersions(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -582,7 +636,7 @@ def doRunInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteImages(args, parsed_globals):
+def doModifyLaunchTemplateDefaultVersion(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -598,9 +652,36 @@ def doDeleteImages(args, parsed_globals):
     client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteImagesRequest()
+    model = models.ModifyLaunchTemplateDefaultVersionRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteImages(model)
+    rsp = client.ModifyLaunchTemplateDefaultVersion(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDisassociateInstancesKeyPairs(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DisassociateInstancesKeyPairsRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DisassociateInstancesKeyPairs(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -798,6 +879,33 @@ def doResizeInstanceDisks(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doCreateLaunchTemplate(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateLaunchTemplateRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.CreateLaunchTemplate(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeReservedInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -933,6 +1041,33 @@ def doResetInstancesType(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDeleteLaunchTemplateVersions(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteLaunchTemplateVersionsRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DeleteLaunchTemplateVersions(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doModifyImageAttribute(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1014,6 +1149,60 @@ def doInquiryPriceResetInstancesType(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeInstanceVncUrl(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeInstanceVncUrlRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeInstanceVncUrl(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateLaunchTemplateVersion(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateLaunchTemplateVersionRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.CreateLaunchTemplateVersion(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doStopInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1033,33 +1222,6 @@ def doStopInstances(args, parsed_globals):
     model = models.StopInstancesRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.StopInstances(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doModifyHostsAttribute(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyHostsAttributeRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ModifyHostsAttribute(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1122,7 +1284,7 @@ def doInquirePricePurchaseReservedInstancesOffering(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeInstanceVncUrl(args, parsed_globals):
+def doModifyInstancesProject(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1138,9 +1300,9 @@ def doDescribeInstanceVncUrl(args, parsed_globals):
     client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInstanceVncUrlRequest()
+    model = models.ModifyInstancesProjectRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeInstanceVncUrl(model)
+    rsp = client.ModifyInstancesProject(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1249,6 +1411,60 @@ def doTerminateInstances(args, parsed_globals):
     model = models.TerminateInstancesRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.TerminateInstances(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doImportKeyPair(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ImportKeyPairRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ImportKeyPair(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeLaunchTemplates(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeLaunchTemplatesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeLaunchTemplates(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1554,33 +1770,6 @@ def doDescribeInstanceTypeConfigs(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyInstancesProject(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyInstancesProjectRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ModifyInstancesProject(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDisassociateSecurityGroups(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1653,21 +1842,24 @@ ACTION_MAP = {
     "DescribeImageSharePermission": doDescribeImageSharePermission,
     "ImportImage": doImportImage,
     "InquiryPriceRunInstances": doInquiryPriceRunInstances,
+    "ModifyHostsAttribute": doModifyHostsAttribute,
     "DescribeImages": doDescribeImages,
     "ModifyKeyPairAttribute": doModifyKeyPairAttribute,
+    "DeleteLaunchTemplate": doDeleteLaunchTemplate,
     "ModifyInstancesAttribute": doModifyInstancesAttribute,
     "DescribeRegions": doDescribeRegions,
     "InquiryPriceResetInstancesInternetMaxBandwidth": doInquiryPriceResetInstancesInternetMaxBandwidth,
-    "DisassociateInstancesKeyPairs": doDisassociateInstancesKeyPairs,
+    "DeleteImages": doDeleteImages,
     "CreateKeyPair": doCreateKeyPair,
     "DescribeInstanceFamilyConfigs": doDescribeInstanceFamilyConfigs,
     "DeleteKeyPairs": doDeleteKeyPairs,
     "CreateDisasterRecoverGroup": doCreateDisasterRecoverGroup,
     "DescribeInstances": doDescribeInstances,
-    "ImportKeyPair": doImportKeyPair,
+    "DescribeLaunchTemplateVersions": doDescribeLaunchTemplateVersions,
     "AssociateInstancesKeyPairs": doAssociateInstancesKeyPairs,
     "RunInstances": doRunInstances,
-    "DeleteImages": doDeleteImages,
+    "ModifyLaunchTemplateDefaultVersion": doModifyLaunchTemplateDefaultVersion,
+    "DisassociateInstancesKeyPairs": doDisassociateInstancesKeyPairs,
     "InquiryPriceResizeInstanceDisks": doInquiryPriceResizeInstanceDisks,
     "ModifyInstancesVpcAttribute": doModifyInstancesVpcAttribute,
     "InquiryPriceResetInstance": doInquiryPriceResetInstance,
@@ -1675,23 +1867,28 @@ ACTION_MAP = {
     "ResetInstancesPassword": doResetInstancesPassword,
     "PurchaseReservedInstancesOffering": doPurchaseReservedInstancesOffering,
     "ResizeInstanceDisks": doResizeInstanceDisks,
+    "CreateLaunchTemplate": doCreateLaunchTemplate,
     "DescribeReservedInstances": doDescribeReservedInstances,
     "DescribeZones": doDescribeZones,
     "DescribeImageQuota": doDescribeImageQuota,
     "AssociateSecurityGroups": doAssociateSecurityGroups,
     "ResetInstancesType": doResetInstancesType,
+    "DeleteLaunchTemplateVersions": doDeleteLaunchTemplateVersions,
     "ModifyImageAttribute": doModifyImageAttribute,
     "DescribeReservedInstancesConfigInfos": doDescribeReservedInstancesConfigInfos,
     "InquiryPriceResetInstancesType": doInquiryPriceResetInstancesType,
+    "DescribeInstanceVncUrl": doDescribeInstanceVncUrl,
+    "CreateLaunchTemplateVersion": doCreateLaunchTemplateVersion,
     "StopInstances": doStopInstances,
-    "ModifyHostsAttribute": doModifyHostsAttribute,
     "DescribeImportImageOs": doDescribeImportImageOs,
     "InquirePricePurchaseReservedInstancesOffering": doInquirePricePurchaseReservedInstancesOffering,
-    "DescribeInstanceVncUrl": doDescribeInstanceVncUrl,
+    "ModifyInstancesProject": doModifyInstancesProject,
     "ResetInstance": doResetInstance,
     "SyncImages": doSyncImages,
     "DeleteDisasterRecoverGroups": doDeleteDisasterRecoverGroups,
     "TerminateInstances": doTerminateInstances,
+    "ImportKeyPair": doImportKeyPair,
+    "DescribeLaunchTemplates": doDescribeLaunchTemplates,
     "DescribeZoneInstanceConfigInfos": doDescribeZoneInstanceConfigInfos,
     "ResetInstancesInternetMaxBandwidth": doResetInstancesInternetMaxBandwidth,
     "StartInstances": doStartInstances,
@@ -1703,7 +1900,6 @@ ACTION_MAP = {
     "DescribeInternetChargeTypeConfigs": doDescribeInternetChargeTypeConfigs,
     "RebootInstances": doRebootInstances,
     "DescribeInstanceTypeConfigs": doDescribeInstanceTypeConfigs,
-    "ModifyInstancesProject": doModifyInstancesProject,
     "DisassociateSecurityGroups": doDisassociateSecurityGroups,
     "AllocateHosts": doAllocateHosts,
 

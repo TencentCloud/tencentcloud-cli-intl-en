@@ -79,7 +79,7 @@
       "output": "CreatePluginResponse"
     },
     "CreateService": {
-      "document": "This API is used to create a service.\nThe maximum unit in API Gateway is service. Multiple APIs can be created in one service, and each service has a default domain name for users to call. You can also bind your own custom domain name to a service.",
+      "document": "This API is used to create a service.\nA service is the biggest usage unit in API Gateway. Each service can contain multiple APIs and one default domain name for invocation. You can also bind your own custom domain name to a service. ",
       "input": "CreateServiceRequest",
       "name": "Creates service",
       "output": "CreateServiceResponse"
@@ -3243,6 +3243,15 @@
           "name": "IsBase64Encoded",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Event bus ID.",
+          "example": "eb-xsae3sdf",
+          "member": "string",
+          "name": "EventBusId",
+          "required": false,
+          "type": "string"
         },
         {
           "default": "",
@@ -7976,6 +7985,60 @@
           "name": "Base64EncodedTriggerRules",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Event bus ID.",
+          "example": "eb-3sczdead",
+          "member": "string",
+          "name": "EventBusId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "SCF function type, which takes effect when the backend type is `SCF`. Valid values: `EVENT` and `HTTP`.",
+          "example": "EVENT",
+          "member": "string",
+          "name": "ServiceScfFunctionType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "EIAM application type.",
+          "example": "Client",
+          "member": "string",
+          "name": "EIAMAppType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "EIAM application authentication type. Valid values: `AuthenticationOnly`, `Authentication`, `Authorization`.",
+          "example": "Authorization",
+          "member": "string",
+          "name": "EIAMAuthType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Validity of the EIAM application token. Unit: second. Default value: `7200`.",
+          "example": "无",
+          "member": "string",
+          "name": "EIAMAppId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "EIAM application ID.",
+          "example": "7200",
+          "member": "int64",
+          "name": "TokenTimeout",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"

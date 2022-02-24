@@ -36,6 +36,18 @@
       "name": "Creates a key pair",
       "output": "CreateKeyPairResponse"
     },
+    "CreateLaunchTemplate": {
+      "document": "This API is used to create an instance launch template.\n\nAn instance launch template contains the configuration information required to create an instance, including instance type, data/system disk type and size, and security group, etc.\n\nWhen a template is created, it defaults to Version 1. You can use `CreateLaunchTemplateVersion` to create new versions of this template, with the version number increasing. When you run `RunInstances` to create instances, you can specify the instance launch template version. If it’s not specified, the default template version is used.",
+      "input": "CreateLaunchTemplateRequest",
+      "name": "Creates an instance launch template",
+      "output": "CreateLaunchTemplateResponse"
+    },
+    "CreateLaunchTemplateVersion": {
+      "document": "This API is used to create an instance launch template based on the specified template ID and the corresponding template version number. The default version number will be used when no template version numbers are specified. Each instance launch template can have up to 30 version numbers.",
+      "input": "CreateLaunchTemplateVersionRequest",
+      "name": "Creating a instance launch template version",
+      "output": "CreateLaunchTemplateVersionResponse"
+    },
     "DeleteDisasterRecoverGroups": {
       "document": "This API is used to delete a [spread placement group](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1). Only empty placement groups can be deleted. To delete a non-empty group, you need to terminate all the CVM instances in it first. Otherwise, the deletion will fail.",
       "input": "DeleteDisasterRecoverGroupsRequest",
@@ -53,6 +65,18 @@
       "input": "DeleteKeyPairsRequest",
       "name": "Deletes key pairs",
       "output": "DeleteKeyPairsResponse"
+    },
+    "DeleteLaunchTemplate": {
+      "document": "This API is used to delete an instance launch template.",
+      "input": "DeleteLaunchTemplateRequest",
+      "name": "Deleting an instance launch template",
+      "output": "DeleteLaunchTemplateResponse"
+    },
+    "DeleteLaunchTemplateVersions": {
+      "document": "This API is used to delete one or more instance launch template versions.",
+      "input": "DeleteLaunchTemplateVersionsRequest",
+      "name": "Deletes one or more instance launch template versions",
+      "output": "DeleteLaunchTemplateVersionsResponse"
     },
     "DescribeDisasterRecoverGroupQuota": {
       "document": "This API is used to query the quota of [spread placement groups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1).",
@@ -143,6 +167,18 @@
       "input": "DescribeKeyPairsRequest",
       "name": "Queries the list of key pairs",
       "output": "DescribeKeyPairsResponse"
+    },
+    "DescribeLaunchTemplateVersions": {
+      "document": "This API is used to query the information of instance launch template versions.",
+      "input": "DescribeLaunchTemplateVersionsRequest",
+      "name": "Queries instance launch template versions",
+      "output": "DescribeLaunchTemplateVersionsResponse"
+    },
+    "DescribeLaunchTemplates": {
+      "document": "This API is used to query one or more instance launch templates.",
+      "input": "DescribeLaunchTemplatesRequest",
+      "name": "Queries instance launch templates",
+      "output": "DescribeLaunchTemplatesResponse"
     },
     "DescribeRegions": {
       "document": "(Suspended) This API is used to query the information of regions. Due to platform policy, the update of this API has been temporarily stopped. Please try the new one as described in https://intl.cloud.tencent.com/document/product/1278/55255?from_cn_redirect=1",
@@ -265,7 +301,7 @@
       "output": "ModifyImageSharePermissionResponse"
     },
     "ModifyInstancesAttribute": {
-      "document": "The API is used to modify the attributes of an instance. Currently, you can only use the API to modify the name and the associated security groups of the instance.\n\n* **Instance names** are used only for users' convenience. Tencent Cloud does not use these names for online support or instance management.\n* Batch operations are supported. The maximum number of Batch instances in each request is 100.\n* When you modify the security groups associated with an instance, the original security groups will be disassociated.\n* You can use the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) API to query the instance operation result. If the 'LatestOperationState' in the response is **SUCCESS**, the operation is successful.",
+      "document": "The API is used to modify the attributes of an instance. Only the name and the associated security groups can be modified for now.\n\n* An attribute must be specified in the request.\n* \"Instance name\" is a custom name for easier management. Tencent Cloud does not use the name for online support or instance management.\n* Batch operations are supported. Each request can modify up to 100 instances.\n* When you modify the security groups associated with an instance is modified, the original security groups are disassociated.\n* You can use the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) to query the instance operation result. If the 'LatestOperationState' in the response is **SUCCESS**, the operation is successful.",
       "input": "ModifyInstancesAttributeRequest",
       "name": "Modifies instance attributes",
       "output": "ModifyInstancesAttributeResponse"
@@ -287,6 +323,12 @@
       "input": "ModifyKeyPairAttributeRequest",
       "name": "Modifies key pair attributes",
       "output": "ModifyKeyPairAttributeResponse"
+    },
+    "ModifyLaunchTemplateDefaultVersion": {
+      "document": "This API is used to modify the default version of the instance launch template.",
+      "input": "ModifyLaunchTemplateDefaultVersionRequest",
+      "name": "Modifies the default version of the instance launch template",
+      "output": "ModifyLaunchTemplateDefaultVersionResponse"
     },
     "PurchaseReservedInstancesOffering": {
       "document": "This API is used to purchase one or more specific Reserved Instances.",
@@ -737,6 +779,15 @@
           "name": "DryRun",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Tag description list. This parameter is used to bind a tag to a custom image.",
+          "example": "NA",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -790,6 +841,537 @@
           "member": "KeyPair",
           "name": "KeyPair",
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLaunchTemplateRequest": {
+      "document": "CreateLaunchTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance launch template name. It can include 2-128 characters.",
+          "example": "MyLaunchTemplate",
+          "member": "string",
+          "name": "LaunchTemplateName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH (for dedicated CVMs)",
+          "example": "NA",
+          "member": "Placement",
+          "name": "Placement",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images (for Chinese mainland only)</li><br/>To check the image ID:<br/><li>For public images, custom images, and shared images, go to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE). For marketplace images, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>",
+          "example": "img-dkwyg6sr",
+          "member": "string",
+          "name": "ImageId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description of instance launch template versions. This parameter can contain 2-256 characters.",
+          "example": "MyLaunchTemplateVersionDesc",
+          "member": "string",
+          "name": "LaunchTemplateVersionDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The instance model. Different resource specifications are specified for different instance models.\n<br><li>To view specific values for `PREPAID` or `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, the system will specify the default model according to the dynamic resource sales in the current region. <br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, you need to specify this parameter as `CDH_1C1G`.",
+          "example": "S5.16XLARGE256",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "System disk configuration of the instance. If this parameter is not specified, the default value will be used.",
+          "example": "NA",
+          "member": "SystemDisk",
+          "name": "SystemDisk",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The configuration information of instance data disks. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC, CLOUD_PREMIUM, or CLOUD_SSD data disks.",
+          "example": "NA",
+          "member": "DataDisk",
+          "name": "DataDisks",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If this parameter is not specified, the classic network is used by default. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be same as the number of VPC IPs, which cannot be greater than 20.",
+          "example": "NA",
+          "member": "VirtualPrivateCloud",
+          "name": "VirtualPrivateCloud",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.",
+          "example": "NA",
+          "member": "InternetAccessible",
+          "name": "InternetAccessible",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Number of instances to be purchased. Value range for monthly-subscribed instances: [1, 300]. Value range for pay-as-you-go instances: [1, 100]. Default value: 1. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on quota, see CVM instance [Purchase Limits](https://intl.cloud.tencent.com/document/product/213/2664).",
+          "example": "1",
+          "member": "int64",
+          "name": "InstanceCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance name to be displayed. <br><li>If this parameter is not specified, \"Unnamed\" will be displayed by default. </li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`. </li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and the instance name body is `server_`, the instance names will be `server_1` and `server_2`. </li><li>This parameter can contain up to 60 characters, including the pattern string.",
+          "example": "MyInstance",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.",
+          "example": "NA",
+          "member": "LoginSettings",
+          "name": "LoginSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.",
+          "example": "['sg-rf6ogz49']",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Enhanced service. You can use this parameter to specify whether to enable services such as Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. However, for custom images and images from the marketplace, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained.",
+          "example": "NA",
+          "member": "EnhancedService",
+          "name": "EnhancedService",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.",
+          "example": "NA",
+          "member": "string",
+          "name": "ClientToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Host name of the CVM. <br><li>Dots (.) or hyphens (-) cannot be the start or end of a host name or appear consecutively in a host name. <br><li>For Windows instances, the host name must be 2-15 characters long and can contain uppercase and lowercase letters, numbers, and hyphens (-). It cannot contain dots (.) or contain only numbers. <br><li>For other instances, such as Linux instances, the host name must be 2-60 characters long. It supports multiple dots (.) and allows uppercase and lowercase letters, numbers, and hyphens (-) between any two dots (.).",
+          "example": "NA",
+          "member": "string",
+          "name": "HostName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.",
+          "example": "NA",
+          "member": "ActionTimer",
+          "name": "ActionTimer",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Placement group ID. You can only specify one.",
+          "example": "['ps-3p88qhfo']",
+          "member": "string",
+          "name": "DisasterRecoverGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The tag description list. This parameter is used to bind a tag to a resource instance. A tag can only be bound to CVM instances.",
+          "example": "NA",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.",
+          "example": "NA",
+          "member": "InstanceMarketOptionsRequest",
+          "name": "InstanceMarketOptions",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).",
+          "example": "YmFzZTY0Cg==",
+          "member": "string",
+          "name": "UserData",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether the request is a dry run only.\ntrue: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.\nIf the dry run fails, the corresponding error code will be returned.\nIf the dry run succeeds, the RequestId will be returned.\nfalse (default value): send a normal request and create instance(s) if all the requirements are met.",
+          "example": "false",
+          "member": "bool",
+          "name": "DryRun",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "CAM role name, which can be obtained from the `roleName` field in the response of the [`DescribeRoleList`](https://intl.cloud.tencent.com/document/product/598/13887?from_cn_redirect=1) API.",
+          "example": "testroleName001",
+          "member": "string",
+          "name": "CamRoleName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "HPC cluster ID. The HPC cluster must and can only be specified for a high-performance computing instance.",
+          "example": "hpc-a5n666lo",
+          "member": "string",
+          "name": "HpcClusterId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance [Billing Mode](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). Valid values: <br><li>`PREPAID`: prepaid, i.e., billed for monthly-subscribed instances <br><li>`POSTPAID_BY_HOUR`: pay-as-you-go on an hourly basis <br><li>`CDHPAID`: billed for CDH instances, not the CVMs running on the CDHs. <br><li>`SPOTPAID`: billed for spot instances. <br>Default value: POSTPAID_BY_HOUR.",
+          "example": "PREPAID",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.",
+          "example": "NA",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLaunchTemplateResponse": {
+      "document": "CreateLaunchTemplate response structure.",
+      "members": [
+        {
+          "document": "The ID of successfully created instance launch template. This parameter will be returned when the instance launch template is created through the `CreateLaunchTemplate` API.",
+          "example": "lt-a5n123lo",
+          "member": "string",
+          "name": "LaunchTemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLaunchTemplateVersionRequest": {
+      "document": "CreateLaunchTemplateVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH (for dedicated CVMs)",
+          "example": "NA",
+          "member": "Placement",
+          "name": "Placement",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Instance launch template ID. This parameter is used as a basis for creating new template versions.",
+          "example": "NA",
+          "member": "string",
+          "name": "LaunchTemplateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter, when specified, is used to create instance launch templates. If this parameter is not specified, the default version will be used.",
+          "example": "1",
+          "member": "int64",
+          "name": "LaunchTemplateVersion",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Description of instance launch template versions. This parameter can contain 2-256 characters.",
+          "example": "new_version",
+          "member": "string",
+          "name": "LaunchTemplateVersionDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The instance model. Different resource specifications are specified for different instance models.\n<br><li>To view specific values for `PREPAID` or `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, the system will specify the default model according to the dynamic resource sales in the current region. <br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, you need to specify this parameter as `CDH_1C1G`.",
+          "example": "PREPAID",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images (for Chinese mainland only)</li><br/>To check the image ID:<br/><li>For public images, custom images, and shared images, go to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE). For marketplace images, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>",
+          "example": "img-irmer45l",
+          "member": "string",
+          "name": "ImageId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "System disk configuration of the instance. If this parameter is not specified, the default value will be used.",
+          "example": "NA",
+          "member": "SystemDisk",
+          "name": "SystemDisk",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The configuration information of instance data disks. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC, CLOUD_PREMIUM, or CLOUD_SSD data disks.",
+          "example": "NA",
+          "member": "DataDisk",
+          "name": "DataDisks",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If this parameter is not specified, the classic network is used by default. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be same as the number of VPC IPs, which cannot be greater than 20.",
+          "example": "NA",
+          "member": "VirtualPrivateCloud",
+          "name": "VirtualPrivateCloud",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.",
+          "example": "NA",
+          "member": "InternetAccessible",
+          "name": "InternetAccessible",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Number of instances to be purchased. Value range for monthly-subscribed instances: [1, 300]. Value range for pay-as-you-go instances: [1, 100]. Default value: 1. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on quota, see CVM instance [Purchase Limits](https://intl.cloud.tencent.com/document/product/213/2664).",
+          "example": "1",
+          "member": "int64",
+          "name": "InstanceCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance name to be displayed. <br><li>If this parameter is not specified, \"Unnamed\" will be displayed by default. </li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`. </li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and the instance name body is `server_`, the instance names will be `server_1` and `server_2`. </li><li>This parameter can contain up to 60 characters, including the pattern string.",
+          "example": "my_instance",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.",
+          "example": "NA",
+          "member": "LoginSettings",
+          "name": "LoginSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.",
+          "example": "NA",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Enhanced service. You can use this parameter to specify whether to enable services such as Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. However, for custom images and images from the marketplace, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained.",
+          "example": "NA",
+          "member": "EnhancedService",
+          "name": "EnhancedService",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.",
+          "example": "NA",
+          "member": "string",
+          "name": "ClientToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Host name of the CVM. <br><li>Dots (.) or hyphens (-) cannot be the start or end of a host name or appear consecutively in a host name. <br><li>For Windows instances, the host name must be 2-15 characters long and can contain uppercase and lowercase letters, numbers, and hyphens (-). It cannot contain dots (.) or contain only numbers. <br><li>For other instances, such as Linux instances, the host name must be 2-60 characters long. It supports multiple dots (.) and allows uppercase and lowercase letters, numbers, and hyphens (-) between any two dots (.).",
+          "example": "NA",
+          "member": "string",
+          "name": "HostName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.",
+          "example": "NA",
+          "member": "ActionTimer",
+          "name": "ActionTimer",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Placement group ID. You can only specify one.",
+          "example": "NA",
+          "member": "string",
+          "name": "DisasterRecoverGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The tag description list. This parameter is used to bind a tag to a resource instance. A tag can only be bound to CVM instances.",
+          "example": "NA",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.",
+          "example": "NA",
+          "member": "InstanceMarketOptionsRequest",
+          "name": "InstanceMarketOptions",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).",
+          "example": "NA",
+          "member": "string",
+          "name": "UserData",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether the request is a dry run only.\n`true`: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.\nIf the dry run fails, the corresponding error code will be returned.\nIf the dry run succeeds, the RequestId will be returned.\n`false` (default value): send a normal request and create instance(s) if all the requirements are met.",
+          "example": "NA",
+          "member": "bool",
+          "name": "DryRun",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "CAM role name, which can be obtained from the `roleName` field in the response of the [`DescribeRoleList`](https://intl.cloud.tencent.com/document/product/598/13887?from_cn_redirect=1) API.",
+          "example": "NA",
+          "member": "string",
+          "name": "CamRoleName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "HPC cluster ID. The HPC cluster must and can only be specified for a high-performance computing instance.",
+          "example": "NA",
+          "member": "string",
+          "name": "HpcClusterId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance [billing mode](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). Valid values: <br><li>`PREPAID`: monthly subscription <br><li>`POSTPAID_BY_HOUR`: pay-as-you-go on an hourly basis <br><li>`CDHPAID`: billed on the associated CDH instance. <br><li>`SPOTPAID`: spot instances. <br>Default value: `POSTPAID_BY_HOUR`.",
+          "example": "NA",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.",
+          "example": "NA",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLaunchTemplateVersionResponse": {
+      "document": "CreateLaunchTemplateVersion response structure.",
+      "members": [
+        {
+          "document": "Version number of the new instance launch template.",
+          "example": "2",
+          "member": "int64",
+          "name": "LaunchTemplateVersionNumber",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -965,6 +1547,69 @@
     },
     "DeleteKeyPairsResponse": {
       "document": "DeleteKeyPairs response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLaunchTemplateRequest": {
+      "document": "DeleteLaunchTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The launch template ID",
+          "example": "lt-rf6ogz49",
+          "member": "string",
+          "name": "LaunchTemplateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLaunchTemplateResponse": {
+      "document": "DeleteLaunchTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLaunchTemplateVersionsRequest": {
+      "document": "DeleteLaunchTemplateVersions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The launch template ID",
+          "example": "lt-irmer45l",
+          "member": "string",
+          "name": "LaunchTemplateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of instance launch template versions.",
+          "example": "[1,2,3]",
+          "member": "int64",
+          "name": "LaunchTemplateVersions",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLaunchTemplateVersionsResponse": {
+      "document": "DeleteLaunchTemplateVersions response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1210,6 +1855,7 @@
         {
           "default": "",
           "document": "List of image IDs, such as `img-gvbnzy6f`. For the format of array-type parameters, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You can obtain the image IDs in two ways: <br><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response. <br><li>View the image IDs in the [Image Console](https://console.cloud.tencent.com/cvm/image).",
+          "example": "[\"img-gvbnzy6f\"]",
           "member": "string",
           "name": "ImageIds",
           "required": false,
@@ -1217,7 +1863,8 @@
         },
         {
           "default": "",
-          "document": "Filters. Each request can have up to 10 `Filters` and 5 `Filters.Values`. You cannot specify `ImageIds` and `Filters` at the same time. Specific filters:\n<li>`image-id` - String - Optional - Filter results by image ID</li>\n<li>`image-type` - String - Optional - Filter results by image type. Valid values:\n    PRIVATE_IMAGE: private image created by the current account \n    PUBLIC_IMAGE: public image created by Tencent Cloud\n   SHARED_IMAGE: image shared with the current account by another account.</li>",
+          "document": "Filters. Each request can have up to 10 `Filters` and 5 `Filters.Values`. You cannot specify `ImageIds` and `Filters` at the same time. Specific filters:\n\n<li><strong>image-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image ID</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>image-type</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image type</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p><p style=\"padding-left: 30px;\">Options:</p><p style=\"padding-left: 30px;\">`PRIVATE_IMAGE`: Private images (images created by this account)</p><p style=\"padding-left: 30px;\">`PUBLIC_IMAGE`: Public images (Tencent Cloud official images)</p><p style=\"padding-left: 30px;\">`SHARED_IMAGE`: Shared images (images shared by other accounts to this account)</p>\n<li><strong>image-name</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image name</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>platform</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image operating system</strong>, such as CentOS.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>tag-key</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>tag key</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>tag:tag-key</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>tag key-value pair</strong>. Replace “tag-key” with the actual value. </p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -1226,6 +1873,7 @@
         {
           "default": "",
           "document": "Offset; default value: 0. For more information on `Offset`, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89).",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -1234,6 +1882,7 @@
         {
           "default": "",
           "document": "Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89).",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -1242,6 +1891,7 @@
         {
           "default": "",
           "document": "Instance type, e.g. `S1.SMALL1`",
+          "example": "\"S1.SMALL1\"",
           "member": "string",
           "name": "InstanceType",
           "required": false,
@@ -1636,6 +2286,177 @@
           "name": "KeyPairSet",
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLaunchTemplateVersionsRequest": {
+      "document": "DescribeLaunchTemplateVersions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The launch template ID",
+          "example": "\"lt-irmer45l\"",
+          "member": "string",
+          "name": "LaunchTemplateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of instance launch templates.",
+          "example": "[1,2,3]",
+          "member": "uint64",
+          "name": "LaunchTemplateVersions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The minimum version number specified, which defaults to 0.",
+          "example": "1",
+          "member": "uint64",
+          "name": "MinVersion",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum version number specified, which defaults to 30.",
+          "example": "2",
+          "member": "uint64",
+          "name": "MaxVersion",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Specify whether to query the default version. This parameter and `LaunchTemplateVersions` cannot be specified at the same time.",
+          "example": "false",
+          "member": "bool",
+          "name": "DefaultVersion",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLaunchTemplateVersionsResponse": {
+      "document": "DescribeLaunchTemplateVersions response structure.",
+      "members": [
+        {
+          "document": "Total number of instance launch templates.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Set of instance launch template versions.",
+          "example": "NA",
+          "member": "LaunchTemplateVersionInfo",
+          "name": "LaunchTemplateVersionSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLaunchTemplatesRequest": {
+      "document": "DescribeLaunchTemplates request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance launch template ID. ID of one or more instance launch templates. If not specified, all templates of the user will be displayed.",
+          "example": "['lt-irmer45l']",
+          "member": "string",
+          "name": "LaunchTemplateIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "<p style=\"padding-left: 30px;\">Filter by [<strong>LaunchTemplateNames</strong>].</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\nThe maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `LaunchTemplateIds` and `Filters` at the same time.",
+          "example": "NA",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLaunchTemplatesResponse": {
+      "document": "DescribeLaunchTemplates response structure.",
+      "members": [
+        {
+          "document": "Number of eligible instance templates.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of instance details\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NA",
+          "member": "LaunchTemplateInfo",
+          "name": "LaunchTemplateSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2155,6 +2976,42 @@
       ],
       "usage": "in"
     },
+    "GPUInfo": {
+      "document": "GPU information of the instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of GPUs. \nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "1",
+          "member": "float",
+          "name": "GPUCount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "GPU address\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "['0000:18:00.0','0000:18:00.1']",
+          "member": "string",
+          "name": "GPUId",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "GPU type of the instance.\nNote: this field may return `null`, indicating that no valid value can be found.",
+          "example": "NVIDIA T4",
+          "member": "string",
+          "name": "GPUType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "HostItem": {
       "document": "Details about a CDH instance",
       "members": [
@@ -2518,6 +3375,7 @@
         {
           "default": "",
           "document": "OS architecture of the image to be imported, `x86_64` or `i386`.",
+          "example": "x86_64",
           "member": "string",
           "name": "Architecture",
           "required": true,
@@ -2526,6 +3384,7 @@
         {
           "default": "",
           "document": "OS type of the image to be imported. You can call `DescribeImportImageOs` to obtain the list of supported operating systems.",
+          "example": "CentOS",
           "member": "string",
           "name": "OsType",
           "required": true,
@@ -2534,6 +3393,7 @@
         {
           "default": "",
           "document": "OS version of the image to be imported. You can call `DescribeImportImageOs` to obtain the list of supported operating systems.",
+          "example": "6",
           "member": "string",
           "name": "OsVersion",
           "required": true,
@@ -2542,6 +3402,7 @@
         {
           "default": "",
           "document": "Address on COS where the image to be imported is stored.",
+          "example": "http://111-1251233127.cosd.myqcloud.com/Windows%20Server%202008%20R2%20x64a.vmdk",
           "member": "string",
           "name": "ImageUrl",
           "required": true,
@@ -2550,6 +3411,7 @@
         {
           "default": "",
           "document": "Image name",
+          "example": "sample",
           "member": "string",
           "name": "ImageName",
           "required": true,
@@ -2558,6 +3420,7 @@
         {
           "default": "",
           "document": "Image description",
+          "example": "sampleimage",
           "member": "string",
           "name": "ImageDescription",
           "required": false,
@@ -2566,6 +3429,7 @@
         {
           "default": "",
           "document": "Dry run to check the parameters without performing the operation",
+          "example": "False",
           "member": "bool",
           "name": "DryRun",
           "required": false,
@@ -2574,10 +3438,20 @@
         {
           "default": "",
           "document": "Whether to force import the image. For more information, see [Forcibly Import Image](https://intl.cloud.tencent.com/document/product/213/12849).",
+          "example": "False",
           "member": "bool",
           "name": "Force",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Tag description list. This parameter is used to bind a tag to a custom image.",
+          "example": "NA",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -3439,6 +4313,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "GPU information. This field is only returned for GPU instances.\nNote: this field may return null, indicating that no valid value was found.",
+          "example": "无",
+          "member": "GPUInfo",
+          "name": "GPUInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4113,6 +4997,420 @@
       ],
       "usage": "out"
     },
+    "LaunchTemplate": {
+      "document": "Instance launch template. This parameter enables you to create an instance using the preset parameters in the template.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance launch template ID. This parameter enables you to create an instance using the preset parameters in the template.",
+          "example": "lt-rf6ogz48",
+          "member": "string",
+          "name": "LaunchTemplateId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance launch template version number. If specified, this parameter will be used to create a new instance launch template.",
+          "example": "1",
+          "member": "uint64",
+          "name": "LaunchTemplateVersion",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "LaunchTemplateInfo": {
+      "document": "Information of instance launch template.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance launch template version number.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "uint64",
+          "name": "LatestVersionNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance launch template ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "lt-rf6ogz49",
+          "member": "string",
+          "name": "LaunchTemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance launch template name.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "foobar",
+          "member": "string",
+          "name": "LaunchTemplateName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Default instance launch template version number.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "5",
+          "member": "uint64",
+          "name": "DefaultVersionNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Total number of versions that the instance launch template contains.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "8",
+          "member": "uint64",
+          "name": "LaunchTemplateVersionCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "UIN of the user who created the template.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "123456",
+          "member": "string",
+          "name": "CreatedBy",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time of the template.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2020-12-17T01:54:31Z",
+          "member": "datetime_iso",
+          "name": "CreationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LaunchTemplateVersionData": {
+      "document": "Information of instance launch template versions",
+      "members": [
+        {
+          "default": "",
+          "document": "Location of the instance.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NA",
+          "member": "Placement",
+          "name": "Placement",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance model.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "S1.SMALL2",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance name.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "MyInstance",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid values: <br><li>`POSTPAID_BY_HOUR`: postpaid for pay-as-you-go instances <br><li>`CDHPAID`: billed for CDH instances, not the CVMs running on the CDHs.<br>\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "PREPAID",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance system disk information.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NA",
+          "member": "SystemDisk",
+          "name": "SystemDisk",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance data disk information. This parameter only covers the data disks purchased together with the instance.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NA",
+          "member": "DataDisk",
+          "name": "DataDisks",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance bandwidth information.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NA",
+          "member": "InternetAccessible",
+          "name": "InternetAccessible",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Information of the VPC where the instance resides.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NA",
+          "member": "VirtualPrivateCloud",
+          "name": "VirtualPrivateCloud",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "`ID` of the image used to create the instance.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "img-pi0aa46r",
+          "member": "string",
+          "name": "ImageId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "['sg-rf6ogz49']",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Login settings of the instance. Currently, only the key associated with the instance is returned.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NA",
+          "member": "LoginSettings",
+          "name": "LoginSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CAM role name.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "testroleName001",
+          "member": "string",
+          "name": "CamRoleName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "HPC cluster `ID`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "hpc-a5n666lo",
+          "member": "string",
+          "name": "HpcClusterId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of instances purchased.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "InstanceCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Enhanced service.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NA",
+          "member": "EnhancedService",
+          "name": "EnhancedService",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16KB.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "TXlVc2VyRGF0YQo=",
+          "member": "string",
+          "name": "UserData",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Placement group ID. You can only specify one.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "['ps-3p88qhfo']",
+          "member": "string",
+          "name": "DisasterRecoverGroupIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NA",
+          "member": "ActionTimer",
+          "name": "ActionTimer",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NA",
+          "member": "InstanceMarketOptionsRequest",
+          "name": "InstanceMarketOptions",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Hostname of a CVM.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "MyHostName",
+          "member": "string",
+          "name": "HostName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "A string used to ensure the idempotency of the request.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "system-f3827db9-c58a-49cc-bf10-33fc1923a34a",
+          "member": "string",
+          "name": "ClientToken",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Prepaid mode. This parameter indicates relevant parameter settings for monthly-subscribed instances.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NA",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of tag description. By specifying this parameter, the tag can be bound to the corresponding CVM and CBS instances at the same time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NA",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LaunchTemplateVersionInfo": {
+      "document": "Set of instance launch template versions.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance launch template version number.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "LaunchTemplateVersion",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Details of instance launch template versions.",
+          "example": "NA",
+          "member": "LaunchTemplateVersionData",
+          "name": "LaunchTemplateVersionData",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time of the instance launch template version.",
+          "example": "2020-12-17T01:54:31Z",
+          "member": "datetime_iso",
+          "name": "CreationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance launch template ID.",
+          "example": "lt-b8v1kcyq",
+          "member": "string",
+          "name": "LaunchTemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies whether it’s the default launch template version.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsDefaultVersion",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of instance launch template version description.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "MyVersion",
+          "member": "string",
+          "name": "LaunchTemplateVersionDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creator account",
+          "example": "251001234",
+          "member": "string",
+          "name": "CreatedBy",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "LocalDiskType": {
       "document": "Describes local disk specifications.",
       "members": [
@@ -4371,6 +5669,7 @@
         {
           "default": "",
           "document": "Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.",
+          "example": "lt-rf6ogz49",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -4378,7 +5677,8 @@
         },
         {
           "default": "",
-          "document": "Instance name. You can specify any name you like, but its length cannot exceed 60 characters.",
+          "document": "The instance name, which can not exceed 60 characters\n<dx-alert infotype=\"explain\" title=\"\">Either `InstanceName` or `SecurityGroups` must be specified, but they can not be both specified.</dx-alert>",
+          "example": "MyInsName",
           "member": "string",
           "name": "InstanceName",
           "required": false,
@@ -4386,11 +5686,21 @@
         },
         {
           "default": "",
-          "document": "ID list of security groups of the instance. The instance will be associated with the specified security groups and will be disassociated from the original security groups.",
+          "document": "IDs of security groups associated with the specified instance. You can associate with a security group by adding its ID, or cancel the association with a security group by removing its ID. <dx-alert infotype=\"explain\" title=\"\">Either `InstanceName` or `SecurityGroups` must be specified, but they cannot be both set.</dx-alert>",
+          "example": "['sg-rf6ogz49']",
           "member": "string",
           "name": "SecurityGroups",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "false",
+          "member": "bool",
+          "name": "DisableApiTermination",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -4523,6 +5833,42 @@
     },
     "ModifyKeyPairAttributeResponse": {
       "document": "ModifyKeyPairAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLaunchTemplateDefaultVersionRequest": {
+      "document": "ModifyLaunchTemplateDefaultVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The launch template ID",
+          "example": "lt-irmer45l",
+          "member": "string",
+          "name": "LaunchTemplateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of the version that you want to set as the default version",
+          "example": "2",
+          "member": "int64",
+          "name": "DefaultVersion",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLaunchTemplateDefaultVersionResponse": {
+      "document": "ModifyLaunchTemplateDefaultVersion response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -5468,6 +6814,7 @@
         {
           "default": "",
           "document": "Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.",
+          "example": "[\"ins-r8hr2upy\\r\\n\",\"ins-5d8a23rs\\r\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -5475,7 +6822,8 @@
         },
         {
           "default": "",
-          "document": "Login password of the instance. The rule of password complexity varies with operating systems:\nFor a Linux instance, the password must be 8 to 30 characters in length; password with more than 12 characters is recommended. It cannot begin with \"/\", and must contain at least three types of the following:<br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\\`~!@#$%^&\\*-+=\\_|{}[]:;'<>,.?/\nFor a Windows CVM, the password must be 12 to 30 characters in length. It cannot begin with \"/\" or contain your username. It must contain at least three types of the following:<br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\\`~!@#$%^&\\*-+=\\_|{}[]:;' <>,.?/<li>If the specified instances include both `Linux` and `Windows` instances, you need to follow the password requirements for `Windows` instances.",
+          "document": "Login password of the instance. The password requirements vary among different operating systems:\nFor a Linux instance, the password must be 8 to 30 characters in length; password with more than 12 characters is recommended. It cannot begin with \"/\", and must contain at least one character from three of the following categories: <br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\\`\\~!@#$%^&\\*-+=\\_|{}[]:;'<>,.?/\nFor a Windows CVM, the password must be 12 to 30 characters in length. It cannot begin with \"/\" or contain a username. It must contain at least one character from three of the following categories: <br><li>Lowercase letters: [a-z]<br><li>Uppercase letters: [A-Z]<br><li>Numbers: 0-9<br><li>Special characters: ()\\`\\~!@#$%^&\\*-+=\\_|{}[]:;' <>,.?/<br><li>If the specified instances include both `Linux` and `Windows` instances, you will need to follow the password requirements for `Windows` instances.",
+          "example": "abc123ABC!@#",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -5484,6 +6832,7 @@
         {
           "default": "",
           "document": "Username of the instance operating system for which the password needs to be reset. This parameter is limited to 64 characters.",
+          "example": "asdc21",
           "member": "string",
           "name": "UserName",
           "required": false,
@@ -5492,6 +6841,7 @@
         {
           "default": "",
           "document": "Whether to force shut down a running instances. It is recommended to manually shut down a running instance before resetting the user password. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails. <br><li>FALSE: do not force shut down an instance after a normal shutdown fails. <br><br>Default value: FALSE. <br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force shut down a CVM when it cannot be shut down normally.",
+          "example": "TRUE",
           "member": "bool",
           "name": "ForceStop",
           "required": false,
@@ -5560,6 +6910,7 @@
         {
           "default": "",
           "document": "Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.",
+          "example": "ins-r8hr2upy",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5568,6 +6919,7 @@
         {
           "default": "",
           "document": "Configuration of data disks to be expanded. Currently you can only use the API to expand non-elastic data disks whose [disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`. You can use [`DescribeDisks`](https://intl.cloud.tencent.com/document/api/362/16315?from_cn_redirect=1) to check whether a disk is elastic. If the `Portable` field in the response is `false`, it means that the disk is not elastic. Data disk capacity unit: GB; minimum increment: 10 GB. For more information on selecting the data disk type, see the [product overview on cloud disks](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Available data disk types are subject to the instance type (`InstanceType`). In addition, the maximum capacity allowed for expansion varies by data disk type.",
+          "example": "无",
           "member": "DataDisk",
           "name": "DataDisks",
           "required": false,
@@ -5576,8 +6928,27 @@
         {
           "default": "",
           "document": "Whether to force shut down a running instances. It is recommended to manually shut down a running instance before resetting the user password. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails. <br><li>FALSE: do not force shut down an instance after a normal shutdown fails. <br><br>Default value: FALSE. <br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force shut down a CVM when it cannot be shut down normally.",
+          "example": "true",
           "member": "bool",
           "name": "ForceStop",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Configuration of the system disk to be expanded. Only cloud disks are supported.",
+          "example": "无",
+          "member": "SystemDisk",
+          "name": "SystemDisk",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether the cloud disk is expanded online.",
+          "example": "true",
+          "member": "bool",
+          "name": "ResizeOnline",
           "required": false,
           "type": "bool"
         }
@@ -5635,7 +7006,7 @@
         },
         {
           "default": "",
-          "document": "Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH. You can specify a CDH for a CVM by creating the CVM on the CDH.",
+          "document": "Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH (for dedicated CVMs)\n <b>Note: `Zone` is required.</b>\n`Placement` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `Placement` prevails.",
           "example": "NA",
           "member": "Placement",
           "name": "Placement",
@@ -5653,7 +7024,7 @@
         },
         {
           "default": "",
-          "document": "The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images</li><br/>You can retrieve available image IDs in the following ways:<br/><li>For the IDs of `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the information. For the IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>",
+          "document": "The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images (for Chinese mainland only)</li><br/>To check the image ID:<br/><li>For public images, custom images, and shared images, go to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE). For marketplace images, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>\n`ImageId` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `ImageId` prevails.",
           "example": "img-irmer45l",
           "member": "string",
           "name": "ImageId",
@@ -5830,6 +7201,24 @@
           "name": "HpcClusterId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance launch template.",
+          "example": "NA",
+          "member": "LaunchTemplate",
+          "name": "LaunchTemplate",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "[\"chc-kwf9mhzf\"]",
+          "member": "string",
+          "name": "ChcIds",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -5995,6 +7384,7 @@
         {
           "default": "",
           "document": "Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.",
+          "example": "[\"ins-r8hr2upy\\r\\n\",\"ins-5d8a23rs\\r\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -6002,7 +7392,8 @@
         },
         {
           "default": "",
-          "document": "Whether to force shut down an instance after a normal shutdown fails. Valid values: <br><li>TRUE: force shut down an instance after a normal shutdown fails <br><li>FALSE: do not force shut down an instance after a normal shutdown fails <br><br>Default value: FALSE.",
+          "document": "(Disused. Please use `StopType` instead.) Whether to forcibly shut down an instance after a normal shutdown fails. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default value: `FALSE`. ",
+          "example": "FALSE",
           "member": "bool",
           "name": "ForceStop",
           "required": false,
@@ -6011,6 +7402,7 @@
         {
           "default": "",
           "document": "Instance shutdown mode. Valid values: <br><li>SOFT_FIRST: perform a soft shutdown first, and force shut down the instance if the soft shutdown fails <br><li>HARD: force shut down the instance directly <br><li>SOFT: soft shutdown only <br>Default value: SOFT.",
+          "example": "SOFT",
           "member": "string",
           "name": "StopType",
           "required": false,
@@ -6019,6 +7411,7 @@
         {
           "default": "",
           "document": "Billing method of a pay-as-you-go instance after shutdown.\nValid values: <br><li>KEEP_CHARGING: billing continues after shutdown <br><li>STOP_CHARGING: billing stops after shutdown <br>Default value: KEEP_CHARGING.\nThis parameter is only valid for some pay-as-you-go instances using cloud disks. For more information, see [No charges when shut down for pay-as-you-go instances](https://intl.cloud.tencent.com/document/product/213/19918).",
+          "example": "KEEP_CHARGING",
           "member": "string",
           "name": "StoppedMode",
           "required": false,
@@ -6289,7 +7682,7 @@
       "members": [
         {
           "default": "",
-          "document": "Availability zone name, such as `ap-guangzhou-3`.\nThe following is a list of all availability zones:\n<li> ap-chongqing-1 </li>\n<li> ap-seoul-1 </li>\n<li> ap-seoul-2 </li>\n<li> ap-chengdu-1 </li>\n<li> ap-chengdu-2 </li>\n<li> ap-hongkong-1 (sold out)</li>\n<li> ap-hongkong-2 </li>\n<li> ap-hongkong-3 </li>\n<li> ap-shenzhen-fsi-1 </li>\n<li> ap-shenzhen-fsi-2 </li>\n<li> ap-shenzhen-fsi-3 </li>\n<li> ap-guangzhou-1 (sold out)</li>\n<li> ap-guangzhou-2 (sold out)</li>\n<li> ap-guangzhou-3 </li>\n<li> ap-guangzhou-4 </li>\n<li> ap-guangzhou-6 </li>\n<li> ap-guangzhou-7 </li>\n<li> ap-tokyo-1 </li>\n<li> ap-tokyo-2 </li>\n<li> ap-singapore-1 </li>\n<li> ap-singapore-2 </li>\n<li> ap-singapore-3 </li>\n<li> ap-shanghai-fsi-1 </li>\n<li> ap-shanghai-fsi-2 </li>\n<li> ap-shanghai-fsi-3 </li>\n<li> ap-bangkok-1 </li>\n<li> ap-bangkok-2 </li>\n<li> ap-shanghai-1 (sold out) </li>\n<li> ap-shanghai-2 </li>\n<li> ap-shanghai-3 </li>\n<li> ap-shanghai-4 </li>\n<li> ap-shanghai-5 </li>\n<li> ap-mumbai-1 </li>\n<li> ap-mumbai-2 </li>\n<li> eu-moscow-1 </li>\n<li> ap-beijing-1 </li>\n<li> ap-beijing-2 </li>\n<li> ap-beijing-3 </li>\n<li> ap-beijing-4 </li>\n<li> ap-beijing-5 </li>\n<li> ap-beijing-6 </li>\n<li> ap-beijing-7 </li>\n<li> na-siliconvalley-1 </li>\n<li> na-siliconvalley-2 </li>\n<li> eu-frankfurt-1 </li>\n<li> eu-frankfurt-2 </li>\n<li> na-toronto-1 </li>\n<li> na-ashburn-1 </li>\n<li> na-ashburn-2 </li>\n<li> ap-nanjing-1 </li>\n<li> ap-nanjing-2 </li>",
+          "document": "Availability zone name, such as `ap-guangzhou-3`.\nThe following is a list of all availability zones:\n<li> ap-chongqing-1 </li>\n<li> ap-seoul-1 </li>\n<li> ap-seoul-2 </li>\n<li> ap-chengdu-1 </li>\n<li> ap-chengdu-2 </li>\n<li> ap-hongkong-1 (sold out)</li>\n<li> ap-hongkong-2 </li>\n<li> ap-hongkong-3 </li>\n<li> ap-shenzhen-fsi-1 </li>\n<li> ap-shenzhen-fsi-2 </li>\n<li> ap-shenzhen-fsi-3 </li>\n<li> ap-guangzhou-1 (sold out)</li>\n<li> ap-guangzhou-2 (sold out)</li>\n<li> ap-guangzhou-3 </li>\n<li> ap-guangzhou-4 </li>\n<li> ap-guangzhou-6 </li>\n<li> ap-guangzhou-7 </li>\n<li> ap-tokyo-1 </li>\n<li> ap-tokyo-2 </li>\n<li> ap-singapore-1 </li>\n<li> ap-singapore-2 </li>\n<li> ap-singapore-3 </li>\n<li> ap-shanghai-fsi-1 </li>\n<li> ap-shanghai-fsi-2 </li>\n<li> ap-shanghai-fsi-3 </li>\n<li> ap-bangkok-1 </li>\n<li> ap-bangkok-2 </li>\n<li> ap-shanghai-1 (sold out) </li>\n<li> ap-shanghai-2 </li>\n<li> ap-shanghai-3 </li>\n<li> ap-shanghai-4 </li>\n<li> ap-shanghai-5 </li>\n<li> ap-mumbai-1 </li>\n<li> ap-mumbai-2 </li>\n<li> eu-moscow-1 </li>\n<li> ap-beijing-1 (sold out) </li>\n<li> ap-beijing-2 </li>\n<li> ap-beijing-3 </li>\n<li> ap-beijing-4 </li>\n<li> ap-beijing-5 </li>\n<li> ap-beijing-6 </li>\n<li> ap-beijing-7 </li>\n<li> na-siliconvalley-1 </li>\n<li> na-siliconvalley-2 </li>\n<li> eu-frankfurt-1 </li>\n<li> eu-frankfurt-2 </li>\n<li> na-toronto-1 </li>\n<li> na-ashburn-1 </li>\n<li> na-ashburn-2 </li>\n<li> ap-nanjing-1 </li>\n<li> ap-nanjing-2 </li>\n<li> sa-saopaulo-1</li>",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",

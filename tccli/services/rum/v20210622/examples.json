@@ -3,9 +3,9 @@
     "CreateLogExport": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLogExport\n<common request parameters>\n\n{\n    \"ID\": 1,\n    \"StartTime\": \"2022-01-20 00:00:00\",\n    \"EndTime\": \"2022-01-21 00:00:00\",\n    \"Count\": 1,\n    \"Query\": \"*\"\n}",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLogExport\n<Common request parameters>\n\n{\n    \"ID\": 1,\n    \"StartTime\": \"2022-01-20 00:00:00\",\n    \"EndTime\": \"2022-01-21 00:00:00\",\n    \"Count\": 1,\n    \"Query\": \"*\"\n}",
         "output": "{\n    \"Response\": {\n        \"ExportID\": \"export-xxx\",\n        \"RequestId\": \"ec04a9c2-2815-4314-abf8-bc648de7b7b2\"\n    }\n}",
-        "title": "创建日志下载任务"
+        "title": "Creating log download task"
       }
     ],
     "CreateOfflineLogConfig": [
@@ -67,9 +67,9 @@
     "DeleteLogExport": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLogExport\n<common request parameters>\n\n{\n    \"ID\": 1,\n    \"ExportID\": \"export-xxxxxx\"\n}",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLogExport\n<Common request parameters>\n\n{\n    \"ID\": 1,\n    \"ExportID\": \"export-xxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Msg\": \"success\",\n        \"RequestId\": \"537f5775-2fd4-4264-b5a8-7c482f22d648\"\n    }\n}",
-        "title": "删除日志下载任务"
+        "title": "Deleting log download task"
       }
     ],
     "DeleteOfflineLogConfig": [
@@ -275,9 +275,9 @@
     "DescribeLogExports": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogExports\n<common request parameters>\n\n{\n    \"ID\": 1\n}",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogExports\n<Common request parameters>\n\n{\n    \"ID\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"LogExportSet\": [\n            {\n                \"CosPath\": \"https://export-gz.xxx.xxx.com\",\n                \"Count\": 1,\n                \"CreateTime\": \"2022-01-21 17:05:57\",\n                \"EndTime\": \"2022-01-21 00:00:00\",\n                \"ExportID\": \"export-1\",\n                \"FileName\": \"log_tar.gz\",\n                \"FileSize\": 862,\n                \"Format\": \"json\",\n                \"Order\": \"desc\",\n                \"Query\": \"*\",\n                \"StartTime\": \"2022-01-20 00:00:00\",\n                \"Status\": \"Completed\"\n            }\n        ],\n        \"RequestId\": \"a4c0bd54-d2d5-4045-a831-38a6f1fd294d\"\n    }\n}",
-        "title": "获取日志下载任务列表"
+        "title": "Getting the list of log download tasks"
       }
     ],
     "DescribeLogList": [
@@ -315,15 +315,15 @@
     "DescribeProjectLimits": [
       {
         "document": "",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeProjectLimits\n&ProjectID=1\n&<common request parameters>",
+        "input": "https://rum.tencentcloudapi.com/?Action=DescribeProjectLimits\n&ProjectID=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ProjectLimitSet\": [\n            {\n                \"ProjectInterface\": \"xx\",\n                \"ProjectID\": 0,\n                \"ReportRate\": 0,\n                \"ReportType\": 0,\n                \"ID\": 0\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "获取项目上报率列表"
+        "title": "Getting the list of project reporting rates"
       },
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProjectLimits\n<common request parameters>\n\n{\n    \"ProjectID\": \"8\"\n}",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProjectLimits\n<Common request parameters>\n\n{\n    \"ProjectID\": \"8\"\n}",
         "output": "{\n    \"Response\": {\n        \"ProjectLimitSet\": [\n            {\n                \"ID\": 17,\n                \"ProjectID\": 8,\n                \"ProjectInterface\": \"web\",\n                \"ReportRate\": 10,\n                \"ReportType\": 1\n            }\n        ],\n        \"RequestId\": \"6f867613-843d-410a-8000-c74477ca48a8\"\n    }\n}",
-        "title": "获取抽样列表"
+        "title": "Getting sample list"
       }
     ],
     "DescribeProjects": [
@@ -422,16 +422,16 @@
     ],
     "ModifyProjectLimit": [
       {
-        "document": "新增修改限流",
-        "input": "https://rum.tencentcloudapi.com/?Action=ModifyProjectLimit\n&ProjectID=1\n&ProjectInterface=web\n&ReportRate=10\n&ReportType=1\n&ID=1\n&<common request parameters>",
+        "document": "This example shows you how to add or modify data reporting limit.",
+        "input": "https://rum.tencentcloudapi.com/?Action=ModifyProjectLimit\n&ProjectID=1\n&ProjectInterface=web\n&ReportRate=10\n&ReportType=1\n&ID=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Msg\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "新增修改限流"
+        "title": "Adding or modifying data reporting limit"
       },
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyProjectLimit\n<common request parameters>\n\n{\n    \"ProjectInterface\": \"web\",\n    \"ProjectID\": \"8\",\n    \"ReportRate\": \"10\",\n    \"ReportType\": \"1\"\n}",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyProjectLimit\n<Common request parameters>\n\n{\n    \"ProjectInterface\": \"web\",\n    \"ProjectID\": \"8\",\n    \"ReportRate\": \"10\",\n    \"ReportType\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"Msg\": \"success\",\n        \"RequestId\": \"a62c0f90-5ed0-4f3e-b285-8e4885a5ca45\"\n    }\n}",
-        "title": "新增抽样"
+        "title": "Adding sample"
       }
     ],
     "ResumeInstance": [

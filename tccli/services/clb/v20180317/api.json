@@ -55,7 +55,7 @@
       "output": "CreateLoadBalancerResponse"
     },
     "CreateLoadBalancerSnatIps": {
-      "document": "This API is used to add an SNAT IP for an SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added.",
+      "document": "This API is used to add an SNAT IP for an SnatPro CLB instance. If SnatPro is not enabled for CLB, it will be automatically enabled after the SNAT IP is added.\nThis is an async API. After it is returned successfully, you can check the task result by calling `DescribeTaskStatus` with the returned `RequestID`.",
       "input": "CreateLoadBalancerSnatIpsRequest",
       "name": "Adds SNAT IP",
       "output": "CreateLoadBalancerSnatIpsResponse"
@@ -97,7 +97,7 @@
       "output": "DeleteLoadBalancerListenersResponse"
     },
     "DeleteLoadBalancerSnatIps": {
-      "document": "This API is used to delete the SNAT IP for an SnatPro CLB instance.",
+      "document": "This API is used to delete the SNAT IP for an SnatPro CLB instance.\nThis is an async API. After it is returned successfully, you can check the task result by calling `DescribeTaskStatus` with the returned `RequestID`.",
       "input": "DeleteLoadBalancerSnatIpsRequest",
       "name": "Deletes SNAT IP",
       "output": "DeleteLoadBalancerSnatIpsResponse"
@@ -331,7 +331,7 @@
       "output": "ModifyListenerResponse"
     },
     "ModifyLoadBalancerAttributes": {
-      "document": "This API is used to modify the attributes of a CLB instance such as name and cross-region attributes.",
+      "document": "This API is used to modify the attributes of a CLB instance such as name and cross-region attributes.\nThis is an async API. After it is returned successfully, you can check the task result by calling `DescribeTaskStatus` with the returned `RequestID`.",
       "input": "ModifyLoadBalancerAttributesRequest",
       "name": "Modifies the attributes of a CLB instance",
       "output": "ModifyLoadBalancerAttributesResponse"
@@ -1783,21 +1783,21 @@
       "members": [
         {
           "default": "",
-          "document": "Logset retention period in days; max value: 90",
-          "example": "7",
-          "member": "uint64",
-          "name": "Period",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
           "document": "Logset name, which must be unique among all CLS logsets; default value: clb_logset",
           "example": "clb_logset",
           "member": "string",
           "name": "LogsetName",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Logset retention period (in days)",
+          "example": "7",
+          "member": "uint64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
         },
         {
           "default": "",
@@ -2420,6 +2420,15 @@
           "name": "TopicType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Logset retention period (in days). Default: 30 days.",
+          "example": "30",
+          "member": "uint64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2752,7 +2761,7 @@
         },
         {
           "default": "",
-          "document": "Domain name of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified.",
+          "document": "Specifies the target domain name. Only one domain name is allowed. This field is invalid when `LocationIds` is specified.",
           "example": "foo.net",
           "member": "string",
           "name": "Domain",
@@ -2770,7 +2779,7 @@
         },
         {
           "default": "",
-          "document": "A listener must be configured with a default domain name. If you need to delete the default domain name, you can specify another one as the new default domain name.",
+          "document": "Specifies a new default domain name for the listener. This field is used when the original default domain name is disabled. If there are multiple domain names, specify one of them.",
           "example": "www.default.example.com",
           "member": "string",
           "name": "NewDefaultServerDomain",
@@ -4727,7 +4736,7 @@
         },
         {
           "default": "",
-          "document": "Specifies the source IP for health check. `0`: use the CLB VIP as the source IP; `1`: IP range starting with 100.64 serving as the source IP. Default: `0`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies the type of IP for health check. `0` (default): Use the CLB VIP as the source IP. `1`: Use the IP range starting with 100.64 as the source IP.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "SourceIpType",
@@ -6137,6 +6146,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List o domain names associated with the forwarding rule\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"www.xxxx.com\"]",
+          "member": "string",
+          "name": "Domains",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -6411,7 +6430,7 @@
         },
         {
           "default": "",
-          "document": "Domain name, which must be under a created forwarding rule.",
+          "document": "The domain name, which must be associated with an existing forwarding rule. If there are multiple domain names, you only need to specify one.",
           "example": "foo.net",
           "member": "string",
           "name": "Domain",
@@ -6420,7 +6439,7 @@
         },
         {
           "default": "",
-          "document": "New domain name",
+          "document": "The one domain name to modify. `NewDomain` and `NewDomains` can not be both specified.",
           "example": "www.new.example.com",
           "member": "string",
           "name": "NewDomain",
@@ -6456,12 +6475,21 @@
         },
         {
           "default": "",
-          "document": "A listener must be configured with a default domain name. If you need to disable the default domain name, you must specify another one as the new default domain name.",
+          "document": "Specifies a new default domain name for the listener. This field is used when the original default domain name is disabled. If there are multiple domain names, specify one of them.",
           "example": "www.qcloud.example.com",
           "member": "string",
           "name": "NewDefaultServerDomain",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The new domain names to modify. `NewDomain` and `NewDomains` can not be both specified.",
+          "example": "[\"www.new.example.com\"]",
+          "member": "string",
+          "name": "NewDomains",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -7575,16 +7603,8 @@
       "members": [
         {
           "default": "",
-          "document": "Domain name of the forwarding rule. Length: 1-80.",
-          "member": "string",
-          "name": "Domain",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
           "document": "Forwarding rule path. Length: 1-200.",
+          "example": "/xxxx",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -7593,7 +7613,18 @@
         },
         {
           "default": "",
+          "document": "The domain name associated with the forwarding rule. It can contain 1-80 characters. Only one domain name can be entered. If you need to enter multiple domain names, use `Domains`.",
+          "example": "www.xxxx.com",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Session persistence time in seconds. Value range: 30-3,600. Setting it to 0 indicates that session persistence is disabled.",
+          "example": "0",
           "member": "int64",
           "name": "SessionExpireTime",
           "required": false,
@@ -7603,6 +7634,7 @@
         {
           "default": "",
           "document": "Health check information. For more information, please see [Health Check](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1)",
+          "example": "{\"HealthSwitch\": 1, \"TimeOut\": 5, \"IntervalTime\": 5, \"HealthNum\"",
           "member": "HealthCheck",
           "name": "HealthCheck",
           "required": false,
@@ -7612,6 +7644,7 @@
         {
           "default": "",
           "document": "Certificate information",
+          "example": "{\"SSLMode\": \"UNIDIRECTIONAL\", \"CertId\": \"fF6AGfxE\"}",
           "member": "CertificateInput",
           "name": "Certificate",
           "required": false,
@@ -7621,6 +7654,7 @@
         {
           "default": "",
           "document": "Request forwarding method of the rule. Value range: WRR, LEAST_CONN, IP_HASH\nThey represent weighted round robin, least connections, and IP hash, respectively. Default value: WRR.",
+          "example": "WRR",
           "member": "string",
           "name": "Scheduler",
           "required": false,
@@ -7630,6 +7664,7 @@
         {
           "default": "",
           "document": "Forwarding protocol between the CLB instance and real server. Currently, HTTP/HTTPS/TRPC are supported.",
+          "example": "HTTP",
           "member": "string",
           "name": "ForwardType",
           "required": false,
@@ -7639,6 +7674,7 @@
         {
           "default": "",
           "document": "Whether to set this domain name as the default domain name. Note: Only one default domain name can be set under one listener.",
+          "example": "true",
           "member": "bool",
           "name": "DefaultServer",
           "required": false,
@@ -7648,6 +7684,7 @@
         {
           "default": "",
           "document": "Whether to enable HTTP/2. Note: HTTP/2 can be enabled only for HTTPS domain names.",
+          "example": "true",
           "member": "bool",
           "name": "Http2",
           "required": false,
@@ -7657,6 +7694,7 @@
         {
           "default": "",
           "document": "Target real server type. NODE: binding a general node; TARGETGROUP: binding a target group.",
+          "example": "NODE",
           "member": "string",
           "name": "TargetType",
           "required": false,
@@ -7666,6 +7704,7 @@
         {
           "default": "",
           "document": "TRPC callee server route, which is required when `ForwardType` is `TRPC`.",
+          "example": "trpcall",
           "member": "string",
           "name": "TrpcCallee",
           "required": false,
@@ -7675,6 +7714,7 @@
         {
           "default": "",
           "document": "TRPC calling service API, which is required when `ForwardType` is `TRPC`.",
+          "example": "trpcFunc",
           "member": "string",
           "name": "TrpcFunc",
           "required": false,
@@ -7684,10 +7724,21 @@
         {
           "default": "",
           "document": "Whether to enable QUIC. Note: QUIC can be enabled only for HTTPS domain names",
+          "example": "true",
           "member": "bool",
           "name": "Quic",
           "required": false,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The domain name associated with the forwarding rule. Each contain 1-80 characters. If you only need to enter one domain name, use `Domain` instead.",
+          "example": "[\"www.xxxx.com\"]",
+          "member": "string",
+          "name": "Domains",
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -7699,6 +7750,7 @@
         {
           "default": "",
           "document": "Forwarding rule ID",
+          "example": "loc-xxx",
           "member": "string",
           "name": "LocationId",
           "required": false,
@@ -7708,6 +7760,7 @@
         {
           "default": "",
           "document": "Domain name of the forwarding rule.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "www.xxxx.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -7717,6 +7770,7 @@
         {
           "default": "",
           "document": "Forwarding rule path.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "/test",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -7726,6 +7780,7 @@
         {
           "default": "",
           "document": "Session persistence time",
+          "example": "无",
           "member": "int64",
           "name": "SessionExpireTime",
           "required": false,
@@ -7735,6 +7790,7 @@
         {
           "default": "",
           "document": "Health check information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "HealthCheck",
           "name": "HealthCheck",
           "required": false,
@@ -7744,6 +7800,7 @@
         {
           "default": "",
           "document": "Certificate information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "CertificateOutput",
           "name": "Certificate",
           "required": false,
@@ -7753,6 +7810,7 @@
         {
           "default": "",
           "document": "Request forwarding method of the rule",
+          "example": "无",
           "member": "string",
           "name": "Scheduler",
           "required": false,
@@ -7762,6 +7820,7 @@
         {
           "default": "",
           "document": "ID of the listener to which the forwarding rule belongs",
+          "example": "无",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -7771,6 +7830,7 @@
         {
           "default": "",
           "document": "Redirect target information of a forwarding rule\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "RewriteTarget",
           "name": "RewriteTarget",
           "required": true,
@@ -7780,6 +7840,7 @@
         {
           "default": "",
           "document": "Whether to enable gzip",
+          "example": "无",
           "member": "bool",
           "name": "HttpGzip",
           "required": true,
@@ -7789,6 +7850,7 @@
         {
           "default": "",
           "document": "Whether the forwarding rule is automatically created",
+          "example": "无",
           "member": "bool",
           "name": "BeAutoCreated",
           "required": true,
@@ -7798,6 +7860,7 @@
         {
           "default": "",
           "document": "Whether to use as the default domain name",
+          "example": "无",
           "member": "bool",
           "name": "DefaultServer",
           "required": true,
@@ -7807,6 +7870,7 @@
         {
           "default": "",
           "document": "Whether to enable Http2",
+          "example": "无",
           "member": "bool",
           "name": "Http2",
           "required": true,
@@ -7816,6 +7880,7 @@
         {
           "default": "",
           "document": "Forwarding protocol between CLB and real server",
+          "example": "无",
           "member": "string",
           "name": "ForwardType",
           "required": true,
@@ -7825,6 +7890,7 @@
         {
           "default": "",
           "document": "Forwarding rule creation time",
+          "example": "无",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -7834,6 +7900,7 @@
         {
           "default": "",
           "document": "Real server type",
+          "example": "无",
           "member": "string",
           "name": "TargetType",
           "required": true,
@@ -7843,6 +7910,7 @@
         {
           "default": "",
           "document": "Basic information of a bound target group. This field will be returned if a target group is bound to a rule.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "BasicTargetGroupInfo",
           "name": "TargetGroup",
           "required": true,
@@ -7852,6 +7920,7 @@
         {
           "default": "",
           "document": "WAF instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "WafDomainId",
           "required": true,
@@ -7861,6 +7930,7 @@
         {
           "default": "",
           "document": "TRPC callee server route, which is valid when `ForwardType` is `TRPC`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "TrpcCallee",
           "required": true,
@@ -7870,6 +7940,7 @@
         {
           "default": "",
           "document": "TRPC calling service API, which is valid when `ForwardType` is `TRPC`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "TrpcFunc",
           "required": true,
@@ -7879,10 +7950,21 @@
         {
           "default": "",
           "document": "QUIC status\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "QuicStatus",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of domain names associated with the forwarding rule\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"www.xxxx.com\"]",
+          "member": "string",
+          "name": "Domains",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],

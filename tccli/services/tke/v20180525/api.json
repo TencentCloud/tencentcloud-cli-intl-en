@@ -3386,10 +3386,20 @@
         {
           "default": "",
           "document": "ClusterId (cluster ID)",
+          "example": "cls-xxxxxx",
           "member": "string",
           "name": "ClusterId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "·  NodePoolsName\n    Filters by the node pool name\n    Type: String\n    Required: No\n\n·  NodePoolsId\n    Filters by the node pool ID\n    Type: String\n    Required: No\n\n·  tags\n    Filters by key-value pairs of tags\n    Type: String\n    Required: No\n\n·  tag:tag-key\n    Filters by key-value pairs of tags\n    Type: String\n    Required: No",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -3665,7 +3675,7 @@
         },
         {
           "default": "",
-          "document": "·  ClusterName\n    Filters by the cluster name\n    Type: String\n    Required: no\n\n·  Tags\n    Filters by key-value pairs of tags\n    Type: String\n    Required: no\n\n·  vpc-id\n    Filters by the VPC ID\n    Type: String\n    Required: no\n\n·  tag-key\n    Filters by the tag key\n    Type: String\n    Required: no\n\n·  tag-value\n    Filters by the tag value\n    Type: String\n    Required: no\n\n·  tag:tag-key\n    Filters by key-value pairs of tags\n    Type: String\n    Required: no",
+          "document": "·  ClusterName\n    Filters by the cluster name\n    Type: String\n    Required: No\n\n·  ClusterType\n    Filters by the cluster type\n    Type: String\n    Required: No\n\n·  ClusterStatus\n    Filters by the cluster status\n    Type: String\n    Required: No\n\n·  Tags\n    Filters by key-value pairs of tags\n    Type: String\n    Required: No\n\n·  vpc-id\n    Filters by the VPC ID\n    Type: String\n    Required: No\n\n·  tag-key\n    Filters by the tag key\n    Type: String\n    Required: No\n\n·  tag-value\n    Filters by the tag value\n    Type: String\n    Required: No\n\n·  tag:tag-key\n    Filters by key-value pairs of tags\n    Type: String\n    Required: No",
           "example": "无",
           "member": "Filter",
           "name": "Filters",

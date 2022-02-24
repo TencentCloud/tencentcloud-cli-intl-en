@@ -1,25 +1,25 @@
 {
   "actions": {
     "AddEcdnDomain": {
-      "document": "This API is used to create an acceleration domain name.",
+      "document": "This API is used to create an acceleration domain name.\n\n>? If you have migrated your ECDN service to CDN, you can use the <a href=\"https://intl.cloud.tencent.com/document/api/228/41123?from_cn_redirect=1\">corresponding CDN API</a>.",
       "input": "AddEcdnDomainRequest",
       "name": "Creates an acceleration domain name",
       "output": "AddEcdnDomainResponse"
     },
     "DeleteEcdnDomain": {
-      "document": "This API is used to delete a specified acceleration domain name. The acceleration domain name to be deleted must be in disabled status.",
+      "document": "This API is used to delete a specified acceleration domain name. The acceleration domain name to be deleted must be in disabled status.\n\n>? If you have migrated your ECDN service to CDN, you can use the <a href=\"https://intl.cloud.tencent.com/document/api/570/42471?from_cn_redirect=1\">corresponding CDN API</a>.",
       "input": "DeleteEcdnDomainRequest",
       "name": "Deletes an acceleration domain name",
       "output": "DeleteEcdnDomainResponse"
     },
     "DescribeDomains": {
-      "document": "This API is used to query the basic information of a CDN domain name, including the project ID, status, business type, creation time, update time, etc.",
+      "document": "This API is used to query the basic information of a CDN domain name, including the project ID, status, business type, creation time, update time, etc.\n\n>? If you have migrated your ECDN service to CDN, you can use the <a href=\"https://intl.cloud.tencent.com/document/api/228/41118?from_cn_redirect=1\">corresponding CDN API</a>.",
       "input": "DescribeDomainsRequest",
       "name": "Queries the basic information of a domain name",
       "output": "DescribeDomainsResponse"
     },
     "DescribeDomainsConfig": {
-      "document": "This API is used to query the detailed configuration information of a CDN acceleration domain name.",
+      "document": "This API is used to query the detailed configuration information of a CDN acceleration domain name.\n\n>? If you have migrated your ECDN service to CDN, you can use the <a href=\"https://intl.cloud.tencent.com/document/api/228/41117?from_cn_redirect=1\">corresponding CDN API</a>.",
       "input": "DescribeDomainsConfigRequest",
       "name": "Queries the detailed configuration of a domain name",
       "output": "DescribeDomainsConfigResponse"
@@ -43,49 +43,49 @@
       "output": "DescribeEcdnStatisticsResponse"
     },
     "DescribeIpStatus": {
-      "document": "This API is used to query the detailed node information of the acceleration platform to which the domain name is connected.",
+      "document": "This API is used to query ECDN node IPs. This API is only available to beta users. Please submit a ticket to use it.\n\nIf you need to add the node IPs to your origin allowlist, keep querying the updating the IPs regularly to ensure the success of origin forwarding. ",
       "input": "DescribeIpStatusRequest",
-      "name": "Queries the node status of the domain name",
+      "name": "Queries ECDN node IPs",
       "output": "DescribeIpStatusResponse"
     },
     "DescribePurgeQuota": {
-      "document": "This API is used to query the usage quota of the purge API.",
+      "document": "This API is used to query the usage quota of the purge API.\n\n>? If you have migrated your ECDN service to CDN, you can use the <a href=\"https://intl.cloud.tencent.com/document/api/228/41956?from_cn_redirect=1\">corresponding CDN API</a>.",
       "input": "DescribePurgeQuotaRequest",
       "name": "Queries purge usage quota",
       "output": "DescribePurgeQuotaResponse"
     },
     "DescribePurgeTasks": {
-      "document": "This API is used to query the submission history of purge tasks and their execution progress.",
+      "document": "This API is used to query the submission record and progress of purge tasks.\n\n>? If you have migrated your ECDN service to CDN, you can use the <a href=\"https://intl.cloud.tencent.com/document/api/228/37873?from_cn_redirect=1\">corresponding CDN API</a>.",
       "input": "DescribePurgeTasksRequest",
       "name": "Queries purge history",
       "output": "DescribePurgeTasksResponse"
     },
     "PurgePathCache": {
-      "document": "This API is used to purge cache directories in batches. One purge task ID will be returned for each submission.",
+      "document": "This API is used to purge cache directories in batches. One purge task ID will be returned for each submission.\n\n>? If you have migrated your ECDN service to CDN, you can use the <a href=\"https://intl.cloud.tencent.com/document/api/570/42475?from_cn_redirect=1\">corresponding CDN API</a>.",
       "input": "PurgePathCacheRequest",
       "name": "Purges directories",
       "output": "PurgePathCacheResponse"
     },
     "PurgeUrlsCache": {
-      "document": "This API is used to batch purge URLs. One purge task ID will be returned for each submission.",
+      "document": "This API is used to batch purge URLs. One purge task ID will be returned for each submission.\n\n>? If you have migrated your ECDN service to CDN, you can use the <a href=\"https://intl.cloud.tencent.com/document/api/228/37870?from_cn_redirect=1\">corresponding CDN API</a>.",
       "input": "PurgeUrlsCacheRequest",
       "name": "Purges URLs",
       "output": "PurgeUrlsCacheResponse"
     },
     "StartEcdnDomain": {
-      "document": "This API is used to enable an acceleration domain name. The domain name to be enabled must be in deactivated status.",
+      "document": "This API is used to enable an acceleration domain name. The domain name to be enabled must be in deactivated status.\n\n>? If you have migrated your ECDN service to CDN, you can use the <a href=\"https://intl.cloud.tencent.com/document/product/228/41121?from_cn_redirect=1\">corresponding CDN API</a>.",
       "input": "StartEcdnDomainRequest",
       "name": "Enables an acceleration domain name",
       "output": "StartEcdnDomainResponse"
     },
     "StopEcdnDomain": {
-      "document": "This API is used to disable an acceleration domain name. The domain name to be disabled must be in enabled or deploying status.",
+      "document": "This API is used to disable an acceleration domain name. The domain name to be disabled must be in enabled or deploying status.\n\n>? If you have migrated your ECDN service to CDN, you can use the <a href=\"https://intl.cloud.tencent.com/document/product/228/41120?from_cn_redirect=1\">corresponding CDN API</a>.",
       "input": "StopEcdnDomainRequest",
       "name": "Disables an acceleration domain name",
       "output": "StopEcdnDomainResponse"
     },
     "UpdateDomainConfig": {
-      "document": "This API is used to update the configuration information of an ECDN acceleration domain name.\nNote: if you need to update a complex configuration item, you must pass in all attributes of the entire object, and the default values will be used for the attributes that are not passed in. You are recommended to get the configuration attribute through the query API first and then directly modify and pass it to this API. Due to the special nature of the certificate for HTTPS configuration, you do not need to pass in the certificate and key fields during the update.",
+      "document": "This API is used to update the configuration information of an ECDN acceleration domain name.\nNote: if you need to update complex configuration items, you must pass all the attributes of the entire object. The default value will be used for attributes that are not passed. We recommend calling the querying API to obtain the configuration attributes first. You can then modify and pass the attributes to the API. The certificate and key fields do not need to be passed for HTTPS configuration.\n\n>?  If your application has been migrated to Tencent Cloud CDN, you can use <a href=\"https://intl.cloud.tencent.com/document/product/228/41116?from_cn_redirect=1\">CDN APIs</a>.\n",
       "input": "UpdateDomainConfigRequest",
       "name": "Updates domain name configuration",
       "output": "UpdateDomainConfigResponse"
@@ -218,6 +218,72 @@
         }
       ],
       "type": "object"
+    },
+    "AdvanceHttps": {
+      "document": "Custom HTTPS configuration for origin-pull",
+      "members": [
+        {
+          "default": "",
+          "document": "Custom TLS data switch\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "on",
+          "member": "string",
+          "name": "CustomTlsStatus",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TLS version settings. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"TLSv1\",\"TLSv1.1\",\"TLSv1.2\",\"TLSv1.3\"]",
+          "member": "string",
+          "name": "TlsVersion",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Custom encryption suite\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"EECDH+AES128\"",
+          "member": "string",
+          "name": "Cipher",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Origin-pull verification status\n`off`: Disables origin-pull verification\n`oneWay`: Only verify the origin\n`twoWay`: Enables two-way origin-pull verification\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "off",
+          "member": "string",
+          "name": "VerifyOriginType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Configuration information of the origin-pull certificate\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ServerCert",
+          "name": "CertInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Configuration information of the origin server certificate\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ClientCert",
+          "name": "OriginCertInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "Cache": {
       "document": "Simple edition of cache configuration, which does not support setting a caching rule for scenarios where the `max-age` is not returned from the origin server.",
@@ -687,7 +753,7 @@
         },
         {
           "default": "",
-          "document": "Time granularity, which can be:\n1 day\t 1, 5, 15, 30, 60, 120, 240, 1440 \n2-3 days 15, 30, 60, 120, 240, 1440\n4-7 days 30, 60, 120, 240, 1440\n8-90 days\t 60, 120, 240, 1440",
+          "document": "Sampling interval in minutes. The available options vary for different query period. See below: \n1 day: `1`, `5`, `15`, `30`, `60`, `120`, `240`, `1440` \n2 to 3 days: `15`, `30`, `60`, `120`, `240`, `1440`\n4 to 7 days: `30`, `60`, `120`, `240`, `1440`\n8 to 31 days: `60`, `120`, `240`, `1440`",
           "example": "60",
           "member": "int64",
           "name": "Interval",
@@ -948,6 +1014,7 @@
         {
           "default": "",
           "document": "Domain name ID.",
+          "example": "ecdn-xxxx",
           "member": "string",
           "name": "ResourceId",
           "required": true,
@@ -957,6 +1024,7 @@
         {
           "default": "",
           "document": "Tencent Cloud account ID.",
+          "example": "1251000000",
           "member": "int64",
           "name": "AppId",
           "required": true,
@@ -966,6 +1034,7 @@
         {
           "default": "",
           "document": "CDN acceleration domain name.",
+          "example": "test.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -975,6 +1044,7 @@
         {
           "default": "",
           "document": "Domain name CNAME.",
+          "example": "test.com.dsa.dnsv1.com",
           "member": "string",
           "name": "Cname",
           "required": true,
@@ -984,6 +1054,7 @@
         {
           "default": "",
           "document": "Domain name status. Valid values: pending (reviewing), rejected (rejected), processing (deploying after approval), online (enabled), offline (disabled), deleted (deleted).",
+          "example": "processing",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -993,6 +1064,7 @@
         {
           "default": "",
           "document": "Project ID.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -1002,6 +1074,7 @@
         {
           "default": "",
           "document": "Domain name creation time.",
+          "example": "2019-12-03 15:23:50",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -1011,6 +1084,7 @@
         {
           "default": "",
           "document": "Domain name update time.",
+          "example": "2019-12-03 15:23:50",
           "member": "datetime",
           "name": "UpdateTime",
           "required": true,
@@ -1020,6 +1094,7 @@
         {
           "default": "",
           "document": "Origin server configuration details.",
+          "example": "{\"Origins\":[\"1.1.1.1\"]}",
           "member": "Origin",
           "name": "Origin",
           "required": true,
@@ -1029,6 +1104,7 @@
         {
           "default": "",
           "document": "Domain name blockage status. Valid values: normal (normal), overdue (service is suspended due to arrears), quota (trial traffic package is used up), malicious (malicious user), ddos (DDoS attack), idle (no traffic), unlicensed (no ICP filing), capping (bandwidth cap reached), readonly (read-only)",
+          "example": "normal",
           "member": "string",
           "name": "Disable",
           "required": true,
@@ -1038,6 +1114,7 @@
         {
           "default": "",
           "document": "Acceleration region. Valid values: mainland, oversea, global.",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
           "required": true,
@@ -1047,11 +1124,22 @@
         {
           "default": "",
           "document": "Domain name lock status. normal: not locked; global: globally locked",
+          "example": "normal",
           "member": "string",
           "name": "Readonly",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain name tag\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "null",
+          "member": "Tag",
+          "name": "Tag",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1280,7 +1368,8 @@
       "members": [
         {
           "default": "",
-          "document": "Filter field name, which can be:\n- origin: primary origin server.\n- domain: domain name.\n- resourceId: domain name ID.\n- status: domain name status. Valid values: online, offline, processing.\n- disable: domain name blockage status. Valid values: normal, unlicensed.\n- projectId: project ID.\n- fullUrlCache: full path cache. Valid values: on, off.\n- https: whether to configure HTTPS. Valid values: on, off, processing.\n- originPullProtocol: origin-pull protocol type. Valid values: http, follow, https.\n- area: acceleration region. Valid values: mainland, overseas, global.",
+          "document": "Filters by the field name, which includes:\n- `origin`: Primary origin server.\n- `domain`: Domain name.\n- `resourceId`: Domain name ID.\n- `status`: Domain name status. Valid values: `online`, `offline`, and `processing`.\n- `disable`: Whether the domain name is blocked. Valid values: `normal`, `unlicensed`.\n- `projectId`: Project ID.\n- `fullUrlCache`: Whether to enable full-path cache, which can be `on` or `off`.\n- `https`: Whether to configure HTTPS, which can be `on`, `off` or `processing`.\n- `originPullProtocol`: Origin-pull protocol type, which can be `http`, `follow`, or `https`.\n- `area`: Acceleration region, which can be `mainland`，`overseas` or `global`.\n- `tagKey`: Tag key.",
+          "example": "origin",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -1290,6 +1379,7 @@
         {
           "default": "",
           "document": "Filter field value.",
+          "example": "[‘xxxx.test.com’]",
           "member": "string",
           "name": "Value",
           "required": true,
@@ -1299,6 +1389,7 @@
         {
           "default": "",
           "document": "Whether to enable fuzzy query, which is supported only for filter fields `origin` and `domain`.",
+          "example": "false",
           "member": "bool",
           "name": "Fuzzy",
           "required": false,
@@ -1748,6 +1839,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "HTTPS advanced origin-pull configuration\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "AdvanceHttps",
+          "name": "AdvanceHttps",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -1778,9 +1879,11 @@
       "document": "PurgePathCache response structure.",
       "members": [
         {
-          "document": "Purge task ID. The first ten digits are the UTC time when the task is submitted.",
+          "document": "Purge task ID",
+          "example": "1533045796-i60rfmzm",
           "member": "string",
           "name": "TaskId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1871,9 +1974,11 @@
       "document": "PurgeUrlsCache response structure.",
       "members": [
         {
-          "document": "Purge task ID. The first ten digits are the UTC time when the task is submitted.",
+          "document": "Purge task ID",
+          "example": "1533045796-i60rfmzm",
           "member": "string",
           "name": "TaskId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2279,7 +2384,8 @@
       "members": [
         {
           "default": "",
-          "document": "WebSocket configuration switch, which can be `on` or `off`.",
+          "document": "Whether to enable custom WebSocket timeout setting. When it’s `off`: WebSocket connection is supported, and the default timeout period is 15 seconds. To change the timeout period, please set it to `on`.\n\n* WebSocket is now only available for beta users. To use it, please submit a ticket.",
+          "example": "off",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -2289,6 +2395,7 @@
         {
           "default": "",
           "document": "Sets timeout period in seconds. Maximum value: 65\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "30",
           "member": "int64",
           "name": "Timeout",
           "required": false,

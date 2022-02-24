@@ -940,7 +940,7 @@
         },
         {
           "default": "",
-          "document": "JDK version\n- KONA: use KONA JDK\n- OPEN: use open JDK",
+          "document": "JDK version\n- KONA: use KONA JDK\n- OPEN: use open JDK\n- KONA: use KONA JDK\n- OPEN: use open JDK",
           "example": "1",
           "member": "string",
           "name": "JdkVersion",
@@ -1108,6 +1108,33 @@
           "name": "LogEnable",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether the configuration is modified (except for the image configuration)",
+          "example": "true",
+          "member": "bool",
+          "name": "ConfEdited",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether the application acceleration is enabled ",
+          "example": "true",
+          "member": "bool",
+          "name": "SpeedUp",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable probing",
+          "example": "1",
+          "member": "HealthCheckConfig",
+          "name": "StartupProbe",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1172,6 +1199,16 @@
           "example": "200",
           "member": "int64",
           "name": "BatchInterval",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The minimum number of available pods",
+          "example": "1",
+          "member": "int64",
+          "name": "MinAvailable",
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -2540,6 +2577,26 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`default``: Custom. `reserved`: System variable. `referenced`: Referenced configuration item.\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "default",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Configuration name\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "configName",
+          "member": "string",
+          "name": "Config",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -2774,7 +2831,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The deployment policy. Values: `AUTO` (automatically deploy), `BETA` (deploy a small batch first to test the result, and deploy the rest automatically) and `MANUAL` (manually deploy)",
           "example": "AUTO",
           "member": "string",
           "name": "DeployStrategyType",
@@ -2783,7 +2840,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Total number of batches",
           "example": "2",
           "member": "int64",
           "name": "TotalBatchCount",
@@ -2792,7 +2849,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Interval between the batches",
           "example": "60",
           "member": "int64",
           "name": "BatchInterval",
@@ -2801,7 +2858,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Number of instances in a beta batch",
           "example": "1",
           "member": "int64",
           "name": "BetaBatchNum",
@@ -2810,7 +2867,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Minimum number of available instances during the deployment",
           "example": "1",
           "member": "int64",
           "name": "MinAvailable",
@@ -3224,6 +3281,16 @@
           "name": "EnableTswTraceService",
           "required": true,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the environment is locked. `1`: locked; `0`: not locked",
+          "example": "1",
+          "member": "int64",
+          "name": "Locked",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
