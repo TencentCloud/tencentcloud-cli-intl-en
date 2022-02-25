@@ -89,9 +89,9 @@
       },
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=CreateDBImportJob\n&InstanceId=cdb-ids6j1b3\n&User=xxxxx\n&Password=xxxxxxxxxx\n&CosUrl=https://test-bulk-XXXXX.cos.ap-chengdu.myqcloud.com/myFile/create_db.sql\n&<common request parameters>",
+        "input": "https://cdb.tencentcloudapi.com/?Action=CreateDBImportJob\n&InstanceId=cdb-ids6j1b3\n&User=xxxxx\n&Password=xxxxxxxxxx\n&CosUrl=https://test-bulk-XXXXX.cos.ap-chengdu.myqcloud.com/myFile/create_db.sql\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestId\": \"be9f64a6-fa652dc6-f5c878b6-a6a50746\"\n    }\n}",
-        "title": "使用COS地址创建数据导入任务"
+        "title": "Creating a data import task by using the COS URL"
       }
     ],
     "CreateDBInstanceHour": [

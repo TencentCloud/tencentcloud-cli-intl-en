@@ -120,6 +120,12 @@
       "name": "Queries the list of real-time threads",
       "output": "DescribeMySqlProcessListResponse"
     },
+    "DescribeProxySessionKillTasks": {
+      "document": "This API is used to query the result of the session killing task executed by the Redis proxy node. The async task ID (an input parameter) is obtained after the API `CreateProxySessionKillTask` is successfully called. Currently, the only valid value of `product` is `redis`.",
+      "input": "DescribeProxySessionKillTasksRequest",
+      "name": "Queries the status of the session killing task executed by the proxy node",
+      "output": "DescribeProxySessionKillTasksResponse"
+    },
     "DescribeSecurityAuditLogDownloadUrls": {
       "document": "This API is used to query the download link of a security audit log export file. Currently, log file download only provides a Tencent Cloud private network address. Please download it by using a CVM instance in the Guangzhou region.",
       "input": "DescribeSecurityAuditLogDownloadUrlsRequest",
@@ -1808,6 +1814,69 @@
           "name": "ProcessList",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProxySessionKillTasksRequest": {
+      "document": "DescribeProxySessionKillTasks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "crs-test1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The async session killing task ID, which is obtained after the API `CreateProxySessionKillTask` is successfully called.",
+          "example": "[1234]",
+          "member": "int64",
+          "name": "AsyncRequestIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Service type. Valid value: `redis` (TencentDB for Redis).",
+          "example": "redis",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProxySessionKillTasksResponse": {
+      "document": "DescribeProxySessionKillTasks response structure.",
+      "members": [
+        {
+          "document": "Session killing task details.",
+          "example": "无",
+          "member": "TaskInfo",
+          "name": "Tasks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of tasks.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4679,6 +4748,122 @@
           "name": "SeriesData",
           "required": true,
           "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TaskInfo": {
+      "document": "Information about Redis session killing task status",
+      "members": [
+        {
+          "default": "",
+          "document": "Async task ID.",
+          "example": "1234",
+          "member": "int64",
+          "name": "AsyncRequestId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of all proxies of the current instance.",
+          "example": "[\"6511ec503b047be913e30c1bbf1f2c8c861e8347\"]",
+          "member": "string",
+          "name": "InstProxyList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number of proxies of the current instance.",
+          "example": "1",
+          "member": "int64",
+          "name": "InstProxyCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task creation time.",
+          "example": "\"2022-02-11 10:22:46\"",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task start time.",
+          "example": "\"2022-02-11 10:22:46\"",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task status. Valid values: `created` (create), `chosen` (to be executed), `running` (being executed), `failed` (failed), and `finished` (completed).",
+          "example": "\"finished\"",
+          "member": "string",
+          "name": "TaskStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IDs of the proxies that have completed the session killing tasks.",
+          "example": "[\"6511ec503b047be913e30c1bbf1f2c8c861e8347\"]",
+          "member": "string",
+          "name": "FinishedProxyList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IDs of the proxies that failed to execute the session killing tasks.",
+          "example": "[\"6511ec503b047be913e30c1bbf1f2c8c861e8347\"]",
+          "member": "string",
+          "name": "FailedProxyList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task end time.",
+          "example": "\"2022-02-11 10:22:46\"",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task progress.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "crs-test1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

@@ -839,6 +839,16 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Billing mode:\n`0`: Pay-as-you-go\n`1`: Monthly subscription\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1525,6 +1535,7 @@
         {
           "default": "",
           "document": "The time when the consumer started connecting.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "ConnectedSince",
           "required": true,
@@ -1534,6 +1545,7 @@
         {
           "default": "",
           "document": "Consumer address.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "ConsumerAddr",
           "required": true,
@@ -1543,6 +1555,7 @@
         {
           "default": "",
           "document": "Consumer name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "ConsumerName",
           "required": true,
@@ -1552,10 +1565,21 @@
         {
           "default": "",
           "document": "Consumer version.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "ClientVersion",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Serial number of the topic partition connected to the consumer.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Partition",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -1830,6 +1854,15 @@
           "name": "Trace",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Tag array.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2001,6 +2034,15 @@
           "name": "Trace",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Tag array.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2634,15 +2676,6 @@
         },
         {
           "default": "",
-          "document": "0: general message;\n1: globally sequential message;\n2: partitionally sequential message;\n3: retry letter queue;\n4: dead letter queue.",
-          "example": "0",
-          "member": "uint64",
-          "name": "TopicType",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
           "document": "Remarks (up to 128 characters).",
           "example": "2个分区的普通消息队列",
           "member": "string",
@@ -2652,12 +2685,30 @@
         },
         {
           "default": "",
+          "document": "0: general message;\n1: globally sequential message;\n2: partitionally sequential message;\n3: retry letter queue;\n4: dead letter queue.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TopicType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
           "document": "Pulsar cluster ID",
           "example": "pulsar-xxx",
           "member": "string",
           "name": "ClusterId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pulsar topic type.\n`0`: Non-persistent and non-partitioned\n`1`: Non-persistent and partitioned\n`2`: Persistent and non-partitioned\n`3`: Persistent and partitioned",
+          "example": "0",
+          "member": "int64",
+          "name": "PulsarTopicType",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -7557,6 +7608,7 @@
         {
           "default": "",
           "document": "Topic name.",
+          "example": "test",
           "member": "string",
           "name": "TopicName",
           "required": true,
@@ -7566,6 +7618,7 @@
         {
           "default": "",
           "document": "Environment (namespace) name.",
+          "example": "test",
           "member": "string",
           "name": "EnvironmentId",
           "required": true,
@@ -7575,6 +7628,7 @@
         {
           "default": "",
           "document": "The time when the consumer started connecting.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "ConnectedSince",
           "required": true,
@@ -7584,6 +7638,7 @@
         {
           "default": "",
           "document": "Consumer address.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "ConsumerAddr",
           "required": true,
@@ -7593,6 +7648,7 @@
         {
           "default": "",
           "document": "Number of consumers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "11",
           "member": "string",
           "name": "ConsumerCount",
           "required": true,
@@ -7602,6 +7658,7 @@
         {
           "default": "",
           "document": "Consumer name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "ConsumerName",
           "required": true,
@@ -7611,6 +7668,7 @@
         {
           "default": "",
           "document": "Number of retained messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "MsgBacklog",
           "required": true,
@@ -7620,6 +7678,7 @@
         {
           "default": "",
           "document": "Proportion of messages under this subscription that were discarded but not sent after TTL.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "MsgRateExpired",
           "required": true,
@@ -7629,6 +7688,7 @@
         {
           "default": "",
           "document": "Sum of the numbers of messages delivered by the consumer per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "MsgRateOut",
           "required": true,
@@ -7638,6 +7698,7 @@
         {
           "default": "",
           "document": "Number of bytes of messages consumed by the consumer per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "MsgThroughputOut",
           "required": true,
@@ -7647,6 +7708,7 @@
         {
           "default": "",
           "document": "Subscription name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "SubscriptionName",
           "required": true,
@@ -7656,6 +7718,7 @@
         {
           "default": "",
           "document": "Set of consumers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Consumer",
           "name": "ConsumerSets",
           "required": true,
@@ -7665,6 +7728,7 @@
         {
           "default": "",
           "document": "Whether it is online.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
           "member": "bool",
           "name": "IsOnline",
           "required": true,
@@ -7674,6 +7738,7 @@
         {
           "default": "",
           "document": "Set of consumption progress information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ConsumersSchedule",
           "name": "ConsumersScheduleSets",
           "required": true,
@@ -7683,6 +7748,7 @@
         {
           "default": "",
           "document": "Remarks.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "Remark",
           "required": true,
@@ -7692,6 +7758,7 @@
         {
           "default": "",
           "document": "Creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -7701,10 +7768,41 @@
         {
           "default": "",
           "document": "Modification time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "datetime",
           "name": "UpdateTime",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subscription type. Valid values: `Exclusive`, `Shared`, `Failover`, and `Key_Shared`. An empty string or `NULL`: Unknown.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "Shared",
+          "member": "string",
+          "name": "SubType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether messages are blocked as the limit of unacknowledged messages has been reached.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "BlockedSubscriptionOnUnackedMsgs",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum number of unacknowledged messages.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "5000",
+          "member": "int64",
+          "name": "MaxUnackedMsgNum",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -7978,6 +8076,16 @@
           "name": "ConsumerLimit",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "`0`: Non-persistent and non-partitioned\n`1`: Non-persistent and partitioned\n`2`: Persistent and non-partitioned\n`3`: Persistent and partitioned\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "PulsarTopicType",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
