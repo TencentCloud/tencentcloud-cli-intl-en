@@ -1,5 +1,11 @@
 {
   "actions": {
+    "DescribeAuditTracks": {
+      "document": "This API is used to query the CloudAudit tracking set list.",
+      "input": "DescribeAuditTracksRequest",
+      "name": "Queries the CloudAudit tracking set list",
+      "output": "DescribeAuditTracksResponse"
+    },
     "DescribeEvents": {
       "document": "This API is used to query CloudAudit logs.",
       "input": "DescribeEventsRequest",
@@ -13,6 +19,23 @@
     "serviceShortName": "cloudaudit"
   },
   "objects": {
+    "DescribeAuditTracksRequest": {
+      "document": "DescribeAuditTracks request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeAuditTracksResponse": {
+      "document": "DescribeAuditTracks response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeEventsRequest": {
       "document": "DescribeEvents request structure.",
       "members": [

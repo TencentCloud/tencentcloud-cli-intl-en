@@ -5995,7 +5995,8 @@
       "members": [
         {
           "default": "",
-          "document": "List of input media tracks, i.e., information of multiple tracks composed of video, audio, image, and other materials. <li>Multiple input tracks are aligned with the output media file on the time axis. </li><li>The materials of each track at the same time point on the time axis will be superimposed. Specifically, videos or images will be superimposed for video image by track order, where a material with a higher track order will be more on top, while audio materials will be mixed. </li><li>Up to 10 tracks are supported for each type (video, audio, or image).</li>",
+          "document": "List of input media tracks, including video, audio, and image tracks. <li>Input tracks are synced to the output media file.</li><li>Input tracks are synced to each other. Videos and images in higher tracks are superimposed over those in lower tracks. Audio tracks are mixed.</li><li>There can be up to 10 tracks for video, audio, and images each.</li><li>The total number of clips in all tracks cannot exceed 500.</li>",
+          "example": "无",
           "member": "MediaTrack",
           "name": "Tracks",
           "required": true,
@@ -6004,6 +6005,7 @@
         {
           "default": "",
           "document": "Information of output media file.",
+          "example": "无",
           "member": "ComposeMediaOutput",
           "name": "Output",
           "required": true,
@@ -6012,6 +6014,7 @@
         {
           "default": "",
           "document": "Canvas used for composing video file.",
+          "example": "无",
           "member": "Canvas",
           "name": "Canvas",
           "required": false,
@@ -6020,6 +6023,7 @@
         {
           "default": "",
           "document": "Used to pass through user request information. `ComposeMediaComplete` callback will return the value of this parameter. It contains up to 1,000 characters.",
+          "example": "\"sessioncontext\"",
           "member": "string",
           "name": "SessionContext",
           "required": false,
@@ -6028,6 +6032,7 @@
         {
           "default": "",
           "document": "Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.",
+          "example": "\"sessionid\"",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -6036,6 +6041,7 @@
         {
           "default": "",
           "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "example": "123",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -7735,6 +7741,7 @@
         {
           "default": "",
           "document": "Player configuration name, which can contain up to 64 letters, digits, underscores, and hyphens (such as test_ABC-123) and must be unique under a user.",
+          "example": "test",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -7742,7 +7749,17 @@
         },
         {
           "default": "",
-          "document": "Switch of DRM-protected adaptive bitstream playback:\n<li>ON: enabled, indicating to play back only output adaptive bitstreams protected by DRM;</li>\n<li>OFF: disabled, indicating to play back unencrypted output adaptive bitstreams.</li>\nDefault value: OFF.",
+          "document": "Type of audio/video played. Valid values:\n<li>AdaptiveDynamicStreaming</li>\n<li>Transcode</li>\n<li>Original</li>\nDefault value: `AdaptiveDynamicStream`",
+          "example": "无",
+          "member": "string",
+          "name": "AudioVideoType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to allow only adaptive bitrate streaming playback protected by DRM. Valid values:\n<li>`ON`: allow only adaptive bitrate streaming playback protected by DRM</li>\n<li>`OFF`: allow adaptive bitrate streaming playback not protected by DRM</li>\nDefault value: `OFF`\nThis parameter is valid when `AudioVideoType` is `AdaptiveDynamicStream`.",
+          "example": "无",
           "member": "string",
           "name": "DrmSwitch",
           "required": false,
@@ -7750,7 +7767,8 @@
         },
         {
           "default": "",
-          "document": "ID of the unencrypted adaptive bitrate streaming template that allows output, which is required if `DrmSwitch` is `OFF`.",
+          "document": "ID of the adaptive bitrate streaming template allowed for playback not protected by DRM.\n\nThis parameter is required if `AudioVideoType` is `AdaptiveDynamicStream` and `DrmSwitch` is `OFF`.",
+          "example": "10",
           "member": "uint64",
           "name": "AdaptiveDynamicStreamingDefinition",
           "required": false,
@@ -7758,7 +7776,8 @@
         },
         {
           "default": "",
-          "document": "Content of the DRM-protected adaptive bitrate streaming template that allows output, which is required if `DrmSwitch` is `ON`.",
+          "document": "Content of the adaptive bitrate streaming template allowed for playback protected by DRM.\n\nThis parameter is required if `AudioVideoType` is `AdaptiveDynamicStream` and `DrmSwitch` is `ON`.",
+          "example": "无",
           "member": "DrmStreamingsInfo",
           "name": "DrmStreamingsInfo",
           "required": false,
@@ -7766,7 +7785,17 @@
         },
         {
           "default": "",
+          "document": "ID of the transcoding template allowed for playback\n\nThis parameter is required if `AudioVideoType` is `Transcode`.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TranscodeDefinition",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
           "document": "ID of the image sprite generating template that allows output.",
+          "example": "无",
           "member": "uint64",
           "name": "ImageSpriteDefinition",
           "required": false,
@@ -7775,6 +7804,7 @@
         {
           "default": "",
           "document": "Display name of player for substreams with different resolutions. If this parameter is left empty or an empty array, the default configuration will be used:\n<li>MinEdgeLength: 240, Name: LD;</li>\n<li>MinEdgeLength: 480, Name: SD;</li>\n<li>MinEdgeLength: 720, Name: HD;</li>\n<li>MinEdgeLength: 1080, Name: FHD;</li>\n<li>MinEdgeLength: 1440, Name: 2K;</li>\n<li>MinEdgeLength: 2160, Name: 4K;</li>\n<li>MinEdgeLength: 4320, Name: 8K.</li>",
+          "example": "无",
           "member": "ResolutionNameInfo",
           "name": "ResolutionNames",
           "required": false,
@@ -7783,6 +7813,7 @@
         {
           "default": "",
           "document": "Domain name used for playback. If it is left empty or set to `Default`, the domain name configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used.",
+          "example": "无",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -7791,6 +7822,7 @@
         {
           "default": "",
           "document": "Scheme used for playback. If it is left empty or set to `Default`, the scheme configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used. Other valid values:\n<li>HTTP;</li>\n<li>HTTPS.</li>",
+          "example": "无",
           "member": "string",
           "name": "Scheme",
           "required": false,
@@ -7799,6 +7831,7 @@
         {
           "default": "",
           "document": "Template description. Length limit: 256 characters.",
+          "example": "无",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -7807,6 +7840,7 @@
         {
           "default": "",
           "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "example": "无",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -16339,6 +16373,7 @@
         {
           "default": "",
           "document": "Player configuration name.",
+          "example": "test",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -16346,7 +16381,17 @@
         },
         {
           "default": "",
+          "document": "Type of audio/video played. Valid values:\n<li>AdaptiveDynamicStreaming</li>\n<li>Transcode</li>\n<li>Original</li>",
+          "example": "无",
+          "member": "string",
+          "name": "AudioVideoType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "Switch of DRM-protected adaptive bitstream playback:\n<li>ON: enabled, indicating to play back only output adaptive bitstreams protected by DRM;</li>\n<li>OFF: disabled, indicating to play back unencrypted output adaptive bitstreams.</li>",
+          "example": "无",
           "member": "string",
           "name": "DrmSwitch",
           "required": false,
@@ -16355,6 +16400,7 @@
         {
           "default": "",
           "document": "ID of the unencrypted adaptive bitrate streaming template that allows output.",
+          "example": "20",
           "member": "uint64",
           "name": "AdaptiveDynamicStreamingDefinition",
           "required": false,
@@ -16363,6 +16409,7 @@
         {
           "default": "",
           "document": "Content of the DRM-protected adaptive bitrate streaming template that allows output.",
+          "example": "无",
           "member": "DrmStreamingsInfoForUpdate",
           "name": "DrmStreamingsInfo",
           "required": false,
@@ -16370,7 +16417,17 @@
         },
         {
           "default": "",
+          "document": "ID of the transcoding template allowed for playback",
+          "example": "无",
+          "member": "uint64",
+          "name": "TranscodeDefinition",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
           "document": "ID of the image sprite generating template that allows output.",
+          "example": "无",
           "member": "uint64",
           "name": "ImageSpriteDefinition",
           "required": false,
@@ -16379,6 +16436,7 @@
         {
           "default": "",
           "document": "Display name of player for substreams with different resolutions.",
+          "example": "无",
           "member": "ResolutionNameInfo",
           "name": "ResolutionNames",
           "required": false,
@@ -16387,6 +16445,7 @@
         {
           "default": "",
           "document": "Domain name used for playback. If its value is `Default`, the domain name configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used.",
+          "example": "无",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -16395,6 +16454,7 @@
         {
           "default": "",
           "document": "Scheme used for playback. Valid values:\n<li>Default: the scheme configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used;</li>\n<li>HTTP;</li>\n<li>HTTPS.</li>",
+          "example": "无",
           "member": "string",
           "name": "Scheme",
           "required": false,
@@ -16403,6 +16463,7 @@
         {
           "default": "",
           "document": "Template description. Length limit: 256 characters.",
+          "example": "无",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -16411,6 +16472,7 @@
         {
           "default": "",
           "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "example": "无",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,

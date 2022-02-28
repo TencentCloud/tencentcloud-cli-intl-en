@@ -217,7 +217,7 @@
     "CreateSuperPlayerConfig": [
       {
         "document": "",
-        "input": "https://vod.tencentcloudapi.com/?Action=CreateSuperPlayerConfig\r\n&Name=test\r\n&AdaptiveDynamicStreamingDefinition=10\r\n&<Common request parameters>",
+        "input": "https://vod.tencentcloudapi.com/?Action=CreateSuperPlayerConfig\n&Name=test\n&AdaptiveDynamicStreamingDefinition=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-1d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a superplayer configuration"
       }
@@ -989,7 +989,7 @@
     "ModifySuperPlayerConfig": [
       {
         "document": "",
-        "input": "https://vod.tencentcloudapi.com/?Action=ModifySuperPlayerConfig\r\n&Name=test\r\n&AdaptiveDynamicStreamingDefinition=20\r\n&<Common request parameters>",
+        "input": "https://vod.tencentcloudapi.com/?Action=ModifySuperPlayerConfig\n&Name=test\n&AdaptiveDynamicStreamingDefinition=20\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-7d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying superplayer configuration"
       }
@@ -1056,7 +1056,7 @@
         "title": "Initiating a transcoding task"
       },
       {
-        "document": "This example shows you how to initiate a transcoding task for the video whose `fileId` is `5285485487985271487` to output in three specifications with transcoding templates (IDs: 20, 30, and 40). All the output videos are watermarked using the watermark template (ID: 15780).",
+        "document": "This example shows you how to initiate a transcoding task for the video whose `fileId` is `5285485487985271487` to output in three specifications using transcoding templates (IDs: 20, 30, and 40), and watermark the output videos using a watermark template (ID: 15780).",
         "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&MediaProcessTask.TranscodeTaskSet.0.Definition=20\n&MediaProcessTask.TranscodeTaskSet.0.WatermarkSet.0.Definition=15780\n&MediaProcessTask.TranscodeTaskSet.1.Definition=30\n&MediaProcessTask.TranscodeTaskSet.1.WatermarkSet.0.Definition=15780\n&MediaProcessTask.TranscodeTaskSet.2.Definition=40\n&MediaProcessTask.TranscodeTaskSet.2.WatermarkSet.0.Definition=15780\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
         "title": "Initiating a transcoding task with watermarked outputs"
@@ -1074,13 +1074,13 @@
         "title": "Initiating an intelligent recognition task"
       },
       {
-        "document": "This example shows you how to initiate a content analysis task (including intelligently generating category, label, and cover) for the video whose `fileId` is `5285485487985271487` by using the content analysis template (ID: 10).",
+        "document": "This example shows you how to initiate a content analysis task (including intelligent categorization, label detection, and thumbnail generation) for the video whose `fileId` is `5285485487985271487` using a content analysis template (ID: 10).",
         "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&AiAnalysisTask.Definition=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07586237bcecodb01fac7kdikk\"\n    }\n}",
         "title": "Initiating an intelligent content analysis task"
       },
       {
-        "document": "This example shows you how to initiate a content recognition task (including face recognition) for the video whose `fileId` is `5285485487985271487` by using the content recognition template (ID: 10).",
+        "document": "This example shows you how to initiate a content recognition task (including face recognition) for the video whose `fileId` is `5285485487985271487` using a content recognition template (ID: 10).",
         "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&AiRecognitionTask.Definition=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc70006fje1\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07586237bcecodb01fac7kdabc\"\n    }\n}",
         "title": "Initiating an intelligent content recognition task"
