@@ -2178,6 +2178,7 @@
         {
           "default": "",
           "document": "Layer-7 listener ID",
+          "example": "listener-9jt0rtv9",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -2186,6 +2187,7 @@
         {
           "default": "",
           "document": "Domain name of the forwarding rule",
+          "example": "www.bbb.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -2194,6 +2196,7 @@
         {
           "default": "",
           "document": "Path of the forwarding rule",
+          "example": "%2Fimage",
           "member": "string",
           "name": "Path",
           "required": true,
@@ -2202,6 +2205,7 @@
         {
           "default": "",
           "document": "The origin server type of the forwarding rule, which supports IP and DOMAIN types.",
+          "example": "IP",
           "member": "string",
           "name": "RealServerType",
           "required": true,
@@ -2210,6 +2214,7 @@
         {
           "default": "",
           "document": "Forwarding rules of origin server, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).",
+          "example": "rr",
           "member": "string",
           "name": "Scheduler",
           "required": true,
@@ -2218,6 +2223,7 @@
         {
           "default": "",
           "document": "Whether the health check is enabled for rules. 1: enabled; 0: disabled.",
+          "example": "1",
           "member": "uint64",
           "name": "HealthCheck",
           "required": true,
@@ -2226,6 +2232,7 @@
         {
           "default": "",
           "document": "Parameters related to origin server health check",
+          "example": "无",
           "member": "RuleCheckParams",
           "name": "CheckParams",
           "required": false,
@@ -2234,6 +2241,7 @@
         {
           "default": "",
           "document": "Protocol types of the forwarding from acceleration connection to origin server, which supports HTTP or HTTPS.\nIf this field is not passed in, it indicates that the ForwardProtocol of the corresponding listener will be used.",
+          "example": "HTTP",
           "member": "string",
           "name": "ForwardProtocol",
           "required": false,
@@ -2241,9 +2249,28 @@
         },
         {
           "default": "",
-          "document": "Remote host to which the acceleration connection forwards. If this parameter is not specified, the default host will be used, i.e., the host with which the client initiates HTTP requests.",
+          "document": "The forwarding host. If it’s not specified, the default host is used, that is the host with which the client initiates HTTP requests.",
+          "example": "无",
           "member": "string",
           "name": "ForwardHost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable Server Name Indication (SNI). Valid values: `ON` (enable) and `OFF` (disable).",
+          "example": "OFF",
+          "member": "string",
+          "name": "ServerNameIndicationSwitch",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.",
+          "example": "www.qq.com",
+          "member": "string",
+          "name": "ServerNameIndication",
           "required": false,
           "type": "string"
         }
@@ -3982,7 +4009,7 @@
         },
         {
           "default": "",
-          "document": "Filter condition   \nEach request can have a maximum of 5 filter conditions for `Filter.Values`.\nRealServerRegion - String - Required: No - Filter by origin server region. You can also check the value of `RegionId` returned by the `DescribeDestRegions` API.\nPackageType - String - Required: No - Filter by type of connection groups, which can be `Thunder` (general connection group) or `Accelerator` (game accelerator connection group).",
+          "document": "Filter condition   \nEach request can have a maximum of 5 filter conditions for `Filter.Values`.\n`RealServerRegion` - String - Required: No - Filter by origin server region. You can also check the value of `RegionId` returned by the `DescribeDestRegions` API.\n`PackageType` - String - Required: No - Filter by type of connection groups, which can be `Thunder` (general connection group) or `Accelerator` (silver connection group).",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -6488,6 +6515,7 @@
         {
           "default": "",
           "document": "Listener ID",
+          "example": "listener-8fueuc9",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -6496,6 +6524,7 @@
         {
           "default": "",
           "document": "Forwarding rule ID",
+          "example": "rule-5g8dh58",
           "member": "string",
           "name": "RuleId",
           "required": true,
@@ -6504,6 +6533,7 @@
         {
           "default": "",
           "document": "Scheduling policy:\nrr: round robin;\nwrr: weighted round robin;\nlc: least connections.",
+          "example": "rr",
           "member": "string",
           "name": "Scheduler",
           "required": false,
@@ -6512,6 +6542,7 @@
         {
           "default": "",
           "document": "Whether to enable the origin server health check:\n1: enable;\n0: disable.",
+          "example": "0",
           "member": "uint64",
           "name": "HealthCheck",
           "required": false,
@@ -6520,6 +6551,7 @@
         {
           "default": "",
           "document": "Health check configuration parameters",
+          "example": "无",
           "member": "RuleCheckParams",
           "name": "CheckParams",
           "required": false,
@@ -6528,6 +6560,7 @@
         {
           "default": "",
           "document": "Forwarding rule path",
+          "example": "/",
           "member": "string",
           "name": "Path",
           "required": false,
@@ -6536,6 +6569,7 @@
         {
           "default": "",
           "document": "Protocol types of the forwarding from acceleration connection to origin server, which supports default, HTTP and HTTPS.\nIf `ForwardProtocol=default`, the `ForwardProtocol` of the listener will be used.",
+          "example": "default",
           "member": "string",
           "name": "ForwardProtocol",
           "required": false,
@@ -6543,9 +6577,28 @@
         },
         {
           "default": "",
-          "document": "The `host` carried in the request forwarded from the acceleration connection to the origin server.\nIf `ForwardHost=default`, the domain name of rule will be used. For other cases, the value set in this field will be used.",
+          "document": "The forwarding host, which is carried in the request forwarded from the acceleration connection to the origin server.\nIf `ForwardHost=default`, the domain name configured with the forwarding rule will be used. For other cases, the value set in this field will be used.",
+          "example": "xx",
           "member": "string",
           "name": "ForwardHost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable Server Name Indication (SNI). Valid values: `ON` (enable) and `OFF` (disable).",
+          "example": "OFF",
+          "member": "string",
+          "name": "ServerNameIndicationSwitch",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.",
+          "example": "www.qq.com",
+          "member": "string",
+          "name": "ServerNameIndication",
           "required": false,
           "type": "string"
         }
@@ -7173,7 +7226,7 @@
         },
         {
           "default": "",
-          "document": "Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (game accelerator connection group), and `CrossBorder` (cross-MLC-border connection group).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (silver connection group), and `CrossBorder` (cross-MLC-border connection group).\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "Thunder",
           "member": "string",
           "name": "PackageType",
@@ -7620,7 +7673,7 @@
         },
         {
           "default": "",
-          "document": "Package type of connection groups. Valid values: `Thunder` (general), `Accelerator` (specific for games), \nand `CrossBorder` (cross-MLC-border connection).\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Package type of connections. Valid values: `Thunder` (general connection), `Accelerator` (silver connection), \nand `CrossBorder` (cross-MLC-border connection).\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "Thunder",
           "member": "string",
           "name": "PackageType",
@@ -7654,6 +7707,16 @@
           "example": "0",
           "member": "int64",
           "name": "Http3Supported",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Indicates whether the origin server IP or domain name is in the blocklist. Valid values: `0` (no) and `1` (yes).\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "InBanBlacklist",
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -7726,6 +7789,7 @@
         {
           "default": "",
           "document": "Origin server IP or domain name",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "RealServerIP",
           "required": true,
@@ -7735,6 +7799,7 @@
         {
           "default": "",
           "document": "Origin server ID",
+          "example": "rs-0d7gb1dr",
           "member": "string",
           "name": "RealServerId",
           "required": true,
@@ -7744,6 +7809,7 @@
         {
           "default": "",
           "document": "Origin server name",
+          "example": "\"\"",
           "member": "string",
           "name": "RealServerName",
           "required": true,
@@ -7753,8 +7819,19 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "0",
           "member": "uint64",
           "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Indicates whether the origin server IP or domain name is in the blocklist. Valid values: `0` (no) and `1` (yes).",
+          "example": "0",
+          "member": "int64",
+          "name": "InBanBlacklist",
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -8049,6 +8126,7 @@
         {
           "default": "",
           "document": "Rule information",
+          "example": "xx",
           "member": "string",
           "name": "RuleId",
           "required": true,
@@ -8058,6 +8136,7 @@
         {
           "default": "",
           "document": "Listener information",
+          "example": "xx",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -8067,6 +8146,7 @@
         {
           "default": "",
           "document": "Rule domain name",
+          "example": "xx",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -8076,6 +8156,7 @@
         {
           "default": "",
           "document": "Rule path",
+          "example": "xx",
           "member": "string",
           "name": "Path",
           "required": true,
@@ -8085,6 +8166,7 @@
         {
           "default": "",
           "document": "Origin server type",
+          "example": "xx",
           "member": "string",
           "name": "RealServerType",
           "required": true,
@@ -8094,6 +8176,7 @@
         {
           "default": "",
           "document": "Forwarding policy of the origin server",
+          "example": "xx",
           "member": "string",
           "name": "Scheduler",
           "required": true,
@@ -8103,6 +8186,7 @@
         {
           "default": "",
           "document": "Whether health check is enabled. 1: enabled, 0: disabled",
+          "example": "1",
           "member": "uint64",
           "name": "HealthCheck",
           "required": true,
@@ -8112,6 +8196,7 @@
         {
           "default": "",
           "document": "Rule status. 0: running, 1: creating, 2: terminating, 3: binding/unbinding origin server, 4: updating configuration",
+          "example": "1",
           "member": "uint64",
           "name": "RuleStatus",
           "required": true,
@@ -8121,6 +8206,7 @@
         {
           "default": "",
           "document": "Health check parameters",
+          "example": "无",
           "member": "RuleCheckParams",
           "name": "CheckParams",
           "required": true,
@@ -8130,6 +8216,7 @@
         {
           "default": "",
           "document": "Bound origin server information",
+          "example": "无",
           "member": "BindRealServer",
           "name": "RealServerSet",
           "required": true,
@@ -8139,6 +8226,7 @@
         {
           "default": "",
           "document": "Origin server service status. 0: exceptional, 1: normal\nIf health check is not enabled, this status will always be normal.\nAs long as one origin server is exceptional, this status will be exceptional. Please view `RealServerSet` for the status of specific origin servers.",
+          "example": "1",
           "member": "uint64",
           "name": "BindStatus",
           "required": true,
@@ -8148,8 +8236,29 @@
         {
           "default": "",
           "document": "The `host` carried in the request forwarded from the connection to the origin server. `default` indicates directly forwarding the received 'host'.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "ForwardHost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable Server Name Indication (SNI). Valid values: `ON` (enable) and `OFF` (disable).\nNote: This field may return `null`, indicating that no valid value can be obtained.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "ServerNameIndicationSwitch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.\nNote: This field may return `null`, indicating that no valid value can be obtained.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "ServerNameIndication",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -8283,6 +8392,7 @@
         {
           "default": "",
           "document": "Listener ID.",
+          "example": "0",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -8291,6 +8401,7 @@
         {
           "default": "",
           "document": "The domain name requiring advanced configuration, i.e., the domain name of the listener's forwarding rules.",
+          "example": "a.a.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -8299,6 +8410,7 @@
         {
           "default": "",
           "document": "Whether to enable the basic authentication:\n0: disable basic authentication;\n1: enable basic authentication.\nThe default value is 0.",
+          "example": "1",
           "member": "int64",
           "name": "BasicAuth",
           "required": false,
@@ -8307,6 +8419,7 @@
         {
           "default": "",
           "document": "Whether to enable the connection authentication, which is for the origin server to authenticate GAAP.\n0: disable;\n1: enable.\nThe default value is 0.",
+          "example": "1",
           "member": "int64",
           "name": "GaapAuth",
           "required": false,
@@ -8315,6 +8428,7 @@
         {
           "default": "",
           "document": "Whether to enable the origin server authentication, which is for GAAP to authenticate the server.\n0: disable;\n1: enable.\nThe default value is 0.",
+          "example": "0",
           "member": "int64",
           "name": "RealServerAuth",
           "required": false,
@@ -8323,6 +8437,7 @@
         {
           "default": "",
           "document": "Basic authentication configuration ID, which is obtained from the certificate management page.",
+          "example": "xxx",
           "member": "string",
           "name": "BasicAuthConfId",
           "required": false,
@@ -8331,6 +8446,7 @@
         {
           "default": "",
           "document": "Connection SSL certificate ID, which is obtained from the certificate management page.",
+          "example": "xxx",
           "member": "string",
           "name": "GaapCertificateId",
           "required": false,
@@ -8339,6 +8455,7 @@
         {
           "default": "",
           "document": "CA certificate ID of the origin server, which is obtained from the certificate management page. When authenticating the origin server, enter this parameter or the `RealServerCertificateIds` parameter.",
+          "example": "xx",
           "member": "string",
           "name": "RealServerCertificateId",
           "required": false,
@@ -8346,7 +8463,8 @@
         },
         {
           "default": "",
-          "document": "Domain name of the origin server certificate.",
+          "document": "This field has been disused. Use ServerNameIndication instead.",
+          "example": "xx",
           "member": "string",
           "name": "RealServerCertificateDomain",
           "required": false,
@@ -8355,6 +8473,7 @@
         {
           "default": "",
           "document": "CA certificate IDs of multiple origin servers, which are obtained from the certificate management page. When authenticating the origin servers, enter this parameter or the `RealServerCertificateId` parameter.",
+          "example": "[]",
           "member": "string",
           "name": "PolyRealServerCertificateIds",
           "required": false,

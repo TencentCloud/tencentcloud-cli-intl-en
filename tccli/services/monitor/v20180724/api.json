@@ -684,6 +684,7 @@
         {
           "default": "",
           "document": "Alarm policy ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "PolicyId",
           "required": true,
@@ -693,6 +694,7 @@
         {
           "default": "",
           "document": "Alarm policy name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "PolicyName",
           "required": true,
@@ -702,6 +704,7 @@
         {
           "default": "",
           "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Remark",
           "required": true,
@@ -711,6 +714,7 @@
         {
           "default": "",
           "document": "Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "MonitorType",
           "required": true,
@@ -720,6 +724,7 @@
         {
           "default": "",
           "document": "Status. Valid values: 0 (disabled), 1 (enabled)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "Enable",
           "required": true,
@@ -729,6 +734,7 @@
         {
           "default": "",
           "document": "Number of instances bound to policy group\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "UseSum",
           "required": true,
@@ -738,6 +744,7 @@
         {
           "default": "",
           "document": "Project ID. Valid values: -1 (no project), 0 (default project)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -747,6 +754,7 @@
         {
           "default": "",
           "document": "Project name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ProjectName",
           "required": true,
@@ -756,6 +764,7 @@
         {
           "default": "",
           "document": "Alarm policy type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Namespace",
           "required": true,
@@ -765,6 +774,7 @@
         {
           "default": "",
           "document": "Trigger condition template ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "ConditionTemplateId",
           "required": true,
@@ -774,6 +784,7 @@
         {
           "default": "",
           "document": "Metric trigger condition\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AlarmPolicyCondition",
           "name": "Condition",
           "required": true,
@@ -783,6 +794,7 @@
         {
           "default": "",
           "document": "Event trigger condition\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AlarmPolicyEventCondition",
           "name": "EventCondition",
           "required": true,
@@ -792,6 +804,7 @@
         {
           "default": "",
           "document": "Notification rule ID list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "NoticeIds",
           "required": true,
@@ -801,6 +814,7 @@
         {
           "default": "",
           "document": "Notification rule list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AlarmNotice",
           "name": "Notices",
           "required": true,
@@ -810,6 +824,7 @@
         {
           "default": "",
           "document": "Triggered task list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AlarmPolicyTriggerTask",
           "name": "TriggerTasks",
           "required": true,
@@ -819,6 +834,7 @@
         {
           "default": "",
           "document": "Template policy group\nNote: this field may return null, indicating that no valid values can be obtained.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "ConditionsTemp",
           "name": "ConditionsTemp",
           "required": true,
@@ -828,6 +844,7 @@
         {
           "default": "",
           "document": "`Uin` of the last modifying user\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "LastEditUin",
           "required": true,
@@ -837,6 +854,7 @@
         {
           "default": "",
           "document": "Update time\nNote: this field may return null, indicating that no valid values can be obtained.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "UpdateTime",
           "required": true,
@@ -846,6 +864,7 @@
         {
           "default": "",
           "document": "Creation time\nNote: this field may return null, indicating that no valid values can be obtained.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "InsertTime",
           "required": true,
@@ -855,6 +874,7 @@
         {
           "default": "",
           "document": "Region\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -864,6 +884,7 @@
         {
           "default": "",
           "document": "Namespace display name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "NamespaceShowName",
           "required": true,
@@ -873,6 +894,7 @@
         {
           "default": "",
           "document": "Whether it is the default policy. Valid values: 1 (yes), 0 (no)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "IsDefault",
           "required": true,
@@ -882,6 +904,7 @@
         {
           "default": "",
           "document": "Whether the default policy can be set. Valid values: 1 (yes), 0 (no)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "CanSetDefault",
           "required": true,
@@ -891,6 +914,7 @@
         {
           "default": "",
           "document": "Instance group ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "InstanceGroupId",
           "required": true,
@@ -900,6 +924,7 @@
         {
           "default": "",
           "document": "Total number of instances in instance group\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "InstanceSum",
           "required": true,
@@ -909,6 +934,7 @@
         {
           "default": "",
           "document": "Instance group name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "InstanceGroupName",
           "required": true,
@@ -918,6 +944,7 @@
         {
           "default": "",
           "document": "Trigger condition type. Valid values: STATIC (static threshold), DYNAMIC (dynamic)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "RuleType",
           "required": true,
@@ -927,6 +954,7 @@
         {
           "default": "",
           "document": "Policy ID for instance/instance group binding and unbinding APIs (BindingPolicyObject, UnBindingAllPolicyObject, UnBindingPolicyObject)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "OriginId",
           "required": true,
@@ -936,10 +964,21 @@
         {
           "default": "",
           "document": "Tag\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "TagInstance",
           "name": "TagInstances",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Information on the filter dimension associated with a policy.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "FilterDimensionsParam",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -2735,7 +2774,7 @@
         },
         {
           "default": "",
-          "document": "The alarm object list, which is a JSON string. The outer array corresponds to multiple instances, and the inner array is the dimension of an object. For example, “CVM - Basic Monitor” can be written as:\n`[ {\"Dimensions\": {\"unInstanceId\": \"ins-qr8d555g\"}}, {\"Dimensions\": {\"unInstanceId\": \"ins-qr8d555h\"}} ]`\nYou can also refer to the “Example 2” below.\n\nFor more information on the parameter samples of different Tencent Cloud services, see [Product Policy Type and Dimension Information](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1).",
+          "document": "The alarm object list, which is a JSON string. The outer array corresponds to multiple instances, and the inner array is the dimension of an object. For example, “CVM - Basic Monitor” can be written as:\n`[ {\"Dimensions\": {\"unInstanceId\": \"ins-qr8d555g\"}}, {\"Dimensions\": {\"unInstanceId\": \"ins-qr8d555h\"}} ]`\nYou can also refer to the “Example 2” below.\n\nFor more information on the parameter samples of different Tencent Cloud services, see [Product Policy Type and Dimension Information](https://intl.cloud.tencent.com/document/product/248/50397?from_cn_redirect=1).\n\nNote: If `1` is passed in for `NeedCorrespondence`, the relationship between a policy and an instance needs to be returned. You can pass in up to 20 alarm object dimensions to avoid request timeout.",
           "example": "[[{\"name\":\"unInstanceId\",\"value\":\"ins-qr888845g\"}]]",
           "member": "string",
           "name": "Dimensions",
@@ -2838,6 +2877,15 @@
           "example": "1",
           "member": "int64",
           "name": "InstanceGroupId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether the relationship between a policy and the input parameter filter dimension is required. `1`: Yes. `0`: No. Default value: `0`.",
+          "example": "1",
+          "member": "int64",
+          "name": "NeedCorrespondence",
           "required": false,
           "type": "int"
         }
@@ -7476,6 +7524,7 @@
         {
           "default": "",
           "document": "Recipient type. Valid values: USER (user), GROUP (user group)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "USER",
           "member": "string",
           "name": "ReceiverType",
           "required": true,
@@ -7485,6 +7534,7 @@
         {
           "default": "",
           "document": "Notification start time, which is expressed by the number of seconds since 00:00:00. Value range: 0–86399\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "StartTime",
           "required": true,
@@ -7494,6 +7544,7 @@
         {
           "default": "",
           "document": "Notification end time, which is expressed by the number of seconds since 00:00:00. Value range: 0–86399\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "86399",
           "member": "int64",
           "name": "EndTime",
           "required": true,
@@ -7502,7 +7553,8 @@
         },
         {
           "default": "",
-          "document": "Notification channel list. Valid values: EMAIL (email), SMS (SMS), CALL (phone), WECHAT (WeChat)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Notification channel list. Valid values: `EMAIL` (email), `SMS` (SMS), `CALL` (phone), `WECHAT` (WeChat), `RTX` (WeCom)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"SMS\", \"CALL\"]",
           "member": "string",
           "name": "NoticeWay",
           "required": true,
@@ -7512,6 +7564,7 @@
         {
           "default": "",
           "document": "User `uid` list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[100001,100002]",
           "member": "int64",
           "name": "UserIds",
           "required": false,
@@ -7521,6 +7574,7 @@
         {
           "default": "",
           "document": "User group ID list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[10001,10002]",
           "member": "int64",
           "name": "GroupIds",
           "required": false,
@@ -7530,6 +7584,7 @@
         {
           "default": "",
           "document": "Phone polling list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[100001,100002]",
           "member": "int64",
           "name": "PhoneOrder",
           "required": false,
@@ -7539,6 +7594,7 @@
         {
           "default": "",
           "document": "Number of phone pollings. Value range: 1–5\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "PhoneCircleTimes",
           "required": false,
@@ -7548,6 +7604,7 @@
         {
           "default": "",
           "document": "Call interval in seconds within one polling. Value range: 60–900\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "60",
           "member": "int64",
           "name": "PhoneInnerInterval",
           "required": false,
@@ -7557,6 +7614,7 @@
         {
           "default": "",
           "document": "Polling interval in seconds. Value range: 60–900\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "60",
           "member": "int64",
           "name": "PhoneCircleInterval",
           "required": false,
@@ -7566,10 +7624,21 @@
         {
           "default": "",
           "document": "Whether receipt notification is required. Valid values: 0 (no), 1 (yes)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "NeedPhoneArriveNotice",
           "required": false,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Dial type. `SYNC` (simultaneous dial), `CIRCLE` (polled dial). Default value: `CIRCLE`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "SYNC",
+          "member": "string",
+          "name": "PhoneCallType",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],

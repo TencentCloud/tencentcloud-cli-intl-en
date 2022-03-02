@@ -79,7 +79,7 @@
       "output": "DescribeDomainsConfigResponse"
     },
     "DescribeIpStatus": {
-      "document": "This API is used to query the status of the edge servers and intermediate nodes on the domain name acceleration platform. Note: edge servers are not generally available. This API can only be used by allowlisted accounts.",
+      "document": "This API is used to query the status of the edge nodes and intermediate nodes. Note: Edge nodes are only available for beta users now.\n\n>? If you have migrated your ECDN service to CDN, you can use the <a href=\"https://intl.cloud.tencent.com/document/api/228/41954?from_cn_redirect=1\">corresponding CDN API</a>.",
       "input": "DescribeIpStatusRequest",
       "name": "Queries domain name node status",
       "output": "DescribeIpStatusResponse"
@@ -237,7 +237,7 @@
     "UpdateDomainConfig": {
       "document": "This API is used to modify the configuration of CDN acceleration domain names.\nNote: if you need to update complex configuration items, you must pass all the attributes of the entire object. The default value will be used for attributes that are not passed. We recommend calling the querying API to obtain the configuration attributes first. You can then modify and pass the attributes to the API. The certificate and key fields do not need to be passed for HTTPS configuration.",
       "input": "UpdateDomainConfigRequest",
-      "name": "Updates domain name configuration.",
+      "name": "Updates domain name configuration",
       "output": "UpdateDomainConfigResponse"
     },
     "UpdatePayType": {
@@ -348,7 +348,7 @@
         },
         {
           "default": "",
-          "document": "Acceleration domain name service type\nweb: static acceleration\ndownload: download acceleration\nmedia: streaming media VOD acceleration",
+          "document": "Acceleration domain name service type\n`web`: Webpage file downloads\n`download`: Large file downloads\n`media`: Audio and video on demand acceleration\n`hybrid`: Dynamic and static content acceleration\n`dynamic`: Dynamic content acceleration",
           "example": "web",
           "member": "string",
           "name": "ServiceType",
@@ -636,7 +636,7 @@
         },
         {
           "default": "",
-          "document": "QUIC is in beta now. Please submit an application to join the beta. For more information, please see QUIC product documents.",
+          "document": "QUIC access, which is a paid service. You can check the product document and Billing Overview for more information.",
           "example": "无",
           "member": "Quic",
           "name": "Quic",
@@ -4521,7 +4521,7 @@
         },
         {
           "default": "",
-          "document": "Domain name service type\nweb: static acceleration\ndownload: download acceleration\nmedia: streaming VOD acceleration",
+          "document": "Acceleration domain name service type\n`web`: Webpage file downloads\n`download`: Large file downloads\n`media`: Audio and video on demand acceleration\n`hybrid`: Dynamic and static content acceleration\n`dynamic`: Dynamic content acceleration",
           "example": "web",
           "member": "string",
           "name": "ServiceType",
@@ -5055,6 +5055,16 @@
           "example": "无",
           "member": "ShareCname",
           "name": "ShareCname",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rule engine\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RuleEngine",
+          "name": "RuleEngine",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -8629,6 +8639,32 @@
       ],
       "usage": "both"
     },
+    "RuleEngine": {
+      "document": "Rule engine configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies whether to enable rule engine\n`on`: Enable\n`off`: Disable",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"[]\"",
+          "member": "string",
+          "name": "Content",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "RuleQueryString": {
       "document": "Configuration to retain query strings for this path",
       "members": [
@@ -9364,6 +9400,16 @@
           "example": "备注",
           "member": "string",
           "name": "Message",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Certificate source\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "upload",
+          "member": "string",
+          "name": "From",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -10195,7 +10241,7 @@
         },
         {
           "default": "",
-          "document": "QUIC is in beta now. Please submit an application to join the beta. For more information, please see QUIC product documents.",
+          "document": "QUIC access, which is a paid service. You can check the product document and Billing Overview for more information.",
           "example": "无",
           "member": "Quic",
           "name": "Quic",
