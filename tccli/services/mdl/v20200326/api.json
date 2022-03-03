@@ -289,6 +289,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Watermark ID",
+          "example": "AB342ED131CE",
+          "member": "string",
+          "name": "WatermarkId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1925,7 +1935,7 @@
       "members": [
         {
           "default": "",
-          "document": "Application name, which is used for RTMP_PUSH and can contain 1-32 letters and digits.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Application name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digits\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "live",
           "member": "string",
           "name": "AppName",
@@ -1935,7 +1945,7 @@
         },
         {
           "default": "",
-          "document": "Stream name, which is used for RTMP_PUSH and can contain 1-32 letters and digits.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Stream name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digits\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "streamid",
           "member": "string",
           "name": "StreamName",
@@ -1945,7 +1955,7 @@
         },
         {
           "default": "",
-          "document": "Origin-pull URL, which is used for RTMP_PULL/HLS_PULL/MP4_PULL. Length limit: [1,512].\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Source URL, which is valid if `Type` is `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL` and can contain 1-512 characters\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "http://www.domain.com/path/source.mp4",
           "member": "string",
           "name": "SourceUrl",
@@ -1971,6 +1981,16 @@
           "name": "SourceType",
           "required": false,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Delayed time (ms) for playback, which is valid if `Type` is `RTMP_PUSH`\nValue range: 0 (default) or 10000-600000\nThe value must be a multiple of 1,000.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "0",
+          "member": "int64",
+          "name": "DelayTime",
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -3307,6 +3327,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Watermark ID\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "AB342ED131CE",
+          "member": "string",
+          "name": "WatermarkId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"

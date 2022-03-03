@@ -72,6 +72,12 @@
       "name": "Queries the security group details of an instance",
       "output": "DescribeDBSecurityGroupsResponse"
     },
+    "DescribeDBSlowLogs": {
+      "document": "This API is used to query the list of slow query logs.",
+      "input": "DescribeDBSlowLogsRequest",
+      "name": "Queries the slow query log list",
+      "output": "DescribeDBSlowLogsResponse"
+    },
     "DescribeDBSyncMode": {
       "document": "This API is used to query the sync mode of a TencentDB instance.",
       "input": "DescribeDBSyncModeRequest",
@@ -2118,6 +2124,139 @@
       ],
       "type": "object"
     },
+    "DescribeDBSlowLogsRequest": {
+      "document": "DescribeDBSlowLogs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of dcdbt-hw0qj6m1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data entry number starting from which to return results",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Query start time in the format of 2016-07-23 14:55:20",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Shard ID of the instance in the format of shard-53ima8ln",
+          "member": "string",
+          "name": "ShardId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query end time in the format of 2016-08-22 14:55:20. If this parameter is left empty, the current time will be used as the query end time.",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specific name of database to be queried",
+          "member": "string",
+          "name": "Db",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting metric. Valid values: `query_time_sum`, `query_count`. Default value: `query_time_sum`",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: `desc` (descending), `asc` (ascending). Default value: `desc`",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query slow queries from either the source or the replica. Valid values: `0` (source), `1` (replica). Default value: `0`",
+          "member": "int64",
+          "name": "Slave",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSlowLogsResponse": {
+      "document": "DescribeDBSlowLogs response structure.",
+      "members": [
+        {
+          "document": "Sum of all statement lock durations",
+          "member": "float",
+          "name": "LockTimeSum",
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of statement queries",
+          "member": "int64",
+          "name": "QueryCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of slow queries that have been logged",
+          "member": "int64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Sum of all statement query durations",
+          "member": "float",
+          "name": "QueryTimeSum",
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Slow query log data",
+          "member": "SlowLogData",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBSyncModeRequest": {
       "document": "DescribeDBSyncMode request structure.",
       "members": [
@@ -3979,6 +4118,202 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SlowLogData": {
+      "document": "Information of a slow query that has been logged",
+      "members": [
+        {
+          "default": "",
+          "document": "Statement checksum for querying details",
+          "example": "无",
+          "member": "string",
+          "name": "CheckSum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "无",
+          "member": "string",
+          "name": "Db",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Abstracted SQL statement",
+          "example": "无",
+          "member": "string",
+          "name": "FingerPrint",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Average lock duration",
+          "example": "无",
+          "member": "string",
+          "name": "LockTimeAvg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum lock duration",
+          "example": "无",
+          "member": "string",
+          "name": "LockTimeMax",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum lock duration",
+          "example": "无",
+          "member": "string",
+          "name": "LockTimeMin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sum of lock durations",
+          "example": "无",
+          "member": "string",
+          "name": "LockTimeSum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of queries",
+          "example": "无",
+          "member": "string",
+          "name": "QueryCount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Average query duration",
+          "example": "无",
+          "member": "string",
+          "name": "QueryTimeAvg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum query duration",
+          "example": "无",
+          "member": "string",
+          "name": "QueryTimeMax",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum query duration",
+          "example": "无",
+          "member": "string",
+          "name": "QueryTimeMin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sum of query durations",
+          "example": "无",
+          "member": "string",
+          "name": "QueryTimeSum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of scanned rows",
+          "example": "无",
+          "member": "string",
+          "name": "RowsExaminedSum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of sent rows",
+          "example": "无",
+          "member": "string",
+          "name": "RowsSentSum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last execution time",
+          "example": "无",
+          "member": "string",
+          "name": "TsMax",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "First execution time",
+          "example": "无",
+          "member": "string",
+          "name": "TsMin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account",
+          "example": "无",
+          "member": "string",
+          "name": "User",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sample SQL\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "string",
+          "name": "ExampleSql",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Host address of the account\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "%",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
