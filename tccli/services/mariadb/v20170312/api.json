@@ -1,5 +1,11 @@
 {
   "actions": {
+    "ActivateHourDBInstance": {
+      "document": "This API is used to remove the isolation of pay-as-you-go instances.",
+      "input": "ActivateHourDBInstanceRequest",
+      "name": "Removes the isolation of pay-as-you-go instances",
+      "output": "ActivateHourDBInstanceResponse"
+    },
     "AssociateSecurityGroups": {
       "document": "This API is used to associate security groups with Tencent Cloud resources in batches.",
       "input": "AssociateSecurityGroupsRequest",
@@ -120,6 +126,12 @@
       "name": "Queries slow query log list",
       "output": "DescribeDBSlowLogsResponse"
     },
+    "DescribeDatabaseObjects": {
+      "document": "This API is used to query the list of database objects in a TencentDB instance, including tables, stored procedures, views, and functions.",
+      "input": "DescribeDatabaseObjectsRequest",
+      "name": "Queries the list of database objects",
+      "output": "DescribeDatabaseObjectsResponse"
+    },
     "DescribeDatabaseTable": {
       "document": "This API is used to query the table information of a TencentDB instance.",
       "input": "DescribeDatabaseTableRequest",
@@ -191,6 +203,12 @@
       "input": "InitDBInstancesRequest",
       "name": "Initializes instances",
       "output": "InitDBInstancesResponse"
+    },
+    "IsolateHourDBInstance": {
+      "document": "This API is used to isolate pay-as-you-go instances.",
+      "input": "IsolateHourDBInstanceRequest",
+      "name": "Isolates pay-as-you-go instances",
+      "output": "IsolateHourDBInstanceResponse"
     },
     "ModifyAccountDescription": {
       "document": "This API is used to modify the remarks of a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts.",
@@ -302,6 +320,46 @@
         }
       ],
       "usage": "in"
+    },
+    "ActivateHourDBInstanceRequest": {
+      "document": "ActivateHourDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ActivateHourDBInstanceResponse": {
+      "document": "ActivateHourDBInstance response structure.",
+      "members": [
+        {
+          "document": "IDs of isolated instances",
+          "member": "string",
+          "name": "SuccessInstanceIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IDs of instances failed to be isolated",
+          "member": "string",
+          "name": "FailedInstanceIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "AssociateSecurityGroupsRequest": {
       "document": "AssociateSecurityGroups request structure.",
@@ -1599,6 +1657,21 @@
       ],
       "usage": "out"
     },
+    "DatabaseFunction": {
+      "document": "Database function information",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "member": "string",
+          "name": "Func",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DatabasePrivilege": {
       "document": "Database permission",
       "members": [
@@ -1624,6 +1697,51 @@
         }
       ],
       "usage": "in"
+    },
+    "DatabaseProcedure": {
+      "document": "Database stored procedure information",
+      "members": [
+        {
+          "default": "",
+          "document": "Stored procedure name",
+          "member": "string",
+          "name": "Proc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DatabaseTable": {
+      "document": "Database table information",
+      "members": [
+        {
+          "default": "",
+          "document": "Table name",
+          "member": "string",
+          "name": "Table",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DatabaseView": {
+      "document": "Database view information",
+      "members": [
+        {
+          "default": "",
+          "document": "View name",
+          "member": "string",
+          "name": "View",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "DcnDetailItem": {
       "document": "DCN details",
@@ -2882,6 +3000,82 @@
       ],
       "type": "object"
     },
+    "DescribeDatabaseObjectsRequest": {
+      "document": "DescribeDatabaseObjects request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of dcdbt-ow7t8lmc.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database name, which can be obtained through the `DescribeDatabases` API.",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseObjectsResponse": {
+      "document": "DescribeDatabaseObjects response structure.",
+      "members": [
+        {
+          "document": "Passed through from the input parameters.",
+          "member": "string",
+          "name": "InstanceId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database name.",
+          "member": "string",
+          "name": "DbName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of tables.",
+          "member": "DatabaseTable",
+          "name": "Tables",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of views.",
+          "member": "DatabaseView",
+          "name": "Views",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of stored procedures.",
+          "member": "DatabaseProcedure",
+          "name": "Procs",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of functions.",
+          "member": "DatabaseFunction",
+          "name": "Funcs",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDatabaseTableRequest": {
       "document": "DescribeDatabaseTable request structure.",
       "members": [
@@ -3510,6 +3704,46 @@
           "document": "Passed through from the input parameters.",
           "member": "string",
           "name": "InstanceIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateHourDBInstanceRequest": {
+      "document": "IsolateHourDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateHourDBInstanceResponse": {
+      "document": "IsolateHourDBInstance response structure.",
+      "members": [
+        {
+          "document": "IDs of instances removed from isolation",
+          "member": "string",
+          "name": "SuccessInstanceIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IDs of instances failed to be removed from isolation",
+          "member": "string",
+          "name": "FailedInstanceIds",
           "type": "list",
           "value_allowed_null": false
         },

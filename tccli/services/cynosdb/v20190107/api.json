@@ -1,5 +1,11 @@
 {
   "actions": {
+    "ActivateInstance": {
+      "document": "This API is used to remove the isolation of an instance to make it accessible again.",
+      "input": "ActivateInstanceRequest",
+      "name": "Removes the isolation of an instance to make it accessible again",
+      "output": "ActivateInstanceResponse"
+    },
     "AddInstances": {
       "document": "This API is used to add an instance in a cluster.",
       "input": "AddInstancesRequest",
@@ -150,6 +156,18 @@
       "name": "Deactivates instance",
       "output": "OfflineInstanceResponse"
     },
+    "PauseServerless": {
+      "document": "This API is used to pause a serverless cluster.",
+      "input": "PauseServerlessRequest",
+      "name": "Pauses a serverless cluster",
+      "output": "PauseServerlessResponse"
+    },
+    "ResumeServerless": {
+      "document": "This API is used to resume a serverless cluster.",
+      "input": "ResumeServerlessRequest",
+      "name": "Resumes a serverless cluster",
+      "output": "ResumeServerlessResponse"
+    },
     "SetRenewFlag": {
       "document": "This API is used to set auto-renewal for an instance.",
       "input": "SetRenewFlagRequest",
@@ -219,6 +237,51 @@
         }
       ],
       "usage": "out"
+    },
+    "ActivateInstanceRequest": {
+      "document": "ActivateInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbpg-bzxxrmtq",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of instance IDs",
+          "example": "[\"cynosdbpg-ins-7upukfpw\\r\\n\"]",
+          "member": "string",
+          "name": "InstanceIdList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ActivateInstanceResponse": {
+      "document": "ActivateInstance response structure.",
+      "members": [
+        {
+          "document": "Task flow ID",
+          "example": "123",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "AddInstancesRequest": {
       "document": "AddInstances request structure.",
@@ -655,7 +718,7 @@
         },
         {
           "default": "",
-          "document": "Number of CPU cores of normal instance",
+          "document": "It is required when `DbMode` is set to `NORMAL` or left empty.\nNumber of CPU cores of a non-serverless instance",
           "example": "1",
           "member": "int64",
           "name": "Cpu",
@@ -664,7 +727,7 @@
         },
         {
           "default": "",
-          "document": "Memory of a non-serverless instance in GB",
+          "document": "It is required when `DbMode` is set to `NORMAL` or left empty.\nMemory of a non-serverless instance in GB",
           "example": "4",
           "member": "int64",
           "name": "Memory",
@@ -673,7 +736,7 @@
         },
         {
           "default": "",
-          "document": "Storage capacity in GB",
+          "document": "This parameter has been deprecated.\nStorage capacity in GB.",
           "example": "100",
           "member": "int64",
           "name": "Storage",
@@ -763,7 +826,7 @@
         },
         {
           "default": "",
-          "document": "Specified allowed time range for time point rollback",
+          "document": "This parameter has been deprecated.\nSpecified allowed time range for time point rollback",
           "example": "0",
           "member": "uint64",
           "name": "ExpectTimeThresh",
@@ -2917,6 +2980,7 @@
         {
           "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100",
+          "example": "0",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -2925,6 +2989,7 @@
         {
           "default": "",
           "document": "Record offset. Default value: 0",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2933,6 +2998,7 @@
         {
           "default": "",
           "document": "Sort by field. Valid values:\n<li> CREATETIME: creation time</li>\n<li> PERIODENDTIME: expiration time</li>",
+          "example": "xx",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -2941,6 +3007,7 @@
         {
           "default": "",
           "document": "Sorting order. Valid values:\n<li> ASC: ascending</li>\n<li> DESC: descending</li>",
+          "example": "xx",
           "member": "string",
           "name": "OrderByType",
           "required": false,
@@ -2949,6 +3016,7 @@
         {
           "default": "",
           "document": "Filter. If more than one filter exists, the logical relationship between these filters is `AND`.",
+          "example": "无",
           "member": "QueryFilter",
           "name": "Filters",
           "required": false,
@@ -2957,6 +3025,7 @@
         {
           "default": "",
           "document": "Engine type. Valid values: MYSQL, POSTGRESQL",
+          "example": "xx",
           "member": "string",
           "name": "DbType",
           "required": false,
@@ -2964,7 +3033,8 @@
         },
         {
           "default": "",
-          "document": "Instance status",
+          "document": "Instance status. Valid values:\ncreating\nrunning\nisolating\nisolated\nactivating: Removing the instance from isolation\nofflining: Eliminating the instance\nofflined: Instance eliminated",
+          "example": "xx",
           "member": "string",
           "name": "Status",
           "required": false,
@@ -2973,6 +3043,7 @@
         {
           "default": "",
           "document": "Instance ID list",
+          "example": "[\"xx\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -3383,6 +3454,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cynosdbpg-45knmnra",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -3391,6 +3463,7 @@
         {
           "default": "",
           "document": "Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively",
+          "example": "7200",
           "member": "uint64",
           "name": "BackupTimeBeg",
           "required": true,
@@ -3398,7 +3471,8 @@
         },
         {
           "default": "",
-          "document": "Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively",
+          "document": "Full backup end time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively.",
+          "example": "21600",
           "member": "uint64",
           "name": "BackupTimeEnd",
           "required": true,
@@ -3407,6 +3481,7 @@
         {
           "default": "",
           "document": "Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800",
+          "example": "604800",
           "member": "uint64",
           "name": "ReserveDuration",
           "required": true,
@@ -3415,6 +3490,7 @@
         {
           "default": "",
           "document": "Backup frequency. It is an array of 7 elements corresponding to Monday through Sunday. full: full backup; increment: incremental backup",
+          "example": "[full,full,full,full,full,full,full]",
           "member": "string",
           "name": "BackupFreq",
           "required": false,
@@ -3423,6 +3499,7 @@
         {
           "default": "",
           "document": "Backup mode. logic: logic backup; snapshot: snapshot backup",
+          "example": "snapshot",
           "member": "string",
           "name": "BackupType",
           "required": false,
@@ -3463,6 +3540,15 @@
           "name": "ParamList",
           "required": true,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `yes` (execute during maintenance time), `no` (execute now)",
+          "example": "无",
+          "member": "string",
+          "name": "IsInMaintainPeriod",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3794,6 +3880,51 @@
       ],
       "usage": "in"
     },
+    "PauseServerlessRequest": {
+      "document": "PauseServerless request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-8vcxoq75",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to pause forcibly and ignore the current user connections. Valid values: `0` (no), `1` (yes). Default value: `1`",
+          "example": "1",
+          "member": "int64",
+          "name": "ForcePause",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "PauseServerlessResponse": {
+      "document": "PauseServerless response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "1008306",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "PolicyRule": {
       "document": "Security group rule",
       "members": [
@@ -3913,6 +4044,42 @@
         }
       ],
       "usage": "in"
+    },
+    "ResumeServerlessRequest": {
+      "document": "ResumeServerless request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-xxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResumeServerlessResponse": {
+      "document": "ResumeServerless response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "1008306",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "SecurityGroup": {
       "document": "Security group details",

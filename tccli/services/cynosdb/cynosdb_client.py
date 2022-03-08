@@ -15,7 +15,7 @@ from tencentcloud.cynosdb.v20190107 import cynosdb_client as cynosdb_client_v201
 from tencentcloud.cynosdb.v20190107 import models as models_v20190107
 
 
-def doDescribeBackupList(args, parsed_globals):
+def doResumeServerless(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -31,9 +31,9 @@ def doDescribeBackupList(args, parsed_globals):
     client = mod.CynosdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeBackupListRequest()
+    model = models.ResumeServerlessRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeBackupList(model)
+    rsp = client.ResumeServerless(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -42,7 +42,7 @@ def doDescribeBackupList(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeBackupConfig(args, parsed_globals):
+def doDescribeInstanceSpecs(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -58,9 +58,9 @@ def doDescribeBackupConfig(args, parsed_globals):
     client = mod.CynosdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeBackupConfigRequest()
+    model = models.DescribeInstanceSpecsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeBackupConfig(model)
+    rsp = client.DescribeInstanceSpecs(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -115,6 +115,33 @@ def doOfflineCluster(args, parsed_globals):
     model = models.OfflineClusterRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.OfflineCluster(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doPauseServerless(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CynosdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.PauseServerlessRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.PauseServerless(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -501,7 +528,7 @@ def doIsolateInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeInstanceSpecs(args, parsed_globals):
+def doDescribeBackupConfig(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -517,9 +544,9 @@ def doDescribeInstanceSpecs(args, parsed_globals):
     client = mod.CynosdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInstanceSpecsRequest()
+    model = models.DescribeBackupConfigRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeInstanceSpecs(model)
+    rsp = client.DescribeBackupConfig(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -663,7 +690,7 @@ def doCreateClusters(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeRollbackTimeValidity(args, parsed_globals):
+def doActivateInstance(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -679,9 +706,9 @@ def doDescribeRollbackTimeValidity(args, parsed_globals):
     client = mod.CynosdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeRollbackTimeValidityRequest()
+    model = models.ActivateInstanceRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeRollbackTimeValidity(model)
+    rsp = client.ActivateInstance(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -709,6 +736,60 @@ def doDescribeDBSecurityGroups(args, parsed_globals):
     model = models.DescribeDBSecurityGroupsRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DescribeDBSecurityGroups(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeBackupList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CynosdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeBackupListRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeBackupList(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeRollbackTimeValidity(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CynosdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeRollbackTimeValidityRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeRollbackTimeValidity(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -755,10 +836,11 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
-    "DescribeBackupList": doDescribeBackupList,
-    "DescribeBackupConfig": doDescribeBackupConfig,
+    "ResumeServerless": doResumeServerless,
+    "DescribeInstanceSpecs": doDescribeInstanceSpecs,
     "DescribeClusterInstanceGrps": doDescribeClusterInstanceGrps,
     "OfflineCluster": doOfflineCluster,
+    "PauseServerless": doPauseServerless,
     "DescribeInstanceDetail": doDescribeInstanceDetail,
     "DescribeRollbackTimeRange": doDescribeRollbackTimeRange,
     "ModifyBackupConfig": doModifyBackupConfig,
@@ -773,14 +855,16 @@ ACTION_MAP = {
     "DescribeClusterDetail": doDescribeClusterDetail,
     "ModifyDBInstanceSecurityGroups": doModifyDBInstanceSecurityGroups,
     "IsolateInstance": doIsolateInstance,
-    "DescribeInstanceSpecs": doDescribeInstanceSpecs,
+    "DescribeBackupConfig": doDescribeBackupConfig,
     "DescribeAccounts": doDescribeAccounts,
     "DescribeResourcesByDealName": doDescribeResourcesByDealName,
     "SetRenewFlag": doSetRenewFlag,
     "UpgradeInstance": doUpgradeInstance,
     "CreateClusters": doCreateClusters,
-    "DescribeRollbackTimeValidity": doDescribeRollbackTimeValidity,
+    "ActivateInstance": doActivateInstance,
     "DescribeDBSecurityGroups": doDescribeDBSecurityGroups,
+    "DescribeBackupList": doDescribeBackupList,
+    "DescribeRollbackTimeValidity": doDescribeRollbackTimeValidity,
     "AddInstances": doAddInstances,
 
 }
