@@ -49,6 +49,8 @@ include tccli/services/dms/v20200819/api.json
 include tccli/services/dms/v20200819/examples.json
 include tccli/services/dts/v20180330/api.json
 include tccli/services/dts/v20180330/examples.json
+include tccli/services/eb/v20210416/api.json
+include tccli/services/eb/v20210416/examples.json
 include tccli/services/ecdn/v20191012/api.json
 include tccli/services/ecdn/v20191012/examples.json
 include tccli/services/ecm/v20190719/api.json

@@ -27,17 +27,17 @@
     "AttachRolePolicy": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=AttachRolePolicy\r\n&PolicyId=1\r\n&AttachRoleId=4611686018427397905\r\n&<Common request parameters>",
+        "input": "https://cam.tencentcloudapi.com/?Action=AttachRolePolicy\n&PolicyId=1\n&AttachRoleId=4611686018427397905\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0b55ef5b-36b1-4649-8bb9-1aca465f17fb\"\n    }\n}",
-        "title": "Binding permission policy to role"
+        "title": "Associating a permissions policy with a role"
       }
     ],
     "AttachUserPolicy": [
       {
-        "document": "This example shows you how to bind a policy (ID 524497) to a user (ID 3449203261)",
-        "input": "https://cam.tencentcloudapi.com/?Action=AttachUserPolicy\r\n&PolicyId=524497\r\n&AttachUin=3449203261\r\n&<Common request parameters>",
+        "document": "This example shows you how to associate a policy (ID: 524497) with a user (ID: 3449203261).",
+        "input": "https://cam.tencentcloudapi.com/?Action=AttachUserPolicy\n&PolicyId=524497\n&AttachUin=3449203261\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1a21f666-d00e-4df8-92f7-7121f9012e43\"\n    }\n}",
-        "title": "Binding policy to user"
+        "title": "Associating a policy with a user"
       }
     ],
     "ConsumeCustomMFAToken": [
@@ -83,9 +83,9 @@
     "CreateSAMLProvider": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSAMLProvider\n<Common request parameters>\n\n{\n    \"SAMLMetadataDocument\": \"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48bWQ6RW50aXR5RGVzY3JpcHRvciBlbnRpdHlJRD0iaHR0cDovL3d3dy5va3RhLmNvbS9leGsxa3F4bWNqUW1HQURNeTM1NyIgeG1sbnM6bWQ9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDptZXRhZGF0YSI%2BPG1kOklEUFNTT0Rlc2NyaXB0b3IgV2FudEF1dGhuUmVxdWVzdHNTaWduZWQ9ImZhbHNlIiBwcm90b2NvbFN1cHBvcnRFbnVtZXJhdGlvbj0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOnB%3D%3D\",\n    \"Name\": \"testName\",\n    \"Description\": \"testProvider\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2a44e8e5-7438-4aa0-8bd2-584dde56caab\"\n    }\n}",
-        "title": "Creating IdP"
+        "input": "https://cam.tencentcloudapi.com/?Action=CreateSAMLProvider\n&Name=testName\n&Description=testProvider\n&SAMLMetadataDocument=PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48bWQ6RW50aXR5RGVzY3JpcHRvciBlbnRpdHlJRD0iaHR0cDovL3d3dy5va3RhLmNvbS9leGsxa3F4bWNqUW1HQURNeTM1NyIgeG1sbnM6bWQ9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDptZXRhZGF0YSI%2BPG1kOklEUFNTT0Rlc2NyaXB0b3IgV2FudEF1dGhuUmVxdWVzdHNTaWduZWQ9ImZhbHNlIiBwcm90b2NvbFN1cHBvcnRFbnVtZXJhdGlvbj0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOnB%3D%3D\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"ProviderArn\": \"testProviderArn\",\n        \"RequestId\": \"2a44e8e5-7438-4aa0-8bd2-584dde56caab\"\n    }\n}",
+        "title": "Creating an identity provider"
       }
     ],
     "CreateServiceLinkedRole": [
@@ -131,17 +131,17 @@
     "DeleteRole": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=DeleteRole\r\n&RoleId=4611686018427844696\r\n&<Common request parameters>",
+        "input": "https://cam.tencentcloudapi.com/?Action=DeleteRole\n&RoleId=4611686018427844696\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"dc9759b5-5345-490e-b276-a3a0dd45004c\"\n    }\n}",
-        "title": "Deleting role"
+        "title": "Deleting a role"
       }
     ],
     "DeleteRolePermissionsBoundary": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=DeleteRolePermissionsBoundary\r\n&RoleId=1234567\r\n&<Common request parameters>",
+        "input": "https://cam.tencentcloudapi.com/?Action=DeleteRolePermissionsBoundary\n&RoleId=1234567\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4097a057-19c9-45bd-ad12-b4225a75c085\"\n    }\n}",
-        "title": "Deleting role permission boundary"
+        "title": "Deleting a role permissions boundary"
       }
     ],
     "DeleteSAMLProvider": [
@@ -235,9 +235,9 @@
     "DetachRolePolicy": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=DetachRolePolicy\r\n&PolicyId=1\r\n&DetachRoleId=4611686018427397905\r\n&<Common request parameters>",
+        "input": "https://cam.tencentcloudapi.com/?Action=DetachRolePolicy\n&PolicyId=1\n&DetachRoleId=4611686018427397905\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"62c57079-8c81-469a-9112-9c5f2025b0b0\"\n    }\n}",
-        "title": "Unbinding policy from role"
+        "title": "Disassociating a policy from a role"
       }
     ],
     "DetachUserPolicy": [
@@ -283,7 +283,7 @@
     "GetPolicyVersion": [
       {
         "document": "This example shows you how to query the details of a policy version.",
-        "input": "https://cam.tencentcloudapi.com/?Action=GetPolicyVersion\r\n&PolicyId=17698703\r\n&VersionId=2\r\n&<Common request parameters>",
+        "input": "https://cam.tencentcloudapi.com/?Action=GetPolicyVersion\n&PolicyId=17698703\n&VersionId=2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"PolicyVersion\": {\n            \"VersionId\": 2,\n            \"CreateDate\": \"2019-08-09T10:31:47Z\",\n            \"IsDefaultVersion\": 1,\n            \"Document\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"effect\\\":\\\"allow\\\",\\\"action\\\":[\\\"name\\\\/cos:*\\\"],\\\"resource\\\":[\\\"*\\\"]}]}\"\n        },\n        \"RequestId\": \"8a0668c1-2d9b-40a5-acc6-151ea3c844e7\"\n    }\n}",
         "title": "Querying policy version details"
       }
@@ -291,23 +291,23 @@
     "GetRole": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=GetRole\r\n&RoleId=4611686018427844696\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RoleInfo\": {\n            \"RoleId\": \"4611686018427844696\",\n            \"RoleName\": \"test_1234544\",\n            \"PolicyDocument\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"action\\\":\\\"name/sts:AssumeRole\\\",\\\"effect\\\":\\\"allow\\\",\\\"principal\\\":{\\\"service\\\":[\\\"cloudaudit.cloud.tencent.com\\\",\\\"cls.cloud.tencent.com\\\"]}}]}\",\n            \"Description\": \"abc\",\n            \"AddTime\": \"2019-07-10 11:22:27\",\n            \"UpdateTime\": \"2019-07-10 11:22:27\",\n            \"ConsoleLogin\": 0\n        },\n        \"RequestId\": \"87fb9770-0fca-4c5a-b985-1c36b05a95cb\"\n    }\n}",
+        "input": "https://cam.tencentcloudapi.com/?Action=GetRole\n&RoleId=4611686018427844696\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RoleInfo\": {\n            \"RoleId\": \"4611686018427844696\",\n            \"RoleName\": \"test_1234544\",\n            \"PolicyDocument\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"action\\\":\\\"name/sts:AssumeRole\\\",\\\"effect\\\":\\\"allow\\\",\\\"principal\\\":{\\\"service\\\":[\\\"cloudaudit.cloud.tencent.com\\\",\\\"cls.cloud.tencent.com\\\"]}}]}\",\n            \"Description\": \"abc\",\n            \"AddTime\": \"2019-07-10 11:22:27\",\n            \"UpdateTime\": \"2019-07-10 11:22:27\",\n            \"ConsoleLogin\": 0,\n            \"RoleType\": \"system\",\n            \"SessionDuration\": 43200,\n            \"DeletionTaskId\": \"114\"\n        },\n        \"RequestId\": \"87fb9770-0fca-4c5a-b985-1c36b05a95cb\"\n    }\n}",
         "title": "Getting role details"
       },
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=GetRole\r\n&RoleId=4611686018427411642\r\n&<Common request parameters>",
+        "input": "https://cam.tencentcloudapi.com/?Action=GetRole\n&RoleId=4611686018427411642\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RoleInfo\": {\n            \"RoleId\": \"4611686018427411642\",\n            \"RoleName\": \"byron3214_QcsRole\",\n            \"PolicyDocument\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"action\\\":\\\"sts:AssumeRole\\\",\\\"effect\\\":\\\"allow\\\",\\\"principal\\\":{\\\"service\\\":[\\\"ccslinked.qcloud.com\\\"]}}]}\",\n            \"Description\": \"role222\",\n            \"AddTime\": \"2020-03-25 11:03:00\",\n            \"UpdateTime\": \"2020-03-25 11:03:00\",\n            \"ConsoleLogin\": 0,\n            \"RoleType\": \"service_linked\",\n            \"SessionDuration\": 43200,\n            \"DeletionTaskId\": \"114\"\n        },\n        \"RequestId\": \"1fb826eb-6d21-42f3-8f6e-9f51360f585d\"\n    }\n}",
-        "title": "Getting service role details"
+        "title": "Getting details of a service-linked role"
       }
     ],
     "GetSAMLProvider": [
       {
-        "document": "This example shows you how to query the details of an IdP.",
-        "input": "https://cam.tencentcloudapi.com/?Action=GetSAMLProvider\r\n&Name=okta\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Name\": \"okta\",\n        \"Description\": \"okta\",\n        \"CreateTime\": \"2018-09-17 17:18:03\",\n        \"ModifyTime\": \"2018-09-17 17:18:03\",\n        \"SAMLMetadata\": \"U0FNTE1ldGFkYXRh\"\n    }\n}",
-        "title": "Querying IdP details"
+        "document": "This example shows you how to query identity provider details.",
+        "input": "https://cam.tencentcloudapi.com/?Action=GetSAMLProvider\n&Name=okta\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Name\": \"okta\",\n        \"Description\": \"okta\",\n        \"CreateTime\": \"2018-09-17 17:18:03\",\n        \"ModifyTime\": \"2018-09-17 17:18:03\",\n        \"SAMLMetadata\": \"U0FNTE1ldGFkYXRh\",\n        \"RequestId\": \"fea0ebe5-3062-4b5a-b95e-8cce5a3b0512\"\n    }\n}",
+        "title": "Querying identity provider details"
       }
     ],
     "GetSecurityLastUsed": [
@@ -329,9 +329,17 @@
     "GetUser": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=GetUser\r\n&Name=test124\r\n&<Common request parameters>",
+        "input": "https://cam.tencentcloudapi.com/?Action=GetUser\n&Name=test124\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Uin\": 100000546533,\n        \"Name\": \"test124\",\n        \"Uid\": 1001774,\n        \"Remark\": \"test\",\n        \"ConsoleLogin\": 1,\n        \"PhoneNum\": \"10086\",\n        \"CountryCode\": \"86\",\n        \"Email\": \"123@qq.com\",\n        \"RequestId\": \"33674182-e53d-416b-b6ce-bd7e7536b5d6\"\n    }\n}",
-        "title": "Querying sub-user"
+        "title": "Querying sub-users"
+      }
+    ],
+    "GetUserAppId": [
+      {
+        "document": "",
+        "input": "https://cam.tencentcloudapi.com/?Action=GetUserAppId\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Uin\": \"12345678\",\n        \"OwnerUin\": \"12345678\",\n        \"AppId\": 1250000000,\n        \"RequestId\": \"6fd84cee-0df1-4003-88c9-029acc082ad1\"\n    }\n}",
+        "title": "Getting the user AppId"
       }
     ],
     "ListAccessKeys": [
@@ -368,26 +376,26 @@
     ],
     "ListAttachedUserPolicies": [
       {
-        "document": "This example shows you how to query the list of policies bound to a sub-account (ID: 3449203261).",
-        "input": "https://cam.tencentcloudapi.com/?Action=ListAttachedUserPolicies\r\n&TargetUin=3449203261\r\n&Page=1\r\n&Rp=10\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"PolicyId\": 1,\n                \"PolicyName\": \"AdministratorAccess\",\n                \"AddTime\": \"2018-04-09 16:31:19\",\n                \"CreateMode\": 2,\n                \"PolicyType\": \"User\"\n            }\n        ],\n        \"TotalNum\": 1,\n        \"RequestId\": \"836d7034-9854-44f0-9d4a-ee57842f8644\"\n    }\n}",
-        "title": "Querying the list of policies associated with sub-account"
+        "document": "This example shows you how to query the list of policies associated with a sub-account (ID: 3449203261).",
+        "input": "https://cam.tencentcloudapi.com/?Action=ListAttachedUserPolicies\n&TargetUin=3449203261\n&Page=1\n&Rp=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"PolicyId\": 109360057,\n                \"PolicyName\": \"test-0103\",\n                \"AddTime\": \"2022-01-03 10:38:28\",\n                \"CreateMode\": 3,\n                \"Remark\": \"\",\n                \"OperateOwnerUin\": null,\n                \"OperateUin\": null,\n                \"OperateUinType\": null,\n                \"PolicyType\": \"\",\n                \"Deactived\": 0,\n                \"DeactivedDetail\": []\n            }\n        ],\n        \"TotalNum\": 1,\n        \"RequestId\": \"db1cdf3f-9b1a-47c5-88b3-c49089aaa811\"\n    }\n}",
+        "title": "Querying the list of policies associated with a sub-account"
       }
     ],
     "ListCollaborators": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=ListCollaborators\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalNum\": 1,\n        \"Data\": [\n            {\n                \"Uin\": 10000000001,\n                \"Name\": \"test\",\n                \"Uid\": 1000001,\n                \"Remark\": \"\",\n                \"ConsoleLogin\": 0,\n                \"PhoneNum\": \"16166666661\",\n                \"CountryCode\": \"86\",\n                \"Email\": \" \"\n            }\n        ],\n        \"RequestId\": \"93ea219e-7dbe-4b76-ad63-baef14b31a3a\"\n    }\n}",
-        "title": "Getting collaborator list"
+        "input": "https://cam.tencentcloudapi.com/?Action=ListCollaborators\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalNum\": 1,\n        \"Data\": [\n            {\n                \"Uin\": 10000000001,\n                \"Name\": \"test\",\n                \"Uid\": 1000001,\n                \"Remark\": \"\",\n                \"ConsoleLogin\": 0,\n                \"PhoneNum\": \"16166666661\",\n                \"CountryCode\": \"86\",\n                \"Email\": \" \",\n                \"CreateTime\": \"2021-11-11 19:38:01\"\n            }\n        ],\n        \"RequestId\": \"93ea219e-7dbe-4b76-ad63-baef14b31a3a\"\n    }\n}",
+        "title": "Getting the collaborator list"
       }
     ],
     "ListEntitiesForPolicy": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=ListEntitiesForPolicy\r\n&PolicyId=524497\r\n&Page=1\r\n&Rp=10\r\n&EntityFilter=All\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"Id\": \"1133398\",\n                \"RelatedType\": 1,\n                \"Uin\": 3449203261,\n                \"Name\": \"test1\"\n            }\n        ],\n        \"TotalNum\": 1,\n        \"RequestId\": \"836d7034-9854-44f0-9d4a-ee57842f8644\"\n    }\n}",
-        "title": "Querying the list of entities associated with policy"
+        "input": "https://cam.tencentcloudapi.com/?Action=ListEntitiesForPolicy\n&PolicyId=524497\n&Page=1\n&Rp=10\n&EntityFilter=All\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"Id\": \"1133398\",\n                \"RelatedType\": 1,\n                \"Uin\": 3449203261,\n                \"AttachmentTime\": \"2021-11-11 19:38:01\",\n                \"Name\": \"test1\"\n            }\n        ],\n        \"TotalNum\": 1,\n        \"RequestId\": \"836d7034-9854-44f0-9d4a-ee57842f8644\"\n    }\n}",
+        "title": "Querying the list of entities associated with a policy"
       }
     ],
     "ListGroups": [
@@ -433,9 +441,9 @@
     "ListUsers": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=ListUsers\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Uin\": 100000546533,\n                \"Name\": \"test124\",\n                \"Uid\": 1001774,\n                \"Remark\": \"test\",\n                \"ConsoleLogin\": 1,\n                \"PhoneNum\": \"10086\",\n                \"CountryCode\": \"86\",\n                \"Email\": \"123@qq.com\"\n            }\n        ]\n    }\n}",
-        "title": "Pulling sub-users"
+        "input": "https://cam.tencentcloudapi.com/?Action=ListUsers\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Uin\": 100021969091,\n                \"Name\": \"cam001\",\n                \"Uid\": 11398137,\n                \"Remark\": \"\",\n                \"ConsoleLogin\": 1,\n                \"PhoneNum\": \"\",\n                \"CountryCode\": \"86\",\n                \"Email\": \"\",\n                \"CreateTime\": \"2021-10-28 18:02:00\"\n            }\n        ],\n        \"RequestId\": \"b2c7267c-8ee5-408b-9a88-ac359f13c8b1\"\n    }\n}",
+        "title": "Pulling the sub-users"
       }
     ],
     "ListUsersForGroup": [
@@ -449,9 +457,9 @@
     "PutRolePermissionsBoundary": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=PutRolePermissionsBoundary\r\n&RoleId=1234567\r\n&PolicyId=1234567\r\n&<Common request parameters>",
+        "input": "https://cam.tencentcloudapi.com/?Action=PutRolePermissionsBoundary\n&RoleId=1234567\n&PolicyId=1234567\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4097a057-19c9-45bd-ad12-b4225a75c085\"\n    }\n}",
-        "title": "Setting role permission boundary"
+        "title": "Setting a role permissions boundary"
       }
     ],
     "PutUserPermissionsBoundary": [
@@ -472,10 +480,10 @@
     ],
     "SetDefaultPolicyVersion": [
       {
-        "document": "This example shows you how to set the effective policy version of a policy.",
-        "input": "https://cam.tencentcloudapi.com/?Action=SetDefaultPolicyVersion\r\n&PolicyId=17698703\r\n&VersionId=1\r\n&<Common request parameters>",
+        "document": "This example shows you how to set an operative policy version.",
+        "input": "https://cam.tencentcloudapi.com/?Action=SetDefaultPolicyVersion\n&PolicyId=17698703\n&VersionId=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"60e60a86-af67-4bbe-8377-7024a0e1d4c7\"\n    }\n}",
-        "title": "Setting effective policy version"
+        "title": "Setting an operative policy version"
       }
     ],
     "SetMfaFlag": [
@@ -504,26 +512,26 @@
     ],
     "UpdatePolicy": [
       {
-        "document": "This example shows you how to update a policy to allow users to access any COS resources with any COS API.",
-        "input": "https://cam.tencentcloudapi.com/?Action=UpdatePolicy\r\n&PolicyId=17698703\r\n&PolicyDocument=%7B%22version%22%3A%222.0%22%2C%22statement%22%3A%5B%7B%22effect%22%3A%22allow%22%2C%22action%22%3A%5B%22name%2Fcos%3A%2A%22%5D%2C%22resource%22%3A%5B%22%2A%22%5D%7D%5D%7D\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"60e60a86-af67-4bbe-8377-7024a0e1d4c7\"\n    }\n}",
-        "title": "Updating policy"
+        "document": "This example shows you how to update a policy to allow the user to access any COS resources with any COS API.",
+        "input": "https://cam.tencentcloudapi.com/?Action=UpdatePolicy\n&PolicyId=17698703\n&PolicyDocument=%7B%22version%22%3A%222.0%22%2C%22statement%22%3A%5B%7B%22effect%22%3A%22allow%22%2C%22action%22%3A%5B%22name%2Fcos%3A%2A%22%5D%2C%22resource%22%3A%5B%22%2A%22%5D%7D%5D%7D\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"PolicyId\": 1,\n        \"RequestId\": \"60e60a86-af67-4bbe-8377-7024a0e1d4c7\"\n    }\n}",
+        "title": "Updating a policy"
       }
     ],
     "UpdateRoleConsoleLogin": [
       {
         "document": "This example shows you how to use a role ID.",
-        "input": "https://cam.tencentcloudapi.com/?Action=UpdateRoleConsoleLogin\r\n&RoleId=10000000947212312\r\n&ConsoleLogin=1\r\n&<Common request parameters>",
+        "input": "https://cam.tencentcloudapi.com/?Action=UpdateRoleConsoleLogin\n&RoleId=10000000947212312\n&ConsoleLogin=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"59e72a7a-1e49-4a73-a2db-8993c0334c57\"\n    }\n}",
-        "title": "Modifying whether a role can log in"
+        "title": "Modifying a role's login permissions"
       }
     ],
     "UpdateRoleDescription": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=UpdateRoleDescription\r\n&RoleId=4611686018427731422\r\n&Description=abc234\r\n&<Common request parameters>",
+        "input": "https://cam.tencentcloudapi.com/?Action=UpdateRoleDescription\n&RoleId=4611686018427731422\n&Description=abc234\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"405af400-30ec-4c78-8955-ef4da843bde2\"\n    }\n}",
-        "title": "Modifying role description"
+        "title": "Modifying a role description"
       }
     ],
     "UpdateSAMLProvider": [

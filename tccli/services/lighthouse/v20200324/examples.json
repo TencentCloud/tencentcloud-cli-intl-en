@@ -56,6 +56,14 @@
         "title": "Creating instance snapshot"
       }
     ],
+    "CreateInstances": [
+      {
+        "document": "This example shows how to create a monthly subscribed Lighthouse instance.",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstances\n<Common request parameters>\n\n{\n    \"BundleId\": \"bundle_gen_03\",\n    \"BlueprintId\": \"lhbp-g0tn7djh\",\n    \"InstanceChargePrepaid\": {\n        \"Period\": \"1\",\n        \"RenewFlag\": \"NOTIFY_AND_MANUAL_RENEW\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceIdSet\": [\n            \"lhins-hx5wjw4g\"\n        ],\n        \"RequestId\": \"232b2817-ec08-43f3-8d78-41b1bfb6082c\"\n    }\n}",
+        "title": "Creating a Lighthouse instance"
+      }
+    ],
     "CreateKeyPair": [
       {
         "document": "",
@@ -195,7 +203,7 @@
         "document": "",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeFirewallRulesTemplate\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FirewallRuleSet\": [\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"Windows login (3389)\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow Windows remote login\",\n                \"Port\": \"3389\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"Linux login (22)\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow Linux SSH login\",\n                \"Port\": \"22\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"HTTP(80)\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow web service HTTP (80), such as Apache and Nginx\",\n                \"Port\": \"80\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"HTTPS(443)\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow web service HTTPS (443), such as Apache and Nginx\",\n                \"Port\": \"443\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"MySQL(3306)\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow MySQL service (3306)\",\n                \"Port\": \"3306\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"SQL Server(1433)\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow SQL Server service (1433)\",\n                \"Port\": \"1433\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"All TCP ports\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow all TCP ports\",\n                \"Port\": \"1-65535\",\n                \"Protocol\": \"TCP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"All UDP ports\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"All all UDP ports\",\n                \"Port\": \"1-65535\",\n                \"Protocol\": \"UDP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"Ping-ICMP\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow Ping\",\n                \"Port\": \"ALL\",\n                \"Protocol\": \"ICMP\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"AppType\": \"ALL\",\n                \"CidrBlock\": \"0.0.0.0/0\",\n                \"FirewallRuleDescription\": \"Allow all TCP, UDP, ICMP (Ping), and GRE ports\",\n                \"Port\": \"ALL\",\n                \"Protocol\": \"ALL\"\n            }\n        ],\n        \"RequestId\": \"b9fdb7cc-8afa-4fae-9062-73e41d06f7d3\",\n        \"TotalCount\": 10\n    }\n}",
-        "title": "Querying firewall rule template"
+        "title": "Querying a firewall rule template"
       }
     ],
     "DescribeGeneralResourceQuotas": [

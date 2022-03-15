@@ -246,6 +246,12 @@
       "name": "Queries sub-users",
       "output": "GetUserResponse"
     },
+    "GetUserAppId": {
+      "document": "This API is used to get the user AppId.",
+      "input": "GetUserAppIdRequest",
+      "name": "Gets the user AppId",
+      "output": "GetUserAppIdResponse"
+    },
     "ListAccessKeys": {
       "document": "This API is used to list the access keys associated with a specified CAM user.",
       "input": "ListAccessKeysRequest",
@@ -375,7 +381,7 @@
     "UpdatePolicy": {
       "document": "This API is used to update a policy.\nThis API will update the default version of an existing policy instead of creating a new one. If no policy exists, a default version will be created.",
       "input": "UpdatePolicyRequest",
-      "name": "Updates policy",
+      "name": "Updates policy information",
       "output": "UpdatePolicyResponse"
     },
     "UpdateRoleConsoleLogin": {
@@ -1047,7 +1053,7 @@
       "usage": "out"
     },
     "AttachedUserPolicyGroupInfo": {
-      "document": "Information on policies associated with the user via the user group.",
+      "document": "Information on policies that are associated with the user and inherited from the user group",
       "members": [
         {
           "default": "",
@@ -1931,7 +1937,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Status. `0`: not set, `11`: enabled, `2`: disabled.",
+          "document": "Status. `0`: not set, `1`: enabled, `2`: disabled.",
           "example": "11",
           "member": "uint64",
           "name": "Status",
@@ -2326,6 +2332,7 @@
         {
           "default": "",
           "document": "Policy ID",
+          "example": "17698703",
           "member": "uint64",
           "name": "PolicyId",
           "required": true,
@@ -2333,7 +2340,8 @@
         },
         {
           "default": "",
-          "document": "Policy version ID",
+          "document": "Policy version, which can be obtained through `ListPolicyVersions`.",
+          "example": "2",
           "member": "uint64",
           "name": "VersionId",
           "required": true,
@@ -2468,7 +2476,7 @@
       "members": [
         {
           "default": "",
-          "document": "A parameter used to query the key ID list.",
+          "document": "Key ID list query. Up to 10 key IDs can be queried.",
           "example": "[\"id1\",\"id2\"]",
           "member": "string",
           "name": "SecretIdList",
@@ -2553,6 +2561,44 @@
       ],
       "type": "object"
     },
+    "GetUserAppIdRequest": {
+      "document": "GetUserAppId request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetUserAppIdResponse": {
+      "document": "GetUserAppId response structure.",
+      "members": [
+        {
+          "document": "UIN of the current account.",
+          "member": "string",
+          "name": "Uin",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "OwnerUin of the current account.",
+          "member": "string",
+          "name": "OwnerUin",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "AppId of the current account.",
+          "member": "uint64",
+          "name": "AppId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "GetUserRequest": {
       "document": "GetUser request structure.",
       "members": [
@@ -2572,57 +2618,73 @@
       "members": [
         {
           "document": "Sub-user UIN",
+          "example": "100000546533",
           "member": "uint64",
           "name": "Uin",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Sub-user username",
+          "example": "test124",
           "member": "string",
           "name": "Name",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Sub-user UID",
+          "example": "1001774",
           "member": "uint64",
           "name": "Uid",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Sub-user remarks",
+          "document": "Sub-user remarks\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "test",
           "member": "string",
           "name": "Remark",
+          "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
-          "document": "If sub-user can log in to the Console",
+          "document": "Whether the sub-user can log in to the console. `0`: No; `1`: Yes.",
+          "example": "1",
           "member": "uint64",
           "name": "ConsoleLogin",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Mobile number",
+          "example": "10086",
           "member": "string",
           "name": "PhoneNum",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Country/Area code",
+          "example": "86",
           "member": "string",
           "name": "CountryCode",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Email",
+          "example": "123@qq.com",
           "member": "string",
           "name": "Email",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2719,6 +2781,7 @@
         {
           "default": "",
           "document": "Sub-user UID",
+          "example": "100000001",
           "member": "uint64",
           "name": "Uid",
           "required": true,
@@ -2728,6 +2791,7 @@
         {
           "default": "",
           "document": "Sub-user UIN",
+          "example": "100000001",
           "member": "uint64",
           "name": "Uin",
           "required": true,
@@ -2737,6 +2801,7 @@
         {
           "default": "",
           "document": "Sub-user name",
+          "example": "userName",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -2746,6 +2811,7 @@
         {
           "default": "",
           "document": "Mobile number",
+          "example": "13600000001",
           "member": "string",
           "name": "PhoneNum",
           "required": true,
@@ -2755,6 +2821,7 @@
         {
           "default": "",
           "document": "Mobile number country/area code",
+          "example": "86",
           "member": "string",
           "name": "CountryCode",
           "required": true,
@@ -2763,7 +2830,8 @@
         },
         {
           "default": "",
-          "document": "If mobile number has been verified",
+          "document": "Whether the mobile phone has been verified. `0`: No; `1`: Yes.",
+          "example": "0",
           "member": "uint64",
           "name": "PhoneFlag",
           "required": true,
@@ -2773,6 +2841,7 @@
         {
           "default": "",
           "document": "Email address",
+          "example": "email@qq.com",
           "member": "string",
           "name": "Email",
           "required": true,
@@ -2781,7 +2850,8 @@
         },
         {
           "default": "",
-          "document": "If email has been verified",
+          "document": "Whether the email has been verified. `0`: No; `1`: Yes.",
+          "example": "1",
           "member": "uint64",
           "name": "EmailFlag",
           "required": true,
@@ -2790,7 +2860,8 @@
         },
         {
           "default": "",
-          "document": "User type",
+          "document": "User type. `1`: Global collaborator; `2`: Project collaborator; `3`: Message recipient.",
+          "example": "1",
           "member": "uint64",
           "name": "UserType",
           "required": true,
@@ -2800,6 +2871,7 @@
         {
           "default": "",
           "document": "Time policy created",
+          "example": "2021-11-11 19:38:01",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -2808,7 +2880,8 @@
         },
         {
           "default": "",
-          "document": "If the user is the main message recipient",
+          "document": "Whether the user is the primary message recipient. `0`: No; `1`: Yes.",
+          "example": "1",
           "member": "uint64",
           "name": "IsReceiverOwner",
           "required": true,
@@ -4147,6 +4220,7 @@
         {
           "default": "",
           "document": "Policy ID",
+          "example": "17698703",
           "member": "uint64",
           "name": "PolicyId",
           "required": true,
@@ -4154,7 +4228,8 @@
         },
         {
           "default": "",
-          "document": "Policy version ID",
+          "document": "Policy version, which can be obtained through `ListPolicyVersions`.",
+          "example": "1",
           "member": "uint64",
           "name": "VersionId",
           "required": true,
@@ -4379,6 +4454,7 @@
         {
           "default": "",
           "document": "Sub-user user ID",
+          "example": "123xxxxx",
           "member": "uint64",
           "name": "Uin",
           "required": true,
@@ -4388,6 +4464,7 @@
         {
           "default": "",
           "document": "Sub-user username",
+          "example": "名称",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -4397,6 +4474,7 @@
         {
           "default": "",
           "document": "Sub-user UID",
+          "example": "123xxxxx",
           "member": "uint64",
           "name": "Uid",
           "required": true,
@@ -4406,6 +4484,7 @@
         {
           "default": "",
           "document": "Sub-user remarks",
+          "example": "备注",
           "member": "string",
           "name": "Remark",
           "required": true,
@@ -4415,6 +4494,7 @@
         {
           "default": "",
           "document": "If sub-user can log in to the console",
+          "example": "1",
           "member": "uint64",
           "name": "ConsoleLogin",
           "required": true,
@@ -4424,6 +4504,7 @@
         {
           "default": "",
           "document": "Mobile number",
+          "example": "151xxxx1001",
           "member": "string",
           "name": "PhoneNum",
           "required": true,
@@ -4433,6 +4514,7 @@
         {
           "default": "",
           "document": "Country/Area code",
+          "example": "86",
           "member": "string",
           "name": "CountryCode",
           "required": true,
@@ -4442,6 +4524,7 @@
         {
           "default": "",
           "document": "Email",
+          "example": "123@qq.com",
           "member": "string",
           "name": "Email",
           "required": true,
@@ -4451,8 +4534,19 @@
         {
           "default": "",
           "document": "Creation time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2021-12-09 11:39:46",
           "member": "datetime",
           "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Nickname.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "昵称",
+          "member": "string",
+          "name": "NickName",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -4485,7 +4579,7 @@
         },
         {
           "default": "",
-          "document": "Sub-user UID",
+          "document": "Sub-user UID. UID is the unique identifier of a user who is a message recipient, while UIN is a unique identifier of a user.",
           "example": "1",
           "member": "uint64",
           "name": "Uid",
@@ -4701,6 +4795,7 @@
         {
           "default": "",
           "document": "Whether login is allowed. 1: yes, 0: no",
+          "example": "1",
           "member": "int64",
           "name": "ConsoleLogin",
           "required": true,
@@ -4708,7 +4803,8 @@
         },
         {
           "default": "",
-          "document": "Role ID",
+          "document": "Role ID. Use either `RoleId` or `RoleName` as the input parameter.",
+          "example": "10000000947212312",
           "member": "int64",
           "name": "RoleId",
           "required": false,
@@ -4716,7 +4812,8 @@
         },
         {
           "default": "",
-          "document": "Role name",
+          "document": "Role name. Use either `RoleId` or `RoleName` as the input parameter.",
+          "example": "RoleNameConsole",
           "member": "string",
           "name": "RoleName",
           "required": false,

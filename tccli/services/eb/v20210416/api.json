@@ -1,0 +1,2468 @@
+{
+  "actions": {
+    "CheckRule": {
+      "document": "This API is used to check a rule.",
+      "input": "CheckRuleRequest",
+      "name": "Checks rule",
+      "output": "CheckRuleResponse"
+    },
+    "CheckTransformation": {
+      "document": "This API is used to test rules and data on the ETL configuration page.",
+      "input": "CheckTransformationRequest",
+      "name": "Checks transformer",
+      "output": "CheckTransformationResponse"
+    },
+    "CreateConnection": {
+      "document": "This API is used to create an event connector.",
+      "input": "CreateConnectionRequest",
+      "name": "Creates event connector",
+      "output": "CreateConnectionResponse"
+    },
+    "CreateEventBus": {
+      "document": "This API is used to create an event bus.",
+      "input": "CreateEventBusRequest",
+      "name": "Creates event bus",
+      "output": "CreateEventBusResponse"
+    },
+    "CreateRule": {
+      "document": "This API is used to create an event rule.",
+      "input": "CreateRuleRequest",
+      "name": "Creates event rule",
+      "output": "CreateRuleResponse"
+    },
+    "CreateTarget": {
+      "document": "This API is used to create a delivery target.",
+      "input": "CreateTargetRequest",
+      "name": "Creates delivery target",
+      "output": "CreateTargetResponse"
+    },
+    "CreateTransformation": {
+      "document": "This API is used to create a transformer.",
+      "input": "CreateTransformationRequest",
+      "name": "Creates transformer",
+      "output": "CreateTransformationResponse"
+    },
+    "DeleteConnection": {
+      "document": "This API is used to delete an event connector.",
+      "input": "DeleteConnectionRequest",
+      "name": "Deletes event connector",
+      "output": "DeleteConnectionResponse"
+    },
+    "DeleteEventBus": {
+      "document": "This API is used to delete an event bus.",
+      "input": "DeleteEventBusRequest",
+      "name": "Deletes event bus",
+      "output": "DeleteEventBusResponse"
+    },
+    "DeleteRule": {
+      "document": "This API is used to delete an event rule.",
+      "input": "DeleteRuleRequest",
+      "name": "Deletes event rule",
+      "output": "DeleteRuleResponse"
+    },
+    "DeleteTarget": {
+      "document": "This API is used to delete a delivery target.",
+      "input": "DeleteTargetRequest",
+      "name": "Deletes delivery target",
+      "output": "DeleteTargetResponse"
+    },
+    "DeleteTransformation": {
+      "document": "This API is used to delete a transformer.",
+      "input": "DeleteTransformationRequest",
+      "name": "Deletes transformer",
+      "output": "DeleteTransformationResponse"
+    },
+    "GetEventBus": {
+      "document": "This API is used to get the details of an event bus.",
+      "input": "GetEventBusRequest",
+      "name": "Gets event bus details",
+      "output": "GetEventBusResponse"
+    },
+    "GetRule": {
+      "document": "This API is used to get the details of an event rule.",
+      "input": "GetRuleRequest",
+      "name": "Gets event rule details",
+      "output": "GetRuleResponse"
+    },
+    "GetTransformation": {
+      "document": "This API is used to get the details of a transformer.",
+      "input": "GetTransformationRequest",
+      "name": "Gets transformer details",
+      "output": "GetTransformationResponse"
+    },
+    "ListConnections": {
+      "document": "This API is used to get the list of event connectors.",
+      "input": "ListConnectionsRequest",
+      "name": "Gets event connector list",
+      "output": "ListConnectionsResponse"
+    },
+    "ListEventBuses": {
+      "document": "This API is used to get the list of event buses.",
+      "input": "ListEventBusesRequest",
+      "name": "Gets event bus list",
+      "output": "ListEventBusesResponse"
+    },
+    "ListRules": {
+      "document": "This API is used to get the list of event rules.",
+      "input": "ListRulesRequest",
+      "name": "Gets event rule list",
+      "output": "ListRulesResponse"
+    },
+    "ListTargets": {
+      "document": "This API is used to get the list delivery targets.",
+      "input": "ListTargetsRequest",
+      "name": "Gets delivery target list",
+      "output": "ListTargetsResponse"
+    },
+    "UpdateConnection": {
+      "document": "This API is used to update an event connector.",
+      "input": "UpdateConnectionRequest",
+      "name": "Updates event connector",
+      "output": "UpdateConnectionResponse"
+    },
+    "UpdateEventBus": {
+      "document": "This API is used to update an event bus.",
+      "input": "UpdateEventBusRequest",
+      "name": "Updates event bus",
+      "output": "UpdateEventBusResponse"
+    },
+    "UpdateRule": {
+      "document": "This API is used to update an event rule.",
+      "input": "UpdateRuleRequest",
+      "name": "Updates event rule",
+      "output": "UpdateRuleResponse"
+    },
+    "UpdateTarget": {
+      "document": "This API is used to update a delivery target.",
+      "input": "UpdateTargetRequest",
+      "name": "Updates delivery target",
+      "output": "UpdateTargetResponse"
+    },
+    "UpdateTransformation": {
+      "document": "This API is used to update a transformer.",
+      "input": "UpdateTransformationRequest",
+      "name": "Updates transformer.",
+      "output": "UpdateTransformationResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2021-04-16",
+    "serviceNameCN": "事件总线",
+    "serviceShortName": "eb"
+  },
+  "objects": {
+    "APIGWParams": {
+      "document": "`APIGWParams` description",
+      "members": [
+        {
+          "default": "",
+          "document": "HTTPS",
+          "example": "HTTPS",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "POST",
+          "example": "POST",
+          "member": "string",
+          "name": "Method",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CheckRuleRequest": {
+      "document": "CheckRule request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "CheckRuleResponse": {
+      "document": "CheckRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckTransformationRequest": {
+      "document": "CheckTransformation request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "JSON string to be processed",
+          "example": "{\"key\": \"value\"}",
+          "member": "string",
+          "name": "Input",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Transformation rule list",
+          "example": "无",
+          "member": "Transformation",
+          "name": "Transformations",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckTransformationResponse": {
+      "document": "CheckTransformation response structure.",
+      "members": [
+        {
+          "document": "Data processed by `Transformations`",
+          "example": "{\"key2\": \"value2\"}",
+          "member": "string",
+          "name": "Output",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CkafkaDeliveryParams": {
+      "document": "Parameter of the Kafka topic to be delivered to",
+      "members": [
+        {
+          "default": "",
+          "document": "ckafka topic name",
+          "example": "topic-xxxxxx",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Six-Segment QCS description of CKafka resource",
+          "example": "qcs::ckafka:ap-chongqing:uin/123456:ckafkaId/uin/456789/ckafka-x",
+          "member": "string",
+          "name": "ResourceDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CkafkaParams": {
+      "document": "CKafka connector parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "kafka offset",
+          "example": "latest",
+          "member": "string",
+          "name": "Offset",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ckafka  topic",
+          "example": "topic",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CkafkaTargetParams": {
+      "document": "CKafka delivery target description",
+      "members": [
+        {
+          "default": "",
+          "document": "CKafka topic to be delivered to",
+          "example": "topic-xxxx",
+          "member": "string",
+          "name": "TopicName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Retry policy",
+          "example": "无",
+          "member": "RetryPolicy",
+          "name": "RetryPolicy",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Connection": {
+      "document": "Connection information",
+      "members": [
+        {
+          "default": "",
+          "document": "Status",
+          "example": "Active",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Update time",
+          "example": "2021-04-27T14:34:19+08:00",
+          "member": "datetime_iso",
+          "name": "ModTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Switch",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2021-04-27T14:34:19+08:00",
+          "member": "datetime_iso",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Connector ID",
+          "example": "connection-xxxxxxxx",
+          "member": "string",
+          "name": "ConnectionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Connector description",
+          "example": "无",
+          "member": "ConnectionDescription",
+          "name": "ConnectionDescription",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Connector name",
+          "example": "connection",
+          "member": "string",
+          "name": "ConnectionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "apigw",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ConnectionDescription": {
+      "document": "Connection description",
+      "members": [
+        {
+          "default": "",
+          "document": "Six-Segment QCS resource description. For more information, see [Resource Description Method](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
+          "example": "qcs::apigw:ap-guangzhou:uin/0000000:serviceid/service-id",
+          "member": "string",
+          "name": "ResourceDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API Gateway parameters\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "APIGWParams",
+          "name": "APIGWParams",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CKafka parameters\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CkafkaParams",
+          "name": "CkafkaParams",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CreateConnectionRequest": {
+      "document": "CreateConnection request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Connector description",
+          "example": "无",
+          "member": "ConnectionDescription",
+          "name": "ConnectionDescription",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Connector name",
+          "example": "connection",
+          "member": "string",
+          "name": "ConnectionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Switch",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "apigw",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateConnectionResponse": {
+      "document": "CreateConnection response structure.",
+      "members": [
+        {
+          "document": "Connector ID",
+          "example": "connection-xxxxxxxx",
+          "member": "string",
+          "name": "ConnectionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEventBusRequest": {
+      "document": "CreateEventBus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter",
+          "example": "EventBusName",
+          "member": "string",
+          "name": "EventBusName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event bus description, which can contain up to 200 characters of any type",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEventBusResponse": {
+      "document": "CreateEventBus response structure.",
+      "members": [
+        {
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRuleRequest": {
+      "document": "CreateRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "See [Event Pattern](https://intl.cloud.tencent.com/document/product/1359/56084?from_cn_redirect=1)",
+          "example": "{   \"detail\": {     \"source-ip\": [ { \"cidr\": \"10.0.0.0/24\" } ]  ",
+          "member": "string",
+          "name": "EventPattern",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event bus ID.",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter",
+          "example": "rule",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Switch.",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Event bus description, which can contain up to 200 characters of any type",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRuleResponse": {
+      "document": "CreateRule response structure.",
+      "members": [
+        {
+          "document": "Event rule ID",
+          "example": "rule-xxxxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTargetRequest": {
+      "document": "CreateTarget request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target type",
+          "example": "scf",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target description",
+          "example": "qcs::scf:ap-guangzhou:uin/3473058547:namespace/test/function/",
+          "member": "TargetDescription",
+          "name": "TargetDescription",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Event rule ID",
+          "example": "rule-xxxxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTargetResponse": {
+      "document": "CreateTarget response structure.",
+      "members": [
+        {
+          "document": "Target ID",
+          "example": "target-e9r3a1l0",
+          "member": "string",
+          "name": "TargetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTransformationRequest": {
+      "document": "CreateTransformation request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "rule-xxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Transformation rule list (currently, only one is supported)",
+          "example": "无",
+          "member": "Transformation",
+          "name": "Transformations",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTransformationResponse": {
+      "document": "CreateTransformation response structure.",
+      "members": [
+        {
+          "document": "Generated transformer ID",
+          "example": "tsfm-xxxxxxxxxxx",
+          "member": "string",
+          "name": "TransformationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeadLetterConfig": {
+      "document": "DLQ configuration of rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Three modes are supported: DLQ, drop, and ignore error, which correspond to `DLQ`, `DROP`, and `IGNORE_ERROR` respectively",
+          "example": "DLQ",
+          "member": "string",
+          "name": "DisposeMethod",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "If the DLQ mode is set, this option is required. Error messages will be delivered to the corresponding Kafka topic\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CkafkaDeliveryParams",
+          "name": "CkafkaDeliveryParams",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DeleteConnectionRequest": {
+      "document": "DeleteConnection request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Connector ID",
+          "example": "connection-xxxxxxxx",
+          "member": "string",
+          "name": "ConnectionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteConnectionResponse": {
+      "document": "DeleteConnection response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEventBusRequest": {
+      "document": "DeleteEventBus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEventBusResponse": {
+      "document": "DeleteEventBus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRuleRequest": {
+      "document": "DeleteRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event rule ID",
+          "example": "rule-xxxxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRuleResponse": {
+      "document": "DeleteRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTargetRequest": {
+      "document": "DeleteTarget request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Delivery target ID",
+          "example": "target-xxxxxxxx",
+          "member": "string",
+          "name": "TargetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event rule ID",
+          "example": "rule-xxxxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTargetResponse": {
+      "document": "DeleteTarget response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTransformationRequest": {
+      "document": "DeleteTransformation request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "rule-xxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Transformer ID",
+          "example": "tsfm-xxxxxx",
+          "member": "string",
+          "name": "TransformationId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTransformationResponse": {
+      "document": "DeleteTransformation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EtlFilter": {
+      "document": "Describes how to filter data",
+      "members": [
+        {
+          "default": "",
+          "document": "The syntax is the same as that of `Rule`",
+          "example": "\"{\\\"source\\\":\\\"ckafka.cloud.tencent\\\"}\"",
+          "member": "string",
+          "name": "Filter",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "EventBus": {
+      "document": "Event bus information",
+      "members": [
+        {
+          "default": "",
+          "document": "Update time",
+          "example": "2021-04-27T14:34:19+08:00",
+          "member": "datetime_iso",
+          "name": "ModTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event bus description, which can contain up to 200 characters of any type",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2021-04-27T14:34:19+08:00",
+          "member": "datetime_iso",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter",
+          "example": "EventBus",
+          "member": "string",
+          "name": "EventBusName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event bus type",
+          "example": "Cloud",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Extraction": {
+      "document": "Describes how to extract data",
+      "members": [
+        {
+          "default": "",
+          "document": "JsonPath, which will be `$.` by default if not specified",
+          "example": "$",
+          "member": "string",
+          "name": "ExtractionInputPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Valid values: TEXT/JSON",
+          "example": "TEXT",
+          "member": "string",
+          "name": "Format",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Only required for `Text`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TextParams",
+          "name": "TextParams",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Filter": {
+      "document": "Key-Value pair filter for conditional filtering queries, such as filtering ID, name, and status\n* If more than one filter exists, the logical relationship between these filters is `AND`.\n* If multiple values exist in one filter, the logical relationship between these values is `OR`.",
+      "members": [
+        {
+          "default": "",
+          "document": "One or more filter values.",
+          "example": "无",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filter name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "GetEventBusRequest": {
+      "document": "GetEventBus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetEventBusResponse": {
+      "document": "GetEventBus response structure.",
+      "members": [
+        {
+          "document": "Update time",
+          "example": "2021-04-27T14:34:19+08:00",
+          "member": "datetime_iso",
+          "name": "ModTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event bus description",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Log topic ID",
+          "example": "78a5887e-357d-4bac-baca-1de008fa6ff0",
+          "member": "string",
+          "name": "ClsTopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creation time",
+          "example": "2021-04-27T14:34:19+08:00",
+          "member": "datetime_iso",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Logset ID",
+          "example": "78a5887e-357d-4bac-baca-1de008fa6ff0",
+          "member": "string",
+          "name": "ClsLogsetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event bus name",
+          "example": "eb",
+          "member": "string",
+          "name": "EventBusName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "(Disused) Event bus type",
+          "example": "Cloud",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRuleRequest": {
+      "document": "GetRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event rule ID",
+          "example": "rule-xxxxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRuleResponse": {
+      "document": "GetRule response structure.",
+      "members": [
+        {
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event rule ID",
+          "example": "rule-xxxxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event rule name",
+          "example": "rule",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event rule status",
+          "example": "Active",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Switch",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event rule description",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event pattern",
+          "example": "{   \"detail\": {     \"source-ip\": [ { \"cidr\": \"10.0.0.0/24\" } ]  ",
+          "member": "string",
+          "name": "EventPattern",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creation time",
+          "example": "2021-04-27T14:34:19+08:00",
+          "member": "datetime_iso",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Update time",
+          "example": "2021-04-27T14:34:19+08:00",
+          "member": "datetime_iso",
+          "name": "ModTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetTransformationRequest": {
+      "document": "GetTransformation request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "rule-xxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Transformer ID",
+          "example": "tsfm-xxxxxxx",
+          "member": "string",
+          "name": "TransformationId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetTransformationResponse": {
+      "document": "GetTransformation response structure.",
+      "members": [
+        {
+          "document": "Transformation rule list",
+          "example": "无",
+          "member": "Transformation",
+          "name": "Transformations",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListConnectionsRequest": {
+      "document": "ListConnections request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Indicates by which field to sort the returned results. Valid values: AddTime, ModTime",
+          "example": "ModTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC",
+          "example": "DESC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListConnectionsResponse": {
+      "document": "ListConnections response structure.",
+      "members": [
+        {
+          "document": "Connector information",
+          "example": "无",
+          "member": "Connection",
+          "name": "Connections",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of connectors",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListEventBusesRequest": {
+      "document": "ListEventBuses request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)",
+          "example": "ModTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)",
+          "example": "DESC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter. For more information, see the Instance Filter Table below. Each request can contain up to 10 `Filters` and 5 `Filter.Values`.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListEventBusesResponse": {
+      "document": "ListEventBuses response structure.",
+      "members": [
+        {
+          "document": "Event bus information",
+          "example": "无",
+          "member": "EventBus",
+          "name": "EventBuses",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of event buses",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListRulesRequest": {
+      "document": "ListRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)",
+          "example": "ModTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)",
+          "example": "DESC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListRulesResponse": {
+      "document": "ListRules response structure.",
+      "members": [
+        {
+          "document": "Event rule information",
+          "example": "无",
+          "member": "Rule",
+          "name": "Rules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of event rules",
+          "example": "8",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListTargetsRequest": {
+      "document": "ListTargets request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event rule ID",
+          "example": "rule-xxxxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)",
+          "example": "ModTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "0",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset. Default value: 0.",
+          "example": "20",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)",
+          "example": "DESC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListTargetsResponse": {
+      "document": "ListTargets response structure.",
+      "members": [
+        {
+          "document": "Total number of targets",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Target information",
+          "example": "无",
+          "member": "Target",
+          "name": "Targets",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OutputStructParam": {
+      "document": "`Transform` output parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Key in the corresponding JSON output",
+          "example": "name",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "You can enter a JsonPath, constant, or built-in date type",
+          "example": "$.name",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data type of `Value`. Valid values: STRING, NUMBER, BOOLEAN, NULL, SYS_VARIABLE, JSONPATH",
+          "example": "JSONPATH",
+          "member": "string",
+          "name": "ValueType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RetryPolicy": {
+      "document": "Description of CKafka delivery target retry policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Retry interval in seconds",
+          "example": "30",
+          "member": "uint64",
+          "name": "RetryInterval",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of retries",
+          "example": "3",
+          "member": "uint64",
+          "name": "MaxRetryAttempts",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Rule": {
+      "document": "Rule information",
+      "members": [
+        {
+          "default": "",
+          "document": "Status",
+          "example": "Active",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time",
+          "example": "2021-04-27T14:34:19+08:00",
+          "member": "datetime_iso",
+          "name": "ModTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Switch",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "rule-xxxxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2021-04-27T14:34:19+08:00",
+          "member": "datetime_iso",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule name",
+          "example": "rule",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target overview\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TargetBrief",
+          "name": "Targets",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "DLQ rule set by the rule, which may be null\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DeadLetterConfig",
+          "name": "DeadLetterConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SCFParams": {
+      "document": "SCF parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Maximum waiting time for batch delivery",
+          "example": "1",
+          "member": "int64",
+          "name": "BatchTimeout",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of events in batch delivery",
+          "example": "1",
+          "member": "int64",
+          "name": "BatchEventCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Enables batch delivery",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableBatchDelivery",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Target": {
+      "document": "Target information",
+      "members": [
+        {
+          "default": "",
+          "document": "Target type",
+          "example": "scf",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target ID",
+          "example": "target-xxxxxxxx",
+          "member": "string",
+          "name": "TargetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target description",
+          "example": "无",
+          "member": "TargetDescription",
+          "name": "TargetDescription",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event rule ID",
+          "example": "rule-xxxxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Enables batch delivery\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableBatchDelivery",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum waiting time for batch delivery\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "BatchTimeout",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum number of events in batch delivery\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "BatchEventCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TargetBrief": {
+      "document": "Target overview",
+      "members": [
+        {
+          "default": "",
+          "document": "Target ID",
+          "example": "target-xxxxxxxx",
+          "member": "string",
+          "name": "TargetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Target type",
+          "example": "scf",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TargetDescription": {
+      "document": "Target description",
+      "members": [
+        {
+          "default": "",
+          "document": "Six-Segment QCS resource description. For more information, see [Resource Description Method](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
+          "example": "qcs::scf:gz:uin/1111:resource",
+          "member": "string",
+          "name": "ResourceDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SCF parameter",
+          "example": "无",
+          "member": "SCFParams",
+          "name": "SCFParams",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CKafka parameters",
+          "example": "无",
+          "member": "CkafkaTargetParams",
+          "name": "CkafkaTargetParams",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TextParams": {
+      "document": "Describes how to slice data",
+      "members": [
+        {
+          "default": "",
+          "document": "Comma, | , tab, space, line break, %, or #, which can contain only 1 character.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": ",",
+          "member": "string",
+          "name": "Separator",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Entered regex (128 characters)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "a(.*)bc",
+          "member": "string",
+          "name": "Regex",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Transform": {
+      "document": "Describes how to transform data\n",
+      "members": [
+        {
+          "default": "",
+          "document": "Describes how to transform data",
+          "example": "无",
+          "member": "OutputStructParam",
+          "name": "OutputStructs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Transformation": {
+      "document": "Transformer",
+      "members": [
+        {
+          "default": "",
+          "document": "Describes how to extract data\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Extraction",
+          "name": "Extraction",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Describes how to filter data\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "EtlFilter",
+          "name": "EtlFilter",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Describes how to transform data\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Transform",
+          "name": "Transform",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "UpdateConnectionRequest": {
+      "document": "UpdateConnection request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Connector ID",
+          "example": "connection-xxxxxxxx",
+          "member": "string",
+          "name": "ConnectionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Switch",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Connector name",
+          "example": "connection",
+          "member": "string",
+          "name": "ConnectionName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateConnectionResponse": {
+      "document": "UpdateConnection response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateEventBusRequest": {
+      "document": "UpdateEventBus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event bus description, which can contain up to 200 characters of any type",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter",
+          "example": "EventBusName",
+          "member": "string",
+          "name": "EventBusName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateEventBusResponse": {
+      "document": "UpdateEventBus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateRuleRequest": {
+      "document": "UpdateRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event rule ID",
+          "example": "rule-xxxxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Switch.",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Rule description, which can contain up to 200 characters of any type.",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event rule name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter",
+          "example": "rule",
+          "member": "string",
+          "name": "RuleName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateRuleResponse": {
+      "document": "UpdateRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateTargetRequest": {
+      "document": "UpdateTarget request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event rule ID",
+          "example": "rule-xxxxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Delivery target ID",
+          "example": "target-xxxxxxxx",
+          "member": "string",
+          "name": "TargetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Enables batch delivery",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableBatchDelivery",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Maximum waiting time for batch delivery",
+          "example": "1",
+          "member": "int64",
+          "name": "BatchTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of events in batch delivery",
+          "example": "1",
+          "member": "int64",
+          "name": "BatchEventCount",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateTargetResponse": {
+      "document": "UpdateTarget response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateTransformationRequest": {
+      "document": "UpdateTransformation request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "rule-xxxxxxxxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Transformer ID",
+          "example": "tsfm-xxxxxxxxx",
+          "member": "string",
+          "name": "TransformationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Transformation rule list (currently, only one is supported)",
+          "example": "无",
+          "member": "Transformation",
+          "name": "Transformations",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateTransformationResponse": {
+      "document": "UpdateTransformation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}
