@@ -1135,6 +1135,15 @@
           "name": "StartupProbe",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The version of the operating system\nIf `openjdk` is selected, the value can be: \n- ALPINE\n- CENTOS\nIf `konajdk` is selected, the value can be: \n- ALPINE\n- TENCENTOS",
+          "example": "1",
+          "member": "string",
+          "name": "OsFlavour",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1211,6 +1220,16 @@
           "name": "MinAvailable",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable force release",
+          "example": "false",
+          "member": "bool",
+          "name": "Force",
+          "required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],

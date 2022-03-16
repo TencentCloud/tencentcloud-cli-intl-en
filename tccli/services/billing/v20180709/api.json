@@ -41,6 +41,18 @@
       "input": "DescribeBillSummaryByTagRequest",
       "name": "Gets cost distribution over different tags",
       "output": "DescribeBillSummaryByTagResponse"
+    },
+    "DescribeVoucherInfo": {
+      "document": "This API is used to query vouchers.",
+      "input": "DescribeVoucherInfoRequest",
+      "name": "Queries vouchers",
+      "output": "DescribeVoucherInfoResponse"
+    },
+    "DescribeVoucherUsageDetails": {
+      "document": "This API is used to query voucher usage details.",
+      "input": "DescribeVoucherUsageDetailsRequest",
+      "name": "Queries voucher usage details",
+      "output": "DescribeVoucherUsageDetailsResponse"
     }
   },
   "metadata": {
@@ -138,6 +150,32 @@
           "example": "0.00",
           "member": "string",
           "name": "TotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ApplicableProducts": {
+      "document": "The products that are applicable.",
+      "members": [
+        {
+          "default": "",
+          "document": "Valid values: `all products` or names of the applicable products (string). Multiple names are separated by commas.",
+          "example": "全产品通用",
+          "member": "string",
+          "name": "GoodsName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If `GoodsName` contains multiple product names and `PayMode` is `*`, it indicates that the voucher can be used in all billing modes for each of the products.",
+          "example": "*",
+          "member": "string",
+          "name": "PayMode",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1675,6 +1713,293 @@
       ],
       "type": "object"
     },
+    "DescribeVoucherInfoRequest": {
+      "document": "DescribeVoucherInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The number of records per page. The default is 20, and the maximum is 1,000.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The page number the records start from. The default is 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The voucher status. Valid values: `unUsed`, `used`, `delivered`, `cancel`, `overdue`.",
+          "example": "unUsed",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The voucher ID.",
+          "example": "123",
+          "member": "string",
+          "name": "VoucherId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The voucher order ID.",
+          "example": "123",
+          "member": "string",
+          "name": "CodeId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The product code.",
+          "example": "a",
+          "member": "string",
+          "name": "ProductCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The campaign ID.",
+          "example": "123",
+          "member": "string",
+          "name": "ActivityId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The voucher name.",
+          "example": "aa",
+          "member": "string",
+          "name": "VoucherName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The start time of the promotional campaign.",
+          "example": "2021-01-01",
+          "member": "string",
+          "name": "TimeFrom",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end time of the promotional campaign.",
+          "example": "2021-01-01",
+          "member": "string",
+          "name": "TimeTo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The field used to sort the records. Valid values: BeginTime, EndTime, CreateTime.",
+          "example": "BeginTime",
+          "member": "string",
+          "name": "SortField",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to sort the records in ascending or descending order. Valid values: desc, asc.",
+          "example": "desc",
+          "member": "string",
+          "name": "SortOrder",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The payment mode. Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If this parameter is empty or `*`, `productCode` and `subProductCode` must also be empty.",
+          "example": "postPay",
+          "member": "string",
+          "name": "PayMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.",
+          "example": "*",
+          "member": "string",
+          "name": "PayScene",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The operator. The default is the UIN of the current user.",
+          "example": "aa",
+          "member": "string",
+          "name": "Operator",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVoucherInfoResponse": {
+      "document": "DescribeVoucherInfo response structure.",
+      "members": [
+        {
+          "document": "The total number of vouchers.",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total voucher balance. The value of this parameter is the total balance (USD, rounded to 8 decimal places) multiplied by 100,000,000.",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalBalance",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The voucher information.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "VoucherInfos",
+          "name": "VoucherInfos",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVoucherUsageDetailsRequest": {
+      "document": "DescribeVoucherUsageDetails request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The number of records per page. The default is 20, and the maximum is 1,000.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The page number the records start from. The default is 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The voucher ID.",
+          "example": "123",
+          "member": "string",
+          "name": "VoucherId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The operator. The default is the UIN of the current.",
+          "example": "aa",
+          "member": "string",
+          "name": "Operator",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVoucherUsageDetailsResponse": {
+      "document": "DescribeVoucherUsageDetails response structure.",
+      "members": [
+        {
+          "document": "The total number of vouchers.",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total amount used. The value of this parameter is the total amount used (USD, rounded to 8 decimal places) multiplied by 100,000,000.",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalUsedAmount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The usage details.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "UsageRecords",
+          "name": "UsageRecords",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExcludedProducts": {
+      "document": "The products that are not applicable.",
+      "members": [
+        {
+          "default": "",
+          "document": "The names of non-applicable products.",
+          "example": "某产品",
+          "member": "string",
+          "name": "GoodsName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all.",
+          "example": "*",
+          "member": "string",
+          "name": "PayMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "PayModeSummaryOverviewItem": {
       "document": "Detailed summary of purchases by billing mode",
       "members": [
@@ -2030,6 +2355,184 @@
           "name": "TotalCost",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UsageDetails": {
+      "document": "The product purchased.",
+      "members": [
+        {
+          "default": "",
+          "document": "The name of the product.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "某产品",
+          "member": "string",
+          "name": "ProductName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "某子产品",
+          "member": "string",
+          "name": "SubProductName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UsageRecords": {
+      "document": "The usage records.",
+      "members": [
+        {
+          "default": "",
+          "document": "The amount used. The value of this parameter is the amount used (USD, rounded to 8 decimal places) multiplied by 100,000,000.",
+          "example": "123",
+          "member": "int64",
+          "name": "UsedAmount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The time when the voucher was used.",
+          "example": "2020-01-01",
+          "member": "string",
+          "name": "UsedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The details of the product purchased.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "UsageDetails",
+          "name": "UsageDetails",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "VoucherInfos": {
+      "document": "Voucher information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The owner of the voucher.",
+          "example": "aa",
+          "member": "string",
+          "name": "OwnerUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The status of the voucher: `unUsed`, `used`, `delivered`, `cancel`, `overdue`",
+          "example": "unUsed",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The value of the voucher. The value of this parameter is the voucher value (USD, rounded to 8 decimal places) multiplied by 100,000,000.",
+          "example": "10000",
+          "member": "int64",
+          "name": "NominalValue",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The balance left. The value of this parameter is the balance left (USD, rounded to 8 decimal places) multiplied by 100,000,000.",
+          "example": "10000",
+          "member": "int64",
+          "name": "Balance",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The voucher ID.",
+          "example": "aa",
+          "member": "string",
+          "name": "VoucherId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all.",
+          "example": "postPay",
+          "member": "string",
+          "name": "PayMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.",
+          "example": "*",
+          "member": "string",
+          "name": "PayScene",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The start time of the validity period.",
+          "example": "2020-01-01",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The end time of the validity period.",
+          "example": "2020-01-01",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The products that are applicable.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "ApplicableProducts",
+          "name": "ApplicableProducts",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The products that are not applicable.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "ExcludedProducts",
+          "name": "ExcludedProducts",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],

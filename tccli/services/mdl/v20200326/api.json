@@ -24,6 +24,12 @@
       "name": "Creates an event in the plan",
       "output": "CreateStreamLivePlanResponse"
     },
+    "CreateStreamLiveWatermark": {
+      "document": "This API is used to add a watermark.",
+      "input": "CreateStreamLiveWatermarkRequest",
+      "name": "Adds a watermark",
+      "output": "CreateStreamLiveWatermarkResponse"
+    },
     "DeleteStreamLiveChannel": {
       "document": "This API is used to delete a StreamLive channel.",
       "input": "DeleteStreamLiveChannelRequest",
@@ -47,6 +53,12 @@
       "input": "DeleteStreamLivePlanRequest",
       "name": "Deletes a StreamLive event",
       "output": "DeleteStreamLivePlanResponse"
+    },
+    "DeleteStreamLiveWatermark": {
+      "document": "This API is used to delete a watermark.",
+      "input": "DeleteStreamLiveWatermarkRequest",
+      "name": "Deletes a watermark",
+      "output": "DeleteStreamLiveWatermarkResponse"
     },
     "DescribeStreamLiveChannel": {
       "document": "This API is used to query a StreamLive channel.",
@@ -120,6 +132,18 @@
       "name": "Queries StreamLive regions",
       "output": "DescribeStreamLiveRegionsResponse"
     },
+    "DescribeStreamLiveWatermark": {
+      "document": "This API is used to query a watermark.",
+      "input": "DescribeStreamLiveWatermarkRequest",
+      "name": "Queries a watermark",
+      "output": "DescribeStreamLiveWatermarkResponse"
+    },
+    "DescribeStreamLiveWatermarks": {
+      "document": "This API is used to query multiple watermarks at a time.",
+      "input": "DescribeStreamLiveWatermarksRequest",
+      "name": "Queries multiple watermarks at a time",
+      "output": "DescribeStreamLiveWatermarksResponse"
+    },
     "ModifyStreamLiveChannel": {
       "document": "This API is used to modify a StreamLive channel.",
       "input": "ModifyStreamLiveChannelRequest",
@@ -137,6 +161,12 @@
       "input": "ModifyStreamLiveInputSecurityGroupRequest",
       "name": "Modifies an input security group",
       "output": "ModifyStreamLiveInputSecurityGroupResponse"
+    },
+    "ModifyStreamLiveWatermark": {
+      "document": "This API is used to modify a watermark.",
+      "input": "ModifyStreamLiveWatermarkRequest",
+      "name": "Modifies a watermark",
+      "output": "ModifyStreamLiveWatermarkResponse"
     },
     "StartStreamLiveChannel": {
       "document": "This API is used to start a StreamLive channel.",
@@ -586,6 +616,82 @@
       ],
       "usage": "out"
     },
+    "CreateImageSettings": {
+      "document": "Watermark image settings",
+      "members": [
+        {
+          "default": "",
+          "document": "Image file format. Valid values: png, jpg.",
+          "example": "png",
+          "member": "string",
+          "name": "ImageType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Base64 encoded image content",
+          "example": "base64 string",
+          "member": "string",
+          "name": "ImageContent",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Origin. Valid values: TOP_LEFT, BOTTOM_LEFT, TOP_RIGHT, BOTTOM_RIGHT.",
+          "example": "TOP_LEFT",
+          "member": "string",
+          "name": "Location",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.",
+          "example": "10",
+          "member": "int64",
+          "name": "XPos",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.",
+          "example": "10",
+          "member": "int64",
+          "name": "YPos",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark image’s width as a percentage of the video width. Value range: 0-100. Default: 10.\n`0` means to scale the width proportionally to the height.\nYou cannot set both `Width` and `Height` to `0`.",
+          "example": "10",
+          "member": "int64",
+          "name": "Width",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark image’s height as a percentage of the video height. Value range: 0-100. Default: 10.\n`0` means to scale the height proportionally to the width.\nYou cannot set both `Width` and `Height` to `0`.",
+          "example": "10",
+          "member": "int64",
+          "name": "Height",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "CreateStreamLiveChannelRequest": {
       "document": "CreateStreamLiveChannel request structure.",
       "members": [
@@ -820,6 +926,135 @@
       ],
       "type": "object"
     },
+    "CreateStreamLiveWatermarkRequest": {
+      "document": "CreateStreamLiveWatermark request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Watermark name",
+          "example": "watermark_name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Watermark type. Valid values: STATIC_IMAGE, TEXT.",
+          "example": "STATIC_IMAGE",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.",
+          "example": "无",
+          "member": "CreateImageSettings",
+          "name": "ImageSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Watermark text settings. This parameter is valid if `Type` is `TEXT`.",
+          "example": "无",
+          "member": "CreateTextSettings",
+          "name": "TextSettings",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStreamLiveWatermarkResponse": {
+      "document": "CreateStreamLiveWatermark response structure.",
+      "members": [
+        {
+          "document": "Watermark ID",
+          "example": "AB342ED131CE",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTextSettings": {
+      "document": "Watermark text settings",
+      "members": [
+        {
+          "default": "",
+          "document": "Text",
+          "example": "watermark",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Origin. Valid values: TOP_LEFT, BOTTOM_LEFT, TOP_RIGHT, BOTTOM_RIGHT.",
+          "example": "TOP_LEFT",
+          "member": "string",
+          "name": "Location",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.",
+          "example": "10",
+          "member": "int64",
+          "name": "XPos",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.",
+          "example": "10",
+          "member": "int64",
+          "name": "YPos",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Font size. Value range: 25-50.",
+          "example": "10",
+          "member": "int64",
+          "name": "FontSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Font color, which is an RGB color value. Default value: 0x000000.",
+          "example": "0x000000",
+          "member": "string",
+          "name": "FontColor",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "DashRemuxSettingsInfo": {
       "document": "DASH configuration information.",
       "members": [
@@ -969,6 +1204,89 @@
         }
       ],
       "type": "object"
+    },
+    "DeleteStreamLiveWatermarkRequest": {
+      "document": "DeleteStreamLiveWatermark request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Watermark ID",
+          "example": "AB342ED131CE",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamLiveWatermarkResponse": {
+      "document": "DeleteStreamLiveWatermark response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImageSettings": {
+      "document": "Watermark image settings",
+      "members": [
+        {
+          "default": "",
+          "document": "Origin",
+          "example": "TOP_LEFT",
+          "member": "string",
+          "name": "Location",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark image’s horizontal distance from the origin as a percentage of the video width",
+          "example": "10",
+          "member": "int64",
+          "name": "XPos",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark image’s vertical distance from the origin as a percentage of the video height",
+          "example": "10",
+          "member": "int64",
+          "name": "YPos",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark image’s width as a percentage of the video width",
+          "example": "10",
+          "member": "int64",
+          "name": "Width",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark image’s height as a percentage of the video height",
+          "example": "10",
+          "member": "int64",
+          "name": "Height",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "DescribeStreamLiveChannelAlertsRequest": {
       "document": "DescribeStreamLiveChannelAlerts request structure.",
@@ -1433,6 +1751,210 @@
         }
       ],
       "type": "object"
+    },
+    "DescribeStreamLiveWatermarkRequest": {
+      "document": "DescribeStreamLiveWatermark request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Watermark ID",
+          "example": "AB342ED131CE",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamLiveWatermarkResponse": {
+      "document": "DescribeStreamLiveWatermark response structure.",
+      "members": [
+        {
+          "document": "Watermark information",
+          "example": "无",
+          "member": "DescribeWatermarkInfo",
+          "name": "Info",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamLiveWatermarksRequest": {
+      "document": "DescribeStreamLiveWatermarks request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeStreamLiveWatermarksResponse": {
+      "document": "DescribeStreamLiveWatermarks response structure.",
+      "members": [
+        {
+          "document": "List of watermark information",
+          "example": "无",
+          "member": "DescribeWatermarkInfo",
+          "name": "Infos",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTextSettings": {
+      "document": "Watermark text settings",
+      "members": [
+        {
+          "default": "",
+          "document": "Text",
+          "example": "watermark",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Origin",
+          "example": "TOP_LEFT",
+          "member": "string",
+          "name": "Location",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark image’s horizontal distance from the origin as a percentage of the video width",
+          "example": "10",
+          "member": "int64",
+          "name": "XPos",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark image’s vertical distance from the origin as a percentage of the video height",
+          "example": "10",
+          "member": "int64",
+          "name": "YPos",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Font size",
+          "example": "10",
+          "member": "int64",
+          "name": "FontSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Font color",
+          "example": "0x000000",
+          "member": "string",
+          "name": "FontColor",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeWatermarkInfo": {
+      "document": "Watermark information",
+      "members": [
+        {
+          "default": "",
+          "document": "Watermark ID",
+          "example": "AB342ED131CE",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Watermark name",
+          "example": "watermark",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Watermark type. Valid values: STATIC_IMAGE, TEXT.",
+          "example": "STATIC_IMAGE",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "DescribeImageSettings",
+          "name": "ImageSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Watermark text settings. This parameter is valid if `Type` is `TEXT`.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "DescribeTextSettings",
+          "name": "TextSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Last modified time (UTC+0) of the watermark, in the format of `2020-01-01T12:00:00Z`\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "2022-01-21T00:00:00Z",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of channel IDs the watermark is bound to\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "string",
+          "name": "AttachedChannels",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "DestinationInfo": {
       "document": "Relay destination address.",
@@ -2247,6 +2769,60 @@
     },
     "ModifyStreamLiveInputSecurityGroupResponse": {
       "document": "ModifyStreamLiveInputSecurityGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyStreamLiveWatermarkRequest": {
+      "document": "ModifyStreamLiveWatermark request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Watermark ID",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Watermark name",
+          "example": "watermark_name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.",
+          "example": "无",
+          "member": "CreateImageSettings",
+          "name": "ImageSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Watermark text settings. This parameter is valid if `Type` is `TEXT`.",
+          "example": "无",
+          "member": "CreateTextSettings",
+          "name": "TextSettings",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyStreamLiveWatermarkResponse": {
+      "document": "ModifyStreamLiveWatermark response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

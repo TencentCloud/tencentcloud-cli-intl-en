@@ -1,5 +1,13 @@
 {
   "actions": {
+    "ActiveHourDCDBInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dcdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ActiveHourDCDBInstance\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"xx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"FailedInstanceIds\": [],\n        \"RequestId\": \"8ce27ff0-7fe1-11ea-8469-525400542aa6\",\n        \"SuccessInstanceIds\": [\n            \"tdsqlshard-cq3ndzu7\"\n        ]\n    }\n}",
+        "title": "Removing the isolation of a pay-as-you-go TDSQL for MySQL instance"
+      }
+    ],
     "AssociateSecurityGroups": [
       {
         "document": "",
@@ -46,6 +54,14 @@
         "input": "https://dcdb.tencentcloudapi.com/?Action=CreateAccount\n&InstanceId=dcdbt-fdpjf5zh\n&UserName=testuser1\n&Host=172.17.%\n&Password=1234qweri#\n&Description=Test account\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2cc4e4dc-c3e9-4858-ab80-03e3526cf24d\",\n        \"InstanceId\": \"dcdbt-fdpjf5zh\",\n        \"UserName\": \"testuser1\",\n        \"Host\": \"172.17.%\",\n        \"ReadOnly\": 0\n    }\n}",
         "title": "Creating an account for a TencentDB instance"
+      }
+    ],
+    "CreateHourDCDBInstance": [
+      {
+        "document": "",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=CreateHourDCDBInstance\n&ShardMemory=2\n&ShardStorage=10\n&ShardNodeCount=2\n&ShardCount=2\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14f6980a-7fe1-11ea-b896-525400542aa6\",\n        \"InstanceIds\": [\n            \"tdsql-xxxxxx\"\n        ],\n        \"FlowId\": 1122\n    }\n}",
+        "title": "N/A"
       }
     ],
     "DeleteAccount": [

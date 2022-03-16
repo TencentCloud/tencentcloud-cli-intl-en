@@ -132,6 +132,12 @@
       "name": "Isolates a TencentDB Instance",
       "output": "IsolateDBInstanceResponse"
     },
+    "ModifyDBInstanceSecurityGroup": {
+      "document": "This API is used to modify the security groups associated with an instance.",
+      "input": "ModifyDBInstanceSecurityGroupRequest",
+      "name": "Modifies the security groups associated with an instance",
+      "output": "ModifyDBInstanceSecurityGroupResponse"
+    },
     "ModifyDBInstanceSpec": {
       "document": "This API is used to adjust the specification configuration of a TencentDB for MongoDB. The purchasable specifications supported by the API can be obtained through the DescribeSpecInfo API.",
       "input": "ModifyDBInstanceSpecRequest",
@@ -175,6 +181,7 @@
         {
           "default": "",
           "document": "List of instance IDs in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "example": "[\"cmgo-eqmoa5sf\\r\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -182,7 +189,8 @@
         },
         {
           "default": "",
-          "document": "Project ID",
+          "document": "Unique ID of an existing project (instead of a new project).",
+          "example": "12",
           "member": "uint64",
           "name": "ProjectId",
           "required": true,
@@ -292,6 +300,26 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup type of the backup file. Valid values: `0` (logical backup), `1` (physical backup)",
+          "example": "1",
+          "member": "int64",
+          "name": "BackupMethod",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup description you set when starting a backup task\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "我的备份",
+          "member": "string",
+          "name": "BackupDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -523,7 +551,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance ID in the format of \"cmgo-p8vnipr5\", which is the same as the instance ID displayed in the TencentDB console",
+          "document": "Instance ID in the format of \"cmgo-p8vnipr5\", which is the same as the instance ID displayed in the TencentDB console.",
           "example": "cmgo-f555zzzz",
           "member": "string",
           "name": "InstanceId",
@@ -532,7 +560,7 @@
         },
         {
           "default": "",
-          "document": "The name of the backup file to be downloaded, which can be obtained by the `DescribeDBBackups` API",
+          "document": "The name of the backup file to be downloaded, which can be obtained by the `DescribeDBBackups` API.",
           "example": "cmgo-74sjf5mt_2021-03-24 15:40",
           "member": "string",
           "name": "BackupName",
@@ -541,7 +569,7 @@
         },
         {
           "default": "",
-          "document": "The list of shards with backups to be downloaded",
+          "document": "Specify the node name of a replica set instance or the shard name list of a sharded cluster instance. Only backups of the specified node or shards will be downloaded.\nSuppose you have a replica set instance (ID: cmgo-p8vnipr5), you can use the sample code `BackupSets.0=cmgo-p8vnipr5_0` to download the full backup. For a replica set instance, the parameter value must be in the format of \"instance ID_0\".\nSuppose you have a sharded cluster instance (ID: cmgo-p8vnipr5), you can use the sample code `BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1` to download the backup data of shard 0 and shard 1. To download the full backup, please specify all shard names.",
           "example": "无",
           "member": "ReplicaSetInfo",
           "name": "BackupSets",
@@ -1256,7 +1284,7 @@
         },
         {
           "default": "",
-          "document": "The end time of the query period. Tasks whose start time and end time fall within the query period will be queried. If it is left empty, the end time can be any time later than the start time.",
+          "document": "The end time of the query period. Tasks will be queried if their start and end times fall within the query period. If it is left empty, the end time can be any time later than the start time.",
           "example": "2021-01-02 15:04:05",
           "member": "string",
           "name": "EndTime",
@@ -1347,6 +1375,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "example": "cmgo-eqmoaxxx",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1354,7 +1383,8 @@
         },
         {
           "default": "",
-          "document": "The number of records that will be returned. Default value: 10,000.",
+          "document": "Number of results to be returned for a single request. Value range: 1-1,000. Default value: 1,000",
+          "example": "1",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -1363,6 +1393,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0.",
+          "example": "1",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -2022,6 +2053,7 @@
         {
           "default": "",
           "document": "Instance region name in the format of ap-guangzhou-2.",
+          "example": "ap-guangzhou-4",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -2029,7 +2061,8 @@
         },
         {
           "default": "",
-          "document": "Number of nodes in each replica set. Currently, the number of nodes per replica set is fixed at 3, while the number of secondary nodes per shard is customizable. For more information, please see the parameter returned by the `DescribeSpecInfo` API.",
+          "document": "The number of nodes in each replica set. The value range is subject to the response parameter of the `DescribeSpecInfo` API.",
+          "example": "3",
           "member": "int64",
           "name": "NodeNum",
           "required": true,
@@ -2038,6 +2071,7 @@
         {
           "default": "",
           "document": "Instance memory size in GB.",
+          "example": "4",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -2046,6 +2080,7 @@
         {
           "default": "",
           "document": "Instance disk size in GB.",
+          "example": "100",
           "member": "int64",
           "name": "Volume",
           "required": true,
@@ -2054,6 +2089,7 @@
         {
           "default": "",
           "document": "Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition.",
+          "example": "MONGO_36_WT",
           "member": "string",
           "name": "MongoVersion",
           "required": true,
@@ -2061,7 +2097,8 @@
         },
         {
           "default": "",
-          "document": "Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO), STDS5 (standard).",
+          "document": "Server type. Valid values: `HIO` (high IO), `HIO10G` (ten-gigabit high IO)",
+          "example": "HIO10G",
           "member": "string",
           "name": "MachineCode",
           "required": true,
@@ -2070,6 +2107,7 @@
         {
           "default": "",
           "document": "Number of instances. Minimum value: 1. Maximum value: 10.",
+          "example": "2",
           "member": "int64",
           "name": "GoodsNum",
           "required": true,
@@ -2078,6 +2116,7 @@
         {
           "default": "",
           "document": "Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
+          "example": "1",
           "member": "int64",
           "name": "Period",
           "required": true,
@@ -2086,6 +2125,7 @@
         {
           "default": "",
           "document": "Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster), STANDALONE (single-node).",
+          "example": "REPLSET",
           "member": "string",
           "name": "ClusterType",
           "required": true,
@@ -2094,6 +2134,7 @@
         {
           "default": "",
           "document": "Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API; to create a single-node instance, set this parameter to 0.",
+          "example": "1",
           "member": "int64",
           "name": "ReplicateSetNum",
           "required": true,
@@ -2127,6 +2168,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed in the TencentDB Console.",
+          "example": "cmgo-8oij5631",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2135,6 +2177,7 @@
         {
           "default": "",
           "document": "Instance memory size in GB after specification adjustment.",
+          "example": "8",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -2143,9 +2186,28 @@
         {
           "default": "",
           "document": "Instance disk size in GB after specification adjustment.",
+          "example": "200",
           "member": "int64",
           "name": "Volume",
           "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Node quantity after configuration modification. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the node quantity remains unchanged.",
+          "example": "3",
+          "member": "int64",
+          "name": "NodeNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Shard quantity after configuration modification, which can only be increased rather than decreased. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the shard quantity remains unchanged.",
+          "example": "2",
+          "member": "int64",
+          "name": "ReplicateSetNum",
+          "required": false,
           "type": "int"
         }
       ],
@@ -2618,7 +2680,7 @@
         },
         {
           "default": "",
-          "document": "Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no)",
+          "document": "Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no, which means the parameter setting takes effect immediately)",
           "example": "\"0\"",
           "member": "string",
           "name": "NeedRestart",
@@ -2658,7 +2720,7 @@
         },
         {
           "default": "",
-          "document": "Whether the TencentDB for MongoDB console has pulled parameter information successfully. Valid values: `1` (yes), `0` (no, and displays \"Loading\" in the console)",
+          "document": "Whether `CurrentValue` is the parameter value actually in use. Valid values: `1` (yes), `0` (no)",
           "example": "1",
           "member": "uint64",
           "name": "Status",
@@ -2714,7 +2776,7 @@
         },
         {
           "default": "",
-          "document": "Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no)",
+          "document": "Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no, which means the parameter setting takes effect immediately)",
           "example": "\"1\"",
           "member": "string",
           "name": "NeedRestart",
@@ -2754,7 +2816,7 @@
         },
         {
           "default": "",
-          "document": "Whether the TencentDB for MongoDB console has pulled parameter information successfully. Valid values: `1` (no), `0` (yes). This field is only used in the console.",
+          "document": "Whether `CurrentValue` is the parameter value actually in use. Valid values: `1` (yes), `0` (no)",
           "example": "1",
           "member": "uint64",
           "name": "Status",
@@ -2764,7 +2826,7 @@
         },
         {
           "default": "",
-          "document": "This field is not in use",
+          "document": "Redundant field which can be ignored",
           "example": "\"\"",
           "member": "string",
           "name": "Unit",
@@ -2810,7 +2872,7 @@
         },
         {
           "default": "",
-          "document": "Whether to restart the instance for the parameter to take effect",
+          "document": "Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no, which means the parameter setting takes effect immediately)",
           "example": "\"1\"",
           "member": "string",
           "name": "NeedRestart",
@@ -2830,7 +2892,7 @@
         },
         {
           "default": "",
-          "document": "Whether the TencentDB for MongoDB console has pulled parameter information successfully",
+          "document": "Whether `CurrentValue` is the parameter value actually in use. Valid values: `1` (yes), `0` (no)",
           "example": "\"1\"",
           "member": "uint64",
           "name": "Status",
@@ -2850,7 +2912,7 @@
         },
         {
           "default": "",
-          "document": "Data type of the parameter",
+          "document": "Data type of the current value. Default value: `multi`",
           "example": "\"multi\"",
           "member": "string",
           "name": "ValueType",
@@ -2866,7 +2928,7 @@
       "members": [
         {
           "default": "",
-          "document": "Current value (not in use)",
+          "document": "Current value",
           "example": "\"\"",
           "member": "string",
           "name": "CurrentValue",
@@ -2876,7 +2938,7 @@
         },
         {
           "default": "",
-          "document": "Default value (not in use)",
+          "document": "Default value",
           "example": "\"\"",
           "member": "string",
           "name": "DefaultValue",
@@ -2886,7 +2948,7 @@
         },
         {
           "default": "",
-          "document": "Whether to restart the instance for the parameter to take effect (not in use)",
+          "document": "Whether to restart the instance for the parameter to take effect",
           "example": "\"\"",
           "member": "string",
           "name": "NeedRestart",
@@ -2896,7 +2958,7 @@
         },
         {
           "default": "",
-          "document": "Parameter name (not in use)",
+          "document": "Parameter name",
           "example": "\"\"",
           "member": "string",
           "name": "ParamName",
@@ -2906,7 +2968,7 @@
         },
         {
           "default": "",
-          "document": "Acceptable values (not in use)",
+          "document": "Value of a text parameter",
           "example": "\"\"",
           "member": "string",
           "name": "TextValue",
@@ -2916,7 +2978,7 @@
         },
         {
           "default": "",
-          "document": "Parameter description (not in use)",
+          "document": "Parameter description",
           "example": "\"\"",
           "member": "string",
           "name": "Tips",
@@ -2926,7 +2988,7 @@
         },
         {
           "default": "",
-          "document": "Data type of the parameter (not in use)",
+          "document": "Value type",
           "example": "\"\"",
           "member": "string",
           "name": "ValueType",
@@ -2936,7 +2998,7 @@
         },
         {
           "default": "",
-          "document": "Whether the TencentDB for MongoDB console has pulled parameter information successfully (not in use)",
+          "document": "Whether `CurrentValue` is the parameter value actually in use. Valid values: `1` (yes), `0` (no)",
           "example": "\"\"",
           "member": "string",
           "name": "Status",
@@ -2971,6 +3033,42 @@
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSecurityGroupRequest": {
+      "document": "ModifyDBInstanceSecurityGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "cmgo-7pjedvz7",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target security group IDs",
+          "example": "[\"sg-a\", \"sg-b\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSecurityGroupResponse": {
+      "document": "ModifyDBInstanceSecurityGroup response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -3107,6 +3205,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "example": "cmgo-eqmoa5sf",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3114,7 +3213,8 @@
         },
         {
           "default": "",
-          "document": "Instance name",
+          "document": "Custom name of the instance, which can contain up to 60 letters, digits, or symbols (_-)",
+          "example": "test_name",
           "member": "string",
           "name": "NewName",
           "required": true,
@@ -3174,7 +3274,7 @@
       "members": [
         {
           "default": "",
-          "document": "Shard name",
+          "document": "Replica set ID",
           "example": "cmgo_ih8uido9_0",
           "member": "string",
           "name": "ReplicaSetId",
@@ -3191,6 +3291,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "cmgo-7pjedvz7",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3199,6 +3300,7 @@
         {
           "default": "",
           "document": "Instance account name",
+          "example": "rwuser",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -3206,7 +3308,8 @@
         },
         {
           "default": "",
-          "document": "New password",
+          "document": "New password, which must contain at least eight characters",
+          "example": "111111",
           "member": "string",
           "name": "Password",
           "required": true,

@@ -1,5 +1,11 @@
 {
   "actions": {
+    "ActiveHourDCDBInstance": {
+      "document": "This API is used to remove the isolation of pay-as-you-go TDSQL for MySQL instances.",
+      "input": "ActiveHourDCDBInstanceRequest",
+      "name": "Removes the isolation of pay-as-you-go TDSQL for MySQL instances",
+      "output": "ActiveHourDCDBInstanceResponse"
+    },
     "AssociateSecurityGroups": {
       "document": "This API is used to associate security groups with Tencent Cloud resources in batches.",
       "input": "AssociateSecurityGroupsRequest",
@@ -35,6 +41,12 @@
       "input": "CreateAccountRequest",
       "name": "Creates an account",
       "output": "CreateAccountResponse"
+    },
+    "CreateHourDCDBInstance": {
+      "document": "This API is used to create pay-as-you-go TDSQL for MySQL instances.",
+      "input": "CreateHourDCDBInstanceRequest",
+      "name": "Creates pay-as-you-go TDSQL for MySQL instances",
+      "output": "CreateHourDCDBInstanceResponse"
     },
     "DeleteAccount": {
       "document": "This API is used to delete a TencentDB account, which is uniquely identified by username and host.",
@@ -180,6 +192,12 @@
       "name": "Initializes instances",
       "output": "InitDCDBInstancesResponse"
     },
+    "IsolateHourDCDBInstance": {
+      "document": "This API is used to isolate pay-as-you-go TDSQL for MySQL instances.",
+      "input": "IsolateHourDCDBInstanceRequest",
+      "name": "Isolates pay-as-you-go TDSQL for MySQL instances",
+      "output": "IsolateHourDCDBInstanceResponse"
+    },
     "ModifyAccountDescription": {
       "document": "This API is used to modify the remarks of a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts.",
       "input": "ModifyAccountDescriptionRequest",
@@ -235,6 +253,46 @@
     "serviceShortName": "dcdb"
   },
   "objects": {
+    "ActiveHourDCDBInstanceRequest": {
+      "document": "ActiveHourDCDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of instance IDs in the format of dcdbt-ow728lmc, which can be obtained through the `DescribeDCDBInstances` API.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ActiveHourDCDBInstanceResponse": {
+      "document": "ActiveHourDCDBInstance response structure.",
+      "members": [
+        {
+          "document": "IDs of instances removed from isolation",
+          "member": "string",
+          "name": "SuccessInstanceIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IDs of instances failed to be removed from isolation",
+          "member": "string",
+          "name": "FailedInstanceIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "AssociateSecurityGroupsRequest": {
       "document": "AssociateSecurityGroups request structure.",
       "members": [
@@ -655,6 +713,231 @@
           "document": "Passed through from the input parameters.",
           "member": "int64",
           "name": "ReadOnly",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateHourDCDBInstanceRequest": {
+      "document": "CreateHourDCDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Shard memory in GB, which can be obtained through the `DescribeShardSpec` API.\n  ",
+          "example": "2",
+          "member": "int64",
+          "name": "ShardMemory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Shard capacity in GB, which can be obtained through the `DescribeShardSpec` API.\n  ",
+          "example": "10",
+          "member": "int64",
+          "name": "ShardStorage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of nodes per shard, which can be obtained through the `DescribeShardSpec` API.\n  ",
+          "example": "2",
+          "member": "int64",
+          "name": "ShardNodeCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of shards in the instance. Value range: 2-8. Upgrade your instance to have up to 64 shards if you require more.",
+          "example": "2",
+          "member": "int64",
+          "name": "ShardCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of instances to be purchased",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID, which can be obtained through the `DescribeProjects` API. If this parameter is not passed in, the instance will be associated with the default project.",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "VPC ID. If this parameter is left empty or not passed in, the instance will be created on the classic network.",
+          "example": "0",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID, which is required when `VpcId` is specified",
+          "example": "0",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of CPU cores per shard, which can be obtained through the `DescribeShardSpec` API.\n  ",
+          "example": "0",
+          "member": "int64",
+          "name": "ShardCpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Database engine version. Valid values:\n10.0.10: MariaDB 10.0.10;\n10.1.9: MariaDB 10.1.9;\n5.7.17: Percona 5.7.17.\nIf this parameter is left empty, `10.1.9` will be used.",
+          "example": "5.7.17",
+          "member": "string",
+          "name": "DbVersionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "AZs to deploy shard nodes. You can specify up to two AZs.",
+          "example": "[\"ap-guangzhou-1\"]",
+          "member": "string",
+          "name": "Zones",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Security group ID",
+          "example": "sg-12345",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom name of the instance",
+          "example": "实例名称",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether IPv6 is supported",
+          "example": "0",
+          "member": "int64",
+          "name": "Ipv6Flag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Array of tag key-value pairs",
+          "example": "无",
+          "member": "ResourceTag",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "If you create a disaster recovery instance, you need to use this parameter to specify the region of the associated source instance so that the disaster recovery instance can sync data with the source instance over the Data Communication Network (DCN).",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "DcnRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "If you create a disaster recovery instance, you need to use this parameter to specify the ID of the associated source instance so that the disaster recovery instance can sync data with the source instance over the Data Communication Network (DCN).",
+          "example": "tdsqlshard-123",
+          "member": "string",
+          "name": "DcnInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of parameters. Valid values: `character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; 0: case-sensitive; 1: case-insensitive); `innodb_page_size` (InnoDB data page size; default size: 16 KB); `sync_mode` (sync mode; 0: async; 1: strong sync; 2: downgradable strong sync; default value: 2).",
+          "example": "无",
+          "member": "DBParamValue",
+          "name": "InitParams",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "ID of the instance to be rolled back",
+          "example": "无",
+          "member": "string",
+          "name": "RollbackInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rollback time",
+          "example": "无",
+          "member": "string",
+          "name": "RollbackTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of security group IDs (this parameter is compatible with the old parameter `SecurityGroupId`)",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateHourDCDBInstanceResponse": {
+      "document": "CreateHourDCDBInstance response structure.",
+      "members": [
+        {
+          "document": "IDs of the instances you have purchased in this order. If no instance IDs are returned, you can query them with the `DescribeOrders` API. You can also use the `DescribeDBInstances` API to check whether an instance has been created successfully.",
+          "example": "[\"tdsql-xxxxxx\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task ID, which can be used to query the creation progress",
+          "example": "1122",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3300,6 +3583,46 @@
           "document": "Passed through from the input parameters.",
           "member": "string",
           "name": "InstanceIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateHourDCDBInstanceRequest": {
+      "document": "IsolateHourDCDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateHourDCDBInstanceResponse": {
+      "document": "IsolateHourDCDBInstance response structure.",
+      "members": [
+        {
+          "document": "IDs of isolated instances",
+          "member": "string",
+          "name": "SuccessInstanceIds",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IDs of instances failed to be isolated",
+          "member": "string",
+          "name": "FailedInstanceIds",
           "type": "list",
           "value_allowed_null": false
         },

@@ -3,15 +3,15 @@
     "AssignProject": [
       {
         "document": "",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=AssignProject\r\n&InstanceIds.0=cmgo-eqmoa5sf\r\n&ProjectId=12\r\n&<Common request parameters>",
+        "input": "https://mongodb.tencentcloudapi.com/?Action=AssignProject\n&InstanceIds.0=cmgo-eqmoa5sf\n&ProjectId=12\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FlowIds\": [\n            1081\n        ],\n        \"RequestId\": \"8e2a339e-5ba9-4da3-8dc2-65a0a6314811\"\n    }\n}",
-        "title": "Specifying the project to which a TencentDB instance belongs"
+        "title": "Specifying the project to which an instance belongs"
       }
     ],
     "CreateBackupDBInstance": [
       {
         "document": "",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=CreateBackupDBInstance\r\n&InstanceId=cmgo-ayxpky6l\r\n&BackupRemark=remarkInfo\r\n&BackupMethod=0\r\n&<Common request parameters>",
+        "input": "https://mongodb.tencentcloudapi.com/?Action=CreateBackupDBInstance\n&InstanceId=cmgo-ayxpky6l\n&BackupRemark=remarkInfo\n&BackupMethod=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": 4773,\n        \"RequestId\": \"e600a8d0-9014-11ea-84c1-01cccde830c6\"\n    }\n}",
         "title": "Creating instance backups"
       }
@@ -26,7 +26,7 @@
     ],
     "CreateDBInstance": [
       {
-        "document": "",
+        "document": "This example shows you how to create a v4.0 instance. To create instances in other versions, please specify the version you need as instructed in the input parameter description.",
         "input": "https://mongodb.tencentcloudapi.com/?Action=CreateDBInstance\n&Memory=4\n&Volume=250\n&GoodsNum=1\n&Zone=ap-guangzhou-2\n&VpcId=vpc-0akbol5v\n&SubnetId=subnet-fyrtjbqw\n&ProjectId=0\n&MongoVersion=MONGO_40_WT\n&MachineCode=HIO10G\n&NodeNum=3\n&Period=1\n&Password=pwd123456\n&ClusterType=REPLSET\n&ReplicateSetNum=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d88095e5-50e8-4245-a0cf-993a536f9b20\",\n        \"DealId\": \"7142863\",\n        \"InstanceIds\": [\n            \"cmgo-po5f899l\"\n        ]\n    }\n}",
         "title": "Creating a monthly subscribed TencentDB instance"
@@ -34,7 +34,7 @@
     ],
     "CreateDBInstanceHour": [
       {
-        "document": "",
+        "document": "This example shows you how to create a v4.0 instance. To create instances in other versions, please specify the version you need as instructed in the input parameter description.",
         "input": "https://mongodb.tencentcloudapi.com/?Action=CreateDBInstanceHour\n&Memory=4\n&Volume=250\n&ReplicateSetNum=1\n&NodeNum=2\n&MongoVersion=MONGO_40_WT\n&MachineCode=HIO10G\n&GoodsNum=1\n&Zone=ap-guangzhou-3\n&Clone=1\n&ClusterType=REPLSET\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eaf9b19d-5ad4-4ca2-9fc4-a319aeb9181f\",\n        \"DealId\": \"20190709160000003502416120946732\",\n        \"InstanceIds\": [\n            \"cmgo-m26c6jsf\"\n        ]\n    }\n}",
         "title": "Creating a pay-as-you-go TencentDB instance"
@@ -67,9 +67,9 @@
     "DescribeClientConnections": [
       {
         "document": "",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=DescribeClientConnections\r\n&InstanceId=cmgo-eqmoaxxx\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"Clients\": [\n            {\n                \"Count\": 15,\n                \"IP\": \"10.xx.xx.xx\"\n            },\n            {\n                \"Count\": 15,\n                \"IP\": \"10.xx.xx.xx\"\n            }\n        ],\n        \"RequestId\": \"c61fd6e2-c505-4fb9-9f30-edd8e897b236\"\n    }\n}",
-        "title": "Querying client connections of a TencentDB instance"
+        "input": "https://mongodb.tencentcloudapi.com/?Action=DescribeClientConnections\n&InstanceId=cmgo-eqmoaxxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Clients\": [\n            {\n                \"Count\": 1,\n                \"IP\": \"xx\",\n                \"InternalService\": true\n            },\n            {\n                \"Count\": 1,\n                \"IP\": \"xx\",\n                \"InternalService\": true\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying the client connections of a TencentDB instance"
       }
     ],
     "DescribeDBBackups": [
@@ -83,7 +83,7 @@
     "DescribeDBInstanceDeal": [
       {
         "document": "",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=DescribeDBInstanceDeal\r\n&DealId=20200420111635\r\n&<Common request parameters>",
+        "input": "https://mongodb.tencentcloudapi.com/?Action=DescribeDBInstanceDeal\n&DealId=20200420111635\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Action\": \"purchase\",\n        \"DiscountPrice\": 759.33,\n        \"OriginalPrice\": 1116.67,\n        \"RequestId\": \"e79836e8-1864-45bf-aa63-0c7af31e7de5\",\n        \"Status\": 4\n    }\n}",
         "title": "Querying order details"
       }
@@ -91,8 +91,8 @@
     "DescribeDBInstances": [
       {
         "document": "",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=DescribeDBInstances\n&Limit=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceDetails\": [\n            {\n                \"AutoRenewFlag\": 0,\n                \"CloneInstances\": [],\n                \"ClusterType\": 0,\n                \"ClusterVer\": 1,\n                \"CpuNum\": 2,\n                \"CreateTime\": \"2019-04-02 19:29:16\",\n                \"DeadLine\": \"2019-04-04 19:29:16\",\n                \"InstanceId\": \"cmgo-rw2v134z\",\n                \"InstanceName\": \"cmgo-rw2v134z\",\n                \"InstanceStatusDesc\": \"Rolling back \",\n                \"InstanceType\": 2,\n                \"InstanceVer\": 4,\n                \"MachineType\": \"HIO10G\",\n                \"MaintenanceEnd\": \"05:00:00\",\n                \"MaintenanceStart\": \"04:00:00\",\n                \"Memory\": 4096,\n                \"MongoVersion\": \"MONGO_3_WT\",\n                \"NetType\": 1,\n                \"PayMode\": 0,\n                \"ProjectId\": 0,\n                \"Protocol\": 0,\n                \"ReadonlyInstances\": [],\n                \"RealInstanceId\": \"cmgo-da0pc0dr\",\n                \"Region\": \"ap-guangzhou\",\n                \"RelatedInstance\": {\n                    \"InstanceId\": \"\",\n                    \"Region\": \"\"\n                },\n                \"ReplicaSets\": [\n                    {\n                        \"Memory\": 4096,\n                        \"OplogSize\": 10240,\n                        \"RealReplicaSetId\": \"cmgo-rw2v134z_0\",\n                        \"ReplicaSetId\": \"cmgo-rw2v134z_0\",\n                        \"ReplicaSetName\": \"cmgo-rw2v134z_0\",\n                        \"SecondaryNum\": 2,\n                        \"UsedVolume\": 0,\n                        \"Volume\": 102400\n                    }\n                ],\n                \"ReplicationSetNum\": 1,\n                \"SecondaryNum\": 2,\n                \"StandbyInstances\": [],\n                \"Status\": 1,\n                \"SubnetId\": \"subnet-b0lagkxi\",\n                \"Tags\": [],\n                \"UsedVolume\": 0,\n                \"Vip\": \"\",\n                \"Volume\": 102400,\n                \"VpcId\": \"vpc-orgohlut\",\n                \"Vport\": 27017,\n                \"Zone\": \"ap-guangzhou-3\"\n            }\n        ],\n        \"RequestId\": \"302530d2-ee57-495e-89d0-51e03b11815e\",\n        \"TotalCount\": 19\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstances\n<Common request parameters>\n\n{\n    \"Status\": [\n        0\n    ],\n    \"OrderBy\": \"xx\",\n    \"InstanceIds\": [\n        \"xx\"\n    ],\n    \"VpcId\": \"xx\",\n    \"Tags\": {\n        \"TagKey\": \"xx\",\n        \"TagValue\": \"xx\"\n    },\n    \"ClusterType\": 0,\n    \"PayMode\": 0,\n    \"Limit\": 1,\n    \"SearchKey\": \"xx\",\n    \"Offset\": 1,\n    \"SubnetId\": \"xx\",\n    \"OrderByType\": \"xx\",\n    \"InstanceType\": 0,\n    \"ProjectIds\": [\n        1\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceDetails\": [\n            {\n                \"AutoRenewFlag\": 0,\n                \"CloneInstances\": [],\n                \"ClusterType\": 0,\n                \"ClusterVer\": 1,\n                \"CpuNum\": 2,\n                \"CreateTime\": \"2019-04-02 19:29:16\",\n                \"DeadLine\": \"2019-04-04 19:29:16\",\n                \"InstanceId\": \"cmgo-rw2v134z\",\n                \"InstanceName\": \"cmgo-rw2v134z\",\n                \"InstanceStatusDesc\": \"Rolling back\",\n                \"InstanceType\": 2,\n                \"InstanceVer\": 4,\n                \"MachineType\": \"HIO10G\",\n                \"MaintenanceEnd\": \"05:00:00\",\n                \"MaintenanceStart\": \"04:00:00\",\n                \"Memory\": 4096,\n                \"MongoVersion\": \"MONGO_3_WT\",\n                \"NetType\": 1,\n                \"PayMode\": 0,\n                \"ProjectId\": 0,\n                \"Protocol\": 0,\n                \"ReadonlyInstances\": [],\n                \"RealInstanceId\": \"cmgo-da0pc0dr\",\n                \"Region\": \"ap-guangzhou\",\n                \"RelatedInstance\": {\n                    \"InstanceId\": \"\",\n                    \"Region\": \"\"\n                },\n                \"ReplicaSets\": [\n                    {\n                        \"Memory\": 4096,\n                        \"OplogSize\": 10240,\n                        \"RealReplicaSetId\": \"cmgo-rw2v134z_0\",\n                        \"ReplicaSetId\": \"cmgo-rw2v134z_0\",\n                        \"ReplicaSetName\": \"cmgo-rw2v134z_0\",\n                        \"SecondaryNum\": 2,\n                        \"UsedVolume\": 0,\n                        \"Volume\": 102400\n                    }\n                ],\n                \"ReplicationSetNum\": 1,\n                \"SecondaryNum\": 2,\n                \"StandbyInstances\": [],\n                \"Status\": 1,\n                \"SubnetId\": \"subnet-b0lagkxi\",\n                \"Tags\": [],\n                \"UsedVolume\": 0,\n                \"Vip\": \"\",\n                \"Volume\": 102400,\n                \"VpcId\": \"vpc-orgohlut\",\n                \"Vport\": 27017,\n                \"Zone\": \"ap-guangzhou-3\"\n            }\n        ],\n        \"RequestId\": \"302530d2-ee57-495e-89d0-51e03b11815e\",\n        \"TotalCount\": 19\n    }\n}",
         "title": "Querying the list of instances"
       }
     ],
@@ -108,7 +108,7 @@
       {
         "document": "",
         "input": "https://mongodb.tencentcloudapi.com/?Action=DescribeSecurityGroup\n&InstanceId=cmgo-p8vnipr5\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Groups\": [\n            {\n                \"CreateTime\": \"2021-01-07 16:38:48\",\n                \"Inbound\": [\n                    {\n                        \"Action\": \"DROP\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"DROP\",\n                        \"CidrIp\": \"::/0\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    }\n                ],\n                \"Outbound\": [\n                    {\n                        \"Action\": \"DROP\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"DROP\",\n                        \"CidrIp\": \"\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    }\n                ],\n                \"ProjectId\": 0,\n                \"SecurityGroupId\": \"sg-7pw2qq97\",\n                \"SecurityGroupName\": \"Reject all\",\n                \"SecurityGroupRemark\": \"Opening all ports to the public and private networks may involve security risks.\"\n            }\n        ],\n        \"RequestId\": \"b1886334-acfe-4445-8429-e11a6e7b3851\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"Groups\": [\n            {\n                \"Outbound\": [\n                    {\n                        \"PortRange\": \"xx\",\n                        \"CidrIp\": \"xx\",\n                        \"ServiceModule\": \"xx\",\n                        \"AddressModule\": \"xx\",\n                        \"Action\": \"xx\",\n                        \"IpProtocol\": \"xx\",\n                        \"Id\": \"xx\",\n                        \"Desc\": \"xx\"\n                    },\n                    {\n                        \"PortRange\": \"xx\",\n                        \"CidrIp\": \"xx\",\n                        \"Action\": \"xx\",\n                        \"AddressModule\": \"xx\",\n                        \"ServiceModule\": \"xx\",\n                        \"IpProtocol\": \"xx\",\n                        \"Id\": \"xx\",\n                        \"Desc\": \"xx\"\n                    }\n                ],\n                \"SecurityGroupName\": \"xx\",\n                \"Inbound\": [\n                    {\n                        \"PortRange\": \"xx\",\n                        \"CidrIp\": \"xx\",\n                        \"ServiceModule\": \"xx\",\n                        \"AddressModule\": \"xx\",\n                        \"Action\": \"xx\",\n                        \"IpProtocol\": \"xx\",\n                        \"Id\": \"xx\",\n                        \"Desc\": \"xx\"\n                    },\n                    {\n                        \"PortRange\": \"xx\",\n                        \"CidrIp\": \"xx\",\n                        \"Action\": \"xx\",\n                        \"AddressModule\": \"xx\",\n                        \"ServiceModule\": \"xx\",\n                        \"IpProtocol\": \"xx\",\n                        \"Id\": \"xx\",\n                        \"Desc\": \"xx\"\n                    }\n                ],\n                \"ProjectId\": 0,\n                \"SecurityGroupId\": \"xx\",\n                \"SecurityGroupRemark\": \"xx\",\n                \"CreateTime\": \"xx\"\n            }\n        ]\n    }\n}",
         "title": "Querying the security groups associated with an instance"
       }
     ],
@@ -147,7 +147,7 @@
     "InquirePriceCreateDBInstances": [
       {
         "document": "",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=InquirePriceCreateDBInstances\r\n&Zone=ap-guangzhou-4\r\n&NodeNum=3\r\n&Memory=4\r\n&Volume=100\r\n&MongoVersion=MONGO_36_WT\r\n&MachineCode=HIO10G\r\n&GoodsNum=2\r\n&Period=1\r\n&ClusterType=REPLSET\r\n&ReplicateSetNum=1\r\n&<Common request parameters>",
+        "input": "https://mongodb.tencentcloudapi.com/?Action=InquirePriceCreateDBInstances\n&Zone=ap-guangzhou-4\n&NodeNum=3\n&Memory=4\n&Volume=100\n&MongoVersion=MONGO_36_WT\n&MachineCode=HIO10G\n&GoodsNum=2\n&Period=1\n&ClusterType=REPLSET\n&ReplicateSetNum=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"DiscountPrice\": 1340,\n            \"OriginalPrice\": 1340,\n            \"UnitPrice\": 670\n        },\n        \"RequestId\": \"fb8b4646-389d-44cc-ab8c-98c081cbdad3\"\n    }\n}",
         "title": "Querying purchase price of an instance"
       }
@@ -155,7 +155,7 @@
     "InquirePriceModifyDBInstanceSpec": [
       {
         "document": "",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=InquirePriceModifyDBInstanceSpec\r\n&InstanceId=cmgo-8oij5631\r\n&Memory=8\r\n&Volume=200\r\n&<Common request parameters>",
+        "input": "https://mongodb.tencentcloudapi.com/?Action=InquirePriceModifyDBInstanceSpec\n&InstanceId=cmgo-8oij5631\n&Memory=8\n&Volume=200\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"DiscountPrice\": 449.36,\n            \"OriginalPrice\": 660.82,\n            \"UnitPrice\": 0\n        },\n        \"RequestId\": \"ac618a97-5a29-4003-8489-fd8a1e1cc8e9\"\n    }\n}",
         "title": "Querying price of database specification adjustment"
       }
@@ -174,6 +174,14 @@
         "input": "https://mongodb.tencentcloudapi.com/?Action=IsolateDBInstance\n&InstanceId=cmgo-f555zzzz\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestId\": \"28920\"\n    }\n}",
         "title": "Terminating a pay-as-you-go TencentDB instance"
+      }
+    ],
+    "ModifyDBInstanceSecurityGroup": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceSecurityGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"SecurityGroupIds\": [\n        \"xx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Modifying security group information of an instance"
       }
     ],
     "ModifyDBInstanceSpec": [
@@ -195,7 +203,7 @@
     "RenameInstance": [
       {
         "document": "",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=RenameInstance\r\n&InstanceId=cmgo-eqmoa5sf\r\n&NewName=test_name\r\n&<Common request parameters>",
+        "input": "https://mongodb.tencentcloudapi.com/?Action=RenameInstance\n&InstanceId=cmgo-eqmoa5sf\n&NewName=test_name\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8e2a339e-5ba9-4da3-8dc2-65a0a6314811\"\n    }\n}",
         "title": "Renaming a TencentDB instance"
       }

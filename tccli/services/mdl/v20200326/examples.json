@@ -32,6 +32,14 @@
         "title": "Sample request"
       }
     ],
+    "CreateStreamLiveWatermark": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStreamLiveWatermark\n<Common request parameters>\n\n{\n    \"TextSettings\": {\n        \"XPos\": 10,\n        \"Text\": \"watermark\",\n        \"YPos\": 10,\n        \"FontSize\": 10,\n        \"Location\": \"TOP_LEFT\",\n        \"FontColor\": \"0x000000\"\n    },\n    \"Type\": \"STATIC_IMAGE\",\n    \"Name\": \"test\",\n    \"ImageSettings\": {\n        \"XPos\": 10,\n        \"YPos\": 10,\n        \"Height\": 10,\n        \"Width\": 10,\n        \"ImageContent\": \"d2F0ZXJtYXJr\",\n        \"Location\": \"TOP_LEFT\",\n        \"ImageType\": \"png\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": \"123\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "DeleteStreamLiveChannel": [
       {
         "document": "",
@@ -61,6 +69,14 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamLivePlan\n<Common request parameters>\n\n{\n    \"ChannelId\": \"AAAAA\",\n    \"EventName\": \"EventName\",\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"AAAAA\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteStreamLiveWatermark": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamLiveWatermark\n<Common request parameters>\n\n{\n    \"Id\": \"xxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -160,6 +176,22 @@
         "title": "Sample request"
       }
     ],
+    "DescribeStreamLiveWatermark": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamLiveWatermark\n<Common request parameters>\n\n{\n    \"Id\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"TextSettings\": {\n                \"XPos\": 0,\n                \"Text\": \"xx\",\n                \"YPos\": 0,\n                \"FontSize\": 0,\n                \"Location\": \"xx\",\n                \"FontColor\": \"xx\"\n            },\n            \"Id\": \"xx\",\n            \"Type\": \"xx\",\n            \"ImageSettings\": {\n                \"XPos\": 0,\n                \"YPos\": 0,\n                \"Height\": 0,\n                \"Width\": 0,\n                \"Location\": \"xx\"\n            },\n            \"Name\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeStreamLiveWatermarks": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamLiveWatermarks\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"TextSettings\": {\n                    \"XPos\": 0,\n                    \"Text\": \"xx\",\n                    \"YPos\": 0,\n                    \"FontSize\": 0,\n                    \"Location\": \"xx\",\n                    \"FontColor\": \"xx\"\n                },\n                \"Id\": \"xx\",\n                \"Type\": \"xx\",\n                \"ImageSettings\": {\n                    \"XPos\": 0,\n                    \"YPos\": 0,\n                    \"Height\": 0,\n                    \"Width\": 0,\n                    \"Location\": \"xx\"\n                },\n                \"Name\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "ModifyStreamLiveChannel": [
       {
         "document": "",
@@ -181,6 +213,14 @@
         "document": "",
         "input": "https://mdl.tencentcloudapi.com/?Action=ModifyStreamLiveInputSecurityGroup\n&Id= 1111\n&Name=xxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyStreamLiveWatermark": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStreamLiveWatermark\n<Common request parameters>\n\n{\n    \"TextSettings\": {\n        \"XPos\": 0,\n        \"Text\": \"xx\",\n        \"YPos\": 0,\n        \"FontSize\": 0,\n        \"Location\": \"xx\",\n        \"FontColor\": \"xx\"\n    },\n    \"ImageSettings\": {\n        \"XPos\": 0,\n        \"YPos\": 0,\n        \"Height\": 0,\n        \"Width\": 0,\n        \"ImageContent\": \"xx\",\n        \"Location\": \"xx\",\n        \"ImageType\": \"xx\"\n    },\n    \"Name\": \"xx\",\n    \"Id\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Sample request"
       }
     ],

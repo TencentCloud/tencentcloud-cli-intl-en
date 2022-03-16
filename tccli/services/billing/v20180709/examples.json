@@ -55,6 +55,22 @@
         "output": "{\n    \"Response\": {\n        \"Ready\": 1,\n        \"SummaryOverview\": [\n            {\n                \"TagValue\": \"\",\n                \"RealTotalCost\": \"13001.95\",\n                \"RealTotalCostRatio\": \"100.00\"\n            }\n        ],\n        \"SummaryTotal\": {\n            \"RealTotalCost\": \"13001.95\"\n        },\n        \"RequestId\": \"7119a6ed-5023-4682-9ea3-33102af1b19e\"\n    }\n}",
         "title": "Getting the bills summarized by tag"
       }
+    ],
+    "DescribeVoucherInfo": [
+      {
+        "document": "",
+        "input": "https://billing.tencentcloudapi.com/?Action=DescribeVoucherInfo\n&Limit=10\n&Offset=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"TotalBalance\": 0,\n        \"VoucherInfos\": [\n            {\n                \"Status\": \"overdue\",\n                \"OwnerUin\": \"xx\",\n                \"PayMode\": \"*postPay*\",\n                \"NominalValue\": 0,\n                \"PayScene\": \"all\",\n                \"VoucherId\": \"xx\",\n                \"EndTime\": \"xx\",\n                \"Balance\": 0,\n                \"BeginTime\": \"xx\",\n                \"ApplicableProducts\": {\n                    \"GoodsName\": \"All\",\n                    \"PayMode\": \"*\"\n                },\n                \"ExcludedProducts\": [\n                    {\n                        \"GoodsName\": \"xxx\",\n                        \"PayMode\": \"*\"\n                    },\n                    {\n                        \"GoodsName\": \"xxx\",\n                        \"PayMode\": \"*\"\n                    },\n                    {\n                        \"GoodsName\": \"xxx\",\n                        \"PayMode\": \"*\"\n                    },\n                    {\n                        \"GoodsName\": \"xxx\",\n                        \"PayMode\": \"*\"\n                    },\n                    {\n                        \"GoodsName\": \"xxx\",\n                        \"PayMode\": \"*\"\n                    },\n                    {\n                        \"GoodsName\": \"xxx\",\n                        \"PayMode\": \"*\"\n                    },\n                    {\n                        \"GoodsName\": \"xxx\",\n                        \"PayMode\": \"*\"\n                    },\n                    {\n                        \"GoodsName\": \"xxx\",\n                        \"PayMode\": \"*\"\n                    },\n                    {\n                        \"GoodsName\": \"xxx\",\n                        \"PayMode\": \"*\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying vouchers"
+      }
+    ],
+    "DescribeVoucherUsageDetails": [
+      {
+        "document": "",
+        "input": "https://billing.tencentcloudapi.com/?Action=DescribeVoucherUsageDetails\n&Limit=10\n&Offset=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": \"0\",\n        \"TotalUsedAmount\": 0,\n        \"UsageRecords\": [\n            {\n                \"UsedAmount\": 0,\n                \"UsedTime\": \"xx\",\n                \"UsageDetails\": [\n                    {\n                        \"ProductName\": \"xxx\",\n                        \"SubProductName\": \"xxx\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying voucher usage details"
+      }
     ]
   },
   "version": "1.0"
