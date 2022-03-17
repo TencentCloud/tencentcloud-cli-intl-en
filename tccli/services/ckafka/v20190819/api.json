@@ -24,6 +24,12 @@
       "name": "Adds ACL policy",
       "output": "CreateAclResponse"
     },
+    "CreateConsumer": {
+      "document": "This API is used to create a consumer group.",
+      "input": "CreateConsumerRequest",
+      "name": "Creates a consumer group",
+      "output": "CreateConsumerResponse"
+    },
     "CreatePartition": {
       "document": "This API is used to add a partition in a topic.",
       "input": "CreatePartitionRequest",
@@ -1337,6 +1343,69 @@
           "document": "Returned result",
           "member": "JgwOperateResponse",
           "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateConsumerRequest": {
+      "document": "CreateConsumer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "ckafka-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Group name.",
+          "example": "group-xxx",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name. You must specify the name of an existing topic for either `TopicName` or `TopicNameList`.",
+          "example": "topic-xxx",
+          "member": "string",
+          "name": "TopicName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name array.",
+          "example": "topic-xxx",
+          "member": "string",
+          "name": "TopicNameList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateConsumerResponse": {
+      "document": "CreateConsumer response structure.",
+      "members": [
+        {
+          "document": "Description of the created consumer group.",
+          "example": "data",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4016,7 +4085,7 @@
         },
         {
           "default": "",
-          "document": "Instance status, which is an int-type value. 0: healthy, 1: alarmed, 2: exceptional",
+          "document": "Instance status. An int-type value will be returned. `0`: Healthy, `1`: Alarmed, `2`: Exceptional",
           "example": "1",
           "member": "int64",
           "name": "Healthy",

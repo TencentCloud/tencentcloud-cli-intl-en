@@ -11,7 +11,7 @@
     "AssociateDDoSEipLoadBalancer": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssociateDDoSEipLoadBalancer\n<Common request parameters>\n\n{\n    \"InstanceId\": \"bgpip-0000011x\",\n    \"Eip\": \"1.1.1.1\",\n    \"LoadBalancerID\": \"lb-0000002i\",\n    \"LoadBalancerRegion\": \"ap-hongkong\"\n}",
+        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssociateDDoSEipLoadBalancer\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Eip\": \"xx\",\n    \"Vip\": \"xx\",\n    \"LoadBalancerRegion\": \"xx\",\n    \"LoadBalancerID\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\"\n    }\n}",
         "title": "Binding an Anti-DDoS EIPs to a CLB instance"
       }
@@ -30,6 +30,38 @@
         "input": "https://antiddos.tencentcloudapi.com/?Action=CreateBoundIP\n&Business=bgp\n&Id=bgp-000000xe\n&BoundDevList.0.Ip=1.1.1.1\n&BoundDevList.0.BizType=public\n&BoundDevList.0.DeviceType=cvm\n&BoundDevList.0.InstanceId=ins-f2f9ssbo\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"Success\": {\n            \"Code\": \"Success\",\n            \"Message\": \"Success\"\n        }\n    }\n}",
         "title": "Binding IP to Anti-DDoS Pro instance"
+      }
+    ],
+    "CreateCCPrecisionPolicy": [
+      {
+        "document": "",
+        "input": "https://antiddos.tencentcloudapi.com/?Action=CreateCCPrecisionPolicy\n&InstanceId=bgpip-0000011x\n&Ip=1.2.1.3\n&Protocol=HTTP\n&Domain=1.acx.com\n&PolicyAction=alg\n&PolicyList.0.FieldType=value\n&PolicyList.0.FieldName=cgi\n&PolicyList.0.Value=/asd\n&PolicyList.0.ValueOperator=equal\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\"\n    }\n}",
+        "title": "Creates a CC precise protection policy"
+      }
+    ],
+    "CreateCCReqLimitPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCCReqLimitPolicy\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Ip\": \"xx\",\n    \"Domain\": \"xx\",\n    \"Policy\": {\n        \"ExecuteDuration\": 1,\n        \"Uri\": \"xx\",\n        \"Period\": 1,\n        \"Cookie\": \"xx\",\n        \"Mode\": \"xx\",\n        \"Action\": \"xx\",\n        \"UserAgent\": \"xx\",\n        \"RequestNum\": 1\n    },\n    \"Protocol\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\"\n    }\n}",
+        "title": "Creating a CC precise protection policy"
+      }
+    ],
+    "CreateCcBlackWhiteIpList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCcBlackWhiteIpList\n<Common request parameters>\n\n{\n    \"Domain\": \"xx\",\n    \"Protocol\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"Ip\": \"xx\",\n    \"IpList\": [\n        {\n            \"Ip\": \"xx\",\n            \"Mask\": 1\n        }\n    ],\n    \"Type\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b7739a1e-837d-4248-bf9f-16a9bf77db22\"\n    }\n}",
+        "title": "Creating a layer 4 access control list to prevent CC attacks"
+      }
+    ],
+    "CreateCcGeoIPBlockConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCcGeoIPBlockConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"IP\": \"xx\",\n    \"Domain\": \"xx\",\n    \"Protocol\": \"xx\",\n    \"CcGeoIPBlockConfig\": {\n        \"Action\": \"xx\",\n        \"Id\": \"xx\",\n        \"RegionType\": \"xx\",\n        \"AreaList\": [\n            0\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Adding regional blocking configuration"
       }
     ],
     "CreateDDoSAI": [
@@ -128,6 +160,46 @@
         "title": "Deleting an Anti-DDoS IP blocklist/allowlist"
       }
     ],
+    "DeleteCCLevelPolicy": [
+      {
+        "document": "",
+        "input": "https://antiddos.tencentcloudapi.com/?Action=DeleteCCLevelPolicy\n&InstanceId=bgpip-0000011x\n&Ip=1.1.1.3\n&Domain=test.com\n&Protocol=http\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\"\n    }\n}",
+        "title": "Deleting a level-defining policy of CC attacks"
+      }
+    ],
+    "DeleteCCPrecisionPolicy": [
+      {
+        "document": "",
+        "input": "https://antiddos.tencentcloudapi.com/?Action=DeleteCCPrecisionPolicy\n&InstanceId=bgpip-0000011x\n&PolicyId=ccPrecs-00000324\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\"\n    }\n}",
+        "title": "Deleting CC precise protection policies"
+      }
+    ],
+    "DeleteCCThresholdPolicy": [
+      {
+        "document": "",
+        "input": "https://antiddos.tencentcloudapi.com/?Action=DeleteCCThresholdPolicy\n&InstanceId=bgpip-0000011x\n&Ip=1.1.1.3\n&Domain=test.com\n&Protocol=http\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\"\n    }\n}",
+        "title": "Deleting a CC cleansing threshold policy"
+      }
+    ],
+    "DeleteCcBlackWhiteIpList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCcBlackWhiteIpList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"PolicyId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\"\n    }\n}",
+        "title": "Deleting a layer-4 access control list"
+      }
+    ],
+    "DeleteCcGeoIPBlockConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCcGeoIPBlockConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"CcGeoIPBlockConfig\": {\n        \"Action\": \"xx\",\n        \"Id\": \"xx\",\n        \"RegionType\": \"xx\",\n        \"AreaList\": [\n            0\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Deleting regional blocking configuration"
+      }
+    ],
     "DeleteDDoSGeoIPBlockConfig": [
       {
         "document": "",
@@ -192,12 +264,60 @@
         "title": "Getting an Anti-DDoS IP blocklist/allowlist"
       }
     ],
+    "DescribeCCLevelList": [
+      {
+        "document": "",
+        "input": "https://antiddos.tencentcloudapi.com/?Action=DescribeCCLevelList\n&Business=bgp-multip\n&Offset=0\n&Limit=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\",\n        \"Total\": 1,\n        \"LevelList\": [\n            {\n                \"InstanceId\": \"bgp-000000432\",\n                \"Ip\": \"1.2.1.1\",\n                \"Protocol\": \"HTTP\",\n                \"Domain\": \"1.ase.com\",\n                \"Level\": \"loose\",\n                \"CreateTime\": \"2020-03-27 14:32:12\",\n                \"ModifyTime\": \"2020-03-27 14:32:32\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the list of CC protection levels"
+      }
+    ],
+    "DescribeCCLevelPolicy": [
+      {
+        "document": "",
+        "input": "https://antiddos.tencentcloudapi.com/?Action=DescribeCCLevelPolicy\n&InstanceId=bgpip-0000011x\n&Ip=1.3.2.5\n&Domain=1.sca.com\n&Protocol=HTTP\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\",\n        \"Level\": \"loose\"\n    }\n}",
+        "title": "Querying a level-defining policy of CC attacks"
+      }
+    ],
+    "DescribeCCPrecisionPlyList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCCPrecisionPlyList\n<Common request parameters>\n\n{\n    \"Domain\": \"xx\",\n    \"Protocol\": \"xx\",\n    \"Business\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"Ip\": \"xx\",\n    \"Limit\": 1,\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"PrecisionPolicyList\": [\n            {\n                \"Domain\": \"xx\",\n                \"PolicyAction\": \"xx\",\n                \"InstanceId\": \"xx\",\n                \"Ip\": \"xx\",\n                \"PolicyList\": [\n                    {\n                        \"ValueOperator\": \"xx\",\n                        \"FieldName\": \"xx\",\n                        \"FieldType\": \"xx\",\n                        \"Value\": \"xx\"\n                    }\n                ],\n                \"PolicyId\": \"xx\",\n                \"ModifyTime\": \"2020-09-22 00:00:00\",\n                \"Protocol\": \"xx\",\n                \"CreateTime\": \"2020-09-22 00:00:00\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Obtaining a list of CC precise protection policies"
+      }
+    ],
+    "DescribeCCThresholdList": [
+      {
+        "document": "",
+        "input": "https://antiddos.tencentcloudapi.com/?Action=DescribeCCThresholdList\n&Business=bgp-multip\n&Offset=0\n&Limit=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\",\n        \"Total\": 1,\n        \"ThresholdList\": [\n            {\n                \"InstanceId\": \"bgp-000000432\",\n                \"Ip\": \"1.2.1.1\",\n                \"Protocol\": \"HTTP\",\n                \"Domain\": \"1.ase.com\",\n                \"Threshold\": 1000,\n                \"CreateTime\": \"2020-03-27 14:32:12\",\n                \"ModifyTime\": \"2020-03-27 14:32:32\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the list of CC cleansing thresholds"
+      }
+    ],
     "DescribeCCTrend": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCCTrend\n<Common request parameters>\n\n{\n    \"Domain\": \"xx\",\n    \"Business\": \"xx\",\n    \"Ip\": \"xx\",\n    \"Period\": 0,\n    \"StartTime\": \"2020-09-22 00:00:00\",\n    \"EndTime\": \"2020-09-22 00:00:00\",\n    \"Id\": \"xx\",\n    \"MetricName\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Business\": \"bgp\",\n        \"Count\": 1,\n        \"Data\": [\n            1234\n        ],\n        \"EndTime\": \"2018-08-27 16:05:10\",\n        \"Id\": \"bgp-00000010\",\n        \"Ip\": \"3.3.3.3\",\n        \"MetricName\": \"inqps\",\n        \"Period\": 300,\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"StartTime\": \"2018-08-27 15:05:10\"\n    }\n}",
         "title": "Getting CC attack data"
+      }
+    ],
+    "DescribeCcBlackWhiteIpList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCcBlackWhiteIpList\n<Common request parameters>\n\n{\n    \"Domain\": \"xx\",\n    \"Protocol\": \"xx\",\n    \"Business\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"Ip\": \"xx\",\n    \"Limit\": 1,\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"CcBlackWhiteIpList\": [\n            {\n                \"Domain\": \"xx\",\n                \"BlackWhiteIp\": \"xx\",\n                \"Protocol\": \"xx\",\n                \"InstanceId\": \"xx\",\n                \"Ip\": \"xx\",\n                \"Mask\": 1,\n                \"PolicyId\": \"xx\",\n                \"ModifyTime\": \"xx\",\n                \"Type\": \"xx\",\n                \"CreateTime\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Obtaining a layer-4 access control list"
+      }
+    ],
+    "DescribeCcGeoIPBlockConfigList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCcGeoIPBlockConfigList\n<Common request parameters>\n\n{\n    \"Domain\": \"xx\",\n    \"Protocol\": \"xx\",\n    \"Business\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"Ip\": \"xx\",\n    \"Limit\": 1,\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"CcGeoIpPolicyList\": [\n            {\n                \"Domain\": \"xx\",\n                \"Protocol\": \"xx\",\n                \"InstanceId\": \"xx\",\n                \"Ip\": \"xx\",\n                \"RegionType\": \"xx\",\n                \"PolicyId\": \"xx\",\n                \"ModifyTime\": \"2020-09-22 00:00:00\",\n                \"Action\": \"xx\",\n                \"CreateTime\": \"2020-09-22 00:00:00\",\n                \"AreaList\": [\n                    1\n                ]\n            }\n        ],\n        \"Total\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Obtaining a list of regional blocking configurations"
       }
     ],
     "DescribeDDoSTrend": [
@@ -334,6 +454,22 @@
         "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisassociateDDoSEipAddress\n<Common request parameters>\n\n{\n    \"InstanceId\": \"bgpip-0000011x\",\n    \"Eip\": \"1.1.1.1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\"\n    }\n}",
         "title": "Unbinding EIPs"
+      }
+    ],
+    "ModifyCCPrecisionPolicy": [
+      {
+        "document": "",
+        "input": "https://antiddos.tencentcloudapi.com/?Action=ModifyCCPrecisionPolicy\n&InstanceId=bgpip-0000011x\n&PolicyId=ccPrecs-00000326\n&PolicyAction=alg\n&PolicyList.0.FieldType=value\n&PolicyList.0.FieldName=cgi\n&PolicyList.0.Value=/cadwe\n&PolicyList.0.ValueOperator=equal\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\"\n    }\n}",
+        "title": "Modifying a CC precise protection policy"
+      }
+    ],
+    "ModifyCcBlackWhiteIpList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCcBlackWhiteIpList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"IpList\": [\n        {\n            \"Ip\": \"xx\",\n            \"Mask\": 1\n        }\n    ],\n    \"Type\": \"xx\",\n    \"PolicyId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\"\n    }\n}",
+        "title": "Modifying a layer-4 access control list"
       }
     ],
     "ModifyDDoSGeoIPBlockConfig": [

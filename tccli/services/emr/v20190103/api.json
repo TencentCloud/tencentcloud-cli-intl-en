@@ -241,6 +241,52 @@
       ],
       "usage": "out"
     },
+    "ClusterExternalServiceInfo": {
+      "document": "Relationship between shared components and the current cluster",
+      "members": [
+        {
+          "default": "",
+          "document": "Dependency. `0`: Other clusters depend on the current cluster. `1`: The current cluster depends on other clusters.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "DependType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Shared component\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "zookeeper",
+          "member": "string",
+          "name": "Service",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Sharing cluster\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "emr-123",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Sharing cluster status\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "ClusterStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "ClusterInstancesInfo": {
       "document": "Cluster instance information",
       "members": [
@@ -603,6 +649,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster dependency\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "ClusterExternalServiceInfo",
+          "name": "ClusterExternalServiceInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -861,6 +917,15 @@
           "name": "SceneName",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Shared component information",
+          "example": "无",
+          "member": "ExternalService",
+          "name": "ExternalService",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1361,6 +1426,16 @@
           "name": "SecurityGroups",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "SSH key ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "skey-xxxxxxxx",
+          "member": "string",
+          "name": "PublicKeyId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
