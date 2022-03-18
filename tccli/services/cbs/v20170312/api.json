@@ -18,6 +18,12 @@
       "name": "Binding a Scheduled Snapshot Policy",
       "output": "BindAutoSnapshotPolicyResponse"
     },
+    "CopySnapshotCrossRegions": {
+      "document": "This API is used to replicate a snapshot to another region.\n\n* This is an async API. A new snapshot ID is issued when the cross-region replication task is generated. It does not mean that the snapshot has been replicated successfully. You can all the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) API in the destination region to check for this snapshot. If the snapshot status is `NORMAL`, the snapshot is replicated successfully.\n* The snapshot cross-region replication service will be commercialized in the Q3 of 2022. We will notify users about the commercialization in advance. Please check your messages in the Message Center.",
+      "input": "CopySnapshotCrossRegionsRequest",
+      "name": "Replicates a snapshot to another region",
+      "output": "CopySnapshotCrossRegionsResponse"
+    },
     "CreateAutoSnapshotPolicy": {
       "document": "This API (CreateAutoSnapshotPolicy) is used to create a scheduled snapshot policy.\n\n* For the limits on the number of scheduled snapshot policies that can be created in each region, see [Scheduled Snapshots](https://intl.cloud.tencent.com/document/product/362/8191?from_cn_redirect=1).\n* The quantity and capacity of the snapshots that can be created in each region are limited. For more information, see the **Snapshots** page on the Tencent Cloud Console. If the number of snapshots exceeds the quota, the creation of the scheduled snapshots will fail.",
       "input": "CreateAutoSnapshotPolicyRequest",
@@ -335,7 +341,7 @@
       "type": "object"
     },
     "AutoMountConfiguration": {
-      "document": "This parameter describes the configuration of automatically initializing and mounting the cloud disk to the CVM when purchasing a new cloud disk.",
+      "document": "Describes how a newly purchased cloud disk is initialized and mounted to a CVM",
       "members": [
         {
           "default": "",
@@ -491,6 +497,60 @@
     "BindAutoSnapshotPolicyResponse": {
       "document": "BindAutoSnapshotPolicy response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CopySnapshotCrossRegionsRequest": {
+      "document": "CopySnapshotCrossRegions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Destination regions of the replication task. You can query the value of regions by calling [DescribeRegions](https://intl.cloud.tencent.com/document/product/213/9456?from_cn_redirect=1) API. Note that you can only specify regions that support snapshots.",
+          "example": "[\"ap-beijing\\r\\n\"]",
+          "member": "string",
+          "name": "DestinationRegions",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Snapshot ID, which can be queried via the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) API.",
+          "example": "snap-ckgjwkqh",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the snapshot replica. If it’s not specified, it defaults to “Copied [source snapshot ID from [region name]”",
+          "example": "snap-hfdadhusads",
+          "member": "string",
+          "name": "SnapshotName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CopySnapshotCrossRegionsResponse": {
+      "document": "CopySnapshotCrossRegions response structure.",
+      "members": [
+        {
+          "document": "Result of the cross-region replication task. The ID of the new snapshot replica is returned if the request succeeds. Otherwise `Error` is returned.",
+          "example": "无",
+          "member": "SnapshotCopyResult",
+          "name": "SnapshotCopyResultSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -3025,6 +3085,52 @@
           "document": "The time when the snapshot sharing starts",
           "member": "date",
           "name": "TimeStartShare",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SnapshotCopyResult": {
+      "document": "Result of the cross-region replication task",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the snapshot replica",
+          "example": "snap-hdbc13ad",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error message. It’s null if the request succeeds.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. It’s `Success` if the request succeeds.",
+          "example": "\"Success\"",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Destination region of the replication task",
+          "example": "\"ap-guangzhou\"",
+          "member": "string",
+          "name": "DestinationRegion",
           "required": true,
           "type": "string",
           "value_allowed_null": false

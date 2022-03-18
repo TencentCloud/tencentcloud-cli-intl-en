@@ -372,6 +372,14 @@
         "title": "Querying whether there are conflict route tables"
       }
     ],
+    "DescribeTKEEdgeScript": [
+      {
+        "document": "",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeTKEEdgeScript\n&ClusterId=cls123\n&NodeName=node\n&Interface=eth0\n&Config={}\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Querying the URL of TKE edge script"
+      }
+    ],
     "DescribeVersions": [
       {
         "document": "",

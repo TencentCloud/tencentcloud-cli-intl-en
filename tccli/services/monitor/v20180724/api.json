@@ -13,9 +13,9 @@
       "output": "CreateAlarmNoticeResponse"
     },
     "CreateAlarmPolicy": {
-      "document": "This API is used to create an alarm policy.",
+      "document": "This API is used to create a Cloud Monitor alarm policy.",
       "input": "CreateAlarmPolicyRequest",
-      "name": "Creates alarm policy",
+      "name": "Creates a Cloud Monitor alarm policy",
       "output": "CreateAlarmPolicyResponse"
     },
     "CreatePolicyGroup": {
@@ -119,6 +119,12 @@
       "input": "DescribeBindingPolicyObjectListRequest",
       "name": "Gets the bound object list.",
       "output": "DescribeBindingPolicyObjectListResponse"
+    },
+    "DescribeConditionsTemplateList": {
+      "document": "This API is used to get the trigger condition template.",
+      "input": "DescribeConditionsTemplateListRequest",
+      "name": "Gets the trigger condition template",
+      "output": "DescribeConditionsTemplateListResponse"
     },
     "DescribeMonitorTypes": {
       "document": "This API is used to list all the monitor types supported by CM.",
@@ -1374,6 +1380,102 @@
       ],
       "usage": "out"
     },
+    "Condition": {
+      "document": "Alarm condition",
+      "members": [
+        {
+          "default": "",
+          "document": "Alarm notification frequency.",
+          "member": "int64",
+          "name": "AlarmNotifyPeriod",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Predefined repeated notification policy. `0`: One-time alarm; `1`: exponential alarm; `2`: consecutive alarm.",
+          "member": "int64",
+          "name": "AlarmNotifyType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detection method.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CalcType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Detection value.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CalcValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Duration.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ContinueTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Metric ID.",
+          "member": "int64",
+          "name": "MetricID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Displayed metric name.",
+          "member": "string",
+          "name": "MetricDisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Statistical period.",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule ID.",
+          "member": "int64",
+          "name": "RuleID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Metric unit.",
+          "member": "string",
+          "name": "Unit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ConditionsTemp": {
       "document": "Alarm condition template",
       "members": [
@@ -1522,7 +1624,7 @@
         {
           "default": "",
           "document": "Remarks with up to 100 letters, digits, underscores, and hyphens",
-          "example": "这是一句备注",
+          "example": "策略demo",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -1548,7 +1650,7 @@
         },
         {
           "default": "",
-          "document": "ID of trigger condition template. This parameter can be left empty.",
+          "document": "Trigger condition template ID. Pass in this parameter if the policy is associated with the trigger condition template; otherwise, pass in the `Condition` parameter. The trigger condition template ID can be obtained via [`DescribeConditionsTemplateList`](https://intl.cloud.tencent.com/document/api/248/70250?from_cn_redirect=1).",
           "example": "无",
           "member": "int64",
           "name": "ConditionTemplateId",
@@ -3676,6 +3778,105 @@
           "member": "DescribeBindingPolicyObjectListInstanceGroup",
           "name": "InstanceGroup",
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConditionsTemplateListRequest": {
+      "document": "DescribeConditionsTemplateList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The value is fixed to `monitor`.",
+          "example": "monitor",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "View name, which can be obtained via [DescribeAllNamespaces](https://intl.cloud.tencent.com/document/product/248/48683?from_cn_redirect=1). For the monitoring of Tencent Cloud services, the value of this parameter is `QceNamespacesNew.N.Id` of the output parameter of `DescribeAllNamespaces`, for example, `cvm_device`.",
+          "example": "cvm_device",
+          "member": "string",
+          "name": "ViewName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by trigger condition template name.",
+          "example": "test",
+          "member": "string",
+          "name": "GroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by trigger condition template ID.",
+          "example": " 1998658",
+          "member": "string",
+          "name": "GroupID",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pagination parameter, which specifies the number of returned results per page. Value range: 1-100. Default value: 20.",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset starting from 0. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting method by update time. `asc`: Ascending order; `desc`: Descending order.",
+          "example": "desc",
+          "member": "string",
+          "name": "UpdateTimeOrder",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConditionsTemplateListResponse": {
+      "document": "DescribeConditionsTemplateList response structure.",
+      "members": [
+        {
+          "document": "Total number of templates.",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Template list.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TemplateGroup",
+          "name": "TemplateGroupList",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -5848,6 +6049,57 @@
       ],
       "usage": "out"
     },
+    "EventCondition": {
+      "document": "Event alarm conditions",
+      "members": [
+        {
+          "default": "",
+          "document": "Alarm notification frequency.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AlarmNotifyPeriod",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Predefined repeated notification policy. `0`: One-time alarm; `1`: exponential alarm; `2`: consecutive alarm\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AlarmNotifyType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Event ID.",
+          "member": "string",
+          "name": "EventID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Displayed event name.",
+          "member": "string",
+          "name": "EventDisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule ID.",
+          "member": "string",
+          "name": "RuleID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "GetMonitorDataRequest": {
       "document": "GetMonitorData request structure.",
       "members": [
@@ -6574,7 +6826,8 @@
       "members": [
         {
           "default": "",
-          "document": "Module name. Enter \"monitor\" here",
+          "document": "Module name, which is specified as `monitor`.",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -6582,17 +6835,28 @@
         },
         {
           "default": "",
-          "document": "Alarm policy ID",
+          "document": "Alarm policy ID. If both `PolicyIds` and this parameter are returned, only `PolicyIds` takes effect.",
+          "example": "policy-asgh3gb2",
           "member": "string",
           "name": "PolicyId",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
           "default": "",
-          "document": "Alarm notification template ID list",
+          "document": "List of alarm notification template IDs.",
+          "example": "[\"notice-bv9b4ghqbg\",\"notice-gj2n9wnt29\"]",
           "member": "string",
           "name": "NoticeIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Alarm policy ID array, which can be used to associate notification templates with multiple alarm policies. Max value: 30.",
+          "example": "[\"policy-asgh3gb2\", \"policy-2vh28fhb\"]",
+          "member": "string",
+          "name": "PolicyIds",
           "required": false,
           "type": "list"
         }
@@ -7018,6 +7282,279 @@
       ],
       "usage": "out"
     },
+    "PolicyGroup": {
+      "document": "Policy group information",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether the alarm policy can be set to default.",
+          "member": "bool",
+          "name": "CanSetDefault",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm policy group ID.",
+          "member": "int64",
+          "name": "GroupID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm policy group name.",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time.",
+          "member": "int64",
+          "name": "InsertTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the alarm policy is set to default.",
+          "member": "int64",
+          "name": "IsDefault",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the alarm policy is enabled.",
+          "member": "bool",
+          "name": "Enable",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "UIN of the last modifier.",
+          "member": "int64",
+          "name": "LastEditUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of unshielded instances.",
+          "member": "int64",
+          "name": "NoShieldedInstanceCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parent policy group ID.",
+          "member": "int64",
+          "name": "ParentGroupID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Project ID.",
+          "member": "int64",
+          "name": "ProjectID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm recipient information.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "PolicyGroupReceiverInfo",
+          "name": "ReceiverInfos",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Remarks.",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time.",
+          "member": "int64",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The total number of associated instances.",
+          "member": "int64",
+          "name": "TotalInstanceCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "View.",
+          "member": "string",
+          "name": "ViewName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the logical relationship between rules is AND.",
+          "member": "int64",
+          "name": "IsUnionRule",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PolicyGroupReceiverInfo": {
+      "document": "Information on recipients in the policy template list (API v2018)",
+      "members": [
+        {
+          "default": "",
+          "document": "End time of a valid time period.",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is required to send notifications.",
+          "member": "int64",
+          "name": "NeedSendNotice",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm receiving channel.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NotifyWay",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alarm call intervals for individuals in seconds.",
+          "member": "int64",
+          "name": "PersonInterval",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Message recipient group list.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ReceiverGroupList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Recipient type.",
+          "member": "string",
+          "name": "ReceiverType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recipient list. The list of recipient IDs that is queried by a platform API.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ReceiverUserList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alarm resolution notification method.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "RecoverNotify",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alarm call interval per round in seconds.",
+          "member": "int64",
+          "name": "RoundInterval",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of alarm call rounds.",
+          "member": "int64",
+          "name": "RoundNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm call notification time. Valid values: `OCCUR` (indicating that a notification is sent when the alarm is triggered) and `RECOVER` (indicating that a notification is sent when the alarm is resolved).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SendFor",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Start time of a valid time period.",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "UID of the alarm call recipient.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "UIDList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "PutMonitorDataRequest": {
       "document": "PutMonitorData request structure.",
       "members": [
@@ -7350,6 +7887,111 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TemplateGroup": {
+      "document": "Template list",
+      "members": [
+        {
+          "default": "",
+          "document": "Metric alarm rules.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "Condition",
+          "name": "Conditions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Event alarm rules.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "EventCondition",
+          "name": "EventConditions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The associated alarm policy groups.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "PolicyGroup",
+          "name": "PolicyGroups",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Template-based policy group ID.",
+          "member": "int64",
+          "name": "GroupID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Template-based policy group name.",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time.",
+          "member": "int64",
+          "name": "InsertTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "UIN of the last modifier.",
+          "member": "int64",
+          "name": "LastEditUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks.",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Update time.",
+          "member": "int64",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "View.",
+          "member": "string",
+          "name": "ViewName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the logical relationship between rules is AND.",
+          "member": "int64",
+          "name": "IsUnionRule",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

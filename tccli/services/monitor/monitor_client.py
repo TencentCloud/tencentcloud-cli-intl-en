@@ -123,6 +123,33 @@ def doSendCustomAlarmMsg(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeConditionsTemplateList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeConditionsTemplateListRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeConditionsTemplateList(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeBindingPolicyObjectList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -339,7 +366,7 @@ def doModifyAlarmPolicyCondition(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyAlarmReceivers(args, parsed_globals):
+def doCreateAlarmPolicy(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -355,9 +382,9 @@ def doModifyAlarmReceivers(args, parsed_globals):
     client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyAlarmReceiversRequest()
+    model = models.CreateAlarmPolicyRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyAlarmReceivers(model)
+    rsp = client.CreateAlarmPolicy(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -601,6 +628,33 @@ def doDescribeAlarmNoticeCallbacks(args, parsed_globals):
     model = models.DescribeAlarmNoticeCallbacksRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DescribeAlarmNoticeCallbacks(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyAlarmReceivers(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyAlarmReceiversRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyAlarmReceivers(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -987,33 +1041,6 @@ def doDeleteAlarmNotices(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateAlarmPolicy(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MonitorClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateAlarmPolicyRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.CreateAlarmPolicy(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doModifyAlarmNotice(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1110,6 +1137,7 @@ ACTION_MAP = {
     "DescribeAlarmPolicies": doDescribeAlarmPolicies,
     "UnBindingPolicyObject": doUnBindingPolicyObject,
     "SendCustomAlarmMsg": doSendCustomAlarmMsg,
+    "DescribeConditionsTemplateList": doDescribeConditionsTemplateList,
     "DescribeBindingPolicyObjectList": doDescribeBindingPolicyObjectList,
     "ModifyAlarmPolicyNotice": doModifyAlarmPolicyNotice,
     "DescribePolicyGroupList": doDescribePolicyGroupList,
@@ -1118,7 +1146,7 @@ ACTION_MAP = {
     "ModifyAlarmPolicyTasks": doModifyAlarmPolicyTasks,
     "DescribePolicyConditionList": doDescribePolicyConditionList,
     "ModifyAlarmPolicyCondition": doModifyAlarmPolicyCondition,
-    "ModifyAlarmReceivers": doModifyAlarmReceivers,
+    "CreateAlarmPolicy": doCreateAlarmPolicy,
     "BindingPolicyObject": doBindingPolicyObject,
     "CreateAlarmNotice": doCreateAlarmNotice,
     "DescribeBasicAlarmList": doDescribeBasicAlarmList,
@@ -1128,6 +1156,7 @@ ACTION_MAP = {
     "DescribeStatisticData": doDescribeStatisticData,
     "DescribeAlarmNotices": doDescribeAlarmNotices,
     "DescribeAlarmNoticeCallbacks": doDescribeAlarmNoticeCallbacks,
+    "ModifyAlarmReceivers": doModifyAlarmReceivers,
     "UnBindingAllPolicyObject": doUnBindingAllPolicyObject,
     "DeletePolicyGroup": doDeletePolicyGroup,
     "DescribeMonitorTypes": doDescribeMonitorTypes,
@@ -1142,7 +1171,6 @@ ACTION_MAP = {
     "DescribeAlarmNotice": doDescribeAlarmNotice,
     "DescribeAlarmEvents": doDescribeAlarmEvents,
     "DeleteAlarmNotices": doDeleteAlarmNotices,
-    "CreateAlarmPolicy": doCreateAlarmPolicy,
     "ModifyAlarmNotice": doModifyAlarmNotice,
     "SetDefaultAlarmPolicy": doSetDefaultAlarmPolicy,
     "DescribeAlarmPolicy": doDescribeAlarmPolicy,
