@@ -24,6 +24,12 @@
       "name": "Disables public network access for a PostgreSQL for Serverless instance",
       "output": "CloseServerlessDBExtranetAccessResponse"
     },
+    "CreateDBInstanceNetworkAccess": {
+      "document": "This API is used to add a network for an instance.",
+      "input": "CreateDBInstanceNetworkAccessRequest",
+      "name": "Adds a network for an instance",
+      "output": "CreateDBInstanceNetworkAccessResponse"
+    },
     "CreateDBInstances": {
       "document": "This API is used to create (but not initialize) one or more TencentDB for PostgreSQL instances.",
       "input": "CreateDBInstancesRequest",
@@ -48,17 +54,35 @@
       "name": "Creates an RO group",
       "output": "CreateReadOnlyGroupResponse"
     },
+    "CreateReadOnlyGroupNetworkAccess": {
+      "document": "This API is used to add a network for an RO group.",
+      "input": "CreateReadOnlyGroupNetworkAccessRequest",
+      "name": "Adds a network for an RO group",
+      "output": "CreateReadOnlyGroupNetworkAccessResponse"
+    },
     "CreateServerlessDBInstance": {
       "document": "This API is used to create a PostgreSQL for Serverless instance. If the creation succeeds, the instance ID will be returned.",
       "input": "CreateServerlessDBInstanceRequest",
       "name": "Creates a PostgreSQL for Serverless instance",
       "output": "CreateServerlessDBInstanceResponse"
     },
+    "DeleteDBInstanceNetworkAccess": {
+      "document": "This API is used to delete a network of an instance.",
+      "input": "DeleteDBInstanceNetworkAccessRequest",
+      "name": "Deletes a network of an instance",
+      "output": "DeleteDBInstanceNetworkAccessResponse"
+    },
     "DeleteReadOnlyGroup": {
       "document": "This API is used to delete an RO group.",
       "input": "DeleteReadOnlyGroupRequest",
       "name": "Deletes an RO group",
       "output": "DeleteReadOnlyGroupResponse"
+    },
+    "DeleteReadOnlyGroupNetworkAccess": {
+      "document": "This API is used to delete a network of an RO group.",
+      "input": "DeleteReadOnlyGroupNetworkAccessRequest",
+      "name": "Deletes a network of an RO group",
+      "output": "DeleteReadOnlyGroupNetworkAccessResponse"
     },
     "DeleteServerlessDBInstance": {
       "document": "This API is used to delete a PostgreSQL for Serverless instance.",
@@ -915,6 +939,78 @@
       ],
       "type": "object"
     },
+    "CreateDBInstanceNetworkAccessRequest": {
+      "document": "CreateDBInstanceNetworkAccess request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of postgres-6bwgamo3.",
+          "example": "postgres-6bwgamo3",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unified VPC ID.",
+          "example": "vpc-gaestjaf",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID.",
+          "example": "subnet-4s9dejli",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to manually assign the VIP. Valid values: `true` (manually assign), `false` (automatically assign).",
+          "example": "true",
+          "member": "bool",
+          "name": "IsAssignVip",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Target VIP.",
+          "example": "无",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBInstanceNetworkAccessResponse": {
+      "document": "CreateDBInstanceNetworkAccess response structure.",
+      "members": [
+        {
+          "document": "Task ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1234",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateDBInstancesRequest": {
       "document": "CreateDBInstances request structure.",
       "members": [
@@ -1610,6 +1706,78 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateReadOnlyGroupNetworkAccessRequest": {
+      "document": "CreateReadOnlyGroupNetworkAccess request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "RO group ID in the format of pgro-4t9c6g7k.",
+          "example": "pgro-4t9c6g7k",
+          "member": "string",
+          "name": "ReadOnlyGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unified VPC ID.",
+          "example": "vpc-gaestjaf",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID.",
+          "example": "subnet-4s9dejli",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to manually assign the VIP. Valid values: `true` (manually assign), `false` (automatically assign).",
+          "example": "true",
+          "member": "bool",
+          "name": "IsAssignVip",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Target VIP.",
+          "example": "无",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateReadOnlyGroupNetworkAccessResponse": {
+      "document": "CreateReadOnlyGroupNetworkAccess response structure.",
+      "members": [
+        {
+          "document": "Task ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1234",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2437,6 +2605,132 @@
         }
       ],
       "usage": "both"
+    },
+    "DeleteDBInstanceNetworkAccessRequest": {
+      "document": "DeleteDBInstanceNetworkAccess request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of postgres-6bwgamo3.",
+          "example": "postgres-6bwgamo3",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unified VPC ID. If you want to delete the classic network, set the parameter to `0`.",
+          "example": "vpc-gaestjaf",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID. If you want to delete the classic network, set the parameter to `0`.",
+          "example": "subnet-4s9dejli",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target VIP.",
+          "example": "无",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDBInstanceNetworkAccessResponse": {
+      "document": "DeleteDBInstanceNetworkAccess response structure.",
+      "members": [
+        {
+          "document": "Task ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1234",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteReadOnlyGroupNetworkAccessRequest": {
+      "document": "DeleteReadOnlyGroupNetworkAccess request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "RO group ID in the format of pgro-4t9c6g7k.",
+          "example": "pgro-4t9c6g7k",
+          "member": "string",
+          "name": "ReadOnlyGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unified VPC ID. If you want to delete the classic network, set the parameter to `0`.",
+          "example": "vpc-gaestjaf",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID. If you want to delete the classic network, set the parameter to `0`.",
+          "example": "subnet-4s9dejli",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target VIP.",
+          "example": "无",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteReadOnlyGroupNetworkAccessResponse": {
+      "document": "DeleteReadOnlyGroupNetworkAccess response structure.",
+      "members": [
+        {
+          "document": "Task ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1234",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DeleteReadOnlyGroupRequest": {
       "document": "DeleteReadOnlyGroup request structure.",
