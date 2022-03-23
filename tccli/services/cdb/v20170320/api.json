@@ -2649,7 +2649,7 @@
         },
         {
           "default": "",
-          "document": "Whether to automatically start disaster recovery synchronization. This parameter takes effect only for disaster recovery instances. Valid values: `0` (no), `1` (yes).",
+          "document": "Whether to automatically start disaster recovery synchronization. This parameter takes effect only for disaster recovery instances. Valid values: `0` (no), `1` (yes). Default value: `0`.",
           "example": "1",
           "member": "int64",
           "name": "AutoSyncFlag",
@@ -3672,6 +3672,7 @@
         {
           "default": "",
           "document": "TencentDB product type to be queried. Currently, only `mysql` is supported.",
+          "example": "mysql",
           "member": "string",
           "name": "Product",
           "required": true,
@@ -3679,7 +3680,8 @@
         },
         {
           "default": "",
-          "document": "Pagination offset.",
+          "document": "Paginated query offset. Default value: `0`.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -3687,7 +3689,8 @@
         },
         {
           "default": "",
-          "document": "Paginated query limit. Default value: 20.",
+          "document": "Maximum entries returned per page, which ranges from 1 to 100. Default value: `20`.",
+          "example": "1",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -3695,7 +3698,8 @@
         },
         {
           "default": "",
-          "document": "Sorting criterion. Valid values: BackupVolume (backup capacity), DataBackupVolume (data backup capacity), BinlogBackupVolume (log backup capacity), AutoBackupVolume (automatic backup capacity), ManualBackupVolume (manual backup capacity).",
+          "document": "Sorting criterion. Valid values: `BackupVolume` (backup capacity), `DataBackupVolume` (data backup capacity), `BinlogBackupVolume` (log backup capacity), `AutoBackupVolume` (automatic backup capacity), `ManualBackupVolume` (manual backup capacity). Default value: `BackupVolume`.",
+          "example": "BackupVolume",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -3703,7 +3707,8 @@
         },
         {
           "default": "",
-          "document": "Sorting order. Valid values: ASC (ascending), DESC (descending).",
+          "document": "Sorting order. Valid values: `ASC` (ascending), `DESC` (descending). Default value: `ASC`.",
+          "example": "ASC",
           "member": "string",
           "name": "OrderDirection",
           "required": false,
@@ -4672,7 +4677,7 @@
         },
         {
           "default": "",
-          "document": "This parameter takes effect only when the ID of read-only replica is passed in. If this parameter is set to `False` or left empty, the security groups bound with the RO group of the read-only replica will be queried. If this parameter is set to `True`, the security groups bound with the read-only replica itself will be queried.",
+          "document": "This parameter takes effect only when the ID of a read-only instance is passed in. If the parameter is set to `False` or left empty, the security groups bound with the RO groups of the read-only instance can only be queried. If it is set to `True`, the security groups can be modified.",
           "example": "False",
           "member": "bool",
           "name": "ForReadonlyInstance",
@@ -5958,6 +5963,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+          "example": "cdb-c1nl9rpv",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5965,7 +5971,8 @@
         },
         {
           "default": "",
-          "document": "Offset. Minimum value: 0.",
+          "document": "Pagination offset, starting from `0`. Default value: `0`.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -5974,6 +5981,7 @@
         {
           "default": "",
           "document": "Number of entries per page. Value range: 1-100. Default value: 20.",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -7893,7 +7901,7 @@
         },
         {
           "default": "",
-          "document": "Global permission. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"PROCESS\", \"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"SHOW DATABASES\", \"CREATE TEMPORARY TABLES\", \"LOCK TABLES\", \"EXECUTE\", \"CREATE VIEW\", \"SHOW VIEW\", \"CREATE ROUTINE\", \"ALTER ROUTINE\", \"EVENT\", \"TRIGGER\".\nNote: if this parameter is not passed in, it means to clear the permission.",
+          "document": "Global permission. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"PROCESS\", \"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"SHOW DATABASES\", \"CREATE TEMPORARY TABLES\", \"LOCK TABLES\", \"EXECUTE\", \"CREATE VIEW\", \"SHOW VIEW\", \"CREATE ROUTINE\", \"ALTER ROUTINE\", \"EVENT\", \"TRIGGER\",\"CREATE USER\",\"RELOAD\",\"REPLICATION CLIENT\",\"REPLICATION SLAVE\",\"UPDATE\".\nNote: If this parameter is not passed in, it means to clear the permission.",
           "example": "[\"SELECT\\n\"]",
           "member": "string",
           "name": "GlobalPrivileges",
@@ -8397,6 +8405,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.",
+          "example": "cdb-f35wr6wj",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -8404,7 +8413,8 @@
         },
         {
           "default": "",
-          "document": "Instance name.",
+          "document": "The modified instance name.",
+          "example": "我是中文",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -10280,7 +10290,7 @@
         },
         {
           "default": "",
-          "document": "RO instance status. Value range: 0 (creating), 1 (running), 4 (deleting)",
+          "document": "RO instance status. Valid values: `0` (creating), `1` (running), `3` (remote RO), `4` (deleting). When the `DescribeDBInstances` API is used to query the information of the source instance, if the source instance is associated with a remote read-only instance, the returned status value of the remote read-only instance always shows 3.",
           "example": "1",
           "member": "int64",
           "name": "Status",
