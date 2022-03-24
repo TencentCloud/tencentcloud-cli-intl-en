@@ -84,6 +84,12 @@
       "name": "Creates service",
       "output": "CreateServiceResponse"
     },
+    "CreateUpstream": {
+      "document": "This API is used to create an upstream.",
+      "input": "CreateUpstreamRequest",
+      "name": "Creates an upstream",
+      "output": "CreateUpstreamResponse"
+    },
     "CreateUsagePlan": {
       "document": "This API is used to create a usage plan.\nTo use API Gateway, you need to create a usage plan and bind it to a service environment.",
       "input": "CreateUsagePlanRequest",
@@ -137,6 +143,12 @@
       "input": "DeleteServiceSubDomainMappingRequest",
       "name": "Deletes the path mapping of custom domain name",
       "output": "DeleteServiceSubDomainMappingResponse"
+    },
+    "DeleteUpstream": {
+      "document": "This API is used to delete an upstream. Note that you can only delete an upstream when it’s not bound with an API.",
+      "input": "DeleteUpstreamRequest",
+      "name": "Deletes an upstream",
+      "output": "DeleteUpstreamResponse"
     },
     "DeleteUsagePlan": {
       "document": "This API is used to delete a usage plan.",
@@ -217,7 +229,7 @@
       "output": "DescribeApiKeyResponse"
     },
     "DescribeApiKeysStatus": {
-      "document": "This API is used to query the list of keys.\nIf you have created multiple API key pairs, you can use this API to query the information of one or more keys. This API does not display the `secretKey`.",
+      "document": "This API is used to query the information of one or more API keys.\n ",
       "input": "DescribeApiKeysStatusRequest",
       "name": "Queries key list",
       "output": "DescribeApiKeysStatusResponse"
@@ -330,6 +342,18 @@
       "name": "Queries service list",
       "output": "DescribeServicesStatusResponse"
     },
+    "DescribeUpstreamBindApis": {
+      "document": "This API is used to query the list of APIs bound with an upstream.",
+      "input": "DescribeUpstreamBindApisRequest",
+      "name": "Queries the list of APIs bound with an upstream",
+      "output": "DescribeUpstreamBindApisResponse"
+    },
+    "DescribeUpstreams": {
+      "document": "This API is used to query the list of upstreams.",
+      "input": "DescribeUpstreamsRequest",
+      "name": "Queries the list of upstreams ",
+      "output": "DescribeUpstreamsResponse"
+    },
     "DescribeUsagePlan": {
       "document": "This API is used to query the details of a usage plan, such as its name, QPS, creation time, and bound environment.",
       "input": "DescribeUsagePlanRequest",
@@ -437,6 +461,12 @@
       "input": "ModifySubDomainRequest",
       "name": "Modifies the custom domain name of service",
       "output": "ModifySubDomainResponse"
+    },
+    "ModifyUpstream": {
+      "document": "This API is used to modify an upstream.",
+      "input": "ModifyUpstreamRequest",
+      "name": "Modifies an upstream",
+      "output": "ModifyUpstreamResponse"
     },
     "ModifyUsagePlan": {
       "document": "This API is used to modify the name, description, and QPS of a usage plan.",
@@ -2288,6 +2318,62 @@
       ],
       "type": "object"
     },
+    "BindApiInfo": {
+      "document": "Information of the API bound with the upstream",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique API ID.",
+          "example": "api-sadasd",
+          "member": "string",
+          "name": "ApiId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique ID of the service",
+          "example": "service-asdaada",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "API name\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "sajsnda",
+          "member": "string",
+          "name": "ApiName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Service name\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "test",
+          "member": "string",
+          "name": "ServiceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Bound At",
+          "example": "2018-10-30T04:24:19Z",
+          "member": "datetime_iso",
+          "name": "BindTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "BindEnvironmentRequest": {
       "document": "BindEnvironment request structure.",
       "members": [
@@ -2657,6 +2743,16 @@
           "name": "Authorization",
           "required": false,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The path matching mode of the backend COS service\n`BackEndPath`: Match the backend path\n`FullPath`: Match the full path\n\nDefault: `BackEndPath`\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "FullPath",
+          "member": "string",
+          "name": "PathMatchMode",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -3326,6 +3422,7 @@
         {
           "default": "",
           "document": "API ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "api-sdfsdf",
           "member": "string",
           "name": "ApiId",
           "required": true,
@@ -3334,7 +3431,8 @@
         },
         {
           "default": "",
-          "document": "path\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Path\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "/",
           "member": "string",
           "name": "Path",
           "required": true,
@@ -3343,7 +3441,8 @@
         },
         {
           "default": "",
-          "document": "method\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Request method\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "GET",
           "member": "string",
           "name": "Method",
           "required": true,
@@ -3353,8 +3452,39 @@
         {
           "default": "",
           "document": "Creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2022-03-02T14:27:56Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Status of the import task\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "success",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Details of the error\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ok",
+          "member": "string",
+          "name": "ErrMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "API name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "api-xxxxx",
+          "member": "string",
+          "name": "ApiName",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -3578,6 +3708,15 @@
           "name": "InstanceId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC attribute",
+          "example": "vpc-quyenan",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3638,6 +3777,114 @@
           "document": "IP version number.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "IpVersion",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUpstreamRequest": {
+      "document": "CreateUpstream request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Backend protocol. Values: `HTTP`, `HTTPS`",
+          "example": "HTTP",
+          "member": "string",
+          "name": "Scheme",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The balancing method can only be `ROUND_ROBIN`.",
+          "example": "Algorithm",
+          "member": "string",
+          "name": "Algorithm",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique VPC ID",
+          "example": "UniqVpcId",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the upstream ",
+          "example": "test",
+          "member": "string",
+          "name": "UpstreamName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description of the upstream",
+          "example": "test",
+          "member": "string",
+          "name": "UpstreamDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Retry attempts. It defaults to `3`.",
+          "example": "3",
+          "member": "uint64",
+          "name": "Retries",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The host header in the request sending to the backend",
+          "example": "UpstreamHost",
+          "member": "string",
+          "name": "UpstreamHost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backend nodes",
+          "example": "无",
+          "member": "UpstreamNode",
+          "name": "Nodes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The location of K8s service",
+          "example": "无",
+          "member": "K8sService",
+          "name": "K8sService",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUpstreamResponse": {
+      "document": "CreateUpstream response structure.",
+      "members": [
+        {
+          "document": "The unique upstream IP returned\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "upstream-0c96l2bo",
+          "member": "string",
+          "name": "UpstreamId",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4012,6 +4259,42 @@
           "name": "Result",
           "type": "bool",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUpstreamRequest": {
+      "document": "DeleteUpstream request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the upstream to delete",
+          "example": "\"upstream-xxxx\"",
+          "member": "string",
+          "name": "UpstreamId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUpstreamResponse": {
+      "document": "DeleteUpstream response structure.",
+      "members": [
+        {
+          "document": "ID of the upstream deleted\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "upstream-sasdsa",
+          "member": "string",
+          "name": "UpstreamId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -6312,6 +6595,175 @@
       ],
       "type": "object"
     },
+    "DescribeUpstreamBindApis": {
+      "document": "Querying the list of APIs bound with an upstream.",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of bound APIs",
+          "example": "无",
+          "member": "BindApiInfo",
+          "name": "BindApiSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeUpstreamBindApisRequest": {
+      "document": "DescribeUpstreamBindApis request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of results returned in a page",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page offset",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Upstream ID",
+          "example": "xxxxx",
+          "member": "string",
+          "name": "UpstreamId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filters the results by `ServiceId` and `ApiId`",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUpstreamBindApisResponse": {
+      "document": "DescribeUpstreamBindApis response structure.",
+      "members": [
+        {
+          "document": "Query results",
+          "example": "无",
+          "member": "DescribeUpstreamBindApis",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUpstreamInfo": {
+      "document": "Information of the queried upstreams",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number of results",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of query result",
+          "example": "无",
+          "member": "UpstreamInfo",
+          "name": "UpstreamSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeUpstreamsRequest": {
+      "document": "DescribeUpstreams request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of results returned in a page",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page offset",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filters",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUpstreamsResponse": {
+      "document": "DescribeUpstreams response structure.",
+      "members": [
+        {
+          "document": "Query results",
+          "example": "无",
+          "member": "DescribeUpstreamInfo",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeUsagePlanEnvironmentsRequest": {
       "document": "DescribeUsagePlanEnvironments request structure.",
       "members": [
@@ -7210,6 +7662,108 @@
         }
       ],
       "usage": "out"
+    },
+    "K8sLabel": {
+      "document": "K8s Label",
+      "members": [
+        {
+          "default": "",
+          "document": "Key of the label",
+          "example": "app",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value of the label",
+          "example": "web",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "K8sService": {
+      "document": "Configuration of K8s service",
+      "members": [
+        {
+          "default": "",
+          "document": "Weight",
+          "example": "10",
+          "member": "int64",
+          "name": "Weight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "K8s cluster ID",
+          "example": "cls-ehovttb4",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace of the container",
+          "example": "default",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the service",
+          "example": "web",
+          "member": "string",
+          "name": "ServiceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Service port",
+          "example": "8088",
+          "member": "int64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The additional Label of the Pod",
+          "example": "[{\"Key\": \"app\", \"Value\": \"web\"}]",
+          "member": "K8sLabel",
+          "name": "ExtraLabels",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "(Optional) Custom name of the service",
+          "example": "TestServiceName",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "LogQuery": {
       "document": "Search criterion input parameter",
@@ -8363,6 +8917,123 @@
       ],
       "type": "object"
     },
+    "ModifyUpstreamRequest": {
+      "document": "ModifyUpstream request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of the upstream",
+          "example": "upstream-0c96l2bo",
+          "member": "string",
+          "name": "UpstreamId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the upstream ",
+          "example": "xxxx",
+          "member": "string",
+          "name": "UpstreamName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description of the upstream",
+          "example": "xxxxx",
+          "member": "string",
+          "name": "UpstreamDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backend protocol. Values: `HTTP`, `HTTPS`",
+          "example": "HTTP, HTTPS",
+          "member": "string",
+          "name": "Scheme",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The balancing method can only be `ROUND_ROBIN`.",
+          "example": "Algorithm",
+          "member": "string",
+          "name": "Algorithm",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique VPC ID.",
+          "example": "UniqVpcId",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Retry attempts. It defaults to `3`.",
+          "example": "Retries",
+          "member": "uint64",
+          "name": "Retries",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The host header in the request sending to the backend",
+          "example": "UpstreamHost",
+          "member": "string",
+          "name": "UpstreamHost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of backend nodes",
+          "example": "无",
+          "member": "UpstreamNode",
+          "name": "Nodes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Configuration of K8s service",
+          "example": "无",
+          "member": "K8sService",
+          "name": "K8sService",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyUpstreamResponse": {
+      "document": "ModifyUpstream response structure.",
+      "members": [
+        {
+          "document": "Information of the upstream after the modification\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "UpstreamInfo",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyUsagePlanRequest": {
       "document": "ModifyUsagePlan request structure.",
       "members": [
@@ -9094,7 +9765,7 @@
       "members": [
         {
           "default": "",
-          "document": "Backend type, which takes effect when VPC is enabled. Valid values: `clb` and `upstream` (VPC channel)",
+          "document": "The backend type. It’s available when `vpc` is enabled. Values: `clb`, `cvm` and `upstream`.",
           "example": "clb",
           "member": "string",
           "name": "Product",
@@ -10075,6 +10746,399 @@
         }
       ],
       "type": "object"
+    },
+    "UpstreamHealthChecker": {
+      "document": "Upstream health check configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies whether to enable active health check",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableActiveCheck",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies whether the enable passive health check",
+          "example": "false",
+          "member": "bool",
+          "name": "EnablePassiveCheck",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The HTTP status code that indicates that the upstream is healthy",
+          "example": "200,201,202",
+          "member": "string",
+          "name": "HealthyHttpStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The HTTP status code that indicates that the upstream is unhealthy",
+          "example": "500,502,503,504",
+          "member": "string",
+          "name": "UnhealthyHttpStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The threshold on consecutive TCP errors. Range: [0, 254]. `0` indicates not to check TCP.",
+          "example": "5",
+          "member": "uint64",
+          "name": "TcpFailureThreshold",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The threshold on consecutive timeouts. Range: [0, 254]. `0` indicates not to check TCP.",
+          "example": "5",
+          "member": "uint64",
+          "name": "TimeoutThreshold",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The threshold on consecutive HTTP errors. Range: [0, 254]. `0` indicates not to check HTTP.",
+          "example": "3",
+          "member": "uint64",
+          "name": "HttpFailureThreshold",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The path for active health check. It defaults to `/`.",
+          "example": "/",
+          "member": "string",
+          "name": "ActiveCheckHttpPath",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The timeout period for active health check in seconds. Default: `5`. ",
+          "example": "5",
+          "member": "uint64",
+          "name": "ActiveCheckTimeout",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The interval for active health check in seconds. Default: `5`. ",
+          "example": "5",
+          "member": "uint64",
+          "name": "ActiveCheckInterval",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Header of the active health check request",
+          "example": "None",
+          "member": "UpstreamHealthCheckerReqHeaders",
+          "name": "ActiveRequestHeader",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The period for an abnormal to recover automatically in seconds. If only the passive health check is enabled, it must be greater than 0. Otherwise the abnormal nodes can not recovered automatically. The default value is 30 seconds. ",
+          "example": "30",
+          "member": "uint64",
+          "name": "UnhealthyTimeout",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UpstreamHealthCheckerReqHeaders": {
+      "document": "The request header configuration of active upstream health check requests",
+      "members": [],
+      "usage": "both"
+    },
+    "UpstreamInfo": {
+      "document": "Information of an upstream",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of the upstream",
+          "example": "x x",
+          "member": "string",
+          "name": "UpstreamId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the upstream ",
+          "example": "x x x",
+          "member": "string",
+          "name": "UpstreamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description of the upstream",
+          "example": "x x",
+          "member": "string",
+          "name": "UpstreamDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protocol",
+          "example": "x x",
+          "member": "string",
+          "name": "Scheme",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Load balancing algorithm",
+          "example": "x x",
+          "member": "string",
+          "name": "Algorithm",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique VPC ID.",
+          "example": "x x",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of retried attempts",
+          "example": "x x",
+          "member": "uint64",
+          "name": "Retries",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backend nodes",
+          "example": "x x",
+          "member": "UpstreamNode",
+          "name": "Nodes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time.",
+          "example": "x x",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Label\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Health check configuration\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "UpstreamHealthChecker",
+          "name": "HealthChecker",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Type of the upstream",
+          "example": "K8S",
+          "member": "string",
+          "name": "UpstreamType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration of K8s service\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "K8sService",
+          "name": "K8sServices",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Host of the upstream\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "string",
+          "name": "UpstreamHost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UpstreamNode": {
+      "document": "Metadata of backend nodes of the upstream",
+      "members": [
+        {
+          "default": "",
+          "document": "IP or domain name of the host",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The port number. Range: [0, 65535]",
+          "example": "22",
+          "member": "uint64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value range: [0, 100]. `0` refers to disable it.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Weight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VM instance ID\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "ins-123456",
+          "member": "string",
+          "name": "VmInstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "[\"release\",\"test\"]",
+          "member": "string",
+          "name": "Tags",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Health status of the node. Value: `OFF`, `HEALTHY`, `UNHEALTHY` and `NO_DATA`. It’s not required for creating and editing actions.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "OFF",
+          "member": "string",
+          "name": "Healthy",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The K8s service name\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "web",
+          "member": "string",
+          "name": "ServiceName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "K8s namespace\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "default",
+          "member": "string",
+          "name": "NameSpace",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the TKE cluster\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "cls-xxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Source of the node\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "K8S",
+          "member": "string",
+          "name": "Source",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The unique service name in API Gateway\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "/upstream-xxxx/cls-xxx/default/web",
+          "member": "string",
+          "name": "UniqueServiceName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "UsagePlan": {
       "document": "`usagePlan` details",

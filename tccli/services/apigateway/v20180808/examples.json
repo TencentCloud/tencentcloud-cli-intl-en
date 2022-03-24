@@ -112,6 +112,14 @@
         "title": "CreateService"
       }
     ],
+    "CreateUpstream": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=CreateUpstream\n&Retries=1\n&UpstreamName=test\n&Algorithm=ROUND_ROBIN\n&UniqVpcId=vpc-sadada\n&UpstreamType=IP_PORT\n&UpstreamHost=www.a.com\n&UpstreamDescription=test\n&Scheme=instance-HTTP\n&Nodes.0.VmInstanceId=ins-saadas\n&Nodes.0.Host=127.0.0.1\n&Nodes.0.Port=80\n&Nodes.0.Weight=100\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"UpstreamId\": \"upstream-0c96l2bo\",\n        \"RequestId\": \"b3197c48-53fb-46df-b721-df4424cf8be9\"\n    }\n}",
+        "title": "Creating an upstream"
+      }
+    ],
     "CreateUsagePlan": [
       {
         "document": "",
@@ -182,6 +190,14 @@
         "input": "https://apigateway.tencentcloudapi.com/?Action=DeleteServiceSubDomainMapping\n&ServiceId=service-19c5fnhy\n&SubDomain=xxxxxxx\n&Environment=test\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"1ab681ab-545a-4e71-91f1-8f1ea8ef13ad\"\n    }\n}",
         "title": "Deleting the path mapping of a custom domain name"
+      }
+    ],
+    "DeleteUpstream": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DeleteUpstream\n&UpstreamId=“upstream-0c96l2bo”\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"UpstreamId\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Deleting an upstream"
       }
     ],
     "DeleteUsagePlan": [
@@ -291,7 +307,7 @@
     "DescribeApiKeysStatus": [
       {
         "document": "",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeApiKeysStatus\r\n&AccessKeyId=AKID8my5MRr9i6VM98F3dZG9zV0KuBq5ID7pMG83\r\n&<Common request parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeApiKeysStatus\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"ApiKeySet\": [\n                {\n                    \"AccessKeyId\": \"AKID1IGx7Tu5mk150ds6fhbdi1RqD8KlI6dW32MD\",\n                    \"AccessKeySecret\": \"qYSyjJAn6BNAmoRpFs93HhtchFCGy4K3zrC2WjR\",\n                    \"AccessKeyType\": \"auto\",\n                    \"SecretName\": \"dd\",\n                    \"Status\": 1,\n                    \"CreatedTime\": \"2020-02-26T06:09:44Z\",\n                    \"ModifiedTime\": \"2020-02-26T06:09:44Z\"\n                }\n            ]\n        },\n        \"RequestId\": \"6096c75d-1562-44be-a4af-75b5e235d319\"\n    }\n}",
         "title": "DescribeApiKeysStatus"
       }
@@ -446,6 +462,22 @@
         "title": "Querying service list"
       }
     ],
+    "DescribeUpstreamBindApis": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeUpstreamBindApis\n&UpstreamId=“upstream-0c96l2bo”\n&Limit=1\n&Offset=0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"BindApiSet\": [\n                {\n                    \"ApiId\": \"xx\",\n                    \"ServiceName\": \"xx\",\n                    \"BindTime\": \"2020-09-22T00:00:00+00:00\",\n                    \"ApiName\": \"xx\",\n                    \"ServiceId\": \"xx\"\n                }\n            ]\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying the list of APIs bound with an upstream"
+      }
+    ],
+    "DescribeUpstreams": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeUpstreams\n&Limit=1\n&Offset=0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"UpstreamSet\": [\n                {\n                    \"Retries\": 1,\n                    \"Algorithm\": \"xx\",\n                    \"UniqVpcId\": \"xx\",\n                    \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                    \"UpstreamId\": \"xx\",\n                    \"UpstreamName\": \"xx\",\n                    \"UpstreamDescription\": \"xx\",\n                    \"Nodes\": [\n                        {\n                            \"VmInstanceId\": \"xx\",\n                            \"Host\": \"xx\",\n                            \"Port\": 1,\n                            \"Weight\": 1,\n                            \"Tags\": [\n                                \"xx\"\n                            ]\n                        }\n                    ],\n                    \"Scheme\": \"xx\"\n                }\n            ]\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying upstreams under the current account"
+      }
+    ],
     "DescribeUsagePlan": [
       {
         "document": "",
@@ -588,6 +620,14 @@
         "input": "https://apigateway.tencentcloudapi.com/?Action=ModifySubDomain\n&ServiceId=service-19c5fnhy\n&SubDomain=xxxxxx\n&CertificateId=''\n&IsDefaultMapping=false\n&Protocol=http\n&NetType=OUTER\n&PathMappingSet.0.Path=/\n&PathMappingSet.0.Environment=release\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"d7f6116b-8184-4bdd-8fbe-1ecbcfa1ea30\"\n    }\n}",
         "title": "Modifying the custom domain name of service"
+      }
+    ],
+    "ModifyUpstream": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=ModifyUpstream\n&UpstreamId=upstream-0c96l2bo\n&Retries=4\n&UpstreamName=test\n&UpstreamHost=www.a.com\n&UpstreamDescription=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"Retries\": 1,\n            \"Algorithm\": \"xx\",\n            \"UniqVpcId\": \"xx\",\n            \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n            \"UpstreamId\": \"xx\",\n            \"UpstreamName\": \"xx\",\n            \"UpstreamDescription\": \"xx\",\n            \"Nodes\": [\n                {\n                    \"VmInstanceId\": \"xx\",\n                    \"Host\": \"xx\",\n                    \"Port\": 1,\n                    \"Weight\": 1,\n                    \"Tags\": [\n                        \"xx\"\n                    ]\n                }\n            ],\n            \"Scheme\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Modifying an upstream"
       }
     ],
     "ModifyUsagePlan": [

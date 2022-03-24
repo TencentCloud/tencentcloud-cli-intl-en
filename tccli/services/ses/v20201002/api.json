@@ -19,7 +19,7 @@
       "output": "CreateEmailIdentityResponse"
     },
     "CreateEmailTemplate": {
-      "document": "This API is used to create a TEXT or HTML email template. To create an HTML template, ensure that it does not include external CSS files. You can use {{variable name}} to specify a variable in the template.\nNote: only an approved template can be used to send emails.",
+      "document": "This API is used to create a TEXT or HTML email template. To create an HTML template, ensure that it does not include external CSS files. You can use {{variable name}} to specify a variable in the template.\nNote: Only an approved template can be used to send emails.",
       "input": "CreateEmailTemplateRequest",
       "name": "Creates an email template",
       "output": "CreateEmailTemplateResponse"
@@ -59,6 +59,12 @@
       "input": "DeleteEmailTemplateRequest",
       "name": "Deletes an email template",
       "output": "DeleteEmailTemplateResponse"
+    },
+    "DeleteReceiver": {
+      "document": "This API is used to delete a recipient group and all recipient email addresses in the group based on the recipient group ID.",
+      "input": "DeleteReceiverRequest",
+      "name": "Deletes a recipient group",
+      "output": "DeleteReceiverResponse"
     },
     "GetEmailIdentity": {
       "document": "This API is used to get the configuration details of a sender domain.",
@@ -160,7 +166,7 @@
         },
         {
           "default": "",
-          "document": "Attachment content after base64 encoding. A single attachment cannot exceed 5 MB. Note: Tencent Cloud APIs require that a request packet should not exceed 10 MB. If you are sending multiple attachments, the total size of these attachments cannot exceed 10 MB.",
+          "document": "Attachment content after Base64 encoding. A single attachment cannot exceed 4 MB. Note: Tencent Cloud APIs require that a request packet should not exceed 8 MB. If you are sending multiple attachments, the total size of these attachments cannot exceed 8 MB.",
           "example": "dGhpcyBpcyBhIGV4YW1wbGU=",
           "member": "string",
           "name": "Content",
@@ -230,7 +236,7 @@
         },
         {
           "default": "",
-          "document": "Email content when emails are sent by calling the API",
+          "document": "Email content when emails are sent by calling the API. This parameter is currently unavailable.",
           "example": "无",
           "member": "Simple",
           "name": "Simple",
@@ -239,7 +245,7 @@
         },
         {
           "default": "",
-          "document": "Email attachments",
+          "document": "Attachment parameters to set when you need to send attachments. This parameter is currently unavailable.",
           "example": "无",
           "member": "Attachment",
           "name": "Attachments",
@@ -272,6 +278,15 @@
           "name": "Unsubscribe",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "ADLocation",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -689,6 +704,33 @@
     },
     "DeleteEmailTemplateResponse": {
       "document": "DeleteEmailTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteReceiverRequest": {
+      "document": "DeleteReceiver request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Recipient group ID, which is returned when a recipient group is created.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ReceiverId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteReceiverResponse": {
+      "document": "DeleteReceiver response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1443,6 +1485,15 @@
           "name": "Unsubscribe",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Email triggering type. `0` (default): non-trigger-based, suitable for marketing emails and non-immediate emails; `1`: trigger-based, suitable for immediate emails such as emails containing verification codes. If the size of an email exceeds a specified value, the system will automatically choose the non-trigger-based type.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TriggerType",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
