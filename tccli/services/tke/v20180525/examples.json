@@ -159,8 +159,8 @@
     "DeleteClusterInstances": [
       {
         "document": "This example shows you how to delete a node in a cluster.",
-        "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterInstances\r\n&ClusterId=cls-xxxxxx\r\n&InstanceIds.0=ins-xxxxx\r\n&InstanceDeleteMode=terminate\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterInstances\n&ClusterId=cls-xxxxxx\n&InstanceIds.0=ins-xxxxx\n&InstanceDeleteMode=terminate\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"SuccInstanceIds\": [\n            \"xxx\"\n        ],\n        \"FailedInstanceIds\": [\n            \"xxx\"\n        ],\n        \"NotFoundInstanceIds\": [\n            \"xxx\"\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Deleting a node in a cluster"
       }
     ],
@@ -215,8 +215,8 @@
     "DescribeClusterAsGroups": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterAsGroups\r\n&ClusterId=cls-xxxxxx\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"82f2fe9c-c5fa-4077-9236-f1341180a696\"\n    }\n}",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterAsGroups\n&ClusterId=cls-xxxxxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ClusterAsGroupSet\": [\n            {\n                \"AutoScalingGroupId\": \"xx\",\n                \"Status\": \"xx\",\n                \"IsUnschedulable\": true,\n                \"Labels\": [\n                    {\n                        \"Name\": \"xx\",\n                        \"Value\": \"xx\"\n                    }\n                ],\n                \"CreatedTime\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"82f2fe9c-c5fa-4077-9236-f1341180a696\"\n    }\n}",
         "title": "Querying the list of cluster-associated scaling groups"
       }
     ],
@@ -302,9 +302,9 @@
     ],
     "DescribeClusterSecurity": [
       {
-        "document": "Querying secret information of a cluster",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterSecurity\r\n&ClusterId=cls-xxxxxxxx\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"UserName\": \"xxxxx\",\n        \"CertificationAuthority\": \"xxxxxx\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\n    }\n}",
+        "document": "This example shows you how to query the secret information of a cluster.",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterSecurity\n&ClusterId=cls-xxxxxxxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"UserName\": \"xx\",\n        \"Domain\": \"xx\",\n        \"CertificationAuthority\": \"xx\",\n        \"Kubeconfig\": \"xx\",\n        \"PgwEndpoint\": \"xx\",\n        \"JnsGwEndpoint\": \"xx\",\n        \"RequestId\": \"xx\",\n        \"SecurityPolicy\": [\n            \"xx\"\n        ],\n        \"ClusterExternalEndpoint\": \"xx\",\n        \"Password\": \"xx\"\n    }\n}",
         "title": "Querying secret information of a cluster"
       }
     ],
@@ -343,9 +343,9 @@
     "DescribeImages": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeImages\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\n    }\n}",
-        "title": "Obtaining the image information"
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeImages\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ImageInstanceSet\": [\n            {\n                \"Alias\": \"xx\",\n                \"OsCustomizeType\": \"xx\",\n                \"OsName\": \"xx\",\n                \"ImageId\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\n    }\n}",
+        "title": "Obtaining image information"
       }
     ],
     "DescribePrometheusInstance": [
@@ -359,8 +359,8 @@
     "DescribeRegions": [
       {
         "document": "This example shows you how to obtain the region list.",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeRegions\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\n    }\n}",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeRegions\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RegionInstanceSet\": [\n            {\n                \"Status\": \"xx\",\n                \"Remark\": \"xx\",\n                \"RegionId\": 0,\n                \"FeatureGates\": \"xx\",\n                \"Alias\": \"xx\",\n                \"RegionName\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\n    }\n}",
         "title": "Obtaining the region list"
       }
     ],
@@ -368,8 +368,8 @@
       {
         "document": "",
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeRouteTableConflicts\n&RouteTableCidrBlock=10.4.0.0/16\n&VpcId=vpc-xxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"HasConflict\": false,\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
-        "title": "Querying whether there are conflict route tables"
+        "output": "{\n    \"Response\": {\n        \"HasConflict\": false,\n        \"RouteTableConflictSet\": [\n            {\n                \"RouteTableType\": \"CcsCluster\",\n                \"RouteTableCidrBlock\": \"172.20.0.0/16\",\n                \"RouteTableName\": \"xxxx\",\n                \"RouteTableId\": \"xxxx\"\n            }\n        ],\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
+        "title": "Querying whether a route table has conflicts"
       }
     ],
     "DescribeTKEEdgeScript": [

@@ -928,6 +928,14 @@
         "title": "Adding subtitles to a media file"
       }
     ],
+    "ModifyMediaStorageClass": [
+      {
+        "document": "",
+        "input": "https://vod.tencentcloudapi.com/?Action=ModifyMediaStorageClass\n&FileIds.0=5285485487985271487\n&StorageClass=STANDARD_IA\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"requestId\"\n    }\n}",
+        "title": "Changing the storage class of a media file from STANDARD to STANDARD_IA"
+      }
+    ],
     "ModifyPersonSample": [
       {
         "document": "This example shows you how to modify the name and description of a sample.",

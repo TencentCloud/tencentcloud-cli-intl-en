@@ -4290,6 +4290,32 @@
       ],
       "usage": "out"
     },
+    "InstanceQuotaConfigResp": {
+      "document": "Traffic throttling policy in instance/topic dimension",
+      "members": [
+        {
+          "default": "",
+          "document": "Production throttling in MB/sec.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "30",
+          "member": "int64",
+          "name": "QuotaProducerByteRate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Consumption throttling in MB/sec.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "30",
+          "member": "int64",
+          "name": "QuotaConsumerByteRate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "InstanceResponse": {
       "document": "Aggregated returned result of instance status",
       "members": [
@@ -4760,6 +4786,24 @@
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Production throttling in MB/sec.",
+          "example": "30",
+          "member": "int64",
+          "name": "QuotaProducerByteRate",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Consumption throttling in MB/sec.",
+          "example": "30",
+          "member": "int64",
+          "name": "QuotaConsumerByteRate",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -5356,6 +5400,16 @@
           "name": "AclRuleList",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Traffic throttling policy in topic dimension.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "InstanceQuotaConfigResp",
+          "name": "QuotaConfig",
+          "required": true,
+          "type": "object",
           "value_allowed_null": true
         }
       ],

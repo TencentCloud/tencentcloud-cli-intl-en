@@ -3267,6 +3267,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "es-xxxxxxxx",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3275,6 +3276,7 @@
         {
           "default": "",
           "document": "Target ES version. Valid values: 6.4.3, 6.8.2, 7.5.1",
+          "example": "6.4.3",
           "member": "string",
           "name": "EsVersion",
           "required": true,
@@ -3283,6 +3285,7 @@
         {
           "default": "",
           "document": "Whether to check for upgrade only. Default value: false",
+          "example": "false",
           "member": "bool",
           "name": "CheckOnly",
           "required": false,
@@ -3291,6 +3294,7 @@
         {
           "default": "",
           "document": "Target X-Pack edition: <li>OSS: Open-source Edition </li><li>basic: Basic Edition </li>Currently only used for v5.6.4 to v6.x upgrade. Default value: basic",
+          "example": "basic",
           "member": "string",
           "name": "LicenseType",
           "required": false,
@@ -3299,6 +3303,7 @@
         {
           "default": "",
           "document": "Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>",
+          "example": "security",
           "member": "uint64",
           "name": "BasicSecurityType",
           "required": false,
@@ -3307,10 +3312,20 @@
         {
           "default": "",
           "document": "Upgrade mode. <li>scale: blue/green deployment</li><li>restart: rolling restart</li>Default value: scale",
+          "example": "scale",
           "member": "string",
           "name": "UpgradeMode",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to back up the cluster before version upgrade (no backup by default)",
+          "example": "false",
+          "member": "bool",
+          "name": "CosBackup",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"

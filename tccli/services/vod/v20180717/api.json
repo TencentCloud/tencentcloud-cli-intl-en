@@ -480,6 +480,12 @@
       "name": "Modifies media file attribute",
       "output": "ModifyMediaInfoResponse"
     },
+    "ModifyMediaStorageClass": {
+      "document": "This API is used to modify the storage class of media files.\nIf the current storage class is STANDARD, it can be changed to one of the following classes:\n<li>STANDARD_IA</li>\n<li>ARCHIVE</li>\n<li>DEEP ARCHIVE</li>\nIf the current storage class is STANDARD_IA, it can be changed to one of the following classes:\n<li>STANDARD</li>\n<li>ARCHIVE</li>\n<li>DEEP ARCHIVE</li>\nIf the current storage class is ARCHIVE, it can be changed to the following class:\n<li>STANDARD</li>\nIf the current storage class is DEEP ARCHIVE, it can be changed to the following class:\n<li>STANDARD</li>",
+      "input": "ModifyMediaStorageClassRequest",
+      "name": "Modifies the storage class of media files",
+      "output": "ModifyMediaStorageClassResponse"
+    },
     "ModifyPersonSample": {
       "document": "This API is used to modify sample information according to the sample ID. You can modify the name and description, add, delete, and reset facial features or tags. Leave at least one image after deleting facial features. To leave no image, please use the reset operation.",
       "input": "ModifyPersonSampleRequest",
@@ -1086,6 +1092,7 @@
         {
           "default": "",
           "document": "Video parameter information.",
+          "example": "null",
           "member": "VideoTemplateInfo",
           "name": "Video",
           "required": true,
@@ -1095,6 +1102,7 @@
         {
           "default": "",
           "document": "Audio parameter information.",
+          "example": "null",
           "member": "AudioTemplateInfo",
           "name": "Audio",
           "required": true,
@@ -1104,6 +1112,7 @@
         {
           "default": "",
           "document": "Whether to remove audio stream. Valid values:\n<li>0: no,</li>\n<li>1: yes.</li>",
+          "example": "0",
           "member": "uint64",
           "name": "RemoveAudio",
           "required": false,
@@ -1113,11 +1122,22 @@
         {
           "default": "",
           "document": "Whether to remove a video stream. Valid values:\n<li>0: no</li>\n<li>1: yes</li>",
+          "example": "0",
           "member": "uint64",
           "name": "RemoveVideo",
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "TESHD transcoding parameters\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "null",
+          "member": "TEHDConfig",
+          "name": "TEHDConfig",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -16007,6 +16027,60 @@
       ],
       "type": "object"
     },
+    "ModifyMediaStorageClassRequest": {
+      "document": "ModifyMediaStorageClass request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The unique IDs of media files",
+          "example": "无",
+          "member": "string",
+          "name": "FileIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The target storage class. Valid values:\n<li>STANDARD</li>\n<li>STANDARD_IA</li>\n<li>ARCHIVE</li>\n<li>DEEP_ARCHIVE</li>",
+          "example": "无",
+          "member": "string",
+          "name": "StorageClass",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
+          "example": "无",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The retrieval mode. When switching files from DEEP ARCHIVE or ARCHIVE to STANDARD, you need to specify the retrieval mode. For details, see [Data retrieval and retrieval mode](https://intl.cloud.tencent.com/document/product/266/43051#data-retrieval-and-retrieval-mode.3Ca-id.3D.22retake.22.3E.3C.2Fa.3E).\nIf the current storage class is ARCHIVE, the valid values for this parameter are as follows:\n<li>Expedited</li>\n<li>Standard</li>\n<li>Bulk</li>\nIf the current storage class is DEEP ARCHIVE, the valid values for this parameter are as follows:\n<li>Standard</li>\n<li>Bulk</li>",
+          "example": "Standard",
+          "member": "string",
+          "name": "RestoreTier",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMediaStorageClassResponse": {
+      "document": "ModifyMediaStorageClass response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyPersonSampleRequest": {
       "document": "ModifyPersonSample request structure.",
       "members": [
@@ -20520,7 +20594,8 @@
       "members": [
         {
           "default": "",
-          "document": "TESHD type. Valid values:\n<li>TEHD-100: TESHD-100.</li>\nIf this parameter is left blank, TESHD will not be enabled.",
+          "document": "TESHD transcoding type. Valid values: <li>TEHD-100</li> <li>OFF (default)</li>",
+          "example": "TEHD-100",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -20530,6 +20605,7 @@
         {
           "default": "",
           "document": "Maximum bitrate, which is valid when `Type` is `TESHD`.\nIf this parameter is left blank or 0 is entered, there will be no upper limit for bitrate.",
+          "example": "0",
           "member": "uint64",
           "name": "MaxVideoBitrate",
           "required": false,
@@ -20544,7 +20620,8 @@
       "members": [
         {
           "default": "",
-          "document": "TESHD type. Valid values:\n<li>TEHD-100: TESHD-100.</li>\nIf this parameter is left blank, no modification will be made.",
+          "document": "TESHD transcoding type. Valid values: <li>TEHD-100</li> <li>OFF (default)</li>",
+          "example": "TEHD-100",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -20554,6 +20631,7 @@
         {
           "default": "",
           "document": "Maximum bitrate. If this parameter is left blank, no modification will be made.",
+          "example": "1000",
           "member": "uint64",
           "name": "MaxVideoBitrate",
           "required": false,

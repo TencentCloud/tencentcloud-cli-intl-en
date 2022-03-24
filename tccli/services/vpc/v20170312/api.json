@@ -60,12 +60,6 @@
       "name": "Binds a NAT gateway to an EIP",
       "output": "AssociateNatGatewayAddressResponse"
     },
-    "AssociateNetworkAclSubnets": {
-      "document": "This API is used to associate a network ACL with subnets in a VPC instance.",
-      "input": "AssociateNetworkAclSubnetsRequest",
-      "name": "Associates a network ACL with subnets",
-      "output": "AssociateNetworkAclSubnetsResponse"
-    },
     "AssociateNetworkInterfaceSecurityGroups": {
       "document": "This API (AssociateNetworkInterfaceSecurityGroups) is used to attach a security group to an ENI.",
       "input": "AssociateNetworkInterfaceSecurityGroupsRequest",
@@ -115,13 +109,13 @@
       "output": "CloneSecurityGroupResponse"
     },
     "CreateAddressTemplate": {
-      "document": "This API (CreateAddressTemplate) is used to create an IP address template.",
+      "document": "This API is used to create an IP address template.",
       "input": "CreateAddressTemplateRequest",
       "name": "Creates an IP address template",
       "output": "CreateAddressTemplateResponse"
     },
     "CreateAddressTemplateGroup": {
-      "document": "This API (CreateAddressTemplateGroup) is used to create an IP address template group.",
+      "document": "This API is used to create an IP address template group.",
       "input": "CreateAddressTemplateGroupRequest",
       "name": "Creates an IP address template group",
       "output": "CreateAddressTemplateGroupResponse"
@@ -131,12 +125,6 @@
       "input": "CreateAndAttachNetworkInterfaceRequest",
       "name": "Creates an ENI and binds it to a CVM",
       "output": "CreateAndAttachNetworkInterfaceResponse"
-    },
-    "CreateAssistantCidr": {
-      "document": "This API (CreateAssistantCidr) is used to batch create secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)",
-      "input": "CreateAssistantCidrRequest",
-      "name": "Creates secondary CIDR blocks",
-      "output": "CreateAssistantCidrResponse"
     },
     "CreateBandwidthPackage": {
       "document": "This API is used to create a [device bandwidth package](https://intl.cloud.tencent.com/document/product/684/15245?from_cn_redirect=1#bwptype) or an [IP bandwidth package](https://intl.cloud.tencent.com/document/product/684/15245?from_cn_redirect=1#bwptype).",
@@ -215,12 +203,6 @@
       "input": "CreateNetDetectRequest",
       "name": "CreateNetDetect",
       "output": "CreateNetDetectResponse"
-    },
-    "CreateNetworkAcl": {
-      "document": "This API is used to create a <a href=\"https://intl.cloud.tencent.com/document/product/215/20088?from_cn_redirect=1\">network ACL</a>.\n* The inbound and outbound rules for a new network ACL are \"Deny All\" by default. You need to call `ModifyNetworkAclEntries` after creation to set rules for the network ACL as needed.",
-      "input": "CreateNetworkAclRequest",
-      "name": "Creates a network ACL",
-      "output": "CreateNetworkAclResponse"
     },
     "CreateNetworkInterface": {
       "document": "This API is used to create an ENI.\n* You can specify private IP addresses and a primary IP when creating an ENI. The specified private IP must be in the same subnet as the ENI and is not occupied.\n* When creating an ENI, you can specify the number of private IP addresses that you want to apply for. The system will randomly generate private IP addresses.\n* An ENI can only be bound with a limited number of IP addresses. For more information about resource limits, see <a href=\"/document/product/576/18527\">ENI Use Limits</a>.\n* You can bind an existing security group when creating an ENI.\n* You can bind a tag when creating an ENI. The tag list in the response indicates the tags that have been successfully added.\n>?This API is async. You can call the [`DescribeVpcTaskResult`](https://intl.cloud.tencent.com/document/api/215/59037?from_cn_redirect=1) API to query the task result. When the task is completed, you can continue other tasks.\n>",
@@ -336,12 +318,6 @@
       "name": "Deletes an IP address template group",
       "output": "DeleteAddressTemplateGroupResponse"
     },
-    "DeleteAssistantCidr": {
-      "document": "This API (DeleteAssistantCidr) is used to delete secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)",
-      "input": "DeleteAssistantCidrRequest",
-      "name": "Deletes secondary CIDR blocks",
-      "output": "DeleteAssistantCidrResponse"
-    },
     "DeleteBandwidthPackage": {
       "document": "This API is used to delete bandwidth packages, including [device bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85).",
       "input": "DeleteBandwidthPackageRequest",
@@ -413,12 +389,6 @@
       "input": "DeleteNetDetectRequest",
       "name": "DeleteNetDetect",
       "output": "DeleteNetDetectResponse"
-    },
-    "DeleteNetworkAcl": {
-      "document": "This API is used to delete a network ACL.",
-      "input": "DeleteNetworkAclRequest",
-      "name": "Deletes a network ACL",
-      "output": "DeleteNetworkAclResponse"
     },
     "DeleteNetworkInterface": {
       "document": "This API is used to delete an ENI.\n* An ENI cannot be deleted when it’s bound to a CVM.\n * After the deletion, all of its private IP addresses will be released.\n\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
@@ -648,12 +618,6 @@
       "name": "Queries the monitoring details of a gateway",
       "output": "DescribeGatewayFlowMonitorDetailResponse"
     },
-    "DescribeGatewayFlowQos": {
-      "document": "This API (DescribeGatewayFlowQos) is used to query the QoS bandwidth limit of inbound IP flow in a gateway.",
-      "input": "DescribeGatewayFlowQosRequest",
-      "name": "Queries the QoS bandwidth limit of inbound IP flow in a gateway.",
-      "output": "DescribeGatewayFlowQosResponse"
-    },
     "DescribeHaVips": {
       "document": "This API (DescribeHaVips) is used to query the list of highly available virtual IPs (HAVIP).",
       "input": "DescribeHaVipsRequest",
@@ -822,12 +786,6 @@
       "name": "Views VPC resources.",
       "output": "DescribeVpcResourceDashboardResponse"
     },
-    "DescribeVpcTaskResult": {
-      "document": "This API is used to query the execution result of a VPC task.",
-      "input": "DescribeVpcTaskResultRequest",
-      "name": "Queries the execution result of an async task",
-      "output": "DescribeVpcTaskResultResponse"
-    },
     "DescribeVpcs": {
       "document": "This API (DescribeVpcs) is used to query the VPC list.",
       "input": "DescribeVpcsRequest",
@@ -882,12 +840,6 @@
       "name": "Disables CCN routes",
       "output": "DisableCcnRoutesResponse"
     },
-    "DisableGatewayFlowMonitor": {
-      "document": "This API (DisableGatewayFlowMonitor) is used to disable gateway flow monitor.",
-      "input": "DisableGatewayFlowMonitorRequest",
-      "name": "Disables gateway flow monitor",
-      "output": "DisableGatewayFlowMonitorResponse"
-    },
     "DisassociateAddress": {
       "document": "This API is used to unbind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).\n* This API supports unbinding an EIP from CVM instances and ENIs.\n* This API does not support unbinding an EIP from a NAT Gateway. To unbind an EIP from a NAT Gateway, use the [`DisassociateNatGatewayAddress`](https://intl.cloud.tencent.com/document/api/215/36716?from_cn_redirect=1) API.\n* Only EIPs in BIND or BIND_ENI status can be unbound.\n* Blocked EIPs cannot be unbound.",
       "input": "DisassociateAddressRequest",
@@ -905,12 +857,6 @@
       "input": "DisassociateNatGatewayAddressRequest",
       "name": "Unbinds an EIP from a NAT gateway",
       "output": "DisassociateNatGatewayAddressResponse"
-    },
-    "DisassociateNetworkAclSubnets": {
-      "document": "This API is used to disassociate a network ACL from subnets in a VPC instance.",
-      "input": "DisassociateNetworkAclSubnetsRequest",
-      "name": "Disassociates a network ACL from a subnet",
-      "output": "DisassociateNetworkAclSubnetsResponse"
     },
     "DisassociateNetworkInterfaceSecurityGroups": {
       "document": "This API (DisassociateNetworkInterfaceSecurityGroups) is used to detach (or fully detach if possible) a security group from an ENI.",
@@ -935,12 +881,6 @@
       "input": "EnableCcnRoutesRequest",
       "name": "Enables CCN routes",
       "output": "EnableCcnRoutesResponse"
-    },
-    "EnableGatewayFlowMonitor": {
-      "document": "This API (EnableGatewayFlowMonitor) is used to enable gateway flow monitor.",
-      "input": "EnableGatewayFlowMonitorRequest",
-      "name": "Enables gateway traffic monitoring",
-      "output": "EnableGatewayFlowMonitorResponse"
     },
     "EnableVpcEndPointConnect": {
       "document": "This API is used to determine whether to accept the request of connecting with an endpoint.",
@@ -1032,12 +972,6 @@
       "name": "Modifies the EIP bandwidth",
       "output": "ModifyAddressesBandwidthResponse"
     },
-    "ModifyAssistantCidr": {
-      "document": "This API (ModifyAssistantCidr) is used to batch modify (e.g. add and delete) secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)",
-      "input": "ModifyAssistantCidrRequest",
-      "name": "Modifies secondary CIDR blocks.",
-      "output": "ModifyAssistantCidrResponse"
-    },
     "ModifyBandwidthPackageAttribute": {
       "document": "This API is used to modify the attributes of a bandwidth package, including the bandwidth package name, and so on.",
       "input": "ModifyBandwidthPackageAttributeRequest",
@@ -1080,12 +1014,6 @@
       "name": "Modifies the attributes of a flow log",
       "output": "ModifyFlowLogAttributeResponse"
     },
-    "ModifyGatewayFlowQos": {
-      "document": "This API (ModifyGatewayFlowQos) is used to adjust the QoS bandwidth limit in a gateway.",
-      "input": "ModifyGatewayFlowQosRequest",
-      "name": "Adjusts the QoS bandwidth limit in a gateway",
-      "output": "ModifyGatewayFlowQosResponse"
-    },
     "ModifyHaVipAttribute": {
       "document": "This API (ModifyHaVipAttribute) is used to modify HAVIP attributes.",
       "input": "ModifyHaVipAttributeRequest",
@@ -1127,18 +1055,6 @@
       "input": "ModifyNetDetectRequest",
       "name": "ModifyNetDetect",
       "output": "ModifyNetDetectResponse"
-    },
-    "ModifyNetworkAclAttribute": {
-      "document": "This API is used to modify the attributes of a network ACL.",
-      "input": "ModifyNetworkAclAttributeRequest",
-      "name": "Modifies network ACL attributes",
-      "output": "ModifyNetworkAclAttributeResponse"
-    },
-    "ModifyNetworkAclEntries": {
-      "document": "This API is used to modify (add or delete) the inbound and outbound rules of a network ACL.",
-      "input": "ModifyNetworkAclEntriesRequest",
-      "name": "Modifies network ACL rules",
-      "output": "ModifyNetworkAclEntriesResponse"
     },
     "ModifyNetworkInterfaceAttribute": {
       "document": "This API (ModifyNetworkInterfaceAttribute) is used to modify ENI attributes.",
@@ -1235,12 +1151,6 @@
       "input": "ModifyVpnGatewayRoutesRequest",
       "name": "Modifies the route status of a VPN gateway",
       "output": "ModifyVpnGatewayRoutesResponse"
-    },
-    "NotifyRoutes": {
-      "document": "This API is used to publish a route to CCN. This can also be done by clicking the **Publish to CCN** button on the route table page.",
-      "input": "NotifyRoutesRequest",
-      "name": "Publishes a route to CCN",
-      "output": "NotifyRoutesResponse"
     },
     "RejectAttachCcnInstances": {
       "document": "This API (RejectAttachCcnInstances) is used to reject association operations when instances are associated across accounts for the CCN owner.\n",
@@ -1355,12 +1265,6 @@
       "input": "UnassignPrivateIpAddressesRequest",
       "name": "Returns the private IPs of an ENI",
       "output": "UnassignPrivateIpAddressesResponse"
-    },
-    "WithdrawNotifyRoutes": {
-      "document": "This API is used to withdraw a route from CCN. This can also be done by clicking the **Withdraw from CCN** button on the route table page.",
-      "input": "WithdrawNotifyRoutesRequest",
-      "name": "Withdraws a route from CCN",
-      "output": "WithdrawNotifyRoutesResponse"
     }
   },
   "metadata": {
@@ -1861,11 +1765,12 @@
       "usage": "both"
     },
     "AddressTemplateSpecification": {
-      "document": "IP address template.",
+      "document": "IP address template",
       "members": [
         {
           "default": "",
           "document": "The ID of the IP address, such as `ipm-2uw6ujo6`.",
+          "example": "ipm-2uw6ujo6",
           "member": "string",
           "name": "AddressId",
           "required": true,
@@ -1875,6 +1780,7 @@
         {
           "default": "",
           "document": "The ID of the IP address group, such as `ipmg-2uw6ujo6`.",
+          "example": "ipmg-2uw6ujo6",
           "member": "string",
           "name": "AddressGroupId",
           "required": true,
@@ -2405,40 +2311,6 @@
     },
     "AssociateNatGatewayAddressResponse": {
       "document": "AssociateNatGatewayAddress response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "AssociateNetworkAclSubnetsRequest": {
-      "document": "AssociateNetworkAclSubnets request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Network ACL instance ID. Example: acl-12345678.",
-          "member": "string",
-          "name": "NetworkAclId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Array of subnet instance IDs. Example: [subnet-12345678]",
-          "member": "string",
-          "name": "SubnetIds",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "AssociateNetworkAclSubnetsResponse": {
-      "document": "AssociateNetworkAclSubnets response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3027,6 +2899,7 @@
         {
           "default": "",
           "document": "The CCN ID that the bandwidth belongs to.\nNote: this field may return null, indicating that no valid value was found.",
+          "example": "ccn-ef5nufih",
           "member": "string",
           "name": "CcnId",
           "required": true,
@@ -3036,6 +2909,7 @@
         {
           "default": "",
           "document": "The creation time of the instance.\nNote: this field may return null, indicating that no valid value was found.",
+          "example": "2018-12-18 20:11:37",
           "member": "string",
           "name": "CreatedTime",
           "required": true,
@@ -3045,6 +2919,7 @@
         {
           "default": "",
           "document": "The expiration time of the instance.\nNote: this field may return null, indicating that no valid value was found.",
+          "example": "2019-01-18 20:11:37",
           "member": "string",
           "name": "ExpiredTime",
           "required": true,
@@ -3054,6 +2929,7 @@
         {
           "default": "",
           "document": "The unique ID of the bandwidth instance.\nNote: this field may return null, indicating that no valid value was found.",
+          "example": "fcr-6fda09za",
           "member": "string",
           "name": "RegionFlowControlId",
           "required": true,
@@ -3063,6 +2939,7 @@
         {
           "default": "",
           "document": "The billing flag.\nNote: this field may return null, indicating that no valid value was found.",
+          "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
           "name": "RenewFlag",
           "required": true,
@@ -3072,10 +2949,21 @@
         {
           "default": "",
           "document": "The information of the bandwidth regions and bandwidth caps. The parameter is only returned for the cross-region limit mode, but not for egress limit.\nNote: this field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "CcnRegionBandwidthLimit",
           "name": "CcnRegionBandwidthLimit",
           "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cloud marketplace instance ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MarketId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -3616,7 +3504,8 @@
       "members": [
         {
           "default": "",
-          "document": "The name of the IP address template group.",
+          "document": "Name of the IP address template group",
+          "example": "TestName",
           "member": "string",
           "name": "AddressTemplateGroupName",
           "required": true,
@@ -3624,7 +3513,8 @@
         },
         {
           "default": "",
-          "document": "The instance ID of the IP address template, such as `ipm-mdunqeb6`.",
+          "document": "IP address template instance ID, such as `ipm-mdunqeb6`.",
+          "example": "[\"ipm-88t6207k\\r\\n\",\"ipm-mdunqeb6\\r\\n\"]",
           "member": "string",
           "name": "AddressTemplateIds",
           "required": true,
@@ -3657,7 +3547,7 @@
       "members": [
         {
           "default": "",
-          "document": "The name of the IP address template",
+          "document": "IP address template name.",
           "example": "TestName",
           "member": "string",
           "name": "AddressTemplateName",
@@ -3809,47 +3699,6 @@
           "name": "NetworkInterface",
           "type": "object",
           "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateAssistantCidrRequest": {
-      "document": "CreateAssistantCidr request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "`VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.",
-          "member": "string",
-          "name": "VpcId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "CIDR set, e.g. [\"10.0.0.0/16\", \"172.16.0.0/16\"]",
-          "member": "string",
-          "name": "CidrBlocks",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateAssistantCidrResponse": {
-      "document": "CreateAssistantCidr response structure.",
-      "members": [
-        {
-          "document": "A set of secondary CIDR blocks.\nNote: This field may return null, indicating that no valid value was found.",
-          "member": "AssistantCidr",
-          "name": "AssistantCidrSet",
-          "type": "list",
-          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4717,47 +4566,6 @@
           "document": "The network detection (NetDetect) object.",
           "member": "NetDetect",
           "name": "NetDetect",
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateNetworkAclRequest": {
-      "document": "CreateNetworkAcl request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of the DescribeVpcs API.",
-          "member": "string",
-          "name": "VpcId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Name of the network ACL. The maximum length is 60 bytes.",
-          "member": "string",
-          "name": "NetworkAclName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateNetworkAclResponse": {
-      "document": "CreateNetworkAcl response structure.",
-      "members": [
-        {
-          "document": "Network ACL instance",
-          "member": "NetworkAcl",
-          "name": "NetworkAcl",
           "type": "object",
           "value_allowed_null": false
         },
@@ -6408,40 +6216,6 @@
       ],
       "type": "object"
     },
-    "DeleteAssistantCidrRequest": {
-      "document": "DeleteAssistantCidr request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "`VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.",
-          "member": "string",
-          "name": "VpcId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "CIDR set, e.g. [\"10.0.0.0/16\", \"172.16.0.0/16\"]",
-          "member": "string",
-          "name": "CidrBlocks",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteAssistantCidrResponse": {
-      "document": "DeleteAssistantCidr response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DeleteBandwidthPackageRequest": {
       "document": "DeleteBandwidthPackage request structure.",
       "members": [
@@ -6797,32 +6571,6 @@
     },
     "DeleteNetDetectResponse": {
       "document": "DeleteNetDetect response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteNetworkAclRequest": {
-      "document": "DeleteNetworkAcl request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Network ACL instance ID. Example: acl-12345678.",
-          "member": "string",
-          "name": "NetworkAclId",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteNetworkAclResponse": {
-      "document": "DeleteNetworkAcl response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -7417,15 +7165,19 @@
       "members": [
         {
           "document": "The number of instances meeting the filter condition.",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "IP address template.",
+          "example": "无",
           "member": "AddressTemplate",
           "name": "AddressTemplateSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -8768,70 +8520,6 @@
           "member": "GatewayFlowMonitorDetail",
           "name": "GatewayFlowMonitorDetailSet",
           "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeGatewayFlowQosRequest": {
-      "document": "DescribeGatewayFlowQos request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Gateway instance ID, which currently supports these types:\nID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;\nID of NAT gateway instance, e.g. `nat-ltjahce6`;\nID of VPN gateway instance, e.g. `vpn-ltjahce6`.",
-          "member": "string",
-          "name": "GatewayId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "CVM private IP addresses with limited bandwidth.",
-          "member": "string",
-          "name": "IpAddresses",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Offset. Default value: 0.",
-          "member": "uint64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
-          "member": "uint64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeGatewayFlowQosResponse": {
-      "document": "DescribeGatewayFlowQos response structure.",
-      "members": [
-        {
-          "document": "List of instance details.",
-          "member": "GatewayQos",
-          "name": "GatewayQosSet",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Number of eligible instances.",
-          "member": "uint64",
-          "name": "TotalCount",
-          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -10451,51 +10139,6 @@
       ],
       "type": "object"
     },
-    "DescribeVpcTaskResultRequest": {
-      "document": "DescribeVpcTaskResult request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "`RequestId` returned by an async task",
-          "example": "481e9b6e-81d1-4859-b8cf-a673e010b388",
-          "member": "string",
-          "name": "TaskId",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeVpcTaskResultResponse": {
-      "document": "DescribeVpcTaskResult response structure.",
-      "members": [
-        {
-          "document": "Execution result of an async task Valid values: `SUCCESS`: the task has been successfully executed; `FAILED`: the job execution failed; `RUNNING`: the job is executing.",
-          "example": "SUCCESS",
-          "member": "string",
-          "name": "Status",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Output of the async task execution result",
-          "example": "SUCCESS",
-          "member": "string",
-          "name": "Output",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeVpcsRequest": {
       "document": "DescribeVpcs request structure.",
       "members": [
@@ -11289,32 +10932,6 @@
       ],
       "type": "object"
     },
-    "DisableGatewayFlowMonitorRequest": {
-      "document": "DisableGatewayFlowMonitor request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Gateway instance ID, which currently supports these types:\nID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;\nID of NAT gateway instance, e.g. `nat-ltjahce6`;\nID of VPN gateway instance, e.g. `vpn-ltjahce6`.",
-          "member": "string",
-          "name": "GatewayId",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DisableGatewayFlowMonitorResponse": {
-      "document": "DisableGatewayFlowMonitor response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DisassociateAddressRequest": {
       "document": "DisassociateAddress request structure.",
       "members": [
@@ -11422,40 +11039,6 @@
     },
     "DisassociateNatGatewayAddressResponse": {
       "document": "DisassociateNatGatewayAddress response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DisassociateNetworkAclSubnetsRequest": {
-      "document": "DisassociateNetworkAclSubnets request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Network ACL instance ID. Example: acl-12345678.",
-          "member": "string",
-          "name": "NetworkAclId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Array of subnet instance IDs. Example: [subnet-12345678].",
-          "member": "string",
-          "name": "SubnetIds",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DisassociateNetworkAclSubnetsResponse": {
-      "document": "DisassociateNetworkAclSubnets response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -11617,32 +11200,6 @@
     },
     "EnableCcnRoutesResponse": {
       "document": "EnableCcnRoutes response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "EnableGatewayFlowMonitorRequest": {
-      "document": "EnableGatewayFlowMonitor request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Gateway instance ID, which currently supports these types:\nID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;\nID of NAT gateway instance, e.g. `nat-ltjahce6`;\nID of VPN gateway instance, e.g. `vpn-ltjahce6`.",
-          "member": "string",
-          "name": "GatewayId",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "EnableGatewayFlowMonitorResponse": {
-      "document": "EnableGatewayFlowMonitor response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -12192,48 +11749,6 @@
           "name": "OutTraffic",
           "required": true,
           "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "GatewayQos": {
-      "document": "Gateway bandwidth limit information",
-      "members": [
-        {
-          "default": "",
-          "document": "VPC instance ID.",
-          "member": "string",
-          "name": "VpcId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "CVM Private IP.",
-          "member": "string",
-          "name": "IpAddress",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Bandwidth limit value.",
-          "member": "int64",
-          "name": "Bandwidth",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The creation time.",
-          "member": "string",
-          "name": "CreateTime",
-          "required": true,
-          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -13567,55 +13082,6 @@
       ],
       "type": "object"
     },
-    "ModifyAssistantCidrRequest": {
-      "document": "ModifyAssistantCidr request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "`VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.",
-          "member": "string",
-          "name": "VpcId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Array of the secondary CIDR blocks to be added, such as [\"10.0.0.0/16\", \"172.16.0.0/16\"]. Either or both of `NewCidrBlocks` and `OldCidrBlocks` must be specified.",
-          "member": "string",
-          "name": "NewCidrBlocks",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Array of the secondary CIDR blocks to be deleted, such as [\"10.0.0.0/16\", \"172.16.0.0/16\"]. Either or both of `NewCidrBlocks` and `OldCidrBlocks` must be specified.",
-          "member": "string",
-          "name": "OldCidrBlocks",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyAssistantCidrResponse": {
-      "document": "ModifyAssistantCidr response structure.",
-      "members": [
-        {
-          "document": "A set of secondary CIDR blocks.\nNote: This field may return null, indicating that no valid value was found.",
-          "member": "AssistantCidr",
-          "name": "AssistantCidrSet",
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "ModifyBandwidthPackageAttributeRequest": {
       "document": "ModifyBandwidthPackageAttribute request structure.",
       "members": [
@@ -13923,48 +13389,6 @@
       ],
       "type": "object"
     },
-    "ModifyGatewayFlowQosRequest": {
-      "document": "ModifyGatewayFlowQos request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Gateway instance ID, which currently supports these types:\nID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;\nID of NAT gateway instance, e.g. `nat-ltjahce6`;\nID of VPN gateway instance, e.g. `vpn-ltjahce6`.",
-          "member": "string",
-          "name": "GatewayId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Bandwidth limit value.",
-          "member": "int64",
-          "name": "Bandwidth",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "CVM private IP addresses with limited bandwidth.",
-          "member": "string",
-          "name": "IpAddresses",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyGatewayFlowQosResponse": {
-      "document": "ModifyGatewayFlowQos response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "ModifyHaVipAttributeRequest": {
       "document": "ModifyHaVipAttribute request structure.",
       "members": [
@@ -14227,6 +13651,7 @@
         {
           "default": "",
           "document": "The ID of a network detection instance, such as `netd-12345678`.",
+          "example": "netd-12345678",
           "member": "string",
           "name": "NetDetectId",
           "required": true,
@@ -14235,6 +13660,7 @@
         {
           "default": "",
           "document": "The name of a network detection instance. The maximum length is 60 characters.",
+          "example": "test",
           "member": "string",
           "name": "NetDetectName",
           "required": false,
@@ -14243,6 +13669,7 @@
         {
           "default": "",
           "document": "The array of detection destination IPv4 addresses, which contains at most two IP addresses.",
+          "example": "[\"10.0.0.2\\r\\n\",\"10.0.0.3\\r\\n\"]",
           "member": "string",
           "name": "DetectDestinationIp",
           "required": false,
@@ -14250,7 +13677,8 @@
         },
         {
           "default": "",
-          "document": "The type of the next hop. Currently supported types are:\nVPN: VPN gateway;\nDIRECTCONNECT: direct connect gateway;\nPEERCONNECTION: peering connection;\nNAT: NAT gateway;\nNORMAL_CVM: normal CVM.",
+          "document": "Type of the next hop. Valid values:\n`VPN`: VPN gateway;\n`DIRECTCONNECT`: Direct connect gateway;\n`PEERCONNECTION`: Peering connection;\n`NAT`: NAT gateway;\n`NORMAL_CVM`: normal CVM;\n`CCN`: CCN gateway.",
+          "example": "NORMAL_CVM",
           "member": "string",
           "name": "NextHopType",
           "required": false,
@@ -14258,7 +13686,8 @@
         },
         {
           "default": "",
-          "document": "The next-hop destination gateway. The value is related to NextHopType.\nIf NextHopType is set to VPN, the value of this parameter is the VPN gateway ID, such as vpngw-12345678.\nIf NextHopType is set to DIRECTCONNECT, the value of this parameter is the direct connect gateway ID, such as dcg-12345678.\nIf NextHopType is set to PEERCONNECTION, the value of this parameter is the peering connection ID, such as pcx-12345678.\nIf NextHopType is set to NAT, the value of this parameter is the NAT gateway ID, such as nat-12345678.\nIf NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 address of the CVM, such as 10.0.0.12.",
+          "document": "Next-hop destination gateway. Its value is determined by `NextHopType`.\nIf `NextHopType` is set to `VPN`, the parameter value is the VPN gateway ID, such as `vpngw-12345678`.\nIf `NextHopType` is set to `DIRECTCONNECT`, the parameter value is the direct connect gateway ID, such as `dcg-12345678`.\nIf `NextHopType` is set to `PEERCONNECTION`, the parameter value is the peering connection ID, such as `pcx-12345678`.\nIf `NextHopType` is set to `NAT`, the parameter value is the NAT gateway ID, such as `nat-12345678`.\nIf `NextHopType` is set to `NORMAL_CVM`, the parameter value is the IPv4 address of the CVM instance, such as `10.0.0.12`.\nIf `NextHopType` is set to `CCN`, the parameter value is the CCN ID, such as `ccn-12345678`.",
+          "example": "10.0.0.4",
           "member": "string",
           "name": "NextHopDestination",
           "required": false,
@@ -14267,6 +13696,7 @@
         {
           "default": "",
           "document": "Network detection description.",
+          "example": "test",
           "member": "string",
           "name": "NetDetectDescription",
           "required": false,
@@ -14277,74 +13707,6 @@
     },
     "ModifyNetDetectResponse": {
       "document": "ModifyNetDetect response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyNetworkAclAttributeRequest": {
-      "document": "ModifyNetworkAclAttribute request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Network ACL instance ID. Example: acl-12345678.",
-          "member": "string",
-          "name": "NetworkAclId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Name of the network ACL. The maximum length is 60 bytes.",
-          "member": "string",
-          "name": "NetworkAclName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyNetworkAclAttributeResponse": {
-      "document": "ModifyNetworkAclAttribute response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyNetworkAclEntriesRequest": {
-      "document": "ModifyNetworkAclEntries request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Network ACL instance ID. Example: acl-12345678.",
-          "member": "string",
-          "name": "NetworkAclId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Network ACL rule set.",
-          "member": "NetworkAclEntrySet",
-          "name": "NetworkAclEntrySet",
-          "required": true,
-          "type": "object"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyNetworkAclEntriesResponse": {
-      "document": "ModifyNetworkAclEntries response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -15811,30 +15173,6 @@
       ],
       "usage": "both"
     },
-    "NetworkAclEntrySet": {
-      "document": "Network ACL rule set",
-      "members": [
-        {
-          "default": "",
-          "document": "Inbound rules.",
-          "member": "NetworkAclEntry",
-          "name": "Ingress",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Outbound rules.",
-          "member": "NetworkAclEntry",
-          "name": "Egress",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "in"
-    },
     "NetworkInterface": {
       "document": "ENI",
       "members": [
@@ -16072,40 +15410,6 @@
         }
       ],
       "usage": "out"
-    },
-    "NotifyRoutesRequest": {
-      "document": "NotifyRoutes request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "The unique ID of the route table",
-          "member": "string",
-          "name": "RouteTableId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The unique ID of the routing policy",
-          "member": "string",
-          "name": "RouteItemIds",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "NotifyRoutesResponse": {
-      "document": "NotifyRoutes response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
     },
     "Price": {
       "document": "Price",
@@ -17619,6 +16923,7 @@
         {
           "default": "",
           "document": "The index number of security group rules, which dynamically changes with the rules. This parameter can be obtained via the `DescribeSecurityGroupPolicies` API and used with the `Version` field in the returned value of the API.",
+          "example": "0",
           "member": "int64",
           "name": "PolicyIndex",
           "required": false,
@@ -17628,6 +16933,7 @@
         {
           "default": "",
           "document": "Protocol. Valid values: TCP, UDP, ICMP, ICMPv6, ALL.",
+          "example": "TCP",
           "member": "string",
           "name": "Protocol",
           "required": false,
@@ -17636,7 +16942,8 @@
         },
         {
           "default": "",
-          "document": "Port (all, discrete port, range).",
+          "document": "Port (`all`, a single port, or a port range).\nNote: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be set to `all`.",
+          "example": "22",
           "member": "string",
           "name": "Port",
           "required": false,
@@ -17646,6 +16953,7 @@
         {
           "default": "",
           "document": "Protocol port ID or protocol port group ID. ServiceTemplate and Protocol+Port are mutually exclusive.",
+          "example": "无",
           "member": "ServiceTemplateSpecification",
           "name": "ServiceTemplate",
           "required": false,
@@ -17655,6 +16963,7 @@
         {
           "default": "",
           "document": "IP range or IP (mutually exclusive).",
+          "example": "0.0.0.0/16",
           "member": "string",
           "name": "CidrBlock",
           "required": false,
@@ -17664,6 +16973,7 @@
         {
           "default": "",
           "document": "The CIDR block or IPv6 (mutually exclusive).",
+          "example": "::/0",
           "member": "string",
           "name": "Ipv6CidrBlock",
           "required": false,
@@ -17673,6 +16983,7 @@
         {
           "default": "",
           "document": "The security group instance ID, such as `sg-ohuuioma`.",
+          "example": "sg-ohuuioma",
           "member": "string",
           "name": "SecurityGroupId",
           "required": false,
@@ -17682,6 +16993,7 @@
         {
           "default": "",
           "document": "IP address ID or IP address group ID.",
+          "example": "无",
           "member": "AddressTemplateSpecification",
           "name": "AddressTemplate",
           "required": false,
@@ -17691,6 +17003,7 @@
         {
           "default": "",
           "document": "ACCEPT or DROP.",
+          "example": "ACCEPT",
           "member": "string",
           "name": "Action",
           "required": false,
@@ -17700,6 +17013,7 @@
         {
           "default": "",
           "document": "Security group policy description.",
+          "example": "desc",
           "member": "string",
           "name": "PolicyDescription",
           "required": false,
@@ -17709,6 +17023,7 @@
         {
           "default": "",
           "document": "The last modification time of the security group.",
+          "example": "2021-03-02 14:41:15",
           "member": "string",
           "name": "ModifyTime",
           "required": false,
@@ -17883,6 +17198,7 @@
         {
           "default": "",
           "document": "Protocol port ID, such as `ppm-f5n1f8da`.",
+          "example": "ppm-f5n1f8da",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -17892,6 +17208,7 @@
         {
           "default": "",
           "document": "Protocol port group ID, such as `ppmg-f5n1f8da`.",
+          "example": "ppmg-f5n1f8da",
           "member": "string",
           "name": "ServiceGroupId",
           "required": true,
@@ -19288,40 +18605,6 @@
         }
       ],
       "usage": "both"
-    },
-    "WithdrawNotifyRoutesRequest": {
-      "document": "WithdrawNotifyRoutes request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "The unique ID of the route table",
-          "member": "string",
-          "name": "RouteTableId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The unique ID of the routing policy",
-          "member": "string",
-          "name": "RouteItemIds",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "WithdrawNotifyRoutesResponse": {
-      "document": "WithdrawNotifyRoutes response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
     }
   },
   "version": "1.0"

@@ -176,6 +176,14 @@
         "title": "Sample request"
       }
     ],
+    "DescribeStreamLiveTranscodeDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamLiveTranscodeDetail\n<Common request parameters>\n\n{\n    \"EndDayTime\": \"2022-01-01\",\n    \"ChannelId\": \"\",\n    \"PageNum\": 1,\n    \"PageSize\": 100,\n    \"StartDayTime\": \"2022-01-01\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalPage\": 10,\n        \"PageNum\": 1,\n        \"PageSize\": 10,\n        \"RequestId\": \"xx\",\n        \"Infos\": [\n            {\n                \"Type\": \"merge_stream\",\n                \"Bitrate\": 1000,\n                \"PushDomain\": \"\",\n                \"ChannelId\": \"12AB3E5F\",\n                \"ModuleCodec\": \"liveprocessor_H264\",\n                \"StartTime\": \"2022-01-01 01:00:00\",\n                \"Duration\": 10,\n                \"EndTime\": \"2022-01-01 01:00:10\",\n                \"Resolution\": \"480P\"\n            }\n        ],\n        \"TotalNum\": 100\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "DescribeStreamLiveWatermark": [
       {
         "document": "",

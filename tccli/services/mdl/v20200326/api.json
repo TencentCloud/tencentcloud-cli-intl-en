@@ -132,6 +132,12 @@
       "name": "Queries StreamLive regions",
       "output": "DescribeStreamLiveRegionsResponse"
     },
+    "DescribeStreamLiveTranscodeDetail": {
+      "document": "This API is used to query the transcoding information of StreamLive streams.",
+      "input": "DescribeStreamLiveTranscodeDetailRequest",
+      "name": "Queries transcoding information",
+      "output": "DescribeStreamLiveTranscodeDetailResponse"
+    },
     "DescribeStreamLiveWatermark": {
       "document": "This API is used to query a watermark.",
       "input": "DescribeStreamLiveWatermarkRequest",
@@ -1752,6 +1758,114 @@
       ],
       "type": "object"
     },
+    "DescribeStreamLiveTranscodeDetailRequest": {
+      "document": "DescribeStreamLiveTranscodeDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The query start time (UTC+8) in the format of yyyy-MM-dd.\nYou can only query data in the last month (not including the current day).",
+          "example": "2022-01-01",
+          "member": "string",
+          "name": "StartDayTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The query end time (UTC+8) in the format of yyyy-MM-dd.\nYou can only query data in the last month (not including the current day).",
+          "example": "2022-01-01",
+          "member": "string",
+          "name": "EndDayTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The channel ID (optional).",
+          "example": "AB342ED131CE",
+          "member": "string",
+          "name": "ChannelId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of pages. Default value: 1.\nThe value cannot exceed 100.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of records per page. Default value: 10.\nValue range: 1-1000.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamLiveTranscodeDetailResponse": {
+      "document": "DescribeStreamLiveTranscodeDetail response structure.",
+      "members": [
+        {
+          "document": "A list of the transcoding information.",
+          "example": "无",
+          "member": "DescribeTranscodeDetailInfo",
+          "name": "Infos",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of the current page.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of records per page.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of records.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of pages.",
+          "example": "100",
+          "member": "int64",
+          "name": "TotalPage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeStreamLiveWatermarkRequest": {
       "document": "DescribeStreamLiveWatermark request structure.",
       "members": [
@@ -1874,6 +1988,102 @@
           "member": "string",
           "name": "FontColor",
           "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeTranscodeDetailInfo": {
+      "document": "Transcoding details.",
+      "members": [
+        {
+          "default": "",
+          "document": "The channel ID.",
+          "example": "AB342ED131CE",
+          "member": "string",
+          "name": "ChannelId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The start time (UTC+8) of transcoding in the format of yyyy-MM-dd HH:mm:ss.",
+          "example": "2022-01-21 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The end time (UTC+8) of transcoding in the format of yyyy-MM-dd HH:mm:ss.",
+          "example": "2022-01-21 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The duration (s) of transcoding.",
+          "example": "30",
+          "member": "int64",
+          "name": "Duration",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The encoding method.\nExamples:\n`liveprocessor_H264`: Live transcoding-H264\n`liveprocessor_H265`: Live transcoding-H265\n`topspeed_H264`: Top speed codec-H264\n`topspeed_H265`: Top speed codec-H265",
+          "example": "liveprocessor_H264",
+          "member": "string",
+          "name": "ModuleCodec",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The target bitrate (Kbps).",
+          "example": "1000",
+          "member": "int64",
+          "name": "Bitrate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The transcoding type.",
+          "example": "merge_stream",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The push domain name.",
+          "example": "无",
+          "member": "string",
+          "name": "PushDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The target resolution.",
+          "example": "480P",
+          "member": "string",
+          "name": "Resolution",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         }

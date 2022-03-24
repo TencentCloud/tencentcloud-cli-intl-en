@@ -96,7 +96,7 @@ def doCreateStreamLiveInput(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteStreamLiveWatermark(args, parsed_globals):
+def doDeleteStreamLivePlan(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -112,9 +112,9 @@ def doDeleteStreamLiveWatermark(args, parsed_globals):
     client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteStreamLiveWatermarkRequest()
+    model = models.DeleteStreamLivePlanRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteStreamLiveWatermark(model)
+    rsp = client.DeleteStreamLivePlan(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -223,6 +223,33 @@ def doDescribeStreamLiveRegions(args, parsed_globals):
     model = models.DescribeStreamLiveRegionsRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DescribeStreamLiveRegions(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeStreamLiveTranscodeDetail(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeStreamLiveTranscodeDetailRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeStreamLiveTranscodeDetail(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -555,6 +582,33 @@ def doDescribeStreamLiveInput(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDeleteStreamLiveWatermark(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteStreamLiveWatermarkRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DeleteStreamLiveWatermark(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doModifyStreamLiveInput(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -690,33 +744,6 @@ def doStopStreamLiveChannel(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteStreamLivePlan(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MdlClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteStreamLivePlanRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DeleteStreamLivePlan(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDescribeStreamLiveWatermarks(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -839,11 +866,12 @@ ACTION_MAP = {
     "DescribeStreamLiveChannelAlerts": doDescribeStreamLiveChannelAlerts,
     "DescribeStreamLiveChannel": doDescribeStreamLiveChannel,
     "CreateStreamLiveInput": doCreateStreamLiveInput,
-    "DeleteStreamLiveWatermark": doDeleteStreamLiveWatermark,
+    "DeleteStreamLivePlan": doDeleteStreamLivePlan,
     "DescribeStreamLiveInputSecurityGroups": doDescribeStreamLiveInputSecurityGroups,
     "DescribeStreamLiveChannelInputStatistics": doDescribeStreamLiveChannelInputStatistics,
     "DeleteStreamLiveChannel": doDeleteStreamLiveChannel,
     "DescribeStreamLiveRegions": doDescribeStreamLiveRegions,
+    "DescribeStreamLiveTranscodeDetail": doDescribeStreamLiveTranscodeDetail,
     "CreateStreamLivePlan": doCreateStreamLivePlan,
     "CreateStreamLiveChannel": doCreateStreamLiveChannel,
     "ModifyStreamLiveInputSecurityGroup": doModifyStreamLiveInputSecurityGroup,
@@ -856,12 +884,12 @@ ACTION_MAP = {
     "DescribeStreamLiveWatermark": doDescribeStreamLiveWatermark,
     "DescribeStreamLiveChannelLogs": doDescribeStreamLiveChannelLogs,
     "DescribeStreamLiveInput": doDescribeStreamLiveInput,
+    "DeleteStreamLiveWatermark": doDeleteStreamLiveWatermark,
     "ModifyStreamLiveInput": doModifyStreamLiveInput,
     "DescribeStreamLiveInputSecurityGroup": doDescribeStreamLiveInputSecurityGroup,
     "DeleteStreamLiveInput": doDeleteStreamLiveInput,
     "DescribeStreamLiveChannelOutputStatistics": doDescribeStreamLiveChannelOutputStatistics,
     "StopStreamLiveChannel": doStopStreamLiveChannel,
-    "DeleteStreamLivePlan": doDeleteStreamLivePlan,
     "DescribeStreamLiveWatermarks": doDescribeStreamLiveWatermarks,
     "DeleteStreamLiveInputSecurityGroup": doDeleteStreamLiveInputSecurityGroup,
     "CreateStreamLiveInputSecurityGroup": doCreateStreamLiveInputSecurityGroup,
