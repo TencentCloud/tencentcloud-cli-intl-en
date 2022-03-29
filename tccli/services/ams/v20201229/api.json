@@ -1,0 +1,1210 @@
+{
+  "actions": {
+    "CancelTask": {
+      "document": "This API is used to cancel a moderation task. If it returns `RequestId`, the task has been canceled successfully.<br>Default API request rate limit: **20 requests/sec**.",
+      "input": "CancelTaskRequest",
+      "name": "Cancels task",
+      "output": "CancelTaskResponse"
+    },
+    "CreateAudioModerationTask": {
+      "document": "This API is used to submit audio content (such as an audio file or stream URL) for smart moderation. Before using it, you need to log in to the console with the Tencent Cloud root account [to activate AMS](https://console.cloud.tencent.com/cms/audio/package) and adjust the business configuration.<br>\n\n### Feature use instructions\n- Go to the \"[CMS console - AMS](https://console.cloud.tencent.com/cms/audio/package)\" to activate AMS.\n- Default API request rate limit: **20 requests/sec**. When this limit is exceeded, requests for async moderation tasks (audio on demand) will automatically join the queue of requests pending moderation, while an error will be reported for sync moderation tasks (audio live streaming).\n\n### API feature description\n- It can detect audio streams or files for non-compliant content;\n- You can set the callback address (Callback) to get the detection result (for moderation tasks in progress, the maximum callback time is the configured **segment length + 2s). You can also call the API for querying the audio detection result to poll the detection result;\n- It can recognize various types of non-compliant content, including vulgarity, abuse, porn, and advertising;\n- You can submit **up to 10** detection tasks at a time.\n\n### Call description for audio file\n- Supported audio file size: **< 500 MB**;\n- Supported audio file duration: **< 1 hour**;\n- Supported audio bitrate: 128–256 Kbps;\n- Supported audio file formats: WAV, MP3, AAC, FLAC, AMR, 3GP, M4A, WMA, OGG, and APE;\n- **When the input is a video file**, the audio track can be extracted from it for audio content moderation.\n\n### Call description for audio stream\n- Supported audio stream duration: **< 3 hours**;\n- Supported audio bitrate: 128–256 Kbps;\n- Supported audio stream transfer protocols: RTMP, HTTP, and HTTPS;\n- Supported audio stream formats: RTP, SRTP, RTMP, RTMPS, MMSH, MMST, HLS, HTTP, TCP, HTTPS, and M3U8;\n- **When the input is a video stream**, the audio track can be extracted from it for audio content moderation.",
+      "input": "CreateAudioModerationTaskRequest",
+      "name": "Creates audio moderation task",
+      "output": "CreateAudioModerationTaskResponse"
+    },
+    "DescribeTaskDetail": {
+      "document": "This API is used to view the details of an audio moderation task, including task status, detection result, recognized text content of the audio file, maliciousness tag that corresponds to the detection result, and suggested operation. For the specific output content, see the sample output parameters.<br>Default API request rate limit: **100 requests/sec**.",
+      "input": "DescribeTaskDetailRequest",
+      "name": "Views task details",
+      "output": "DescribeTaskDetailResponse"
+    },
+    "DescribeTasks": {
+      "document": "This API is used to view the list of moderation tasks. You can also filter moderation tasks by multiple types of business information, such as business type, moderation result, and task status. The output content of the task list includes the total number of queried tasks, task name, task status, audio moderation type, maliciousness tag of the detection result, and suggested operation. For the specific output content, see the sample output parameters.<br>Default API request rate limit: **20 requests/sec**.",
+      "input": "DescribeTasksRequest",
+      "name": "Views moderation task list",
+      "output": "DescribeTasksResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2020-12-29",
+    "serviceNameCN": "音频内容检测",
+    "serviceShortName": "ams"
+  },
+  "objects": {
+    "AudioResult": {
+      "document": "Audio moderation output parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "This field is used to return whether the moderated content hit the moderation model. Valid values: 0 (**no**), 1 (**yes**).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "HitFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Label",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the operation suggestion. When you get the determination result, the returned value indicates the suggested operation.<br>\nReturned values: **Block**, **Review**, **Pass**.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Suggestion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the confidence under the current tag. Value range: 0 (**the lowest confidence**)–100 (**the highest confidence**), where a higher value indicates that the text is more likely to fall into the category of the current returned tag; for example, *Porn 99* indicates that the text is highly likely to be pornographic.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Score",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the text information generated by recognizing an audio file with ASR. Audio files of up to **5 hours** can be recognized. If this limit is exceeded, an error will be reported by the API.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the URL where audio segments are stored, which is valid for 1 day.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the length of an audio file in seconds.",
+          "example": "无",
+          "member": "string",
+          "name": "Duration",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to return additional information, and the returned information varies by customer or `Biztype`.",
+          "example": "无",
+          "member": "string",
+          "name": "Extra",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the detailed moderation result of the text generated by recognizing an audio file with ASR. For the specific result, see the detailed description of the `AudioResultDetailLanguageResult` data structure.",
+          "example": "无",
+          "member": "AudioResultDetailTextResult",
+          "name": "TextResults",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the detailed moan detection result of an audio file. For the specific result, see the detailed description of the `AudioResultDetailMoanResult` data structure.",
+          "example": "无",
+          "member": "AudioResultDetailMoanResult",
+          "name": "MoanResults",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the detailed minor language detection result of an audio. For the specific result, see the detailed description of the `AudioResultDetailLanguageResult` data structure.",
+          "example": "无",
+          "member": "AudioResultDetailLanguageResult",
+          "name": "LanguageResults",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to return a subtag under the current tag (Lable).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubLabel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AudioResultDetailLanguageResult": {
+      "document": "Audio language detection result",
+      "members": [
+        {
+          "default": "",
+          "document": "This field is used to return the language information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Label",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This parameter is used to return the confidence under the current tag. Value range: 0 (**the lowest confidence**)–100 (**the highest confidence**), where a higher value indicates that the audio is more likely to fall into the category of the current returned language tag;\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Score",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This parameter is used to return the start time of the segment of an audio file under the corresponding language tag in milliseconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "float",
+          "name": "StartTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This parameter is used to return the end time of the segment of an audio file under the corresponding language tag in milliseconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "float",
+          "name": "EndTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "*This field is in beta test. Stay tuned*\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubLabelCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AudioResultDetailMoanResult": {
+      "document": "Audio moan moderation result",
+      "members": [
+        {
+          "default": "",
+          "document": "This field is used to return the type of the content to be detected. It is fixed at **Moan** here to call the moan detection feature.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Label",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the confidence of moan detection. Value range: 0 (**the lowest confidence**)–100 (**the highest confidence**), where a higher value indicates that the audio is more likely to fall into the category of moan.",
+          "example": "无",
+          "member": "int64",
+          "name": "Score",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the start time of the segment of an audio file under the corresponding moan tag in milliseconds.",
+          "example": "无",
+          "member": "float",
+          "name": "StartTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the end time of the segment of an audio file under the corresponding moan tag in milliseconds.",
+          "example": "无",
+          "member": "float",
+          "name": "EndTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "*This field is in beta test. Stay tuned*",
+          "example": "无",
+          "member": "string",
+          "name": "SubLabelCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to return a subtag under the current tag (Lable).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubLabel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AudioResultDetailTextResult": {
+      "document": "ASR-Based audio moderation result",
+      "members": [
+        {
+          "default": "",
+          "document": "This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Label",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the keyword information hit by the text content recognized with ASR and indicate the specific cause of content non-compliance (such as \"Friend me\"). This parameter may have multiple returned values representing multiple hit keywords. If the returned value is empty, but `Score` is not empty, the maliciousness tag (Label) that corresponds to the recognition result derives from the returned value determined by the semantic model.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Keywords",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is **valid only when `Label` is `Custom` (custom keyword)**. It is used to return the ID of the custom library for easier custom library management and configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LibId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is **valid only when `Label` is `Custom` (custom keyword)**. It is used to return the name of the custom library for easier custom library management and configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LibName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the confidence under the current tag. Value range: 0 (**the lowest confidence**)–100 (**the highest confidence**), where a higher value indicates that the text is more likely to fall into the category of the current returned tag; for example, *Porn 99* indicates that the text is highly likely to be pornographic.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Score",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the operation suggestion. When you get the determination result, the returned value indicates the suggested operation.<br>\nReturned values: **Block**, **Review**, **Pass**.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Suggestion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the dictionary type of a custom keyword. Valid values: **1** (blocklist/allowlist), **2** (custom keyword dictionary). If no custom keyword dictionary is configured, the default value will be 1 (blocklist/allowlist).",
+          "example": "无",
+          "member": "int64",
+          "name": "LibType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to return a subtag under the current tag (Lable).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubLabel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AudioSegments": {
+      "document": "Indicates audio segment information",
+      "members": [
+        {
+          "default": "",
+          "document": "This field is used to return the start time of an audio segment in seconds. For audio on demand files, this parameter indicates the time offset of the audio from the complete audio track, such as 0 (no offset), 5 (5 seconds after the start of the audio track), and 10 (10 seconds after the start of the audio track). For live audio stream files, this parameter returns the Unix timestamp of the start of the audio segment, such as `1594650717`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OffsetTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the specific moderation result of an audio segment. For details, see the description of the `AudioResult` data structure.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AudioResult",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BucketInfo": {
+      "document": "Bucket information\nSee the basic concepts at https://intl.cloud.tencent.com/document/product/436/44352?from_cn_redirect=1",
+      "members": [
+        {
+          "default": "",
+          "document": "This field indicates a bucket name in Tencent Cloud COS. For more information on buckets, see [Basic Concepts](https://intl.cloud.tencent.com/document/product/436/44352?from_cn_redirect=1).",
+          "example": "无",
+          "member": "string",
+          "name": "Bucket",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field indicates a region where a Tencent Cloud managed data center is deployed. COS data is stored in buckets in these regions.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field indicates an object key in Tencent Cloud COS. An object is stored in a bucket as a basic storage unit. You can manage objects through the Tencent Cloud console, API, or SDK. For more information on objects, see [Object Overview](https://intl.cloud.tencent.com/document/product/436/13324?from_cn_redirect=1).",
+          "example": "无",
+          "member": "string",
+          "name": "Object",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CancelTaskRequest": {
+      "document": "CancelTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "This field indicates the task ID (in the `Results` parameter) returned after an audio moderation task is created. It is used to identify the moderation task to be canceled.",
+          "example": "task-audio-XwxJtbkKXWgCt8AZ",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelTaskResponse": {
+      "document": "CancelTask response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAudioModerationTaskRequest": {
+      "document": "CreateAudioModerationTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "This field indicates the input audio moderation task information. For the specific input content, see the detailed description of the `TaskInput` data structure.<br>Note: you can create up to **10 tasks** at a time.",
+          "example": "[]",
+          "member": "TaskInput",
+          "name": "Tasks",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "This field indicates the specific number of the policy, which is used for API scheduling and can be configured in the CMS console. If the `Biztype` parameter is passed in, a moderation policy will be used based on the business scenario; otherwise, the default moderation policy will be used.<br>Note: `Biztype` can contain 3–32 digits, letters, and underscores; different `Biztype` values are associated with different business scenarios and moderation policies, so you need to verify the `Biztype` before calling this API.",
+          "example": "default",
+          "member": "string",
+          "name": "BizType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This field indicates the input audio moderation type. Valid values: **AUDIO** (audio on demand), **LIVE_AUDIO** (audio live streaming). Default value: AUDIO.",
+          "example": "AUDIO",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This field is optional and indicates the key information of the callback signature, which is used to ensure the data security. The signature algorithm is to add the `X-Signature` field to the returned HTTP header, whose value is the SHA256-encoded hex string of `seed` + `body` . After receiving the callback data, you can calculate `X-Signature` by using **sha256(seed + body)** based on the returned `body` for verification.<br>For specific use cases, see [Signature Algorithm v3](https://intl.cloud.tencent.com/document/product/1219/53263?from_cn_redirect=1).",
+          "example": "seed",
+          "member": "string",
+          "name": "Seed",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This field is optional and indicates the address for receiving the moderation information callback in the default format of URL. After it is configured successfully, the non-compliant audio/video segments generated during moderation will be sent through this API. For the format of the returned callback content, see [Sample Callback Signature](https://intl.cloud.tencent.com/document/product/1219/53257?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B2-.E5.9B.9E.E8.B0.83.E7.AD.BE.E5.90.8D.E7.A4.BA.E4.BE.8B)",
+          "example": "https://example.com/url",
+          "member": "string",
+          "name": "CallbackUrl",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAudioModerationTaskResponse": {
+      "document": "CreateAudioModerationTask response structure.",
+      "members": [
+        {
+          "document": "This field is used to return the task creation result. For the specific output content, see the detailed description of the `TaskResult` data structure.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "TaskResult",
+          "name": "Results",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskDetailRequest": {
+      "document": "DescribeTaskDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "This field indicates the task ID (in the `Results` parameter) returned after an audio moderation task is created. It is used to identify the moderation task for which to query the details.\n<br>Note: the query API can query up to **20 tasks at a time**.",
+          "example": "w-audio-YBJzazmYs4vO27p2",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This boolean field indicates whether to display all audio segments. Valid values: True (yes), False (display only audio segments that hit the moderation rule). Default value: False.",
+          "example": "false",
+          "member": "bool",
+          "name": "ShowAllSegments",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskDetailResponse": {
+      "document": "DescribeTaskDetail response structure.",
+      "members": [
+        {
+          "document": "This field is used to return the task ID (in the `Results` parameter) after an audio moderation task is created. It is used to identify the moderation task for which to query the details.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "w-audio-YBJzazmYs4vO27p2",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field is used to return the data ID parameter passed in within the `Tasks` parameter when the audio moderation API is called for easier data identification and management.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "azmYs4vO27p2",
+          "member": "string",
+          "name": "DataId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field is used to return the `BizType` parameter passed in when the audio moderation API is called for easier data identification and management.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "default",
+          "member": "string",
+          "name": "BizType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field is used to return the task name in the `TaskInput` parameter passed in when the audio moderation API is called for easier task identification and management.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "名称",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field is used to return the task status of the queried content.\n<br>Valid values: **FINISH** (task completed), **PENDING** (task pending), **RUNNING** (task in progress), **ERROR** (task error), **CANCELLED** (task canceled).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "FINISH",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field is used to return the audio moderation type passed in when the audio moderation API is called. Valid values: **AUDIO** (audio on demand), **LIVE_AUDIO** (audio live streaming). Default value: AUDIO.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "AUDIO",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field is used to return the operation suggestion for the maliciousness tag. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "Pass",
+          "member": "string",
+          "name": "Suggestion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "{}",
+          "member": "TaskLabel",
+          "name": "Labels",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field is used to return the media content information of the moderation service, mainly including the input file type and access URL.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "{}",
+          "member": "InputInfo",
+          "name": "InputInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field is used to return the recognized text content of an audio file. **Up to the first 1,000 characters** can be recognized.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "the text",
+          "member": "string",
+          "name": "AudioText",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field is used to return the moderation result of an audio segment, mainly including the start time and audio moderation result.<br>For the specific output content, see the detailed description of the `AudioSegments` and `AudioResult` data structures.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "{}",
+          "member": "AudioSegments",
+          "name": "AudioSegments",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "If the task status is `Error`, this field will return the error type; otherwise, null will be returned by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "URL_ERROR",
+          "member": "string",
+          "name": "ErrorType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "If the task status is `Error`, this field will return the error message; otherwise, null will be returned by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "the url is request is 404",
+          "member": "string",
+          "name": "ErrorDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field is used to return the creation time of the queried task in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-28T08:20:25.759Z",
+          "member": "string",
+          "name": "CreatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field is used to return the last update time of the queried task in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-28T08:20:25.759Z",
+          "member": "string",
+          "name": "UpdatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTasksRequest": {
+      "document": "DescribeTasks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "This parameter indicates the number of tasks to be displayed on each page of the task list. **Default value: 10**.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter indicates the input parameter of the task filter. You can filter tasks by business type, file type, processing suggestion, and task status. For the specific parameter content, see the detailed description of the `TaskFilter` data structure.",
+          "example": "无",
+          "member": "TaskFilter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "This parameter indicates the `Token` information used during pagination. It is automatically generated by the system and will be passed to the next generated page for easy and fast pagination. When you turn to the last page, this field will be empty.",
+          "example": "无",
+          "member": "string",
+          "name": "PageToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter indicates the start time of the task list in ISO 8601 timestamp format. **Default value: 3 days ago**. If this parameter is passed in, tasks between this time point and `EndTime` will be filtered out.<br>Note: this parameter is used together with `Filter` to filter tasks in no particular order.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter indicates the end time of the task list in ISO 8601 timestamp format. **Default value: empty**. If this parameter is passed in, tasks between `StartTime` and this time point will be filtered out.<br>Note: this parameter is used together with `Filter` to filter tasks in no particular order.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTasksResponse": {
+      "document": "DescribeTasks response structure.",
+      "members": [
+        {
+          "document": "This field is used to return the total number of queried tasks in the format of `int` string.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Total",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field is used to return the detailed data of the tasks on the current page. For the specific output content, see the detailed description of the `TaskData` data structure.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TaskData",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field is used to return the `Token` information used during pagination. It is automatically generated by the system and will be passed to the next generated page for easy and fast pagination. When you turn to the last page, this field will be empty.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "4765-48dXwxJtbkKXW8d3eb",
+          "member": "string",
+          "name": "PageToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InputInfo": {
+      "document": "Input information details",
+      "members": [
+        {
+          "default": "",
+          "document": "This field indicates the file access type. Valid values: **URL** (resource link), **COS** (Tencent Cloud COS).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field indicates the link address for file access in standard URL format.<br>Note: when `Type` is `URL`, this field will not be empty.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field indicates the Tencent Cloud bucket information for file access.<br>Note: when `Type` is `COS`, this field will not be empty.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BucketInfo",
+          "name": "BucketInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MediaInfo": {
+      "document": "Media type",
+      "members": [
+        {
+          "default": "",
+          "document": "This field is used to return the codec of the media file passed in, such as WAV, MP3, AAC, FLAC, AMR, 3GP, M4A, WMA, OGG, and APE.",
+          "example": "无",
+          "member": "string",
+          "name": "Codecs",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the segment length of the input streaming media file in seconds. It is **15 seconds by default** and is customizable.",
+          "example": "无",
+          "member": "int64",
+          "name": "Duration",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "*This field is in beta test. Stay tuned*",
+          "example": "无",
+          "member": "int64",
+          "name": "Width",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "*This field is in beta test. Stay tuned*",
+          "example": "无",
+          "member": "int64",
+          "name": "Height",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "*This field is in beta test. Stay tuned*",
+          "example": "无",
+          "member": "string",
+          "name": "Thumbnail",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "StorageInfo": {
+      "document": "Indicates the information of data storage",
+      "members": [
+        {
+          "default": "",
+          "document": "This field indicates the file access type. Valid values: **URL** (resource link), **COS** (Tencent Cloud COS). It should correspond to the access type passed in and can be used for strict verification and quick identification of the access address. If you don't pass in this parameter, the default value will be `URL`, and the system will automatically determine the access address type.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field indicates the link address for file access in standard URL format.<br>Note: when `Type` is `URL`, this field will not be empty. You must pass in either this parameter or the `BucketInfo` parameter.",
+          "example": "无",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field indicates the Tencent Cloud bucket information for file access.<br>Note: when `Type` is `COS`, this field will not be empty. You must pass in either this parameter or the `Url` parameter.",
+          "example": "无",
+          "member": "BucketInfo",
+          "name": "BucketInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TaskData": {
+      "document": "Task data",
+      "members": [
+        {
+          "default": "",
+          "document": "This field is used to return the ID of the audio moderation task data for subsequent query and management of moderation tasks.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DataId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the ID of an audio moderation task for identification, query, and management of moderation tasks.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the task status of the queried content.\n<br>Valid values: **FINISH** (task completed), **PENDING** (task pending), **RUNNING** (task in progress), **ERROR** (task error), **CANCELLED** (task canceled).",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the name of an audio moderation task for subsequent query and management of moderation tasks.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the `BizType` parameter passed in when the audio moderation API is called for easier data identification and management.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "BizType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the audio moderation type passed in when the audio moderation API is called. Valid values: **AUDIO** (audio on demand), **LIVE_AUDIO** (audio live streaming). Default value: AUDIO.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the operation suggestion for the maliciousness tag. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Suggestion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Input information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MediaInfo",
+          "name": "MediaInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TaskLabel",
+          "name": "Labels",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the creation time of the queried task in ISO 8601 format.",
+          "example": "无",
+          "member": "string",
+          "name": "CreatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the last update time of the queried task in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UpdatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TaskFilter": {
+      "document": "Task filter",
+      "members": [
+        {
+          "default": "",
+          "document": "This field is used to pass in the business type of a task as a filter. `Biztype` is the specific number of the policy, which is used for API scheduling and can be configured in the CMS console. Different `Biztype` values are associated with different business scenarios and moderation policies, so you need to verify the `Biztype` before calling this API. `Biztype` can contain 3–32 digits, letters, and underscores.<br>Note: when this parameter is not passed in, tasks will not be filtered by business type by default.",
+          "example": "无",
+          "member": "string",
+          "name": "BizType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to pass in the type of an audio moderation task as a filter. Valid values: **VIDEO** (video on demand moderation), **AUDIO** (audio on demand moderation), **LIVE_VIDEO** (video live streaming moderation), **LIVE_AUDIO** (audio live streaming moderation).<br>Note: when this parameter is not passed in, tasks will not be filtered by task type by default.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to pass in the operation suggestion of an audio moderation task as a filter. Valid values: **Block**, **Review**, **Pass**.<br>Note: when this parameter is not passed in, tasks will not be filtered by operation suggestion by default.",
+          "example": "无",
+          "member": "string",
+          "name": "Suggestion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is used to pass in the status of a moderation task as a filter. Valid values: **FINISH** (task completed), **PENDING** (task pending), **RUNNING** (task in progress), **ERROR** (task error), **CANCELLED** (task canceled).<br>Note: when this parameter is not passed in, tasks will not be filtered by task status by default.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskStatus",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TaskInput": {
+      "document": "Audio/Video task data structure",
+      "members": [
+        {
+          "default": "",
+          "document": "This field is optional and indicates the data ID assigned by you to the object to be detected for easier file identification and management.<br>It **can contain up to 64 letters, digits, and special symbols (_-@#)**.",
+          "example": "无",
+          "member": "string",
+          "name": "DataId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is optional and indicates the name of an audio moderation task for subsequent query and management of moderation tasks.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is required and indicates the access parameter of the moderated file, which is used to get the moderated media file and contains the access type and address.",
+          "example": "无",
+          "member": "StorageInfo",
+          "name": "Input",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TaskLabel": {
+      "document": "Returns the tag output by a moderation task",
+      "members": [
+        {
+          "default": "",
+          "document": "This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Label",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the operation suggestion for the current tag. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Suggestion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the confidence under the current tag (Label). Value range: 0 (**the lowest confidence**)–100 (**the highest confidence**), where a higher value indicates that the text is more likely to fall into the category of the current returned tag; for example, *Porn 99* indicates that the text is highly likely to be pornographic, while *Porn 0* indicates that the text is not pornographic.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Score",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return a subtag under the current tag (Lable).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubLabel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TaskResult": {
+      "document": "The result returned during task creation",
+      "members": [
+        {
+          "default": "",
+          "document": "This field is used to return the `DataId` passed in within the `TaskInput` structure when an audio moderation task is created. It is used to identify the specific moderation task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DataId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the ID of an audio moderation task for identification, query, and management of moderation tasks.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is used to return the task creation status. If `OK` is returned, the task has been created successfully; if another value is returned, refer to the common error codes.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "**This field will take effect only when the returned value of `Code` is an error code**. It is used to return the error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

@@ -1,4 +1,6 @@
 LICENSE
+include tccli/services/ams/v20201229/api.json
+include tccli/services/ams/v20201229/examples.json
 include tccli/services/antiddos/v20200309/api.json
 include tccli/services/antiddos/v20200309/examples.json
 include tccli/services/apigateway/v20180808/api.json
@@ -71,6 +73,8 @@ include tccli/services/gse/v20191112/api.json
 include tccli/services/gse/v20191112/examples.json
 include tccli/services/iai/v20200303/api.json
 include tccli/services/iai/v20200303/examples.json
+include tccli/services/ims/v20201229/api.json
+include tccli/services/ims/v20201229/examples.json
 include tccli/services/iotcloud/v20210408/api.json
 include tccli/services/iotcloud/v20210408/examples.json
 include tccli/services/ip/v20210409/api.json
@@ -141,8 +145,12 @@ include tccli/services/tiw/v20190919/api.json
 include tccli/services/tiw/v20190919/examples.json
 include tccli/services/tke/v20180525/api.json
 include tccli/services/tke/v20180525/examples.json
+include tccli/services/tms/v20201229/api.json
+include tccli/services/tms/v20201229/examples.json
 include tccli/services/trtc/v20190722/api.json
 include tccli/services/trtc/v20190722/examples.json
+include tccli/services/vm/v20201229/api.json
+include tccli/services/vm/v20201229/examples.json
 include tccli/services/vod/v20180717/api.json
 include tccli/services/vod/v20180717/examples.json
 include tccli/services/vpc/v20170312/api.json

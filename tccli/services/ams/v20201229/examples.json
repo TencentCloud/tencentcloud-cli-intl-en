@@ -1,0 +1,43 @@
+{
+  "actions": {
+    "CancelTask": [
+      {
+        "document": "This example shows you how to cancel a task.",
+        "input": "POST / HTTP/1.1\nHost: ams.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CancelTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"task-audio-XwxJtbkKXWgCt8AZ\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c933aca1-90d2-4ab8-b045-f1b08069d76f\"\n    }\n}",
+        "title": "Canceling task"
+      }
+    ],
+    "CreateAudioModerationTask": [
+      {
+        "document": "This example shows you how to create an audio moderation task.",
+        "input": "POST / HTTP/1.1\nHost: ams.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAudioModerationTask\n<Common request parameters>\n\n{\n    \"Type\": \"AUDIO\",\n    \"Tasks\": [\n        {\n            \"DataId\": \"0a782332-c9db-4cf5-a66e-20d60b4ea469\",\n            \"Input\": {\n                \"Url\": \"https://test.myqcloud.com/test.mp3\"\n            }\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Results\": [\n            {\n                \"DataId\": \"0a782332-c9db-4cf5-a66e-20d60b4ea469\",\n                \"TaskId\": \"c933aca1-90d2-4ab8-b045-f1b08069d76f\",\n                \"Code\": \"OK\",\n                \"Message\": \"Success\"\n            }\n        ],\n        \"RequestId\": \"c933aca1-90d2-4ab8-b045-f1b08069d76f\"\n    }\n}",
+        "title": "Creating audio moderation task"
+      },
+      {
+        "document": "If you configure `Seed` when creating a moderation task, we will add the signature parameter to the callback to ensure the data security.\nSignature algorithm: add the `X-Signature` field to the returned HTTP header, whose value is the SHA256-encoded hex string of `seed` + `body`.\n\nFor example:\nIf your ` CallbackUrl` is `http://example.com` and `Seed` is `dedb6dcc1cb7c63fde8fa5abfd57`, and the returned callback data is: \n```{\"TaskId\": \"task-video-X0zpcRUMzVidxj20\",\"DataId\":\"test\",\"Suggestion\": \"Block\"}```,\nThen, after completing the moderation, we will pass in `X-Signature` with the following value in the HTTP header when calling `http://example.com`:\n`74f0ae6d1f1e4eb1ffe4162da480a812f8a4dc19fe5a52bacbcd2c862d3edcfd`\n\n> Note: for the callback body format, see the API for task details query.",
+        "input": "POST / HTTP/1.1\nHost: ams.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAudioModerationTask\n<Common request parameters>\n\n{\n    \"Type\": \"AUDIO\",\n    \"CallbackUrl\": \"https://apis.example.com/callback/audio\",\n    \"Seed\": \"dedb6dcc1cb7c63fde8fa5abfd57\",\n    \"Tasks\": [\n        {\n            \"DataId\": \"test\",\n            \"Input\": {\n                \"Url\": \"https://test.myqcloud.com/test.mp3\"\n            }\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Results\": [\n            {\n                \"DataId\": \"test\",\n                \"TaskId\": \"c933aca1-90d2-4ab8-b045-f1b08069d76f\",\n                \"Code\": \"OK\",\n                \"Message\": \"Success\"\n            }\n        ],\n        \"RequestId\": \"c933aca1-90d2-4ab8-b045-f1b08069d76f\"\n    }\n}",
+        "title": "Sample callback signature"
+      }
+    ],
+    "DescribeTaskDetail": [
+      {
+        "document": "This example shows you how to view the details of a task by `TaskId`.",
+        "input": "POST / HTTP/1.1\nHost: ams.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTaskDetail\n<Common request parameters>\n\n{\n    \"TaskId\": \"task-video-XwxJtbkKXWgCt8AZ\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"w-audio-X_Qnzci_GulDQ01r\",\n        \"DataId\": \"\",\n        \"BizType\": \"202012161\",\n        \"Name\": \"\",\n        \"Status\": \"FINISH\",\n        \"Type\": \"AUDIO\",\n        \"Suggestion\": \"Review\",\n        \"Labels\": [\n            {\n                \"Label\": \"Abuse\",\n                \"Suggestion\": \"Review\",\n                \"Score\": 0\n            }\n        ],\n        \"InputInfo\": {\n            \"Type\": \"URL\",\n            \"Url\": \"https://test.cos.ap-guangzhou.myqcloud.com/porn5.mp3\"\n        },\n        \"AudioText\": \"Audio text\",\n        \"AudioSegments\": [\n            {\n                \"Result\": {\n                    \"HitFlag\": 0,\n                    \"Url\": \"https://cos.ap-guangzhou.myqcloud.com/0.mp3\",\n                    \"Suggestion\": \"Pass\",\n                    \"Label\": \"Normal\",\n                    \"Text\": \"\",\n                    \"TextResults\": [],\n                    \"MoanResults\": [],\n                    \"LanguageResults\": [],\n                    \"Duration\": \"60000\",\n                    \"Score\": 0,\n                    \"Extra\": \"\"\n                },\n                \"OffsetTime\": \"0\"\n            }\n        ],\n        \"ErrorType\": \"\",\n        \"ErrorDescription\": \"\",\n        \"CreatedAt\": \"2021-01-05T08:48:13.069Z\",\n        \"UpdatedAt\": \"2021-01-05T08:49:31.421Z\",\n        \"RequestId\": \"34785328532523\"\n    }\n}",
+        "title": "Viewing task details"
+      }
+    ],
+    "DescribeTasks": [
+      {
+        "document": "This example shows you how to view the list of moderation tasks.",
+        "input": "POST / HTTP/1.1\nHost: ams.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTasks\n<Common request parameters>\n\n{\n    \"Filter\": {\n        \"Type\": \"AUDIO\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": \"1\",\n        \"Data\": [\n            {\n                \"TaskId\": \"task-video-XwxJtbkKXWgCt8AZ\",\n                \"DataId\": \"data_test_01\",\n                \"BizType\": \"1001\",\n                \"Name\": \"Test video\",\n                \"Status\": \"FINISH\",\n                \"Type\": \"VIDEO\",\n                \"Suggestion\": \"Block\",\n                \"Labels\": [\n                    {\n                        \"Label\": \"Porn\",\n                        \"Suggestion\": \"Block\",\n                        \"Score\": 99\n                    },\n                    {\n                        \"Label\": \"Hot\",\n                        \"Suggestion\": \"Block\",\n                        \"Score\": 70\n                    }\n                ],\n                \"MediaInfo\": {\n                    \"Codecs\": \"h264 aac\",\n                    \"Duration\": 36,\n                    \"Width\": 352,\n                    \"Height\": 640\n                },\n                \"CreatedAt\": \"2020-07-13T11:47:01.925Z\",\n                \"UpdatedAt\": \"2020-07-13T11:47:25.840Z\"\n            }\n        ],\n        \"PageToken\": \"4765-48dXwxJtbkKXW8d3eb\",\n        \"RequestId\": \"8d3e4765-48db-40b5-8fdb-aaf1d7225a60\"\n    }\n}",
+        "title": "Viewing moderation task list"
+      }
+    ]
+  },
+  "version": "1.0"
+}

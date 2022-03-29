@@ -1,0 +1,455 @@
+{
+  "actions": {
+    "TextModeration": {
+      "document": "This API is used to submit text content for intelligent moderation. \n\n### Notes\n- Before invoking this API, be sure you have activated Tencent Cloud Text Moderation System in the [Content Moderation - Text Moderation System](https://console.cloud.tencent.com/cms/text/package) console.\n- This is a paid API. For the billing details, see [Text Moderation System Pricing](https://intl.cloud.tencent.com/product/tms/pricing?from_cn_redirect=1).\n\n \n \n \n \n \n \n\n### Use limits\n- The submitted texts can not be longer than 10,000 unicode characters.\n- English letters, digits and Chinese characters are supported for moderation.\n- The API request frequency limit: **1,000 times/second**. \n",
+      "input": "TextModerationRequest",
+      "name": "Moderates text contents",
+      "output": "TextModerationResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2020-12-29",
+    "serviceNameCN": "文本内容安全",
+    "serviceShortName": "tms"
+  },
+  "objects": {
+    "DetailResults": {
+      "document": "Details of results returned by text moderation",
+      "members": [
+        {
+          "default": "",
+          "document": "Result of the moderation. <br>`Normal`: normal content; `Porn`: pornographic content; `Abuse`: abusive content; **Ad**: advertising content; `Custom`: custom violating content",
+          "example": "无",
+          "member": "string",
+          "name": "Label",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recommended follow-up action. <br>`Block`: block it automatically; `Review`: review the content again in human; **Pass**: pass\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "string",
+          "name": "Suggestion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field returns the matched keywords. This parameter can include multiple returned values, which means multiple keywords are matched. If no keyword is returned but there is a `Score`, it means that the result of `Label` is determined by a semantic model.\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "string",
+          "name": "Keywords",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field indicates the convincing level of the `Label`, ranging from `0` (lowest) to `100` (highest). \nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "int64",
+          "name": "Score",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "It indicates the library type corresponding with the keyword. Valid values: `1` (blocklist/allowlist library) and `2` (custom keyword library). If no custom keyword library is configured, the default value is 1.\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "int64",
+          "name": "LibType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is **only valid when `Label` is `Custom`. It returns the custom library ID to facilitate the library management and configuration.\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "string",
+          "name": "LibId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is **only valid when `Label` is `Custom` (custom keyword)`. It returns the custom library name to facilitate the library management and configuration.\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "string",
+          "name": "LibName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The field returns the second-level labels under the current label.\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "string",
+          "name": "SubLabel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Device": {
+      "document": "This field indicates the device information of the service subscriber",
+      "members": [
+        {
+          "default": "",
+          "document": "This field indicates the IP address of the device used by the service subscriber. <br>\nNote: Currently, only IPv4 addresses can be recorded.",
+          "example": "无",
+          "member": "string",
+          "name": "IP",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field indicates the MAC address used by the service subscriber to facilitate device identification and management. Its format and value are consistent with those of the standard MAC address.",
+          "example": "无",
+          "member": "string",
+          "name": "Mac",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "* In beta test. Available soon.*",
+          "example": "无",
+          "member": "string",
+          "name": "TokenId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "* In beta test. Available soon.*",
+          "example": "无",
+          "member": "string",
+          "name": "DeviceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field represents the **IMEI** (International Mobile Equipment Identity) number of the device used by the service subscriber. IMEI can be used to identify each independent mobile communication device, such as a mobile phone, which is convenient for device identification and management. <br>Note: IMEI is formatted with **15 to 17 numbers only**.",
+          "example": "无",
+          "member": "string",
+          "name": "IMEI",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "**Dedicated for iOS device**. This field indicates the **IDFA** (Identifier for Advertising) corresponding to the service subscriber. IDFA, a string of hexadecimal 32 characters including numbers and letters, is provided by Apple Inc. to identify the user.<br>\nNote: Since the iOS14 update in 2021, Apple Inc. has allowed users to manually activate or deactivate IDFA, so the validity of the string identifier may be reduced.",
+          "example": "无",
+          "member": "string",
+          "name": "IDFA",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "**Dedicated for iOS device**. This field indicates the **IDFV** (Identifier for Vendor) corresponding to the service subscriber. IDFV, a string of hexadecimal 32 characters including numbers and letters, is provided by Apple Inc. to identify the vendor. IDFV can also be used as a unique device identifier.",
+          "example": "无",
+          "member": "string",
+          "name": "IDFV",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "RiskDetails": {
+      "document": "Account risk detection results",
+      "members": [
+        {
+          "default": "",
+          "document": "This field returns the risk categories after account information detection. Valid values: **RiskAccount** (the account is at risk), **RiskIP** (the IP address is at risk), and **RiskIMEI** (the mobile device identifier is at risk).",
+          "example": "无",
+          "member": "string",
+          "name": "Label",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field returns the risk levels after account information detection. Valid values: **1** (suspected to be at risk) and **2** (malicious risk).",
+          "example": "无",
+          "member": "int64",
+          "name": "Level",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TextModerationRequest": {
+      "document": "TextModeration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "This field indicates the text content of the object to be moderated. The text needs to be encoded in utf-8 format and encrypted with Base64. It can contain up to 10,000 characters, calculated by unicode encoding.",
+          "example": "111",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This field indicates the specific policy number, which is used for the API call and can be configured in the CMS console. If it's not entered (left empty), the default moderation policy is adopted. If it's entered, the moderation policies are specified for business scenarios. <br>Note: Biztype contains 3 to 32 characters, including numbers, letters and underscores only. Different Biztypes are associated with different business scenarios and moderation policies. Ensure that you use the Biztype corresponding to the policy you want to apply.",
+          "example": "111",
+          "member": "string",
+          "name": "BizType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This field indicates the data ID you assigned to the object to be moderated, which is convenient for you to identify and manage the file. <br>Value: this field can contain **up to 64 characters**, including uppercase and lowercase letters, numbers and four special symbols (_, -, @, #)",
+          "example": "1111",
+          "member": "string",
+          "name": "DataId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This field indicates the user information related with the object to be moderated, which can be used to identify violating users at risk.",
+          "example": "111",
+          "member": "User",
+          "name": "User",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "This field indicates the device information related with the object to be moderated, which can be used to identify violating devices at risk.",
+          "example": "1111",
+          "member": "Device",
+          "name": "Device",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "TextModerationResponse": {
+      "document": "TextModeration response structure.",
+      "members": [
+        {
+          "document": "This field returns the BizType of the request parameters",
+          "example": "111",
+          "member": "string",
+          "name": "BizType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "This field returns the **negative label with the highest priority** in the moderation results (DetailResults), which indicates the moderation result recommended by the model. It is recommended that you handle different violations with the suggested values according to your business needs. <br>Returned values: **Normal**: normal content; **Porn**: pornographic content; **Abuse**: abusive content; **Ad**: advertising content; **Custom**: custom violating content, and others such as objectionable, insecure or inappropriate content.",
+          "example": "111",
+          "member": "string",
+          "name": "Label",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "This field returns the follow-up moderation suggestions. The returned value indicates the recommended operation after obtaining the moderation result. It is recommended that you handle different violations with the suggested values according to your business needs. <br>Returned values: **Block**: block; **Review**: human moderation; **Pass**: pass",
+          "example": "11",
+          "member": "string",
+          "name": "Suggestion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "This field returns the keywords matched with the libraries in the moderated text under the current label to mark the specific violations (for example, *Friend me*). This parameter may have multiple returned values, indicating multiple keywords are matched. If the returned value is empty and the `Score` is not empty, it means that the negative label corresponding to the moderation result is a value returned from the semantic model judgment\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "11",
+          "member": "string",
+          "name": "Keywords",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field returns the confidence level under the current label. Value range: 0 (**the lowest confidence level**) - 100 (**the highest confidence level**). The higher the value, the more likely the text is to belong to the category indicated by the current label. For example, *pornographic 99* indicates that the text is very likely to be pornographic, and *pornographic 0* indicates that the text is not pornographic",
+          "example": "11",
+          "member": "int64",
+          "name": "Score",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "This field returns the moderation results based on the text libraries. For details, see `DetailResults` in the data structure\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "11",
+          "member": "DetailResults",
+          "name": "DetailResults",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field returns the detection results of violating accounts at risk, mainly including violation categories and risk levels. For details, see `RiskDetails` in the data structure\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "11",
+          "member": "RiskDetails",
+          "name": "RiskDetails",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field returns the extra information configured according to your needs. If it's not configured, the returned value is empty by default. <br>Note: the returned information varies based on different customers or Biztypes. If you need to configure this field, please submit a ticket or contact after-sales manager\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "11",
+          "member": "string",
+          "name": "Extra",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "This field returns the `DataId` in the request parameter corresponding to the moderated object\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "11",
+          "member": "string",
+          "name": "DataId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The field returns the second-level labels under the current label.\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "11",
+          "member": "string",
+          "name": "SubLabel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "User": {
+      "document": "This field indicates the account-related information of the service subscriber",
+      "members": [
+        {
+          "default": "",
+          "document": "This field indicates the service subscriber ID. This ID can be used to optimize the moderation result judgment based on the account's violation records, which is helpful for auxiliary judgment when there is a risk of suspected violations.",
+          "example": "无",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field indicates the account nickname information of the service subscriber.",
+          "example": "无",
+          "member": "string",
+          "name": "Nickname",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field indicates the account type corresponding to the service subscriber ID.<br>\nUse this field and the account ID (UserId) together to determine a unique account.",
+          "example": "无",
+          "member": "int64",
+          "name": "AccountType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field indicates the gender information of the service subscriber's account.<br>\nValues: **0** (default value, indicating the gender is unknown), **1** (male) and **2** (female).",
+          "example": "无",
+          "member": "int64",
+          "name": "Gender",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field indicates the age information of the service subscriber's account.<br>\nValues: Integers between **0** (default value, indicating that the age is unknown) and the number of (**custom maximum age**).",
+          "example": "无",
+          "member": "int64",
+          "name": "Age",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field indicates the level information of the service subscriber's account.<br>\nValues: **0** (default value, indicating that the level is unknown), **1** (lower level), **2** (medium level) and **3** (higher level). Currently, **custom levels are not supported**.",
+          "example": "无",
+          "member": "int64",
+          "name": "Level",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field indicates the mobile phone number information of the service subscriber's account. The mobile phone numbers in various regions of the world can be recorded.<br>\nNote: Please keep the format of mobile phone number uniform. For example, uniformly use the area code format (086/+86), etc.",
+          "example": "无",
+          "member": "string",
+          "name": "Phone",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field indicates the URL of the service subscriber's profile photos formatted with .png, .jpg, .jpeg, .bmp, .gif and .webp.\nNote: Up to 5 MB is supported, and the minimum resolution is 256 x 256. When it takes more than 3 seconds to download, the \"download timeout\" is returned.",
+          "example": "无",
+          "member": "string",
+          "name": "HeadUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field indicates the profile information of service subscribers. It can contain up to 5,000 characters, including Chinese characters, letters and special symbols.",
+          "example": "无",
+          "member": "string",
+          "name": "Desc",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    }
+  },
+  "version": "1.0"
+}

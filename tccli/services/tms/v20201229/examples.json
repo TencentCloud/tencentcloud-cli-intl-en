@@ -1,0 +1,13 @@
+{
+  "actions": {
+    "TextModeration": [
+      {
+        "document": "",
+        "input": "https://tms.tencentcloudapi.com/?Action=TextModeration\n&Content=57uY5aOw57uY6Imy\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"DataId\": \"123\",\n        \"Extra\": \"xx\",\n        \"BizType\": \"0\",\n        \"RiskDetails\": [\n            {\n                \"Level\": 2,\n                \"Label\": \"RiskAccount\"\n            }\n        ],\n        \"DetailResults\": [\n            {\n                \"LibName\": \"Porn\",\n                \"Score\": 72,\n                \"Label\": \"Porn\",\n                \"SubLabel\": \"SexualBehavior\",\n                \"LibId\": \"12\",\n                \"Suggestion\": \"Review\",\n                \"Keywords\": [\n                    \"Pornographic\"\n                ],\n                \"LibType\": 0\n            },\n            {\n                \"LibName\": \"Porn\",\n                \"Score\": 0,\n                \"Label\": \"\",\n                \"LibId\": \"1\",\n                \"Suggestion\": \"Block\",\n                \"Keywords\": [\n                    \"Pornographic\"\n                ],\n                \"LibType\": 2\n            }\n        ],\n        \"Label\": \"Ad\",\n        \"SubLabel\": \"Contact\",\n        \"Score\": 87,\n        \"RequestId\": \"x2123-123123-123\",\n        \"Suggestion\": \"Block\",\n        \"Keywords\": [\n            \"Friend me for coupons\"\n        ]\n    }\n}",
+        "title": "Moderates text contents"
+      }
+    ]
+  },
+  "version": "1.0"
+}
