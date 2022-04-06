@@ -1,11 +1,5 @@
 {
   "actions": {
-    "BatchSendEmail": {
-      "document": "This API is used to send a TEXT or HTML email to multiple recipients at a time for marketing or notification purposes. By default, you can send emails using a template only. To send custom content, please contact your sales rep to enable this feature. You need to create a recipient group with email addresses first and then send emails by group ID. SES supports scheduled and recurring email sending tasks. You need to pass in `TimedParam` for a scheduled task and `CycleParam` for a recurring one.",
-      "input": "BatchSendEmailRequest",
-      "name": "Sends an email to multiple recipients at a time",
-      "output": "BatchSendEmailResponse"
-    },
     "CreateEmailAddress": {
       "document": "After the sender domain is verified, you need a sender address to send emails. For example, if your sender domain is mail.qcloud.com, your sender address can be service@mail.qcloud.com. If you want to display your name (such as \"Tencent Cloud\") in the inbox list of the recipients, the sender address should be in the format of `Tencent Cloud <email address>`. Please note that there must be a space between your name and the first angle bracket.",
       "input": "CreateEmailAddressRequest",
@@ -17,12 +11,6 @@
       "input": "CreateEmailIdentityRequest",
       "name": "Creates a sender domain",
       "output": "CreateEmailIdentityResponse"
-    },
-    "CreateEmailTemplate": {
-      "document": "This API is used to create a TEXT or HTML email template. To create an HTML template, ensure that it does not include external CSS files. You can use {{variable name}} to specify a variable in the template.\nNote: Only an approved template can be used to send emails.",
-      "input": "CreateEmailTemplateRequest",
-      "name": "Creates an email template",
-      "output": "CreateEmailTemplateResponse"
     },
     "CreateReceiver": {
       "document": "This API is used to create a recipient group, which is the list of target email addresses for batch sending emails. After creating a group, you need to upload recipient email addresses. Then, you can create a sending task and select the group to batch send emails.",
@@ -78,12 +66,6 @@
       "name": "Gets the details of a template",
       "output": "GetEmailTemplateResponse"
     },
-    "GetSendEmailStatus": {
-      "document": "This API is used to get email sending status. Only data within 30 days can be queried.",
-      "input": "GetSendEmailStatusRequest",
-      "name": "Gets the email sending status",
-      "output": "GetSendEmailStatusResponse"
-    },
     "GetStatisticsReport": {
       "document": "This API is used to get the email sending statistics over a recent period, including data on sent emails, delivery success rate, open rate, bounce rate, and so on.",
       "input": "GetStatisticsReportRequest",
@@ -137,12 +119,6 @@
       "input": "UpdateEmailIdentityRequest",
       "name": "Verifies DNS configuration",
       "output": "UpdateEmailIdentityResponse"
-    },
-    "UpdateEmailTemplate": {
-      "document": "This API is used to update an email template. An updated template must be approved again before it can be used.",
-      "input": "UpdateEmailTemplateRequest",
-      "name": "Updates an email template",
-      "output": "UpdateEmailTemplateResponse"
     }
   },
   "metadata": {
@@ -176,141 +152,6 @@
         }
       ],
       "usage": "in"
-    },
-    "BatchSendEmailRequest": {
-      "document": "BatchSendEmail request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Sender address. Enter a sender address, for example, noreply@mail.qcloud.com. To display the sender name, enter the address in the following format:\nSender <email address>, for example:\nTencent Cloud team <noreply@mail.qcloud.com>",
-          "example": "abc@ef.com",
-          "member": "string",
-          "name": "FromEmailAddress",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Recipient group ID",
-          "example": "123",
-          "member": "uint64",
-          "name": "ReceiverId",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Email subject",
-          "example": "邮件主题",
-          "member": "string",
-          "name": "Subject",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Task type. `1`: immediate; `2`: scheduled; `3`: recurring",
-          "example": "1",
-          "member": "uint64",
-          "name": "TaskType",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will be sent to Tencent Cloud.",
-          "example": "abc@ef.com",
-          "member": "string",
-          "name": "ReplyToAddresses",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Template when emails are sent using a template",
-          "example": "无",
-          "member": "Template",
-          "name": "Template",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Email content when emails are sent by calling the API. This parameter is currently unavailable.",
-          "example": "无",
-          "member": "Simple",
-          "name": "Simple",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Attachment parameters to set when you need to send attachments. This parameter is currently unavailable.",
-          "example": "无",
-          "member": "Attachment",
-          "name": "Attachments",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Parameter required for a recurring sending task",
-          "example": "无",
-          "member": "CycleEmailParam",
-          "name": "CycleParam",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Parameter required for a scheduled sending task",
-          "example": "无",
-          "member": "TimedEmailParam",
-          "name": "TimedParam",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Unsubscribe option. `1`: provides an unsubscribe link; `0`: does not provide an unsubscribe link",
-          "example": "1",
-          "member": "string",
-          "name": "Unsubscribe",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "",
-          "example": "0",
-          "member": "uint64",
-          "name": "ADLocation",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "BatchSendEmailResponse": {
-      "document": "BatchSendEmail response structure.",
-      "members": [
-        {
-          "document": "Sending task ID",
-          "example": "123",
-          "member": "uint64",
-          "name": "TaskId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
     },
     "BlackEmailAddress": {
       "document": "Email address blocklist structure, including the blocklisted address and the time when it is blocklisted.",
@@ -408,40 +249,6 @@
           "type": "list",
           "value_allowed_null": false
         },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateEmailTemplateRequest": {
-      "document": "CreateEmailTemplate request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Template name.",
-          "member": "string",
-          "name": "TemplateName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Template content.",
-          "member": "TemplateContent",
-          "name": "TemplateContent",
-          "required": true,
-          "type": "object"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateEmailTemplateResponse": {
-      "document": "CreateEmailTemplate response structure.",
-      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -876,71 +683,6 @@
           "member": "TemplateContent",
           "name": "TemplateContent",
           "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "GetSendEmailStatusRequest": {
-      "document": "GetSendEmailStatus request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Sent date. This parameter is required. You can only query the sending status for a single date at a time.",
-          "member": "date",
-          "name": "RequestDate",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Offset. Default value: `0`",
-          "member": "uint64",
-          "name": "Offset",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Maximum number of pulled entries. The maximum value is `100`.",
-          "member": "uint64",
-          "name": "Limit",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "`MessageId` field returned by the `SendMail` API",
-          "member": "string",
-          "name": "MessageId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Recipient email address",
-          "member": "string",
-          "name": "ToEmailAddress",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "GetSendEmailStatusResponse": {
-      "document": "GetSendEmailStatus response structure.",
-      "members": [
-        {
-          "document": "Email sending status list",
-          "member": "SendEmailStatus",
-          "name": "EmailStatusList",
-          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -1519,120 +1261,6 @@
       ],
       "type": "object"
     },
-    "SendEmailStatus": {
-      "document": "Describes the email sending status.",
-      "members": [
-        {
-          "default": "",
-          "document": "`MessageId` field returned by the `SendEmail` API",
-          "member": "string",
-          "name": "MessageId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Recipient email address",
-          "member": "string",
-          "name": "ToEmailAddress",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Sender email address",
-          "member": "string",
-          "name": "FromEmailAddress",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Tencent Cloud processing status:\n0: successful.\n1001: internal system exception.\n1002: internal system exception.\n1003: internal system exception.\n1003: internal system exception.\n1004: email sending timeout.\n1005: internal system exception.\n1006: you have sent too many emails to the same address in a short period.\n1007: the email address is in the blocklist.\n1009: internal system exception.\n1010: daily email sending limit exceeded.\n1011: no permission to send custom content. Use a template.\n2001: no results found.\n3007: invalid template ID or unavailable template.\n3008: template status exception.\n3009: no permission to use this template.\n3010: the format of the `TemplateData` field is incorrect. \n3014: unable to send the email because the sender domain is not verified.\n3020: the recipient email address is in the blocklist.\n3024: failed to pre-check the email address format.\n3030: email sending is restricted temporarily due to high bounce rate.\n3033: the account has insufficient balance or overdue payment.",
-          "member": "int64",
-          "name": "SendStatus",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Recipient processing status:\n0: Tencent Cloud has accepted the request and added it to the send queue.\n1: the email is delivered successfully, `DeliverTime` indicates the time when the email is delivered successfully.\n2: the email is discarded. `DeliverMessage` indicates the reason for discarding.\n3: the recipient's ESP rejects the email, probably because the email address does not exist or due to other reasons.\n8: the email is delayed by the ESP. `DeliverMessage` indicates the reason for delay.",
-          "member": "int64",
-          "name": "DeliverStatus",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Description of the recipient processing status",
-          "member": "string",
-          "name": "DeliverMessage",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Timestamp when the request arrives at Tencent Cloud",
-          "member": "int64",
-          "name": "RequestTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Timestamp when Tencent Cloud delivers the email",
-          "member": "int64",
-          "name": "DeliverTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether the recipient has opened the email",
-          "member": "bool",
-          "name": "UserOpened",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether the recipient has clicked the links in the email",
-          "member": "bool",
-          "name": "UserClicked",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether the recipient has unsubscribed from emails sent by the sender",
-          "member": "bool",
-          "name": "UserUnsubscribed",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether the recipient has reported the sender",
-          "member": "bool",
-          "name": "UserComplainted",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
     "SendTaskData": {
       "document": "Email sending task data",
       "members": [
@@ -1978,48 +1606,6 @@
           "type": "list",
           "value_allowed_null": false
         },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "UpdateEmailTemplateRequest": {
-      "document": "UpdateEmailTemplate request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Template content.",
-          "member": "TemplateContent",
-          "name": "TemplateContent",
-          "required": true,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Template ID.",
-          "member": "uint64",
-          "name": "TemplateID",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Template name.",
-          "member": "string",
-          "name": "TemplateName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "UpdateEmailTemplateResponse": {
-      "document": "UpdateEmailTemplate response structure.",
-      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

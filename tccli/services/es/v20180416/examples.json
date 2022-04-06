@@ -80,6 +80,14 @@
         "title": "Restarting cluster nodes"
       }
     ],
+    "UpdateDictionaries": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateDictionaries\n<Common request parameters>\n\n{\n    \"IkStopwords\": [\n        \"xx\"\n    ],\n    \"Synonym\": [\n        \"xx\"\n    ],\n    \"InstanceId\": \"xx\",\n    \"UpdateType\": 0,\n    \"ForceRestart\": true,\n    \"QQDict\": [\n        \"xx\"\n    ],\n    \"IkMainDicts\": [\n        \"xx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c96a110c-7493-452d-a99b-683d07xxxxxx\"\n    }\n}",
+        "title": "Updating ES cluster dictionaries"
+      }
+    ],
     "UpdateInstance": [
       {
         "document": "This example shows you how to rename an ES cluster instance.",

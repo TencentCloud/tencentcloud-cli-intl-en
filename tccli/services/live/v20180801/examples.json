@@ -109,9 +109,15 @@
     "CreateLiveRecordTemplate": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=CreateLiveRecordTemplate\n&TemplateName=template\n&Description=test\n&FlvParam.Enable=0\n&FlvParam.RecordInterval=1800\n&FlvParam.StorageTime=600\n&HlsParam.Enable=1\n&HlsParam.RecordInterval=1800\n&HlsParam.StorageTime=600\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=CreateLiveRecordTemplate\n&TemplateName=templat\n&Description=test\n&FlvParam.Enable=0\n&FlvParam.RecordInterval=1800\n&FlvParam.StorageTime=600\n&HlsParam.Enable=1\n&HlsParam.RecordInterval=1800\n&HlsParam.StorageTime=600\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TemplateId\": 1000,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLiveRecordTemplate\n<Common request parameters>\n\n{\n    \"RemoveWatermark\": \"false\",\n    \"FlvParam\": {\n        \"StorageTime\": \"2\",\n        \"VodSubAppId\": \"251195406\",\n        \"Enable\": \"1\",\n        \"RecordInterval\": \"2222\"\n    },\n    \"IsDelayLive\": \"0\",\n    \"Description\": \"String\",\n    \"TemplateName\": \"String\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"74ed2203-278d-4ec8-8c67-65626a94daef\",\n        \"TemplateId\": 362894\n    }\n}",
+        "title": "Sample"
       }
     ],
     "CreateLiveSnapshotRule": [
@@ -287,14 +293,6 @@
         "document": "",
         "input": "https://live.tencentcloudapi.com/?Action=DescribeAreaBillBandwidthAndFluxList\n&PlayDomains.0=5000.playdomain.com\n&StartTime=2019-02-0100:00:00\n&EndTime=2019-02-0100:10:00\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DataInfoList\": [\n            {\n                \"Name\": \"Middle East/Africa\",\n                \"Countrys\": [\n                    {\n                        \"Name\": \"United Arab Emirates\",\n                        \"BandInfoList\": [\n                            {\n                                \"Bandwidth\": 6.95,\n                                \"Flux\": 260.7,\n                                \"PeakTime\": \"2020-09-09 00:00:00\",\n                                \"Time\": \"2020-09-09 00:05:00\"\n                            },\n                            {\n                                \"Bandwidth\": 5.84,\n                                \"Flux\": 219.09,\n                                \"PeakTime\": \"2020-09-09 00:05:00\",\n                                \"Time\": \"2020-09-09 00:10:00\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Sample request"
-      }
-    ],
-    "DescribeBillBandwidthAndFluxList": [
-      {
-        "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeBillBandwidthAndFluxList\n&PlayDomains.0=5000.playdomain.com\n&StartTime=2019-02-0100:00:00\n&EndTime=2019-02-0100:10:00\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"P95PeakBandwidth\": 117042.495,\n        \"P95PeakBandwidthTime\": \"2019-02-01 00:00:00\",\n        \"DataInfoList\": [\n            {\n                \"Bandwidth\": 117042.495,\n                \"Flux\": 4389093.551,\n                \"Time\": \"2019-02-01 00:00:00\",\n                \"PeakTime\": \"2019-02-01 00:00:00\"\n            },\n            {\n                \"Bandwidth\": 110364.995,\n                \"Flux\": 4138687.32,\n                \"Time\": \"2019-02-01 00:05:00\",\n                \"PeakTime\": \"2019-02-01 00:05:00\"\n            },\n            {\n                \"Bandwidth\": 99380.978,\n                \"Flux\": 3726786.679,\n                \"Time\": \"2019-02-01 00:10:00\",\n                \"PeakTime\": \"2019-02-01 00:10:00\"\n            }\n        ],\n        \"PeakBandwidth\": 117042.495,\n        \"PeakBandwidthTime\": \"2019-02-01 00:00:00\",\n        \"RequestId\": \"f54e3deb-f318-4148-8a68-3c959642f9ec\",\n        \"SumFlux\": 12254567.55\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -647,14 +645,6 @@
         "document": "",
         "input": "https://live.tencentcloudapi.com/?Action=DescribeStreamPlayInfoList\n&PlayDomain=5000.playdomain.com\n&StreamName=stream1\n&StartTime=2019-03-01 00:00:00\n&EndTime=2019-03-01 00:03:00\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DataInfoList\": [\n            {\n                \"Time\": \"2019-03-01 00:00:00\",\n                \"Bandwidth\": 10.0,\n                \"Flux\": 75.0,\n                \"Request\": 50,\n                \"Online\": 10\n            },\n            {\n                \"Time\": \"2019-03-01 00:02:00\",\n                \"Bandwidth\": 20.0,\n                \"Flux\": 150.0,\n                \"Request\": 50,\n                \"Online\": 20\n            },\n            {\n                \"Time\": \"2019-03-01 00:03:00\",\n                \"Bandwidth\": 30.0,\n                \"Flux\": 225.0,\n                \"Request\": 50,\n                \"Online\": 30\n            }\n        ],\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
-        "title": "Sample request"
-      }
-    ],
-    "DescribeStreamPushInfoList": [
-      {
-        "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeStreamPushInfoList\n&StartTime=2019-06-21 12:00:00\n&EndTime=2019-06-21 12:01:02\n&StreamName=abcd\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"DataInfoList\": [\n            {\n                \"StreamParam\": \"xx\",\n                \"ACodec\": \"AAC\",\n                \"AppName\": \"live\",\n                \"AudioFps\": 43,\n                \"AudioRate\": 131580,\n                \"AudioTs\": 5004,\n                \"BeginPushTime\": \"2019-06-21 00:29:12.252\",\n                \"ClientIp\": \"125.39.132.102\",\n                \"LocalTs\": 5000,\n                \"PushDomain\": \"123.livepush.myqcloud.com\",\n                \"Resolution\": \"368*640\",\n                \"Sequence\": \"10151483429474411508\",\n                \"Time\": \"2019-06-21 01:10:39.87\",\n                \"VCodec\": \"H264\",\n                \"VideoFps\": 24,\n                \"VideoRate\": 701528,\n                \"VideoTs\": 5032,\n                \"MateFps\": 30,\n                \"MetaAudioRate\": 22,\n                \"MetaVideoRate\": 4885\n            }\n        ],\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
         "title": "Sample request"
       }
     ],

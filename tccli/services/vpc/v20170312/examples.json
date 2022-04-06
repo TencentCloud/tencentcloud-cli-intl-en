@@ -90,14 +90,6 @@
         "title": "Binding a direct connect gateway with a NAT gateway"
       }
     ],
-    "AssociateNatGatewayAddress": [
-      {
-        "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=AssociateNatGatewayAddress\n&NatGatewayId=nat-mdbjfr0y\n&PublicIpAddresses.0=139.199.232.212\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dbffc3f0-1807-4683-89ee-2d2b96425ee1\"\n    }\n}",
-        "title": "Binding an NAT gateway with an EIP"
-      }
-    ],
     "AssociateNetworkInterfaceSecurityGroups": [
       {
         "document": "",
@@ -292,14 +284,6 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=CreateLocalGateway\n&CdcId=cluster-1234dert\n&VpcId=vpc-m0c2kcun\n&LocalGatewayName=TEST\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"LocalGateway\": {\n            \"CdcId\": \"cluster-1234dert\",\n            \"VpcId\": \"vpc-m0c2kcun\",\n            \"UniqLocalGwId\": \"lgw-1234edfr\",\n            \"LocalGatewayName\": \"TEST\",\n            \"LocalGwIp\": \"10.0.0.0\",\n            \"CreateTime\": \"2021-03-24 15:31:56\"\n        },\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
         "title": "Creating a local gateway"
-      }
-    ],
-    "CreateNatGateway": [
-      {
-        "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateNatGateway\n&NatGatewayName=test_name\n&VpcId=vpc-abcdefgh\n&InternetMaxBandwidthOut=10\n&MaxConcurrentConnection=1000000\n&AddressCount=1\n&PublicIpAddresses.0=139.199.232.119\n&Tags.0.Key=city\n&Tags.0.Value=shanghai\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"NatGatewaySet\": [\n            {\n                \"NatGatewayId\": \"nat-cqbn23ju\",\n                \"NatGatewayName\": \"11111\",\n                \"VpcId\": \"vpc-qi4ja3sx\",\n                \"CreatedTime\": \"2019-07-16 09:40:00\",\n                \"State\": \"AVAILABLE\",\n                \"NetworkState\": \"AVAILABLE\",\n                \"InternetMaxBandwidthOut\": 10,\n                \"MaxConcurrentConnection\": 1000000,\n                \"SecurityGroupSet\": [],\n                \"PublicIpAddressSet\": [\n                    {\n                        \"AddressId\": \"eip-9uw5fwsu\",\n                        \"PublicIpAddress\": \"139.199.232.119\",\n                        \"IsBlocked\": false\n                    },\n                    {\n                        \"AddressId\": \"eip-9uw5fsss\",\n                        \"PublicIpAddress\": \"139.199.232.221\",\n                        \"IsBlocked\": false\n                    }\n                ],\n                \"DestinationIpPortTranslationNatRuleSet\": [],\n                \"DirectConnectGatewayIds\": [],\n                \"Zone\": \"ap-guangzhou-2\",\n                \"ExclusiveGatewayBandwidth\": 1,\n                \"IsExclusive\": true,\n                \"SourceIpTranslationNatRuleSet\": [],\n                \"SubnetId\": \"1215354\",\n                \"TagSet\": [\n                    {\n                        \"Key\": \"city\",\n                        \"Value\": \"shanghai\"\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"6f2a42cf-2905-4fa5-af49-0f01612550de\"\n    }\n}",
-        "title": "Creating a NAT Gateway"
       }
     ],
     "CreateNatGatewayDestinationIpPortTranslationNatRule": [
@@ -519,7 +503,7 @@
     "DeleteDirectConnectGatewayCcnRoutes": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteDirectConnectGatewayCcnRoutes\r\n&<Common request parameters>\r\n&DirectConnectGatewayId=dcg-prpqlmg1\r\n&RouteIds.0=ccnr-bvipc87w\r\n&RouteIds.1=ccnr-oc61so0o",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteDirectConnectGatewayCcnRoutes\n&DirectConnectGatewayId=dcg-prpqlmg1\n&RouteIds.0=ccnr-bvipc87w\n&RouteIds.1=ccnr-oc61so0o\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6e446c86-d8c9-4981-9b33-d10956585058\"\n    }\n}",
         "title": "Deleting the CCN routes of a direct connect gateway"
       }
@@ -546,30 +530,6 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=DeleteLocalGateway\n&CdcId=cluster-1234dert\n&LocalGatewayId=lgw-1234edfr\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
         "title": "Deleting a local gateway"
-      }
-    ],
-    "DeleteNatGateway": [
-      {
-        "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteNatGateway\r\n&NatGatewayId=nat-ig8xpno8\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dbffc3f0-1807-4683-89ee-2d2b96425ee1\"\n    }\n}",
-        "title": "Deleting an NAT gateway"
-      }
-    ],
-    "DeleteNatGatewayDestinationIpPortTranslationNatRule": [
-      {
-        "document": "This example shows you how to delete the port forwarding rules of an NAT gateway by only passing in `IpProtocol`, `PublicIpAddress`, and `PublicPort` fields in the `DestinationIpPortTranslationNatRule` structure.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteNatGatewayDestinationIpPortTranslationNatRule\r\n&NatGatewayId=nat-3isn9hr0\r\n&DestinationIpPortTranslationNatRules.0.IpProtocol=TCP\r\n&DestinationIpPortTranslationNatRules.0.PublicIpAddress=139.199.232.238\r\n&DestinationIpPortTranslationNatRules.0.PublicPort=8989\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dbffc3f0-1807-4683-89ee-2d2b96425ee1\"\n    }\n}",
-        "title": "Deleting the port forwarding rules of an NAT gateway"
-      }
-    ],
-    "DeleteNatGatewaySourceIpTranslationNatRule": [
-      {
-        "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteNatGatewaySourceIpTranslationNatRule\n&NatGatewayId=nat-3isn9hr0\n&NatGatewaySnatIds.0=snat-3ixd0hr0\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14f7ea4e-8452-4742-84b5-5a4aee304968\"\n    }\n}",
-        "title": "Deleting an SNAT forwarding rule of the NAT gateway"
       }
     ],
     "DeleteNetDetect": [
@@ -883,8 +843,8 @@
     "DescribeDirectConnectGatewayCcnRoutes": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeDirectConnectGatewayCcnRoutes\r\n&DirectConnectGatewayId=dcg-prpqlmg1\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RouteSet\": [\n            {\n                \"RouteId\": \"ccnr-bvipc87w\",\n                \"DestinationCidrBlock\": \"10.33.0.0/24\",\n                \"ASPath\": [\n                    \"1000\",\n                    \"2000\",\n                    \"3000\"\n                ]\n            },\n            {\n                \"RouteId\": \"ccnr-oc61so0o\",\n                \"DestinationCidrBlock\": \"192.168.0.0/24\",\n                \"ASPath\": []\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"6e446c86-d8c9-4981-9b33-d10956585058\"\n    }\n}",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeDirectConnectGatewayCcnRoutes\n&DirectConnectGatewayId=dcg-prpqlmg1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RouteSet\": [\n            {\n                \"RouteId\": \"ccnr-bvipc87w\",\n                \"DestinationCidrBlock\": \"10.33.0.0/24\",\n                \"UpdateTime\": \"xx\",\n                \"Description\": \"xx\",\n                \"ASPath\": [\n                    \"1000\",\n                    \"2000\",\n                    \"3000\"\n                ]\n            },\n            {\n                \"RouteId\": \"ccnr-oc61so0o\",\n                \"DestinationCidrBlock\": \"192.168.0.0/24\",\n                \"UpdateTime\": \"xx\",\n                \"Description\": \"xx\",\n                \"ASPath\": []\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"6e446c86-d8c9-4981-9b33-d10956585058\"\n    }\n}",
         "title": "Querying the CCN routes of a direct connect gateway"
       }
     ],
@@ -962,42 +922,6 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=DescribeLocalGateway\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"LocalGatewaySet\": [\n            {\n                \"CdcId\": \"cluster-1234dert\",\n                \"VpcId\": \"vpc-m0c2kcun\",\n                \"UniqLocalGwId\": \"lgw-1234edfr\",\n                \"LocalGatewayName\": \"TEST\",\n                \"LocalGwIp\": \"10.0.0.0\",\n                \"CreateTime\": \"2021-03-24 15:31:56\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
         "title": "Querying local gateways"
-      }
-    ],
-    "DescribeNatGatewayDestinationIpPortTranslationNatRules": [
-      {
-        "document": "This example shows you how to use the `NatGatewayId` array to obtain the port forwarding rules of an NAT gateway.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeNatGatewayDestinationIpPortTranslationNatRules\r\n&NatGatewayIds.0=nat-3isn9hr0\r\n&Offset=0\r\n&Limit=10\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"NatGatewayDestinationIpPortTranslationNatRuleSet\": [\n            {\n                \"IpProtocol\": \"TCP\",\n                \"PublicIpAddress\": \"139.199.232.238\",\n                \"PublicPort\": 8989,\n                \"PrivateIpAddress\": \"10.80.80.41\",\n                \"PrivatePort\": 8989,\n                \"Description\": \"test_dnapt\",\n                \"CreatedTime\": \"2019-05-04 13:09:25\",\n                \"NatGatewayId\": \"nat-3isn9hr0\",\n                \"VpcId\": \"vpc-0yi4hekt\"\n            },\n            {\n                \"IpProtocol\": \"UDP\",\n                \"PublicIpAddress\": \"139.199.232.238\",\n                \"PublicPort\": 8989,\n                \"PrivateIpAddress\": \"10.80.80.41\",\n                \"PrivatePort\": 8989,\n                \"Description\": \"test_dnapt\",\n                \"CreatedTime\": \"2019-05-04 13:20:20\",\n                \"NatGatewayId\": \"nat-3isn9hr0\",\n                \"VpcId\": \"vpc-0yi4hekt\"\n            }\n        ],\n        \"RequestId\": \"9b751ec3-d10a-4138-bdd9-fa5564684e60\"\n    }\n}",
-        "title": "Querying the port forwarding rule of an NAT gateway-2"
-      },
-      {
-        "document": "This example shows you how to use the `Filter` array to obtain the port forwarding rules of an NAT gateway.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeNatGatewayDesftinationIpPortTranslationNatRules\r\n&Filters.0.Name=vpc-id\r\n&Filters.0.Values.0=vpc-0yi4hekt\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"NatGatewayDestinationIpPortTranslationNatRuleSet\": [\n            {\n                \"IpProtocol\": \"TCP\",\n                \"PublicIpAddress\": \"139.199.232.238\",\n                \"PublicPort\": 8989,\n                \"PrivateIpAddress\": \"10.80.80.41\",\n                \"PrivatePort\": 8989,\n                \"Description\": \"test_dnapt\",\n                \"CreatedTime\": \"2019-05-04 13:42:11\",\n                \"NatGatewayId\": \"nat-3isn9hr0\",\n                \"VpcId\": \"vpc-0yi4hekt\"\n            },\n            {\n                \"IpProtocol\": \"UDP\",\n                \"PublicIpAddress\": \"139.199.232.238\",\n                \"PublicPort\": 8989,\n                \"PrivateIpAddress\": \"10.80.80.41\",\n                \"PrivatePort\": 8989,\n                \"Description\": \"test_dnapt\",\n                \"CreatedTime\": \"2019-05-04 13:20:20\",\n                \"NatGatewayId\": \"nat-3isn9hr0\",\n                \"VpcId\": \"vpc-0yi4hekt\"\n            }\n        ],\n        \"RequestId\": \"eb203971-a7a0-45c1-9c72-36ad86688590\"\n    }\n}",
-        "title": "Querying the port forwarding rules of an NAT gateway"
-      }
-    ],
-    "DescribeNatGatewaySourceIpTranslationNatRules": [
-      {
-        "document": "This example shows you how to use the Filter array to obtain the SNAT forwarding rules of an NAT gateway.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeNatGatewaySourceIpTranslationNatRules\n&NatGatewayId=nat-3isn9hr0\n&Filters.0.Name=resource-id\n&Filters.0.Values.0=subnet-0yi4hekt\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"SourceIpTranslationNatRuleSet\": [\n            {\n                \"NatGatewaySnatId\": \"subnet-0yi4hekt\",\n                \"ResourceId\": \"subnet-0yi4hekt\",\n                \"ResourceType\": \"SUBNET\",\n                \"PublicIpAddresses\": [\n                    \"139.199.232.238\"\n                ],\n                \"PrivateIpAddress\": \"10.80.80.0/24\",\n                \"Description\": \"test_snat\",\n                \"CreatedTime\": \"2019-05-04 13:42:11\",\n                \"NatGatewayId\": \"nat-3isn9hr0\",\n                \"VpcId\": \"vpc-0yi4hekt\"\n            }\n        ],\n        \"RequestId\": \"eb203971-a7a0-45c1-9c72-36ad86688590\"\n    }\n}",
-        "title": "Querying the SNAT forwarding rules of an NAT gateway"
-      }
-    ],
-    "DescribeNatGateways": [
-      {
-        "document": "This example shows you how to use `NatGatewayIds` to query the NAT gateway information.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeNatGateways\r\n&NatGatewayIds.0=nat-3isn9hr0\r\n&NatGatewayIds.1=nat-mxkohguo\r\n&Offset=0\r\n&Limit=10\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"NatGatewaySet\": [\n            {\n                \"NatGatewayId\": \"nat-3isn9hr0\",\n                \"NatGatewayName\": \"test\",\n                \"VpcId\": \"vpc-0yi4hekt\",\n                \"CreatedTime\": \"2017-09-20 20:28:24\",\n                \"State\": \"AVAILABLE\",\n                \"NetworkState\": \"RUNNING\",\n                \"InternetMaxBandwidthOut\": 100,\n                \"MaxConcurrentConnection\": 1000000,\n                \"PublicIpAddressSet\": [\n                    {\n                        \"AddressId\": \"eip-7qcdm91q\",\n                        \"PublicIpAddress\": \"139.199.232.238\",\n                        \"IsBlocked\": false\n                    }\n                ],\n                \"DestinationIpPortTranslationNatRuleSet\": [\n                    {\n                        \"IpProtocol\": \"TCP\",\n                        \"PublicIpAddress\": \"139.199.232.238\",\n                        \"PublicPort\": 8586,\n                        \"PrivateIpAddress\": \"10.80.80.41\",\n                        \"PrivatePort\": 8989,\n                        \"Description\": \"test_modify\"\n                    },\n                    {\n                        \"IpProtocol\": \"UDP\",\n                        \"PublicIpAddress\": \"139.199.232.238\",\n                        \"PublicPort\": 8989,\n                        \"PrivateIpAddress\": \"10.80.80.41\",\n                        \"PrivatePort\": 8989,\n                        \"Description\": \"test_dnapt\"\n                    }\n                ],\n                \"Zone\": \"ap-guangzhou-1\",\n                \"TagSet\": [\n                    {\n                        \"Key\": \"test-key\",\n                        \"Value\": \"test-value1\"\n                    }\n                ]\n            },\n            {\n                \"NatGatewayId\": \"nat-mxkohguo\",\n                \"NatGatewayName\": \"aaaaaa\",\n                \"VpcId\": \"vpc-m7sihqw5\",\n                \"CreatedTime\": \"2018-07-25 11:37:29\",\n                \"State\": \"PENDING\",\n                \"NetworkState\": \"UNAVAILABLE\",\n                \"InternetMaxBandwidthOut\": 100,\n                \"MaxConcurrentConnection\": 1000000,\n                \"PublicIpAddressSet\": [],\n                \"DestinationIpPortTranslationNatRuleSet\": [],\n                \"Zone\": \"ap-guangzhou-1\",\n                \"TagSet\": [\n                    {\n                        \"Key\": \"test-key\",\n                        \"Value\": \"test-value2\"\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"fed7e087-083f-49e4-8754-17fb130828e0\"\n    }\n}",
-        "title": "Querying NAT gateway information-2"
-      },
-      {
-        "document": "This example shows you how to use `Filters` to query the NAT gateway information.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeNatGateways\r\n&Filters.0.Name=vpc-id\r\n&Filters.0.Values.0=vpc-0yi4hekt\r\n&Offset=0\r\n&Limit=10\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"NatGatewaySet\": [\n            {\n                \"NatGatewayId\": \"nat-3isn9hr0\",\n                \"NatGatewayName\": \"test\",\n                \"VpcId\": \"vpc-0yi4hekt\",\n                \"CreatedTime\": \"2017-09-20 20:28:24\",\n                \"State\": \"AVAILABLE\",\n                \"NetworkState\": \"RUNNING\",\n                \"InternetMaxBandwidthOut\": 100,\n                \"MaxConcurrentConnection\": 1000000,\n                \"PublicIpAddressSet\": [\n                    {\n                        \"AddressId\": \"eip-7qcdm91q\",\n                        \"PublicIpAddress\": \"139.199.232.238\",\n                        \"IsBlocked\": false\n                    }\n                ],\n                \"DestinationIpPortTranslationNatRuleSet\": [\n                    {\n                        \"IpProtocol\": \"TCP\",\n                        \"PublicIpAddress\": \"139.199.232.238\",\n                        \"PublicPort\": 8586,\n                        \"PrivateIpAddress\": \"10.80.80.41\",\n                        \"PrivatePort\": 8989,\n                        \"Description\": \"test_modify\"\n                    },\n                    {\n                        \"IpProtocol\": \"UDP\",\n                        \"PublicIpAddress\": \"139.199.232.238\",\n                        \"PublicPort\": 8989,\n                        \"PrivateIpAddress\": \"10.80.80.41\",\n                        \"PrivatePort\": 8989,\n                        \"Description\": \"test_dnapt\"\n                    }\n                ],\n                \"Zone\": \"ap-guangzhou-1\",\n                \"TagSet\": [\n                    {\n                        \"Key\": \"test-key\",\n                        \"Value\": \"test-value3\"\n                    }\n                ]\n            },\n            {\n                \"NatGatewayId\": \"nat-7xh58vea\",\n                \"NatGatewayName\": \"test_create\",\n                \"VpcId\": \"vpc-0yi4hekt\",\n                \"CreatedTime\": \"2019-05-04 15:01:11\",\n                \"State\": \"PENDING\",\n                \"NetworkState\": \"RUNNING\",\n                \"InternetMaxBandwidthOut\": 100,\n                \"MaxConcurrentConnection\": 1000000,\n                \"PublicIpAddressSet\": [],\n                \"DestinationIpPortTranslationNatRuleSet\": [],\n                \"Zone\": \"ap-guangzhou-2\",\n                \"TagSet\": [\n                    {\n                        \"Key\": \"test-key\",\n                        \"Value\": \"test-value4\"\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"a3964872-e2f5-4180-8607-0b49ec8e0109\"\n    }\n}",
-        "title": "Querying NAT gateway information"
       }
     ],
     "DescribeNetDetectStates": [
@@ -1283,7 +1207,7 @@
     "DisableCcnRoutes": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DisableCcnRoutes\r\n&<Common request parameters>\r\n&CcnId=ccn-gree226l\r\n&RouteIds.0=ccnr-bvipc87w\r\n&RouteIds.1=ccnr-oc61so0o",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DisableCcnRoutes\n&CcnId=ccn-gree226l\n&RouteIds.0=ccnr-bvipc87w\n&RouteIds.1=ccnr-oc61so0o\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"627c2362-890f-4f9e-9158-5e457b80d48b\"\n    }\n}",
         "title": "Disabling multiple routing policies"
       }
@@ -1302,14 +1226,6 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=DisassociateDirectConnectGatewayNatGateway\n&VpcId=\"vpc-8xpno8ee\"\n&DirectConnectGatewayId=\"dcg-fxa6gh5t\"\n&NatGatewayId=\"nat-ig8xpno8\"\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"dbffc3f0-1807-4683-89ee-2d2b96425ee1\"\n    }\n}",
         "title": "Unbinding a direct connect gateway from a NAT gateway"
-      }
-    ],
-    "DisassociateNatGatewayAddress": [
-      {
-        "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DisassociateNatGatewayAddress\n&NatGatewayId=nat-mdbjfr0y\n&PublicIpAddresses.0=139.199.232.212\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dbffc3f0-1807-4683-89ee-2d2b96425ee1\"\n    }\n}",
-        "title": "Unbinding an EIP from an NAT gateway"
       }
     ],
     "DisassociateNetworkInterfaceSecurityGroups": [
@@ -1339,7 +1255,7 @@
     "EnableCcnRoutes": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=EnableCcnRoutes\r\n&<Common request parameters>\r\n&CcnId=ccn-gree226l\r\n&RouteIds.0=ccnr-bvipc87w\r\n&RouteIds.1=ccnr-oc61so0o",
+        "input": "https://vpc.tencentcloudapi.com/?Action=EnableCcnRoutes\n&CcnId=ccn-gree226l\n&RouteIds.0=ccnr-bvipc87w\n&RouteIds.1=ccnr-oc61so0o\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"627c2362-890f-4f9e-9158-5e457b80d48b\"\n    }\n}",
         "title": "Enabling multiple routing policies"
       }
@@ -1388,20 +1304,6 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=InquirePriceCreateDirectConnectGateway\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCost\": 10,\n        \"RealTotalCost\": 10,\n        \"RequestId\": \"128826e5-2881-4c60-9168-73899331801c\"\n    }\n}",
         "title": "Querying the price of creating a direct connect gateway"
-      }
-    ],
-    "InquiryPriceCreateVpnGateway": [
-      {
-        "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=InquiryPriceCreateVpnGateway\r\n&Version=2017-03-12\r\n&InstanceChargeType=PREPAID\r\n&InstanceChargePrepaid.Period=1\r\n&InternetMaxBandwidthOut=5\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"InstancePrice\": {\n                \"OriginalPrice\": 380,\n                \"DiscountPrice\": 380\n            }\n        },\n        \"RequestId\": \"1b2534de-3f38-4913-921a-af5ff1a9cb73\"\n    }\n}",
-        "title": "Querying monthly subscription prices"
-      },
-      {
-        "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=InquiryPriceCreateVpnGateway\r\n&Version=2017-03-12\r\n&InstanceChargeType=POSTPAID_BY_HOUR\r\n&InternetMaxBandwidthOut=5\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"InstancePrice\": {\n                \"UnitPrice\": 0.48,\n                \"ChargeUnit\": \"HOUR\"\n            },\n            \"BandwidthPrice\": {\n                \"UnitPrice\": 0.8,\n                \"ChargeUnit\": \"GB\"\n            }\n        },\n        \"RequestId\": \"e87327cd-f8fa-4340-9959-58ebe8f11f6b\"\n    }\n}",
-        "title": "Querying pay-as-you-go prices"
       }
     ],
     "InquiryPriceRenewVpnGateway": [
@@ -1560,30 +1462,6 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=ModifyLocalGateway\n&LocalGatewayName=test1\n&CdcId=cluster-1234dert\n&LocalGatewayId=lgw-1234edfr\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
         "title": "Modifying a local gateway"
-      }
-    ],
-    "ModifyNatGatewayAttribute": [
-      {
-        "document": "This example shows you how to change the name and public network outbound bandwidth cap of an NAT gateway. If you want to reset the maximum concurrent connections of an NAT gateway, use the `ResetNatGatewayConnection` API.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyNatGatewayAttribute\n&NatGatewayId=nat-ig8xpno8\n&NatGatewayName=Test NAT gateway\n&InternetMaxBandwidthOut=500\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e5c289dc-bf4b-4828-8093-3c434d1f0886\"\n    }\n}",
-        "title": "Modifying the attributes of an NAT gateway"
-      }
-    ],
-    "ModifyNatGatewayDestinationIpPortTranslationNatRule": [
-      {
-        "document": "This example shows you how to modify the port forwarding rules of an NAT gateway. To modify the source rules (SourceNatRule), you only need to pass in `IpProtocol`, `PublicIpAddress`, and `PublicPort`. To modify the destination rules (DestinationNatRule), pass in all the parameters to be modified.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyNatGatewayDestinationIpPortTranslationNatRule\r\n&NatGatewayId=nat-3isn9hr0\r\n&SourceNatRule.IpProtocol=TCP\r\n&SourceNatRule.PublicIpAddress=139.199.232.238\r\n&SourceNatRule.PublicPort=8989\r\n&DestinationNatRule.IpProtocol=UDP\r\n&DestinationNatRule.PublicIpAddress=139.199.232.226\r\n&DestinationNatRule.PublicPort=8586\r\n&DestinationNatRule.PrivateIpAddress=10.80.80.41\r\n&DestinationNatRule.PrivatePort=8586\r\n&DestinationNatRule.Description=test_modify\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dbffc3f0-1807-4683-89ee-2d2b96425ee1\"\n    }\n}",
-        "title": "Modifying the port forwarding rules of an NAT gateway"
-      }
-    ],
-    "ModifyNatGatewaySourceIpTranslationNatRule": [
-      {
-        "document": "This example shows you how to modify an SNAT forwarding rule of the NAT gateway by only specifying `NatGatewaySnatId`, `PublicIpAddresses` and `Description` for `SourceIpTranslationNatRule`.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyNatGatewaySourceIpTranslationNatRule\n&NatGatewayId=nat-3isn9hr0\n&SourceIpTranslationNatRule.NatGatewaySnatId=snat-4cnwed83\n&SourceIpTranslationNatRule.ResourceId=cvm-24796297\n&SourceIpTranslationNatRule.ResourceType=NETWORKINTERFACE\n&SourceIpTranslationNatRule.PrivateIpAddress=10.80.80.41\n&SourceIpTranslationNatRule.PublicIpAddresses.0=180.12.59.43\n&SourceIpTranslationNatRule.Description=test_snat\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dbffc3f0-1807-4683-89ee-2d2b96425ee1\"\n    }\n}",
-        "title": "Modifying an SNAT forwarding rule of the NAT gateway"
       }
     ],
     "ModifyNetDetect": [
@@ -1789,17 +1667,9 @@
     "ResetAttachCcnInstances": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ResetAttachCcnInstances\r\n&<Common request parameters>\r\n&CcnId=ccn-gree226l\r\n&CcnUin=979137\r\n&Instances.0.InstanceType=VPC\r\n&Instances.0.InstanceId=vpc-3dr1zrr9\r\n&Instances.0.InstanceRegion=ap-guangzhou",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ResetAttachCcnInstances\n&CcnId=ccn-gree226l\n&CcnUin=979137\n&Instances.0.InstanceType=VPC\n&Instances.0.InstanceId=vpc-3dr1zrr9\n&Instances.0.InstanceRegion=ap-guangzhou\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"627c2362-890f-4f9e-9158-5e457b80d48b\"\n    }\n}",
         "title": "Re-sending the association application for an instance"
-      }
-    ],
-    "ResetNatGatewayConnection": [
-      {
-        "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ResetNatGatewayConnection\n&NatGatewayId=nat-ig8xpno8\n&MaxConcurrentConnection=3000000\n&<common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dbffc3f0-1807-4683-89ee-2d2b96425ee1\"\n    }\n}",
-        "title": "Increasing the maximum concurrent connections of a NAT gateway"
       }
     ],
     "ResetRoutes": [

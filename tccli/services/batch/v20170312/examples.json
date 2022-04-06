@@ -192,20 +192,6 @@
         "title": "Retrying jobs"
       }
     ],
-    "SubmitJob": [
-      {
-        "document": "",
-        "input": "https://batch.tencentcloudapi.com/?Action=SubmitJob\n&Placement.Zone=ap-guangzhou-2\n&Job.JobName=test\n&Job.JobDescription=test\n&Job.Priority=1\n&Job.Tasks.0.TaskName=hello2\n&Job.Tasks.0.TaskInstanceNum=1\n&Job.Tasks.0.Application.DeliveryForm=LOCAL\n&Job.Tasks.0.Application.Command=python -c \"fib=lambda n:1 if n<=2 else fib(n-1)+fib(n-2); print(fib(20))\"\n&Job.Tasks.0.ComputeEnv.EnvType=MANAGED\n&Job.Tasks.0.ComputeEnv.EnvData.InstanceType=S1.SMALL1\n&Job.Tasks.0.ComputeEnv.EnvData.ImageId=img-bd78fy2t\n&Job.Tasks.0.RedirectInfo.StdoutRedirectPath=cos://dondonbatch-1251783334.cosgz.myqcloud.com/hello2/logs/\n&Job.Tasks.0.RedirectInfo.StderrRedirectPath=cos://dondonbatch-1251783334.cosgz.myqcloud.com/hello2/logs/\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"JobId\": \"job-4yn0we13\",\n        \"RequestId\": \"bf2a9734-e485-423f-9d73-a93f5e6c6a0c\"\n    }\n}",
-        "title": "Submitting a job"
-      },
-      {
-        "document": "",
-        "input": "https://batch.tencentcloudapi.com/?Action=SubmitJob\n&Placement.Zone=ap-beijing-2\n&Job.JobName=dag\n&Job.JobDescription=dag_demo\n&Job.Tasks.0.TaskName=pre_task\n&Job.Tasks.0.TaskInstanceNum=1\n&Job.Tasks.0.Application.DeliveryForm=LOCAL\n&Job.Tasks.0.Application.Command=echo pre_task\n&Job.Tasks.0.ComputeEnv.EnvData.InstanceType=S2.SMALL1\n&Job.Tasks.0.RedirectInfo.StdoutRedirectPath=cos://batch-demo-1251783334.cosbj.myqcloud.com/logs/\n&Job.Tasks.0.RedirectInfo.StderrRedirectPath=cos://batch-demo-1251783334.cosbj.myqcloud.com/logs/\n&Job.Tasks.1.TaskName=post_task\n&Job.Tasks.1.TaskInstanceNum=1\n&Job.Tasks.1.Application.DeliveryForm=LOCAL\n&Job.Tasks.1.Application.Command=echo post_task\n&Job.Tasks.1.ComputeEnv.EnvData.InstanceType=S2.SMALL1\n&Job.Tasks.1.RedirectInfo.StdoutRedirectPath=cos://batch-demo-1251783334.cosbj.myqcloud.com/logs/\n&Job.Tasks.1.RedirectInfo.StderrRedirectPath=cos://batch-demo-1251783334.cosbj.myqcloud.com/logs/\n&Job.Dependences.0.StartTask=pre_task\n&Job.Dependences.0.EndTask=post_task\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"JobId\": \"job-2bmv4p7o\",\n        \"RequestId\": \"165dc518-52a4-4363-8ea4-14f1ee8dea1a\"\n    }\n}",
-        "title": "Submitting a DAG-type job containing dependencies"
-      }
-    ],
     "TerminateComputeNode": [
       {
         "document": "",

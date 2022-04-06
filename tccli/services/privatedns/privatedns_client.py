@@ -42,33 +42,6 @@ def doCreatePrivateDNSAccount(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribePrivateZone(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.PrivatednsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribePrivateZoneRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribePrivateZone(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDescribeAccountVpcList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -96,7 +69,7 @@ def doDescribeAccountVpcList(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribePrivateZoneRecordList(args, parsed_globals):
+def doModifyPrivateZone(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -112,9 +85,9 @@ def doDescribePrivateZoneRecordList(args, parsed_globals):
     client = mod.PrivatednsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribePrivateZoneRecordListRequest()
+    model = models.ModifyPrivateZoneRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribePrivateZoneRecordList(model)
+    rsp = client.ModifyPrivateZone(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -123,7 +96,7 @@ def doDescribePrivateZoneRecordList(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyPrivateZoneRecord(args, parsed_globals):
+def doDescribePrivateZoneService(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -139,9 +112,9 @@ def doModifyPrivateZoneRecord(args, parsed_globals):
     client = mod.PrivatednsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyPrivateZoneRecordRequest()
+    model = models.DescribePrivateZoneServiceRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyPrivateZoneRecord(model)
+    rsp = client.DescribePrivateZoneService(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -150,7 +123,7 @@ def doModifyPrivateZoneRecord(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeletePrivateDNSAccount(args, parsed_globals):
+def doDescribeQuotaUsage(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -166,9 +139,9 @@ def doDeletePrivateDNSAccount(args, parsed_globals):
     client = mod.PrivatednsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeletePrivateDNSAccountRequest()
+    model = models.DescribeQuotaUsageRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeletePrivateDNSAccount(model)
+    rsp = client.DescribeQuotaUsage(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -250,33 +223,6 @@ def doCreatePrivateZone(args, parsed_globals):
     model = models.CreatePrivateZoneRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.CreatePrivateZone(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribePrivateZoneList(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.PrivatednsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribePrivateZoneListRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribePrivateZoneList(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -393,60 +339,6 @@ def doDescribeRequestData(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeletePrivateZoneRecord(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.PrivatednsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeletePrivateZoneRecordRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DeletePrivateZoneRecord(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doModifyPrivateZone(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.PrivatednsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyPrivateZoneRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ModifyPrivateZone(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDescribePrivateDNSAccountList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -474,7 +366,7 @@ def doDescribePrivateDNSAccountList(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeletePrivateZone(args, parsed_globals):
+def doModifyPrivateZoneRecord(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -490,36 +382,9 @@ def doDeletePrivateZone(args, parsed_globals):
     client = mod.PrivatednsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeletePrivateZoneRequest()
+    model = models.ModifyPrivateZoneRecordRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeletePrivateZone(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribePrivateZoneService(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.PrivatednsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribePrivateZoneServiceRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribePrivateZoneService(model)
+    rsp = client.ModifyPrivateZoneRecord(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -540,24 +405,19 @@ MODELS_MAP = {
 
 ACTION_MAP = {
     "CreatePrivateDNSAccount": doCreatePrivateDNSAccount,
-    "DescribePrivateZone": doDescribePrivateZone,
     "DescribeAccountVpcList": doDescribeAccountVpcList,
-    "DescribePrivateZoneRecordList": doDescribePrivateZoneRecordList,
-    "ModifyPrivateZoneRecord": doModifyPrivateZoneRecord,
-    "DeletePrivateDNSAccount": doDeletePrivateDNSAccount,
+    "ModifyPrivateZone": doModifyPrivateZone,
+    "DescribePrivateZoneService": doDescribePrivateZoneService,
+    "DescribeQuotaUsage": doDescribeQuotaUsage,
     "DescribeAuditLog": doDescribeAuditLog,
     "CreatePrivateZoneRecord": doCreatePrivateZoneRecord,
     "CreatePrivateZone": doCreatePrivateZone,
-    "DescribePrivateZoneList": doDescribePrivateZoneList,
     "SubscribePrivateZoneService": doSubscribePrivateZoneService,
     "DescribeDashboard": doDescribeDashboard,
     "ModifyPrivateZoneVpc": doModifyPrivateZoneVpc,
     "DescribeRequestData": doDescribeRequestData,
-    "DeletePrivateZoneRecord": doDeletePrivateZoneRecord,
-    "ModifyPrivateZone": doModifyPrivateZone,
     "DescribePrivateDNSAccountList": doDescribePrivateDNSAccountList,
-    "DeletePrivateZone": doDeletePrivateZone,
-    "DescribePrivateZoneService": doDescribePrivateZoneService,
+    "ModifyPrivateZoneRecord": doModifyPrivateZoneRecord,
 
 }
 

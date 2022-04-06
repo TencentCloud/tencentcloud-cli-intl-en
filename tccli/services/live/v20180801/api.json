@@ -204,12 +204,6 @@
       "name": "Queries the billable LVB bandwidth and traffic data outside Chinese mainland.",
       "output": "DescribeAreaBillBandwidthAndFluxListResponse"
     },
-    "DescribeBillBandwidthAndFluxList": {
-      "document": "This API is used to query the data of billable LVB bandwidth and traffic.",
-      "input": "DescribeBillBandwidthAndFluxListRequest",
-      "name": "Queries the data of billable LVB bandwidth and traffic",
-      "output": "DescribeBillBandwidthAndFluxListResponse"
-    },
     "DescribeConcurrentRecordStreamNum": {
       "document": "This API is used to query the number of concurrent recording channels, which is applicable to LCB and LVB.",
       "input": "DescribeConcurrentRecordStreamNumRequest",
@@ -473,12 +467,6 @@
       "input": "DescribeStreamPlayInfoListRequest",
       "name": "Queries the playback information list of stream",
       "output": "DescribeStreamPlayInfoListResponse"
-    },
-    "DescribeStreamPushInfoList": {
-      "document": "This API is used to query the upstream push quality data by stream ID, including frame rate, bitrate, elapsed time, and codec of audio and video files.",
-      "input": "DescribeStreamPushInfoListRequest",
-      "name": "Queries the upstream push quality data of stream",
-      "output": "DescribeStreamPushInfoListResponse"
     },
     "DescribeTopClientIpSumInfoList": {
       "document": "This API is used to query the information of the top n client IPs in a certain period of time (top 1,000 is supported currently).",
@@ -2098,6 +2086,7 @@
         {
           "default": "",
           "document": "Template name. Only letters, digits, underscores, and hyphens can be contained.",
+          "example": "templat",
           "member": "string",
           "name": "TemplateName",
           "required": true,
@@ -2106,6 +2095,7 @@
         {
           "default": "",
           "document": "Message description",
+          "example": "test",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -2114,6 +2104,7 @@
         {
           "default": "",
           "document": "FLV recording parameter, which is set when FLV recording is enabled.",
+          "example": "无",
           "member": "RecordParam",
           "name": "FlvParam",
           "required": false,
@@ -2122,6 +2113,7 @@
         {
           "default": "",
           "document": "HLS recording parameter, which is set when HLS recording is enabled.",
+          "example": "无",
           "member": "RecordParam",
           "name": "HlsParam",
           "required": false,
@@ -2130,6 +2122,7 @@
         {
           "default": "",
           "document": "Mp4 recording parameter, which is set when Mp4 recording is enabled.",
+          "example": "无",
           "member": "RecordParam",
           "name": "Mp4Param",
           "required": false,
@@ -2138,6 +2131,7 @@
         {
           "default": "",
           "document": "AAC recording parameter, which is set when AAC recording is enabled.",
+          "example": "无",
           "member": "RecordParam",
           "name": "AacParam",
           "required": false,
@@ -2146,6 +2140,7 @@
         {
           "default": "",
           "document": "LVB type. Default value: 0.\n0: LVB.\n1: LCB.",
+          "example": "12",
           "member": "int64",
           "name": "IsDelayLive",
           "required": false,
@@ -2154,6 +2149,7 @@
         {
           "default": "",
           "document": "HLS-specific recording parameter.",
+          "example": "无",
           "member": "HlsSpecialParam",
           "name": "HlsSpecialParam",
           "required": false,
@@ -2162,10 +2158,20 @@
         {
           "default": "",
           "document": "Mp3 recording parameter, which is set when Mp3 recording is enabled.",
+          "example": "无",
           "member": "RecordParam",
           "name": "Mp3Param",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to remove the watermark. This parameter is invalid if `IsDelayLive` is `1`.",
+          "example": "false",
+          "member": "bool",
+          "name": "RemoveWatermark",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -3431,129 +3437,6 @@
         {
           "document": "Detailed data information.",
           "member": "BillAreaInfo",
-          "name": "DataInfoList",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeBillBandwidthAndFluxListRequest": {
-      "document": "DescribeBillBandwidthAndFluxList request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Start time point in the format of `yyyy-mm-dd HH:MM:SS`.",
-          "example": "2019-02-0100:00:00",
-          "member": "string",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 3 years can be queried.",
-          "example": "2019-02-0100:10:00",
-          "member": "string",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "LVB playback domain name. If this parameter is left empty, full data will be queried.",
-          "example": "[\"5000.playdomain.com\\n\"]",
-          "member": "string",
-          "name": "PlayDomains",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Valid values:\nMainland: query data for Mainland China,\nOversea: query data for regions outside Mainland China,\nDefault: query data for all regions.\nNote: LEB only supports querying data for all regions.",
-          "example": "Mainland",
-          "member": "string",
-          "name": "MainlandOrOversea",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Data granularity. Valid values:\n5: 5-minute granularity (the query time span should be within 1 day),\n60: 1-hour granularity (the query time span should be within one month),\n1440: 1-day granularity (the query time span should be within one month).\nDefault value: 5.",
-          "example": "5",
-          "member": "uint64",
-          "name": "Granularity",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Service name. Valid values: LVB, LEB. The sum of LVB and LEB usage will be returned if this parameter is left empty.",
-          "example": "LEB",
-          "member": "string",
-          "name": "ServiceName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Region. Valid values:\nChina Mainland\nAsia Pacific I\nAsia Pacific II\nAsia Pacific III\nEurope\nNorth America\nSouth America\nMiddle East\nAfrica",
-          "example": "[\"China Mainland\"]",
-          "member": "string",
-          "name": "RegionNames",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeBillBandwidthAndFluxListResponse": {
-      "document": "DescribeBillBandwidthAndFluxList response structure.",
-      "members": [
-        {
-          "document": "Time point of peak bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.",
-          "member": "string",
-          "name": "PeakBandwidthTime",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Peak bandwidth in Mbps.",
-          "member": "float",
-          "name": "PeakBandwidth",
-          "type": "float",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Time point of 95th percentile bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.",
-          "member": "string",
-          "name": "P95PeakBandwidthTime",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "95th percentile bandwidth in Mbps.",
-          "member": "float",
-          "name": "P95PeakBandwidth",
-          "type": "float",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Total traffic in MB.",
-          "member": "float",
-          "name": "SumFlux",
-          "type": "float",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Detailed data information.",
-          "member": "BillDataInfo",
           "name": "DataInfoList",
           "type": "list",
           "value_allowed_null": false
@@ -6124,76 +6007,6 @@
       ],
       "type": "object"
     },
-    "DescribeStreamPushInfoListRequest": {
-      "document": "DescribeStreamPushInfoList request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Stream name.",
-          "example": "abcd",
-          "member": "string",
-          "name": "StreamName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Start time point in the format of `yyyy-mm-dd HH:MM:SS`.",
-          "example": "2019-06-21 12:00:00",
-          "member": "string",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "End time in the format of yyyy-mm-dd HH:MM:SS. You can query data in the past 7 days. You’re advised to set the query period to up to 3 hours.",
-          "example": "2019-06-21 12:01:02",
-          "member": "string",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Push domain name.",
-          "example": "abc",
-          "member": "string",
-          "name": "PushDomain",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.",
-          "example": "abc",
-          "member": "string",
-          "name": "AppName",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeStreamPushInfoListResponse": {
-      "document": "DescribeStreamPushInfoList response structure.",
-      "members": [
-        {
-          "document": "Returned data list.",
-          "member": "PushQualityData",
-          "name": "DataInfoList",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeTopClientIpSumInfoListRequest": {
       "document": "DescribeTopClientIpSumInfoList request structure.",
       "members": [
@@ -7547,6 +7360,7 @@
         {
           "default": "",
           "document": "Template ID obtained through the `DescribeRecordTemplates` API.",
+          "example": "1000",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -7555,6 +7369,7 @@
         {
           "default": "",
           "document": "Template name.",
+          "example": "templat",
           "member": "string",
           "name": "TemplateName",
           "required": false,
@@ -7563,6 +7378,7 @@
         {
           "default": "",
           "document": "Message description",
+          "example": "test",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -7571,6 +7387,7 @@
         {
           "default": "",
           "document": "FLV recording parameter, which is set when FLV recording is enabled.",
+          "example": "无",
           "member": "RecordParam",
           "name": "FlvParam",
           "required": false,
@@ -7579,6 +7396,7 @@
         {
           "default": "",
           "document": "HLS recording parameter, which is set when HLS recording is enabled.",
+          "example": "无",
           "member": "RecordParam",
           "name": "HlsParam",
           "required": false,
@@ -7587,6 +7405,7 @@
         {
           "default": "",
           "document": "MP4 recording parameter, which is set when MP4 recording is enabled.",
+          "example": "无",
           "member": "RecordParam",
           "name": "Mp4Param",
           "required": false,
@@ -7595,6 +7414,7 @@
         {
           "default": "",
           "document": "AAC recording parameter, which is set when AAC recording is enabled.",
+          "example": "无",
           "member": "RecordParam",
           "name": "AacParam",
           "required": false,
@@ -7603,6 +7423,7 @@
         {
           "default": "",
           "document": "Custom HLS recording parameter.",
+          "example": "无",
           "member": "HlsSpecialParam",
           "name": "HlsSpecialParam",
           "required": false,
@@ -7611,10 +7432,20 @@
         {
           "default": "",
           "document": "MP3 recording parameter, which is set when MP3 recording is enabled.",
+          "example": "无",
           "member": "RecordParam",
           "name": "Mp3Param",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to remove the watermark. This parameter is invalid if `IsDelayLive` is `1`.",
+          "example": "false",
+          "member": "bool",
+          "name": "RemoveWatermark",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -8381,7 +8212,7 @@
         },
         {
           "default": "",
-          "document": "Video bitrate (Kbps) for publishing",
+          "document": "Video bitrate (bps) for publishing",
           "example": "100",
           "member": "uint64",
           "name": "VideoSpeed",
@@ -8401,7 +8232,7 @@
         },
         {
           "default": "",
-          "document": "Audio bitrate (Kbps) for publishing",
+          "document": "Audio bitrate (bps) for publishing",
           "example": "40",
           "member": "uint64",
           "name": "AudioSpeed",
@@ -8471,7 +8302,7 @@
         },
         {
           "default": "",
-          "document": "Audio bitrate in `metadata` in Kbps.",
+          "document": "Audio bitrate (bps) in metadata",
           "example": "22",
           "member": "uint64",
           "name": "MetaAudioSpeed",
@@ -8481,7 +8312,7 @@
         },
         {
           "default": "",
-          "document": "Video bitrate in `metadata` in Kbps.",
+          "document": "Video bitrate (bps) in metadata",
           "example": "4885",
           "member": "uint64",
           "name": "MetaVideoSpeed",
@@ -8497,212 +8328,6 @@
           "name": "MetaFps",
           "required": true,
           "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "PushQualityData": {
-      "document": "Push quality data of a stream.",
-      "members": [
-        {
-          "default": "",
-          "document": "Data time in the format of `%Y-%m-%d %H:%M:%S.%ms` and accurate down to the millisecond level.",
-          "example": "2021-03-01 00:00:00",
-          "member": "string",
-          "name": "Time",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Push domain name.",
-          "example": "test.com",
-          "member": "string",
-          "name": "PushDomain",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Push path.",
-          "example": "live",
-          "member": "string",
-          "name": "AppName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Push client IP.",
-          "example": "0.0.0.0",
-          "member": "string",
-          "name": "ClientIp",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Push start time in the format of `%Y-%m-%d %H:%M:%S.%ms` and accurate down to the millisecond level.",
-          "example": "2021-03-01 00:00:00",
-          "member": "string",
-          "name": "BeginPushTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Resolution information.",
-          "example": "480*864",
-          "member": "string",
-          "name": "Resolution",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Video codec.",
-          "example": "H264",
-          "member": "string",
-          "name": "VCodec",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Audio codec.",
-          "example": "AAC",
-          "member": "string",
-          "name": "ACodec",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Push serial number, which uniquely identifies a push.",
-          "example": "11111",
-          "member": "string",
-          "name": "Sequence",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Video frame rate.",
-          "example": "1",
-          "member": "uint64",
-          "name": "VideoFps",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Video bitrate in bps.",
-          "example": "1",
-          "member": "uint64",
-          "name": "VideoRate",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Audio frame rate.",
-          "example": "1",
-          "member": "uint64",
-          "name": "AudioFps",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Audio bitrate in bps.",
-          "example": "1",
-          "member": "uint64",
-          "name": "AudioRate",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Local elapsed time in milliseconds. The greater the difference between audio/video elapsed time and local elapsed time, the poorer the push quality and the more serious the upstream lag.",
-          "example": "10",
-          "member": "uint64",
-          "name": "LocalTs",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Video elapsed time in milliseconds.",
-          "example": "10",
-          "member": "uint64",
-          "name": "VideoTs",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Audio elapsed time in milliseconds.",
-          "example": "10",
-          "member": "uint64",
-          "name": "AudioTs",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Video bitrate in `metadata` in Kbps.",
-          "example": "1",
-          "member": "uint64",
-          "name": "MetaVideoRate",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Audio bitrate in `metadata` in Kbps.",
-          "example": "1",
-          "member": "uint64",
-          "name": "MetaAudioRate",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Frame rate in `metadata`.",
-          "example": "1",
-          "member": "uint64",
-          "name": "MateFps",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Push parameter",
-          "example": "&test=1",
-          "member": "string",
-          "name": "StreamParam",
-          "required": true,
-          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -8800,6 +8425,7 @@
         {
           "default": "",
           "document": "Template ID.",
+          "example": "1",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -8809,6 +8435,7 @@
         {
           "default": "",
           "document": "Template name.",
+          "example": "test-1",
           "member": "string",
           "name": "TemplateName",
           "required": true,
@@ -8818,6 +8445,7 @@
         {
           "default": "",
           "document": "Message description",
+          "example": "test",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -8827,6 +8455,7 @@
         {
           "default": "",
           "document": "FLV recording parameter.",
+          "example": "无",
           "member": "RecordParam",
           "name": "FlvParam",
           "required": true,
@@ -8836,6 +8465,7 @@
         {
           "default": "",
           "document": "HLS recording parameter.",
+          "example": "无",
           "member": "RecordParam",
           "name": "HlsParam",
           "required": true,
@@ -8845,6 +8475,7 @@
         {
           "default": "",
           "document": "MP4 recording parameter.",
+          "example": "无",
           "member": "RecordParam",
           "name": "Mp4Param",
           "required": true,
@@ -8854,6 +8485,7 @@
         {
           "default": "",
           "document": "AAC recording parameter.",
+          "example": "无",
           "member": "RecordParam",
           "name": "AacParam",
           "required": true,
@@ -8863,6 +8495,7 @@
         {
           "default": "",
           "document": "0: LVB,\n1: LCB.",
+          "example": "1",
           "member": "int64",
           "name": "IsDelayLive",
           "required": true,
@@ -8872,6 +8505,7 @@
         {
           "default": "",
           "document": "Custom HLS recording parameter",
+          "example": "无",
           "member": "HlsSpecialParam",
           "name": "HlsSpecialParam",
           "required": true,
@@ -8881,11 +8515,22 @@
         {
           "default": "",
           "document": "MP3 recording parameter.",
+          "example": "无",
           "member": "RecordParam",
           "name": "Mp3Param",
           "required": true,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the watermark is removed.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "false",
+          "member": "bool",
+          "name": "RemoveWatermark",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

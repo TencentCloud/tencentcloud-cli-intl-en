@@ -18,24 +18,6 @@
       "name": "Adds DNS record for private domain",
       "output": "CreatePrivateZoneRecordResponse"
     },
-    "DeletePrivateDNSAccount": {
-      "document": "This API is used to delete a Private DNS account.",
-      "input": "DeletePrivateDNSAccountRequest",
-      "name": "Deletes Private DNS account",
-      "output": "DeletePrivateDNSAccountResponse"
-    },
-    "DeletePrivateZone": {
-      "document": "This API is used to delete a private domain and stop DNS.",
-      "input": "DeletePrivateZoneRequest",
-      "name": "Deletes private domain",
-      "output": "DeletePrivateZoneResponse"
-    },
-    "DeletePrivateZoneRecord": {
-      "document": "This API is used to delete a DNS record for a private domain.",
-      "input": "DeletePrivateZoneRecordRequest",
-      "name": "Deletes DNS record for private domain",
-      "output": "DeletePrivateZoneRecordResponse"
-    },
     "DescribeAccountVpcList": {
       "document": "This API is used to get the VPC list of a Private DNS account.",
       "input": "DescribeAccountVpcListRequest",
@@ -60,29 +42,17 @@
       "name": "Gets the list of Private DNS accounts",
       "output": "DescribePrivateDNSAccountListResponse"
     },
-    "DescribePrivateZone": {
-      "document": "This API is used to get the private domain information.",
-      "input": "DescribePrivateZoneRequest",
-      "name": "Gets private domain information",
-      "output": "DescribePrivateZoneResponse"
-    },
-    "DescribePrivateZoneList": {
-      "document": "This API is used to get the list of private domains.",
-      "input": "DescribePrivateZoneListRequest",
-      "name": "Gets the list of private domains",
-      "output": "DescribePrivateZoneListResponse"
-    },
-    "DescribePrivateZoneRecordList": {
-      "document": "This API is used to get the list of records for a private domain.",
-      "input": "DescribePrivateZoneRecordListRequest",
-      "name": "Gets the list of records for private domain",
-      "output": "DescribePrivateZoneRecordListResponse"
-    },
     "DescribePrivateZoneService": {
       "document": "This API is used to query the Private DNS activation status.",
       "input": "DescribePrivateZoneServiceRequest",
       "name": "Queries Private DNS activation status",
       "output": "DescribePrivateZoneServiceResponse"
+    },
+    "DescribeQuotaUsage": {
+      "document": "This API is used to query quota usage.",
+      "input": "DescribeQuotaUsageRequest",
+      "name": "Queries quota usage",
+      "output": "DescribeQuotaUsageResponse"
     },
     "DescribeRequestData": {
       "document": "This API is used to get the DNS request volume of a private domain.",
@@ -564,114 +534,6 @@
       ],
       "usage": "out"
     },
-    "DeletePrivateDNSAccountRequest": {
-      "document": "DeletePrivateDNSAccount request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Private DNS account",
-          "example": "无",
-          "member": "PrivateDNSAccount",
-          "name": "Account",
-          "required": true,
-          "type": "object"
-        }
-      ],
-      "type": "object"
-    },
-    "DeletePrivateDNSAccountResponse": {
-      "document": "DeletePrivateDNSAccount response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DeletePrivateZoneRecordRequest": {
-      "document": "DeletePrivateZoneRecord request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Private domain ID",
-          "example": "1999",
-          "member": "string",
-          "name": "ZoneId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Record ID",
-          "example": "2323",
-          "member": "string",
-          "name": "RecordId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Array of record IDs. `RecordId` takes precedence.",
-          "example": "[]",
-          "member": "string",
-          "name": "RecordIdSet",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DeletePrivateZoneRecordResponse": {
-      "document": "DeletePrivateZoneRecord response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DeletePrivateZoneRequest": {
-      "document": "DeletePrivateZone request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Private domain ID",
-          "example": "1",
-          "member": "string",
-          "name": "ZoneId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Array of private domain IDs. `ZoneId` takes precedence.",
-          "example": "无",
-          "member": "string",
-          "name": "ZoneIdSet",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DeletePrivateZoneResponse": {
-      "document": "DeletePrivateZone response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeAccountVpcListRequest": {
       "document": "DescribeAccountVpcList request structure.",
       "members": [
@@ -932,177 +794,6 @@
       ],
       "type": "object"
     },
-    "DescribePrivateZoneListRequest": {
-      "document": "DescribePrivateZoneList request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Pagination offset, starting from 0",
-          "example": "无",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of entries per page. Maximum value: 100. Default value: 20",
-          "example": "无",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Filter parameter",
-          "example": "无",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribePrivateZoneListResponse": {
-      "document": "DescribePrivateZoneList response structure.",
-      "members": [
-        {
-          "document": "Number of private domains",
-          "example": "无",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "List of private domains",
-          "example": "无",
-          "member": "PrivateZone",
-          "name": "PrivateZoneSet",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribePrivateZoneRecordListRequest": {
-      "document": "DescribePrivateZoneRecordList request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Private domain ID: zone-xxxxxx",
-          "example": "1",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Filter parameter",
-          "example": "无",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Pagination offset, starting from 0",
-          "example": "0",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of entries per page. Maximum value: 100. Default value: 20",
-          "example": "200",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribePrivateZoneRecordListResponse": {
-      "document": "DescribePrivateZoneRecordList response structure.",
-      "members": [
-        {
-          "document": "Number of DNS records",
-          "example": "5",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "List of DNS records",
-          "example": "无",
-          "member": "PrivateZoneRecord",
-          "name": "RecordSet",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribePrivateZoneRequest": {
-      "document": "DescribePrivateZone request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Domain name, which must be in the format of standard TLD",
-          "example": "无",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribePrivateZoneResponse": {
-      "document": "DescribePrivateZone response structure.",
-      "members": [
-        {
-          "document": "Private domain details",
-          "example": "无",
-          "member": "PrivateZone",
-          "name": "PrivateZone",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribePrivateZoneServiceRequest": {
       "document": "DescribePrivateZoneService request structure.",
       "members": [],
@@ -1118,6 +809,32 @@
           "name": "ServiceStatus",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeQuotaUsageRequest": {
+      "document": "DescribeQuotaUsage request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeQuotaUsageResponse": {
+      "document": "DescribeQuotaUsage response structure.",
+      "members": [
+        {
+          "document": "TLD quota usage",
+          "example": "无",
+          "member": "TldQuota",
+          "name": "TldQuota",
+          "required": true,
+          "type": "object",
           "value_allowed_null": false
         },
         {
@@ -1528,246 +1245,6 @@
       ],
       "usage": "both"
     },
-    "PrivateZone": {
-      "document": "Private domain information",
-      "members": [
-        {
-          "default": "",
-          "document": "Private domain ID: zone-xxxxxxxx",
-          "example": "1782",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Domain name owner UIN",
-          "example": "444353877",
-          "member": "int64",
-          "name": "OwnerUin",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Private domain",
-          "example": "test.com",
-          "member": "string",
-          "name": "Domain",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Creation time",
-          "example": "2020-12-26 18:51:20",
-          "member": "datetime",
-          "name": "CreatedOn",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Modification time",
-          "example": "2020-12-26 18:51:20",
-          "member": "datetime",
-          "name": "UpdatedOn",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of results",
-          "example": "0",
-          "member": "int64",
-          "name": "RecordCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "备注",
-          "member": "string",
-          "name": "Remark",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "List of bound VPCs",
-          "example": "[]",
-          "member": "VpcInfo",
-          "name": "VpcSet",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Private domain status. Valid values: ENABLED (DNS enabled); SUSPEND (DNS paused); FROZEN (locked)",
-          "example": "ENABLED",
-          "member": "string",
-          "name": "Status",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Subdomain recursive DNS status. Valid values: ENABLED, DISABLED",
-          "example": "DISABLED",
-          "member": "string",
-          "name": "DnsForwardStatus",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Set of tag key-value pairs",
-          "example": "[{TagKey: \"testtag\", TagValue: \"testtag\"}]",
-          "member": "TagInfo",
-          "name": "Tags",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "List of authorized accounts' VPCs associated with the private domain\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "AccountVpcInfoOutput",
-          "name": "AccountVpcSet",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "PrivateZoneRecord": {
-      "document": "Private domain information",
-      "members": [
-        {
-          "default": "",
-          "document": "Record ID",
-          "member": "string",
-          "name": "RecordId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Private domain ID: zone-xxxxxxxx",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Subdomain",
-          "member": "string",
-          "name": "SubDomain",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Record type. Valid values: \"A\", \"AAAA\", \"CNAME\", \"MX\", \"TXT\", \"PTR\"",
-          "member": "string",
-          "name": "RecordType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Record value",
-          "member": "string",
-          "name": "RecordValue",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Record cache time. The smaller the value, the faster the record will take effect. Value range: 1–86400s. Default value: 600",
-          "member": "int64",
-          "name": "TTL",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "MX priority, which is required when the record type is MX. Valid values: 5, 10, 15, 20, 30, 40, 50\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "int64",
-          "name": "MX",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Record status: ENABLED",
-          "member": "string",
-          "name": "Status",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Record weight. Value range: 1–100\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "int64",
-          "name": "Weight",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Record creation time",
-          "member": "datetime",
-          "name": "CreatedOn",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Record update time",
-          "member": "datetime",
-          "name": "UpdatedOn",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Additional information\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "Extra",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "SubscribePrivateZoneServiceRequest": {
       "document": "SubscribePrivateZoneService request structure.",
       "members": [],
@@ -1817,6 +1294,52 @@
         }
       ],
       "usage": "both"
+    },
+    "TldQuota": {
+      "document": "TLD quota",
+      "members": [
+        {
+          "default": "",
+          "document": "Total quota",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Used quota",
+          "example": "1",
+          "member": "int64",
+          "name": "Used",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Available quota",
+          "example": "5000",
+          "member": "int64",
+          "name": "Stock",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User’s quota",
+          "example": "100",
+          "member": "int64",
+          "name": "Quota",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "VpcInfo": {
       "document": "VPC information",

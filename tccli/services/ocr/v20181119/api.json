@@ -821,71 +821,109 @@
       "members": [
         {
           "document": "Passport ID",
+          "example": "E6918C",
           "member": "string",
           "name": "ID",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Name",
+          "example": "LIM HEG CHUN STEE",
           "member": "string",
           "name": "Name",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Date of birth",
+          "example": "无",
           "member": "string",
           "name": "DateOfBirth",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Gender (F: female, M: male)",
+          "example": "M",
           "member": "string",
           "name": "Sex",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Expiration date",
+          "example": "230414",
           "member": "string",
           "name": "DateOfExpiration",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Issuing country",
+          "example": "SGP",
           "member": "string",
           "name": "IssuingCountry",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Nationality",
+          "example": "SGP",
           "member": "string",
           "name": "Nationality",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Alarm code\n-9103 Alarm for spoofed card\n-9102 Alarm for photocopied card\n-9106 Alarm for covered card",
+          "example": "[]",
           "member": "int64",
           "name": "Warn",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Identity photo",
+          "example": "无",
           "member": "string",
           "name": "Image",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Extended field:\n{\n    ID:{\n        Confidence:0.9999\n    },\n    Name:{\n        Confidence:0.9996\n    }\n}",
+          "example": "{\"IssuingCountry\":{\"Confidence\":\"0.9500\"},\"Name\":{\"Confidence\":\"0.9500\"},\"ID\":{\"Confidence\":\"0.9500\"},\"Nationality\":{\"Confidence\":\"0.9500\"},\"Sex\":{\"Confidence\":\"0.9500\"},\"DateOfExpiration\":{\"Confidence\":\"0.9500\"}}",
           "member": "string",
           "name": "AdvancedInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The first row of the machine-readable zone (MRZ) at the bottom",
+          "example": "P<CANBROWN<<BENJAMIN<<<<<<<<<<<<<<<<<<<<<<<<",
+          "member": "string",
+          "name": "CodeSet",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The second row of the MRZ at the bottom",
+          "example": "JK123488<3CAN8510168M2603298<<<<<<<<<<<<<<04",
+          "member": "string",
+          "name": "CodeCrc",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
