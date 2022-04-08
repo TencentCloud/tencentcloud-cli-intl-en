@@ -664,6 +664,22 @@
       ],
       "usage": "in"
     },
+    "AutoUpgradeClusterLevel": {
+      "document": "Auto-upgrades cluster specification",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable Auto Cluster Upgrade",
+          "example": "true",
+          "member": "bool",
+          "name": "IsAutoUpgrade",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "AutoscalingAdded": {
       "document": "Nodes that are added in scale-out",
       "members": [
@@ -905,7 +921,7 @@
         },
         {
           "default": "",
-          "document": "Cluster status (Running, Creating, or Abnormal)",
+          "document": "Cluster status (`Running`, `Creating`, `Idling` or `Abnormal`)",
           "example": "Running",
           "member": "string",
           "name": "ClusterStatus",
@@ -989,6 +1005,26 @@
           "example": "false",
           "member": "bool",
           "name": "EnableExternalNode",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "L5",
+          "member": "string",
+          "name": "ClusterLevel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoUpgradeClusterLevel",
           "required": true,
           "type": "bool",
           "value_allowed_null": true
@@ -1480,6 +1516,26 @@
           "name": "SubnetId",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster specifications available for managed clusters",
+          "example": "L5",
+          "member": "string",
+          "name": "ClusterLevel",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto cluster upgrade for managed clusters",
+          "example": "无",
+          "member": "AutoUpgradeClusterLevel",
+          "name": "AutoUpgradeClusterLevel",
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -5386,6 +5442,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cls-xxxxxxx",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -5394,6 +5451,7 @@
         {
           "default": "",
           "document": "Project of the Cluster",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -5402,6 +5460,7 @@
         {
           "default": "",
           "document": "Cluster name",
+          "example": "cls-xxxxx",
           "member": "string",
           "name": "ClusterName",
           "required": false,
@@ -5410,10 +5469,29 @@
         {
           "default": "",
           "document": "Cluster description",
+          "example": "测试集群",
           "member": "string",
           "name": "ClusterDesc",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster specification",
+          "example": "L5",
+          "member": "string",
+          "name": "ClusterLevel",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Auto-upgrades cluster specification",
+          "example": "无",
+          "member": "AutoUpgradeClusterLevel",
+          "name": "AutoUpgradeClusterLevel",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -5423,23 +5501,47 @@
       "members": [
         {
           "document": "Project of the Cluster\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "document": "Cluster name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxxxx",
           "member": "string",
           "name": "ClusterName",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Cluster description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxxxx",
           "member": "string",
           "name": "ClusterDesc",
+          "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Cluster specification\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "L5",
+          "member": "string",
+          "name": "ClusterLevel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Auto-upgrades cluster specification\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AutoUpgradeClusterLevel",
+          "name": "AutoUpgradeClusterLevel",
+          "required": true,
+          "type": "object",
           "value_allowed_null": true
         },
         {

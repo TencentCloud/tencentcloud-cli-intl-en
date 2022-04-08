@@ -72,6 +72,12 @@
       "name": "Creates a service-linked role",
       "output": "CreateServiceLinkedRoleResponse"
     },
+    "CreateUserOIDCConfig": {
+      "document": "This API is used to create a user OIDC configuration. Only one user OIDC IdP can be created, and the user SAML SSO IdP will be automatically disabled after it is created.",
+      "input": "CreateUserOIDCConfigRequest",
+      "name": "Creates user OIDC configuration",
+      "output": "CreateUserOIDCConfigResponse"
+    },
     "CreateUserSAMLConfig": {
       "document": "This API is used to create user SAML configurations.",
       "input": "CreateUserSAMLConfigRequest",
@@ -138,12 +144,6 @@
       "name": "Gets a role list",
       "output": "DescribeRoleListResponse"
     },
-    "DescribeSafeAuthFlag": {
-      "document": "This API is used to query security settings.",
-      "input": "DescribeSafeAuthFlagRequest",
-      "name": "Queries security settings.",
-      "output": "DescribeSafeAuthFlagResponse"
-    },
     "DescribeSafeAuthFlagColl": {
       "document": "This API is used to query security settings.",
       "input": "DescribeSafeAuthFlagCollRequest",
@@ -161,6 +161,12 @@
       "input": "DescribeSubAccountsRequest",
       "name": "Queries sub-users through sub-user UIN list",
       "output": "DescribeSubAccountsResponse"
+    },
+    "DescribeUserOIDCConfig": {
+      "document": "This API is used to query the user OIDC configuration.",
+      "input": "DescribeUserOIDCConfigRequest",
+      "name": "Queries user OIDC configuration",
+      "output": "DescribeUserOIDCConfigResponse"
     },
     "DescribeUserSAMLConfig": {
       "document": "This API is used to query user SAML configurations.",
@@ -185,6 +191,12 @@
       "input": "DetachUserPolicyRequest",
       "name": "Unassociates a policy and a user",
       "output": "DetachUserPolicyResponse"
+    },
+    "DisableUserSSO": {
+      "document": "This API is used to disable user SSO.",
+      "input": "DisableUserSSORequest",
+      "name": "Disables user SSO",
+      "output": "DisableUserSSOResponse"
     },
     "GetAccountSummary": {
       "document": "This API is used to query account summary. ",
@@ -407,6 +419,12 @@
       "input": "UpdateUserRequest",
       "name": "Updates a sub-user",
       "output": "UpdateUserResponse"
+    },
+    "UpdateUserOIDCConfig": {
+      "document": "This API is used to modify the user OIDC configuration.",
+      "input": "UpdateUserOIDCConfigRequest",
+      "name": "Modifies user OIDC configuration",
+      "output": "UpdateUserOIDCConfigResponse"
     },
     "UpdateUserSAMLConfig": {
       "document": "This API is used to modify user SAML configurations.",
@@ -1406,6 +1424,105 @@
       ],
       "type": "object"
     },
+    "CreateUserOIDCConfigRequest": {
+      "document": "CreateUserOIDCConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "OpenID Connect IdP URL.\nIt corresponds to the value of the `issuer` field in the `Openid-configuration` provided by the enterprise IdP.",
+          "example": "https://xulongliang.authing.cn/oidc",
+          "member": "string",
+          "name": "IdentityUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Signature public key, which is used to verify the OpenID Connect IdP's ID token and must be Base64-encoded. For the security of your account, we recommend you rotate it regularly.",
+          "example": "无",
+          "member": "string",
+          "name": "IdentityKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Client ID registered with the OpenID Connect IdP.",
+          "example": "61adcf00620c31e3ddbc9546",
+          "member": "string",
+          "name": "ClientId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OpenID Connect IdP authorization endpoint. It corresponds to the value of the `authorization_endpoint` field in the `Openid-configuration` provided by the enterprise IdP.",
+          "example": "https://console.authing.cn/console/get-started/61adcf00620c31e3d",
+          "member": "string",
+          "name": "AuthorizationEndpoint",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Authorization response type, which is always `id_token`.",
+          "example": "id_token",
+          "member": "string",
+          "name": "ResponseType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Authorization response mode. Valid values: form_post (recommended); fragment.",
+          "example": "fragment",
+          "member": "string",
+          "name": "ResponseMode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Mapping field name. It indicates which field in the `id_token` of the IdP is mapped to the username of a sub-user. It is usually the `sub` or `name` field",
+          "example": "sub",
+          "member": "string",
+          "name": "MappingFiled",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Authorization information scope. Valid values: openid (default); email; profile.",
+          "example": "无",
+          "member": "string",
+          "name": "Scope",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserOIDCConfigResponse": {
+      "document": "CreateUserOIDCConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateUserSAMLConfigRequest": {
       "document": "CreateUserSAMLConfig request structure.",
       "members": [
@@ -1845,44 +1962,6 @@
       ],
       "type": "object"
     },
-    "DescribeSafeAuthFlagRequest": {
-      "document": "DescribeSafeAuthFlag request structure.",
-      "members": [],
-      "type": "object"
-    },
-    "DescribeSafeAuthFlagResponse": {
-      "document": "DescribeSafeAuthFlag response structure.",
-      "members": [
-        {
-          "document": "Login protection settings",
-          "member": "LoginActionFlag",
-          "name": "LoginFlag",
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Sensitive operation protection settings",
-          "member": "LoginActionFlag",
-          "name": "ActionFlag",
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Suspicious login location protection settings",
-          "member": "OffsiteFlag",
-          "name": "OffsiteFlag",
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeSubAccountsRequest": {
       "document": "DescribeSubAccounts request structure.",
       "members": [
@@ -1908,6 +1987,122 @@
           "name": "SubAccounts",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserOIDCConfigRequest": {
+      "document": "DescribeUserOIDCConfig request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeUserOIDCConfigResponse": {
+      "document": "DescribeUserOIDCConfig response structure.",
+      "members": [
+        {
+          "document": "IdP type. 12: user OIDC IdP",
+          "example": "11",
+          "member": "uint64",
+          "name": "ProviderType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IdP URL",
+          "example": "11",
+          "member": "string",
+          "name": "IdentityUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Signature public key",
+          "example": "无",
+          "member": "string",
+          "name": "IdentityKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Client ID",
+          "example": "无",
+          "member": "string",
+          "name": "ClientId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Status. 0: not set; 2: disabled; 11: enabled.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Authorization endpoint",
+          "example": "无",
+          "member": "string",
+          "name": "AuthorizationEndpoint",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Authorization scope",
+          "example": "无",
+          "member": "string",
+          "name": "Scope",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Authorization response type",
+          "example": "无",
+          "member": "string",
+          "name": "ResponseType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Authorization response mode",
+          "example": "无",
+          "member": "string",
+          "name": "ResponseMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Mapping field name",
+          "example": "无",
+          "member": "string",
+          "name": "MappingFiled",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Description",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -2062,6 +2257,23 @@
     },
     "DetachUserPolicyResponse": {
       "document": "DetachUserPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableUserSSORequest": {
+      "document": "DisableUserSSO request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DisableUserSSOResponse": {
+      "document": "DisableUserSSO response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4908,6 +5120,105 @@
     },
     "UpdateSAMLProviderResponse": {
       "document": "UpdateSAMLProvider response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateUserOIDCConfigRequest": {
+      "document": "UpdateUserOIDCConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "OpenID Connect IdP URL.\nIt corresponds to the value of the `issuer` field in the `Openid-configuration` provided by the enterprise IdP.",
+          "example": "https://xulongliang.authing.cn/oidc",
+          "member": "string",
+          "name": "IdentityUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Signature public key, which is used to verify the OpenID Connect IdP's ID token and must be Base64-encoded. For the security of your account, we recommend you rotate it regularly.",
+          "example": "无",
+          "member": "string",
+          "name": "IdentityKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Client ID registered with the OpenID Connect IdP.",
+          "example": "61adcf00620c31e3ddbc9546",
+          "member": "string",
+          "name": "ClientId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "OpenID Connect IdP authorization endpoint. It corresponds to the value of the `authorization_endpoint` field in the `Openid-configuration` provided by the enterprise IdP.",
+          "example": "https://console.authing.cn/console/get-started/61adcf00620c31e3d",
+          "member": "string",
+          "name": "AuthorizationEndpoint",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Authorization response type, which is always `id_token`.",
+          "example": "id_token",
+          "member": "string",
+          "name": "ResponseType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Authorization response mode. Valid values: form_post (recommended); fragment.",
+          "example": "fragment",
+          "member": "string",
+          "name": "ResponseMode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Mapping field name. It indicates which field in the `id_token` of the IdP is mapped to the username of a sub-user. It is usually the `sub` or `name` field",
+          "example": "sub",
+          "member": "string",
+          "name": "MappingFiled",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Authorization information scope. Valid values: openid (default); email; profile.",
+          "example": "无",
+          "member": "string",
+          "name": "Scope",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateUserOIDCConfigResponse": {
+      "document": "UpdateUserOIDCConfig response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

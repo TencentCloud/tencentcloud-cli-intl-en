@@ -594,6 +594,7 @@
         {
           "default": "",
           "document": "Alarm notification template ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "12345",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -603,6 +604,7 @@
         {
           "default": "",
           "document": "Alarm notification template name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "默认通知",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -612,6 +614,7 @@
         {
           "default": "",
           "document": "Last modified time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-11-16 13:56:56",
           "member": "string",
           "name": "UpdatedAt",
           "required": true,
@@ -621,6 +624,7 @@
         {
           "default": "",
           "document": "Last modified by\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1500000688",
           "member": "string",
           "name": "UpdatedBy",
           "required": true,
@@ -630,6 +634,7 @@
         {
           "default": "",
           "document": "Alarm notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "ALL",
           "member": "string",
           "name": "NoticeType",
           "required": true,
@@ -639,6 +644,7 @@
         {
           "default": "",
           "document": "User notification list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "UserNotice",
           "name": "UserNotices",
           "required": true,
@@ -648,6 +654,7 @@
         {
           "default": "",
           "document": "Callback notification list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "URLNotice",
           "name": "URLNotices",
           "required": true,
@@ -657,6 +664,7 @@
         {
           "default": "",
           "document": "Whether it is the system default notification template. Valid values: 0 (no), 1 (yes)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "IsPreset",
           "required": true,
@@ -666,6 +674,7 @@
         {
           "default": "",
           "document": "Notification language. Valid values: zh-CN (Chinese), en-US (English)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "zh-CN",
           "member": "string",
           "name": "NoticeLanguage",
           "required": true,
@@ -675,8 +684,19 @@
         {
           "default": "",
           "document": "List of IDs of the alarm policies bound to alarm notification template\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "PolicyIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Channel to push alarm notifications to CLS.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CLSNotice",
+          "name": "CLSNotices",
           "required": true,
           "type": "list",
           "value_allowed_null": true
@@ -1302,6 +1322,52 @@
       ],
       "type": "object"
     },
+    "CLSNotice": {
+      "document": "The operation of pushing alarm notifications to CLS",
+      "members": [
+        {
+          "default": "",
+          "document": "Region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Logset ID.",
+          "example": "logset-28hg48g2",
+          "member": "string",
+          "name": "LogSetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Topic ID.",
+          "example": "topic-2ingu2bg",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status. Valid values: `0` (disabled), `1` (enabled). Default value: `1` (enabled). This parameter can be left empty.",
+          "example": "1",
+          "member": "int64",
+          "name": "Enable",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "CommonNamespace": {
       "document": "Unified namespace information",
       "members": [
@@ -1515,6 +1581,7 @@
         {
           "default": "",
           "document": "Module name. Enter \"monitor\" here",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -1523,6 +1590,7 @@
         {
           "default": "",
           "document": "Notification template name, which can contain up to 60 characters",
+          "example": "默认通知模版",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -1531,6 +1599,7 @@
         {
           "default": "",
           "document": "Notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)",
+          "example": "ALL",
           "member": "string",
           "name": "NoticeType",
           "required": true,
@@ -1539,6 +1608,7 @@
         {
           "default": "",
           "document": "Notification language. Valid values: zh-CN (Chinese), en-US (English)",
+          "example": "zh-CN",
           "member": "string",
           "name": "NoticeLanguage",
           "required": true,
@@ -1547,6 +1617,7 @@
         {
           "default": "",
           "document": "User notifications (up to 5)",
+          "example": "无",
           "member": "UserNotice",
           "name": "UserNotices",
           "required": false,
@@ -1555,8 +1626,18 @@
         {
           "default": "",
           "document": "Callback notifications (up to 3)",
+          "example": "无",
           "member": "URLNotice",
           "name": "URLNotices",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The operation of pushing alarm notifications to CLS. Up to one CLS log topic can be configured.",
+          "example": "无",
+          "member": "CLSNotice",
+          "name": "CLSNotices",
           "required": false,
           "type": "list"
         }
@@ -2990,6 +3071,15 @@
           "name": "NeedCorrespondence",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter alarm policy by triggered task (such as auto scaling task). Up to 10 tasks can be specified.",
+          "example": "无",
+          "member": "AlarmPolicyTriggerTask",
+          "name": "TriggerTasks",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -6622,6 +6712,7 @@
         {
           "default": "",
           "document": "Module name. Enter \"monitor\" here",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -6630,6 +6721,7 @@
         {
           "default": "",
           "document": "Alarm notification rule name, which can contain up to 60 characters",
+          "example": "默认通知模版",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -6638,6 +6730,7 @@
         {
           "default": "",
           "document": "Notification type. Valid values: ALARM (for unresolved alarms), OK (for resolved alarms), ALL (for all alarms)",
+          "example": "ALL",
           "member": "string",
           "name": "NoticeType",
           "required": true,
@@ -6646,6 +6739,7 @@
         {
           "default": "",
           "document": "Notification language. Valid values: zh-CN (Chinese), en-US (English)",
+          "example": "zh-CN",
           "member": "string",
           "name": "NoticeLanguage",
           "required": true,
@@ -6654,6 +6748,7 @@
         {
           "default": "",
           "document": "Alarm notification template ID",
+          "example": "notice-xxx",
           "member": "string",
           "name": "NoticeId",
           "required": true,
@@ -6662,6 +6757,7 @@
         {
           "default": "",
           "document": "User notifications (up to 5)",
+          "example": "无",
           "member": "UserNotice",
           "name": "UserNotices",
           "required": false,
@@ -6670,8 +6766,18 @@
         {
           "default": "",
           "document": "Callback notifications (up to 3)",
+          "example": "无",
           "member": "URLNotice",
           "name": "URLNotices",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The operation of pushing alarm notifications to CLS. Up to one CLS log topic can be configured.",
+          "example": "无",
+          "member": "CLSNotice",
+          "name": "CLSNotices",
           "required": false,
           "type": "list"
         }

@@ -96,6 +96,33 @@ def doListUsersForGroup(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doAttachGroupPolicy(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.AttachGroupPolicyRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.AttachGroupPolicy(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doPutRolePermissionsBoundary(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -582,6 +609,33 @@ def doUpdateUser(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doListPolicies(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ListPoliciesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ListPolicies(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doGetPolicy(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -744,7 +798,7 @@ def doGetUser(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteUserPermissionsBoundary(args, parsed_globals):
+def doUpdateUserOIDCConfig(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -760,9 +814,9 @@ def doDeleteUserPermissionsBoundary(args, parsed_globals):
     client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteUserPermissionsBoundaryRequest()
+    model = models.UpdateUserOIDCConfigRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteUserPermissionsBoundary(model)
+    rsp = client.UpdateUserOIDCConfig(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -844,6 +898,33 @@ def doGetServiceLinkedRoleDeletionStatus(args, parsed_globals):
     model = models.GetServiceLinkedRoleDeletionStatusRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.GetServiceLinkedRoleDeletionStatus(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeUserOIDCConfig(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeUserOIDCConfigRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeUserOIDCConfig(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1141,33 +1222,6 @@ def doGetAccountSummary(args, parsed_globals):
     model = models.GetAccountSummaryRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.GetAccountSummary(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeSafeAuthFlag(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeSafeAuthFlagRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeSafeAuthFlag(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1581,7 +1635,7 @@ def doListPolicyVersions(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doListGroupsForUser(args, parsed_globals):
+def doCreateUserOIDCConfig(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1597,9 +1651,9 @@ def doListGroupsForUser(args, parsed_globals):
     client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListGroupsForUserRequest()
+    model = models.CreateUserOIDCConfigRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ListGroupsForUser(model)
+    rsp = client.CreateUserOIDCConfig(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1662,33 +1716,6 @@ def doGetSecurityLastUsed(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAttachGroupPolicy(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AttachGroupPolicyRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.AttachGroupPolicy(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doUpdateGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1708,6 +1735,33 @@ def doUpdateGroup(args, parsed_globals):
     model = models.UpdateGroupRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.UpdateGroup(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDisableUserSSO(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DisableUserSSORequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DisableUserSSO(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1824,7 +1878,7 @@ def doDetachUserPolicy(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doListPolicies(args, parsed_globals):
+def doListGroupsForUser(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1840,9 +1894,36 @@ def doListPolicies(args, parsed_globals):
     client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ListPoliciesRequest()
+    model = models.ListGroupsForUserRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ListPolicies(model)
+    rsp = client.ListGroupsForUser(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteUserPermissionsBoundary(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CamClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteUserPermissionsBoundaryRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DeleteUserPermissionsBoundary(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1892,6 +1973,7 @@ ACTION_MAP = {
     "GetUserAppId": doGetUserAppId,
     "SetMfaFlag": doSetMfaFlag,
     "ListUsersForGroup": doListUsersForGroup,
+    "AttachGroupPolicy": doAttachGroupPolicy,
     "PutRolePermissionsBoundary": doPutRolePermissionsBoundary,
     "DeleteServiceLinkedRole": doDeleteServiceLinkedRole,
     "AddUser": doAddUser,
@@ -1910,16 +1992,18 @@ ACTION_MAP = {
     "CreateSAMLProvider": doCreateSAMLProvider,
     "DeleteSAMLProvider": doDeleteSAMLProvider,
     "UpdateUser": doUpdateUser,
+    "ListPolicies": doListPolicies,
     "GetPolicy": doGetPolicy,
     "GetCustomMFATokenInfo": doGetCustomMFATokenInfo,
     "ListAccessKeys": doListAccessKeys,
     "DeleteGroup": doDeleteGroup,
     "DeleteRole": doDeleteRole,
     "GetUser": doGetUser,
-    "DeleteUserPermissionsBoundary": doDeleteUserPermissionsBoundary,
+    "UpdateUserOIDCConfig": doUpdateUserOIDCConfig,
     "ListAttachedGroupPolicies": doListAttachedGroupPolicies,
     "PutUserPermissionsBoundary": doPutUserPermissionsBoundary,
     "GetServiceLinkedRoleDeletionStatus": doGetServiceLinkedRoleDeletionStatus,
+    "DescribeUserOIDCConfig": doDescribeUserOIDCConfig,
     "ConsumeCustomMFAToken": doConsumeCustomMFAToken,
     "GetGroup": doGetGroup,
     "CreateGroup": doCreateGroup,
@@ -1931,7 +2015,6 @@ ACTION_MAP = {
     "UpdateSAMLProvider": doUpdateSAMLProvider,
     "DescribeSafeAuthFlagColl": doDescribeSafeAuthFlagColl,
     "GetAccountSummary": doGetAccountSummary,
-    "DescribeSafeAuthFlag": doDescribeSafeAuthFlag,
     "DescribeSafeAuthFlagIntl": doDescribeSafeAuthFlagIntl,
     "GetRole": doGetRole,
     "UpdateRoleDescription": doUpdateRoleDescription,
@@ -1947,16 +2030,17 @@ ACTION_MAP = {
     "UpdateRoleConsoleLogin": doUpdateRoleConsoleLogin,
     "AttachUserPolicy": doAttachUserPolicy,
     "ListPolicyVersions": doListPolicyVersions,
-    "ListGroupsForUser": doListGroupsForUser,
+    "CreateUserOIDCConfig": doCreateUserOIDCConfig,
     "UpdateUserSAMLConfig": doUpdateUserSAMLConfig,
     "GetSecurityLastUsed": doGetSecurityLastUsed,
-    "AttachGroupPolicy": doAttachGroupPolicy,
     "UpdateGroup": doUpdateGroup,
+    "DisableUserSSO": doDisableUserSSO,
     "GetPolicyVersion": doGetPolicyVersion,
     "CreatePolicy": doCreatePolicy,
     "DetachGroupPolicy": doDetachGroupPolicy,
     "DetachUserPolicy": doDetachUserPolicy,
-    "ListPolicies": doListPolicies,
+    "ListGroupsForUser": doListGroupsForUser,
+    "DeleteUserPermissionsBoundary": doDeleteUserPermissionsBoundary,
     "UpdatePolicy": doUpdatePolicy,
 
 }

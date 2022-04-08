@@ -16,12 +16,12 @@
         "title": "Adding an instance"
       }
     ],
-    "CreateClusters": [
+    "CreateAccounts": [
       {
         "document": "",
-        "input": "https://cynosdb.tencentcloudapi.com/?Action=CreateClusters\n&Zone=ap-guangzhou-3\n&ProjectId=0\n&VpcId=vpc-1ptuei0b\n&SubnetId=subnet-1tmw9t4o\n&DbType=POSTGRESQL\n&DbVersion=10.0\n&Cpu=2\n&Memory=4\n&Storage=100\n&ClusterName=newInstance\n&AdminPassword=passwd@admin\n&HaCount=1\n&Count=1\n&PayMode=0\n&StoragePayMode=0\n&RollbackStrategy=noneRollback\n&StorageLimit=100\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"ResourceIds\": [\n            \"cynosdbpg-ins-67rmucgk\"\n        ],\n        \"RequestId\": \"132075\",\n        \"TranId\": \"20190522160000003106844584180998\",\n        \"ClusterIds\": [\n            \"cynosdbmysql-sls-9nts65r2\"\n        ],\n        \"BigDealIds\": [\n            \"xxx\"\n        ],\n        \"DealNames\": [\n            \"20190522112283\"\n        ]\n    }\n}",
-        "title": "Creating a cluster"
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=CreateAccounts\n&ClusterId=xxx\n&Accounts.0.AccountName=xx\n&Accounts.0.AccountPassword=xxx\n&Accounts.0.Description=xxx\n&Accounts.0.Host=xxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"176669\"\n    }\n}",
+        "title": "Creating account"
       }
     ],
     "DescribeAccounts": [
@@ -168,6 +168,14 @@
         "title": "Modifying the backup configuration of cluster"
       }
     ],
+    "ModifyClusterName": [
+      {
+        "document": "",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=ModifyClusterName\n&ClusterId=cynosdbpg-5804k48e\n&ClusterName=newName\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"148561\"\n    }\n}",
+        "title": "Modifying cluster name"
+      }
+    ],
     "ModifyClusterParam": [
       {
         "document": "",
@@ -182,6 +190,14 @@
         "input": "https://cynosdb.tencentcloudapi.com/?Action=ModifyDBInstanceSecurityGroups\n&Zone=ap-guangzhou-3\n&InstanceId=cynosdbpg-ins-4senc2fm\n&SecurityGroupIds.0=sg-ajr1jzgj\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1a42feb9-82087f71-6a0031ac-699a92a8\"\n    }\n}",
         "title": "Modifying security group bound to instance"
+      }
+    ],
+    "ModifyInstanceName": [
+      {
+        "document": "",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=ModifyInstanceName\n&InstanceId=cynosdb-ins-dokydbam\n&InstanceName=newName\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"148561\"\n    }\n}",
+        "title": "Modifying instance name"
       }
     ],
     "ModifyMaintainPeriodConfig": [

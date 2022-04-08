@@ -150,6 +150,33 @@ def doPauseServerless(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyClusterName(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CynosdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyClusterNameRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyClusterName(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeInstanceDetail(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -304,6 +331,33 @@ def doOfflineInstance(args, parsed_globals):
     model = models.OfflineInstanceRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.OfflineInstance(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyInstanceName(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CynosdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyInstanceNameRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyInstanceName(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -663,7 +717,7 @@ def doUpgradeInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateClusters(args, parsed_globals):
+def doCreateAccounts(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -679,9 +733,9 @@ def doCreateClusters(args, parsed_globals):
     client = mod.CynosdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateClustersRequest()
+    model = models.CreateAccountsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateClusters(model)
+    rsp = client.CreateAccounts(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -841,12 +895,14 @@ ACTION_MAP = {
     "DescribeClusterInstanceGrps": doDescribeClusterInstanceGrps,
     "OfflineCluster": doOfflineCluster,
     "PauseServerless": doPauseServerless,
+    "ModifyClusterName": doModifyClusterName,
     "DescribeInstanceDetail": doDescribeInstanceDetail,
     "DescribeRollbackTimeRange": doDescribeRollbackTimeRange,
     "ModifyBackupConfig": doModifyBackupConfig,
     "DescribeInstances": doDescribeInstances,
     "ModifyMaintainPeriodConfig": doModifyMaintainPeriodConfig,
     "OfflineInstance": doOfflineInstance,
+    "ModifyInstanceName": doModifyInstanceName,
     "IsolateCluster": doIsolateCluster,
     "DescribeClusters": doDescribeClusters,
     "DescribeMaintainPeriod": doDescribeMaintainPeriod,
@@ -860,7 +916,7 @@ ACTION_MAP = {
     "DescribeResourcesByDealName": doDescribeResourcesByDealName,
     "SetRenewFlag": doSetRenewFlag,
     "UpgradeInstance": doUpgradeInstance,
-    "CreateClusters": doCreateClusters,
+    "CreateAccounts": doCreateAccounts,
     "ActivateInstance": doActivateInstance,
     "DescribeDBSecurityGroups": doDescribeDBSecurityGroups,
     "DescribeBackupList": doDescribeBackupList,
