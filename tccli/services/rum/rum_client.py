@@ -69,60 +69,6 @@ def doCreateReleaseFile(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDataLogUrlInfo(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.RumClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDataLogUrlInfoRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeDataLogUrlInfo(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeTawInstances(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.RumClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTawInstancesRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeTawInstances(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDescribeDataPerformancePage(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -798,7 +744,7 @@ def doCreateWhitelist(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeProjects(args, parsed_globals):
+def doModifyProject(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -814,9 +760,9 @@ def doDescribeProjects(args, parsed_globals):
     client = mod.RumClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeProjectsRequest()
+    model = models.ModifyProjectRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeProjects(model)
+    rsp = client.ModifyProject(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -925,33 +871,6 @@ def doStopInstance(args, parsed_globals):
     model = models.StopInstanceRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.StopInstance(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doModifyProject(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.RumClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyProjectRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ModifyProject(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1122,7 +1041,7 @@ def doDescribeOfflineLogConfigs(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeScores(args, parsed_globals):
+def doDescribeDataLogUrlInfo(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1138,9 +1057,9 @@ def doDescribeScores(args, parsed_globals):
     client = mod.RumClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeScoresRequest()
+    model = models.DescribeDataLogUrlInfoRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeScores(model)
+    rsp = client.DescribeDataLogUrlInfo(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1486,8 +1405,6 @@ MODELS_MAP = {
 ACTION_MAP = {
     "DescribeTawAreas": doDescribeTawAreas,
     "CreateReleaseFile": doCreateReleaseFile,
-    "DescribeDataLogUrlInfo": doDescribeDataLogUrlInfo,
-    "DescribeTawInstances": doDescribeTawInstances,
     "DescribeDataPerformancePage": doDescribeDataPerformancePage,
     "DescribeDataLogUrlStatistics": doDescribeDataLogUrlStatistics,
     "DescribeDataFetchProject": doDescribeDataFetchProject,
@@ -1513,19 +1430,18 @@ ACTION_MAP = {
     "DescribeProjectLimits": doDescribeProjectLimits,
     "DescribeDataCustomUrl": doDescribeDataCustomUrl,
     "CreateWhitelist": doCreateWhitelist,
-    "DescribeProjects": doDescribeProjects,
+    "ModifyProject": doModifyProject,
     "CreateStarProject": doCreateStarProject,
     "DeleteWhitelist": doDeleteWhitelist,
     "ModifyProjectLimit": doModifyProjectLimit,
     "StopInstance": doStopInstance,
-    "ModifyProject": doModifyProject,
     "DeleteReleaseFile": doDeleteReleaseFile,
     "DeleteLogExport": doDeleteLogExport,
     "DescribeWhitelists": doDescribeWhitelists,
     "DescribeDataEventUrl": doDescribeDataEventUrl,
     "DeleteOfflineLogRecord": doDeleteOfflineLogRecord,
     "DescribeOfflineLogConfigs": doDescribeOfflineLogConfigs,
-    "DescribeScores": doDescribeScores,
+    "DescribeDataLogUrlInfo": doDescribeDataLogUrlInfo,
     "CreateProject": doCreateProject,
     "DescribeDataReportCount": doDescribeDataReportCount,
     "DescribeDataPvUrlInfo": doDescribeDataPvUrlInfo,

@@ -326,20 +326,6 @@
         "title": "Getting sample list"
       }
     ],
-    "DescribeProjects": [
-      {
-        "document": "",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeProjects\n&Offset=1\n&Limit=20\n&Filters.0.Name='Name'\n&Filters.0.Values.0='Test project name'\n&Filters.0.Values.1='Test project name 2'\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"ProjectSet\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting RUM project list by filter"
-      },
-      {
-        "document": "",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeProjects\n&Offset=1\n&Limit=20\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"ProjectSet\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting RUM project list"
-      }
-    ],
     "DescribePvList": [
       {
         "document": "",
@@ -364,28 +350,12 @@
         "title": "Getting release file list"
       }
     ],
-    "DescribeScores": [
-      {
-        "document": "",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeScores\n&ID=1\n&StartTime=2020011920\n&EndTime=2022051914\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"ScoreSet\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting homepage score"
-      }
-    ],
     "DescribeTawAreas": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTawAreas\n<Common request parameters>\n\n{\n    \"AreaIds\": [\n        1\n    ],\n    \"AreaStatuses\": [\n        1\n    ],\n    \"Limit\": 0,\n    \"Offset\": 100\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AreaSet\": [\n            {\n                \"AreaId\": 1,\n                \"AreaStatus\": 1,\n                \"AreaName\": \"Chinese mainland\",\n                \"AreaKey\": \"area_cn_dl\"\n            }\n        ],\n        \"RequestId\": \"10f605a3-6480-4254-bbb7-7ca1ab6a133e\"\n    }\n}",
         "title": "Querying region"
-      }
-    ],
-    "DescribeTawInstances": [
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTawInstances\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"InstanceSet\": [\n            {\n                \"AreaId\": \"1\",\n                \"ChargeStatus\": 1,\n                \"ChargeType\": 1,\n                \"ClusterId\": \"1\",\n                \"CreatedAt\": \"2021-04-29 20:51:05\",\n                \"DataRetentionDays\": \"30\",\n                \"InstanceDesc\": \"\",\n                \"InstanceId\": \"taw-VJ2mHDEb\",\n                \"InstanceName\": \"test\",\n                \"InstanceStatus\": 2,\n                \"Tags\": [],\n                \"UpdatedAt\": \"2021-04-29 20:51:05\"\n            },\n            {\n                \"AreaId\": \"1\",\n                \"ChargeStatus\": 1,\n                \"ChargeType\": 1,\n                \"ClusterId\": \"1\",\n                \"CreatedAt\": \"2021-04-29 20:59:15\",\n                \"DataRetentionDays\": \"30\",\n                \"InstanceDesc\": \"\",\n                \"InstanceId\": \"taw-mE08H4Ez\",\n                \"InstanceName\": \"test\",\n                \"InstanceStatus\": 2,\n                \"Tags\": [],\n                \"UpdatedAt\": \"2021-04-29 20:59:15\"\n            }\n        ],\n        \"RequestId\": \"d356e035-ac3d-4237-add9-50a44c01dd39\",\n        \"TotalCount\": \"2\"\n    }\n}",
-        "title": "Querying instance"
       }
     ],
     "DescribeUvList": [

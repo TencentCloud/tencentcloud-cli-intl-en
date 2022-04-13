@@ -306,6 +306,12 @@
       "name": "Gets media details",
       "output": "DescribeMediaInfosResponse"
     },
+    "DescribeMediaPlayStatDetails": {
+      "document": "This API is used to query the playback statistics of a media file at the specified granularity.\n* You can query playback statistics in the past year.\n* If the granularity is an hour, the start and end time cannot be more than seven days apart.\n* If the granularity is a day, the start and end time cannot be more than 90 days apart.",
+      "input": "DescribeMediaPlayStatDetailsRequest",
+      "name": "Queries the playback statistics of a media file at the specified granularity",
+      "output": "DescribeMediaPlayStatDetailsResponse"
+    },
     "DescribeMediaProcessUsageData": {
       "document": "This API is used to query the information of video processing usage within the specified time range.\n   1. Statistics on video processing for the last 365 days can be queried.\n   2. The query time range cannot be more than 90 days.",
       "input": "DescribeMediaProcessUsageDataRequest",
@@ -401,12 +407,6 @@
       "input": "DescribeWordSamplesRequest",
       "name": "Gets keyword sample list",
       "output": "DescribeWordSamplesResponse"
-    },
-    "EditMedia": {
-      "document": "This API is used to edit a video (by clipping, splicing, etc.) to generate a new VOD video. Editing features include:\n\n1. Clipping a file in VOD to generate a new video;\n2. Splicing multiple files in VOD to generate a new video;\n3. Clipping multiple files in VOD and then splicing the clips to generate a new video;\n4. Directly generating a new video from a stream in VOD;\n5. Clipping a stream in VOD to generate a new video;\n6. Splicing multiple streams in VOD to generate a new video;\n7. Clipping multiple streams in VOD and then splicing the clips to generate a new video.\n\nYou can also specify whether to perform a task flow for the generated new video.",
-      "input": "EditMediaRequest",
-      "name": "Edits a video",
-      "output": "EditMediaResponse"
     },
     "ExecuteFunction": {
       "document": "This API is only used in special scenarios of custom development. Unless requested by VOD customer service, please do not call it.",
@@ -558,6 +558,12 @@
       "name": "Parses video index file",
       "output": "ParseStreamingManifestResponse"
     },
+    "ProcessImage": {
+      "document": "This API is used to initiate an image processing task. Image processing operations include the following:\n\n1. Intelligent recognition of pornographic, terrorism, and politically sensitive content\n\n><li>File size: < 5 MB</li>\n><li>Resolution: Preferably higher than 256 x 256. Resolution lower than this may compromise the recognition performance.</li>\n><li>Supported image formats: PNG, JPG, JPEG, BMP, GIF, WEBP</li>\n",
+      "input": "ProcessImageRequest",
+      "name": "Processes an image",
+      "output": "ProcessImageResponse"
+    },
     "ProcessMedia": {
       "document": "This API is used to initiate a media processing task on a VOD file. The task may include:\n1. Video transcoding (with watermark)\n2. Animated image generating\n3. Time point screenshot\n4. Sampled screenshot\n5. Image sprite generating\n6. Taking a screenshot to use as the thumbnail\n7. Adaptive bitrate streaming and encryption\n8. Intelligent recognition of pornographic, terrorism, and politically sensitive content\n9. Intelligent content analysis for labeling, categorization, thumbnail generation, or frame-specific labeling\n10. Recognition of opening and closing credits, faces, full text, text keywords, full speech, speech keywords, and objects\n\nIf event notifications are used, the event type is [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).",
       "input": "ProcessMediaRequest",
@@ -611,12 +617,6 @@
       "input": "SimpleHlsClipRequest",
       "name": "Performs simple HLS clipping",
       "output": "SimpleHlsClipResponse"
-    },
-    "WeChatMiniProgramPublish": {
-      "document": "This API is used to publish a VOD video on WeChat Mini Program for playback in the WeChat Mini Program player.",
-      "input": "WeChatMiniProgramPublishRequest",
-      "name": "Publishes a video on WeChat Mini Program",
-      "output": "WeChatMiniProgramPublishResponse"
     }
   },
   "metadata": {
@@ -6164,7 +6164,7 @@
         },
         {
           "default": "",
-          "document": "Metadata of a source video.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The metadata of the output video.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "MediaMetaData",
           "name": "MetaData",
@@ -6404,6 +6404,128 @@
         }
       ],
       "type": "object"
+    },
+    "ContentReviewOcrResult": {
+      "document": "The result for OCR-based image recognition.",
+      "members": [
+        {
+          "default": "",
+          "document": "The confidence score for the OCR-based recognition result. Value range: 0-100.",
+          "example": "无",
+          "member": "float",
+          "name": "Confidence",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The suggestion for handling the suspicious content detected based on OCR. Valid values:\n<li>pass/li>\n<li>review</li>\n<li>block</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Suggestion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The list of suspicious keywords detected based on OCR.",
+          "example": "无",
+          "member": "string",
+          "name": "KeywordSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The coordinates (pixel) of the top-left and bottom-right corners of the frame where a suspicious keyword appears. Format: [x1, y1, x2, y2].",
+          "example": "无",
+          "member": "int64",
+          "name": "AreaCoordSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ContentReviewResult": {
+      "document": "The result for intelligent image recognition.",
+      "members": [
+        {
+          "default": "",
+          "document": "The result type. Valid values:\n<li>Porn.Image: Recognition of pornographic content in the image</li>\n<li>Terrorism.Image: Recognition of terrorism content in the image</li>\n<li>Political.Image: Recognition of politically sensitive content in the image</li>\n<li>Porn.Ocr: OCR-based recognition of pornographic content in the image</li>\n<li>Terrorism.Ocr: OCR-based recognition of terrorism content in the image</li>\n<li>Political.Ocr: OCR-based recognition of politically sensitive content in the image</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The pornographic content detected in the image. This parameter is valid if `Type` is `Porn.Image`.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "PornImageResult",
+          "name": "PornImageResult",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The terrorism content detected in the image. This parameter is valid if `Type` is `Terrorism.Image`.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "TerrorismImageResult",
+          "name": "TerrorismImageResult",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The politically sensitive content detected in the image. This parameter is valid if `Type` is `Political.Image`.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "PoliticalImageResult",
+          "name": "PoliticalImageResult",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The pornographic content detected in the image based on OCR. This parameter is valid if `Type` is `Porn.Ocr`.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "ContentReviewOcrResult",
+          "name": "PornOcrResult",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The terrorism content detected in the image based on OCR. This parameter is valid if `Type` is `Terrorism.Ocr`.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "ContentReviewOcrResult",
+          "name": "TerrorismOcrResult",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The politically sensitive content detected in the image based on OCR. This parameter is valid if `Type` is `Political.Ocr`.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "ContentReviewOcrResult",
+          "name": "PoliticalOcrResult",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "ContentReviewTemplateItem": {
       "document": "Intelligent recognition template details",
@@ -9603,6 +9725,78 @@
       ],
       "type": "object"
     },
+    "DescribeMediaPlayStatDetailsRequest": {
+      "document": "DescribeMediaPlayStatDetails request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the media file.",
+          "example": "5285485487985271487",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The start time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "example": "2018-12-01T00:00:00+08:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).",
+          "example": "2018-12-07T00:00:00+08:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Granularity. Valid values:\n<li>Hour</li>\n<li>Day</li>\nThe default value depends on the time period queried. If the time period is shorter than one day, the default value is `Hour`; if the time period is one day or longer, the default value is `Day`.",
+          "example": "Day",
+          "member": "string",
+          "name": "Interval",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
+          "example": "1450001234",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMediaPlayStatDetailsResponse": {
+      "document": "DescribeMediaPlayStatDetails response structure.",
+      "members": [
+        {
+          "document": "The playback statistics.",
+          "example": "无",
+          "member": "PlayStatInfo",
+          "name": "PlayStatInfoSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeMediaProcessUsageDataRequest": {
       "document": "DescribeMediaProcessUsageData request structure.",
       "members": [
@@ -11031,161 +11225,6 @@
       ],
       "usage": "both"
     },
-    "EditMediaOutputConfig": {
-      "document": "Result file output of video editing.",
-      "members": [
-        {
-          "default": "",
-          "document": "Output filename of up to 64 characters, which is generated by the system by default.",
-          "member": "string",
-          "name": "MediaName",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Output file format. Valid values: mp4, hls. Default value: mp4.",
-          "member": "string",
-          "name": "Type",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API.\n<li>Default value: 0, which means \"Other\".</li>",
-          "member": "int64",
-          "name": "ClassId",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Expiration time of output media file in ISO 8601 format, after which the file will be deleted. Files will never expire by default. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
-          "member": "string",
-          "name": "ExpireTime",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "in"
-    },
-    "EditMediaRequest": {
-      "document": "EditMedia request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Input video type. Valid values: File, Stream.",
-          "member": "string",
-          "name": "InputType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Information of input video file, which is required if `InputType` is `File`.",
-          "member": "EditMediaFileInfo",
-          "name": "FileInfos",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Input stream information, which is required if `InputType` is `Stream`.",
-          "member": "EditMediaStreamInfo",
-          "name": "StreamInfos",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Editing template ID. Valid values: 10, 20. If this parameter is left empty, template 10 will be used.\n<li>10: the input with the highest resolution will be used as the benchmark;</li>\n<li>20: the input with the highest bitrate will be used as the benchmark;</li>",
-          "member": "uint64",
-          "name": "Definition",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "[Task flow template](https://intl.cloud.tencent.com/document/product/266/11700?from_cn_redirect=1#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF) name, which should be entered if you want to perform a task flow on the generated new video.",
-          "member": "string",
-          "name": "ProcedureName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Configuration of file generated after editing.",
-          "member": "EditMediaOutputConfig",
-          "name": "OutputConfig",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Identifies the source context which is used to pass through the user request information. The `EditMediaComplete` callback and task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
-          "member": "string",
-          "name": "SessionContext",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Task priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.",
-          "member": "int64",
-          "name": "TasksPriority",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.",
-          "member": "string",
-          "name": "SessionId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Reserved field for special purposes.",
-          "member": "string",
-          "name": "ExtInfo",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
-          "member": "uint64",
-          "name": "SubAppId",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "EditMediaResponse": {
-      "document": "EditMedia response structure.",
-      "members": [
-        {
-          "document": "Video editing task ID, which can be used to query the status of editing task (with task type being `EditMedia`).",
-          "member": "string",
-          "name": "TaskId",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "EditMediaStreamInfo": {
       "document": "Video stream editing information",
       "members": [
@@ -11304,7 +11343,7 @@
         },
         {
           "default": "",
-          "document": "Metadata of a source video",
+          "document": "The metadata of the output video.",
           "example": "无",
           "member": "MediaMetaData",
           "name": "MetaData",
@@ -12072,6 +12111,22 @@
           "name": "Switch",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ImageContentReviewInput": {
+      "document": "The request parameters for an image recognition task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the image recognition template to use. Valid values:\n<li>10: All recognition types enabled</li>",
+          "example": "无",
+          "member": "uint64",
+          "name": "Definition",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -17245,6 +17300,52 @@
       ],
       "usage": "out"
     },
+    "PlayStatInfo": {
+      "document": "The playback statistics.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start time (in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I)) of the data returned. For example, if the granularity is a day, `2018-12-01T00:00:00+08:00` indicates that the data is for the period between December 1, 2018 (inclusive) and December 2, 2018 (exclusive).\n<li>If the granularity is an hour, `2019-08-22T00:00:00+08:00` indicates the data is for the period between 00:00 and 01:00 AM on August 22, 2019.</li>\n<li>If the granularity is a day, `2019-08-22T00:00:00+08:00` indicates the data is for August 22, 2019.</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Time",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ID of the media file.",
+          "example": "无",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The playback times.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PlayTimes",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The traffic (in bytes) consumed for playback.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Traffic",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "PlayerConfig": {
       "document": "Player configuration details",
       "members": [
@@ -17502,6 +17603,52 @@
         }
       ],
       "usage": "in"
+    },
+    "PoliticalImageResult": {
+      "document": "The result for the recognition of politically sensitive content in the image.",
+      "members": [
+        {
+          "default": "",
+          "document": "The confidence score for the politically sensitive content recognition result. Value range: 0-100.",
+          "example": "无",
+          "member": "float",
+          "name": "Confidence",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The suggestion for handling the detected politically sensitive content. Valid values:\n<li>pass/li>\n<li>review</li>\n<li>block</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Suggestion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The name of the politically sensitive content or banned icon detected.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The coordinates (pixel) of the top-left and bottom-right corners of the frame where politically sensitive content or a banned icon appears. Format: [x1, y1, x2, y2].",
+          "example": "无",
+          "member": "int64",
+          "name": "AreaCoordSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "PoliticalImgReviewTemplateInfo": {
       "document": "Parameters for recognition of politically sensitive content in images",
@@ -17810,6 +17957,42 @@
         }
       ],
       "usage": "in"
+    },
+    "PornImageResult": {
+      "document": "The result for the recognition of pornographic content in the image.",
+      "members": [
+        {
+          "default": "",
+          "document": "The confidence score for the pornographic content recognition result. Value range: 0-100.",
+          "example": "无",
+          "member": "float",
+          "name": "Confidence",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The suggestion for handling the detected pornographic content. Valid values:\n<li>pass/li>\n<li>review</li>\n<li>block</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Suggestion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The label for the detected pornographic content. Valid values:\n<li>porn</li>\n<li>sexy</li>\n<li>vulgar</li>\n<li>intimacy</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Label",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "PornImgReviewTemplateInfo": {
       "document": "Parameters for recognition of pornographic content in images",
@@ -18246,6 +18429,69 @@
         }
       ],
       "usage": "out"
+    },
+    "ProcessImageRequest": {
+      "document": "ProcessImage request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The unique ID of the media file. For this API to work, the file must be an image.",
+          "example": "无",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Operation. `ContentReview` is the only valid value currently.",
+          "example": "无",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image recognition parameters. This parameter is valid if `Operation` is `ContentReview`.",
+          "example": "无",
+          "member": "ImageContentReviewInput",
+          "name": "ContentReviewInput",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
+          "example": "无",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ProcessImageResponse": {
+      "document": "ProcessImage response structure.",
+      "members": [
+        {
+          "document": "The image recognition result.",
+          "example": "无",
+          "member": "ContentReviewResult",
+          "name": "ContentReviewResultSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ProcessMediaByProcedureRequest": {
       "document": "ProcessMediaByProcedure request structure.",
@@ -18984,7 +19230,7 @@
         },
         {
           "default": "",
-          "document": "Metadata of a source video",
+          "document": "The metadata of the output video.",
           "example": "无",
           "member": "MediaMetaData",
           "name": "MetaData",
@@ -19343,6 +19589,7 @@
         {
           "default": "",
           "document": "Unique ID of a sampled screencapturing template.",
+          "example": "10",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -19352,6 +19599,7 @@
         {
           "default": "",
           "document": "Template type. Valid values:\n<li>Preset: preset template;</li>\n<li>Custom: custom template.</li>",
+          "example": "Custom",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -19361,6 +19609,7 @@
         {
           "default": "",
           "document": "Name of a sampled screencapturing template.",
+          "example": "MyTemplate",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -19370,6 +19619,7 @@
         {
           "default": "",
           "document": "Template description.",
+          "example": "MyTemplate",
           "member": "string",
           "name": "Comment",
           "required": true,
@@ -19379,6 +19629,7 @@
         {
           "default": "",
           "document": "Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.",
+          "example": "1920",
           "member": "uint64",
           "name": "Width",
           "required": true,
@@ -19388,6 +19639,7 @@
         {
           "default": "",
           "document": "Maximum value of the height (or short side) of a screenshot in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.",
+          "example": "1080",
           "member": "uint64",
           "name": "Height",
           "required": true,
@@ -19397,6 +19649,7 @@
         {
           "default": "",
           "document": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open.",
+          "example": "open",
           "member": "string",
           "name": "ResolutionAdaptive",
           "required": true,
@@ -19406,6 +19659,7 @@
         {
           "default": "",
           "document": "Image format.",
+          "example": "jpg",
           "member": "string",
           "name": "Format",
           "required": true,
@@ -19415,6 +19669,7 @@
         {
           "default": "",
           "document": "Sampled screencapturing type.",
+          "example": "Time",
           "member": "string",
           "name": "SampleType",
           "required": true,
@@ -19424,6 +19679,7 @@
         {
           "default": "",
           "document": "Sampling interval.",
+          "example": "1",
           "member": "uint64",
           "name": "SampleInterval",
           "required": true,
@@ -19433,6 +19689,7 @@
         {
           "default": "",
           "document": "Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "2018-10-01T10:00:00Z",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -19442,6 +19699,7 @@
         {
           "default": "",
           "document": "Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "2018-10-01T10:00:00Z",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -19450,7 +19708,8 @@
         },
         {
           "default": "",
-          "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black.",
+          "document": "The fill mode, or the way of processing a screenshot when the configured aspect ratio is different from that of the source video. Valid values:\n<li>stretch: Stretch the image frame by frame to fill the entire screen. The video image may become \"squashed\" or \"stretched\" after transcoding.</li>\n<li>black: Keep the image's original aspect ratio and fill the blank space with black bars.</li>\n<li>white: Keep the image’s original aspect ratio and fill the blank space with white bars.</li>\n<li>gauss: Keep the image’s original aspect ratio and apply Gaussian blur to the blank space.</li>\nDefault value: black.",
+          "example": "black",
           "member": "string",
           "name": "FillType",
           "required": true,
@@ -19953,6 +20212,7 @@
         {
           "default": "",
           "document": "Unique ID of a specified time point screencapturing template.",
+          "example": "10",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -19962,6 +20222,7 @@
         {
           "default": "",
           "document": "Template type. Valid values:\n<li>Preset: preset template;</li>\n<li>Custom: custom template.</li>",
+          "example": "Custom",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -19971,6 +20232,7 @@
         {
           "default": "",
           "document": "Name of a specified time point screencapturing template.",
+          "example": "MyTemplate",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -19980,6 +20242,7 @@
         {
           "default": "",
           "document": "Template description.",
+          "example": "MyTemplate",
           "member": "string",
           "name": "Comment",
           "required": true,
@@ -19989,6 +20252,7 @@
         {
           "default": "",
           "document": "Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.",
+          "example": "1920",
           "member": "uint64",
           "name": "Width",
           "required": true,
@@ -19998,6 +20262,7 @@
         {
           "default": "",
           "document": "Maximum value of the height (or short side) of a screenshot in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.",
+          "example": "1080",
           "member": "uint64",
           "name": "Height",
           "required": true,
@@ -20007,6 +20272,7 @@
         {
           "default": "",
           "document": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open.",
+          "example": "open",
           "member": "string",
           "name": "ResolutionAdaptive",
           "required": true,
@@ -20016,6 +20282,7 @@
         {
           "default": "",
           "document": "Image format.",
+          "example": "jpg",
           "member": "string",
           "name": "Format",
           "required": true,
@@ -20025,6 +20292,7 @@
         {
           "default": "",
           "document": "Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "2018-10-01T10:00:00Z",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -20034,6 +20302,7 @@
         {
           "default": "",
           "document": "Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "2018-10-01T10:00:00Z",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -20042,7 +20311,8 @@
         },
         {
           "default": "",
-          "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black.",
+          "document": "The fill mode, or the way of processing a screenshot when the configured aspect ratio is different from that of the source video. Valid values:\n<li>stretch: Stretch the image frame by frame to fill the entire screen. The video image may become \"squashed\" or \"stretched\" after transcoding.</li>\n<li>black: Keep the image's original aspect ratio and fill the blank space with black bars.</li>\n<li>white: Keep the image’s original aspect ratio and fill the blank space with white bars.</li>\n<li>gauss: Keep the image’s original aspect ratio and apply Gaussian blur to the blank space.</li>\nDefault value: black.",
+          "example": "black",
           "member": "string",
           "name": "FillType",
           "required": true,
@@ -20944,6 +21214,42 @@
         }
       ],
       "usage": "in"
+    },
+    "TerrorismImageResult": {
+      "document": "The result for the recognition of terrorism content in the image.",
+      "members": [
+        {
+          "default": "",
+          "document": "The confidence score for the terrorism content recognition result. Value range: 0-100.",
+          "example": "无",
+          "member": "float",
+          "name": "Confidence",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The suggestion for handling the detected terrorism content. Valid values:\n<li>pass/li>\n<li>review</li>\n<li>block</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Suggestion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The label for the detected terrorism content. Valid values:\n<li>guns</li>\n<li>crowd</li>\n<li>police</li>\n<li>bloody</li>\n<li>banners</li>\n<li>explosion</li>\n<li>scenario (terrorist scenes) </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Label",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "TerrorismImgReviewTemplateInfo": {
       "document": "Parameters for recognition of terrorism content in images",
@@ -22393,55 +22699,6 @@
         }
       ],
       "usage": "out"
-    },
-    "WeChatMiniProgramPublishRequest": {
-      "document": "WeChatMiniProgramPublish request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Media file ID.",
-          "member": "string",
-          "name": "FileId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "ID of the transcoding template corresponding to the published video. 0 represents the source video.",
-          "member": "int64",
-          "name": "SourceDefinition",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
-          "member": "uint64",
-          "name": "SubAppId",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "WeChatMiniProgramPublishResponse": {
-      "document": "WeChatMiniProgramPublish response structure.",
-      "members": [
-        {
-          "document": "Task ID.",
-          "member": "string",
-          "name": "TaskId",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
     },
     "WechatMiniProgramPublishTask": {
       "document": "Release on WeChat Mini Program task information",

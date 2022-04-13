@@ -546,6 +546,14 @@
         "title": "Getting only the basic information of a media file"
       }
     ],
+    "DescribeMediaPlayStatDetails": [
+      {
+        "document": "",
+        "input": "https://vod.tencentcloudapi.com/?Action=DescribeMediaPlayStatDetails\n&FileId=5285485487985271487\n&StartTime=2021-01-01T00:00:00+08:00\n&EndTime=2021-01-01T02:00:00+08:00\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"PlayStatInfoSet\": [\n            {\n                \"FileId\": \"5285485487985271487\",\n                \"Time\": \"2021-01-01T00:00:00+08:00\",\n                \"PlayTimes\": 13,\n                \"Traffic\": 23434\n            },\n            {\n                \"FileId\": \"5285485487985271487\",\n                \"Time\": \"2021-01-01T01:00:00+08:00\",\n                \"PlayTimes\": 3,\n                \"Traffic\": 2334\n            }\n        ],\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\"\n    }\n}",
+        "title": "Querying the playback statistics of the media file `5285485487985271487` from 2021-01-01 00:00:00 to 2021-01-01 02:00:00"
+      }
+    ],
     "DescribeMediaProcessUsageData": [
       {
         "document": "",
@@ -716,56 +724,6 @@
         "title": "Getting the list of keyword samples - with filters"
       }
     ],
-    "EditMedia": [
-      {
-        "document": "This example shows you how to clip the 60th to 120th seconds of video `5285485487985271487` to generate a new VOD video.",
-        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=File\n&FileInfos.0.FileId=5285485487985271487\n&FileInfos.0.StartTimeOffset=60.0\n&FileInfos.0.EndTimeOffset=120.0\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-EditMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
-        "title": "Clipping one VOD file to generate a new video"
-      },
-      {
-        "document": "This example shows you how to splice three LVB recording streams whose IDs are 99873, 99874, and 99875 to generate a new VOD video.",
-        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=Stream\n&StreamInfos.0.StreamId=99873\n&StreamInfos.1.StreamId=99874\n&StreamInfos.2.StreamId=99875\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-clipMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
-        "title": "Splicing multiple VOD streams to generate a new video"
-      },
-      {
-        "document": "This example shows you how to clip the segment between 10:00:00 and 11:00:00 on September 20, 2018 of the LVB recording stream whose ID is 99873 to generate a new VOD video.",
-        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=Stream\n&StreamInfos.0.StreamId=99873\n&StreamInfos.0.StartTime=2018-09-20T10:00:00Z\n&StreamInfos.0.StartTime=2018-09-20T11:00:00Z\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-clipMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
-        "title": "Clipping one VOD stream to generate a new video"
-      },
-      {
-        "document": "This example shows you how to generate a new VOD video from LVB recording stream whose ID is 99873.",
-        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=Stream\n&StreamInfos.0.StreamId=99873\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-EditMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
-        "title": "Directly generating a new video from VOD stream"
-      },
-      {
-        "document": "This example shows you how to clip the 60th to 120th seconds of videos `5285485487985271487`, `5285485487985271488`, and `5285485487985271489` respectively and splice the clips to generate a new VOD video.",
-        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=File\n&FileInfos.0.FileId=5285485487985271487\n&FileInfos.0.StartTimeOffset=60.0\n&FileInfos.0.EndTimeOffset=120.0\n&FileInfos.1.FileId=5285485487985271488\n&FileInfos.1.StartTimeOffset=60.0\n&FileInfos.1.EndTimeOffset=120.0\n&FileInfos.2.FileId=5285485487985271489\n&FileInfos.2.StartTimeOffset=60.0\n&FileInfos.2.EndTimeOffset=120.0\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-EditMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
-        "title": "Clipping multiple VOD files and then splicing clips to generate a new video"
-      },
-      {
-        "document": "This example shows you how to clip the 60th to 120th seconds of video `5285485487985271487` to generate a new VOD video and run task flow `TranscodeAndSnapshot`.",
-        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=File\n&FileInfos.0.FileId=5285485487985271487\n&FileInfos.0.StartTimeOffset=60.0\n&FileInfos.0.EndTimeOffset=120.0\n&ProcedureName=TranscodeAndSnapshot\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-clipMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
-        "title": "Clipping one VOD file to generate a new video and run a task flow"
-      },
-      {
-        "document": "This example shows you how to clip the segments between 10:00:00 and 11:00:00 on September 20, 2018 of three LVB recording streams whose IDs are 99873, 99874, and 99875 and splice them to generate a new VOD video.",
-        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=Stream\n&StreamInfos.0.StreamId=99873\n&StreamInfos.0.StartTime=2018-09-20T10:00:00Z\n&StreamInfos.0.StartTime=2018-09-20T11:00:00Z\n&StreamInfos.1.StreamId=99874\n&StreamInfos.1.StartTime=2018-09-20T10:00:00Z\n&StreamInfos.1.StartTime=2018-09-20T11:00:00Z\n&StreamInfos.2.StreamId=99875\n&StreamInfos.2.StartTime=2018-09-20T10:00:00Z\n&StreamInfos.2.StartTime=2018-09-20T11:00:00Z\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-clipMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
-        "title": "Clipping multiple VOD streams and then splicing clips to generate a new video"
-      },
-      {
-        "document": "This example shows you how to splice videos `5285485487985271487`, `5285485487985271488`, and `5285485487985271489` to generate a new VOD video.",
-        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=File\n&FileInfos.0.FileId=5285485487985271487\n&FileInfos.1.FileId=5285485487985271488\n&FileInfos.2.FileId=5285485487985271489\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-EditMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
-        "title": "Splicing multiple VOD files to generate a new video"
-      }
-    ],
     "ExecuteFunction": [
       {
         "document": "",
@@ -784,13 +742,13 @@
     ],
     "LiveRealTimeClip": [
       {
-        "document": "对直播码为 record-stream 和域名为 example.com 的直播流发起即时剪辑，起始时间为 2018-09-20T10:00:00Z，结束时间为 2018-09-20T11:00:00Z，并且不固化。假设该直播流在 2018-09-20T10:30:00Z 到 2018-09-20T10:40:00Z 存在过断流的情况，持续时间为10分钟，那么输出参数 SegmentSet 将包含两个片段信息，可以得到剪辑后的视频实际时长为50分钟。",
+        "document": "This example shows you how to clip a live stream whose live stream code is record-stream and domain is example.com for temporary sharing, starting at 2018-09-20T10:00:00Z and ending at 2018-09-20T11:00:00Z. Assuming that the live stream has been interrupted for 10 minutes from 2018-09-20T10:30:00Z to 2018-09-20T10:40:00Z, then the output parameter SegmentSet contains the information of two segments and the actual length of the video clip is 50 minutes.",
         "input": "https://vod.tencentcloudapi.com/?Action=LiveRealTimeClip\r\n&StreamId=record-stream\r\n&StartTime=2018-09-20T10:00:00Z\r\n&EndTime=2018-09-20T11:00:00Z\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Url\": \"http://video.com/playlist.m3u8\",\n        \"FileId\": \"\",\n        \"VodTaskId\": \"\",\n        \"MetaData\": null\n    }\n}",
         "title": "Clipping a live video for temporary sharing"
       },
       {
-        "document": "对直播码为 record-stream 和域名为 example.com 的直播流发起即时剪辑，起始时间为 2018-09-20T12:00:00Z，结束时间为 2018-09-20T13:00:00Z，并且进行固化和发起任务流处理。",
+        "document": "This example shows you how to clip a live stream whose live stream code is record-stream and domain is example.com for long-term storage, starting at 2018-09-20T12:00:00Z and ending at 2018-09-20T13:00:00Z, and initiate a processing task flow.",
         "input": "https://vod.tencentcloudapi.com/?Action=LiveRealTimeClip\r\n&StreamId=record-stream\r\n&StartTime=2018-09-20T10:00:00Z\r\n&EndTime=2018-09-20T11:00:00Z\r\n&IsPersistence=1\r\n&Procedure=SomeProcedure\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Url\": \"http://video.com/playlist.m3u8\",\n        \"FileId\": \"\",\n        \"VodTaskId\": \"\",\n        \"MetaData\": null,\n        \"RequestId\": \"requestId\"\n    }\n}",
         "title": "Clipping a live video for long-term storage"
@@ -1056,6 +1014,14 @@
         "title": "Parsing an index file"
       }
     ],
+    "ProcessImage": [
+      {
+        "document": "",
+        "input": "https://vod.tencentcloudapi.com/?Action=ProcessImage\n&FileId=5285485487985271487\n&Operation=ContentReview\n&ContentReviewInput.Definition=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"ContentReviewResultSet\": [\n            {\n                \"Type\": \"Porn.Image\",\n                \"PornImageResult\": {\n                    \"Confidence\": 99,\n                    \"Suggestion\": \"block\",\n                    \"Label\":\"sexy\",\n                },\n                \"TerrorismImageResult\": null,\n                \"PoliticalImageResult\": null,\n                \"PornOcrResult\": null,\n                \"TerrorismOcrResult\": null,\n                \"PoliticalOcrResult\": null\n            }\n        ]\n    }\n}",
+        "title": "Initiating an image recognition task"
+      }
+    ],
     "ProcessMedia": [
       {
         "document": "This example shows you how to initiate a transcoding task for the video whose `fileId` is `5285485487985271487` to output in three specifications with transcoding templates (IDs: 20, 30, and 40).",
@@ -1210,14 +1176,6 @@
         "input": "https://vod.tencentcloudapi.com/?Action=SimpleHlsClip\n&Url=http://xxxxx.vod2.myqcloud.com/xxxxx/aaaaaa/hhhh.m3u8\n&StartTimeOffset=2.0\n&EndTimeOffset=10.0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Url\": \"http://xxxxx.vod2.myqcloud.com/xxxxx/aaaaaa/10_50.m3u8\",\n        \"FileId\": \"\",\n        \"MetaData\": {\n            \"Size\": 0,\n            \"Container\": \"hls\",\n            \"Bitrate\": 622014,\n            \"Height\": 480,\n            \"Width\": 640,\n            \"Duration\": 48,\n            \"Rotate\": 0,\n            \"VideoStreamSet\": [\n                {\n                    \"Bitrate\": 592385,\n                    \"Height\": 480,\n                    \"Width\": 640,\n                    \"Codec\": \"h264\",\n                    \"Fps\": 25\n                }\n            ],\n            \"AudioStreamSet\": [\n                {\n                    \"Bitrate\": 29629,\n                    \"SamplingRate\": 44100,\n                    \"Codec\": \"aac\"\n                }\n            ],\n            \"VideoDuration\": 0,\n            \"AudioDuration\": 0\n        },\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Clipping an HLS video (with a negative time offset)"
-      }
-    ],
-    "WeChatMiniProgramPublish": [
-      {
-        "document": "This example shows you how to initiate a WeChat Mini Program publishing task for a video (fileId: 5285485487985271487) by using a transcoding template (ID: 10).",
-        "input": "https://vod.tencentcloudapi.com/?Action=WeChatMiniProgramPublish\r\n&FileId=5285485487985271487\r\n&SourceDefinition=10\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-wechat-mini-program-publish-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
-        "title": "Initiating a WeChat Mini Program publishing task"
       }
     ]
   },

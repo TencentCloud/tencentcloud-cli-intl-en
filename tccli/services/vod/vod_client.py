@@ -42,33 +42,6 @@ def doCreateSnapshotByTimeOffsetTemplate(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doEditMedia(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.VodClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.EditMediaRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.EditMedia(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDescribeVodDomains(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -717,6 +690,33 @@ def doDescribeCDNStatDetails(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeMediaPlayStatDetails(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.VodClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeMediaPlayStatDetailsRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeMediaPlayStatDetails(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doModifyImageSpriteTemplate(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1249,6 +1249,33 @@ def doParseStreamingManifest(args, parsed_globals):
     model = models.ParseStreamingManifestRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.ParseStreamingManifest(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doProcessImage(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.VodClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ProcessImageRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ProcessImage(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -2553,33 +2580,6 @@ def doDeleteSampleSnapshotTemplate(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doWeChatMiniProgramPublish(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.VodClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.WeChatMiniProgramPublishRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.WeChatMiniProgramPublish(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doSimpleHlsClip(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -2808,7 +2808,6 @@ MODELS_MAP = {
 
 ACTION_MAP = {
     "CreateSnapshotByTimeOffsetTemplate": doCreateSnapshotByTimeOffsetTemplate,
-    "EditMedia": doEditMedia,
     "DescribeVodDomains": doDescribeVodDomains,
     "ApplyUpload": doApplyUpload,
     "DeleteAnimatedGraphicsTemplate": doDeleteAnimatedGraphicsTemplate,
@@ -2833,6 +2832,7 @@ ACTION_MAP = {
     "DescribeCDNUsageData": doDescribeCDNUsageData,
     "CreateTranscodeTemplate": doCreateTranscodeTemplate,
     "DescribeCDNStatDetails": doDescribeCDNStatDetails,
+    "DescribeMediaPlayStatDetails": doDescribeMediaPlayStatDetails,
     "ModifyImageSpriteTemplate": doModifyImageSpriteTemplate,
     "DeleteClass": doDeleteClass,
     "ExecuteFunction": doExecuteFunction,
@@ -2853,6 +2853,7 @@ ACTION_MAP = {
     "DescribeProcedureTemplates": doDescribeProcedureTemplates,
     "DescribeTranscodeTemplates": doDescribeTranscodeTemplates,
     "ParseStreamingManifest": doParseStreamingManifest,
+    "ProcessImage": doProcessImage,
     "CreateProcedureTemplate": doCreateProcedureTemplate,
     "PushUrlCache": doPushUrlCache,
     "DeleteMedia": doDeleteMedia,
@@ -2901,7 +2902,6 @@ ACTION_MAP = {
     "AttachMediaSubtitles": doAttachMediaSubtitles,
     "ModifyMediaInfo": doModifyMediaInfo,
     "DeleteSampleSnapshotTemplate": doDeleteSampleSnapshotTemplate,
-    "WeChatMiniProgramPublish": doWeChatMiniProgramPublish,
     "SimpleHlsClip": doSimpleHlsClip,
     "CreatePersonSample": doCreatePersonSample,
     "ModifySubAppIdStatus": doModifySubAppIdStatus,

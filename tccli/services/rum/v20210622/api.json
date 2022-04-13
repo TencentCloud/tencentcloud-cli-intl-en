@@ -240,12 +240,6 @@
       "name": "Gets the list of project reporting rates",
       "output": "DescribeProjectLimitsResponse"
     },
-    "DescribeProjects": {
-      "document": "This API is used to get the list of projects (under teams created by an instance).",
-      "input": "DescribeProjectsRequest",
-      "name": "Gets project list",
-      "output": "DescribeProjectsResponse"
-    },
     "DescribePvList": {
       "document": "This API is used to get the list of PVs under a project.",
       "input": "DescribePvListRequest",
@@ -264,23 +258,11 @@
       "name": "Gets the list of sourcemap files of project",
       "output": "DescribeReleaseFilesResponse"
     },
-    "DescribeScores": {
-      "document": "This API is used to get the list of homepage scores.",
-      "input": "DescribeScoresRequest",
-      "name": "Gets the list of homepage scores",
-      "output": "DescribeScoresResponse"
-    },
     "DescribeTawAreas": {
       "document": "This API is used to query region information.",
       "input": "DescribeTawAreasRequest",
       "name": "Queries region information",
       "output": "DescribeTawAreasResponse"
-    },
-    "DescribeTawInstances": {
-      "document": "This API is used to query instance information.",
-      "input": "DescribeTawInstancesRequest",
-      "name": "Queries instance information",
-      "output": "DescribeTawInstancesResponse"
     },
     "DescribeUvList": {
       "document": "This API is used to get the list of UVs under a project.",
@@ -736,6 +718,15 @@
           "example": "30",
           "member": "string",
           "name": "PeriodRetain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance purchase channel. Valid value: `cdn`.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "BuyingChannel",
           "required": false,
           "type": "string"
         }
@@ -4890,7 +4881,7 @@
         },
         {
           "default": "",
-          "document": "Query statement. Maximum length: 4096",
+          "document": "Query statement, which can contain up to 4,096 characters.",
           "example": "id:100",
           "member": "string",
           "name": "Query",
@@ -5110,69 +5101,6 @@
       ],
       "type": "object"
     },
-    "DescribeProjectsRequest": {
-      "document": "DescribeProjects request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Number of items per page (integer)",
-          "example": "20",
-          "member": "uint64",
-          "name": "Limit",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Page number (integer)",
-          "example": "1",
-          "member": "uint64",
-          "name": "Offset",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Filter",
-          "example": "无",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeProjectsResponse": {
-      "document": "DescribeProjects response structure.",
-      "members": [
-        {
-          "document": "Total number of items in the list",
-          "example": "0",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Project list",
-          "example": "无",
-          "member": "RumProject",
-          "name": "ProjectSet",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribePvListRequest": {
       "document": "DescribePvList request structure.",
       "members": [
@@ -5353,60 +5281,6 @@
       ],
       "type": "object"
     },
-    "DescribeScoresRequest": {
-      "document": "DescribeScores request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "End time",
-          "example": "2022051914",
-          "member": "string",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Start time",
-          "example": "2020011920",
-          "member": "string",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Project ID",
-          "example": "1",
-          "member": "int64",
-          "name": "ID",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeScoresResponse": {
-      "document": "DescribeScores response structure.",
-      "members": [
-        {
-          "document": "Array",
-          "example": "无",
-          "member": "ScoreInfo",
-          "name": "ScoreSet",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeTawAreasRequest": {
       "document": "DescribeTawAreas request structure.",
       "members": [
@@ -5477,114 +5351,6 @@
           "name": "AreaSet",
           "required": true,
           "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeTawInstancesRequest": {
-      "document": "DescribeTawInstances request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Billing status",
-          "example": "无",
-          "member": "int64",
-          "name": "ChargeStatuses",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Billing type",
-          "example": "无",
-          "member": "int64",
-          "name": "ChargeTypes",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Pagination limit",
-          "example": "1",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Pagination offset",
-          "example": "0",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Region ID",
-          "example": "无",
-          "member": "int64",
-          "name": "AreaIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: terminating; 8: terminated)",
-          "example": "无",
-          "member": "int64",
-          "name": "InstanceStatuses",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Instance ID",
-          "example": "无",
-          "member": "string",
-          "name": "InstanceIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Filter parameter",
-          "example": "无",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeTawInstancesResponse": {
-      "document": "DescribeTawInstances response structure.",
-      "members": [
-        {
-          "document": "Instance list",
-          "example": "无",
-          "member": "RumInstanceInfo",
-          "name": "InstanceSet",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Total number of instances",
-          "example": "1",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -5694,32 +5460,6 @@
         }
       ],
       "type": "object"
-    },
-    "Filter": {
-      "document": "Key-Value pair filter for conditional filtering queries, such as filtering ID, name, status, etc.\n\n· If more than one filter exists, the logical relationship between these filters is `AND`.\n· If multiple values exist in one filter, the logical relationship between these values is `OR`.",
-      "members": [
-        {
-          "default": "",
-          "document": "One or more filter values.",
-          "example": "ap-guangdong,ap-shenzhen",
-          "member": "string",
-          "name": "Values",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Filter name.",
-          "example": "Zone",
-          "member": "string",
-          "name": "Name",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "in"
     },
     "LogExport": {
       "document": "Log export record",
@@ -6135,7 +5875,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "ReleaseFile": {
       "document": "Release file list (sourcemap)",
@@ -6266,288 +6006,6 @@
       ],
       "usage": "out"
     },
-    "RumInstanceInfo": {
-      "document": "RUM instance information",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: deleted)",
-          "example": "2",
-          "member": "int64",
-          "name": "InstanceStatus",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Region ID",
-          "example": "1",
-          "member": "int64",
-          "name": "AreaId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Tag list",
-          "example": "无",
-          "member": "Tag",
-          "name": "Tags",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Instance ID",
-          "example": "taw-12345678",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Cluster ID",
-          "example": "1",
-          "member": "int64",
-          "name": "ClusterId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Instance description",
-          "example": "测试",
-          "member": "string",
-          "name": "InstanceDesc",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Billing status (1: in use; 2: expired; 3: terminated; 4: assigning; 5: assignment failed)",
-          "example": "1",
-          "member": "int64",
-          "name": "ChargeStatus",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Billing type (1: free; 2: prepaid; 3: postpaid)",
-          "example": "1",
-          "member": "int64",
-          "name": "ChargeType",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Update time",
-          "example": "2021-01-01 00:00:00",
-          "member": "string",
-          "name": "UpdatedAt",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Data retention period (in days)",
-          "example": "30",
-          "member": "int64",
-          "name": "DataRetentionDays",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Instance name",
-          "example": "测试",
-          "member": "string",
-          "name": "InstanceName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Creation time",
-          "example": "2021-01-01 00:00:00",
-          "member": "string",
-          "name": "CreatedAt",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "RumProject": {
-      "document": "RUM project information",
-      "members": [
-        {
-          "default": "",
-          "document": "Project name",
-          "example": "测试项目",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Creator ID",
-          "example": "123456",
-          "member": "string",
-          "name": "Creator",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Instance ID",
-          "example": "tam-123",
-          "member": "string",
-          "name": "InstanceID",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Project type",
-          "example": "log",
-          "member": "string",
-          "name": "Type",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Creation time",
-          "example": "2020-04-26 00:00:00",
-          "member": "datetime",
-          "name": "CreateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Project repository address\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "http://github.com/xxx/yyy",
-          "member": "string",
-          "name": "Repo",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Project URL\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "http://cloud.tencent.com/index.html",
-          "member": "string",
-          "name": "URL",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Project sample rate",
-          "example": "12",
-          "member": "string",
-          "name": "Rate",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Unique project key (12 characters)",
-          "example": "hjkysfkey12",
-          "member": "string",
-          "name": "Key",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether to enable URL aggregation",
-          "example": "1",
-          "member": "int64",
-          "name": "EnableURLGroup",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Instance name",
-          "example": "tamIns",
-          "member": "string",
-          "name": "InstanceName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Project ID",
-          "example": "1",
-          "member": "int64",
-          "name": "ID",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Instance key",
-          "example": "tam-key",
-          "member": "string",
-          "name": "InstanceKey",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Project description\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "这是一个项目描述",
-          "member": "string",
-          "name": "Desc",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Starred status. 1: yes; 0: no\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "1",
-          "member": "int64",
-          "name": "IsStar",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "RumPvInfo": {
       "document": "RUM log object",
       "members": [
@@ -6613,142 +6071,6 @@
           "example": "20201102",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "ScoreInfo": {
-      "document": "Project score entity",
-      "members": [
-        {
-          "default": "",
-          "document": "duration",
-          "example": "1",
-          "member": "string",
-          "name": "StaticDuration",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "pv",
-          "example": "111",
-          "member": "string",
-          "name": "PagePv",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Failure",
-          "example": "1",
-          "member": "string",
-          "name": "ApiFail",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Request",
-          "example": "12",
-          "member": "string",
-          "name": "ApiNum",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "fail",
-          "example": "12",
-          "member": "string",
-          "name": "StaticFail",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Project ID",
-          "example": "1",
-          "member": "int64",
-          "name": "ProjectID",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "uv",
-          "example": "12",
-          "member": "string",
-          "name": "PageUv",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of requests",
-          "example": "12",
-          "member": "string",
-          "name": "ApiDuration",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Score",
-          "example": "90",
-          "member": "string",
-          "name": "Score",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "error",
-          "example": "111",
-          "member": "string",
-          "name": "PageError",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "num",
-          "example": "12",
-          "member": "string",
-          "name": "StaticNum",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "num",
-          "example": "1",
-          "member": "int64",
-          "name": "RecordNum",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Duration",
-          "example": "111",
-          "member": "string",
-          "name": "PageDuration",
           "required": true,
           "type": "string",
           "value_allowed_null": false
