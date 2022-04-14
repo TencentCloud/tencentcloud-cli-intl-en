@@ -12,12 +12,6 @@
       "name": "Creates alias for function version",
       "output": "CreateAliasResponse"
     },
-    "CreateFunction": {
-      "document": "This API is used to create a function based on the input parameters.",
-      "input": "CreateFunctionRequest",
-      "name": "Creates a function",
-      "output": "CreateFunctionResponse"
-    },
     "CreateNamespace": {
       "document": "This API is used to create a namespace based on the input parameters.",
       "input": "CreateNamespaceRequest",
@@ -89,12 +83,6 @@
       "input": "GetAsyncEventStatusRequest",
       "name": "Gets the async event status of a function",
       "output": "GetAsyncEventStatusResponse"
-    },
-    "GetFunction": {
-      "document": "This API is used to obtain function details, such as name, code, handler, associated trigger, and timeout.",
-      "input": "GetFunctionRequest",
-      "name": "Obtains function details",
-      "output": "GetFunctionResponse"
     },
     "GetFunctionAddress": {
       "document": "This API is used to obtain the download address of the function code package.",
@@ -246,12 +234,6 @@
       "name": "Updates the function code",
       "output": "UpdateFunctionCodeResponse"
     },
-    "UpdateFunctionConfiguration": {
-      "document": "This API is used to update the function configuration based on the input parameters.",
-      "input": "UpdateFunctionConfigurationRequest",
-      "name": "Updates the function configuration",
-      "output": "UpdateFunctionConfigurationResponse"
-    },
     "UpdateFunctionEventInvokeConfig": {
       "document": "This API is used to update the async retry configuration of a function, including the number of retry attempts and message retention period.",
       "input": "UpdateFunctionEventInvokeConfigRequest",
@@ -271,30 +253,6 @@
     "serviceShortName": "scf"
   },
   "objects": {
-    "AccessInfo": {
-      "document": "HTTP domain name-related information",
-      "members": [
-        {
-          "default": "",
-          "document": "Domain name",
-          "member": "string",
-          "name": "Host",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "VIP",
-          "member": "string",
-          "name": "Vip",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
-    },
     "Alias": {
       "document": "Version alias of function",
       "members": [
@@ -477,108 +435,6 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
-    },
-    "CfsConfig": {
-      "document": "File system (CFS) configuration description",
-      "members": [
-        {
-          "default": "",
-          "document": "File system information list",
-          "member": "CfsInsInfo",
-          "name": "CfsInsList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
-    },
-    "CfsInsInfo": {
-      "document": "Configuration information of the CFS instance associated with function",
-      "members": [
-        {
-          "default": "",
-          "document": "User ID",
-          "member": "string",
-          "name": "UserId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "User group ID",
-          "member": "string",
-          "name": "UserGroupId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "CFS instance ID",
-          "member": "string",
-          "name": "CfsId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "File system mount target ID",
-          "member": "string",
-          "name": "MountInsId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Local mount target",
-          "member": "string",
-          "name": "LocalMountDir",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Remote mount target",
-          "member": "string",
-          "name": "RemoteMountDir",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "File system IP, which is not required when you configure CFS.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "IpAddress",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "VPC ID of file system, which is not required when you configure CFS.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "MountVpcId",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "VPC subnet ID of file system, which is not required when you configure CFS.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "MountSubnetId",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -887,258 +743,6 @@
       ],
       "type": "object"
     },
-    "CreateFunctionRequest": {
-      "document": "CreateFunction request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Name of the new function. The name can contain 2 to 60 characters, including English letters, digits, hyphens (-), and underscores (_). The name must start with a letter and cannot end with a hyphen or underscore.",
-          "example": "helloworld",
-          "member": "string",
-          "name": "FunctionName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Function code. Note: `COS`, `ZipFile`, and `DemoId` cannot be specified at the same time.",
-          "example": "无",
-          "member": "Code",
-          "name": "Code",
-          "required": true,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Function handler name. It supports the format of \"file name.handler name\" where the file name and handler name are separated with a \".\" (for Java, it is in the format of \"package name.class name::handler name\"). File and handler names can contain 2–60 letters, digits, underscores, and dashes and must start and end with letters",
-          "example": "index.main_handler",
-          "member": "string",
-          "name": "Handler",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Function description. It can contain up to 1,000 characters including letters, digits, spaces, commas (,), periods (.), and Chinese characters.",
-          "example": "hello world!",
-          "member": "string",
-          "name": "Description",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3072 MB in increments of 128 MB",
-          "example": "128",
-          "member": "int64",
-          "name": "MemorySize",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds",
-          "example": "3",
-          "member": "int64",
-          "name": "Timeout",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Function environment variable",
-          "example": "无",
-          "member": "Environment",
-          "name": "Environment",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, Php5, Php7, Go1, Java8, CustomRuntime. Default value: Python2.7",
-          "example": "Python3.6",
-          "member": "string",
-          "name": "Runtime",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Function VPC configuration",
-          "example": "无",
-          "member": "VpcConfig",
-          "name": "VpcConfig",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Function namespace",
-          "example": "default",
-          "member": "string",
-          "name": "Namespace",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Role bound to the function",
-          "example": "SCF_ExecuteRole",
-          "member": "string",
-          "name": "Role",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Specifies whether to [install dependency online](https://intl.cloud.tencent.com/document/product/583/37920?from_cn_redirect=1). `TRUE`: yes. Default to `FALSE`. It is only available for Node.js functions.",
-          "example": "FALSE",
-          "member": "string",
-          "name": "InstallDependency",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "CLS Logset ID to which the function logs are shipped",
-          "example": "xxxxx",
-          "member": "string",
-          "name": "ClsLogsetId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "CLS Topic ID to which the function logs are shipped",
-          "example": "xxxxx",
-          "member": "string",
-          "name": "ClsTopicId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Function type. The default value is `Event`. Enter `Event` if you need to create a trigger function. Enter `HTTP` if you need to create an HTTP function service.",
-          "example": "Event",
-          "member": "string",
-          "name": "Type",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Code source. Valid values: ZipFile, Cos, Demo",
-          "example": "xxxxx",
-          "member": "string",
-          "name": "CodeSource",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "List of layer versions to be associate with the function. Layers will be overwritten sequentially in the order in the list.",
-          "example": "无",
-          "member": "LayerVersionSimple",
-          "name": "Layers",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Dead letter queue parameter",
-          "example": "无",
-          "member": "DeadLetterConfig",
-          "name": "DeadLetterConfig",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Public network access configuration",
-          "example": "无",
-          "member": "PublicNetConfigIn",
-          "name": "PublicNetConfig",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "File system configuration parameter, which is used for the function to mount the file system",
-          "example": "无",
-          "member": "CfsConfig",
-          "name": "CfsConfig",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "The function initialization timeout period. It defaults to 65s for general cases and 90s for image deployment functions.",
-          "example": "3",
-          "member": "int64",
-          "name": "InitTimeout",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Tag parameter of the function. It is an array of key-value pairs.",
-          "example": "无",
-          "member": "Tag",
-          "name": "Tags",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Whether to enable the async attribute. TRUE: yes; FALSE: no",
-          "example": "FALSE",
-          "member": "string",
-          "name": "AsyncRunEnable",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Whether to enable event tracking. TRUE: yes; FALSE: no",
-          "example": "FALSE",
-          "member": "string",
-          "name": "TraceEnable",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Protocols supported by HTTP-triggered functions. Valid value: `WS` (WebSockets)",
-          "example": "WS",
-          "member": "string",
-          "name": "ProtocolType",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Parameters of the specified protocol",
-          "example": "无",
-          "member": "ProtocolParams",
-          "name": "ProtocolParams",
-          "required": false,
-          "type": "object"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateFunctionResponse": {
-      "document": "CreateFunction response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "CreateNamespaceRequest": {
       "document": "CreateNamespace request structure.",
       "members": [
@@ -1223,7 +827,7 @@
         },
         {
           "default": "",
-          "document": "Function version",
+          "document": "Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.",
           "example": "$DEFAULT",
           "member": "string",
           "name": "Qualifier",
@@ -1269,39 +873,6 @@
         }
       ],
       "type": "object"
-    },
-    "DeadLetterConfig": {
-      "document": "Dead letter queue parameter",
-      "members": [
-        {
-          "default": "",
-          "document": "Dead letter queue mode",
-          "member": "string",
-          "name": "Type",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Dead letter queue name",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Tag form of a dead letter queue topic mode",
-          "member": "string",
-          "name": "FilterType",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "in"
     },
     "DeleteAliasRequest": {
       "document": "DeleteAlias request structure.",
@@ -1593,84 +1164,6 @@
         }
       ],
       "type": "object"
-    },
-    "EipConfigIn": {
-      "document": "Fixed IP configuration for public network access",
-      "members": [
-        {
-          "default": "",
-          "document": "Status of the EIP. Values: ['ENABLE','DISABLE']",
-          "member": "string",
-          "name": "EipStatus",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "in"
-    },
-    "EipConfigOut": {
-      "document": "Fixed IP configuration for public network access",
-      "members": [
-        {
-          "default": "",
-          "document": "Whether it is a fixed IP. Valid values: [\"ENABLE\",\"DISABLE\"]",
-          "member": "string",
-          "name": "EipStatus",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "IP list\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "EipAddress",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "EipOutConfig": {
-      "document": "EipOutConfig",
-      "members": [
-        {
-          "default": "",
-          "document": "It specifies whether the IP is fixed. The value is `TRUE` or `FALSE`.",
-          "member": "string",
-          "name": "EipFixed",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "IP list",
-          "member": "string",
-          "name": "Eips",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "Environment": {
-      "document": "Environment variable parameter of the function",
-      "members": [
-        {
-          "default": "",
-          "document": "Environment variable array",
-          "member": "Variable",
-          "name": "Variables",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "in"
     },
     "Filter": {
       "document": "Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.\nIf more than one filter exists, the logical relationship between these filters is `AND`.\nIf multiple values exist in one filter, the logical relationship between these values under the same filter is `OR`.",
@@ -2455,452 +1948,6 @@
       ],
       "type": "object"
     },
-    "GetFunctionRequest": {
-      "document": "GetFunction request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Name of the function to obtain details",
-          "member": "string",
-          "name": "FunctionName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Function version number",
-          "member": "string",
-          "name": "Qualifier",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Function namespace",
-          "member": "string",
-          "name": "Namespace",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "It indicates whether to display the code. `TRUE` means displaying the code, and `FALSE` means hiding the code. The code will not be displayed for entry files exceeding 1 MB.",
-          "member": "string",
-          "name": "ShowCode",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "GetFunctionResponse": {
-      "document": "GetFunction response structure.",
-      "members": [
-        {
-          "document": "Latest modification time of the function",
-          "example": "2018-06-07 09:52:23",
-          "member": "datetime",
-          "name": "ModTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function code",
-          "example": "无",
-          "member": "string",
-          "name": "CodeInfo",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function description",
-          "example": "这是一个云函数",
-          "member": "string",
-          "name": "Description",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function trigger list",
-          "example": "无",
-          "member": "Trigger",
-          "name": "Triggers",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function entry",
-          "example": "scfredis.main_handler",
-          "member": "string",
-          "name": "Handler",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function code size",
-          "example": "0",
-          "member": "int64",
-          "name": "CodeSize",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function timeout",
-          "example": "3",
-          "member": "int64",
-          "name": "Timeout",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function version",
-          "example": "$LATEST",
-          "member": "string",
-          "name": "FunctionVersion",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Maximum available memory of the function",
-          "example": "128",
-          "member": "int64",
-          "name": "MemorySize",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function running environment",
-          "example": "Python2.7",
-          "member": "string",
-          "name": "Runtime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function name",
-          "example": "ledDummyAPITest",
-          "member": "string",
-          "name": "FunctionName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function VPC",
-          "example": "无",
-          "member": "VpcConfig",
-          "name": "VpcConfig",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Whether to use GPU",
-          "example": "FALSE",
-          "member": "string",
-          "name": "UseGpu",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function environment variable",
-          "example": "无",
-          "member": "Environment",
-          "name": "Environment",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Whether the code is correct",
-          "example": "failed",
-          "member": "string",
-          "name": "CodeResult",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Code error information",
-          "example": "无",
-          "member": "string",
-          "name": "CodeError",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Error code",
-          "example": "0",
-          "member": "int64",
-          "name": "ErrNo",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function namespace",
-          "example": "default",
-          "member": "string",
-          "name": "Namespace",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Role bound to the function",
-          "example": "无",
-          "member": "string",
-          "name": "Role",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Whether to install dependencies automatically",
-          "example": "FALSE",
-          "member": "string",
-          "name": "InstallDependency",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)",
-          "example": "Active",
-          "member": "string",
-          "name": "Status",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Status description",
-          "example": "无",
-          "member": "string",
-          "name": "StatusDesc",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "CLS logset to which logs are shipped",
-          "example": "5354061a-dcaa-46be-8359-fe5gt56075c0",
-          "member": "string",
-          "name": "ClsLogsetId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "CLS Topic to which logs are shipped",
-          "example": "5354061a-dcaa-46be-jydw-fe51e56075c0",
-          "member": "string",
-          "name": "ClsTopicId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function ID",
-          "example": "lam-bcrxav2w",
-          "member": "string",
-          "name": "FunctionId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function tag list",
-          "example": "无",
-          "member": "Tag",
-          "name": "Tags",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "EipConfig configuration",
-          "example": "无",
-          "member": "EipOutConfig",
-          "name": "EipConfig",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Domain name information",
-          "example": "无",
-          "member": "AccessInfo",
-          "name": "AccessInfo",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function type. The value is `HTTP` or `Event`.",
-          "example": "无",
-          "member": "string",
-          "name": "Type",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Whether to enable L5",
-          "example": "无",
-          "member": "string",
-          "name": "L5Enable",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Version information of a layer associated with a function",
-          "example": "无",
-          "member": "LayerVersionInfo",
-          "name": "Layers",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Information of a dead letter queue associated with a function",
-          "example": "无",
-          "member": "DeadLetterConfig",
-          "name": "DeadLetterConfig",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Function creation time",
-          "example": "无",
-          "member": "datetime",
-          "name": "AddTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Public network access configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "PublicNetConfigOut",
-          "name": "PublicNetConfig",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Whether Ons is enabled\nNote: This field may return null, indicating that no valid value was found.",
-          "example": "无",
-          "member": "string",
-          "name": "OnsEnable",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "File system configuration parameter, which is used for the function to mount the file system\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "CfsConfig",
-          "name": "CfsConfig",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Function billing status. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E8.AE.A1.E8.B4.B9.E7.8A.B6.E6.80.81)\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "Available",
-          "member": "string",
-          "name": "AvailableStatus",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Function version\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "$LATEST",
-          "member": "string",
-          "name": "Qualifier",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Timeout period for function initialization",
-          "example": "无",
-          "member": "int64",
-          "name": "InitTimeout",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Cause of function failure\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "StatusReason",
-          "name": "StatusReasons",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Specifies whether to enable asynchronization \nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "AsyncRunEnable",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Specifies whether to enable event tracking\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "TraceEnable",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Protocols supported by HTTP-triggered functions. It supports WebSockets for now.\nNote: This field may return null, indicating that no valid value was found.",
-          "example": "\"\"",
-          "member": "string",
-          "name": "ProtocolType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Parameters of the specified protocol\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "ProtocolParams",
-          "name": "ProtocolParams",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "GetLayerVersionRequest": {
       "document": "GetLayerVersion request structure.",
       "members": [
@@ -3483,32 +2530,6 @@
         }
       ],
       "usage": "out"
-    },
-    "LayerVersionSimple": {
-      "document": "Specifies a layer version",
-      "members": [
-        {
-          "default": "",
-          "document": "Name of the layer to bind. Leave it blank if you want to unbind layers",
-          "example": "layername",
-          "member": "string",
-          "name": "LayerName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Version ID f the layer to bind/unbind. If the layer version to unbind is the only layer version of the function version, enter `0`.",
-          "example": "1",
-          "member": "int64",
-          "name": "LayerVersion",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
     },
     "LimitsInfo": {
       "document": "Limit information",
@@ -4413,6 +3434,7 @@
         {
           "default": "",
           "document": "Function array",
+          "example": "func1",
           "member": "string",
           "name": "Functions",
           "required": true,
@@ -4422,6 +3444,7 @@
         {
           "default": "",
           "document": "Namespace name",
+          "example": "default",
           "member": "string",
           "name": "Namespace",
           "required": true,
@@ -4431,75 +3454,32 @@
         {
           "default": "",
           "document": "Number of functions in namespace",
+          "example": "1",
           "member": "int64",
           "name": "FunctionsCount",
           "required": true,
           "type": "int",
           "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "ProtocolParams": {
-      "document": "Parameters of the protocol",
-      "members": [
+        },
         {
           "default": "",
-          "document": "Parameters of WebSockets protocol\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "{             IdleTimeOut: 15     }",
-          "member": "WSParams",
-          "name": "WSParams",
-          "required": false,
-          "type": "object",
+          "document": "Total memory quota of the namespace\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalConcurrencyMem",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
-    "PublicNetConfigIn": {
-      "document": "Public network access configuration",
-      "members": [
-        {
-          "default": "",
-          "document": "Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']",
-          "member": "string",
-          "name": "PublicNetStatus",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "EIP configuration",
-          "member": "EipConfigIn",
-          "name": "EipConfig",
-          "required": false,
-          "type": "object",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "in"
-    },
-    "PublicNetConfigOut": {
-      "document": "Public network access configuration",
-      "members": [
-        {
-          "default": "",
-          "document": "Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']",
-          "member": "string",
-          "name": "PublicNetStatus",
+          "document": "Memory usage of the namespace\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalAllocatedConcurrencyMem",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "EIP configuration",
-          "member": "EipConfigOut",
-          "name": "EipConfig",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4714,6 +3694,42 @@
           "name": "TriggerActions",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Specifies the provisioned concurrency type.\n`Default`: Static provisioned concurrency. \n`ConcurrencyUtilizationTracking`: Scales the concurrency automatically according to the concurrency utilization.\nIf `ConcurrencyUtilizationTracking` is passed in, \n\n`TrackingTarget`, `MinCapacity` and `MaxCapacity` are required, and `VersionProvisionedConcurrencyNum` must be `0`. ",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ProvisionedType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The target concurrency utilization. Range: (0,1) (two decimal places)",
+          "example": "0",
+          "member": "float",
+          "name": "TrackingTarget",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "default": "",
+          "document": "The minimum number of instances. It can not be smaller than `1`.",
+          "example": "0",
+          "member": "uint64",
+          "name": "MinCapacity",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of instances",
+          "example": "0",
+          "member": "uint64",
+          "name": "MaxCapacity",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -5733,204 +4749,6 @@
       ],
       "type": "object"
     },
-    "UpdateFunctionConfigurationRequest": {
-      "document": "UpdateFunctionConfiguration request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Name of the function to be modified",
-          "example": "<FunctionName>",
-          "member": "string",
-          "name": "FunctionName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Function description. It can contain up to 1,000 characters, including letters, digits, spaces, commas (,), periods (.), and Chinese characters.",
-          "example": "<Description>",
-          "member": "string",
-          "name": "Description",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3,072 MB in increments of 128 MB.",
-          "example": "128",
-          "member": "int64",
-          "name": "MemorySize",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds",
-          "example": "3",
-          "member": "int64",
-          "name": "Timeout",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Go1, Java8, CustomRuntime",
-          "example": "Python3.6",
-          "member": "string",
-          "name": "Runtime",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Function environment variable",
-          "example": "无",
-          "member": "Environment",
-          "name": "Environment",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Function namespace",
-          "example": "default",
-          "member": "string",
-          "name": "Namespace",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Function VPC configuration",
-          "example": "无",
-          "member": "VpcConfig",
-          "name": "VpcConfig",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Role bound to the function",
-          "example": "SCF_ExecuteRole",
-          "member": "string",
-          "name": "Role",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Specifies whether to [install dependency online](https://intl.cloud.tencent.com/document/product/583/37920?from_cn_redirect=1). `TRUE`: yes. Default to `FALSE`. It is only available for Node.js functions.",
-          "example": "FALSE",
-          "member": "string",
-          "name": "InstallDependency",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "CLS logset ID to which logs are shipped",
-          "example": "xxxx",
-          "member": "string",
-          "name": "ClsLogsetId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "CLS Topic ID to which logs are shipped",
-          "example": "xxxx",
-          "member": "string",
-          "name": "ClsTopicId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "It specifies whether to synchronously publish a new version during the update. The default value is `FALSE`, indicating not to publish a new version",
-          "example": "FALSE",
-          "member": "string",
-          "name": "Publish",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Whether to enable L5 access. TRUE: enable; FALSE: not enable",
-          "example": "FALSE",
-          "member": "string",
-          "name": "L5Enable",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "List of layer versions that bound with the function. Files with the same name will be overridden by the bound layer versions according to the ascending order in the list. ",
-          "example": "无",
-          "member": "LayerVersionSimple",
-          "name": "Layers",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Information of a dead letter queue associated with a function",
-          "example": "无",
-          "member": "DeadLetterConfig",
-          "name": "DeadLetterConfig",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Public network access configuration",
-          "example": "无",
-          "member": "PublicNetConfigIn",
-          "name": "PublicNetConfig",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "File system configuration input parameter, which is used for the function to bind the CFS file system",
-          "example": "无",
-          "member": "CfsConfig",
-          "name": "CfsConfig",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "The function initialization timeout period",
-          "example": "15",
-          "member": "int64",
-          "name": "InitTimeout",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Parameters of the specified protocol",
-          "example": "无",
-          "member": "ProtocolParams",
-          "name": "ProtocolParams",
-          "required": false,
-          "type": "object"
-        }
-      ],
-      "type": "object"
-    },
-    "UpdateFunctionConfigurationResponse": {
-      "document": "UpdateFunctionConfiguration response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "UpdateFunctionEventInvokeConfigRequest": {
       "document": "UpdateFunctionEventInvokeConfig request structure.",
       "members": [
@@ -6061,30 +4879,6 @@
       ],
       "usage": "out"
     },
-    "Variable": {
-      "document": "Variable parameter",
-      "members": [
-        {
-          "default": "",
-          "document": "Variable name",
-          "member": "string",
-          "name": "Key",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Variable value",
-          "member": "string",
-          "name": "Value",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "in"
-    },
     "VersionMatch": {
       "document": "Function version with match rule",
       "members": [
@@ -6213,46 +5007,6 @@
           "required": true,
           "type": "float",
           "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
-    },
-    "VpcConfig": {
-      "document": "VPC parameter configuration",
-      "members": [
-        {
-          "default": "",
-          "document": "VPC ID",
-          "member": "string",
-          "name": "VpcId",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Subnet ID",
-          "member": "string",
-          "name": "SubnetId",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "in"
-    },
-    "WSParams": {
-      "document": "Parameters of the specified protocol",
-      "members": [
-        {
-          "default": "",
-          "document": "Idle timeout period in seconds. Default: 15; range: 1 to 1800\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "15",
-          "member": "uint64",
-          "name": "IdleTimeOut",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": true
         }
       ],
       "usage": "both"
