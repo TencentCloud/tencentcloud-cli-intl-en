@@ -112,14 +112,6 @@
         "title": "Deleting a table"
       }
     ],
-    "DescribeApplications": [
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: tcaplusdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApplications\n<Common request parameters>\n\n{\n    \"TableGroupId\": \"xx\",\n    \"ClusterId\": \"xx\",\n    \"Applicant\": \"xx\",\n    \"TableName\": \"xx\",\n    \"Limit\": 1,\n    \"Offset\": 1,\n    \"CensorStatus\": 0,\n    \"ApplyType\": 0\n}",
-        "output": "{\n    \"Response\": {\n        \"Applications\": [\n            {\n                \"Applicant\": \"100000012683\",\n                \"ApplicationId\": \"4-169\",\n                \"ApplicationStatus\": 2,\n                \"ApplicationType\": 2,\n                \"CanCensor\": true,\n                \"CanWithdrawal\": false,\n                \"ClusterId\": \"4\",\n                \"ClusterName\": \"xml_1_ly\",\n                \"CreatedTime\": \"2021-02-25 11:58:37\",\n                \"ExecuteStatus\": \"-1\",\n                \"ExecuteUser\": \"222\",\n                \"TableGroupId\": \"1\",\n                \"TableGroupName\": \"zone_1_1\",\n                \"TableInstanceId\": \"null\",\n                \"TableName\": \"add_table10\",\n                \"TaskId\": \"0\",\n                \"UpdateTime\": \"2021-02-25 11:58:37\"\n            }\n        ],\n        \"RequestId\": \"fdsfdsfdsfdsf\",\n        \"TotalCount\": 92\n    }\n}",
-        "title": "Querying the list of cluster operation applications"
-      }
-    ],
     "DescribeClusterTags": [
       {
         "document": "This example shows you how to get the associated tag list of a cluster.",

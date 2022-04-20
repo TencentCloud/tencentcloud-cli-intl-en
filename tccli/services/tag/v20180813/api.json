@@ -18,6 +18,12 @@
       "name": "Creating Tags",
       "output": "CreateTagResponse"
     },
+    "CreateTags": {
+      "document": "This API is used to create multiple tag key-value pairs.",
+      "input": "CreateTagsRequest",
+      "name": "Batch creates tags",
+      "output": "CreateTagsResponse"
+    },
     "DeleteResourceTag": {
       "document": "This API is used to unassociate tags and resources.",
       "input": "DeleteResourceTagRequest",
@@ -30,6 +36,12 @@
       "name": "Deleting Tags",
       "output": "DeleteTagResponse"
     },
+    "DeleteTags": {
+      "document": "This API is used to delete multiple tag key-value pairs.",
+      "input": "DeleteTagsRequest",
+      "name": "Batch deletes tags",
+      "output": "DeleteTagsResponse"
+    },
     "DescribeResourceTags": {
       "document": "This API is used to query the tags associated with a resource.",
       "input": "DescribeResourceTagsRequest",
@@ -37,9 +49,9 @@
       "output": "DescribeResourceTagsResponse"
     },
     "DescribeResourceTagsByResourceIds": {
-      "document": "This API is used to query tag key and value pairs for existing resources.",
+      "document": "This API is used to query the tag key-value pairs associated with an existing resource.",
       "input": "DescribeResourceTagsByResourceIdsRequest",
-      "name": "Querying Tags Associated with a Resource",
+      "name": "Batch queries tags associated with resource",
       "output": "DescribeResourceTagsByResourceIdsResponse"
     },
     "DescribeResourceTagsByResourceIdsSeq": {
@@ -102,6 +114,30 @@
       "name": "Unbinds tag from resources in batches",
       "output": "DetachResourcesTagResponse"
     },
+    "GetResources": {
+      "document": "This API is used to query the list of resources associated with a tag.",
+      "input": "GetResourcesRequest",
+      "name": "Queries resource tag list",
+      "output": "GetResourcesResponse"
+    },
+    "GetTagKeys": {
+      "document": "This API is used to query the list of tag keys.",
+      "input": "GetTagKeysRequest",
+      "name": "Queries tag key list",
+      "output": "GetTagKeysResponse"
+    },
+    "GetTagValues": {
+      "document": "This API is used to query tag values in the list of created tags.",
+      "input": "GetTagValuesRequest",
+      "name": "Queries tag value list",
+      "output": "GetTagValuesResponse"
+    },
+    "GetTags": {
+      "document": "This API is used to get the list of created tags.",
+      "input": "GetTagsRequest",
+      "name": "Gets tag list",
+      "output": "GetTagsResponse"
+    },
     "ModifyResourceTags": {
       "document": "This API is used to modify all tags associated with a resource.",
       "input": "ModifyResourceTagsRequest",
@@ -113,6 +149,18 @@
       "input": "ModifyResourcesTagValueRequest",
       "name": "Modifies tag value associated with resources in batches",
       "output": "ModifyResourcesTagValueResponse"
+    },
+    "TagResources": {
+      "document": "This API is used to create and bind a tag uniformly to multiple specified resources of multiple Tencent Cloud services.",
+      "input": "TagResourcesRequest",
+      "name": "Binds tag to resources",
+      "output": "TagResourcesResponse"
+    },
+    "UnTagResources": {
+      "document": "This API is used to unbind a tag uniformly from multiple specified resources of multiple Tencent Cloud services.",
+      "input": "UnTagResourcesRequest",
+      "name": "Unbinds tag from resources",
+      "output": "UnTagResourcesResponse"
     },
     "UpdateResourceTagValue": {
       "document": "This API is used to modify the values of tags associated with a resource (the tag key does not change).",
@@ -148,7 +196,7 @@
         },
         {
           "default": "",
-          "document": "[Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)",
+          "document": "[Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
           "member": "string",
           "name": "Resource",
           "required": true,
@@ -174,7 +222,7 @@
       "members": [
         {
           "default": "",
-          "document": "Resource service name",
+          "document": "Resource service name (the third segment in the six-segment resource description)",
           "member": "string",
           "name": "ServiceType",
           "required": true,
@@ -206,7 +254,7 @@
         },
         {
           "default": "",
-          "document": "Resource region. This field is not required for resources that do not have the region attribute",
+          "document": "Resource region. If resources have the region attribute, this field is required; otherwise, it is optional.",
           "member": "string",
           "name": "ResourceRegion",
           "required": false,
@@ -214,7 +262,7 @@
         },
         {
           "default": "",
-          "document": "Resource prefix, which is not required for COS buckets",
+          "document": "Resource prefix (the part before \"/\" in the last segment in the six-segment resource description), which is optional for COS buckets but required for other Tencent Cloud resources.",
           "member": "string",
           "name": "ResourcePrefix",
           "required": false,
@@ -269,6 +317,33 @@
       ],
       "type": "object"
     },
+    "CreateTagsRequest": {
+      "document": "CreateTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag list.\nValue range of N: 0–9",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTagsResponse": {
+      "document": "CreateTags response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteResourceTagRequest": {
       "document": "DeleteResourceTag request structure.",
       "members": [
@@ -282,7 +357,7 @@
         },
         {
           "default": "",
-          "document": "[Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)",
+          "document": "[Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
           "member": "string",
           "name": "Resource",
           "required": true,
@@ -337,6 +412,33 @@
       ],
       "type": "object"
     },
+    "DeleteTagsRequest": {
+      "document": "DeleteTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag list.\nValue range of N: 0–9",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTagsResponse": {
+      "document": "DeleteTags response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeResourceTagsByResourceIdsRequest": {
       "document": "DescribeResourceTagsByResourceIds request structure.",
       "members": [
@@ -358,7 +460,7 @@
         },
         {
           "default": "",
-          "document": "Unique resource ID.",
+          "document": "Array of resource IDs (up to 50)",
           "member": "string",
           "name": "ResourceIds",
           "required": true,
@@ -664,7 +766,7 @@
         },
         {
           "default": "",
-          "document": "Unique resource ID",
+          "document": "Unique resource ID. Queries with `ResourceId` only may be slow or fail to return results. We recommend you also enter `ServiceType`, `ResourcePrefix`, and `ResourceRegion` (which can be ignored for resources that don't have the region attribute) when entering `ResourceId`.",
           "member": "string",
           "name": "ResourceId",
           "required": false,
@@ -688,7 +790,7 @@
         },
         {
           "default": "",
-          "document": "Whether it is a COS resource ID",
+          "document": "Whether it is a COS resource (0 or 1). This parameter is required when the entered `ResourceId` is a COS resource.",
           "member": "uint64",
           "name": "CosResourceId",
           "required": false,
@@ -1400,7 +1502,7 @@
       "members": [
         {
           "default": "",
-          "document": "Resource service name",
+          "document": "Resource service name (the third segment in the six-segment resource description)",
           "member": "string",
           "name": "ServiceType",
           "required": true,
@@ -1424,7 +1526,7 @@
         },
         {
           "default": "",
-          "document": "Resource region. This field is not required for resources that do not have the region attribute",
+          "document": "Resource region. If resources have the region attribute, this field is required; otherwise, it is optional.",
           "member": "string",
           "name": "ResourceRegion",
           "required": false,
@@ -1432,7 +1534,7 @@
         },
         {
           "default": "",
-          "document": "Resource prefix, which is not required for COS buckets",
+          "document": "Resource prefix (the part before \"/\" in the last segment in the six-segment resource description), which is optional for COS buckets but required for other Tencent Cloud resources.",
           "member": "string",
           "name": "ResourcePrefix",
           "required": false,
@@ -1453,12 +1555,300 @@
       ],
       "type": "object"
     },
+    "FailedResource": {
+      "document": "Information of failed resources.\nThis is returned when resource tag binding or unbinding fails.",
+      "members": [
+        {
+          "default": "",
+          "document": "Six-segment descriptions of failed resources",
+          "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
+          "member": "string",
+          "name": "Resource",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code",
+          "example": "InvalidParameterValue.TagKeyDuplicate",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error message",
+          "example": "TagKeyDuplicate",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GetResourcesRequest": {
+      "document": "GetResources request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource.\nFor example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.\nIf this parameter is passed in, the list of all matching resources will be returned, and the specified `MaxResults` will become invalid.\nValue range of N: 0–9",
+          "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
+          "member": "string",
+          "name": "ResourceList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tag key and value.\nIf multiple tags are specified, resources bound to all such tags will be queried.\nValue range of N: 0–5\nThere can be up to 10 `TagValues` in each `TagFilters`.",
+          "example": "无",
+          "member": "TagFilter",
+          "name": "TagFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The token value of the next page obtained from the response of the previous page.\nLeave it empty for the first request.",
+          "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
+          "member": "string",
+          "name": "PaginationToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of data entries to return per page (up to 200).\nDefault value: 50.",
+          "example": "50",
+          "member": "uint64",
+          "name": "MaxResults",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetResourcesResponse": {
+      "document": "GetResources response structure.",
+      "members": [
+        {
+          "document": "Token value obtained for the next page",
+          "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
+          "member": "string",
+          "name": "PaginationToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of resources and their associated tags (key-value pairs)",
+          "example": "无",
+          "member": "ResourceTagMapping",
+          "name": "ResourceTagMappingList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetTagKeysRequest": {
+      "document": "GetTagKeys request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The token value of the next page obtained from the response of the previous page.\nLeave it empty for the first request.",
+          "example": "无",
+          "member": "string",
+          "name": "PaginationToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of data entries to return per page (up to 1,000).\nDefault value: 50.",
+          "example": "50",
+          "member": "uint64",
+          "name": "MaxResults",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetTagKeysResponse": {
+      "document": "GetTagKeys response structure.",
+      "members": [
+        {
+          "document": "Token value obtained for the next page",
+          "example": "无",
+          "member": "string",
+          "name": "PaginationToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag key information.",
+          "example": "无",
+          "member": "string",
+          "name": "TagKeys",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetTagValuesRequest": {
+      "document": "GetTagValues request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.\nAll tag values corresponding to the list of tag keys.\nMaximum length: 20",
+          "example": "无",
+          "member": "string",
+          "name": "TagKeys",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The token value of the next page obtained from the response of the previous page.\nLeave it empty for the first request.",
+          "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
+          "member": "string",
+          "name": "PaginationToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of data entries to return per page (up to 1,000).\nDefault value: 50.",
+          "example": "50",
+          "member": "uint64",
+          "name": "MaxResults",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetTagValuesResponse": {
+      "document": "GetTagValues response structure.",
+      "members": [
+        {
+          "document": "Token value obtained for the next page",
+          "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
+          "member": "string",
+          "name": "PaginationToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag list.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetTagsRequest": {
+      "document": "GetTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The token value of the next page obtained from the response of the previous page.\nLeave it empty for the first request.",
+          "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
+          "member": "string",
+          "name": "PaginationToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of data entries to return per page (up to 1,000).\nDefault value: 50.",
+          "example": "50",
+          "member": "uint64",
+          "name": "MaxResults",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tag key.\nAll tags corresponding to the list of tag keys.\nMaximum length: 20",
+          "example": "无",
+          "member": "string",
+          "name": "TagKeys",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "GetTagsResponse": {
+      "document": "GetTags response structure.",
+      "members": [
+        {
+          "document": "Token value obtained for the next page",
+          "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
+          "member": "string",
+          "name": "PaginationToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tag list.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyResourceTagsRequest": {
       "document": "ModifyResourceTags request structure.",
       "members": [
         {
           "default": "",
-          "document": "[Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)",
+          "document": "[Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
           "member": "string",
           "name": "Resource",
           "required": true,
@@ -1466,7 +1856,7 @@
         },
         {
           "default": "",
-          "document": "The tags to be added or modified. If the resource described by `Resource` is not associated with the input tag keys, an association will be added. If the tag keys are already associated, the values corresponding to the associated tag keys will be modified to the input values. This API must contain either `ReplaceTags` or `DeleteTag`. And these two parameters cannot include the same tag keys.",
+          "document": "The tags to be added or modified. If the resource described by `Resource` is not associated with the input tag keys, an association will be added. If the tag keys are already associated, the values corresponding to the associated tag keys will be modified to the input values. This API must contain either `ReplaceTags` or `DeleteTag`, and these two parameters cannot include the same tag keys. This parameter can be omitted, but it cannot be an empty array.",
           "member": "Tag",
           "name": "ReplaceTags",
           "required": false,
@@ -1474,7 +1864,7 @@
         },
         {
           "default": "",
-          "document": "The tags to be unassociated. This API must contain either `ReplaceTags` or `DeleteTag`. And these two parameters cannot include the same tag keys.",
+          "document": "The tags to be disassociated. This API must contain either `ReplaceTags` or `DeleteTag`, and these two parameters cannot include the same tag keys. This parameter can be omitted, but it cannot be an empty array.",
           "member": "TagKeyObject",
           "name": "DeleteTags",
           "required": false,
@@ -1500,7 +1890,7 @@
       "members": [
         {
           "default": "",
-          "document": "Resource service name",
+          "document": "Resource service name (the third segment in the six-segment resource description)",
           "member": "string",
           "name": "ServiceType",
           "required": true,
@@ -1532,7 +1922,7 @@
         },
         {
           "default": "",
-          "document": "Resource region. This field is not required for resources that do not have the region attribute",
+          "document": "Resource region. If resources have the region attribute, this field is required; otherwise, it is optional.",
           "member": "string",
           "name": "ResourceRegion",
           "required": false,
@@ -1540,7 +1930,7 @@
         },
         {
           "default": "",
-          "document": "Resource prefix, which is not required for COS buckets",
+          "document": "Resource prefix (the part before \"/\" in the last segment in the six-segment resource description), which is optional for COS buckets but required for other Tencent Cloud resources.",
           "member": "string",
           "name": "ResourcePrefix",
           "required": false,
@@ -1632,6 +2022,32 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ResourceTagMapping": {
+      "document": "Resources and their associated tags (key-value pairs).",
+      "members": [
+        {
+          "default": "",
+          "document": "Six-segment resource description. Tencent Cloud uses a six-segment value to describe a resource.\nFor example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.",
+          "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
+          "member": "string",
+          "name": "Resource",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of tags associated with the resource",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1759,6 +2175,51 @@
       ],
       "usage": "out"
     },
+    "TagResourcesRequest": {
+      "document": "TagResources request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource. For more information, see [CAM](https://intl.cloud.tencent.com/document/product/598/67350?from_cn_redirect=1) > Overview > API List > Six-Segment Resource Information.\nFor example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.\nValue range of N: 0–9",
+          "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
+          "member": "string",
+          "name": "ResourceList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tag key and value.\nIf multiple tags are specified, all such tags will be created and bound to the specified resources.\nFor each resource, each tag key can have only one value. If you try to add an existing tag key, the corresponding tag value will be updated to the new value.\nNon-existent tags will be automatically created.\nValue range of N: 0–9",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "TagResourcesResponse": {
+      "document": "TagResources response structure.",
+      "members": [
+        {
+          "document": "Information of failed resources.\nWhen tag creating and binding succeeds, the returned `FailedResources` will be empty.\nWhen tag creating and binding partially or completely fails, the returned `FailedResources` will display the details of failed resources.",
+          "example": "无",
+          "member": "FailedResource",
+          "name": "FailedResources",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "TagWithDelete": {
       "document": "A tag key-value pair and if deletion is allowed.",
       "members": [
@@ -1792,6 +2253,51 @@
       ],
       "usage": "out"
     },
+    "UnTagResourcesRequest": {
+      "document": "UnTagResources request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource. For more information, see [CAM](https://intl.cloud.tencent.com/document/product/598/67350?from_cn_redirect=1) > Overview > API List > Six-Segment Resource Information.\nFor example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.\nValue range of N: 0–9",
+          "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
+          "member": "string",
+          "name": "ResourceList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tag key.\nValue range: 0–9",
+          "example": "无",
+          "member": "string",
+          "name": "TagKeys",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UnTagResourcesResponse": {
+      "document": "UnTagResources response structure.",
+      "members": [
+        {
+          "document": "Information of failed resources.\nWhen tag unbinding succeeds, the returned `FailedResources` will be empty.\nWhen tag unbinding partially or completely fails, the returned `FailedResources` will display the details of failed resources.",
+          "example": "无",
+          "member": "FailedResource",
+          "name": "FailedResources",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "UpdateResourceTagValueRequest": {
       "document": "UpdateResourceTagValue request structure.",
       "members": [
@@ -1813,7 +2319,7 @@
         },
         {
           "default": "",
-          "document": "[Six-segment resource description](https://cloud.tencent.com/document/product/598/10606)",
+          "document": "[Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
           "member": "string",
           "name": "Resource",
           "required": true,

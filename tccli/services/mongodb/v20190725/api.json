@@ -132,6 +132,12 @@
       "name": "Isolates a TencentDB Instance",
       "output": "IsolateDBInstanceResponse"
     },
+    "ModifyDBInstanceNetworkAddress": {
+      "document": "This API is used to modify the network settings of a TencentDB instance, such as switching its network type from classic network to VPC or between VPCs.",
+      "input": "ModifyDBInstanceNetworkAddressRequest",
+      "name": "Modifies the network settings of TencentDB instances",
+      "output": "ModifyDBInstanceNetworkAddressResponse"
+    },
     "ModifyDBInstanceSecurityGroup": {
       "document": "This API is used to modify the security groups associated with an instance.",
       "input": "ModifyDBInstanceSecurityGroupRequest",
@@ -3042,6 +3048,69 @@
       ],
       "type": "object"
     },
+    "ModifyDBInstanceNetworkAddressRequest": {
+      "document": "ModifyDBInstanceNetworkAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "cmgo-7pjedvz7",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Old IP retention period in minutes. The old IP will be released after the specified time, and both the old and new IPs can be accessed before the release. The value `0` indicates that the old IP will be reclaimed immediately.",
+          "example": "1",
+          "member": "uint64",
+          "name": "OldIpExpiredTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "ID of the VPC to which the new IP belongs after the switch. When it is classic network, this field will be empty.",
+          "example": "vpc-****",
+          "member": "string",
+          "name": "NewUniqVpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the subnet to which the new IP belongs after the switch. When it is classic network, this field will be empty.",
+          "example": "subnet-****",
+          "member": "string",
+          "name": "NewUniqSubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP information to be modified",
+          "example": "无",
+          "member": "ModifyNetworkAddress",
+          "name": "NetworkAddresses",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceNetworkAddressResponse": {
+      "document": "ModifyDBInstanceNetworkAddress response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyDBInstanceSecurityGroupRequest": {
       "document": "ModifyDBInstanceSecurityGroup request structure.",
       "members": [
@@ -3165,6 +3234,30 @@
         }
       ],
       "type": "object"
+    },
+    "ModifyNetworkAddress": {
+      "document": "Database IP to be modified",
+      "members": [
+        {
+          "default": "",
+          "document": "New IP",
+          "member": "string",
+          "name": "NewIPAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Old IP",
+          "member": "string",
+          "name": "OldIpAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "OfflineIsolatedDBInstanceRequest": {
       "document": "OfflineIsolatedDBInstance request structure.",

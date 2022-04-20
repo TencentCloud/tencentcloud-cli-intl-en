@@ -176,6 +176,14 @@
         "title": "Terminating a pay-as-you-go TencentDB instance"
       }
     ],
+    "ModifyDBInstanceNetworkAddress": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceNetworkAddress\n<common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"NetworkAddresses\": [\n        {\n            \"OldIpAddress\": \"xx\",\n            \"NewIPAddress\": \"xx\"\n        }\n    ],\n    \"OldIpExpiredTime\": 1,\n    \"NewUniqVpcId\": \"xx\",\n    \"NewUniqSubnetId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "修改云数据库实例网络信息"
+      }
+    ],
     "ModifyDBInstanceSecurityGroup": [
       {
         "document": "",

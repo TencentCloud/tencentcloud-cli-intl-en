@@ -21,19 +21,19 @@
         "document": "This example shows you how to add an A record.",
         "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrivateZoneRecord\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-123456\",\n    \"RecordType\": \"A\",\n    \"SubDomain\": \"b\",\n    \"RecordValue\": \"3.3.3.3\",\n    \"Weight\": 100,\n    \"TTL\": 600\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a98891db-9d73-514a-8751422197b540cd\",\n        \"RecordId\": 1111\n    }\n}",
-        "title": "Private domain - adding A record"
+        "title": "Private domain - adding an A record"
       },
       {
         "document": "This example shows you how to add an MX record.",
         "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrivateZoneRecord\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-123456\",\n    \"RecordType\": \"MX\",\n    \"SubDomain\": \"b\",\n    \"RecordValue\": \"3.3.3.3\",\n    \"Weight\": 100,\n    \"MX\": 5\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a98891db-9d73-514a-8751422197b540cd\",\n        \"RecordId\": 1111\n    }\n}",
-        "title": "Private domain - adding MX record"
+        "title": "Private domain - adding an MX record"
       },
       {
         "document": "This example shows you how to add a PTR record.",
         "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrivateZoneRecord\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-123456\",\n    \"RecordType\": \"PTR\",\n    \"SubDomain\": \"1.1.1\",\n    \"RecordValue\": \"qq.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a98891db-9d73-514a-8751422197b540cd\",\n        \"RecordId\": 1111\n    }\n}",
-        "title": "Private domain - adding PTR record"
+        "title": "Private domain - adding a PTR record"
       }
     ],
     "DescribeAccountVpcList": [
@@ -97,7 +97,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPrivateZone\n<Common request parameters>\n\n{\n    \"ZoneId\": \"1\",\n    \"Remark\": \"Test domain name\",\n    \"DnsForwardStatus\": \"ENABLED\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5cd964e2-b5e6-8a35-9ce5a1085860c845\"\n    }\n}",
-        "title": "Modifying private domain"
+        "title": "Modifying a private domain"
       }
     ],
     "ModifyPrivateZoneRecord": [
@@ -105,13 +105,13 @@
         "document": "This example shows you how to modify an A record.",
         "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPrivateZoneRecord\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-xxxxxx\",\n    \"RecordId\": \"289\",\n    \"RecordType\": \"A\",\n    \"SubDomain\": \"@\",\n    \"RecordValue\": \"8.8.8.8\",\n    \"TTL\": 600,\n    \"Weight\": \"100\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d6f4fef6-8a3c-e2ee-792856f06fa696da\"\n    }\n}",
-        "title": "Modifying DNS record for private domain (A record)"
+        "title": "Modifying a DNS record (A record) for a private domain"
       },
       {
         "document": "This example shows you how to modify an MX record.",
         "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPrivateZoneRecord\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-mao3y9jo\",\n    \"SubDomain\": \"mail\",\n    \"RecordType\": \"MX\",\n    \"RecordValue\": \"stmp.qq.com\",\n    \"TTL\": 300,\n    \"MX\": 10,\n    \"RecordId\": \"16125\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"660006f4-8531-46f0-a2ba-05daf4e7932e\"\n    }\n}",
-        "title": "Modifying DNS record for private domain (MX record)"
+        "title": "Modifying a DNS record (MX record) for a private domain"
       }
     ],
     "ModifyPrivateZoneVpc": [

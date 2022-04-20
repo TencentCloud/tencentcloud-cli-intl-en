@@ -84,12 +84,6 @@
       "name": "Drops table",
       "output": "DeleteTablesResponse"
     },
-    "DescribeApplications": {
-      "document": "This API is used to query the list of cluster operation applications.",
-      "input": "DescribeApplicationsRequest",
-      "name": "Queries the list of cluster operation applications",
-      "output": "DescribeApplicationsResponse"
-    },
     "DescribeClusterTags": {
       "document": "This API is used to get the associated tag list of a cluster.",
       "input": "DescribeClusterTagsRequest",
@@ -307,182 +301,6 @@
     "serviceShortName": "tcaplusdb"
   },
   "objects": {
-    "Application": {
-      "document": "Cluster operation application",
-      "members": [
-        {
-          "default": "",
-          "document": "Application ID",
-          "example": "10001",
-          "member": "string",
-          "name": "ApplicationId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Application type",
-          "example": "表格合并",
-          "member": "int64",
-          "name": "ApplicationType",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Cluster ID",
-          "example": "1822112",
-          "member": "string",
-          "name": "ClusterId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Cluster name",
-          "example": "Test",
-          "member": "string",
-          "name": "ClusterName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Table group name\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "db_user",
-          "member": "string",
-          "name": "TableGroupName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Table name",
-          "example": "db_user_info",
-          "member": "string",
-          "name": "TableName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Applicant",
-          "example": "yuxinfan",
-          "member": "string",
-          "name": "Applicant",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The creation time of the application",
-          "example": "2021-01-18 20:10:21",
-          "member": "string",
-          "name": "CreatedTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Status. Valid values: `-1` (canceled), `0` (pending approval), `1` (application approved and task submitted), `2` (rejected)",
-          "example": "0",
-          "member": "int64",
-          "name": "ApplicationStatus",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Table group ID",
-          "example": "222",
-          "member": "string",
-          "name": "TableGroupId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "ID of the submitted task (if the application is not approved, this parameter is `0`)",
-          "example": "222",
-          "member": "string",
-          "name": "TaskId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Globally unique table ID\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "tcaplus_dsdfsdf",
-          "member": "string",
-          "name": "TableInstanceId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Update time\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "2021-01-18 20:10:21",
-          "member": "string",
-          "name": "UpdateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Approver\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "yuxinfan",
-          "member": "string",
-          "name": "ExecuteUser",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Execution status\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "0",
-          "member": "string",
-          "name": "ExecuteStatus",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Whether the application can be approved by the API caller\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "0",
-          "member": "bool",
-          "name": "CanCensor",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Whether the application can be canceled by the API caller\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "0",
-          "member": "bool",
-          "name": "CanWithdrawal",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "ApplyResult": {
       "document": "Application update results",
       "members": [
@@ -894,6 +712,36 @@
           "name": "KafkaInfo",
           "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of days after which the cluster Txh backup file will expire and be deleted.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TxhBackupExpireDay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of days after which the cluster Ulog backup file will expire and be deleted.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "UlogBackupExpireDay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the expiration policy of cluster Ulog backup file is read-only. `0`: Yes; `1`: No.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsReadOnlyUlogBackupExpireDay",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -1722,114 +1570,6 @@
           "member": "TableResultNew",
           "name": "TableResults",
           "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeApplicationsRequest": {
-      "document": "DescribeApplications request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "ID of the cluster whose applications will be queried",
-          "example": "10001",
-          "member": "string",
-          "name": "ClusterId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The maximum number of results returned per page",
-          "example": "1",
-          "member": "uint64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Pagination offset",
-          "example": "12",
-          "member": "uint64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Application status used as a filter condition",
-          "example": "0",
-          "member": "int64",
-          "name": "CensorStatus",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Table group ID used as a filter condition",
-          "example": "xx",
-          "member": "string",
-          "name": "TableGroupId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Table name used as a filter condition",
-          "example": "xx",
-          "member": "string",
-          "name": "TableName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Applicant UIN used as a filter condition",
-          "example": "xx",
-          "member": "string",
-          "name": "Applicant",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Application type used as a filter condition",
-          "example": "0",
-          "member": "int64",
-          "name": "ApplyType",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeApplicationsResponse": {
-      "document": "DescribeApplications response structure.",
-      "members": [
-        {
-          "document": "Application list",
-          "example": "无",
-          "member": "Application",
-          "name": "Applications",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Total number of applications",
-          "example": "0",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -5240,6 +4980,16 @@
           "name": "DbClusterInfoStruct",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of days after which the table Txh backup files will be expire and deleted.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TxhBackupExpireDay",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

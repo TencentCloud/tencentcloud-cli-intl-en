@@ -96,6 +96,12 @@
       "name": "Creates a time point screencapturing template",
       "output": "CreateSnapshotByTimeOffsetTemplateResponse"
     },
+    "CreateStorageRegion": {
+      "document": "This API is used to enable storage in a region.\n  1. When you activate VOD, the system will enable storage for you in certain regions. If you need to store data in another region, you can use this API to enable storage in that region.\n  2. You can use the `DescribeStorageRegions` API to query all supported storage regions and the regions you have storage access to currently.",
+      "input": "CreateStorageRegionRequest",
+      "name": "Enables storage in a region",
+      "output": "CreateStorageRegionResponse"
+    },
     "CreateSubAppId": {
       "document": "This API is used to create a VOD subapplication.",
       "input": "CreateSubAppIdRequest",
@@ -360,6 +366,12 @@
       "name": "Queries storage capacity usage details",
       "output": "DescribeStorageDetailsResponse"
     },
+    "DescribeStorageRegions": {
+      "document": "This API is used to query the following information:\n  1. All supported storage regions.\n  2. The regions you have storage access to currently.\n  3. The default storage region.",
+      "input": "DescribeStorageRegionsRequest",
+      "name": "Queries storage regions",
+      "output": "DescribeStorageRegionsResponse"
+    },
     "DescribeSubAppIds": {
       "document": "This API is used to query the list of the primary application and subapplications of the current account.",
       "input": "DescribeSubAppIdsRequest",
@@ -467,6 +479,12 @@
       "input": "ModifyContentReviewTemplateRequest",
       "name": "Modifies intelligent video content recognition templates",
       "output": "ModifyContentReviewTemplateResponse"
+    },
+    "ModifyDefaultStorageRegion": {
+      "document": "This API is used to set the default storage region. A file will be stored in the default region if no region is specified for file upload.",
+      "input": "ModifyDefaultStorageRegionRequest",
+      "name": "Sets the default storage region",
+      "output": "ModifyDefaultStorageRegionResponse"
     },
     "ModifyImageSpriteTemplate": {
       "document": "This API is used to modify a custom image sprite generating template.",
@@ -7836,6 +7854,40 @@
       ],
       "type": "object"
     },
+    "CreateStorageRegionRequest": {
+      "document": "CreateStorageRegion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The region to enable storage in, which must be a storage region supported by VOD.",
+          "member": "string",
+          "name": "StorageRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStorageRegionResponse": {
+      "document": "CreateStorageRegion response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateSubAppIdRequest": {
       "document": "CreateSubAppId request structure.",
       "members": [
@@ -10353,6 +10405,39 @@
           "document": "Storage statistics with one piece of data for every 5 minutes or 1 day.",
           "member": "StatDataItem",
           "name": "Data",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStorageRegionsRequest": {
+      "document": "DescribeStorageRegions request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStorageRegionsResponse": {
+      "document": "DescribeStorageRegions response structure.",
+      "members": [
+        {
+          "document": "The information of the storage regions.",
+          "member": "StorageRegionInfo",
+          "name": "StorageRegionInfos",
           "type": "list",
           "value_allowed_null": false
         },
@@ -15788,6 +15873,40 @@
       ],
       "type": "object"
     },
+    "ModifyDefaultStorageRegionRequest": {
+      "document": "ModifyDefaultStorageRegion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The default storage region, which must be a region you have storage access to. You can use the `DescribeStorageRegions` API to query such regions.",
+          "member": "string",
+          "name": "StorageRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDefaultStorageRegionResponse": {
+      "document": "ModifyDefaultStorageRegion response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyImageSpriteTemplateRequest": {
       "document": "ModifyImageSpriteTemplate request structure.",
       "members": [
@@ -20684,6 +20803,48 @@
         }
       ],
       "usage": "both"
+    },
+    "StorageRegionInfo": {
+      "document": "The information of a storage region.",
+      "members": [
+        {
+          "default": "",
+          "document": "Storage region.",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description of the storage region.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether storage is enabled in the region. Valid values:\n<li>opened: Enabled</li>\n<li>unopened: Not enabled</li>",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the region is the default storage region. Valid values: true, false.",
+          "member": "bool",
+          "name": "IsDefault",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "StorageStatData": {
       "document": "VOD storage usage by region.",
