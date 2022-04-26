@@ -1,0 +1,181 @@
+{
+  "actions": {
+    "CancelInvocation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CancelInvocation\n<Common request parameters>\n\n{\n    \"InvocationId\": \"inv-ib2lld37\",\n    \"InstanceIds\": [\n        \"ins-zcewfho0\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b27421da-0ad4-4e11-b694-cda143606701\"\n    }\n}",
+        "title": "Canceling the execution of a command"
+      }
+    ],
+    "CreateCommand": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCommand\n<Common request parameters>\n\n{\n    \"CommandName\": \"hello-command\",\n    \"Description\": \"hello world\",\n    \"Content\": \"bHM=\",\n    \"CommandType\": \"SHELL\",\n    \"WorkingDirectory\": \"/\",\n    \"Timeout\": 60\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9bea970a-0bab-495f-b0dd-de5eedfdf611\",\n        \"CommandId\": \"cmd-7efujjs6\"\n    }\n}",
+        "title": "Creating a command"
+      }
+    ],
+    "CreateInvoker": [
+      {
+        "document": "Execute command cmd-m7uma92n on instance ins-yx05ky8j at 2021-09-01 00:00:00 UTC+8",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInvoker\n<Common request parameters>\n\n{\n    \"Name\": \"test-invoker\",\n    \"CommandId\": \"cmd-m7uma92n\",\n    \"InstanceIds\": [\n        \"ins-yx05ky8j\"\n    ],\n    \"Type\": \"SCHEDULE\",\n    \"ScheduleSettings\": {\n        \"Policy\": \"ONCE\",\n        \"InvokeTime\": \"2021-09-01T00:00:00+08:00\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"97268137-e0f7-477d-833b-766273d0ea47\",\n        \"InvokerId\": \"ivk-le1g3x2h\"\n    }\n}",
+        "title": "Creating a run-once invoker"
+      },
+      {
+        "document": "Execute command cmd-m7uma92n on instance ins-yx05ky8j at 00:00:00 UTC+8 on the first day of every month",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInvoker\n<Common request parameters>\n\n{\n    \"Name\": \"cron-invoker\",\n    \"CommandId\": \"cmd-m7uma92n\",\n    \"InstanceIds\": [\n        \"ins-yx05ky8j\"\n    ],\n    \"Type\": \"SCHEDULE\",\n    \"ScheduleSettings\": {\n        \"Policy\": \"RECURRENCE\",\n        \"Recurrence\": \"0 0 1 * *\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d1d7ce29-b6ac-436d-93e0-b454f096cc50\",\n        \"InvokerId\": \"ivk-n0t6rxtv\"\n    }\n}",
+        "title": "Creating an invoker that executes a command repeatedly"
+      }
+    ],
+    "DeleteCommand": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCommand\n<Common request parameters>\n\n{\n    \"CommandId\": \"cmd-7efujjs6\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7f79b764-bc0f-471b-89c1-ca1b93cf7e8d\"\n    }\n}",
+        "title": "Deleting a command"
+      }
+    ],
+    "DeleteInvoker": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteInvoker\n<Common request parameters>\n\n{\n    \"InvokerId\": \"ivk-b7s3qa5l\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bc16e010-7b50-4661-88e8-4d2c77d15558\"\n    }\n}",
+        "title": "Deleting an invoker"
+      }
+    ],
+    "DescribeAutomationAgentStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAutomationAgentStatus\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"lhins-ar5wyn4x\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"520e7b93-904d-44de-a2dd-8e4c545be4ce\",\n        \"AutomationAgentSet\": [\n            {\n                \"InstanceId\": \"lhins-ar5wyn4x\",\n                \"Version\": \"0.1.0\",\n                \"LastHeartbeatTime\": \"2020-11-16T12:05:44+00:00\",\n                \"AgentStatus\": \"Online\",\n                \"Environment\": \"Linux\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying the agent status"
+      }
+    ],
+    "DescribeCommands": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCommands\n<Common request parameters>\n\n{\n    \"CommandIds\": [\n        \"cmd-dvstpcyy\"\n    ],\n    \"Offset\": 0,\n    \"Limit\": 20\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eb973a12-71e3-4c0c-b1d8-4b863e5f5daf\",\n        \"TotalCount\": 1,\n        \"CommandSet\": [\n            {\n                \"CommandId\": \"cmd-dvstpcyy\",\n                \"CommandName\": \"run-command\",\n                \"Description\": \"whoami\",\n                \"FormattedDescription\": \"\",\n                \"CreatedBy\": \"USER\",\n                \"Content\": \"d2hvYW1p\",\n                \"CommandType\": \"SHELL\",\n                \"WorkingDirectory\": \"/root/\",\n                \"Timeout\": 60,\n                \"EnableParameter\": false,\n                \"DefaultParameters\": \"\",\n                \"Username\": \"root\",\n                \"Tags\": [\n                    {\n                        \"Value\": \"test-key\",\n                        \"Key\": \"test-value\"\n                    }\n                ],\n                \"CreatedTime\": \"2020-11-02T02:48:11+00:00\",\n                \"UpdatedTime\": \"2020-11-02T02:48:11+00:00\"\n            }\n        ]\n    }\n}",
+        "title": "Querying a command with the specified `CommandId`"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCommands\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 20,\n    \"Filters\": [\n        {\n            \"Name\": \"command-name\",\n            \"Values\": [\n                \"second-command\",\n                \"first-command\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6b215093-e1f6-4803-b84a-a230849e88d1\",\n        \"TotalCount\": 2,\n        \"CommandSet\": [\n            {\n                \"CommandId\": \"cmd-hb2q34lk\",\n                \"CommandName\": \"second-command\",\n                \"Description\": \"ps\",\n                \"FormattedDescription\": \"\",\n                \"CreatedBy\": \"USER\",\n                \"Content\": \"cHM=\",\n                \"CommandType\": \"SHELL\",\n                \"WorkingDirectory\": \"/root/\",\n                \"Timeout\": 60,\n                \"EnableParameter\": false,\n                \"DefaultParameters\": \"\",\n                \"Username\": \"root\",\n                \"Tags\": [\n                    {\n                        \"Value\": \"test-key\",\n                        \"Key\": \"test-value\"\n                    }\n                ],\n                \"CreatedTime\": \"2020-10-30T07:19:52+00:00\",\n                \"UpdatedTime\": \"2020-10-30T07:19:52+00:00\"\n            },\n            {\n                \"CommandId\": \"cmd-63usjhmq\",\n                \"CommandName\": \"first-command\",\n                \"Description\": \"hello world!\",\n                \"FormattedDescription\": \"\",\n                \"CreatedBy\": \"USER\",\n                \"Content\": \"cHM=\",\n                \"CommandType\": \"SHELL\",\n                \"WorkingDirectory\": \"/\",\n                \"Timeout\": 600,\n                \"EnableParameter\": false,\n                \"DefaultParameters\": \"\",\n                \"Username\": \"root\",\n                \"Tags\": [\n                    {\n                        \"Value\": \"test-key\",\n                        \"Key\": \"test-value\"\n                    }\n                ],\n                \"CreatedTime\": \"2020-10-26T11:26:07+00:00\",\n                \"UpdatedTime\": \"2020-11-09T08:12:45+00:00\"\n            }\n        ]\n    }\n}",
+        "title": "Querying commands with the `command-name` filter"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCommands\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 1,\n    \"Filters\": [\n        {\n            \"Name\": \"created-by\",\n            \"Values\": [\n                \"USER\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6b215093-e1f6-4803-b84a-a230849e88d1\",\n        \"TotalCount\": 2,\n        \"CommandSet\": [\n            {\n                \"CommandId\": \"cmd-hb2q34lk\",\n                \"CommandName\": \"second-command\",\n                \"Description\": \"ps\",\n                \"FormattedDescription\": \"\",\n                \"CreatedBy\": \"USER\",\n                \"Content\": \"cHM=\",\n                \"CommandType\": \"SHELL\",\n                \"WorkingDirectory\": \"/root/\",\n                \"Timeout\": 60,\n                \"EnableParameter\": false,\n                \"DefaultParameters\": \"\",\n                \"Username\": \"root\",\n                \"Tags\": [],\n                \"CreatedTime\": \"2020-10-30T07:19:52+00:00\",\n                \"UpdatedTime\": \"2020-10-30T07:19:52+00:00\"\n            }\n        ]\n    }\n}",
+        "title": "Querying commands with the `created-by` filter"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCommands\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"test-value\"\n            ],\n            \"Name\": \"tag:test-key\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"33d3d954-f73a-4a7f-869b-8792bc7a6f13\",\n        \"TotalCount\": 1,\n        \"CommandSet\": [\n            {\n                \"CommandId\": \"cmd-38ps9q4p\",\n                \"CommandName\": \"tag-test-1\",\n                \"Description\": \"\",\n                \"FormattedDescription\": \"\",\n                \"CreatedBy\": \"USER\",\n                \"Content\": \"cHMK\",\n                \"CommandType\": \"SHELL\",\n                \"WorkingDirectory\": \"/root\",\n                \"Timeout\": 60,\n                \"EnableParameter\": false,\n                \"DefaultParameters\": \"\",\n                \"Username\": \"root\",\n                \"Tags\": [\n                    {\n                        \"Key\": \"test-key\",\n                        \"Value\": \"test-value\"\n                    }\n                ],\n                \"CreatedTime\": \"2021-05-12T02:49:04Z\",\n                \"UpdatedTime\": \"2021-05-12T02:49:04Z\"\n            }\n        ]\n    }\n}",
+        "title": "Query commands with the tag:tag-key filter"
+      }
+    ],
+    "DescribeInvocationTasks": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInvocationTasks\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"HideOutput\": false,\n    \"Filters\": [\n        {\n            \"Name\": \"invocation-id\",\n            \"Values\": [\n                \"inv-1vll7hda\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a1df9725-51c6-466d-a038-4c86461a8e26\",\n        \"TotalCount\": 3,\n        \"InvocationTaskSet\": [\n            {\n                \"CommandId\": \"cmd-13axrtuq\",\n                \"CommandDocument\": {\n                    \"Content\": \"d2hvYW1p\",\n                    \"CommandType\": \"SHELL\",\n                    \"Timeout\": 1,\n                    \"Username\": \"root\",\n                    \"WorkingDirectory\": \"/root/\"\n                },\n                \"InvocationId\": \"inv-1vll7hda\",\n                \"InvocationTaskId\": \"invt-afwuqts2\",\n                \"TaskStatus\": \"SUCCESS\",\n                \"InstanceId\": \"ins-zj0f57ev\",\n                \"TaskResult\": {\n                    \"ExitCode\": 0,\n                    \"Output\": \"cm9vdAo=\",\n                    \"Dropped\": 0,\n                    \"OutputUploadCOSErrorInfo\": \"\",\n                    \"OutputUrl\": \"\",\n                    \"ExecStartTime\": \"2020-11-05T07:49:58+00:00\",\n                    \"ExecEndTime\": \"2020-11-05T07:50:04+00:00\"\n                },\n                \"ErrorInfo\": \"\",\n                \"InvocationSource\": \"xx\",\n                \"StartTime\": \"2020-11-05T07:49:58+00:00\",\n                \"EndTime\": \"2020-11-05T07:50:04+00:00\",\n                \"CreatedTime\": \"2020-11-05T07:49:56+00:00\",\n                \"UpdatedTime\": \"2020-11-05T07:50:06+00:00\"\n            },\n            {\n                \"CommandId\": \"cmd-13axrtuq\",\n                \"CommandDocument\": {\n                    \"Content\": \"d2hvYW1p\",\n                    \"CommandType\": \"SHELL\",\n                    \"Timeout\": 1,\n                    \"Username\": \"root\",\n                    \"WorkingDirectory\": \"/root/\"\n                },\n                \"InvocationId\": \"inv-1vll7hda\",\n                \"InvocationTaskId\": \"invt-08oe5fe2\",\n                \"TaskStatus\": \"SUCCESS\",\n                \"InstanceId\": \"ins-zj0f57ex\",\n                \"TaskResult\": {\n                    \"ExitCode\": 0,\n                    \"Output\": \"cm9vdAo=\",\n                    \"Dropped\": 0,\n                    \"OutputUploadCOSErrorInfo\": \"\",\n                    \"OutputUrl\": \"\",\n                    \"ExecStartTime\": \"2020-11-05T07:49:58+00:00\",\n                    \"ExecEndTime\": \"2020-11-05T07:50:04+00:00\"\n                },\n                \"ErrorInfo\": \"\",\n                \"InvocationSource\": \"xx\",\n                \"StartTime\": \"2020-11-05T07:49:58+00:00\",\n                \"EndTime\": \"2020-11-05T07:50:04+00:00\",\n                \"CreatedTime\": \"2020-11-05T07:49:56+00:00\",\n                \"UpdatedTime\": \"2020-11-05T07:50:06+00:00\"\n            },\n            {\n                \"CommandId\": \"cmd-13axrtuq\",\n                \"CommandDocument\": {\n                    \"Content\": \"d2hvYW1p\",\n                    \"CommandType\": \"SHELL\",\n                    \"Timeout\": 1,\n                    \"Username\": \"root\",\n                    \"WorkingDirectory\": \"/root/\"\n                },\n                \"InvocationId\": \"inv-1vll7hda\",\n                \"InvocationTaskId\": \"invt-91cpqs22\",\n                \"TaskStatus\": \"SUCCESS\",\n                \"InstanceId\": \"ins-zj0f57ew\",\n                \"TaskResult\": {\n                    \"ExitCode\": 0,\n                    \"Output\": \"cm9vdAo=\",\n                    \"Dropped\": 0,\n                    \"OutputUploadCOSErrorInfo\": \"\",\n                    \"OutputUrl\": \"\",\n                    \"ExecStartTime\": \"2020-11-05T07:49:58+00:00\",\n                    \"ExecEndTime\": \"2020-11-05T07:50:04+00:00\"\n                },\n                \"ErrorInfo\": \"\",\n                \"InvocationSource\": \"xx\",\n                \"StartTime\": \"2020-11-05T07:49:58+00:00\",\n                \"EndTime\": \"2020-11-05T07:50:04+00:00\",\n                \"CreatedTime\": \"2020-11-05T07:49:56+00:00\",\n                \"UpdatedTime\": \"2020-11-05T07:50:06+00:00\"\n            }\n        ]\n    }\n}",
+        "title": "Query the details of all execution tasks by execution activity ID"
+      }
+    ],
+    "DescribeInvocations": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInvocations\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 1,\n    \"InvocationIds\": [\n        \"inv-q4zp60g0\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"958a3603-d0c3-4c97-a37d-6bc24eacddac\",\n        \"TotalCount\": 1,\n        \"InvocationSet\": [\n            {\n                \"CommandId\": \"cmd-9dxzty3m\",\n                \"CommandContent\": \"cHdk\",\n                \"CommandType\": \"SHELL\",\n                \"Timeout\": 60,\n                \"InvocationSource\": \"USER\",\n                \"WorkingDirectory\": \"/root\",\n                \"InvocationId\": \"inv-q4zp60g0\",\n                \"InstanceKind\": \"CVM\",\n                \"InvocationStatus\": \"SUCCESS\",\n                \"Description\": \"Test Invocation\",\n                \"Parameters\": \"\",\n                \"DefaultParameters\": \"\",\n                \"Username\": \"root\",\n                \"InvocationTaskBasicInfoSet\": [\n                    {\n                        \"InvocationTaskId\": \"invt-kakne8h2\",\n                        \"TaskStatus\": \"SUCCESS\",\n                        \"InstanceId\": \"ins-zj0f57ew\"\n                    },\n                    {\n                        \"InvocationTaskId\": \"invt-jc2onrxm\",\n                        \"TaskStatus\": \"SUCCESS\",\n                        \"InstanceId\": \"ins-zj0f57ex\"\n                    },\n                    {\n                        \"InvocationTaskId\": \"invt-6xmuisyq\",\n                        \"TaskStatus\": \"SUCCESS\",\n                        \"InstanceId\": \"ins-zj0f57ev\"\n                    }\n                ],\n                \"StartTime\": \"2020-11-09T07:21:59+00:00\",\n                \"EndTime\": \"2020-11-09T07:22:08+00:00\",\n                \"CreatedTime\": \"2020-11-09T07:21:59+00:00\",\n                \"UpdatedTime\": \"2020-11-09T07:22:08+00:00\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the execution activities"
+      }
+    ],
+    "DescribeInvokerRecords": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInvokerRecords\n<Common request parameters>\n\n{\n    \"InvokerIds\": [\n        \"ivk-b7s3qa5l\"\n    ],\n    \"Offset\": 0,\n    \"Limit\": 2\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0398dcea-b3de-4ec9-8e78-976191e0a94f\",\n        \"TotalCount\": 1443,\n        \"InvokerRecordSet\": [\n            {\n                \"InvokerId\": \"ivk-b7s3qa5l\",\n                \"Reason\": \"start an invocation at scheduled time.\",\n                \"InvocationId\": \"inv-l9l4orf1\",\n                \"Result\": \"SUCCESS\",\n                \"InvokeTime\": \"2021-09-06T09:33:05Z\"\n            },\n            {\n                \"InvokerId\": \"ivk-b7s3qa5l\",\n                \"Reason\": \"start an invocation at scheduled time.\",\n                \"InvocationId\": \"inv-7ojgezbd\",\n                \"Result\": \"SUCCESS\",\n                \"InvokeTime\": \"2021-09-06T09:30:05Z\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the execution history of an invoker"
+      }
+    ],
+    "DescribeInvokers": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInvokers\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"invoker-id\",\n            \"Values\": [\n                \"ivk-b7s3qa5l\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a4c828cf-31c9-42d2-a558-2ad340a76ef0\",\n        \"TotalCount\": 1,\n        \"InvokerSet\": [\n            {\n                \"InvokerId\": \"ivk-b7s3qa5l\",\n                \"Name\": \"test-invoker\",\n                \"Type\": \"SCHEDULE\",\n                \"CommandId\": \"cmd-m7uma92n\",\n                \"Username\": \"root\",\n                \"Parameters\": \"{\\\"var\\\": \\\"1\\\"}\",\n                \"InstanceIds\": [\n                    \"ins-yx05ky8j\"\n                ],\n                \"Enable\": false,\n                \"ScheduleSettings\": {\n                    \"Policy\": \"ONCE\",\n                    \"Recurrence\": \"\",\n                    \"InvokeTime\": \"\"\n                },\n                \"CreatedTime\": \"2021-08-30T06:42:02Z\",\n                \"UpdatedTime\": \"2021-09-09T12:07:00Z\"\n            }\n        ]\n    }\n}",
+        "title": "Querying invokers"
+      }
+    ],
+    "DescribeRegions": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRegions\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 13,\n        \"RegionSet\": [\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"RegionName\": \"Guangzhou\",\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-nanjing\",\n                \"RegionName\": \"Nanjing\",\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-shanghai\",\n                \"RegionName\": \"Shanghai\",\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-hongkong\",\n                \"RegionName\": \"Hong Kong (China)\",\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-beijing\",\n                \"RegionName\": \"Beijing\",\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-singapore\",\n                \"RegionName\": \"Singapore\",\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"na-siliconvalley\",\n                \"RegionName\": \"Silicon Valley\",\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-chengdu\",\n                \"RegionName\": \"Chengdu\",\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"eu-frankfurt\",\n                \"RegionName\": \"Frankfurt\",\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-seoul\",\n                \"RegionName\": \"Seoul\",\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-chongqing\",\n                \"RegionName\": \"Chongqing\",\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-mumbai\",\n                \"RegionName\": \"Mumbai\",\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"eu-moscow\",\n                \"RegionName\": \"Moscow\",\n                \"RegionState\": \"AVAILABLE\"\n            }\n        ],\n        \"RequestId\": \"6fb7f9db-b7da-4cb8-a912-3a3b1690f3a6\"\n    }\n}",
+        "title": "Querying regions that support TAT"
+      }
+    ],
+    "DisableInvoker": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisableInvoker\n<Common request parameters>\n\n{\n    \"InvokerId\": \"ivk-b7s3qa5l\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a6c5b0bd-4273-47c0-8d34-c32822f3ccb0\"\n    }\n}",
+        "title": "Disabling an invoker"
+      }
+    ],
+    "EnableInvoker": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableInvoker\n<Common request parameters>\n\n{\n    \"InvokerId\": \"ivk-b7s3qa5l\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"64119f65-18f5-47f3-a8d2-60d9fee593bf\"\n    }\n}",
+        "title": "Enabling an invoker"
+      }
+    ],
+    "InvokeCommand": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InvokeCommand\n<Common request parameters>\n\n{\n    \"CommandId\": \"cmd-ffxdx79i\",\n    \"InstanceIds\": [\n        \"lhins-ar5wyn40\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"41417f50-51b5-4c8d-85b7-f6c508cb228f\",\n        \"InvocationId\": \"inv-8xgjrytm\"\n    }\n}",
+        "title": "Triggering a command on a Lighthouse instance"
+      }
+    ],
+    "ModifyCommand": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCommand\n<Common request parameters>\n\n{\n    \"CommandName\": \"second-command\",\n    \"Description\": \"hello world!\",\n    \"Content\": \"cHM=\",\n    \"CommandType\": \"SHELL\",\n    \"WorkingDirectory\": \"/\",\n    \"Timeout\": 600,\n    \"CommandId\": \"cmd-63usjhmq\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9bea970a-0bab-495f-b0dd-de5eedfdf611\"\n    }\n}",
+        "title": "Modifying a command"
+      }
+    ],
+    "ModifyInvoker": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInvoker\n<Common request parameters>\n\n{\n    \"InvokerId\": \"ivk-b7s3qa5l\",\n    \"Parameters\": \"{\\\"var\\\": \\\"1\\\"}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7f3acde8-196d-4be4-9fa7-359f79b026bc\"\n    }\n}",
+        "title": "Modifying an invoker"
+      }
+    ],
+    "PreviewReplacedCommandContent": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PreviewReplacedCommandContent\n<Common request parameters>\n\n{\n    \"Parameters\": \"{\\\"a\\\": \\\"123\\\"}\",\n    \"Content\": \"bHMge3thfX0KZWNobyB7e2J9fSB7e2N9fQ==\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0b4c6010-42a7-45cd-b8c3-daa7de930e82\",\n        \"ReplacedContent\": \"bHMgMTIzCmVjaG8ge3tifX0ge3tjfX0=\"\n    }\n}",
+        "title": "Previewing the result of replacing comment content"
+      }
+    ],
+    "RunCommand": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tat.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RunCommand\n<Common request parameters>\n\n{\n    \"CommandName\": \"run-command\",\n    \"SaveCommand\": false,\n    \"Description\": \"whoami\",\n    \"Content\": \"d2hvYW1p\",\n    \"CommandType\": \"SHELL\",\n    \"WorkingDirectory\": \"/root/\",\n    \"Timeout\": 60,\n    \"InstanceIds\": [\n        \"ins-zj0f57ew\",\n        \"ins-zj0f57ex\",\n        \"ins-zj0f57ev\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f3e3a951-56b1-4042-af23-ba50223a8f60\",\n        \"CommandId\": \"cmd-5oa8jajm\",\n        \"InvocationId\": \"inv-mp6m9vmu\"\n    }\n}",
+        "title": "Executing a command on multiple CVM instances in batch"
+      }
+    ]
+  },
+  "version": "1.0"
+}

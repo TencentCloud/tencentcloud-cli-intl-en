@@ -1,0 +1,4188 @@
+{
+  "actions": {
+    "AddAccountToAccountGroup": {
+      "document": "This API is used to add an account to an account group.",
+      "input": "AddAccountToAccountGroupRequest",
+      "name": "Adds account to account group",
+      "output": "AddAccountToAccountGroupResponse"
+    },
+    "AddUserToUserGroup": {
+      "document": "This API is used to add a user to a user group.",
+      "input": "AddUserToUserGroupRequest",
+      "name": "Adds user to user group",
+      "output": "AddUserToUserGroupResponse"
+    },
+    "CreateAccountGroup": {
+      "document": "This API is used to create an account group.",
+      "input": "CreateAccountGroupRequest",
+      "name": "Creates account group",
+      "output": "CreateAccountGroupResponse"
+    },
+    "CreateAppAccount": {
+      "document": "This API is used to create an application account.",
+      "input": "CreateAppAccountRequest",
+      "name": "Creates application account",
+      "output": "CreateAppAccountResponse"
+    },
+    "CreateOrgNode": {
+      "document": "This API is used to create an organization node.",
+      "input": "CreateOrgNodeRequest",
+      "name": "Creates organization node",
+      "output": "CreateOrgNodeResponse"
+    },
+    "CreateUser": {
+      "document": "This API is used to create a user.",
+      "input": "CreateUserRequest",
+      "name": "Creates user",
+      "output": "CreateUserResponse"
+    },
+    "CreateUserGroup": {
+      "document": "This API is used to create a user group.",
+      "input": "CreateUserGroupRequest",
+      "name": "Creates user group",
+      "output": "CreateUserGroupResponse"
+    },
+    "DeleteAccountGroup": {
+      "document": "This API is used to delete an account group.",
+      "input": "DeleteAccountGroupRequest",
+      "name": "Deletes account group",
+      "output": "DeleteAccountGroupResponse"
+    },
+    "DeleteAppAccount": {
+      "document": "This API is used to delete an application account.",
+      "input": "DeleteAppAccountRequest",
+      "name": "Deletes application account",
+      "output": "DeleteAppAccountResponse"
+    },
+    "DeleteOrgNode": {
+      "document": "This API is used to delete an organization node.",
+      "input": "DeleteOrgNodeRequest",
+      "name": "Deletes organization node",
+      "output": "DeleteOrgNodeResponse"
+    },
+    "DeleteUser": {
+      "document": "This API is used to delete a user by username or user ID.",
+      "input": "DeleteUserRequest",
+      "name": "Deletes user",
+      "output": "DeleteUserResponse"
+    },
+    "DeleteUserGroup": {
+      "document": "This API is used to delete a user group.",
+      "input": "DeleteUserGroupRequest",
+      "name": "Deletes user group",
+      "output": "DeleteUserGroupResponse"
+    },
+    "DeleteUsers": {
+      "document": "This API is used to batch delete the users under the current node. If an error occurs when a user is deleted, the deletion of other selected users will not be affected, and the username/ID of the user who fails to be deleted will be prompted.",
+      "input": "DeleteUsersRequest",
+      "name": "Batch deletes users",
+      "output": "DeleteUsersResponse"
+    },
+    "DescribeAccountGroup": {
+      "document": "This API is used to query the list of account groups.",
+      "input": "DescribeAccountGroupRequest",
+      "name": "Queries account group list",
+      "output": "DescribeAccountGroupResponse"
+    },
+    "DescribeAppAccount": {
+      "document": "This API is used to query the list of application accounts.",
+      "input": "DescribeAppAccountRequest",
+      "name": "Queries application account list",
+      "output": "DescribeAppAccountResponse"
+    },
+    "DescribeApplication": {
+      "document": "This API is used to get the information of an application.",
+      "input": "DescribeApplicationRequest",
+      "name": "Gets application information",
+      "output": "DescribeApplicationResponse"
+    },
+    "DescribeOrgNode": {
+      "document": "This API is used to read the information of an organization node by organization node ID.",
+      "input": "DescribeOrgNodeRequest",
+      "name": "Reads organization node information",
+      "output": "DescribeOrgNodeResponse"
+    },
+    "DescribePublicKey": {
+      "document": "This API is used to get the information of a JWT public key.",
+      "input": "DescribePublicKeyRequest",
+      "name": "Gets JWT public key information",
+      "output": "DescribePublicKeyResponse"
+    },
+    "DescribeUserGroup": {
+      "document": "This API is used to get the information of a user group.",
+      "input": "DescribeUserGroupRequest",
+      "name": "Gets user group information",
+      "output": "DescribeUserGroupResponse"
+    },
+    "DescribeUserInfo": {
+      "document": "This API is used to search for a user by username or user ID.",
+      "input": "DescribeUserInfoRequest",
+      "name": "Gets user information",
+      "output": "DescribeUserInfoResponse"
+    },
+    "DescribeUserResourcesAuthorization": {
+      "document": "This API is used to query the list of resource authorizations under the specified user.",
+      "input": "DescribeUserResourcesAuthorizationRequest",
+      "name": "Queries resource authorization list under specified user",
+      "output": "DescribeUserResourcesAuthorizationResponse"
+    },
+    "DescribeUserThirdPartyAccountInfo": {
+      "document": "This API is used to get the third-party account binding information by username or user ID.",
+      "input": "DescribeUserThirdPartyAccountInfoRequest",
+      "name": "Gets the third-party account binding information of user",
+      "output": "DescribeUserThirdPartyAccountInfoResponse"
+    },
+    "ListAccountInAccountGroup": {
+      "document": " This API is used to get the list of accounts in an account group.",
+      "input": "ListAccountInAccountGroupRequest",
+      "name": "Gets the list of accounts in account group",
+      "output": "ListAccountInAccountGroupResponse"
+    },
+    "ListApplicationAuthorizations": {
+      "document": "This API is used to get the list of authorization relationships of an application (including search criteria-based match).",
+      "input": "ListApplicationAuthorizationsRequest",
+      "name": "Gets authorization relationship list of application",
+      "output": "ListApplicationAuthorizationsResponse"
+    },
+    "ListApplications": {
+      "document": "This API is used to get the list of applications.",
+      "input": "ListApplicationsRequest",
+      "name": "Gets application list",
+      "output": "ListApplicationsResponse"
+    },
+    "ListAuthorizedApplicationsToOrgNode": {
+      "document": "This API is used to get the list of accessible applications by organization node ID.",
+      "input": "ListAuthorizedApplicationsToOrgNodeRequest",
+      "name": "Gets the list of applications accessible to organization node",
+      "output": "ListAuthorizedApplicationsToOrgNodeResponse"
+    },
+    "ListAuthorizedApplicationsToUser": {
+      "document": "This API is used to get the list of accessible applications by user ID.",
+      "input": "ListAuthorizedApplicationsToUserRequest",
+      "name": "Gets the list of applications accessible to user",
+      "output": "ListAuthorizedApplicationsToUserResponse"
+    },
+    "ListAuthorizedApplicationsToUserGroup": {
+      "document": "This API is used to get the list of accessible applications by user group ID.",
+      "input": "ListAuthorizedApplicationsToUserGroupRequest",
+      "name": "Gets the list of applications accessible to user group",
+      "output": "ListAuthorizedApplicationsToUserGroupResponse"
+    },
+    "ListUserGroups": {
+      "document": "This API is used to get the information of the user group list (including query conditions).",
+      "input": "ListUserGroupsRequest",
+      "name": "Gets user group list information",
+      "output": "ListUserGroupsResponse"
+    },
+    "ListUserGroupsOfUser": {
+      "document": "This API is used to get the list of a user's user groups.",
+      "input": "ListUserGroupsOfUserRequest",
+      "name": "Gets the list of user's user groups",
+      "output": "ListUserGroupsOfUserResponse"
+    },
+    "ListUsers": {
+      "document": "This API is used to get the information of the user list.",
+      "input": "ListUsersRequest",
+      "name": "Gets user list information",
+      "output": "ListUsersResponse"
+    },
+    "ListUsersInOrgNode": {
+      "document": "This API is used to read the users under an organization node by organization node ID.",
+      "input": "ListUsersInOrgNodeRequest",
+      "name": "Reads users under node",
+      "output": "ListUsersInOrgNodeResponse"
+    },
+    "ListUsersInUserGroup": {
+      "document": "This API is used to get the list of the users in a user group.",
+      "input": "ListUsersInUserGroupRequest",
+      "name": "Gets the list of users in user group",
+      "output": "ListUsersInUserGroupResponse"
+    },
+    "ModifyAccountGroup": {
+      "document": "This API is used to modify an account group.",
+      "input": "ModifyAccountGroupRequest",
+      "name": "Modifies account group",
+      "output": "ModifyAccountGroupResponse"
+    },
+    "ModifyAppAccount": {
+      "document": "This API is used to modify an application account.",
+      "input": "ModifyAppAccountRequest",
+      "name": "Modifies application account",
+      "output": "ModifyAppAccountResponse"
+    },
+    "ModifyApplication": {
+      "document": "This API is used to update the information of an application.",
+      "input": "ModifyApplicationRequest",
+      "name": "Updates application",
+      "output": "ModifyApplicationResponse"
+    },
+    "ModifyUserInfo": {
+      "document": "This API is used to modify the information of a user by username or user ID.",
+      "input": "ModifyUserInfoRequest",
+      "name": "Modifies user",
+      "output": "ModifyUserInfoResponse"
+    },
+    "RemoveAccountFromAccountGroup": {
+      "document": "This API is used to remove an account from an account group.",
+      "input": "RemoveAccountFromAccountGroupRequest",
+      "name": "Removes account from account group",
+      "output": "RemoveAccountFromAccountGroupResponse"
+    },
+    "RemoveUserFromUserGroup": {
+      "document": "This API is used to remove a user from a user group.",
+      "input": "RemoveUserFromUserGroupRequest",
+      "name": "Removes user from user group",
+      "output": "RemoveUserFromUserGroupResponse"
+    },
+    "UpdateOrgNode": {
+      "document": "This API is used to create an organization node.",
+      "input": "UpdateOrgNodeRequest",
+      "name": "Updates organization node",
+      "output": "UpdateOrgNodeResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2021-04-20",
+    "serviceNameCN": "数字身份管控平台（员工版）",
+    "serviceShortName": "eiam"
+  },
+  "objects": {
+    "AccountGroupInfo": {
+      "document": "List of queried account group information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Account group ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AccountGroupId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account group name.",
+          "example": "无",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time.",
+          "example": "无",
+          "member": "string",
+          "name": "CreatedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AccountGroupSearchCriteria": {
+      "document": "Account group query parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Keyword",
+          "example": "比赛一组",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "AddAccountToAccountGroupRequest": {
+      "document": "AddAccountToAccountGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Account group ID",
+          "example": "无",
+          "member": "string",
+          "name": "AccountGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of IDs of the accounts to be added to the account group.",
+          "example": "无",
+          "member": "string",
+          "name": "AccountIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AddAccountToAccountGroupResponse": {
+      "document": "AddAccountToAccountGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddUserToUserGroupRequest": {
+      "document": "AddUserToUserGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IDs of the users to be added to the user group.",
+          "example": "id",
+          "member": "string",
+          "name": "UserIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "User group ID, which is globally unique.",
+          "example": "id",
+          "member": "string",
+          "name": "UserGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddUserToUserGroupResponse": {
+      "document": "AddUserToUserGroup response structure.",
+      "members": [
+        {
+          "document": "List of IDs of the users failed to be added to the user group.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FailedItems",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AppAccountInfo": {
+      "document": "List of queried account information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Account ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AccountId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "AccountName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User information list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LinkUserInfo",
+          "name": "UserList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreatedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AppAccountSearchCriteria": {
+      "document": "Account query parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Keyword",
+          "example": "张三",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ApplicationAuthorizationInfo": {
+      "document": "Application information list.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of the user's accounts under authorized applications\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationAccounts",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application ID, which is globally unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of IDs of the user's user groups and organization nodes that have access to the application.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "InheritedForm",
+          "name": "InheritedForm",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreatedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ApplicationInfoSearchCriteria": {
+      "document": "Application attribute search criteria.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application search keyword, which can be application name or ID.",
+          "example": "无",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application type. Valid values: OAUTH2, JWT, CAS, SAML2, FORM, OIDC, APIGW",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ApplicationInformation": {
+      "document": "Application information list.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID, which is globally unique.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Displayed application name, which can contain up to 64 characters and is the same as the application name by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application creation time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreatedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Last update time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LastModifiedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application status.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "AppStatus",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application icon.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Icon",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application type.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Client ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ClientId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AuthorizationInfo": {
+      "document": "Returned authorization information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AppId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application name.",
+          "example": "无",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Type name.",
+          "example": "无",
+          "member": "string",
+          "name": "EntityName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique type ID.",
+          "example": "无",
+          "member": "string",
+          "name": "EntityId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last update time in ISO 8601 format.",
+          "example": "无",
+          "member": "string",
+          "name": "LastModifiedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique authorization type ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AuthorizationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AuthorizationInfoSearchCriteria": {
+      "document": "User attribute search criteria.\n",
+      "members": [
+        {
+          "default": "",
+          "document": "Search by name. When the query type is user, the match criteria include username and application name. When the query type is user group, the match criteria include user group name and application name. When the query type is organization, the match criteria include organization name and application name.",
+          "example": "无",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "AuthorizationUserResouceInfo": {
+      "document": "Returned list of eligible user data",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "8580d166-2a25-45eb-beff-3085f5464deb",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Resource type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "resourceGroup",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Authorized resource\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "service-888:*",
+          "member": "string",
+          "name": "Resource",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Inheritance relationship\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "InheritedForm",
+          "name": "InheritedForm",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application account\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationAccounts",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Resource name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "用户菜单",
+          "member": "string",
+          "name": "ResourceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateAccountGroupRequest": {
+      "document": "CreateAccountGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Account group name.",
+          "example": "无",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccountGroupResponse": {
+      "document": "CreateAccountGroup response structure.",
+      "members": [
+        {
+          "document": "Account group ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "AccountGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAppAccountRequest": {
+      "document": "CreateAppAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Account name",
+          "example": "无",
+          "member": "string",
+          "name": "AccountName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Account password",
+          "example": "无",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAppAccountResponse": {
+      "document": "CreateAppAccount response structure.",
+      "members": [
+        {
+          "document": "Account ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "AccountId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOrgNodeRequest": {
+      "document": "CreateOrgNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organization node name, which can contain up to 64 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Parent organization node ID. If this parameter is left empty, the organization will be created under the root organization node by default.",
+          "example": "无",
+          "member": "string",
+          "name": "ParentOrgNodeId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Organization node description.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "External ID of the organization node, which is optional and customizable. If this parameter is specified, its uniqueness will be verified.",
+          "example": "无",
+          "member": "string",
+          "name": "CustomizedOrgNodeId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOrgNodeResponse": {
+      "document": "CreateOrgNode response structure.",
+      "members": [
+        {
+          "document": "Organization node ID, which is globally unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "OrgNodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserGroupRequest": {
+      "document": "CreateUserGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User group nickname, which is unique and can contain up to 64 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User group remarks, which can contain up to 512 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserGroupResponse": {
+      "document": "CreateUserGroup response structure.",
+      "members": [
+        {
+          "document": "User group ID, which is globally unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "UserGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserRequest": {
+      "document": "CreateUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Username, which can contain up to 64 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User password, which needs to be configured according to the password policy.",
+          "example": "无",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Nickname, which can contain up to 64 characters and is the same as the username by default.",
+          "example": "无",
+          "member": "string",
+          "name": "DisplayName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User remarks, which can contain up to 512 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of IDs of the user's user groups.",
+          "example": "无",
+          "member": "string",
+          "name": "UserGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "User's mobile number, such as `+86-1xxxxxxxxxx`.",
+          "example": "无",
+          "member": "string",
+          "name": "Phone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique ID of the user's primary organization. If this parameter is left empty, the user will be created under the root node by default.",
+          "example": "无",
+          "member": "string",
+          "name": "OrgNodeId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User expiration time in ISO 8601 format.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpirationTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User's email address.",
+          "example": "无",
+          "member": "string",
+          "name": "Email",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether the password needs to be reset. Default value: false (no).",
+          "example": "无",
+          "member": "bool",
+          "name": "PwdNeedReset",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "List of IDs of the user's secondary organizations.",
+          "example": "无",
+          "member": "string",
+          "name": "SecondaryOrgNodeIdList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserResponse": {
+      "document": "CreateUser response structure.",
+      "members": [
+        {
+          "document": "Returned ID of the newly created user, which is globally unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAccountGroupRequest": {
+      "document": "DeleteAccountGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Array of account group IDs.",
+          "example": "无",
+          "member": "string",
+          "name": "AccountGroupIdList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAccountGroupResponse": {
+      "document": "DeleteAccountGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAppAccountRequest": {
+      "document": "DeleteAppAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Array of account IDs .",
+          "example": "无",
+          "member": "string",
+          "name": "AccountIdList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAppAccountResponse": {
+      "document": "DeleteAppAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrgNodeRequest": {
+      "document": "DeleteOrgNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organization node ID, which is globally unique.",
+          "example": "无",
+          "member": "string",
+          "name": "OrgNodeId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrgNodeResponse": {
+      "document": "DeleteOrgNode response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserGroupRequest": {
+      "document": "DeleteUserGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User group ID, which is globally unique.",
+          "example": "id",
+          "member": "string",
+          "name": "UserGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserGroupResponse": {
+      "document": "DeleteUserGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserRequest": {
+      "document": "DeleteUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Username, which can contain up to 32 characters. You need to select either `UserName` or `UserId` as the search criterion; if both are selected, `UserName` will be used by default.",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User ID. You need to select either `UserName` or `UserId` as the search criterion. If both are selected, `UserName` will be used by default.",
+          "example": "id",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserResponse": {
+      "document": "DeleteUser response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUsersRequest": {
+      "document": "DeleteUsers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IDs of the users to be deleted. You need to specify at least `DeleteIdList` or `DeleteNameList`. If both are specified, `DeleteNameList` will be used first.",
+          "example": "无",
+          "member": "string",
+          "name": "DeleteIdList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of usernames of the users to be deleted. You need to specify at least `DeleteIdList` or `DeleteNameList`. If both are specified, `DeleteNameList` will be used first.",
+          "example": "无",
+          "member": "string",
+          "name": "DeleteNameList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUsersResponse": {
+      "document": "DeleteUsers response structure.",
+      "members": [
+        {
+          "document": "Information of the users failed to be deleted. When the business parameter is `DeleteIdList`, this field will return the list of IDs of the users failed to be deleted. When the business parameter is `DeleteNameList`, this field will return the list of usernames of the users failed to be deleted.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FailedItems",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountGroupRequest": {
+      "document": "DescribeAccountGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.",
+          "example": "无",
+          "member": "AccountGroupSearchCriteria",
+          "name": "SearchCondition",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountGroupResponse": {
+      "document": "DescribeAccountGroup response structure.",
+      "members": [
+        {
+          "document": "Total number of records returned for the query.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Application ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Returned list of eligible data.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AccountGroupInfo",
+          "name": "AccountGroupList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAppAccountRequest": {
+      "document": "DescribeAppAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.",
+          "example": "无",
+          "member": "AppAccountSearchCriteria",
+          "name": "SearchCondition",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAppAccountResponse": {
+      "document": "DescribeAppAccount response structure.",
+      "members": [
+        {
+          "document": "Total number of records returned for the query.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Application ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Returned list of eligible data.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AppAccountInfo",
+          "name": "AppAccountList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationRequest": {
+      "document": "DescribeApplication request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID, which is globally unique. You must specify at least this parameter or `ClientId`.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Client ID. You must specify at least this parameter or `ApplicationId`.",
+          "example": "无",
+          "member": "string",
+          "name": "ClientId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationResponse": {
+      "document": "DescribeApplication response structure.",
+      "members": [
+        {
+          "document": "Key ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Displayed application name, which can contain up to 64 characters and is the same as the application name by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Last modification time of the application in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LastModifiedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Client ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "ClientId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Application type, i.e., the application template type selected during application creation.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Application creation time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreatedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Application ID, which is globally unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Token validity period in seconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "TokenExpired",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Client secret.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ClientSecret",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Public key information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PublicKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Authorization address.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "AuthorizeUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Access address of the application icon image.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IconUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Security level.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SecureLevel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Application status.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "AppStatus",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrgNodeRequest": {
+      "document": "DescribeOrgNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organization node ID, which is globally unique and can contain up to 64 characters. If this parameter is left empty, the information of the root organization node will be read by default.",
+          "example": "无",
+          "member": "string",
+          "name": "OrgNodeId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to read the information of its sub-nodes. When this parameter is left empty or specified as `false`, only the information of the current organization node will be read by default. When it is specified as `true`, the information of the current organization node and its level-1 sub-nodes will be read.",
+          "example": "无",
+          "member": "bool",
+          "name": "IncludeOrgNodeChildInfo",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrgNodeResponse": {
+      "document": "DescribeOrgNode response structure.",
+      "members": [
+        {
+          "document": "Displayed organization node name, which can contain up to 64 characters and is the same as the organization name by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Last modification time of the organization node in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LastModifiedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "External ID of the organization node.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "CustomizedOrgNodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Parent node ID of the current organization node.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "ParentOrgNodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Organization node ID, which is globally unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "OrgNodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Data source.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DataSource",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Organization node creation time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreatedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of sub-nodes under the current organization node.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OrgNodeChildInfo",
+          "name": "OrgNodeChildInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Organization node description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePublicKeyRequest": {
+      "document": "DescribePublicKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID, which is globally unique.",
+          "example": "id",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePublicKeyResponse": {
+      "document": "DescribePublicKey response structure.",
+      "members": [
+        {
+          "document": "Public key information used for JWT signature verification.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PublicKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "JWT key ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Application ID, which is globally unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserGroupRequest": {
+      "document": "DescribeUserGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User group ID, which is globally unique.",
+          "example": "id",
+          "member": "string",
+          "name": "UserGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserGroupResponse": {
+      "document": "DescribeUserGroup response structure.",
+      "members": [
+        {
+          "document": "User group nickname, which is not unique and can contain up to 64 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "User group remarks, which can contain up to 512 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "User group ID, which is globally unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "UserGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserInfoRequest": {
+      "document": "DescribeUserInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Username, which can contain up to 64 characters. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User ID, which can contain up to 64 characters. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.",
+          "example": "id",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserInfoResponse": {
+      "document": "DescribeUserInfo response structure.",
+      "members": [
+        {
+          "document": "Username.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Nickname\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "User remarks.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of IDs of the user's user groups.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserGroupIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "User ID, which can contain up to 64 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "User's email address.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "User's mobile number.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Phone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Unique ID of the user's primary organization.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OrgNodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Data source\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DataSource",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "User expiration time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpirationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "User activation time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ActivationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether the password of the current user needs to be reset. `false` indicates no.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "PwdNeedReset",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of IDs of the user's secondary organizations.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SecondaryOrgNodeIdList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether the user is an admin. Valid values: 0: no; 1: yes.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "AdminFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserResourcesAuthorizationRequest": {
+      "document": "DescribeUserResourcesAuthorization request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User ID. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.",
+          "example": "无",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Username. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether the query scope includes the application access of the user groups and organizations associated with the user. Valid values: false: no; true: yes. Default value: false.",
+          "example": "true",
+          "member": "bool",
+          "name": "IncludeInheritedAuthorizations",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserResourcesAuthorizationResponse": {
+      "document": "DescribeUserResourcesAuthorization response structure.",
+      "members": [
+        {
+          "document": "Unique application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Application account.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationAccounts",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Unique ID of the authorized user.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Username of the authorized user.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Returned resource list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AuthorizationUserResouceInfo",
+          "name": "AuthorizationUserResourceList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserThirdPartyAccountInfoRequest": {
+      "document": "DescribeUserThirdPartyAccountInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Username. You need to specify at least `Username` or `UserId`. If both are specified, `Username` will be used first.",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User ID. You need to specify at least `Username` or `UserId`. If both are specified, `Username` will be used first.",
+          "example": "无",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserThirdPartyAccountInfoResponse": {
+      "document": "DescribeUserThirdPartyAccountInfo response structure.",
+      "members": [
+        {
+          "document": "User ID.",
+          "example": "无",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Username.",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Third-Party account binding information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ThirdPartyAccountInfo",
+          "name": "ThirdPartyAccounts",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InheritedForm": {
+      "document": "Application information list.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IDs of the user's user groups.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "UserGroupIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of IDs of the user's organization nodes.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "OrgNodeIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LinkUserInfo": {
+      "document": "User information associated with the account",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID, which is globally unique and can contain up to 64 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Username.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ListAccountInAccountGroupRequest": {
+      "document": "ListAccountInAccountGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Account group ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AccountGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Search criterion. You can combine multiple search criteria and search in multiple data ranges.",
+          "example": "无",
+          "member": "AccountGroupSearchCriteria",
+          "name": "SearchCondition",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAccountInAccountGroupResponse": {
+      "document": "ListAccountInAccountGroup response structure.",
+      "members": [
+        {
+          "document": "List of accounts returned for the query.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AppAccountInfo",
+          "name": "AccountList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of accounts returned for the query.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Account group ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "AccountGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListApplicationAuthorizationsRequest": {
+      "document": "ListApplicationAuthorizations request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Query type. Valid values: User: user; UserGroup: user group; OrgNode: organization.",
+          "example": "无",
+          "member": "string",
+          "name": "EntityType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.",
+          "example": "无",
+          "member": "AuthorizationInfoSearchCriteria",
+          "name": "SearchCondition",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Set of sort criteria. You can sort the results by last modification time (lastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by application name.",
+          "example": "无",
+          "member": "SortCondition",
+          "name": "Sort",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListApplicationAuthorizationsResponse": {
+      "document": "ListApplicationAuthorizations response structure.",
+      "members": [
+        {
+          "document": "Returned list of application authorization information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AuthorizationInfo",
+          "name": "AuthorizationInfoList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of returned application information items.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListApplicationsRequest": {
+      "document": "ListApplications request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Fuzzy match search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, and an asterisk (*) at the end of the field indicates partial match. The fuzzy match search feature and the exact match query feature will not take effect at the same time. If both `SearchCondition` and `ApplicationIdList` are specified, `ApplicationIdList` will take effect by default for exact match query; otherwise, the information of all applications will be returned by default.",
+          "example": "无",
+          "member": "ApplicationInfoSearchCriteria",
+          "name": "SearchCondition",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Set of sort criteria. Valid values: DisplayName: application name; CreatedDate: creation time; LastModifiedDate: last modification time. If this field is left empty, the results will be sorted in alphabetical order by application name.",
+          "example": "无",
+          "member": "SortCondition",
+          "name": "Sort",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Set of sort criteria. Valid values: DisplayName: application name; CreatedDate: creation time; LastModifiedDate: last modification time. If this field is left empty, the results will be sorted in alphabetical order by application name.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Application ID list, through which the corresponding application information will be matched exactly. The fuzzy match search feature and the exact match query feature will not take effect at the same time. If both `SearchCondition` and `ApplicationIdList` are specified, `ApplicationIdList` will take effect by default for exact match query; otherwise, the information of all applications will be returned by default.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationIdList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListApplicationsResponse": {
+      "document": "ListApplications response structure.",
+      "members": [
+        {
+          "document": "Total number of returned application information items.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Returned application information list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ApplicationInformation",
+          "name": "ApplicationInfoList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAuthorizedApplicationsToOrgNodeRequest": {
+      "document": "ListAuthorizedApplicationsToOrgNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organization node ID.",
+          "example": "id",
+          "member": "string",
+          "name": "OrgNodeId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAuthorizedApplicationsToOrgNodeResponse": {
+      "document": "ListAuthorizedApplicationsToOrgNode response structure.",
+      "members": [
+        {
+          "document": "List of IDs of the applications accessible to the organization node.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "{}",
+          "member": "string",
+          "name": "ApplicationIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAuthorizedApplicationsToUserGroupRequest": {
+      "document": "ListAuthorizedApplicationsToUserGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User group ID.",
+          "example": "id",
+          "member": "string",
+          "name": "UserGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAuthorizedApplicationsToUserGroupResponse": {
+      "document": "ListAuthorizedApplicationsToUserGroup response structure.",
+      "members": [
+        {
+          "document": "List of IDs of the applications accessible to the user group.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "ApplicationIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAuthorizedApplicationsToUserRequest": {
+      "document": "ListAuthorizedApplicationsToUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID.",
+          "example": "id",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether the query scope includes the application access of the user groups and organizations associated with the user. Valid values: false: no; true: yes. Default value: false.",
+          "example": "无",
+          "member": "bool",
+          "name": "IncludeInheritedAuthorizations",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAuthorizedApplicationsToUserResponse": {
+      "document": "ListAuthorizedApplicationsToUser response structure.",
+      "members": [
+        {
+          "document": "List of information of the applications accessible to the user.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ApplicationAuthorizationInfo",
+          "name": "ApplicationAuthorizationInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUserGroupsOfUserRequest": {
+      "document": "ListUserGroupsOfUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID, which is globally unique.",
+          "example": "id",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Fuzzy search criterion. You can search by user group name (DisplayName). If this field is left empty, all of the user's user groups will be displayed by default.",
+          "example": "无",
+          "member": "UserGroupInformationSearchCriteria",
+          "name": "SearchCondition",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Set of sort criteria. Valid values: DisplayName: user group name; UserGroupId: user group ID; CreatedDate: creation time. If this field is left empty, the results will be sorted in alphabetical order by user group name.",
+          "example": "无",
+          "member": "SortCondition",
+          "name": "Sort",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 user groups will be returned.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 user groups will be returned.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUserGroupsOfUserResponse": {
+      "document": "ListUserGroupsOfUser response structure.",
+      "members": [
+        {
+          "document": "List of IDs of the user's user groups.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserGroupIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "User ID, which is globally unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of information of the user's user groups.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UserGroupInfo",
+          "name": "UserGroupInfoList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of returned user group information items.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUserGroupsRequest": {
+      "document": "ListUserGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.",
+          "example": "无",
+          "member": "UserGroupInfoSearchCriteria",
+          "name": "SearchCondition",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Set of sort criteria. The supported attributes for sorting include user group name (DisplayName), user group ID (UserGroupId), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by user group name.",
+          "example": "无",
+          "member": "SortCondition",
+          "name": "Sort",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUserGroupsResponse": {
+      "document": "ListUserGroups response structure.",
+      "members": [
+        {
+          "document": "Returned user group list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UserGroupInformation",
+          "name": "UserGroupList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of returned user group information items.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUsersInOrgNodeRequest": {
+      "document": "ListUsersInOrgNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organization node ID, which is globally unique and can contain up to 64 characters. If this parameter is left empty, the user information under the root organization node will be read by default.",
+          "example": "id",
+          "member": "string",
+          "name": "OrgNodeId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to read the information of its sub-nodes. When this parameter is left empty or specified as `false`, only the information of the current organization node will be read by default. When it is specified as `true`, the information of the current organization node and its level-1 sub-nodes will be read.",
+          "example": "无",
+          "member": "bool",
+          "name": "IncludeOrgNodeChildInfo",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.",
+          "example": "无",
+          "member": "ListUsersInOrgNodeSearchCriteria",
+          "name": "SearchCondition",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Set of sort criteria. The supported attributes for sorting include username (UserName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).",
+          "example": "无",
+          "member": "SortCondition",
+          "name": "Sort",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUsersInOrgNodeResponse": {
+      "document": "ListUsersInOrgNode response structure.",
+      "members": [
+        {
+          "document": "User information list under the organization sub-node.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OrgNodeChildUserInfo",
+          "name": "OrgNodeChildUserInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Organization node ID, which is globally unique and can contain up to 64 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "OrgNodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "User information list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UserInfo",
+          "name": "UserInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of users under the current organization node.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalUserNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Organization ID path.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OrgNodeIdPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Organization name path.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OrgNodeNamePath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUsersInOrgNodeSearchCriteria": {
+      "document": "Displays user attribute search criteria under the organization.",
+      "members": [
+        {
+          "default": "",
+          "document": "Username, which can contain up to 64 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User's mobile number.",
+          "example": "无",
+          "member": "string",
+          "name": "Phone",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User's email address.",
+          "example": "无",
+          "member": "string",
+          "name": "Email",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User creation time in ISO 8601 format.",
+          "example": "无",
+          "member": "string",
+          "name": "CreationTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last update time of the user.",
+          "example": "无",
+          "member": "string",
+          "name": "LastUpdateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Search by name. The match criteria include username and user's mobile number.",
+          "example": "无",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ListUsersInUserGroupRequest": {
+      "document": "ListUsersInUserGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User group ID, which is globally unique.",
+          "example": "id",
+          "member": "string",
+          "name": "UserGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.",
+          "example": "无",
+          "member": "UserSearchCriteria",
+          "name": "SearchCondition",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Set of sort criteria. The supported attributes for sorting include username (UserName), nickname (DisplayName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).",
+          "example": "无",
+          "member": "SortCondition",
+          "name": "Sort",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUsersInUserGroupResponse": {
+      "document": "ListUsersInUserGroup response structure.",
+      "members": [
+        {
+          "document": "User group ID, which is globally unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "UserGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Returned user information list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UserInfo",
+          "name": "UserInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of returned user information items.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUsersRequest": {
+      "document": "ListUsers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.",
+          "example": "无",
+          "member": "UserSearchCriteria",
+          "name": "SearchCondition",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "User attributes expected to be returned. All built-in user attributes will be returned by default, including user UUID (UserId), nickname (DisplayName), username (UserName), mobile number (Phone), email address (Email), status (Status), user group (SubjectGroups), organization path (OrgPath), remarks (Description), creation time (CreationTime), last modification time (LastUpdateTime), and last login time (LastLoginTime).",
+          "example": "无",
+          "member": "string",
+          "name": "ExpectedFields",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Set of sort criteria. The supported attributes for sorting include username (UserName), nickname (DisplayName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), last modification time (LastUpdateTime), and last login time (LastLoginTime). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).",
+          "example": "无",
+          "member": "SortCondition",
+          "name": "Sort",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 1,000 users will be returned.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 1,000 users will be returned.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to view the total number of search results. Default value: false (no).",
+          "example": "无",
+          "member": "bool",
+          "name": "IncludeTotal",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUsersResponse": {
+      "document": "ListUsers response structure.",
+      "members": [
+        {
+          "document": "List of users returned for the query.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UserInformation",
+          "name": "UserList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of users returned for the query, which will be returned only when the `IncludeTotal` input parameter is set to `true`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccountGroupRequest": {
+      "document": "ModifyAccountGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Account group ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AccountGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Account group name. When this parameter is not specified, the name will not be modified.",
+          "example": "无",
+          "member": "string",
+          "name": "GroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description. When this parameter is not specified, the description will not be modified.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccountGroupResponse": {
+      "document": "ModifyAccountGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAppAccountRequest": {
+      "document": "ModifyAppAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Account ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AccountId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Account name. When this parameter is not specified, the name will not be modified.",
+          "example": "无",
+          "member": "string",
+          "name": "AccountName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Account password. When this parameter is not specified, the password will not be changed.",
+          "example": "无",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description. When this parameter is not specified, the description will not be modified.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAppAccountResponse": {
+      "document": "ModifyAppAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyApplicationRequest": {
+      "document": "ModifyApplication request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application ID, which is globally unique.",
+          "example": "id",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security level.",
+          "example": "无",
+          "member": "string",
+          "name": "SecureLevel",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Displayed application name, which can contain up to 32 characters and is the same as the application name by default.",
+          "example": "无",
+          "member": "string",
+          "name": "DisplayName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Application status. Valid values: true: enabled; false: disabled.",
+          "example": "无",
+          "member": "bool",
+          "name": "AppStatus",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Access address of the application icon image.",
+          "example": "无",
+          "member": "string",
+          "name": "IconUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description, which can contain up to 128 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyApplicationResponse": {
+      "document": "ModifyApplication response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyUserInfoRequest": {
+      "document": "ModifyUserInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Username, which can contain up to 32 characters. You need to select either `Username` or `UserId` as the search criterion; if both are selected, `Username` will be used by default.",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Nickname, which can contain up to 64 characters and is the same as the username by default.",
+          "example": "无",
+          "member": "string",
+          "name": "DisplayName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User remarks, which can contain up to 512 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of IDs of the user's user groups.",
+          "example": "无",
+          "member": "string",
+          "name": "UserGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "User ID. You need to select either `UserName` or `UserId` as the search criterion. If both are selected, `UserName` will be used by default.",
+          "example": "id",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User's mobile number.",
+          "example": "无",
+          "member": "string",
+          "name": "Phone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User expiration time in ISO 8601 format.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpirationTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User password, which needs to be configured according to the password policy.",
+          "example": "无",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User's email address.",
+          "example": "无",
+          "member": "string",
+          "name": "Email",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether the password needs to be reset. Default value: false (no).",
+          "example": "无",
+          "member": "bool",
+          "name": "PwdNeedReset",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Unique ID of the user's primary organization. If this parameter is left empty, the user will be created under the root node by default.",
+          "example": "无",
+          "member": "string",
+          "name": "OrgNodeId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of IDs of the user's secondary organizations.",
+          "example": "无",
+          "member": "string",
+          "name": "SecondaryOrgNodeIdList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyUserInfoResponse": {
+      "document": "ModifyUserInfo response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OrgNodeChildInfo": {
+      "document": "List of sub-nodes under the current organization node",
+      "members": [
+        {
+          "default": "",
+          "document": "Displayed organization node name, which can contain up to 64 characters and is the same as the organization name by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Last modification time of the organization node in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "LastModifiedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "External ID of the organization node, which is optional and customizable.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "CustomizedOrgNodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Parent node ID of the current organization node.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "ParentOrgNodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Organization node ID, which is globally unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "OrgNodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Data source.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "DataSource",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Organization node creation time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "CreatedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Organization node description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "OrgNodeChildUserInfo": {
+      "document": "User information list under the organization sub-node",
+      "members": [
+        {
+          "default": "",
+          "document": "Organization node ID, which is globally unique and can contain up to 64 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "OrgNodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User information list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UserInfo",
+          "name": "UserInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Total number of users under the current organization node.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalUserNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Organization ID path.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OrgNodeIdPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Organization name path.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OrgNodeNamePath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RemoveAccountFromAccountGroupRequest": {
+      "document": "RemoveAccountFromAccountGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Account group ID",
+          "example": "无",
+          "member": "string",
+          "name": "AccountGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of IDs of the accounts to be removed.",
+          "example": "无",
+          "member": "string",
+          "name": "AccountIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveAccountFromAccountGroupResponse": {
+      "document": "RemoveAccountFromAccountGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveUserFromUserGroupRequest": {
+      "document": "RemoveUserFromUserGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IDs of the users to be added to the user group.",
+          "example": "id",
+          "member": "string",
+          "name": "UserIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "User group ID, which is globally unique.",
+          "example": "id",
+          "member": "string",
+          "name": "UserGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveUserFromUserGroupResponse": {
+      "document": "RemoveUserFromUserGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SortCondition": {
+      "document": "Sort criterion.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sorting attribute.",
+          "example": "无",
+          "member": "string",
+          "name": "SortKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: ASC: ascending order; DESC: descending order.",
+          "example": "无",
+          "member": "string",
+          "name": "SortOrder",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ThirdPartyAccountInfo": {
+      "document": "Third-Party account information.",
+      "members": [
+        {
+          "default": "",
+          "document": "Third-Party account code. `2` indicates WeCom account.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "AccountCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Username of the account.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "AccountName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UpdateOrgNodeRequest": {
+      "document": "UpdateOrgNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organization node ID, which is globally unique.",
+          "example": "id",
+          "member": "string",
+          "name": "OrgNodeId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Organization node name, which can contain up to 64 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Organization node description.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "External ID of the organization node, which is optional and customizable. If this parameter is specified, its uniqueness will be verified.",
+          "example": "id",
+          "member": "string",
+          "name": "CustomizedOrgNodeId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateOrgNodeResponse": {
+      "document": "UpdateOrgNode response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UserGroupInfo": {
+      "document": "Returned user group list.",
+      "members": [
+        {
+          "default": "",
+          "document": "Nickname, which can contain up to 64 characters and is the same as the username by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User group ID, which is globally unique and can contain up to 64 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "UserGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User group remarks.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreatedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UserGroupInfoSearchCriteria": {
+      "document": "User group attribute search criteria.",
+      "members": [
+        {
+          "default": "",
+          "document": "Search by name. The match criteria include user group name and user group ID.",
+          "example": "无",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "UserGroupInformation": {
+      "document": "Returned user group list.",
+      "members": [
+        {
+          "default": "",
+          "document": "User group ID.",
+          "example": "无",
+          "member": "string",
+          "name": "UserGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User group name.",
+          "example": "无",
+          "member": "string",
+          "name": "UserGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last update time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LastModifiedDate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UserGroupInformationSearchCriteria": {
+      "document": "User group attribute search criteria in the list of the user's user groups.",
+      "members": [
+        {
+          "default": "",
+          "document": "Search by name. The match criteria include user group name.",
+          "example": "无",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "UserInfo": {
+      "document": "User information list.",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID, which is globally unique and can contain up to 64 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "id",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Nickname, which can contain up to 64 characters and is the same as the username by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Username.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User's mobile number.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Phone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Email address.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User status.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Data source.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DataSource",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UserInformation": {
+      "document": "User information list.",
+      "members": [
+        {
+          "default": "",
+          "document": "Username, which can contain up to 32 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User status.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Nickname, which can contain up to 64 characters and is the same as the username by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User remarks, which can contain up to 512 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Last update time of the user in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LastUpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User creation time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Path ID of the user's primary organization.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OrgPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User's mobile number with country code, such as `+86-00000000000`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Phone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of IDs of the user's user groups.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubjectGroups",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User's email address.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Last login time of the user in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LastLoginTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User ID, which is globally unique and can contain up to 64 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UserSearchCriteria": {
+      "document": "User attribute search criteria.",
+      "members": [
+        {
+          "default": "",
+          "document": "Username, which can contain up to 64 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User's mobile number.",
+          "example": "无",
+          "member": "string",
+          "name": "Phone",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User's email address.",
+          "example": "无",
+          "member": "string",
+          "name": "Email",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User creation time in ISO 8601 format.",
+          "example": "无",
+          "member": "string",
+          "name": "CreationTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The user's last update time.",
+          "example": "无",
+          "member": "string",
+          "name": "LastUpdateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Search by name. The match criteria include username and user ID.",
+          "example": "无",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    }
+  },
+  "version": "1.0"
+}

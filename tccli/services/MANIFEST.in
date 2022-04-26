@@ -23,6 +23,8 @@ include tccli/services/cfs/v20190719/api.json
 include tccli/services/cfs/v20190719/examples.json
 include tccli/services/chdfs/v20201112/api.json
 include tccli/services/chdfs/v20201112/examples.json
+include tccli/services/ciam/v20210420/api.json
+include tccli/services/ciam/v20210420/examples.json
 include tccli/services/ckafka/v20190819/api.json
 include tccli/services/ckafka/v20190819/examples.json
 include tccli/services/clb/v20180317/api.json
@@ -57,6 +59,8 @@ include tccli/services/ecdn/v20191012/api.json
 include tccli/services/ecdn/v20191012/examples.json
 include tccli/services/ecm/v20190719/api.json
 include tccli/services/ecm/v20190719/examples.json
+include tccli/services/eiam/v20210420/api.json
+include tccli/services/eiam/v20210420/examples.json
 include tccli/services/emr/v20190103/api.json
 include tccli/services/emr/v20190103/examples.json
 include tccli/services/es/v20180416/api.json
@@ -131,6 +135,8 @@ include tccli/services/sts/v20180813/api.json
 include tccli/services/sts/v20180813/examples.json
 include tccli/services/tag/v20180813/api.json
 include tccli/services/tag/v20180813/examples.json
+include tccli/services/tat/v20201028/api.json
+include tccli/services/tat/v20201028/examples.json
 include tccli/services/tcaplusdb/v20190823/api.json
 include tccli/services/tcaplusdb/v20190823/examples.json
 include tccli/services/tcr/v20190924/api.json

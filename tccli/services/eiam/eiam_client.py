@@ -11,11 +11,11 @@ from tccli.exceptions import ConfigurationError, ParamError
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.cvm.v20170312 import cvm_client as cvm_client_v20170312
-from tencentcloud.cvm.v20170312 import models as models_v20170312
+from tencentcloud.eiam.v20210420 import eiam_client as eiam_client_v20210420
+from tencentcloud.eiam.v20210420 import models as models_v20210420
 
 
-def doCreateImage(args, parsed_globals):
+def doDescribeUserGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -28,12 +28,12 @@ def doCreateImage(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateImageRequest()
+    model = models.DescribeUserGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateImage(model)
+    rsp = client.DescribeUserGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -42,7 +42,7 @@ def doCreateImage(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeInstancesStatus(args, parsed_globals):
+def doCreateAccountGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -55,12 +55,12 @@ def doDescribeInstancesStatus(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInstancesStatusRequest()
+    model = models.CreateAccountGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeInstancesStatus(model)
+    rsp = client.CreateAccountGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -69,7 +69,7 @@ def doDescribeInstancesStatus(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyImageSharePermission(args, parsed_globals):
+def doModifyApplication(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -82,12 +82,12 @@ def doModifyImageSharePermission(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyImageSharePermissionRequest()
+    model = models.ModifyApplicationRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyImageSharePermission(model)
+    rsp = client.ModifyApplication(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -96,7 +96,7 @@ def doModifyImageSharePermission(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeInstancesOperationLimit(args, parsed_globals):
+def doDescribePublicKey(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -109,12 +109,12 @@ def doDescribeInstancesOperationLimit(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInstancesOperationLimitRequest()
+    model = models.DescribePublicKeyRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeInstancesOperationLimit(model)
+    rsp = client.DescribePublicKey(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -123,7 +123,7 @@ def doDescribeInstancesOperationLimit(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeImageSharePermission(args, parsed_globals):
+def doListUsers(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -136,12 +136,12 @@ def doDescribeImageSharePermission(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeImageSharePermissionRequest()
+    model = models.ListUsersRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeImageSharePermission(model)
+    rsp = client.ListUsers(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -150,7 +150,7 @@ def doDescribeImageSharePermission(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doImportImage(args, parsed_globals):
+def doRemoveAccountFromAccountGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -163,12 +163,12 @@ def doImportImage(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ImportImageRequest()
+    model = models.RemoveAccountFromAccountGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ImportImage(model)
+    rsp = client.RemoveAccountFromAccountGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -177,7 +177,7 @@ def doImportImage(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyKeyPairAttribute(args, parsed_globals):
+def doListAccountInAccountGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -190,12 +190,12 @@ def doModifyKeyPairAttribute(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyKeyPairAttributeRequest()
+    model = models.ListAccountInAccountGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyKeyPairAttribute(model)
+    rsp = client.ListAccountInAccountGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -204,7 +204,7 @@ def doModifyKeyPairAttribute(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeImages(args, parsed_globals):
+def doListAuthorizedApplicationsToUserGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -217,12 +217,12 @@ def doDescribeImages(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeImagesRequest()
+    model = models.ListAuthorizedApplicationsToUserGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeImages(model)
+    rsp = client.ListAuthorizedApplicationsToUserGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -231,7 +231,7 @@ def doDescribeImages(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteLaunchTemplate(args, parsed_globals):
+def doModifyAppAccount(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -244,12 +244,12 @@ def doDeleteLaunchTemplate(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteLaunchTemplateRequest()
+    model = models.ModifyAppAccountRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteLaunchTemplate(model)
+    rsp = client.ModifyAppAccount(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -258,7 +258,7 @@ def doDeleteLaunchTemplate(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyInstancesAttribute(args, parsed_globals):
+def doModifyAccountGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -271,12 +271,12 @@ def doModifyInstancesAttribute(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyInstancesAttributeRequest()
+    model = models.ModifyAccountGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyInstancesAttribute(model)
+    rsp = client.ModifyAccountGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -285,7 +285,7 @@ def doModifyInstancesAttribute(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeRegions(args, parsed_globals):
+def doDescribeUserResourcesAuthorization(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -298,12 +298,12 @@ def doDescribeRegions(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeRegionsRequest()
+    model = models.DescribeUserResourcesAuthorizationRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeRegions(model)
+    rsp = client.DescribeUserResourcesAuthorization(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -312,7 +312,7 @@ def doDescribeRegions(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doInquiryPriceResetInstancesInternetMaxBandwidth(args, parsed_globals):
+def doListApplicationAuthorizations(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -325,12 +325,12 @@ def doInquiryPriceResetInstancesInternetMaxBandwidth(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InquiryPriceResetInstancesInternetMaxBandwidthRequest()
+    model = models.ListApplicationAuthorizationsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.InquiryPriceResetInstancesInternetMaxBandwidth(model)
+    rsp = client.ListApplicationAuthorizations(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -339,7 +339,7 @@ def doInquiryPriceResetInstancesInternetMaxBandwidth(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteImages(args, parsed_globals):
+def doDescribeUserThirdPartyAccountInfo(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -352,12 +352,12 @@ def doDeleteImages(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteImagesRequest()
+    model = models.DescribeUserThirdPartyAccountInfoRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteImages(model)
+    rsp = client.DescribeUserThirdPartyAccountInfo(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -366,7 +366,7 @@ def doDeleteImages(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateKeyPair(args, parsed_globals):
+def doDeleteUserGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -379,12 +379,12 @@ def doCreateKeyPair(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateKeyPairRequest()
+    model = models.DeleteUserGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateKeyPair(model)
+    rsp = client.DeleteUserGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -393,7 +393,7 @@ def doCreateKeyPair(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeInstanceFamilyConfigs(args, parsed_globals):
+def doDeleteAccountGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -406,12 +406,12 @@ def doDescribeInstanceFamilyConfigs(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInstanceFamilyConfigsRequest()
+    model = models.DeleteAccountGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeInstanceFamilyConfigs(model)
+    rsp = client.DeleteAccountGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -420,7 +420,7 @@ def doDescribeInstanceFamilyConfigs(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteKeyPairs(args, parsed_globals):
+def doModifyUserInfo(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -433,12 +433,12 @@ def doDeleteKeyPairs(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteKeyPairsRequest()
+    model = models.ModifyUserInfoRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteKeyPairs(model)
+    rsp = client.ModifyUserInfo(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -447,7 +447,7 @@ def doDeleteKeyPairs(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateDisasterRecoverGroup(args, parsed_globals):
+def doListUserGroups(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -460,12 +460,12 @@ def doCreateDisasterRecoverGroup(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateDisasterRecoverGroupRequest()
+    model = models.ListUserGroupsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateDisasterRecoverGroup(model)
+    rsp = client.ListUserGroups(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -474,7 +474,7 @@ def doCreateDisasterRecoverGroup(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeInstances(args, parsed_globals):
+def doAddUserToUserGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -487,12 +487,12 @@ def doDescribeInstances(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInstancesRequest()
+    model = models.AddUserToUserGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeInstances(model)
+    rsp = client.AddUserToUserGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -501,7 +501,7 @@ def doDescribeInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeLaunchTemplateVersions(args, parsed_globals):
+def doDeleteAppAccount(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -514,12 +514,12 @@ def doDescribeLaunchTemplateVersions(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeLaunchTemplateVersionsRequest()
+    model = models.DeleteAppAccountRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeLaunchTemplateVersions(model)
+    rsp = client.DeleteAppAccount(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -528,7 +528,7 @@ def doDescribeLaunchTemplateVersions(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAssociateInstancesKeyPairs(args, parsed_globals):
+def doDescribeAccountGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -541,12 +541,12 @@ def doAssociateInstancesKeyPairs(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AssociateInstancesKeyPairsRequest()
+    model = models.DescribeAccountGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.AssociateInstancesKeyPairs(model)
+    rsp = client.DescribeAccountGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -555,7 +555,7 @@ def doAssociateInstancesKeyPairs(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyLaunchTemplateDefaultVersion(args, parsed_globals):
+def doDeleteUsers(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -568,12 +568,12 @@ def doModifyLaunchTemplateDefaultVersion(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyLaunchTemplateDefaultVersionRequest()
+    model = models.DeleteUsersRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyLaunchTemplateDefaultVersion(model)
+    rsp = client.DeleteUsers(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -582,7 +582,7 @@ def doModifyLaunchTemplateDefaultVersion(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDisassociateInstancesKeyPairs(args, parsed_globals):
+def doCreateAppAccount(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -595,12 +595,12 @@ def doDisassociateInstancesKeyPairs(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DisassociateInstancesKeyPairsRequest()
+    model = models.CreateAppAccountRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DisassociateInstancesKeyPairs(model)
+    rsp = client.CreateAppAccount(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -609,7 +609,7 @@ def doDisassociateInstancesKeyPairs(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doInquiryPriceResizeInstanceDisks(args, parsed_globals):
+def doListUsersInUserGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -622,12 +622,12 @@ def doInquiryPriceResizeInstanceDisks(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InquiryPriceResizeInstanceDisksRequest()
+    model = models.ListUsersInUserGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.InquiryPriceResizeInstanceDisks(model)
+    rsp = client.ListUsersInUserGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -636,7 +636,7 @@ def doInquiryPriceResizeInstanceDisks(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyInstancesVpcAttribute(args, parsed_globals):
+def doCreateUser(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -649,12 +649,12 @@ def doModifyInstancesVpcAttribute(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyInstancesVpcAttributeRequest()
+    model = models.CreateUserRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyInstancesVpcAttribute(model)
+    rsp = client.CreateUser(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -663,7 +663,7 @@ def doModifyInstancesVpcAttribute(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doInquiryPriceResetInstance(args, parsed_globals):
+def doListAuthorizedApplicationsToUser(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -676,12 +676,12 @@ def doInquiryPriceResetInstance(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InquiryPriceResetInstanceRequest()
+    model = models.ListAuthorizedApplicationsToUserRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.InquiryPriceResetInstance(model)
+    rsp = client.ListAuthorizedApplicationsToUser(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -690,7 +690,7 @@ def doInquiryPriceResetInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDisasterRecoverGroupQuota(args, parsed_globals):
+def doDescribeAppAccount(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -703,12 +703,12 @@ def doDescribeDisasterRecoverGroupQuota(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDisasterRecoverGroupQuotaRequest()
+    model = models.DescribeAppAccountRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeDisasterRecoverGroupQuota(model)
+    rsp = client.DescribeAppAccount(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -717,7 +717,7 @@ def doDescribeDisasterRecoverGroupQuota(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doResetInstancesPassword(args, parsed_globals):
+def doDescribeOrgNode(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -730,12 +730,12 @@ def doResetInstancesPassword(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ResetInstancesPasswordRequest()
+    model = models.DescribeOrgNodeRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ResetInstancesPassword(model)
+    rsp = client.DescribeOrgNode(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -744,7 +744,7 @@ def doResetInstancesPassword(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doPurchaseReservedInstancesOffering(args, parsed_globals):
+def doDescribeUserInfo(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -757,12 +757,12 @@ def doPurchaseReservedInstancesOffering(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.PurchaseReservedInstancesOfferingRequest()
+    model = models.DescribeUserInfoRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.PurchaseReservedInstancesOffering(model)
+    rsp = client.DescribeUserInfo(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -771,7 +771,7 @@ def doPurchaseReservedInstancesOffering(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doResizeInstanceDisks(args, parsed_globals):
+def doRemoveUserFromUserGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -784,12 +784,12 @@ def doResizeInstanceDisks(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ResizeInstanceDisksRequest()
+    model = models.RemoveUserFromUserGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ResizeInstanceDisks(model)
+    rsp = client.RemoveUserFromUserGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -798,7 +798,7 @@ def doResizeInstanceDisks(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeZones(args, parsed_globals):
+def doCreateOrgNode(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -811,12 +811,12 @@ def doDescribeZones(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeZonesRequest()
+    model = models.CreateOrgNodeRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeZones(model)
+    rsp = client.CreateOrgNode(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -825,7 +825,7 @@ def doDescribeZones(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeImageQuota(args, parsed_globals):
+def doDeleteUser(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -838,12 +838,12 @@ def doDescribeImageQuota(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeImageQuotaRequest()
+    model = models.DeleteUserRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeImageQuota(model)
+    rsp = client.DeleteUser(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -852,7 +852,7 @@ def doDescribeImageQuota(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAssociateSecurityGroups(args, parsed_globals):
+def doListApplications(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -865,12 +865,12 @@ def doAssociateSecurityGroups(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AssociateSecurityGroupsRequest()
+    model = models.ListApplicationsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.AssociateSecurityGroups(model)
+    rsp = client.ListApplications(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -879,7 +879,7 @@ def doAssociateSecurityGroups(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doResetInstancesType(args, parsed_globals):
+def doListAuthorizedApplicationsToOrgNode(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -892,12 +892,12 @@ def doResetInstancesType(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ResetInstancesTypeRequest()
+    model = models.ListAuthorizedApplicationsToOrgNodeRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ResetInstancesType(model)
+    rsp = client.ListAuthorizedApplicationsToOrgNode(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -906,7 +906,7 @@ def doResetInstancesType(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteLaunchTemplateVersions(args, parsed_globals):
+def doDeleteOrgNode(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -919,12 +919,12 @@ def doDeleteLaunchTemplateVersions(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteLaunchTemplateVersionsRequest()
+    model = models.DeleteOrgNodeRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteLaunchTemplateVersions(model)
+    rsp = client.DeleteOrgNode(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -933,7 +933,7 @@ def doDeleteLaunchTemplateVersions(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyImageAttribute(args, parsed_globals):
+def doAddAccountToAccountGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -946,12 +946,12 @@ def doModifyImageAttribute(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyImageAttributeRequest()
+    model = models.AddAccountToAccountGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyImageAttribute(model)
+    rsp = client.AddAccountToAccountGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -960,7 +960,7 @@ def doModifyImageAttribute(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeReservedInstancesConfigInfos(args, parsed_globals):
+def doCreateUserGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -973,12 +973,12 @@ def doDescribeReservedInstancesConfigInfos(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeReservedInstancesConfigInfosRequest()
+    model = models.CreateUserGroupRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeReservedInstancesConfigInfos(model)
+    rsp = client.CreateUserGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -987,7 +987,7 @@ def doDescribeReservedInstancesConfigInfos(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doInquiryPriceResetInstancesType(args, parsed_globals):
+def doListUserGroupsOfUser(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1000,12 +1000,12 @@ def doInquiryPriceResetInstancesType(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InquiryPriceResetInstancesTypeRequest()
+    model = models.ListUserGroupsOfUserRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.InquiryPriceResetInstancesType(model)
+    rsp = client.ListUserGroupsOfUser(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1014,7 +1014,7 @@ def doInquiryPriceResetInstancesType(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doStopInstances(args, parsed_globals):
+def doDescribeApplication(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1027,12 +1027,12 @@ def doStopInstances(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.StopInstancesRequest()
+    model = models.DescribeApplicationRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.StopInstances(model)
+    rsp = client.DescribeApplication(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1041,7 +1041,7 @@ def doStopInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateLaunchTemplateVersion(args, parsed_globals):
+def doListUsersInOrgNode(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1054,12 +1054,12 @@ def doCreateLaunchTemplateVersion(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateLaunchTemplateVersionRequest()
+    model = models.ListUsersInOrgNodeRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.CreateLaunchTemplateVersion(model)
+    rsp = client.ListUsersInOrgNode(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1068,7 +1068,7 @@ def doCreateLaunchTemplateVersion(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyHostsAttribute(args, parsed_globals):
+def doUpdateOrgNode(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1081,579 +1081,12 @@ def doModifyHostsAttribute(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.EiamClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyHostsAttributeRequest()
+    model = models.UpdateOrgNodeRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyHostsAttribute(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeImportImageOs(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeImportImageOsRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeImportImageOs(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doInquirePricePurchaseReservedInstancesOffering(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InquirePricePurchaseReservedInstancesOfferingRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.InquirePricePurchaseReservedInstancesOffering(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doModifyInstancesProject(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyInstancesProjectRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ModifyInstancesProject(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doResetInstance(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ResetInstanceRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ResetInstance(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doSyncImages(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.SyncImagesRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.SyncImages(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeleteDisasterRecoverGroups(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteDisasterRecoverGroupsRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DeleteDisasterRecoverGroups(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doTerminateInstances(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.TerminateInstancesRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.TerminateInstances(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doImportKeyPair(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ImportKeyPairRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ImportKeyPair(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeLaunchTemplates(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeLaunchTemplatesRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeLaunchTemplates(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeZoneInstanceConfigInfos(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeZoneInstanceConfigInfosRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeZoneInstanceConfigInfos(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doResetInstancesInternetMaxBandwidth(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ResetInstancesInternetMaxBandwidthRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ResetInstancesInternetMaxBandwidth(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doStartInstances(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.StartInstancesRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.StartInstances(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeDisasterRecoverGroups(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDisasterRecoverGroupsRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeDisasterRecoverGroups(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeKeyPairs(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeKeyPairsRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeKeyPairs(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeReservedInstancesOfferings(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeReservedInstancesOfferingsRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeReservedInstancesOfferings(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeHosts(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeHostsRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeHosts(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doModifyDisasterRecoverGroupAttribute(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyDisasterRecoverGroupAttributeRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ModifyDisasterRecoverGroupAttribute(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeInternetChargeTypeConfigs(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInternetChargeTypeConfigsRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeInternetChargeTypeConfigs(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doRebootInstances(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.RebootInstancesRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.RebootInstances(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDisassociateSecurityGroups(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DisassociateSecurityGroupsRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DisassociateSecurityGroups(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doAllocateHosts(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CvmClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AllocateHostsRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.AllocateHosts(model)
+    rsp = client.UpdateOrgNode(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1663,82 +1096,61 @@ def doAllocateHosts(args, parsed_globals):
 
 
 CLIENT_MAP = {
-    "v20170312": cvm_client_v20170312,
+    "v20210420": eiam_client_v20210420,
 
 }
 
 MODELS_MAP = {
-    "v20170312": models_v20170312,
+    "v20210420": models_v20210420,
 
 }
 
 ACTION_MAP = {
-    "CreateImage": doCreateImage,
-    "DescribeInstancesStatus": doDescribeInstancesStatus,
-    "ModifyImageSharePermission": doModifyImageSharePermission,
-    "DescribeInstancesOperationLimit": doDescribeInstancesOperationLimit,
-    "DescribeImageSharePermission": doDescribeImageSharePermission,
-    "ImportImage": doImportImage,
-    "ModifyKeyPairAttribute": doModifyKeyPairAttribute,
-    "DescribeImages": doDescribeImages,
-    "DeleteLaunchTemplate": doDeleteLaunchTemplate,
-    "ModifyInstancesAttribute": doModifyInstancesAttribute,
-    "DescribeRegions": doDescribeRegions,
-    "InquiryPriceResetInstancesInternetMaxBandwidth": doInquiryPriceResetInstancesInternetMaxBandwidth,
-    "DeleteImages": doDeleteImages,
-    "CreateKeyPair": doCreateKeyPair,
-    "DescribeInstanceFamilyConfigs": doDescribeInstanceFamilyConfigs,
-    "DeleteKeyPairs": doDeleteKeyPairs,
-    "CreateDisasterRecoverGroup": doCreateDisasterRecoverGroup,
-    "DescribeInstances": doDescribeInstances,
-    "DescribeLaunchTemplateVersions": doDescribeLaunchTemplateVersions,
-    "AssociateInstancesKeyPairs": doAssociateInstancesKeyPairs,
-    "ModifyLaunchTemplateDefaultVersion": doModifyLaunchTemplateDefaultVersion,
-    "DisassociateInstancesKeyPairs": doDisassociateInstancesKeyPairs,
-    "InquiryPriceResizeInstanceDisks": doInquiryPriceResizeInstanceDisks,
-    "ModifyInstancesVpcAttribute": doModifyInstancesVpcAttribute,
-    "InquiryPriceResetInstance": doInquiryPriceResetInstance,
-    "DescribeDisasterRecoverGroupQuota": doDescribeDisasterRecoverGroupQuota,
-    "ResetInstancesPassword": doResetInstancesPassword,
-    "PurchaseReservedInstancesOffering": doPurchaseReservedInstancesOffering,
-    "ResizeInstanceDisks": doResizeInstanceDisks,
-    "DescribeZones": doDescribeZones,
-    "DescribeImageQuota": doDescribeImageQuota,
-    "AssociateSecurityGroups": doAssociateSecurityGroups,
-    "ResetInstancesType": doResetInstancesType,
-    "DeleteLaunchTemplateVersions": doDeleteLaunchTemplateVersions,
-    "ModifyImageAttribute": doModifyImageAttribute,
-    "DescribeReservedInstancesConfigInfos": doDescribeReservedInstancesConfigInfos,
-    "InquiryPriceResetInstancesType": doInquiryPriceResetInstancesType,
-    "StopInstances": doStopInstances,
-    "CreateLaunchTemplateVersion": doCreateLaunchTemplateVersion,
-    "ModifyHostsAttribute": doModifyHostsAttribute,
-    "DescribeImportImageOs": doDescribeImportImageOs,
-    "InquirePricePurchaseReservedInstancesOffering": doInquirePricePurchaseReservedInstancesOffering,
-    "ModifyInstancesProject": doModifyInstancesProject,
-    "ResetInstance": doResetInstance,
-    "SyncImages": doSyncImages,
-    "DeleteDisasterRecoverGroups": doDeleteDisasterRecoverGroups,
-    "TerminateInstances": doTerminateInstances,
-    "ImportKeyPair": doImportKeyPair,
-    "DescribeLaunchTemplates": doDescribeLaunchTemplates,
-    "DescribeZoneInstanceConfigInfos": doDescribeZoneInstanceConfigInfos,
-    "ResetInstancesInternetMaxBandwidth": doResetInstancesInternetMaxBandwidth,
-    "StartInstances": doStartInstances,
-    "DescribeDisasterRecoverGroups": doDescribeDisasterRecoverGroups,
-    "DescribeKeyPairs": doDescribeKeyPairs,
-    "DescribeReservedInstancesOfferings": doDescribeReservedInstancesOfferings,
-    "DescribeHosts": doDescribeHosts,
-    "ModifyDisasterRecoverGroupAttribute": doModifyDisasterRecoverGroupAttribute,
-    "DescribeInternetChargeTypeConfigs": doDescribeInternetChargeTypeConfigs,
-    "RebootInstances": doRebootInstances,
-    "DisassociateSecurityGroups": doDisassociateSecurityGroups,
-    "AllocateHosts": doAllocateHosts,
+    "DescribeUserGroup": doDescribeUserGroup,
+    "CreateAccountGroup": doCreateAccountGroup,
+    "ModifyApplication": doModifyApplication,
+    "DescribePublicKey": doDescribePublicKey,
+    "ListUsers": doListUsers,
+    "RemoveAccountFromAccountGroup": doRemoveAccountFromAccountGroup,
+    "ListAccountInAccountGroup": doListAccountInAccountGroup,
+    "ListAuthorizedApplicationsToUserGroup": doListAuthorizedApplicationsToUserGroup,
+    "ModifyAppAccount": doModifyAppAccount,
+    "ModifyAccountGroup": doModifyAccountGroup,
+    "DescribeUserResourcesAuthorization": doDescribeUserResourcesAuthorization,
+    "ListApplicationAuthorizations": doListApplicationAuthorizations,
+    "DescribeUserThirdPartyAccountInfo": doDescribeUserThirdPartyAccountInfo,
+    "DeleteUserGroup": doDeleteUserGroup,
+    "DeleteAccountGroup": doDeleteAccountGroup,
+    "ModifyUserInfo": doModifyUserInfo,
+    "ListUserGroups": doListUserGroups,
+    "AddUserToUserGroup": doAddUserToUserGroup,
+    "DeleteAppAccount": doDeleteAppAccount,
+    "DescribeAccountGroup": doDescribeAccountGroup,
+    "DeleteUsers": doDeleteUsers,
+    "CreateAppAccount": doCreateAppAccount,
+    "ListUsersInUserGroup": doListUsersInUserGroup,
+    "CreateUser": doCreateUser,
+    "ListAuthorizedApplicationsToUser": doListAuthorizedApplicationsToUser,
+    "DescribeAppAccount": doDescribeAppAccount,
+    "DescribeOrgNode": doDescribeOrgNode,
+    "DescribeUserInfo": doDescribeUserInfo,
+    "RemoveUserFromUserGroup": doRemoveUserFromUserGroup,
+    "CreateOrgNode": doCreateOrgNode,
+    "DeleteUser": doDeleteUser,
+    "ListApplications": doListApplications,
+    "ListAuthorizedApplicationsToOrgNode": doListAuthorizedApplicationsToOrgNode,
+    "DeleteOrgNode": doDeleteOrgNode,
+    "AddAccountToAccountGroup": doAddAccountToAccountGroup,
+    "CreateUserGroup": doCreateUserGroup,
+    "ListUserGroupsOfUser": doListUserGroupsOfUser,
+    "DescribeApplication": doDescribeApplication,
+    "ListUsersInOrgNode": doListUsersInOrgNode,
+    "UpdateOrgNode": doUpdateOrgNode,
 
 }
 
 AVAILABLE_VERSION_LIST = [
-    "v20170312",
+    "v20210420",
 
 ]
 
@@ -1801,11 +1213,11 @@ def parse_global_arg(parsed_globals):
         if g_param[OptionsDefine.ServiceVersion]:
             g_param[OptionsDefine.Version] = "v" + g_param[OptionsDefine.ServiceVersion].replace('-', '')
         else:
-            version = conf["cvm"][OptionsDefine.Version]
+            version = conf["eiam"][OptionsDefine.Version]
             g_param[OptionsDefine.Version] = "v" + version.replace('-', '')
 
         if g_param[OptionsDefine.Endpoint] is None:
-            g_param[OptionsDefine.Endpoint] = conf["cvm"][OptionsDefine.Endpoint]
+            g_param[OptionsDefine.Endpoint] = conf["eiam"][OptionsDefine.Endpoint]
     except Exception as err:
         raise ConfigurationError("config file:%s error, %s" % (conf_path, str(err)))
 

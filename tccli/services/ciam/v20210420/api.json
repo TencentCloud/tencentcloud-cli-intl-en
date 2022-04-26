@@ -1,0 +1,181 @@
+{
+  "actions": {
+    "ListUserGroups": {
+      "document": "This API is used to list user groups.",
+      "input": "ListUserGroupsRequest",
+      "name": "Lists user groups",
+      "output": "ListUserGroupsResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2021-04-20",
+    "serviceNameCN": "数字身份管控平台（公众版）",
+    "serviceShortName": "ciam"
+  },
+  "objects": {
+    "ListUserGroupsRequest": {
+      "document": "ListUserGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of queried pages",
+          "example": "0",
+          "member": "int64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "example": "10",
+          "member": "int64",
+          "name": "Size",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Query conditions (user group ID or user group name)",
+          "example": "xxx",
+          "member": "string",
+          "name": "Condition",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUserGroupsResponse": {
+      "document": "ListUserGroups response structure.",
+      "members": [
+        {
+          "document": "User group list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UserGroup",
+          "name": "Content",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Pagination\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Pageable",
+          "name": "Pageable",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Pageable": {
+      "document": "Pagination object",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current page number",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "UserGroup": {
+      "document": "User group",
+      "members": [
+        {
+          "default": "",
+          "document": "User group ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User group name",
+          "example": "xxx",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User group description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "XXX",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tenant ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "TenantId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

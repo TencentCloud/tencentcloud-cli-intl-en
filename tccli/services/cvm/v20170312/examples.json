@@ -3,15 +3,15 @@
     "AllocateHosts": [
       {
         "document": "This example shows you how to purchase an HS1 CDH instance in Guangzhou Zone 2 for one month, with the auto-renewal enabled.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=AllocateHosts\r\n&Placement.Zone=ap-guangzhou-2\r\n&HostChargeType=PREPAID\r\n&HostChargePrepaid.Period=1\r\n&HostChargePrepaid.RenewFlag=NOTIFY_AND_AUTO_RENEW\r\n&HostType=HS1\r\n&HostCount=1\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"HostIdSet\": [\n            \"host-lan4lb2k\"\n        ]\n    }\n}",
-        "title": "Purchasing a monthly-subscribed CDH instance"
+        "input": "https://cvm.tencentcloudapi.com/?Action=AllocateHosts\n&Placement.Zone=ap-guangzhou-2\n&HostChargeType=PREPAID\n&HostChargePrepaid.Period=1\n&HostChargePrepaid.RenewFlag=NOTIFY_AND_AUTO_RENEW\n&HostType=HS1\n&HostCount=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"HostIdSet\": [\n            \"host-lan4lb2k\"\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Purchasing a monthly subscribed CDH instance"
       }
     ],
     "AssociateInstancesKeyPairs": [
       {
         "document": "",
-        "input": "https://cvm.tencentcloudapi.com/?Action=AssociateInstancesKeyPairs\r\n&InstanceIds.0=ins-1e4r6y8i\r\n&InstanceIds.1=ins-3e56fg78\r\n&KeyIds.0=skey-4e5ty7i8\r\n&<Common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=AssociateInstancesKeyPairs\n&InstanceIds.0=ins-1e4r6y8i\n&InstanceIds.1=ins-3e56fg78\n&KeyIds.0=skey-4e5ty7i8\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Binding a key pair to CVM"
       }
@@ -19,7 +19,7 @@
     "AssociateSecurityGroups": [
       {
         "document": "",
-        "input": "https://cvm.tencentcloudapi.com/?Action=AssociateSecurityGroups\r\n&InstanceIds.0=ins-2zvpghhc\r\n&InstanceIds.1=ins-915zrb0p\r\n&SecurityGroupIds.0=sg-9id3l839\r\n&<Common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=AssociateSecurityGroups\n&InstanceIds.0=ins-2zvpghhc\n&InstanceIds.1=ins-915zrb0p\n&SecurityGroupIds.0=sg-9id3l839\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3385dcf2-e1f0-4ed8-a924-c296721ab65f\"\n    }\n}",
         "title": "Associating multiple instances with one security group"
       }
@@ -48,14 +48,6 @@
         "title": "Creating a key pair"
       }
     ],
-    "CreateLaunchTemplate": [
-      {
-        "document": "This example shows you how to create an instance in Guangzhou Zone 2 using the image `img-pmqg1cw7` and the instance launch template `test`. All other parameters keep the default values. ",
-        "input": "https://cvm.tencentcloudapi.com/?Action=CreateLaunchTemplate\n&Placement.Zone=ap-guangzhou-2\n&ImageId=img-pmqg1cw7\n&LaunchTemplateName=test\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"LaunchTemplateId\": \"lt-lobxe2yo\",\n        \"RequestId\": \"9b4ad85f-1657-4445-111d-3c0a9fbec309\"\n    }\n}",
-        "title": "Creating an instance launch template with minimal parameters"
-      }
-    ],
     "CreateLaunchTemplateVersion": [
       {
         "document": "This example shows you how to create a new launch template version in Guangzhou Zone 1.",
@@ -78,12 +70,18 @@
         "input": "https://cvm.tencentcloudapi.com/?Action=DeleteImages\n&ImageIds.0=img-34vaef8fe\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"71e69b56-32be-4412-ab45-49eded6a87be\"\n    }\n}",
         "title": "Deleting an image"
+      },
+      {
+        "document": "This example shows you how to delete the image `img-34vaef8fe`. If the image is in use or the image ID does not exist, no operation will be performed and an error code will be returned.",
+        "input": "https://cvm.tencentcloudapi.com/?Action=DeleteImages\r\n&ImageIds.0=img-34vaef8fe\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"71e69b56-32be-4412-ab45-49eded6a87be\"\n    }\n}",
+        "title": "Deleting an image"
       }
     ],
     "DeleteKeyPairs": [
       {
         "document": "",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DeleteKeyPairs\r\n&KeyIds.0=skey-mv9yzyjj\r\n&<Common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=DeleteKeyPairs\n&KeyIds.0=skey-mv9yzyjj\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting a key pair"
       }
@@ -123,8 +121,8 @@
     "DescribeHosts": [
       {
         "document": "This example shows you how to query the details of one or more CDH instances.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeHosts\r\n&Filters.0.Name=zone\r\n&Filters.0.Values.0=ap-guangzhou-2\r\n&Offset=0\r\n&Limit=20\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"HostSet\": [\n            {\n                \"Placement\": {\n                    \"Zone\": \"ap-guangzhou-2\",\n                    \"ProjectId\": 0\n                },\n                \"HostId\": \"host-ey16rkyg\",\n                \"HostType\": \"HS1\",\n                \"HostName\": \"bibibibib-111\",\n                \"HostChargeType\": \"PREPAID\",\n                \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\",\n                \"CreatedTime\": \"2018-01-04T09:45:39Z\",\n                \"ExpiredTime\": \"2025-05-04T09:45:42Z\",\n                \"InstanceIds\": [],\n                \"HostState\": \"RUNNING\",\n                \"HostResource\": {\n                    \"CpuTotal\": 24,\n                    \"CpuAvailable\": 24,\n                    \"MemTotal\": 56.0,\n                    \"MemAvailable\": 56.0,\n                    \"DiskTotal\": 1200,\n                    \"DiskAvailable\": 1200,\n                    \"DiskType\": \"LOCAL_BASIC\"\n                }\n            }\n        ],\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
+        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeHosts\n&Filters.0.Name=zone\n&Filters.0.Values.0=ap-guangzhou-2\n&Offset=0\n&Limit=20\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"HostSet\": [\n            {\n                \"Placement\": {\n                    \"Zone\": \"ap-guangzhou-2\",\n                    \"ProjectId\": 0\n                },\n                \"HostId\": \"host-ey16rkyg\",\n                \"HostType\": \"HS1\",\n                \"HostName\": \"bibibibib-111\",\n                \"CageId\": \"\",\n                \"HostChargeType\": \"PREPAID\",\n                \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\",\n                \"CreatedTime\": \"2018-01-04T09:45:39Z\",\n                \"ExpiredTime\": \"2025-05-04T09:45:42Z\",\n                \"InstanceIds\": [],\n                \"HostState\": \"RUNNING\",\n                \"HostResource\": {\n                    \"CpuTotal\": 24,\n                    \"CpuAvailable\": 24,\n                    \"MemTotal\": 56.0,\n                    \"MemAvailable\": 56.0,\n                    \"DiskTotal\": 1200,\n                    \"DiskAvailable\": 1200,\n                    \"DiskType\": \"LOCAL_BASIC\"\n                }\n            }\n        ],\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Querying the list of CDH instances"
       }
     ],
@@ -148,14 +146,14 @@
       {
         "document": "This example shows you how to query the information of an image by the image ID.",
         "input": "https://cvm.tencentcloudapi.com/?Action=DescribeImages\n&Filters.0.Name=image-id\n&Filters.0.Values.0=img-9qabwvbn\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ImageSet\": [\n            {\n                \"ImageId\": \"img-9qabwvbn\",\n                \"OsName\": \"CentOS 7.6 64-bit\",\n                \"ImageSize\": 10,\n                \"ImageType\": \"PUBLIC_IMAGE\",\n                \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                \"ImageState\": \"NORMAL\",\n                \"ImageSource\": \"OFFICIAL\",\n                \"ImageName\": \"CentOS 7.6 64-bit\",\n                \"ImageDescription\": \"CentOS 7.6 64-bit\",\n                \"ImageCreator\": null,\n                \"SyncPercent\": null,\n                \"IsSupportCloudinit\": true,\n                \"Platform\": \"CentOS\",\n                \"Architecture\": \"x86_64\",\n                \"SnapshotSet\": []\n            }\n        ],\n        \"RequestId\": \"db145873-3128-4079-8cec-65e05a7c9f89\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ImageSet\": [\n            {\n                \"ImageId\": \"img-9qabwvbn\",\n                \"OsName\": \"CentOS 7.6 64-bit\",\n                \"ImageSize\": 10,\n                \"ImageType\": \"PUBLIC_IMAGE\",\n                \"CreatedTime\": null,\n                \"ImageState\": \"NORMAL\",\n                \"ImageSource\": \"OFFICIAL\",\n                \"ImageName\": \"CentOS 7.6 64-bit\",\n                \"ImageDescription\": \"CentOS 7.6 64-bit\",\n                \"ImageCreator\": null,\n                \"SyncPercent\": null,\n                \"IsSupportCloudinit\": true,\n                \"Platform\": \"CentOS\",\n                \"Architecture\": \"x86_64\",\n                \"SnapshotSet\": []\n            }\n        ],\n        \"RequestId\": \"db145873-3128-4079-8cec-65e05a7c9f89\"\n    }\n}",
         "title": "Querying an image by the image ID"
       },
       {
         "document": "This example shows you how to query all private images under an account.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeImages\n&Filters.0.Name=image-type\n&Filters.0.Values.0=PRIVATE_IMAGE\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 408,\n        \"ImageSet\": [\n            {\n                \"OsName\": \"CentOS 7.4 64-bit\",\n                \"ImageSize\": 20,\n                \"ImageType\": \"PRIVATE_IMAGE\",\n                \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                \"ImageDescription\": \"test-image\",\n                \"ImageSource\": \"CREATE_IMAGE\",\n                \"ImageId\": \"img-qlzp4oea\",\n                \"ImageName\": \"test-image\",\n                \"ImageCreator\": \"3205597606\",\n                \"ImageState\": \"NORMAL\",\n                \"SyncPercent\": null,\n                \"SnapshotSet\": [\n                    {\n                        \"SnapshotId\": \"snap-gqa37j2p\",\n                        \"DiskUsage\": \"SYSTEM_DISK\",\n                        \"DiskSize\": 20\n                    }\n                ],\n                \"Architecture\": \"x86_64\",\n                \"Platform\": \"CentOS\",\n                \"IsSupportCloudinit\": true\n            }\n        ],\n        \"RequestId\": \"5908394c-5b3f-42e0-a537-8410553890a5\"\n    }\n}",
-        "title": "Querying an image by the image type"
+        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeImages\r\n&Filters.0.Name=image-type\r\n&Filters.0.Values.0=PRIVATE_IMAGE\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"ImageSet\": [\n            {\n                \"ImageId\": \"img-pmqg1cw7\",\n                \"ImageType\": \"PUBLIC_IMAGE\",\n                \"ImageName\": \"CentOS 6.6 32-bit\",\n                \"ImageDescription\": \"CentOS 6.6 32-bit\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"5920380e-277a-420a-a221-0caac3eb7159\"\n    }\n}",
+        "title": "Querying images by image type"
       }
     ],
     "DescribeImportImageOs": [
@@ -172,22 +170,6 @@
         "input": "https://cvm.tencentcloudapi.com/?Action=DescribeInstanceFamilyConfigs\r\n&Region=ap-guangzhou\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"InstanceFamilyConfigSet\": [\n            {\n                \"InstanceFamilyName\": \"Standard S1\",\n                \"InstanceFamily\": \"S1\"\n            },\n            {\n                \"InstanceFamilyName\": \"Network-optimized N1\",\n                \"InstanceFamily\": \"N1\"\n            },\n            {\n                \"InstanceFamilyName\": \"High IO I1\",\n                \"InstanceFamily\": \"I1\"\n            },\n            {\n                \"InstanceFamilyName\": \"MEM optimized M1\",\n                \"InstanceFamily\": \"M1\"\n            },\n            {\n                \"InstanceFamilyName\": \"Standard S2\",\n                \"InstanceFamily\": \"S2\"\n            },\n            {\n                \"InstanceFamilyName\": \"Standard network enhanced SN2\",\n                \"InstanceFamily\": \"SN2\"\n            },\n            {\n                \"InstanceFamilyName\": \"High IO I2\",\n                \"InstanceFamily\": \"I2\"\n            },\n            {\n                \"InstanceFamilyName\": \"MEM optimized M2\",\n                \"InstanceFamily\": \"M2\"\n            },\n            {\n                \"InstanceFamilyName\": \"Compute C2\",\n                \"InstanceFamily\": \"C2\"\n            },\n            {\n                \"InstanceFamilyName\": \"Compute Network-optimized CN2\",\n                \"InstanceFamily\": \"CN2\"\n            },\n            {\n                \"InstanceFamilyName\": \"Standard S3\",\n                \"InstanceFamily\": \"S3\"\n            },\n            {\n                \"InstanceFamilyName\": \"Compute C3\",\n                \"InstanceFamily\": \"C3\"\n            },\n            {\n                \"InstanceFamilyName\": \"FPGA FX2\",\n                \"InstanceFamily\": \"FX2\"\n            },\n            {\n                \"InstanceFamilyName\": \"GPU compute GN2\",\n                \"InstanceFamily\": \"GN2\"\n            },\n            {\n                \"InstanceFamilyName\": \"GPU rendering GA2\",\n                \"InstanceFamily\": \"GA2\"\n            },\n            {\n                \"InstanceFamilyName\": \"GPU compute GN8\",\n                \"InstanceFamily\": \"GN8\"\n            },\n            {\n                \"InstanceFamilyName\": \"Dedicated\",\n                \"InstanceFamily\": \"CDH\"\n            },\n            {\n                \"InstanceFamilyName\": \"Shared core\",\n                \"InstanceFamily\": \"SHARED\"\n            },\n            {\n                \"InstanceFamilyName\": \"Special models\",\n                \"InstanceFamily\": \"SPECIAL\"\n            },\n            {\n                \"InstanceFamilyName\": \"Others\",\n                \"InstanceFamily\": \"OTHER\"\n            }\n        ],\n        \"RequestId\": \"b061782b-934a-4e53-b1eb-d5f2fed8130e\"\n    }\n}",
         "title": "Querying supported instance families"
-      }
-    ],
-    "DescribeInstanceTypeConfigs": [
-      {
-        "document": "This example shows you how to query instance types of the family `I1` in Guangzhou Zone 2.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeInstanceTypeConfigs\r\n&Filters.0.Name=zone\r\n&Filters.0.Values.0=ap-guangzhou-2\r\n&Filters.1.Name=instance-family\r\n&Filters.1.Values.0=I1\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceTypeConfigSet\": [\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"InstanceFamily\": \"I1\",\n                \"InstanceType\": \"I1.MEDIUM4\",\n                \"CPU\": 2,\n                \"GPU\": 0,\n                \"FPGA\": 0,\n                \"Memory\": 4\n            },\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"InstanceFamily\": \"I1\",\n                \"InstanceType\": \"I1.MEDIUM8\",\n                \"CPU\": 2,\n                \"GPU\": 0,\n                \"FPGA\": 0,\n                \"Memory\": 8\n            },\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"InstanceFamily\": \"I1\",\n                \"InstanceType\": \"I1.MEDIUM16\",\n                \"CPU\": 2,\n                \"GPU\": 0,\n                \"FPGA\": 0,\n                \"Memory\": 16\n            },\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"InstanceFamily\": \"I1\",\n                \"InstanceType\": \"I1.LARGE8\",\n                \"CPU\": 4,\n                \"GPU\": 0,\n                \"FPGA\": 0,\n                \"Memory\": 8\n            }\n        ],\n        \"RequestId\": \"2f1fd71e-95ab-4f10-8adb-895e99d33ff5\"\n    }\n}",
-        "title": "Querying a list of instance models"
-      }
-    ],
-    "DescribeInstanceVncUrl": [
-      {
-        "document": "This example shows you how to query the VNC URL of an instance.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeInstanceVncUrl\r\n&Region=ap-beijing\r\n&InstanceId=ins-r9hr2upy\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceVncUrl\": \"wss%3A%2F%2Fbjvnc.qcloud.com%3A26789%2Fvnc%3Fs%3DaHpjWnRVMFNhYmxKdDM5MjRHNlVTSVQwajNUSW0wb2tBbmFtREFCTmFrcy8vUUNPMG0wSHZNOUUxRm5PMmUzWmFDcWlOdDJIbUJxSTZDL0RXcHZxYnZZMmRkWWZWcEZia2lyb09XMzdKNmM9\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "Querying the VNC URL of an instance"
       }
     ],
     "DescribeInstances": [
@@ -221,7 +203,7 @@
     "DescribeInstancesStatus": [
       {
         "document": "This example shows you how to query the status of two specified instances.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeInstancesStatus\r\n&InstanceIds.0=ins-r8hr2upy\r\n&InstanceIds.1=ins-5d8a23rs\r\n&Offset=0\r\n&Limit=2\r\n&<Common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeInstancesStatus\n&InstanceIds.0=ins-r8hr2upy\n&InstanceIds.1=ins-5d8a23rs\n&Offset=0\n&Limit=2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"InstanceStatusSet\": [\n            {\n                \"InstanceId\": \"ins-r8hr2upy\",\n                \"InstanceState\": \"RUNNING\"\n            },\n            {\n                \"InstanceId\": \"ins-5d8a23rs\",\n                \"InstanceState\": \"STOPPED\"\n            }\n        ],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Querying the list of instance status"
       }
@@ -266,14 +248,6 @@
         "title": "Sample Request"
       }
     ],
-    "DescribeReservedInstances": [
-      {
-        "document": "",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeReservedInstances\n&Filters.0.Name=zone\n&Filters.0.Values.0=ap-guangzhou-1\n&Limit=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ReservedInstancesSet\": [\n            {\n                \"ReservedInstancesId\": \"13d8e599-b8dc-4e8a-80b4-7dce9eb27043\",\n                \"InstanceType\": \"S3.16XLARGE256\",\n                \"InstanceFamily\": \"S3\",\n                \"Zone\": \"ap-guangzhou-1\",\n                \"StartTime\": \"0000-00-00 00:00:00\",\n                \"EndTime\": \"0000-00-00 00:00:00\",\n                \"Duration\": 31536000,\n                \"InstanceCount\": 1,\n                \"ProductDescription\": \"linux\",\n                \"State\": \"active\",\n                \"CurrencyCode\": \"USD\",\n                \"OfferingType\": \"All Upfront\"\n            }\n        ],\n        \"RequestId\": \"9cb3dd3d-5717-47c4-bf3b-05c7ddb4655b\"\n    }\n}",
-        "title": "Describing the reserved instance purchased"
-      }
-    ],
     "DescribeReservedInstancesConfigInfos": [
       {
         "document": "",
@@ -315,7 +289,7 @@
     "DisassociateInstancesKeyPairs": [
       {
         "document": "",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DisassociateInstancesKeyPairs\r\n&InstanceIds.0=ins-w34e5rl9\r\n&KeyIds.0=skey-e3r6y7ji\r\n&<Common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=DisassociateInstancesKeyPairs\n&InstanceIds.0=ins-w34e5rl9\n&KeyIds.0=skey-e3r6y7ji\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Disassociating a key pair from an instance"
       }
@@ -323,7 +297,7 @@
     "DisassociateSecurityGroups": [
       {
         "document": "",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DisassociateSecurityGroups\r\n&InstanceIds.0=ins-2zvpghhc\r\n&InstanceIds.1=ins-915zrb0p\r\n&SecurityGroupIds.0=sg-9id3l839\r\n&<Common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=DisassociateSecurityGroups\n&InstanceIds.0=ins-2zvpghhc\n&InstanceIds.1=ins-915zrb0p\n&SecurityGroupIds.0=sg-9id3l839\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3385dcf2-e1f0-4ed8-a924-c296721ab65f\"\n    }\n}",
         "title": "Disassociating instances from security groups"
       }
@@ -339,7 +313,7 @@
     "ImportKeyPair": [
       {
         "document": "",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ImportKeyPair\r\n&KeyName=operation_key\r\n&ProjectId=0\r\n&PublicKey=ssh-rsa XXXXXXXXXXXX== skey_45071\r\n&<Common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=ImportKeyPair\n&KeyName=operation_key\n&ProjectId=0\n&PublicKey=ssh-rsa XXXXXXXXXXXX== skey_45071\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"KeyId\": \"skey-4e5ty7i8\",\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Importing a key pair"
       }
@@ -384,26 +358,6 @@
         "title": "Querying the price for expanding the disk capacity of a pay-as-you-go instance"
       }
     ],
-    "InquiryPriceRunInstances": [
-      {
-        "document": "This example queries the price of creating an instance in Shanghai Zone 2 with the image `img-pmqg1cw7`. Only the required `Placement.Zone` and `ImageId` parameters are passed in. The other parameters use system default values. ",
-        "input": "https://cvm.tencentcloudapi.com/?Action=InquiryPriceRunInstances\n&Placement.Zone=ap-shanghai-2\n&ImageId=img-pmqg1cw7\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"InstancePrice\": {\n                \"DiscountPrice\": 0.0,\n                \"OriginalPriceThreeYear\": 0.0,\n                \"DiscountOneYear\": 0.0,\n                \"UnitPrice\": 0.2,\n                \"UnitPriceThirdStep\": 0.1,\n                \"OriginalPriceFiveYear\": 0.0,\n                \"Discount\": 0.0,\n                \"DiscountFiveYear\": 0.0,\n                \"UnitPriceDiscountThirdStep\": 0.06,\n                \"UnitPriceSecondStep\": 0.12,\n                \"OriginalPrice\": 0.0,\n                \"DiscountThreeYear\": 0.0,\n                \"UnitPriceDiscountSecondStep\": 0.06,\n                \"UnitPriceDiscount\": 0.08,\n                \"DiscountPriceFiveYear\": 0.0,\n                \"OriginalPriceOneYear\": 0.0,\n                \"ChargeUnit\": \"xx\",\n                \"DiscountPriceThreeYear\": 0.0,\n                \"DiscountPriceOneYear\": 0.0\n            },\n            \"BandwidthPrice\": {\n                \"DiscountPrice\": 0.0,\n                \"OriginalPriceThreeYear\": 0.0,\n                \"DiscountOneYear\": 0.0,\n                \"UnitPrice\": 0.0,\n                \"UnitPriceThirdStep\": 0.0,\n                \"OriginalPriceFiveYear\": 0.0,\n                \"Discount\": 0.0,\n                \"DiscountFiveYear\": 0.0,\n                \"UnitPriceDiscountThirdStep\": 0.0,\n                \"UnitPriceSecondStep\": 0.0,\n                \"OriginalPrice\": 0.0,\n                \"DiscountThreeYear\": 0.0,\n                \"UnitPriceDiscountSecondStep\": 0.0,\n                \"UnitPriceDiscount\": 0.0,\n                \"DiscountPriceFiveYear\": 0.0,\n                \"OriginalPriceOneYear\": 0.0,\n                \"ChargeUnit\": \"xx\",\n                \"DiscountPriceThreeYear\": 0.0,\n                \"DiscountPriceOneYear\": 0.0\n            }\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Querying the price of an instance with only the required parameters"
-      },
-      {
-        "document": "This example shows you how to query the price for purchasing one 64C256G standard (S5.16XLARGE256) instance in Shanghai Zone 2 using the image `img-pmqg1cw7`. The other configurations are as follows: billing method: monthly subscription for one month with auto-renewal upon expiration; system disk: 50 GB Premium Cloud Storage; data disk: 100 GB Premium Cloud Storage; network type: VPC; public network billing: pay-as-you-go by traffic on an hourly basis; public network bandwidth cap: 10 Mbps; public IP: randomly assigned; instance name: QCLOUD-TEST; login password: Qcloud@TestApi123++; Cloud Monitor service: enabled; Anti-DDoS: enabled.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=InquiryPriceRunInstances\n&Placement.Zone=ap-shanghai-2\n&InstanceChargeType=PREPAID\n&InstanceChargePrepaid.Period=1\n&InstanceChargePrepaid.RenewFlag=NOTIFY_AND_AUTO_RENEW\n&ImageId=img-pmqg1cw7\n&InstanceType=S5.16XLARGE256\n&SystemDisk.DiskType=CLOUD_PREMIUM\n&SystemDisk.DiskSize=50\n&DataDisks.0.DiskType=CLOUD_PREMIUM\n&DataDisks.0.DiskSize=100\n&InternetAccessible.InternetChargeType=TRAFFIC_POSTPAID_BY_HOUR\n&InternetAccessible.InternetMaxBandwidthOut=10\n&InternetAccessible.PublicIpAssigned=TRUE\n&InstanceName=QCLOUD-TEST\n&LoginSettings.Password=Qcloud@TestApi123++\n&EnhancedService.SecurityService.Enabled=TRUE\n&EnhancedService.MonitorService.Enabled=TRUE\n&InstanceCount=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"InstancePrice\": {\n                \"DiscountPrice\": 1804.9,\n                \"OriginalPriceThreeYear\": 0.0,\n                \"DiscountOneYear\": 0.0,\n                \"UnitPrice\": 0.0,\n                \"UnitPriceThirdStep\": 0.0,\n                \"OriginalPriceFiveYear\": 0.0,\n                \"Discount\": 0.0,\n                \"DiscountFiveYear\": 0.0,\n                \"UnitPriceDiscountThirdStep\": 0.0,\n                \"UnitPriceSecondStep\": 0.0,\n                \"OriginalPrice\": 8884.5,\n                \"DiscountThreeYear\": 0.0,\n                \"UnitPriceDiscountSecondStep\": 0.0,\n                \"UnitPriceDiscount\": 0.0,\n                \"DiscountPriceFiveYear\": 0.0,\n                \"OriginalPriceOneYear\": 0.0,\n                \"ChargeUnit\": \"xx\",\n                \"DiscountPriceThreeYear\": 0.0,\n                \"DiscountPriceOneYear\": 0.0\n            },\n            \"BandwidthPrice\": {\n                \"DiscountPrice\": 0.0,\n                \"OriginalPriceThreeYear\": 0.0,\n                \"DiscountOneYear\": 0.0,\n                \"UnitPrice\": 0.8,\n                \"UnitPriceThirdStep\": 0.0,\n                \"OriginalPriceFiveYear\": 0.0,\n                \"Discount\": 0.0,\n                \"DiscountFiveYear\": 0.0,\n                \"UnitPriceDiscountThirdStep\": 0.0,\n                \"UnitPriceSecondStep\": 0.0,\n                \"OriginalPrice\": 0.0,\n                \"DiscountThreeYear\": 0.0,\n                \"UnitPriceDiscountSecondStep\": 0.0,\n                \"UnitPriceDiscount\": 0.52,\n                \"DiscountPriceFiveYear\": 0.0,\n                \"OriginalPriceOneYear\": 0.0,\n                \"ChargeUnit\": \"xx\",\n                \"DiscountPriceThreeYear\": 0.0,\n                \"DiscountPriceOneYear\": 0.0\n            }\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Querying the price of a monthly-subscribed instance"
-      },
-      {
-        "document": "This example shows you how to query the price for purchasing one 64C256G standard (S5.16XLARGE256) instance in Shanghai Zone 2 using the image `img-pmqg1cw7`. The other configurations are as follows: billing mode: pay-as-you-go on an hourly basis; system disk: 50 GB Premium Cloud Storage; data disk: 100 GB Premium Cloud Storage; network type: VPC; public network billing: pay-as-you-go by traffic on an hourly basis; public network bandwidth cap: 10 Mbps; public IP: randomly assigned; instance name: QCLOUD-TEST; login password: Qcloud@TestApi123++; Cloud Monitor service: enabled; Anti-DDoS: enabled.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=InquiryPriceRunInstances\n&Placement.Zone=ap-shanghai-2\n&InstanceChargeType=POSTPAID_BY_HOUR\n&ImageId=img-pmqg1cw7\n&InstanceType=S5.16XLARGE256\n&SystemDisk.DiskType=CLOUD_PREMIUM\n&SystemDisk.DiskSize=50\n&DataDisks.0.DiskType=CLOUD_PREMIUM\n&DataDisks.0.DiskSize=100\n&InternetAccessible.InternetChargeType=TRAFFIC_POSTPAID_BY_HOUR\n&InternetAccessible.InternetMaxBandwidthOut=10\n&InternetAccessible.PublicIpAssigned=TRUE\n&InstanceName=QCLOUD-TEST\n&LoginSettings.Password=Qcloud@TestApi123++\n&EnhancedService.SecurityService.Enabled=TRUE\n&EnhancedService.MonitorService.Enabled=TRUE\n&InstanceCount=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"InstancePrice\": {\n                \"DiscountPrice\": 0.0,\n                \"OriginalPriceThreeYear\": 0.0,\n                \"DiscountOneYear\": 0.0,\n                \"UnitPrice\": 16.09,\n                \"UnitPriceThirdStep\": 16.09,\n                \"OriginalPriceFiveYear\": 0.0,\n                \"Discount\": 0.0,\n                \"DiscountFiveYear\": 0.0,\n                \"UnitPriceDiscountThirdStep\": 3.33,\n                \"UnitPriceSecondStep\": 16.09,\n                \"OriginalPrice\": 0.0,\n                \"DiscountThreeYear\": 0.0,\n                \"UnitPriceDiscountSecondStep\": 3.33,\n                \"UnitPriceDiscount\": 3.33,\n                \"DiscountPriceFiveYear\": 0.0,\n                \"OriginalPriceOneYear\": 0.0,\n                \"ChargeUnit\": \"xx\",\n                \"DiscountPriceThreeYear\": 0.0,\n                \"DiscountPriceOneYear\": 0.0\n            },\n            \"BandwidthPrice\": {\n                \"DiscountPrice\": 0.0,\n                \"OriginalPriceThreeYear\": 0.0,\n                \"DiscountOneYear\": 0.0,\n                \"UnitPrice\": 0.8,\n                \"UnitPriceThirdStep\": 0.0,\n                \"OriginalPriceFiveYear\": 0.0,\n                \"Discount\": 0.0,\n                \"DiscountFiveYear\": 0.0,\n                \"UnitPriceDiscountThirdStep\": 0.0,\n                \"UnitPriceSecondStep\": 0.0,\n                \"OriginalPrice\": 0.0,\n                \"DiscountThreeYear\": 0.0,\n                \"UnitPriceDiscountSecondStep\": 0.0,\n                \"UnitPriceDiscount\": 0.52,\n                \"DiscountPriceFiveYear\": 0.0,\n                \"OriginalPriceOneYear\": 0.0,\n                \"ChargeUnit\": \"xx\",\n                \"DiscountPriceThreeYear\": 0.0,\n                \"DiscountPriceOneYear\": 0.0\n            }\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Querying the price of an hourly-billed pay-as-you-go instance"
-      }
-    ],
     "ModifyDisasterRecoverGroupAttribute": [
       {
         "document": "This example shows you how to modify the attributes of a spread placement group.",
@@ -416,7 +370,7 @@
       {
         "document": "This example shows you how to modify the `HostName` attribute of a specified CDH instance.",
         "input": "https://cvm.tencentcloudapi.com/?Action=ModifyHostsAttribute\n&HostIds.0=host-ey16rkyg\n&HostName=webserver\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {}\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Modifying the attributes of a CDH instance"
       }
     ],
@@ -447,7 +401,7 @@
     "ModifyInstancesProject": [
       {
         "document": "This example shows you how to change the projects of two instances to a specified one.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyInstancesProject\r\n&InstanceIds.0=ins-r8hr2upy\r\n&InstanceIds.1=ins-5d8a23rs\r\n&ProjectId=1045\r\n&<Common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyInstancesProject\n&InstanceIds.0=ins-r8hr2upy\n&InstanceIds.1=ins-5d8a23rs\n&ProjectId=1045\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Modifying the projects of two instances"
       }
@@ -463,15 +417,15 @@
     "ModifyKeyPairAttribute": [
       {
         "document": "This example shows you how to modify the key pair name.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyKeyPairAttribute\r\n&KeyId=skey-mv9yzyjj\r\n&KeyName=Tencent\r\n&<Common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyKeyPairAttribute\n&KeyId=skey-mv9yzyjj\n&KeyName=Tencent\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "Modifying key pair name"
+        "title": "Modifying the key pair name"
       },
       {
         "document": "This example shows you how to modify the key pair description.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyKeyPairAttribute\r\n&KeyId=skey-mv9yzyjj\r\n&Description=Tencent\r\n&<Common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyKeyPairAttribute\n&KeyId=skey-mv9yzyjj\n&Description=Tencent\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"aea2227b-fbb7-4cc7-bf29-d49b2b6db97c\"\n    }\n}",
-        "title": "Modifying key pair description"
+        "title": "Modifying the key pair description"
       }
     ],
     "ModifyLaunchTemplateDefaultVersion": [
@@ -536,38 +490,6 @@
         "input": "https://cvm.tencentcloudapi.com/?Action=ResizeInstanceDisks\n&InstanceId=ins-r8hr2upy\n&DataDisks.0.DiskSize=100\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d39d6c09-44e9-4e80-8661-77b5ff3cbc15\"\n    }\n}",
         "title": "Resetting the disk size of a specific instance"
-      }
-    ],
-    "RunInstances": [
-      {
-        "document": "This example shows you how to create an instance using only the required `Placement.Zone` and `ImageId` parameters. The other parameters use system default values. The instance is created in Shanghai Zone 2 with the image `img-pmqg1cw7`.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=RunInstances\n&Placement.Zone=ap-shanghai-2\n&ImageId=img-pmqg1cw7\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceIdSet\": [\n            \"ins-1vogaxgk\"\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Purchasing an instance with only the required parameters"
-      },
-      {
-        "document": "This example shows you how to purchase one 64C256G standard (S5.16XLARGE256) instance in Shanghai Zone 2 using the image `img-pmqg1cw7`. The other configurations are as follows: billing method: monthly subscription for one month, with the auto-renewal enabled; system disk: 50 GB Premium Cloud Storage; data disk: 100 GB Premium Cloud Storage; network type: VPC; public network billing: pay-as-you-go by traffic on an hourly basis; public network bandwidth cap: 10 Mbps; public IP: randomly assigned; instance name: QCLOUD-TEST; login password: Qcloud@TestApi123++; Cloud Monitor service: enabled; Anti-DDoS: enabled.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=RunInstances\n&Placement.Zone=ap-shanghai-2\n&InstanceChargeType=PREPAID\n&InstanceChargePrepaid.Period=1\n&InstanceChargePrepaid.RenewFlag=NOTIFY_AND_AUTO_RENEW\n&ImageId=img-pmqg1cw7\n&InstanceType=S5.16XLARGE256\n&SystemDisk.DiskType=CLOUD_PREMIUM\n&SystemDisk.DiskSize=50\n&DataDisks.0.DiskType=CLOUD_PREMIUM\n&DataDisks.0.DiskSize=100\n&InternetAccessible.InternetChargeType=TRAFFIC_POSTPAID_BY_HOUR\n&InternetAccessible.InternetMaxBandwidthOut=10\n&InternetAccessible.PublicIpAssigned=TRUE\n&InstanceName=QCLOUD-TEST\n&LoginSettings.Password=Qcloud@TestApi123++\n&EnhancedService.SecurityService.Enabled=TRUE\n&EnhancedService.MonitorService.Enabled=TRUE\n&InstanceCount=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceIdSet\": [\n            \"ins-bfw5zq3y\"\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Purchasing a monthly-subscribed instance"
-      },
-      {
-        "document": "This example shows you how to purchase one 64C256G standard (S5.16XLARGE256) instance in Shanghai Zone 2 using the image `img-pmqg1cw7`. The other configurations are as follows: billing mode: pay-as-you-go on an hourly basis; system disk: 50 GB Premium Cloud Storage; data disk: 100 GB Premium Cloud Storage; network type: VPC; public network billing: pay-as-you-go by traffic on an hourly basis; public network bandwidth cap: 10 Mbps; public IP: randomly assigned; instance name: QCLOUD-TEST; login password: Qcloud@TestApi123++; Cloud Monitor service: enabled; Anti-DDoS: enabled.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=RunInstances\n&Placement.Zone=ap-shanghai-2\n&InstanceChargeType=POSTPAID_BY_HOUR\n&ImageId=img-pmqg1cw7\n&InstanceType=S5.16XLARGE256\n&SystemDisk.DiskType=CLOUD_PREMIUM\n&SystemDisk.DiskSize=50\n&DataDisks.0.DiskType=CLOUD_PREMIUM\n&DataDisks.0.DiskSize=100\n&InternetAccessible.InternetChargeType=TRAFFIC_POSTPAID_BY_HOUR\n&InternetAccessible.InternetMaxBandwidthOut=10\n&InternetAccessible.PublicIpAssigned=TRUE\n&InstanceName=QCLOUD-TEST\n&LoginSettings.Password=Qcloud@TestApi123++\n&EnhancedService.SecurityService.Enabled=TRUE\n&EnhancedService.MonitorService.Enabled=TRUE\n&InstanceCount=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceIdSet\": [\n            \"ins-32kcaqoa\"\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Purchasing an hourly-billed pay-as-you-go instance"
-      },
-      {
-        "document": "This example shows you how to purchase one instance with the following configurations. Availability zone: Shanghai Zone 2; CDH: host-q88gab4i; image ID: img-pmqg1cw7; billing method: billed together with the CDH; model: 1C1G; system disk: 50 GB Premium Cloud Storage; data disk: 100 GB Premium Cloud Storage; network type: VPC; public network billing: pay-as-you-go by traffic on an hourly basis; public network bandwidth cap: 10 Mbps; public IP: randomly assigned; instance name: QCLOUD-TEST; login password: Qcloud@TestApi123++; Cloud Monitor service: enabled; Anti-DDoS: enabled.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=RunInstances\n&Placement.Zone=ap-shanghai-2\n&Placement.HostIds.0=host-q88gab4i\n&InstanceChargeType=CDHPAID\n&ImageId=img-pmqg1cw7\n&InstanceType=CDH_1C1G\n&SystemDisk.DiskType=CLOUD_PREMIUM\n&SystemDisk.DiskSize=50\n&DataDisks.0.DiskType=CLOUD_PREMIUM\n&DataDisks.0.DiskSize=100\n&InternetAccessible.InternetChargeType=TRAFFIC_POSTPAID_BY_HOUR\n&InternetAccessible.InternetMaxBandwidthOut=10\n&InternetAccessible.PublicIpAssigned=TRUE\n&InstanceName=QCLOUD-TEST\n&LoginSettings.Password=Qcloud@TestApi123++\n&EnhancedService.SecurityService.Enabled=TRUE\n&EnhancedService.MonitorService.Enabled=TRUE\n&InstanceCount=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceIdSet\": [\n            \"ins-0s7wsh5x\"\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Purchasing a CDH instance"
-      },
-      {
-        "document": "This example shows you how to purchase two instances with the following configurations. Availability zone: Shanghai Zone 2; billing method: pay-as-you-go on an hourly basis; image ID: img-dkwyg6sr; model: 64C256G standard (S5.16XLARGE256); system disk: 50 GB Premium Cloud Storage; network: VPC; VPC ID: 1urkhbj4; subnet ID: dcs9x3gz; VPC IP address: 10.0.0.18 and 10.0.0.19.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=RunInstances\n&InstanceType=S5.16XLARGE256\n&SystemDisk.DiskType=CLOUD_PREMIUM\n&SystemDisk.DiskSize=50\n&Placement.Zone=ap-shanghai-2\n&ImageId=img-dkwyg6sr\n&VirtualPrivateCloud.SubnetId=subnet-dcs9x3gz\n&VirtualPrivateCloud.VpcId=vpc-1urkhbj4\n&VirtualPrivateCloud.PrivateIpAddresses.0=10.0.0.18\n&VirtualPrivateCloud.PrivateIpAddresses.1=10.0.0.19\n&InstanceCount=2\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"InstanceIdSet\": [\n            \"ins-0s7wsh5x\",\n            \"ins-03lw8hok\"\n        ],\n        \"RequestId\": \"3c14def19-cfes-470e-b241-90787u6jf5uj\"\n    }\n}",
-        "title": "Creating an instance with the VPC IP address specified"
       }
     ],
     "StartInstances": [

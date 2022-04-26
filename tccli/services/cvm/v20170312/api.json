@@ -36,12 +36,6 @@
       "name": "Creates a key pair",
       "output": "CreateKeyPairResponse"
     },
-    "CreateLaunchTemplate": {
-      "document": "This API is used to create an instance launch template.\n\nAn instance launch template contains the configuration information required to create an instance, including instance type, data/system disk type and size, and security group, etc.\n\nWhen a template is created, it defaults to Version 1. You can use `CreateLaunchTemplateVersion` to create new versions of this template, with the version number increasing. When you run `RunInstances` to create instances, you can specify the instance launch template version. If it’s not specified, the default template version is used.",
-      "input": "CreateLaunchTemplateRequest",
-      "name": "Creates an instance launch template",
-      "output": "CreateLaunchTemplateResponse"
-    },
     "CreateLaunchTemplateVersion": {
       "document": "This API is used to create an instance launch template based on the specified template ID and the corresponding template version number. The default version number will be used when no template version numbers are specified. Each instance launch template can have up to 30 version numbers.",
       "input": "CreateLaunchTemplateVersionRequest",
@@ -55,7 +49,7 @@
       "output": "DeleteDisasterRecoverGroupsResponse"
     },
     "DeleteImages": {
-      "document": "This API is used to delete images.\n\n* If the [ImageState](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#image_state) of an image is `Creating` or `In Use`, it cannot be deleted. Use [DescribeImages](https://intl.cloud.tencent.com/document/api/213/9418?from_cn_redirect=1) to query the image state.\n* You can only create up to 10 custom images in each region. If you have used up the quota, you can delete images to create new ones.\n* A shared image cannot be deleted.",
+      "document": "This API is used to delete one or more images.\n\n* If the [ImageState](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#Image) of an image is `CREATING` or `USING`, the image cannot be deleted. Call the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) API to query the image status.\n* Up to 10 custom images are allowed in each region. If you have run out of the quota, delete unused images to create new ones.\n* A shared image cannot be deleted.",
       "input": "DeleteImagesRequest",
       "name": "Deletes images",
       "output": "DeleteImagesResponse"
@@ -126,18 +120,6 @@
       "name": "Queries supported instance model families",
       "output": "DescribeInstanceFamilyConfigsResponse"
     },
-    "DescribeInstanceTypeConfigs": {
-      "document": "This API is used to query the model configuration of an instance.\n\n* You can filter the query results with `zone` or `instance-family`. For more information on filtering conditions, see [`Filter`](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#Filter).\n* If no parameter is defined, the model configuration of all the instances in the specified region will be returned.",
-      "input": "DescribeInstanceTypeConfigsRequest",
-      "name": "Queries the list of instance models",
-      "output": "DescribeInstanceTypeConfigsResponse"
-    },
-    "DescribeInstanceVncUrl": {
-      "document": "This API is used to query the Virtual Network Console (VNC) URL of an instance for its login to the VNC.\n\n* It does not support `STOPPED` CVMs.\n* A VNC URL is only valid for 15 seconds. If you do not access the URL within 15 seconds, it will become invalid and you have to query a URL again.\n* Once the VNC URL is accessed, it will become invalid and you have to query a URL again if needed.\n* If the connection is interrupted, you can make up to 30 reconnection attempts per minute.\n* After getting the value `InstanceVncUrl`, you need to append `InstanceVncUrl=xxxx` to the end of the link <https://img.qcloud.com/qcloud/app/active_vnc/index.html?>.\n\n  - `InstanceVncUrl`: its value will be returned after the API is successfully called.\n\n    The final URL is in the following format:\n\n```\nhttps://img.qcloud.com/qcloud/app/active_vnc/index.html?InstanceVncUrl=wss%3A%2F%2Fbjvnc.qcloud.com%3A26789%2Fvnc%3Fs%3DaHpjWnRVMFNhYmxKdDM5MjRHNlVTSVQwajNUSW0wb2tBbmFtREFCTmFrcy8vUUNPMG0wSHZNOUUxRm5PMmUzWmFDcWlOdDJIbUJxSTZDL0RXcHZxYnZZMmRkWWZWcEZia2lyb09XMzdKNmM9\n```\n",
-      "input": "DescribeInstanceVncUrlRequest",
-      "name": "Queries the VNC URL of an instance",
-      "output": "DescribeInstanceVncUrlResponse"
-    },
     "DescribeInstances": {
       "document": "This API is used to query the details of instances.\n\n* You can filter the query results with the instance `ID`, name, or billing method. See `Filter` for more information.\n* If no parameter is defined, a certain number of instances under the current account will be returned. The number is specified by `Limit` and is 20 by default.",
       "input": "DescribeInstancesRequest",
@@ -186,12 +168,6 @@
       "name": "Queries the list of regions",
       "output": "DescribeRegionsResponse"
     },
-    "DescribeReservedInstances": {
-      "document": "This API is used to list reserved instances the user has purchased.",
-      "input": "DescribeReservedInstancesRequest",
-      "name": "Lists reserved instances that have been purchased",
-      "output": "DescribeReservedInstancesResponse"
-    },
     "DescribeReservedInstancesConfigInfos": {
       "document": "This API is used to describe reserved instance (RI) offerings. Currently, RIs are only offered to beta users.",
       "input": "DescribeReservedInstancesConfigInfosRequest",
@@ -235,7 +211,7 @@
       "output": "ImportImageResponse"
     },
     "ImportKeyPair": {
-      "document": "This API is used to import key pairs.\n\n* You can use this API to import key pairs to a user account, but the key pairs will not be automatically associated with any instance. You may use [AssociasteInstancesKeyPair](https://intl.cloud.tencent.com/document/api/213/9404?from_cn_redirect=1) to associate key pairs with instances.\n* You need to specify the names of the key pairs and the content of the public keys.\n* If you only have private keys, you can convert them to public keys with the `SSL` tool before importing them.",
+      "document": "This API is used to import key pairs.\n\n* You can use this API to import key pairs to a user account, but the key pairs will not be automatically associated with any instance. You may use [AssociasteInstancesKeyPair](https://intl.cloud.tencent.com/document/api/213/15698?from_cn_redirect=1) to associate key pairs with instances.\n* You need to specify the names of the key pairs and the content of the public keys.\n* If you only have private keys, you can convert them to public keys with the `SSL` tool before importing them.",
       "input": "ImportKeyPairRequest",
       "name": "Imports key pairs",
       "output": "ImportKeyPairResponse"
@@ -269,12 +245,6 @@
       "input": "InquiryPriceResizeInstanceDisksRequest",
       "name": "Queries the capacity price of an instance after disk expansion",
       "output": "InquiryPriceResizeInstanceDisksResponse"
-    },
-    "InquiryPriceRunInstances": {
-      "document": "This API is used to query the price of creating instances. You can only use this API for instances whose configuration is within the purchase limit. For more information, see [RunInstances](https://intl.cloud.tencent.com/document/api/213/15730?from_cn_redirect=1).",
-      "input": "InquiryPriceRunInstancesRequest",
-      "name": "Queries the price of creating instances",
-      "output": "InquiryPriceRunInstancesResponse"
     },
     "ModifyDisasterRecoverGroupAttribute": {
       "document": "This API is used to modify the attributes of [spread placement groups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1).",
@@ -371,12 +341,6 @@
       "input": "ResizeInstanceDisksRequest",
       "name": "Expands the disk capacity of an instance",
       "output": "ResizeInstanceDisksResponse"
-    },
-    "RunInstances": {
-      "document": "This API is used to create one or more instances with a specified configuration.\n\n* After an instance is created successfully, it will start up automatically, and the [instance state](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#instance_state) will become \"Running\".\n* If you create a pay-as-you-go instance billed on an hourly basis, an amount equivalent to the hourly rate will be frozen before the creation. Make sure your account balance is sufficient before calling this API.\n* The number of instances you can purchase through this API is subject to the [CVM instance purchase limit](https://intl.cloud.tencent.com/document/product/213/2664?from_cn_redirect=1). Both the instances created through this API and the console will be counted toward the quota.\n* This API is an async API. An instance `ID` list will be returned after you successfully make a creation request. However, it does not mean the creation has been completed. The state of the instance will be `Creating` during the creation. You can use [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) to query the status of the instance. If the status changes from `Creating` to `Running`, it means that the instance has been created successfully.",
-      "input": "RunInstancesRequest",
-      "name": "Creates instances",
-      "output": "RunInstancesResponse"
     },
     "StartInstances": {
       "document": "This API is used to start instances.\n\n* You can only perform this operation on instances whose status is `STOPPED`.\n* The instance status will become `STARTING` when the API is called successfully and `RUNNING` when the instance is successfully started.\n* Batch operations are supported. The maximum number of instances in each request is 100.",
@@ -852,267 +816,6 @@
       ],
       "type": "object"
     },
-    "CreateLaunchTemplateRequest": {
-      "document": "CreateLaunchTemplate request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance launch template name. It can include 2-128 characters.",
-          "example": "MyLaunchTemplate",
-          "member": "string",
-          "name": "LaunchTemplateName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH (for dedicated CVMs)",
-          "example": "NA",
-          "member": "Placement",
-          "name": "Placement",
-          "required": true,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images (for Chinese mainland only)</li><br/>To check the image ID:<br/><li>For public images, custom images, and shared images, go to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE). For marketplace images, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>",
-          "example": "img-dkwyg6sr",
-          "member": "string",
-          "name": "ImageId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Description of instance launch template versions. This parameter can contain 2-256 characters.",
-          "example": "MyLaunchTemplateVersionDesc",
-          "member": "string",
-          "name": "LaunchTemplateVersionDescription",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The instance model. Different resource specifications are specified for different instance models.\n<br><li>To view specific values for `PREPAID` or `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, the system will specify the default model according to the dynamic resource sales in the current region. <br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, you need to specify this parameter as `CDH_1C1G`.",
-          "example": "S5.16XLARGE256",
-          "member": "string",
-          "name": "InstanceType",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "System disk configuration of the instance. If this parameter is not specified, the default value will be used.",
-          "example": "NA",
-          "member": "SystemDisk",
-          "name": "SystemDisk",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "The configuration information of instance data disks. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC, CLOUD_PREMIUM, or CLOUD_SSD data disks.",
-          "example": "NA",
-          "member": "DataDisk",
-          "name": "DataDisks",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If this parameter is not specified, the classic network is used by default. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be same as the number of VPC IPs, which cannot be greater than 20.",
-          "example": "NA",
-          "member": "VirtualPrivateCloud",
-          "name": "VirtualPrivateCloud",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.",
-          "example": "NA",
-          "member": "InternetAccessible",
-          "name": "InternetAccessible",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Number of instances to be purchased. Value range for monthly-subscribed instances: [1, 300]. Value range for pay-as-you-go instances: [1, 100]. Default value: 1. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on quota, see CVM instance [Purchase Limits](https://intl.cloud.tencent.com/document/product/213/2664).",
-          "example": "1",
-          "member": "int64",
-          "name": "InstanceCount",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Instance name to be displayed. <br><li>If this parameter is not specified, \"Unnamed\" will be displayed by default. </li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`. </li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and the instance name body is `server_`, the instance names will be `server_1` and `server_2`. </li><li>This parameter can contain up to 60 characters, including the pattern string.",
-          "example": "MyInstance",
-          "member": "string",
-          "name": "InstanceName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.",
-          "example": "NA",
-          "member": "LoginSettings",
-          "name": "LoginSettings",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.",
-          "example": "['sg-rf6ogz49']",
-          "member": "string",
-          "name": "SecurityGroupIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Enhanced service. You can use this parameter to specify whether to enable services such as Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. However, for custom images and images from the marketplace, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained.",
-          "example": "NA",
-          "member": "EnhancedService",
-          "name": "EnhancedService",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.",
-          "example": "NA",
-          "member": "string",
-          "name": "ClientToken",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Host name of the CVM. <br><li>Dots (.) or hyphens (-) cannot be the start or end of a host name or appear consecutively in a host name. <br><li>For Windows instances, the host name must be 2-15 characters long and can contain uppercase and lowercase letters, numbers, and hyphens (-). It cannot contain dots (.) or contain only numbers. <br><li>For other instances, such as Linux instances, the host name must be 2-60 characters long. It supports multiple dots (.) and allows uppercase and lowercase letters, numbers, and hyphens (-) between any two dots (.).",
-          "example": "NA",
-          "member": "string",
-          "name": "HostName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.",
-          "example": "NA",
-          "member": "ActionTimer",
-          "name": "ActionTimer",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Placement group ID. You can only specify one.",
-          "example": "['ps-3p88qhfo']",
-          "member": "string",
-          "name": "DisasterRecoverGroupIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "The tag description list. This parameter is used to bind a tag to a resource instance. A tag can only be bound to CVM instances.",
-          "example": "NA",
-          "member": "TagSpecification",
-          "name": "TagSpecification",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.",
-          "example": "NA",
-          "member": "InstanceMarketOptionsRequest",
-          "name": "InstanceMarketOptions",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).",
-          "example": "YmFzZTY0Cg==",
-          "member": "string",
-          "name": "UserData",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Whether the request is a dry run only.\ntrue: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.\nIf the dry run fails, the corresponding error code will be returned.\nIf the dry run succeeds, the RequestId will be returned.\nfalse (default value): send a normal request and create instance(s) if all the requirements are met.",
-          "example": "false",
-          "member": "bool",
-          "name": "DryRun",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "document": "CAM role name, which can be obtained from the `roleName` field in the response of the [`DescribeRoleList`](https://intl.cloud.tencent.com/document/product/598/13887?from_cn_redirect=1) API.",
-          "example": "testroleName001",
-          "member": "string",
-          "name": "CamRoleName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "HPC cluster ID. The HPC cluster must and can only be specified for a high-performance computing instance.",
-          "example": "hpc-a5n666lo",
-          "member": "string",
-          "name": "HpcClusterId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Instance [Billing Mode](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). Valid values: <br><li>`PREPAID`: prepaid, i.e., billed for monthly-subscribed instances <br><li>`POSTPAID_BY_HOUR`: pay-as-you-go on an hourly basis <br><li>`CDHPAID`: billed for CDH instances, not the CVMs running on the CDHs. <br><li>`SPOTPAID`: billed for spot instances. <br>Default value: POSTPAID_BY_HOUR.",
-          "example": "PREPAID",
-          "member": "string",
-          "name": "InstanceChargeType",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.",
-          "example": "NA",
-          "member": "InstanceChargePrepaid",
-          "name": "InstanceChargePrepaid",
-          "required": false,
-          "type": "object"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateLaunchTemplateResponse": {
-      "document": "CreateLaunchTemplate response structure.",
-      "members": [
-        {
-          "document": "The ID of successfully created instance launch template. This parameter will be returned when the instance launch template is created through the `CreateLaunchTemplate` API.",
-          "example": "lt-a5n123lo",
-          "member": "string",
-          "name": "LaunchTemplateId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "CreateLaunchTemplateVersionRequest": {
       "document": "CreateLaunchTemplateVersion request structure.",
       "members": [
@@ -1325,7 +1028,7 @@
         },
         {
           "default": "",
-          "document": "CAM role name, which can be obtained from the `roleName` field in the response of the [`DescribeRoleList`](https://intl.cloud.tencent.com/document/product/598/13887?from_cn_redirect=1) API.",
+          "document": "CAM role name, which can be obtained from the `roleName` field in the response of the [`DescribeRoleList`](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1) API.",
           "example": "NA",
           "member": "string",
           "name": "CamRoleName",
@@ -1408,7 +1111,7 @@
         },
         {
           "default": "",
-          "document": "Data disk ID. Data disks of the type `LOCAL_BASIC` or `LOCAL_SSD` do not have IDs and do not support this parameter.",
+          "document": "Data disk ID. Note that it’s not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.\nThis parameter is only available for the `DescribeInstances` API.",
           "example": "无",
           "member": "string",
           "name": "DiskId",
@@ -1741,7 +1444,8 @@
       "members": [
         {
           "default": "",
-          "document": "<li><strong>zone</strong></li>\n<p style=\"padding-left: 30px;\">Filter results by **<strong>availability zones</strong>**. For example, availability zone: ap-guangzhou-1;</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: <a href=\"https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1\">list of availability zones</a></p>\n<li><strong>project-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter results by **<strong>project ID</strong>**. You can query the existing project list through the [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1) API or [CVM console](https://console.cloud.tencent.com/cvm/index), or create a project by calling the [AddProject](https://intl.cloud.tencent.com/document/api/378/4398?from_cn_redirect=1) API. For example, project ID: 1002189;</p><p style=\"padding-left: 30px;\">Type: Integer</p><p style=\"padding-left: 30px;\">Required: no</p>\n<li><strong>host-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter results by **<strong>[CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) ID</strong>**. For example, [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) ID: host-xxxxxxxx;</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p>\n<li><strong>state</strong></li>\n<p style=\"padding-left: 30px;\">Filter results by **<strong>CDH instance name</strong>**. </p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p>\n<li><strong>state</strong></li>\n<p style=\"padding-left: 30px;\">Filter results by **<strong>CDH instance status </strong>**. (PENDING: creating | LAUNCH_FAILURE: creation failed | RUNNING: running | EXPIRED: expired)</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p>\nEach request can have up to 10 `Filters` and 5 `Filters.Values`.",
+          "document": "<li><strong>zone</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the availability zone, such as `ap-guangzhou-1`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p><p style=\"padding-left: 30px;\">Valid values: See <a href=\"https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1\">Regions and Availability Zones</a></p>\n<li><strong>project-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the project ID. You can query the list of created projects by calling `DescribeProject` or logging in to the [CVM console](https://console.cloud.tencent.com/cvm/index). You can also call `AddProject` to create projects. The project ID is like 1002189. </p><p style=\"padding-left: 30px;\">Type: Integer</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>host-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the CDH instance ID. Format: host-xxxxxxxx. </p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>host-name</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the host name.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>host-state</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the CDH instance status. (`PENDING`: Creating | `LAUNCH_FAILURE`: Failed to create | `RUNNING`: Running | `EXPIRED`: Expired)</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\nEach request can have up to 10 `Filters` and 5 `Filter.Values`.",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -1750,6 +1454,7 @@
         {
           "default": "",
           "document": "Offset; default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -1758,6 +1463,7 @@
         {
           "default": "",
           "document": "Number of results returned; default value: 20; maximum: 100.",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -1981,72 +1687,6 @@
       ],
       "type": "object"
     },
-    "DescribeInstanceTypeConfigsRequest": {
-      "document": "DescribeInstanceTypeConfigs request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "<li><strong>zone</strong></li>\n<p style=\"padding-left: 30px;\">Filter results by **<strong>availability zones</strong>**. For example, availability zone: ap-guangzhou-1.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: <a href=\"https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1\">list of availability zones</a></p>\n<li><strong>instance-family</strong></li>\n<p style=\"padding-left: 30px;\">Filter results by **<strong>instance models</strong>**. For example, instance models: S1, I1 and M1.</p><p style=\"padding-left: 30px;\">Type: Integer</p><p style=\"padding-left: 30px;\">Required: no</p>\nEach request can have up to 10 `Filters` and 1 `Filters.Values`.",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeInstanceTypeConfigsResponse": {
-      "document": "DescribeInstanceTypeConfigs response structure.",
-      "members": [
-        {
-          "document": "List of instance model families",
-          "member": "InstanceTypeConfig",
-          "name": "InstanceTypeConfigSet",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeInstanceVncUrlRequest": {
-      "document": "DescribeInstanceVncUrl request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeInstanceVncUrlResponse": {
-      "document": "DescribeInstanceVncUrl response structure.",
-      "members": [
-        {
-          "document": "Instance VNC URL.",
-          "member": "string",
-          "name": "InstanceVncUrl",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeInstancesOperationLimitRequest": {
       "document": "DescribeInstancesOperationLimit request structure.",
       "members": [
@@ -2094,6 +1734,7 @@
         {
           "default": "",
           "document": "Query by instance ID(s). For example, instance ID: `ins-xxxxxxxx`. For the specific format, refer to section `Ids.N` of the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You can query up to 100 instances in each request. However, `InstanceIds` and `Filters` cannot be specified at the same time.",
+          "example": "['ins-rf6ogz49']",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -2101,7 +1742,8 @@
         },
         {
           "default": "",
-          "document": "Filters.\n<li> `zone` - String - Optional - Filter results by availability zone.</li>\n<li> `project-id` - Integer - Optional - Filter results by project ID. You can call [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1) or log in to the [console](https://console.cloud.tencent.com/cvm/index) to view the list of existing projects. You can also create a new project by calling [AddProject](https://intl.cloud.tencent.com/document/api/378/4398?from_cn_redirect=1).</li>\n<li> `host-id` - String - Optional - Filter results by [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) ID. [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) ID format: `host-xxxxxxxx`.</li>\n</li>`vpc-id` - String - Optional - Filter results by VPC ID. VPC ID format: `vpc-xxxxxxxx`.</li>\n<li> `subnet-id` - String - Optional - Filter results by subnet ID. Subnet ID format: `subnet-xxxxxxxx`.</li>\n</li>`instance-id` - String - Optional - Filter results by instance ID. Instance ID format: `ins-xxxxxxxx`.</li>\n</li>`security-group-id` - String - Optional - Filter results by security group ID. Security group ID format: `sg-8jlk3f3r`.</li>\n</li>`instance-name` - String - Optional - Filter results by instance name.</li>\n</li>`instance-charge-type` - String - Optional - Filter results by instance billing method. `POSTPAID_BY_HOUR`: pay-as-you-go | `CDHPAID`: you are only billed for [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances, not the CVMs running on the [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances.</li>\n</li>`private-ip-address` - String - Optional - Filter results by the private IP address of the instance's primary ENI.</li>\n</li>`public-ip-address` - String - Optional - Filter results by the public IP address of the instance's primary ENI, including the IP addresses automatically assigned during the instance creation and the EIPs manually associated after the instance creation.</li>\n<li> `tag-key` - String - Optional - Filter results by tag key.</li>\n</li>`tag-value` - String - Optional - Filter results by tag value.</li>\n<li> `tag:tag-key` - String - Optional - Filter results by tag key-value pair. Replace `tag-key` with specific tag keys, as shown in example 2.</li>\nEach request can have up to 10 `Filters` and 5 `Filters.Values`. You cannot specify `InstanceIds` and `Filters` at the same time.",
+          "document": "Filters\n<li> `zone` - String - Optional - Filter by the availability zone.</li>\n<li> `project-id` - Integer - Optional - Filter by the project ID. You can query the list of created projects by calling `DescribeProject` or logging in to the [CVM console](https://console.cloud.tencent.com/cvm/index). You can also call `AddProject` to create projects. </li>\n<li> `host-id` - String - Optional - Filter by the CDH instance ID. Format: `host-xxxxxxxx`.</li>\n</li>`vpc-id` - String - Optional - Filter by the VPC ID. Format: `vpc-xxxxxxxx`.</li>\n<li> `subnet-id` - String - Optional - Filter by the subnet ID. Format: `subnet-xxxxxxxx`.</li>\n</li>`instance-id` - String - Optional - Filter by the instance ID. Format: `ins-xxxxxxxx`.</li>\n</li>`security-group-id` - String - Optional - Filter by the security group ID. Format: `sg-8jlk3f3r`.</li>\n</li>`instance-name` - String - Optional - Filter by the instance name.</li>\n</li>`instance-charge-type` - String - Optional - Filter by the instance billing method. `POSTPAID_BY_HOUR`: pay-as-you-go | `CDHPAID`: You are only billed for [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances, not the CVMs running on the [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances.</li>\n</li>`private-ip-address` - String - Optional - Filter by the private IP address of the instance's primary ENI.</li>\n</li>`public-ip-address` - String - Optional - Filter by the public IP address of the instance's primary ENI, including the IP addresses automatically assigned during the instance creation and the EIPs manually associated after the instance creation.</li>\n<li> `tag-key` - String - Optional - Filter by the tag key.</li>\n</li>`tag-value` - String - Optional - Filter by the tag value.</li>\n<li> `tag:tag-key` - String - Optional - Filter by the tag key-value pair. Replace `tag-key` with the actual tag keys. See example 2.</li>\nEach request can have up to 10 `Filters` and 5 `Filters.Values`. You cannot specify `InstanceIds` and `Filters` at the same time.",
+          "example": "NA",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2110,6 +1752,7 @@
         {
           "default": "",
           "document": "Offset; default value: 0. For more information on `Offset`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377).",
+          "example": "1",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2118,6 +1761,7 @@
         {
           "default": "",
           "document": "Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377). ",
+          "example": "5",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -2238,6 +1882,7 @@
         {
           "default": "",
           "document": "Key pair ID(s) in the format of `skey-11112222`. This API supports using multiple IDs as filters at the same time. For more information on the format of this parameter, see the `id.N` section in [API Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You cannot specify `KeyIds` and `Filters` at the same time. You can log in to the [console](https://console.cloud.tencent.com/cvm/index) to query the key pair IDs.",
+          "example": "skey-11112222",
           "member": "string",
           "name": "KeyIds",
           "required": false,
@@ -2245,7 +1890,8 @@
         },
         {
           "default": "",
-          "document": "Filters.\n<li> `project-id` - Integer - Optional - Filter results by project ID. To view the list of project IDs, you can go to [Project Management](https://console.cloud.tencent.com/project), or call [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1) and look for `projectId` in the response. </li>\n<li> `key-name` - String - Optional - Filter results by key pair name. </li> You cannot specify `KeyIds` and `Filters` at the same time.",
+          "document": "Filters\n<li> `project-id` - Integer - Optional - Filter by project ID. To view the list of project IDs, you can go to [Project Management](https://console.cloud.tencent.com/project), or call the `DescribeProject` API and look for `projectId` in the response.</li>\n<li> `key-name` - String - Optional - Filter by key pair name.</li>You cannot specify `KeyIds` and `Filters` at the same time.",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2254,6 +1900,7 @@
         {
           "default": "",
           "document": "Offset; default value: 0. For more information on `Offset`, see the corresponding sections in API [Introduction](https://intl.cloud.tencent.com/document/product/377). Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377). ",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2262,6 +1909,7 @@
         {
           "default": "",
           "document": "Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see the corresponding section in API [Introduction](https://intl.cloud.tencent.com/document/product/377). ",
+          "example": "20",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -2597,70 +2245,6 @@
           "document": "The list of Reserved Instances that meet the condition.",
           "member": "ReservedInstancesOffering",
           "name": "ReservedInstancesOfferingsSet",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeReservedInstancesRequest": {
-      "document": "DescribeReservedInstances request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Dry run. The default is false.",
-          "member": "bool",
-          "name": "DryRun",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "document": "Offset. The default value is 0. For more information on `Offset`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of returned results. The default value is 20. The maximum is 100. For more information on `Limit`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "<li><strong>zone</strong></li>\n<p style=\"padding-left: 30px;\">Filters by <strong>availability zone</strong> in which reserved instances can be purchased, such as `ap-guangzhou-1`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: please see <a href=\"https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1\">Availability Zones</a></p>\n<li><strong>duration</strong></li>\n<p style=\"padding-left: 30px;\">Filters by <strong>validity period</strong> of the reserved instance, such as `31536000`.</p><p style=\"padding-left: 30px;\">Type: Integer</p><p style=\"padding-left: 30px;\">Unit: second</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid value: 31536000 (1 year)</p>\n<li><strong>instance-type</strong></li>\n<p style=\"padding-left: 30px;\">Filters by <strong>specification of the reserved instance</strong>, such as `S3.MEDIUM4`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: please see <a href=\"https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1\">Reserved Instance Types</a></p>\n<li><strong>instance-family</strong></li>\n<p style=\"padding-left: 30px;\">Filters by <strong>type of the reserved instance</strong>, such as `S3`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: please see <a href=\"https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1\">Reserved Instance Types</a></p>\n<li><strong>offering-type</strong></li>\n<li><strong>offering-type</strong></li>\n<p style=\"padding-left: 30px;\">Filters by <strong>payment method</strong>, such as `All Upfront`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: All Upfront | Partial Upfront | No Upfront</p>\n<li><strong>product-description</strong></li>\n<p style=\"padding-left: 30px;\">Filters by <strong>platform description</strong> (operating system) of the reserved instance, such as `linux`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid value: linux</p>\n<li><strong>reserved-instances-id</strong></li>\n<p style=\"padding-left: 30px;\">Filters by <strong>reserved instance ID</strong> in the form of 650c138f-ae7e-4750-952a-96841d6e9fc1.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p>\n<li><strong>state</strong></li>\n<p style=\"padding-left: 30px;\">Filters by <strong>reserved instance status</strong>, such as `active`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Required: no</p><p style=\"padding-left: 30px;\">Valid values: active (created) | pending (waiting to be created) | retired (expired)</p>\nEach request can have up to 10 `Filters` and 5 `Filter.Values`.",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeReservedInstancesResponse": {
-      "document": "DescribeReservedInstances response structure.",
-      "members": [
-        {
-          "document": "The number of eligible reserved instances.",
-          "member": "int64",
-          "name": "TotalCount",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "List of eligible reserved instances.",
-          "member": "ReservedInstances",
-          "name": "ReservedInstancesSet",
           "type": "list",
           "value_allowed_null": false
         },
@@ -3474,6 +3058,7 @@
         {
           "default": "",
           "document": "Key pair name, which can contain numbers, letters, and underscores, with a maximum length of 25 characters.",
+          "example": "operation_key",
           "member": "string",
           "name": "KeyName",
           "required": true,
@@ -3481,7 +3066,8 @@
         },
         {
           "default": "",
-          "document": "The ID of the [project](https://intl.cloud.tencent.com/document/product/378/10861?from_cn_redirect=1) to which the created key pair belongs.<br><br>You can retrieve the project ID in two ways:<br><li>Query the project ID in [Project Management](https://console.cloud.tencent.com/project).<br><li>Call [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1) and search for `projectId` in the response.\n\nIf you want to use the default project, specify 0 for the parameter.",
+          "document": "The project ID to which the key pair belongs after it is created. <br><br>You can obtain the project ID in the following ways: <br><li>Check the project list in the [Project management](https://console.cloud.tencent.com/project) page.<br><li>Call the `DescribeProject` API and view the `projectId` in the response.\n\nIf you want to use the default project, specify 0 for the parameter.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -3490,6 +3076,7 @@
         {
           "default": "",
           "document": "Content of the public key in the key pair in the `OpenSSH RSA` format.",
+          "example": "ssh-rsa XXXXXXXXXXXX== skey_45071",
           "member": "string",
           "name": "PublicKey",
           "required": true,
@@ -3780,183 +3367,6 @@
       "members": [
         {
           "document": "Price of the disks after being expanded to the specified configurations",
-          "member": "Price",
-          "name": "Price",
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "InquiryPriceRunInstancesRequest": {
-      "document": "InquiryPriceRunInstances request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone and project.",
-          "member": "Placement",
-          "name": "Placement",
-          "required": true,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><li>Marketplace images </li><br/>You can obtain the available image IDs in the following ways: <br/><li>For IDs of `public images`, `custom images`, and `shared images`, log in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE) to query the information; for IDs of `marketplace images`, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>",
-          "member": "string",
-          "name": "ImageId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The instance [billing method](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1).<br><li>POSTPAID_BY_HOUR: hourly, pay-as-you-go<br>Default value: POSTPAID_BY_HOUR.",
-          "member": "string",
-          "name": "InstanceChargeType",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Configuration of prepaid instances. You can use the parameter to specify the attributes of prepaid instances, such as the subscription period and the auto-renewal plan. This parameter is required for prepaid instances.",
-          "member": "InstanceChargePrepaid",
-          "name": "InstanceChargePrepaid",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "The instance model. Different resource specifications are specified for different models. For specific values, call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to retrieve the latest specification list or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If the parameter is not specified, `S1.SMALL1` will be used by default.",
-          "member": "string",
-          "name": "InstanceType",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "System disk configuration of the instance. If this parameter is not specified, the default value will be used.",
-          "member": "SystemDisk",
-          "name": "SystemDisk",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "The configuration information of the instance data disk. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC data disk or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC data disks, CLOUD_PREMIUM data disks, or CLOUD_SSD data disks.",
-          "member": "DataDisk",
-          "name": "DataDisks",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "VPC configurations. You can use this parameter to specify the VPC ID, subnet ID, etc. If this parameter is not specified, the basic network will be used by default. If a VPC IP is specified in this parameter, the `InstanceCount` parameter can only be 1. ",
-          "member": "VirtualPrivateCloud",
-          "name": "VirtualPrivateCloud",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.",
-          "member": "InternetAccessible",
-          "name": "InternetAccessible",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Number of instances to be purchased. Value range: [1, 100]; default value: 1. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on quota, see [CVM instance purchase limit](https://intl.cloud.tencent.com/document/product/213/2664).",
-          "member": "int64",
-          "name": "InstanceCount",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Instance name to be displayed.<br><li>If this parameter is not specified, \"Unnamed\" will be displayed by default.</li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and name them as `server_`, the instance names will be displayed as `server_1` and `server_2`.</li><li>The instance name contains up to 60 characters (including pattern strings).",
-          "member": "string",
-          "name": "InstanceName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.",
-          "member": "LoginSettings",
-          "name": "LoginSettings",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will not be associated with any security group by default.",
-          "member": "string",
-          "name": "SecurityGroupIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Monitor and Cloud Security. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.",
-          "member": "EnhancedService",
-          "name": "EnhancedService",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. <br>For more information, see 'How to ensure idempotency'.",
-          "member": "string",
-          "name": "ClientToken",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Host name of the CVM. <br><li>Periods (.) or hyphens (-) cannot be the start or end of a host name or appear consecutively in a host name.<br><li>For Windows instances, the host name must be 2-15 characters long and can contain uppercase and lowercase letters, numbers, and hyphens (-). It cannot contain periods (.) or contain only numbers. <br><li>For other instances, such as Linux instances, the host name must be 2-30 characters long. It supports multiple periods (.) and allows uppercase and lowercase letters, numbers, and hyphens (-) between any two periods (.).",
-          "member": "string",
-          "name": "HostName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The tag description list. This parameter is used to bind a tag to a resource instance. A tag can only be bound to CVM instances.",
-          "member": "TagSpecification",
-          "name": "TagSpecification",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "The market options of the instance.",
-          "member": "InstanceMarketOptionsRequest",
-          "name": "InstanceMarketOptions",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "HPC cluster ID.",
-          "member": "string",
-          "name": "HpcClusterId",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "InquiryPriceRunInstancesResponse": {
-      "document": "InquiryPriceRunInstances response structure.",
-      "members": [
-        {
-          "document": "Price of the instance with the specified configurations.",
           "member": "Price",
           "name": "Price",
           "type": "object",
@@ -4418,75 +3828,6 @@
           "name": "InstanceState",
           "required": false,
           "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "InstanceTypeConfig": {
-      "document": "Describes the configurations of an instance model.",
-      "members": [
-        {
-          "default": "",
-          "document": "Availability zone.",
-          "member": "string",
-          "name": "Zone",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Instance model.",
-          "member": "string",
-          "name": "InstanceType",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Instance model family.",
-          "member": "string",
-          "name": "InstanceFamily",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of GPU cores.",
-          "member": "int64",
-          "name": "GPU",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of CPU cores.",
-          "member": "int64",
-          "name": "CPU",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Memory capacity; unit: `GB`.",
-          "member": "int64",
-          "name": "Memory",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of FPGA cores; unit: core.",
-          "member": "int64",
-          "name": "FPGA",
-          "required": true,
-          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -4996,32 +4337,6 @@
         }
       ],
       "usage": "out"
-    },
-    "LaunchTemplate": {
-      "document": "Instance launch template. This parameter enables you to create an instance using the preset parameters in the template.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance launch template ID. This parameter enables you to create an instance using the preset parameters in the template.",
-          "example": "lt-rf6ogz48",
-          "member": "string",
-          "name": "LaunchTemplateId",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Instance launch template version number. If specified, this parameter will be used to create a new instance launch template.",
-          "example": "1",
-          "member": "uint64",
-          "name": "LaunchTemplateVersion",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "in"
     },
     "LaunchTemplateInfo": {
       "document": "Information of instance launch template.",
@@ -5535,6 +4850,7 @@
         {
           "default": "",
           "document": "CDH instance ID(s).",
+          "example": "[\"host-ey16rkyg\\n\"]",
           "member": "string",
           "name": "HostIds",
           "required": true,
@@ -5543,6 +4859,7 @@
         {
           "default": "",
           "document": "CDH instance name to be displayed. You can specify any name you like, but its length cannot exceed 60 characters.",
+          "example": "webserver",
           "member": "string",
           "name": "HostName",
           "required": false,
@@ -5551,6 +4868,7 @@
         {
           "default": "",
           "document": "Auto renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically <br><br>If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis if the account balance is sufficient.",
+          "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
           "name": "RenewFlag",
           "required": false,
@@ -5558,7 +4876,8 @@
         },
         {
           "default": "",
-          "document": "Project ID. You can create a project by using the [AddProject](https://intl.cloud.tencent.com/doc/api/403/4398?from_cn_redirect=1) API and obtain its ID from the response parameter `projectId` of the [`DescribeProject`](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) API. Subsequently, the project ID can be used to filter results when you query instances by calling the [DescribeHosts](https://intl.cloud.tencent.com/document/api/213/16474?from_cn_redirect=1) API.",
+          "document": "Project ID. You can use the `AddProject` API to create projects, and obtain the `projectId` field in the response of the `DescribeProject` API. When using the [DescribeHosts](https://intl.cloud.tencent.com/document/api/213/16474?from_cn_redirect=1) API to query instances later, you can filter the results by the project ID.",
+          "example": "0",
           "member": "uint64",
           "name": "ProjectId",
           "required": false,
@@ -5723,6 +5042,7 @@
         {
           "default": "",
           "document": "Instance IDs. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. You can operate up to 100 instances in each request.",
+          "example": "[\"ins-r8hr2upy\\r\\n\",\"ins-5d8a23rs\\r\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -5730,7 +5050,8 @@
         },
         {
           "default": "",
-          "document": "Project ID. You can create a project by using the [AddProject](https://intl.cloud.tencent.com/doc/api/403/4398?from_cn_redirect=1) API and obtain its ID from the response parameter `projectId` of the [`DescribeProject`](https://intl.cloud.tencent.com/document/product/378/4400?from_cn_redirect=1) API. Subsequently, the project ID can be used to filter results when you query instances by calling the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API.",
+          "document": "Project ID. You can use the API `AddProject` to create projects, and obtain the `projectId` field in the response of the `DescribeProject` API. When using the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API to query instances later, you can filter the results by the project ID.",
+          "example": "1045",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -6485,120 +5806,6 @@
       ],
       "usage": "out"
     },
-    "ReservedInstances": {
-      "document": "Describes the information of the reserved instances the user has purchased",
-      "members": [
-        {
-          "default": "",
-          "document": "The ID of the purchased reserved instance, taking the form 650c138f-ae7e-4750-952a-96841d6e9fc1.",
-          "member": "string",
-          "name": "ReservedInstancesId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Reserved instance specification, such as `S3.MEDIUM4`.\nValid values: please see <a href=\"https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1\">Reserved Instance Specifications</a>",
-          "member": "string",
-          "name": "InstanceType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Availability zones in which the reserved instance can be purchased. For example, \"ap-guangzhou-1\".\nReturned values: <a href=\"https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1\">list of availability zones</a>",
-          "member": "string",
-          "name": "Zone",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Start time of the reserved instance billing, taking the form of 2019-10-23 00:00:00.",
-          "member": "datetime",
-          "name": "StartTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "End time of the reserved instance, taking the form of 2019-10-23 00:00:00",
-          "member": "datetime",
-          "name": "EndTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The **validity** of the reserved instance in seconds, which is the purchased usage period. For example, 31536000.\nMeasurement unit: second.",
-          "member": "int64",
-          "name": "Duration",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The number of reserved instances that have been purchased. For example, 10.",
-          "member": "int64",
-          "name": "InstanceCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The operating system of the reserved instance. For example, \"linux\".\nReturned value: linux.",
-          "member": "string",
-          "name": "ProductDescription",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The status of the reserved instance. For example, \"active\".\nReturned value: \"active\" (created) | \"pending\" (waiting to be created) | \"retired\" (expired).",
-          "member": "string",
-          "name": "State",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The currency in which the reserved instance is billed. The ISO 4217 standard currency codes are used. For example, USD.\nReturned value: USD.",
-          "member": "string",
-          "name": "CurrencyCode",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The payment method of the reserved instance. For example, \"All Upfront\".\nReturned value: All Upfront.",
-          "member": "string",
-          "name": "OfferingType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Reserved instance type, such as `S3`.\nValid values: please see <a href=\"https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1\">Reserved Instance Types</a>",
-          "member": "string",
-          "name": "InstanceFamily",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
     "ReservedInstancesOffering": {
       "document": "The information of the Reserved Instance offering.",
       "members": [
@@ -6982,265 +6189,6 @@
         }
       ],
       "usage": "both"
-    },
-    "RunInstancesRequest": {
-      "document": "RunInstances request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance [billing type](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). <br><li>POSTPAID_BY_HOUR: pay-as-you-go billing by hour <br><li>CDHPAID: Dedicated CVM (associated with a dedicated host. Resource usage of the dedicated host is free of charge.) <br><li>SPOTPAID: [spot instance] (https://intl.cloud.tencent.com/document/product/213/17817)<br> Default value: POSTPAID_BY_HOUR.",
-          "example": "POSTPAID_BY_HOUR",
-          "member": "string",
-          "name": "InstanceChargeType",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Configuration of prepaid instances. You can use the parameter to specify the attributes of prepaid instances, such as the subscription period and the auto-renewal plan. This parameter is required for prepaid instances.",
-          "example": "NA",
-          "member": "InstanceChargePrepaid",
-          "name": "InstanceChargePrepaid",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH (for dedicated CVMs)\n <b>Note: `Zone` is required.</b>\n`Placement` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `Placement` prevails.",
-          "example": "NA",
-          "member": "Placement",
-          "name": "Placement",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "The instance model. Different resource specifications are specified for different instance models.\n<br><li>To view specific values for `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, `S1.SMALL1` will be used by default.<br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, specify this parameter as `CDH_1C1G`.",
-          "example": "POSTPAID_BY_HOUR",
-          "member": "string",
-          "name": "InstanceType",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images (for Chinese mainland only)</li><br/>To check the image ID:<br/><li>For public images, custom images, and shared images, go to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE). For marketplace images, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>\n`ImageId` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `ImageId` prevails.",
-          "example": "img-irmer45l",
-          "member": "string",
-          "name": "ImageId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "System disk configuration of the instance. If this parameter is not specified, the default value will be used.",
-          "example": "NA",
-          "member": "SystemDisk",
-          "name": "SystemDisk",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "The configuration information of instance data disks. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC data disk or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC data disks, CLOUD_PREMIUM data disks, or CLOUD_SSD data disks.",
-          "example": "NA",
-          "member": "DataDisk",
-          "name": "DataDisks",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If this parameter is not specified, the classic network is used by default. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be same as the number of VPC IPs, which cannot be greater than 20.",
-          "example": "NA",
-          "member": "VirtualPrivateCloud",
-          "name": "VirtualPrivateCloud",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.",
-          "example": "NA",
-          "member": "InternetAccessible",
-          "name": "InternetAccessible",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "The number of instances to be purchased. Value range: [1, 100]; default value: 1. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on the quota, see [CVM instance purchase limit](https://intl.cloud.tencent.com/document/product/213/2664).",
-          "example": "1",
-          "member": "int64",
-          "name": "InstanceCount",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Instance name to be displayed.<br><li>If this parameter is not specified, \"Unnamed\" will be displayed by default.</li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and name them as `server_`, the instance names will be displayed as `server_1` and `server_2`.</li><li>The instance name contains up to 60 characters (including pattern strings).",
-          "example": "server_{R:3}",
-          "member": "string",
-          "name": "InstanceName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Instance login settings. You can use this parameter to set the login method, login password and SSH key, or keep the original login settings of the image. If it's not specified, the user needs to set the login password using the \"Reset password\" option in the CVM console or calling the API `ResetInstancesPassword` to complete the creation of the CVM instance(s).",
-          "example": "NA",
-          "member": "LoginSettings",
-          "name": "LoginSettings",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.",
-          "example": "['sg-ajhn9qtq']",
-          "member": "string",
-          "name": "SecurityGroupIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Specifies whether to enable services such as Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. However, for custom images and images from the marketplace, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained.",
-          "example": "NA",
-          "member": "EnhancedService",
-          "name": "EnhancedService",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. <br>For more information, see 'How to ensure idempotency'.",
-          "example": "system-f3827db9-c58a-49cc-bf10-33fc1923a34a",
-          "member": "string",
-          "name": "ClientToken",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Instance hostname. <br><li>Dots (.) and dashes (-) can not be used as the first or last character of HostName nor used consecutively. <br<li>Windows instances: 2 to 15 characters, including English letters (case-insensitive), numbers and dashes (-). Dots and numeric-only names are not allowed. <br><li>Other instances (Linux, etc.): 2 to 60 characters, including English letters (case-insensitive), numbers, dashes (-) and dots. Note that consecutive dots are not allowed.<br><li>Batch naming: use `{R:x}` for batch naming if multiple instances are purchased. `x` is the serial number of the instance. It’s generated by [x, x+n-1], where `n` refers to the number of instances purchased. For example, if `server{R:3}` is input, if you purchase one instance, the hostname is `server3`. If you purchase two instances, the hostnames are `server3` and `server4` respectively. You can specify multiple pattern strings `{R:x}`. </li><br><li>Purchasing multiple instances: If no pattern string is specified, you shall add suffixes `1, 2...n` to the instance hostname. `n` represents the number of purchased instances. For example, if the instance hostname is `server`,  when two instances are purchased, the hostnames of instances purchased are respectively `server1` and `server2`.",
-          "example": "MyHostName",
-          "member": "string",
-          "name": "HostName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.",
-          "example": "NA",
-          "member": "ActionTimer",
-          "name": "ActionTimer",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Placement group ID. You can only specify one.",
-          "example": "['ps-3p88qhfo']",
-          "member": "string",
-          "name": "DisasterRecoverGroupIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Binds the tag with the specified resources (CVM and CLB) as well",
-          "example": "NA",
-          "member": "TagSpecification",
-          "name": "TagSpecification",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "The market options of the instance.",
-          "example": "NA",
-          "member": "InstanceMarketOptionsRequest",
-          "name": "InstanceMarketOptions",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "User data provided to the instance, which needs to be encoded in base64 format with the maximum size of 16KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).",
-          "example": "TXlVc2VyRGF0YQo=",
-          "member": "string",
-          "name": "UserData",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Whether the request is a dry run only.\ntrue: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.\nIf the dry run fails, the corresponding error code will be returned.\nIf the dry run succeeds, the RequestId will be returned.\nfalse (default value): send a normal request and create instance(s) if all the requirements are met.",
-          "example": "false",
-          "member": "bool",
-          "name": "DryRun",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "document": "CAM role name, which can be obtained from the `roleName` field in the response of the [`DescribeRoleList`](https://intl.cloud.tencent.com/document/product/598/13887?from_cn_redirect=1) API.",
-          "example": "testroleName001",
-          "member": "string",
-          "name": "CamRoleName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "HPC cluster ID. The HPC cluster must and can only be specified for a high-performance computing instance.",
-          "example": "hpc-a5n666lo",
-          "member": "string",
-          "name": "HpcClusterId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Instance launch template.",
-          "example": "NA",
-          "member": "LaunchTemplate",
-          "name": "LaunchTemplate",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Specify the CHC physical server that used to create the CHC CVM.",
-          "example": "[\"chc-kwf9mhzf\"]",
-          "member": "string",
-          "name": "ChcIds",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "RunInstancesResponse": {
-      "document": "RunInstances response structure.",
-      "members": [
-        {
-          "document": "If you use this API to create instance(s), this parameter will be returned, representing one or more instance `ID`s. Retuning the instance `ID` list does not necessarily mean that the instance(s) were created successfully. To check whether the instance(s) were created successfully, you can call [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and check the states of the instances in `InstancesSet` in the response. If the state of an instance changes from \"pending\" to \"running\", it means that the instance has been created successfully.",
-          "member": "string",
-          "name": "InstanceIdSet",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
     },
     "RunMonitorServiceEnabled": {
       "document": "Describes information related to the Cloud Monitor service.",
