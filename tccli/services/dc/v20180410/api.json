@@ -306,6 +306,30 @@
       ],
       "type": "object"
     },
+    "BFDInfo": {
+      "document": "BFD configuration information",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of health checks",
+          "member": "int64",
+          "name": "ProbeFailedTimes",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Health check interval",
+          "member": "int64",
+          "name": "Interval",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "BgpPeer": {
       "document": "BGP parameter, including Asn and AuthKey.",
       "members": [
@@ -521,6 +545,7 @@
         {
           "default": "",
           "document": "Direct Connect ID, such as `dc-kd7d06of`.",
+          "example": "dc-abcdefgh",
           "member": "string",
           "name": "DirectConnectId",
           "required": true,
@@ -529,6 +554,7 @@
         {
           "default": "",
           "document": "Dedicated tunnel name.",
+          "example": "Test",
           "member": "string",
           "name": "DirectConnectTunnelName",
           "required": true,
@@ -537,6 +563,7 @@
         {
           "default": "",
           "document": "Connection owner, who is the current customer by default.\nThe developer account ID should be entered for shared connections.",
+          "example": "12325464",
           "member": "string",
           "name": "DirectConnectOwnerAccount",
           "required": false,
@@ -545,6 +572,7 @@
         {
           "default": "",
           "document": "Network type. Valid values: VPC, BMVPC, CCN. Default value: VPC.\nVPC: Virtual Private Cloud.\nBMVPC: BM VPC.\nCCN: Cloud Connect Network.",
+          "example": "VPC",
           "member": "string",
           "name": "NetworkType",
           "required": false,
@@ -553,6 +581,7 @@
         {
           "default": "",
           "document": "Network region.",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "NetworkRegion",
           "required": false,
@@ -561,6 +590,7 @@
         {
           "default": "",
           "document": "Unified VPC ID or BMVPC ID.",
+          "example": "vpc-abcdefgh",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -569,6 +599,7 @@
         {
           "default": "",
           "document": "Direct connect gateway ID, such as `dcg-d545ddf`.",
+          "example": "dcg-abcdefgh",
           "member": "string",
           "name": "DirectConnectGatewayId",
           "required": false,
@@ -577,6 +608,7 @@
         {
           "default": "",
           "document": "Direct Connect bandwidth in Mbps.\nDefault value: connection bandwidth value.",
+          "example": "100",
           "member": "int64",
           "name": "Bandwidth",
           "required": false,
@@ -585,6 +617,7 @@
         {
           "default": "",
           "document": "BGP: BGP routing.\nSTATIC: Static routing.\nDefault value: BGP routing.",
+          "example": "BGP",
           "member": "string",
           "name": "RouteType",
           "required": false,
@@ -593,6 +626,7 @@
         {
           "default": "",
           "document": "BgpPeer, which is BGP information on the user side and includes Asn and AuthKey.",
+          "example": "无",
           "member": "BgpPeer",
           "name": "BgpPeer",
           "required": false,
@@ -601,6 +635,7 @@
         {
           "default": "",
           "document": "Static routing, i.e., IP range of the user's IDC.",
+          "example": "无",
           "member": "RouteFilterPrefix",
           "name": "RouteFilterPrefixes",
           "required": false,
@@ -609,6 +644,7 @@
         {
           "default": "",
           "document": "VLAN. Value range: 0-3,000.\n0: sub-interface not enabled.\nDefault value: Non-zero.",
+          "example": "100",
           "member": "int64",
           "name": "Vlan",
           "required": false,
@@ -617,6 +653,7 @@
         {
           "default": "",
           "document": "TencentAddress: Tencent-side IP address.",
+          "example": "192.168.1.2/30",
           "member": "string",
           "name": "TencentAddress",
           "required": false,
@@ -625,6 +662,7 @@
         {
           "default": "",
           "document": "CustomerAddress: User-side IP address.",
+          "example": "192.168.1.1/30",
           "member": "string",
           "name": "CustomerAddress",
           "required": false,
@@ -633,6 +671,7 @@
         {
           "default": "",
           "document": "TencentBackupAddress, i.e., Tencent-side standby IP address",
+          "example": "192.168.1.1/30",
           "member": "string",
           "name": "TencentBackupAddress",
           "required": false,
@@ -641,10 +680,47 @@
         {
           "default": "",
           "document": "Cloud Attached Connection Service ID",
+          "example": "cas-xxxxxxxx",
           "member": "string",
           "name": "CloudAttachId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable BFD",
+          "example": "0",
+          "member": "int64",
+          "name": "BfdEnable",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable NQA",
+          "example": "0",
+          "member": "int64",
+          "name": "NqaEnable",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "BFD configuration information",
+          "example": "无",
+          "member": "BFDInfo",
+          "name": "BfdInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "NQA configuration information",
+          "example": "无",
+          "member": "NQAInfo",
+          "name": "NqaInfo",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2082,6 +2158,39 @@
         }
       ],
       "type": "object"
+    },
+    "NQAInfo": {
+      "document": "NQA configuration information",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of health checks",
+          "member": "int64",
+          "name": "ProbeFailedTimes",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Health check interval",
+          "member": "int64",
+          "name": "Interval",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP address for the health check",
+          "member": "string",
+          "name": "DestinationIp",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "RejectDirectConnectTunnelRequest": {
       "document": "RejectDirectConnectTunnel request structure.",

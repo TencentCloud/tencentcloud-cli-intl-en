@@ -1214,10 +1214,29 @@
         {
           "default": "",
           "document": "List of the IDs of the instances to be deleted.",
+          "example": "[\"img-34vaef8fe\\r\\n\"]",
           "member": "string",
           "name": "ImageIds",
           "required": true,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to delete the snapshot associated with the image",
+          "example": "False",
+          "member": "bool",
+          "name": "DeleteBindedSnap",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Check whether deleting an image is supported",
+          "example": "True",
+          "member": "bool",
+          "name": "DryRun",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -1569,7 +1588,7 @@
         },
         {
           "default": "",
-          "document": "Filters. Each request can have up to 10 `Filters` and 5 `Filters.Values`. You cannot specify `ImageIds` and `Filters` at the same time. Specific filters:\n\n<li><strong>image-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image ID</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>image-type</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image type</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p><p style=\"padding-left: 30px;\">Options:</p><p style=\"padding-left: 30px;\">`PRIVATE_IMAGE`: Private images (images created by this account)</p><p style=\"padding-left: 30px;\">`PUBLIC_IMAGE`: Public images (Tencent Cloud official images)</p><p style=\"padding-left: 30px;\">`SHARED_IMAGE`: Shared images (images shared by other accounts to this account)</p>\n<li><strong>image-name</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image name</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>platform</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image operating system</strong>, such as CentOS.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>tag-key</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>tag key</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>tag:tag-key</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>tag key-value pair</strong>. Replace “tag-key” with the actual value. </p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>",
+          "document": "Filters. Each request can have up to 10 `Filters`, and 5 `Filters.Values` for each filter. `ImageIds` and `Filters` cannot be specified at the same time. See details:\n\n<li><strong>image-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image ID</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>image-type</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image type</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p><p style=\"padding-left: 30px;\">Options:</p><p style=\"padding-left: 30px;\">`PRIVATE_IMAGE`: Private images (images created by this account)</p><p style=\"padding-left: 30px;\">`PUBLIC_IMAGE`: Public images (Tencent Cloud official images)</p><p style=\"padding-left: 30px;\">`SHARED_IMAGE`: Shared images (images shared by other accounts to this account)</p>\n<li><strong>image-name</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image name</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>platform</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image operating system</strong>, such as `CentOS`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>tag-key</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>tag key</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>tag-value</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>tag value</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>tag:tag-key</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>tag key-value pair</strong>. Replace “tag-key” with the actual value. </p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -2794,6 +2813,7 @@
         {
           "default": "",
           "document": "Image ID",
+          "example": "img-19mu3fy3",
           "member": "string",
           "name": "ImageId",
           "required": false,
@@ -2803,6 +2823,7 @@
         {
           "default": "",
           "document": "Operating system of the image",
+          "example": "CentOS 8.0 64位",
           "member": "string",
           "name": "OsName",
           "required": false,
@@ -2812,6 +2833,7 @@
         {
           "default": "",
           "document": "Image type",
+          "example": "PRIVATE_IMAGE",
           "member": "string",
           "name": "ImageType",
           "required": false,
@@ -2821,6 +2843,7 @@
         {
           "default": "",
           "document": "Creation time of the image",
+          "example": "2022-03-21T08:41:45Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "required": true,
@@ -2830,6 +2853,7 @@
         {
           "default": "",
           "document": "Image name",
+          "example": "test",
           "member": "string",
           "name": "ImageName",
           "required": true,
@@ -2839,6 +2863,7 @@
         {
           "default": "",
           "document": "Image description",
+          "example": "test",
           "member": "string",
           "name": "ImageDescription",
           "required": true,
@@ -2848,6 +2873,7 @@
         {
           "default": "",
           "document": "Image size",
+          "example": "50",
           "member": "int64",
           "name": "ImageSize",
           "required": true,
@@ -2857,6 +2883,7 @@
         {
           "default": "",
           "document": "Image architecture",
+          "example": "x86_64",
           "member": "string",
           "name": "Architecture",
           "required": true,
@@ -2866,6 +2893,7 @@
         {
           "default": "",
           "document": "Image state",
+          "example": "NORMAL",
           "member": "string",
           "name": "ImageState",
           "required": true,
@@ -2875,6 +2903,7 @@
         {
           "default": "",
           "document": "Source platform of the image",
+          "example": "CentOS",
           "member": "string",
           "name": "Platform",
           "required": false,
@@ -2884,6 +2913,7 @@
         {
           "default": "",
           "document": "Image creator",
+          "example": "xxx",
           "member": "string",
           "name": "ImageCreator",
           "required": false,
@@ -2893,6 +2923,7 @@
         {
           "default": "",
           "document": "Image source",
+          "example": "CREATE_IMAGE",
           "member": "string",
           "name": "ImageSource",
           "required": false,
@@ -2902,6 +2933,7 @@
         {
           "default": "",
           "document": "Synchronization percentage\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "null",
           "member": "int64",
           "name": "SyncPercent",
           "required": true,
@@ -2911,6 +2943,7 @@
         {
           "default": "",
           "document": "Whether the image supports cloud-init\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "true",
           "member": "bool",
           "name": "IsSupportCloudinit",
           "required": true,
@@ -2920,8 +2953,19 @@
         {
           "default": "",
           "document": "Information on the snapshots associated with the image\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "[]",
           "member": "Snapshot",
           "name": "SnapshotSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The list of tags bound to the image.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "[]",
+          "member": "Tag",
+          "name": "Tags",
           "required": true,
           "type": "list",
           "value_allowed_null": true
@@ -6433,6 +6477,15 @@
           "name": "DestinationRegions",
           "required": true,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Checks whether image synchronization can be initiated ",
+          "example": "False",
+          "member": "bool",
+          "name": "DryRun",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"

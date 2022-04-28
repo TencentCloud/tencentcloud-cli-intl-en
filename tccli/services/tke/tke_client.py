@@ -96,6 +96,33 @@ def doCreateCluster(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doUpdateClusterVersion(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TkeClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.UpdateClusterVersionRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.UpdateClusterVersion(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeClusterStatus(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -412,6 +439,33 @@ def doModifyClusterAttribute(args, parsed_globals):
     model = models.ModifyClusterAttributeRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.ModifyClusterAttribute(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doGetClusterLevelPrice(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TkeClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.GetClusterLevelPriceRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.GetClusterLevelPrice(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1014,6 +1068,33 @@ def doCreateClusterNodePool(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeClusterLevelChangeRecords(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TkeClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeClusterLevelChangeRecordsRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeClusterLevelChangeRecords(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeEnableVpcCniProgress(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1203,7 +1284,7 @@ def doDescribeRegions(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAddExistedInstances(args, parsed_globals):
+def doDescribeVersions(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1219,9 +1300,9 @@ def doAddExistedInstances(args, parsed_globals):
     client = mod.TkeClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AddExistedInstancesRequest()
+    model = models.DescribeVersionsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.AddExistedInstances(model)
+    rsp = client.DescribeVersions(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1392,7 +1473,7 @@ def doDeleteClusterNodePool(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeVersions(args, parsed_globals):
+def doAddExistedInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1408,9 +1489,9 @@ def doDescribeVersions(args, parsed_globals):
     client = mod.TkeClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeVersionsRequest()
+    model = models.AddExistedInstancesRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeVersions(model)
+    rsp = client.AddExistedInstances(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1438,6 +1519,33 @@ def doDescribeClusterEndpointStatus(args, parsed_globals):
     model = models.DescribeClusterEndpointStatusRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DescribeClusterEndpointStatus(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeClusterLevelAttribute(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TkeClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeClusterLevelAttributeRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeClusterLevelAttribute(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1554,7 +1662,7 @@ def doDescribeClusterKubeconfig(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doUpdateClusterVersion(args, parsed_globals):
+def doDescribeResourceUsage(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1570,9 +1678,9 @@ def doUpdateClusterVersion(args, parsed_globals):
     client = mod.TkeClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpdateClusterVersionRequest()
+    model = models.DescribeResourceUsageRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.UpdateClusterVersion(model)
+    rsp = client.DescribeResourceUsage(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1757,6 +1865,7 @@ ACTION_MAP = {
     "DescribeClusterAuthenticationOptions": doDescribeClusterAuthenticationOptions,
     "CheckInstancesUpgradeAble": doCheckInstancesUpgradeAble,
     "CreateCluster": doCreateCluster,
+    "UpdateClusterVersion": doUpdateClusterVersion,
     "DescribeClusterStatus": doDescribeClusterStatus,
     "DescribeClusterNodePoolDetail": doDescribeClusterNodePoolDetail,
     "DescribeVpcCniPodLimits": doDescribeVpcCniPodLimits,
@@ -1769,6 +1878,7 @@ ACTION_MAP = {
     "EnableVpcCniNetworkType": doEnableVpcCniNetworkType,
     "DeleteCluster": doDeleteCluster,
     "ModifyClusterAttribute": doModifyClusterAttribute,
+    "GetClusterLevelPrice": doGetClusterLevelPrice,
     "DeleteClusterAsGroups": doDeleteClusterAsGroups,
     "DeleteClusterRoute": doDeleteClusterRoute,
     "ModifyPrometheusAlertRule": doModifyPrometheusAlertRule,
@@ -1791,6 +1901,7 @@ ACTION_MAP = {
     "ModifyClusterNodePool": doModifyClusterNodePool,
     "DescribeClusterNodePools": doDescribeClusterNodePools,
     "CreateClusterNodePool": doCreateClusterNodePool,
+    "DescribeClusterLevelChangeRecords": doDescribeClusterLevelChangeRecords,
     "DescribeEnableVpcCniProgress": doDescribeEnableVpcCniProgress,
     "CreateClusterNodePoolFromExistingAsg": doCreateClusterNodePoolFromExistingAsg,
     "DescribeClusters": doDescribeClusters,
@@ -1798,20 +1909,21 @@ ACTION_MAP = {
     "ModifyNodePoolInstanceTypes": doModifyNodePoolInstanceTypes,
     "CreatePrometheusAlertRule": doCreatePrometheusAlertRule,
     "DescribeRegions": doDescribeRegions,
-    "AddExistedInstances": doAddExistedInstances,
+    "DescribeVersions": doDescribeVersions,
     "DeleteClusterEndpointVip": doDeleteClusterEndpointVip,
     "DescribePrometheusInstance": doDescribePrometheusInstance,
     "DescribeClusterSecurity": doDescribeClusterSecurity,
     "DescribeRouteTableConflicts": doDescribeRouteTableConflicts,
     "EnableClusterDeletionProtection": doEnableClusterDeletionProtection,
     "DeleteClusterNodePool": doDeleteClusterNodePool,
-    "DescribeVersions": doDescribeVersions,
+    "AddExistedInstances": doAddExistedInstances,
     "DescribeClusterEndpointStatus": doDescribeClusterEndpointStatus,
+    "DescribeClusterLevelAttribute": doDescribeClusterLevelAttribute,
     "DeleteClusterInstances": doDeleteClusterInstances,
     "DescribeClusterAsGroups": doDescribeClusterAsGroups,
     "DisableClusterDeletionProtection": doDisableClusterDeletionProtection,
     "DescribeClusterKubeconfig": doDescribeClusterKubeconfig,
-    "UpdateClusterVersion": doUpdateClusterVersion,
+    "DescribeResourceUsage": doDescribeResourceUsage,
     "DescribeAvailableClusterVersion": doDescribeAvailableClusterVersion,
     "ModifyClusterEndpointSP": doModifyClusterEndpointSP,
     "CreateClusterEndpointVip": doCreateClusterEndpointVip,

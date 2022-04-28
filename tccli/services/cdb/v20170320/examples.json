@@ -3,7 +3,7 @@
     "AddTimeWindow": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=AddTimeWindow\n&InstanceId=cdb-eb2w7dto\n&Monday.0=02:00-03:00\n&<Common request parameters>",
+        "input": "https://cdb.tencentcloudapi.com/?Action=AddTimeWindow\n&InstanceId=cdb-eb2w7dto\n&Monday.0=02:00-03:00\n&MaxDelayTime=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Adding a maintenance window"
       }
@@ -13,7 +13,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplyCDBProxy\n<Common request parameters>\n\n{\n    \"UniqVpcId\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"SecurityGroup\": [\n        \"xx\"\n    ],\n    \"Mem\": 1,\n    \"UniqSubnetId\": \"xx\",\n    \"Desc\": \"xx\",\n    \"Cpu\": 1,\n    \"ProxyCount\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": \"dd803e8b-02543d6b-0b6ec9c4-8c1e133c\",\n        \"RequestId\": \"6236a2ad-0557-48c3-b983-247d2870e0a1\"\n    }\n}",
-        "title": "Creating a database proxy group"
+        "title": "Creating a database proxy"
       }
     ],
     "AssociateSecurityGroups": [
@@ -37,7 +37,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseCDBProxy\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-test\",\n    \"ProxyGroupId\": \"proxy-test\",\n    \"OnlyCloseRW\": true\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3689c0eb-a92d-77ce-0ee2-17d99f604e64\"\n    }\n}",
-        "title": "Disabling database proxy"
+        "title": "Disabling the database proxy"
       }
     ],
     "CloseWanService": [
@@ -46,14 +46,6 @@
         "input": "https://cdb.tencentcloudapi.com/?Action=CloseWanService\r\n&InstanceId=cdb-ezq1vzem\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestId\": \"841592f6-dd318344-aea19230-38912726\"\n    }\n}",
         "title": "Disabling public network access for an instance"
-      }
-    ],
-    "CreateAccounts": [
-      {
-        "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=CreateAccounts\n&InstanceId=cdb-f35wr6wj\n&Accounts.0.User=ajnnw\n&Accounts.0.Host=127.0.0.1\n&Password=fsdgfdgfd\n&Description=description\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestId\": \"256117ed-efa08b54-61784d44-91781bbd\"\n    }\n}",
-        "title": "Creating a TencentDB account"
       }
     ],
     "CreateAuditPolicy": [
@@ -97,17 +89,9 @@
     "CreateDBInstanceHour": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=CreateDBInstanceHour\n&Memory=1000\n&Volume=25\n&GoodsNum=1\n&Zone=ap-guangzhou-3\n&UniqVpcId=vpc-0akbol5v\n&UniqSubnetId=subnet-fyrtjbqw\n&ProjectId=0\n&InstanceRole=master\n&EngineVersion=5.6\n&ProtectMode=0\n&DeployMode=0\n&SlaveZone=ap-guangzhou-3\n&ResourceTags.0.TagKey=marchtest\n&ResourceTags.0.TagValue.0=test1\n&<Common request parameters>",
+        "input": "https://cdb.tencentcloudapi.com/?Action=CreateDBInstanceHour\n&Memory=1000\n&Volume=25\n&GoodsNum=1\n&Zone=ap-guangzhou-3\n&UniqVpcId=vpc-0akbol5v\n&UniqSubnetId=subnet-fyrtjbqw\n&ProjectId=0\n&InstanceRole=master\n&EngineVersion=5.6\n&ProtectMode=0\n&DeployMode=0\n&SlaveZone=ap-guangzhou-3\n&ResourceTags.0.TagKey=marchtest\n&ResourceTags.0.TagValue.0=test1\n&<Public request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"InstanceIds\": [\n            \"cdb-03brtubb\"\n        ],\n        \"DealIds\": [\n            \"20171201160000002670226599824833\"\n        ]\n    }\n}",
         "title": "Creating a pay-as-you-go TencentDB instance"
-      }
-    ],
-    "CreateDeployGroup": [
-      {
-        "document": "This example shows you how to create a placement group.",
-        "input": "https://cdb.tencentcloudapi.com/?Action=CreateDeployGroup\n&DeployGroupName=cdb-ezq1vzem\n&Description=test\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"DeployGroupId\": \"213123\",\n        \"RequestId\": \"b4a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
-        "title": "Creating a placement group"
       }
     ],
     "CreateParamTemplate": [
@@ -142,14 +126,6 @@
         "title": "Deleting a TencentDB instance backup"
       }
     ],
-    "DeleteDeployGroups": [
-      {
-        "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=DeleteDeployGroups\n&DeployGroupIds.0=test\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b4a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
-        "title": "Deleting a placement group"
-      }
-    ],
     "DeleteParamTemplate": [
       {
         "document": "",
@@ -174,14 +150,6 @@
         "title": "Querying the information of TencentDB account permissions"
       }
     ],
-    "DescribeAccounts": [
-      {
-        "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeAccounts\n&InstanceId=cdb-f35wr6wj\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TotalCount\": 2,\n        \"MaxUserConnections\": 10240,\n        \"Items\": [\n            {\n                \"Notes\": \"test\",\n                \"Host\": \"localhost\",\n                \"User\": \"test_user\",\n                \"ModifyTime\": \"2020-11-10 01:00:00\",\n                \"ModifyPasswordTime\": \"2020-11-10 01:00:00\",\n                \"CreateTime\": \"2020-11-10 01:00:00\",\n                \"MaxUserConnections\": 20\n            },\n            {\n                \"Notes\": \"test2\",\n                \"Host\": \"localhost\",\n                \"User\": \"root\",\n                \"ModifyTime\": \"2020-11-10 01:00:00\",\n                \"ModifyPasswordTime\": \"2020-11-10 01:00:00\",\n                \"CreateTime\": \"2020-11-10 01:00:00\",\n                \"MaxUserConnections\": 20\n            }\n        ]\n    }\n}",
-        "title": "Querying the information of all TencentDB accounts"
-      }
-    ],
     "DescribeAsyncRequestInfo": [
       {
         "document": "",
@@ -190,10 +158,26 @@
         "title": "Querying the execution result of an async task"
       }
     ],
+    "DescribeAuditPolicies": [
+      {
+        "document": "",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeAuditPolicies\n&InstanceId=cdb-qwerasdf\n&PolicyId=cdbpolicy-asdfqwer\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TotalCount\": 1,\n        \"Items\": [\n            {\n                \"PolicyId\": \"cdbpolicy-asdfqwer\"\n                \"Status\": \"running\",\n                \"InstanceId\": \"cdb-qwerasdf\",\n                \"InstanceName\": \"test\",\n                \"CreateTime\": \"2019-03-20 17:09:13\",\n                \"ModifyTime\": \"2019-03-20 17:09:13\",\n                \"PolicyName\": \"audit_policy_1\",\n                \"RuleId\": \"cdbrule-asdfqwer\",\n                \"RuleName\": \"audit1\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the audit policies"
+      }
+    ],
+    "DescribeAuditRules": [
+      {
+        "document": "",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeAuditRules\n&RuleId=\"cdbrule-qwerasdf\"\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TotalCount\": 1,\n        \"Items\": [\n            {\n                \"RuleId\": \"cdbrule-qwerasdf\",\n                \"CreateTime\": \"2019-03-20 17:09:13\",\n                \"ModifyTime\": \"2019-03-20 17:09:13\",\n                \"RuleName\": \"audit1\",\n                \"Description\": \"audit_test\",\n                \"AuditAll\": true\n            }\n        ]\n    }\n}",
+        "title": "Querying the audit rules"
+      }
+    ],
     "DescribeBackupConfig": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeBackupConfig\r\n&InstanceId=cdb-c1nl9rpv\r\n&<Common request parameters>",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeBackupConfig\r\n&InstanceId=cdb-c1nl9rpv\r\n&<Public request parameters>",
         "output": "{\n    \"Response\": {\n        \"BackupMethod\": \"physical\",\n        \"BinlogExpireDays\": 7,\n        \"BackupExpireDays\": 7,\n        \"StartTimeMin\": 10,\n        \"StartTimeMax\": 14,\n        \"BackupTimeWindow\": {\n            \"Friday\": \"10:00-14:00\",\n            \"Monday\": \"10:00-14:00\",\n            \"Saturday\": \"10:00-14:00\",\n            \"Sunday\": \"10:00-14:00\",\n            \"Thursday\": \"10:00-14:00\",\n            \"Tuesday\": \"10:00-14:00\",\n            \"Wednesday\": \"10:00-14:00\"\n        },\n        \"RequestId\": \"9d73ec37-89b8-4d36-9f40-123123123\"\n    }\n}",
         "title": "Querying the configuration information of a TencentDB instance backup"
       }
@@ -225,9 +209,9 @@
     "DescribeBackups": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeBackups\r\n&InstanceId=cdb-c1nl9rpv\r\n&<Common request parameters>",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeBackups\r\n&InstanceId=cdb-c1nl9rpv\r\n&<Public request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TotalCount\": 2,\n        \"Items\": [\n            {\n                \"Status\": \"SUCCESS\",\n                \"FinishTime\": \"2017-07-23 12:03:42\",\n                \"Name\": \"ivansqwutestdr_backup_20170429000134\",\n                \"IntranetUrl\": \"http://gz.xxxxxxxxxxxxxxxxx\",\n                \"Creator\": \"SYSTEM\",\n                \"BackupId\": 12445233,\n                \"Date\": \"2017-04-29 00:01:34\",\n                \"InternetUrl\": \"http://gz.xxxxxxxxxxxxxxxxx\",\n                \"Type\": \"logical\",\n                \"Size\": 653226\n            },\n            {\n                \"Status\": \"SUCCESS\",\n                \"FinishTime\": \"2017-07-23 12:03:42\",\n                \"Name\": \"ivansqwutestdr_backup_20170430000129\",\n                \"IntranetUrl\": \"http://gz.xxxxxxxxxxxxxxxxx\",\n                \"Creator\": \"SYSTEM\",\n                \"BackupId\": 436184134,\n                \"Date\": \"2017-04-30 00:01:29\",\n                \"InternetUrl\": \"http://gz.xxxxxxxxxxxxxxxxx\",\n                \"Type\": \"logical\",\n                \"Size\": 653226\n            }\n        ]\n    }\n}",
-        "title": "Querying the data backup file list"
+        "title": "Querying data backup file list"
       }
     ],
     "DescribeBinlogBackupOverview": [
@@ -313,8 +297,8 @@
     "DescribeDBInstances": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeDBInstances\n&InstanceIds.0=cdb-70zdmgg1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"756bb037-a44a-4b4f-abe0-6efd34a6c792\",\n        \"Items\": [\n            {\n                \"WanStatus\": 0,\n                \"Zone\": \"ap-chengdu-1\",\n                \"InitFlag\": 1,\n                \"Memory\": 1000,\n                \"Status\": 1,\n                \"VpcId\": 511512,\n                \"SlaveInfo\": {\n                    \"First\": {\n                        \"Vip\": \"\",\n                        \"Region\": \"ap-chengdu\",\n                        \"Vport\": 0,\n                        \"Zone\": \"ap-chengdu-1\"\n                    }\n                },\n                \"InstanceId\": \"cdb-70zdmgg1\",\n                \"Volume\": 50,\n                \"AutoRenew\": 0,\n                \"ProtectMode\": 0,\n                \"RoGroups\": [\n                    {\n                        \"RoInstances\": [\n                            {\n                                \"Status\": 1,\n                                \"VpcId\": 511512,\n                                \"InstanceType\": 3,\n                                \"Zone\": \"ap-chengdu-1\",\n                                \"Qps\": 1000,\n                                \"InstanceId\": \"cdbro-3i70uj0k\",\n                                \"Region\": \"ap-chengdu\",\n                                \"DeadlineTime\": \"0000-00-00 00:00:00\",\n                                \"PayType\": 1,\n                                \"TaskStatus\": 0,\n                                \"Volume\": 50,\n                                \"EngineVersion\": \"5.6\",\n                                \"DeviceType\": \"CUSTOM\",\n                                \"Memory\": 1000,\n                                \"SubnetId\": 115839,\n                                \"Vip\": \"172.16.0.11\",\n                                \"Vport\": 3306,\n                                \"InstanceName\": \"cdb_ro_103608\",\n                                \"HourFeeStatus\": 1\n                            }\n                        ],\n                        \"MinRoInGroup\": 1,\n                        \"Vip\": \"172.16.0.11\",\n                        \"RoGroupName\": \"ro_group_103608\",\n                        \"Vport\": 3306,\n                        \"WeightMode\": \"system\",\n                        \"RoGroupId\": \"cdbrg-3i70uj0k\",\n                        \"RoMaxDelayTime\": 1\n                    },\n                    {\n                        \"RoInstances\": [\n                            {\n                                \"Status\": 1,\n                                \"VpcId\": 511512,\n                                \"InstanceType\": 3,\n                                \"Zone\": \"ap-chengdu-1\",\n                                \"Qps\": 1000,\n                                \"InstanceId\": \"cdbro-6scijza8\",\n                                \"Region\": \"ap-chengdu\",\n                                \"DeadlineTime\": \"0000-00-00 00:00:00\",\n                                \"PayType\": 1,\n                                \"TaskStatus\": 0,\n                                \"Volume\": 25,\n                                \"EngineVersion\": \"5.6\",\n                                \"DeviceType\": \"CUSTOM\",\n                                \"Memory\": 1000,\n                                \"SubnetId\": 115839,\n                                \"Vip\": \"172.16.0.25\",\n                                \"Vport\": 3306,\n                                \"InstanceName\": \"cdb_ro_103610\",\n                                \"HourFeeStatus\": 1\n                            }\n                        ],\n                        \"MinRoInGroup\": 1,\n                        \"Vip\": \"172.16.0.25\",\n                        \"RoGroupName\": \"ro_group_103610\",\n                        \"Vport\": 3306,\n                        \"WeightMode\": \"system\",\n                        \"RoGroupId\": \"cdbrg-6scijza8\",\n                        \"RoMaxDelayTime\": 1\n                    }\n                ],\n                \"SubnetId\": 115839,\n                \"InstanceType\": 1,\n                \"ProjectId\": 0,\n                \"Region\": \"ap-chengdu\",\n                \"DeadlineTime\": \"0000-00-00 00:00:00\",\n                \"DeployMode\": 0,\n                \"TaskStatus\": 0,\n                \"DeviceType\": \"CUSTOM\",\n                \"EngineVersion\": \"5.6\",\n                \"InstanceName\": \"jersey_test\",\n                \"DrInfo\": [],\n                \"UniqVpcId\": \"vpc-5v8wn9mg\",\n                \"WanDomain\": \"\",\n                \"WanPort\": 0,\n                \"PayType\": 1,\n                \"CreateTime\": \"2018-05-03 14:53:23\",\n                \"Vip\": \"172.16.0.16\",\n                \"UniqSubnetId\": \"subnet-1typ0s7d\",\n                \"Vport\": 3306,\n                \"CdbError\": 0,\n                \"DeployGroupId\": \"\",\n                \"InstanceNodes\": 2,\n                \"PhysicalId\": \"\",\n                \"ZoneId\": 720001,\n                \"RoVipInfo\": [],\n                \"DeviceClass\": \"Z3\",\n                \"Qps\": 0,\n                \"TagList\": [],\n                \"Cpu\": 8,\n                \"ZoneName\": \"Qingyuan Xin'an Zone 1\"\n            }\n        ]\n    }\n}",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeDBInstances\r\n&InstanceIds.0=cdb-70zdmgg1\r\n&<Public request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"756bb037-a44a-4b4f-abe0-6efd34a6c792\",\n        \"Items\": [\n            {\n                \"WanStatus\": 0,\n                \"Zone\": \"ap-chengdu-1\",\n                \"InitFlag\": 1,\n                \"Memory\": 1000,\n                \"Status\": 1,\n                \"VpcId\": 511512,\n                \"SlaveInfo\": {\n                    \"First\": {\n                        \"Vip\": \"\",\n                        \"Region\": \"ap-chengdu\",\n                        \"Vport\": 0,\n                        \"Zone\": \"ap-chengdu-1\"\n                    }\n                },\n                \"InstanceId\": \"cdb-70zdmgg1\",\n                \"Volume\": 50,\n                \"AutoRenew\": 0,\n                \"ProtectMode\": 0,\n                \"RoGroups\": [\n                    {\n                        \"RoInstances\": [\n                            {\n                                \"Status\": 1,\n                                \"VpcId\": 511512,\n                                \"InstanceType\": 3,\n                                \"Zone\": \"ap-chengdu-1\",\n                                \"Qps\": 1000,\n                                \"InstanceId\": \"cdbro-3i70uj0k\",\n                                \"Region\": \"ap-chengdu\",\n                                \"DeadlineTime\": \"0000-00-00 00:00:00\",\n                                \"PayType\": 1,\n                                \"TaskStatus\": 0,\n                                \"Volume\": 50,\n                                \"EngineVersion\": \"5.6\",\n                                \"DeviceType\": \"CUSTOM\",\n                                \"Memory\": 1000,\n                                \"SubnetId\": 115839,\n                                \"Vip\": \"172.16.0.11\",\n                                \"Vport\": 3306,\n                                \"InstanceName\": \"cdb_ro_103608\",\n                                \"HourFeeStatus\": 1\n                            }\n                        ],\n                        \"MinRoInGroup\": 1,\n                        \"Vip\": \"172.16.0.11\",\n                        \"RoGroupName\": \"ro_group_103608\",\n                        \"Vport\": 3306,\n                        \"WeightMode\": \"system\",\n                        \"RoGroupId\": \"cdbrg-3i70uj0k\",\n                        \"RoMaxDelayTime\": 1\n                    },\n                    {\n                        \"RoInstances\": [\n                            {\n                                \"Status\": 1,\n                                \"VpcId\": 511512,\n                                \"InstanceType\": 3,\n                                \"Zone\": \"ap-chengdu-1\",\n                                \"Qps\": 1000,\n                                \"InstanceId\": \"cdbro-6scijza8\",\n                                \"Region\": \"ap-chengdu\",\n                                \"DeadlineTime\": \"0000-00-00 00:00:00\",\n                                \"PayType\": 1,\n                                \"TaskStatus\": 0,\n                                \"Volume\": 25,\n                                \"EngineVersion\": \"5.6\",\n                                \"DeviceType\": \"CUSTOM\",\n                                \"Memory\": 1000,\n                                \"SubnetId\": 115839,\n                                \"Vip\": \"172.16.0.25\",\n                                \"Vport\": 3306,\n                                \"InstanceName\": \"cdb_ro_103610\",\n                                \"HourFeeStatus\": 1\n                            }\n                        ],\n                        \"MinRoInGroup\": 1,\n                        \"Vip\": \"172.16.0.25\",\n                        \"RoGroupName\": \"ro_group_103610\",\n                        \"Vport\": 3306,\n                        \"WeightMode\": \"system\",\n                        \"RoGroupId\": \"cdbrg-6scijza8\",\n                        \"RoMaxDelayTime\": 1\n                    }\n                ],\n                \"SubnetId\": 115839,\n                \"InstanceType\": 1,\n                \"ProjectId\": 0,\n                \"Region\": \"ap-chengdu\",\n                \"DeadlineTime\": \"0000-00-00 00:00:00\",\n                \"DeployMode\": 0,\n                \"TaskStatus\": 0,\n                \"DeviceType\": \"CUSTOM\",\n                \"EngineVersion\": \"5.6\",\n                \"InstanceName\": \"jersey_test\",\n                \"DrInfo\": [],\n                \"UniqVpcId\": \"vpc-5v8wn9mg\",\n                \"WanDomain\": \"\",\n                \"WanPort\": 0,\n                \"PayType\": 1,\n                \"CreateTime\": \"2018-05-03 14:53:23\",\n                \"Vip\": \"172.16.0.16\",\n                \"UniqSubnetId\": \"subnet-1typ0s7d\",\n                \"Vport\": 3306,\n                \"CdbError\": 0\n            }\n        ]\n    }\n}",
         "title": "Querying the list of instances"
       }
     ],
@@ -366,14 +350,6 @@
         "title": "Querying the list of default configurable parameters"
       }
     ],
-    "DescribeDeployGroupList": [
-      {
-        "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeDeployGroupList\n&DeployGroupId=test\n&DeployGroupName=test\n&Limit=10\n&Offset=0\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Total\": 100,\n        \"Items\": [\n            {\n                \"DeployGroupId\": \"test\",\n                \"DeployGroupName\": \"test\",\n                \"Description\": \"test\",\n                \"Quota\": 50,\n                \"CreateTime\": \"2019-09-10 13:14:15\"\n            }\n        ],\n        \"RequestId\": \"b4a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
-        "title": "Querying the list of placement groups"
-      }
-    ],
     "DescribeDeviceMonitorInfo": [
       {
         "document": "",
@@ -393,9 +369,9 @@
     "DescribeInstanceParamRecords": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeInstanceParamRecords\r\n&InstanceId=cdb-f35wr6wj\r\n&<Common request parameters>",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeInstanceParamRecords\n&InstanceId=cdb-f35wr6wj\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1a42feb9-82087f71-6a0031ac-699a92a8\",\n        \"TotalCount\": \"28\",\n        \"Items\": [\n            {\n                \"InstanceId\": \"cdb-1234asdf\",\n                \"ParamName\": \"lower_case_table_names\",\n                \"OldValue\": \"0\",\n                \"NewValue\": \"1\",\n                \"IsSucess\": true,\n                \"ModifyTime\": \"2019-01-15 18:59:40\"\n            }\n        ]\n    }\n}",
-        "title": "Querying instance parameter modification logs"
+        "title": "Querying instance parameter modification records"
       }
     ],
     "DescribeInstanceParams": [
@@ -449,7 +425,7 @@
     "DescribeProxyCustomConf": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProxyCustomConf\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Limit\": 1,\n    \"Offset\": 1\n}",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProxyCustomConf\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Limit\": 1,\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Count\": 3,\n        \"CustomConf\": [\n            {\n                \"Cpu\": 2,\n                \"Device\": \"Z3\",\n                \"DeviceType\": \"custom\",\n                \"Memory\": 4000,\n                \"Type\": \"High-Availability Edition\"\n            },\n            {\n                \"Cpu\": 4,\n                \"Device\": \"Z3\",\n                \"DeviceType\": \"custom\",\n                \"Memory\": 8000,\n                \"Type\": \"High-Availability Edition\"\n            },\n            {\n                \"Cpu\": 8,\n                \"Device\": \"Z3\",\n                \"DeviceType\": \"custom\",\n                \"Memory\": 16000,\n                \"Type\": \"High-Availability Edition\"\n            }\n        ],\n        \"RequestId\": \"9bd2a785-2dc0-47dc-b285-2b154a218ea1\",\n        \"WeightRule\": [\n            {\n                \"LessThan\": 2000,\n                \"Weight\": 1\n            },\n            {\n                \"LessThan\": 8000,\n                \"Weight\": 2\n            },\n            {\n                \"LessThan\": 16000,\n                \"Weight\": 4\n            },\n            {\n                \"LessThan\": 32000,\n                \"Weight\": 8\n            },\n            {\n                \"LessThan\": 48000,\n                \"Weight\": 10\n            },\n            {\n                \"LessThan\": 64000,\n                \"Weight\": 12\n            },\n            {\n                \"LessThan\": 96000,\n                \"Weight\": 14\n            },\n            {\n                \"LessThan\": 128000,\n                \"Weight\": 16\n            },\n            {\n                \"LessThan\": 192000,\n                \"Weight\": 24\n            },\n            {\n                \"LessThan\": 256000,\n                \"Weight\": 30\n            },\n            {\n                \"LessThan\": 488000,\n                \"Weight\": 50\n            },\n            {\n                \"LessThan\": 690000,\n                \"Weight\": 75\n            },\n            {\n                \"LessThan\": -1,\n                \"Weight\": 100\n            }\n        ]\n    }\n}",
         "title": "Querying the configuration of database proxy"
       }
@@ -537,8 +513,8 @@
     "DescribeTimeWindow": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeTimeWindow\r\n&InstanceId=cdb-eb2w7dto\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"Monday\": [\n            \"19:00-20:00\"\n        ],\n        \"Tuesday\": [\n            \"18:00-20:00\"\n        ],\n        \"Friday\": [\n            \"18:00-20:00\"\n        ],\n        \"Wednesday\": [\n            \"18:00-20:00\"\n        ],\n        \"Thursday\": [\n            \"18:00-20:00\"\n        ],\n        \"Sunday\": [\n            \"18:00-20:00\",\n            \"21:30-22:00\"\n        ],\n        \"Saturday\": [\n            \"18:00-20:00\"\n        ]\n    }\n}",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeTimeWindow\n&InstanceId=cdb-eb2w7dto\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"MaxDelayTime\": 10,\n        \"Monday\": [\n            \"19:00-20:00\"\n        ],\n        \"Tuesday\": [\n            \"18:00-20:00\"\n        ],\n        \"Friday\": [\n            \"18:00-20:00\"\n        ],\n        \"Wednesday\": [\n            \"18:00-20:00\"\n        ],\n        \"Thursday\": [\n            \"18:00-20:00\"\n        ],\n        \"Sunday\": [\n            \"18:00-20:00\",\n            \"21:30-22:00\"\n        ],\n        \"Saturday\": [\n            \"18:00-20:00\"\n        ]\n    }\n}",
         "title": "Querying a maintenance time window"
       }
     ],
@@ -561,7 +537,7 @@
     "InitDBInstances": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=InitDBInstances\r\n&InstanceIds.0=cdb-f35wr6wj\r\n&NewPassword=Gx18ux23F^X\r\n&Parameters.0.name=lower_case_table_names\r\n&Parameters.0.value=1\r\n&Parameters.1.name=character_set_server\r\n&Parameters.1.value=utf8\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InitDBInstances\n<Common request parameters>\n\n{\n    \"NewPassword\": \"xx\",\n    \"Vport\": 0,\n    \"Parameters\": [\n        {\n            \"Name\": \"lower_case_table_names\",\n            \"Value\": \"1\"\n        },\n        {\n            \"Name\": \"character_set_server\",\n            \"Value\": \"utf8\"\n        }\n    ],\n    \"InstanceIds\": [\n        \"cdb-f35wr6wj\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestIds\": [\n            \"8cd119d4-61ba-11e7-aeff-018cfa1f5560\"\n        ]\n    }\n}",
         "title": "Initializing a new instance"
       }
@@ -617,7 +593,7 @@
     "ModifyBackupConfig": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=ModifyBackupConfig\r\n&InstanceId=cdb-c1nl9rpv\r\n&ExpireDays=10\r\n&BinlogExpireDays=8\r\n&StartTime=02:00-06:00\r\n&BackupMethod=logical\r\n&<Common request parameters>",
+        "input": "https://cdb.tencentcloudapi.com/?Action=ModifyBackupConfig\r\n&InstanceId=cdb-c1nl9rpv\r\n&ExpireDays=10\r\n&BinlogExpireDays=8\r\n&StartTime=02:00-06:00\r\n&BackupMethod=logical\r\n&<Public request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Modifying the database backup configuration"
       }
@@ -686,14 +662,6 @@
         "title": "Modifying the security groups bound to a TencentDB instance"
       }
     ],
-    "ModifyDBInstanceVipVport": [
-      {
-        "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=ModifyDBInstanceVipVport\r\n&InstanceId=cdb-f35wr6wj\r\n&DstIp=10.0.1.1\r\n&DstPort=1025\r\n&UniqVpcId=11357\r\n&UniqSubnetId=23789\r\n&ReleaseDuration=12\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestId\": \"d2baf2fb-cbae62df-7dd0d736-9cbd3e31\"\n    }\n}",
-        "title": "Modifying the IP and port number of a TencentDB instance"
-      }
-    ],
     "ModifyInstanceParam": [
       {
         "document": "",
@@ -716,14 +684,6 @@
         "input": "https://cdb.tencentcloudapi.com/?Action=ModifyLocalBinlogConfig\n&InstanceId=cdb-c1nl9rpv\n&SaveHours=72\n&MaxUsage=30\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Modifying the retention policy of local binlog"
-      }
-    ],
-    "ModifyNameOrDescByDpId": [
-      {
-        "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=ModifyNameOrDescByDpId\n&DeployGroupName=cdb-ezq1vzem\n&Description=test\n&DeployGroupId=test\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b4a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
-        "title": "Modifying the name or description of a placement group"
       }
     ],
     "ModifyParamTemplate": [
@@ -751,7 +711,7 @@
     "ModifyTimeWindow": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=ModifyTimeWindow\r\n&InstanceId=cdb-eb2w7dto\r\n&TimeRanges.0=03:00-03:30\r\n&Weekdays.0=monday\r\n&<Common request parameters>",
+        "input": "https://cdb.tencentcloudapi.com/?Action=ModifyTimeWindow\n&InstanceId=cdb-eb2w7dto\n&TimeRanges.0=03:00-03:30\n&Weekdays.0=monday\n&MaxDelayTime=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1a42feb9-82087f71-6a0031ac-699a92a8\"\n    }\n}",
         "title": "Updating a maintenance time window"
       }
@@ -802,6 +762,14 @@
         "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ReloadBalanceProxyNode\n<Common request parameters>\n\n{\n    \"ProxyGroupId\": \"proxy-test\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3689c0eb-a92d-77ce-0ee2-17d99f604e64\"\n    }\n}",
         "title": "Rebalancing the load on database proxy"
+      }
+    ],
+    "ResetRootAccount": [
+      {
+        "document": "",
+        "input": "https://cdb.tencentcloudapi.com/?Action=ResetRootAccount\n&InstanceId=cdb-ksixa\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
+        "title": "Resetting the root account permissions"
       }
     ],
     "RestartDBInstances": [

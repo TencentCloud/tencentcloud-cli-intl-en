@@ -36,12 +36,6 @@
       "name": "Disables public network access for an instance",
       "output": "CloseWanServiceResponse"
     },
-    "CreateAccounts": {
-      "document": "This API is used to create one or more TencentDB instance accounts. The account names, host addresses, and passwords are required, and account remarks and the maximum connections are optional.",
-      "input": "CreateAccountsRequest",
-      "name": "Creates TencentDB accounts",
-      "output": "CreateAccountsResponse"
-    },
     "CreateAuditPolicy": {
       "document": "This API is used to create an audit policy for a TencentDB instance by associating an audit rule with the TencentDB instance.",
       "input": "CreateAuditPolicyRequest",
@@ -72,12 +66,6 @@
       "name": "Creates pay-as-you-go TencentDB instance",
       "output": "CreateDBInstanceHourResponse"
     },
-    "CreateDeployGroup": {
-      "document": "This API is used to create a placement group for placing instances.",
-      "input": "CreateDeployGroupRequest",
-      "name": "Creates a placement group",
-      "output": "CreateDeployGroupResponse"
-    },
     "CreateParamTemplate": {
       "document": "This API is used to create a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.",
       "input": "CreateParamTemplateRequest",
@@ -102,12 +90,6 @@
       "name": "Deletes a TencentDB instance backup",
       "output": "DeleteBackupResponse"
     },
-    "DeleteDeployGroups": {
-      "document": "This API is used to delete placement groups by placement group ID (a placement group cannot be deleted if it contains resources).",
-      "input": "DeleteDeployGroupsRequest",
-      "name": "Deletes placement groups",
-      "output": "DeleteDeployGroupsResponse"
-    },
     "DeleteParamTemplate": {
       "document": "This API is used to delete a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.",
       "input": "DeleteParamTemplateRequest",
@@ -126,17 +108,23 @@
       "name": "Queries the information of TencentDB account permissions",
       "output": "DescribeAccountPrivilegesResponse"
     },
-    "DescribeAccounts": {
-      "document": "This API (DescribeAccounts) is used to query information of all TencentDB accounts.",
-      "input": "DescribeAccountsRequest",
-      "name": "Queries the information of all TencentDB accounts",
-      "output": "DescribeAccountsResponse"
-    },
     "DescribeAsyncRequestInfo": {
       "document": "This API (DescribeAsyncRequestInfo) is used to query the async task execution result of a TencentDB instance.",
       "input": "DescribeAsyncRequestInfoRequest",
       "name": "Queries the execution result of an async task",
       "output": "DescribeAsyncRequestInfoResponse"
+    },
+    "DescribeAuditPolicies": {
+      "document": "This API is used to query the audit policies of a TencentDB instance.",
+      "input": "DescribeAuditPoliciesRequest",
+      "name": "Queries the audit policies",
+      "output": "DescribeAuditPoliciesResponse"
+    },
+    "DescribeAuditRules": {
+      "document": "This API is used to query the audit rules in the current region.",
+      "input": "DescribeAuditRulesRequest",
+      "name": "Queries the audit rules",
+      "output": "DescribeAuditRulesResponse"
     },
     "DescribeBackupConfig": {
       "document": "This API (DescribeBackupConfig) is used to query the configuration information of a TencentDB instance backup.",
@@ -269,12 +257,6 @@
       "input": "DescribeDefaultParamsRequest",
       "name": "Queries the list of default configurable parameters",
       "output": "DescribeDefaultParamsResponse"
-    },
-    "DescribeDeployGroupList": {
-      "document": "This API is used to query the list of placement groups of a user. You can specify the placement group ID or name.",
-      "input": "DescribeDeployGroupListRequest",
-      "name": "Queries the list of placement groups",
-      "output": "DescribeDeployGroupListResponse"
     },
     "DescribeDeviceMonitorInfo": {
       "document": "This API (DescribeDeviceMonitorInfo) is used to query the monitoring information of a TencentDB physical machine on the day. Currently, it only supports instances with 488 GB memory and 6 TB disk.",
@@ -510,12 +492,6 @@
       "name": "Modifies the security groups bound to a TencentDB instance",
       "output": "ModifyDBInstanceSecurityGroupsResponse"
     },
-    "ModifyDBInstanceVipVport": {
-      "document": "This API (ModifyDBInstanceVipVport) is used to modify the IP and port number of a TencentDB instance, switch from the basic network to VPC, or change VPC subnets.",
-      "input": "ModifyDBInstanceVipVportRequest",
-      "name": "Modifies the IP and port number of a TencentDB instance",
-      "output": "ModifyDBInstanceVipVportResponse"
-    },
     "ModifyInstanceParam": {
       "document": "This API (ModifyInstanceParam) is used to modify instance parameters.",
       "input": "ModifyInstanceParamRequest",
@@ -533,12 +509,6 @@
       "input": "ModifyLocalBinlogConfigRequest",
       "name": "Modifies the retention policy of local binlog",
       "output": "ModifyLocalBinlogConfigResponse"
-    },
-    "ModifyNameOrDescByDpId": {
-      "document": "This API is used to modify the name or description of a placement group.",
-      "input": "ModifyNameOrDescByDpIdRequest",
-      "name": "Modifies the name or description of a placement group",
-      "output": "ModifyNameOrDescByDpIdResponse"
     },
     "ModifyParamTemplate": {
       "document": "This API is used to modify a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.",
@@ -593,6 +563,12 @@
       "input": "ReloadBalanceProxyNodeRequest",
       "name": "Rebalances the load on database proxy",
       "output": "ReloadBalanceProxyNodeResponse"
+    },
+    "ResetRootAccount": {
+      "document": "This API is used to reset the root account and initialize the account permissions.",
+      "input": "ResetRootAccountRequest",
+      "name": "Resets the root account",
+      "output": "ResetRootAccountResponse"
     },
     "RestartDBInstances": {
       "document": "This API (RestartDBInstances) is used to restart TencentDB instances.\n\nNote:\n1. This API only supports restarting primary instances.\n2. The instance status must be normal, and no other async tasks are in progress.",
@@ -707,88 +683,13 @@
       ],
       "usage": "in"
     },
-    "AccountInfo": {
-      "document": "Account details",
-      "members": [
-        {
-          "default": "",
-          "document": "Account remarks",
-          "example": "your note",
-          "member": "string",
-          "name": "Notes",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Account domain name",
-          "example": "%",
-          "member": "string",
-          "name": "Host",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Account name",
-          "example": "root",
-          "member": "string",
-          "name": "User",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Account information modification time",
-          "example": "2020-09-09 16:40:30",
-          "member": "datetime",
-          "name": "ModifyTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Password modification time",
-          "example": "2020-09-09 16:40:30",
-          "member": "datetime",
-          "name": "ModifyPasswordTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "This parameter is no longer supported.",
-          "example": "''",
-          "member": "datetime",
-          "name": "CreateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The maximum number of instance connections supported by an account",
-          "example": "10240",
-          "member": "int64",
-          "name": "MaxUserConnections",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
     "AddTimeWindowRequest": {
       "document": "AddTimeWindow request structure.",
       "members": [
         {
           "default": "",
           "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+          "example": "cdb-eb2w7dto",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -797,6 +698,7 @@
         {
           "default": "",
           "document": "Maintenance window on Monday. The format should be 10:00-12:00. You can set multiple time windows on a day. Each time window lasts from half an hour to three hours, and must start and end on the hour or half hour. At least one time window is required in a week. The same rule applies to the following parameters.",
+          "example": "[\"02:00-03:00\\n\"]",
           "member": "string",
           "name": "Monday",
           "required": false,
@@ -805,6 +707,7 @@
         {
           "default": "",
           "document": "Maintenance window on Tuesday. At least one time window is required in a week.",
+          "example": "无",
           "member": "string",
           "name": "Tuesday",
           "required": false,
@@ -813,6 +716,7 @@
         {
           "default": "",
           "document": "Maintenance window on Wednesday. At least one time window is required in a week.",
+          "example": "无",
           "member": "string",
           "name": "Wednesday",
           "required": false,
@@ -821,6 +725,7 @@
         {
           "default": "",
           "document": "Maintenance window on Thursday. At least one time window is required in a week.",
+          "example": "无",
           "member": "string",
           "name": "Thursday",
           "required": false,
@@ -829,6 +734,7 @@
         {
           "default": "",
           "document": "Maintenance window on Friday. At least one time window is required in a week.",
+          "example": "无",
           "member": "string",
           "name": "Friday",
           "required": false,
@@ -837,6 +743,7 @@
         {
           "default": "",
           "document": "Maintenance window on Saturday. At least one time window is required in a week.",
+          "example": "无",
           "member": "string",
           "name": "Saturday",
           "required": false,
@@ -845,10 +752,20 @@
         {
           "default": "",
           "document": "Maintenance window on Sunday. At least one time window is required in a week.",
+          "example": "无",
           "member": "string",
           "name": "Sunday",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Maximum delay threshold, which takes effect only for source instances and disaster recovery instances.",
+          "example": "10",
+          "member": "uint64",
+          "name": "MaxDelayTime",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -989,7 +906,7 @@
         },
         {
           "default": "",
-          "document": "Description",
+          "document": "Description (up to 256 characters)",
           "example": "proxy代理",
           "member": "string",
           "name": "Desc",
@@ -1064,6 +981,204 @@
         }
       ],
       "type": "object"
+    },
+    "AuditFilter": {
+      "document": "Audit rule filters",
+      "members": [
+        {
+          "default": "",
+          "document": "Filter parameter names. Valid values:\nSrcIp: Client IP;\nUser: Database account;\nDB: Database name.",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filter match type. Valid value:\n`INC`: Include;\n`EXC`: Exclude;\n`EQ`: Equal to;\n`NEQ`: Not equal to.",
+          "member": "string",
+          "name": "Compare",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filter match value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AuditPolicy": {
+      "document": "Audit Policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Audit policy ID.",
+          "example": "cdbpolicy-g78s8xn6",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audit policy status. Valid values:\n`creating`;\n`running`,\n`paused`;\n`failed`.",
+          "example": "running",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database instance ID",
+          "example": "cdb-pr1rb3j9",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time of audit policy in the format of 2019-03-20 17:09:13",
+          "example": "2021-02-15 15:24:22",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last modified time of audit policy in the format of 2019-03-20 17:09:13",
+          "example": "2022-01-15 15:24:22",
+          "member": "string",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audit policy name",
+          "example": "fullaudit",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audit rule ID",
+          "example": "cdbrule-11o5fvz2",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audit rule name\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "allrule",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database instance name\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "test",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AuditRule": {
+      "document": "Audit rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Audit rule ID",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time of audit rule in the format of 2019-03-20 17:09:13",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last modified time of audit rule in the format of 2019-03-20 17:09:13",
+          "member": "string",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audit rule name\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Audit rule description\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Audit rule filters\nNote: This field may return `null`, indicating that no valid value was found.",
+          "member": "AuditFilter",
+          "name": "RuleFilters",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable full audit",
+          "member": "bool",
+          "name": "AuditAll",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "BackupConfig": {
       "document": "Configuration information of ECDB secondary database 2. This field is only applicable to ECDB instances",
@@ -1698,7 +1813,7 @@
         },
         {
           "default": "",
-          "document": "Whether only to disable read/write separation. Valid values: `true`, `false`",
+          "document": "Whether only to disable read/write separation. Valid values: `true`, `false`. Default value: `false`.",
           "example": "false",
           "member": "bool",
           "name": "OnlyCloseRW",
@@ -1895,76 +2010,6 @@
         }
       ],
       "usage": "out"
-    },
-    "CreateAccountsRequest": {
-      "document": "CreateAccounts request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
-          "example": "cdb-f35wr6wj",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "TencentDB account.",
-          "example": "无",
-          "member": "Account",
-          "name": "Accounts",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Password of the new account",
-          "example": "fsdgfdgfd",
-          "member": "string",
-          "name": "Password",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Remarks",
-          "example": "test description",
-          "member": "string",
-          "name": "Description",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Maximum connections of the new account. Default value: `10240`. Maximum value: `10240`.",
-          "example": "1",
-          "member": "int64",
-          "name": "MaxUserConnections",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateAccountsResponse": {
-      "document": "CreateAccounts response structure.",
-      "members": [
-        {
-          "document": "Async task request ID, which can be used to query the execution result of an async task.",
-          "member": "string",
-          "name": "AsyncRequestId",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
     },
     "CreateAuditPolicyRequest": {
       "document": "CreateAuditPolicy request structure.",
@@ -2272,6 +2317,15 @@
           "name": "CageId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2595,7 +2649,7 @@
         },
         {
           "default": "",
-          "document": "A string that is used to guarantee the idempotency of the request, which is generated by the user and must be unique in each request on the same day. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.",
+          "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.",
           "example": "*******",
           "member": "string",
           "name": "ClientToken",
@@ -2691,6 +2745,15 @@
           "name": "DryRun",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The list of IPs for sources instances. Only one IP address can be assigned to a single source instance. If all IPs are used up, the system will automatically assign IPs to the remaining source instances that do not have one.",
+          "example": "[]",
+          "member": "string",
+          "name": "Vips",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2710,71 +2773,6 @@
           "member": "string",
           "name": "InstanceIds",
           "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateDeployGroupRequest": {
-      "document": "CreateDeployGroup request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Name of a placement group, which can contain up to 60 characters.",
-          "member": "string",
-          "name": "DeployGroupName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Description of a placement group, which can contain up to 200 characters.",
-          "member": "string",
-          "name": "Description",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Affinity policy of placement group. Currently, the value of this parameter can only be 1. Policy 1 indicates the upper limit of instances on one physical machine.",
-          "member": "int64",
-          "name": "Affinity",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Upper limit of instances on one physical machine as defined in affinity policy 1 of placement group.",
-          "member": "int64",
-          "name": "LimitNum",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Model attribute of placement group. Valid values: SH12+SH02, TS85.",
-          "member": "string",
-          "name": "DevClass",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateDeployGroupResponse": {
-      "document": "CreateDeployGroup response structure.",
-      "members": [
-        {
-          "document": "Placement group ID.",
-          "member": "string",
-          "name": "DeployGroupId",
-          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -3139,32 +3137,6 @@
       ],
       "type": "object"
     },
-    "DeleteDeployGroupsRequest": {
-      "document": "DeleteDeployGroups request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "List of IDs of placement groups to be deleted.",
-          "member": "string",
-          "name": "DeployGroupIds",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteDeployGroupsResponse": {
-      "document": "DeleteDeployGroups response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DeleteParamTemplateRequest": {
       "document": "DeleteParamTemplate request structure.",
       "members": [
@@ -3216,84 +3188,6 @@
         }
       ],
       "type": "object"
-    },
-    "DeployGroupInfo": {
-      "document": "Placement group information",
-      "members": [
-        {
-          "default": "",
-          "document": "ID of a placement group.",
-          "member": "string",
-          "name": "DeployGroupId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Name of a placement group.",
-          "member": "string",
-          "name": "DeployGroupName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Creation time.",
-          "member": "string",
-          "name": "CreateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Instance quota of placement group, indicating the maximum number of instances that can be placed in one placement group.",
-          "member": "int64",
-          "name": "Quota",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Affinity policy of placement group. Currently, only policy 1 is supported, indicating to distribute instances across physical machines.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "Affinity",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Upper limit of instances in one placement group on one physical machine as defined in affinity policy 1 of placement group.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "int64",
-          "name": "LimitNum",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Placement group details.",
-          "member": "string",
-          "name": "Description",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Physical model attribute of placement group.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "DevClass",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
     },
     "DescribeAccountPrivilegesRequest": {
       "document": "DescribeAccountPrivileges request structure.",
@@ -3365,83 +3259,6 @@
       ],
       "type": "object"
     },
-    "DescribeAccountsRequest": {
-      "document": "DescribeAccounts request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Record offset. Default value: 0.",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of results to be returned for a single request. Value range: 1-100. Default value: 20.",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Regular expression for matching account names, which complies with the rules at MySQL official website.",
-          "member": "string",
-          "name": "AccountRegexp",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeAccountsResponse": {
-      "document": "DescribeAccounts response structure.",
-      "members": [
-        {
-          "document": "Number of eligible accounts.",
-          "example": "2",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Details of eligible accounts.",
-          "example": "无",
-          "member": "AccountInfo",
-          "name": "Items",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The maximum number of instance connections (set by the MySQL parameter `max_connections`)",
-          "example": "10240",
-          "member": "int64",
-          "name": "MaxUserConnections",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeAsyncRequestInfoRequest": {
       "document": "DescribeAsyncRequestInfo request structure.",
       "members": [
@@ -3471,6 +3288,177 @@
           "member": "string",
           "name": "Info",
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditPoliciesRequest": {
+      "document": "DescribeAuditPolicies request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "cdb-qwerasdf",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Audit policy ID.",
+          "example": "cdbpolicy-asdfqwer",
+          "member": "string",
+          "name": "PolicyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Audit policy name. Fuzzy match query is supported.",
+          "example": "full",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Value range: 1-100. Default value: 20.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Audit rule ID, which can be used to query its associated audit policies.\nNote: At least one of the parameters (“RuleId”, “PolicyId”, PolicyId”, or “PolicyName”) must be passed in.",
+          "example": "test",
+          "member": "string",
+          "name": "RuleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "example": "cdb",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditPoliciesResponse": {
+      "document": "DescribeAuditPolicies response structure.",
+      "members": [
+        {
+          "document": "Number of eligible audit policies",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Audit policy details\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "AuditPolicy",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditRulesRequest": {
+      "document": "DescribeAuditRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Audit rule ID.",
+          "example": "rule_123",
+          "member": "string",
+          "name": "RuleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Audit rule name. Fuzzy match query is supported.",
+          "example": "rule_name",
+          "member": "string",
+          "name": "RuleName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page. Value range: 1-100. Default value: 20.",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditRulesResponse": {
+      "document": "DescribeAuditRules response structure.",
+      "members": [
+        {
+          "document": "Number of eligible audit rules",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Audit rule details\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "AuditRule",
+          "name": "Items",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -3909,7 +3897,7 @@
         },
         {
           "default": "",
-          "document": "Proxy ID",
+          "document": "Proxy group ID",
           "example": "无",
           "member": "string",
           "name": "ProxyGroupId",
@@ -4510,7 +4498,7 @@
         },
         {
           "default": "",
-          "document": "Lock flag.",
+          "document": "Whether to lock disk write. Valid values: `0`(unlock), `1`(lock). Default value: 0.",
           "example": "0",
           "member": "int64",
           "name": "CdbErrors",
@@ -4631,6 +4619,33 @@
           "example": "[\"cage-test\"]",
           "member": "string",
           "name": "CageIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "example": "[\"a12\",\"v22\"]",
+          "member": "string",
+          "name": "TagValues",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "VPC character vpcId",
+          "example": "[\"vpc-saxa\",\"vpc-sss\"]",
+          "member": "string",
+          "name": "UniqueVpcIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "VPC character subnetId",
+          "example": "[\"subnet-kkai\"]",
+          "member": "string",
+          "name": "UniqSubnetIds",
           "required": false,
           "type": "list"
         }
@@ -4988,70 +5003,6 @@
       ],
       "type": "object"
     },
-    "DescribeDeployGroupListRequest": {
-      "document": "DescribeDeployGroupList request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "ID of a placement group.",
-          "member": "string",
-          "name": "DeployGroupId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Name of a placement group.",
-          "member": "string",
-          "name": "DeployGroupName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Offset. Default value: 0.",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeDeployGroupListResponse": {
-      "document": "DescribeDeployGroupList response structure.",
-      "members": [
-        {
-          "document": "Number of eligible entries.",
-          "member": "int64",
-          "name": "Total",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "List of returned results.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "DeployGroupInfo",
-          "name": "Items",
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeDeviceMonitorInfoRequest": {
       "document": "DescribeDeviceMonitorInfo request structure.",
       "members": [
@@ -5208,6 +5159,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.",
+          "example": "cdb-f35wr6wj",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5215,7 +5167,8 @@
         },
         {
           "default": "",
-          "document": "Pagination offset.",
+          "document": "Pagination offset. Default value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -5223,7 +5176,8 @@
         },
         {
           "default": "",
-          "document": "Number of entries per page.",
+          "document": "Number of entries per page. Default value: 20.",
+          "example": "20",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -5415,7 +5369,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Parameter template type. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).",
+          "document": "Type of the parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).",
           "example": "HIGH_STABILITY",
           "member": "string",
           "name": "TemplateType",
@@ -6320,51 +6274,74 @@
       "members": [
         {
           "document": "List of maintenance time windows on Monday.",
+          "example": "[\"19:00-20:00\"]",
           "member": "string",
           "name": "Monday",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "List of maintenance time windows on Tuesday.",
+          "example": "[\"18:00-20:00\"]",
           "member": "string",
           "name": "Tuesday",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "List of maintenance time windows on Wednesday.",
+          "example": "[\"18:00-20:00\"]",
           "member": "string",
           "name": "Wednesday",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "List of maintenance time windows on Thursday.",
+          "example": "[\"18:00-20:00\"]",
           "member": "string",
           "name": "Thursday",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "List of maintenance time windows on Friday.",
+          "example": "[\"18:00-20:00\"]",
           "member": "string",
           "name": "Friday",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "List of maintenance time windows on Saturday.",
+          "example": "[\"18:00-20:00\"]",
           "member": "string",
           "name": "Saturday",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "List of maintenance time windows on Sunday.",
+          "example": "[\"18:00-20:00\",\"21:30-22:00\"]",
           "member": "string",
           "name": "Sunday",
+          "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Maximum data delay threshold",
+          "example": "10",
+          "member": "uint64",
+          "name": "MaxDelayTime",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -7901,7 +7878,7 @@
         },
         {
           "default": "",
-          "document": "Global permission. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"PROCESS\", \"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"SHOW DATABASES\", \"CREATE TEMPORARY TABLES\", \"LOCK TABLES\", \"EXECUTE\", \"CREATE VIEW\", \"SHOW VIEW\", \"CREATE ROUTINE\", \"ALTER ROUTINE\", \"EVENT\", \"TRIGGER\",\"CREATE USER\",\"RELOAD\",\"REPLICATION CLIENT\",\"REPLICATION SLAVE\",\"UPDATE\".\nNote: If this parameter is not passed in, it means to clear the permission.",
+          "document": "Global permission. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"PROCESS\", \"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"SHOW DATABASES\", \"CREATE TEMPORARY TABLES\", \"LOCK TABLES\", \"EXECUTE\", \"CREATE VIEW\", \"SHOW VIEW\", \"CREATE ROUTINE\", \"ALTER ROUTINE\", \"EVENT\", \"TRIGGER\", \"CREATE USER\", \"RELOAD\", \"REPLICATION CLIENT\", \"REPLICATION SLAVE\", \"UPDATE\".\nNote: When “ModifyAction” is empty, if `GlobalPrivileges` is not passed in, it indicates the global permission will become ineffective.",
           "example": "[\"SELECT\\n\"]",
           "member": "string",
           "name": "GlobalPrivileges",
@@ -7910,7 +7887,7 @@
         },
         {
           "default": "",
-          "document": "Database permission. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \t\"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"CREATE TEMPORARY TABLES\", \"LOCK TABLES\", \"EXECUTE\", \"CREATE VIEW\", \"SHOW VIEW\", \"CREATE ROUTINE\", \"ALTER ROUTINE\", \"EVENT\", \"TRIGGER\".\nNote: if this parameter is not passed in, it means to clear the permission.",
+          "document": "Database permission. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"CREATE TEMPORARY TABLES\", \"LOCK TABLES\", \"EXECUTE\", \"CREATE VIEW\", \"SHOW VIEW\", \"CREATE ROUTINE\", \"ALTER ROUTINE\", \"EVENT\", \"TRIGGER\".\nNote: When “ModifyAction” is empty, if `DatabasePrivileges` is not passed in, it indicates the permission of the database will become ineffective.",
           "example": "无",
           "member": "DatabasePrivilege",
           "name": "DatabasePrivileges",
@@ -7919,7 +7896,7 @@
         },
         {
           "default": "",
-          "document": "Table permission in the database. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \t\"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"CREATE VIEW\", \"SHOW VIEW\", \"TRIGGER\".\nNote: if this parameter is not passed in, it means to clear the permission.",
+          "document": "Table permission in the database. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"CREATE VIEW\", \"SHOW VIEW\", \"TRIGGER\".\nNote: When “ModifyAction” is empty, if `TablePrivileges` is not passed in, it indicates the permission of the table will become ineffective.",
           "example": "无",
           "member": "TablePrivilege",
           "name": "TablePrivileges",
@@ -7928,7 +7905,7 @@
         },
         {
           "default": "",
-          "document": "Column permission in table. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"REFERENCES\".\nNote: if this parameter is not passed in, it means to clear the permission.",
+          "document": "Column permission in the table. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"REFERENCES\".\nNote: When “ModifyAction” is empty, if `ColumnPrivileges` is not passed in, it indicates the permission of the column will become ineffective.",
           "example": "无",
           "member": "ColumnPrivilege",
           "name": "ColumnPrivileges",
@@ -7937,7 +7914,7 @@
         },
         {
           "default": "",
-          "document": "If this parameter is specified, permissions are modified in batches. Valid values: `grant`, `revoke`.",
+          "document": "When this parameter is not empty, it indicates that the permission will be modified. Valid values: `grant` (grant permission), `revoke` (revoke permission)",
           "example": "无",
           "member": "string",
           "name": "ModifyAction",
@@ -8251,7 +8228,7 @@
         },
         {
           "default": "",
-          "document": "Whether to remove delayed read-only instances from the proxy group. Valid values: `true`, `false`",
+          "document": "Whether to remove delayed read-only instances from the proxy group. Valid values: `true`, `false`. Default value: `false`.",
           "example": "false",
           "member": "bool",
           "name": "IsKickout",
@@ -8260,7 +8237,7 @@
         },
         {
           "default": "",
-          "document": "The minimum number of read-only instances allowed by the proxy group",
+          "document": "The minimum number of read-only instances allowed by the proxy group. Minimum value: 1; maximum value: The number of instances.",
           "example": "2",
           "member": "uint64",
           "name": "MinCount",
@@ -8296,7 +8273,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable failover. If it is enabled, the connection address will route requests to the source instance in case of proxy failure. Valid values: `true`, `false`",
+          "document": "Whether to enable failover. If it is enabled, the connection address will route requests to the source instance in case of proxy failure. Valid values: `true`, `false`. Default value: `false`.",
           "example": "false",
           "member": "bool",
           "name": "FailOver",
@@ -8305,7 +8282,7 @@
         },
         {
           "default": "",
-          "document": "Whether to automatically add newly created read-only instances to the proxy group. Valid values: `true`, `false`",
+          "document": "Whether to automatically add newly created read-only instances to the proxy group. Valid values: `true`, `false` Default value: `false`.",
           "example": "false",
           "member": "bool",
           "name": "AutoAddRo",
@@ -8514,79 +8491,6 @@
       ],
       "type": "object"
     },
-    "ModifyDBInstanceVipVportRequest": {
-      "document": "ModifyDBInstanceVipVport request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Destination IP. Either this parameter or `DstPort` must be passed in.",
-          "member": "string",
-          "name": "DstIp",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Destination port number. Value range: [1024-65535]. Either this parameter or `DstIp` must be passed in.",
-          "member": "int64",
-          "name": "DstPort",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Unified VPC ID",
-          "member": "string",
-          "name": "UniqVpcId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Unified subnet ID.",
-          "member": "string",
-          "name": "UniqSubnetId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Repossession duration in hours for old IP in the original network when changing from the basic network to VPC or changing the VPC subnet. Value range: 0-168 hours. Default value: 24 hours.",
-          "member": "int64",
-          "name": "ReleaseDuration",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyDBInstanceVipVportResponse": {
-      "document": "ModifyDBInstanceVipVport response structure.",
-      "members": [
-        {
-          "document": "Async task ID. (This returned field has been disused)\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "AsyncRequestId",
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "ModifyInstanceParamRequest": {
       "document": "ModifyInstanceParam request structure.",
       "members": [
@@ -8731,54 +8635,13 @@
       ],
       "type": "object"
     },
-    "ModifyNameOrDescByDpIdRequest": {
-      "document": "ModifyNameOrDescByDpId request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "ID of a placement group.",
-          "member": "string",
-          "name": "DeployGroupId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Name of a placement group, which can contain up to 60 characters. The placement group name and description cannot both be empty.",
-          "member": "string",
-          "name": "DeployGroupName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Description of a placement group, which can contain up to 200 characters. The placement group name and description cannot both be empty.",
-          "member": "string",
-          "name": "Description",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyNameOrDescByDpIdResponse": {
-      "document": "ModifyNameOrDescByDpId response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "ModifyParamTemplateRequest": {
       "document": "ModifyParamTemplate request structure.",
       "members": [
         {
           "default": "",
           "document": "Template ID.",
+          "example": "11231",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -8786,7 +8649,8 @@
         },
         {
           "default": "",
-          "document": "Template name.",
+          "document": "Template name (up to 64 characters)",
+          "example": "\"\"",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -8794,7 +8658,8 @@
         },
         {
           "default": "",
-          "document": "Template description.",
+          "document": "Template description (up to 255 characters)",
+          "example": "\"\"",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -8803,6 +8668,7 @@
         {
           "default": "",
           "document": "List of parameters.",
+          "example": "无",
           "member": "Parameter",
           "name": "ParamList",
           "required": false,
@@ -8901,6 +8767,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+          "example": "cdb-eb2w7dto",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -8909,6 +8776,7 @@
         {
           "default": "",
           "document": "Time period available for maintenance after modification in the format of 10:00-12:00. Each period lasts from half an hour to three hours, with the start time and end time aligned by half-hour. Up to two time periods can be set. Start and end time range: [00:00, 24:00].",
+          "example": "[\"03:00-03:30\\r\\n\"]",
           "member": "string",
           "name": "TimeRanges",
           "required": true,
@@ -8917,10 +8785,20 @@
         {
           "default": "",
           "document": "Specifies for which day to modify the time period. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. If it is not specified or is left blank, the time period will be modified for every day by default.",
+          "example": "[\"monday\\r\\n\"]",
           "member": "string",
           "name": "Weekdays",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Data delay threshold. It takes effect only for source instance and disaster recovery instance. Default value: 10.",
+          "example": "10",
+          "member": "uint64",
+          "name": "MaxDelayTime",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -9940,6 +9818,33 @@
     },
     "ReloadBalanceProxyNodeResponse": {
       "document": "ReloadBalanceProxyNode response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetRootAccountRequest": {
+      "document": "ResetRootAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "cdb-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetRootAccountResponse": {
+      "document": "ResetRootAccount response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -11919,7 +11824,7 @@
         },
         {
           "default": "",
-          "document": "Number of proxy nodes",
+          "document": "The number of proxy nodes",
           "example": "2",
           "member": "int64",
           "name": "ProxyCount",
@@ -11928,7 +11833,7 @@
         },
         {
           "default": "",
-          "document": "Number of CPU cores per proxy node",
+          "document": "The number of CPU cores per proxy node",
           "example": "4",
           "member": "int64",
           "name": "Cpu",

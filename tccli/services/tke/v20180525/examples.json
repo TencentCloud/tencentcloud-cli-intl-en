@@ -268,6 +268,22 @@
         "title": "Obtaining the cluster kubeconfig file"
       }
     ],
+    "DescribeClusterLevelAttribute": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterLevelAttribute\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Items\": [\n            {\n                \"Name\": \"L5\",\n                \"Alias\": \"500 nodes\",\n                \"NodeCount\": 500,\n                \"PodCount\": 1000,\n                \"ConfigMapCount\": 200,\n                \"CRDCount\": 1,\n                \"OtherCount\": 1,\n                \"Enable\": true\n            }\n        ]\n    }\n}",
+        "title": "Obtaining the model of managed clusters"
+      }
+    ],
+    "DescribeClusterLevelChangeRecords": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterLevelChangeRecords\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"ClusterID\": \"xx\",\n    \"EndAt\": \"xx\",\n    \"StartAt\": \"xx\",\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Items\": [\n            {\n                \"Status\": \"xx\",\n                \"EndedAt\": \"xx\",\n                \"ClusterID\": \"xx\",\n                \"TriggerType\": \"xx\",\n                \"NewLevel\": \"xx\",\n                \"OldLevel\": \"xx\",\n                \"StartedAt\": \"xx\",\n                \"Message\": \"xx\",\n                \"ID\": \"xx\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the cluster model adjustment history"
+      }
+    ],
     "DescribeClusterNodePoolDetail": [
       {
         "document": "",
@@ -364,6 +380,14 @@
         "title": "Obtaining the region list"
       }
     ],
+    "DescribeResourceUsage": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeResourceUsage\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"CRDUsage\": {\n            \"Details\": [\n                {\n                    \"Name\": \"tkeserviceconfigs\",\n                    \"Usage\": 0\n                }\n            ],\n            \"Name\": \"CRD\",\n            \"Usage\": 0\n        },\n        \"ConfigMapUsage\": 14,\n        \"OtherUsage\": {\n            \"Details\": [\n                {\n                    \"Name\": \"clusterrolebindings\",\n                    \"Usage\": 47\n                },\n                {\n                    \"Name\": \"endpoints\",\n                    \"Usage\": 4\n                }\n            ],\n            \"Name\": \"Other\",\n            \"Usage\": 51\n        },\n        \"PodUsage\": 3,\n        \"RequestId\": \"c7ad171e-3604-4662-b3b8-cd10b818a407\"\n    }\n}",
+        "title": "Querying the cluster resource usage"
+      }
+    ],
     "DescribeRouteTableConflicts": [
       {
         "document": "",
@@ -418,6 +442,14 @@
         "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableVpcCniNetworkType\n<Common request parameters>\n\n{\n    \"ClusterId\": \"xx\",\n    \"EnableStaticIp\": false,\n    \"VpcCniType\": \"tke-route-eni\",\n    \"Subnets\": [\n        \"xxx\",\n        \"yyy\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Enabling VPC-CNI network mode"
+      }
+    ],
+    "GetClusterLevelPrice": [
+      {
+        "document": "",
+        "input": "https://tke.tencentcloudapi.com/?Action=GetClusterLevelPrice\n&ClusterLevel=3600\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"Cost\": 6,\n        \"TotalCost\": 6\n    }\n}",
+        "title": "Obtaining the price of specified cluster model"
       }
     ],
     "GetUpgradeInstanceProgress": [

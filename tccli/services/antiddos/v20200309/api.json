@@ -1918,7 +1918,7 @@
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Indicates whether a hybrid cloud product is used.\n`hybrid`: Anti-DDoS Service Platform\nFor other products, leave this field empty.",
           "example": "hybrid",
           "member": "string",
           "name": "Product",
@@ -2041,7 +2041,7 @@
       "members": [
         {
           "default": "",
-          "document": "Region type. Valid values:\noversea: outside the Chinese mainland\n`china`: the Chinese mainland\n`customized`: custom region\n]",
+          "document": "Region type. Valid values:\n`oversea`: Outside the Chinese mainland\n`china`: The Chinese mainland\n`customized`: User-specified region\n]",
           "example": "oversea",
           "member": "string",
           "name": "RegionType",
@@ -5239,6 +5239,46 @@
       "members": [
         {
           "default": "",
+          "document": "Forwarding protocol. Valid values: `http` and `https`.",
+          "example": "无",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Forwarding domain name.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Load balancing method. Valid value: `1` (weighed polling).",
+          "example": "无",
+          "member": "uint64",
+          "name": "LbType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).",
+          "example": "无",
+          "member": "uint64",
+          "name": "KeepEnable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Session persistence duration, in seconds.",
           "example": "无",
           "member": "uint64",
@@ -5249,10 +5289,10 @@
         },
         {
           "default": "",
-          "document": "Load balancing method. Valid value: `1` (weighed polling).",
+          "document": "Forwarding method. Valid values: `1` (by domain name); `2` (by IP).",
           "example": "无",
           "member": "uint64",
-          "name": "LbType",
+          "name": "SourceType",
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -5269,52 +5309,92 @@
         },
         {
           "default": "",
-          "document": "Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).",
+          "document": "Region code.",
           "example": "无",
           "member": "uint64",
-          "name": "KeepEnable",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Forwarding domain name.",
-          "example": "无",
-          "member": "string",
-          "name": "Domain",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Forwarding protocol. Valid values: `http` and `https`.",
-          "example": "无",
-          "member": "string",
-          "name": "Protocol",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Forwarding method. Valid values: `1` (by domain name); `2` (by IP).",
-          "example": "无",
-          "member": "uint64",
-          "name": "SourceType",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). It defaults to `0`.",
-          "example": "无",
-          "member": "uint64",
-          "name": "HttpsToHttpEnable",
+          "name": "Region",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource ID.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance IP address.",
+          "example": "无",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.",
+          "example": "无",
+          "member": "string",
+          "name": "RuleId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule description.",
+          "example": "无",
+          "member": "string",
+          "name": "RuleName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.",
+          "example": "无",
+          "member": "uint64",
+          "name": "CertType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "When the certificate is managed by Tencent Cloud, this field must be set to the ID of the managed certificate.",
+          "example": "无",
+          "member": "string",
+          "name": "SSLId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "[Disused] When the certificate is an external certificate, the certificate content should be provided here. ",
+          "example": "无",
+          "member": "string",
+          "name": "Cert",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "[Disused] When the certificate is an external certificate, the certificate key should be provided here. ",
+          "example": "无",
+          "member": "string",
+          "name": "PrivateKey",
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -5329,12 +5409,12 @@
         },
         {
           "default": "",
-          "document": "CC protection level based on HTTPS.",
+          "document": "CC protection status. Valid values: `0` (disabled) and `1` (enabled).",
           "example": "无",
-          "member": "string",
-          "name": "CCLevel",
+          "member": "uint64",
+          "name": "CCStatus",
           "required": false,
-          "type": "string",
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -5359,30 +5439,10 @@
         },
         {
           "default": "",
-          "document": "Region code.",
-          "example": "无",
-          "member": "uint64",
-          "name": "Region",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Rule description.",
+          "document": "CC protection level based on HTTPS.",
           "example": "无",
           "member": "string",
-          "name": "RuleName",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "[Disused] When the certificate is an external certificate, the certificate content should be provided here. ",
-          "example": "无",
-          "member": "string",
-          "name": "Cert",
+          "name": "CCLevel",
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -5399,40 +5459,10 @@
         },
         {
           "default": "",
-          "document": "Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.",
-          "example": "无",
-          "member": "string",
-          "name": "RuleId",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Anti-DDoS instance IP address.",
-          "example": "无",
-          "member": "string",
-          "name": "Ip",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "[Disused] When the certificate is an external certificate, the certificate key should be provided here. ",
-          "example": "无",
-          "member": "string",
-          "name": "PrivateKey",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.",
+          "document": "Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). It defaults to `0`.",
           "example": "无",
           "member": "uint64",
-          "name": "CertType",
+          "name": "HttpsToHttpEnable",
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -5449,32 +5479,22 @@
         },
         {
           "default": "",
-          "document": "CC protection status. Valid values: `0` (disabled) and `1` (enabled).",
+          "document": "Specifies whether to forcibly redirect HTTP to HTTPS. `1`: Enable. `0`: Disable.",
           "example": "无",
           "member": "uint64",
-          "name": "CCStatus",
+          "name": "RewriteHttps",
           "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "When the certificate is managed by Tencent Cloud, this field must be set to the ID of the managed certificate.",
+          "document": "Returns an error code when the rule configuration fails (only valid when `Status=2`). `1001`: The certificate does not exist. `1002`: Failed to obtain the certificate. `1003`: Failed to upload the certificate. `1004`: The certificate has expired.",
           "example": "无",
-          "member": "string",
-          "name": "SSLId",
+          "member": "uint64",
+          "name": "ErrCode",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Resource ID.",
-          "example": "无",
-          "member": "string",
-          "name": "Id",
-          "required": false,
-          "type": "string",
+          "type": "int",
           "value_allowed_null": false
         }
       ],

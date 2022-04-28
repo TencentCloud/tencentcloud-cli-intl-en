@@ -192,6 +192,18 @@
       "name": "Obtains the cluster kubeconfig file",
       "output": "DescribeClusterKubeconfigResponse"
     },
+    "DescribeClusterLevelAttribute": {
+      "document": "This API is used to obtain the cluster model.",
+      "input": "DescribeClusterLevelAttributeRequest",
+      "name": "Obtains the cluster model",
+      "output": "DescribeClusterLevelAttributeResponse"
+    },
+    "DescribeClusterLevelChangeRecords": {
+      "document": "This API is used to query the cluster model adjustment history.",
+      "input": "DescribeClusterLevelChangeRecordsRequest",
+      "name": "Queries the cluster model adjustment history",
+      "output": "DescribeClusterLevelChangeRecordsResponse"
+    },
     "DescribeClusterNodePoolDetail": {
       "document": "This API is used to query detailed information of a node pool.",
       "input": "DescribeClusterNodePoolDetailRequest",
@@ -264,6 +276,12 @@
       "name": "Queries the list of regions",
       "output": "DescribeRegionsResponse"
     },
+    "DescribeResourceUsage": {
+      "document": "This API is used to query the cluster resource usage.",
+      "input": "DescribeResourceUsageRequest",
+      "name": "Queries the cluster resource usage",
+      "output": "DescribeResourceUsageResponse"
+    },
     "DescribeRouteTableConflicts": {
       "document": "This API is used to query the list of route table conflicts.",
       "input": "DescribeRouteTableConflictsRequest",
@@ -305,6 +323,12 @@
       "input": "EnableVpcCniNetworkTypeRequest",
       "name": "Enables the VPC-CNI network mode",
       "output": "EnableVpcCniNetworkTypeResponse"
+    },
+    "GetClusterLevelPrice": {
+      "document": "Obtaining the price of specified cluster model",
+      "input": "GetClusterLevelPriceRequest",
+      "name": "Obtaining the price of specified cluster model",
+      "output": "GetClusterLevelPriceResponse"
     },
     "GetUpgradeInstanceProgress": {
       "document": "This API is used to obtain the current progress of the node upgrade. ",
@@ -1011,7 +1035,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Cluster models. It’s valid for managed clusters.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "L5",
           "member": "string",
           "name": "ClusterLevel",
@@ -1021,7 +1045,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The target cluster model for auto-upgrade\nNote: this field may return null, indicating that no valid value is obtained.",
           "example": "true",
           "member": "bool",
           "name": "AutoUpgradeClusterLevel",
@@ -1662,6 +1686,188 @@
         }
       ],
       "usage": "both"
+    },
+    "ClusterLevelAttribute": {
+      "document": "Information of the managed cluster model",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster model",
+          "example": "L500",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Model name",
+          "example": "500节点",
+          "member": "string",
+          "name": "Alias",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of nodes",
+          "example": "20",
+          "member": "uint64",
+          "name": "NodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of Pods",
+          "example": "100",
+          "member": "uint64",
+          "name": "PodCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of ConfigMap",
+          "example": "200",
+          "member": "uint64",
+          "name": "ConfigMapCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CRDs",
+          "example": "500",
+          "member": "uint64",
+          "name": "CRDCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is enabled",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of other resources\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "500",
+          "member": "uint64",
+          "name": "OtherCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ClusterLevelChangeRecord": {
+      "document": "Cluster model adjustment history",
+      "members": [
+        {
+          "default": "",
+          "document": "Record ID",
+          "example": "xxxx-xxxx-xxxx-xxxx",
+          "member": "string",
+          "name": "ID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xxxxxx",
+          "member": "string",
+          "name": "ClusterID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status (valid values: `trading`, `upgrading`, `success`, `failed`)",
+          "example": "success",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status description",
+          "example": "余额不足",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Original model",
+          "example": "L5",
+          "member": "string",
+          "name": "OldLevel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "New model",
+          "example": "L20",
+          "member": "string",
+          "name": "NewLevel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trigger type (valid values: `manual`, `auto`)",
+          "example": "manual",
+          "member": "string",
+          "name": "TriggerType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "2022-02-01 00:00:00",
+          "member": "string",
+          "name": "StartedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "2022-02-01 00:00:00",
+          "member": "string",
+          "name": "EndedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ClusterNetworkSettings": {
       "document": "Cluster network-related parameters",
@@ -2570,7 +2776,7 @@
         },
         {
           "default": "",
-          "document": "The name of the device or partition to mount\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "Mounted device name or partition name (only required when adding an existing node)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "/dev/vdb",
           "member": "string",
           "name": "DiskPartition",
@@ -3401,6 +3607,132 @@
       ],
       "type": "object"
     },
+    "DescribeClusterLevelAttributeRequest": {
+      "document": "DescribeClusterLevelAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID (available for cluster model adjustment)",
+          "example": "cls-xxxxxx",
+          "member": "string",
+          "name": "ClusterID",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterLevelAttributeResponse": {
+      "document": "DescribeClusterLevelAttribute response structure.",
+      "members": [
+        {
+          "document": "Total number",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster model",
+          "example": "无",
+          "member": "ClusterLevelAttribute",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterLevelChangeRecordsRequest": {
+      "document": "DescribeClusterLevelChangeRecords request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xxxxxx",
+          "member": "string",
+          "name": "ClusterID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "2022-02-01 00:00:00",
+          "member": "string",
+          "name": "StartAt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "2022-02-01 23:00:00",
+          "member": "string",
+          "name": "EndAt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: `0`",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of output entries. Default value: `20`",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterLevelChangeRecordsResponse": {
+      "document": "DescribeClusterLevelChangeRecords response structure.",
+      "members": [
+        {
+          "document": "Total number",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster model",
+          "example": "无",
+          "member": "ClusterLevelChangeRecord",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeClusterNodePoolDetailRequest": {
       "document": "DescribeClusterNodePoolDetail request structure.",
       "members": [
@@ -4092,6 +4424,69 @@
       ],
       "type": "object"
     },
+    "DescribeResourceUsageRequest": {
+      "document": "DescribeResourceUsage request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xxxxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourceUsageResponse": {
+      "document": "DescribeResourceUsage response structure.",
+      "members": [
+        {
+          "document": "CRD usage",
+          "example": "无",
+          "member": "ResourceUsage",
+          "name": "CRDUsage",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Pod usage",
+          "example": "100",
+          "member": "uint64",
+          "name": "PodUsage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ConfigMap usage",
+          "example": "100",
+          "member": "uint64",
+          "name": "ConfigMapUsage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Other resource usage",
+          "example": "无",
+          "member": "ResourceUsage",
+          "name": "OtherUsage",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeRouteTableConflictsRequest": {
       "document": "DescribeRouteTableConflicts request structure.",
       "members": [
@@ -4728,6 +5123,51 @@
         }
       ],
       "usage": "in"
+    },
+    "GetClusterLevelPriceRequest": {
+      "document": "GetClusterLevelPrice request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The cluster model. It’s used for price query.",
+          "example": "L5",
+          "member": "string",
+          "name": "ClusterLevel",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetClusterLevelPriceResponse": {
+      "document": "GetClusterLevelPrice response structure.",
+      "members": [
+        {
+          "document": "Discount price (unit: US cent)",
+          "example": "8",
+          "member": "uint64",
+          "name": "Cost",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Original price (unit: US cent)",
+          "example": "8",
+          "member": "uint64",
+          "name": "TotalCost",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "GetUpgradeInstanceProgressRequest": {
       "document": "GetUpgradeInstanceProgress request structure.",
@@ -6636,6 +7076,68 @@
         }
       ],
       "usage": "in"
+    },
+    "ResourceUsage": {
+      "document": "Cluster resource usage",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource type",
+          "example": "Pod",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource usage",
+          "example": "100",
+          "member": "uint64",
+          "name": "Usage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource usage details",
+          "example": "无",
+          "member": "ResourceUsageDetail",
+          "name": "Details",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ResourceUsageDetail": {
+      "document": "Resource usage details",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource name",
+          "example": "clusterrolebindings",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource usage",
+          "example": "100",
+          "member": "uint64",
+          "name": "Usage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "RouteInfo": {
       "document": "Object of cluster route",

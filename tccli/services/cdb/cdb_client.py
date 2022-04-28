@@ -177,33 +177,6 @@ def doIsolateDBInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doRestartDBInstances(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.RestartDBInstancesRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.RestartDBInstances(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doModifyInstanceTag(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -609,6 +582,33 @@ def doDescribeDefaultParams(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeAuditPolicies(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeAuditPoliciesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeAuditPolicies(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeTagsOfInstanceIds(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -879,7 +879,7 @@ def doModifyTimeWindow(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteDeployGroups(args, parsed_globals):
+def doQueryCDBProxy(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -895,9 +895,9 @@ def doDeleteDeployGroups(args, parsed_globals):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteDeployGroupsRequest()
+    model = models.QueryCDBProxyRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteDeployGroups(model)
+    rsp = client.QueryCDBProxy(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1114,33 +1114,6 @@ def doCreateBackup(args, parsed_globals):
     model = models.CreateBackupRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.CreateBackup(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doModifyDBInstanceVipVport(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyDBInstanceVipVportRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ModifyDBInstanceVipVport(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1392,33 +1365,6 @@ def doDescribeProxyCustomConf(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDeployGroupList(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDeployGroupListRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeDeployGroupList(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doStopDBImportJob(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1438,33 +1384,6 @@ def doStopDBImportJob(args, parsed_globals):
     model = models.StopDBImportJobRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.StopDBImportJob(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doCreateAccounts(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateAccountsRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.CreateAccounts(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -2256,7 +2175,7 @@ def doCreateDBImportJob(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeAccounts(args, parsed_globals):
+def doRestartDBInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -2272,9 +2191,9 @@ def doDescribeAccounts(args, parsed_globals):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeAccountsRequest()
+    model = models.RestartDBInstancesRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeAccounts(model)
+    rsp = client.RestartDBInstances(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -2329,6 +2248,33 @@ def doDescribeBackupDownloadRestriction(args, parsed_globals):
     model = models.DescribeBackupDownloadRestrictionRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DescribeBackupDownloadRestriction(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doResetRootAccount(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ResetRootAccountRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ResetRootAccount(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -2553,7 +2499,7 @@ def doApplyCDBProxy(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyDBInstanceProject(args, parsed_globals):
+def doDescribeAuditRules(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -2569,9 +2515,9 @@ def doModifyDBInstanceProject(args, parsed_globals):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyDBInstanceProjectRequest()
+    model = models.DescribeAuditRulesRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyDBInstanceProject(model)
+    rsp = client.DescribeAuditRules(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -2715,33 +2661,6 @@ def doOpenWanService(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doQueryCDBProxy(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.QueryCDBProxyRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.QueryCDBProxy(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doModifyDBInstanceSecurityGroups(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -2761,6 +2680,33 @@ def doModifyDBInstanceSecurityGroups(args, parsed_globals):
     model = models.ModifyDBInstanceSecurityGroupsRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.ModifyDBInstanceSecurityGroups(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyDBInstanceProject(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyDBInstanceProjectRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyDBInstanceProject(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -2815,33 +2761,6 @@ def doDescribeSupportedPrivileges(args, parsed_globals):
     model = models.DescribeSupportedPrivilegesRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DescribeSupportedPrivileges(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doCreateDeployGroup(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateDeployGroupRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.CreateDeployGroup(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -2958,33 +2877,6 @@ def doDescribeCloneList(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyNameOrDescByDpId(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyNameOrDescByDpIdRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ModifyNameOrDescByDpId(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doUpgradeDBInstance(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -3083,7 +2975,6 @@ ACTION_MAP = {
     "DescribeDataBackupOverview": doDescribeDataBackupOverview,
     "BalanceRoGroupLoad": doBalanceRoGroupLoad,
     "IsolateDBInstance": doIsolateDBInstance,
-    "RestartDBInstances": doRestartDBInstances,
     "ModifyInstanceTag": doModifyInstanceTag,
     "DescribeTimeWindow": doDescribeTimeWindow,
     "DescribeBackupOverview": doDescribeBackupOverview,
@@ -3099,6 +2990,7 @@ ACTION_MAP = {
     "DescribeBackupConfig": doDescribeBackupConfig,
     "CloseWanService": doCloseWanService,
     "DescribeDefaultParams": doDescribeDefaultParams,
+    "DescribeAuditPolicies": doDescribeAuditPolicies,
     "DescribeTagsOfInstanceIds": doDescribeTagsOfInstanceIds,
     "DescribeDatabases": doDescribeDatabases,
     "DescribeErrorLogData": doDescribeErrorLogData,
@@ -3109,7 +3001,7 @@ ACTION_MAP = {
     "ReleaseIsolatedDBInstances": doReleaseIsolatedDBInstances,
     "CreateCloneInstance": doCreateCloneInstance,
     "ModifyTimeWindow": doModifyTimeWindow,
-    "DeleteDeployGroups": doDeleteDeployGroups,
+    "QueryCDBProxy": doQueryCDBProxy,
     "SwitchForUpgrade": doSwitchForUpgrade,
     "DeleteParamTemplate": doDeleteParamTemplate,
     "DescribeBackups": doDescribeBackups,
@@ -3118,7 +3010,6 @@ ACTION_MAP = {
     "AddTimeWindow": doAddTimeWindow,
     "DescribeLocalBinlogConfig": doDescribeLocalBinlogConfig,
     "CreateBackup": doCreateBackup,
-    "ModifyDBInstanceVipVport": doModifyDBInstanceVipVport,
     "DescribeDBInstanceConfig": doDescribeDBInstanceConfig,
     "DescribeProjectSecurityGroups": doDescribeProjectSecurityGroups,
     "DescribeSlowLogs": doDescribeSlowLogs,
@@ -3128,9 +3019,7 @@ ACTION_MAP = {
     "DescribeInstanceParams": doDescribeInstanceParams,
     "ModifyCDBProxy": doModifyCDBProxy,
     "DescribeProxyCustomConf": doDescribeProxyCustomConf,
-    "DescribeDeployGroupList": doDescribeDeployGroupList,
     "StopDBImportJob": doStopDBImportJob,
-    "CreateAccounts": doCreateAccounts,
     "UpgradeCDBProxy": doUpgradeCDBProxy,
     "UpgradeDBInstanceEngineVersion": doUpgradeDBInstanceEngineVersion,
     "DescribeInstanceParamRecords": doDescribeInstanceParamRecords,
@@ -3160,9 +3049,10 @@ ACTION_MAP = {
     "DescribeDBImportRecords": doDescribeDBImportRecords,
     "DescribeDBSwitchRecords": doDescribeDBSwitchRecords,
     "CreateDBImportJob": doCreateDBImportJob,
-    "DescribeAccounts": doDescribeAccounts,
+    "RestartDBInstances": doRestartDBInstances,
     "ReloadBalanceProxyNode": doReloadBalanceProxyNode,
     "DescribeBackupDownloadRestriction": doDescribeBackupDownloadRestriction,
+    "ResetRootAccount": doResetRootAccount,
     "ModifyAccountPassword": doModifyAccountPassword,
     "DescribeUploadedFiles": doDescribeUploadedFiles,
     "DescribeCDBProxy": doDescribeCDBProxy,
@@ -3171,22 +3061,20 @@ ACTION_MAP = {
     "DescribeRoGroups": doDescribeRoGroups,
     "ModifyBackupConfig": doModifyBackupConfig,
     "ApplyCDBProxy": doApplyCDBProxy,
-    "ModifyDBInstanceProject": doModifyDBInstanceProject,
+    "DescribeAuditRules": doDescribeAuditRules,
     "ModifyAutoRenewFlag": doModifyAutoRenewFlag,
     "SwitchCDBProxy": doSwitchCDBProxy,
     "StartBatchRollback": doStartBatchRollback,
     "DescribeDeviceMonitorInfo": doDescribeDeviceMonitorInfo,
     "OpenWanService": doOpenWanService,
-    "QueryCDBProxy": doQueryCDBProxy,
     "ModifyDBInstanceSecurityGroups": doModifyDBInstanceSecurityGroups,
+    "ModifyDBInstanceProject": doModifyDBInstanceProject,
     "DescribeProxyConnectionPoolConf": doDescribeProxyConnectionPoolConf,
     "DescribeSupportedPrivileges": doDescribeSupportedPrivileges,
-    "CreateDeployGroup": doCreateDeployGroup,
     "DescribeBinlogs": doDescribeBinlogs,
     "DescribeDBSecurityGroups": doDescribeDBSecurityGroups,
     "StartReplication": doStartReplication,
     "DescribeCloneList": doDescribeCloneList,
-    "ModifyNameOrDescByDpId": doModifyNameOrDescByDpId,
     "UpgradeDBInstance": doUpgradeDBInstance,
     "UpgradeCDBProxyVersion": doUpgradeCDBProxyVersion,
     "DeleteTimeWindow": doDeleteTimeWindow,

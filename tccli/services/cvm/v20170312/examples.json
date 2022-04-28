@@ -66,16 +66,16 @@
     ],
     "DeleteImages": [
       {
-        "document": "This example shows you how to delete the image `img-34vaef8fe`. If the image is in use or the image ID does not exist, no operation will be performed and an error code will be returned.",
+        "document": "This example shows you how to delete the image `img-34vaef8fe`. If the image is in use or the image ID does not exist, no operation will be performed, and an error code will be returned.",
         "input": "https://cvm.tencentcloudapi.com/?Action=DeleteImages\n&ImageIds.0=img-34vaef8fe\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"71e69b56-32be-4412-ab45-49eded6a87be\"\n    }\n}",
         "title": "Deleting an image"
       },
       {
         "document": "This example shows you how to delete the image `img-34vaef8fe`. If the image is in use or the image ID does not exist, no operation will be performed and an error code will be returned.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DeleteImages\r\n&ImageIds.0=img-34vaef8fe\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"71e69b56-32be-4412-ab45-49eded6a87be\"\n    }\n}",
-        "title": "Deleting an image"
+        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteImages\n<Common request parameters>\n\n{\n    \"ImageIds\": [\n        \"img-mfih409y\"\n    ],\n    \"DryRun\": \"True\",\n    \"DeleteBindedSnap\": \"True\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f24aca43-5135-4c9b-81fb-734969ce4c78\"\n    }\n}",
+        "title": "Checking whether the specified image can be deleted"
       }
     ],
     "DeleteKeyPairs": [
@@ -146,14 +146,14 @@
       {
         "document": "This example shows you how to query the information of an image by the image ID.",
         "input": "https://cvm.tencentcloudapi.com/?Action=DescribeImages\n&Filters.0.Name=image-id\n&Filters.0.Values.0=img-9qabwvbn\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ImageSet\": [\n            {\n                \"ImageId\": \"img-9qabwvbn\",\n                \"OsName\": \"CentOS 7.6 64-bit\",\n                \"ImageSize\": 10,\n                \"ImageType\": \"PUBLIC_IMAGE\",\n                \"CreatedTime\": null,\n                \"ImageState\": \"NORMAL\",\n                \"ImageSource\": \"OFFICIAL\",\n                \"ImageName\": \"CentOS 7.6 64-bit\",\n                \"ImageDescription\": \"CentOS 7.6 64-bit\",\n                \"ImageCreator\": null,\n                \"SyncPercent\": null,\n                \"IsSupportCloudinit\": true,\n                \"Platform\": \"CentOS\",\n                \"Architecture\": \"x86_64\",\n                \"SnapshotSet\": []\n            }\n        ],\n        \"RequestId\": \"db145873-3128-4079-8cec-65e05a7c9f89\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ImageSet\": [\n            {\n                \"ImageId\": \"img-9qabwvbn\",\n                \"OsName\": \"CentOS 7.6 64-bit\",\n                \"ImageSize\": 10,\n                \"ImageType\": \"PUBLIC_IMAGE\",\n                \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                \"ImageState\": \"NORMAL\",\n                \"ImageSource\": \"OFFICIAL\",\n                \"ImageName\": \"CentOS 7.6 64-bit\",\n                \"ImageDescription\": \"CentOS 7.6 64-bit\",\n                \"ImageCreator\": null,\n                \"SyncPercent\": null,\n                \"IsSupportCloudinit\": true,\n                \"Platform\": \"CentOS\",\n                \"Architecture\": \"x86_64\",\n                \"SnapshotSet\": []\n                \"Tags\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"db145873-3128-4079-8cec-65e05a7c9f89\"\n    }\n}",
         "title": "Querying an image by the image ID"
       },
       {
         "document": "This example shows you how to query all private images under an account.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeImages\r\n&Filters.0.Name=image-type\r\n&Filters.0.Values.0=PRIVATE_IMAGE\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"ImageSet\": [\n            {\n                \"ImageId\": \"img-pmqg1cw7\",\n                \"ImageType\": \"PUBLIC_IMAGE\",\n                \"ImageName\": \"CentOS 6.6 32-bit\",\n                \"ImageDescription\": \"CentOS 6.6 32-bit\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"5920380e-277a-420a-a221-0caac3eb7159\"\n    }\n}",
-        "title": "Querying images by image type"
+        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeImages\n&Filters.0.Name=image-type\n&Filters.0.Values.0=PRIVATE_IMAGE\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 408,\n        \"ImageSet\": [\n            {\n                \"OsName\": \"CentOS 7.4 64-bit\",\n                \"ImageSize\": 20,\n                \"ImageType\": \"PRIVATE_IMAGE\",\n                \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                \"ImageDescription\": \"test-image\",\n                \"ImageSource\": \"CREATE_IMAGE\",\n                \"ImageId\": \"img-qlzp4oea\",\n                \"ImageName\": \"test-image\",\n                \"ImageCreator\": \"3205597606\",\n                \"ImageState\": \"NORMAL\",\n                \"SyncPercent\": null,\n                \"SnapshotSet\": [\n                    {\n                        \"SnapshotId\": \"snap-gqa37j2p\",\n                        \"DiskUsage\": \"SYSTEM_DISK\",\n                        \"DiskSize\": 20\n                    }\n                ],\n                \"Tags\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"Architecture\": \"x86_64\",\n                \"Platform\": \"CentOS\",\n                \"IsSupportCloudinit\": true\n            }\n        ],\n        \"RequestId\": \"5908394c-5b3f-42e0-a537-8410553890a5\"\n    }\n}",
+        "title": "Querying an image by the image type"
       }
     ],
     "DescribeImportImageOs": [
