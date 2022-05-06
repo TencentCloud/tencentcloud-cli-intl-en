@@ -1316,7 +1316,7 @@
         },
         {
           "default": "",
-          "document": "PostgreSQL version number. If it is specified, an instance running the latest kernel of PostgreSQL `DBVersion` will be created.",
+          "document": "PostgreSQL version. If it is specified, an instance running the latest kernel of PostgreSQL `DBVersion` will be created. You must pass in at least one of the following parameters: DBVersion, DBMajorVersion, DBKernelVersion.",
           "example": "12.4",
           "member": "string",
           "name": "DBVersion",
@@ -1424,7 +1424,7 @@
         },
         {
           "default": "",
-          "document": "PostgreSQL major version number. Valid values: `10`, `11`, `12`, `13`. If it is specified, an instance running the latest kernel of PostgreSQL `DBMajorVersion` will be created.",
+          "document": "PostgreSQL major version. Valid values: `10`, `11`, `12`, `13`. If it is specified, an instance running the latest kernel of PostgreSQL `DBMajorVersion` will be created. You must pass in at least one of the following parameters: DBMajorVersion, DBVersion, DBKernelVersion.",
           "example": "12",
           "member": "string",
           "name": "DBMajorVersion",
@@ -1433,7 +1433,7 @@
         },
         {
           "default": "",
-          "document": "PostgreSQL kernel version number. If it is specified, an instance running kernel `DBKernelVersion` will be created.",
+          "document": "PostgreSQL kernel version. If it is specified, an instance running the latest kernel of PostgreSQL `DBKernelVersion` will be created. You must pass in one of the following parameters: DBKernelVersion, DBVersion, DBMajorVersion.",
           "example": "v12.4_r1.0",
           "member": "string",
           "name": "DBKernelVersion",
@@ -1448,6 +1448,33 @@
           "name": "DBNodeSet",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to support transparent data encryption. Valid values: 1 (yes), 0 (no). Default value: 0.",
+          "example": "1",
+          "member": "uint64",
+          "name": "NeedSupportTDE",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "KeyId of custom key, which is required if you select custom key encryption. It is also the unique CMK identifier.",
+          "example": "无",
+          "member": "string",
+          "name": "KMSKeyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The region where the KMS service is enabled. When “KMSRegion” is left empty, the “KMS” of the local domain will be enabled by default. If the local domain is not supported, you need to select another region supported by KMS.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "KMSRegion",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1658,7 +1685,7 @@
         },
         {
           "default": "",
-          "document": "The information of tags to be associated with instances. This parameter is left empty by default.",
+          "document": "The information of tags to be bound with the purchased instance, which is left empty by default (type: tag array).",
           "example": "空",
           "member": "Tag",
           "name": "TagList",
@@ -2499,6 +2526,16 @@
           "name": "DBNodeSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the instance supports TDE data encryption. Valid values: 0 (no), 1 (yes)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsSupportTDE",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -6705,26 +6742,42 @@
         {
           "default": "",
           "document": "Region abbreviation, which corresponds to the `Region` field of `RegionSet`",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "AZ abbreviate, which corresponds to the `Zone` field of `ZoneSet`",
+          "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Specification details list",
+          "example": "空",
           "member": "SpecItemInfo",
           "name": "SpecItemInfoList",
           "required": true,
-          "type": "list"
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Regions where KMS is supported\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "[\"ap-guangzhou\"]",
+          "member": "string",
+          "name": "SupportKMSRegions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -6850,6 +6903,16 @@
           "name": "KernelVersion",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether TDE data encryption is supported. Valid values: 0 (no), 1 (yes)\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsSupportTDE",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

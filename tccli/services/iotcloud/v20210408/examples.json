@@ -133,6 +133,14 @@
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxxxxxxxxxxxxxxxxxxxxx\"\n    }\n}",
         "title": "Updating a private CA certificate"
       }
+    ],
+    "UpdateProductDynamicRegister": [
+      {
+        "document": "This example shows you how to update product dynamic registration.",
+        "input": "https://iotcloud.tencentcloudapi.com/?Action=UpdateProductDynamicRegister\n&ProductId=ABCDE12345\n&RegisterType=0\n&RegisterLimit=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RegisterType\": 0,\n        \"ProductSecret\": \"xxxx\",\n        \"RegisterLimit\": 10000,\n        \"RequestId\": \"d15b72a9-ab2b-4906-9632-52f7a31932a9\"\n    }\n}",
+        "title": "Updating product dynamic registration"
+      }
     ]
   },
   "version": "1.0"

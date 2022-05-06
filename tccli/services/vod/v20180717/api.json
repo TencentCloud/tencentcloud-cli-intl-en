@@ -11253,8 +11253,29 @@
         {
           "default": "",
           "document": "ID of the adaptive bitrate streaming template whose protection type is SimpleAES.",
+          "example": "无",
           "member": "uint64",
           "name": "SimpleAesDefinition",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ID of the adaptive bitrate streaming template that encrypts the streams by Widewine.",
+          "example": "无",
+          "member": "uint64",
+          "name": "WidevineDefinition",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ID of the adaptive bitrate streaming template that encrypts the streams by FairPlay.",
+          "example": "无",
+          "member": "uint64",
+          "name": "FairPlayDefinition",
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -11268,8 +11289,29 @@
         {
           "default": "",
           "document": "ID of the adaptive bitrate streaming template whose protection type is SimpleAES.",
+          "example": "无",
           "member": "uint64",
           "name": "SimpleAesDefinition",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ID of the adaptive bitrate streaming template that encrypts the streams by Widewine.",
+          "example": "无",
+          "member": "uint64",
+          "name": "WidevineDefinition",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ID of the adaptive bitrate streaming template that encrypts the streams by FairPlay.",
+          "example": "无",
+          "member": "uint64",
+          "name": "FairPlayDefinition",
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -19915,7 +19957,7 @@
         },
         {
           "default": "",
-          "document": "[Stream ID](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1) set. Any element in the set can be matched.\n<li>Array length limit: 10.</li>",
+          "document": "The live stream code array. A media file will be returned if it matches any element in the array.\n<li>Array length limit: 10</li>",
           "example": "无",
           "member": "string",
           "name": "StreamIds",
@@ -20032,7 +20074,7 @@
         },
         {
           "default": "",
-          "document": "(This is not recommended. `StreamIds` should be used instead)\n[Stream ID](https://intl.cloud.tencent.com/document/product/267/5959?from_cn_redirect=1).",
+          "document": "(Not recommended. Consider using `StreamIds` instead.)\nThe live stream code.",
           "example": "无",
           "member": "string",
           "name": "StreamId",

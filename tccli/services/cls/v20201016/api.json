@@ -6,6 +6,12 @@
       "name": "Applies collection configuration to specified machine group",
       "output": "ApplyConfigToMachineGroupResponse"
     },
+    "CloseKafkaConsumer": {
+      "document": "This API is used to disable Kafka consumption.",
+      "input": "CloseKafkaConsumerRequest",
+      "name": "Disables Kafka consumption",
+      "output": "CloseKafkaConsumerResponse"
+    },
     "CreateAlarm": {
       "document": "This API is used to create an alarm policy.",
       "input": "CreateAlarmRequest",
@@ -53,6 +59,12 @@
       "input": "CreateMachineGroupRequest",
       "name": "Creates machine group",
       "output": "CreateMachineGroupResponse"
+    },
+    "CreateShipper": {
+      "document": "This API is used to create a shipping rule. Note: To use this API, you need to check whether you have configured the role and permission for COS shipping tasks. If not, see **Viewing and Configuring Shipping Authorization** at https://intl.cloud.tencent.com/document/product/614/71623.?from_cn_redirect=1",
+      "input": "CreateShipperRequest",
+      "name": "Creates a shipping rule",
+      "output": "CreateShipperResponse"
     },
     "CreateTopic": {
       "document": "This API is used to create a log topic.",
@@ -287,6 +299,18 @@
       "input": "ModifyShipperRequest",
       "name": "Modifies shipping rule",
       "output": "ModifyShipperResponse"
+    },
+    "ModifyTopic": {
+      "document": "This API is used to modify a log topic.",
+      "input": "ModifyTopicRequest",
+      "name": "Modifies a log topic",
+      "output": "ModifyTopicResponse"
+    },
+    "OpenKafkaConsumer": {
+      "document": "This API is used to enable the Kafka consumption feature.",
+      "input": "OpenKafkaConsumerRequest",
+      "name": "Enables Kafka consumption",
+      "output": "OpenKafkaConsumerResponse"
     },
     "RetryShipperTask": {
       "document": "This API is used to retry a failed shipping task.",
@@ -540,6 +564,7 @@
         {
           "default": "",
           "document": "Log topic ID",
+          "example": "380fe1f1-0c7b-4b0d-xxxx-d514959db1bb",
           "member": "string",
           "name": "TopicId",
           "required": true,
@@ -549,6 +574,7 @@
         {
           "default": "",
           "document": "Query statement",
+          "example": "code:200 | select count(*) as success_counts",
           "member": "string",
           "name": "Query",
           "required": true,
@@ -558,6 +584,7 @@
         {
           "default": "",
           "document": "Monitoring object number, which is incremental from 1.",
+          "example": "1",
           "member": "int64",
           "name": "Number",
           "required": true,
@@ -566,7 +593,8 @@
         },
         {
           "default": "",
-          "document": "Offset of the query start time from the current time in minutes. The value cannot be positive. Value range: -1440–0.",
+          "document": "Offset of the query start time from the alarm execution time in minutes. The value cannot be positive. Value range: -1440–0.",
+          "example": "-5",
           "member": "int64",
           "name": "StartTimeOffset",
           "required": true,
@@ -575,7 +603,8 @@
         },
         {
           "default": "",
-          "document": "Offset of the query end time from the current time in minutes. The value cannot be positive and must be greater than `StartTimeOffset`. Value range: -1440–0.",
+          "document": "Offset of the query end time from the alarm execution time in minutes. The value cannot be positive and must be greater than `StartTimeOffset`. Value range: -1440–0.",
+          "example": "0",
           "member": "int64",
           "name": "EndTimeOffset",
           "required": true,
@@ -585,6 +614,7 @@
         {
           "default": "",
           "document": "Logset ID",
+          "example": "1c012db7-2cfd-4418-xxxx-7342c7a42516",
           "member": "string",
           "name": "LogsetId",
           "required": true,
@@ -659,7 +689,7 @@
         },
         {
           "default": "",
-          "document": "Offset of the query start time from the current time. The value cannot be positive. Value range: -1440–0.",
+          "document": "Offset of the query start time from the alarm execution time in minutes. The value cannot be positive. Value range: -1440–0.",
           "example": "-240",
           "member": "int64",
           "name": "StartTimeOffset",
@@ -669,7 +699,7 @@
         },
         {
           "default": "",
-          "document": "Offset of the query end time from the current time. The value cannot be positive and must be greater than `StartTimeOffset`. Value range: -1440–0.",
+          "document": "Offset of the query end time from the alarm execution time in minutes. The value cannot be positive and must be greater than `StartTimeOffset`. Value range: -1440–0.",
           "example": "0",
           "member": "int64",
           "name": "EndTimeOffset",
@@ -843,6 +873,33 @@
         }
       ],
       "usage": "both"
+    },
+    "CloseKafkaConsumerRequest": {
+      "document": "CloseKafkaConsumer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CLS topic identifier",
+          "example": "57f5808c-4a55-11eb-b378-0242ac130002",
+          "member": "string",
+          "name": "FromTopicId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloseKafkaConsumerResponse": {
+      "document": "CloseKafkaConsumer response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "Column": {
       "document": "Column attribute of log analysis",
@@ -1516,6 +1573,24 @@
           "name": "Status",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Internal field marker of full-text index. Default value: `false`. Valid value: `false`: excluding internal fields; `true`: including internal fields",
+          "example": "true",
+          "member": "bool",
+          "name": "IncludeInternalFields",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Metadata flag. Default value: `0`. Valid value: `0`: full-text index (including the metadata field with key-value index enabled); `1`: full-text index (including all metadata fields); `2`: full-text index (excluding metadata fields).",
+          "example": "0",
+          "member": "uint64",
+          "name": "MetadataFlag",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1654,6 +1729,123 @@
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
           "member": "string",
           "name": "GroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateShipperRequest": {
+      "document": "CreateShipper request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the log topic to which the shipping rule to be created belongs",
+          "example": "57f5808c-4a55-11eb-b378-0242ac130002",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Destination bucket in the shipping rule to be created",
+          "example": "bucketName-appid",
+          "member": "string",
+          "name": "Bucket",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Prefix of the shipping directory in the shipping rule to be created",
+          "example": "无",
+          "member": "string",
+          "name": "Prefix",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Shipping rule name",
+          "example": "testShipper",
+          "member": "string",
+          "name": "ShipperName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Interval between shipping tasks (in sec). Default value: 300. Value range: 300-900",
+          "example": "60",
+          "member": "uint64",
+          "name": "Interval",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum size of a file to be shipped, in MB. Default value: 256. Value range: 100-256",
+          "example": "256",
+          "member": "uint64",
+          "name": "MaxSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter rules for shipped logs. Only logs matching the rules can be shipped. All rules are in the AND relationship, and up to five rules can be added. If the array is empty, no filtering will be performed, and all logs will be shipped.",
+          "example": "无",
+          "member": "FilterRuleInfo",
+          "name": "FilterRules",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Rules for partitioning logs to be shipped. `strftime` can be used to define the presentation of time format.",
+          "example": "%Y%m%d",
+          "member": "string",
+          "name": "Partition",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Compression configuration of shipped log",
+          "example": "无",
+          "member": "CompressInfo",
+          "name": "Compress",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Format configuration of shipped log content",
+          "example": "无",
+          "member": "ContentInfo",
+          "name": "Content",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateShipperResponse": {
+      "document": "CreateShipper response structure.",
+      "members": [
+        {
+          "document": "Shipping rule ID",
+          "example": "57f5808c-4a55-11eb-b378-0242ac130002",
+          "member": "string",
+          "name": "ShipperId",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2532,6 +2724,24 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "Internal field marker of full-text index. Default value: `false`. Valid value: `false`: excluding internal fields; `true`: including internal fields\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "true",
+          "member": "bool",
+          "name": "IncludeInternalFields",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Metadata flag. Default value: `0`. Valid value: `0`: full-text index (including the metadata field with key-value index enabled); `1`: full-text index (including all metadata fields); `2`: full-text index (excluding metadata fields).\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "1",
+          "member": "uint64",
+          "name": "MetadataFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3869,6 +4079,16 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source host name of logs\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "hostName-1",
+          "member": "string",
+          "name": "HostName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3952,6 +4172,16 @@
           "example": "{\"content\":\"test\"}",
           "member": "string",
           "name": "LogJson",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Source host name of logs\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "hostName-1",
+          "member": "string",
+          "name": "HostName",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -4689,7 +4919,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Internal field marker of full-text index. Default value: `false`. Valid value: `false`: excluding internal fields; `true`: including internal fields",
           "example": "false",
           "member": "bool",
           "name": "IncludeInternalFields",
@@ -4698,7 +4928,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Metadata flag. Default value: `0`. Valid value: `0`: full-text index (including the metadata field with key-value index enabled); `1`: full-text index (including all metadata fields); `2`: full-text index (excluding metadata fields).",
           "example": "0",
           "member": "uint64",
           "name": "MetadataFlag",
@@ -4972,6 +5202,87 @@
       ],
       "type": "object"
     },
+    "ModifyTopicRequest": {
+      "document": "ModifyTopic request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Log topic ID",
+          "example": "xxxxxx-xx-xx-xx-xxxxxxxx",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log topic name",
+          "example": "testname",
+          "member": "string",
+          "name": "TopicName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag description list. This parameter is used to bind a tag to a log topic. Up to 10 tag key-value pairs are supported, and they must be unique.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to start collection for this log topic",
+          "example": "true",
+          "member": "bool",
+          "name": "Status",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable automatic split",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoSplit",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of partitions to split into for this topic if automatic split is enabled",
+          "example": "50",
+          "member": "int64",
+          "name": "MaxSplitPartitions",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Lifecycle in days. Value range: 1-3600 (3640 indicates permanent retention)",
+          "example": "30",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTopicResponse": {
+      "document": "ModifyTopic response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "MonitorTime": {
       "document": "Monitoring task execution time point in alarm policy",
       "members": [
@@ -5061,6 +5372,42 @@
         }
       ],
       "usage": "both"
+    },
+    "OpenKafkaConsumerRequest": {
+      "document": "OpenKafkaConsumer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "`TopicId` created by the CLS console",
+          "example": "57f5808c-4a55-11eb-b378-0242ac130002",
+          "member": "string",
+          "name": "FromTopicId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenKafkaConsumerResponse": {
+      "document": "OpenKafkaConsumer response structure.",
+      "members": [
+        {
+          "document": "`TopicId` to be consumed",
+          "example": "out-57f5808c-4a55-11eb-b378-0242ac130002",
+          "member": "string",
+          "name": "TopicID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "PartitionInfo": {
       "document": "Log topic partition information",

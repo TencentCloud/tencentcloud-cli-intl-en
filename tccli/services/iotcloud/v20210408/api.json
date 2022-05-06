@@ -95,6 +95,12 @@
       "input": "UpdatePrivateCARequest",
       "name": "Updates a private CA certificate",
       "output": "UpdatePrivateCAResponse"
+    },
+    "UpdateProductDynamicRegister": {
+      "document": "This API is used to update the configuration of product dynamic registration. ",
+      "input": "UpdateProductDynamicRegisterRequest",
+      "name": "Updates product dynamic registration",
+      "output": "UpdateProductDynamicRegisterResponse"
     }
   },
   "metadata": {
@@ -1801,6 +1807,78 @@
     "UpdatePrivateCAResponse": {
       "document": "UpdatePrivateCA response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateProductDynamicRegisterRequest": {
+      "document": "UpdateProductDynamicRegister request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Product ID",
+          "example": "ABCDE12345",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Dynamic registration type. Valid values: 0 - disabled; 1 - pre-create device; 2 - auto-create device.",
+          "example": "0",
+          "member": "uint64",
+          "name": "RegisterType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum dynamically registered devices",
+          "example": "10",
+          "member": "uint64",
+          "name": "RegisterLimit",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateProductDynamicRegisterResponse": {
+      "document": "UpdateProductDynamicRegister response structure.",
+      "members": [
+        {
+          "document": "Dynamic registration type. Valid values: 0 - disabled; 1 - pre-create device; 2 - auto-create device.",
+          "example": "0",
+          "member": "uint64",
+          "name": "RegisterType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Product key for dynamic registration",
+          "example": "xxxx",
+          "member": "string",
+          "name": "ProductSecret",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Maximum dynamically registered devices",
+          "example": "10000",
+          "member": "uint64",
+          "name": "RegisterLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

@@ -55,7 +55,7 @@
       "output": "DescribeAlarmEventsResponse"
     },
     "DescribeAlarmHistories": {
-      "document": "This API is used to query the alarm records.\n\nNote: **If you query the alarm records as a sub-user, you can only query those of authorized projects** or those of products which are not categorized by projects. For information on how to grant a sub-account the project permission, see [Project & Tag](https://intl.cloud.tencent.com/document/product/598/32738?from_cn_redirect=1).",
+      "document": "This API is used to query the alarm records.\n\nNote: **If you use a sub-account, you can only query the alarm records of authorized projects** or uncategorized products.",
       "input": "DescribeAlarmHistoriesRequest",
       "name": "Queries alarm records",
       "output": "DescribeAlarmHistoriesResponse"
@@ -5996,6 +5996,7 @@
         {
           "default": "",
           "document": "Module, whose value is fixed at `monitor`",
+          "example": "monitor",
           "member": "string",
           "name": "Module",
           "required": true,
@@ -6004,6 +6005,7 @@
         {
           "default": "",
           "document": "Namespace. Valid values: QCE/TKE",
+          "example": "QCE/TKE",
           "member": "string",
           "name": "Namespace",
           "required": true,
@@ -6012,6 +6014,7 @@
         {
           "default": "",
           "document": "Metric name list",
+          "example": "[\"K8sPodCpuCoreUsed\"]",
           "member": "string",
           "name": "MetricNames",
           "required": true,
@@ -6020,6 +6023,7 @@
         {
           "default": "",
           "document": "Dimension condition. The `=` and `in` operators are supported",
+          "example": "无",
           "member": "MidQueryCondition",
           "name": "Conditions",
           "required": false,
@@ -6027,7 +6031,8 @@
         },
         {
           "default": "",
-          "document": "Statistical granularity in s. Default value: 300",
+          "document": "Statistical period in seconds. Default value: 300. Optional values: 60, 300, 3,600, and 86,400.\nDue to the storage period limit, the statistical period is subject to the time range of statistics:\n60s: The time range is less than 12 hours, and the timespan between `StartTime` and the current time cannot exceed 15 days.\n300s: The time range is less than three days, and the timespan between `StartTime` and the current time cannot exceed 31 days.\n3,600s: The time range is less than 30 days, and the timespan between `StartTime` and the current time cannot exceed 93 days.\n86,400s: The time range is less than 186 days, and the timespan between `StartTime` and the current time cannot exceed 186 days.",
+          "example": "300",
           "member": "uint64",
           "name": "Period",
           "required": false,
@@ -6036,6 +6041,7 @@
         {
           "default": "",
           "document": "Start time, which is the current time by default, such as 2020-12-08T19:51:23+08:00",
+          "example": "2020-11-24T15:15:50+08:00",
           "member": "string",
           "name": "StartTime",
           "required": false,
@@ -6044,6 +6050,7 @@
         {
           "default": "",
           "document": "End time, which is the current time by default, such as 2020-12-08T19:51:23+08:00",
+          "example": "2020-11-24T15:25:50+08:00",
           "member": "string",
           "name": "EndTime",
           "required": false,
@@ -6052,6 +6059,7 @@
         {
           "default": "",
           "document": "`groupBy` by the specified dimension",
+          "example": "[\"K8sPodCpuCoreUsed\"]",
           "member": "string",
           "name": "GroupBys",
           "required": false,
@@ -8154,6 +8162,16 @@
           "required": false,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Notification cycle. The values 1-7 indicate Monday to Sunday.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[1,2,5]",
+          "member": "int64",
+          "name": "Weekday",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -8387,6 +8405,16 @@
           "name": "PhoneCallType",
           "required": false,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Notification cycle. The values 1-7 indicate Monday to Sunday.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[1,2,5]",
+          "member": "int64",
+          "name": "Weekday",
+          "required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],

@@ -145,7 +145,7 @@
       "output": "DeleteServiceSubDomainMappingResponse"
     },
     "DeleteUpstream": {
-      "document": "This API is used to delete an upstream. Note that you can only delete an upstream when it’s not bound with an API.",
+      "document": "This API is used to delete an upstream. Note that you can only delete an upstream when it’s not bound with any APIs.",
       "input": "DeleteUpstreamRequest",
       "name": "Deletes an upstream",
       "output": "DeleteUpstreamResponse"
@@ -339,19 +339,19 @@
     "DescribeServicesStatus": {
       "document": "This API is used to query the list of one or more services and return relevant domain name, time, and other information.",
       "input": "DescribeServicesStatusRequest",
-      "name": "Queries service list",
+      "name": "Queries service status",
       "output": "DescribeServicesStatusResponse"
     },
     "DescribeUpstreamBindApis": {
-      "document": "This API is used to query the list of APIs bound with an upstream.",
+      "document": "This API is used to query APIs bound with an upstream.",
       "input": "DescribeUpstreamBindApisRequest",
-      "name": "Queries the list of APIs bound with an upstream",
+      "name": "Queries APIs bound with an upstream",
       "output": "DescribeUpstreamBindApisResponse"
     },
     "DescribeUpstreams": {
-      "document": "This API is used to query the list of upstreams.",
+      "document": "This API is used to query details of upstreams under the current account.",
       "input": "DescribeUpstreamsRequest",
-      "name": "Queries the list of upstreams ",
+      "name": "Queries details of upstreams under the current account",
       "output": "DescribeUpstreamsResponse"
     },
     "DescribeUsagePlan": {
@@ -3393,6 +3393,15 @@
           "name": "EIAMAppId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Owner of the resource",
+          "example": "无",
+          "member": "string",
+          "name": "Owner",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3567,7 +3576,7 @@
         },
         {
           "default": "",
-          "document": "Plugin type. Valid values: `IPControl`, `TrafficControl`, `Cors`, `CustomReq`, `CustomAuth`, `Routing`, `TrafficControlByParameter`.",
+          "document": "Plugin type. Valid values: `IPControl`, `TrafficControl`, `Cors`, `CustomReq`, `CustomAuth`, `Routing`, `TrafficControlByParameter`, `CircuitBreaker`, `ProxyCache`",
           "example": "IPControl",
           "member": "string",
           "name": "PluginType",
@@ -3591,6 +3600,15 @@
           "name": "Description",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Label",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -3794,7 +3812,7 @@
       "members": [
         {
           "default": "",
-          "document": "Backend protocol. Values: `HTTP`, `HTTPS`",
+          "document": "Backend protocol. Valid values: `HTTP`, `HTTPS`",
           "example": "HTTP",
           "member": "string",
           "name": "Scheme",
@@ -3803,8 +3821,8 @@
         },
         {
           "default": "",
-          "document": "The balancing method can only be `ROUND_ROBIN`.",
-          "example": "Algorithm",
+          "document": "Load balancing algorithm. Valid value: `ROUND-ROBIN`",
+          "example": "ROUND-ROBIN",
           "member": "string",
           "name": "Algorithm",
           "required": true,
@@ -3813,7 +3831,7 @@
         {
           "default": "",
           "document": "Unique VPC ID",
-          "example": "UniqVpcId",
+          "example": "vpc-123456",
           "member": "string",
           "name": "UniqVpcId",
           "required": true,
@@ -3821,8 +3839,8 @@
         },
         {
           "default": "",
-          "document": "Name of the upstream ",
-          "example": "test",
+          "document": "Upstream name",
+          "example": "test_upstream",
           "member": "string",
           "name": "UpstreamName",
           "required": false,
@@ -3830,10 +3848,19 @@
         },
         {
           "default": "",
-          "document": "Description of the upstream",
-          "example": "test",
+          "document": "Upstream description",
+          "example": "description",
           "member": "string",
           "name": "UpstreamDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Upstream access type. Valid values: `IP_PORT`, `K8S`",
+          "example": "IP_PORT",
+          "member": "string",
+          "name": "UpstreamType",
           "required": false,
           "type": "string"
         },
@@ -3848,8 +3875,8 @@
         },
         {
           "default": "",
-          "document": "The host header in the request sending to the backend",
-          "example": "UpstreamHost",
+          "document": "The Host request header that forwarded from the gateway to backend",
+          "example": "example.com",
           "member": "string",
           "name": "UpstreamHost",
           "required": false,
@@ -3866,7 +3893,25 @@
         },
         {
           "default": "",
-          "document": "The location of K8s service",
+          "document": "Label",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Health check configuration",
+          "example": "无",
+          "member": "UpstreamHealthChecker",
+          "name": "HealthChecker",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Configuration of TKE service",
           "example": "无",
           "member": "K8sService",
           "name": "K8sService",
@@ -3880,7 +3925,7 @@
       "document": "CreateUpstream response structure.",
       "members": [
         {
-          "document": "The unique upstream IP returned\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "The unique upstream ID returned\nNote: This field may return `NULL`, indicating that no valid value was found.",
           "example": "upstream-0c96l2bo",
           "member": "string",
           "name": "UpstreamId",
@@ -4274,8 +4319,8 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the upstream to delete",
-          "example": "\"upstream-xxxx\"",
+          "document": "ID of the upstream to be deleted",
+          "example": "upstream-xxxx",
           "member": "string",
           "name": "UpstreamId",
           "required": true,
@@ -4288,8 +4333,8 @@
       "document": "DeleteUpstream response structure.",
       "members": [
         {
-          "document": "ID of the upstream deleted\nNote: This field may return `null`, indicating that no valid value was found.",
-          "example": "upstream-sasdsa",
+          "document": "ID of the deleted upstream\nNote: This field may return `NULL`, indicating that no valid value was found.",
+          "example": "upstream-xxxx",
           "member": "string",
           "name": "UpstreamId",
           "required": true,
@@ -6387,7 +6432,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Whether it’s for special usage\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether the service if for special usage. Valid values: `DEFAULT` (general usage), `HTTP_DNS`.\nNote: This field may return `NULL`, indicating that no valid value was found.",
           "example": "DEFAULT",
           "member": "string",
           "name": "SpecialUse",
@@ -6596,7 +6641,7 @@
       "type": "object"
     },
     "DescribeUpstreamBindApis": {
-      "document": "Querying the list of APIs bound with an upstream.",
+      "document": "Queries APIs bound with an upstream",
       "members": [
         {
           "default": "",
@@ -6626,8 +6671,8 @@
       "members": [
         {
           "default": "",
-          "document": "Number of results returned in a page",
-          "example": "1",
+          "document": "Number of entries per page",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": true,
@@ -6635,7 +6680,7 @@
         },
         {
           "default": "",
-          "document": "Page offset",
+          "document": "The starting position of paging",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -6685,7 +6730,7 @@
       "type": "object"
     },
     "DescribeUpstreamInfo": {
-      "document": "Information of the queried upstreams",
+      "document": "The returned result of upstream query",
       "members": [
         {
           "default": "",
@@ -6715,8 +6760,8 @@
       "members": [
         {
           "default": "",
-          "document": "Number of results returned in a page",
-          "example": "1",
+          "document": "Number of entries per page",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": true,
@@ -6724,7 +6769,7 @@
         },
         {
           "default": "",
-          "document": "Page offset",
+          "document": "The starting position of paging",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -6733,7 +6778,7 @@
         },
         {
           "default": "",
-          "document": "Filters",
+          "document": "Filters. Valid values: `UpstreamId` and `UpstreamName`",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -8922,7 +8967,7 @@
       "members": [
         {
           "default": "",
-          "document": "Unique ID of the upstream",
+          "document": "Unique upstream ID",
           "example": "upstream-0c96l2bo",
           "member": "string",
           "name": "UpstreamId",
@@ -8931,8 +8976,8 @@
         },
         {
           "default": "",
-          "document": "Name of the upstream ",
-          "example": "xxxx",
+          "document": "Upstream name",
+          "example": "upstream_a",
           "member": "string",
           "name": "UpstreamName",
           "required": false,
@@ -8940,8 +8985,8 @@
         },
         {
           "default": "",
-          "document": "Description of the upstream",
-          "example": "xxxxx",
+          "document": "Upstream description",
+          "example": "description",
           "member": "string",
           "name": "UpstreamDescription",
           "required": false,
@@ -8949,8 +8994,8 @@
         },
         {
           "default": "",
-          "document": "Backend protocol. Values: `HTTP`, `HTTPS`",
-          "example": "HTTP, HTTPS",
+          "document": "Backend protocol. Valid values: `HTTP`, `HTTPS`",
+          "example": "HTTP",
           "member": "string",
           "name": "Scheme",
           "required": false,
@@ -8958,8 +9003,17 @@
         },
         {
           "default": "",
-          "document": "The balancing method can only be `ROUND_ROBIN`.",
-          "example": "Algorithm",
+          "document": "Upstream access type. Valid values: `IP_PORT`, `K8S`",
+          "example": "IP_PORT",
+          "member": "string",
+          "name": "UpstreamType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Load balancing algorithm. Valid value: `ROUND_ROBIN`",
+          "example": "ROUND_ROBIN",
           "member": "string",
           "name": "Algorithm",
           "required": false,
@@ -8968,7 +9022,7 @@
         {
           "default": "",
           "document": "Unique VPC ID.",
-          "example": "UniqVpcId",
+          "example": "vpc-123456",
           "member": "string",
           "name": "UniqVpcId",
           "required": false,
@@ -8977,7 +9031,7 @@
         {
           "default": "",
           "document": "Retry attempts. It defaults to `3`.",
-          "example": "Retries",
+          "example": "3",
           "member": "uint64",
           "name": "Retries",
           "required": false,
@@ -8985,8 +9039,8 @@
         },
         {
           "default": "",
-          "document": "The host header in the request sending to the backend",
-          "example": "UpstreamHost",
+          "document": "Gateway forwarding to the upstream Host request header",
+          "example": "example.com",
           "member": "string",
           "name": "UpstreamHost",
           "required": false,
@@ -9003,7 +9057,16 @@
         },
         {
           "default": "",
-          "document": "Configuration of K8s service",
+          "document": "Health check configuration",
+          "example": "无",
+          "member": "UpstreamHealthChecker",
+          "name": "HealthChecker",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Configuration of TKE service",
           "example": "无",
           "member": "K8sService",
           "name": "K8sService",
@@ -9017,7 +9080,7 @@
       "document": "ModifyUpstream response structure.",
       "members": [
         {
-          "document": "Information of the upstream after the modification\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "Return modified upstream information\nNote: This field may return `NULL`, indicating that no valid value was found.",
           "example": "无",
           "member": "UpstreamInfo",
           "name": "Result",
@@ -9812,6 +9875,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "It’s required for `upstream`.\nNote: This field may return `NULL`, indicating that no valid value was found.",
+          "example": "upstream-sadad",
+          "member": "string",
+          "name": "UpstreamId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "default": "",
@@ -10748,7 +10821,7 @@
       "type": "object"
     },
     "UpstreamHealthChecker": {
-      "document": "Upstream health check configuration",
+      "document": "Upstream health check parameter configuration",
       "members": [
         {
           "default": "",
@@ -10879,12 +10952,12 @@
       "usage": "both"
     },
     "UpstreamInfo": {
-      "document": "Information of an upstream",
+      "document": "Upstream details",
       "members": [
         {
           "default": "",
-          "document": "Unique ID of the upstream",
-          "example": "x x",
+          "document": "Unique upstream ID",
+          "example": "upstream-xxxx",
           "member": "string",
           "name": "UpstreamId",
           "required": true,
@@ -10893,8 +10966,8 @@
         },
         {
           "default": "",
-          "document": "Name of the upstream ",
-          "example": "x x x",
+          "document": "Upstream name",
+          "example": "test_upstream",
           "member": "string",
           "name": "UpstreamName",
           "required": true,
@@ -10903,8 +10976,8 @@
         },
         {
           "default": "",
-          "document": "Description of the upstream",
-          "example": "x x",
+          "document": "Upstream description",
+          "example": "description",
           "member": "string",
           "name": "UpstreamDescription",
           "required": true,
@@ -10913,8 +10986,8 @@
         },
         {
           "default": "",
-          "document": "Protocol",
-          "example": "x x",
+          "document": "Backend protocol. Valid values: `HTTP`, `HTTPS`",
+          "example": "HTTP",
           "member": "string",
           "name": "Scheme",
           "required": true,
@@ -10923,8 +10996,8 @@
         },
         {
           "default": "",
-          "document": "Load balancing algorithm",
-          "example": "x x",
+          "document": "Load balancing algorithm. Valid value: `ROUND_ROBIN`",
+          "example": "ROUND_ROBIN",
           "member": "string",
           "name": "Algorithm",
           "required": true,
@@ -10933,8 +11006,8 @@
         },
         {
           "default": "",
-          "document": "Unique VPC ID.",
-          "example": "x x",
+          "document": "Unique VPC ID",
+          "example": "vpc-123456",
           "member": "string",
           "name": "UniqVpcId",
           "required": true,
@@ -10943,8 +11016,8 @@
         },
         {
           "default": "",
-          "document": "Number of retried attempts",
-          "example": "x x",
+          "document": "Number of retry attempts",
+          "example": "3",
           "member": "uint64",
           "name": "Retries",
           "required": true,
@@ -10993,7 +11066,7 @@
         },
         {
           "default": "",
-          "document": "Type of the upstream",
+          "document": "Upstream type. Valid values: `IP_PORT`, `K8S`",
           "example": "K8S",
           "member": "string",
           "name": "UpstreamType",
@@ -11003,7 +11076,7 @@
         },
         {
           "default": "",
-          "document": "Configuration of K8s service\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "Configuration of TKE service\nNote: This field may return `NULL`, indicating that no valid value was found.",
           "example": "无",
           "member": "K8sService",
           "name": "K8sServices",
@@ -11013,7 +11086,7 @@
         },
         {
           "default": "",
-          "document": "Host of the upstream\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "The Host header that the gateway forwards to the upstream\nNote: This field may return `NULL`, indicating that no valid value was found.",
           "example": "无",
           "member": "string",
           "name": "UpstreamHost",
@@ -11025,11 +11098,11 @@
       "usage": "out"
     },
     "UpstreamNode": {
-      "document": "Metadata of backend nodes of the upstream",
+      "document": "Upstream node metadata",
       "members": [
         {
           "default": "",
-          "document": "IP or domain name of the host",
+          "document": "IP or domain name",
           "example": "1.1.1.1",
           "member": "string",
           "name": "Host",
@@ -11059,7 +11132,7 @@
         },
         {
           "default": "",
-          "document": "VM instance ID\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "CVM Instance ID\nNote: This field may return `NULL`, indicating that no valid value was found.",
           "example": "ins-123456",
           "member": "string",
           "name": "VmInstanceId",
@@ -11079,7 +11152,7 @@
         },
         {
           "default": "",
-          "document": "Health status of the node. Value: `OFF`, `HEALTHY`, `UNHEALTHY` and `NO_DATA`. It’s not required for creating and editing actions.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "Health status of the node. Values: `OFF`, `HEALTHY`, `UNHEALTHY` and `NO_DATA`. It’s not required for creating and editing actions. It only supports VPC upstreams.\nNote: This field may return `NULL`, indicating that no valid value was found.",
           "example": "OFF",
           "member": "string",
           "name": "Healthy",
@@ -11089,7 +11162,7 @@
         },
         {
           "default": "",
-          "document": "The K8s service name\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "TKE container name\nNote: This field may return `NULL`, indicating that no valid value was found.",
           "example": "web",
           "member": "string",
           "name": "ServiceName",
@@ -11099,7 +11172,7 @@
         },
         {
           "default": "",
-          "document": "K8s namespace\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "TKE namespace\nNote: This field may return `NULL`, indicating that no valid value was found.",
           "example": "default",
           "member": "string",
           "name": "NameSpace",
@@ -11119,7 +11192,7 @@
         },
         {
           "default": "",
-          "document": "Source of the node\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "Node source. Valid value: `K8S`\nNote: This field may return `NULL`, indicating that no valid value was found.",
           "example": "K8S",
           "member": "string",
           "name": "Source",

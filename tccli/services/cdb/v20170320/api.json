@@ -169,7 +169,7 @@
       "output": "DescribeBinlogsResponse"
     },
     "DescribeCDBProxy": {
-      "document": "This API is used to query the information of database proxy.",
+      "document": "This API is used to query database proxy. It will be deprecated and replaced by the `QueryCDBProxy` API.",
       "input": "DescribeCDBProxyRequest",
       "name": "Queries the information of database proxy",
       "output": "DescribeCDBProxyResponse"
@@ -1361,6 +1361,16 @@
           "example": "\"\"",
           "member": "string",
           "name": "ManualBackupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup retention type. Valid values: `save_mode_regular` (non-archive backup), save_mode_period`(archive backup).",
+          "example": "save_mode_regular",
+          "member": "string",
+          "name": "SaveMode",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2721,7 +2731,7 @@
         },
         {
           "default": "",
-          "document": "Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).",
+          "document": "Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template). Default value: `HIGH_STABILITY`.",
           "example": "HIGH_STABILITY",
           "member": "string",
           "name": "ParamTemplateType",
@@ -3489,44 +3499,101 @@
       "members": [
         {
           "document": "Earliest start time point of automatic backup, such as 2 (for 2:00 AM). (This field has been disused. You are recommended to use the `BackupTimeWindow` field)",
+          "example": "10",
           "member": "int64",
           "name": "StartTimeMin",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Latest start time point of automatic backup, such as 6 (for 6:00 AM). (This field has been disused. You are recommended to use the `BackupTimeWindow` field)",
+          "example": "14",
           "member": "int64",
           "name": "StartTimeMax",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Backup file retention period in days.",
+          "example": "7",
           "member": "int64",
           "name": "BackupExpireDays",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Backup mode. Value range: physical, logical",
+          "example": "physical",
           "member": "string",
           "name": "BackupMethod",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Binlog file retention period in days.",
+          "example": "7",
           "member": "int64",
           "name": "BinlogExpireDays",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Time window for automatic instance backup.",
+          "example": "无",
           "member": "CommonTimeWindow",
           "name": "BackupTimeWindow",
+          "required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Switch for archive backup retention. Valid values: `off` (disable), `on` (enable). Default value:`off`.",
+          "example": "off",
+          "member": "string",
+          "name": "EnableBackupPeriodSave",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Maximum days of archive backup retention. Valid range: 90-3650. Default value: 1080.",
+          "example": "1080",
+          "member": "int64",
+          "name": "BackupPeriodSaveDays",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Archive backup retention period. Valid values: `weekly` (a week), `monthly` (a month), `quarterly` (a quarter), `yearly` (a year). Default value: `monthly`.",
+          "example": "weekly",
+          "member": "string",
+          "name": "BackupPeriodSaveInterval",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of archive backups. Minimum value: `1`, Maximum value: Number of non-archive backups in archive backup retention period. Default value: `1`.",
+          "example": "1",
+          "member": "int64",
+          "name": "BackupPeriodSaveCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The start time in the format: yyyy-mm-dd HH:MM:SS, which is used to enable archive backup retention policy.",
+          "example": "1970-01-01 00:00:01",
+          "member": "string",
+          "name": "StartBackupPeriodSaveDate",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -7269,7 +7336,7 @@
         },
         {
           "default": "",
-          "document": "Lock flag",
+          "document": "Whether the disk write is locked (It depends on whether the instance data in disk exceeds its quota). Valid values: `0` (unlocked), `1` (locked).",
           "example": "0",
           "member": "int64",
           "name": "CdbError",
@@ -7983,6 +8050,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+          "example": "cdb-c1nl9rpv",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -7990,7 +8058,8 @@
         },
         {
           "default": "",
-          "document": "Backup file retention period in days. Value range: 7-732.",
+          "document": "Backup file retention period in days. Value range: 7-1830.",
+          "example": "10",
           "member": "int64",
           "name": "ExpireDays",
           "required": false,
@@ -7999,6 +8068,7 @@
         {
           "default": "",
           "document": "(This parameter will be disused. The `BackupTimeWindow` parameter is recommended.) Backup time range in the format of 02:00-06:00, with the start time and end time on the hour. Valid values: 00:00-12:00, 02:00-06:00, 06:00-10:00, 10:00-14:00, 14:00-18:00, 18:00-22:00, 22:00-02:00.",
+          "example": "02:00-06:00",
           "member": "string",
           "name": "StartTime",
           "required": false,
@@ -8007,6 +8077,7 @@
         {
           "default": "",
           "document": "Automatic backup mode. Only `physical` (physical cold backup) is supported",
+          "example": "logical",
           "member": "string",
           "name": "BackupMethod",
           "required": false,
@@ -8014,7 +8085,8 @@
         },
         {
           "default": "",
-          "document": "Binlog retention period in days. Value range: 7-732. It cannot be greater than the retention period of backup files.",
+          "document": "Binlog retention period in days. Value range: 7-1830. It can’t be greater than the retention period of backup files.",
+          "example": "8",
           "member": "int64",
           "name": "BinlogExpireDays",
           "required": false,
@@ -8023,10 +8095,65 @@
         {
           "default": "",
           "document": "Backup time window; for example, to set up backup between 10:00 and 14:00 on every Tuesday and Sunday, you should set this parameter as follows: {\"Monday\": \"\", \"Tuesday\": \"10:00-14:00\", \"Wednesday\": \"\", \"Thursday\": \"\", \"Friday\": \"\", \"Saturday\": \"\", \"Sunday\": \"10:00-14:00\"} (Note: You can set up backup on different days, but the backup time windows need to be the same. If this field is set, the `StartTime` field will be ignored)",
+          "example": "无",
           "member": "CommonTimeWindow",
           "name": "BackupTimeWindow",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Switch for archive backup retention. Valid values: `off` (disable), `on` (enable). Default value:`off`.",
+          "example": "off",
+          "member": "string",
+          "name": "EnableBackupPeriodSave",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Switch for long-term backup retention (This field can be ignored, for its feature hasn’t been launched). Valid values: `off` (disable), `on` (enable). Default value: `off`. Once enabled, the parameters (BackupPeriodSaveDays, BackupPeriodSaveInterval, and BackupPeriodSaveCount) will be invalid.",
+          "example": "off",
+          "member": "string",
+          "name": "EnableBackupPeriodLongTermSave",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum days of archive backup retention. Valid range: 90-3650. Default value: 1080.",
+          "example": "1080",
+          "member": "int64",
+          "name": "BackupPeriodSaveDays",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Archive backup retention period. Valid values: `weekly` (a week), `monthly` (a month), `quarterly` (a quarter), `yearly` (a year). Default value: `monthly`.",
+          "example": "weekly",
+          "member": "string",
+          "name": "BackupPeriodSaveInterval",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of archive backups. Minimum value: `1`, Maximum value: Number of non-archive backups in archive backup retention period. Default value: `1`.",
+          "example": "1",
+          "member": "int64",
+          "name": "BackupPeriodSaveCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The start time in the format of yyyy-mm-dd HH:MM:SS, which is used to enable archive backup retention policy.",
+          "example": "1970-01-01 00:00:01",
+          "member": "string",
+          "name": "StartBackupPeriodSaveDate",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -11824,7 +11951,7 @@
         },
         {
           "default": "",
-          "document": "The number of proxy nodes",
+          "document": "Number of proxy nodes",
           "example": "2",
           "member": "int64",
           "name": "ProxyCount",
@@ -11833,7 +11960,7 @@
         },
         {
           "default": "",
-          "document": "The number of CPU cores per proxy node",
+          "document": "Number of CPU cores per proxy node",
           "example": "4",
           "member": "int64",
           "name": "Cpu",

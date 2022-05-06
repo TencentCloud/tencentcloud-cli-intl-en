@@ -73,7 +73,7 @@
         "document": "",
         "input": "https://postgres.tencentcloudapi.com/?Action=CreateReadOnlyDBInstance\n&SpecCode=cdb.pg.z1.2g\n&Storage=10\n&InstanceCount=1\n&Period=1\n&InstanceChargeType=prepaid\n&Zone=ap-guangzhou-2\n&DBVersion=9.3.5\n&AutoVoucher=0\n&AutoRenewFlag=1\n&MasterDBInstanceId=Postgres-testmaster\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"DealNames\": [\n            \"20180119110001\"\n        ],\n        \"DBInstanceIdSet\": [\n            \"123\"\n        ],\n        \"BillId\": \"123\"\n    }\n}",
-        "title": "Creating a read-only instance"
+        "title": "CreateReadOnlyDBInstance"
       }
     ],
     "CreateReadOnlyGroup": [
@@ -260,8 +260,8 @@
       {
         "document": "",
         "input": "https://postgres.tencentcloudapi.com/?Action=DescribeProductConfig\n&Zone=ap-guangzhou-2\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eaa0a364-08c9-42f6-888e-4e3b7e99b50d\",\n        \"SpecInfoList\": [\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"Zone\": \"ap-guangzhou-2\",\n                \"SpecItemInfoList\": [\n                    {\n                        \"SpecCode\": \"cdb.pg.z1.2g\",\n                        \"Version\": \"9.5.4\",\n                        \"VersionName\": \"PostgreSQL 9.5.4\",\n                        \"Cpu\": 1,\n                        \"Memory\": 2048,\n                        \"MaxStorage\": 1000,\n                        \"MinStorage\": 10,\n                        \"Qps\": 2100,\n                        \"Pid\": 11004,\n                        \"Type\": \"TS85\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
-        "title": "Querying the purchasable specification information in an AZ in a region"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eaa0a364-08c9-42f6-888e-4e3b7e99b50d\",\n        \"SpecInfoList\": [\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"Zone\": \"ap-guangzhou-2\",\n                \"SupportKMSRegions\": [\n                    \"ap-guangzhou\"\n                ],\n                \"SpecItemInfoList\": [\n                    {\n                        \"SpecCode\": \"cdb.pg.z1.2g\",\n                        \"Version\": \"10.4\",\n                        \"VersionName\": \"PostgreSQL 10\",\n                        \"Cpu\": 1,\n                        \"Memory\": 2048,\n                        \"MaxStorage\": 1000,\n                        \"MinStorage\": 10,\n                        \"Qps\": 2100,\n                        \"Pid\": 11004,\n                        \"Type\": \"TS85\"\n                        \"KernelVersion\": \"v10.4_r1.0\",\n                        \"MajorVersion\": \"10\",\n                        \"IsSupportTDE\": 1\n                    }\n                ]\n            }\n        ]\n    }\n}",
+        "title": "Querying the purchasable specifications in an AZ in a region"
       }
     ],
     "DescribeReadOnlyGroups": [

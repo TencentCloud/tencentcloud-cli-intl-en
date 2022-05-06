@@ -8,6 +8,14 @@
         "title": "Applying collection configuration to specified machine group"
       }
     ],
+    "CloseKafkaConsumer": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseKafkaConsumer\n<Common request parameters>\n\n{\n    \"FromTopicId\": \"a5ce0c9c-0690-44a5-bc79-5f2190626bd0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
+        "title": "Disabling Kafka consumption"
+      }
+    ],
     "CreateAlarm": [
       {
         "document": "",
@@ -42,8 +50,8 @@
     ],
     "CreateExport": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateExport\n<Common request parameters>\n\n{\n    \"TopicId\": \"ee20bb16-3025-4048-b81a-dd436373062e\",\n    \"Query\": \"status:200\",\n    \"Count\": 100,\n    \"Order\": \"desc\",\n    \"Format\": \"json\",\n    \"From\": 1607499107000,\n    \"To\": 1607499207000\n}",
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateExport\n<common request parameters>\n\n{\n    \"TopicId\": \"ee20bb16-3025-4048-b81a-dd436373062e\",\n    \"Query\": \"status:200\",\n    \"Count\": 100,\n    \"Order\": \"desc\",\n    \"Format\": \"json\",\n    \"From\": 1607499107000,\n    \"To\": 1607499207000\n}",
         "output": "{\n    \"Response\": {\n        \"ExportId\": \"57196a6a-7622-47be-bc92-d2ebea959a0f\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Creating log export task"
       }
@@ -51,9 +59,9 @@
     "CreateIndex": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateIndex\n<common request parameters>\n\n{\n    \"TopicId\": \"3edc8551-111b-473b-9fc4-ed66e20dfa8a\",\n    \"Status\": true,\n    \"Rule\": {\n        \"FullText\": {\n            \"CaseSensitive\": true,\n            \"Tokenizer\": \"*\"\n        },\n        \"KeyValue\": {\n            \"CaseSensitive\": true,\n            \"KeyValues\": [\n                {\n                    \"Key\": \"age\",\n                    \"Value\": {\n                        \"Type\": \"long\",\n                        \"Tokenizer\": \"_\",\n                        \"SqlFlag\": false\n                    }\n                }\n            ]\n        },\n        \"Tag\": {\n            \"CaseSensitive\": true,\n            \"KeyValues\": [\n                {\n                    \"Key\": \"tag\",\n                    \"Value\": {\n                        \"Type\": \"string\",\n                        \"Tokenizer\": \"**\",\n                        \"SqlFlag\": false\n                    }\n                }\n            ]\n        }\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateIndex\n<Common request parameters>\n\n{\n    \"TopicId\": \"3edc8551-111b-473b-9fc4-ed66e20dfa8a\",\n    \"Status\": true,\n    \"Rule\": {\n        \"FullText\": {\n            \"CaseSensitive\": true,\n            \"Tokenizer\": \"*\"\n        },\n        \"KeyValue\": {\n            \"CaseSensitive\": true,\n            \"KeyValues\": [\n                {\n                    \"Key\": \"age\",\n                    \"Value\": {\n                        \"Type\": \"long\",\n                        \"Tokenizer\": \"_\",\n                        \"SqlFlag\": false\n                    }\n                }\n            ]\n        },\n        \"Tag\": {\n            \"CaseSensitive\": true,\n            \"KeyValues\": [\n                {\n                    \"Key\": \"tag\",\n                    \"Value\": {\n                        \"Type\": \"string\",\n                        \"Tokenizer\": \"**\",\n                        \"SqlFlag\": false\n                    }\n                }\n            ]\n        }\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "创建索引"
+        "title": "Creating index"
       }
     ],
     "CreateLogset": [
@@ -70,6 +78,14 @@
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMachineGroup\n<Common request parameters>\n\n{\n    \"GroupName\": \"testname\",\n    \"MachineGroupType\": {\n        \"Type\": \"ip\",\n        \"Values\": [\n            \"10.10.1.119\"\n        ]\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"GroupId\": \"57f5808c-4a55-11eb-b378-0242ac130002\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Creating machine group"
+      }
+    ],
+    "CreateShipper": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateShipper\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxxx-xx-xx-xx-xxxxxxxx\",\n    \"Bucket\": \"test-1250000001\",\n    \"Prefix\": \"test\",\n    \"ShipperName\": \"myname\",\n    \"Interval\": 300,\n    \"MaxSize\": 256,\n    \"Partition\": \"%Y%m%d\",\n    \"Compress\": {\n        \"Format\": \"none\"\n    },\n    \"FilterRules\": [\n        {\n            \"Key\": \"\",\n            \"Regex\": \"\",\n            \"Value\": \"\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"ShipperId\": \"xxxx-xx-xx-xx-xxxxxxxx\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
+        "title": "Creating shipping rule"
       }
     ],
     "CreateTopic": [
@@ -219,9 +235,9 @@
     "DescribeIndex": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIndex\n<common request parameters>\n\n{\n    \"TopicId\": \"826f8b26-b054-4a0d-8c8e-f3d609f5e0ea\"\n}",
-        "output": "{\n    \"Response\": {\n        \"TopicId\": \"826f8b26-b054-4a0d-8c8e-f3d609f5e0ea\",\n        \"Status\": true,\n        \"Rule\": {\n            \"FullText\": {\n                \"CaseSensitive\": false,\n                \"Tokenizer\": \"-=/?\"\n            },\n            \"KeyValue\": {\n                \"CaseSensitive\": false,\n                \"KeyValues\": [\n                    {\n                        \"Key\": \"age\",\n                        \"Value\": {\n                            \"Type\": \"long\",\n                            \"SqlFlag\": true\n                        }\n                    }\n                ]\n            },\n            \"Tag\": {\n                \"CaseSensitive\": false,\n                \"KeyValues\": [\n                    {\n                        \"Key\": \"__TAG__.timestamp\",\n                        \"Value\": {\n                            \"Type\": \"long\",\n                            \"SqlFlag\": true\n                        }\n                    }\n                ]\n            }\n        },\n        \"ModifyTime\": \"2021-01-13 21:00:08\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "获取索引信息"
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIndex\n<Common request parameters>\n\n{\n    \"TopicId\": \"826f8b26-b054-4a0d-8c8e-f3d609f5e0ea\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TopicId\": \"826f8b26-b054-4a0d-8c8e-f3d609f5e0ea\",\n        \"Status\": true,\n        \"Rule\": {\n            \"FullText\": {\n                \"CaseSensitive\": false,\n                \"Tokenizer\": \"-=/?\"\n            },\n            \"KeyValue\": {\n                \"CaseSensitive\": false,\n                \"KeyValues\": [\n                    {\n                        \"Key\": \"age\",\n                        \"Value\": {\n                            \"Type\": \"long\",\n                            \"SqlFlag\": true\n                        }\n                    }\n                ]\n            },\n            \"Tag\": {\n                \"CaseSensitive\": false,\n                \"KeyValues\": [\n                    {\n                        \"Key\": \"__TAG__.timestamp\",\n                        \"Value\": {\n                            \"Type\": \"long\",\n                            \"SqlFlag\": true\n                        }\n                    }\n                ]\n            }\n        },\n        \"ModifyTime\": \"2021-01-13 21:00:08\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\",\n        \"IncludeInternalFields\": true,\n        \"MetadataFlag\": 1\n    }\n}",
+        "title": "Getting index information"
       }
     ],
     "DescribeLogContext": [
@@ -300,7 +316,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTopics\n<Common request parameters>\n\n{\n    \"Filters\": [],\n    \"Offset\": 10,\n    \"Limit\": 30\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Topics\": [\n            {\n                \"Status\": true,\n                \"TopicId\": \"xx\",\n                \"Tags\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"StorageType\": \"xx\",\n                \"PartitionCount\": 1,\n                \"MaxSplitPartitions\": 0,\n                \"Period\": 0,\n                \"AutoSplit\": true,\n                \"TopicName\": \"xx\",\n                \"Index\": true,\n                \"CreateTime\": \"xx\",\n                \"LogsetId\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Topics\": [\n            {\n                \"Status\": true,\n                \"TopicId\": \"xx\",\n                \"Tags\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"StorageType\": \"xx\",\n                \"PartitionCount\": 1,\n                \"MaxSplitPartitions\": 0,\n                \"Period\": 0,\n                \"AutoSplit\": true,\n                \"LogsetId\": \"xx\",\n                \"Index\": true,\n                \"CreateTime\": \"xx\",\n                \"TopicName\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Getting the list of log topics"
       }
     ],
@@ -355,9 +371,9 @@
     "ModifyIndex": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyIndex\n<common request parameters>\n\n{\n    \"TopicId\": \"826f8b26-b054-4a0d-8c8e-f3d609f5e0ea\",\n    \"Rule\": {\n        \"FullText\": {\n            \"CaseSensitive\": false,\n            \"Tokenizer\": \"-=/?\"\n        },\n        \"Tag\": {\n            \"CaseSensitive\": false,\n            \"KeyValues\": [\n                {\n                    \"Value\": {\n                        \"Type\": \"long\",\n                        \"SqlFlag\": true\n                    },\n                    \"Key\": \"timestamp\"\n                }\n            ]\n        },\n        \"KeyValue\": {\n            \"CaseSensitive\": false,\n            \"KeyValues\": [\n                {\n                    \"Value\": {\n                        \"Type\": \"long\",\n                        \"SqlFlag\": true\n                    },\n                    \"Key\": \"age\"\n                }\n            ]\n        }\n    },\n    \"Status\": true\n}",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyIndex\n<Common request parameters>\n\n{\n    \"TopicId\": \"826f8b26-b054-4a0d-8c8e-f3d609f5e0ea\",\n    \"Rule\": {\n        \"FullText\": {\n            \"CaseSensitive\": false,\n            \"Tokenizer\": \"-=/?\"\n        },\n        \"Tag\": {\n            \"CaseSensitive\": false,\n            \"KeyValues\": [\n                {\n                    \"Value\": {\n                        \"Type\": \"long\",\n                        \"SqlFlag\": true\n                    },\n                    \"Key\": \"timestamp\"\n                }\n            ]\n        },\n        \"KeyValue\": {\n            \"CaseSensitive\": false,\n            \"KeyValues\": [\n                {\n                    \"Value\": {\n                        \"Type\": \"long\",\n                        \"SqlFlag\": true\n                    },\n                    \"Key\": \"age\"\n                }\n            ]\n        }\n    },\n    \"Status\": true,\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
-        "title": "修改索引"
+        "title": "Modifying index"
       }
     ],
     "ModifyLogset": [
@@ -382,6 +398,22 @@
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyShipper\n<Common request parameters>\n\n{\n    \"ShipperId\": \"xxxx-xx-xx-xx-xxxxxxxx\",\n    \"Bucket\": \"test-1250000001\",\n    \"Prefix\": \"test\",\n    \"ShipperName\": \"myname\",\n    \"Interval\": 300,\n    \"MaxSize\": 256,\n    \"Partition\": \"%Y%m%d\",\n    \"Compress\": {\n        \"Format\": \"none\"\n    },\n    \"FilterRules\": [\n        {\n            \"Key\": \"\",\n            \"Regex\": \"\",\n            \"Value\": \"\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Modifying shipping rule"
+      }
+    ],
+    "ModifyTopic": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyTopic\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxxxxx-xx-xx-xx-xxxxxxxx\",\n    \"TopicName\": \"testname\",\n    \"Status\": false,\n    \"Tags\": [],\n    \"Period\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
+        "title": "Modifying a log topic"
+      }
+    ],
+    "OpenKafkaConsumer": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenKafkaConsumer\n<Common request parameters>\n\n{\n    \"FromTopicId\": \"a5ce0c9c-0690-44a5-bc79-5f2190626bd0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TopicID\": \"out-a5ce0c9c-0690-44a5-bc79-5f2190626bd0\",\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
+        "title": "Enabling the Kafka consumption feature"
       }
     ],
     "RetryShipperTask": [
