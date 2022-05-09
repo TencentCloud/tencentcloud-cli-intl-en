@@ -1611,7 +1611,7 @@
         },
         {
           "default": "",
-          "document": "Message retention period in ms, which is optional. The current minimum value is 60,000 ms",
+          "document": "Message retention period in milliseconds, which is optional. Min value: 60,000 ms.",
           "example": "60000",
           "member": "int64",
           "name": "RetentionMs",
@@ -1624,6 +1624,15 @@
           "example": "360000",
           "member": "int64",
           "name": "SegmentMs",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Max message size in bytes. Value range: 1,024 bytes (1 KB) to 8,388,608 bytes (8 MB).",
+          "example": "1024",
+          "member": "int64",
+          "name": "MaxMessageBytes",
           "required": false,
           "type": "int"
         },
@@ -2495,7 +2504,7 @@
         },
         {
           "default": "",
-          "document": "Filter.",
+          "document": "Filter. Valid values of `filter.Name` include `Ip`, `VpcId`, `SubNetId`, `InstanceType`, and `InstanceId`. Up to 10 values can be passed for `filter.Values`.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -2510,6 +2519,15 @@
           "name": "InstanceIds",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by instance ID.",
+          "example": "[instance-will-s]",
+          "member": "string",
+          "name": "InstanceIdList",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -4726,7 +4744,7 @@
         },
         {
           "default": "",
-          "document": "Maximum topic message length in bytes. The maximum value is 8,388,608 bytes (i.e., 8 MB).",
+          "document": "Max message size in bytes. Max value: 8,388,608 bytes (8 MB).",
           "example": "1",
           "member": "int64",
           "name": "MaxMessageBytes",
@@ -5043,7 +5061,7 @@
         },
         {
           "default": "",
-          "document": "VIP network type (1: public network TGW; 2: classic network; 3: VPC; 4: supporting network (Standard Edition); 5: SSL public network access; 6: BM VPC; 7: supporting network (Pro Edition))",
+          "document": "VIP network type (1: Public network TGW; 2: Classic network; 3: VPC; 4: Supporting network (IDC environment); 5: SSL public network access; 6: BM VPC; 7: Supporting network (CVM environment)).",
           "example": "1",
           "member": "int64",
           "name": "VipType",

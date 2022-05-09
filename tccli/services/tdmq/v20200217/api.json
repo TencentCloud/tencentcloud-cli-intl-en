@@ -162,24 +162,6 @@
       "name": "Delete role",
       "output": "DeleteRolesResponse"
     },
-    "DeleteSubscriptions": {
-      "document": "This API is used to delete a subscription.",
-      "input": "DeleteSubscriptionsRequest",
-      "name": "Deletes subscription",
-      "output": "DeleteSubscriptionsResponse"
-    },
-    "DeleteTopics": {
-      "document": "This API is used to batch delete topics.",
-      "input": "DeleteTopicsRequest",
-      "name": "Deletes topics",
-      "output": "DeleteTopicsResponse"
-    },
-    "DescribeBindClusters": {
-      "document": "This API is used to get the list of dedicated clusters bound to a user.",
-      "input": "DescribeBindClustersRequest",
-      "name": "Gets the list of dedicated clusters",
-      "output": "DescribeBindClustersResponse"
-    },
     "DescribeBindVpcs": {
       "document": "This API is used to get the tenant-VPC binding relationship.",
       "input": "DescribeBindVpcsRequest",
@@ -191,12 +173,6 @@
       "input": "DescribeClusterDetailRequest",
       "name": "Gets cluster details",
       "output": "DescribeClusterDetailResponse"
-    },
-    "DescribeClusters": {
-      "document": "This API is used to get the list of clusters.",
-      "input": "DescribeClustersRequest",
-      "name": "Gets the list of clusters",
-      "output": "DescribeClustersResponse"
     },
     "DescribeCmqDeadLetterSourceQueues": {
       "document": "This API is used to enumerate the source queues of a CMQ dead letter queue.",
@@ -210,12 +186,6 @@
       "name": "Queries the details of CMQ queue",
       "output": "DescribeCmqQueueDetailResponse"
     },
-    "DescribeCmqQueues": {
-      "document": "This API is used to query all CMQ queues.",
-      "input": "DescribeCmqQueuesRequest",
-      "name": "Queries all CMQ queues",
-      "output": "DescribeCmqQueuesResponse"
-    },
     "DescribeCmqSubscriptionDetail": {
       "document": "This API is used to query the CMQ subscription details.",
       "input": "DescribeCmqSubscriptionDetailRequest",
@@ -228,29 +198,11 @@
       "name": "Queries the details of CMQ topic",
       "output": "DescribeCmqTopicDetailResponse"
     },
-    "DescribeCmqTopics": {
-      "document": "This API is used to enumerate all CMQ topics.",
-      "input": "DescribeCmqTopicsRequest",
-      "name": "Enumerates all CMQ topics",
-      "output": "DescribeCmqTopicsResponse"
-    },
     "DescribeEnvironmentAttributes": {
       "document": "This API is used to get the attributes of the specified namespace.",
       "input": "DescribeEnvironmentAttributesRequest",
       "name": "Gets namespace attributes",
       "output": "DescribeEnvironmentAttributesResponse"
-    },
-    "DescribeEnvironmentRoles": {
-      "document": "This API is used to get the list of namespace roles.",
-      "input": "DescribeEnvironmentRolesRequest",
-      "name": "Gets the list of namespace roles",
-      "output": "DescribeEnvironmentRolesResponse"
-    },
-    "DescribeEnvironments": {
-      "document": "This API is used to get the list of namespaces under a tenant.",
-      "input": "DescribeEnvironmentsRequest",
-      "name": "Gets the list of namespaces",
-      "output": "DescribeEnvironmentsResponse"
     },
     "DescribePublisherSummary": {
       "document": "This API is used to obtain message production overview information.",
@@ -270,47 +222,11 @@
       "name": "Gets the information of specific RocketMQ cluster",
       "output": "DescribeRocketMQClusterResponse"
     },
-    "DescribeRocketMQClusters": {
-      "document": "This API is used to get the list of RocketMQ clusters.",
-      "input": "DescribeRocketMQClustersRequest",
-      "name": "Gets the list of RocketMQ clusters",
-      "output": "DescribeRocketMQClustersResponse"
-    },
-    "DescribeRocketMQGroups": {
-      "document": "This API is used to get the list of RocketMQ consumer groups.",
-      "input": "DescribeRocketMQGroupsRequest",
-      "name": "Gets the list of RocketMQ consumer groups",
-      "output": "DescribeRocketMQGroupsResponse"
-    },
-    "DescribeRocketMQNamespaces": {
-      "document": "This API is used to get the list of RocketMQ namespaces.",
-      "input": "DescribeRocketMQNamespacesRequest",
-      "name": "Gets the list of RocketMQ namespaces",
-      "output": "DescribeRocketMQNamespacesResponse"
-    },
-    "DescribeRocketMQTopics": {
-      "document": "This API is used to get the list of RocketMQ topics.",
-      "input": "DescribeRocketMQTopicsRequest",
-      "name": "Gets the list of RocketMQ topics",
-      "output": "DescribeRocketMQTopicsResponse"
-    },
     "DescribeRoles": {
       "document": "This API is used to get the list of roles.",
       "input": "DescribeRolesRequest",
       "name": "Gets the list of roles",
       "output": "DescribeRolesResponse"
-    },
-    "DescribeSubscriptions": {
-      "document": "This API is used to query the list of subscribers under the specified environment and topic.",
-      "input": "DescribeSubscriptionsRequest",
-      "name": "Queries the list of consumption subscriptions",
-      "output": "DescribeSubscriptionsResponse"
-    },
-    "DescribeTopics": {
-      "document": "This API is used to get the list of topics under an environment.",
-      "input": "DescribeTopicsRequest",
-      "name": "Gets the list of topic",
-      "output": "DescribeTopicsResponse"
     },
     "ModifyCluster": {
       "document": "This API is used to update a cluster.",
@@ -401,6 +317,12 @@
       "input": "ResetMsgSubOffsetByTimestampRequest",
       "name": "Rewinds message",
       "output": "ResetMsgSubOffsetByTimestampResponse"
+    },
+    "ResetRocketMQConsumerOffSet": {
+      "document": "This API is used to reset the consumption offset of a specified consumer group to a specified timestamp.",
+      "input": "ResetRocketMQConsumerOffSetRequest",
+      "name": "Resets RocketMQ consumption offset",
+      "output": "ResetRocketMQConsumerOffSetResponse"
     },
     "RewindCmqQueue": {
       "document": "This API is used to rewind a CMQ queue.",
@@ -498,21 +420,6 @@
         }
       ],
       "type": "object"
-    },
-    "BindCluster": {
-      "document": "Dedicated cluster information",
-      "members": [
-        {
-          "default": "",
-          "document": "Physical cluster name",
-          "member": "string",
-          "name": "ClusterName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
     },
     "ClearCmqQueueRequest": {
       "document": "ClearCmqQueue request structure.",
@@ -1227,6 +1134,16 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Queue storage space configured for message rewind. Value range: 1,024-10,240 MB (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "RetentionSizeInMB",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1499,6 +1416,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster status. 0: creating; 1: normal; 2: terminating; 3: deleted; 4. isolated; 5. creation failed; 6: deletion failed\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1524,122 +1451,6 @@
           "name": "MaxQueryCount",
           "required": true,
           "type": "int",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "Consumer": {
-      "document": " Consumer",
-      "members": [
-        {
-          "default": "",
-          "document": "The time when the consumer started connecting.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "ConnectedSince",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Consumer address.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "ConsumerAddr",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Consumer name.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "ConsumerName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Consumer version.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "ClientVersion",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Serial number of the topic partition connected to the consumer.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "0",
-          "member": "int64",
-          "name": "Partition",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "ConsumersSchedule": {
-      "document": "Consumption progress details",
-      "members": [
-        {
-          "default": "",
-          "document": "Current partition ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "uint64",
-          "name": "Partitions",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "uint64",
-          "name": "NumberOfEntries",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of retained messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "uint64",
-          "name": "MsgBacklog",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Sum of the numbers of messages delivered by the consumer per second.",
-          "member": "string",
-          "name": "MsgRateOut",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of bytes of messages consumed by the consumer per second.",
-          "member": "string",
-          "name": "MsgThroughputOut",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Percentage of messages discarded due to timeout.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "MsgRateExpired",
-          "required": true,
-          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -1767,7 +1578,7 @@
         },
         {
           "default": "",
-          "document": "Message retention period. Value range: 60–1296000 seconds (i.e., 1 minute–15 days). Default value: 345600 (i.e., 4 days).",
+          "document": "The max period during which a message is retained before it is automatically acknowledged. Value range: 30-43,200 seconds (30 seconds to 12 hours). Default value: 3600 seconds (1 hour).",
           "example": "0",
           "member": "uint64",
           "name": "MsgRetentionSeconds",
@@ -1776,7 +1587,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable the message rewinding feature for a queue. Value range: 0–msgRetentionSeconds, where 0 means not to enable this feature, while `msgRetentionSeconds` indicates that the maximum rewindable period is the message retention period of the queue.",
+          "document": "Rewindable time of messages in the queue. Value range: 0-1,296,000s (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.",
           "example": "0",
           "member": "uint64",
           "name": "RewindSeconds",
@@ -1863,6 +1674,15 @@
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Queue storage space configured for message rewind. Value range: 1,024-10,240 MB (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.",
+          "example": "0",
+          "member": "uint64",
+          "name": "RetentionSizeInMB",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -3184,167 +3004,6 @@
       ],
       "type": "object"
     },
-    "DeleteSubscriptionsRequest": {
-      "document": "DeleteSubscriptions request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Set of subscriptions. Up to 20 subscriptions can be deleted at a time.",
-          "example": "无",
-          "member": "SubscriptionTopic",
-          "name": "SubscriptionTopicSets",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Pulsar cluster ID.",
-          "example": "test",
-          "member": "string",
-          "name": "ClusterId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Environment (namespace) name.",
-          "example": "test",
-          "member": "string",
-          "name": "EnvironmentId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Whether to force deletion. Default value: false",
-          "example": "false",
-          "member": "bool",
-          "name": "Force",
-          "required": false,
-          "type": "bool"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteSubscriptionsResponse": {
-      "document": "DeleteSubscriptions response structure.",
-      "members": [
-        {
-          "document": "Array of successfully deleted subscriptions.",
-          "example": "无",
-          "member": "SubscriptionTopic",
-          "name": "SubscriptionTopicSets",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteTopicsRequest": {
-      "document": "DeleteTopics request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Set of topics. Up to 20 topics can be deleted at a time.",
-          "example": "无",
-          "member": "TopicRecord",
-          "name": "TopicSets",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Pulsar cluster ID.",
-          "example": "test",
-          "member": "string",
-          "name": "ClusterId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Environment (namespace) name.",
-          "example": "test",
-          "member": "string",
-          "name": "EnvironmentId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Whether to force deletion. Default value: false",
-          "example": "false",
-          "member": "bool",
-          "name": "Force",
-          "required": false,
-          "type": "bool"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteTopicsResponse": {
-      "document": "DeleteTopics response structure.",
-      "members": [
-        {
-          "document": "Array of deleted topics.",
-          "example": "无",
-          "member": "TopicRecord",
-          "name": "TopicSets",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeBindClustersRequest": {
-      "document": "DescribeBindClusters request structure.",
-      "members": [],
-      "type": "object"
-    },
-    "DescribeBindClustersResponse": {
-      "document": "DescribeBindClusters response structure.",
-      "members": [
-        {
-          "document": "Number of dedicated clusters",
-          "example": "1",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "List of dedicated clusters",
-          "example": "[]",
-          "member": "BindCluster",
-          "name": "ClusterSet",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeBindVpcsRequest": {
       "document": "DescribeBindVpcs request structure.",
       "members": [
@@ -3426,87 +3085,6 @@
           "name": "ClusterSet",
           "required": true,
           "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeClustersRequest": {
-      "document": "DescribeClusters request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Offset. If this parameter is left empty, 0 will be used by default.",
-          "example": "0",
-          "member": "uint64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.",
-          "example": "0",
-          "member": "uint64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Filter by list of cluster IDs",
-          "example": "无",
-          "member": "string",
-          "name": "ClusterIdList",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Whether to filter by tag",
-          "example": "true",
-          "member": "bool",
-          "name": "IsTagFilter",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "document": "Filter. Currently, you can filter only by tag.",
-          "example": "无",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeClustersResponse": {
-      "document": "DescribeClusters response structure.",
-      "members": [
-        {
-          "document": "Number of clusters",
-          "example": "1",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "List of cluster information",
-          "example": "无",
-          "member": "Cluster",
-          "name": "ClusterSet",
-          "required": true,
-          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -3626,96 +3204,6 @@
       ],
       "type": "object"
     },
-    "DescribeCmqQueuesRequest": {
-      "document": "DescribeCmqQueues request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Starting position of the list of queues to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default",
-          "example": "0",
-          "member": "uint64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
-          "example": "1",
-          "member": "uint64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Filter by `QueueName`",
-          "example": "无",
-          "member": "string",
-          "name": "QueueName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "List of CMQ queue names",
-          "example": "test",
-          "member": "string",
-          "name": "QueueNameList",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "For filtering by tag, this must be configured to `true`.",
-          "example": "true",
-          "member": "bool",
-          "name": "IsTagFilter",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "document": "Filter. Currently, you can filter only by tag.",
-          "example": "无",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeCmqQueuesResponse": {
-      "document": "DescribeCmqQueues response structure.",
-      "members": [
-        {
-          "document": "Quantity",
-          "example": "2",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "List of queues\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "CmqQueue",
-          "name": "QueueList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeCmqSubscriptionDetailRequest": {
       "document": "DescribeCmqSubscriptionDetail request structure.",
       "members": [
@@ -3824,96 +3312,6 @@
       ],
       "type": "object"
     },
-    "DescribeCmqTopicsRequest": {
-      "document": "DescribeCmqTopics request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Starting position of the list of queues to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default",
-          "example": "0",
-          "member": "uint64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
-          "example": "1",
-          "member": "uint64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Fuzzy search by `TopicName`",
-          "example": "无",
-          "member": "string",
-          "name": "TopicName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Filter by list of CMQ topic names",
-          "example": "test",
-          "member": "string",
-          "name": "TopicNameList",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "For filtering by tag, this must be configured to `true`.",
-          "example": "true",
-          "member": "bool",
-          "name": "IsTagFilter",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "document": "Filter. Currently, you can filter only by tag.",
-          "example": "无",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeCmqTopicsResponse": {
-      "document": "DescribeCmqTopics response structure.",
-      "members": [
-        {
-          "document": "List of topics\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "CmqTopic",
-          "name": "TopicList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Total number of topics",
-          "example": "1",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeEnvironmentAttributesRequest": {
       "document": "DescribeEnvironmentAttributes request structure.",
       "members": [
@@ -4011,177 +3409,6 @@
           "name": "Remark",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeEnvironmentRolesRequest": {
-      "document": "DescribeEnvironmentRoles request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Environment (namespace) name (required).",
-          "example": "default",
-          "member": "string",
-          "name": "EnvironmentId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Offset. If this parameter is left empty, 0 will be used by default.",
-          "example": "0",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.",
-          "example": "10",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Pulsar cluster ID (required)",
-          "example": "pulsar-ge3n43v3wj",
-          "member": "string",
-          "name": "ClusterId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Role name",
-          "example": "role",
-          "member": "string",
-          "name": "RoleName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "* RoleName\nFilter by role name for exact query.\nType: String\nRequired: no",
-          "example": "无",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeEnvironmentRolesResponse": {
-      "document": "DescribeEnvironmentRoles response structure.",
-      "members": [
-        {
-          "document": "Number of records.",
-          "example": "1",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Set of namespace roles.",
-          "example": "[]",
-          "member": "EnvironmentRole",
-          "name": "EnvironmentRoleSets",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeEnvironmentsRequest": {
-      "document": "DescribeEnvironments request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Fuzzy search by namespace name.",
-          "example": "default",
-          "member": "string",
-          "name": "EnvironmentId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Offset. If this parameter is left empty, 0 will be used by default.",
-          "example": "0",
-          "member": "uint64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.",
-          "example": "5",
-          "member": "uint64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Pulsar cluster ID",
-          "example": "pulsar-ge3n43v3wj",
-          "member": "string",
-          "name": "ClusterId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "* EnvironmentId\nFilter by namespace for exact query.\nType: String\nRequired: no",
-          "example": "无",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeEnvironmentsResponse": {
-      "document": "DescribeEnvironments response structure.",
-      "members": [
-        {
-          "document": "Number of namespaces.",
-          "example": "1",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Array set of namespaces.",
-          "example": "[]",
-          "member": "Environment",
-          "name": "EnvironmentSet",
-          "required": true,
-          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -4427,384 +3654,6 @@
       ],
       "type": "object"
     },
-    "DescribeRocketMQClustersRequest": {
-      "document": "DescribeRocketMQClusters request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Offset",
-          "example": "0",
-          "member": "uint64",
-          "name": "Offset",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Maximum number",
-          "example": "10",
-          "member": "uint64",
-          "name": "Limit",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Search by cluster ID",
-          "example": "xxxx",
-          "member": "string",
-          "name": "IdKeyword",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Search by cluster name",
-          "example": "xxxx",
-          "member": "string",
-          "name": "NameKeyword",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Filter by list of cluster IDs",
-          "example": "无",
-          "member": "string",
-          "name": "ClusterIdList",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "For filtering by tag, this must be configured to `true`",
-          "example": "无",
-          "member": "bool",
-          "name": "IsTagFilter",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "document": "Filter. Currently, you can filter only by tag.",
-          "example": "无",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeRocketMQClustersResponse": {
-      "document": "DescribeRocketMQClusters response structure.",
-      "members": [
-        {
-          "document": "Cluster information\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "RocketMQClusterDetail",
-          "name": "ClusterList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Total number",
-          "example": "100",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeRocketMQGroupsRequest": {
-      "document": "DescribeRocketMQGroups request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Cluster ID",
-          "example": "rocketmq-xxxxx",
-          "member": "string",
-          "name": "ClusterId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Namespace",
-          "example": "prod",
-          "member": "string",
-          "name": "NamespaceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Offset",
-          "example": "0",
-          "member": "uint64",
-          "name": "Offset",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Maximum number",
-          "example": "20",
-          "member": "uint64",
-          "name": "Limit",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Topic name, which can be used to query all subscription groups under the topic",
-          "example": "test",
-          "member": "string",
-          "name": "FilterTopic",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Consumer group query by consumer group name. Fuzzy query is supported",
-          "example": "test",
-          "member": "string",
-          "name": "FilterGroup",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Sort by specified field. Valid values: tps, accumulative.",
-          "example": "tps",
-          "member": "string",
-          "name": "SortedBy",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Sort in ascending or descending order. Valid values: asc, desc.",
-          "example": "asc",
-          "member": "string",
-          "name": "SortOrder",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Subscription group name. After it is specified, only the information of the corresponding subscription group will be returned.",
-          "example": "test",
-          "member": "string",
-          "name": "FilterOneGroup",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeRocketMQGroupsResponse": {
-      "document": "DescribeRocketMQGroups response structure.",
-      "members": [
-        {
-          "document": "Total number",
-          "example": "100",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "List of subscription groups",
-          "example": "无",
-          "member": "RocketMQGroup",
-          "name": "Groups",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeRocketMQNamespacesRequest": {
-      "document": "DescribeRocketMQNamespaces request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Cluster ID",
-          "example": "rocketmq-xxxxx",
-          "member": "string",
-          "name": "ClusterId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Offset",
-          "example": "0",
-          "member": "uint64",
-          "name": "Offset",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Maximum number",
-          "example": "10",
-          "member": "uint64",
-          "name": "Limit",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Search by name",
-          "example": "xxxx",
-          "member": "string",
-          "name": "NameKeyword",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeRocketMQNamespacesResponse": {
-      "document": "DescribeRocketMQNamespaces response structure.",
-      "members": [
-        {
-          "document": "List of namespaces",
-          "example": "无",
-          "member": "RocketMQNamespace",
-          "name": "Namespaces",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Total number",
-          "example": "100",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeRocketMQTopicsRequest": {
-      "document": "DescribeRocketMQTopics request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Query offset",
-          "example": "0",
-          "member": "uint64",
-          "name": "Offset",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Query limit",
-          "example": "10",
-          "member": "uint64",
-          "name": "Limit",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Cluster ID",
-          "example": "rocketmq-xxxxx",
-          "member": "string",
-          "name": "ClusterId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Namespace",
-          "example": "prod",
-          "member": "string",
-          "name": "NamespaceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Filter by topic type. Valid values: Normal, GlobalOrder, PartitionedOrder, Transaction.",
-          "example": "无",
-          "member": "string",
-          "name": "FilterType",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Search by topic name. Fuzzy query is supported.",
-          "example": "test",
-          "member": "string",
-          "name": "FilterName",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeRocketMQTopicsResponse": {
-      "document": "DescribeRocketMQTopics response structure.",
-      "members": [
-        {
-          "document": "Total number of records",
-          "example": "100",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "List of topic information",
-          "example": "无",
-          "member": "RocketMQTopic",
-          "name": "Topics",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeRolesRequest": {
       "document": "DescribeRoles request structure.",
       "members": [
@@ -4886,360 +3735,6 @@
       ],
       "type": "object"
     },
-    "DescribeSubscriptionsRequest": {
-      "document": "DescribeSubscriptions request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Environment (namespace) name.",
-          "example": "test1",
-          "member": "string",
-          "name": "EnvironmentId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Topic name.",
-          "example": "test",
-          "member": "string",
-          "name": "TopicName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Offset. If this parameter is left empty, 0 will be used by default.",
-          "example": "0",
-          "member": "uint64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.",
-          "example": "10",
-          "member": "uint64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Fuzzy match by subscriber name.",
-          "example": "test",
-          "member": "string",
-          "name": "SubscriptionName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Data filter.",
-          "example": "无",
-          "member": "FilterSubscription",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Pulsar cluster ID",
-          "example": "pulsar-xxxx",
-          "member": "string",
-          "name": "ClusterId",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeSubscriptionsResponse": {
-      "document": "DescribeSubscriptions response structure.",
-      "members": [
-        {
-          "document": "Array set of subscribers.",
-          "example": "无",
-          "member": "Subscription",
-          "name": "SubscriptionSets",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Quantity.",
-          "example": "1",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeTopicsRequest": {
-      "document": "DescribeTopics request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Environment (namespace) name.",
-          "example": "test1",
-          "member": "string",
-          "name": "EnvironmentId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Fuzzy match by topic name.",
-          "example": "topic1",
-          "member": "string",
-          "name": "TopicName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Offset. If this parameter is left empty, 0 will be used by default.",
-          "example": "0",
-          "member": "uint64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.",
-          "example": "20",
-          "member": "uint64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Topic type description:\n0: general message;\n1: globally sequential message;\n2: partitionally sequential message;\n3: retry letter queue;\n4: dead letter queue;\n5: transaction message.",
-          "example": "1",
-          "member": "uint64",
-          "name": "TopicType",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Pulsar cluster ID",
-          "example": "cluster1",
-          "member": "string",
-          "name": "ClusterId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "* TopicName\nQuery by topic name for exact search.\nType: String\nRequired: no",
-          "example": "无",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeTopicsResponse": {
-      "document": "DescribeTopics response structure.",
-      "members": [
-        {
-          "document": "Array set of topics.",
-          "example": "无",
-          "member": "Topic",
-          "name": "TopicSets",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Number of topics.",
-          "example": "1",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "Environment": {
-      "document": "Namespace information",
-      "members": [
-        {
-          "default": "",
-          "document": "Namespace name",
-          "example": "test",
-          "member": "string",
-          "name": "EnvironmentId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Remarks",
-          "example": "test",
-          "member": "string",
-          "name": "Remark",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "TTL for unconsumed messages in seconds. Maximum value: 1296000 seconds (i.e., 15 days)",
-          "example": "2",
-          "member": "int64",
-          "name": "MsgTTL",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Creation time",
-          "example": "2020-02-17 00:00:00",
-          "member": "datetime",
-          "name": "CreateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Modification time",
-          "example": "2020-02-17 00:00:00",
-          "member": "datetime",
-          "name": "UpdateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Namespace ID",
-          "example": "test",
-          "member": "string",
-          "name": "NamespaceId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Namespace name",
-          "example": "test",
-          "member": "string",
-          "name": "NamespaceName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of topics\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "2",
-          "member": "int64",
-          "name": "TopicNum",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Message retention policy\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "RetentionPolicy",
-          "name": "RetentionPolicy",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "EnvironmentRole": {
-      "document": "Set of environment roles",
-      "members": [
-        {
-          "default": "",
-          "document": "Environment (namespace).",
-          "member": "string",
-          "name": "EnvironmentId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Role name.",
-          "member": "string",
-          "name": "RoleName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Permissions, which is a non-empty string array of `produce` and `consume` at the most.",
-          "member": "string",
-          "name": "Permissions",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Role description.",
-          "member": "string",
-          "name": "RoleDescribe",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Creation time.",
-          "member": "datetime",
-          "name": "CreateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Update time.",
-          "member": "datetime",
-          "name": "UpdateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
     "Filter": {
       "document": "Filter parameter",
       "members": [
@@ -5259,52 +3754,6 @@
           "example": "无",
           "member": "string",
           "name": "Values",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "in"
-    },
-    "FilterSubscription": {
-      "document": "Filters subscriptions",
-      "members": [
-        {
-          "default": "",
-          "document": "Whether to display only subscriptions that include real consumers.",
-          "example": "false",
-          "member": "bool",
-          "name": "ConsumerHasCount",
-          "required": false,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether to display only subscriptions with retained messages.",
-          "example": "false",
-          "member": "bool",
-          "name": "ConsumerHasBacklog",
-          "required": false,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether to display only subscriptions with messages discarded after expiration.",
-          "example": "false",
-          "member": "bool",
-          "name": "ConsumerHasExpired",
-          "required": false,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Filter by subscription name for exact search.",
-          "example": "false",
-          "member": "string",
-          "name": "SubscriptionNames",
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -5416,7 +3865,7 @@
         },
         {
           "default": "",
-          "document": "Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.",
+          "document": "Max message size, which defaults to 1,024 KB for the queue of TDMQ for CMQ and cannot be modified.",
           "example": "1024",
           "member": "uint64",
           "name": "MaxMsgSize",
@@ -5425,7 +3874,7 @@
         },
         {
           "default": "",
-          "document": "Message retention period. Value range: 60–1296000 seconds (i.e., 1 minute–15 days). Default value: 345600 (i.e., 4 days).",
+          "document": "The max period during which a message is retained before it is automatically acknowledged. Value range: 30-43,200 seconds (30 seconds to 12 hours). Default value: 3600 seconds (1 hour).",
           "example": "0",
           "member": "uint64",
           "name": "MsgRetentionSeconds",
@@ -5434,7 +3883,7 @@
         },
         {
           "default": "",
-          "document": "Maximum message rewindable period. Value range: 0–msgRetentionSeconds (maximum message retention period of the queue). 0 indicates not to enable message rewinding.",
+          "document": "Rewindable time of messages in the queue. Value range: 0-1,296,000s (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.",
           "example": "0",
           "member": "uint64",
           "name": "RewindSeconds",
@@ -5510,6 +3959,15 @@
           "example": "0",
           "member": "uint64",
           "name": "Transaction",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Queue storage space configured for message rewind. Value range: 1,024-10,240 MB (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.",
+          "example": "0",
+          "member": "uint64",
+          "name": "RetentionSizeInMB",
           "required": false,
           "type": "int"
         }
@@ -6194,129 +4652,6 @@
       ],
       "type": "object"
     },
-    "PartitionsTopic": {
-      "document": "Partitioned topic",
-      "members": [
-        {
-          "default": "",
-          "document": "Average size of the messages published in the last interval in bytes.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "AverageMsgSize",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of consumers.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "ConsumerCount",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Total number of recorded messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "LastConfirmedEntry",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Time when the last ledger was created.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "LastLedgerCreatedTimestamp",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of messages published by local and replicated publishers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "MsgRateIn",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Sum of the numbers of messages delivered by local and replicated consumers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "MsgRateOut",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of bytes of messages published by local and replicated publishers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "MsgThroughputIn",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of bytes of messages delivered by local and replicated consumers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "MsgThroughputOut",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Total number of recorded messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "NumberOfEntries",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Subpartition ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "int64",
-          "name": "Partitions",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of producers.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "ProducerCount",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Total amount of all stored messages in bytes.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "TotalSize",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Topic type description.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "uint64",
-          "name": "TopicType",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "PublishCmqMsgRequest": {
       "document": "PublishCmqMsg request structure.",
       "members": [
@@ -6647,6 +4982,78 @@
       ],
       "type": "object"
     },
+    "ResetRocketMQConsumerOffSetRequest": {
+      "document": "ResetRocketMQConsumerOffSet request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID.",
+          "example": "rocketmq-xxxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name.",
+          "example": "prod",
+          "member": "string",
+          "name": "NamespaceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Consumer group name.",
+          "example": "test",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name.",
+          "example": "test",
+          "member": "string",
+          "name": "Topic",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Reset method. 0: Start from the latest offset; 1: Start from specified time point.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The specified timestamp that has been reset, in milliseconds. This parameter only takes effect when the value of `Type` is `1`.",
+          "example": "1000000",
+          "member": "uint64",
+          "name": "ResetTimestamp",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetRocketMQConsumerOffSetResponse": {
+      "document": "ResetRocketMQConsumerOffSet response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "RetentionPolicy": {
       "document": "Message retention policy",
       "members": [
@@ -6805,42 +5212,6 @@
       ],
       "usage": "out"
     },
-    "RocketMQClusterDetail": {
-      "document": "Tenant RocketMQ cluster details",
-      "members": [
-        {
-          "default": "",
-          "document": "Cluster's basic information",
-          "example": "无",
-          "member": "RocketMQClusterInfo",
-          "name": "Info",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Cluster configuration information",
-          "example": "无",
-          "member": "RocketMQClusterConfig",
-          "name": "Config",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Cluster status. 0: creating; 1: normal; 2: terminating; 3: deleted; 4. isolated; 5. creation failed; 6: deletion failed\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "0",
-          "member": "int64",
-          "name": "Status",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "RocketMQClusterInfo": {
       "document": "RocketMQ cluster's basic information",
       "members": [
@@ -6913,6 +5284,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the namespace access point is supported.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "SupportNamespaceEndpoint",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -6956,244 +5337,6 @@
           "example": "22000",
           "member": "uint64",
           "name": "AccumulativeMsgNum",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "RocketMQGroup": {
-      "document": "RocketMQ consumer group information",
-      "members": [
-        {
-          "default": "",
-          "document": "Consumer group name",
-          "example": "test",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of online consumers",
-          "example": "1",
-          "member": "uint64",
-          "name": "ConsumerNum",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Consumption TPS",
-          "example": "100",
-          "member": "uint64",
-          "name": "TPS",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Total number of retained messages",
-          "example": "100",
-          "member": "int64",
-          "name": "TotalAccumulative",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "0: cluster consumption mode; 1: broadcast consumption mode; -1: unknown",
-          "example": "0",
-          "member": "int64",
-          "name": "ConsumptionMode",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether to allow consumption",
-          "example": "true",
-          "member": "bool",
-          "name": "ReadEnabled",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of partitions in the retry letter topic\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "2",
-          "member": "uint64",
-          "name": "RetryPartitionNum",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Creation time in milliseconds",
-          "example": "10000",
-          "member": "uint64",
-          "name": "CreateTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Modification time in milliseconds",
-          "example": "修改时间",
-          "member": "uint64",
-          "name": "UpdateTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Client protocol",
-          "example": "tcp",
-          "member": "string",
-          "name": "ClientProtocol",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "备注",
-          "member": "string",
-          "name": "Remark",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Consumer type. Enumerated values: ACTIVELY, PASSIVELY\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "ACTIVELY",
-          "member": "string",
-          "name": "ConsumerType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Whether to enable broadcast consumption",
-          "example": "false",
-          "member": "bool",
-          "name": "BroadcastEnabled",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "RocketMQNamespace": {
-      "document": "RocketMQ namespace information",
-      "members": [
-        {
-          "default": "",
-          "document": "Namespace name, which can contain 3–64 letters, digits, hyphens, and underscores",
-          "example": "prod",
-          "member": "string",
-          "name": "NamespaceId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Retention period for unconsumed messages in milliseconds. Valid range: 60 seconds–15 days.",
-          "example": "100000",
-          "member": "uint64",
-          "name": "Ttl",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Retention period for persisted messages in milliseconds",
-          "example": "10000",
-          "member": "uint64",
-          "name": "RetentionTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "备注",
-          "member": "string",
-          "name": "Remark",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "RocketMQTopic": {
-      "document": "RocketMQ topic information",
-      "members": [
-        {
-          "default": "",
-          "document": "Topic name",
-          "example": "test",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "备注",
-          "member": "string",
-          "name": "Remark",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of read/write partitions",
-          "example": "1",
-          "member": "uint64",
-          "name": "PartitionNum",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Creation time in milliseconds",
-          "example": "100000",
-          "member": "uint64",
-          "name": "CreateTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Creation time in milliseconds",
-          "example": "100000",
-          "member": "uint64",
-          "name": "UpdateTime",
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -7602,245 +5745,6 @@
       ],
       "usage": "in"
     },
-    "Subscription": {
-      "document": "Subscriber",
-      "members": [
-        {
-          "default": "",
-          "document": "Topic name.",
-          "example": "test",
-          "member": "string",
-          "name": "TopicName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Environment (namespace) name.",
-          "example": "test",
-          "member": "string",
-          "name": "EnvironmentId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The time when the consumer started connecting.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "ConnectedSince",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Consumer address.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "ConsumerAddr",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of consumers.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "11",
-          "member": "string",
-          "name": "ConsumerCount",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Consumer name.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "ConsumerName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of retained messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "1",
-          "member": "string",
-          "name": "MsgBacklog",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Proportion of messages under this subscription that were discarded but not sent after TTL.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "1",
-          "member": "string",
-          "name": "MsgRateExpired",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Sum of the numbers of messages delivered by the consumer per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "1",
-          "member": "string",
-          "name": "MsgRateOut",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of bytes of messages consumed by the consumer per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "1",
-          "member": "string",
-          "name": "MsgThroughputOut",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Subscription name.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "SubscriptionName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Set of consumers.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "Consumer",
-          "name": "ConsumerSets",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Whether it is online.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "true",
-          "member": "bool",
-          "name": "IsOnline",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Set of consumption progress information.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "ConsumersSchedule",
-          "name": "ConsumersScheduleSets",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Remarks.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "Remark",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "datetime",
-          "name": "CreateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Modification time.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "datetime",
-          "name": "UpdateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Subscription type. Valid values: `Exclusive`, `Shared`, `Failover`, and `Key_Shared`. An empty string or `NULL`: Unknown.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "Shared",
-          "member": "string",
-          "name": "SubType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Whether messages are blocked as the limit of unacknowledged messages has been reached.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "true",
-          "member": "bool",
-          "name": "BlockedSubscriptionOnUnackedMsgs",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Maximum number of unacknowledged messages.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "5000",
-          "member": "int64",
-          "name": "MaxUnackedMsgNum",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "SubscriptionTopic": {
-      "document": "Subscription",
-      "members": [
-        {
-          "default": "",
-          "document": "Environment (namespace) name.",
-          "member": "string",
-          "name": "EnvironmentId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Topic name.",
-          "member": "string",
-          "name": "TopicName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Subscription name.",
-          "member": "string",
-          "name": "SubscriptionName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
-    },
     "Tag": {
       "document": "Type of the tag key/value",
       "members": [
@@ -7864,256 +5768,6 @@
         }
       ],
       "usage": "in"
-    },
-    "Topic": {
-      "document": "Topic instance",
-      "members": [
-        {
-          "default": "",
-          "document": "Average size of the messages published in the last interval in bytes.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "AverageMsgSize",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of consumers.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "ConsumerCount",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Total number of recorded messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "LastConfirmedEntry",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Time when the last ledger was created.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "LastLedgerCreatedTimestamp",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of messages published by local and replicated publishers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "MsgRateIn",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Sum of the numbers of messages delivered by local and replicated consumers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "MsgRateOut",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of bytes of messages published by local and replicated publishers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "MsgThroughputIn",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of bytes of messages delivered by local and replicated consumers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "MsgThroughputOut",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Total number of recorded messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "NumberOfEntries",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of partitions ≤ 0: there are no subpartitions in the topic.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "int64",
-          "name": "Partitions",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Number of producers.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "ProducerCount",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Total amount of all stored messages in bytes.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "TotalSize",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Subpartitions in a partitioned topic.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "PartitionsTopic",
-          "name": "SubTopicSets",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Topic type description:\n0: general message;\n1: globally sequential message;\n2: partitionally sequential message;\n3: retry letter queue;\n4: dead letter queue;\n5: transaction message.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "uint64",
-          "name": "TopicType",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Environment (namespace) name.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "EnvironmentId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Topic name.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "TopicName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Remarks (up to 128 characters).\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "Remark",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "datetime",
-          "name": "CreateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Modification time.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "datetime",
-          "name": "UpdateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Maximum number of producers.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "5000",
-          "member": "string",
-          "name": "ProducerLimit",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Maximum number of consumers.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "5000",
-          "member": "string",
-          "name": "ConsumerLimit",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "`0`: Non-persistent and non-partitioned\n`1`: Non-persistent and partitioned\n`2`: Persistent and non-partitioned\n`3`: Persistent and partitioned\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "1",
-          "member": "int64",
-          "name": "PulsarTopicType",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "TopicRecord": {
-      "document": "Topic's key information",
-      "members": [
-        {
-          "default": "",
-          "document": "Environment (namespace) name.",
-          "member": "string",
-          "name": "EnvironmentId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Topic name.",
-          "member": "string",
-          "name": "TopicName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
     },
     "UnbindCmqDeadLetterRequest": {
       "document": "UnbindCmqDeadLetter request structure.",
