@@ -73,7 +73,7 @@
       "output": "CreateWordSamplesResponse"
     },
     "CreateWorkflow": {
-      "document": "This API is used to set a processing rule for media files uploaded to the specified directory of a COS bucket, including:\n1. Video transcoding (with watermark);\n2. Animated image generating;\n3. Time point screencapturing;\n4. Sampled screencapturing;\n5. Image sprite generating;\n6. Video conversion to adaptive bitrate streaming;\n7. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);\n8. Intelligent content recognition (face recognition, full text recognition, text keyword recognition, full speech recognition, and speech keyword recognition).\n\nNote: Once successfully created, a workflow is disabled by default and needs to be enabled manually.",
+      "document": "This API is used to create a workflow for media files uploaded to a specified COS bucket. A workflow may include the following tasks:\n1. Video transcoding (with watermark)\n2. Animated image generating\n3. Time point screencapturing\n4. Sampled screencapturing\n5. Image sprite generating\n6. Adaptive bitrate streaming\n7. Intelligent content moderation (detection of pornographic and sensitive content)\n8. Intelligent content analysis (labeling, categorization, thumbnail generation, frame-specific labeling)\n9. Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)\n\nNote: A workflow is disabled upon creation. You need to manually enable it.",
       "input": "CreateWorkflowRequest",
       "name": "Creates a workflow",
       "output": "CreateWorkflowResponse"
@@ -367,13 +367,13 @@
       "output": "ParseNotificationResponse"
     },
     "ProcessLiveStream": {
-      "document": "This API is used to initiate tasks to process live streaming media files. Such tasks include:\n\n* Intelligent content moderation (detecting porn, terrorism, and politically sensitive information in image and porn information in speech)\n* Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)\n\nLive stream processing event notifications are written into specified CMQ queues in real time. Users need to obtain event notification results from such CMQ queues. Output files of the processing tasks are written into destination buckets specified by users.",
+      "document": "This API is used to initiate live stream processing tasks. Such tasks may include the following:\n\n* Intelligent content moderation (detection of pornographic content in images and speech, detection of sensitive information)\n* Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)\n\nLive stream processing event notifications are written into specified CMQ queues in real time. Users need to obtain event notification results from such CMQ queues. Output files of the processing tasks are written into destination buckets specified by users.",
       "input": "ProcessLiveStreamRequest",
       "name": "Initiates a live stream processing task",
       "output": "ProcessLiveStreamResponse"
     },
     "ProcessMedia": {
-      "document": "This API is used to initiate a processing task for media files in COS, including:\n1. Video transcoding (with watermark);\n2. Animated image generating;\n3. Time point screencapturing;\n4. Sampled screencapturing;\n5. Image sprite generating;\n6. Video conversion to adaptive bitrate streaming;\n7. Intelligent content audit (detection of porn, terrorism, and politically sensitive information);\n8. Intelligent content recognition (face recognition, full text recognition, text keyword recognition, full speech recognition, and speech keyword recognition).",
+      "document": "This API is used to initiate processing tasks for media files in COS. Such tasks may include the following:\n1. Video transcoding (with watermark)\n2. Animated image generating\n3. Time point screencapturing\n4. Sampled screencapturing\n5. Image sprite generating\n6. Adaptive bitrate streaming\n7. Intelligent content moderation (detection of pornographic and sensitive content)\n8. Intelligent content analysis (labeling, categorization, thumbnail generation, frame-specific labeling)\n9. Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)",
       "input": "ProcessMediaRequest",
       "name": "Initiates a video processing task",
       "output": "ProcessMediaResponse"
@@ -1254,7 +1254,8 @@
       "members": [
         {
           "default": "",
-          "document": "Task type. Valid values:\n<li>Porn: Porn information detection in image</li>\n<li>Terrorism: Terrorism information detection in image</li>\n<li>Political: Politically sensitive information detection in image</li>\n<li>Porn.Asr: ASR-based porn information detection in text</li>\n<li>Porn.Ocr: OCR-based porn information detection in text</li>\n<li>Porn.Voice: Porn information detection in speech</li>\n<li>Political.Asr: ASR-based politically sensitive information detection in text</li>\n<li>Political.Ocr: OCR-based politically sensitive information detection in text</li>",
+          "document": "Task type. Valid values:\n<li>Porn (in images)</li>\n<li>Terrorism (in images)</li>\n<li>Political (in images)</li>\n<li>Porn.Asr</li>\n<li>Porn.Ocr</li>\n<li>Political.Asr</li>\n<li>Political.Ocr</li>\n<li>Terrorism.Ocr</li>\n<li>Prohibited.Asr</li>\n<li>Prohibited.Ocr</li>",
+          "example": "\"Political\"",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -1264,6 +1265,7 @@
         {
           "default": "",
           "document": "Sample rate, which indicates the number of video frames captured per second for audit",
+          "example": "0",
           "member": "float",
           "name": "SampleRate",
           "required": true,
@@ -1273,6 +1275,7 @@
         {
           "default": "",
           "document": "Audited video duration in seconds.",
+          "example": "0",
           "member": "float",
           "name": "Duration",
           "required": true,
@@ -1282,6 +1285,7 @@
         {
           "default": "",
           "document": "Query result of an intelligent porn information detection in image task in video content audit, which is valid when task type is `Porn`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewTaskPornResult",
           "name": "PornTask",
           "required": true,
@@ -1290,7 +1294,8 @@
         },
         {
           "default": "",
-          "document": "Query result of an intelligent terrorism information detection in image task in video content audit, which is valid when task type is `Terrorism`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The result of detecting terrorism content in images, which is valid when the task type is `Terrorism`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewTaskTerrorismResult",
           "name": "TerrorismTask",
           "required": true,
@@ -1299,7 +1304,8 @@
         },
         {
           "default": "",
-          "document": "Query result of an intelligent politically sensitive information detection in image task in video content audit, which is valid when task type is `Political`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The result of detecting politically sensitive information in images, which is valid when the task type is `Political`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewTaskPoliticalResult",
           "name": "PoliticalTask",
           "required": true,
@@ -1309,6 +1315,7 @@
         {
           "default": "",
           "document": "Query result of an ASR-based porn information detection in text task in video content audit, which is valid when task type is `Porn.Asr`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewTaskPornAsrResult",
           "name": "PornAsrTask",
           "required": true,
@@ -1318,6 +1325,7 @@
         {
           "default": "",
           "document": "Query result of an OCR-based porn information detection in text task in video content audit, which is valid when task type is `Porn.Ocr`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewTaskPornOcrResult",
           "name": "PornOcrTask",
           "required": true,
@@ -1326,7 +1334,8 @@
         },
         {
           "default": "",
-          "document": "Query result of an ASR-based politically sensitive information detection in text task in video content audit, which is valid when task type is `Political.Asr`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The result of detecting politically sensitive information based on ASR, which is valid when the task type is `Political.Asr`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewTaskPoliticalAsrResult",
           "name": "PoliticalAsrTask",
           "required": true,
@@ -1335,7 +1344,8 @@
         },
         {
           "default": "",
-          "document": "Query result of an OCR-based politically sensitive information detection in text task in video content audit, which is valid when task type is `Political.Ocr`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The result of detecting politically sensitive information based on OCR, which is valid when the task type is `Political.Ocr`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewTaskPoliticalOcrResult",
           "name": "PoliticalOcrTask",
           "required": true,
@@ -1344,7 +1354,8 @@
         },
         {
           "default": "",
-          "document": "Query result of OCR-based terrorism information detection in text task in video content audit, which is valid if task type is `Terrorism.Ocr`.",
+          "document": "The result of detecting terrorism content based on OCR, which is valid when task type is `Terrorism.Ocr`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewTaskTerrorismOcrResult",
           "name": "TerrorismOcrTask",
           "required": true,
@@ -1354,6 +1365,7 @@
         {
           "default": "",
           "document": "Query result of ASR-based prohibited information detection in speech task in video content audit, which is valid if task type is `Prohibited.Asr`.",
+          "example": "NULL",
           "member": "AiReviewTaskProhibitedAsrResult",
           "name": "ProhibitedAsrTask",
           "required": true,
@@ -1363,6 +1375,7 @@
         {
           "default": "",
           "document": "Query result of OCR-based prohibited information detection in text task in video content audit, which is valid if task type is `Prohibited.Ocr`.",
+          "example": "NULL",
           "member": "AiReviewTaskProhibitedOcrResult",
           "name": "ProhibitedOcrTask",
           "required": true,
@@ -2246,11 +2259,12 @@
       "usage": "out"
     },
     "AiReviewPoliticalAsrTaskInput": {
-      "document": "Input parameter type of an ASR-based politically sensitive information detection in text task during content audit",
+      "document": "The input parameters for ASR-based detection of politically sensitive information.",
       "members": [
         {
           "default": "",
-          "document": "ID of a politically sensitive information detection template.",
+          "document": "The template ID.",
+          "example": "0",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -2261,11 +2275,12 @@
       "usage": "out"
     },
     "AiReviewPoliticalAsrTaskOutput": {
-      "document": "ASR-detected politically sensitive information in text",
+      "document": "The information about the sensitive content detected based on ASR.",
       "members": [
         {
           "default": "",
-          "document": "Score of the ASR-detected politically sensitive information in text from 0 to 100.",
+          "document": "The confidence score for the ASR-based detection of sensitive information. Value range: 0-100.",
+          "example": "0",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -2274,7 +2289,8 @@
         },
         {
           "default": "",
-          "document": "Suggestion for the ASR-detected politically sensitive information in text. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "document": "The suggestion for handling the sensitive information detected based on ASR. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
+          "example": "“”",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -2283,7 +2299,8 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain ASR-detected politically sensitive information in text.",
+          "document": "The video segments that contain sensitive information detected based on ASR.",
+          "example": "无",
           "member": "MediaContentReviewAsrTextSegmentItem",
           "name": "SegmentSet",
           "required": true,
@@ -2294,11 +2311,12 @@
       "usage": "out"
     },
     "AiReviewPoliticalOcrTaskInput": {
-      "document": "Input parameter type of an OCR-based politically sensitive information detection in text task during content audit",
+      "document": "The input parameters for OCR-based detection of politically sensitive information.",
       "members": [
         {
           "default": "",
-          "document": "ID of a politically sensitive information detection template.",
+          "document": "The template ID.",
+          "example": "0",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -2309,11 +2327,12 @@
       "usage": "out"
     },
     "AiReviewPoliticalOcrTaskOutput": {
-      "document": "OCR-detected politically sensitive information in text",
+      "document": "The information about the sensitive content detected based on OCR.",
       "members": [
         {
           "default": "",
-          "document": "Score of the OCR-detected politically sensitive information in text from 0 to 100.",
+          "document": "The confidence score for the OCR-based detection of sensitive information. Value range: 0-100.",
+          "example": "0",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -2322,7 +2341,8 @@
         },
         {
           "default": "",
-          "document": "Suggestion for the OCR-detected politically sensitive information in text. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "document": "The suggestion for handling the sensitive information detected based on OCR. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
+          "example": "\"\"",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -2331,7 +2351,8 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain OCR-detected politically sensitive information in text.",
+          "document": "The video segments that contain sensitive information detected based on OCR.",
+          "example": "无",
           "member": "MediaContentReviewOcrTextSegmentItem",
           "name": "SegmentSet",
           "required": true,
@@ -2342,11 +2363,12 @@
       "usage": "out"
     },
     "AiReviewPoliticalTaskInput": {
-      "document": "Input parameter type of a politically sensitive information detection task during content audit",
+      "document": "The input parameters for the detection of politically sensitive information.",
       "members": [
         {
           "default": "",
-          "document": "ID of a politically sensitive information detection template.",
+          "document": "The template ID.",
+          "example": "0",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -2357,11 +2379,12 @@
       "usage": "out"
     },
     "AiReviewPoliticalTaskOutput": {
-      "document": "Politically sensitive information",
+      "document": "The sensitive information detected.",
       "members": [
         {
           "default": "",
-          "document": "Score of the detected politically sensitive information in video from 0 to 100.",
+          "document": "The confidence score for the detection of sensitive information. Value range: 0-100.",
+          "example": "0",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -2370,7 +2393,8 @@
         },
         {
           "default": "",
-          "document": "Suggestion for the detected politically sensitive information. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "document": "The suggestion for handling the sensitive information detected. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
+          "example": "\"\"",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -2379,7 +2403,8 @@
         },
         {
           "default": "",
-          "document": "Tags for the results of video politically sensitive information detection. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#AiReviewPoliticalTaskOutput) and this parameter is as follows:\nviolation_photo:\n<li>violation_photo: violating photo.</li>\nOther values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):\n<li>politician: political figure.</li>",
+          "document": "The labels for the detected sensitive content. The relationship between the values of this parameter and those of the `LabelSet` parameter in [PoliticalImgReviewTemplateInfo](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#AiReviewPoliticalTaskOutput) is as follows:\nviolation_photo:\n<li>violation_photo (banned icons)</li>\nOther values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):\n<li>politician</li>",
+          "example": "\"\"",
           "member": "string",
           "name": "Label",
           "required": true,
@@ -2388,7 +2413,8 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain the detected politically sensitive information.",
+          "document": "The video segments that contain sensitive information.",
+          "example": "无",
           "member": "MediaContentReviewPoliticalSegmentItem",
           "name": "SegmentSet",
           "required": true,
@@ -2648,11 +2674,12 @@
       "usage": "out"
     },
     "AiReviewTaskPoliticalAsrResult": {
-      "document": "Result type of an ASR-based politically sensitive information detection in text task during content audit",
+      "document": "The result of ASR-based detection of politically sensitive information.",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "\"\"",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -2662,6 +2689,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see the list of [Error Codes](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2671,6 +2699,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2680,6 +2709,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -2688,7 +2718,8 @@
         },
         {
           "default": "",
-          "document": "Input for an ASR-based politically sensitive information detection in text task during content audit.",
+          "document": "The input parameter for ASR-based detection of politically sensitive information.",
+          "example": "无",
           "member": "AiReviewPoliticalAsrTaskInput",
           "name": "Input",
           "required": true,
@@ -2697,7 +2728,8 @@
         },
         {
           "default": "",
-          "document": "Output of an ASR-based politically sensitive information detection in text task during content audit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The output of ASR-based detection of politically sensitive information.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewPoliticalAsrTaskOutput",
           "name": "Output",
           "required": true,
@@ -2708,11 +2740,12 @@
       "usage": "out"
     },
     "AiReviewTaskPoliticalOcrResult": {
-      "document": "Result type of an OCR-based politically sensitive information detection in text task during content audit",
+      "document": "The result of OCR-based detection of politically sensitive information.",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "\"\"",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -2722,6 +2755,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2731,6 +2765,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2740,6 +2775,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -2748,7 +2784,8 @@
         },
         {
           "default": "",
-          "document": "Input for an OCR-based politically sensitive information detection in text task during content audit.",
+          "document": "The input parameter for OCR-based detection of politically sensitive information.",
+          "example": "无",
           "member": "AiReviewPoliticalOcrTaskInput",
           "name": "Input",
           "required": true,
@@ -2757,7 +2794,8 @@
         },
         {
           "default": "",
-          "document": "Output of an OCR-based politically sensitive information detection in text task during content audit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The output of OCR-based detection of politically sensitive information.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewPoliticalOcrTaskOutput",
           "name": "Output",
           "required": true,
@@ -2768,11 +2806,12 @@
       "usage": "out"
     },
     "AiReviewTaskPoliticalResult": {
-      "document": "Result type of a politically sensitive information detection task during content audit",
+      "document": "The result of sensitive information detection.",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "\"\"",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -2782,6 +2821,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2791,6 +2831,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2800,6 +2841,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -2808,7 +2850,8 @@
         },
         {
           "default": "",
-          "document": "Input for a politically sensitive information detection task during content audit.",
+          "document": "The input parameter for sensitive information detection.",
+          "example": "无",
           "member": "AiReviewPoliticalTaskInput",
           "name": "Input",
           "required": true,
@@ -2817,7 +2860,8 @@
         },
         {
           "default": "",
-          "document": "Output of a politically sensitive information detection task during content audit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The output of sensitive information detection.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewPoliticalTaskOutput",
           "name": "Output",
           "required": true,
@@ -3128,11 +3172,12 @@
       "usage": "out"
     },
     "AiReviewTaskTerrorismOcrResult": {
-      "document": "Result type of OCR-based terrorism information detection in text task in content audit",
+      "document": "The result of OCR-based detection of terrorism content.",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "\"\"",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -3142,6 +3187,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -3151,6 +3197,7 @@
         {
           "default": "",
           "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3160,6 +3207,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -3168,7 +3216,8 @@
         },
         {
           "default": "",
-          "document": "Input of OCR-based terrorism information detection in text task in content audit.",
+          "document": "The input parameter for OCR-based detection of terrorism content.",
+          "example": "NULL",
           "member": "AiReviewTerrorismOcrTaskInput",
           "name": "Input",
           "required": true,
@@ -3177,7 +3226,8 @@
         },
         {
           "default": "",
-          "document": "Output of OCR-based terrorism information detection in text task in content audit.",
+          "document": "The output of OCR-based detection of terrorism content.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewTerrorismOcrTaskOutput",
           "name": "Output",
           "required": true,
@@ -3188,11 +3238,12 @@
       "usage": "out"
     },
     "AiReviewTaskTerrorismResult": {
-      "document": "Result type of a terrorism information detection task during content audit",
+      "document": "The result of sensitive information detection.",
       "members": [
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "\"\"",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -3202,6 +3253,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -3211,6 +3263,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3220,6 +3273,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -3228,7 +3282,8 @@
         },
         {
           "default": "",
-          "document": "Input for a terrorism information detection task during content audit.",
+          "document": "The input parameter for sensitive information detection.",
+          "example": "NULL",
           "member": "AiReviewTerrorismTaskInput",
           "name": "Input",
           "required": true,
@@ -3237,7 +3292,8 @@
         },
         {
           "default": "",
-          "document": "Output of a terrorism information detection task during content audit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The output of sensitive information detection.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewTerrorismTaskOutput",
           "name": "Output",
           "required": true,
@@ -3248,11 +3304,12 @@
       "usage": "out"
     },
     "AiReviewTerrorismOcrTaskInput": {
-      "document": "Input parameter type of OCR-based terrorism information detection in text task in content audit",
+      "document": "The input parameter for OCR-based detection of sensitive information.",
       "members": [
         {
           "default": "",
-          "document": "Terrorism information detection template ID.",
+          "document": "The template ID.",
+          "example": "0",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -3263,11 +3320,12 @@
       "usage": "out"
     },
     "AiReviewTerrorismOcrTaskOutput": {
-      "document": "OCR-detected terrorism information in text",
+      "document": "The information about the sensitive content detected based on OCR.",
       "members": [
         {
           "default": "",
-          "document": "Score of OCR-detected terrorism information in text between 0 and 100.",
+          "document": "The confidence score for the OCR-based detection of sensitive information. Value range: 1-100.",
+          "example": "0",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -3276,7 +3334,8 @@
         },
         {
           "default": "",
-          "document": "Suggestion for OCR-detected terrorism information in text. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "document": "The suggestion for handling the sensitive information detected based on OCR. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
+          "example": "\"\"",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -3285,7 +3344,8 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain OCR-detected terrorism information in text.",
+          "document": "The video segments that contain sensitive information detected based on OCR.",
+          "example": "NULL",
           "member": "MediaContentReviewOcrTextSegmentItem",
           "name": "SegmentSet",
           "required": true,
@@ -3296,11 +3356,12 @@
       "usage": "out"
     },
     "AiReviewTerrorismTaskInput": {
-      "document": "Input parameter type of a terrorism information detection task during content audit",
+      "document": "The input parameter for the detection of sensitive information.",
       "members": [
         {
           "default": "",
-          "document": "ID of a terrorism information detection template.",
+          "document": "The template ID.",
+          "example": "0",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -3311,11 +3372,11 @@
       "usage": "out"
     },
     "AiReviewTerrorismTaskOutput": {
-      "document": "Terrorism information",
+      "document": "The information about the sensitive content detected.",
       "members": [
         {
           "default": "",
-          "document": "Score of the detected terrorism information in a video from 0 to 100.",
+          "document": "The confidence score for the detection of sensitive information. Value range: 0-100.",
           "example": "20",
           "member": "float",
           "name": "Confidence",
@@ -3325,7 +3386,7 @@
         },
         {
           "default": "",
-          "document": "Suggestion for the detected terrorism information. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "document": "The suggestion for handling the sensitive information detected. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
           "example": "pass",
           "member": "string",
           "name": "Suggestion",
@@ -3335,7 +3396,7 @@
         },
         {
           "default": "",
-          "document": "Tags for detected terrorism information in a video. Valid values:\n<li>`guns`: weapons and guns</li>\n<li>`crowd`: crowds</li>\n<li>`police`: police forces</li>\n<li>`bloody`: bloodiness</li>\n<li>`banners`: terrorism flags</li>\n<li>`militant`: militants</li>\n<li>`explosion`: explosions and fires</li>\n<li>`terrorists`: terrorists</li>\n<li>`scenario`: terrorism images</li>",
+          "document": "The labels for the detected sensitive content. Valid values:\n<li>guns</li>\n<li>crowd</li>\n<li>police</li>\n<li>bloody</li>\n<li>banners (sensitive flags)</li>\n<li>militant</li>\n<li>explosion</li>\n<li>terrorists</li>\n<li>scenario (sensitive scenes) </li>",
           "example": "crowd",
           "member": "string",
           "name": "Label",
@@ -3345,7 +3406,7 @@
         },
         {
           "default": "",
-          "document": "List of video segments that contain the detected terrorism information.",
+          "document": "The video segments that contain sensitive information.",
           "example": "[]",
           "member": "MediaContentReviewSegmentItem",
           "name": "SegmentSet",
@@ -4004,6 +4065,7 @@
         {
           "default": "",
           "document": "Unique ID of a content audit template.",
+          "example": "0",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -4013,6 +4075,7 @@
         {
           "default": "",
           "document": "Name of a content audit template. Length limit: 64 characters.",
+          "example": "\"\"",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -4022,6 +4085,7 @@
         {
           "default": "",
           "document": "Description of a content audit template. Length limit: 256 characters.",
+          "example": "\"\"",
           "member": "string",
           "name": "Comment",
           "required": true,
@@ -4031,6 +4095,7 @@
         {
           "default": "",
           "document": "Porn information detection control parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "PornConfigureInfo",
           "name": "PornConfigure",
           "required": true,
@@ -4039,7 +4104,8 @@
         },
         {
           "default": "",
-          "document": "Terrorism information detection control parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The parameters for detecting sensitive information.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "TerrorismConfigureInfo",
           "name": "TerrorismConfigure",
           "required": true,
@@ -4048,7 +4114,8 @@
         },
         {
           "default": "",
-          "document": "Politically sensitive information detection control parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The parameters for detecting sensitive information.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "PoliticalConfigureInfo",
           "name": "PoliticalConfigure",
           "required": true,
@@ -4058,6 +4125,7 @@
         {
           "default": "",
           "document": "Control parameter of prohibited information detection. Prohibited information includes:\n<li>Abusive;</li>\n<li>Drug-related.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "ProhibitedConfigureInfo",
           "name": "ProhibitedConfigure",
           "required": true,
@@ -4067,6 +4135,7 @@
         {
           "default": "",
           "document": "Custom content audit control parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "UserDefineConfigureInfo",
           "name": "UserDefineConfigure",
           "required": true,
@@ -4076,6 +4145,7 @@
         {
           "default": "",
           "document": "Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "\"\"",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -4085,6 +4155,7 @@
         {
           "default": "",
           "document": "Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "\"\"",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -7062,7 +7133,7 @@
         },
         {
           "default": "",
-          "document": "Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the default figures will be returned. Valid values:\n<li>entertainment: Entertainment celebrity;</li>\n<li>sport: Sports celebrity;</li>\n<li>politician: Politically sensitive figure.</li>",
+          "document": "The default face filter labels, which specify the types of faces to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:\n<li>entertainment (people in the entertainment industry)</li>\n<li>sport (sports celebrities)</li>\n<li>politician</li>",
           "example": "无",
           "member": "string",
           "name": "DefaultLibraryLabelSet",
@@ -7118,7 +7189,7 @@
         },
         {
           "default": "",
-          "document": "Default figure filter tag, which specifies the default figure tag that needs to be returned. If this parameter is left empty or an empty value is entered, all results of the default figures will be returned. Valid values:\n<li>entertainment: Entertainment celebrity;</li>\n<li>sport: Sports celebrity;</li>\n<li>politician: Politically sensitive figure.</li>",
+          "document": "The default face filter labels, which specify the types of faces to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:\n<li>entertainment (people in the entertainment industry)</li>\n<li>sport (sports celebrities)</li>\n<li>politician</li>",
           "example": "无",
           "member": "string",
           "name": "DefaultLibraryLabelSet",
@@ -7590,11 +7661,12 @@
       "usage": "out"
     },
     "LiveStreamAiReviewImagePoliticalResult": {
-      "document": "Result of politically sensitive information detection in image in AI-based live stream content audit",
+      "document": "The result of detecting sensitive information in live streaming videos.",
       "members": [
         {
           "default": "",
           "document": "Start PTS time of a suspected segment in seconds.",
+          "example": "0",
           "member": "float",
           "name": "StartPtsTime",
           "required": true,
@@ -7604,6 +7676,7 @@
         {
           "default": "",
           "document": "End PTS time of a suspected segment in seconds.",
+          "example": "0",
           "member": "float",
           "name": "EndPtsTime",
           "required": true,
@@ -7612,7 +7685,8 @@
         },
         {
           "default": "",
-          "document": "Score of a suspected politically sensitive segment.",
+          "document": "The confidence score for the detected sensitive segments.",
+          "example": "0",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -7622,6 +7696,7 @@
         {
           "default": "",
           "document": "Suggestion for porn information detection of a suspected segment. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
+          "example": "\"\"",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -7630,7 +7705,8 @@
         },
         {
           "default": "",
-          "document": "Tag of the detected politically sensitive information in video. Valid values:\n<li>politician: Politically sensitive figure.</li>\n<li>violation_photo: Violating photo.</li>",
+          "document": "The labels for the detected sensitive information. Valid values:\n<li>politician</li>\n<li>violation_photo (banned icons)</li>",
+          "example": "\"\"",
           "member": "string",
           "name": "Label",
           "required": true,
@@ -7639,7 +7715,8 @@
         },
         {
           "default": "",
-          "document": "Name of a politically sensitive figure or violating photo.",
+          "document": "The name of a sensitive person or banned icon.",
+          "example": "\"\"",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -7648,7 +7725,8 @@
         },
         {
           "default": "",
-          "document": "Zone coordinates (at the pixel level) of a politically sensitive figure or violating photo: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.",
+          "document": "The coordinates (pixel) of the detected sensitive people or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.",
+          "example": "0",
           "member": "int64",
           "name": "AreaCoordSet",
           "required": true,
@@ -7658,6 +7736,7 @@
         {
           "default": "",
           "document": "URL of a suspected image (which will not be permanently stored\nand will be deleted after `PicUrlExpireTime`).",
+          "example": "\"\"",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -7667,6 +7746,7 @@
         {
           "default": "",
           "document": "Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "\"\"",
           "member": "string",
           "name": "PicUrlExpireTime",
           "required": true,
@@ -7746,11 +7826,12 @@
       "usage": "out"
     },
     "LiveStreamAiReviewImageTerrorismResult": {
-      "document": "Result of terrorism information detection in image in AI-based live stream content audit",
+      "document": "The result of detecting sensitive information in live streaming videos.",
       "members": [
         {
           "default": "",
           "document": "Start PTS time of a suspected segment in seconds.",
+          "example": "0",
           "member": "float",
           "name": "StartPtsTime",
           "required": true,
@@ -7760,6 +7841,7 @@
         {
           "default": "",
           "document": "End PTS time of a suspected segment in seconds.",
+          "example": "0",
           "member": "float",
           "name": "EndPtsTime",
           "required": true,
@@ -7768,7 +7850,8 @@
         },
         {
           "default": "",
-          "document": "Score of a suspected terrorism segment.",
+          "document": "The confidence score for the detected sensitive segments.",
+          "example": "0",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -7777,7 +7860,8 @@
         },
         {
           "default": "",
-          "document": "Suggestion for terrorism information detection of a suspected segment. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
+          "document": "The suggestion for handling the sensitive segments. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
+          "example": "\"\"",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -7786,7 +7870,8 @@
         },
         {
           "default": "",
-          "document": "Tag of the detected terrorism information in a video. Valid values:\n<li>guns: Weapons and guns.</li>\n<li>crowd: Crowd.</li>\n<li>police: Police force.</li>\n<li>bloody: Bloody scenes.</li>\n<li>banners: Terrorism flags.</li>\n<li>militant: Militants.</li>\n<li>explosion: Explosions and fires.</li>\n<li>terrorists: Terrorists.</li>",
+          "document": "The labels for the detected sensitive content. Valid values:\n<li>guns</li>\n<li>crowd</li>\n<li>police</li>\n<li>bloody</li>\n<li>banners (sensitive flags)</li>\n<li>militant</li>\n<li>explosion</li>\n<li>terrorists</li>",
+          "example": "\"\"",
           "member": "string",
           "name": "Label",
           "required": true,
@@ -7796,6 +7881,7 @@
         {
           "default": "",
           "document": "URL of a suspected image (which will not be permanently stored\nand will be deleted after `PicUrlExpireTime`).",
+          "example": "\"\"",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -7805,6 +7891,7 @@
         {
           "default": "",
           "document": "Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "\"\"",
           "member": "string",
           "name": "PicUrlExpireTime",
           "required": true,
@@ -7834,7 +7921,8 @@
       "members": [
         {
           "default": "",
-          "document": "Content audit type. Valid values:\n<li>ImagePorn: Porn information detection in image</li>\n<li>ImageTerrorism: Terrorism information detection in image</li>\n<li>ImagePolitical: Politically sensitive information detection in image</li>\n<li>PornVoice: Porn information detection in speech</li>",
+          "document": "The type of the moderation result. Valid values:\n<li>ImagePorn</li>\n<li>ImageTerrorism</li>\n<li>ImagePolitical</li>\n<li>PornVoice (pornographic content in speech)</li>",
+          "example": "\"\"",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -7844,6 +7932,7 @@
         {
           "default": "",
           "document": "Result of porn information detection in image, which is valid when `Type` is `ImagePorn`.",
+          "example": "无",
           "member": "LiveStreamAiReviewImagePornResult",
           "name": "ImagePornResultSet",
           "required": true,
@@ -7852,7 +7941,8 @@
         },
         {
           "default": "",
-          "document": "Result of terrorism information detection in image, which is valid when `Type` is `ImageTerrorism`.",
+          "document": "The result of detecting sensitive information in images, which is valid if `Type` is `ImageTerrorism`.",
+          "example": "无",
           "member": "LiveStreamAiReviewImageTerrorismResult",
           "name": "ImageTerrorismResultSet",
           "required": true,
@@ -7861,7 +7951,8 @@
         },
         {
           "default": "",
-          "document": "Result of politically sensitive information detection in image, which is valid when `Type` is `ImagePolitical`.",
+          "document": "The result of detecting sensitive information in images, which is valid if `Type` is `ImagePolitical`.",
+          "example": "无",
           "member": "LiveStreamAiReviewImagePoliticalResult",
           "name": "ImagePoliticalResultSet",
           "required": true,
@@ -7871,6 +7962,7 @@
         {
           "default": "",
           "document": "Result of porn information detection in speech, which is valid when `Type` is `PornVoice`.",
+          "example": "无",
           "member": "LiveStreamAiReviewVoicePornResult",
           "name": "VoicePornResultSet",
           "required": true,
@@ -8780,11 +8872,12 @@
       "usage": "out"
     },
     "MediaContentReviewPoliticalSegmentItem": {
-      "document": "Suspected politically sensitive segment identified during content audit",
+      "document": "The information about the sensitive segments detected.",
       "members": [
         {
           "default": "",
           "document": "Start time offset of a suspected segment in seconds.",
+          "example": "0",
           "member": "float",
           "name": "StartTimeOffset",
           "required": true,
@@ -8794,6 +8887,7 @@
         {
           "default": "",
           "document": "End time offset of a suspected segment in seconds.",
+          "example": "0",
           "member": "float",
           "name": "EndTimeOffset",
           "required": true,
@@ -8802,7 +8896,8 @@
         },
         {
           "default": "",
-          "document": "Score of a suspected politically sensitive segment.",
+          "document": "The confidence score for the detected sensitive segments.",
+          "example": "0",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -8811,7 +8906,8 @@
         },
         {
           "default": "",
-          "document": "Suggestion for politically sensitive information detection of a suspected segment. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "document": "The suggestion for handling the sensitive segments. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
+          "example": "\"\"",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -8820,7 +8916,8 @@
         },
         {
           "default": "",
-          "document": "Name of a politically sensitive figure or violating photo.",
+          "document": "The name of a sensitive person or banned icon.",
+          "example": "\"\"",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -8829,7 +8926,8 @@
         },
         {
           "default": "",
-          "document": "Tags for the results of politically sensitive information detection of suspected video segments. The relationship between the `LabelSet` parameter in the content audit template [controlling tasks of video politically sensitive information detection](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) and this parameter is as follows:\nviolation_photo:\n<li>violation_photo: violating photo.</li>\npolitician:\n<li>nation_politician: head of state/government;</li>\n<li>province_politician: province/state leader;</li>\n<li>bureau_politician: ministry leader;</li>\n<li>county_politician: county/city leader;</li>\n<li>rural_politician: town leader;</li>\n<li>sensitive_politician: politically sensitive figure.</li>\n<li>foreign_politician: head of a foreign country/government.</li>\nentertainment:\n<li>sensitive_entertainment: sensitive entertainment celebrity.</li>\nsport:\n<li>sensitive_sport: sensitive sports figure.</li>\nentrepreneur:\n<li>sensitive_entrepreneur: sensitive business figure.</li>\nscholar:\n<li>sensitive_scholar: sensitive educator.</li>\ncelebrity:\n<li>sensitive_celebrity: sensitive well-known figure;</li>\n<li>historical_celebrity: well-known historical figure.</li>\nmilitary:\n<li>sensitive_military: militarily sensitive figure.</li>",
+          "document": "The labels for the detected sensitive segments. The relationship between the values of this parameter and those of the `LabelSet` parameter in [PoliticalImgReviewTemplateInfo](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) is as follows:\nviolation_photo:\n<li>violation_photo (banned icons)</li>\npolitician:\n<li>nation_politician (state leader)</li>\n<li>province_politician (provincial officials)</li>\n<li>bureau_politician (bureau-level officials)</li>\n<li>county_politician (county-level officials)</li>\n<li>rural_politician (township-level officials)</li>\n<li>sensitive_politician (sensitive people)</li>\n<li>foreign_politician (state leaders of other countries)</li>\nentertainment:\n<li>sensitive_entertainment (sensitive people in the entertainment industry</li>\nsport:\n<li>sensitive_sport (sensitive sports celebrities)</li>\nentrepreneur:\n<li>sensitive_entrepreneur</li>\nscholar:\n<li>sensitive_scholar</li>\ncelebrity:\n<li>sensitive_celebrity</li>\n<li>historical_celebrity (sensitive historical figures)</li>\nmilitary:\n<li>sensitive_military (sensitive people in military)</li>",
+          "example": "\"\"",
           "member": "string",
           "name": "Label",
           "required": true,
@@ -8839,6 +8937,7 @@
         {
           "default": "",
           "document": "URL of a suspected image (which will not be permanently stored\n and will be deleted after `PicUrlExpireTime`).",
+          "example": "\"\"",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -8847,7 +8946,8 @@
         },
         {
           "default": "",
-          "document": "Zone coordinates (at the pixel level) of a politically sensitive figure or violating photo: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.",
+          "document": "The coordinates (pixel) of the detected sensitive people or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.",
+          "example": "0",
           "member": "int64",
           "name": "AreaCoordSet",
           "required": true,
@@ -8857,6 +8957,7 @@
         {
           "default": "",
           "document": "Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "\"\"",
           "member": "string",
           "name": "PicUrlExpireTime",
           "required": true,
@@ -8867,11 +8968,12 @@
       "usage": "out"
     },
     "MediaContentReviewSegmentItem": {
-      "document": "Suspected porn/terrorism segment identified during content audit",
+      "document": "The information about the detected pornographic/sensitive segments.",
       "members": [
         {
           "default": "",
           "document": "Start time offset of a suspected segment in seconds.",
+          "example": "0",
           "member": "float",
           "name": "StartTimeOffset",
           "required": true,
@@ -8881,6 +8983,7 @@
         {
           "default": "",
           "document": "End time offset of a suspected segment in seconds.",
+          "example": "0",
           "member": "float",
           "name": "EndTimeOffset",
           "required": true,
@@ -8890,6 +8993,7 @@
         {
           "default": "",
           "document": "Score of a suspected porn segment.",
+          "example": "0",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -8899,6 +9003,7 @@
         {
           "default": "",
           "document": "Tag of porn information detection result of a suspected segment.",
+          "example": "\"\"",
           "member": "string",
           "name": "Label",
           "required": true,
@@ -8908,6 +9013,7 @@
         {
           "default": "",
           "document": "Suggestion for porn information detection of a suspected segment. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
+          "example": "\"\"",
           "member": "string",
           "name": "Suggestion",
           "required": true,
@@ -8917,6 +9023,7 @@
         {
           "default": "",
           "document": "URL of a suspected image (which will not be permanently stored\n and will be deleted after `PicUrlExpireTime`).",
+          "example": "\"\"",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -8926,6 +9033,7 @@
         {
           "default": "",
           "document": "Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "\"\"",
           "member": "string",
           "name": "PicUrlExpireTime",
           "required": true,
@@ -9745,7 +9853,8 @@
       "members": [
         {
           "default": "",
-          "document": "Time offset corresponding to the screenshot in the video in <font color=red>milliseconds</font>.",
+          "document": "The timestamp (seconds) of the screenshot.",
+          "example": "0",
           "member": "float",
           "name": "TimeOffset",
           "required": true,
@@ -9755,6 +9864,7 @@
         {
           "default": "",
           "document": "Path to the screenshot.",
+          "example": "\"\"",
           "member": "string",
           "name": "Path",
           "required": true,
@@ -9764,6 +9874,7 @@
         {
           "default": "",
           "document": "List of watermarking template IDs if the screenshots are watermarked.",
+          "example": "NULL",
           "member": "int64",
           "name": "WaterMarkDefinition",
           "required": true,
@@ -11366,11 +11477,12 @@
       "type": "object"
     },
     "PoliticalAsrReviewTemplateInfo": {
-      "document": "Control parameter of a politically sensitive information detection in speech task",
+      "document": "The parameters for detecting sensitive information based on ASR.",
       "members": [
         {
           "default": "",
-          "document": "Switch of a politically sensitive information detection in speech task. Valid values:\n<li>ON: Enables a politically sensitive information detection in speech task;</li>\n<li>OFF: Disables a politically sensitive information detection in speech task.</li>",
+          "document": "Whether to detect sensitive information based on ASR. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -11380,6 +11492,7 @@
         {
           "default": "",
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.",
+          "example": "100",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -11389,6 +11502,7 @@
         {
           "default": "",
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.",
+          "example": "75",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -11399,11 +11513,12 @@
       "usage": "both"
     },
     "PoliticalAsrReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of a politically sensitive information detection in speech task.",
+      "document": "The parameters for detecting sensitive information based on ASR.",
       "members": [
         {
           "default": "",
-          "document": "Switch of a politically sensitive information detection in speech task. Valid values:\n<li>ON: Enables a politically sensitive information detection in speech task;</li>\n<li>OFF: Disables a politically sensitive information detection in speech task.</li>",
+          "document": "Whether to detect sensitive information based on ASR. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "\"\"",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -11413,6 +11528,7 @@
         {
           "default": "",
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.",
+          "example": "0",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -11422,6 +11538,7 @@
         {
           "default": "",
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.",
+          "example": "0",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -11432,11 +11549,12 @@
       "usage": "in"
     },
     "PoliticalConfigureInfo": {
-      "document": "Control parameter of a politically sensitive information detection task",
+      "document": "The parameters for detecting sensitive information.",
       "members": [
         {
           "default": "",
-          "document": "Control parameter of politically sensitive information detection in image.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The parameters for detecting sensitive information in images.",
+          "example": "无",
           "member": "PoliticalImgReviewTemplateInfo",
           "name": "ImgReviewInfo",
           "required": false,
@@ -11445,7 +11563,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of politically sensitive information detection in speech.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The parameters for detecting sensitive information based on ASR.",
+          "example": "无",
           "member": "PoliticalAsrReviewTemplateInfo",
           "name": "AsrReviewInfo",
           "required": false,
@@ -11454,7 +11573,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of politically sensitive information detection in text.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The parameters for detecting sensitive information based on OCR.",
+          "example": "无",
           "member": "PoliticalOcrReviewTemplateInfo",
           "name": "OcrReviewInfo",
           "required": false,
@@ -11465,11 +11585,12 @@
       "usage": "both"
     },
     "PoliticalConfigureInfoForUpdate": {
-      "document": "Control parameter of a politically sensitive information detection task.",
+      "document": "The parameters for detecting sensitive information.",
       "members": [
         {
           "default": "",
-          "document": "Control parameter of politically sensitive information detection in image.",
+          "document": "The parameters for detecting sensitive information in images.",
+          "example": "NULL",
           "member": "PoliticalImgReviewTemplateInfoForUpdate",
           "name": "ImgReviewInfo",
           "required": false,
@@ -11478,7 +11599,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of politically sensitive information detection in speech.",
+          "document": "The parameters for detecting sensitive information based on ASR.",
+          "example": "NULL",
           "member": "PoliticalAsrReviewTemplateInfoForUpdate",
           "name": "AsrReviewInfo",
           "required": false,
@@ -11487,7 +11609,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of politically sensitive information detection in text.",
+          "document": "The parameters for detecting sensitive information based on OCR.",
+          "example": "NULL",
           "member": "PoliticalOcrReviewTemplateInfoForUpdate",
           "name": "OcrReviewInfo",
           "required": false,
@@ -11498,11 +11621,12 @@
       "usage": "in"
     },
     "PoliticalImgReviewTemplateInfo": {
-      "document": "Control parameter of a politically sensitive information detection in image task",
+      "document": "The parameters for detecting sensitive information in images.",
       "members": [
         {
           "default": "",
-          "document": "Switch of a politically sensitive information detection in image task. Valid values:\n<li>ON: Enables a politically sensitive information detection in image task;</li>\n<li>OFF: Disables a politically sensitive information detection in image task.</li>",
+          "document": "Whether to detect sensitive information in images. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -11511,7 +11635,8 @@
         },
         {
           "default": "",
-          "document": "Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:\n<li>violation_photo: violating photo;</li>\n<li>politician: political figure;</li>\n<li>entertainment: entertainment celebrity;</li>\n<li>sport: sports figure;</li>\n<li>entrepreneur: business figure;</li>\n<li>scholar: educator;</li>\n<li>celebrity: well-known figure;</li>\n<li>military: military figure.</li>",
+          "document": "The filter labels for sensitive information detection in images, which specify the types of sensitive information to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:\n<li>violation_photo (banned icons)</li>\n<li>politician</li>\n<li>entertainment (people in the entertainment industry)</li>\n<li>sport (people in the sports industry)</li>\n<li>entrepreneur</li>\n<li>scholar</li>\n<li>celebrity</li>\n<li>military (people in military)</li>",
+          "example": "violation_photo",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -11521,6 +11646,7 @@
         {
           "default": "",
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.",
+          "example": "97",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -11530,6 +11656,7 @@
         {
           "default": "",
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.",
+          "example": "95",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -11540,11 +11667,12 @@
       "usage": "both"
     },
     "PoliticalImgReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of a politically sensitive information detection in image task.",
+      "document": "The parameters for detecting sensitive information in images.",
       "members": [
         {
           "default": "",
-          "document": "Switch of a politically sensitive information detection in image task. Valid values:\n<li>ON: Enables a politically sensitive information detection in image task;</li>\n<li>OFF: Disables a politically sensitive information detection in image task.</li>",
+          "document": "Whether to detect sensitive information in images. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -11553,7 +11681,8 @@
         },
         {
           "default": "",
-          "document": "Filter tags for politically sensitive information detection of video images. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:\n<li>violation_photo: violating photo;</li>\n<li>politician: political figure;</li>\n<li>entertainment: entertainment celebrity;</li>\n<li>sport: sports figure;</li>\n<li>entrepreneur: business figure;</li>\n<li>scholar: educator;</li>\n<li>celebrity: well-known figure;</li>\n<li>military: military figure.</li>",
+          "document": "The filter labels for sensitive information detection in images, which specify the types of sensitive information to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:\n<li>violation_photo (banned icons)</li>\n<li>politician</li>\n<li>entertainment (people in the entertainment industry)</li>\n<li>sport (people in the sports industry)</li>\n<li>entrepreneur</li>\n<li>scholar</li>\n<li>celebrity</li>\n<li>military (people in military)</li>",
+          "example": "violation_photo",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -11563,6 +11692,7 @@
         {
           "default": "",
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.",
+          "example": "0",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -11572,6 +11702,7 @@
         {
           "default": "",
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.",
+          "example": "0",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -11582,11 +11713,12 @@
       "usage": "in"
     },
     "PoliticalOcrReviewTemplateInfo": {
-      "document": "Control parameter of a politically sensitive information detection in text task",
+      "document": "The parameters for detecting sensitive information based on OCR.",
       "members": [
         {
           "default": "",
-          "document": "Switch of a politically sensitive information detection in text task. Valid values:\n<li>ON: Enables a politically sensitive information detection in text task;</li>\n<li>OFF: Disables a politically sensitive information detection in text task.</li>",
+          "document": "Whether to detect sensitive information based on OCR. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -11596,6 +11728,7 @@
         {
           "default": "",
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.",
+          "example": "0",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -11605,6 +11738,7 @@
         {
           "default": "",
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.",
+          "example": "0",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -11615,11 +11749,12 @@
       "usage": "both"
     },
     "PoliticalOcrReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of a politically sensitive information detection in text task.",
+      "document": "The parameters for detecting sensitive information based on OCR.",
       "members": [
         {
           "default": "",
-          "document": "Switch of a politically sensitive information detection in text task. Valid values:\n<li>ON: Enables a politically sensitive information detection in text task;</li>\n<li>OFF: Disables a politically sensitive information detection in text task.</li>",
+          "document": "Whether to detect sensitive information based on OCR. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -11629,6 +11764,7 @@
         {
           "default": "",
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.",
+          "example": "0",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -11638,6 +11774,7 @@
         {
           "default": "",
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.",
+          "example": "0",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -13200,11 +13337,12 @@
       "usage": "out"
     },
     "TerrorismConfigureInfo": {
-      "document": "Control parameter of a terrorism information detection task",
+      "document": "The parameters for detecting sensitive information.",
       "members": [
         {
           "default": "",
-          "document": "Control parameter of a terrorism information detection in image task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The parameters for detecting sensitive information in images.",
+          "example": "NULL",
           "member": "TerrorismImgReviewTemplateInfo",
           "name": "ImgReviewInfo",
           "required": false,
@@ -13213,7 +13351,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of terrorism information detection in text task.",
+          "document": "The parameters for detecting sensitive information based on OCR.",
+          "example": "NULL",
           "member": "TerrorismOcrReviewTemplateInfo",
           "name": "OcrReviewInfo",
           "required": true,
@@ -13224,11 +13363,12 @@
       "usage": "out"
     },
     "TerrorismConfigureInfoForUpdate": {
-      "document": "Control parameter of a terrorism information detection task.",
+      "document": "The parameters for detecting sensitive information.",
       "members": [
         {
           "default": "",
-          "document": "Control parameter of a terrorism information detection in image task.",
+          "document": "The parameters for detecting sensitive information in images.",
+          "example": "NULL",
           "member": "TerrorismImgReviewTemplateInfoForUpdate",
           "name": "ImgReviewInfo",
           "required": false,
@@ -13237,7 +13377,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter of terrorism information detection in text task.",
+          "document": "The parameters for detecting sensitive information based on OCR.",
+          "example": "NULL",
           "member": "TerrorismOcrReviewTemplateInfoForUpdate",
           "name": "OcrReviewInfo",
           "required": false,
@@ -13248,11 +13389,11 @@
       "usage": "in"
     },
     "TerrorismImgReviewTemplateInfo": {
-      "document": "Control parameter of a terrorism information detection in image task",
+      "document": "The parameters for detecting sensitive information in images.",
       "members": [
         {
           "default": "",
-          "document": "Switch of a terrorism information detection in image task. Valid values:\n<li>ON: Enables a terrorism information detection in image task;</li>\n<li>OFF: Disables a terrorism information detection in image task.</li>",
+          "document": "Whether to detect sensitive information in images. Valid values:\n<li>ON</li>\n<li>OFF</li>",
           "example": "ON",
           "member": "string",
           "name": "Switch",
@@ -13262,7 +13403,7 @@
         },
         {
           "default": "",
-          "document": "Filter tags for terrorism information detection in images. If a specified tag is detected, the tag is returned. If no filter tag is specified, all detected tags are returned. Valid values:\n<li>`guns`: weapons and guns</li>\n<li>`crowd`: crowds</li>\n<li>`bloody`: bloodiness</li>\n<li>`police`: police forces</li>\n<li>`banners`: terrorism flags</li>\n<li>`militant`: militants</li>\n<li>`explosion`: explosions and fires</li>\n<li>`terrorists`: terrorists</li>\n<li>`scenario`: terrorism images</li>",
+          "document": "The filter labels for sensitive information detection in images, which specify the types of sensitive information to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:\n<li>guns</li>\n<li>crowd</li>\n<li>bloody</li>\n<li>police</li>\n<li>banners (sensitive flags)</li>\n<li>militant</li>\n<li>explosion</li>\n<li>terrorists</li>\n<li>scenario (sensitive scenes) </li>",
           "example": "bloody",
           "member": "string",
           "name": "LabelSet",
@@ -13294,11 +13435,11 @@
       "usage": "both"
     },
     "TerrorismImgReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of a terrorism information detection in image task.",
+      "document": "The parameters for detecting sensitive information in images.",
       "members": [
         {
           "default": "",
-          "document": "Switch of a terrorism information detection in image task. Valid values:\n<li>ON: Enables a terrorism information detection in image task;</li>\n<li>OFF: Disables a terrorism information detection in image task.</li>",
+          "document": "Whether to detect sensitive information in images. Valid values:\n<li>ON</li>\n<li>OFF</li>",
           "example": "ON",
           "member": "string",
           "name": "Switch",
@@ -13308,7 +13449,7 @@
         },
         {
           "default": "",
-          "document": "Filter tags for terrorism information detection in images. If a specified tag is detected, the tag is returned. If no filter tag is specified, all detected tags are returned. Valid values:\n<li>`guns`: weapons and guns</li>\n<li>`crowd`: crowds</li>\n<li>`bloody`: bloodiness</li>\n<li>`police`: police forces</li>\n<li>`banners`: terrorism flags</li>\n<li>`militant`: militants</li>\n<li>`explosion`: explosions and fires</li>\n<li>`terrorists`: terrorists</li>\n<li>`scenario`: terrorism images</li>",
+          "document": "The filter labels for sensitive information detection in images, which specify the types of sensitive information to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:\n<li>guns</li>\n<li>crowd</li>\n<li>bloody</li>\n<li>police</li>\n<li>banners (sensitive flags)</li>\n<li>militant</li>\n<li>explosion</li>\n<li>terrorists</li>\n<li>scenario (sensitive scenes) </li>",
           "example": "guns",
           "member": "string",
           "name": "LabelSet",
@@ -13340,11 +13481,12 @@
       "usage": "in"
     },
     "TerrorismOcrReviewTemplateInfo": {
-      "document": "Control parameter of terrorism information detection in text task",
+      "document": "The parameters for detecting sensitive information based on OCR.",
       "members": [
         {
           "default": "",
-          "document": "Switch of terrorism information detection in text task. Valid values:\n<li>ON: enables terrorism information detection in text task;</li>\n<li>OFF: disables terrorism information detection in text task.</li>",
+          "document": "Whether to detect sensitive information based on OCR. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -13354,6 +13496,7 @@
         {
           "default": "",
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.",
+          "example": "0",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -13363,6 +13506,7 @@
         {
           "default": "",
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.",
+          "example": "0",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -13373,11 +13517,12 @@
       "usage": "both"
     },
     "TerrorismOcrReviewTemplateInfoForUpdate": {
-      "document": "Control parameter of terrorism information detection in text task",
+      "document": "The parameters for detecting sensitive information based on OCR.",
       "members": [
         {
           "default": "",
-          "document": "Switch of terrorism information detection in text task. Valid values:\n<li>ON: enables terrorism information detection in text task;</li>\n<li>OFF: disables terrorism information detection in text task.</li>",
+          "document": "Whether to detect sensitive information based on OCR. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -13387,6 +13532,7 @@
         {
           "default": "",
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.",
+          "example": "0",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -13396,6 +13542,7 @@
         {
           "default": "",
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.",
+          "example": "0",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -14173,6 +14320,7 @@
         {
           "default": "",
           "document": "Video stream codec. Valid values:\n<li>libx264: H.264</li>\n<li>libx265: H.265</li>\nCurrently, a resolution within 640*480p must be specified for H.265.",
+          "example": "libx264",
           "member": "string",
           "name": "Codec",
           "required": false,
@@ -14182,6 +14330,7 @@
         {
           "default": "",
           "document": "Video frame rate in Hz. Value range: [0, 100].\nIf the value is 0, the frame rate will be the same as that of the source video.",
+          "example": "0",
           "member": "uint64",
           "name": "Fps",
           "required": false,
@@ -14191,6 +14340,7 @@
         {
           "default": "",
           "document": "Bitrate of a video stream in Kbps. Value range: 0 and [128, 35,000].\nIf the value is 0, the bitrate of the video will be the same as that of the source video.",
+          "example": "0",
           "member": "uint64",
           "name": "Bitrate",
           "required": false,
@@ -14200,6 +14350,7 @@
         {
           "default": "",
           "document": "Resolution adaption. Valid values:\n<li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>",
+          "example": "open",
           "member": "string",
           "name": "ResolutionAdaptive",
           "required": false,
@@ -14209,6 +14360,7 @@
         {
           "default": "",
           "document": "Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>",
+          "example": "0",
           "member": "uint64",
           "name": "Width",
           "required": false,
@@ -14218,6 +14370,7 @@
         {
           "default": "",
           "document": "Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].",
+          "example": "0",
           "member": "uint64",
           "name": "Height",
           "required": false,
@@ -14227,6 +14380,7 @@
         {
           "default": "",
           "document": "Frame interval between I keyframes. Value range: 0 and [1,100000]. If this parameter is 0, the system will automatically set the GOP length.",
+          "example": "0",
           "member": "uint64",
           "name": "Gop",
           "required": false,
@@ -14236,6 +14390,7 @@
         {
           "default": "",
           "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>",
+          "example": "stretch",
           "member": "string",
           "name": "FillType",
           "required": false,
@@ -14245,8 +14400,19 @@
         {
           "default": "",
           "document": "The control factor of video constant bitrate. Value range: [0, 51]. This parameter will be disabled if you enter `0`.\nIt is not recommended to specify this parameter if there are no special requirements.",
+          "example": "0",
           "member": "uint64",
           "name": "Vcrf",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable adaptive encoding. Valid values:\n<li>0: Disable</li>\n<li>1: Enable</li>\nDefault value: 0. If this parameter is set to `1`, multiple streams with different resolutions and bitrates will be generated automatically. The highest resolution, bitrate, and quality of the streams are determined by the values of `width` and `height`, `Bitrate`, and `Vcrf` in `VideoTemplate` respectively. If these parameters are not set in `VideoTemplate`, the highest resolution generated will be the same as that of the source video, and the highest video quality will be close to VMAF 95. To use this parameter or learn about the billing details of adaptive encoding, please contact your sales rep.",
+          "example": "0",
+          "member": "uint64",
+          "name": "ContentAdaptStream",
           "required": false,
           "type": "int",
           "value_allowed_null": false

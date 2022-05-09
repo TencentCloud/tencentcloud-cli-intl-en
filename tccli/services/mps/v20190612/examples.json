@@ -599,7 +599,7 @@
     "ModifyWordSample": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=ModifyWordSample\n&Keyword=Fight\n&Usages.0=Review\n&TagOperationInfo.Type=reset\n&TagOperationInfo.Tags.0=Terrorism\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=ModifyWordSample\n&Keyword=Fight\n&Usages.0=Review\n&TagOperationInfo.Type=reset\n&TagOperationInfo.Tags.0=Sensitive information\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying a keyword sample"
       }
