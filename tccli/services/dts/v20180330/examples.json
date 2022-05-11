@@ -2,7 +2,7 @@
   "actions": {
     "ActivateSubscribe": [
       {
-        "document": "This example shows you how to configure a data subscription.",
+        "document": "This example shows you how to configure data subscription.",
         "input": "https://dts.tencentcloudapi.com/?Action=ActivateSubscribe\n&SubscribeId=subs-ieuwi83j2e\n&InstanceId=cdb-9dijwkkw2\n&SubscribeObjectType=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": \"cafebabe-254f-11ea-8995-e92c139e6978\",\n        \"RequestId\": \"9iu7ueht-c38f-11ea-84e5-d5a93c1b919b\"\n    }\n}",
         "title": "Configuring data subscription"
@@ -13,15 +13,15 @@
         "document": "",
         "input": "https://dts.tencentcloudapi.com/?Action=CompleteMigrateJob\n&JobId=dts-1kl0iy0v\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5268ea15-6636-44d1-89f9-e989d1c82e7d\"\n    }\n}",
-        "title": "Completing data migration task"
+        "title": "Completing a data migration task"
       }
     ],
     "CreateMigrateCheckJob": [
       {
         "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=CreateMigrateCheckJob\r\n&JobId=dts-1kl0iy0v\r\n&<Common request parameters>",
+        "input": "https://dts.tencentcloudapi.com/?Action=CreateMigrateCheckJob\n&JobId=dts-1kl0iy0v\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"46b45da1-3e8e-4ef2-8de8-b1bffa027385\"\n    }\n}",
-        "title": "Creating migration verification task"
+        "title": "Creating a migration check task"
       }
     ],
     "CreateMigrateJob": [
@@ -70,16 +70,16 @@
     ],
     "DescribeMigrateCheckJob": [
       {
-        "document": "This example shows you how to get the migration verification result (verification failed).",
-        "input": "https://dts.tencentcloudapi.com/?Action=DescribeMigrateCheckJob\r\n&JobId=dts-1kl0iy0v\r\n&<Common request parameters>",
+        "document": "Check failed",
+        "input": "https://dts.tencentcloudapi.com/?Action=DescribeMigrateCheckJob\n&JobId=dts-1kl0iy0v\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Status\": \"finished\",\n        \"ErrorCode\": -1,\n        \"ErrorMessage\": \"The selected table does not exist. Please select another one [the input parameter \"table\" was not found in the source instance]\",\n        \"Progress\": \"100\",\n        \"CheckFlag\": 0,\n        \"RequestId\": \"67b4cfcf-6957-48ae-b7ef-ba33209895e3\"\n    }\n}",
-        "title": "Getting migration verification result - 2"
+        "title": "Getting the migration check result - 2"
       },
       {
-        "document": "This example shows you how to get the migration verification result (verification succeeded).",
-        "input": "https://dts.tencentcloudapi.com/?Action=DescribeMigrateCheckJob\r\n&JobId=dts-dau5czmd\r\n&<Common request parameters>",
+        "document": "Check succeeded",
+        "input": "https://dts.tencentcloudapi.com/?Action=DescribeMigrateCheckJob\n&JobId=dts-dau5czmd\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Status\": \"finished\",\n        \"ErrorCode\": 0,\n        \"ErrorMessage\": \"ok\",\n        \"Progress\": \"100\",\n        \"CheckFlag\": 1,\n        \"RequestId\": \"336448b0-2a45-4be4-8356-c245eab5784f\"\n    }\n}",
-        "title": "Getting migration verification result"
+        "title": "Getting the migration check result"
       }
     ],
     "DescribeMigrateJobs": [
@@ -101,8 +101,8 @@
     "DescribeSubscribeConf": [
       {
         "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=DescribeSubscribeConf\r\n&SubscribeId=subs-ieuwi83j2e\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"ChannelId\": \"dts-channel-C9rS58f2rFx11ZEZ\",\n        \"ConsumeStartTime\": \"2019-12-19 16:23:45\",\n        \"CreateTime\": \"2019-12-20 14:59:07\",\n        \"ExpireTime\": \"0000-00-00 00:00:00\",\n        \"InstanceId\": \"cdb-forsubsc\",\n        \"InstanceStatus\": \"running\",\n        \"IsolateTime\": \"0000-00-00 00:00:00\",\n        \"ModifyTime\": \"2019-12-20 18:06:26\",\n        \"OfflineTime\": \"0000-00-00 00:00:00\",\n        \"PayType\": 1,\n        \"Product\": \"mysql\",\n        \"Region\": \"ap-guangzhou\",\n        \"RequestId\": \"e580eac0-26c7-11ea-8e66-910ac0afe95e\",\n        \"SdkConsumedTime\": \"0000-00-00 00:00:00\",\n        \"SdkHost\": \"\",\n        \"Status\": \"normal\",\n        \"SubsStatus\": \"configured\",\n        \"SubscribeId\": \"subs-58zcu8bax0\",\n        \"SubscribeName\": \"Test instance\",\n        \"SubscribeObjectType\": 3,\n        \"SubscribeObjects\": [\n            {\n                \"DatabaseName\": \"dts\",\n                \"ObjectsType\": 0,\n                \"TableNames\": null\n            }\n        ],\n        \"UniqSubnetId\": \"subnet-4p1hpsj8\",\n        \"UniqVpcId\": \"vpc-fbg8gh1j\",\n        \"Vip\": \"192.168.1.143\",\n        \"Vport\": 7507\n    }\n}",
+        "input": "https://dts.tencentcloudapi.com/?Action=DescribeSubscribeConf\n&SubscribeId=subs-ieuwi83j2e\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"ChannelId\": \"dts-channel-C9rS58f2rFx11ZEZ\",\n        \"ConsumeStartTime\": \"2019-12-19 16:23:45\",\n        \"CreateTime\": \"2019-12-20 14:59:07\",\n        \"ExpireTime\": \"0000-00-00 00:00:00\",\n        \"InstanceId\": \"cdb-forsubsc\",\n        \"InstanceStatus\": \"running\",\n        \"IsolateTime\": \"0000-00-00 00:00:00\",\n        \"ModifyTime\": \"2019-12-20 18:06:26\",\n        \"OfflineTime\": \"0000-00-00 00:00:00\",\n        \"PayType\": 1,\n        \"Product\": \"mysql\",\n        \"Region\": \"ap-guangzhou\",\n        \"RequestId\": \"e580eac0-26c7-11ea-8e66-910ac0afe95e\",\n        \"SdkConsumedTime\": \"0000-00-00 00:00:00\",\n        \"SdkHost\": \"\",\n        \"Status\": \"normal\",\n        \"SubsStatus\": \"configured\",\n        \"SubscribeId\": \"subs-58zcu8bax0\",\n        \"SubscribeName\": \"Test instance\",\n        \"SubscribeObjectType\": 3,\n        \"SubscribeObjects\": [\n            {\n                \"DatabaseName\": \"dts\",\n                \"ObjectsType\": 0,\n                \"TableNames\": null\n            }\n        ],\n        \"UniqSubnetId\": \"subnet-4p1hpsj8\",\n        \"SubscribeVersion\": \"kafka\",\n        \"UniqVpcId\": \"vpc-fbg8gh1j\",\n        \"Vip\": \"192.168.1.143\",\n        \"Vport\": 7507,\n        \"AutoRenewFlag\": 0,\n        \"Errors\": [\n            {\n                \"Message\": \"\"\n            }\n        ],\n        \"Tags\": [\n            {\n                \"TagKey\": \"userDefineKey\",\n                \"TagValue\": \"userDefineValue\"\n            }\n        ]\n    }\n}",
         "title": "Viewing subscription configuration details"
       }
     ],
@@ -119,15 +119,15 @@
         "document": "",
         "input": "https://dts.tencentcloudapi.com/?Action=IsolateSubscribe\n&SubscribeId=subs-ieuwi83j2e\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
-        "title": "Isolating subscription object"
+        "title": "Isolating subscription objects"
       }
     ],
     "ModifyMigrateJob": [
       {
-        "document": "This example shows you how to modify the configuration of migration task \"dts-1kl0iy0v\".",
-        "input": "https://dts.tencentcloudapi.com/?Action=ModifyMigrateJob\r\n&JobId=dts-1kl0iy0v\r\n&JobName=userdts\r\n&DatabaseInfo=[{\"Database\":\"test\",\"Table\":[\"user\",\"log\"]}]\r\n&MigrateOption.RunMode=1\r\n&MigrateOption.MigrateType=2\r\n&MigrateOption.MigrateObject=2\r\n&MigrateOption.ConsistencyType=5\r\n&MigrateOption.IsOverrideRoot=0\r\n&DstInfo.ReadOnly=0\r\n&SrcInfo.Supplier=others \r\n&<Common request parameters>",
+        "document": "This example shows you how to modify the configuration of the migration task “dts-1kl0iy0v”.",
+        "input": "https://dts.tencentcloudapi.com/?Action=ModifyMigrateJob\n&JobId=dts-1kl0iy0v\n&JobName=userdts\n&DatabaseInfo=[{\"Database\":\"test\",\"Table\":[\"user\",\"log\"]}]\n&MigrateOption.RunMode=1\n&MigrateOption.MigrateType=2\n&MigrateOption.MigrateObject=2\n&MigrateOption.ConsistencyType=5\n&MigrateOption.IsOverrideRoot=0\n&DstInfo.ReadOnly=0\n&DstInfo.Region=ap-guangzhou\n&SrcInfo.Supplier=others \n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"27ef2b7c-a786-48b4-9404-2f9baf3f4916\"\n    }\n}",
-        "title": "Modifying data migration task"
+        "title": "Modifying a data migration task"
       }
     ],
     "ModifySubscribeConsumeTime": [
@@ -141,17 +141,17 @@
     "ModifySubscribeName": [
       {
         "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=ModifySubscribeName\r\n&SubscribeId=subs-ieuwi83j2e\r\n&SubscribeName=test\r\n&<Common request parameters>",
+        "input": "https://dts.tencentcloudapi.com/?Action=ModifySubscribeName\n&SubscribeId=subs-ieuwi83j2e\n&SubscribeName=test\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
-        "title": "Renaming data subscription instance"
+        "title": "Renaming a data subscription instance"
       }
     ],
     "ModifySubscribeObjects": [
       {
         "document": "This example shows you how to modify the subscription rule of a data subscription, such as adding or removing certain tables.",
-        "input": "https://dts.tencentcloudapi.com/?Action=ModifySubscribeObjects\r\n&SubscribeId=subs-ieuwi83j2e\r\n&SubscribeObjectType=0\r\n&<Common request parameters>",
+        "input": "https://dts.tencentcloudapi.com/?Action=ModifySubscribeObjects\n&SubscribeId=subs-ieuwi83j2e\n&SubscribeObjectType=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\",\n        \"AsyncRequestId\": \"19b514a7-816c43c1-ffb34ab6-8c6a23eb\"\n    }\n}",
-        "title": "Modifying the subscription rule of data subscription channel"
+        "title": "Modifying the subscription rule of a data subscription channel"
       }
     ],
     "ModifySubscribeVipVport": [
@@ -165,33 +165,33 @@
     "OfflineIsolatedSubscribe": [
       {
         "document": "This example shows you how to deactivate an isolated subscription instance.",
-        "input": "https://dts.tencentcloudapi.com/?Action=OfflineIsolatedSubscribe\r\n&SubscribeId=subs-ieuwi83j2e\r\n&<Common request parameters>",
+        "input": "https://dts.tencentcloudapi.com/?Action=OfflineIsolatedSubscribe\n&SubscribeId=subs-ieuwi83j2e\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
-        "title": "Deactivating isolated data subscription instance"
+        "title": "Deactivating an isolated data subscription instance"
       }
     ],
     "ResetSubscribe": [
       {
         "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=ResetSubscribe\r\n&SubscribeId=subs-ieuwi83j2e\r\n&<Common request parameters>",
+        "input": "https://dts.tencentcloudapi.com/?Action=ResetSubscribe\n&SubscribeId=subs-ieuwi83j2e\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
-        "title": "Resetting data subscription instance"
+        "title": "Resetting a data subscription instance"
       }
     ],
     "StartMigrateJob": [
       {
         "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=StartMigrateJob\r\n&JobId=dts-1kl0iy0v\r\n&<Common request parameters>",
+        "input": "https://dts.tencentcloudapi.com/?Action=StartMigrateJob\n&JobId=dts-1kl0iy0v\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bab78b9b-ce8a-4645-bfb2-5b03397d6ea0\"\n    }\n}",
-        "title": "Starting migration task"
+        "title": "Starting a migration task"
       }
     ],
     "StopMigrateJob": [
       {
         "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=StopMigrateJob\r\n&JobId=dts-1kl0iy0v\r\n&<Common request parameters>",
+        "input": "https://dts.tencentcloudapi.com/?Action=StopMigrateJob\n&JobId=dts-1kl0iy0v\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"22f6b9ca-e94d-4a4d-b48f-a5133e791374\"\n    }\n}",
-        "title": "Canceling data migration task"
+        "title": "Canceling a data migration task"
       }
     ]
   },

@@ -1,119 +1,27 @@
 {
   "actions": {
-    "CreatePicture": [
+    "CreateCloudRecording": [
       {
-        "document": "",
-        "input": "https://trtc.tencentcloudapi.com/?Action=CreatePicture\n&Content=test\n&Suffix=jpg\n&SdkAppId=123\n&Height=12\n&Width=15\n&XPosition=15\n&YPosition=36\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"PictureId\": 1400297109,\n        \"RequestId\": \"049461e6-f2f5-4168-887e-aca4fbfa5fae\"\n    }\n}",
-        "title": "Uploading an image"
+        "document": "This example shows you how to start on-cloud recording in room 3560 under the application whose `SDKAppID` is `1234`.\n\nThe timeout period for recording is one minute.\nThe recording mode is mixed-stream recording.\nThe type of the streams recorded are audio and video.\nThe streams of all anchors in the room are subscribed.\nThe recording file is saved to Tencent Cloud with the prefix `directory1/directory2/`.\nThe resolution of the recorded video is 360 x 640, the frame rate is 15 fps, and the bitrate is 500,000 bps. The default background color is used.\nThe grid layout template is used.",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCloudRecording\n<Common request parameters>\n\n{\n    \"StorageParams\": {\n        \"CloudStorage\": {\n            \"Vendor\": 0,\n            \"Region\": \"xx\",\n            \"Bucket\": \"xx\",\n            \"FileNamePrefix\": [\n                \"directory1\",\n                \"directory2\"\n            ],\n            \"SecretKey\": \"xx\",\n            \"AccessKey\": \"xx\"\n        }\n    },\n    \"UserSig\": \"xx\",\n    \"UserId\": \"xx\",\n    \"RecordParams\": {\n        \"MaxIdleTime\": 60,\n        \"StreamType\": 0,\n        \"RecordMode\": 2\n    },\n    \"RoomIdType\": 1,\n    \"MixTranscodeParams\": {\n        \"VideoParams\": {\n            \"Width\": 360,\n            \"BitRate\": 500000,\n            \"Fps\": 15,\n            \"Height\": 640,\n            \"Gop\": 10\n        }\n    },\n    \"SdkAppId\": 1234,\n    \"RoomId\": \"3560\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"5df46eb2-8e4b-490e-9c3c-dbd3b84faefc\",\n        \"RequestId\": \"71993312-6ab8-4768-9124-118e0a20c45f\"\n    }\n}",
+        "title": "Starting an on-cloud recording task"
       }
     ],
-    "CreateTroubleInfo": [
+    "DeleteCloudRecording": [
       {
-        "document": "",
-        "input": "https://trtc.tencentcloudapi.com/?Action=CreateTroubleInfo\n&SdkAppId=1400188366\n&RoomId=1587879309\n&TeacherUserId=1587882309\n&StudentUserId=123456\n&TroubleUserId=123456\n&TroubleType=1\n&TroubleTime=87654321\n&TroubleMsg=VoiceException\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"56b89272-cdff-46a3-a399-87ec6f209b53\"\n    }\n}",
-        "title": "Creating exception information"
+        "document": "This example shows you how to stop the on-cloud recording task whose ID is xx under the application whose `SDKAppID` is `1234`.",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCloudRecording\n<Common request parameters>\n\n{\n    \"TaskId\": \"xx\",\n    \"SdkAppId\": 1234\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"5df46eb2-8e4b-490e-9c3c-dbd3b84faefc\",\n        \"RequestId\": \"71993312-6ab8-4768-9124-118e0a20c45f\"\n    }\n}",
+        "title": "Stopping an on-cloud recording task"
       }
     ],
-    "DeletePicture": [
+    "DescribeCloudRecording": [
       {
         "document": "",
-        "input": "https://trtc.tencentcloudapi.com/?Action=DeletePicture\n&PictureId=1234567890\n&SdkAppId=123456789\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"049461e6-f2f5-4168-887e-aca4fbfa5fae\"\n    }\n}",
-        "title": "Deleting an image"
-      }
-    ],
-    "DescribeAbnormalEvent": [
-      {
-        "document": "",
-        "input": "https://trtc.tencentcloudapi.com/?Action=DescribeAbnormalEvent\n&SdkAppId=1400188366\n&StartTime=1592448600\n&EndTime=1592449080\n&RoomId=461\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"AbnormalExperienceList\": [\n            {\n                \"UserId\": \"itachi3\",\n                \"RoomId\": \"461\",\n                \"EventTime\": 1592448600,\n                \"ExperienceId\": 4,\n                \"AbnormalEventList\": [\n                    {\n                        \"AbnormalEventId\": 2011,\n                        \"PeerId\": \"\"\n                    },\n                    {\n                        \"AbnormalEventId\": 2012,\n                        \"PeerId\": \"\"\n                    }\n                ]\n            },\n            {\n                \"UserId\": \"itachili1\",\n                \"RoomId\": \"461\",\n                \"EventTime\": 1592448600,\n                \"ExperienceId\": 4,\n                \"AbnormalEventList\": [\n                    {\n                        \"AbnormalEventId\": 2011,\n                        \"PeerId\": \"\"\n                    },\n                    {\n                        \"AbnormalEventId\": 2012,\n                        \"PeerId\": \"\"\n                    }\n                ]\n            },\n            {\n                \"UserId\": \"itachi3\",\n                \"RoomId\": \"461\",\n                \"EventTime\": 1592448660,\n                \"ExperienceId\": 4,\n                \"AbnormalEventList\": [\n                    {\n                        \"AbnormalEventId\": 2011,\n                        \"PeerId\": \"\"\n                    },\n                    {\n                        \"AbnormalEventId\": 2012,\n                        \"PeerId\": \"\"\n                    }\n                ]\n            },\n            {\n                \"UserId\": \"itachi3\",\n                \"RoomId\": \"461\",\n                \"EventTime\": 1592448720,\n                \"ExperienceId\": 4,\n                \"AbnormalEventList\": [\n                    {\n                        \"AbnormalEventId\": 2011,\n                        \"PeerId\": \"\"\n                    },\n                    {\n                        \"AbnormalEventId\": 2012,\n                        \"PeerId\": \"\"\n                    }\n                ]\n            },\n            {\n                \"UserId\": \"itachi3\",\n                \"RoomId\": \"461\",\n                \"EventTime\": 1592448780,\n                \"ExperienceId\": 4,\n                \"AbnormalEventList\": [\n                    {\n                        \"AbnormalEventId\": 2011,\n                        \"PeerId\": \"\"\n                    },\n                    {\n                        \"AbnormalEventId\": 2012,\n                        \"PeerId\": \"\"\n                    }\n                ]\n            },\n            {\n                \"UserId\": \"itachi3\",\n                \"RoomId\": \"461\",\n                \"EventTime\": 1592448600,\n                \"ExperienceId\": 4,\n                \"AbnormalEventList\": [\n                    {\n                        \"AbnormalEventId\": 2014,\n                        \"PeerId\": \"\"\n                    },\n                    {\n                        \"AbnormalEventId\": 2021,\n                        \"PeerId\": \"\"\n                    },\n                    {\n                        \"AbnormalEventId\": 2022,\n                        \"PeerId\": \"\"\n                    },\n                    {\n                        \"AbnormalEventId\": 2011,\n                        \"PeerId\": \"itachili1\"\n                    },\n                    {\n                        \"AbnormalEventId\": 2012,\n                        \"PeerId\": \"itachili1\"\n                    }\n                ]\n            },\n            {\n                \"UserId\": \"itachi3\",\n                \"RoomId\": \"461\",\n                \"EventTime\": 1592448600,\n                \"ExperienceId\": 5,\n                \"AbnormalEventList\": [\n                    {\n                        \"AbnormalEventId\": 2014,\n                        \"PeerId\": \"\"\n                    }\n                ]\n            },\n            {\n                \"UserId\": \"itachi3\",\n                \"RoomId\": \"461\",\n                \"EventTime\": 1592448660,\n                \"ExperienceId\": 4,\n                \"AbnormalEventList\": [\n                    {\n                        \"AbnormalEventId\": 2014,\n                        \"PeerId\": \"\"\n                    },\n                    {\n                        \"AbnormalEventId\": 2021,\n                        \"PeerId\": \"\"\n                    },\n                    {\n                        \"AbnormalEventId\": 2022,\n                        \"PeerId\": \"\"\n                    }\n                ]\n            },\n            {\n                \"UserId\": \"itachi3\",\n                \"RoomId\": \"461\",\n                \"EventTime\": 1592448660,\n                \"ExperienceId\": 5,\n                \"AbnormalEventList\": [\n                    {\n                        \"AbnormalEventId\": 2014,\n                        \"PeerId\": \"\"\n                    }\n                ]\n            },\n            {\n                \"UserId\": \"itachi3\",\n                \"RoomId\": \"461\",\n                \"EventTime\": 1592448720,\n                \"ExperienceId\": 4,\n                \"AbnormalEventList\": [\n                    {\n                        \"AbnormalEventId\": 2014,\n                        \"PeerId\": \"\"\n                    },\n                    {\n                        \"AbnormalEventId\": 2021,\n                        \"PeerId\": \"\"\n                    },\n                    {\n                        \"AbnormalEventId\": 2022,\n                        \"PeerId\": \"\"\n                    }\n                ]\n            },\n            {\n                \"UserId\": \"itachi3\",\n                \"RoomId\": \"461\",\n                \"EventTime\": 1592448720,\n                \"ExperienceId\": 5,\n                \"AbnormalEventList\": [\n                    {\n                        \"AbnormalEventId\": 2014,\n                        \"PeerId\": \"\"\n                    }\n                ]\n            }\n        ],\n        \"Total\": 11,\n        \"RequestId\": \"75a3a17f-ca35-4cc8-b42f-2ebb8903b6a7\"\n    }\n}",
-        "title": "Querying exceptions"
-      }
-    ],
-    "DescribeCallDetail": [
-      {
-        "document": "",
-        "input": "https://trtc.tencentcloudapi.com/?Action=DescribeCallDetail\n&CommId=1400353843_218695_1590065777\n&StartTime=1590065777\n&EndTime=1590065877\n&SdkAppId=1400353843\n&DataType.0=bigvCapFps\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"UserList\": [\n            {\n                \"RoomStr\": \"218695\",\n                \"UserId\": \"1716\",\n                \"JoinTs\": 1590065777,\n                \"LeaveTs\": 1590067658,\n                \"Finished\": true,\n                \"DeviceType\": \"\",\n                \"SdkVersion\": \"4.3.14\",\n                \"ClientIp\": \"10.4.1.13\"\n            }\n        ],\n        \"Data\": [\n            {\n                \"Content\": [\n                    {\n                        \"Time\": 1590065779,\n                        \"Value\": 0\n                    },\n                    {\n                        \"Time\": 1590065781,\n                        \"Value\": 0\n                    },\n                    {\n                        \"Time\": 1590065783,\n                        \"Value\": 0\n                    },\n                    {\n                        \"Time\": 1590065785,\n                        \"Value\": 0\n                    },\n                    {\n                        \"Time\": 1590065787,\n                        \"Value\": 0\n                    },\n                    {\n                        \"Time\": 1590065789,\n                        \"Value\": 0\n                    }\n                ],\n                \"PeerId\": \"\",\n                \"UserId\": \"1716\",\n                \"DataType\": \"bigvCapFps\"\n            }\n        ],\n        \"RequestId\": \"2e12e365-43e8-4efd-902d-906303e2ee4a\"\n    }\n}",
-        "title": "Querying user list and call metrics"
-      }
-    ],
-    "DescribeDetailEvent": [
-      {
-        "document": "This example shows you how to query a user’s activity details such as room entry/exit and video enablement/disablement during a call.",
-        "input": "https://trtc.tencentcloudapi.com/?Action=DescribeDetailEvent\n&CommId=1400188366_3568_1588055615\n&StartTime=1588055615\n&EndTime=1588058615\n&UserId=user_66319581\n&RoomId=1711\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Content\": [\n                    {\n                        \"Type\": 0,\n                        \"Time\": 1589975272790,\n                        \"EventId\": 32793,\n                        \"ParamOne\": -1,\n                        \"ParamTwo\": -1\n                    }\n                ],\n                \"PeerId\": \"hyder11\"\n            },\n            {\n                \"Content\": [\n                    {\n                        \"Type\": 0,\n                        \"Time\": 1589975212877,\n                        \"EventId\": 32793,\n                        \"ParamOne\": -1,\n                        \"ParamTwo\": -1\n                    }\n                ],\n                \"PeerId\": \"user_20453511\"\n            },\n            {\n                \"Content\": [\n                    {\n                        \"Type\": 0,\n                        \"Time\": 1589975202782,\n                        \"EventId\": 32769,\n                        \"ParamOne\": -1,\n                        \"ParamTwo\": -1\n                    },\n                    {\n                        \"Type\": 0,\n                        \"Time\": 1589975202782,\n                        \"EventId\": 32791,\n                        \"ParamOne\": -1,\n                        \"ParamTwo\": -1\n                    },\n                    {\n                        \"Type\": 0,\n                        \"Time\": 1589975202782,\n                        \"EventId\": 32768,\n                        \"ParamOne\": -1,\n                        \"ParamTwo\": -1\n                    },\n                    {\n                        \"Type\": 0,\n                        \"Time\": 1589975202782,\n                        \"EventId\": 32788,\n                        \"ParamOne\": -1,\n                        \"ParamTwo\": -1\n                    },\n                    {\n                        \"Type\": 0,\n                        \"Time\": 1589975202782,\n                        \"EventId\": 32793,\n                        \"ParamOne\": -1,\n                        \"ParamTwo\": -1\n                    }\n                ],\n                \"PeerId\": \"user_66319581\"\n            }\n        ],\n        \"RequestId\": \"093bffd3-9d27-45ca-8410-c61c0e4cdcb8\"\n    }\n}",
-        "title": "Querying activity details"
-      }
-    ],
-    "DescribeHistoryScale": [
-      {
-        "document": "",
-        "input": "https://trtc.tencentcloudapi.com/?Action=DescribeHistoryScale\n&SdkAppId=1400188366\n&StartTime=1587571000\n&EndTime=1588034999\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Total\": 4,\n        \"ScaleList\": [\n            {\n                \"Time\": 1587830400,\n                \"RoomNumbers\": 130644,\n                \"UserNumber\": 2111978,\n                \"UserCount\": 7004243\n            },\n            {\n                \"Time\": 1587744000,\n                \"RoomNumbers\": 79241,\n                \"UserNumber\": 781494,\n                \"UserCount\": 2968232\n            },\n            {\n                \"Time\": 1587657600,\n                \"RoomNumbers\": 180341,\n                \"UserNumber\": 3047931,\n                \"UserCount\": 10839565\n            },\n            {\n                \"Time\": 1587571200,\n                \"RoomNumbers\": 185469,\n                \"UserNumber\": 3267726,\n                \"UserCount\": 11656700\n            }\n        ],\n        \"RequestId\": \"70259dd1-c935-4a31-8576-f4daadd942ef\"\n    }\n}",
-        "title": "Querying the number of rooms and users history"
-      }
-    ],
-    "DescribePicture": [
-      {
-        "document": "",
-        "input": "https://trtc.tencentcloudapi.com/?Action=DescribePicture\n&SdkAppId=123456\n&PictureId=123\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Total\": 2,\n        \"PictureInfo\": [\n            {\n                \"PictureId\": 1,\n                \"Height\": 12,\n                \"Width\": 13,\n                \"XPosition\": 14,\n                \"YPosition\": 15,\n                \"SdkAppId\": 123456\n            },\n            {\n                \"PictureId\": 2,\n                \"Height\": 22,\n                \"Width\": 23,\n                \"XPosition\": 24,\n                \"YPosition\": 25,\n                \"SdkAppId\": 123456\n            }\n        ],\n        \"RequestId\": \"83ca6fdd-cf4c-46a9-a577-74c3497ad3fa\"\n    }\n}",
-        "title": "Querying image parameters"
-      }
-    ],
-    "DescribeRecordStatistic": [
-      {
-        "document": "",
-        "input": "https://trtc.tencentcloudapi.com/?Action=DescribeRecordStatistic\n&SdkAppId=1400123456\n&StartTime=2019-10-11\n&EndTime=2019-10-13\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"SdkAppIdUsages\": [\n            {\n                \"SdkAppId\": \"1400123456\",\n                \"Usages\": [\n                    {\n                        \"TimeKey\": \"2019-10-11\",\n                        \"Class1VideoTime\": 556026,\n                        \"Class2VideoTime\": 86361829,\n                        \"Class3VideoTime\": 0,\n                        \"AudioTime\": 64169044\n                    },\n                    {\n                        \"TimeKey\": \"2019-10-12\",\n                        \"Class1VideoTime\": 551103,\n                        \"Class2VideoTime\": 85103796,\n                        \"Class3VideoTime\": 0,\n                        \"AudioTime\": 64156599\n                    },\n                    {\n                        \"TimeKey\": \"2019-10-13\",\n                        \"Class1VideoTime\": 515249,\n                        \"Class2VideoTime\": 82982805,\n                        \"Class3VideoTime\": 0,\n                        \"AudioTime\": 65673394\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"644956b8-9f7c-44c5-b833-31d91dba1b24\"\n    }\n}",
-        "title": "Querying billable recording durations"
-      }
-    ],
-    "DescribeRoomInformation": [
-      {
-        "document": "",
-        "input": "https://trtc.tencentcloudapi.com/?Action=DescribeRoomInformation\n&StartTime=1588031999\n&EndTime=1588034999\n&SdkAppId=1400188366\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Total\": 10,\n        \"RoomList\": [\n            {\n                \"CommId\": \"1400188366_563398783_1587959355\",\n                \"RoomString\": \"113a730673fee2d86e93e26cddb25b7d\",\n                \"CreateTime\": 1587959355,\n                \"DestroyTime\": 1588040628,\n                \"IsFinished\": false,\n                \"UserId\": \"mixer_113a730673fee2d86e93e26cddb25b7d\"\n            },\n            {\n                \"CommId\": \"1400188366_3791597063_1587959341\",\n                \"RoomString\": \"4724f5b26c36bd53ea139e7e1c3dea1e\",\n                \"CreateTime\": 1587959341,\n                \"DestroyTime\": 1588040628,\n                \"IsFinished\": false,\n                \"UserId\": \"mixer_4724f5b26c36bd53ea139e7e1c3dea1e\"\n            },\n            {\n                \"CommId\": \"1400188366_15343445_1587731480\",\n                \"RoomString\": \"ae4e2ebc3a71d5b151efca3e1dbe32e9\",\n                \"CreateTime\": 1587731480,\n                \"DestroyTime\": 1588040628,\n                \"IsFinished\": false,\n                \"UserId\": \"mixer_ae4e2ebc3a71d5b151efca3e1dbe32e9\"\n            },\n            {\n                \"CommId\": \"1400188366_1100067693_1587730962\",\n                \"RoomString\": \"f83dec1f40adaf92117b62d6f9e7e0b4\",\n                \"CreateTime\": 1587730962,\n                \"DestroyTime\": 1588040628,\n                \"IsFinished\": false,\n                \"UserId\": \"mixer_f83dec1f40adaf92117b62d6f9e7e0b4\"\n            },\n            {\n                \"CommId\": \"1400188366_2420034035_1587723604\",\n                \"RoomString\": \"76f067dfad1044171dad37bf65b1cf4b\",\n                \"CreateTime\": 1587723604,\n                \"DestroyTime\": 1588040628,\n                \"IsFinished\": false,\n                \"UserId\": \"mixer_76f067dfad1044171dad37bf65b1cf4b\"\n            },\n            {\n                \"CommId\": \"1400188366_2420034035_1587713998\",\n                \"RoomString\": \"76f067dfad1044171dad37bf65b1cf4b\",\n                \"CreateTime\": 1587713998,\n                \"DestroyTime\": 1588040628,\n                \"IsFinished\": false,\n                \"UserId\": \"mixer_76f067dfad1044171dad37bf65b1cf4b\"\n            },\n            {\n                \"CommId\": \"1400188366_3501_1586952940\",\n                \"RoomString\": \"3501\",\n                \"CreateTime\": 1586952940,\n                \"DestroyTime\": 1588040628,\n                \"IsFinished\": false,\n                \"UserId\": \"yuting\"\n            },\n            {\n                \"CommId\": \"1400188366_3015068783_1586952940\",\n                \"RoomString\": \"7651c9da1253981c8b842bcdcad11c3e\",\n                \"CreateTime\": 1586952940,\n                \"DestroyTime\": 1588040628,\n                \"IsFinished\": false,\n                \"UserId\": \"7651c9da1253981c8b842bcdcad11c3e\"\n            },\n            {\n                \"CommId\": \"1400188366_3501_1586952865\",\n                \"RoomString\": \"3501\",\n                \"CreateTime\": 1586952865,\n                \"DestroyTime\": 1588040628,\n                \"IsFinished\": false,\n                \"UserId\": \"yuting\"\n            },\n            {\n                \"CommId\": \"1400188366_3015068783_1586952865\",\n                \"RoomString\": \"7651c9da1253981c8b842bcdcad11c3e\",\n                \"CreateTime\": 1586952865,\n                \"DestroyTime\": 1588040628,\n                \"IsFinished\": false,\n                \"UserId\": \"7651c9da1253981c8b842bcdcad11c3e\"\n            }\n        ],\n        \"RequestId\": \"83ca6fdd-cf4c-46a9-a577-74c3497ad3fa\"\n    }\n}",
-        "title": "Querying the room list under a specified `SdkAppId`"
-      }
-    ],
-    "DescribeTrtcInteractiveTime": [
-      {
-        "document": "This example shows you how to query billable audio/video interaction durations for a period longer than 1 day.",
-        "input": "https://trtc.tencentcloudapi.com/?Action=DescribeTrtcInteractiveTime\n&SdkAppId=1400243510\n&StartTime=2020-09-07\n&EndTime=2020-09-08\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Usages\": [\n            {\n                \"TotalNum\": 2,\n                \"SdkAppId\": \"1400243510\",\n                \"SdkAppIdTrtcTimeUsages\": [\n                    {\n                        \"AudioVideoTime\": 0,\n                        \"VideoTimeSd\": 3633229,\n                        \"VideoTimeHd\": 7266458,\n                        \"VideoTimeHdp\": 10899687,\n                        \"AudioTime\": 8435963,\n                        \"TimeKey\": \"2020-09-07\"\n                    },\n                    {\n                        \"AudioVideoTime\": 0,\n                        \"VideoTimeSd\": 8896,\n                        \"VideoTimeHd\": 17792,\n                        \"VideoTimeHdp\": 26688,\n                        \"AudioTime\": 30690,\n                        \"TimeKey\": \"2020-09-08\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"644956b8-9f7c-44c5-b833-31d91dba1b24\"\n    }\n}",
-        "title": "Querying billable audio/video interaction durations for a period longer than 1 day"
-      },
-      {
-        "document": "",
-        "input": "https://trtc.tencentcloudapi.com/?Action=DescribeTrtcInteractiveTime\n&SdkAppId=1400243510\n&StartTime=2020-09-08\n&EndTime=2020-09-08\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Usages\": [\n            {\n                \"TotalNum\": 2,\n                \"SdkAppId\": \"1400243510\",\n                \"SdkAppIdTrtcTimeUsages\": [\n                    {\n                        \"AudioVideoTime\": 14706996,\n                        \"VideoTimeSd\": 0,\n                        \"VideoTimeHd\": 0,\n                        \"VideoTimeHdp\": 0,\n                        \"AudioTime\": 0,\n                        \"TimeKey\": \"2020-09-07 09:50:00\"\n                    },\n                    {\n                        \"AudioVideoTime\": 56820,\n                        \"VideoTimeSd\": 0,\n                        \"VideoTimeHd\": 0,\n                        \"VideoTimeHdp\": 0,\n                        \"AudioTime\": 0,\n                        \"TimeKey\": \"2020-09-08 09:55:00\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"644956b8-9f7c-44c5-b833-31d91dba1b24\"\n    }\n}",
-        "title": "Querying billable audio/video interaction durations for 1 day"
-      },
-      {
-        "document": "",
-        "input": "https://trtc.tencentcloudapi.com/?Action=DescribeTrtcInteractiveTime\n&StartTime=2020-09-08\n&EndTime=2020-09-08\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Usages\": [\n            {\n                \"SdkAppId\": \"total\",\n                \"SdkAppIdTrtcTimeUsages\": [\n                    {\n                        \"TimeKey\": \"2020-09-08 00:05:00\",\n                        \"AudioVideoTime\": 512916,\n                        \"VideoTimeSd\": 0,\n                        \"VideoTimeHd\": 0,\n                        \"VideoTimeHdp\": 0,\n                        \"AudioTime\": 0\n                    },\n                    {\n                        \"TimeKey\": \"2020-09-08 00:10:00\",\n                        \"AudioVideoTime\": 523098,\n                        \"VideoTimeSd\": 0,\n                        \"VideoTimeHd\": 0,\n                        \"VideoTimeHdp\": 0,\n                        \"AudioTime\": 0\n                    },\n                    {\n                        \"TimeKey\": \"2020-09-08 00:15:00\",\n                        \"AudioVideoTime\": 512861,\n                        \"VideoTimeSd\": 0,\n                        \"VideoTimeHd\": 0,\n                        \"VideoTimeHdp\": 0,\n                        \"AudioTime\": 0\n                    }\n                ],\n                \"TotalNum\": 3\n            }\n        ],\n        \"RequestId\": \"644956b8-9f7c-44c5-b833-31d91dba1b24\"\n    }\n}",
-        "title": "Querying billable audio/video interaction durations without passing in `SDKAppID`"
-      }
-    ],
-    "DescribeTrtcMcuTranscodeTime": [
-      {
-        "document": "This example shows you how to query billable relaying and transcoding durations for a period longer than 1 day.",
-        "input": "https://trtc.tencentcloudapi.com/?Action=DescribeTrtcMcuTranscodeTime\n&SdkAppId=1400123456\n&StartTime=2020-09-07\n&EndTime=2020-09-08\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Usages\": [\n            {\n                \"SdkAppId\": \"1400123456\",\n                \"TotalNum\": 1,\n                \"SdkAppIdTranscodeTimeUsages\": [\n                    {\n                        \"AudioTime\": 1,\n                        \"VideoTimeHd\": 1,\n                        \"VideoTimeFhd\": 1,\n                        \"VideoTimeSd\": 1,\n                        \"TimeKey\": \"xx\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"644956b8-9f7c-44c5-b833-31d91dba1b23\"\n    }\n}",
-        "title": "Querying billable relaying and transcoding durations"
-      }
-    ],
-    "DescribeUserInformation": [
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserInformation\n<Common request parameters>\n\n{\n    \"StartTime\": 1590065777,\n    \"CommId\": \"1400353843_218695_1590065777\",\n    \"UserIds\": [\n        \"user1_54816741\",\n        \"user2_2107025\"\n    ],\n    \"SdkAppId\": \"1400353843\",\n    \"EndTime\": 1590065877\n}",
-        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"UserList\": [\n            {\n                \"RoomStr\": \"218695\",\n                \"UserId\": \"user1_54816741\",\n                \"JoinTs\": 1590065777,\n                \"LeaveTs\": 1590067658,\n                \"Finished\": true,\n                \"DeviceType\": \"\",\n                \"SdkVersion\": \"4.3.14\",\n                \"ClientIp\": \"10.4.1.13\"\n            },\n            {\n                \"RoomStr\": \"218695\",\n                \"UserId\": \"user2_2107025\",\n                \"JoinTs\": 1590065700,\n                \"LeaveTs\": 1590067693,\n                \"Finished\": true,\n                \"DeviceType\": \"\",\n                \"SdkVersion\": \"4.3.14\",\n                \"ClientIp\": \"10.4.1.13\"\n            }\n        ],\n        \"RequestId\": \"2e12e365-43e8-4efd-902d-906303e2ee4a\"\n    }\n}",
-        "title": "Querying users and call metrics"
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCloudRecording\n<Common request parameters>\n\n{\n    \"TaskId\": \"xx\",\n    \"SdkAppId\": 1234\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": \"xx\",\n        \"StorageFileList\": [\n            {\n                \"TrackType\": \"xx\",\n                \"BeginTimeStamp\": 1,\n                \"UserId\": \"xx\",\n                \"FileName\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\",\n        \"TaskId\": \"xx\"\n    }\n}",
+        "title": "Querying the status of the task whose task ID is xx under the application whose `SDKAppID` is `1234`"
       }
     ],
     "DismissRoom": [
@@ -132,18 +40,18 @@
         "title": "Closing a room"
       }
     ],
-    "ModifyPicture": [
+    "ModifyCloudRecording": [
       {
-        "document": "",
-        "input": "https://trtc.tencentcloudapi.com/?Action=ModifyPicture\n&PictureId=123456\n&Height=12\n&Width=15\n&XPosition=15\n&YPosition=36\n&SdkAppId=30\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"049461e6-f2f5-4168-887e-aca4fbfa5fae\"\n    }\n}",
-        "title": "Modifying image parameters"
+        "document": "This example shows you how to subscribe to the video and audio streams of user 123 and 456 and customize the layout for the recording task whose task ID is xx under the application whose `SDKAppID` is `1234`.",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCloudRecording\n<Common request parameters>\n\n{\n    \"SubscribeStreamUserIds\": {\n        \"SubscribeVideoUserIds\": [\n            \"123\",\n            \"456\"\n        ],\n        \"SubscribeAudioUserIds\": [\n            \"123\",\n            \"456\"\n        ]\n    },\n    \"TaskId\": \"xx\",\n    \"SdkAppId\": 1234,\n    \"MixLayoutParams\": {\n        \"MixLayoutMode\": 4,\n        \"MixLayoutList\": [\n            {\n                \"Top\": 100,\n                \"UserId\": \"123\",\n                \"Height\": 100,\n                \"Width\": 100,\n                \"Left\": 100\n            },\n            {\n                \"Top\": 200,\n                \"UserId\": \"456\",\n                \"Height\": 100,\n                \"Width\": 100,\n                \"Left\": 200\n            }\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"5df46eb2-8e4b-490e-9c3c-dbd3b84faefc\",\n        \"RequestId\": \"71993312-6ab8-4768-9124-118e0a20c45f\"\n    }\n}",
+        "title": "Modifying an on-cloud recording task"
       }
     ],
     "RemoveUser": [
       {
         "document": "This example shows you how to remove users `test1` and `test2` from room `1234`.",
-        "input": "https://trtc.tencentcloudapi.com/?Action=RemoveUser\r\n&SdkAppId=1400000001\r\n&RoomId=1234\r\n&UserIds.0=test1\r\n&UserIds.1=test2\r\n&UserIds.3=test3\r\n&UserIds.4=test4\r\n&UserIds.5=test5\r\n&UserIds.6=test6\r\n&UserIds.7=test7\r\n&UserIds.8=test8\r\n&UserIds.9=test9\r\n&UserIds.10=test10\r\n&<Common request parameters>",
+        "input": "https://trtc.tencentcloudapi.com/?Action=RemoveUser\n&SdkAppId=1400000001\n&RoomId=1234\n&UserIds.0=test1\n&UserIds.1=test2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Removing users from a room"
       }
@@ -154,38 +62,6 @@
         "input": "https://trtc.tencentcloudapi.com/?Action=RemoveUserByStrRoomId\n&SdkAppId=1400000001\n&RoomId=abcd\n&UserIds.0=test1\n&UserIds.1=test2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Removing users from a room"
-      }
-    ],
-    "StartMCUMixTranscode": [
-      {
-        "document": "This example shows you how to enable On-Cloud MixTranscoding for a specified room (ID: `3560`) and specify the screen sharing template for image layout.\n\nThe On-Cloud MixTranscoding parameters are as follows:\n- CDN live stream ID: 1400188366_3560_mix\n- Recording file name: 1400188366_3560_mix_file\n- Video parameters for CDN live stream: aspect ratio: 1280 x 720; bitrate: 1560 Kbps; frame rate: 15 FPS; GOP: 2 seconds\n- Audio parameters for CDN live stream: audio sample rate: 48 kHz; bitrate: 64 Kbps; sound channel: dual\n- Layout template: screen sharing. The screen sharing image of user `main_pc` occupies the left side of the screen as the big image.",
-        "input": "https://trtc.tencentcloudapi.com/?Action=StartMCUMixTranscode\n&SdkAppId=1400188366\n&RoomId=3560\n&OutputParams.StreamId=1400188366_3560_mix\n&OutputParams.PureAudioStream=0\n&OutputParams.RecordId=1400188366_3560_mix_file\n&OutputParams.RecordAudioOnly=0\n&EncodeParams.VideoWidth=1280\n&EncodeParams.VideoHeight=720\n&EncodeParams.VideoBitrate=1560\n&EncodeParams.VideoFramerate=15\n&EncodeParams.VideoGop=2\n&EncodeParams.BackgroundColor=0\n&EncodeParams.AudioSampleRate=48000\n&EncodeParams.AudioBitrate=64\n&EncodeParams.AudioChannels=2\n&LayoutParams.Template=2\n&LayoutParams.MainVideoUserId=main_pc\n&LayoutParams.MainVideoStreamType=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Enabling On-Cloud MixTranscoding"
-      }
-    ],
-    "StartMCUMixTranscodeByStrRoomId": [
-      {
-        "document": "This example shows you how to enable On-Cloud MixTranscoding for a specified room (ID: `Room_3560`) and specify the screen sharing template for image layout.\n\nThe On-Cloud MixTranscoding parameters are as follows:\n- CDN live stream ID: 1400188366_3560_mix\n- Recording file name: 1400188366_3560_mix_file\n- Video parameters for CDN live stream: aspect ratio: 1280 x 720; bitrate: 1560 Kbps; frame rate: 15 FPS; GOP: 2 seconds\n- Audio parameters for CDN live stream: audio sample rate: 48 kHz; bitrate: 64 Kbps; sound channel: dual\n- Layout template: screen sharing. The screen sharing image of user `main_pc` occupies the left side of the screen as the big image.",
-        "input": "https://trtc.tencentcloudapi.com/?Action=StartMCUMixTranscodeByStrRoomId\n&SdkAppId=1400188366\n&StrRoomId=Room_3560\n&OutputParams.StreamId=1400188366_3560_mix\n&OutputParams.PureAudioStream=0\n&OutputParams.RecordId=1400188366_3560_mix_file\n&OutputParams.RecordAudioOnly=0\n&EncodeParams.VideoWidth=1280\n&EncodeParams.VideoHeight=720\n&EncodeParams.VideoBitrate=1560\n&EncodeParams.VideoFramerate=15\n&EncodeParams.VideoGop=2\n&EncodeParams.BackgroundColor=0\n&EncodeParams.AudioSampleRate=48000\n&EncodeParams.AudioBitrate=64\n&EncodeParams.AudioChannels=2\n&LayoutParams.Template=2\n&LayoutParams.MainVideoUserId=main_pc\n&LayoutParams.MainVideoStreamType=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Enabling On-Cloud MixTranscoding"
-      }
-    ],
-    "StopMCUMixTranscode": [
-      {
-        "document": "This example shows you how to stop On-Cloud MixTranscoding for room `3560`.",
-        "input": "https://trtc.tencentcloudapi.com/?Action=StopMCUMixTranscode\n&SdkAppId=1400188366\n&RoomId=3560\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Stopping On-Cloud MixTranscoding"
-      }
-    ],
-    "StopMCUMixTranscodeByStrRoomId": [
-      {
-        "document": "This example shows you how to stop On-Cloud MixTranscoding for room `Room_3560`.",
-        "input": "https://trtc.tencentcloudapi.com/?Action=StopMCUMixTranscodeByStrRoomId\n&SdkAppId=1400188366\n&StrRoomId=Room_3560\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Stopping On-Cloud MixTranscoding"
       }
     ]
   },

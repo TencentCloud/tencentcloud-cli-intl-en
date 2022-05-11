@@ -4161,6 +4161,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -7725,7 +7735,7 @@
         },
         {
           "default": "",
-          "document": "The coordinates (pixel) of the detected sensitive people or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.",
+          "document": "The pixel coordinates of the detected sensitive people or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.",
           "example": "0",
           "member": "int64",
           "name": "AreaCoordSet",
@@ -8946,7 +8956,7 @@
         },
         {
           "default": "",
-          "document": "The coordinates (pixel) of the detected sensitive people or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.",
+          "document": "The pixel coordinates of the detected sensitive people or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.",
           "example": "0",
           "member": "int64",
           "name": "AreaCoordSet",
