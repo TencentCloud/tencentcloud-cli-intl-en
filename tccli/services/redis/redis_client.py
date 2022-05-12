@@ -42,6 +42,33 @@ def doDescribeReplicationGroup(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeInstanceNodeInfo(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.RedisClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeInstanceNodeInfoRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeInstanceNodeInfo(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeInstanceMonitorBigKeySizeDist(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -142,6 +169,33 @@ def doDescribeSlowLog(args, parsed_globals):
     model = models.DescribeSlowLogRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DescribeSlowLog(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doReleaseWanAddress(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.RedisClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ReleaseWanAddressRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ReleaseWanAddress(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -258,6 +312,33 @@ def doDescribeInstanceAccount(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doAllocateWanAddress(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.RedisClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.AllocateWanAddressRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.AllocateWanAddress(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeInstanceMonitorBigKeyTypeDist(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -339,6 +420,33 @@ def doInquiryPriceUpgradeInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeInstanceMonitorTookDist(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.RedisClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeInstanceMonitorTookDistRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeInstanceMonitorTookDist(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeInstanceMonitorHotKey(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -393,7 +501,7 @@ def doModfiyInstancePassword(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeInstanceMonitorTookDist(args, parsed_globals):
+def doChangeReplicaToMaster(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -409,9 +517,9 @@ def doDescribeInstanceMonitorTookDist(args, parsed_globals):
     client = mod.RedisClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInstanceMonitorTookDistRequest()
+    model = models.ChangeReplicaToMasterRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeInstanceMonitorTookDist(model)
+    rsp = client.ChangeReplicaToMaster(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -459,20 +567,24 @@ MODELS_MAP = {
 
 ACTION_MAP = {
     "DescribeReplicationGroup": doDescribeReplicationGroup,
+    "DescribeInstanceNodeInfo": doDescribeInstanceNodeInfo,
     "DescribeInstanceMonitorBigKeySizeDist": doDescribeInstanceMonitorBigKeySizeDist,
     "DescribeInstanceMonitorTopNCmdTook": doDescribeInstanceMonitorTopNCmdTook,
     "DescribeInstanceMonitorBigKey": doDescribeInstanceMonitorBigKey,
     "DescribeSlowLog": doDescribeSlowLog,
+    "ReleaseWanAddress": doReleaseWanAddress,
     "InquiryPriceCreateInstance": doInquiryPriceCreateInstance,
     "DescribeMaintenanceWindow": doDescribeMaintenanceWindow,
     "DescribeInstanceMonitorSIP": doDescribeInstanceMonitorSIP,
     "DescribeInstanceAccount": doDescribeInstanceAccount,
+    "AllocateWanAddress": doAllocateWanAddress,
     "DescribeInstanceMonitorBigKeyTypeDist": doDescribeInstanceMonitorBigKeyTypeDist,
     "DescribeInstanceMonitorTopNCmd": doDescribeInstanceMonitorTopNCmd,
     "InquiryPriceUpgradeInstance": doInquiryPriceUpgradeInstance,
+    "DescribeInstanceMonitorTookDist": doDescribeInstanceMonitorTookDist,
     "DescribeInstanceMonitorHotKey": doDescribeInstanceMonitorHotKey,
     "ModfiyInstancePassword": doModfiyInstancePassword,
-    "DescribeInstanceMonitorTookDist": doDescribeInstanceMonitorTookDist,
+    "ChangeReplicaToMaster": doChangeReplicaToMaster,
     "DescribeProductInfo": doDescribeProductInfo,
 
 }

@@ -231,33 +231,6 @@ def doDeleteAutoScalingGroup(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doScaleOutInstances(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.AutoscalingClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ScaleOutInstancesRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ScaleOutInstances(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doStartAutoScalingInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -285,7 +258,7 @@ def doStartAutoScalingInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doUpgradeLaunchConfiguration(args, parsed_globals):
+def doModifyLifecycleHook(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -301,9 +274,9 @@ def doUpgradeLaunchConfiguration(args, parsed_globals):
     client = mod.AutoscalingClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpgradeLaunchConfigurationRequest()
+    model = models.ModifyLifecycleHookRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.UpgradeLaunchConfiguration(model)
+    rsp = client.ModifyLifecycleHook(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -466,33 +439,6 @@ def doDetachInstances(args, parsed_globals):
     model = models.DetachInstancesRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DetachInstances(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doScaleInInstances(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.AutoscalingClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ScaleInInstancesRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.ScaleInInstances(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -717,33 +663,6 @@ def doSetInstancesProtection(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateLaunchConfiguration(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.AutoscalingClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateLaunchConfigurationRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.CreateLaunchConfiguration(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doModifyNotificationConfiguration(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -925,60 +844,6 @@ def doUpgradeLifecycleHook(args, parsed_globals):
     model = models.UpgradeLifecycleHookRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.UpgradeLifecycleHook(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDisableAutoScalingGroup(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.AutoscalingClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DisableAutoScalingGroupRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DisableAutoScalingGroup(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeLaunchConfigurations(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.AutoscalingClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeLaunchConfigurationsRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeLaunchConfigurations(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1357,16 +1222,14 @@ ACTION_MAP = {
     "ModifyLoadBalancerTargetAttributes": doModifyLoadBalancerTargetAttributes,
     "DescribeNotificationConfigurations": doDescribeNotificationConfigurations,
     "DeleteAutoScalingGroup": doDeleteAutoScalingGroup,
-    "ScaleOutInstances": doScaleOutInstances,
     "StartAutoScalingInstances": doStartAutoScalingInstances,
-    "UpgradeLaunchConfiguration": doUpgradeLaunchConfiguration,
+    "ModifyLifecycleHook": doModifyLifecycleHook,
     "DetachLoadBalancers": doDetachLoadBalancers,
     "AttachInstances": doAttachInstances,
     "DescribeScalingPolicies": doDescribeScalingPolicies,
     "DeleteScheduledAction": doDeleteScheduledAction,
     "AttachLoadBalancers": doAttachLoadBalancers,
     "DetachInstances": doDetachInstances,
-    "ScaleInInstances": doScaleInInstances,
     "CreateScheduledAction": doCreateScheduledAction,
     "DescribeAutoScalingAdvices": doDescribeAutoScalingAdvices,
     "RemoveInstances": doRemoveInstances,
@@ -1375,7 +1238,6 @@ ACTION_MAP = {
     "ModifyLoadBalancers": doModifyLoadBalancers,
     "ModifyDesiredCapacity": doModifyDesiredCapacity,
     "SetInstancesProtection": doSetInstancesProtection,
-    "CreateLaunchConfiguration": doCreateLaunchConfiguration,
     "ModifyNotificationConfiguration": doModifyNotificationConfiguration,
     "ModifyAutoScalingGroup": doModifyAutoScalingGroup,
     "CreateNotificationConfiguration": doCreateNotificationConfiguration,
@@ -1383,8 +1245,6 @@ ACTION_MAP = {
     "CreateAutoScalingGroupFromInstance": doCreateAutoScalingGroupFromInstance,
     "CreateLifecycleHook": doCreateLifecycleHook,
     "UpgradeLifecycleHook": doUpgradeLifecycleHook,
-    "DisableAutoScalingGroup": doDisableAutoScalingGroup,
-    "DescribeLaunchConfigurations": doDescribeLaunchConfigurations,
     "CreateScalingPolicy": doCreateScalingPolicy,
     "DeleteLaunchConfiguration": doDeleteLaunchConfiguration,
     "DeleteLifecycleHook": doDeleteLifecycleHook,

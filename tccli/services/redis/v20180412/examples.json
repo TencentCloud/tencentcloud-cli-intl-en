@@ -1,5 +1,21 @@
 {
   "actions": {
+    "AllocateWanAddress": [
+      {
+        "document": "",
+        "input": "https://redis.tencentcloudapi.com/?Action=AllocateWanAddress\n&InstanceId=crs-5qlrlhux\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 327,\n        \"WanStatus\": “Enabling public network access”,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
+        "title": "Enabling public network instance"
+      }
+    ],
+    "ChangeReplicaToMaster": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ChangeReplicaToMaster\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-sa5dsfs\",\n    \"GroupId\": 301524\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c4ed5948-d156-4931-b9c3-10133a0bb6c9\",\n        \"TaskId\": 10856\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "DescribeInstanceAccount": [
       {
         "document": "",
@@ -72,6 +88,14 @@
         "title": "Sample request"
       }
     ],
+    "DescribeInstanceNodeInfo": [
+      {
+        "document": "",
+        "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceNodeInfo\n&InstanceId=crs-asdasdas\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"121d5b40-d2b8-11e9-8c40-ef686158cbd6\",\n        \"ProxyCount\": 10,\n        \"RedisCount\": 10,\n        \"TendisCount\": 5,\n        \"Proxy\": [\n            {\n                \"NodeId\": \"6abb7c308ed3d65930599d6f3d978971864cec77\"\n            }\n        ],\n        \"Redis\": [\n            {\n                \"ClusterId\": 0,\n                \"NodeId\": \"0f2ce0f969c4f43bc338bc1d6f60597d654bb3e4\",\n                \"NodeRole\": \"slave\"\n            }\n        ],\n        \"Tendis\": [\n            {\n                \"NodeId\": \"54dc6b83093359783abd2f0b07da61d3\",\n                \"NodeRole\": \"master\"\n            }\n        ]\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "DescribeMaintenanceWindow": [
       {
         "document": "",
@@ -126,6 +150,14 @@
         "input": "https://redis.tencentcloudapi.com/?Action=ModfiyInstancePassword\r\n&InstanceId=crs-5a4py64p\r\n&OldPassword=zy456987\r\n&Password=456987zy\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"cca16225-a169-4f11-b1cf-13398200f604\",\n        \"TaskId\": 16661\n    }\n}",
         "title": "Sample request"
+      }
+    ],
+    "ReleaseWanAddress": [
+      {
+        "document": "",
+        "input": "https://redis.tencentcloudapi.com/?Action=ReleaseWanAddress\n&InstanceId=crs-5qlrlhux\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 327,\n        \"WanStatus\": “Disabling public network access”,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
+        "title": "Disabling public network instance"
       }
     ]
   },

@@ -1,5 +1,17 @@
 {
   "actions": {
+    "AllocateWanAddress": {
+      "document": "This API is used to enable public network access.",
+      "input": "AllocateWanAddressRequest",
+      "name": "Enables public network API",
+      "output": "AllocateWanAddressResponse"
+    },
+    "ChangeReplicaToMaster": {
+      "document": "This API is used to promote a replica node group of a multi-AZ deployed instance to master node group or a replica node of a single-AZ deployed instance to master node.",
+      "input": "ChangeReplicaToMasterRequest",
+      "name": "Promotes a replica node group to master node group",
+      "output": "ChangeReplicaToMasterResponse"
+    },
     "DescribeInstanceAccount": {
       "document": "This API is used to view instance sub-account information.",
       "input": "DescribeInstanceAccountRequest",
@@ -54,6 +66,12 @@
       "name": "Queries the instance CPU time",
       "output": "DescribeInstanceMonitorTopNCmdTookResponse"
     },
+    "DescribeInstanceNodeInfo": {
+      "document": "This API is used to query instance node information.",
+      "input": "DescribeInstanceNodeInfoRequest",
+      "name": "Queries instance node information",
+      "output": "DescribeInstanceNodeInfoResponse"
+    },
     "DescribeMaintenanceWindow": {
       "document": "This API is used to query instance maintenance window. The maintenance window specifies a time period during which compatible version upgrade, architecture upgrade, backend maintenance, and other operations can be performed to avoid affecting business.",
       "input": "DescribeMaintenanceWindowRequest",
@@ -95,6 +113,12 @@
       "input": "ModfiyInstancePasswordRequest",
       "name": "Changes the Redis password",
       "output": "ModfiyInstancePasswordResponse"
+    },
+    "ReleaseWanAddress": {
+      "document": "This API is used to disable public network access.",
+      "input": "ReleaseWanAddressRequest",
+      "name": "Disables public network API",
+      "output": "ReleaseWanAddressResponse"
     }
   },
   "metadata": {
@@ -162,6 +186,51 @@
         }
       ],
       "usage": "out"
+    },
+    "AllocateWanAddressRequest": {
+      "document": "AllocateWanAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "crs-dvchdv5",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AllocateWanAddressResponse": {
+      "document": "AllocateWanAddress response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "486489",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Status of enabling public network access",
+          "example": "\"外网开通中\"",
+          "member": "string",
+          "name": "WanStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "BigKeyInfo": {
       "document": "Big key details",
@@ -255,6 +324,51 @@
         }
       ],
       "usage": "out"
+    },
+    "ChangeReplicaToMasterRequest": {
+      "document": "ChangeReplicaToMaster request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "crs-cdbdbncd",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Replica group ID, which is required for multi-AZ instances.",
+          "example": "354266",
+          "member": "int64",
+          "name": "GroupId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ChangeReplicaToMasterResponse": {
+      "document": "ChangeReplicaToMaster response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "626515",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CommandTake": {
       "document": "Command duration",
@@ -697,6 +811,105 @@
           "name": "Data",
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceNodeInfoRequest": {
+      "document": "DescribeInstanceNodeInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "crs-asdasdas",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List size",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The offset value",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceNodeInfoResponse": {
+      "document": "DescribeInstanceNodeInfo response structure.",
+      "members": [
+        {
+          "document": "The number of proxy nodes",
+          "example": "10",
+          "member": "int64",
+          "name": "ProxyCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Proxy node information\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ProxyNodes",
+          "name": "Proxy",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of redis nodes",
+          "example": "10",
+          "member": "int64",
+          "name": "RedisCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Redis node information\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RedisNodes",
+          "name": "Redis",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of tendis nodes",
+          "example": "5",
+          "member": "int64",
+          "name": "TendisCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tendis node information\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TendisNodes",
+          "name": "Tendis",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1654,6 +1867,67 @@
       ],
       "usage": "out"
     },
+    "ProxyNodes": {
+      "document": "Proxy node information",
+      "members": [
+        {
+          "default": "",
+          "document": "Node ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RedisNodes": {
+      "document": "Redis node information",
+      "members": [
+        {
+          "default": "",
+          "document": "Node ID",
+          "example": "edcfcc21cef97eabbbeeb52067de8eddffc85772",
+          "member": "string",
+          "name": "NodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node role",
+          "example": "master",
+          "member": "string",
+          "name": "NodeRole",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shard ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ClusterId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ ID",
+          "example": "100002",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "RegionConf": {
       "document": "Region information",
       "members": [
@@ -1704,6 +1978,51 @@
         }
       ],
       "usage": "out"
+    },
+    "ReleaseWanAddressRequest": {
+      "document": "ReleaseWanAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "crs-dvchdv5",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReleaseWanAddressResponse": {
+      "document": "ReleaseWanAddress response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "486489",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Status of disabling public network access",
+          "example": "\"外网关闭中\"",
+          "member": "string",
+          "name": "WanStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "SourceCommand": {
       "document": "Access command",
@@ -1757,6 +2076,30 @@
           "name": "Cmd",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TendisNodes": {
+      "document": "Tendis node information",
+      "members": [
+        {
+          "default": "",
+          "document": "Node ID",
+          "member": "string",
+          "name": "NodeId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Node role",
+          "member": "string",
+          "name": "NodeRole",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
