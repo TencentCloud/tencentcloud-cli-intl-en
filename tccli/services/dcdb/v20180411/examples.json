@@ -256,6 +256,14 @@
         "title": "Modifying the remarks of a TencentDB account"
       }
     ],
+    "ModifyDBInstanceName": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dcdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceName\n<Common request parameters>\n\n{\n    \"InstanceId\": \"dcdbt-21dfpcv1\",\n    \"InstanceName\": \"test-name\"\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceId\": \"dcdbt-21dfpcv1\",\n        \"RequestId\": \"9405c219-c89f-4557-9ada-881c72a9e9ea\"\n    }\n}",
+        "title": "-"
+      }
+    ],
     "ModifyDBInstanceSecurityGroups": [
       {
         "document": "",

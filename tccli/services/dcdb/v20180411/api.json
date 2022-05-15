@@ -192,6 +192,12 @@
       "name": "Modifies account remarks",
       "output": "ModifyAccountDescriptionResponse"
     },
+    "ModifyDBInstanceName": {
+      "document": "This API is used to modify instance name.",
+      "input": "ModifyDBInstanceNameRequest",
+      "name": "Modifies instance name",
+      "output": "ModifyDBInstanceNameResponse"
+    },
     "ModifyDBInstanceSecurityGroups": {
       "document": "This API is used to modify the security groups associated with TencentDB.",
       "input": "ModifyDBInstanceSecurityGroupsRequest",
@@ -3735,6 +3741,51 @@
     "ModifyAccountDescriptionResponse": {
       "document": "ModifyAccountDescription response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceNameRequest": {
+      "document": "ModifyDBInstanceName request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of tdsql-hdaprz0v",
+          "example": "tdsql-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "example": "test-name",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceNameResponse": {
+      "document": "ModifyDBInstanceName response structure.",
+      "members": [
+        {
+          "document": "Instance ID.",
+          "example": "tdsql-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

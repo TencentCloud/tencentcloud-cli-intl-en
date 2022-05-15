@@ -162,6 +162,12 @@
       "name": "Pulls database list",
       "output": "DescribeDatabasesResponse"
     },
+    "DescribeEncryptionKeys": {
+      "document": "This API is used to get instance key list.",
+      "input": "DescribeEncryptionKeysRequest",
+      "name": "Gets instance key list",
+      "output": "DescribeEncryptionKeysResponse"
+    },
     "DescribeOrders": {
       "document": "This API is used to get order information.",
       "input": "DescribeOrdersRequest",
@@ -3588,6 +3594,42 @@
       ],
       "type": "object"
     },
+    "DescribeEncryptionKeysRequest": {
+      "document": "DescribeEncryptionKeys request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "postgres-xxxxxxxx",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEncryptionKeysResponse": {
+      "document": "DescribeEncryptionKeys response structure.",
+      "members": [
+        {
+          "document": "Instance key list\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "EncryptionKey",
+          "name": "EncryptionKeys",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeOrdersRequest": {
       "document": "DescribeOrders request structure.",
       "members": [
@@ -4276,6 +4318,72 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "EncryptionKey": {
+      "document": "KMS key information",
+      "members": [
+        {
+          "default": "",
+          "document": "Encrypted KeyId of KMS instance\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "空",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Encryption key alias of KMS instance \nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "PGSQL-KMS",
+          "member": "string",
+          "name": "KeyAlias",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance DEK ciphertext\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "空",
+          "member": "string",
+          "name": "DEKCipherTextBlob",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the key is enabled. Valid values: `1` (yes), `0` (no)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsEnabled",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region where KMS key resides\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "KeyRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "DEK key creation time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "2014-08-03 12:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
