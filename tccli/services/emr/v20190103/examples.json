@@ -24,6 +24,14 @@
         "title": "Querying instance details"
       }
     ],
+    "DescribeResourceSchedule": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: emr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeResourceSchedule\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FSInfo\": \"xx\",\n        \"CSInfo\": \"xx\",\n        \"Scheduler\": \"xx\",\n        \"OpenSwitch\": true,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "test"
+      }
+    ],
     "InquiryPriceCreateInstance": [
       {
         "document": "",
@@ -40,14 +48,6 @@
         "title": "Querying renewal price"
       }
     ],
-    "InquiryPriceScaleOutInstance": [
-      {
-        "document": "",
-        "input": "https://emr.tencentcloudapi.com/?Action=InquiryPriceScaleOutInstance\n&TimeUnit=s\n&TimeSpan=3600\n&ZoneId=100003\n&PayMode=0\n&InstanceId=emr-3ida6zmi\n&CoreCount=1\n&TaskCount=0\n&Currency=CNY\n&RouterCount=0\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"DiscountCost\": \"77\",\n        \"PriceSpec\": {\n            \"InstanceType\": \"S5\",\n            \"DiskCnt\": 1,\n            \"StorageType\": 1,\n            \"DiskNum\": 1,\n            \"DiskType\": \"2\",\n            \"LocalDiskNum\": 0,\n            \"Cpu\": 0,\n            \"DiskSize\": 100,\n            \"MemSize\": 100,\n            \"RootSize\": 50,\n            \"Spec\": \"S5.2XLARGE8\"\n        },\n        \"Unit\": \"1\",\n        \"OriginalCost\": \"1.1\",\n        \"RequestId\": \"04daa603-e1e7-4243-b25d-31e6a6736528\"\n    }\n}",
-        "title": "Querying the price of scale-out"
-      }
-    ],
     "InquiryPriceUpdateInstance": [
       {
         "document": "",
@@ -56,20 +56,20 @@
         "title": "Querying the price of changing configuration"
       }
     ],
-    "ScaleOutInstance": [
+    "ModifyResourceScheduleConfig": [
       {
         "document": "",
-        "input": "https://emr.tencentcloudapi.com/?Action=ScaleOutInstance\n&TimeUnit=s\n&TimeSpan=3600\n&CoreCount=1\n&InstanceId=emr-5n3l5c83\n&PayMode=0\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"BillId\": \"\",\n        \"ClientToken\": \"\",\n        \"DealNames\": [\n            \"20200309357833\",\n            \"20200309357834\",\n            \"20200309357835\",\n            \"20200309357836\"\n        ],\n        \"FlowId\": 0,\n        \"InstanceId\": \"emr-5n3l5c83\",\n        \"RequestId\": \"f0f11d21-6d0d-4f73-9177-8ae4ec456068\"\n    }\n}",
-        "title": "Scaling out a cluster"
+        "input": "POST / HTTP/1.1\nHost: emr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyResourceScheduleConfig\n<common request parameters>\n\n{\n    \"InstanceId\": \"emr-buy439fq\",\n    \"Key\": \"capacity\",\n    \"Value\": \"{\\\"queueMappings\\\":[{\\\"mapping-type\\\":\\\"u\\\",\\\"name\\\":\\\"1331\\\",\\\"full-queue-name\\\":\\\"132\\\",\\\"special-name\\\":true,\\\"special-queue\\\":true}],\\\"queue\\\":{\\\"name\\\":\\\"root\\\",\\\"capacity\\\":100,\\\"maximum-capacity\\\":100,\\\"minimum-user-limit-percent\\\":0,\\\"user-limit-factor\\\":0,\\\"maximum-allocation-mb\\\":0,\\\"maximum-allocation-vcores\\\":0,\\\"state\\\":null,\\\"maximum-applications\\\":0,\\\"maximum-am-resource-percent\\\":0,\\\"acl_submit_applications\\\":null,\\\"acl_administer_queue\\\":null,\\\"queues\\\":[{\\\"name\\\":\\\"121\\\",\\\"capacity\\\":12,\\\"maximum-capacity\\\":12,\\\"minimum-user-limit-percent\\\":12,\\\"user-limit-factor\\\":12,\\\"maximum-allocation-mb\\\":12,\\\"maximum-allocation-vcores\\\":12,\\\"state\\\":\\\"RUNNING\\\",\\\"maximum-applications\\\":10000,\\\"maximum-am-resource-percent\\\":25,\\\"acl_submit_applications\\\":{\\\"user\\\":\\\"*\\\",\\\"group\\\":\\\"*\\\"},\\\"acl_administer_queue\\\":{\\\"user\\\":\\\"*\\\",\\\"group\\\":\\\"*\\\"},\\\"queues\\\":null},{\\\"name\\\":\\\"12\\\",\\\"capacity\\\":12,\\\"maximum-capacity\\\":12,\\\"minimum-user-limit-percent\\\":12,\\\"user-limit-factor\\\":12,\\\"maximum-allocation-mb\\\":12,\\\"maximum-allocation-vcores\\\":12,\\\"state\\\":\\\"RUNNING\\\",\\\"maximum-applications\\\":10000,\\\"maximum-am-resource-percent\\\":25,\\\"acl_submit_applications\\\":{\\\"user\\\":\\\"*\\\",\\\"group\\\":\\\"*\\\"},\\\"acl_administer_queue\\\":{\\\"user\\\":\\\"*\\\",\\\"group\\\":\\\"*\\\"},\\\"queues\\\":null},{\\\"name\\\":\\\"default\\\",\\\"capacity\\\":76,\\\"maximum-capacity\\\":100,\\\"minimum-user-limit-percent\\\":12,\\\"user-limit-factor\\\":1,\\\"maximum-allocation-mb\\\":12,\\\"maximum-allocation-vcores\\\":12,\\\"state\\\":\\\"RUNNING\\\",\\\"maximum-applications\\\":12,\\\"maximum-am-resource-percent\\\":12,\\\"acl_submit_applications\\\":{\\\"user\\\":\\\"*\\\",\\\"group\\\":\\\"*\\\"},\\\"acl_administer_queue\\\":{\\\"user\\\":\\\"*\\\",\\\"group\\\":\\\"*\\\"},\\\"queues\\\":[{\\\"name\\\":\\\"d1\\\",\\\"capacity\\\":100,\\\"maximum-capacity\\\":100,\\\"minimum-user-limit-percent\\\":null,\\\"user-limit-factor\\\":null,\\\"maximum-allocation-mb\\\":null,\\\"maximum-allocation-vcores\\\":null,\\\"state\\\":\\\"RUNNING\\\",\\\"maximum-applications\\\":10000,\\\"maximum-am-resource-percent\\\":25,\\\"acl_submit_applications\\\":{\\\"user\\\":\\\"*\\\",\\\"group\\\":\\\"*\\\"},\\\"acl_administer_queue\\\":{\\\"user\\\":\\\"*\\\",\\\"group\\\":\\\"*\\\"},\\\"queues\\\":null}]}]},\\\"queueMappingsOverride\\\":true}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": null,\n        \"IsDraft\": true,\n        \"RequestId\": \"cb6e29be-d9d5-4694-8ff5-19bf8bbd412f\"\n    }\n}",
+        "title": "修改yarn资源调度的资源配置"
       }
     ],
-    "TerminateInstance": [
+    "ModifyResourceScheduler": [
       {
-        "document": "This example shows you how to terminate an entire cluster.",
-        "input": "https://emr.tencentcloudapi.com/?Action=TerminateInstance\n&InstanceId=emr-4slr7ad7\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4d701c1e-8507-47e1-8c69-a8f06a236f24\"\n    }\n}",
-        "title": "Terminating an instance"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: emr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyResourceScheduler\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"NewValue\": \"xx\",\n    \"OldValue\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "test"
       }
     ],
     "TerminateTasks": [
