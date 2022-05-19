@@ -42,6 +42,12 @@
       "name": "Creates a user group",
       "output": "CreateGroupResponse"
     },
+    "CreateOIDCConfig": {
+      "document": "This API is used to create role OIDC configurations.",
+      "input": "CreateOIDCConfigRequest",
+      "name": "Creates role OIDC configurations",
+      "output": "CreateOIDCConfigResponse"
+    },
     "CreatePolicy": {
       "document": "This API (CreatePolicy) is used to create a policy.",
       "input": "CreatePolicyRequest",
@@ -90,6 +96,12 @@
       "name": "Deletes a user group",
       "output": "DeleteGroupResponse"
     },
+    "DeleteOIDCConfig": {
+      "document": "This API is used to delete OIDC IdPs.",
+      "input": "DeleteOIDCConfigRequest",
+      "name": "Deletes OIDC IdPs",
+      "output": "DeleteOIDCConfigResponse"
+    },
     "DeletePolicy": {
       "document": "This API (DeletePolicy) is used to delete a policy.",
       "input": "DeletePolicyRequest",
@@ -137,6 +149,12 @@
       "input": "DeleteUserPermissionsBoundaryRequest",
       "name": "Deletes user permission boundary",
       "output": "DeleteUserPermissionsBoundaryResponse"
+    },
+    "DescribeOIDCConfig": {
+      "document": "This API is used to query role OIDC configurations.",
+      "input": "DescribeOIDCConfigRequest",
+      "name": "Queries role OIDC configurations",
+      "output": "DescribeOIDCConfigResponse"
     },
     "DescribeRoleList": {
       "document": "This API (DescribeRoleList) is used to get the role list under the account.",
@@ -389,6 +407,12 @@
       "input": "UpdateGroupRequest",
       "name": "Updates a user group",
       "output": "UpdateGroupResponse"
+    },
+    "UpdateOIDCConfig": {
+      "document": "This API is used to modify role OIDC configurations.",
+      "input": "UpdateOIDCConfigRequest",
+      "name": "Modifies role OIDC configurations",
+      "output": "UpdateOIDCConfigResponse"
     },
     "UpdatePolicy": {
       "document": "This API is used to update a policy.\nThis API will update the default version of an existing policy instead of creating a new one. If no policy exists, a default version will be created.",
@@ -1163,6 +1187,69 @@
       ],
       "type": "object"
     },
+    "CreateOIDCConfigRequest": {
+      "document": "CreateOIDCConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "IdP URL.",
+          "example": "https://xulongliang.authing.cn/oidc",
+          "member": "string",
+          "name": "IdentityUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Public key for signature, which must be Base64-encoded.",
+          "example": "无",
+          "member": "string",
+          "name": "IdentityKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Client ID.",
+          "example": "61adcf00620c31e3ddbc9546",
+          "member": "string",
+          "name": "ClientId",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Name.",
+          "example": "OIDC",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description.",
+          "example": "描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOIDCConfigResponse": {
+      "document": "CreateOIDCConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreatePolicyRequest": {
       "document": "CreatePolicy request structure.",
       "members": [
@@ -1576,6 +1663,33 @@
       ],
       "type": "object"
     },
+    "DeleteOIDCConfigRequest": {
+      "document": "DeleteOIDCConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "OIDC IdP name.",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOIDCConfigResponse": {
+      "document": "DeleteOIDCConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeletePolicyRequest": {
       "document": "DeletePolicy request structure.",
       "members": [
@@ -1814,6 +1928,96 @@
     "DeleteUserResponse": {
       "document": "DeleteUser response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOIDCConfigRequest": {
+      "document": "DescribeOIDCConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name.",
+          "example": "OIDC",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOIDCConfigResponse": {
+      "document": "DescribeOIDCConfig response structure.",
+      "members": [
+        {
+          "document": "IdP type. 11: Role IdP.",
+          "example": "11",
+          "member": "uint64",
+          "name": "ProviderType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IdP URL.",
+          "example": "11",
+          "member": "string",
+          "name": "IdentityUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Public key for signature.",
+          "example": "无",
+          "member": "string",
+          "name": "IdentityKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Client ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ClientId",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Status. 0: Not set; 2: Disabled; 11: Enabled.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Description.",
+          "example": "desc",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Name.",
+          "example": "OIDC",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -4926,6 +5130,69 @@
     },
     "UpdateGroupResponse": {
       "document": "UpdateGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateOIDCConfigRequest": {
+      "document": "UpdateOIDCConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "IdP URL.",
+          "example": "https://xulongliang.authing.cn/oidc",
+          "member": "string",
+          "name": "IdentityUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Public key for signature, which must be Base64-encoded.",
+          "example": "无",
+          "member": "string",
+          "name": "IdentityKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Client ID.",
+          "example": "61adcf00620c31e3ddbc9546",
+          "member": "string",
+          "name": "ClientId",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Name.",
+          "example": "OIDC",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description.",
+          "example": "描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateOIDCConfigResponse": {
+      "document": "UpdateOIDCConfig response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

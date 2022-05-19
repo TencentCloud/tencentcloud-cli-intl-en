@@ -80,6 +80,14 @@
         "title": "Deleting an ACL"
       }
     ],
+    "DeleteRoute": [
+      {
+        "document": "",
+        "input": "https://ckafka.tencentcloudapi.com/?Action=DeleteRoute\n&InstanceId=xxx\n&RouteId=1\n&CallerAppid=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"ReturnMessage\": \"xx\",\n            \"ReturnCode\": \"xx\",\n            \"Data\": {\n                \"FlowId\": 0\n            }\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Deleting a route"
+      }
+    ],
     "DeleteRouteTriggerTime": [
       {
         "document": "",

@@ -147,6 +147,8 @@ include tccli/services/tem/v20210701/api.json
 include tccli/services/tem/v20210701/examples.json
 include tccli/services/tem/v20201221/api.json
 include tccli/services/tem/v20201221/examples.json
+include tccli/services/teo/v20220106/api.json
+include tccli/services/teo/v20220106/examples.json
 include tccli/services/tiw/v20190919/api.json
 include tccli/services/tiw/v20190919/examples.json
 include tccli/services/tke/v20180525/api.json

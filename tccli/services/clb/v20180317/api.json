@@ -31,7 +31,7 @@
       "output": "BatchRegisterTargetsResponse"
     },
     "CloneLoadBalancer": {
-      "document": "This API is used to create a CLB instance with the same forwarding rules and binding relation as the source CLB instance. Note that this API is asynchronous, which means that changes to the source CLB after the invocation are not cloned.\n\nUse limits:\nClassic network-based CLBs, Classic CLBs, IPv6 CLBs, and NAT64 CLBs are not supported.\nMonthly-subscribed CLB instances are not supported.\nQUIC and port listeners are not supported.\nThe CLB backend server cannot be bound to a target group or an SCF function.\nThe following settings will not be cloned automatically: \"Custom Configuration\", \"Redirection Configuration\" and \"Allow Traffic by Default in Security Group\".\n\nPermissions:\nThe required permissions are as follows: `CreateLoadBalancer`, `CreateLoadBalancerListeners`, `CreateListenerRules`, `BatchRegisterTargets`, `SetLoadBalancerSecurityGroups`, `ModifyLoadBalancerAttributes`, `SetLoadBalancerClsLog`, and `DeleteLoadBalancer`. Note that `DeleteLoadBalancer` is used to roll back in case of cloning failures. If you do not have the permission, the failure data will remain.\n\nNotes:\nFor a BGP bandwidth package, you need to pass the package ID.\nTo clone a dedicated CLB cluster, specify it in the parameter, otherwise a shared CLB cluster is created.\nThis API is only available for beta users. To try it out, [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&step=1).",
+      "document": "This API is used to create a clone of the source CLB instance with the same forwarding rules and binding relations. Note that this API is asynchronous, which means that changes to the source CLB after invocation of the API are not included in the clone.\n\nUse limits:\nUnsupported instance types: Classic network CLB, Classic CLB, IPv6 CLB, and NAT64 CLB.\nMonthly subscribed CLB instances are not supported.\nQUIC and port listeners are not supported.\nThe CLB backend service cannot be a target group or an SCF function.\nThe following settings will not be cloned automatically and require manual configuration: \"Custom Configuration\", \"Redirection Configuration\" and \"Allow Traffic by Default in Security Group\".\n\nNotes:\nIf you are using a BGP bandwidth package, you need to pass the package ID.\nTo create a dedicated cluster-based CLB by cloning the source CLB, you need to pass the cluster ID. Otherwise, a normal CLB is created.\nThis API is only available for beta users. If you want to try it out, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&step=1).",
       "input": "CloneLoadBalancerRequest",
       "name": "Clones a CLB instance",
       "output": "CloneLoadBalancerResponse"
@@ -1528,7 +1528,7 @@
         },
         {
           "default": "",
-          "document": "Sets the primary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB.\nNote: A primary AZ carries traffic by default, while a secondary AZ does not. It only works when the primary AZ is faulty.",
+          "document": "Sets the primary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB.\nNote: By default, the traffic goes to the primary AZ. The secondary AZs only carry traffic when the primary AZ is unavailable. The optimal secondary AZ is chosen automatically. You can query the primary and secondary AZ of a region by calling [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "MasterZoneId",
@@ -1537,7 +1537,7 @@
         },
         {
           "default": "",
-          "document": "Sets the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB instances.\nNote: A secondary AZ carries traffic when the primary AZ fails. ",
+          "document": "Specifies the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`. It is applicable only to public network CLB.\nNote: The traffic only goes to the secondary AZ when the primary AZ is unavailable. You can query the list of primary and secondary AZ of a region by calling [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "SlaveZoneId",
@@ -2060,7 +2060,7 @@
         },
         {
           "default": "",
-          "document": "Sets the primary AZ ID for cross-AZ disaster recovery, such as 100001 or ap-guangzhou-1, which is applicable only to public network CLB.\nNote: A primary AZ carries traffic, while a secondary AZ does not carry traffic by default and will be used only if the primary AZ becomes unavailable. The platform will automatically select the optimal secondary AZ. The list of primary AZs in a specific region can be queried through the DescribeMasterZones API.",
+          "document": "Sets the primary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB.\nNote: By default, the traffic goes to the primary AZ. The secondary AZs only carry traffic when the primary AZ is unavailable. The optimal secondary AZ is chosen automatically. You can query the primary and secondary AZ of a region by calling [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "MasterZoneId",
@@ -2177,7 +2177,7 @@
         },
         {
           "default": "",
-          "document": "Sets the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB instances.\nNote: A secondary AZ will load traffic if the primary AZ has failures. The API `DescribeMasterZones` is used to query the primary and secondary AZ list of a region.",
+          "document": "Specifies the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`. It is applicable only to public network CLB.\nNote: The traffic only goes to the secondary AZ when the primary AZ is unavailable. You can query the list of primary and secondary AZ of a region by calling [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "SlaveZoneId",
@@ -2209,13 +2209,13 @@
       "document": "CreateLoadBalancer response structure.",
       "members": [
         {
-          "document": "Array of unique CLB instance IDs.",
+          "document": "Array of unique CLB instance IDs.\nThis field may return `null` in some cases, such as there is delay during instance creation. You can query the IDs of the created instances by invoking `DescribeTaskStatus` with the `RequestId` or `DealName` returned by this API.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[\"lb-6efswuxa\"]",
           "member": "string",
           "name": "LoadBalancerIds",
           "required": true,
           "type": "list",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "document": "Order ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
@@ -4736,12 +4736,22 @@
         },
         {
           "default": "",
-          "document": "Specifies the type of IP for health check. `0` (default): Use the CLB VIP as the source IP. `1`: Use the IP range starting with 100.64 as the source IP.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies the type of IP for health check. `0` (default): CLB VIP. `1`: Use the IP range starting with 100.64 as the source IP.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "SourceIpType",
           "required": false,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "GRPC health check status code, which is only applicable to rules with GRPC as the backend forwarding protocol. It can be a single number (such as `20`), multiple numbers (such as `20,25`) or a range (such as `0-99`). The default value is `12`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "12",
+          "member": "string",
+          "name": "ExtendedCode",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -7184,7 +7194,8 @@
       "members": [
         {
           "default": "",
-          "document": "Quota name. Valid values:\n<li> TOTAL_OPEN_CLB_QUOTA: quota of public network CLB instances in the current region</li>\n<li> TOTAL_INTERNAL_CLB_QUOTA: quota of private network CLB instances in the current region</li>\n<li> TOTAL_LISTENER_QUOTA: quota of listeners under one CLB instance</li>\n<li> TOTAL_LISTENER_RULE_QUOTA: quota of forwarding rules under one listener</li>\n<li> TOTAL_TARGET_BIND_QUOTA: quota of CVM instances can be bound under one forwarding rule</li>",
+          "document": "Quota name. Valid values:\n<li> `TOTAL_OPEN_CLB_QUOTA`: Quota of public network CLB instances in the current region</li>\n<li> `TOTAL_INTERNAL_CLB_QUOTA`: Quota of private network CLB instances in the current region</li>\n<li> `TOTAL_LISTENER_QUOTA`: Quota of listeners under one CLB instance</li>\n<li> `TOTAL_LISTENER_RULE_QUOTA`: Quota of forwarding rules under one listener</li>\n<li> `TOTAL_TARGET_BIND_QUOTA`: Quota of CVM instances can be bound under one forwarding rule</li>\n<li> `TOTAL_SNAP_IP_QUOTA`: Quota of SNAT IPs for cross-region binding 2.0 under one CLB instance </li>\n<li> `TOTAL_ISP_CLB_QUOTA`: Quota of triple-ISP (CMCC/CUCC/CTCC) CLB instances in the current region</li>",
+          "example": "TOTAL_OPEN_CLB_QUOTA",
           "member": "string",
           "name": "QuotaId",
           "required": true,
@@ -7194,6 +7205,7 @@
         {
           "default": "",
           "document": "Currently used quantity. If it is `null`, it is meaningless.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "int64",
           "name": "QuotaCurrent",
           "required": true,
@@ -7203,6 +7215,7 @@
         {
           "default": "",
           "document": "Quota limit.",
+          "example": "3",
           "member": "int64",
           "name": "QuotaLimit",
           "required": true,

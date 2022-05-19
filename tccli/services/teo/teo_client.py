@@ -11,11 +11,11 @@ from tccli.exceptions import ConfigurationError, ParamError
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.sts.v20180813 import sts_client as sts_client_v20180813
-from tencentcloud.sts.v20180813 import models as models_v20180813
+from tencentcloud.teo.v20220106 import teo_client as teo_client_v20220106
+from tencentcloud.teo.v20220106 import models as models_v20220106
 
 
-def doGetFederationToken(args, parsed_globals):
+def doCreatePurgeTask(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -28,12 +28,12 @@ def doGetFederationToken(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.StsClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetFederationTokenRequest()
+    model = models.CreatePurgeTaskRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.GetFederationToken(model)
+    rsp = client.CreatePurgeTask(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -42,7 +42,7 @@ def doGetFederationToken(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAssumeRoleWithSAML(args, parsed_globals):
+def doDescribePurgeTasks(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -55,12 +55,12 @@ def doAssumeRoleWithSAML(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.StsClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AssumeRoleWithSAMLRequest()
+    model = models.DescribePurgeTasksRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.AssumeRoleWithSAML(model)
+    rsp = client.DescribePurgeTasks(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -69,7 +69,7 @@ def doAssumeRoleWithSAML(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAssumeRole(args, parsed_globals):
+def doDescribeZones(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -82,66 +82,12 @@ def doAssumeRole(args, parsed_globals):
     )
     profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.StsClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AssumeRoleRequest()
+    model = models.DescribeZonesRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.AssumeRole(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doGetCallerIdentity(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.StsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GetCallerIdentityRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.GetCallerIdentity(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doAssumeRoleWithWebIdentity(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.StsClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AssumeRoleWithWebIdentityRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.AssumeRoleWithWebIdentity(model)
+    rsp = client.DescribeZones(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -151,26 +97,24 @@ def doAssumeRoleWithWebIdentity(args, parsed_globals):
 
 
 CLIENT_MAP = {
-    "v20180813": sts_client_v20180813,
+    "v20220106": teo_client_v20220106,
 
 }
 
 MODELS_MAP = {
-    "v20180813": models_v20180813,
+    "v20220106": models_v20220106,
 
 }
 
 ACTION_MAP = {
-    "GetFederationToken": doGetFederationToken,
-    "AssumeRoleWithSAML": doAssumeRoleWithSAML,
-    "AssumeRole": doAssumeRole,
-    "GetCallerIdentity": doGetCallerIdentity,
-    "AssumeRoleWithWebIdentity": doAssumeRoleWithWebIdentity,
+    "CreatePurgeTask": doCreatePurgeTask,
+    "DescribePurgeTasks": doDescribePurgeTasks,
+    "DescribeZones": doDescribeZones,
 
 }
 
 AVAILABLE_VERSION_LIST = [
-    "v20180813",
+    "v20220106",
 
 ]
 
@@ -233,11 +177,11 @@ def parse_global_arg(parsed_globals):
         if g_param[OptionsDefine.ServiceVersion]:
             g_param[OptionsDefine.Version] = "v" + g_param[OptionsDefine.ServiceVersion].replace('-', '')
         else:
-            version = conf["sts"][OptionsDefine.Version]
+            version = conf["teo"][OptionsDefine.Version]
             g_param[OptionsDefine.Version] = "v" + version.replace('-', '')
 
         if g_param[OptionsDefine.Endpoint] is None:
-            g_param[OptionsDefine.Endpoint] = conf["sts"][OptionsDefine.Endpoint]
+            g_param[OptionsDefine.Endpoint] = conf["teo"][OptionsDefine.Endpoint]
     except Exception as err:
         raise ConfigurationError("config file:%s error, %s" % (conf_path, str(err)))
 

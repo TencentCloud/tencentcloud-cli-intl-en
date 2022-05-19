@@ -2758,6 +2758,15 @@
         },
         {
           "default": "",
+          "document": "Instance engine type. Valid values: `InnoDB` (default); `RocksDB`.",
+          "example": "InnoDB",
+          "member": "string",
+          "name": "EngineType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "The list of IPs for sources instances. Only one IP address can be assigned to a single source instance. If all IPs are used up, the system will automatically assign IPs to the remaining source instances that do not have one.",
           "example": "[]",
           "member": "string",

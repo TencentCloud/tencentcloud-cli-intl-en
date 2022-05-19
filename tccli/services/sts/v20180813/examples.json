@@ -4,7 +4,7 @@
       {
         "document": "",
         "input": "https://sts.tencentcloudapi.com/?Action=AssumeRole\n&RoleArn=qcs%3A%3Acam%3A%3Auin%2F2385420691%3Arole%2F4611686018427397919\n&RoleSessionName=cts\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Credentials\": {\n            \"Token\": \"da1e9d2ee9dda83506832d5ecb903b790132dfe340001\",\n            \"TmpSecretId\": \"AKID65zyIP0mpXtaI******WIQVMn1umNH58\",\n            \"TmpSecretKey\": \"q95K84wrzuEGoc*******52boxvp71yoh\"\n        },\n        \"ExpiredTime\": 1543914376,\n        \"Expiration\": \"2018-12-04T09:06:16Z\",\n        \"RequestId\": \"4daec797-9cd2-4f09-9e7a-7d4c43b2a74c\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Credentials\": {\n            \"Token\": \"da1e9d2ee9d***2dfe340001\",\n            \"TmpSecretId\": \"AKID65zyIP0mpXtaI******WIQVMn1umNH58\",\n            \"TmpSecretKey\": \"q95K84wrzuEGoc*******52boxvp71yoh\"\n        },\n        \"ExpiredTime\": 1543914376,\n        \"Expiration\": \"2018-12-04T09:06:16Z\",\n        \"RequestId\": \"4daec797-9cd2-4f09-9e7a-7d4c43b2a74c\"\n    }\n}",
         "title": "Applying for a role"
       }
     ],
@@ -14,6 +14,14 @@
         "input": "https://sts.tencentcloudapi.com/?Action=AssumeRoleWithSAML\n&PrincipalArn=qcs::cam::uin/798950673:saml-provider/OneLogin\n&RoleArn=qcs::cam::uin/798950673:roleName/OneLogin-Role\n&RoleSessionName=test\n&SAMLAssertion=c2FtbCBhc3NlcnRpb24=\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Credentials\": {\n            \"Token\": \"1siMD5r0tPAq9xpRlnzj4pjI8daS4MIW4dcd2a6a1ad76f09a0069002923def8aFw7tUMd2nH-yMZE5816oW7_Y-0JwI_ReMlkz-ajVxc_6MrXEYRtRShjDg5-L4Dq0ceupsIfdokiZG9EkfzO6Vt11iW0jLlPMT1pRFue\",\n            \"TmpSecretId\": \"AKID65zyIP0mp****qt2SlWIQVMn1umNH58\",\n            \"TmpSecretKey\": \"q95K84wrzuE****y39zg52boxvp71yoh\"\n        },\n        \"ExpiredTime\": 1543914376,\n        \"Expiration\": \"2018-12-04T09:06:16Z\",\n        \"RequestId\": \"4daec797-9cd2-4f09-9e7a-7d4c43b2a74c\"\n    }\n}",
         "title": "Applying for temporary credentials for a role via a SAML assertion"
+      }
+    ],
+    "AssumeRoleWithWebIdentity": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: sts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssumeRoleWithWebIdentity\n<Common request parameters>\n\n{\n    \"DurationSeconds\": \"5000\",\n    \"RoleSessionName\": \"test_OIDC\",\n    \"WebIdentityToken\": \"eyJraWQiOiJkT**********CNOQ\",\n    \"RoleArn\": \"qcs::cam::uin/798950673:roleName/OneLogin-Role\",\n    \"ProviderId\": \"OIDC\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ExpiredTime\": 1543914376,\n        \"Expiration\": \"2018-12-04T09:06:16Z\",\n        \"Credentials\": {\n            \"Token\": \"1siMD5r0tPAq9xpR******6a1ad76f09a0069002923def8aFw7tUMd2nH\",\n            \"TmpSecretId\": \"AKID65zyIP0mp****qt2SlWIQVMn1umNH58\",\n            \"TmpSecretKey\": \"q95K84wrzuE****y39zg52boxvp71yoh\"\n        },\n        \"RequestId\": \"f6e7cbcb-add1-47bd-9097-d08cf8f3a919\"\n    }\n}",
+        "title": "This example shows how to apply for an OIDC role credential."
       }
     ],
     "GetCallerIdentity": [

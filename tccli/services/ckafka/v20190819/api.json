@@ -60,6 +60,12 @@
       "name": "Deletes ACL",
       "output": "DeleteAclResponse"
     },
+    "DeleteRoute": {
+      "document": "This API is used to delete a route.",
+      "input": "DeleteRouteRequest",
+      "name": "Deletes a route",
+      "output": "DeleteRouteResponse"
+    },
     "DeleteRouteTriggerTime": {
       "document": "This API is used to modify the delayed trigger time of route deletion.",
       "input": "DeleteRouteTriggerTimeRequest",
@@ -1846,6 +1852,69 @@
       ],
       "type": "object"
     },
+    "DeleteRouteRequest": {
+      "document": "DeleteRoute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique instance ID.",
+          "example": "xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Route ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "RouteId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "AppId of the caller.",
+          "example": "1",
+          "member": "int64",
+          "name": "CallerAppid",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The time when a route was deleted.",
+          "example": "2020-08-21 11:15:54",
+          "member": "string",
+          "name": "DeleteRouteTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRouteResponse": {
+      "document": "DeleteRoute response structure.",
+      "members": [
+        {
+          "document": "Returned result.",
+          "example": "无",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteRouteTriggerTimeRequest": {
       "document": "DeleteRouteTriggerTime request structure.",
       "members": [
@@ -3219,7 +3288,7 @@
         },
         {
           "default": "",
-          "document": "Offset information",
+          "document": "Offset information, which is required.",
           "example": "1",
           "member": "int64",
           "name": "Offset",

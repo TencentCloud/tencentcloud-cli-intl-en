@@ -37,7 +37,7 @@
       "output": "CreateConsumerResponse"
     },
     "CreateExport": {
-      "document": "This API is used to create a download task to export raw logs.",
+      "document": "This API is used to create a download task. To get the returned download address, call `DescribeExports` to view the task list. The `CosPath` parameter is also included for download address. For more information, visit https://intl.cloud.tencent.com/document/product/614/56449.?from_cn_redirect=1",
       "input": "CreateExportRequest",
       "name": "Creates log download task",
       "output": "CreateExportResponse"
@@ -1117,6 +1117,16 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "`Parquet` format description\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ParquetInfo",
+          "name": "Parquet",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -1918,7 +1928,7 @@
         },
         {
           "default": "",
-          "document": "Log topic storage type. Valid values: `hot` (real-time storage); `cold` (IA storage). Default value: `hot`.",
+          "document": "Log topic storage type. Valid values: `hot` (STANDARD storage); `cold` (IA storage). Default value: `hot`.",
           "example": "hot",
           "member": "string",
           "name": "StorageType",
@@ -3342,7 +3352,7 @@
       "members": [
         {
           "default": "",
-          "document": "<br><li> `topicName` filters by **log topic name**. Type: String. Required: No<br><li> `logsetName` filters by **logset name**. Type: String. Required: No<br><li> `topicId` filters by **log topic ID**. Type: String. Required: No<br><li> `logsetId` filters by **logset ID**. You can call DescribeLogsets to query the list of created logsets or log in to the console to view them. You can also call CreateLogset to create a logset. Type: String. Required: No<br><li> `tagKey` filters by **tag key**. Type: String. Required: No<br><li> `tag:tagKey` filters by **tag key-value pair**. The tagKey should be replaced with a specified tag key, such as tag:exampleKey. Type: String. Required: No<br><li> `storageType` filters by **log topic storage type**. Valid values: `hot` (real-time storage); `cold`: (IA storage). Type: String. Required: No. Each request can contain up to 10 `Filters` and 100 `Filter.Values`.",
+          "document": "<br><li> `topicName` filters by **log topic name**. Type: String. Required: No<br><li> `logsetName` filters by **logset name**. Type: String. Required: No<br><li> `topicId` filters by **log topic ID**. Type: String. Required: No<br><li> `logsetId` filters by **logset ID**. You can call the `DescribeLogsets` API to query the list of created logsets or log in to the console to view them. You can also call the `CreateLogset` API to create a logset. Type: String. Required: No<br><li> `tagKey` filters by **tag key**. Type: String. Required: No<br><li> `tag:tagKey` filters by **tag key-value pair**. The tagKey should be replaced with a specified tag key, such as “tag:exampleKey”. Type: String. Required: No<br><li> `storageType` filters by **log topic storage type**. Valid values: `hot` (STANDARD storage); `cold`: (IA storage). Type: String. Required: No. Each request can contain up to 10 `Filters` and 100 `Filter.Values`.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -5408,6 +5418,58 @@
         }
       ],
       "type": "object"
+    },
+    "ParquetInfo": {
+      "document": "`Parquet` contents",
+      "members": [
+        {
+          "default": "",
+          "document": "`ParquetKeyInfo` array",
+          "example": "无",
+          "member": "ParquetKeyInfo",
+          "name": "ParquetKeyInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ParquetKeyInfo": {
+      "document": "`Parquet` content description",
+      "members": [
+        {
+          "default": "",
+          "document": "Key name",
+          "example": "content",
+          "member": "string",
+          "name": "KeyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Supported data types: string, boolean, int32, int64, float, and double",
+          "example": "string",
+          "member": "string",
+          "name": "KeyType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Assignment information returned upon resolution failure\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "KeyNonExistingField",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "PartitionInfo": {
       "document": "Log topic partition information",

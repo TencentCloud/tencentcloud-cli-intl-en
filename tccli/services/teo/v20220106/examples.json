@@ -1,0 +1,35 @@
+{
+  "actions": {
+    "CreatePurgeTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<Common request parameters>\n\n{\n    \"Targets\": [\n        \"http://www.qq.com/a.txt\",\n        \"www.qq.com/1.txt\"\n    ],\n    \"Type\": \"purge_url\",\n    \"ZoneId\": \"abc\",\n    \"EncodeUrl\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwch\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Purging by the specified URL"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<Common request parameters>\n\n{\n    \"Type\": \"purge_all\",\n    \"ZoneId\": \"abc\",\n    \"EncodeUrl\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwch\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Purging all resources of the site `abc`"
+      }
+    ],
+    "DescribePurgeTasks": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePurgeTasks\n<Common request parameters>\n\n{\n    \"ZoneId\": \"abc\",\n    \"StartTime\": \"2022-02-09T00:00:00+08:00\",\n    \"EndTime\": \"2022-02-09T23:59:00+08:00\",\n    \"Statuses\": [\n        \"success\"\n    ],\n    \"Limit\": 1,\n    \"Offset\": 7,\n    \"Domains\": [\n        \"www.qq.com\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc-afhhakf-24hkahf-2424\",\n        \"Tasks\": [\n            {\n                \"JobId\": \"20g9wz8m9mgx\",\n                \"Status\": \"success\",\n                \"Target\": \"http://www.qq.com/a.txt\",\n                \"Type\": \"purge_url\",\n                \"CreateTime\": \"2022-02-09T02:28:43Z\",\n                \"UpdateTime\": \"2022-02-09T02:28:52Z\"\n            }\n        ],\n        \"TotalCount\": 8\n    }\n}",
+        "title": "Querying the cache purging history"
+      }
+    ],
+    "DescribeZones": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeZones\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Zones\": [\n            {\n                \"Status\": \"xx\",\n                \"ModifiedOn\": \"2020-09-22T00:00:00+00:00\",\n                \"Name\": \"xx\",\n                \"NameServers\": [\n                    \"xx\"\n                ],\n                \"CreatedOn\": \"2020-09-22T00:00:00+00:00\",\n                \"OriginalNameServers\": [\n                    \"xx\"\n                ],\n                \"Paused\": true,\n                \"Type\": \"xx\",\n                \"Id\": \"xx\"\n            }\n        ],\n        \"TotalCount\": 0,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Query the list of user sites"
+      }
+    ]
+  },
+  "version": "1.0"
+}

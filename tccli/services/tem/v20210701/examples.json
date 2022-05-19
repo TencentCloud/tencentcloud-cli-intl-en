@@ -120,10 +120,10 @@
     ],
     "RestartApplication": [
       {
-        "document": "This examples restarts an application.",
+        "document": "This example shows how to stop an application.",
         "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestartApplication\n<Common request parameters>\n\n{\n    \"SourceChannel\": 0,\n    \"ApplicationId\": \"xx\",\n    \"EnvironmentId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Restarting an application"
+        "title": "Stopping an application"
       }
     ],
     "RestartApplicationPod": [

@@ -397,6 +397,7 @@
         {
           "default": "",
           "document": "Unique ID of intelligent analysis template.",
+          "example": "0",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -406,6 +407,7 @@
         {
           "default": "",
           "document": "Intelligent analysis template name.",
+          "example": "“”",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -415,6 +417,7 @@
         {
           "default": "",
           "document": "Intelligent analysis template description.",
+          "example": "“”",
           "member": "string",
           "name": "Comment",
           "required": true,
@@ -424,6 +427,7 @@
         {
           "default": "",
           "document": "Control parameter of intelligent categorization task.",
+          "example": "无",
           "member": "ClassificationConfigureInfo",
           "name": "ClassificationConfigure",
           "required": true,
@@ -433,6 +437,7 @@
         {
           "default": "",
           "document": "Control parameter of intelligent tagging task.",
+          "example": "无",
           "member": "TagConfigureInfo",
           "name": "TagConfigure",
           "required": true,
@@ -442,6 +447,7 @@
         {
           "default": "",
           "document": "Control parameter of intelligent cover generating task.",
+          "example": "无",
           "member": "CoverConfigureInfo",
           "name": "CoverConfigure",
           "required": true,
@@ -451,6 +457,7 @@
         {
           "default": "",
           "document": "Control parameter of intelligent frame-specific tagging task.",
+          "example": "无",
           "member": "FrameTagConfigureInfo",
           "name": "FrameTagConfigure",
           "required": true,
@@ -460,6 +467,7 @@
         {
           "default": "",
           "document": "Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "“”",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -469,11 +477,22 @@
         {
           "default": "",
           "document": "Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "“”",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The template type. Valid values:\n* Preset\n* Custom\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -484,6 +503,7 @@
         {
           "default": "",
           "document": "Unique ID of a video content recognition template.",
+          "example": "0",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -493,6 +513,7 @@
         {
           "default": "",
           "document": "Name of a video content recognition template.",
+          "example": "“”",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -502,6 +523,7 @@
         {
           "default": "",
           "document": "Description of a video content recognition template.",
+          "example": "“”",
           "member": "string",
           "name": "Comment",
           "required": true,
@@ -511,6 +533,7 @@
         {
           "default": "",
           "document": "Face recognition control parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "FaceConfigureInfo",
           "name": "FaceConfigure",
           "required": true,
@@ -520,6 +543,7 @@
         {
           "default": "",
           "document": "Full text recognition control parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "OcrFullTextConfigureInfo",
           "name": "OcrFullTextConfigure",
           "required": true,
@@ -529,6 +553,7 @@
         {
           "default": "",
           "document": "Text keyword recognition control parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "OcrWordsConfigureInfo",
           "name": "OcrWordsConfigure",
           "required": true,
@@ -538,6 +563,7 @@
         {
           "default": "",
           "document": "Full speech recognition control parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AsrFullTextConfigureInfo",
           "name": "AsrFullTextConfigure",
           "required": true,
@@ -547,6 +573,7 @@
         {
           "default": "",
           "document": "Speech keyword recognition control parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AsrWordsConfigureInfo",
           "name": "AsrWordsConfigure",
           "required": true,
@@ -556,6 +583,7 @@
         {
           "default": "",
           "document": "Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "“”",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -565,11 +593,22 @@
         {
           "default": "",
           "document": "Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "“”",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The template type. Valid values:\n* Preset\n* Custom\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4164,7 +4203,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The template type. Valid values:\n* Preset\n* Custom\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "“”",
           "member": "string",
           "name": "Type",
@@ -5732,6 +5771,7 @@
         {
           "default": "",
           "document": "Unique ID filter of video content analysis templates. Array length limit: 10.",
+          "example": "[\"30\\r\\n\"]",
           "member": "int64",
           "name": "Definitions",
           "required": false,
@@ -5740,6 +5780,7 @@
         {
           "default": "",
           "document": "Pagination offset. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -5748,10 +5789,20 @@
         {
           "default": "",
           "document": "Number of returned entries. Default value: 10. Maximum value: 100.",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The filter for querying templates. If this parameter is left empty, both preset and custom templates are returned. Valid values:\n* Preset\n* Custom",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5788,6 +5839,7 @@
         {
           "default": "",
           "document": "Unique ID filter of video content recognition templates. Array length limit: 10.",
+          "example": "[\"30\\r\\n\"]",
           "member": "int64",
           "name": "Definitions",
           "required": false,
@@ -5796,6 +5848,7 @@
         {
           "default": "",
           "document": "Paging offset. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -5804,10 +5857,20 @@
         {
           "default": "",
           "document": "Number of returned entries. Default value: 10. Maximum value: 50.",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The filter for querying templates. If this parameter is left empty, both preset and custom templates are returned. Valid values:\n* Preset\n* Custom",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5972,6 +6035,7 @@
         {
           "default": "",
           "document": "Unique ID of intelligent content recognition templates as the filter. Array length limit: 50",
+          "example": "无",
           "member": "int64",
           "name": "Definitions",
           "required": false,
@@ -5980,6 +6044,7 @@
         {
           "default": "",
           "document": "Paging offset. Default value: 0.",
+          "example": "无",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -5988,10 +6053,20 @@
         {
           "default": "",
           "document": "Number of returned entries. Default value: 10. Maximum value: 50.",
+          "example": "无",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The filter for querying templates. If this parameter is left empty, both preset and custom templates are returned. Valid values:\n* Preset\n* Custom",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
