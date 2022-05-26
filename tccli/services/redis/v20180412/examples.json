@@ -147,8 +147,16 @@
     "ModfiyInstancePassword": [
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=ModfiyInstancePassword\r\n&InstanceId=crs-5a4py64p\r\n&OldPassword=zy456987\r\n&Password=456987zy\r\n&<Common request parameters>",
+        "input": "https://redis.tencentcloudapi.com/?Action=ModfiyInstancePassword\n&InstanceId=crs-5a4py64p\n&OldPassword=zy456987\n&Password=456987zy\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"cca16225-a169-4f11-b1cf-13398200f604\",\n        \"TaskId\": 16661\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyInstanceReadOnly": [
+      {
+        "document": "",
+        "input": "https://redis.tencentcloudapi.com/?Action=ModifyInstanceReadOnly\n&InstanceId=crs-5a4py64p\n&InputMode=0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 0,\n        \"RequestId\": \"c07beb69-a8f0-4e09-9655-68e59677a7f1\"\n    }\n}",
         "title": "Sample request"
       }
     ],

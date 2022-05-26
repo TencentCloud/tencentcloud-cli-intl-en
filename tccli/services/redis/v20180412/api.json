@@ -114,6 +114,12 @@
       "name": "Changes the Redis password",
       "output": "ModfiyInstancePasswordResponse"
     },
+    "ModifyInstanceReadOnly": {
+      "document": "This API is used to set instance input mode.",
+      "input": "ModifyInstanceReadOnlyRequest",
+      "name": "Sets instance input mode",
+      "output": "ModifyInstanceReadOnlyResponse"
+    },
     "ReleaseWanAddress": {
       "document": "This API is used to disable public network access.",
       "input": "ReleaseWanAddressRequest",
@@ -1732,6 +1738,51 @@
           "document": "Task ID",
           "member": "int64",
           "name": "TaskId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceReadOnlyRequest": {
+      "document": "ModifyInstanceReadOnly request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "crs-deindi7de",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance input mode. Valid values: `0` (read/write), `1` (read-only)",
+          "example": "1",
+          "member": "string",
+          "name": "InputMode",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceReadOnlyResponse": {
+      "document": "ModifyInstanceReadOnly response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "example": "486489",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
