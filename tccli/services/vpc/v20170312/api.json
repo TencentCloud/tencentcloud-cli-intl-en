@@ -73,7 +73,7 @@
       "output": "AttachClassicLinkVpcResponse"
     },
     "AttachNetworkInterface": {
-      "document": "This API is used to bind an ENI to a CVM.\n* One CVM can be bound with multiple ENIs, but only one primary ENI. * For more information about the limits, see <a href=\"https://intl.cloud.tencent.com/document/product/576/18527?from_cn_redirect=1\">ENI Use Limits</a>.\n* An ENI can only be bound to one CVM at a time.\n* Only the running or shutdown CVMs can be bound with ENIs. For more information about the CVM status, see <a href=\"https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#InstanceStatus\">InstanceStatus</a> in the Data Types.\n* An ENI can only be bound to a VPC-based CVM under the same availability zone as the ENI subnet.\n\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
+      "document": "This API is used to bind an ENI to a CVM.\n* An ENI must be bound with one security group at least. To bind it, see <a href=\"https://intl.cloud.tencent.com/document/product/215/43132?from_cn_redirect=1\">AssociateNetworkInterfaceSecurityGroups</a>.\n* One CVM can be bound with multiple ENIs, but only one can be the primary ENI. For more information about the limits, see <a href=\"https://intl.cloud.tencent.com/document/product/576/18527?from_cn_redirect=1\">ENI Use Limits</a>.\n* An ENI can only be bound to one CVM.\n* Only the running or shutdown CVMs can be bound with ENIs. For more information about the CVM status, see <a href=\"https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#InstanceStatus\">InstanceStatus</a> in the Data Types.\n* An ENI can only be bound to a VPC-based CVM under the same availability zone as the ENI subnet.\n\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
       "input": "AttachNetworkInterfaceRequest",
       "name": "Binds an ENI to a CVM",
       "output": "AttachNetworkInterfaceResponse"
@@ -173,18 +173,6 @@
       "input": "CreateLocalGatewayRequest",
       "name": "Creates a local gateway",
       "output": "CreateLocalGatewayResponse"
-    },
-    "CreateNatGatewayDestinationIpPortTranslationNatRule": {
-      "document": "This API (CreateNatGatewayDestinationIpPortTranslationNatRule) is used to create a port forwarding rule for a NAT gateway.",
-      "input": "CreateNatGatewayDestinationIpPortTranslationNatRuleRequest",
-      "name": "Creates a port forwarding rule for a NAT gateway",
-      "output": "CreateNatGatewayDestinationIpPortTranslationNatRuleResponse"
-    },
-    "CreateNatGatewaySourceIpTranslationNatRule": {
-      "document": "This API is used to create a SNAT rule for the NAT Gateway.",
-      "input": "CreateNatGatewaySourceIpTranslationNatRuleRequest",
-      "name": "Creates a SNAT rule for the NAT Gateway",
-      "output": "CreateNatGatewaySourceIpTranslationNatRuleResponse"
     },
     "CreateNetDetect": {
       "document": "This API is used to create a network detection instance.",
@@ -792,6 +780,12 @@
       "name": "Disables CCN routes",
       "output": "DisableCcnRoutesResponse"
     },
+    "DisableFlowLogs": {
+      "document": "This API is used to disable flow log.",
+      "input": "DisableFlowLogsRequest",
+      "name": "Disables flow log",
+      "output": "DisableFlowLogsResponse"
+    },
     "DisassociateAddress": {
       "document": "This API is used to unbind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).\n* This API supports unbinding an EIP from CVM instances and ENIs.\n* This API does not support unbinding an EIP from a NAT Gateway. To unbind an EIP from a NAT Gateway, use the [`DisassociateNatGatewayAddress`](https://intl.cloud.tencent.com/document/api/215/36716?from_cn_redirect=1) API.\n* Only EIPs in BIND or BIND_ENI status can be unbound.\n* Blocked EIPs cannot be unbound.",
       "input": "DisassociateAddressRequest",
@@ -827,6 +821,12 @@
       "input": "EnableCcnRoutesRequest",
       "name": "Enables CCN routes",
       "output": "EnableCcnRoutesResponse"
+    },
+    "EnableFlowLogs": {
+      "document": "This API is used to enable flow log.",
+      "input": "EnableFlowLogsRequest",
+      "name": "Enables flow log",
+      "output": "EnableFlowLogsResponse"
     },
     "EnableVpcEndPointConnect": {
       "document": "This API is used to determine whether to accept the request of connecting with an endpoint.",
@@ -3972,7 +3972,7 @@
         },
         {
           "default": "",
-          "document": "The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, and `CCN`.",
+          "document": "The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, `CCN`, `NAT`, and `DCG`.",
           "example": "NETWORKINTERFACE",
           "member": "string",
           "name": "ResourceType",
@@ -4175,74 +4175,6 @@
           "type": "object",
           "value_allowed_null": false
         },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateNatGatewayDestinationIpPortTranslationNatRuleRequest": {
-      "document": "CreateNatGatewayDestinationIpPortTranslationNatRule request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "The ID of the NAT gateway, such as `nat-df45454`.",
-          "member": "string",
-          "name": "NatGatewayId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The port forwarding rules of the NAT gateway.",
-          "member": "DestinationIpPortTranslationNatRule",
-          "name": "DestinationIpPortTranslationNatRules",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateNatGatewayDestinationIpPortTranslationNatRuleResponse": {
-      "document": "CreateNatGatewayDestinationIpPortTranslationNatRule response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateNatGatewaySourceIpTranslationNatRuleRequest": {
-      "document": "CreateNatGatewaySourceIpTranslationNatRule request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "The ID of the NAT Gateway, such as `nat-df45454`",
-          "member": "string",
-          "name": "NatGatewayId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The SNAT forwarding rule of the NAT Gateway",
-          "member": "SourceIpTranslationNatRule",
-          "name": "SourceIpTranslationNatRules",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateNatGatewaySourceIpTranslationNatRuleResponse": {
-      "document": "CreateNatGatewaySourceIpTranslationNatRule response structure.",
-      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -9930,66 +9862,6 @@
       ],
       "type": "object"
     },
-    "DestinationIpPortTranslationNatRule": {
-      "document": "The port forwarding rules of the NAT gateway",
-      "members": [
-        {
-          "default": "",
-          "document": "Network protocol. Available choices: `TCP`, `UDP`.",
-          "member": "string",
-          "name": "IpProtocol",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "EIP.",
-          "member": "string",
-          "name": "PublicIpAddress",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Public port.",
-          "member": "uint64",
-          "name": "PublicPort",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Private network address.",
-          "member": "string",
-          "name": "PrivateIpAddress",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Private network port.",
-          "member": "uint64",
-          "name": "PrivatePort",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "NAT gateway forwarding rule description.",
-          "member": "string",
-          "name": "Description",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
     "DetachCcnInstancesRequest": {
       "document": "DetachCcnInstances request structure.",
       "members": [
@@ -10408,6 +10280,33 @@
       ],
       "type": "object"
     },
+    "DisableFlowLogsRequest": {
+      "document": "DisableFlowLogs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Flow log ID.",
+          "example": "[\"fl-7rymh5cn\"]",
+          "member": "string",
+          "name": "FlowLogIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableFlowLogsResponse": {
+      "document": "DisableFlowLogs response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DisassociateAddressRequest": {
       "document": "DisassociateAddress request structure.",
       "members": [
@@ -10642,6 +10541,33 @@
     },
     "EnableCcnRoutesResponse": {
       "document": "EnableCcnRoutes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableFlowLogsRequest": {
+      "document": "EnableFlowLogs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Flow log ID.",
+          "example": "[\"fl-7rymh5cn\"]",
+          "member": "string",
+          "name": "FlowLogIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableFlowLogsResponse": {
+      "document": "EnableFlowLogs response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -11008,7 +10934,7 @@
         },
         {
           "default": "",
-          "document": "The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, and `CCN`.",
+          "document": "The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, `CCN`, `NAT`, and `DCG`.",
           "example": "NETWORKINTERFACE",
           "member": "string",
           "name": "ResourceType",
@@ -16208,93 +16134,6 @@
         }
       ],
       "type": "object"
-    },
-    "SourceIpTranslationNatRule": {
-      "document": "SNAT rule of a NAT Gateway",
-      "members": [
-        {
-          "default": "",
-          "document": "Resource ID",
-          "member": "string",
-          "name": "ResourceId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Resource type. Valid values: SUBNET, NETWORKINTERFACE\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "ResourceType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Source IP/IP range",
-          "member": "string",
-          "name": "PrivateIpAddress",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Elastic IP address pool",
-          "member": "string",
-          "name": "PublicIpAddresses",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Description",
-          "member": "string",
-          "name": "Description",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "SNAT rule ID",
-          "member": "string",
-          "name": "NatGatewaySnatId",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "NAT Gateway ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "NatGatewayId",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "VPC ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "VpcId",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Creation time of a SNAT rule for a NAT Gateway\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "CreatedTime",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
     },
     "Subnet": {
       "document": "Subnet object",

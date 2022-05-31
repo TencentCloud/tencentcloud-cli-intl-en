@@ -286,22 +286,6 @@
         "title": "Creating a local gateway"
       }
     ],
-    "CreateNatGatewayDestinationIpPortTranslationNatRule": [
-      {
-        "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateNatGatewayDestinationIpPortTranslationNatRule\r\n&NatGatewayId=nat-3isn9hr0\r\n&DestinationIpPortTranslationNatRules.0.IpProtocol=TCP\r\n&DestinationIpPortTranslationNatRules.0.PublicIpAddress=139.199.232.238\r\n&DestinationIpPortTranslationNatRules.0.PublicPort=8989\r\n&DestinationIpPortTranslationNatRules.0.PrivateIpAddress=10.80.80.41\r\n&DestinationIpPortTranslationNatRules.0.PrivatePort=8989\r\n&DestinationIpPortTranslationNatRules.0.Description=test_dnapt\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14f7ea4e-8452-4742-84b5-5a3aee304967\"\n    }\n}",
-        "title": "Creating NAT forwarding rules"
-      }
-    ],
-    "CreateNatGatewaySourceIpTranslationNatRule": [
-      {
-        "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateNatGatewaySourceIpTranslationNatRule\n&NatGatewayId=nat-3isn9hr0\n&SourceIpTranslationNatRules.0.ResourceId=cvm-24796297\n&SourceIpTranslationNatRules.0.ResourceType=NETWORKINTERFACE\n&SourceIpTranslationNatRules.0.PrivateIpAddress=10.80.80.41\n&SourceIpTranslationNatRules.0.PublicIpAddresses.0=180.12.59.43\n&SourceIpTranslationNatRules.0.Description=test_snat\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14f7ea4e-8452-4742-84b5-5a4aee304968\"\n    }\n}",
-        "title": "Creating an SNAT rule for the NAT gateway"
-      }
-    ],
     "CreateNetDetect": [
       {
         "document": "",
@@ -963,14 +947,14 @@
     "DescribeNetworkInterfaceLimit": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeNetworkInterfaceLimit\n&InstanceId=ins-1991090i\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"EniPrivateIpAddressQuantity\": 10,\n        \"ExtendEniPrivateIpAddressQuantity\": 20,\n        \"ExtendEniQuantity\": 0,\n        \"RequestId\": \"01f14f34-e9ae-470d-a71b-e8616ad3fae1\",\n        \"EniQuantity\": 2\n    }\n}",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeNetworkInterfaceLimit\r\n&InstanceId=ins-1991090i\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"EniQuantity\": 2,\n        \"EniPrivateIpAddressQuantity\": 10,\n        \"RequestId\": \"01f14f34-e9ae-470d-a71b-e8616ad3fae1\"\n    }\n}",
         "title": "Querying the ENI quota by CVM instance ID"
       },
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeNetworkInterfaceLimit\n&InstanceId=eni-1991090i\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"EniQuantity\": 0,\n        \"EniPrivateIpAddressQuantity\": 10,\n        \"ExtendEniQuantity\": 0,\n        \"ExtendEniPrivateIpAddressQuantity\": 0,\n        \"RequestId\": \"01f14f34-e9ae-470d-a71b-e8616ad3fae1\"\n    }\n}",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeNetworkInterfaceLimit\r\n&InstanceId=eni-1991090i\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"EniQuantity\": 0,\n        \"EniPrivateIpAddressQuantity\": 10,\n        \"RequestId\": \"01f14f34-e9ae-470d-a71b-e8616ad3fae1\"\n    }\n}",
         "title": "Querying the ENI quota by ENI ID"
       }
     ],
@@ -1212,6 +1196,14 @@
         "title": "Disabling multiple routing policies"
       }
     ],
+    "DisableFlowLogs": [
+      {
+        "document": "",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DisableFlowLogs\n&FlowLogIds.0=fl-7rymh5cn\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a38579de-a046-4d68-b24a-b629c8d0ae57\"\n    }\n}",
+        "title": "Disabling the flow log"
+      }
+    ],
     "DisassociateAddress": [
       {
         "document": "",
@@ -1258,6 +1250,14 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=EnableCcnRoutes\n&CcnId=ccn-gree226l\n&RouteIds.0=ccnr-bvipc87w\n&RouteIds.1=ccnr-oc61so0o\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"627c2362-890f-4f9e-9158-5e457b80d48b\"\n    }\n}",
         "title": "Enabling multiple routing policies"
+      }
+    ],
+    "EnableFlowLogs": [
+      {
+        "document": "",
+        "input": "https://vpc.tencentcloudapi.com/?Action=EnableFlowLogs\n&FlowLogIds.0=fl-7rymh5cn\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a38579de-a046-4d68-b24a-b629c8d0ae57\"\n    }\n}",
+        "title": "Enabling the flow log"
       }
     ],
     "EnableVpcEndPointConnect": [
