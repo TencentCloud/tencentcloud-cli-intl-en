@@ -1,11 +1,19 @@
 {
   "actions": {
+    "AddUsersForUserManager": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: emr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddUsersForUserManager\n<Common request parameters>\n\n{\n    \"UserManagerUserList\": [\n        {\n            \"UserName\": \"test1\",\n            \"UserGroup\": \"test1\",\n            \"PassWord\": \"test1\",\n            \"ReMark\": \"test1\"\n        },\n        {\n            \"UserName\": \"test2\",\n            \"UserGroup\": \"test2\",\n            \"PassWord\": \"test2\",\n            \"ReMark\": \"test2\"\n        },\n        {\n            \"UserName\": \"test3\",\n            \"UserGroup\": \"test3\",\n            \"PassWord\": \"test3\",\n            \"ReMark\": \"test3\"\n        },\n        {\n            \"UserName\": \"test4\",\n            \"UserGroup\": \"test4\",\n            \"PassWord\": \"test4\",\n            \"ReMark\": \"test4\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"782d3570-9f82-4bff-974a-17cf684fdfe9\"\n    }\n}",
+        "title": "test"
+      }
+    ],
     "CreateInstance": [
       {
         "document": "",
         "input": "https://emr.tencentcloudapi.com/?Action=CreateInstance\n&ProductId=4\n&SupportHA=0\n&InstanceName=emr test\n&PayMode=0\n&Placement.Zone=ap-guangzhou-3\n&Placement.ProjectId=0\n&AutoRenew=0\n&Software.0=hadoop-2.8.4\n&Software.1=zookeeper-3.4.9\n&Software.2=knox-1.2.0\n&ResourceSpec.MasterResourceSpec.MemSize=8192\n&ResourceSpec.MasterResourceSpec.Cpu=4\n&ResourceSpec.MasterResourceSpec.DiskSize=100\n&ResourceSpec.MasterResourceSpec.DiskType=CLOUD_PREMIUM\n&ResourceSpec.MasterResourceSpec.Spec=CVM.S2\n&ResourceSpec.MasterResourceSpec.RootSize=100\n&ResourceSpec.MasterResourceSpec.StorageType=5\n&ResourceSpec.CoreResourceSpec.MemSize=8192\n&ResourceSpec.CoreResourceSpec.Cpu=4\n&ResourceSpec.CoreResourceSpec.DiskSize=100\n&ResourceSpec.CoreResourceSpec.DiskType=CLOUD_PREMIUM\n&ResourceSpec.CoreResourceSpec.Spec=CVM.S2\n&ResourceSpec.CoreResourceSpec.RootSize=100\n&ResourceSpec.CoreResourceSpec.StorageType=5\n&ResourceSpec.MasterCount=1\n&ResourceSpec.CoreCount=2\n&VPCSettings.VpcId=vpc-xxxxxx\n&VPCSettings.SubnetId=subnet-xxxxxxx\n&LoginSettings.Password=tencent@cloud123\n&TimeSpan=3600\n&TimeUnit=s\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d830face-6587-4263-8ab0-56bda265787d\",\n        \"InstanceId\": \"emr-xxxx\"\n    }\n}",
-        "title": "Creating instance"
+        "title": "Creating an instance"
       }
     ],
     "DescribeClusterNodes": [
@@ -24,11 +32,27 @@
         "title": "Querying instance details"
       }
     ],
+    "DescribeInstancesList": [
+      {
+        "document": "",
+        "input": "https://emr.tencentcloudapi.com/?Action=DescribeInstancesList\n&Offset=0\n&Limit=10\n&OrderField=clusterid\n&Asc=0\n&DisplayStrategy=clusterList\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCnt\": 1,\n        \"InstancesList\": [\n            {\n                \"Zone\": \"xx\",\n                \"SubnetName\": \"xx\",\n                \"Status\": 1,\n                \"VpcId\": 1,\n                \"AlarmInfo\": \"xx\",\n                \"Tags\": [\n                    {\n                        \"TagKey\": \"xx\",\n                        \"TagValue\": \"xx\"\n                    },\n                    {\n                        \"TagKey\": \"xx\",\n                        \"TagValue\": \"xx\"\n                    },\n                    {\n                        \"TagKey\": \"xx\",\n                        \"TagValue\": \"xx\"\n                    }\n                ],\n                \"RegionId\": 1,\n                \"ClusterId\": \"xx\",\n                \"VpcName\": \"Test\",\n                \"AddTime\": \"xx\",\n                \"SubnetId\": 1,\n                \"MasterIp\": \"xx\",\n                \"ProjectId\": 1,\n                \"ZoneId\": 1,\n                \"StatusDesc\": \"xx\",\n                \"ProductId\": 1,\n                \"UniqVpcId\": \"xx\",\n                \"ClusterName\": \"xx\",\n                \"EmrVersion\": \"xx\",\n                \"IsWoodpeckerCluster\": 1,\n                \"UniqSubnetId\": \"xx\",\n                \"ChargeType\": 1,\n                \"AppId\": 1\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying instance details"
+      }
+    ],
     "DescribeResourceSchedule": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: emr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeResourceSchedule\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"FSInfo\": \"xx\",\n        \"CSInfo\": \"xx\",\n        \"Scheduler\": \"xx\",\n        \"OpenSwitch\": true,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "test"
+      }
+    ],
+    "DescribeUsersForUserManager": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: emr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUsersForUserManager\n<Common request parameters>\n\n{\n    \"NeedKeytabInfo\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"782d3570-9f82-4bff-974a-17cf684fdfe9\"\n    }\n}",
         "title": "test"
       }
     ],

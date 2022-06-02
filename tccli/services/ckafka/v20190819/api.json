@@ -216,6 +216,12 @@
       "name": "Sets instance attributes",
       "output": "ModifyInstanceAttributesResponse"
     },
+    "ModifyInstancePre": {
+      "document": "This API is used to change the configurations of a prepaid instance, such as disk capacity and bandwidth.",
+      "input": "ModifyInstancePreRequest",
+      "name": "Changes the configurations of a prepaid instance",
+      "output": "ModifyInstancePreResponse"
+    },
     "ModifyPassword": {
       "document": "This API is used to change the password.",
       "input": "ModifyPasswordRequest",
@@ -1423,6 +1429,88 @@
         }
       ],
       "type": "object"
+    },
+    "CreateInstancePreData": {
+      "document": "Data returned by the `CreateInstancePre` API.",
+      "members": [
+        {
+          "default": "",
+          "document": "The value returned by `CreateInstancePre` is 0, which is fixed and cannot be used as the query condition of `CheckTaskStatus`. It is only used to ensure the consistency with the backend data structure.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Order number list.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "DealNames",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateInstancePreResp": {
+      "document": "Response structure of creating a prepaid instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Returned code. 0: Normal; other values: Error.",
+          "example": "1",
+          "member": "string",
+          "name": "ReturnCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The message indicating whether the operation is successful.",
+          "example": "1",
+          "member": "string",
+          "name": "ReturnMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data returned by the operation.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "CreateInstancePreData",
+          "name": "Data",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Deletion time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "DeleteRouteTimestamp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "CreatePartitionRequest": {
       "document": "CreatePartition request structure.",
@@ -4667,6 +4755,69 @@
           "document": "Returned result",
           "member": "JgwOperateResponse",
           "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstancePreRequest": {
+      "document": "ModifyInstancePre request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance name.",
+          "example": "ckafka-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Estimated disk capacity, which can be increased by increment.",
+          "example": "100",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Estimated bandwidth, which can be increased by increment.",
+          "example": "100",
+          "member": "int64",
+          "name": "BandWidth",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Estimated partition count, which can be increased by increment.",
+          "example": "100",
+          "member": "int64",
+          "name": "Partition",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstancePreResponse": {
+      "document": "ModifyInstancePre response structure.",
+      "members": [
+        {
+          "document": "Response structure of modifying the configurations of a prepaid instance.",
+          "example": "无",
+          "member": "CreateInstancePreResp",
+          "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },

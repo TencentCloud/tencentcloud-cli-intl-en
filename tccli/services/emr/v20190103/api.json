@@ -1,5 +1,11 @@
 {
   "actions": {
+    "AddUsersForUserManager": {
+      "document": "This API is used to add user lists (user management).",
+      "input": "AddUsersForUserManagerRequest",
+      "name": "Adds user lists (user management)",
+      "output": "AddUsersForUserManagerResponse"
+    },
     "CreateInstance": {
       "document": "This API is used to create an EMR cluster instance.",
       "input": "CreateInstanceRequest",
@@ -18,11 +24,23 @@
       "name": "Queries EMR instances",
       "output": "DescribeInstancesResponse"
     },
+    "DescribeInstancesList": {
+      "document": "This API is used to query EMR cluster instances.",
+      "input": "DescribeInstancesListRequest",
+      "name": "Queries EMR cluster instances",
+      "output": "DescribeInstancesListResponse"
+    },
     "DescribeResourceSchedule": {
       "document": "This API is used to get data from the YARN Resource Scheduling page.",
       "input": "DescribeResourceScheduleRequest",
       "name": "Gets data from the YARN Resource Scheduling page",
       "output": "DescribeResourceScheduleResponse"
+    },
+    "DescribeUsersForUserManager": {
+      "document": "This API is used to export users in batches.",
+      "input": "DescribeUsersForUserManagerRequest",
+      "name": "Queries the user list (user management)",
+      "output": "DescribeUsersForUserManagerResponse"
     },
     "InquiryPriceCreateInstance": {
       "document": "This API is used to query price of instance creation.",
@@ -67,6 +85,33 @@
     "serviceShortName": "emr"
   },
   "objects": {
+    "AddUsersForUserManagerRequest": {
+      "document": "AddUsersForUserManager request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User information list",
+          "example": "[{\"UserName\":\"user1\",\"UserGroup\":\"group1\",\"PassWord\":\"123456\"}]",
+          "member": "UserInfoForUserManager",
+          "name": "UserManagerUserList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AddUsersForUserManagerResponse": {
+      "document": "AddUsersForUserManager response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "COSSettings": {
       "document": "COS-related configuration",
       "members": [
@@ -659,6 +704,46 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The VPC ID string type of the cluster\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The subnet ID string type of the cluster\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node information\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TopologyInfo",
+          "name": "TopologyInfoList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Multi-AZ cluster\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsMultiZoneCluster",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -677,30 +762,12 @@
         },
         {
           "default": "",
-          "document": "Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.",
-          "example": "无",
-          "member": "VPCSettings",
-          "name": "VPCSettings",
-          "required": true,
-          "type": "object"
-        },
-        {
-          "default": "",
           "document": "List of deployed components. The list of component options varies by EMR product ID (i.e., `ProductId`; for specific meanings, please see the `ProductId` input parameter). For more information, please see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).\nEnter an instance value: `hive` or `flink`.",
           "example": "[\"hadoop-2.8.4\\n\",\"zookeeper-3.4.9\\n\",\"knox-1.2.0\\n\"]",
           "member": "string",
           "name": "Software",
           "required": true,
           "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Node resource specification.",
-          "example": "无",
-          "member": "NewResourceSpec",
-          "name": "ResourceSpec",
-          "required": true,
-          "type": "object"
         },
         {
           "default": "",
@@ -731,15 +798,6 @@
         },
         {
           "default": "",
-          "document": "Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.",
-          "example": "无",
-          "member": "Placement",
-          "name": "Placement",
-          "required": true,
-          "type": "object"
-        },
-        {
-          "default": "",
           "document": "Purchase duration of instance, which needs to be used together with `TimeUnit`.\n<li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>\n<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>",
           "example": "3600",
           "member": "uint64",
@@ -767,10 +825,37 @@
         },
         {
           "default": "",
+          "document": "Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.",
+          "example": "无",
+          "member": "VPCSettings",
+          "name": "VPCSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Node resource specification.",
+          "example": "无",
+          "member": "NewResourceSpec",
+          "name": "ResourceSpec",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
           "document": "Parameter required for enabling COS access.",
           "example": "无",
           "member": "COSSettings",
           "name": "COSSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.",
+          "example": "无",
+          "member": "Placement",
+          "name": "Placement",
           "required": false,
           "type": "object"
         },
@@ -924,6 +1009,33 @@
           "example": "无",
           "member": "ExternalService",
           "name": "ExternalService",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "VersionID",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "`true` indicates that the multi-AZ deployment mode is enabled. This parameter is available only in cluster creation and cannot be changed after setting.",
+          "example": "false",
+          "member": "bool",
+          "name": "MultiZone",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Node resource specs. The actual number of AZs is set, with the first AZ as the primary AZ, the second as the backup AZ, and the third as the arbitrator AZ. If the multi-AZ mode is not enabled, set the value to `1`.",
+          "example": "无",
+          "member": "MultiZoneSetting",
+          "name": "MultiZoneSettings",
           "required": false,
           "type": "list"
         }
@@ -1104,6 +1216,96 @@
       ],
       "type": "object"
     },
+    "DescribeInstancesListRequest": {
+      "document": "DescribeInstancesList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster filtering policy. Valid values: <li>clusterList: Queries the list of clusters excluding terminated ones.</li><li>monitorManage: Queries the list of clusters excluding those terminated, under creation and not successfully created.</li><li>cloudHardwareManage/componentManage: Two reserved values, which have the same implications as those of `monitorManage`.</li>",
+          "example": "clusterList",
+          "member": "string",
+          "name": "DisplayStrategy",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Page number. Default value: `0`, indicating the first page.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results per page. Default value: `10`; maximum value: `100`.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting field. Valid values: <li>clusterId: Sorting by instance ID. </li><li>addTime: Sorting by instance creation time.</li><li>status: Sorting by instance status code.</li>",
+          "example": "clusterid",
+          "member": "string",
+          "name": "OrderField",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sort ascending or descending based on `OrderField`. Valid values:<li>0: Descending.</li><li>1: Ascending.</li>Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "Asc",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom query",
+          "example": "无",
+          "member": "Filters",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesListResponse": {
+      "document": "DescribeInstancesList response structure.",
+      "members": [
+        {
+          "document": "Number of eligible instances.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCnt",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster instance list.",
+          "example": "无",
+          "member": "EmrListInstance",
+          "name": "InstancesList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeInstancesRequest": {
       "document": "DescribeInstances request structure.",
       "members": [
@@ -1261,6 +1463,309 @@
         }
       ],
       "type": "object"
+    },
+    "DescribeUsersForUserManagerRequest": {
+      "document": "DescribeUsersForUserManager request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether the Keytab file information is required. This field is only valid for clusters with Kerberos enabled and defaults to `false`.",
+          "example": "true",
+          "member": "bool",
+          "name": "NeedKeytabInfo",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUsersForUserManagerResponse": {
+      "document": "DescribeUsersForUserManager response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EmrListInstance": {
+      "document": "Returned cluster list sample",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "emr-xxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status description\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "状态描述",
+          "member": "string",
+          "name": "StatusDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster name",
+          "example": "集群名字",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster region",
+          "example": "集群地域",
+          "member": "uint64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User APPID",
+          "example": "663622",
+          "member": "uint64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "创建时间",
+          "member": "string",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Running time",
+          "example": "运行时间",
+          "member": "string",
+          "name": "RunTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster IP",
+          "example": "集群ID",
+          "member": "string",
+          "name": "MasterIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster version",
+          "example": "集群版本",
+          "member": "string",
+          "name": "EmrVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster billing mode",
+          "example": "0",
+          "member": "uint64",
+          "name": "ChargeType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "EMR ID",
+          "example": "23321",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "44333",
+          "member": "uint64",
+          "name": "ProductId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Project ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "4555",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "4552",
+          "member": "uint64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subnet ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "3422",
+          "member": "uint64",
+          "name": "SubnetId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VPC ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "45666",
+          "member": "uint64",
+          "name": "VpcId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Region\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "zone",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Status code\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance tag\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "[]",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alarm information\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "告警信息",
+          "member": "string",
+          "name": "AlarmInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is a Woodpecker cluster\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "IsWoodpeckerCluster",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VPC name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "emr",
+          "member": "string",
+          "name": "VpcName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subnet name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "emr",
+          "member": "string",
+          "name": "SubnetName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VPC ID string\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "vpc-lzd3w8jz",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subnet ID string\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "subnet-3d73yezg",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster type\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "spark",
+          "member": "string",
+          "name": "ClusterClass",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is a multi-AZ cluster\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsMultiZoneCluster",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "EmrProductConfigOutter": {
       "document": "EMR product configuration",
@@ -1504,6 +2009,30 @@
       ],
       "usage": "in"
     },
+    "Filters": {
+      "document": "Custom query filter of the EMR cluster instance list",
+      "members": [
+        {
+          "default": "",
+          "document": "Field name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filters by the field value",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "InquiryPriceCreateInstanceRequest": {
       "document": "InquiryPriceCreateInstance request structure.",
       "members": [
@@ -1524,15 +2053,6 @@
           "name": "TimeSpan",
           "required": true,
           "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Node specification queried for price.",
-          "example": "无",
-          "member": "NewResourceSpec",
-          "name": "ResourceSpec",
-          "required": true,
-          "type": "object"
         },
         {
           "default": "",
@@ -1572,11 +2092,20 @@
         },
         {
           "default": "",
+          "document": "Node specification queried for price.",
+          "example": "无",
+          "member": "NewResourceSpec",
+          "name": "ResourceSpec",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
           "document": "Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.",
           "example": "无",
           "member": "Placement",
           "name": "Placement",
-          "required": true,
+          "required": false,
           "type": "object"
         },
         {
@@ -1585,7 +2114,7 @@
           "example": "无",
           "member": "VPCSettings",
           "name": "VPCSettings",
-          "required": true,
+          "required": false,
           "type": "object"
         },
         {
@@ -1639,6 +2168,24 @@
           "example": "无",
           "member": "ExternalService",
           "name": "ExternalService",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "uint64",
+          "name": "VersionID",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "AZ specs",
+          "example": "无",
+          "member": "MultiZoneSetting",
+          "name": "MultiZoneSettings",
           "required": false,
           "type": "list"
         }
@@ -2085,6 +2632,52 @@
           "required": false,
           "type": "int",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "MultiZoneSetting": {
+      "document": "Parameter information of each AZ",
+      "members": [
+        {
+          "default": "",
+          "document": "\"master\", \"standby\", \"third-party\"\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "\"master\"",
+          "member": "string",
+          "name": "ZoneTag",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "None",
+          "example": "无",
+          "member": "VPCSettings",
+          "name": "VPCSettings",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "None",
+          "example": "无",
+          "member": "Placement",
+          "name": "Placement",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "None",
+          "example": "无",
+          "member": "NewResourceSpec",
+          "name": "ResourceSpec",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -2569,6 +3162,46 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "System disk type\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "RootStorageType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "AZ information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subnet\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SubnetInfo",
+          "name": "SubnetInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Client\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Clients",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2948,6 +3581,58 @@
       ],
       "usage": "in"
     },
+    "ShortNodeInfo": {
+      "document": "Node information",
+      "members": [
+        {
+          "default": "",
+          "document": "Node type: Master/Core/Task/Router/Common\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "Master",
+          "member": "string",
+          "name": "NodeType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of nodes\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "NodeSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "SubnetInfo": {
+      "document": "Subnet information",
+      "members": [
+        {
+          "default": "",
+          "document": "Subnet information (name)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "名字",
+          "member": "string",
+          "name": "SubnetName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subnet information (ID)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "subnet-xxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "Tag": {
       "document": "Tag",
       "members": [
@@ -3006,6 +3691,52 @@
       ],
       "type": "object"
     },
+    "TopologyInfo": {
+      "document": "Cluster node topology information",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "100002",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "AZ information\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "\"ap-guangzhou-2\"",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subnet information\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SubnetInfo",
+          "name": "SubnetInfoList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node information\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ShortNodeInfo",
+          "name": "NodeInfoList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "UpdateInstanceSettings": {
       "document": "Target resource specification",
       "members": [
@@ -3047,6 +3778,52 @@
         }
       ],
       "usage": "both"
+    },
+    "UserInfoForUserManager": {
+      "document": "Added user information list",
+      "members": [
+        {
+          "default": "",
+          "document": "Username",
+          "example": "user1",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The group to which the user belongs",
+          "example": "group1",
+          "member": "string",
+          "name": "UserGroup",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "123456",
+          "member": "string",
+          "name": "PassWord",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "提交mr任务",
+          "member": "string",
+          "name": "ReMark",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "VPCSettings": {
       "document": "VPC parameters",

@@ -8963,6 +8963,7 @@
         {
           "default": "",
           "document": "ENI instance ID, such as `eni-f1xjkw1b`.",
+          "example": "eni-f1xjkw1b。",
           "member": "string",
           "name": "NetworkInterfaceId",
           "required": true,
@@ -8972,6 +8973,7 @@
         {
           "default": "",
           "document": "ENI name.",
+          "example": "royhyangtest-main",
           "member": "string",
           "name": "NetworkInterfaceName",
           "required": true,
@@ -8981,6 +8983,7 @@
         {
           "default": "",
           "document": "ENI description.",
+          "example": "xx",
           "member": "string",
           "name": "NetworkInterfaceDescription",
           "required": true,
@@ -8990,6 +8993,7 @@
         {
           "default": "",
           "document": "Subnet instance ID.",
+          "example": "subnet-nao8lfro",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -8999,6 +9003,7 @@
         {
           "default": "",
           "document": "VPC instance ID.",
+          "example": "vpc-2kx9z6h3",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -9008,6 +9013,7 @@
         {
           "default": "",
           "document": "Bound security groups.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[           \"sg-c2r7lnxh\",  \"sg-f9ekbxeq\" ]",
           "member": "string",
           "name": "GroupSet",
           "required": true,
@@ -9017,6 +9023,7 @@
         {
           "default": "",
           "document": "Whether it is the primary ENI.",
+          "example": "true",
           "member": "bool",
           "name": "Primary",
           "required": true,
@@ -9026,6 +9033,7 @@
         {
           "default": "",
           "document": "MAC address.",
+          "example": "20:90:6F:F5:34:C7",
           "member": "string",
           "name": "MacAddress",
           "required": true,
@@ -9035,6 +9043,7 @@
         {
           "default": "",
           "document": "ENI status:\nPENDING: creating\nAVAILABLE: available\nATTACHING: binding\nDETACHING: unbinding\nDELETING: deleting",
+          "example": "AVAILABLE",
           "member": "string",
           "name": "State",
           "required": true,
@@ -9044,6 +9053,7 @@
         {
           "default": "",
           "document": "Private IP information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[{             \"Description\": \"\",             \"Primary\": true, ]",
           "member": "PrivateIpAddressSpecification",
           "name": "PrivateIpAddressSet",
           "required": true,
@@ -9053,6 +9063,7 @@
         {
           "default": "",
           "document": "Bound CVM object.\nNote: this field may return null, indicating that no valid values can be obtained.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "{           \"InstanceId\": \"ins-ymk3eje8\",           \"DeviceIndex",
           "member": "NetworkInterfaceAttachment",
           "name": "Attachment",
           "required": true,
@@ -9062,6 +9073,7 @@
         {
           "default": "",
           "document": "AZ.",
+          "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -9071,6 +9083,7 @@
         {
           "default": "",
           "document": "Creation time.",
+          "example": "\"2021-01-07 16:32:55",
           "member": "string",
           "name": "CreatedTime",
           "required": true,
@@ -9080,6 +9093,7 @@
         {
           "default": "",
           "document": "List of IPv6 addresses.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[           {             \"Description\": \"\",             \"Primar",
           "member": "Ipv6Address",
           "name": "Ipv6AddressSet",
           "required": true,
@@ -9089,6 +9103,7 @@
         {
           "default": "",
           "document": "Tag key-value pairs.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[           {             \"Key\": \"Version\",             \"Value\":",
           "member": "Tag",
           "name": "TagSet",
           "required": true,
@@ -9098,6 +9113,7 @@
         {
           "default": "",
           "document": "ENI type. Valid values: 0: ENI; 1: EVM ENI.",
+          "example": "1",
           "member": "uint64",
           "name": "EniType",
           "required": true,
@@ -9107,11 +9123,22 @@
         {
           "default": "",
           "document": "ECM region (EcmRegion)",
+          "example": "ap-changchun-ecm-ct2",
           "member": "string",
           "name": "EcmRegion",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Type of the resource bound with an ENI. Valid values: `cvm` and `eks`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "cvm",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

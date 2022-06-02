@@ -1354,6 +1354,7 @@
         {
           "default": "",
           "document": "Role name",
+          "example": "test_1234544",
           "member": "string",
           "name": "RoleName",
           "required": true,
@@ -1362,6 +1363,7 @@
         {
           "default": "",
           "document": "Policy document",
+          "example": "%7B%22version%22%3A%222.0%22%2C%22statement%22%3A%5B%7B%22action%22%3A%22name%2Fsts%3AAssumeRole%22%2C%22effect%22%3A%22allow%22%2C%22principal%22%3A%7B%22service%22%3A%5B%22cloudaudit.cloud.tencent.com%22%2C%22cls.cloud.tencent.com%22%5D%7D%7D%5D%7D",
           "member": "string",
           "name": "PolicyDocument",
           "required": true,
@@ -1370,6 +1372,7 @@
         {
           "default": "",
           "document": "Role description",
+          "example": "abc",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -1378,6 +1381,7 @@
         {
           "default": "",
           "document": "Whether login is allowed. 1: yes, 0: no",
+          "example": "0",
           "member": "uint64",
           "name": "ConsoleLogin",
           "required": false,
@@ -1386,10 +1390,20 @@
         {
           "default": "",
           "document": "The maximum validity period of the temporary key for creating a role (range: 0-43200)",
+          "example": "3600",
           "member": "uint64",
           "name": "SessionDuration",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tags bound to the role.",
+          "example": "无",
+          "member": "RoleTags",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1468,6 +1482,7 @@
         {
           "default": "",
           "document": "Authorized service, i.e., Tencent Cloud service entity with this role attached.",
+          "example": "[\"ccs.qcloud.com\\n\"]",
           "member": "string",
           "name": "QCSServiceName",
           "required": true,
@@ -1476,6 +1491,7 @@
         {
           "default": "",
           "document": "Custom suffix. A string you provide, which is combined with the service-provided prefix to form the complete role name.",
+          "example": "forTest",
           "member": "string",
           "name": "CustomSuffix",
           "required": false,
@@ -1484,10 +1500,20 @@
         {
           "default": "",
           "document": "Role description.",
+          "example": "ccsLinkedRole",
           "member": "string",
           "name": "Description",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tags bound to the role.",
+          "example": "无",
+          "member": "RoleTags",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2033,6 +2059,7 @@
         {
           "default": "",
           "document": "Page number, beginning from 1",
+          "example": "1",
           "member": "uint64",
           "name": "Page",
           "required": true,
@@ -2041,10 +2068,20 @@
         {
           "default": "",
           "document": "Number of lines per page, no greater than 200",
+          "example": "5",
           "member": "uint64",
           "name": "Rp",
           "required": true,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "A parameter used to filter the list of roles under a tag.",
+          "example": "无",
+          "member": "RoleTags",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -4472,6 +4509,7 @@
         {
           "default": "",
           "document": "Role ID",
+          "example": "12",
           "member": "string",
           "name": "RoleId",
           "required": true,
@@ -4481,6 +4519,7 @@
         {
           "default": "",
           "document": "Role name",
+          "example": "testRoleName",
           "member": "string",
           "name": "RoleName",
           "required": true,
@@ -4490,6 +4529,7 @@
         {
           "default": "",
           "document": "Role policy document",
+          "example": "无",
           "member": "string",
           "name": "PolicyDocument",
           "required": true,
@@ -4499,6 +4539,7 @@
         {
           "default": "",
           "document": "Role description",
+          "example": "Description",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -4508,6 +4549,7 @@
         {
           "default": "",
           "document": "Time role created",
+          "example": "2020-01-01 01:01:01",
           "member": "string",
           "name": "AddTime",
           "required": true,
@@ -4517,6 +4559,7 @@
         {
           "default": "",
           "document": "Time role last updated",
+          "example": "2020-01-01 01:01:01",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -4526,6 +4569,7 @@
         {
           "default": "",
           "document": "If login is allowed for the role",
+          "example": "1",
           "member": "uint64",
           "name": "ConsoleLogin",
           "required": true,
@@ -4535,6 +4579,7 @@
         {
           "default": "",
           "document": "User role. Valid values: `user`, `system`, `service_linked`\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "user",
           "member": "string",
           "name": "RoleType",
           "required": true,
@@ -4544,6 +4589,7 @@
         {
           "default": "",
           "document": "Valid period\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "7200",
           "member": "uint64",
           "name": "SessionDuration",
           "required": true,
@@ -4553,14 +4599,51 @@
         {
           "default": "",
           "document": "Task identifier for deleting a service-linked role \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "string",
           "name": "DeletionTaskId",
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tags.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RoleTags",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
+    },
+    "RoleTags": {
+      "document": "Role tag type",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key.",
+          "example": "TagKey",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value.",
+          "example": "TagValue",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "SAMLProviderInfo": {
       "document": "SAML identity provider",

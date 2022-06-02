@@ -15,33 +15,6 @@ from tencentcloud.emr.v20190103 import emr_client as emr_client_v20190103
 from tencentcloud.emr.v20190103 import models as models_v20190103
 
 
-def doInquiryPriceUpdateInstance(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.EmrClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InquiryPriceUpdateInstanceRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.InquiryPriceUpdateInstance(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDescribeInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -61,6 +34,33 @@ def doDescribeInstances(args, parsed_globals):
     model = models.DescribeInstancesRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DescribeInstances(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doInquiryPriceUpdateInstance(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.EmrClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.InquiryPriceUpdateInstanceRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.InquiryPriceUpdateInstance(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -96,7 +96,7 @@ def doDescribeClusterNodes(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyResourceScheduler(args, parsed_globals):
+def doDescribeUsersForUserManager(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -112,9 +112,36 @@ def doModifyResourceScheduler(args, parsed_globals):
     client = mod.EmrClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyResourceSchedulerRequest()
+    model = models.DescribeUsersForUserManagerRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifyResourceScheduler(model)
+    rsp = client.DescribeUsersForUserManager(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeInstancesList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.EmrClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeInstancesListRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeInstancesList(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -231,6 +258,33 @@ def doDescribeResourceSchedule(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doAddUsersForUserManager(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.EmrClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.AddUsersForUserManagerRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.AddUsersForUserManager(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doModifyResourceScheduleConfig(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -250,6 +304,33 @@ def doModifyResourceScheduleConfig(args, parsed_globals):
     model = models.ModifyResourceScheduleConfigRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.ModifyResourceScheduleConfig(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyResourceScheduler(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.EmrClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyResourceSchedulerRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.ModifyResourceScheduler(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -296,15 +377,18 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
-    "InquiryPriceUpdateInstance": doInquiryPriceUpdateInstance,
     "DescribeInstances": doDescribeInstances,
+    "InquiryPriceUpdateInstance": doInquiryPriceUpdateInstance,
     "DescribeClusterNodes": doDescribeClusterNodes,
-    "ModifyResourceScheduler": doModifyResourceScheduler,
+    "DescribeUsersForUserManager": doDescribeUsersForUserManager,
+    "DescribeInstancesList": doDescribeInstancesList,
     "InquiryPriceRenewInstance": doInquiryPriceRenewInstance,
     "CreateInstance": doCreateInstance,
     "InquiryPriceCreateInstance": doInquiryPriceCreateInstance,
     "DescribeResourceSchedule": doDescribeResourceSchedule,
+    "AddUsersForUserManager": doAddUsersForUserManager,
     "ModifyResourceScheduleConfig": doModifyResourceScheduleConfig,
+    "ModifyResourceScheduler": doModifyResourceScheduler,
     "TerminateTasks": doTerminateTasks,
 
 }
