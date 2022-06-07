@@ -3473,10 +3473,20 @@
         },
         {
           "default": "",
-          "document": "Memory usage of the namespace\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Concurrency usage of the namespace\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "TotalAllocatedConcurrencyMem",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Provisioned concurrency usage of the namespace\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalAllocatedProvisionedMem",
           "required": true,
           "type": "int",
           "value_allowed_null": true

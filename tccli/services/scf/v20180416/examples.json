@@ -156,7 +156,7 @@
       {
         "document": "",
         "input": "https://scf.tencentcloudapi.com/?Action=GetRequestStatus\n&FunctionName=<FunctionName>\n&FunctionRequestId=<FunctionRequestId>\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Data\": [\n            {\n                \"MemUsage\": 0.0,\n                \"RetCode\": 0,\n                \"RetMsg\": \"xx\",\n                \"RequestId\": \"xx\",\n                \"StartTime\": \"1601204649\",\n                \"Duration\": 0.0,\n                \"RetryNum\": 1\n                \"FunctionName\": \"xx\",\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Data\": [\n            {\n                \"MemUsage\": 0.0,\n                \"RetCode\": 0,\n                \"RetMsg\": \"xx\",\n                \"RequestId\": \"xx\",\n                \"StartTime\": \"xx\",\n                \"Duration\": 0.0,\n                \"RetryNum\": 0,\n                \"FunctionName\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Obtaining the execution status of a function"
       }
     ],
@@ -208,10 +208,10 @@
         "title": "Obtaining the list of functions"
       },
       {
-        "document": "It queries functions whose status tag is `dev` and owner tag is `me`.",
+        "document": "This example shows how to query functions with the tags of `status`:`dev` and `owner`:`me`.",
         "input": "https://scf.tencentcloudapi.com/?Action=ListFunctions\n&Filters.0.Name=tag-status\n&Filters.0.Values.0=dev\n&Filters.1.Name=tag-owner\n&Filters.1.Values.0=me\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Functions\": [\n            {\n                \"ModTime\": \"xx\",\n                \"Status\": \"xx\",\n                \"StatusDesc\": \"xx\",\n                \"FunctionName\": \"xx\",\n                \"TotalProvisionedConcurrencyMem\": 1,\n                \"Tags\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"AddTime\": \"xx\",\n                \"Namespace\": \"xx\",\n                \"StatusReasons\": [\n                    {\n                        \"ErrorCode\": \"xx\",\n                        \"ErrorMessage\": \"xx\"\n                    }\n                ],\n                \"Runtime\": \"xx\",\n                \"Type\": \"xx\",\n                \"FunctionId\": \"xx\",\n                \"ReservedConcurrencyMem\": 1,\n                \"Description\": \"xx\",\n                \"TraceEnable\": \"FALSE\",\n                \"AsyncRunEnable\": \"FALSE\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Querying functions based on tags"
+        "title": "Querying functions associated with the specified tags"
       }
     ],
     "ListLayerVersions": [
@@ -315,7 +315,7 @@
         "document": "",
         "input": "https://scf.tencentcloudapi.com/?Action=UpdateFunctionCode\n&FunctionName=test\n&Handler=index.main\n&CosBucketName=<CosBucketName>\n&CosObjectName=<CosObjectName>\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Updating function code"
+        "title": "Updating the function code"
       }
     ],
     "UpdateFunctionEventInvokeConfig": [
