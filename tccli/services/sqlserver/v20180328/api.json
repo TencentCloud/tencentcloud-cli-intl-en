@@ -391,6 +391,7 @@
         {
           "default": "",
           "document": "Instance username",
+          "example": "ac1",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -400,6 +401,7 @@
         {
           "default": "",
           "document": "Instance password",
+          "example": "无",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -409,6 +411,7 @@
         {
           "default": "",
           "document": "List of database permissions",
+          "example": "无",
           "member": "DBPrivilege",
           "name": "DBPrivileges",
           "required": false,
@@ -418,6 +421,7 @@
         {
           "default": "",
           "document": "Account remarks",
+          "example": "无",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -427,10 +431,21 @@
         {
           "default": "",
           "document": "Whether it is an admin account. Default value: no",
+          "example": "false",
           "member": "bool",
           "name": "IsAdmin",
           "required": false,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Valid values: `win-windows authentication`, `sql-sqlserver authentication`. Default value: `sql-sqlserver authentication`.",
+          "example": "sql",
+          "member": "string",
+          "name": "Authentication",
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -442,6 +457,7 @@
         {
           "default": "",
           "document": "Account name",
+          "example": "ac1",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -451,6 +467,7 @@
         {
           "default": "",
           "document": "Account remarks",
+          "example": "无",
           "member": "string",
           "name": "Remark",
           "required": true,
@@ -460,6 +477,7 @@
         {
           "default": "",
           "document": "Account creation time",
+          "example": "2020-04-09 00:00:00",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -469,6 +487,7 @@
         {
           "default": "",
           "document": "Account status. 1: creating, 2: normal, 3: modifying, 4: resetting password, -1: deleting",
+          "example": "2",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -478,6 +497,7 @@
         {
           "default": "",
           "document": "Account update time",
+          "example": "2020-04-09 00:00:00",
           "member": "datetime",
           "name": "UpdateTime",
           "required": true,
@@ -487,6 +507,7 @@
         {
           "default": "",
           "document": "Password update time",
+          "example": "2020-04-09 00:00:00",
           "member": "datetime",
           "name": "PassTime",
           "required": true,
@@ -496,6 +517,7 @@
         {
           "default": "",
           "document": "Internal account status, which should be `enable` normally",
+          "example": "enable",
           "member": "string",
           "name": "InternalStatus",
           "required": true,
@@ -505,6 +527,7 @@
         {
           "default": "",
           "document": "Information of read and write permissions of this account on relevant databases",
+          "example": "无",
           "member": "DBPrivilege",
           "name": "Dbs",
           "required": true,
@@ -514,10 +537,31 @@
         {
           "default": "",
           "document": "Whether it is an admin account",
+          "example": "false",
           "member": "bool",
           "name": "IsAdmin",
           "required": true,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Valid values: `win-windows authentication`, `sql-sqlserver authentication`.",
+          "example": "win",
+          "member": "string",
+          "name": "Authentication",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The host required for `win-windows authentication` account",
+          "example": "172_8_9_12",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -577,6 +621,7 @@
         {
           "default": "",
           "document": "Database username",
+          "example": "ac1",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -586,10 +631,21 @@
         {
           "default": "",
           "document": "Account permission change information",
+          "example": "无",
           "member": "DBPrivilegeModifyInfo",
           "name": "DBPrivileges",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is an admin account",
+          "example": "true",
+          "member": "bool",
+          "name": "IsAdmin",
+          "required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -748,6 +804,16 @@
           "example": "558800",
           "member": "string",
           "name": "GroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup file format. Valid values:`pkg` (archive file), `single` (unarchived files).",
+          "example": "pkg",
+          "member": "string",
+          "name": "BackupFormat",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1911,6 +1977,56 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance backup info\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "InstanceNote",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Backup cycle",
+          "example": "1",
+          "member": "int64",
+          "name": "BackupCycle",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup cycle type. Valid values: `daily`, `weekly`, `monthly`.",
+          "example": "daily",
+          "member": "string",
+          "name": "BackupCycleType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data (log) backup retention period",
+          "example": "7",
+          "member": "int64",
+          "name": "BackupSaveDays",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance type. Valid values: `HA` (high-availability), `RO` (read-only), `SI` (basic edition), `BI` (business intelligence service).",
+          "example": "HA",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2620,6 +2736,15 @@
           "name": "DatabaseName",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List items sorting by backup size. Valid values: `desc`(descending order), `asc` (ascending order). Default value: `desc`.",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2935,6 +3060,24 @@
           "name": "Group",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Backup type. Valid values: `1` (data backup), `2` (log backup). Default value: `1`.",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter by backup file format. Valid values: `pkg` (archive file), `single` (Unarchived files).",
+          "example": "pkg",
+          "member": "string",
+          "name": "BackupFormat",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3138,6 +3281,15 @@
           "name": "UidSet",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance type. Valid values: `HA` (high-availability), `RO` (read-only), `SI` (basic edition), `BI` (business intelligence service).",
+          "example": "HA",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5007,7 +5159,7 @@
         },
         {
           "default": "",
-          "document": "Backup mode, which supports daily backup only. Valid value: daily.",
+          "document": "Backup type. Valid values: `weekly` (when length(BackupDay) <=7 && length(BackupDay) >=2), `daily` (when length(BackupDay)=1). Default value: `daily`.",
           "example": "daily",
           "member": "string",
           "name": "BackupType",
@@ -5040,6 +5192,24 @@
           "name": "BackupModel",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The days of the week on which backup will be performed when “BackupType” is `weekly`. If data backup retention period is less than 7 days, the values will be 1-7, indicating that backup will be performed everyday by default; if data backup retention period is greater than or equal to 7 days, the values will be at least any two days, indicating that backup will be performed at least twice in a week by default.",
+          "example": "[1,2,3,4,5,6,7]",
+          "member": "uint64",
+          "name": "BackupCycle",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Data (log) backup retention period. Value range: 3-1830 days, default value: 7 days.",
+          "example": "7",
+          "member": "uint64",
+          "name": "BackupSaveDays",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -6579,6 +6749,7 @@
         {
           "default": "",
           "document": "Instance ID in the format of mssql-j8kv137v",
+          "example": "mssql-j8kv137v",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6587,6 +6758,7 @@
         {
           "default": "",
           "document": "Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size",
+          "example": "4",
           "member": "int64",
           "name": "Memory",
           "required": false,
@@ -6595,6 +6767,7 @@
         {
           "default": "",
           "document": "Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity",
+          "example": "400",
           "member": "int64",
           "name": "Storage",
           "required": false,
@@ -6603,6 +6776,7 @@
         {
           "default": "",
           "document": "Whether to automatically use vouchers. 0: no, 1: yes. Default value: 0",
+          "example": "0",
           "member": "int64",
           "name": "AutoVoucher",
           "required": false,
@@ -6611,6 +6785,7 @@
         {
           "default": "",
           "document": "Voucher ID (currently, only one voucher can be used per order)",
+          "example": "0",
           "member": "string",
           "name": "VoucherIds",
           "required": false,
@@ -6619,6 +6794,7 @@
         {
           "default": "",
           "document": "The number of CUP cores after the instance is upgraded.",
+          "example": "1",
           "member": "int64",
           "name": "Cpu",
           "required": false,
@@ -6627,6 +6803,7 @@
         {
           "default": "",
           "document": "Upgrade the SQL Server version. Supported versions include SQL Server 2008 Enterprise (`2008R2`), SQL Server 2012 Enterprise (`2012SP3`), etc. As the purchasable versions are region-specific, you can use the `DescribeProductConfig` API to query the information of purchasable versions in each region. Downgrading is unsupported. If this parameter is left empty, the SQL Server version will not be changed.",
+          "example": "2008R2",
           "member": "string",
           "name": "DBVersion",
           "required": false,
@@ -6635,6 +6812,7 @@
         {
           "default": "",
           "document": "Upgrade the high availability architecture from image-based disaster recovery to Always On cluster disaster recovery. This parameter is valid only for instances which support Always On high availability and run SQL Server 2017 or later. Neither downgrading to image-based disaster recovery nor upgrading from cluster disaster recovery to Always On disaster recovery is supported. If this parameter is left empty, the high availability architecture will not be changed.",
+          "example": "CLUSTER",
           "member": "string",
           "name": "HAType",
           "required": false,
@@ -6643,10 +6821,20 @@
         {
           "default": "",
           "document": "Change the instance deployment scheme. Valid values: `SameZones` (change to single-AZ deployment, which does not support cross-AZ disaster recovery), `MultiZones` (change to multi-AZ deployment, which supports cross-AZ disaster recovery).",
+          "example": "MultiZones",
           "member": "string",
           "name": "MultiZones",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The time when configuration adjustment task is performed. Valid values: `0` (execute immediately), `1` (execute during maintenance time). Default value: `1`.",
+          "example": "1",
+          "member": "int64",
+          "name": "WaitSwitch",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"

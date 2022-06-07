@@ -5,7 +5,7 @@
         "document": "",
         "input": "https://sqlserver.tencentcloudapi.com/?Action=CloneDB\n&InstanceId=mssql-njj2mtpl\n&RenameRestore.0.OldName=db1\n&RenameRestore.0.NewName=clone_db1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\",\n        \"FlowId\": 3546\n    }\n}",
-        "title": "Cloning databases"
+        "title": "Cloning a database"
       }
     ],
     "CreateAccount": [
@@ -27,7 +27,7 @@
     "CreateBackupMigration": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=CreateBackupMigration\n&InstanceId=mssql-rdc0gajn\n&RecoveryType=FULL\n&UploadType=COS_UPLOAD\n&MigrationName=character strings\n&BackupFiles.0=db1.bak\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=CreateBackupMigration\n&InstanceId=mssql-rdc0gajn\n&RecoveryType=FULL\n&UploadType=COS_UPLOAD\n&MigrationName=character string\n&BackupFiles.0=db1.bak\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"BackupMigrationId\": \"mssql-backup-migration-cg0ffgqt\",\n        \"RequestId\": \"4e2f2093-9cde-44ec-b64b-edfcc2f911d4\"\n    }\n}",
         "title": "Creating a backup file import task"
       }
@@ -35,7 +35,7 @@
     "CreateDB": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=CreateDB\r\n&InstanceId=mssql-i1z41iwd\r\n&DBs.0.DBName=test_db\r\n&DBs.0.Charset=Chinese_PRC_CI_AS\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=CreateDB\n&InstanceId=mssql-i1z41iwd\n&DBs.0.DBName=test_db\n&DBs.0.Charset=Chinese_PRC_CI_AS\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 123,\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\"\n    }\n}",
         "title": "Creating the \"test_db\" database"
       }
@@ -51,7 +51,7 @@
     "CreateIncrementalMigration": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=CreateIncrementalMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&IsRecovery=NO\n&BackupFiles.0=db_cvm_1_20200927204209_2log2_2noreconvery2.bak\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=CreateIncrementalMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&IsRecovery=NO\n&BackupFiles.0=db_cvm_1_20200927204209_2log2_2noreconvery2.bak\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"IncrementalMigrationId\": \"mssql-incremental-migration-kp7bgv8p\",\n        \"RequestId\": \"1e3d890b-1ff7-44ba-808d-633f11c873d8\"\n    }\n}",
         "title": "Creating an incremental migration task"
       }
@@ -67,7 +67,7 @@
     "DeleteAccount": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DeleteAccount\r\n&InstanceId=mssql-njj2mtpl\r\n&UserNames.0=testusername\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DeleteAccount\n&InstanceId=mssql-njj2mtpl\n&UserNames.0=testusername\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a61e500-aa33-454c-9ec2-da2a368c39ab\",\n        \"FlowId\": 312\n    }\n}",
         "title": "Deleting an instance account"
       }
@@ -75,7 +75,7 @@
     "DeleteBackupMigration": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DeleteBackupMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DeleteBackupMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f0c186aa-b171-4a96-b176-b8e8ff23994d\"\n    }\n}",
         "title": "Deleting a full backup import task"
       }
@@ -83,7 +83,7 @@
     "DeleteDB": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DeleteDB\r\n&InstanceId=mssql-rljoi3bf\r\n&Names.0=test_db\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DeleteDB\n&InstanceId=mssql-rljoi3bf\n&Names.0=test_db\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a928d733-109a-4f44-84ad-991da182d0a3\",\n        \"FlowId\": 30467\n    }\n}",
         "title": "Deleting a database"
       }
@@ -91,7 +91,7 @@
     "DeleteIncrementalMigration": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DeleteIncrementalMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&IncrementalMigrationId=mssql-incremental-migration-67q4wy87\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DeleteIncrementalMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&IncrementalMigrationId=mssql-incremental-migration-67q4wy87\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ed62412-c476-4714-8042-241f50b2aedf\"\n    }\n}",
         "title": "Deleting an incremental backup import task"
       }
@@ -99,7 +99,7 @@
     "DeleteMigration": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DeleteMigration\r\n&MigrateId=2729\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DeleteMigration\n&MigrateId=2729\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\"\n    }\n}",
         "title": "Deleting a migration task"
       }
@@ -114,20 +114,20 @@
     ],
     "DescribeBackupCommand": [
       {
-        "document": "Used when transaction logs need an incremental import. What is acquired is a full backup that is not restored.\n`\\\\\\\\n` in the command means a line feed.",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupCommand\n&BackupFileType=FULL\n&DataBaseName=db1\n&IsRecovery=YES\n&LocalPath=E:/\n&<Common request parameters>",
+        "document": "",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupCommand\n&BackupFileType=FULL\n&DataBaseName=db1\n&IsRecovery=YES\n&LocalPath=E:/\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Command\": \"BACKUP DATABASE db1 TO DISK='E:/db1.bak' WITH INIT\",\n        \"RequestId\": \"1de3aea3-5fef-4891-b8b0-faeb4e3b5543\"\n    }\n}",
         "title": "Querying the command of creating a full backup"
       },
       {
         "document": "This example shows you how to query the command to create a full backup and an incremental transaction log backup when you need to import the incremental transaction log backup. The full backup created does not need to be restored.\n\\\\\\\\n in the command means a line feed.",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupCommand\n&BackupFileType=FULL_LOG\n&DataBaseName=db1\n&IsRecovery=NO\n&LocalPath=E:/\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupCommand\n&BackupFileType=FULL_LOG\n&DataBaseName=db1\n&IsRecovery=NO\n&LocalPath=E:/\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Command\": \"declare @dbname varchar(100)\\\\\\\\ndeclare @localtime varchar(20)\\\\\\\\ndeclare @str varchar(8000)\\\\\\\\nset @dbname='db1'\\\\\\\\nset @localtime =replace(replace(replace(CONVERT(varchar, getdate(), 120 ),'-',''),' ',''),':','')\\\\\\\\nset @str='BACKUP DATABASE [' + @dbname + '] TO  DISK = N''E:/' + @dbname + '_' + @localtime + '_2full2_2noreconvery2.bak'' WITH INIT'\\\\\\\\nexec(@str)\\\\\\\\ngo\",\n        \"RequestId\": \"03199d88-9dda-49eb-a045-7c69eb4d3591\"\n    }\n}",
         "title": "Querying the command of creating a full backup and an incremental transaction log backup"
       },
       {
         "document": "This example shows you how to query the command to create an incremental transaction log backup when you need to import it. The incremental transaction log backup created needs to be restored.\n\\\\\\\\n in the command means a line feed.",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupCommand\n&BackupFileType=LOG\n&DataBaseName=db1\n&IsRecovery=YES\n&LocalPath=E:/\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupCommand\n&BackupFileType=LOG\n&DataBaseName=db1\n&IsRecovery=YES\n&LocalPath=E:/\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Command\": \"declare @dbname varchar(100)\\\\\\\\ndeclare @localtime varchar(20)\\\\\\\\ndeclare @str varchar(8000)\\\\\\\\nset @dbname='db1'\\\\\\\\nset @localtime =replace(replace(replace(CONVERT(varchar, getdate(), 120 ),'-',''),' ',''),':','')\\\\\\\\nset @str='BACKUP LOG [' + @dbname + '] TO  DISK = N''E:/' + @dbname + '_' + @localtime + '_2log2_2reconvery2.bak'' WITH FORMAT, INIT'\\\\\\\\nexec(@str)\\\\\\\\ngo\",\n        \"RequestId\": \"8d53700f-b80b-415a-8738-0c340eff2057\"\n    }\n}",
         "title": "Querying the command of creating an incremental transaction log backup"
       }
@@ -143,7 +143,7 @@
     "DescribeBackupMigration": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupMigration\n&BackupMigrationId=mssql-backup-migration-kpl74n9l\n&MigrationName=character string\n&BackupFileName=db1\n&RecoveryType=FULL\n&UploadType=COS_UPLOAD\n&Limit=100\n&Offset=0\n&OrderBy=createTime\n&OrderByType=desc\n&StatusSet.0=2\n&InstanceId=mssql-rdc0gajn\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupMigration\n&BackupMigrationId=mssql-backup-migration-kpl74n9l\n&MigrationName=character string\n&BackupFileName=db1\n&RecoveryType=FULL\n&UploadType=COS_UPLOAD\n&Limit=100\n&Offset=0\n&OrderBy=createTime\n&OrderByType=desc\n&StatusSet.0=2\n&InstanceId=mssql-rdc0gajn\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"BackupMigrationSet\": [\n            {\n                \"Action\": {\n                    \"AllAction\": [\n                        \"start\",\n                        \"delete\",\n                        \"incremental\",\n                        \"modify\",\n                        \"view\",\n                        \"upload\"\n                    ],\n                    \"AllowedAction\": [\n                        \"view\",\n                        \"modify\",\n                        \"delete\",\n                        \"upload\",\n                        \"start\"\n                    ]\n                },\n                \"AppId\": 251006279,\n                \"BackupFiles\": [\n                    \"db1.bak\"\n                ],\n                \"CreateTime\": \"2020-09-27 16:23:47\",\n                \"Detail\": {\n                    \"Progress\": 0,\n                    \"StepAll\": 0,\n                    \"StepInfo\": [],\n                    \"StepNow\": 0\n                },\n                \"EndTime\": \"0000-00-00 00:00:00\",\n                \"InstanceId\": \"mssql-rdc0gajn\",\n                \"IsRecovery\": \"\",\n                \"Message\": \"\",\n                \"MigrationId\": \"mssql-backup-migration-kpl74n9l\",\n                \"MigrationName\": \"character string\",\n                \"RecoveryType\": \"FULL\",\n                \"Region\": \"ap-guangzhou\",\n                \"StartTime\": \"0000-00-00 00:00:00\",\n                \"Status\": 2,\n                \"UploadType\": \"COS_UPLOAD\"\n            }\n        ],\n        \"RequestId\": \"cf4b1509-8029-4daf-b7b1-e504ff82cbba\",\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying a full backup import task"
       }
@@ -151,13 +151,13 @@
     "DescribeBackupUploadSize": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupUploadSize\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-kpl74n9l\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupUploadSize\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-kpl74n9l\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"CosUploadBackupFileSet\": [\n            {\n                \"FileName\": \"db1.bak\",\n                \"Size\": 172032\n            }\n        ],\n        \"RequestId\": \"15455085-fe18-4c19-a463-5494451fb0f0\"\n    }\n}",
         "title": "Querying the list of uploaded full backup files"
       },
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupUploadSize\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&IncrementalMigrationId=mssql-incremental-migration-kp7bgv8p\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupUploadSize\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&IncrementalMigrationId=mssql-incremental-migration-kp7bgv8p\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"CosUploadBackupFileSet\": [\n            {\n                \"FileName\": \"db_cvm_1_20200927204209_2log2_2noreconvery2.bak\",\n                \"Size\": 28672\n            },\n            {\n                \"FileName\": \"db_cvm_3_20200927204219_2log2_2noreconvery2.bak\",\n                \"Size\": 40960\n            }\n        ],\n        \"RequestId\": \"08218621-158d-49df-8366-dfa7958a1ffd\"\n    }\n}",
         "title": "Querying the list of uploaded incremental backup files"
       }
@@ -182,8 +182,8 @@
       {
         "document": "",
         "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeDBInstances\n&ProjectId=0\n&InstanceIdSet.0=mssql-3l3fgqn7\n&Status=2\n&VipSet.0=172.1.0.12\n&InstanceNameSet.0=Data warehouse\n&VersionSet.0=2008R2\n&Zone=ap-guangzhou-2\n&TagKeys.0=Test tag\n&Offset=0\n&Limit=3\n&PayMode=1\n&VpcId=vpc-mknbt351\n&SubnetId=subnet-f72hylo6\n&SearchKey=172.17.0.12\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"DBInstances\": [\n            {\n                \"BackupModel\": \"master_pkg\",\n                \"BackupTime\": \"06:15:15\",\n                \"Cpu\": 1,\n                \"CreateTime\": \"2021-05-07 15:26:58\",\n                \"EndTime\": \"0000-00-00 00:00:00\",\n                \"HAFlag\": \"MIRROR\",\n                \"InstanceId\": \"mssql-m0031jhf\",\n                \"IsolateOperator\": \"\",\n                \"IsolateTime\": \"0000-00-00 00:00:00\",\n                \"Memory\": 2,\n                \"Model\": 1,\n                \"Name\": \"2008_1\",\n                \"PayMode\": 0,\n                \"Pid\": 10908,\n                \"ProjectId\": 0,\n                \"ROFlag\": \"\",\n                \"Region\": \"ap-guangzhou\",\n                \"RegionId\": 1,\n                \"RenewFlag\": 0,\n                \"ResourceTags\": null,\n                \"StartTime\": \"2021-05-07 15:26:58\",\n                \"Status\": 2,\n                \"Storage\": 10,\n                \"SubFlag\": \"\",\n                \"SubnetId\": 29802,\n                \"Type\": \"TS85\",\n                \"Uid\": \"gamedb.gz570.cdb.db\",\n                \"UniqSubnetId\": \"subnet-57pxp1bq\",\n                \"UniqVpcId\": \"vpc-3p65tezp\",\n                \"UpdateTime\": \"2021-05-07 16:56:15\",\n                \"UsedStorage\": 0,\n                \"Version\": \"2008R2\",\n                \"VersionName\": \"SQL Server 2008 Enterprise\",\n                \"Vip\": \"172.16.1.116\",\n                \"VpcId\": 206194,\n                \"Vport\": 1433,\n                \"Zone\": \"ap-guangzhou-2\",\n                \"ZoneId\": 100002\n            }\n        ],\n        \"RequestId\": \"de641788-0565-4617-a7f4-639de128772b\",\n        \"TotalCount\": 1\n    }\n}",
-        "title": "Querying the list of instances"
+        "output": "{\n    \"Response\": {\n        \"DBInstances\": [\n            {\n                \"BackupModel\": \"master_pkg\",\n                \"BackupTime\": \"06:15:15\",\n                \"Cpu\": 1,\n                \"CreateTime\": \"2021-05-07 15:26:58\",\n                \"EndTime\": \"0000-00-00 00:00:00\",\n                \"HAFlag\": \"MIRROR\",\n                \"InstanceId\": \"mssql-m0031jhf\",\n                \"IsolateOperator\": \"\",\n                \"IsolateTime\": \"0000-00-00 00:00:00\",\n                \"Memory\": 2,\n                \"Model\": 1,\n                \"Name\": \"2008_1\",\n                \"PayMode\": 0,\n                \"Pid\": 10908,\n                \"ProjectId\": 0,\n                \"ROFlag\": \"\",\n                \"Region\": \"ap-guangzhou\",\n                \"RegionId\": 1,\n                \"RenewFlag\": 0,\n                \"ResourceTags\": null,\n                \"StartTime\": \"2021-05-07 15:26:58\",\n                \"Status\": 2,\n                \"Storage\": 10,\n                \"SubFlag\": \"\",\n                \"SubnetId\": 29802,\n                \"Type\": \"TS85\",\n                \"Uid\": \"gamedb.gz570.cdb.db\",\n                \"UniqSubnetId\": \"subnet-57pxp1bq\",\n                \"UniqVpcId\": \"vpc-3p65tezp\",\n                \"UpdateTime\": \"2021-05-07 16:56:15\",\n                \"UsedStorage\": 0,\n                \"Version\": \"2008R2\",\n                \"VersionName\": \"SQL Server 2008 Enterprise\",\n                \"Vip\": \"172.16.1.116\",\n                \"VpcId\": 206194,\n                \"Vport\": 1433,\n                \"Zone\": \"ap-guangzhou-2\",\n                \"ZoneId\": 100002,\n                \"BackupSaveDays\": 7,\n                \"BackupCycleType\": \"weekly\",\n                \"InstanceNote\": \"test\",\n                \"InstanceType\": \"HA\",\n                \"BackupCycle\": [\n                    1,\n                    2,\n                    3,\n                    4,\n                    5,\n                    6,\n                    7.\n                ]\n            }\n        ],\n        \"RequestId\": \"de641788-0565-4617-a7f4-639de128772b\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying the instance list"
       }
     ],
     "DescribeDBs": [
@@ -205,7 +205,7 @@
     "DescribeFlowStatus": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeFlowStatus\r\n&FlowId=30403\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeFlowStatus\n&FlowId=30403\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\",\n        \"Status\": 0\n    }\n}",
         "title": "Querying task status"
       }
@@ -237,15 +237,15 @@
     "DescribeMigrationDetail": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeMigrationDetail\r\n&MigrateId=2728\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\",\n        \"MigrateId\": 2728,\n        \"MigrateName\": \"Test API\",\n        \"AppId\": 1254065710,\n        \"Region\": \"ap-guangzhou\",\n        \"SourceType\": 5,\n        \"CreateTime\": \"2018-08-06 17:44:58\",\n        \"StartTime\": \"0000-00- 00 00:00:00\",\n        \"EndTime\": \"0000-00-00 00:00:00\",\n        \"Status\": 1,\n        \"Progress\": 0,\n        \"MigrateType\": 2,\n        \"Source\": {\n            \"InstanceId\": \"\",\n            \"CvmId\": \"\",\n            \"VpcId\": \"\",\n            \"SubnetId\": \"\",\n            \"UserName\": \"\",\n            \"Password\": \"\",\n            \"Ip\": \"\",\n            \"Port\": 0\n        },\n        \"Target\": {\n            \"UserName\": \"\",\n            \"Password\": \"\"\n        },\n        \"MigrateDBSet\": []\n    }\n}",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeMigrationDetail\n&MigrateId=2728\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\",\n        \"MigrateId\": 2728,\n        \"MigrateName\": \"Test API\",\n        \"AppId\": 1254065710,\n        \"Region\": \"ap-guangzhou\",\n        \"SourceType\": 5,\n        \"CreateTime\": \"2018-08-06 17:44:58\",\n        \"StartTime\": \"2020-09-22 00:00:00\",\n        \"EndTime\": \"2020-09-22 00:00:00\",\n        \"Status\": 1,\n        \"Progress\": 0,\n        \"MigrateType\": 2,\n        \"Source\": {\n            \"InstanceId\": \"\",\n            \"CvmId\": \"\",\n            \"VpcId\": \"\",\n            \"SubnetId\": \"\",\n            \"UserName\": \"\",\n            \"Password\": \"\",\n            \"Ip\": \"\",\n            \"Port\": 0,\n            \"Url\": [\n                \"http://gz-oncvm-1254065710.cosgz.myqcloud.com/test4_20180724021516.bak\",\n                \"http://gz-oncvm-1254065710.cosgz.myqcloud.com/testdb.bak\"\n            ]\n        },\n        \"Target\": {\n            \"UserName\": \"\",\n            \"Password\": \"\"\n        },\n        \"MigrateDBSet\": []\n    }\n}",
         "title": "Querying migration task details"
       }
     ],
     "DescribeMigrations": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeMigrations\r\n&MigrateName=Test\r\n&Limit=10\r\n&Offset=0\r\n&OrderBy=name\r\n&OrderByType=desc\r\n&StatusSet.0=1\r\n&StatusSet.1=4\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeMigrations\n&MigrateName=Test\n&Limit=10\n&Offset=0\n&OrderBy=name\n&OrderByType=desc\n&StatusSet.0=1\n&StatusSet.1=4\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"728ba95f-0443-41ec-82c9-44bc8bfc0802\",\n        \"TotalCount\": 2,\n        \"MigrateTaskSet\": [\n            {\n                \"MigrateId\": 2734,\n                \"MigrateName\": \"Test migration\",\n                \"AppId\": 1251006373,\n                \"Region\": \"ap-guangzhou\",\n                \"SourceType\": 5,\n                \"CreateTime\": \"2018-08-09 11:46:15\",\n                \"StartTime\": \"0000-00-00 00:00:00\",\n                \"EndTime\": \"0000-00-00 00:00:00\",\n                \"Status\": 1,\n                \"Message\": \"\",\n                \"CheckFlag\": 0,\n                \"Progress\": 0,\n                \"MigrateDetail\": {\n                    \"StepName\": \"\",\n                    \"Progress\": 0\n                }\n            },\n            {\n                \"MigrateId\": 2732,\n                \"MigrateName\": \"Test API\",\n                \"AppId\": 1251006373,\n                \"Region\": \"ap-guangzhou\",\n                \"SourceType\": 5,\n                \"CreateTime\": \"2018-08-08 21:03:09\",\n                \"StartTime\": \"0000-00-00 00:00:00\",\n                \"EndTime\": \"0000-00-00 00:00:00\",\n                \"Status\": 1,\n                \"Message\": \"\",\n                \"CheckFlag\": 0,\n                \"Progress\": 0,\n                \"MigrateDetail\": {\n                    \"StepName\": \"\",\n                    \"Progress\": 0\n                }\n            }\n        ]\n    }\n}",
         "title": "Querying the list of migration tasks"
       }
@@ -253,8 +253,8 @@
     "DescribeOrders": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeOrders\r\n&DealNames.0=201806271245\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\",\n        \"Deals\": [\n            {\n                \"DealName\": \"201806271765\",\n                \"OwnerUin\": \"3374998458\",\n                \"Count\": 1,\n                \"FlowId\": 3456,\n                \"InstanceIdSet\": [\n                    \"mssql-k8vodfsw\"\n                ]\n            }\n        ]\n    }\n}",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeOrders\n&DealNames.0=201806271245\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\",\n        \"TotalCount\": 10,\n        \"Deals\": [\n            {\n                \"DealName\": \"201806271765\",\n                \"OwnerUin\": \"3374998458\",\n                \"Count\": 1,\n                \"FlowId\": 3456,\n                \"InstanceIdSet\": [\n                    \"mssql-k8vodfsw\"\n                ],\n                \"InstanceChargeType\": \"POST\"\n            }\n        ]\n    }\n}",
         "title": "Querying orders"
       }
     ],
@@ -269,7 +269,7 @@
     "DescribeRegions": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeRegions\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeRegions\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9b0beca5-f3ea-44d3-97de-ec8f02effaea\",\n        \"TotalCount\": 9,\n        \"RegionSet\": [\n            {\n                \"Region\": \"ap-hongkong\",\n                \"RegionName\": \"Hong Kong (China)\",\n                \"RegionId\": 5,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-shanghai-fsi\",\n                \"RegionName\": \"Shanghai Finance\",\n                \"RegionId\": 7,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-shantou\",\n                \"RegionName\": \"Shantou\",\n                \"RegionId\": 2,\n                \"RegionState\": \"UNAVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-tianjin\",\n                \"RegionName\": \"Tianjin\",\n                \"RegionId\": 3,\n                \"RegionState\": \"UNAVAILABLE\"\n            },\n            {\n                \"Region\": \"na-toronto\",\n                \"RegionName\": \"North America\",\n                \"RegionId\": 6,\n                \"RegionState\": \"UNAVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-beijing\",\n                \"RegionName\": \"Beijing\",\n                \"RegionId\": 8,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-shenzhen-fsi\",\n                \"RegionName\": \"Shenzhen Finance\",\n                \"RegionId\": 11,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"RegionName\": \"Guangzhou\",\n                \"RegionId\": 1,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-shanghai\",\n                \"RegionName\": \"Shanghai\",\n                \"RegionId\": 4,\n                \"RegionState\": \"AVAILABLE\"\n            }\n        ]\n    }\n}",
         "title": "Querying all regions"
       }
@@ -277,7 +277,7 @@
     "DescribeRollbackTime": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeRollbackTime\r\n&InstanceId=mssql-j8kv137v\r\n&DBs.0=db1\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeRollbackTime\n&InstanceId=mssql-j8kv137v\n&DBs.0=db1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"780339f6-30d7-419a-a30c-c2dc0933af1c\",\n        \"Details\": [\n            {\n                \"DBName\": \"db1\",\n                \"StartTime\": \"2018-08-07 11:09:03\",\n                \"EndTime\": \"2018-08-09 11:09:03\"\n            }\n        ]\n    }\n}",
         "title": "Querying the time range available for rolling back \"db1\" in the \"mssql-j8kv137v\" instance"
       }
@@ -293,7 +293,7 @@
     "DescribeUploadBackupInfo": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeUploadBackupInfo\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-kpl74n9l\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeUploadBackupInfo\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-kpl74n9l\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"BucketName\": \"cosbacktest-1254065710\",\n        \"ExpiredTime\": \"1601205149\",\n        \"Path\": \"251006279/sqlserver/mssql-rdc0gajn/migration/backup/mssql-backup-migration-kpl74n9l/\",\n        \"Region\": \"ap-guangzhou\",\n        \"RequestId\": \"6ce2010c-a9c2-474d-860e-f2c8581304eb\",\n        \"StartTime\": \"1601204649\",\n        \"TmpSecretId\": \"AKID44fDXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        \"TmpSecretKey\": \"2jWOoltcvf21JIsNUaXXXXXXXXXXXXXXXXXXXXXXXXX\",\n        \"XCosSecurityToken\": \"J6nJk8Q30PaQwyvn4OF4oOezabX61kra1cf794342ff14c39705aa17584f81650YmAxWf4vkrV2ZK2Gcr_-kzjJ7a_fRRCeQtXd547VoWnmbJ2txpX6Kj_SywpVdS4c4sMrIn2aFir1nmTu--k_a9NDyykODaR2O3n-PP_k84qacwjb-XXXXXXXXXXXXXXXXXXXXXXXXX\"\n    }\n}",
         "title": "Querying the upload key of full backups"
       }
@@ -309,7 +309,7 @@
     "InquiryPriceCreateDBInstances": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=InquiryPriceCreateDBInstances\r\n&Zone=ap-guangzhou-2\r\n&Memory=2\r\n&Storage=300\r\n&Period=1\r\n&GoodsNum=1\r\n&DBVersion=2008R2\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=InquiryPriceCreateDBInstances\n&Zone=ap-guangzhou-2\n&Memory=2\n&Storage=300\n&Period=1\n&GoodsNum=1\n&DBVersion=2008R2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"OriginalPrice\": 20988,\n        \"Price\": 20988\n    }\n}",
         "title": "Querying the price of the requested SQL Server instance"
       }
@@ -317,7 +317,7 @@
     "InquiryPriceUpgradeDBInstance": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=InquiryPriceUpgradeDBInstance\r\n&InstanceId=mssql-njj2mtpl\r\n&Memory=8\r\n&Storage=300\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=InquiryPriceUpgradeDBInstance\n&InstanceId=mssql-njj2mtpl\n&Memory=8\n&Storage=300\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"dcff5304-324e-4cd6-a5f2-02cb16bde2da\",\n        \"OriginalPrice\": 149696,\n        \"Price\": 149696\n    }\n}",
         "title": "Querying the price for upgrading an instance"
       }
@@ -333,7 +333,7 @@
     "ModifyAccountRemark": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyAccountRemark\r\n&InstanceId=mssql-j8kv137v\r\n&Accounts.0.UserName=test\r\n&Accounts.0.Remark=testRemark\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyAccountRemark\n&InstanceId=mssql-j8kv137v\n&Accounts.0.UserName=test\n&Accounts.0.Remark=testRemark\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\"\n    }\n}",
         "title": "Modifying account remarks"
       }
@@ -341,7 +341,7 @@
     "ModifyBackupMigration": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyBackupMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-kpl74n9l\n&MigrationName=character string\n&RecoveryType=FULL\n&UploadType=COS_UPLOAD\n&BackupFiles.0=db1.bak\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyBackupMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-kpl74n9l\n&MigrationName=character string\n&RecoveryType=FULL\n&UploadType=COS_UPLOAD\n&BackupFiles.0=db1.bak\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"BackupMigrationId\": \"mssql-backup-migration-kpl74n9l\",\n        \"RequestId\": \"836a10d3-cd1f-4ac1-96a9-f2e642333f0b\"\n    }\n}",
         "title": "Modifying a full backup import task"
       }
@@ -349,7 +349,7 @@
     "ModifyBackupStrategy": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyBackupStrategy\n&InstanceId=mssql-j8kv137v\n&BackupType=daily\n&BackupTime=14\n&BackupDay=1\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyBackupStrategy\n&InstanceId=mssql-j8kv137v\n&BackupType=daily\n&BackupTime=14\n&BackupDay=1\n&BackupSaveDays=7\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"780339f6-30d7-419a-a30c-c2dc0933af1c\",\n        \"Errno\": 0,\n        \"Msg\": \"\"\n    }\n}",
         "title": "Modifying the backup policy of the \"mssql-j8kv137v\" instance"
       }
@@ -357,7 +357,7 @@
     "ModifyDBInstanceName": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBInstanceName\r\n&InstanceId=mssql-njj2mtpl\r\n&InstanceName=testModifyInstanceName\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBInstanceName\n&InstanceId=mssql-njj2mtpl\n&InstanceName=testModifyInstanceName\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a61e500-aa33-454c-9ec2-da2a368c39ab\"\n    }\n}",
         "title": "Renaming the \"mssql-njj2mtpl\" instance to \"testModifyInstanceName\""
       }
@@ -367,7 +367,7 @@
         "document": "",
         "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBInstanceNetwork\n&InstanceId=mssql-p2yli7gv\n&NewVpcId=vpc-ilki4qdp\n&NewSubnetId=subnet-lru6dhh8\n&Vip=127.0.0.1\n&OldIpRetainTime=12\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"20db6661-2a85-49d9-8a37-976b931649fb\",\n        \"FlowId\": 100125\n    }\n}",
-        "title": "Modifying the instance network by specifying a new IP"
+        "title": "Modifying the instance network"
       },
       {
         "document": "",
@@ -379,7 +379,7 @@
     "ModifyDBInstanceProject": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBInstanceProject\r\n&InstanceIdSet.0=mssql-j8kv137v\r\n&ProjectId=347\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBInstanceProject\n&InstanceIdSet.0=mssql-j8kv137v\n&ProjectId=347\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\",\n        \"Count\": 1\n    }\n}",
         "title": "Modifying the project to which the instance belongs"
       }
@@ -387,7 +387,7 @@
     "ModifyDBName": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBName\r\n&InstanceId=mssql-i1z41iwd\r\n&OldDBName=test_db\r\n&NewDBName=test_db_newname\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBName\n&InstanceId=mssql-i1z41iwd\n&OldDBName=test_db\n&NewDBName=test_db_newname\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 123,\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\"\n    }\n}",
         "title": "Modifying a database name"
       }
@@ -395,7 +395,7 @@
     "ModifyDBRemark": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBRemark\r\n&InstanceId=mssql-njj2mtpl\r\n&DBRemarks.0.Name=db_test\r\n&DBRemarks.0.Remark=Test database\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBRemark\n&InstanceId=mssql-njj2mtpl\n&DBRemarks.0.Name=db_test\n&DBRemarks.0.Remark=Test database\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Modifying database remarks"
       }
@@ -427,7 +427,7 @@
     "ModifyIncrementalMigration": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyIncrementalMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&IncrementalMigrationId=mssql-incremental-migration-kp7bgv8p\n&IsRecovery=YES\n&BackupFiles.0=db_cvm_1_20200927204209_2log2_2reconvery2.bak\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyIncrementalMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&IncrementalMigrationId=mssql-incremental-migration-kp7bgv8p\n&IsRecovery=YES\n&BackupFiles.0=db_cvm_1_20200927204209_2log2_2reconvery2.bak\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"IncrementalMigrationId\": \"mssql-incremental-migration-kp7bgv8p\",\n        \"RequestId\": \"dab70669-594b-4610-981b-5bfeef7182bb\"\n    }\n}",
         "title": "Modifying an incremental migration task"
       }
@@ -443,7 +443,7 @@
     "ModifyMigration": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyMigration\r\n&MigrateId=2728\r\n&MigrateName=Test API\r\n&MigrateType=2\r\n&SourceType=5\r\n&Source.Url.0=http://gz-oncvm-1254065710.cosgz.myqcloud.com/testdb.bak\r\n&Target.InstanceId=mssql-si2823jyl\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyMigration\n&MigrateId=2728\n&MigrateName=Test API\n&MigrateType=2\n&SourceType=5\n&Source.Url.0=http://gz-oncvm-1254065710.cosgz.myqcloud.com/testdb.bak\n&Target.InstanceId=mssql-si2823jyl\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\",\n        \"MigrateId\": 2728\n    }\n}",
         "title": "Modifying a migration task"
       }
@@ -459,7 +459,7 @@
     "ResetAccountPassword": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=ResetAccountPassword\r\n&InstanceId=mssql-njj2mtpl\r\n&Accounts.0.UserName=test_user_4\r\n&Accounts.0.Password=1234qwer()\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ResetAccountPassword\n&InstanceId=mssql-njj2mtpl\n&Accounts.0.UserName=test_user_4\n&Accounts.0.Password=1234qwer()\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"aa77bb20-7522-4b1e-bc0f-ad5d82790b17\",\n        \"FlowId\": 30457\n    }\n}",
         "title": "Resetting the account password of the \"mssql-njj2mtpl\" instance"
       }
@@ -467,7 +467,7 @@
     "RestartDBInstance": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=RestartDBInstance\r\n&InstanceId=mssql-njj2mtpl\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=RestartDBInstance\n&InstanceId=mssql-njj2mtpl\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a61e500-aa33-454c-9ec2-da2a368c39ab\",\n        \"FlowId\": \"30321\"\n    }\n}",
         "title": "Restarting the \"mssql-niycdqff\" instance"
       }
@@ -483,7 +483,7 @@
     "RollbackInstance": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=RollbackInstance\n&InstanceId=mssql-j8kv137v\n&Type=0\n&Time=2018-08-0711:32:29\n&DBs.0=db1\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=RollbackInstance\n&InstanceId=mssql-j8kv137v\n&Type=0\n&Time=2018-08-07 11:32:29\n&DBs.0=db1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"780339f6-30d7-419a-a30c-c2dc0933af1c\",\n        \"FlowId\": 1234\n    }\n}",
         "title": "Rolling back \"db1\" in the \"mssql-j8kv137v\" instance to 11:32:29, August 7, 2018"
       }
@@ -491,7 +491,7 @@
     "RunMigration": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=RunMigration\r\n&MigrateId=2729\r\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=RunMigration\n&MigrateId=2729\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba35\",\n        \"FlowId\": 30530\n    }\n}",
         "title": "Running a migration task"
       }
@@ -499,7 +499,7 @@
     "StartBackupMigration": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=StartBackupMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-kpl74n9l\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=StartBackupMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-kpl74n9l\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 1001399,\n        \"RequestId\": \"551b4694-5f0b-43e7-a62d-94afb2af4d3d\"\n    }\n}",
         "title": "Starting a full migration task"
       }
@@ -507,7 +507,7 @@
     "StartIncrementalMigration": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=StartIncrementalMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&IncrementalMigrationId=mssql-incremental-migration-kp7bgv8p\n&<Common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=StartIncrementalMigration\n&InstanceId=mssql-rdc0gajn\n&BackupMigrationId=mssql-backup-migration-cg0ffgqt\n&IncrementalMigrationId=mssql-incremental-migration-kp7bgv8p\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 1001403,\n        \"RequestId\": \"6f2b5d2b-a3c1-426d-8e1c-325a69ccb694\"\n    }\n}",
         "title": "Starting an incremental import task"
       }
