@@ -1,11 +1,27 @@
 {
   "actions": {
+    "CreateUploadUrl": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateUploadUrl\n<Common request parameters>\n\n{\n    \"TargetAction\": \"ApplyWebVerificationToken\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ExpiredTimestamp\": 1637212877,\n        \"RequestId\": \"2e546a7c-4e12-43f6-bf98-d33d3724ea5b\",\n        \"ResourceUrl\": \"https://singapore-1257237511.cos.ap-singapore.myqcloud.com/faceid%2FApplyWebVerificationToken%2F2e546a7c-4e12-43f6-bf98-d33d3724ea5b?q-sign-algorithm=sha1&q-ak=AKIDeQ4Zsyob70ywoF8ijZDj5IJ8bzBHfuQk&q-sign-time=1637205677%3B1637212877&q-key-time=1637205677%3B1637212877&q-header-list=host&q-url-param-list=&q-signature=32302bad71219f9ebcae6f4703ae05b0ae33378f\",\n        \"UploadUrl\": \"https://singapore-1257237511.cos.ap-singapore.myqcloud.com/faceid%2FApplyWebVerificationToken%2F2e546a7c-4e12-43f6-bf98-d33d3724ea5b?q-sign-algorithm=sha1&q-ak=AKIDeQ4Zsyob70ywoF8ijZDj5IJ8bzBHfuQk&q-sign-time=1637205677%3B1637212877&q-key-time=1637205677%3B1637212877&q-header-list=host&q-url-param-list=&q-signature=9495ea0b69a2b2fb6b53a0e8d8a0dcd836762bbd\"\n    }\n}",
+        "title": "Generating a resource URL"
+      }
+    ],
     "DetectReflectLivenessAndCompare": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetectReflectLivenessAndCompare\n<Common request parameters>\n\n{\n    \"ImageMd5\": \"d41d8cd98f00b204e9800998ecf8427e\",\n    \"LiveDataUrl\": \"https://faceid-resource-sg-1254418846.cos.ap-singapore.myqcloud.com/faceid%2FApplyWebVerificationToken%2F1300268875%2F20b11b59-572d-406d-8d94-e6e05782134c\",\n    \"ImageUrl\": \"https://faceid-resource-sg-1254418846.cos.ap-singapore.myqcloud.com/faceid%2FApplyWebVerificationToken%2F1300268875%2F20b11b59-572d-406d-8d94-e6e05782134c\",\n    \"LiveDataMd5\": \"d41d8cd98f00b204e9800998ecf8427e\"\n}",
         "output": "{\n    \"Response\": {\n        \"BestFrameUrl\": \"https://faceid-resource-sg-1254418846.cos.ap-singapore.myqcloud.com/faceid%2FApplyWebVerificationToken%2F1300268875%2F20b11b59-572d-406d-8d94-e6e05782134c\",\n        \"Description\": \"Success\",\n        \"BestFrameMd5\": \"d41d8cd98f00b204e9800998ecf8427e\",\n        \"RequestId\": \"00577fa0-9d11-459e-a455-fc202ecd65bc\",\n        \"Sim\": 96.3,\n        \"Result\": \"Success\"\n    }\n}",
         "title": "Compared successfully"
+      }
+    ],
+    "GenerateReflectSequence": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GenerateReflectSequence\n<Common request parameters>\n\n{\n    \"DeviceDataUrl\": \"https://faceid-resource-sg-1254418846.cos.ap-singapore.myqcloud.com/faceid%2FApplyWebVerificationToken%2F1300268875%2F20b11b59-572d-406d-8d94-e6e05782134c\",\n    \"DeviceDataMd5\": \"d41d8cd98f00b204e9800998ecf8427e\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ReflectSequenceUrl\": \"https://faceid-resource-sg-1254418846.cos.ap-singapore.myqcloud.com\",\n        \"ReflectSequenceMd5\": \"d41d8cd98f00b204e9800998ecf8427e\",\n        \"RequestId\": \"32-323233-323\"\n    }\n}",
+        "title": "Obtaining a light sequence"
       }
     ],
     "LivenessCompare": [
