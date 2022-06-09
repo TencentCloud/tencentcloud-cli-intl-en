@@ -502,6 +502,15 @@
           "name": "RangerServiceAddresses",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Multiple resource tags, which can be an empty array",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"

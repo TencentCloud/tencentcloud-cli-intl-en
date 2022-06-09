@@ -42,7 +42,7 @@ def doUpdateDeviceLogLevel(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteProduct(args, parsed_globals):
+def doDescribeDevices(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -58,9 +58,36 @@ def doDeleteProduct(args, parsed_globals):
     client = mod.IotcloudClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteProductRequest()
+    model = models.DescribeDevicesRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteProduct(model)
+    rsp = client.DescribeDevices(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateProduct(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IotcloudClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateProductRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.CreateProduct(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -150,7 +177,7 @@ def doDeletePrivateCA(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribePrivateCA(args, parsed_globals):
+def doDescribePrivateCABindedProducts(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -166,9 +193,9 @@ def doDescribePrivateCA(args, parsed_globals):
     client = mod.IotcloudClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribePrivateCARequest()
+    model = models.DescribePrivateCABindedProductsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribePrivateCA(model)
+    rsp = client.DescribePrivateCABindedProducts(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -204,7 +231,7 @@ def doCreatePrivateCA(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDevices(args, parsed_globals):
+def doDescribeProducts(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -220,9 +247,9 @@ def doDescribeDevices(args, parsed_globals):
     client = mod.IotcloudClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDevicesRequest()
+    model = models.DescribeProductsRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeDevices(model)
+    rsp = client.DescribeProducts(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -366,7 +393,7 @@ def doUpdateDevicesEnableState(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribePrivateCABindedProducts(args, parsed_globals):
+def doDeleteProduct(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -382,9 +409,36 @@ def doDescribePrivateCABindedProducts(args, parsed_globals):
     client = mod.IotcloudClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribePrivateCABindedProductsRequest()
+    model = models.DeleteProductRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribePrivateCABindedProducts(model)
+    rsp = client.DeleteProduct(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribePrivateCA(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.IotcloudClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribePrivateCARequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribePrivateCA(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -486,19 +540,21 @@ MODELS_MAP = {
 
 ACTION_MAP = {
     "UpdateDeviceLogLevel": doUpdateDeviceLogLevel,
-    "DeleteProduct": doDeleteProduct,
+    "DescribeDevices": doDescribeDevices,
+    "CreateProduct": doCreateProduct,
     "DeleteDevice": doDeleteDevice,
     "CreateDevice": doCreateDevice,
     "DeletePrivateCA": doDeletePrivateCA,
-    "DescribePrivateCA": doDescribePrivateCA,
+    "DescribePrivateCABindedProducts": doDescribePrivateCABindedProducts,
     "CreatePrivateCA": doCreatePrivateCA,
-    "DescribeDevices": doDescribeDevices,
+    "DescribeProducts": doDescribeProducts,
     "SetProductsForbiddenStatus": doSetProductsForbiddenStatus,
     "DescribePrivateCAs": doDescribePrivateCAs,
     "DescribeProductCA": doDescribeProductCA,
     "DescribeDevice": doDescribeDevice,
     "UpdateDevicesEnableState": doUpdateDevicesEnableState,
-    "DescribePrivateCABindedProducts": doDescribePrivateCABindedProducts,
+    "DeleteProduct": doDeleteProduct,
+    "DescribePrivateCA": doDescribePrivateCA,
     "DescribeProduct": doDescribeProduct,
     "UpdatePrivateCA": doUpdatePrivateCA,
     "UpdateProductDynamicRegister": doUpdateProductDynamicRegister,

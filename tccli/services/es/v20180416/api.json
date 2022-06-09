@@ -1,16 +1,40 @@
 {
   "actions": {
+    "CreateIndex": {
+      "document": "This API is used to create indices.",
+      "input": "CreateIndexRequest",
+      "name": "Creates indices",
+      "output": "CreateIndexResponse"
+    },
     "CreateInstance": {
       "document": "This API is used to create an ES cluster instance with the specified specification.",
       "input": "CreateInstanceRequest",
       "name": "Creates an ES cluster instance",
       "output": "CreateInstanceResponse"
     },
+    "DeleteIndex": {
+      "document": "This API is used to delete indices.",
+      "input": "DeleteIndexRequest",
+      "name": "Deletes indices",
+      "output": "DeleteIndexResponse"
+    },
     "DeleteInstance": {
       "document": "This API is used to terminate a cluster instance. ",
       "input": "DeleteInstanceRequest",
       "name": "Terminates an ES cluster instance",
       "output": "DeleteInstanceResponse"
+    },
+    "DescribeIndexList": {
+      "document": "This API is used to obtain the index list.",
+      "input": "DescribeIndexListRequest",
+      "name": "Obtains the index list",
+      "output": "DescribeIndexListResponse"
+    },
+    "DescribeIndexMeta": {
+      "document": "This API is used to obtain index metadata.",
+      "input": "DescribeIndexMetaRequest",
+      "name": "Obtains index metadata",
+      "output": "DescribeIndexMetaResponse"
     },
     "DescribeInstanceLogs": {
       "document": "This API is used to query the eligible ES cluster logs in the current region.",
@@ -66,6 +90,12 @@
       "name": "Updates ES cluster dictionaries",
       "output": "UpdateDictionariesResponse"
     },
+    "UpdateIndex": {
+      "document": "This API is used to update indices.",
+      "input": "UpdateIndexRequest",
+      "name": "Updates indices",
+      "output": "UpdateIndexResponse"
+    },
     "UpdateInstance": {
       "document": "This API is used for operations such as modifying node specification, renaming an instance, modifying configuration, resetting password, and setting Kibana blocklist/allowlist. `InstanceId` is required, while `ForceRestart` is optional. Other parameters or parameter combinations and their meanings are as follows:\n- InstanceName: renames an instance (only for instance identification)\n- NodeInfoList: modifies node configuration (horizontally scaling nodes, vertically scaling nodes, adding primary nodes, adding cold nodes, etc.)\n- EsConfig: modifies cluster configuration\n- Password: changes the password of the default user \"elastic\"\n- EsAcl: modifies the ACL\n- CosBackUp: sets auto-backup to COS for a cluster\nOnly one of the parameters or parameter combinations above can be passed in at a time, while passing fewer or more ones will cause the request to fail.",
       "input": "UpdateInstanceRequest",
@@ -103,6 +133,62 @@
     "serviceShortName": "es"
   },
   "objects": {
+    "BackingIndexMetaField": {
+      "document": "Backing index metadata fields",
+      "members": [
+        {
+          "default": "",
+          "document": "Backing index name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "IndexName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Backing index status\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "GREEN",
+          "member": "string",
+          "name": "IndexStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Backing index size\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "30GB",
+          "member": "int64",
+          "name": "IndexStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Current lifecycle phase of backing index\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "hot",
+          "member": "string",
+          "name": "IndexPhrase",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Backing index creation time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "2021-03-01 10:00:00",
+          "member": "string",
+          "name": "IndexCreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "ClusterView": {
       "document": "Cluster view data",
       "members": [
@@ -352,6 +438,78 @@
         }
       ],
       "usage": "in"
+    },
+    "CreateIndexRequest": {
+      "document": "CreateIndex request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ES cluster ID",
+          "example": "es-abcdefgh",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type of the index to create. `auto`: Automated; `normal`: General.",
+          "example": "auto",
+          "member": "string",
+          "name": "IndexType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the index to create",
+          "example": "test",
+          "member": "string",
+          "name": "IndexName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "JSON-formatted index metadata to create, such as `mappings` and `settings`",
+          "example": "{}",
+          "member": "string",
+          "name": "IndexMetaJson",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Username for cluster access",
+          "example": "elastic",
+          "member": "string",
+          "name": "Username",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Password for cluster access",
+          "example": "123456",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIndexResponse": {
+      "document": "CreateIndex response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CreateInstanceRequest": {
       "document": "CreateInstance request structure.",
@@ -659,6 +817,78 @@
       ],
       "type": "object"
     },
+    "DeleteIndexRequest": {
+      "document": "DeleteIndex request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ES cluster ID",
+          "example": "es-abcdefgh",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type of the index to delete. `auto`: Automated; `normal`: General.",
+          "example": "auto",
+          "member": "string",
+          "name": "IndexType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the index to delete",
+          "example": "test",
+          "member": "string",
+          "name": "IndexName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Username for cluster access",
+          "example": "elastic",
+          "member": "string",
+          "name": "Username",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Password for cluster access",
+          "example": "123456",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backing index name",
+          "example": "test",
+          "member": "string",
+          "name": "BackingIndexName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIndexResponse": {
+      "document": "DeleteIndex response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteInstanceRequest": {
       "document": "DeleteInstance request structure.",
       "members": [
@@ -676,6 +906,204 @@
     "DeleteInstanceResponse": {
       "document": "DeleteInstance response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIndexListRequest": {
+      "document": "DescribeIndexList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Index type. `auto`: Automated; `normal`: General.",
+          "example": "auto",
+          "member": "string",
+          "name": "IndexType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ES cluster ID",
+          "example": "es-abcdefgh",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Index name. `null` indicates that all indexes are requested.",
+          "example": "test",
+          "member": "string",
+          "name": "IndexName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Username for cluster access",
+          "example": "elastic",
+          "member": "string",
+          "name": "Username",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Password for cluster access",
+          "example": "123456",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The starting position of paging",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of results per page",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting condition field, which can be `IndexName`, `IndexStorage`, or `IndexCreateTime`.",
+          "example": "storage",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filtering by index status",
+          "example": "[\"GREEN\"]",
+          "member": "string",
+          "name": "IndexStatusList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Sorting mode, which can be `asc` and `desc`.",
+          "example": "asc",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIndexListResponse": {
+      "document": "DescribeIndexList response structure.",
+      "members": [
+        {
+          "document": "Index metadata field\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "IndexMetaField",
+          "name": "IndexMetaFields",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of results\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIndexMetaRequest": {
+      "document": "DescribeIndexMeta request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ES cluster ID",
+          "example": "es-abcdefgh",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Index type. `auto`: Automated; `normal`: General.",
+          "example": "auto",
+          "member": "string",
+          "name": "IndexType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Index name. `null` indicates that all indexes are requested.",
+          "example": "test",
+          "member": "string",
+          "name": "IndexName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Username for cluster access",
+          "example": "elastic",
+          "member": "string",
+          "name": "Username",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Password for cluster access",
+          "example": "123456",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIndexMetaResponse": {
+      "document": "DescribeIndexMeta response structure.",
+      "members": [
+        {
+          "document": "Index metadata field\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "IndexMetaField",
+          "name": "IndexMetaField",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -1095,6 +1523,32 @@
       ],
       "usage": "both"
     },
+    "EsConfigSetInfo": {
+      "document": "Configuration set information",
+      "members": [
+        {
+          "default": "",
+          "document": "Configuration set type, such as `LDAP` and `AD`.",
+          "example": "ldap",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "\"{\\\"order\\\":0,\\\"url\\\":\\\"ldap://10.0.1.72:389\\\",\\\"bind_dn\\\":\\\"cn=admin,dc=tencent,dc=com\\\",\\\"user_search.base_dn\\\":\\\"dc=tencent,dc=com\\\",\\\"user_search.filter\\\":\\\"(cn={0})\\\",\\\"group_search.base_dn\\\":\\\"dc=tencent,dc=com\\\"}\"",
+          "example": "参考描述",
+          "member": "string",
+          "name": "EsConfig",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "EsDictionaryInfo": {
       "document": "ES dictionary information",
       "members": [
@@ -1202,6 +1656,320 @@
         }
       ],
       "type": "object"
+    },
+    "IndexMetaField": {
+      "document": "Index metadata field",
+      "members": [
+        {
+          "default": "",
+          "document": "Index type\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "auto",
+          "member": "string",
+          "name": "IndexType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Index name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "IndexName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Index status\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "GREEN",
+          "member": "string",
+          "name": "IndexStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Index size (in byte)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "30",
+          "member": "int64",
+          "name": "IndexStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Index creation time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "2021-03-01 10:00:00",
+          "member": "string",
+          "name": "IndexCreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Backing index\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "BackingIndexMetaField",
+          "name": "BackingIndices",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "es-abcdefgh",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster version\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "7.14.2",
+          "member": "string",
+          "name": "ClusterVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Index lifecycle policy field\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "IndexPolicyField",
+          "name": "IndexPolicyField",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Index automation field\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "IndexOptionsField",
+          "name": "IndexOptionsField",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Index setting field\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "IndexSettingsField",
+          "name": "IndexSettingsField",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster APP ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "10004222",
+          "member": "uint64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "IndexOptionsField": {
+      "document": "Index automation field",
+      "members": [
+        {
+          "default": "",
+          "document": "Max age for expiry purpose\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "3d",
+          "member": "string",
+          "name": "ExpireMaxAge",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Max size for expiry purpose\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "2GB",
+          "member": "string",
+          "name": "ExpireMaxSize",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rollover cycle\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1d",
+          "member": "string",
+          "name": "RolloverMaxAge",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the dynamic rollover\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "true",
+          "member": "string",
+          "name": "RolloverDynamic",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable dynamic sharding\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "true",
+          "member": "string",
+          "name": "ShardNumDynamic",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Timestamp field\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "@timestamp",
+          "member": "string",
+          "name": "TimestampField",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Write mode\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "append_only",
+          "member": "string",
+          "name": "WriteMode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "IndexPolicyField": {
+      "document": "Index lifecycle policy field",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the warm phase\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "false",
+          "member": "string",
+          "name": "WarmEnable",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Min age before data transitions to the warm phase\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "3d",
+          "member": "string",
+          "name": "WarmMinAge",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the cold phase\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "false",
+          "member": "string",
+          "name": "ColdEnable",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Min age before data transitions to the cold phase\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "3d",
+          "member": "string",
+          "name": "ColdMinAge",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the frozen phase\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "false",
+          "member": "string",
+          "name": "FrozenEnable",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Min age before data transitions to the frozen phase\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "3d",
+          "member": "string",
+          "name": "FrozenMinAge",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "IndexSettingsField": {
+      "document": "Index configuration fields",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of primary shards\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "5",
+          "member": "string",
+          "name": "NumberOfShards",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of replica shards\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "NumberOfReplicas",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Index refresh interval\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "20s",
+          "member": "string",
+          "name": "RefreshInterval",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "InstanceInfo": {
       "document": "Instance details",
@@ -2923,7 +3691,7 @@
         },
         {
           "default": "",
-          "document": "0: Install; 1: Delete",
+          "document": "`0` (default): Install, `1`: Delete",
           "example": "0",
           "member": "int64",
           "name": "UpdateType",
@@ -2932,7 +3700,7 @@
         },
         {
           "default": "",
-          "document": "Whether to force restart the cluster",
+          "document": "Whether to force restart the cluster. The default value is `false`.",
           "example": "false",
           "member": "bool",
           "name": "ForceRestart",
@@ -2944,6 +3712,78 @@
     },
     "UpdateDictionariesResponse": {
       "document": "UpdateDictionaries response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateIndexRequest": {
+      "document": "UpdateIndex request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ES cluster ID",
+          "example": "es-abcdefgh",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type of the index to update. `auto`: Automated; `normal`: General.",
+          "example": "auto",
+          "member": "string",
+          "name": "IndexType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the index to update",
+          "example": "test",
+          "member": "string",
+          "name": "IndexName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "JSON-formatted index metadata to update, such as `mappings` and `settings`.",
+          "example": "{}",
+          "member": "string",
+          "name": "UpdateMetaJson",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Username for cluster access",
+          "example": "elastic",
+          "member": "string",
+          "name": "Username",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Password for cluster access",
+          "example": "123456",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateIndexResponse": {
+      "document": "UpdateIndex response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3217,6 +4057,15 @@
           "name": "CerebroPrivateAccess",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Added or modified configuration set information",
+          "example": "无",
+          "member": "EsConfigSetInfo",
+          "name": "EsConfigSet",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -3274,7 +4123,7 @@
         },
         {
           "default": "",
-          "document": "Whether to force restart",
+          "document": "Whether to force restart the cluster. The default value is `false`.",
           "example": "true",
           "member": "bool",
           "name": "ForceRestart",
@@ -3283,7 +4132,7 @@
         },
         {
           "default": "",
-          "document": "Whether to reinstall",
+          "document": "Whether to reinstall the cluster. The default value is `false`.",
           "example": "true",
           "member": "bool",
           "name": "ForceUpdate",

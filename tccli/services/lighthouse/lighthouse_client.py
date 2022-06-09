@@ -339,33 +339,6 @@ def doDescribeCcnAttachedInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeInstances(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.LighthouseClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInstancesRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeInstances(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doImportKeyPair(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -771,7 +744,7 @@ def doDescribeDisks(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeGeneralResourceQuotas(args, parsed_globals):
+def doModifySnapshotAttribute(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -787,9 +760,9 @@ def doDescribeGeneralResourceQuotas(args, parsed_globals):
     client = mod.LighthouseClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeGeneralResourceQuotasRequest()
+    model = models.ModifySnapshotAttributeRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeGeneralResourceQuotas(model)
+    rsp = client.ModifySnapshotAttribute(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -844,33 +817,6 @@ def doDescribeInstancesDeniedActions(args, parsed_globals):
     model = models.DescribeInstancesDeniedActionsRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DescribeInstancesDeniedActions(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doInquirePriceRenewInstances(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.LighthouseClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InquirePriceRenewInstancesRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.InquirePriceRenewInstances(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1311,33 +1257,6 @@ def doTerminateInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doTerminateDisks(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.LighthouseClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.TerminateDisksRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.TerminateDisks(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDescribeInstanceVncUrl(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1365,7 +1284,7 @@ def doDescribeInstanceVncUrl(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifySnapshotAttribute(args, parsed_globals):
+def doTerminateDisks(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1381,9 +1300,9 @@ def doModifySnapshotAttribute(args, parsed_globals):
     client = mod.LighthouseClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifySnapshotAttributeRequest()
+    model = models.TerminateDisksRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ModifySnapshotAttribute(model)
+    rsp = client.TerminateDisks(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1689,33 +1608,6 @@ def doRebootInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateInstances(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.LighthouseClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateInstancesRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.CreateInstances(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDetachDisks(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1820,7 +1712,6 @@ ACTION_MAP = {
     "DeleteKeyPairs": doDeleteKeyPairs,
     "ModifyDisksRenewFlag": doModifyDisksRenewFlag,
     "DescribeCcnAttachedInstances": doDescribeCcnAttachedInstances,
-    "DescribeInstances": doDescribeInstances,
     "ImportKeyPair": doImportKeyPair,
     "DescribeInstancesTrafficPackages": doDescribeInstancesTrafficPackages,
     "InquirePriceCreateBlueprint": doInquirePriceCreateBlueprint,
@@ -1836,10 +1727,9 @@ ACTION_MAP = {
     "DescribeDisksDeniedActions": doDescribeDisksDeniedActions,
     "DescribeModifyInstanceBundles": doDescribeModifyInstanceBundles,
     "DescribeDisks": doDescribeDisks,
-    "DescribeGeneralResourceQuotas": doDescribeGeneralResourceQuotas,
+    "ModifySnapshotAttribute": doModifySnapshotAttribute,
     "ModifyBlueprintAttribute": doModifyBlueprintAttribute,
     "DescribeInstancesDeniedActions": doDescribeInstancesDeniedActions,
-    "InquirePriceRenewInstances": doInquirePriceRenewInstances,
     "DeleteSnapshots": doDeleteSnapshots,
     "InquirePriceCreateInstances": doInquirePriceCreateInstances,
     "DescribeInstanceLoginKeyPairAttribute": doDescribeInstanceLoginKeyPairAttribute,
@@ -1856,9 +1746,8 @@ ACTION_MAP = {
     "DescribeSnapshots": doDescribeSnapshots,
     "ModifyFirewallRules": doModifyFirewallRules,
     "TerminateInstances": doTerminateInstances,
-    "TerminateDisks": doTerminateDisks,
     "DescribeInstanceVncUrl": doDescribeInstanceVncUrl,
-    "ModifySnapshotAttribute": doModifySnapshotAttribute,
+    "TerminateDisks": doTerminateDisks,
     "DescribeFirewallRules": doDescribeFirewallRules,
     "StartInstances": doStartInstances,
     "DescribeKeyPairs": doDescribeKeyPairs,
@@ -1870,7 +1759,6 @@ ACTION_MAP = {
     "ModifyFirewallRuleDescription": doModifyFirewallRuleDescription,
     "ResetAttachCcn": doResetAttachCcn,
     "RebootInstances": doRebootInstances,
-    "CreateInstances": doCreateInstances,
     "DetachDisks": doDetachDisks,
     "CreateBlueprint": doCreateBlueprint,
     "CreateInstanceSnapshot": doCreateInstanceSnapshot,

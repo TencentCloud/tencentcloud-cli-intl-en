@@ -12,6 +12,12 @@
       "name": "Creates a private CA certificate",
       "output": "CreatePrivateCAResponse"
     },
+    "CreateProduct": {
+      "document": "This API is used to create a new IoT communication product. ",
+      "input": "CreateProductRequest",
+      "name": "Creates a product",
+      "output": "CreateProductResponse"
+    },
     "DeleteDevice": {
       "document": "This API is used to delete an IoT Hub device. ",
       "input": "DeleteDeviceRequest",
@@ -71,6 +77,12 @@
       "input": "DescribeProductCARequest",
       "name": "Queries the CA certificates bound to a product",
       "output": "DescribeProductCAResponse"
+    },
+    "DescribeProducts": {
+      "document": "This API is used to obtain the product list. ",
+      "input": "DescribeProductsRequest",
+      "name": "Obtains the product list",
+      "output": "DescribeProductsResponse"
     },
     "SetProductsForbiddenStatus": {
       "document": "This API is used to enable or disable multiple products at a time.",
@@ -462,6 +474,78 @@
     "CreatePrivateCAResponse": {
       "document": "CreatePrivateCA response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProductRequest": {
+      "document": "CreateProduct request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Product name, which cannot be same as that of an existing product. Naming rule: [a-zA-Z0-9:_-]{1,32}.",
+          "example": "fruit",
+          "member": "string",
+          "name": "ProductName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Product properties",
+          "example": "无",
+          "member": "ProductProperties",
+          "name": "ProductProperties",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Skey, which is required to create a CLAA product.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Skey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProductResponse": {
+      "document": "CreateProduct response structure.",
+      "members": [
+        {
+          "document": "Product name",
+          "example": "fruit",
+          "member": "string",
+          "name": "ProductName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Product ID, the globally unique ID assigned by Tencent Cloud.",
+          "example": "ABCDE12345",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Product properties",
+          "example": "无",
+          "member": "ProductProperties",
+          "name": "ProductProperties",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -1145,6 +1229,60 @@
       ],
       "type": "object"
     },
+    "DescribeProductsRequest": {
+      "document": "DescribeProducts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset, starting from 0",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries returned per page. Valid range: 10–250.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProductsResponse": {
+      "document": "DescribeProducts response structure.",
+      "members": [
+        {
+          "document": "Total number of products",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of product details",
+          "example": "无",
+          "member": "ProductInfo",
+          "name": "Products",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeviceInfo": {
       "document": "Device details",
       "members": [
@@ -1462,6 +1600,52 @@
         }
       ],
       "usage": "both"
+    },
+    "ProductInfo": {
+      "document": "Product details",
+      "members": [
+        {
+          "default": "",
+          "document": "Product ID",
+          "example": "ABCDE2345",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product name",
+          "example": "IotHub",
+          "member": "string",
+          "name": "ProductName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product metadata",
+          "example": "无",
+          "member": "ProductMetadata",
+          "name": "ProductMetadata",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product properties",
+          "example": "无",
+          "member": "ProductProperties",
+          "name": "ProductProperties",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ProductMetadata": {
       "document": "Product metadata",

@@ -15,6 +15,33 @@ from tencentcloud.es.v20180416 import es_client as es_client_v20180416
 from tencentcloud.es.v20180416 import models as models_v20180416
 
 
+def doDeleteIndex(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.EsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteIndexRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DeleteIndex(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doUpdateRequestTargetNodeTypes(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -69,6 +96,33 @@ def doDescribeInstanceOperations(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doCreateIndex(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.EsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateIndexRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.CreateIndex(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -96,6 +150,33 @@ def doDescribeInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDeleteInstance(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.EsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteInstanceRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DeleteInstance(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doGetRequestTargetNodeTypes(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -115,6 +196,33 @@ def doGetRequestTargetNodeTypes(args, parsed_globals):
     model = models.GetRequestTargetNodeTypesRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.GetRequestTargetNodeTypes(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeIndexMeta(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.EsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeIndexMetaRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeIndexMeta(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -204,6 +312,33 @@ def doCreateInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeIndexList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.EsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeIndexListRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeIndexList(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doUpgradeInstance(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -285,7 +420,7 @@ def doUpdateInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteInstance(args, parsed_globals):
+def doUpdateIndex(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -301,9 +436,9 @@ def doDeleteInstance(args, parsed_globals):
     client = mod.EsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteInstanceRequest()
+    model = models.UpdateIndexRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DeleteInstance(model)
+    rsp = client.UpdateIndex(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -458,17 +593,22 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
+    "DeleteIndex": doDeleteIndex,
     "UpdateRequestTargetNodeTypes": doUpdateRequestTargetNodeTypes,
     "DescribeInstanceOperations": doDescribeInstanceOperations,
+    "CreateIndex": doCreateIndex,
     "DescribeInstances": doDescribeInstances,
+    "DeleteInstance": doDeleteInstance,
     "GetRequestTargetNodeTypes": doGetRequestTargetNodeTypes,
+    "DescribeIndexMeta": doDescribeIndexMeta,
     "UpdatePlugins": doUpdatePlugins,
     "DescribeViews": doDescribeViews,
     "CreateInstance": doCreateInstance,
+    "DescribeIndexList": doDescribeIndexList,
     "UpgradeInstance": doUpgradeInstance,
     "UpgradeLicense": doUpgradeLicense,
     "UpdateInstance": doUpdateInstance,
-    "DeleteInstance": doDeleteInstance,
+    "UpdateIndex": doUpdateIndex,
     "RestartInstance": doRestartInstance,
     "RestartNodes": doRestartNodes,
     "DescribeInstanceLogs": doDescribeInstanceLogs,

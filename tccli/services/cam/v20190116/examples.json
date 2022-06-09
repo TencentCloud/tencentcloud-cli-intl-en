@@ -99,9 +99,9 @@
     "CreateServiceLinkedRole": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=CreateServiceLinkedRole\r\n&QCSServiceName.0=ccs.qcloud.com\r\n&CustomSuffix=forTest\r\n&Description=ccsLinkedRole\r\n&<Common request parameters>",
+        "input": "https://cam.tencentcloudapi.com/?Action=CreateServiceLinkedRole\n&QCSServiceName.0=ccs.qcloud.com\n&CustomSuffix=forTest\n&Description=ccsLinkedRole\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RoleId\": \"4611686018427411525\",\n        \"RequestId\": \"c3da1c1c-df35-467d-9335-99c68d993e0a\"\n    }\n}",
-        "title": "Creating service role"
+        "title": "Creating a service-related role"
       }
     ],
     "CreateUserOIDCConfig": [
@@ -532,6 +532,22 @@
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetMfaFlag\n<Common request parameters>\n\n{\n    \"LoginFlag\": {\n        \"Phone\": 1,\n        \"Stoken\": 1,\n        \"Wechat\": 1\n    },\n    \"OpUin\": 1,\n    \"ActionFlag\": {\n        \"Phone\": 1,\n        \"Stoken\": 1,\n        \"Wechat\": 1\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"cf75531d-b72d-4dcb-b0ed-d1c029a37f38\"\n    }\n}",
         "title": "Setting authentication mode for login protection to WeChat"
+      }
+    ],
+    "TagRole": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TagRole\n<Common request parameters>\n\n{\n    \"Tags\": [\n        {\n            \"Key\": \"AKey\",\n            \"Value\": \"AValue\"\n        }\n    ],\n    \"RoleName\": \"CAM_QCSRole\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx-xxx-xxx-xxx\"\n    }\n}",
+        "title": "Binding tags to a role"
+      }
+    ],
+    "UntagRole": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UntagRole\n<Common request parameters>\n\n{\n    \"TagKeys\": [\n        \"AKey\"\n    ],\n    \"RoleName\": \"CAM_QCSRole\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx-xxx-xxx-xxx\"\n    }\n}",
+        "title": "Unbinding tags from a role"
       }
     ],
     "UpdateAssumeRolePolicy": [

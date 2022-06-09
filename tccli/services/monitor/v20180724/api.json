@@ -1026,6 +1026,16 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of advanced metrics.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "AdvancedMetricNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1202,6 +1212,36 @@
           "example": "STATIC",
           "member": "string",
           "name": "RuleType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is an advanced metric. 0: No; 1: Yes.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "IsAdvanced",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the advanced metric feature is enabled. 0: No; 1: Yes.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "IsOpen",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Integration center product ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "cvm",
+          "member": "string",
+          "name": "ProductId",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6403,6 +6443,7 @@
         {
           "default": "",
           "document": "Alarm policy type",
+          "example": "cvm_device",
           "member": "string",
           "name": "Namespace",
           "required": true,
@@ -6412,6 +6453,7 @@
         {
           "default": "",
           "document": "Metric name",
+          "example": "CpuUsage",
           "member": "string",
           "name": "MetricName",
           "required": true,
@@ -6421,6 +6463,7 @@
         {
           "default": "",
           "document": "Metric display name",
+          "example": "CPU利用率",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -6430,6 +6473,7 @@
         {
           "default": "",
           "document": "Minimum value",
+          "example": "0",
           "member": "float",
           "name": "Min",
           "required": true,
@@ -6439,6 +6483,7 @@
         {
           "default": "",
           "document": "Maximum value",
+          "example": "100",
           "member": "float",
           "name": "Max",
           "required": true,
@@ -6448,6 +6493,7 @@
         {
           "default": "",
           "document": "Dimension list",
+          "example": "vm_uuid",
           "member": "string",
           "name": "Dimensions",
           "required": true,
@@ -6457,6 +6503,7 @@
         {
           "default": "",
           "document": "Unit",
+          "example": "%",
           "member": "string",
           "name": "Unit",
           "required": true,
@@ -6466,10 +6513,41 @@
         {
           "default": "",
           "document": "Metric configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MetricConfig",
           "name": "MetricConfig",
           "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is an advanced metric. 1: Yes; 0: No.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "IsAdvanced",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the advanced metric feature is enabled. 1: Yes; 0: No.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "IsOpen",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Integration center product ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "ProductId",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
