@@ -4724,6 +4724,15 @@
           "name": "UniqSubnetIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tag key value",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -7954,7 +7963,7 @@
         },
         {
           "default": "",
-          "document": "Global permission. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"PROCESS\", \"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"SHOW DATABASES\", \"CREATE TEMPORARY TABLES\", \"LOCK TABLES\", \"EXECUTE\", \"CREATE VIEW\", \"SHOW VIEW\", \"CREATE ROUTINE\", \"ALTER ROUTINE\", \"EVENT\", \"TRIGGER\", \"CREATE USER\", \"RELOAD\", \"REPLICATION CLIENT\", \"REPLICATION SLAVE\", \"UPDATE\".\nNote: When “ModifyAction” is empty, if `GlobalPrivileges` is not passed in, it indicates the global permission will become ineffective.",
+          "document": "Global permission. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"PROCESS\", \"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"SHOW DATABASES\", \"CREATE TEMPORARY TABLES\", \"LOCK TABLES\", \"EXECUTE\", \"CREATE VIEW\", \"SHOW VIEW\", \"CREATE ROUTINE\", \"ALTER ROUTINE\", \"EVENT\", \"TRIGGER\", \"CREATE USER\", \"RELOAD\", \"REPLICATION CLIENT\", \"REPLICATION SLAVE\".\nNote: When “ModifyAction” is empty, if `GlobalPrivileges` is not passed in, it indicates the global permission will become ineffective.",
           "example": "[\"SELECT\\n\"]",
           "member": "string",
           "name": "GlobalPrivileges",
@@ -11027,6 +11036,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Engine type. Valid values: `Innodb`,`RocksDB`.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "InnoDB",
+          "member": "string",
+          "name": "EngineType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -11742,6 +11761,32 @@
         }
       ],
       "usage": "both"
+    },
+    "Tag": {
+      "document": "Tag structure",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "example": "name",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "example": "zhang",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "TagInfo": {
       "document": "Tag information",

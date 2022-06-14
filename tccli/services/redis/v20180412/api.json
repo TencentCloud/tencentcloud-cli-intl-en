@@ -125,6 +125,18 @@
       "input": "ReleaseWanAddressRequest",
       "name": "Disables public network API",
       "output": "ReleaseWanAddressResponse"
+    },
+    "UpgradeProxyVersion": {
+      "document": "This API is used to upgrade instance proxy version.",
+      "input": "UpgradeProxyVersionRequest",
+      "name": "Upgrades instance proxy version",
+      "output": "UpgradeProxyVersionResponse"
+    },
+    "UpgradeSmallVersion": {
+      "document": "This API is used to upgrade instance minor version.",
+      "input": "UpgradeSmallVersionRequest",
+      "name": "Upgrades instance minor version",
+      "output": "UpgradeSmallVersionResponse"
     }
   },
   "metadata": {
@@ -2155,6 +2167,132 @@
         }
       ],
       "usage": "out"
+    },
+    "UpgradeProxyVersionRequest": {
+      "document": "UpgradeProxyVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "crs-dvchdv5",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The current proxy version",
+          "example": "5.0.0",
+          "member": "string",
+          "name": "CurrentProxyVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Upgradeable redis version",
+          "example": "5.0.1",
+          "member": "string",
+          "name": "UpgradeProxyVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "`1` (upgrade immediately), `0` (upgrade during maintenance time)",
+          "example": "1",
+          "member": "int64",
+          "name": "InstanceTypeUpgradeNow",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeProxyVersionResponse": {
+      "document": "UpgradeProxyVersion response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "486489",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeSmallVersionRequest": {
+      "document": "UpgradeSmallVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "crs-dvchdv5",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The current redis version",
+          "example": "5.0.0",
+          "member": "string",
+          "name": "CurrentRedisVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Upgradeable redis version",
+          "example": "5.0.1",
+          "member": "string",
+          "name": "UpgradeRedisVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "`1` (upgrade immediately), `0` (upgrade during maintenance time)",
+          "example": "1",
+          "member": "int64",
+          "name": "InstanceTypeUpgradeNow",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeSmallVersionResponse": {
+      "document": "UpgradeSmallVersion response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "486489",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ZoneCapacityConf": {
       "document": "Product information in the availability zone",
