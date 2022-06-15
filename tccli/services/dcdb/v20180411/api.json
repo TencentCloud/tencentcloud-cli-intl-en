@@ -78,6 +78,12 @@
       "name": "Views database parameters",
       "output": "DescribeDBParametersResponse"
     },
+    "DescribeDBSecurityGroups": {
+      "document": "This API is used to query the security group information of an instance.",
+      "input": "DescribeDBSecurityGroupsRequest",
+      "name": "Queries the security group information of an instance",
+      "output": "DescribeDBSecurityGroupsResponse"
+    },
     "DescribeDBSlowLogs": {
       "document": "This API is used to query the list of slow query logs.",
       "input": "DescribeDBSlowLogsRequest",
@@ -143,6 +149,12 @@
       "input": "DescribeFlowRequest",
       "name": "Queries task status",
       "output": "DescribeFlowResponse"
+    },
+    "DescribeOrders": {
+      "document": "This API is used to query TDSQL order information. You can pass in an order ID to query the TDSQL instance associated with the order and the corresponding task process ID.",
+      "input": "DescribeOrdersRequest",
+      "name": "Queries the order information",
+      "output": "DescribeOrdersResponse"
     },
     "DescribeProjectSecurityGroups": {
       "document": "This API is used to query the security group details of a project.",
@@ -2041,6 +2053,66 @@
       ],
       "usage": "out"
     },
+    "Deal": {
+      "document": "Order information",
+      "members": [
+        {
+          "default": "",
+          "document": "Order ID.",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account",
+          "member": "string",
+          "name": "OwnerUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of items",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The associated process ID, which can be used to query the process execution status.",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ID of the created instance, which is required only for the order that creates an instance.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Billing mode. Valid values: `0` (postpaid), `1` (prepaid).",
+          "member": "int64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DeleteAccountRequest": {
       "document": "DeleteAccount request structure.",
       "members": [
@@ -2371,6 +2443,69 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSecurityGroupsRequest": {
+      "document": "DescribeDBSecurityGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database engine name. Valid value: `dcdb`.",
+          "example": "dcdb",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tdsqlshard-eb2w7dto",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSecurityGroupsResponse": {
+      "document": "DescribeDBSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "Security group details",
+          "example": "无",
+          "member": "SecurityGroup",
+          "name": "Groups",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance VIP\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VIP",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Instance Port\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VPort",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3274,6 +3409,51 @@
           "name": "Status",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrdersRequest": {
+      "document": "DescribeOrders request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of long order IDs to be queried, which are returned by the APIs for creating, renewing, or scaling instances.",
+          "example": "[\"20181103110163\\r\\n\"]",
+          "member": "string",
+          "name": "DealNames",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrdersResponse": {
+      "document": "DescribeOrders response structure.",
+      "members": [
+        {
+          "document": "Returned number of orders",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Order information list",
+          "example": "无",
+          "member": "Deal",
+          "name": "Deals",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {

@@ -3934,6 +3934,7 @@
         {
           "default": "",
           "document": "Region information",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -3943,6 +3944,7 @@
         {
           "default": "",
           "document": "AZ information",
+          "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -3952,10 +3954,21 @@
         {
           "default": "",
           "document": "Purchasable specification information",
+          "example": "无",
           "member": "SpecItem",
           "name": "SpecItems",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether cross-AZ deployment is supported. Valid values: `1` (yes), `0` (no).",
+          "example": "1",
+          "member": "int64",
+          "name": "SupportMultiAZ",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

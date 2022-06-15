@@ -117,7 +117,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLiveRecordTemplate\n<Common request parameters>\n\n{\n    \"RemoveWatermark\": \"false\",\n    \"FlvParam\": {\n        \"StorageTime\": \"2\",\n        \"VodSubAppId\": \"251195406\",\n        \"Enable\": \"1\",\n        \"RecordInterval\": \"2222\"\n    },\n    \"IsDelayLive\": \"0\",\n    \"Description\": \"String\",\n    \"TemplateName\": \"String\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"74ed2203-278d-4ec8-8c67-65626a94daef\",\n        \"TemplateId\": 362894\n    }\n}",
-        "title": "Sample"
+        "title": "Example"
       }
     ],
     "CreateLiveSnapshotRule": [
@@ -280,22 +280,6 @@
         "title": "Sample request"
       }
     ],
-    "DescribeAllStreamPlayInfoList": [
-      {
-        "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeAllStreamPlayInfoList\n&QueryTime=2019-12-12 10:00:00\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"QueryTime\": \"2019-12-12 10:00:00\",\n        \"DataInfoList\": [\n            {\n                \"Bandwidth\": 1.82,\n                \"Online\": 1,\n                \"PlayDomain\": \"domain.test1.com\",\n                \"Protocol\": \"Hls\",\n                \"Rate\": 0,\n                \"Request\": 19,\n                \"StreamName\": \"test1\"\n            },\n            {\n                \"Bandwidth\": 1.59,\n                \"Online\": 1,\n                \"PlayDomain\": \"domain.test2.com\",\n                \"Protocol\": \"Flv\",\n                \"Rate\": 0,\n                \"Request\": 10,\n                \"StreamName\": \"test2\"\n            },\n            {\n                \"Bandwidth\": 3.6,\n                \"Online\": 2,\n                \"PlayDomain\": \"domain.test3.com\",\n                \"Protocol\": \"Flv\",\n                \"Rate\": 0,\n                \"Request\": 12,\n                \"StreamName\": \"test3\"\n            }\n        ],\n        \"RequestId\": \"k54e3deb-f318-4147-8a68-3c959642f9ec\"\n    }\n}",
-        "title": "Sample request"
-      }
-    ],
-    "DescribeAreaBillBandwidthAndFluxList": [
-      {
-        "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeAreaBillBandwidthAndFluxList\n&PlayDomains.0=5000.playdomain.com\n&StartTime=2019-02-0100:00:00\n&EndTime=2019-02-0100:10:00\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"DataInfoList\": [\n            {\n                \"Name\": \"Middle East/Africa\",\n                \"Countrys\": [\n                    {\n                        \"Name\": \"United Arab Emirates\",\n                        \"BandInfoList\": [\n                            {\n                                \"Bandwidth\": 6.95,\n                                \"Flux\": 260.7,\n                                \"PeakTime\": \"2020-09-09 00:00:00\",\n                                \"Time\": \"2020-09-09 00:05:00\"\n                            },\n                            {\n                                \"Bandwidth\": 5.84,\n                                \"Flux\": 219.09,\n                                \"PeakTime\": \"2020-09-09 00:05:00\",\n                                \"Time\": \"2020-09-09 00:10:00\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Sample request"
-      }
-    ],
     "DescribeConcurrentRecordStreamNum": [
       {
         "document": "",
@@ -389,14 +373,6 @@
         "document": "",
         "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveDomainCert\r\n&DomainName=5000.livepush.myqcloud.com\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DomainCertInfo\": {\n            \"CertId\": 1000,\n            \"CertName\": \"testName\",\n            \"Description\": \"testDesc\",\n            \"CreateTime\": \"2018-11-30T15:50:12Z\",\n            \"HttpsCrt\": \"xxx\",\n            \"CertType\": 0,\n            \"CertExpireTime\": \"2018-12-30T15:50:12Z\",\n            \"DomainName\": \"5000.livepush.play.com\",\n            \"Status\": 1\n        },\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Sample request"
-      }
-    ],
-    "DescribeLiveDomainPlayInfoList": [
-      {
-        "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveDomainPlayInfoList\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"DomainInfoList\": [\n            {\n                \"DetailInfoList\": [\n                    {\n                        \"Bandwidth\": 309.998,\n                        \"Flux\": 18599.88,\n                        \"MainlandOrOversea\": \"Mainland\",\n                        \"Online\": 374,\n                        \"Request\": 175\n                    },\n                    {\n                        \"Bandwidth\": 0,\n                        \"Flux\": 0,\n                        \"MainlandOrOversea\": \"Oversea\",\n                        \"Online\": 0,\n                        \"Request\": 0\n                    }\n                ],\n                \"Domain\": \"345.tencent.com\"\n            },\n            {\n                \"DetailInfoList\": [\n                    {\n                        \"Bandwidth\": 134351.765,\n                        \"Flux\": 8061105.9,\n                        \"MainlandOrOversea\": \"Mainland\",\n                        \"Online\": 130171,\n                        \"Request\": 102524\n                    },\n                    {\n                        \"Bandwidth\": 0,\n                        \"Flux\": 0,\n                        \"MainlandOrOversea\": \"Oversea\",\n                        \"Online\": 0,\n                        \"Request\": 0\n                    }\n                ],\n                \"Domain\": \"123.tencent.com\"\n            }\n        ],\n        \"RequestId\": \"04b76ebd-487d-4a7a-aca8-82060359feee\",\n        \"Time\": \"2019-04-07 21:55:00\",\n        \"TotalBandwidth\": 2909181.92,\n        \"TotalFlux\": 174550915.2,\n        \"TotalOnline\": 2800396,\n        \"TotalRequest\": 2446274\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -608,14 +584,6 @@
         "title": "Sample request"
       }
     ],
-    "DescribeProIspPlaySumInfoList": [
-      {
-        "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeProIspPlaySumInfoList\n&PlayDomains.0=5000.playdomain.com\n&StartTime=2019-03-01 00:00:00\n&EndTime=2019-03-01 12:00:00\n&StatType=Province\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"DataInfoList\": [\n            {\n                \"Name\": \"Shandong\",\n                \"TotalFlux\": 50.0,\n                \"TotalRequest\": 50,\n                \"AvgFluxPerSecond\": 10.1\n            }\n        ],\n        \"TotalFlux\": 100.0,\n        \"TotalRequest\": 100,\n        \"AvgFluxPerSecond\": 100,\n        \"PageSize\": 10,\n        \"PageNum\": 1,\n        \"TotalNum\": 10,\n        \"TotalPage\": 2,\n        \"StatType\": \"Province\",\n        \"RequestId\": \"e6628973-db6a-48f1-9fcd-fe0b3ba54bc9\"\n    }\n}",
-        "title": "Sample request"
-      }
-    ],
     "DescribeProvinceIspPlayInfoList": [
       {
         "document": " ",
@@ -672,14 +640,6 @@
         "title": "Sample request"
       }
     ],
-    "DropLiveStream": [
-      {
-        "document": "This example shows you how to use this API to pause the push of a host.",
-        "input": "https://live.tencentcloudapi.com/?Action=DropLiveStream\r\n&DomainName=5000.livepush.myqcloud.com\r\n&AppName=live\r\n&StreamName=stream1\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
-        "title": "Sample request"
-      }
-    ],
     "EnableLiveDomain": [
       {
         "document": "",
@@ -699,7 +659,7 @@
     "ForbidLiveStream": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=ForbidLiveStream\r\n&DomainName=5000.livepush.myqcloud.com\r\n&AppName=live\r\n&StreamName=stream1\r\n&ResumeTime=2018-11-24T12:00:00Z\r\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=ForbidLiveStream\n&DomainName=5000.livepush.myqcloud.com\n&AppName=live\n&StreamName=stream1\n&ResumeTime=2018-11-24T12:00:00Z\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
         "title": "Sample request"
       }
@@ -763,7 +723,7 @@
     "ModifyLiveRecordTemplate": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=ModifyLiveRecordTemplate\n&TemplateName=template\n&Description=test\n&FlvParam.Enable=1\n&FlvParam.RecordInterval=1800\n&FlvParam.StorageTime=700\n&TemplateId=1000\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=ModifyLiveRecordTemplate\n&TemplateName=templat\n&Description=test\n&FlvParam.Enable=1\n&FlvParam.RecordInterval=1800\n&FlvParam.StorageTime=700\n&TemplateId=1000\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }

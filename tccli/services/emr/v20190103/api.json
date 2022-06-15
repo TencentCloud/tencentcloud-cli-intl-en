@@ -1,7 +1,7 @@
 {
   "actions": {
     "AddUsersForUserManager": {
-      "document": "This API is used to add user lists (user management).",
+      "document": "This API is available for clusters with OpenLDAP components configured.\nThis API is used to add user lists (user management).",
       "input": "AddUsersForUserManagerRequest",
       "name": "Adds user lists (user management)",
       "output": "AddUsersForUserManagerResponse"
@@ -37,7 +37,7 @@
       "output": "DescribeResourceScheduleResponse"
     },
     "DescribeUsersForUserManager": {
-      "document": "This API is used to export users in batches.",
+      "document": "This API is available for clusters with OpenLDAP components configured.\nThis API is used to export users in batches. For a Kerberos cluster, set `NeedKeytabInfo` to `true` to obtain the download link of the Keytab file. If `SupportDownLoadKeyTab` is `true`, but `DownLoadKeyTabUrl` is null, the Keytab file is not ready yet (being generated) in the backend.",
       "input": "DescribeUsersForUserManagerRequest",
       "name": "Queries the user list (user management)",
       "output": "DescribeUsersForUserManagerResponse"
@@ -90,6 +90,15 @@
       "members": [
         {
           "default": "",
+          "document": "Cluster string ID",
+          "example": "emr-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "User information list",
           "example": "[{\"UserName\":\"user1\",\"UserGroup\":\"group1\",\"PassWord\":\"123456\"}]",
           "member": "UserInfoForUserManager",
@@ -103,6 +112,24 @@
     "AddUsersForUserManagerResponse": {
       "document": "AddUsersForUserManager response structure.",
       "members": [
+        {
+          "document": "The user list that is successfully added\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "[\"123\"]",
+          "member": "string",
+          "name": "SuccessUserList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The user list that is not successfully added\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "[\"123\"]",
+          "member": "string",
+          "name": "FailedUserList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -1469,6 +1496,42 @@
       "members": [
         {
           "default": "",
+          "document": "Cluster instance ID",
+          "example": "emr-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Page number",
+          "example": "0",
+          "member": "int64",
+          "name": "PageNo",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page size",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "User list query filter",
+          "example": "无",
+          "member": "UserManagerFilter",
+          "name": "UserManagerFilter",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
           "document": "Whether the Keytab file information is required. This field is only valid for clusters with Kerberos enabled and defaults to `false`.",
           "example": "true",
           "member": "bool",
@@ -1482,6 +1545,24 @@
     "DescribeUsersForUserManagerResponse": {
       "document": "DescribeUsersForUserManager response structure.",
       "members": [
+        {
+          "document": "Total number",
+          "example": "100",
+          "member": "int64",
+          "name": "TotalCnt",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "User information list\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "UserManagerUserBriefInfo",
+          "name": "UserManagerUserList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -3824,6 +3905,88 @@
         }
       ],
       "usage": "in"
+    },
+    "UserManagerFilter": {
+      "document": "User management list filter",
+      "members": [
+        {
+          "default": "",
+          "document": "Username\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "emr",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "UserManagerUserBriefInfo": {
+      "document": "Brief user information in user management",
+      "members": [
+        {
+          "default": "",
+          "document": "Username",
+          "example": "hadoop",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The group to which the user belongs",
+          "example": "hadoop",
+          "member": "string",
+          "name": "UserGroup",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`Manager` represents an admin, and `NormalUser` represents a general user.",
+          "example": "NormalUser",
+          "member": "string",
+          "name": "UserType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account creation time\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "2022-04-28 18:08:28",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the corresponding Keytab file of the user is available for download. This parameter applies only to a Kerberos-enabled cluster.",
+          "example": "true",
+          "member": "bool",
+          "name": "SupportDownLoadKeyTab",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Download link of the Keytab file\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "https://image-xxx.cos.region.xx.com/12323/someone.keytab",
+          "member": "string",
+          "name": "DownLoadKeyTabUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "VPCSettings": {
       "document": "VPC parameters",

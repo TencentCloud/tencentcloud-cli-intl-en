@@ -192,18 +192,6 @@
       "name": "Deletes recording task (new)",
       "output": "DeleteRecordTaskResponse"
     },
-    "DescribeAllStreamPlayInfoList": {
-      "document": "This API is used to query the downstream information of all streams at a specified point in time (at a 1-minute granularity).",
-      "input": "DescribeAllStreamPlayInfoListRequest",
-      "name": "Queries the downstream playback data of all streams at specified point in time",
-      "output": "DescribeAllStreamPlayInfoListResponse"
-    },
-    "DescribeAreaBillBandwidthAndFluxList": {
-      "document": "This API is used to query the billable LVB bandwidth and traffic data outside Chinese mainland.",
-      "input": "DescribeAreaBillBandwidthAndFluxListRequest",
-      "name": "Queries the billable LVB bandwidth and traffic data outside Chinese mainland.",
-      "output": "DescribeAreaBillBandwidthAndFluxListResponse"
-    },
     "DescribeConcurrentRecordStreamNum": {
       "document": "This API is used to query the number of concurrent recording channels, which is applicable to LCB and LVB.",
       "input": "DescribeConcurrentRecordStreamNumRequest",
@@ -275,12 +263,6 @@
       "input": "DescribeLiveDomainCertRequest",
       "name": "Gets domain name certificate information",
       "output": "DescribeLiveDomainCertResponse"
-    },
-    "DescribeLiveDomainPlayInfoList": {
-      "document": "This API is used to query the real-time downstream playback data at the domain name level. As it takes certain time to process data, the API queries quasi-real-time data generated 4 minutes ago by default.",
-      "input": "DescribeLiveDomainPlayInfoListRequest",
-      "name": "Queries the real-time downstream playback data at domain name level",
-      "output": "DescribeLiveDomainPlayInfoListResponse"
     },
     "DescribeLiveDomainReferer": {
       "document": "This API is used to query referer allowlist/blocklist configuration of a live streaming domain name.\nReferer information is included in HTTP requests. After you enable referer configuration, live streams using RTMP or WebRTC for playback will not authenticate the referer and can be played back normally. To make the referer configuration effective, the HTTP-FLV or HLS protocol is recommended for playback.",
@@ -438,12 +420,6 @@
       "name": "Queries the aggregated data of playback HTTP error codes",
       "output": "DescribePlayErrorCodeSumInfoListResponse"
     },
-    "DescribeProIspPlaySumInfoList": {
-      "document": "This API is used to query the average traffic per second, total traffic, and number of total requests by country/region, district, and ISP in a certain period of time.",
-      "input": "DescribeProIspPlaySumInfoListRequest",
-      "name": "Queries aggregated playback data by district and ISP",
-      "output": "DescribeProIspPlaySumInfoListResponse"
-    },
     "DescribeProvinceIspPlayInfoList": {
       "document": "This API is used to query the downstream playback data of a specified ISP in a specified district, including bandwidth, traffic, number of requests, and number of concurrent connections.",
       "input": "DescribeProvinceIspPlayInfoListRequest",
@@ -485,12 +461,6 @@
       "input": "DescribeVisitTopSumInfoListRequest",
       "name": "Queries the information of top n domain names or stream IDs in certain period of time",
       "output": "DescribeVisitTopSumInfoListResponse"
-    },
-    "DropLiveStream": {
-      "document": "This API is used to disconnect the push connection, which can be resumed.",
-      "input": "DropLiveStreamRequest",
-      "name": "Disconnects a live stream",
-      "output": "DropLiveStreamResponse"
     },
     "EnableLiveDomain": {
       "document": "This API is used to enable a disabled LVB domain name.",
@@ -821,96 +791,6 @@
           "name": "Bandwidth",
           "required": true,
           "type": "float",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "BillAreaInfo": {
-      "document": "Region information, `DescribeAreaBillBandwidthAndFluxList` output parameter",
-      "members": [
-        {
-          "default": "",
-          "document": "Region name",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Detailed country information",
-          "member": "BillCountryInfo",
-          "name": "Countrys",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "BillCountryInfo": {
-      "document": "The bandwidth information of a country, `DescribeAreaBillBandwidthAndFluxList` output parameter",
-      "members": [
-        {
-          "default": "",
-          "document": "Country",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Detailed bandwidth information",
-          "member": "BillDataInfo",
-          "name": "BandInfoList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "BillDataInfo": {
-      "document": "Bandwidth and traffic information.",
-      "members": [
-        {
-          "default": "",
-          "document": "Time point in the format of `yyyy-mm-dd HH:MM:SS`.",
-          "member": "string",
-          "name": "Time",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Bandwidth in Mbps.",
-          "member": "float",
-          "name": "Bandwidth",
-          "required": true,
-          "type": "float",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Traffic in MB.",
-          "member": "float",
-          "name": "Flux",
-          "required": true,
-          "type": "float",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Time point of peak value in the format of `yyyy-mm-dd HH:MM:SS`. As raw data is at a 5-minute granularity, if data at a 1-hour or 1-day granularity is queried, the time point of peak bandwidth value at the corresponding granularity will be returned.",
-          "member": "string",
-          "name": "PeakTime",
-          "required": true,
-          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2172,6 +2052,15 @@
           "name": "RemoveWatermark",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "A special parameter for FLV recording.",
+          "example": "无",
+          "member": "FlvSpecialParam",
+          "name": "FlvSpecialParam",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -3351,105 +3240,6 @@
       ],
       "type": "object"
     },
-    "DescribeAllStreamPlayInfoListRequest": {
-      "document": "DescribeAllStreamPlayInfoList request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Query time point accurate to the minute. You can query data within the last month. As there is a 5-minute delay in the data, you're advised to pass in a time point 5 minutes earlier than needed. Format: yyyy-mm-dd HH:MM:00. As the accuracy is to the minute, please set the value of second to `00`.",
-          "example": "2019-12-12 10:00:00",
-          "member": "string",
-          "name": "QueryTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Playback domain name list. If this parameter is left empty, full data will be queried.",
-          "example": "[\"5000.playdomain.com\\n\"]",
-          "member": "string",
-          "name": "PlayDomains",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeAllStreamPlayInfoListResponse": {
-      "document": "DescribeAllStreamPlayInfoList response structure.",
-      "members": [
-        {
-          "document": "Query point in time in the returned input parameters.",
-          "member": "string",
-          "name": "QueryTime",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Data information list.",
-          "member": "MonitorStreamPlayInfo",
-          "name": "DataInfoList",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeAreaBillBandwidthAndFluxListRequest": {
-      "document": "DescribeAreaBillBandwidthAndFluxList request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Start time point in the format of yyyy-mm-dd HH:MM:SS.",
-          "member": "string",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 1 days.",
-          "member": "string",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "LVB playback domain name. If it is left blank, the full data will be queried.",
-          "member": "string",
-          "name": "PlayDomains",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeAreaBillBandwidthAndFluxListResponse": {
-      "document": "DescribeAreaBillBandwidthAndFluxList response structure.",
-      "members": [
-        {
-          "document": "Detailed data information.",
-          "member": "BillAreaInfo",
-          "name": "DataInfoList",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeConcurrentRecordStreamNumRequest": {
       "document": "DescribeConcurrentRecordStreamNum request structure.",
       "members": [
@@ -3862,74 +3652,6 @@
           "member": "DomainCertInfo",
           "name": "DomainCertInfo",
           "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeLiveDomainPlayInfoListRequest": {
-      "document": "DescribeLiveDomainPlayInfoList request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Playback domain name list.",
-          "member": "string",
-          "name": "PlayDomains",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeLiveDomainPlayInfoListResponse": {
-      "document": "DescribeLiveDomainPlayInfoList response structure.",
-      "members": [
-        {
-          "document": "Data time in the format of `yyyy-mm-dd HH:MM:SS`.",
-          "member": "string",
-          "name": "Time",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Real-time total bandwidth.",
-          "member": "float",
-          "name": "TotalBandwidth",
-          "type": "float",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Real-time total traffic.",
-          "member": "float",
-          "name": "TotalFlux",
-          "type": "float",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Total number of requests.",
-          "member": "uint64",
-          "name": "TotalRequest",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Real-time total number of connections.",
-          "member": "uint64",
-          "name": "TotalOnline",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Data by domain name.",
-          "member": "DomainInfoList",
-          "name": "DomainInfoList",
-          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -5508,151 +5230,6 @@
       ],
       "type": "object"
     },
-    "DescribeProIspPlaySumInfoListRequest": {
-      "document": "DescribeProIspPlaySumInfoList request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Start time (Beijing time).\nIn the format of `yyyy-mm-dd HH:MM:SS`.",
-          "member": "string",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "End time (Beijing time).\nIn the format of `yyyy-mm-dd HH:MM:SS`.\nNote: `EndTime` and `StartTime` only support querying data for the last day.",
-          "member": "string",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Statistics type. Valid values: Province (district), Isp (ISP), CountryOrArea (country or region).",
-          "member": "string",
-          "name": "StatType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Playback domain name list. If it is left empty, it refers to all playback domain names.",
-          "member": "string",
-          "name": "PlayDomains",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Page number. Value range: [1,1000]. Default value: 1.",
-          "member": "uint64",
-          "name": "PageNum",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of entries per page. Value range: [1,1000]. Default value: 20.",
-          "member": "uint64",
-          "name": "PageSize",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.",
-          "member": "string",
-          "name": "MainlandOrOversea",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.",
-          "member": "string",
-          "name": "OutLanguage",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeProIspPlaySumInfoListResponse": {
-      "document": "DescribeProIspPlaySumInfoList response structure.",
-      "members": [
-        {
-          "document": "Total traffic.",
-          "member": "float",
-          "name": "TotalFlux",
-          "type": "float",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Total number of requests.",
-          "member": "uint64",
-          "name": "TotalRequest",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Statistics type.",
-          "member": "string",
-          "name": "StatType",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Number of results per page.",
-          "member": "uint64",
-          "name": "PageSize",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Page number.",
-          "member": "uint64",
-          "name": "PageNum",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Total number of results.",
-          "member": "uint64",
-          "name": "TotalNum",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Total number of pages.",
-          "member": "uint64",
-          "name": "TotalPage",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Aggregated data list by district, ISP, or country/region.",
-          "member": "ProIspPlaySumInfo",
-          "name": "DataInfoList",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Download speed in MB/s. Calculation method: total traffic/total duration.",
-          "member": "float",
-          "name": "AvgFluxPerSecond",
-          "type": "float",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeProvinceIspPlayInfoListRequest": {
       "document": "DescribeProvinceIspPlayInfoList request structure.",
       "members": [
@@ -6416,57 +5993,6 @@
       ],
       "usage": "out"
     },
-    "DomainDetailInfo": {
-      "document": "Statistics of each domain name.",
-      "members": [
-        {
-          "default": "",
-          "document": "In or outside Mainland China:\nMainland: data in Mainland China.\nOversea: data outside Mainland China.",
-          "member": "string",
-          "name": "MainlandOrOversea",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Bandwidth in Mbps.",
-          "member": "float",
-          "name": "Bandwidth",
-          "required": true,
-          "type": "float",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Traffic in MB.",
-          "member": "float",
-          "name": "Flux",
-          "required": true,
-          "type": "float",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of viewers.",
-          "member": "uint64",
-          "name": "Online",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of requests.",
-          "member": "uint64",
-          "name": "Request",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
     "DomainInfo": {
       "document": "LVB domain name information",
       "members": [
@@ -6581,72 +6107,6 @@
       ],
       "usage": "out"
     },
-    "DomainInfoList": {
-      "document": "Multi-domain name information list",
-      "members": [
-        {
-          "default": "",
-          "document": "Domain name.",
-          "member": "string",
-          "name": "Domain",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Details.",
-          "member": "DomainDetailInfo",
-          "name": "DetailInfoList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "DropLiveStreamRequest": {
-      "document": "DropLiveStream request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Stream name.",
-          "member": "string",
-          "name": "StreamName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Your acceleration domain name.",
-          "member": "string",
-          "name": "DomainName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default.",
-          "member": "string",
-          "name": "AppName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DropLiveStreamResponse": {
-      "document": "DropLiveStream response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "EnableLiveDomainRequest": {
       "document": "EnableLiveDomain request structure.",
       "members": [
@@ -6672,6 +6132,22 @@
         }
       ],
       "type": "object"
+    },
+    "FlvSpecialParam": {
+      "document": "Special FLV recording setting.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable upload while recording. This parameter is only valid for FLV recording.",
+          "example": "false",
+          "member": "bool",
+          "name": "UploadInRecording",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ForbidLiveDomainRequest": {
       "document": "ForbidLiveDomain request structure.",
@@ -6705,6 +6181,7 @@
         {
           "default": "",
           "document": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default.",
+          "example": "live",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -6713,6 +6190,7 @@
         {
           "default": "",
           "document": "Your push domain name.",
+          "example": "5000.livepush.myqcloud.com",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -6721,6 +6199,7 @@
         {
           "default": "",
           "document": "Stream name.",
+          "example": "stream1",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -6728,7 +6207,8 @@
         },
         {
           "default": "",
-          "document": "Time to resume the stream in UTC format, such as 2018-11-29T19:00:00Z.\nNotes:\n1. The duration of forbidding is 7 days by default and can be up to 90 days.\n2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "document": "The time (in UTC format) to resume the stream, such as 2018-11-29T19:00:00Z.\nNotes:\n1. The default stream disabling period is seven days. A stream can be disabled for up to 90 days.\n2. Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.",
+          "example": "2018-11-24T12:00:00Z",
           "member": "string",
           "name": "ResumeTime",
           "required": false,
@@ -6737,6 +6217,7 @@
         {
           "default": "",
           "document": "Reason for forbidding.\nNote: Be sure to enter the reason for forbidding to avoid any faulty operations.\nLength limit: 2,048 bytes.",
+          "example": "forbid reason",
           "member": "string",
           "name": "Reason",
           "required": false,
@@ -7446,6 +6927,15 @@
           "name": "RemoveWatermark",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "A special parameter for FLV recording.",
+          "example": "false",
+          "member": "FlvSpecialParam",
+          "name": "FlvSpecialParam",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -7746,75 +7236,6 @@
       ],
       "type": "object"
     },
-    "MonitorStreamPlayInfo": {
-      "document": "Monitored playback data",
-      "members": [
-        {
-          "default": "",
-          "document": "Playback domain name.",
-          "member": "string",
-          "name": "PlayDomain",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Stream ID.",
-          "member": "string",
-          "name": "StreamName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Playback bitrate. 0 indicates the original bitrate.",
-          "member": "uint64",
-          "name": "Rate",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Playback protocol. Valid values: Unknown, Flv, Hls, Rtmp, Huyap2p.",
-          "member": "string",
-          "name": "Protocol",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Bandwidth in Mbps.",
-          "member": "float",
-          "name": "Bandwidth",
-          "required": true,
-          "type": "float",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of online viewers. A data point is sampled per minute, and the number of TCP connections across the sample points is calculated.",
-          "member": "uint64",
-          "name": "Online",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of requests.",
-          "member": "uint64",
-          "name": "Request",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
     "PlayAuthKeyInfo": {
       "document": "Playback authentication key information.",
       "members": [
@@ -8044,48 +7465,6 @@
           "name": "Code5xx",
           "required": true,
           "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "ProIspPlaySumInfo": {
-      "document": "Queries playback information by district/ISP.",
-      "members": [
-        {
-          "default": "",
-          "document": "District/ISP/country/region.",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Total traffic in MB.",
-          "member": "float",
-          "name": "TotalFlux",
-          "required": true,
-          "type": "float",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Total number of requests.",
-          "member": "uint64",
-          "name": "TotalRequest",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Average download traffic in MB/s.",
-          "member": "float",
-          "name": "AvgFluxPerSecond",
-          "required": true,
-          "type": "float",
           "value_allowed_null": false
         }
       ],
@@ -8504,7 +7883,7 @@
         },
         {
           "default": "",
-          "document": "Custom HLS recording parameter",
+          "document": "A special parameter for HLS recording.",
           "example": "无",
           "member": "HlsSpecialParam",
           "name": "HlsSpecialParam",
@@ -8530,6 +7909,16 @@
           "name": "RemoveWatermark",
           "required": true,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "A special parameter for FLV recording.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "FlvSpecialParam",
+          "name": "FlvSpecialParam",
+          "required": true,
+          "type": "object",
           "value_allowed_null": true
         }
       ],

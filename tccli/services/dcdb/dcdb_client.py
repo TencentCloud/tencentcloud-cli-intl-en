@@ -42,7 +42,7 @@ def doDescribeAccountPrivileges(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doActiveHourDCDBInstance(args, parsed_globals):
+def doDescribeOrders(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -58,9 +58,9 @@ def doActiveHourDCDBInstance(args, parsed_globals):
     client = mod.DcdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ActiveHourDCDBInstanceRequest()
+    model = models.DescribeOrdersRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.ActiveHourDCDBInstance(model)
+    rsp = client.DescribeOrders(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -339,7 +339,7 @@ def doDescribeAccounts(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doGrantAccountPrivileges(args, parsed_globals):
+def doActiveHourDCDBInstance(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -355,9 +355,9 @@ def doGrantAccountPrivileges(args, parsed_globals):
     client = mod.DcdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.GrantAccountPrivilegesRequest()
+    model = models.ActiveHourDCDBInstanceRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.GrantAccountPrivileges(model)
+    rsp = client.ActiveHourDCDBInstance(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -771,6 +771,33 @@ def doDescribeDcnDetail(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doGrantAccountPrivileges(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.DcdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.GrantAccountPrivilegesRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.GrantAccountPrivileges(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCopyAccountPrivileges(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -871,6 +898,33 @@ def doDestroyHourDCDBInstance(args, parsed_globals):
     model = models.DestroyHourDCDBInstanceRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.DestroyHourDCDBInstance(model)
+    result = rsp.to_json_string()
+    try:
+        json_obj = json.loads(result)
+    except TypeError as e:
+        json_obj = json.loads(result.decode('utf-8'))  # python3.3
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDBSecurityGroups(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    cred = credential.Credential(
+        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+    )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.DcdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDBSecurityGroupsRequest()
+    model.from_json_string(json.dumps(args))
+    rsp = client.DescribeDBSecurityGroups(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1080,7 +1134,7 @@ MODELS_MAP = {
 
 ACTION_MAP = {
     "DescribeAccountPrivileges": doDescribeAccountPrivileges,
-    "ActiveHourDCDBInstance": doActiveHourDCDBInstance,
+    "DescribeOrders": doDescribeOrders,
     "DescribeDatabaseObjects": doDescribeDatabaseObjects,
     "DescribeDCDBInstances": doDescribeDCDBInstances,
     "DescribeFileDownloadUrl": doDescribeFileDownloadUrl,
@@ -1091,7 +1145,7 @@ ACTION_MAP = {
     "SwitchDBInstanceHA": doSwitchDBInstanceHA,
     "CloneAccount": doCloneAccount,
     "DescribeAccounts": doDescribeAccounts,
-    "GrantAccountPrivileges": doGrantAccountPrivileges,
+    "ActiveHourDCDBInstance": doActiveHourDCDBInstance,
     "DeleteAccount": doDeleteAccount,
     "DescribeDBParameters": doDescribeDBParameters,
     "ModifyDBInstancesProject": doModifyDBInstancesProject,
@@ -1107,10 +1161,12 @@ ACTION_MAP = {
     "CloseDBExtranetAccess": doCloseDBExtranetAccess,
     "ModifyAccountDescription": doModifyAccountDescription,
     "DescribeDcnDetail": doDescribeDcnDetail,
+    "GrantAccountPrivileges": doGrantAccountPrivileges,
     "CopyAccountPrivileges": doCopyAccountPrivileges,
     "DescribeDCDBShards": doDescribeDCDBShards,
     "DescribeDatabases": doDescribeDatabases,
     "DestroyHourDCDBInstance": doDestroyHourDCDBInstance,
+    "DescribeDBSecurityGroups": doDescribeDBSecurityGroups,
     "DescribeDatabaseTable": doDescribeDatabaseTable,
     "CancelDcnJob": doCancelDcnJob,
     "InitDCDBInstances": doInitDCDBInstances,

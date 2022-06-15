@@ -15,33 +15,6 @@ from tencentcloud.live.v20180801 import live_client as live_client_v20180801
 from tencentcloud.live.v20180801 import models as models_v20180801
 
 
-def doDropLiveStream(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DropLiveStreamRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DropLiveStream(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDescribeLiveWatermarks(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -601,33 +574,6 @@ def doAddLiveWatermark(args, parsed_globals):
     model = models.AddLiveWatermarkRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.AddLiveWatermark(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeAreaBillBandwidthAndFluxList(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeAreaBillBandwidthAndFluxListRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeAreaBillBandwidthAndFluxList(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -1365,7 +1311,7 @@ def doModifyLiveCallbackTemplate(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeProIspPlaySumInfoList(args, parsed_globals):
+def doDescribeGroupProIspPlayInfoList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     cred = credential.Credential(
@@ -1381,9 +1327,9 @@ def doDescribeProIspPlaySumInfoList(args, parsed_globals):
     client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeProIspPlaySumInfoListRequest()
+    model = models.DescribeGroupProIspPlayInfoListRequest()
     model.from_json_string(json.dumps(args))
-    rsp = client.DescribeProIspPlaySumInfoList(model)
+    rsp = client.DescribeGroupProIspPlayInfoList(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -2094,33 +2040,6 @@ def doDescribeDeliverBandwidthList(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeLiveDomainPlayInfoList(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeLiveDomainPlayInfoListRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeLiveDomainPlayInfoList(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doCreateLiveRecordRule(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -2356,60 +2275,6 @@ def doCreateLiveSnapshotRule(args, parsed_globals):
     model = models.CreateLiveSnapshotRuleRequest()
     model.from_json_string(json.dumps(args))
     rsp = client.CreateLiveSnapshotRule(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeGroupProIspPlayInfoList(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeGroupProIspPlayInfoListRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeGroupProIspPlayInfoList(model)
-    result = rsp.to_json_string()
-    try:
-        json_obj = json.loads(result)
-    except TypeError as e:
-        json_obj = json.loads(result.decode('utf-8'))  # python3.3
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeAllStreamPlayInfoList(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    cred = credential.Credential(
-        g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-    )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.LiveClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeAllStreamPlayInfoListRequest()
-    model.from_json_string(json.dumps(args))
-    rsp = client.DescribeAllStreamPlayInfoList(model)
     result = rsp.to_json_string()
     try:
         json_obj = json.loads(result)
@@ -2753,7 +2618,6 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
-    "DropLiveStream": doDropLiveStream,
     "DescribeLiveWatermarks": doDescribeLiveWatermarks,
     "DescribeConcurrentRecordStreamNum": doDescribeConcurrentRecordStreamNum,
     "CreateLiveRecord": doCreateLiveRecord,
@@ -2775,7 +2639,6 @@ ACTION_MAP = {
     "DescribeVisitTopSumInfoList": doDescribeVisitTopSumInfoList,
     "DescribeLiveDomainCert": doDescribeLiveDomainCert,
     "AddLiveWatermark": doAddLiveWatermark,
-    "DescribeAreaBillBandwidthAndFluxList": doDescribeAreaBillBandwidthAndFluxList,
     "DeleteLiveWatermarkRule": doDeleteLiveWatermarkRule,
     "DeleteLiveCallbackRule": doDeleteLiveCallbackRule,
     "CreateLiveSnapshotTemplate": doCreateLiveSnapshotTemplate,
@@ -2803,7 +2666,7 @@ ACTION_MAP = {
     "DescribeLiveCallbackTemplate": doDescribeLiveCallbackTemplate,
     "DeleteLiveDomain": doDeleteLiveDomain,
     "ModifyLiveCallbackTemplate": doModifyLiveCallbackTemplate,
-    "DescribeProIspPlaySumInfoList": doDescribeProIspPlaySumInfoList,
+    "DescribeGroupProIspPlayInfoList": doDescribeGroupProIspPlayInfoList,
     "DescribeStreamPlayInfoList": doDescribeStreamPlayInfoList,
     "CreateLiveCert": doCreateLiveCert,
     "DescribeLiveTranscodeRules": doDescribeLiveTranscodeRules,
@@ -2830,7 +2693,6 @@ ACTION_MAP = {
     "ForbidLiveStream": doForbidLiveStream,
     "AddLiveDomain": doAddLiveDomain,
     "DescribeDeliverBandwidthList": doDescribeDeliverBandwidthList,
-    "DescribeLiveDomainPlayInfoList": doDescribeLiveDomainPlayInfoList,
     "CreateLiveRecordRule": doCreateLiveRecordRule,
     "DescribeLiveWatermark": doDescribeLiveWatermark,
     "DescribeLiveTranscodeTemplates": doDescribeLiveTranscodeTemplates,
@@ -2840,8 +2702,6 @@ ACTION_MAP = {
     "DescribeLiveWatermarkRules": doDescribeLiveWatermarkRules,
     "DeleteLiveRecord": doDeleteLiveRecord,
     "CreateLiveSnapshotRule": doCreateLiveSnapshotRule,
-    "DescribeGroupProIspPlayInfoList": doDescribeGroupProIspPlayInfoList,
-    "DescribeAllStreamPlayInfoList": doDescribeAllStreamPlayInfoList,
     "DescribeLivePlayAuthKey": doDescribeLivePlayAuthKey,
     "DescribeLiveStreamState": doDescribeLiveStreamState,
     "ModifyLiveDomainReferer": doModifyLiveDomainReferer,
