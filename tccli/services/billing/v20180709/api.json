@@ -435,6 +435,7 @@
         {
           "default": "",
           "document": "Component type: type of a resource component, e.g. memory, disk, etc.",
+          "example": "内存",
           "member": "string",
           "name": "ComponentCodeName",
           "required": true,
@@ -444,6 +445,7 @@
         {
           "default": "",
           "document": "Component name: name of a resource component, e.g. TencentDB for MySQL-memory",
+          "example": "高效云系统盘",
           "member": "string",
           "name": "ItemCodeName",
           "required": true,
@@ -453,6 +455,7 @@
         {
           "default": "",
           "document": "Component published price: original price of a resource component with the original granularity",
+          "example": "0.35000000",
           "member": "string",
           "name": "SinglePrice",
           "required": true,
@@ -462,6 +465,7 @@
         {
           "default": "",
           "document": "Specified price of the component",
+          "example": "0.00000000",
           "member": "string",
           "name": "SpecifiedPrice",
           "required": true,
@@ -471,6 +475,7 @@
         {
           "default": "",
           "document": "Price unit",
+          "example": "元/GB/月",
           "member": "string",
           "name": "PriceUnit",
           "required": true,
@@ -480,6 +485,7 @@
         {
           "default": "",
           "document": "Component usage",
+          "example": "50.00000000",
           "member": "string",
           "name": "UsedAmount",
           "required": true,
@@ -489,6 +495,7 @@
         {
           "default": "",
           "document": "Component usage unit",
+          "example": "GB",
           "member": "string",
           "name": "UsedAmountUnit",
           "required": true,
@@ -498,6 +505,7 @@
         {
           "default": "",
           "document": "Usage period",
+          "example": "1.00000000",
           "member": "string",
           "name": "TimeSpan",
           "required": true,
@@ -507,6 +515,7 @@
         {
           "default": "",
           "document": "Time unit",
+          "example": "月",
           "member": "string",
           "name": "TimeUnitName",
           "required": true,
@@ -516,6 +525,7 @@
         {
           "default": "",
           "document": "Original price of the component",
+          "example": "17.50000000",
           "member": "string",
           "name": "Cost",
           "required": true,
@@ -525,6 +535,7 @@
         {
           "default": "",
           "document": "Discount rate",
+          "example": "0.00000000",
           "member": "string",
           "name": "Discount",
           "required": true,
@@ -534,6 +545,7 @@
         {
           "default": "",
           "document": "Offer type",
+          "example": "折扣",
           "member": "string",
           "name": "ReduceType",
           "required": true,
@@ -543,6 +555,7 @@
         {
           "default": "",
           "document": "Total discounted price",
+          "example": "0.00000000",
           "member": "string",
           "name": "RealCost",
           "required": true,
@@ -552,6 +565,7 @@
         {
           "default": "",
           "document": "Amount paid in voucher",
+          "example": "0.00000000",
           "member": "string",
           "name": "VoucherPayAmount",
           "required": true,
@@ -561,6 +575,7 @@
         {
           "default": "",
           "document": "Amount paid in cash",
+          "example": "0.00000000",
           "member": "string",
           "name": "CashPayAmount",
           "required": true,
@@ -570,6 +585,7 @@
         {
           "default": "",
           "document": "Amount paid in trial credit",
+          "example": "0.00000000",
           "member": "string",
           "name": "IncentivePayAmount",
           "required": true,
@@ -579,6 +595,7 @@
         {
           "default": "",
           "document": "Component type code\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "sv_cvm_rootdisk_cbspremium",
           "member": "string",
           "name": "ItemCode",
           "required": true,
@@ -588,6 +605,7 @@
         {
           "default": "",
           "document": "Component code\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "v_cvm_rootdisk",
           "member": "string",
           "name": "ComponentCode",
           "required": true,
@@ -597,8 +615,79 @@
         {
           "default": "",
           "document": "Contract price",
+          "example": "0.00000000",
           "member": "string",
           "name": "ContractPrice",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The special instance (resource pack, reserved instance, savings plan, or spot instance) that is applied to deduction. Valid values:\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "RI",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The usage duration deducted by a reserved instance. The unit of measurement for deduction is the same as that for usage duration.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "0.00000000",
+          "member": "string",
+          "name": "RiTimeSpan",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The amount deducted by a reserved instance based on the original component cost.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "0.00000000",
+          "member": "string",
+          "name": "OriginalCostWithRI",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The discount multiplier that applies to the component based on the remaining commitment of the savings plan.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "0.00000000",
+          "member": "string",
+          "name": "SPDeductionRate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The savings plan deduction amount.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "0.00000000",
+          "member": "string",
+          "name": "SPDeduction",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The amount deducted by a savings plan based on the original component cost.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "0.00000000",
+          "member": "string",
+          "name": "OriginalCostWithSP",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The blended discount multiplier that combines the official website discount, reserved instance discount, and savings plan discount. If no reserved instance and savings plan discounts are available, the blended discount multiplier equals the discount multiplier.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "0.00000000",
+          "member": "string",
+          "name": "BlendedDiscount",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -937,6 +1026,46 @@
           "name": "RegionId",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The special instance (resource pack, reserved instance, savings plan, or spot instance) that is applied to deduction. Valid values:\n\nri=Standard RI\n\nsvp=Savings Plan\n\nsi=Spot Instances\n\nrp=Resource Pack",
+          "example": "ri",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The amount deducted by a reserved instance based on the original component cost.",
+          "example": "0",
+          "member": "string",
+          "name": "OriginalCostWithRI",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The savings plan deduction amount.",
+          "example": "0",
+          "member": "string",
+          "name": "SPDeduction",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The amount deducted by a savings plan based on the original component cost.",
+          "example": "0",
+          "member": "string",
+          "name": "OriginalCostWithSP",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

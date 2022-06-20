@@ -12,6 +12,12 @@
       "name": "Cancels DCN synchronization",
       "output": "CancelDcnJobResponse"
     },
+    "CloneAccount": {
+      "document": "This API is used to clone an instance account.",
+      "input": "CloneAccountRequest",
+      "name": "Clones instance account",
+      "output": "CloneAccountResponse"
+    },
     "CloseDBExtranetAccess": {
       "document": "This API is used to disable public network access for a TencentDB instance, which will make the public IP address inaccessible. The `DescribeDCDBInstances` API will not return the public domain name and port information of the corresponding instance.",
       "input": "CloseDBExtranetAccessRequest",
@@ -42,6 +48,18 @@
       "name": "Deletes account",
       "output": "DeleteAccountResponse"
     },
+    "DescribeAccountPrivileges": {
+      "document": "This API is used to query the permissions of a TencentDB account.\nNote: Accounts with the same username but different hosts are different accounts.",
+      "input": "DescribeAccountPrivilegesRequest",
+      "name": "Queries account permissions",
+      "output": "DescribeAccountPrivilegesResponse"
+    },
+    "DescribeAccounts": {
+      "document": "This API is used to query the list of accounts of a specified TencentDB instance.",
+      "input": "DescribeAccountsRequest",
+      "name": "Queries account list",
+      "output": "DescribeAccountsResponse"
+    },
     "DescribeDBInstances": {
       "document": "This API is used to query the TencentDB instance list. It supports filtering instances by project ID, instance ID, private address, and instance name.\nIf no filter is specified, 20 instances will be returned by default. Up to 100 instances can be returned for a single request.",
       "input": "DescribeDBInstancesRequest",
@@ -54,11 +72,41 @@
       "name": "Gets log list",
       "output": "DescribeDBLogFilesResponse"
     },
+    "DescribeDBParameters": {
+      "document": "This API is used to get the current parameter settings of a database.",
+      "input": "DescribeDBParametersRequest",
+      "name": "Views database parameters",
+      "output": "DescribeDBParametersResponse"
+    },
     "DescribeDBSecurityGroups": {
       "document": "This API is used to query the security group details of an instance.",
       "input": "DescribeDBSecurityGroupsRequest",
       "name": "Queries the security group details of an instance",
       "output": "DescribeDBSecurityGroupsResponse"
+    },
+    "DescribeDBSlowLogs": {
+      "document": "This API is used to query the list of slow query logs.",
+      "input": "DescribeDBSlowLogsRequest",
+      "name": "Queries slow query log list",
+      "output": "DescribeDBSlowLogsResponse"
+    },
+    "DescribeDatabaseObjects": {
+      "document": "This API is used to query the list of database objects in a TencentDB instance, including tables, stored procedures, views, and functions.",
+      "input": "DescribeDatabaseObjectsRequest",
+      "name": "Queries database object list",
+      "output": "DescribeDatabaseObjectsResponse"
+    },
+    "DescribeDatabaseTable": {
+      "document": "This API is used to query the table information of a TencentDB instance.",
+      "input": "DescribeDatabaseTableRequest",
+      "name": "Queries table information",
+      "output": "DescribeDatabaseTableResponse"
+    },
+    "DescribeDatabases": {
+      "document": "This API is used to query the database list of a TencentDB instance.",
+      "input": "DescribeDatabasesRequest",
+      "name": "Queries database list",
+      "output": "DescribeDatabasesResponse"
     },
     "DescribeDcnDetail": {
       "document": "This API is used to query the disaster recovery details of an instance.",
@@ -77,6 +125,12 @@
       "input": "DescribeInstanceNodeInfoRequest",
       "name": "Queries instance node information",
       "output": "DescribeInstanceNodeInfoResponse"
+    },
+    "DescribeOrders": {
+      "document": "This API is used to query TencentDB order information. You can pass in an order ID to query the TencentDB instance associated with the order and the corresponding task process ID.",
+      "input": "DescribeOrdersRequest",
+      "name": "Queries order information",
+      "output": "DescribeOrdersResponse"
     },
     "DescribeProjectSecurityGroups": {
       "document": "This API is used to query the security group details of a project.",
@@ -119,6 +173,18 @@
       "input": "ModifyDBInstancesProjectRequest",
       "name": "Modifies the project to which instances belong",
       "output": "ModifyDBInstancesProjectResponse"
+    },
+    "ModifyDBParameters": {
+      "document": "This API is used to modify database parameters.",
+      "input": "ModifyDBParametersRequest",
+      "name": "Modifies database parameters",
+      "output": "ModifyDBParametersResponse"
+    },
+    "ModifyDBSyncMode": {
+      "document": "This API is used to modify the sync mode of a TencentDB instance.",
+      "input": "ModifyDBSyncModeRequest",
+      "name": "Modifies sync mode",
+      "output": "ModifyDBSyncModeResponse"
     },
     "ModifySyncTaskAttribute": {
       "document": "This API is used to modify sync task attributes (currently, only the task name can be modified).",
@@ -243,6 +309,87 @@
       ],
       "type": "object"
     },
+    "CloneAccountRequest": {
+      "document": "CloneAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tdsql-6a0lwzzj",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source user account name",
+          "example": "testuser",
+          "member": "string",
+          "name": "SrcUser",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source user host",
+          "example": "10.10.10.%",
+          "member": "string",
+          "name": "SrcHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target user account name",
+          "example": "testuser",
+          "member": "string",
+          "name": "DstUser",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target user host",
+          "example": "10.10.20.%",
+          "member": "string",
+          "name": "DstHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target account description",
+          "example": "testclone",
+          "member": "string",
+          "name": "DstDesc",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloneAccountResponse": {
+      "document": "CloneAccount response structure.",
+      "members": [
+        {
+          "document": "Async task flow ID.",
+          "example": "4123",
+          "member": "uint64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CloseDBExtranetAccessRequest": {
       "document": "CloseDBExtranetAccess request structure.",
       "members": [
@@ -329,6 +476,28 @@
         }
       ],
       "usage": "in"
+    },
+    "ConstraintRange": {
+      "document": "Range of constraint type values",
+      "members": [
+        {
+          "default": "",
+          "document": "Minimum value when the constraint type is `section`",
+          "member": "string",
+          "name": "Min",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum value when the constraint type is `section`",
+          "member": "string",
+          "name": "Max",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "out"
     },
     "CopyAccountPrivilegesRequest": {
       "document": "CopyAccountPrivileges request structure.",
@@ -710,6 +879,75 @@
         }
       ],
       "type": "object"
+    },
+    "DBAccount": {
+      "document": "TencentDB account information",
+      "members": [
+        {
+          "default": "",
+          "document": "Username",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Host from which a user can log in (corresponding to the `host` field for a MySQL user; a user is uniquely identified by username and host; this parameter is in IP format and ends with % for IP range; % can be entered; if this parameter is left empty, % will be used by default).",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User remarks",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last updated time",
+          "member": "datetime",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Read-only flag. 0: no; 1: for the account's SQL requests, the replica will be used first, and if it is unavailable, the primary will be used; 2: the replica will be used first, and if it is unavailable, the operation will fail.",
+          "member": "int64",
+          "name": "ReadOnly",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is meaningful for read-only accounts, indicating that a replica should be selected if its delay from the primary is less than this value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DelayThresh",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "DBInstance": {
       "document": "TencentDB instance details.",
@@ -1249,6 +1487,36 @@
       ],
       "usage": "in"
     },
+    "Database": {
+      "document": "Database information",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DatabaseFunction": {
+      "document": "Database function information",
+      "members": [
+        {
+          "default": "",
+          "document": "Function name",
+          "member": "string",
+          "name": "Func",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DatabasePrivilege": {
       "document": "Database permission",
       "members": [
@@ -1274,6 +1542,51 @@
         }
       ],
       "usage": "in"
+    },
+    "DatabaseProcedure": {
+      "document": "Database stored procedure information",
+      "members": [
+        {
+          "default": "",
+          "document": "Stored procedure name",
+          "member": "string",
+          "name": "Proc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DatabaseTable": {
+      "document": "Database table information",
+      "members": [
+        {
+          "default": "",
+          "document": "Table name",
+          "member": "string",
+          "name": "Table",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DatabaseView": {
+      "document": "Database view information",
+      "members": [
+        {
+          "default": "",
+          "document": "View name",
+          "member": "string",
+          "name": "View",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "DcnDetailItem": {
       "document": "DCN details",
@@ -1461,6 +1774,66 @@
       ],
       "usage": "out"
     },
+    "Deal": {
+      "document": "Order information",
+      "members": [
+        {
+          "default": "",
+          "document": "Order number",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account",
+          "member": "string",
+          "name": "OwnerUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of items",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the associated process, which can be used to query the process execution status.",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is populated only for orders that create instances, indicating the ID of the created instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Payment mode. Valid values: 0 (postpaid), 1 (prepaid)",
+          "member": "int64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DeleteAccountRequest": {
       "document": "DeleteAccount request structure.",
       "members": [
@@ -1494,6 +1867,168 @@
     "DeleteAccountResponse": {
       "document": "DeleteAccount response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountPrivilegesRequest": {
+      "document": "DescribeAccountPrivileges request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the form of `tdsql-ow728lmc`, which can be obtained by querying the instance details through `DescribeDBInstances`.",
+          "example": "tdsql-fdpjf5zh",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Login username.",
+          "example": "testuser1",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Access host allowed for a user. An account is uniquely identified by username and host.",
+          "example": "172.17.%",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database name. `\\*` indicates that global permissions will be queried (i.e., `\\*.\\*`), in which case the `Type` and `Object ` parameters will be ignored.",
+          "example": "*",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type. Valid values: table, view, proc, func, \\*. If `DbName` is a specific database name and `Type` is `\\*`, the permissions of the database will be queried (i.e., `db.\\*`), in which case the `Object` parameter will be ignored.",
+          "example": "*",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type name. For example, if `Type` is `table`, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\\*` or empty.",
+          "example": "*",
+          "member": "string",
+          "name": "Object",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "If `Type` is `table` and `ColName` is `\\*`, the permissions of the table will be queried; if `ColName` is a specific field name, the permissions of the corresponding field will be queried.",
+          "example": "*",
+          "member": "string",
+          "name": "ColName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountPrivilegesResponse": {
+      "document": "DescribeAccountPrivileges response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "tdsql-fdpjf5zh",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Permission list.",
+          "example": "[\"SELECT\",\"UPDATE\"]",
+          "member": "string",
+          "name": "Privileges",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database account username",
+          "example": "testuser1",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database account host",
+          "example": "172.17.%",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountsRequest": {
+      "document": "DescribeAccounts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the form of `tdsql-ow728lmc`, which can be obtained by querying the instance details through `DescribeDBInstances`.",
+          "example": "tdsql-fdpjf5zh",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountsResponse": {
+      "document": "DescribeAccounts response structure.",
+      "members": [
+        {
+          "document": "Instance ID, which is passed through from the input parameters.",
+          "example": "tdsql-fdpjf5zh",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance user list.",
+          "example": "无",
+          "member": "DBAccount",
+          "name": "Users",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -1782,6 +2317,51 @@
       ],
       "type": "object"
     },
+    "DescribeDBParametersRequest": {
+      "document": "DescribeDBParameters request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `tdsql-ow728lmc`.",
+          "example": "tdsql-ige1a5k3",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBParametersResponse": {
+      "document": "DescribeDBParameters response structure.",
+      "members": [
+        {
+          "document": "Instance ID in the format of `tdsql-ow728lmc`.",
+          "example": "tdsql-ige1a5k3",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Requests the current parameter values of the database",
+          "example": "无",
+          "member": "ParamDesc",
+          "name": "Params",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBSecurityGroupsRequest": {
       "document": "DescribeDBSecurityGroups request structure.",
       "members": [
@@ -1835,6 +2415,366 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSlowLogsRequest": {
+      "document": "DescribeDBSlowLogs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `tdsql-ow728lmc`.",
+          "example": "tdsql-ige1a5k3",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data entry number starting from which to return results",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Query start time in the format of 2016-07-23 14:55:20",
+          "example": "2017-08-06 00:00:00",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query end time in the format of 2016-08-22 14:55:20",
+          "example": "2017-08-07 23:59:59",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specific name of the database to be queried",
+          "example": "db",
+          "member": "string",
+          "name": "Db",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting metric. Valid values: query_time_sum, query_count",
+          "example": "query_time_sum",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: desc, asc",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query slow queries from either the primary or the replica. Valid values: 0 (primary), 1 (replica)",
+          "example": "1",
+          "member": "int64",
+          "name": "Slave",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSlowLogsResponse": {
+      "document": "DescribeDBSlowLogs response structure.",
+      "members": [
+        {
+          "document": "Slow query log data",
+          "example": "无",
+          "member": "SlowLogData",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total statement lock time",
+          "example": "0",
+          "member": "float",
+          "name": "LockTimeSum",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of statement queries",
+          "example": "1",
+          "member": "int64",
+          "name": "QueryCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of results",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total statement query time",
+          "example": "1.13",
+          "member": "float",
+          "name": "QueryTimeSum",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseObjectsRequest": {
+      "document": "DescribeDatabaseObjects request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `dcdbt-ow7t8lmc`.",
+          "example": "tdsql-e9tklsgz",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database name, which can be obtained through the `DescribeDatabases` API.",
+          "example": "dbname",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseObjectsResponse": {
+      "document": "DescribeDatabaseObjects response structure.",
+      "members": [
+        {
+          "document": "Passed through from input parameters.",
+          "example": "tdsql-e9tklsgz",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database name.",
+          "example": "test",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Table list.",
+          "example": "无",
+          "member": "DatabaseTable",
+          "name": "Tables",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "View list.",
+          "example": "无",
+          "member": "DatabaseView",
+          "name": "Views",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Stored procedure list.",
+          "example": "无",
+          "member": "DatabaseProcedure",
+          "name": "Procs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Function list.",
+          "example": "无",
+          "member": "DatabaseFunction",
+          "name": "Funcs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseTableRequest": {
+      "document": "DescribeDatabaseTable request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `dcdbt-ow7t8lmc`.",
+          "example": "tdsql-e9tklsgz",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database name, which can be obtained through the `DescribeDatabases` API.",
+          "example": "test",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Table name, which can be obtained through the `DescribeDatabaseObjects` API.",
+          "example": "test",
+          "member": "string",
+          "name": "Table",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseTableResponse": {
+      "document": "DescribeDatabaseTable response structure.",
+      "members": [
+        {
+          "document": "Instance name.",
+          "example": "tdsql-e9tklsgz",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Database name.",
+          "example": "test",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Table name.",
+          "example": "region",
+          "member": "string",
+          "name": "Table",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Column information.",
+          "example": "无",
+          "member": "TableColumn",
+          "name": "Cols",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabasesRequest": {
+      "document": "DescribeDatabases request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `dcdbt-ow7t8lmc`.",
+          "example": "tdsql-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabasesResponse": {
+      "document": "DescribeDatabases response structure.",
+      "members": [
+        {
+          "document": "The database list of this instance.",
+          "example": "无",
+          "member": "Database",
+          "name": "Databases",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Passed through from input parameters.",
+          "example": "tdsql-e9tklsgz",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1976,6 +2916,51 @@
           "example": "无",
           "member": "NodeInfo",
           "name": "NodesInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrdersRequest": {
+      "document": "DescribeOrders request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of long order numbers to be queried, which are returned for the APIs for creating, renewing, or scaling instances.",
+          "example": "[\"20171103110035\\r\\n\"]",
+          "member": "string",
+          "name": "DealNames",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrdersResponse": {
+      "document": "DescribeOrders response structure.",
+      "members": [
+        {
+          "document": "Returned number of orders.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Order information list.",
+          "example": "无",
+          "member": "Deal",
+          "name": "Deals",
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -2488,6 +3473,105 @@
       ],
       "type": "object"
     },
+    "ModifyDBParametersRequest": {
+      "document": "ModifyDBParameters request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `tdsql-ow728lmc`.",
+          "example": "tdsql-ige1a5k3",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Parameter list. Each element is a combination of `Param` and `Value`.",
+          "example": "无",
+          "member": "DBParamValue",
+          "name": "Params",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBParametersResponse": {
+      "document": "ModifyDBParameters response structure.",
+      "members": [
+        {
+          "document": "Instance ID in the format of `tdsql-ow728lmc`.",
+          "example": "tdsql-ige1a5k3",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Parameter modification result",
+          "example": "无",
+          "member": "ParamModifyResult",
+          "name": "Result",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBSyncModeRequest": {
+      "document": "ModifyDBSyncMode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the instance for which to modify the sync mode. The ID is in the format of `tdsql-ow728lmc`.",
+          "example": "tdsql-avw0207d",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sync mode. Valid values: `0` (async), `1` (strong sync), `2` (downgradable strong sync).",
+          "example": "0",
+          "member": "int64",
+          "name": "SyncMode",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBSyncModeResponse": {
+      "document": "ModifyDBSyncMode response structure.",
+      "members": [
+        {
+          "document": "Async task ID. The task status can be queried through the `DescribeFlow` API.",
+          "example": "3521",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifySyncTaskAttributeRequest": {
       "document": "ModifySyncTaskAttribute request structure.",
       "members": [
@@ -2543,6 +3627,148 @@
           "name": "Role",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ParamConstraint": {
+      "document": "Parameter constraint",
+      "members": [
+        {
+          "default": "",
+          "document": "Constraint type, such as `enum` and `section`.",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of valid values when constraint type is `enum`",
+          "member": "string",
+          "name": "Enum",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Range when constraint type is `section`\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "ConstraintRange",
+          "name": "Range",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of valid values when constraint type is `string`",
+          "member": "string",
+          "name": "String",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ParamDesc": {
+      "document": "Database parameter description",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name",
+          "example": "long_query_time",
+          "member": "string",
+          "name": "Param",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current parameter value",
+          "example": "1",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Previously set value, which is the same as `value` after the parameter takes effect.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "string",
+          "name": "SetValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Default value",
+          "example": "1",
+          "member": "string",
+          "name": "Default",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter constraint",
+          "example": "无",
+          "member": "ParamConstraint",
+          "name": "Constraint",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether a value has been set. false: no, true: yes",
+          "example": "true",
+          "member": "bool",
+          "name": "HaveSetValue",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether restart is required. false: no;\ntrue: yes.",
+          "example": "false",
+          "member": "bool",
+          "name": "NeedRestart",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ParamModifyResult": {
+      "document": "Parameter modification result",
+      "members": [
+        {
+          "default": "",
+          "document": "Renames parameter",
+          "member": "string",
+          "name": "Param",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Result of parameter modification. 0: success; -1: failure; -2: invalid parameter value.",
+          "member": "int64",
+          "name": "Code",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -2656,7 +3882,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "SecurityGroup": {
       "document": "Security group details",
@@ -2762,6 +3988,226 @@
           "document": "Network protocol. UDP and TCP are supported.",
           "member": "string",
           "name": "IpProtocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SlowLogData": {
+      "document": "Information of a slow query that has been logged",
+      "members": [
+        {
+          "default": "",
+          "document": "Statement checksum for querying details",
+          "example": "无",
+          "member": "string",
+          "name": "CheckSum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "无",
+          "member": "string",
+          "name": "Db",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Abstracted SQL statement",
+          "example": "无",
+          "member": "string",
+          "name": "FingerPrint",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Average lock time",
+          "example": "无",
+          "member": "string",
+          "name": "LockTimeAvg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum lock time",
+          "example": "无",
+          "member": "string",
+          "name": "LockTimeMax",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum lock time",
+          "example": "无",
+          "member": "string",
+          "name": "LockTimeMin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total lock time",
+          "example": "无",
+          "member": "string",
+          "name": "LockTimeSum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of queries",
+          "example": "无",
+          "member": "string",
+          "name": "QueryCount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Average query time",
+          "example": "无",
+          "member": "string",
+          "name": "QueryTimeAvg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum query time",
+          "example": "无",
+          "member": "string",
+          "name": "QueryTimeMax",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum query time",
+          "example": "无",
+          "member": "string",
+          "name": "QueryTimeMin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total query time",
+          "example": "无",
+          "member": "string",
+          "name": "QueryTimeSum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of scanned rows",
+          "example": "无",
+          "member": "string",
+          "name": "RowsExaminedSum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of sent rows",
+          "example": "无",
+          "member": "string",
+          "name": "RowsSentSum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last execution time",
+          "example": "无",
+          "member": "string",
+          "name": "TsMax",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "First execution time",
+          "example": "无",
+          "member": "string",
+          "name": "TsMin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account",
+          "example": "无",
+          "member": "string",
+          "name": "User",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sample SQL\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ExampleSql",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Host address of account",
+          "example": "%",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TableColumn": {
+      "document": "Database column information",
+      "members": [
+        {
+          "default": "",
+          "document": "Column name",
+          "member": "string",
+          "name": "Col",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Column type",
+          "member": "string",
+          "name": "Type",
           "required": true,
           "type": "string",
           "value_allowed_null": false

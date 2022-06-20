@@ -16,6 +16,14 @@
         "title": "N/A"
       }
     ],
+    "CloneAccount": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=CloneAccount\n&InstanceId=tdsql-6a0lwzzj\n&SrcUser=testuser\n&SrcHost=10.10.10.%\n&DstUser=testuser\n&DstHost=10.10.20.%\n&DstDesc=testclone\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dc521928-4651-44ac-81f0-7c8acdd8b73e\",\n        \"FlowId\": 4123\n    }\n}",
+        "title": "Cloning an existing account"
+      }
+    ],
     "CloseDBExtranetAccess": [
       {
         "document": "",
@@ -56,6 +64,22 @@
         "title": "Deleting a TencentDB account"
       }
     ],
+    "DescribeAccountPrivileges": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeAccountPrivileges\n&InstanceId=tdsql-fdpjf5zh\n&UserName=testuser1\n&Host=172.17.%\n&DbName=*\n&Type=*\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3381c9e9-d87f-4e21-ba1d-596d6f697a7e\",\n        \"InstanceId\": \"tdsql-fdpjf5zh\",\n        \"UserName\": \"testuser1\",\n        \"Host\": \"172.17.%\",\n        \"Privileges\": [\n            \"SELECT\",\n            \"UPDATE\"\n        ]\n    }\n}",
+        "title": "Querying the global permissions of TencentDB account"
+      }
+    ],
+    "DescribeAccounts": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccounts\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql-lyzax5rb\"\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceId\": \"tdsql-lyzax5rb\",\n        \"RequestId\": \"8da4cad2-3f97-41b5-8ef5-a1d3d61e1fdb\",\n        \"Users\": [\n            {\n                \"CreateTime\": \"2022-03-24 15:39:02\",\n                \"DelayThresh\": 0,\n                \"Description\": \"\",\n                \"Host\": \"%\",\n                \"ReadOnly\": 0,\n                \"UpdateTime\": \"2022-03-24 15:39:02\",\n                \"UserName\": \"h1\"\n            }\n        ]\n    }\n}",
+        "title": "None"
+      }
+    ],
     "DescribeDBInstances": [
       {
         "document": "",
@@ -72,12 +96,52 @@
         "title": "Getting the binlog list"
       }
     ],
+    "DescribeDBParameters": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeDBParameters\n&InstanceId=tdsql-ige1a5k3\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"InstanceId\": \"tdsql-ige1a5k3\",\n        \"Params\": [\n            {\n                \"Default\": \"1\",\n                \"SetValue\": \"\",\n                \"Value\": \"1\",\n                \"Param\": \"auto_increment_increment\",\n                \"HaveSetValue\": false,\n                \"NeedRestart\": false,\n                \"Constraint\": {\n                    \"String\": \"\",\n                    \"Enum\": \"\",\n                    \"Range\": {\n                        \"Max\": \"65535\",\n                        \"Min\": \"1\"\n                    },\n                    \"Type\": \"section\"\n                }\n            }\n        ],\n        \"RequestId\": \"914db412-d6e6-47ad-8e62-d06e02e52a56\"\n    }\n}",
+        "title": "Getting current database parameters"
+      }
+    ],
     "DescribeDBSecurityGroups": [
       {
         "document": "",
         "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeDBSecurityGroups\n&Product=mariadb\n&InstanceId=tdsql-eb2w7dto\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"VIP\": \"10.0.0.7\",\n        \"VPort\": 3306,\n        \"RequestId\": \"31a60135-7057-47ae-8fd3-7a0617deca38\",\n        \"Groups\": [\n            {\n                \"ProjectId\": 0,\n                \"CreateTime\": \"\",\n                \"Inbound\": [\n                    {\n                        \"Action\": \"\",\n                        \"CidrIp\": \"\",\n                        \"PortRange\": \"\",\n                        \"IpProtocol\": \"\"\n                    }\n                ],\n                \"Outbound\": [\n                    {\n                        \"Action\": \"\",\n                        \"CidrIp\": \"\",\n                        \"PortRange\": \"\",\n                        \"IpProtocol\": \"\"\n                    }\n                ],\n                \"SecurityGroupId\": \"\",\n                \"SecurityGroupName\": \"\",\n                \"SecurityGroupRemark\": \"mariadb\"\n            }\n        ]\n    }\n}",
-        "title": "Sample 1. Querying the security group details of an instance"
+        "output": "{\n    \"Response\": {\n        \"VIP\": \"10.0.0.7\",\n        \"VPort\": \"3306\",\n        \"RequestId\": \"31a60135-7057-47ae-8fd3-7a0617deca38\",\n        \"Groups\": [\n            {\n                \"ProjectId\": 0,\n                \"CreateTime\": \"\",\n                \"Inbound\": [\n                    {\n                        \"Action\": \"\",\n                        \"CidrIp\": \"\",\n                        \"PortRange\": \"\",\n                        \"IpProtocol\": \"\"\n                    }\n                ],\n                \"Outbound\": [\n                    {\n                        \"Action\": \"\",\n                        \"CidrIp\": \"\",\n                        \"PortRange\": \"\",\n                        \"IpProtocol\": \"\"\n                    }\n                ],\n                \"SecurityGroupId\": \"\",\n                \"SecurityGroupName\": \"\",\n                \"SecurityGroupRemark\": \"mariadb\"\n            }\n        ]\n    }\n}",
+        "title": "Example 1. Querying the security group information of an instance"
+      }
+    ],
+    "DescribeDBSlowLogs": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeDBSlowLogs\n&InstanceId=tdsql-ige1a5k3\n&Offset=0\n&Limit=20\n&StartTime=2017-08-06 00:00:00\n&EndTime=2017-08-07 23:59:59\n&Slave=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"LockTimeSum\": 0.0,\n        \"QueryCount\": 1,\n        \"QueryTimeSum\": 1.13,\n        \"RequestId\": \"1e74e824-6d2b-495d-b347-5250cdf8e964\",\n        \"Total\": 1,\n        \"Data\": [\n            {\n                \"CheckSum\": \"14090621765287179955\",\n                \"Db\": \"\",\n                \"FingerPrint\": \"replace into sysdb.statustable set ts = from_unixtime(?),ip=?,port=?\",\n                \"LockTimeAvg\": \"0.00\",\n                \"LockTimeMax\": \"0.00\",\n                \"LockTimeMin\": \"0.00\",\n                \"LockTimeSum\": \"0.00\",\n                \"QueryCount\": \"1\",\n                \"QueryTimeAvg\": \"1.13\",\n                \"QueryTimeMax\": \"1.13\",\n                \"QueryTimeMin\": \"1.13\",\n                \"QueryTimeSum\": \"1.13\",\n                \"RowsExaminedSum\": \"0.00\",\n                \"RowsSentSum\": \"0.00\",\n                \"TsMax\": \"2016-08-06 11:32:10\",\n                \"TsMin\": \"2016-08-06 11:32:10\",\n                \"User\": \"agent\",\n                \"Host\": \"10.1.1.1\",\n                \"ExampleSql\": \"\"\n            }\n        ]\n    }\n}",
+        "title": "Querying slow query log list"
+      }
+    ],
+    "DescribeDatabaseObjects": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeDatabaseObjects\n&InstanceId=tdsql-e9tklsgz\n&DbName=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"DbName\": \"test\",\n        \"Funcs\": [],\n        \"InstanceId\": \"tdsql-e9tklsgz\",\n        \"Procs\": [\n            {\n                \"Proc\": \"AddGeometryColumn\"\n            },\n            {\n                \"Proc\": \"DropGeometryColumn\"\n            }\n        ],\n        \"RequestId\": \"a70c33e5-0c38-43a0-9953-234accd84d2a\",\n        \"Tables\": [\n            {\n                \"Table\": \"region\"\n            }\n        ],\n        \"Views\": []\n    }\n}",
+        "title": "Querying instance table objects"
+      }
+    ],
+    "DescribeDatabaseTable": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeDatabaseTable\n&InstanceId=tdsql-e9tklsgz\n&DbName=test\n&Table=region\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Cols\": [\n            {\n                \"Col\": \"id\",\n                \"Type\": \"tinyint(4) unsigned\"\n            },\n            {\n                \"Col\": \"name\",\n                \"Type\": \"varchar(16)\"\n            },\n            {\n                \"Col\": \"short_name\",\n                \"Type\": \"varchar(8)\"\n            },\n            {\n                \"Col\": \"code\",\n                \"Type\": \"varchar(256)\"\n            }\n        ],\n        \"DbName\": \"test\",\n        \"InstanceId\": \"tdsql-e9tklsgz\",\n        \"RequestId\": \"2de52957-ebe4-4d7b-8985-4e415b3fb360\",\n        \"Table\": \"region\"\n    }\n}",
+        "title": "Querying the table structure of specified instance"
+      }
+    ],
+    "DescribeDatabases": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeDatabases\n&InstanceId=tdsql-e9tklsgz\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Databases\": [\n            {\n                \"DbName\": \"information_schema\"\n            },\n            {\n                \"DbName\": \"mysql\"\n            },\n            {\n                \"DbName\": \"performance_schema\"\n            },\n            {\n                \"DbName\": \"test\"\n            }\n        ],\n        \"InstanceId\": \"tdsql-e9tklsgz\",\n        \"RequestId\": \"86cb12ed-0e1f-416c-99a6-79f83a8fd31e\"\n    }\n}",
+        "title": "Querying instance database list"
       }
     ],
     "DescribeDcnDetail": [
@@ -102,6 +166,14 @@
         "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceNodeInfo\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql-b43f8yjl\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"186315\",\n        \"NodesInfo\": [\n            {\n                \"Role\": \"master\",\n                \"NodeId\": \"5c2af09aeeb701fef6d5fef4329bb62d61f211ac\"\n            },\n            {\n                \"Role\": \"slave\",\n                \"NodeId\": \"dbedea66f4ba2b71e6816e3f9d0c2936e5448786\"\n            },\n            {\n                \"Role\": \"slave\",\n                \"NodeId\": \"1b40c8a28bec5c4af666d31b24119e319d68773e\"\n            }\n        ],\n        \"TotalCount\": 3\n    }\n}",
         "title": "Querying the information of primary and replica nodes of an instance"
+      }
+    ],
+    "DescribeOrders": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeOrders\n&DealNames.0=20171103110035\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9b59ee51-0e13-1c2f-dedb-59fabe9d7f4a\",\n        \"TotalCount\": 1,\n        \"Deals\": [\n            {\n                \"DealName\": \"20171103110035\",\n                \"OwnerUin\": \"1235674890\",\n                \"Count\": 1,\n                \"PayMode\": 1,\n                \"FlowId\": 1234,\n                \"InstanceIds\": [\n                    \"tdsql-1234\"\n                ]\n            }\n        ]\n    }\n}",
+        "title": "Querying order information"
       }
     ],
     "DescribeProjectSecurityGroups": [
@@ -158,6 +230,22 @@
         "input": "https://mariadb.tencentcloudapi.com/?Action=ModifyDBInstancesProject\n&InstanceIds.0=tdsql-fdpjf5zh\n&ProjectId=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Modifying the project to which a TencentDB instance belongs"
+      }
+    ],
+    "ModifyDBParameters": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=ModifyDBParameters\n&InstanceId=tdsql-ige1a5k3\n&Params.0.Param=character_set_server\n&Params.0.Value=utf8\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"InstanceId\": \"tdsql-ige1a5k3\",\n        \"Result\": [\n            {\n                \"Code\": 0,\n                \"Param\": \"character_set_server\"\n            }\n        ],\n        \"RequestId\": \"896e21bc-1547-4ce2-ab81-c97cc9d73973\"\n    }\n}",
+        "title": "Modifying database parameters"
+      }
+    ],
+    "ModifyDBSyncMode": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=ModifyDBSyncMode\n&InstanceId=tdsql-avw0207d\n&SyncMode=0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"901bd41c-08a2-4001-8364-5a63f32056ae\",\n        \"FlowId\": 3521\n    }\n}",
+        "title": "Modifying the sync mode of TencentDB instance"
       }
     ],
     "ModifySyncTaskAttribute": [
