@@ -759,7 +759,7 @@
         "document": "",
         "input": "https://ecm.tencentcloudapi.com/?Action=ModifyIpv6AddressesAttribute\n&EcmRegion=ap-guangzhou-ecm-cu2\n&NetworkInterfaceId=eni-9c8zkfev\n&Ipv6Addresses.0.Address=3402:4e00:20:1202::7\n&Ipv6Addresses.0.Description=abc\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"57065a05-9d50-476b-9cd6-97b0ddf03766\"\n    }\n}",
-        "title": "Modifying the IPv6 address attributes of ENI"
+        "title": "Modifying the IPv6 address attributes of an ENI"
       }
     ],
     "ModifyListener": [
@@ -919,7 +919,7 @@
         "document": "",
         "input": "https://ecm.tencentcloudapi.com/?Action=ReleaseIpv6Addresses\n&NetworkInterfaceId=eni-9c8zkfev\n&EcmRegion=ap-xian-ecm \n&Ipv6Addresses.0.Address=3402:4e00:20:1202:0:8d01:ee9c:3e22\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"75221557-b667-440a-8cfe-ccd1bde2a234\",\n        \"TaskId\": 3082\n    }\n}",
-        "title": "Releasing IPv6 address"
+        "title": "Releasing an IPv6 address"
       }
     ],
     "RemovePrivateIpAddresses": [

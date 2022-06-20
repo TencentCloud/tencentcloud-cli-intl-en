@@ -93,7 +93,7 @@
     "CreateProxyGroupDomain": {
       "document": "This API (CreateProxyGroupDomain) is used to create the connection group domain name, and enable the domain name resolution.",
       "input": "CreateProxyGroupDomainRequest",
-      "name": "Enables a connection group domain name.",
+      "name": "(Disused) Enables a connection group domain name",
       "output": "CreateProxyGroupDomainResponse"
     },
     "CreateRule": {
@@ -243,7 +243,7 @@
     "DescribeGroupDomainConfig": {
       "document": "This API (DescribeGroupDomainConfig) is used to obtain the domain name resolution configuration details of a connection group.",
       "input": "DescribeGroupDomainConfigRequest",
-      "name": "Obtains the domain name resolution configuration details a connection group.",
+      "name": "(Disused) Obtains domain name resolution configuration details of a connection group",
       "output": "DescribeGroupDomainConfigResponse"
     },
     "DescribeHTTPListeners": {
@@ -423,7 +423,7 @@
     "ModifyGroupDomainConfig": {
       "document": "This API (ModifyGroupDomainConfig) is used to configure the nearest access domain name of a connection group.",
       "input": "ModifyGroupDomainConfigRequest",
-      "name": "Configures the nearest access domain name of a connection group.",
+      "name": "(Disused) Configures the nearest access domain name of a connection group ",
       "output": "ModifyGroupDomainConfigResponse"
     },
     "ModifyHTTPListenerAttribute": {
@@ -2249,7 +2249,7 @@
         },
         {
           "default": "",
-          "document": "The forwarding host. If it’s not specified, the default host is used, that is the host with which the client initiates HTTP requests.",
+          "document": "The host to which the acceleration connection forwards. If this parameter is not specified, the default host will be used, i.e., the host with which the client initiates HTTP requests.",
           "example": "无",
           "member": "string",
           "name": "ForwardHost",
@@ -7463,7 +7463,7 @@
         },
         {
           "default": "",
-          "document": "Connection status. Valid values:\n`RUNNING`: running\n`CREATING`: creating\n`DESTROYING`: terminating\n`OPENING`: enabling\n`CLOSING`: disabling\n`CLOSED`: disabled\n`ADJUSTING`: adjusting configuration\n`ISOLATING`: isolating\n`ISOLATED`: isolated\n`CLONING`: copying",
+          "document": "Connection status. Valid values:\n`RUNNING`: Running\n`CREATING`: Creating\n`DESTROYING`: Terminating\n`OPENING`: Enabling\n`CLOSING`: Disabling\n`CLOSED`: Disabled\n`ADJUSTING`: Adjusting configuration\n`ISOLATING`: Isolating\n`ISOLATED`: Isolated\n`CLONING`: Copying\n`RECOVERING`: Maintaining",
           "example": "\"RUNNING\"",
           "member": "string",
           "name": "Status",
@@ -7663,7 +7663,7 @@
         },
         {
           "default": "",
-          "document": "Network type. `normal`: general BGP; `cn2`: dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland).\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Network type. `normal`: general BGP; `cn2`: dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland); `secure_eip`: custom security EIP.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "\"normal\"",
           "member": "string",
           "name": "NetworkType",

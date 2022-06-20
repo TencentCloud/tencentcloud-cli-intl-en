@@ -25,9 +25,9 @@
       "output": "CreateAnimatedGraphicsTemplateResponse"
     },
     "CreateContentReviewTemplate": {
-      "document": "This API is used to create a custom template for intelligent content recognition. Up to 50 templates can be created.",
+      "document": "This API is used to create a custom content moderation template. Up to 50 templates can be created in total.",
       "input": "CreateContentReviewTemplateRequest",
-      "name": "Creates intelligent content recognition templates",
+      "name": "Creates a content moderation template",
       "output": "CreateContentReviewTemplateResponse"
     },
     "CreateImageSpriteTemplate": {
@@ -103,9 +103,9 @@
       "output": "DeleteAnimatedGraphicsTemplateResponse"
     },
     "DeleteContentReviewTemplate": {
-      "document": "This API is used to delete a custom intelligent content recognition template.",
+      "document": "This API is used to delete a custom content moderation template.",
       "input": "DeleteContentReviewTemplateRequest",
-      "name": "Deletes intelligent content recognition templates",
+      "name": "Deletes a content moderation template",
       "output": "DeleteContentReviewTemplateResponse"
     },
     "DeleteImageSpriteTemplate": {
@@ -181,9 +181,9 @@
       "output": "DescribeAnimatedGraphicsTemplatesResponse"
     },
     "DescribeContentReviewTemplates": {
-      "document": "This API is used to get the list of intelligent content recognition templates using their unique ID. The returned result includes all custom templates that meet the conditions as well as preset intelligent content recognition templates.",
+      "document": "This API is used to query content moderation templates by template ID. Both custom and preset templates that match the template IDs passed in will be returned.",
       "input": "DescribeContentReviewTemplatesRequest",
-      "name": "Gets the list of intelligent content recognition templates",
+      "name": "Queries content moderation templates",
       "output": "DescribeContentReviewTemplatesResponse"
     },
     "DescribeImageSpriteTemplates": {
@@ -271,7 +271,7 @@
       "output": "EnableWorkflowResponse"
     },
     "ExecuteFunction": {
-      "document": "This API is only used in unique custom development scenarios. Unless requested by Media Processing Service customer service, please do not call it.",
+      "document": "This API is reserved for special circumstances. Do not use it unless you are directed to use it by technical support.",
       "input": "ExecuteFunctionRequest",
       "name": "Runs a custom API",
       "output": "ExecuteFunctionResponse"
@@ -307,9 +307,9 @@
       "output": "ModifyAnimatedGraphicsTemplateResponse"
     },
     "ModifyContentReviewTemplate": {
-      "document": "This API is used to modify a custom intelligent content recognition template.",
+      "document": "This API is used to modify a custom content moderation template.",
       "input": "ModifyContentReviewTemplateRequest",
-      "name": "Modifies intelligent content recognition templates",
+      "name": "Modifies a content moderation template",
       "output": "ModifyContentReviewTemplateResponse"
     },
     "ModifyImageSpriteTemplate": {
@@ -375,7 +375,7 @@
     "ProcessMedia": {
       "document": "This API is used to initiate processing tasks for media files in COS. Such tasks may include the following:\n1. Video transcoding (with watermark)\n2. Animated image generating\n3. Time point screencapturing\n4. Sampled screencapturing\n5. Image sprite generating\n6. Adaptive bitrate streaming\n7. Intelligent content moderation (detection of pornographic and sensitive content)\n8. Intelligent content analysis (labeling, categorization, thumbnail generation, frame-specific labeling)\n9. Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)",
       "input": "ProcessMediaRequest",
-      "name": "Initiates a video processing task",
+      "name": "Starts a media processing task",
       "output": "ProcessMediaResponse"
     },
     "ResetWorkflow": {
@@ -940,6 +940,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -948,7 +949,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -958,6 +960,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -967,6 +970,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -976,6 +980,7 @@
         {
           "default": "",
           "document": "Input of intelligent categorization task.",
+          "example": "NULL",
           "member": "AiAnalysisTaskClassificationInput",
           "name": "Input",
           "required": true,
@@ -985,6 +990,7 @@
         {
           "default": "",
           "document": "Output of intelligent categorization task.",
+          "example": "NULL",
           "member": "AiAnalysisTaskClassificationOutput",
           "name": "Output",
           "required": true,
@@ -1039,6 +1045,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1047,7 +1054,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1057,6 +1065,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1066,6 +1075,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -1075,6 +1085,7 @@
         {
           "default": "",
           "document": "Input of intelligent cover generating task.",
+          "example": "NULL",
           "member": "AiAnalysisTaskCoverInput",
           "name": "Input",
           "required": true,
@@ -1084,6 +1095,7 @@
         {
           "default": "",
           "document": "Output of intelligent cover generating task.",
+          "example": "NULL",
           "member": "AiAnalysisTaskCoverOutput",
           "name": "Output",
           "required": true,
@@ -1129,6 +1141,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1137,7 +1150,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1147,6 +1161,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1156,6 +1171,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -1165,6 +1181,7 @@
         {
           "default": "",
           "document": "Input of intelligent frame-specific tagging task.",
+          "example": "NULL",
           "member": "AiAnalysisTaskFrameTagInput",
           "name": "Input",
           "required": true,
@@ -1174,6 +1191,7 @@
         {
           "default": "",
           "document": "Output of intelligent frame-specific tagging task.",
+          "example": "NULL",
           "member": "AiAnalysisTaskFrameTagOutput",
           "name": "Output",
           "required": true,
@@ -1234,6 +1252,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1242,7 +1261,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1252,6 +1272,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1261,6 +1282,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -1270,6 +1292,7 @@
         {
           "default": "",
           "document": "Input of intelligent tagging task.",
+          "example": "NULL",
           "member": "AiAnalysisTaskTagInput",
           "name": "Input",
           "required": true,
@@ -1279,6 +1302,7 @@
         {
           "default": "",
           "document": "Output of intelligent tagging task.",
+          "example": "NULL",
           "member": "AiAnalysisTaskTagOutput",
           "name": "Output",
           "required": true,
@@ -1505,6 +1529,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1513,7 +1538,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1523,6 +1549,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1532,6 +1559,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -1541,6 +1569,7 @@
         {
           "default": "",
           "document": "Input information of a full speech recognition task.",
+          "example": "NULL",
           "member": "AiRecognitionTaskAsrFullTextResultInput",
           "name": "Input",
           "required": true,
@@ -1550,6 +1579,7 @@
         {
           "default": "",
           "document": "Output information of a full speech recognition task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiRecognitionTaskAsrFullTextResultOutput",
           "name": "Output",
           "required": true,
@@ -1655,6 +1685,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1663,7 +1694,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1673,6 +1705,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1682,6 +1715,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -1691,6 +1725,7 @@
         {
           "default": "",
           "document": "Input information of a speech keyword recognition task.",
+          "example": "NULL",
           "member": "AiRecognitionTaskAsrWordsResultInput",
           "name": "Input",
           "required": true,
@@ -1700,6 +1735,7 @@
         {
           "default": "",
           "document": "Output information of a speech keyword recognition task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiRecognitionTaskAsrWordsResultOutput",
           "name": "Output",
           "required": true,
@@ -1802,6 +1838,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1810,7 +1847,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1820,6 +1858,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1829,6 +1868,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -1838,6 +1878,7 @@
         {
           "default": "",
           "document": "Input information of a face recognition task.",
+          "example": "NULL",
           "member": "AiRecognitionTaskFaceResultInput",
           "name": "Input",
           "required": true,
@@ -1847,6 +1888,7 @@
         {
           "default": "",
           "document": "Output information of a face recognition task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiRecognitionTaskFaceResultOutput",
           "name": "Output",
           "required": true,
@@ -1877,6 +1919,7 @@
         {
           "default": "",
           "document": "Unique ID of a figure.",
+          "example": "9527",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -1886,6 +1929,7 @@
         {
           "default": "",
           "document": "Figure library type, indicating to which figure library the recognized figure belongs:\n<li>Default: Default figure library;</li>\n<li>UserDefine: Custom figure library.</li>",
+          "example": "Default",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -1895,6 +1939,7 @@
         {
           "default": "",
           "document": "Name of a figure.",
+          "example": "张三",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -1904,11 +1949,102 @@
         {
           "default": "",
           "document": "Result set of segments that contain a figure.",
+          "example": "NULL",
           "member": "AiRecognitionTaskFaceSegmentItem",
           "name": "SegmentSet",
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The person’s gender.\n<li>Male</li>\n<li>Female</li>\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "Male",
+          "member": "string",
+          "name": "Gender",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The person’s birth date.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "1953年6月",
+          "member": "string",
+          "name": "Birthday",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The person’s job or job title.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "歌手",
+          "member": "string",
+          "name": "Profession",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The college the person graduated from.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "清华大学",
+          "member": "string",
+          "name": "SchoolOfGraduation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The person’s profile.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Abstract",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The person’s place of birth.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "湖北武汉",
+          "member": "string",
+          "name": "PlaceOfBirth",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the person is a politician or artist.\n<li>Politician</li>\n<li>Artist</li>\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "Politician",
+          "member": "string",
+          "name": "PersonType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Sensitivity\n<li>Normal</li>\n<li>Sensitive</li>\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "Normal",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The screenshot URL.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1991,6 +2127,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1999,7 +2136,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2009,6 +2147,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2018,6 +2157,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -2027,6 +2167,7 @@
         {
           "default": "",
           "document": "Input information of a full text recognition task.",
+          "example": "NULL",
           "member": "AiRecognitionTaskOcrFullTextResultInput",
           "name": "Input",
           "required": true,
@@ -2036,6 +2177,7 @@
         {
           "default": "",
           "document": "Output information of a full text recognition task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiRecognitionTaskOcrFullTextResultOutput",
           "name": "Output",
           "required": true,
@@ -2147,6 +2289,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -2155,7 +2298,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2165,6 +2309,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2174,6 +2319,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -2183,6 +2329,7 @@
         {
           "default": "",
           "document": "Input information of a text keyword recognition task.",
+          "example": "NULL",
           "member": "AiRecognitionTaskOcrWordsResultInput",
           "name": "Input",
           "required": true,
@@ -2192,6 +2339,7 @@
         {
           "default": "",
           "document": "Output information of a text keyword recognition task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiRecognitionTaskOcrWordsResultOutput",
           "name": "Output",
           "required": true,
@@ -2727,7 +2875,7 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see the list of [Error Codes](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
           "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
@@ -2793,7 +2941,7 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
           "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
@@ -2859,7 +3007,7 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
           "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
@@ -2916,6 +3064,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -2924,7 +3073,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2934,6 +3084,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2943,6 +3094,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -2952,6 +3104,7 @@
         {
           "default": "",
           "document": "Input for an ASR-based porn information detection in text task during content audit.",
+          "example": "NULL",
           "member": "AiReviewPornAsrTaskInput",
           "name": "Input",
           "required": true,
@@ -2961,6 +3114,7 @@
         {
           "default": "",
           "document": "Output of an ASR-based porn information detection in text task during content audit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewPornAsrTaskOutput",
           "name": "Output",
           "required": true,
@@ -2976,6 +3130,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -2984,7 +3139,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2994,6 +3150,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3003,6 +3160,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -3012,6 +3170,7 @@
         {
           "default": "",
           "document": "Input for an OCR-based porn information detection in text task during content audit.",
+          "example": "NULL",
           "member": "AiReviewPornOcrTaskInput",
           "name": "Input",
           "required": true,
@@ -3021,6 +3180,7 @@
         {
           "default": "",
           "document": "Output of an OCR-based porn information detection in text task during content audit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewPornOcrTaskOutput",
           "name": "Output",
           "required": true,
@@ -3036,6 +3196,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -3044,7 +3205,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -3054,6 +3216,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3063,6 +3226,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -3072,6 +3236,7 @@
         {
           "default": "",
           "document": "Input for a porn information detection task during content audit.",
+          "example": "NULL",
           "member": "AiReviewPornTaskInput",
           "name": "Input",
           "required": true,
@@ -3081,6 +3246,7 @@
         {
           "default": "",
           "document": "Output of a porn information detection task during content audit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiReviewPornTaskOutput",
           "name": "Output",
           "required": true,
@@ -3096,6 +3262,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -3104,7 +3271,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -3114,6 +3282,7 @@
         {
           "default": "",
           "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3123,6 +3292,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -3132,6 +3302,7 @@
         {
           "default": "",
           "document": "Input of ASR-based prohibited information detection in speech task in content audit",
+          "example": "NULL",
           "member": "AiReviewProhibitedAsrTaskInput",
           "name": "Input",
           "required": true,
@@ -3141,6 +3312,7 @@
         {
           "default": "",
           "document": "Output of ASR-based prohibited information detection in speech task in content audit",
+          "example": "NULL",
           "member": "AiReviewProhibitedAsrTaskOutput",
           "name": "Output",
           "required": true,
@@ -3156,6 +3328,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -3164,7 +3337,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -3174,6 +3348,7 @@
         {
           "default": "",
           "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3183,6 +3358,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -3192,6 +3368,7 @@
         {
           "default": "",
           "document": "Input of OCR-based prohibited information detection in text task in content audit",
+          "example": "NULL",
           "member": "AiReviewProhibitedOcrTaskInput",
           "name": "Input",
           "required": true,
@@ -3201,6 +3378,7 @@
         {
           "default": "",
           "document": "Output of OCR-based prohibited information detection in text task in content audit",
+          "example": "NULL",
           "member": "AiReviewProhibitedOcrTaskOutput",
           "name": "Output",
           "required": true,
@@ -3225,7 +3403,7 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
           "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
@@ -3291,7 +3469,7 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
           "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
@@ -4257,11 +4435,12 @@
       "usage": "both"
     },
     "CosInputInfo": {
-      "document": "Information of the COS object for video processing.",
+      "document": "The information of the COS object to process.",
       "members": [
         {
           "default": "",
-          "document": "Name of the COS bucket where a video processing object file is located, such as `TopRankVideo-125xxx88`.",
+          "document": "The COS bucket of the object to process, such as `TopRankVideo-125xxx88`.",
+          "example": "NULL",
           "member": "string",
           "name": "Bucket",
           "required": true,
@@ -4270,7 +4449,8 @@
         },
         {
           "default": "",
-          "document": "Region of the COS bucket where a video processing object file is located, such as `ap-chongqing`.",
+          "document": "The region of the COS bucket, such as `ap-chongqing`.",
+          "example": "NULL",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -4279,7 +4459,8 @@
         },
         {
           "default": "",
-          "document": "Path to an input object file for video processing, such as `/movie/201907/WildAnimal.mov`.",
+          "document": "The path of the object to process, such as `/movie/201907/WildAnimal.mov`.",
+          "example": "NULL",
           "member": "string",
           "name": "Object",
           "required": true,
@@ -4290,11 +4471,12 @@
       "usage": "both"
     },
     "CosOutputStorage": {
-      "document": "Information of a COS output object generated from video processing.",
+      "document": "The information of the output COS object after media processing.",
       "members": [
         {
           "default": "",
-          "document": "Name of the target bucket of a video processing output file, such as `TopRankVideo-125xxx88`. If this parameter is left empty, the parameter of the upper folder will be inherited.",
+          "document": "The bucket to which the output file of media processing is saved, such as `TopRankVideo-125xxx88`. If this parameter is left empty, the value of the upper layer will be inherited.",
+          "example": "NULL",
           "member": "string",
           "name": "Bucket",
           "required": false,
@@ -4303,7 +4485,8 @@
         },
         {
           "default": "",
-          "document": "Region of the target bucket of a video processing output file, such as `ap-chongqing`. If this parameter is left empty, the parameter of the upper folder will be inherited.",
+          "document": "The region of the output bucket, such as `ap-chongqing`. If this parameter is left empty, the value of the upper layer will be inherited.",
+          "example": "NULL",
           "member": "string",
           "name": "Region",
           "required": false,
@@ -4664,7 +4847,8 @@
       "members": [
         {
           "default": "",
-          "document": "Name of an intelligent content recognition template. Length limit: 64 characters",
+          "document": "The name of the content moderation template. Length limit: 64 characters.",
+          "example": "内容审核模板",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -4672,7 +4856,8 @@
         },
         {
           "default": "",
-          "document": "Description of an intelligent content recognition template. Length limit: 256 characters",
+          "document": "The template description. Length limit: 256 characters.",
+          "example": "模板1",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -4681,6 +4866,7 @@
         {
           "default": "",
           "document": "Control parameter for porn information",
+          "example": "无",
           "member": "PornConfigureInfo",
           "name": "PornConfigure",
           "required": false,
@@ -4689,6 +4875,7 @@
         {
           "default": "",
           "document": "Control parameter for terrorism information",
+          "example": "无",
           "member": "TerrorismConfigureInfo",
           "name": "TerrorismConfigure",
           "required": false,
@@ -4697,6 +4884,7 @@
         {
           "default": "",
           "document": "Control parameter for politically sensitive information",
+          "example": "无",
           "member": "PoliticalConfigureInfo",
           "name": "PoliticalConfigure",
           "required": false,
@@ -4705,6 +4893,7 @@
         {
           "default": "",
           "document": "Control parameter of prohibited information detection. Prohibited information includes:\n<li>Abusive;</li>\n<li>Drug-related.</li>\nNote: this parameter is not supported yet.",
+          "example": "无",
           "member": "ProhibitedConfigureInfo",
           "name": "ProhibitedConfigure",
           "required": false,
@@ -4712,7 +4901,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter for custom intelligent content recognition tasks",
+          "document": "Custom content moderation parameters.",
+          "example": "无",
           "member": "UserDefineConfigureInfo",
           "name": "UserDefineConfigure",
           "required": false,
@@ -4725,9 +4915,11 @@
       "document": "CreateContentReviewTemplate response structure.",
       "members": [
         {
-          "document": "Unique ID of an intelligent content recognition template",
+          "document": "The unique ID of the content moderation template.",
+          "example": "30",
           "member": "int64",
           "name": "Definition",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5328,6 +5520,7 @@
         {
           "default": "",
           "document": "Workflow name of up to 128 characters, which must be unique for the same user.",
+          "example": "trans-100020-100030-100040",
           "member": "string",
           "name": "WorkflowName",
           "required": true,
@@ -5336,6 +5529,7 @@
         {
           "default": "",
           "document": "Triggering rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.",
+          "example": "无",
           "member": "WorkflowTrigger",
           "name": "Trigger",
           "required": true,
@@ -5343,7 +5537,8 @@
         },
         {
           "default": "",
-          "document": "Storage location of a video processing output file. If this parameter is left empty, the storage location in `Trigger` will be inherited.",
+          "document": "The location to save the output file of media processing. If this parameter is left empty, the storage location in `Trigger` will be inherited.",
+          "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
           "required": false,
@@ -5351,7 +5546,8 @@
         },
         {
           "default": "",
-          "document": "Target directory of a video processing output file, such as `/movie/201907/`. If this parameter is left empty, the file will be outputted to the same directory where the source file is located.",
+          "document": "The directory to save the media processing output file, such as `/movie/201907/`. If this parameter is left empty, the output file will be saved to the same directory where the source file is located.",
+          "example": "\"\"",
           "member": "string",
           "name": "OutputDir",
           "required": false,
@@ -5359,7 +5555,8 @@
         },
         {
           "default": "",
-          "document": "Parameter of a video processing task.",
+          "document": "The media processing parameters to use.",
+          "example": "无",
           "member": "MediaProcessTaskInput",
           "name": "MediaProcessTask",
           "required": false,
@@ -5368,6 +5565,7 @@
         {
           "default": "",
           "document": "Type parameter of a video content audit task.",
+          "example": "无",
           "member": "AiContentReviewTaskInput",
           "name": "AiContentReviewTask",
           "required": false,
@@ -5376,6 +5574,7 @@
         {
           "default": "",
           "document": "Video content analysis task parameter.",
+          "example": "无",
           "member": "AiAnalysisTaskInput",
           "name": "AiAnalysisTask",
           "required": false,
@@ -5384,6 +5583,7 @@
         {
           "default": "",
           "document": "Type parameter of a video content recognition task.",
+          "example": "无",
           "member": "AiRecognitionTaskInput",
           "name": "AiRecognitionTask",
           "required": false,
@@ -5392,6 +5592,7 @@
         {
           "default": "",
           "document": "Event notification configuration for a task. If this parameter is left empty, no event notifications will be obtained.",
+          "example": "无",
           "member": "TaskNotifyConfig",
           "name": "TaskNotifyConfig",
           "required": false,
@@ -5400,6 +5601,7 @@
         {
           "default": "",
           "document": "Workflow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.",
+          "example": "0",
           "member": "int64",
           "name": "TaskPriority",
           "required": false,
@@ -5536,7 +5738,8 @@
       "members": [
         {
           "default": "",
-          "document": "Unique ID of an intelligent content recognition template",
+          "document": "The unique ID of the content moderation template.",
+          "example": "30",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -6034,7 +6237,7 @@
       "members": [
         {
           "default": "",
-          "document": "Unique ID of intelligent content recognition templates as the filter. Array length limit: 50",
+          "document": "The IDs of the content moderation templates to query. Array length limit: 50.",
           "example": "无",
           "member": "int64",
           "name": "Definitions",
@@ -6944,7 +7147,7 @@
         },
         {
           "default": "",
-          "document": "Target storage of video processing output file.",
+          "document": "The storage location of the media processing output file.",
           "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
@@ -6953,7 +7156,7 @@
         },
         {
           "default": "",
-          "document": "Target path of video processing output file.",
+          "document": "The path to save the media processing output file.",
           "example": "/clip_result/clip_WildAnimal.{format}",
           "member": "string",
           "name": "OutputObjectPath",
@@ -8392,7 +8595,8 @@
       "members": [
         {
           "default": "",
-          "document": "Video processing task ID.",
+          "document": "The media processing task ID.",
+          "example": "NULL",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -8402,6 +8606,7 @@
         {
           "default": "",
           "document": "Task flow status. Valid values:\n<li>PROCESSING: Processing;</li>\n<li>FINISH: Completed.</li>",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -8411,6 +8616,7 @@
         {
           "default": "",
           "document": "Error code. 0: success; other values: failure.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -8420,6 +8626,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -8429,6 +8636,7 @@
         {
           "default": "",
           "document": "Live stream URL.",
+          "example": "NULL",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -9198,11 +9406,12 @@
       "usage": "out"
     },
     "MediaInputInfo": {
-      "document": "Information of a video processing input object.",
+      "document": "The information of the object to process.",
       "members": [
         {
           "default": "",
           "document": "The type of video processing input object, which supports COS and URL.",
+          "example": "NULL",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -9211,7 +9420,8 @@
         },
         {
           "default": "",
-          "document": "This parameter is required and valid when `Type` is `COS`, indicating the information of a COS object for video processing.",
+          "document": "The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.",
+          "example": "NULL",
           "member": "CosInputInfo",
           "name": "CosInputInfo",
           "required": false,
@@ -9220,7 +9430,8 @@
         },
         {
           "default": "",
-          "document": "This parameter is required and valid when `Type` is `URL`, indicating the information of a URL object for video processing.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "document": "The URL of the object to process. This parameter is valid and required when `Type` is `URL`.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "NULL",
           "member": "UrlInputInfo",
           "name": "UrlInputInfo",
           "required": false,
@@ -9341,6 +9552,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -9349,7 +9561,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -9359,6 +9572,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -9368,6 +9582,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -9377,6 +9592,7 @@
         {
           "default": "",
           "document": "Input of an adaptive bitrate streaming task.",
+          "example": "NULL",
           "member": "AdaptiveDynamicStreamingTaskInput",
           "name": "Input",
           "required": true,
@@ -9386,6 +9602,7 @@
         {
           "default": "",
           "document": "Output of an adaptive bitrate streaming task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AdaptiveDynamicStreamingInfoItem",
           "name": "Output",
           "required": true,
@@ -9401,6 +9618,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -9409,7 +9627,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -9419,6 +9638,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -9428,6 +9648,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -9437,6 +9658,7 @@
         {
           "default": "",
           "document": "Input for an animated image generating task.",
+          "example": "NULL",
           "member": "AnimatedGraphicTaskInput",
           "name": "Input",
           "required": true,
@@ -9446,6 +9668,7 @@
         {
           "default": "",
           "document": "Output of an animated image generating task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "MediaAnimatedGraphicsItem",
           "name": "Output",
           "required": true,
@@ -9461,6 +9684,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -9469,7 +9693,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -9479,6 +9704,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -9488,6 +9714,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -9497,6 +9724,7 @@
         {
           "default": "",
           "document": "Input for an image sprite generating task.",
+          "example": "NULL",
           "member": "ImageSpriteTaskInput",
           "name": "Input",
           "required": true,
@@ -9506,6 +9734,7 @@
         {
           "default": "",
           "document": "Output of an image sprite generating task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "MediaImageSpriteItem",
           "name": "Output",
           "required": true,
@@ -9516,11 +9745,12 @@
       "usage": "out"
     },
     "MediaProcessTaskInput": {
-      "document": "Type of a video processing task",
+      "document": "The type of media processing task.",
       "members": [
         {
           "default": "",
           "document": "List of transcoding tasks.",
+          "example": "NULL",
           "member": "TranscodeTaskInput",
           "name": "TranscodeTaskSet",
           "required": false,
@@ -9530,6 +9760,7 @@
         {
           "default": "",
           "document": "List of animated image generating tasks.",
+          "example": "NULL",
           "member": "AnimatedGraphicTaskInput",
           "name": "AnimatedGraphicTaskSet",
           "required": false,
@@ -9539,6 +9770,7 @@
         {
           "default": "",
           "document": "List of time point screencapturing tasks.",
+          "example": "NULL",
           "member": "SnapshotByTimeOffsetTaskInput",
           "name": "SnapshotByTimeOffsetTaskSet",
           "required": false,
@@ -9548,6 +9780,7 @@
         {
           "default": "",
           "document": "List of sampled screencapturing tasks.",
+          "example": "NULL",
           "member": "SampleSnapshotTaskInput",
           "name": "SampleSnapshotTaskSet",
           "required": false,
@@ -9557,6 +9790,7 @@
         {
           "default": "",
           "document": "List of image sprite generating tasks.",
+          "example": "NULL",
           "member": "ImageSpriteTaskInput",
           "name": "ImageSpriteTaskSet",
           "required": false,
@@ -9566,6 +9800,7 @@
         {
           "default": "",
           "document": "List of adaptive bitrate streaming tasks.",
+          "example": "NULL",
           "member": "AdaptiveDynamicStreamingTaskInput",
           "name": "AdaptiveDynamicStreamingTaskSet",
           "required": false,
@@ -9650,6 +9885,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -9658,7 +9894,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -9668,6 +9905,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -9677,6 +9915,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -9686,6 +9925,7 @@
         {
           "default": "",
           "document": "Input for a sampled screencapturing task.",
+          "example": "NULL",
           "member": "SampleSnapshotTaskInput",
           "name": "Input",
           "required": true,
@@ -9695,6 +9935,7 @@
         {
           "default": "",
           "document": "Output of a sampled screencapturing task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "MediaSampleSnapshotItem",
           "name": "Output",
           "required": true,
@@ -9710,6 +9951,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -9718,7 +9960,8 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -9728,6 +9971,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -9737,6 +9981,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -9746,6 +9991,7 @@
         {
           "default": "",
           "document": "Input for a time point screencapturing task.",
+          "example": "NULL",
           "member": "SnapshotByTimeOffsetTaskInput",
           "name": "Input",
           "required": true,
@@ -9755,6 +10001,7 @@
         {
           "default": "",
           "document": "Output of a time point screencapturing task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "MediaSnapshotByTimeOffsetItem",
           "name": "Output",
           "required": true,
@@ -9779,7 +10026,7 @@
         },
         {
           "default": "",
-          "document": "Error code. An empty string indicates the task is successful; otherwise it is failed. For details about the values, see [Error Code List](https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
           "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
@@ -10504,7 +10751,8 @@
       "members": [
         {
           "default": "",
-          "document": "Unique ID of an intelligent content recognition template",
+          "document": "The unique ID of the content moderation template.",
+          "example": "30",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -10512,7 +10760,8 @@
         },
         {
           "default": "",
-          "document": "Name of an intelligent content recognition template. Length limit: 64 characters",
+          "document": "The name of the content moderation template. Length limit: 64 characters.",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -10520,7 +10769,8 @@
         },
         {
           "default": "",
-          "document": "Description of an intelligent content recognition template. Length limit: 256 characters",
+          "document": "The template description. Length limit: 256 characters.",
+          "example": "无",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -10529,6 +10779,7 @@
         {
           "default": "",
           "document": "Control parameter for porn information",
+          "example": "无",
           "member": "PornConfigureInfoForUpdate",
           "name": "PornConfigure",
           "required": false,
@@ -10537,6 +10788,7 @@
         {
           "default": "",
           "document": "Control parameter for terrorism information",
+          "example": "无",
           "member": "TerrorismConfigureInfoForUpdate",
           "name": "TerrorismConfigure",
           "required": false,
@@ -10545,6 +10797,7 @@
         {
           "default": "",
           "document": "Control parameter for politically sensitive information",
+          "example": "无",
           "member": "PoliticalConfigureInfoForUpdate",
           "name": "PoliticalConfigure",
           "required": false,
@@ -10553,6 +10806,7 @@
         {
           "default": "",
           "document": "Control parameter of prohibited information detection. Prohibited information includes:\n<li>Abusive;</li>\n<li>Drug-related.</li>\nNote: this parameter is not supported yet.",
+          "example": "无",
           "member": "ProhibitedConfigureInfoForUpdate",
           "name": "ProhibitedConfigure",
           "required": false,
@@ -10560,7 +10814,8 @@
         },
         {
           "default": "",
-          "document": "Control parameter for custom intelligent content recognition tasks",
+          "document": "Custom content moderation parameters.",
+          "example": "无",
           "member": "UserDefineConfigureInfoForUpdate",
           "name": "UserDefineConfigure",
           "required": false,
@@ -11177,11 +11432,12 @@
       "type": "object"
     },
     "MosaicInput": {
-      "document": "Blur parameter type of video processing task",
+      "document": "The mosaic effect parameters to use in a media processing task.",
       "members": [
         {
           "default": "",
           "document": "Origin position, which currently can only be:\n<li>TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the blur is in the top-left corner of the image or text.</li>\nDefault value: TopLeft.",
+          "example": "NULL",
           "member": "string",
           "name": "CoordinateOrigin",
           "required": false,
@@ -11191,6 +11447,7 @@
         {
           "default": "",
           "document": "The horizontal position of the origin of the blur relative to the origin of coordinates of the video. % and px formats are supported:\n<li>If the string ends in %, the `XPos` of the blur will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>\n<li>If the string ends in px, the `XPos` of the blur will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>\nDefault value: 0 px.",
+          "example": "NULL",
           "member": "string",
           "name": "XPos",
           "required": false,
@@ -11200,6 +11457,7 @@
         {
           "default": "",
           "document": "Vertical position of the origin of blur relative to the origin of coordinates of video. % and px formats are supported:\n<li>If the string ends in %, the `YPos` of the blur will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>\n<li>If the string ends in px, the `YPos` of the blur will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>\nDefault value: 0 px.",
+          "example": "NULL",
           "member": "string",
           "name": "YPos",
           "required": false,
@@ -11209,6 +11467,7 @@
         {
           "default": "",
           "document": "Blur width. % and px formats are supported:\n<li>If the string ends in %, the `Width` of the blur will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;</li>\n<li>If the string ends in px, the `Width` of the blur will be in px; for example, `100px` means that `Width` is 100 px.</li>\nDefault value: 10%.",
+          "example": "NULL",
           "member": "string",
           "name": "Width",
           "required": false,
@@ -11218,6 +11477,7 @@
         {
           "default": "",
           "document": "Blur height. % and px formats are supported:\n<li>If the string ends in %, the `Height` of the blur will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>\n<li>If the string ends in px, the `Height` of the blur will be in px; for example, `100px` means that `Height` is 100 px.</li>\nDefault value: 10%.",
+          "example": "NULL",
           "member": "string",
           "name": "Height",
           "required": false,
@@ -11227,6 +11487,7 @@
         {
           "default": "",
           "document": "Start time offset of blur in seconds. If this parameter is left empty or 0 is entered, the blur will appear upon the first video frame.\n<li>If this parameter is left empty or 0 is entered, the blur will appear upon the first video frame;</li>\n<li>If this value is greater than 0 (e.g., n), the blur will appear at second n after the first video frame;</li>\n<li>If this value is smaller than 0 (e.g., -n), the blur will appear at second n before the last video frame.</li>",
+          "example": "NULL",
           "member": "float",
           "name": "StartTimeOffset",
           "required": false,
@@ -11236,6 +11497,7 @@
         {
           "default": "",
           "document": "End time offset of blur in seconds.\n<li>If this parameter is left empty or 0 is entered, the blur will exist till the last video frame;</li>\n<li>If this value is greater than 0 (e.g., n), the blur will exist till second n;</li>\n<li>If this value is smaller than 0 (e.g., -n), the blur will exist till second n before the last video frame.</li>",
+          "example": "NULL",
           "member": "float",
           "name": "EndTimeOffset",
           "required": false,
@@ -12245,7 +12507,8 @@
       "members": [
         {
           "default": "",
-          "document": "Input information of a file for video processing.",
+          "document": "The information of the file to process.",
+          "example": "无",
           "member": "MediaInputInfo",
           "name": "InputInfo",
           "required": true,
@@ -12253,7 +12516,8 @@
         },
         {
           "default": "",
-          "document": "Target bucket of a video processing output file. If this parameter is left empty, the storage location in `InputInfo` will be inherited.",
+          "document": "The storage location of the media processing output file. If this parameter is left empty, the storage location in `InputInfo` will be inherited.",
+          "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
           "required": false,
@@ -12261,7 +12525,8 @@
         },
         {
           "default": "",
-          "document": "Target directory of a video processing output file, such as `/movie/201907/`. If this parameter is left empty, the file will be outputted to the same directory as that in `InputInfo`.",
+          "document": "The directory to save the media processing output file, such as `/movie/201907/`. If this parameter is left empty, the file will be saved to the directory in `InputInfo`.",
+          "example": "无",
           "member": "string",
           "name": "OutputDir",
           "required": false,
@@ -12269,7 +12534,8 @@
         },
         {
           "default": "",
-          "document": "Parameter of a video processing task.",
+          "document": "The media processing parameters to use.",
+          "example": "无",
           "member": "MediaProcessTaskInput",
           "name": "MediaProcessTask",
           "required": false,
@@ -12278,6 +12544,7 @@
         {
           "default": "",
           "document": "Type parameter of a video content audit task.",
+          "example": "无",
           "member": "AiContentReviewTaskInput",
           "name": "AiContentReviewTask",
           "required": false,
@@ -12286,6 +12553,7 @@
         {
           "default": "",
           "document": "Video content analysis task parameter.",
+          "example": "无",
           "member": "AiAnalysisTaskInput",
           "name": "AiAnalysisTask",
           "required": false,
@@ -12294,6 +12562,7 @@
         {
           "default": "",
           "document": "Type parameter of a video content recognition task.",
+          "example": "无",
           "member": "AiRecognitionTaskInput",
           "name": "AiRecognitionTask",
           "required": false,
@@ -12302,6 +12571,7 @@
         {
           "default": "",
           "document": "Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.",
+          "example": "无",
           "member": "TaskNotifyConfig",
           "name": "TaskNotifyConfig",
           "required": false,
@@ -12310,6 +12580,7 @@
         {
           "default": "",
           "document": "Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.",
+          "example": "无",
           "member": "int64",
           "name": "TasksPriority",
           "required": false,
@@ -12318,6 +12589,7 @@
         {
           "default": "",
           "document": "The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.",
+          "example": "无",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -12326,6 +12598,7 @@
         {
           "default": "",
           "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
+          "example": "无",
           "member": "string",
           "name": "SessionContext",
           "required": false,
@@ -13275,7 +13548,7 @@
       "members": [
         {
           "default": "",
-          "document": "CMQ model. There are two types: `Queue` and `Topic`. Currently, only `Queue` is supported.",
+          "document": "The CMQ or TDMQ-CMQ model. Valid values: Queue, Topic.",
           "example": "Queue ",
           "member": "string",
           "name": "CmqModel",
@@ -13285,7 +13558,7 @@
         },
         {
           "default": "",
-          "document": "CMQ region, such as `sh` and `bj`.",
+          "document": "The CMQ or TDMQ-CMQ region, such as `sh` (Shanghai) or `bj` (Beijing).",
           "example": "sh",
           "member": "string",
           "name": "CmqRegion",
@@ -13295,20 +13568,20 @@
         },
         {
           "default": "",
-          "document": "This parameter is valid when the model is `Queue`, indicating the name of the CMQ queue for receiving event notifications.",
+          "document": "The CMQ or TDMQ-CMQ topic to receive notifications. This parameter is valid when `CmqModel` is `Topic`.",
           "example": "test",
           "member": "string",
-          "name": "QueueName",
+          "name": "TopicName",
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.",
-          "example": "test",
+          "document": "The CMQ or TDMQ-CMQ queue to receive notifications. This parameter is valid when `CmqModel` is `Queue`.",
+          "example": "\"\"",
           "member": "string",
-          "name": "TopicName",
+          "name": "QueueName",
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -13325,7 +13598,7 @@
         },
         {
           "default": "",
-          "document": "Notification type, `CMQ` by default. If `URL` is passed in, HTTP callbacks are sent to the URL specified by `NotifyUrl`.",
+          "document": "The notification type. Valid values:\n<li>CMQ: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>\n<li>TDMQ-CMQ: Message queue</li>\n<li>URL: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>\nDefault value: `TDMQ-CMQ`.",
           "example": "URL",
           "member": "string",
           "name": "NotifyType",
@@ -13347,11 +13620,12 @@
       "usage": "both"
     },
     "TaskOutputStorage": {
-      "document": "Information of a video processing output object.",
+      "document": "The information of the media processing output object.",
       "members": [
         {
           "default": "",
-          "document": "Storage location type of a video processing output object. Only COS is supported currently.",
+          "document": "The type of storage location for the media processing output object. Only COS is supported currently.",
+          "example": "NULL",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -13360,7 +13634,8 @@
         },
         {
           "default": "",
-          "document": "This parameter is valid and required when `Type` is COS, indicating the location of an output COS object after video processing.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The location to save the output object in COS. This parameter is valid and required when `Type` is COS.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "NULL",
           "member": "CosOutputStorage",
           "name": "CosOutputStorage",
           "required": false,
@@ -13971,11 +14246,12 @@
       "usage": "out"
     },
     "UrlInputInfo": {
-      "document": "Information of a video processing URL object.",
+      "document": "The URL of the object to process.",
       "members": [
         {
           "default": "",
           "document": "URL of a video.",
+          "example": "NULL",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -14506,11 +14782,12 @@
       "usage": "in"
     },
     "WatermarkInput": {
-      "document": "Watermark parameter type of a video processing task",
+      "document": "The watermark parameters to use in a media processing task.",
       "members": [
         {
           "default": "",
           "document": "ID of a watermarking template.",
+          "example": "NULL",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -14520,6 +14797,7 @@
         {
           "default": "",
           "document": "Custom watermark parameter, which is valid if `Definition` is 0.\nThis parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the watermark parameter preferably.\nCustom watermark parameter is not available for screenshot.",
+          "example": "NULL",
           "member": "RawWatermarkParameter",
           "name": "RawParameter",
           "required": false,
@@ -14529,6 +14807,7 @@
         {
           "default": "",
           "document": "Text content of up to 100 characters. This field is required only when the watermark type is text.\nText watermark is not available for screenshot.",
+          "example": "NULL",
           "member": "string",
           "name": "TextContent",
           "required": false,
@@ -14538,6 +14817,7 @@
         {
           "default": "",
           "document": "SVG content of up to 2,000,000 characters. This field is required only when the watermark type is `SVG`.\nSVG watermark is not available for screenshot.",
+          "example": "NULL",
           "member": "string",
           "name": "SvgContent",
           "required": false,
@@ -14547,6 +14827,7 @@
         {
           "default": "",
           "document": "Start time offset of a watermark in seconds. If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame.\n<li>If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame;</li>\n<li>If this value is greater than 0 (e.g., n), the watermark will appear at second n after the first video frame;</li>\n<li>If this value is smaller than 0 (e.g., -n), the watermark will appear at second n before the last video frame.</li>",
+          "example": "NULL",
           "member": "float",
           "name": "StartTimeOffset",
           "required": false,
@@ -14556,6 +14837,7 @@
         {
           "default": "",
           "document": "End time offset of a watermark in seconds.\n<li>If this parameter is left empty or 0 is entered, the watermark will exist till the last video frame;</li>\n<li>If this value is greater than 0 (e.g., n), the watermark will exist till second n;</li>\n<li>If this value is smaller than 0 (e.g., -n), the watermark will exist till second n before the last video frame.</li>",
+          "example": "NULL",
           "member": "float",
           "name": "EndTimeOffset",
           "required": false,
@@ -14685,6 +14967,7 @@
         {
           "default": "",
           "document": "Workflow ID.",
+          "example": "NULL",
           "member": "int64",
           "name": "WorkflowId",
           "required": true,
@@ -14694,6 +14977,7 @@
         {
           "default": "",
           "document": "Workflow name.",
+          "example": "NULL",
           "member": "string",
           "name": "WorkflowName",
           "required": true,
@@ -14703,6 +14987,7 @@
         {
           "default": "",
           "document": "Workflow status. Valid values:\n<li>Enabled: Enabled,</li>\n<li>Disabled: Disabled.</li>",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -14712,6 +14997,7 @@
         {
           "default": "",
           "document": "Input rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.",
+          "example": "NULL",
           "member": "WorkflowTrigger",
           "name": "Trigger",
           "required": true,
@@ -14720,7 +15006,8 @@
         },
         {
           "default": "",
-          "document": "Target storage of a video processing output file.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The location to save the media processing output file.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "NULL",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
           "required": true,
@@ -14729,7 +15016,8 @@
         },
         {
           "default": "",
-          "document": "Parameter of a video processing task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The media processing parameters to use.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "NULL",
           "member": "MediaProcessTaskInput",
           "name": "MediaProcessTask",
           "required": true,
@@ -14739,6 +15027,7 @@
         {
           "default": "",
           "document": "Type parameter of a video content audit task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiContentReviewTaskInput",
           "name": "AiContentReviewTask",
           "required": true,
@@ -14748,6 +15037,7 @@
         {
           "default": "",
           "document": "Video content analysis task parameter.",
+          "example": "NULL",
           "member": "AiAnalysisTaskInput",
           "name": "AiAnalysisTask",
           "required": true,
@@ -14757,6 +15047,7 @@
         {
           "default": "",
           "document": "Type parameter of a video content recognition task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiRecognitionTaskInput",
           "name": "AiRecognitionTask",
           "required": true,
@@ -14766,6 +15057,7 @@
         {
           "default": "",
           "document": "Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "TaskNotifyConfig",
           "name": "TaskNotifyConfig",
           "required": true,
@@ -14775,6 +15067,7 @@
         {
           "default": "",
           "document": "Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.",
+          "example": "NULL",
           "member": "int64",
           "name": "TaskPriority",
           "required": true,
@@ -14783,7 +15076,8 @@
         },
         {
           "default": "",
-          "document": "Target directory of a video processing output file, such as `/movie/201907/`.",
+          "document": "The directory to save the media processing output file, such as `/movie/201907/`.",
+          "example": "NULL",
           "member": "string",
           "name": "OutputDir",
           "required": true,
@@ -14793,6 +15087,7 @@
         {
           "default": "",
           "document": "Creation time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "NULL",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -14802,6 +15097,7 @@
         {
           "default": "",
           "document": "Last modified time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "NULL",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -14812,11 +15108,12 @@
       "usage": "out"
     },
     "WorkflowTask": {
-      "document": "Information of a video processing task",
+      "document": "The information of the media processing task.",
       "members": [
         {
           "default": "",
-          "document": "Video processing task ID.",
+          "document": "The media processing task ID.",
+          "example": "NULL",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -14826,6 +15123,7 @@
         {
           "default": "",
           "document": "Task flow status. Valid values:\n<li>PROCESSING: Processing;</li>\n<li>FINISH: Completed.</li>",
+          "example": "NULL",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -14835,6 +15133,7 @@
         {
           "default": "",
           "document": "Disused. Please use `ErrCode` of each specific task.",
+          "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -14844,6 +15143,7 @@
         {
           "default": "",
           "document": "Disused. Please use `Message` of each specific task.",
+          "example": "NULL",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -14852,7 +15152,8 @@
         },
         {
           "default": "",
-          "document": "Information of a target file of video processing.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The information of the file processed.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "NULL",
           "member": "MediaInputInfo",
           "name": "InputInfo",
           "required": true,
@@ -14862,6 +15163,7 @@
         {
           "default": "",
           "document": "Metadata of a source video.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "MediaMetaData",
           "name": "MetaData",
           "required": true,
@@ -14870,7 +15172,8 @@
         },
         {
           "default": "",
-          "document": "Execution status and result of a video processing task.",
+          "document": "The execution status and result of the media processing task.",
+          "example": "NULL",
           "member": "MediaProcessTaskResult",
           "name": "MediaProcessResultSet",
           "required": true,
@@ -14880,6 +15183,7 @@
         {
           "default": "",
           "document": "Execution status and result of a video content audit task.",
+          "example": "NULL",
           "member": "AiContentReviewResult",
           "name": "AiContentReviewResultSet",
           "required": true,
@@ -14889,6 +15193,7 @@
         {
           "default": "",
           "document": "Execution status and result of video content analysis task.",
+          "example": "NULL",
           "member": "AiAnalysisResult",
           "name": "AiAnalysisResultSet",
           "required": true,
@@ -14898,6 +15203,7 @@
         {
           "default": "",
           "document": "Execution status and result of a video content recognition task.",
+          "example": "NULL",
           "member": "AiRecognitionResult",
           "name": "AiRecognitionResultSet",
           "required": true,

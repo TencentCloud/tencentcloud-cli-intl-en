@@ -2,22 +2,22 @@
   "actions": {
     "CreateAIAnalysisTemplate": [
       {
-        "document": "This example shows you how to create a custom video content analysis template to enable intelligent categorization.",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIAnalysisTemplate\r\n&Name=Intelligent analysis template\r\n&Comment=Template 1\r\n&ClassificationConfigure.Switch=ON\r\n&<Common request parameters>",
+        "document": "This example shows you how to create a custom video analysis template to perform intelligent categorization.",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIAnalysisTemplate\n&Name=Intelligent analysis template\n&Comment=Template 1\n&ClassificationConfigure.Switch=ON\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 30,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Creating a template for a specified analysis task"
+        "title": "Creating a template for a video analysis task"
       },
       {
-        "document": "This example shows you how to create a custom video content analysis template to enable intelligent categorization and intelligent tagging.",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIAnalysisTemplate\r\n&Name=Intelligent analysis template\r\n&Comment=Template 2\r\n&ClassificationConfigure.Switch=ON\r\n&TagConfigure.Switch=ON\r\n&<Common request parameters>",
+        "document": "This example shows you how to create a custom video analysis template to perform intelligent categorization and labeling.",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIAnalysisTemplate\n&Name=Intelligent analysis template\n&Comment=Template 2\n&ClassificationConfigure.Switch=ON\n&TagConfigure.Switch=ON\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 31,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a template for multiple analysis tasks"
       },
       {
-        "document": "This example shows you how to create a custom video content analysis template to enable all intelligent analysis tasks.",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIAnalysisTemplate\r\n&Name=Intelligent analysis template\r\n&Comment=Template 3\r\n&ClassificationConfigure.Switch=ON\r\n&TagConfigure.Switch=ON\r\n&CoverConfigure.Switch=NO\r\n&FrameTagConfigure.Switch=ON\r\n&<Common request parameters>",
+        "document": "This example shows you how to create a custom video analysis template to perform all intelligent analysis tasks.",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIAnalysisTemplate\n&Name=Intelligent analysis template\n&Comment=Template 3\n&ClassificationConfigure.Switch=ON\n&TagConfigure.Switch=ON\n&CoverConfigure.Switch=NO\n&FrameTagConfigure.Switch=ON\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 33,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Creating a template to enable all content analysis tasks"
+        "title": "Creating a template to perform all content analysis tasks"
       }
     ],
     "CreateAIRecognitionTemplate": [
@@ -45,41 +45,41 @@
     "CreateAnimatedGraphicsTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateAnimatedGraphicsTemplate\r\n&Name=Animated image generating template 1\r\n&Width=540\r\n&Height=960\r\n&Format=gif\r\n&Fps=30\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateAnimatedGraphicsTemplate\n&Name=Animated image generating template 1\n&Width=540\n&Height=960\n&Format=gif\n&Fps=30\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 1008,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating an animated image generating template"
       }
     ],
     "CreateContentReviewTemplate": [
       {
-        "document": "This example shows you how to create a custom intelligent content recognition template to enable only the porn information recognition task, with the following configuration. Threshold scores for rule violation and human recognition: default values; filter tags: not specified.",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateContentReviewTemplate\n&Name=Intelligent content recognition template\n&Comment=Template 1\n&PornConfigure.ImgReviewInfo.Switch=ON\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Definition\": 30,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Creating an intelligent content recognition template to enable only the porn information recognition task"
-      },
-      {
-        "document": "This example shows you how to create a custom intelligent content recognition template to enable the porn information recognition task, with the threshold scores for rule violation and human recognition set to 80 and 30, respectively.",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateContentReviewTemplate\n&Name=Intelligent content recognition template\n&Comment=Template 2\n&PornConfigure.ImgReviewInfo.Switch=ON\n&PornConfigure.ImgReviewInfo.BlockConfidence=80\n&PornConfigure.ImgReviewInfo.ReviewConfidence=30\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Definition\": 31,\n        \"RequestId\": \"97aee3e9-2qd3-4151-9d4b-9730a45227a9\"\n    }\n}",
-        "title": "Creating an intelligent content recognition template to enable only the porn information recognition task with specified rule violation threshold and frame capturing interval"
-      },
-      {
-        "document": "This example shows you how to create a custom intelligent content recognition template to enable porn, terrorism, and politically sensitive information recognition tasks with the following configuration. Threshold scores for rule violation and human recognition: default values; filter tags: not specified.",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateContentReviewTemplate\n&Name=Intelligent content recognition template\n&Comment=Template 3\n&PornConfigure.ImgReviewInfo.Switch=ON\n&TerrorismConfigure.ImgReviewInfo.Switch=ON\n&TerrorismConfigure.OcrReviewInfo.Switch=OFF\n&PoliticalConfigure.ImgReviewInfo.Switch=ON\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Definition\": 32,\n        \"RequestId\": \"88aee3e9-2qd3-4151-9d4b-4390a45227a9\"\n    }\n}",
-        "title": "Creating an intelligent content recognition template to enable multiple recognition tasks"
-      },
-      {
-        "document": "This example shows you how to create a custom intelligent content recognition template to enable the porn information recognition task with the following configuration. Threshold values for rule violation and human recognition: default values; filter tags: “porn” and “sexy”.",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateContentReviewTemplate\n&Name=Intelligent content recognition template\n&Comment=Template 1\n&PornConfigure.ImgReviewInfo.Switch=ON\n&PornConfigure.ImgReviewInfo.LabelSet.0=porn\n&PornConfigure.ImgReviewInfo.LabelSet.1=sexy\n&<Common request parameters>",
+        "document": "This example shows you how to create a custom content moderation template to detect pornographic content in images. Thresholds for rule violation and human recognition are set to the default values, and the labels used are `porn` and `sexy`.",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateContentReviewTemplate\n&Name=Content moderation template\n&Comment=Template 1\n&PornConfigure.ImgReviewInfo.Switch=ON\n&PornConfigure.ImgReviewInfo.LabelSet.0=porn\n&PornConfigure.ImgReviewInfo.LabelSet.1=sexy\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 33,\n        \"RequestId\": \"67aee3e9-2qd3-2395-9d4b-4390a96837a7\"\n    }\n}",
-        "title": "Creating a content recognition template to enable porn information recognition with specified filter tags"
+        "title": "Creating a content recognition template to detect pornographic content in images based on specific labels"
+      },
+      {
+        "document": "This example shows you how to create a custom content moderation template to detect pornographic content in images using the default thresholds for rule violation and human recognition.",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateContentReviewTemplate\n&Name=Content moderation template\n&Comment=Template 1\n&PornConfigure.ImgReviewInfo.Switch=ON\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 30,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Creating a content moderation template to detect pornographic content in images"
+      },
+      {
+        "document": "This example shows you how to create a custom content moderation template to detect pornographic content in images. The thresholds for rule violation and human recognition are set to 80 and 30, respectively.",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateContentReviewTemplate\n&Name=Content moderation template\n&Comment=Template 2\n&PornConfigure.ImgReviewInfo.Switch=ON\n&PornConfigure.ImgReviewInfo.BlockConfidence=80\n&PornConfigure.ImgReviewInfo.ReviewConfidence=30\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 31,\n        \"RequestId\": \"97aee3e9-2qd3-4151-9d4b-9730a45227a9\"\n    }\n}",
+        "title": "Creating a content moderation template to detect pornographic content in images using specified thresholds for rule violation and human recognition and a specified frame capture interval"
+      },
+      {
+        "document": "This example shows you how to create a custom content moderation template to detect pornographic, terrorist, and politically sensitive content in images using the default thresholds for rule violation and human recognition.",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateContentReviewTemplate\n&Name=Content moderation template\n&Comment=Template 3\n&PornConfigure.ImgReviewInfo.Switch=ON\n&TerrorismConfigure.ImgReviewInfo.Switch=ON\n&TerrorismConfigure.OcrReviewInfo.Switch=OFF\n&PoliticalConfigure.ImgReviewInfo.Switch=ON\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 32,\n        \"RequestId\": \"88aee3e9-2qd3-4151-9d4b-4390a45227a9\"\n    }\n}",
+        "title": "Creating a content moderation template to perform multiple moderation tasks"
       }
     ],
     "CreateImageSpriteTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateImageSpriteTemplate\r\n&Name=Image sprite generating template 1\r\n&Width=54\r\n&Height=96\r\n&SampleType=Percent\r\n&SampleInterval=10\r\n&RowCount=5\r\n&ColumnCount=10\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateImageSpriteTemplate\n&Name=Image sprite generating template 1\n&Width=54\n&Height=96\n&SampleType=Percent\n&SampleInterval=10\n&RowCount=5\n&ColumnCount=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 1008,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating an image sprite generating template"
       }
@@ -95,7 +95,7 @@
     "CreateSampleSnapshotTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateSampleSnapshotTemplate\r\n&Name=Sampled screenshot template 1\r\n&Width=540\r\n&Height=960\r\n&SampleType=Percent\r\n&SampleInterval=10\r\n&Format=jpg\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateSampleSnapshotTemplate\n&Name=Sampled screenshot template 1\n&Width=540\n&Height=960\n&SampleType=Percent\n&SampleInterval=10\n&Format=jpg\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 1008,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a sampled screenshot template"
       }
@@ -103,7 +103,7 @@
     "CreateSnapshotByTimeOffsetTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateSnapshotByTimeOffsetTemplate\r\n&Name=Time point screenshot template 1\r\n&Width=540\r\n&Height=960\r\n&Format=jpg\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateSnapshotByTimeOffsetTemplate\n&Name=Time point screenshot template 1\n&Width=540\n&Height=960\n&Format=jpg\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 1008,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a time point screenshot template"
       }
@@ -146,13 +146,13 @@
     ],
     "CreateWorkflow": [
       {
-        "document": "This example shows you how to set a transcoding rule named \"trans-100020-100030-100040\" for the `TopRankVideo-125xxx88` bucket to generate output in the three formats of 100020, 100030, and 100040.",
+        "document": "This example shows you how to set a transcoding rule named \"trans-100020-100030-100040\" to process the content in the `TopRankVideo-125xxx88` bucket according to the transcoding templates 100020, 100030, and 100040.",
         "input": "https://mps.tencentcloudapi.com/?Action=CreateWorkflow\n&WorkflowName=trans-100020-100030-100040\n&Trigger.Type=CosFileUpload\n&Trigger.CosFileUploadTrigger.Bucket=TopRankVideo-125xxx88\n&Trigger.CosFileUploadTrigger.Region=ap-chongqing\n&Trigger.CosFileUploadTrigger.Dir=/movie/201907/\n&MediaProcessTask.TranscodeTaskSet.0.Definition=100020\n&MediaProcessTask.TranscodeTaskSet.1.Definition=100030\n&MediaProcessTask.TranscodeTaskSet.2.Definition=100040\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"WorkflowId\": 157482\n    }\n}",
         "title": "Setting a transcoding rule"
       },
       {
-        "document": "This example shows you how to set a transcoding rule named \"snapshot\" for the `TopRankVideo-125xxx88` bucket to generate output in the format of 100010.",
+        "document": "This example shows you how to set a screenshot rule named \"snapshot\" to process the content in the `TopRankVideo-125xxx88` bucket according to the screenshot template 100010.",
         "input": "https://mps.tencentcloudapi.com/?Action=CreateWorkflow\n&WorkflowName=snapshot\n&Trigger.Type=CosFileUpload\n&Trigger.CosFileUploadTrigger.Bucket=TopRankVideo-125xxx88\n&Trigger.CosFileUploadTrigger.Region=ap-chongqing\n&Trigger.CosFileUploadTrigger.Dir=/movie/201907/\n&MediaProcessTask.SampleSnapshotTaskSet.0.Definition=100010\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"WorkflowId\": 3457482\n    }\n}",
         "title": "Setting a sampled screenshot rule"
@@ -161,7 +161,7 @@
     "DeleteAIAnalysisTemplate": [
       {
         "document": "This example shows you how to delete a custom video content analysis template.",
-        "input": "https://mps.tencentcloudapi.com/?Action=DeleteAIAnalysisTemplate\r\n&Definition=30\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=DeleteAIAnalysisTemplate\n&Definition=30\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"35ae8d8e-dce3-42851-9d4b-559414529d931\"\n    }\n}",
         "title": "Deleting the content analysis template whose ID is 30"
       }
@@ -169,7 +169,7 @@
     "DeleteAIRecognitionTemplate": [
       {
         "document": "This example shows you how to delete a custom video content recognition template.",
-        "input": "https://mps.tencentcloudapi.com/?Action=DeleteAIRecognitionTemplate\r\n&Definition=30\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=DeleteAIRecognitionTemplate\n&Definition=30\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"35ae8d8e-dce3-42851-9d4b-559414529d931\"\n    }\n}",
         "title": "Deleting the video content recognition template whose ID is 30"
       }
@@ -177,7 +177,7 @@
     "DeleteAdaptiveDynamicStreamingTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=DeleteAdaptiveDynamicStreamingTemplate\r\n&Definition=10001\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=DeleteAdaptiveDynamicStreamingTemplate\n&Definition=10001\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Deleting an adaptive bitrate streaming template"
       }
@@ -185,23 +185,23 @@
     "DeleteAnimatedGraphicsTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=DeleteAnimatedGraphicsTemplate\r\n&Definition=10001\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=DeleteAnimatedGraphicsTemplate\n&Definition=10001\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Deleting an animated image generating template"
       }
     ],
     "DeleteContentReviewTemplate": [
       {
-        "document": "This example shows you how to delete a custom intelligent content recognition template.",
+        "document": "This example shows you how to delete a custom content moderation template.",
         "input": "https://mps.tencentcloudapi.com/?Action=DeleteContentReviewTemplate\n&Definition=30\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"35ae8d8e-dce3-42851-9d4b-559414529d931\"\n    }\n}",
-        "title": "Deleting the intelligent content recognition template whose ID is 30"
+        "title": "Deleting the content moderation template whose ID is 30"
       }
     ],
     "DeleteImageSpriteTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=DeleteImageSpriteTemplate\r\n&Definition=10001\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=DeleteImageSpriteTemplate\n&Definition=10001\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Deleting an image sprite generating template"
       }
@@ -217,7 +217,7 @@
     "DeleteSampleSnapshotTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=DeleteSampleSnapshotTemplate\r\n&Definition=10001\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=DeleteSampleSnapshotTemplate\n&Definition=10001\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Deleting a sampled screenshot template"
       }
@@ -225,7 +225,7 @@
     "DeleteSnapshotByTimeOffsetTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=DeleteSnapshotByTimeOffsetTemplate\r\n&Definition=10001\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=DeleteSnapshotByTimeOffsetTemplate\n&Definition=10001\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Deleting a time point screenshot template"
       }
@@ -233,7 +233,7 @@
     "DeleteTranscodeTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=DeleteTranscodeTemplate\r\n&Definition=1008\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=DeleteTranscodeTemplate\n&Definition=1008\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Deleting a transcoding template"
       }
@@ -241,7 +241,7 @@
     "DeleteWatermarkTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=DeleteWatermarkTemplate\r\n&Definition=1001\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=DeleteWatermarkTemplate\n&Definition=1001\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Deleting a watermark template"
       }
@@ -264,7 +264,7 @@
     ],
     "DescribeAIAnalysisTemplates": [
       {
-        "document": "This example shows you how to get 10 video content analysis templates with the serial number starting from 0, including system default ones.",
+        "document": "",
         "input": "https://mps.tencentcloudapi.com/?Action=DescribeAIAnalysisTemplates\n&Definitions.0=30\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AIAnalysisTemplateSet\": [\n            {\n                \"Definition\": 30,\n                \"Name\": \"Template 1\",\n                \"Comment\": \"Intelligent analysis template\",\n                \"Type\": \"Preset\",\n                \"ClassificationConfigure\": {\n                    \"Switch\": \"ON\"\n                },\n                \"TagConfigure\": {\n                    \"Switch\": \"ON\"\n                },\n                \"CoverConfigure\": {\n                    \"Switch\": \"ON\"\n                },\n                \"FrameTagConfigure\": {\n                    \"Switch\": \"ON\"\n                },\n                \"CreateTime\": \"2019-01-01T12:00:00Z\",\n                \"UpdateTime\": \"2019-01-01T16:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"19ae8d8e-dce3-4151-9d4b-5594384987a9\"\n    }\n}",
         "title": "Querying the video analysis template whose ID is 30"
@@ -278,9 +278,9 @@
     ],
     "DescribeAIRecognitionTemplates": [
       {
-        "document": "This example shows you how to get 10 video content recognition templates with the serial number starting from 0.",
+        "document": "",
         "input": "https://mps.tencentcloudapi.com/?Action=DescribeAIRecognitionTemplates\n&Definitions.0=30\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AIRecognitionTemplateSet\":[\n            {\n                \"Definition\": 30,\n                \"Name\": \"Template 1\",\n                \"Type\": \"Preset\",\n                \"Comment\": \"Intelligent content recognition template\",\n                \"FaceConfigure\": {\n                    \"Switch\": \"ON\",\n                    \"Score\": 0.0,\n                    \"FaceLibrary\": \"All\"\n                    \"DefaultLibraryLabelSet\": [\n                        \"xx\"\n                    ],\n                    \"UserDefineLibraryLabelSet\": [\n                        \"xx\"\n                    ]\n                },\n                \"OcrFullTextConfigure\": {\n                    \"Switch\": \"ON\"\n                },\n                \"OcrWordsConfigure\": {\n                    \"Switch\": \"OFF\",\n                    \"LabelSet\": [\n                        \"xx\"\n                    ]\n                },\n                \"AsrFullTextConfigure\": {\n                    \"Switch\": \"ON\",\n                    \"SubtitleFormat\": \"xx\"\n                },\n                \"AsrWordsConfigure\": {\n                    \"Switch\": \"OFF\",\n                    \"LabelSet\": [\n                        \"xx\"\n                    ]\n                },\n                \"CreateTime\": \"2019-01-01T12:00:00Z\",\n                \"UpdateTime\": \"2019-01-01T16:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"19ae8d8e-dce3-4151-9d4b-5594384987a9\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AIRecognitionTemplateSet\":[\n            {\n                \"Definition\": 30,\n                \"Name\": \"Template 1\",\n                \"Type\": \"Preset\",\n                \"Comment\": \"Intelligent content recognition template\",\n                \"FaceConfigure\":{\n                    \"Switch\": \"ON\",\n                    \"Score\": 0.0,\n                    \"FaceLibrary\": \"All\"\n                    \"DefaultLibraryLabelSet\": [\n                        \"xx\"\n                    ],\n                    \"UserDefineLibraryLabelSet\": [\n                        \"xx\"\n                    ]\n                },\n                \"OcrFullTextConfigure\": {\n                    \"Switch\": \"ON\"\n                },\n                \"OcrWordsConfigure\": {\n                    \"Switch\": \"OFF\",\n                    \"LabelSet\": [\n                        \"xx\"\n                    ]\n                },\n                \"AsrFullTextConfigure\": {\n                    \"Switch\": \"ON\",\n                    \"SubtitleFormat\": \"xx\"\n                },\n                \"AsrWordsConfigure\": {\n                    \"Switch\": \"OFF\",\n                    \"LabelSet\": [\n                        \"xx\"\n                    ]\n                },\n                \"CreateTime\": \"2019-01-01T12:00:00Z\",\n                \"UpdateTime\": \"2019-01-01T16:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"19ae8d8e-dce3-4151-9d4b-5594384987a9\"\n    }\n}",
         "title": "Querying the video recognition template whose ID is 30"
       },
       {
@@ -295,37 +295,37 @@
         "document": "",
         "input": "https://mps.tencentcloudapi.com/?Action=DescribeAdaptiveDynamicStreamingTemplates\n&Definitions.0=10001\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"AdaptiveDynamicStreamingTemplateSet\": [\n            {\n                \"Comment\": \"Adaptive bitrate streaming template 1\",\n                \"Definition\": 1001,\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\",\n                \"DisableHigherVideoBitrate\": 1,\n                \"Name\": \"Adaptive bitrate streaming template 1\",\n                \"Format\": \"HLS\",\n                \"DisableHigherVideoResolution\": 1,\n                \"StreamInfos\": [\n                    {\n                        \"RemoveVideo\": 0,\n                        \"Audio\": {\n                            \"Codec\": \"libfdk_aac\",\n                            \"SampleRate\": 44100,\n                            \"AudioChannel\": 2,\n                            \"Bitrate\": 200\n                        },\n                        \"Video\": {\n                            \"Fps\": 25,\n                            \"Width\": 1080,\n                            \"Height\": 960,\n                            \"Vcrf\": 23,\n                            \"Codec\": \"libx264\",\n                            \"ResolutionAdaptive\": \"open\",\n                            \"FillType\": \"black\",\n                            \"Bitrate\": 1000,\n                            \"Gop\": 50\n                        },\n                        \"RemoveAudio\": 0\n                    }\n                ],\n                \"Type\": \"Preset\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Querying a list of adaptive bitrate streaming templates"
+        "title": "Querying adaptive bitrate streaming templates"
       }
     ],
     "DescribeAnimatedGraphicsTemplates": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=DescribeAnimatedGraphicsTemplates\r\n&Definitions.0=10001\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Getting a list of animated image generating templates"
+        "input": "https://mps.tencentcloudapi.com/?Action=DescribeAnimatedGraphicsTemplates\n&Definitions.0=10001\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AnimatedGraphicsTemplateSet\": [\n            {\n                \"Definition\": 10001,\n                \"Name\": \"Animated image generating template 1\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\",\n                \"Height\": 540,\n                \"Width\": 960,\n                \"Format\": \"gif\",\n                \"Fps\": 30,\n                \"ResolutionAdaptive\": \"xx\",\n                \"Type\": \"Preset\",\n                \"Quality\": 0.0,\n                \"Comment\": \"\"\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Querying animated image generating templates"
       }
     ],
     "DescribeContentReviewTemplates": [
       {
-        "document": "This example shows you how to get 10 video content audit templates with the serial number starting from 0. The default content audit template is included.",
+        "document": "",
         "input": "https://mps.tencentcloudapi.com/?Action=DescribeContentReviewTemplates\n&Definitions.0=30\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ContentReviewTemplateSet\": [\n            {\n                \"Definition\": 30,\n                \"Name\": \"Template 1\",\n                \"Type\": \"Preset\",\n                \"Comment\": \"Intelligent content recognition template\",\n                \"PornConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [\n                            \"porn\"\n                        ],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"TerrorismConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [\n                            \"bloody\"\n                        ],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"OFF\",\n                        \"BlockConfidence\": 0,\n                        \"ReviewConfidence\": 0\n                    }\n                },\n                \"PoliticalConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [\n                            \"politician\"\n                        ],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"ProhibitedConfigure\": null,\n                \"UserDefineConfigure\": {\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [],\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [],\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"CreateTime\": \"2019-01-01T12:00:00Z\",\n                \"UpdateTime\": \"2019-01-01T16:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"19ae8d8e-dce3-4151-9d4b-5594384987a9\"\n    }\n}",
-        "title": "Querying the intelligent content recognition template whose ID is 30"
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ContentReviewTemplateSet\": [\n            {\n                \"Definition\": 30,\n                \"Name\": \"Template 1\",\n                \"Type\": \"Preset\",\n                \"Comment\": \"Intelligent content moderation template\",\n                \"PornConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [\n                            \"porn\"\n                        ],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"TerrorismConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [\n                            \"bloody\"\n                        ],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"OFF\",\n                        \"BlockConfidence\": 0,\n                        \"ReviewConfidence\": 0\n                    }\n                },\n                \"PoliticalConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [\n                            \"politician\"\n                        ],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"ProhibitedConfigure\": null,\n                \"UserDefineConfigure\": {\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [],\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [],\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"CreateTime\": \"2019-01-01T12:00:00Z\",\n                \"UpdateTime\": \"2019-01-01T16:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"19ae8d8e-dce3-4151-9d4b-5594384987a9\"\n    }\n}",
+        "title": "Querying the content moderation template whose ID is 30"
       },
       {
-        "document": "This example shows you how to get up to 10 intelligent content recognition templates, including preset ones, starting from the first record (offset = 0).",
+        "document": "This example shows you how to get up to 10 content moderation templates, including preset ones, starting from the first record (offset = 0).",
         "input": "https://mps.tencentcloudapi.com/?Action=DescribeContentReviewTemplates\n&Offset=0\n&Limit=10\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"ContentReviewTemplateSet\": [\n            {\n                \"Definition\": 30,\n                \"Name\": \"Template 1\",\n                \"Type\": \"Preset\",\n                \"Comment\": \"Intelligent content recognition template\",\n                \"PornConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [\n                            \"porn\"\n                        ],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"TerrorismConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [\n                            \"bloody\"\n                        ],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"OFF\",\n                        \"BlockConfidence\": 0,\n                        \"ReviewConfidence\": 0\n                    }\n                },\n                \"PoliticalConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [\n                            \"politician\"\n                        ],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"ProhibitedConfigure\": null,\n                \"UserDefineConfigure\": {\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [],\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [],\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"CreateTime\": \"2019-01-01T12:00:00Z\",\n                \"UpdateTime\": \"2019-01-01T16:00:00Z\"\n            },\n            {\n                \"Definition\": 31,\n                \"Name\": \"Template 2\",\n                \"Type\": \"Preset\",\n                \"Comment\": \"Content moderation template\",\n                \"PornConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"OFF\"\n                    },\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"OFF\"\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"TerrorismConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"OFF\",\n                        \"BlockConfidence\": 0,\n                        \"ReviewConfidence\": 0\n                    }\n                },\n                \"PoliticalConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [\n                            \"politician\"\n                        ],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"ProhibitedConfigure\": null,\n                \"UserDefineConfigure\": {\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [],\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [],\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"CreateTime\": \"2019-01-01T12:00:00Z\",\n                \"UpdateTime\": \"2019-01-01T16:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"19ae8d8e-dce3-4151-9d4b-5594384987a9\"\n    }\n}",
-        "title": "Querying a specified number of intelligent content recognition templates"
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"ContentReviewTemplateSet\": [\n            {\n                \"Definition\": 30,\n                \"Name\": \"Template 1\",\n                \"Type\": \"Preset\",\n                \"Comment\": \"Intelligent content moderation template\",\n                \"PornConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [\n                            \"porn\"\n                        ],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"TerrorismConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [\n                            \"bloody\"\n                        ],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"OFF\",\n                        \"BlockConfidence\": 0,\n                        \"ReviewConfidence\": 0\n                    }\n                },\n                \"PoliticalConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [\n                            \"politician\"\n                        ],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"ProhibitedConfigure\": null,\n                \"UserDefineConfigure\": {\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [],\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [],\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"CreateTime\": \"2019-01-01T12:00:00Z\",\n                \"UpdateTime\": \"2019-01-01T16:00:00Z\"\n            },\n            {\n                \"Definition\": 31,\n                \"Name\": \"Template 2\",\n                \"Type\": \"Preset\",\n                \"Comment\": \"Content moderation template\",\n                \"PornConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"OFF\"\n                    },\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"OFF\"\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"TerrorismConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"OFF\",\n                        \"BlockConfidence\": 0,\n                        \"ReviewConfidence\": 0\n                    }\n                },\n                \"PoliticalConfigure\": {\n                    \"ImgReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [\n                            \"politician\"\n                        ],\n                        \"BlockConfidence\": 80,\n                        \"ReviewConfidence\": 30\n                    },\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"ProhibitedConfigure\": null,\n                \"UserDefineConfigure\": {\n                    \"AsrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [],\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    },\n                    \"OcrReviewInfo\": {\n                        \"Switch\": \"ON\",\n                        \"LabelSet\": [],\n                        \"BlockConfidence\": 100,\n                        \"ReviewConfidence\": 75\n                    }\n                },\n                \"CreateTime\": \"2019-01-01T12:00:00Z\",\n                \"UpdateTime\": \"2019-01-01T16:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"19ae8d8e-dce3-4151-9d4b-5594384987a9\"\n    }\n}",
+        "title": "Querying a specified number of video moderation templates"
       }
     ],
     "DescribeImageSpriteTemplates": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=DescribeImageSpriteTemplates\r\n&Definitions.0=10001\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ImageSpriteTemplateSet\": [\n            {\n                \"Definition\": 10001,\n                \"Name\": \"Image sprite generating template 1\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\",\n                \"Height\": 540,\n                \"SampleType\": \"Percent\",\n                \"SampleInterval\": 10,\n                \"RowCount\": 10,\n                \"ColumnCount\": 5,\n                \"Width\": 960\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Getting a list of image sprite generating templates"
+        "input": "https://mps.tencentcloudapi.com/?Action=DescribeImageSpriteTemplates\n&Definitions.0=10001\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ImageSpriteTemplateSet\": [\n            {\n                \"Definition\": 10001,\n                \"Name\": \"Image sprite generating template 1\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\",\n                \"Height\": 540,\n                \"SampleType\": \"Percent\",\n                \"SampleInterval\": 10,\n                \"RowCount\": 10,\n                \"ColumnCount\": 5,\n                \"ResolutionAdaptive\": \"xx\",\n                \"FillType\": \"black\",\n                \"Comment\": \"\",\n                \"Type\": \"Preset\",\n                \"Width\": 960\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Querying image sprite generating templates"
       }
     ],
     "DescribeMediaMetaData": [
@@ -347,17 +347,17 @@
     "DescribeSampleSnapshotTemplates": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=DescribeSampleSnapshotTemplates\r\n&Definitions.0=10001\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"SampleSnapshotTemplateSet\": [\n            {\n                \"Definition\": 10001,\n                \"Type\": \"Custom\",\n                \"Name\": \"Sampled screenshot template 1\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\",\n                \"Format\": \"jpg\",\n                \"Height\": 540,\n                \"SampleType\": \"Percent\",\n                \"SampleInterval\": 10,\n                \"Width\": 960\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Querying a list of sampled screenshot templates"
+        "input": "https://mps.tencentcloudapi.com/?Action=DescribeSampleSnapshotTemplates\n&Definitions.0=10001\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"SampleSnapshotTemplateSet\": [\n            {\n                \"Definition\": 10001,\n                \"Type\": \"Custom\",\n                \"Name\": \"Sampled screenshot template 1\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\",\n                \"Format\": \"jpg\",\n                \"Height\": 540,\n                \"SampleType\": \"Percent\",\n                \"SampleInterval\": 10,\n                \"ResolutionAdaptive\": \"xx\",\n                \"FillType\": \"black\",\n                \"Width\": 960\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Querying sampled screenshot templates"
       }
     ],
     "DescribeSnapshotByTimeOffsetTemplates": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=DescribeSnapshotByTimeOffsetTemplates\r\n&Definitions.0=10001\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"SnapshotByTimeOffsetTemplateSet\": [\n            {\n                \"Definition\": 10001,\n                \"Type\": \"Custom\",\n                \"Name\": \"Time point screenshot template 1\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\",\n                \"Format\": \"jpg\",\n                \"Height\": 540,\n                \"Width\": 960\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Getting a list of time point screenshot templates"
+        "input": "https://mps.tencentcloudapi.com/?Action=DescribeSnapshotByTimeOffsetTemplates\n&Definitions.0=10001\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"SnapshotByTimeOffsetTemplateSet\": [\n            {\n                \"Definition\": 10001,\n                \"Type\": \"Custom\",\n                \"Name\": \"Time point screenshot template 1\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\",\n                \"Format\": \"jpg\",\n                \"Height\": 540,\n                \"Width\": 960,\n                \"ResolutionAdaptive\": \"xx\",\n                \"FillType\": \"black\"\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Getting time point screenshot templates"
       }
     ],
     "DescribeTaskDetail": [
@@ -423,7 +423,7 @@
         "document": "This example shows you how to query the workflow whose ID is 78459.",
         "input": "https://mps.tencentcloudapi.com/?Action=DescribeWorkflows\n&WorkflowIds.0=78459\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TotalCount\": 1,\n        \"WorkflowInfoSet\": [\n            {\n                \"WorkflowId\": 78459,\n                \"WorkflowName\": \"transcode-10\",\n                \"Status\": \"Enabled\",\n                \"Trigger\": {\n                    \"Type\": \"CosFileUpload\",\n                    \"CosFileUploadTrigger\": {\n                        \"Bucket\": \"TopRankVideo-125xxx88\",\n                        \"Region\": \"ap-chongqing\",\n                        \"Dir\": \"/movie/201907/\"\n                    }\n                },\n                \"OutputStorage\": {\n                    \"Type\": \"COS\",\n                    \"CosOutputStorage\": {\n                        \"Bucket\": \"TopRankVideo-125xxx88\",\n                        \"Region\": \"ap-chongqing\"\n                    }\n                },\n                \"MediaProcessTask\": {\n                    \"TranscodeTaskSet\": [\n                        {\n                            \"Definition\": 10,\n                            \"WatermarkSet\": []\n                        }\n                    ]\n                },\n                \"OutputDir\": \"/movie/201907/\",\n                \"AiContentReviewTask\": null,\n                \"AiRecognitionTask\": null,\n                \"AiAnalysisTask\": null,\n                \"TaskNotifyConfig\": null,\n                \"TaskPriority\": 0,\n                \"CreateTime\": \"2019-07-18T10:00:00Z\",\n                \"UpdateTime\": \"2019-07-18T11:00:03Z\"\n            }\n        ]\n    }\n}",
-        "title": "Querying a specified workflow"
+        "title": "Querying a workflow"
       }
     ],
     "DisableWorkflow": [
@@ -455,7 +455,7 @@
         "document": "",
         "input": "https://mps.tencentcloudapi.com/?Action=ExecuteFunction\n&FunctionName=ExampleFunc\n&FunctionArg=XXX\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8ad61e3a-6b8e-4b4e-9256-fdc701190064ef0\",\n        \"Result\": \"XXX\"\n    }\n}",
-        "title": "Customer A initiating a custom video processing task"
+        "title": "A media processing task customized for customer A."
       }
     ],
     "ManageTask": [
@@ -468,27 +468,27 @@
     ],
     "ModifyAIAnalysisTemplate": [
       {
-        "document": "This example shows you how to modify a custom video content analysis template to enable intelligent thumbnail generation.",
-        "input": "https://mps.tencentcloudapi.com/?Action=ModifyAIAnalysisTemplate\r\n&Definition=30\r\n&CoverConfigure.Switch=ON\r\n&<Common request parameters>",
+        "document": "This example shows you how to enable intelligent thumbnail generation in a custom video content analysis template.",
+        "input": "https://mps.tencentcloudapi.com/?Action=ModifyAIAnalysisTemplate\n&Definition=30\n&CoverConfigure.Switch=ON\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Enabling intelligent thumbnail generation"
       },
       {
-        "document": "This example shows you how to modify a custom video content analysis template to disable intelligent thumbnail generation.",
-        "input": "https://mps.tencentcloudapi.com/?Action=ModifyAIAnalysisTemplate\r\n&Definition=30\r\n&CoverConfigure.Switch=OFF\r\n&<Common request parameters>",
+        "document": "This example shows you how to disable intelligent thumbnail generation in a custom video content analysis template.",
+        "input": "https://mps.tencentcloudapi.com/?Action=ModifyAIAnalysisTemplate\n&Definition=30\n&CoverConfigure.Switch=OFF\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Disabling intelligent thumbnail generation"
       },
       {
-        "document": "This example shows you how to modify a custom video content analysis template to enable intelligent tagging and disable intelligent thumbnail generation.",
-        "input": "https://mps.tencentcloudapi.com/?Action=ModifyAIAnalysisTemplate\r\n&Definition=30\r\n&TagConfigure.Switch=ON\r\n&CoverConfigure.Switch=OFF\r\n&<Common request parameters>",
+        "document": "This example shows you how to enable intelligent labeling and disable intelligent thumbnail generation in a custom video content analysis template.",
+        "input": "https://mps.tencentcloudapi.com/?Action=ModifyAIAnalysisTemplate\n&Definition=30\n&TagConfigure.Switch=ON\n&CoverConfigure.Switch=OFF\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Enabling a content analysis task and disabling another"
       }
     ],
     "ModifyAIRecognitionTemplate": [
       {
-        "document": "This example shows you how to modify a custom video content recognition template to disable full text recognition and enable text keyword recognition.",
+        "document": "This example shows you how to disable full text recognition and enable text keyword recognition in a custom video content recognition template.",
         "input": "https://mps.tencentcloudapi.com/?Action=ModifyAIRecognitionTemplate\n&Definition=30\n&OcrFullTextConfigure.Switch=OFF\n&OcrWordsConfigure.Switch=ON\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Enabling a content recognition task and disabling another"
@@ -505,35 +505,35 @@
     "ModifyAnimatedGraphicsTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=ModifyAnimatedGraphicsTemplate\r\n&Definition=10001\r\n&Name=Animated image generating template 1\r\n&Width=540\r\n&Height=960\r\n&Fps=30\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=ModifyAnimatedGraphicsTemplate\n&Definition=10001\n&Name=Animated image generating template 1\n&Width=540\n&Height=960\n&Fps=30\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying an animated image generating template"
       }
     ],
     "ModifyContentReviewTemplate": [
       {
-        "document": "This example shows you how to modify a custom intelligent content recognition template with the following configuration. Threshold scores for rule violation and human recognition: default values; filter tags: not specified.",
+        "document": "This example shows you how to modify a custom content moderation template, enabling porn detection, setting the thresholds for both rule violation and human recognition to the default, and not specifying any labels.",
         "input": "https://mps.tencentcloudapi.com/?Action=ModifyContentReviewTemplate\n&Definition=30\n&PornConfigure.ImgReviewInfo.Switch=ON\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Modifying an intelligent content recognition template to enable porn recognition"
+        "title": "Enabling porn detection in a content moderation template"
       },
       {
-        "document": "This example shows you how to modify a custom intelligent content recognition template with the following configuration. Threshold score for rule violation: 90; threshold score for human recognition: 60; filter tags: not specified.",
+        "document": "This example shows you how to modify a custom content moderation template. Porn detection is enabled, thresholds for rule violation and human recognition are 90 and 60 respectively, and no labels are specified.",
         "input": "https://mps.tencentcloudapi.com/?Action=ModifyContentReviewTemplate\n&Definition=30\n&PornConfigure.ImgReviewInfo.Switch=ON\n&PornConfigure.ImgReviewInfo.BlockConfidence=90\n&PornConfigure.ImgReviewInfo.ReviewConfidence=60\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"82ae8d8e-dce3-4151-9d4b-5594145223e1\"\n    }\n}",
-        "title": "Modifying an intelligent content recognition template to enable porn recognition with threshold scores specified"
+        "title": "Enabling porn detection in a content moderation template with specified thresholds for rule violation and human recognition"
       },
       {
-        "document": "This example shows you how to modify a custom intelligent content recognition template with the following configuration. Threshold score for rule violation: 90; threshold score for human recognition: 60; filter tags: sexy.",
+        "document": "This example shows you how to modify a custom content moderation template, enabling porn detection. The thresholds for rule violation and human recognition are 90 and 60 respectively, and the label used is `sexy`.",
         "input": "https://mps.tencentcloudapi.com/?Action=ModifyContentReviewTemplate\n&Definition=30\n&PornConfigure.ImgReviewInfo.Switch=ON\n&PornConfigure.ImgReviewInfo.LabelSet.0=sexy\n&PornConfigure.ImgReviewInfo.BlockConfidence=90\n&PornConfigure.ImgReviewInfo.ReviewConfidence=60\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"67ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Modifying an intelligent content recognition template to enable porn recognition with filter tags and threshold scores specified"
+        "title": "Enabling porn detection in a content moderation template with specified thresholds for rule violation and human recognition and specified labels"
       }
     ],
     "ModifyImageSpriteTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=ModifyImageSpriteTemplate\r\n&Definition=10001\r\n&Name=Image sprite generating template 1\r\n&Width=54\r\n&Height=96\r\n&SampleType=Percent\r\n&SampleInterval=10\r\n&RowCount=5\r\n&ColumnCount=10\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=ModifyImageSpriteTemplate\n&Definition=10001\n&Name=Image sprite generating template 1\n&Width=54\n&Height=96\n&SampleType=Percent\n&SampleInterval=10\n&RowCount=5\n&ColumnCount=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying an image sprite generating template"
       }
@@ -567,7 +567,7 @@
     "ModifySampleSnapshotTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=ModifySampleSnapshotTemplate\r\n&Definition=10001\r\n&Name=Sampled screenshot template 1\r\n&Width=540\r\n&Height=960\r\n&SampleType=Percent\r\n&SampleInterval=10\r\n&Format=jpg\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=ModifySampleSnapshotTemplate\n&Definition=10001\n&Name=Sampled screencapturing template 1\n&Width=540\n&Height=960\n&SampleType=Percent\n&SampleInterval=10\n&Format=jpg\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying a sampled screenshot template"
       }
@@ -575,7 +575,7 @@
     "ModifySnapshotByTimeOffsetTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=ModifySnapshotByTimeOffsetTemplate\r\n&Definition=10001\r\n&Name=Time point screenshot template 1\r\n&Width=540\r\n&Height=960\r\n&Format=jpg\r\n&<Common request parameters>",
+        "input": "https://mps.tencentcloudapi.com/?Action=ModifySnapshotByTimeOffsetTemplate\n&Definition=10001\n&Name=Time point screenshot template 1\n&Width=540\n&Height=960\n&Format=jpg\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying a time point screenshot template"
       }
@@ -630,7 +630,7 @@
     ],
     "ProcessMedia": [
       {
-        "document": "This example shows you how to initiate a transcoding task for a specified COS endpoint to output videos in the three formats of 20, 30, and 40.",
+        "document": "This example shows you how to initiate a transcoding task for a COS endpoint to transcode videos according to the transcoding templates 20, 30, and 40.",
         "input": "https://mps.tencentcloudapi.com/?Action=ProcessMedia\n&InputInfo.Type=COS\n&InputInfo.CosInputInfo.Bucket=TopRankVideo-125xxx88\n&InputInfo.CosInputInfo.Region=ap-chongqing\n&InputInfo.CosInputInfo.Object=/movie/201907/WildAnimal.mov\n&MediaProcessTask.TranscodeTaskSet.0.Definition=20\n&MediaProcessTask.TranscodeTaskSet.1.Definition=30\n&MediaProcessTask.TranscodeTaskSet.2.Definition=40\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
         "title": "Initiating a transcoding task"
