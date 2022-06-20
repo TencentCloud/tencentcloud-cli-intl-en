@@ -36,12 +36,6 @@
       "name": "Creates a cluster",
       "output": "CreateClusterResponse"
     },
-    "CreateClusterAsGroup": {
-      "document": "Create a scaling group for an existing cluster",
-      "input": "CreateClusterAsGroupRequest",
-      "name": "Create a cluster scaling group",
-      "output": "CreateClusterAsGroupResponse"
-    },
     "CreateClusterEndpoint": {
       "document": "Create a cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)",
       "input": "CreateClusterEndpointRequest",
@@ -533,6 +527,15 @@
           "name": "InstanceAdvancedSettingsOverrides",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Node image (it is required when creating a node)",
+          "example": "无",
+          "member": "string",
+          "name": "ImageId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1524,7 +1527,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable the node’s default security group (default: `No`, Aphla feature)",
+          "document": "Whether to enable the node’s default security group (default: `No`, Alpha feature)",
           "example": "false",
           "member": "bool",
           "name": "NeedWorkSecurityGroup",
@@ -1636,6 +1639,16 @@
           "name": "ClaimExpiredSeconds",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to ignore ServiceCIDR conflict errors. It is only valid in VPC-CNI mode. Default value: `false`.",
+          "example": "false",
+          "member": "bool",
+          "name": "IgnoreServiceCIDRConflict",
+          "required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -1971,6 +1984,16 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to ignore ServiceCIDR conflict errors. It is only valid in VPC-CNI mode. Default value: `false`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "IgnoreServiceCIDRConflict",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2139,84 +2162,13 @@
       ],
       "usage": "out"
     },
-    "CreateClusterAsGroupRequest": {
-      "document": "CreateClusterAsGroup request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Cluster ID",
-          "member": "string",
-          "name": "ClusterId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The pass-through parameters for scaling group creation, in the format of a JSON string. For more information, see the [CreateAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20440?from_cn_redirect=1) API. The **LaunchConfigurationId** is created with the LaunchConfigurePara parameter, which does not support data entry.",
-          "member": "string",
-          "name": "AutoScalingGroupPara",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The pass-through parameters for launch configuration creation, in the format of a JSON string. For more information, see the [CreateLaunchConfiguration](https://intl.cloud.tencent.com/document/api/377/20447?from_cn_redirect=1) API. **ImageId** is not required as it is already included in the cluster dimension. **UserData** is not required as it's set through the **UserScript**.",
-          "member": "string",
-          "name": "LaunchConfigurePara",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Advanced configuration information of the node",
-          "member": "InstanceAdvancedSettings",
-          "name": "InstanceAdvancedSettings",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Node label array",
-          "member": "Label",
-          "name": "Labels",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateClusterAsGroupResponse": {
-      "document": "CreateClusterAsGroup response structure.",
-      "members": [
-        {
-          "document": "Launch configuration ID",
-          "member": "string",
-          "name": "LaunchConfigurationId",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Scaling group ID",
-          "member": "string",
-          "name": "AutoScalingGroupId",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "CreateClusterEndpointRequest": {
       "document": "CreateClusterEndpoint request structure.",
       "members": [
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cls-xxxxxxxx",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -2225,6 +2177,7 @@
         {
           "default": "",
           "document": "The ID of the subnet where the cluster's port is located (only needs to be entered when the non-public network access is enabled, and must be within the subnet of the cluster's VPC). ",
+          "example": "subnet-xxxxxx",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -2233,10 +2186,38 @@
         {
           "default": "",
           "document": "Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).",
+          "example": "true",
           "member": "bool",
           "name": "IsExtranet",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The domain name",
+          "example": "cls.domain.com",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The security group in use. Required only for public network access.",
+          "example": "sg-xxx",
+          "member": "string",
+          "name": "SecurityGroup",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The LB parameter. Required only for public network access.",
+          "example": "无",
+          "member": "string",
+          "name": "ExtensiveParameters",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2470,6 +2451,24 @@
           "name": "Taints",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Node pool runtime type and version",
+          "example": "docker",
+          "member": "string",
+          "name": "ContainerRuntime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Runtime version",
+          "example": "18.06",
+          "member": "string",
+          "name": "RuntimeVersion",
+          "required": false,
+          "type": "string"
         },
         {
           "default": "",
@@ -5475,6 +5474,16 @@
           "name": "PreStartUserScript",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node taint\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "Taint",
+          "name": "Taints",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],

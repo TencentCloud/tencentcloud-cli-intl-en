@@ -26,9 +26,9 @@
     ],
     "CreateDisasterRecoverGroup": [
       {
-        "document": "Create a spread placement group",
-        "input": "https://cvm.tencentcloudapi.com/?Action=CreateDisasterRecoverGroup\r\n&Name=Physical machine disaster recovery group\r\n&Type=HOST\r\n&<Common request parameter>",
-        "output": "{\n    \"Response\": {\n        \"Type\": \"HOST\",\n        \"DisasterRecoverGroupId\": \"ps-qajfd25h\",\n        \"Name\": \"Physical machine disaster recovery group\",\n        \"CvmQuotaTotal\": 50,\n        \"CurrentNum\": 0,\n        \"CreateTime\": \"2018-06-08T07:26:38Z\",\n        \"RequestId\": \"21387009-9b9c-4b57-8fa2-8228f702ff6c\"\n    }\n}",
+        "document": "This example shows you how to create a spread placement group.",
+        "input": "https://cvm.tencentcloudapi.com/?Action=CreateDisasterRecoverGroup\n&Name=Physical machine spread placement group\n&Type=HOST\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Type\": \"HOST\",\n        \"DisasterRecoverGroupId\": \"ps-qajfd25h\",\n        \"Name\": \"Physical machine spread placement group\",\n        \"CvmQuotaTotal\": 50,\n        \"CurrentNum\": 0,\n        \"CreateTime\": \"2020-09-22 00:00:00\",\n        \"RequestId\": \"21387009-9b9c-4b57-8fa2-8228f702ff6c\"\n    }\n}",
         "title": "Creating a spread placement group"
       }
     ],
@@ -58,8 +58,8 @@
     ],
     "DeleteDisasterRecoverGroups": [
       {
-        "document": "Deletes a spread placement group",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DeleteDisasterRecoverGroups\r\n&DisasterRecoverGroupIds.0=ps-58l1hu01\r\n&<common request parameters>",
+        "document": "This example shows you how to delete a spread placement group.",
+        "input": "https://cvm.tencentcloudapi.com/?Action=DeleteDisasterRecoverGroups\n&DisasterRecoverGroupIds.0=ps-58l1hu01\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
         "title": "Deleting a spread placement group"
       }
@@ -104,8 +104,8 @@
     ],
     "DescribeDisasterRecoverGroupQuota": [
       {
-        "document": "This example shows you how to query your placement group quota.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeDisasterRecoverGroupQuota\r\n&<Common request parameters>",
+        "document": "This example shows you how to query the quota of your placement groups.",
+        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeDisasterRecoverGroupQuota\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"GroupQuota\": 10,\n        \"CvmInHostGroupQuota\": 50,\n        \"CvmInSwGroupQuota\": 20,\n        \"CvmInRackGroupQuota\": 30,\n        \"CurrentNum\": 25,\n        \"RequestId\": \"a13da94a-1cbc-42ca-ac6c-e14ef0c76a7c\"\n    }\n}",
         "title": "Querying placement group quota"
       }
@@ -113,7 +113,7 @@
     "DescribeDisasterRecoverGroups": [
       {
         "document": "This example shows you how to query the information of a spread placement group.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeDisasterRecoverGroups\r\n&<common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeDisasterRecoverGroups\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DisasterRecoverGroupSet\": [\n            {\n                \"DisasterRecoverGroupId\": \"ps-21q9ibvr\",\n                \"Name\": \"Database service\",\n                \"Type\": \"RACK\",\n                \"CvmQuotaTotal\": 30,\n                \"CurrentNum\": 0,\n                \"InstanceIds\": [],\n                \"CreateTime\": \"2018-04-19T02:47:12Z\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"c68ce193-be41-4d13-9a9b-2dc031db6477\"\n    }\n}",
         "title": "Querying the information of a spread placement group"
       }
@@ -321,7 +321,7 @@
     "ImportKeyPair": [
       {
         "document": "",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ImportKeyPair\r\n&KeyName=operation_key\r\n&ProjectId=0\r\n&PublicKey=ssh-rsa XXXXXXXXXXXX== skey_45071\r\n&<Common request parameters>",
+        "input": "https://cvm.tencentcloudapi.com/?Action=ImportKeyPair\n&KeyName=operation_key\n&ProjectId=0\n&PublicKey=ssh-rsa XXXXXXXXXXXX== skey_45071\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"KeyId\": \"skey-4e5ty7i8\",\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Importing a key pair"
       }
@@ -368,10 +368,10 @@
     ],
     "ModifyDisasterRecoverGroupAttribute": [
       {
-        "document": "This example shows you how to modify the attributes of a spread placement group.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyDisasterRecoverGroupAttribute\r\n&DisasterRecoverGroupId=ps-58l1hu01\r\n&Name=Physical machine disaster recovery group 1\r\n&<Common request parameters>",
+        "document": "This example shows you how to modify the name of a spread placement group.",
+        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyDisasterRecoverGroupAttribute\n&DisasterRecoverGroupId=ps-58l1hu01\n&Name=Physical machine spread placement group 1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6e185c04-116f-47b7-b21c-e13580c5d0f2\"\n    }\n}",
-        "title": "Modifying spread placement group attributes"
+        "title": "Modifying the name of a spread placement group"
       }
     ],
     "ModifyHostsAttribute": [
@@ -395,7 +395,7 @@
         "document": "This example shows you how to share the image `img-6pb6lrmy` to the account `1038493875`.",
         "input": "https://cvm.tencentcloudapi.com/?Action=ModifyImageSharePermission\n&ImageId=img-6pb6lrmy\n&AccountIds.0=1038493875\n&Permission=SHARE\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"71e69b56-32be-4412-ab45-49eded6a87be\"\n    }\n}",
-        "title": "Sharing image"
+        "title": "Sharing an image"
       }
     ],
     "ModifyInstancesAttribute": [

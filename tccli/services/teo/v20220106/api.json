@@ -1,10 +1,22 @@
 {
   "actions": {
+    "CreatePrefetchTask": {
+      "document": "This API is used to create a pre-warming task.",
+      "input": "CreatePrefetchTaskRequest",
+      "name": "Creates a pre-warming task",
+      "output": "CreatePrefetchTaskResponse"
+    },
     "CreatePurgeTask": {
       "document": "This API is used to create a cache purging task.",
       "input": "CreatePurgeTaskRequest",
       "name": "Creates a cache purging task",
       "output": "CreatePurgeTaskResponse"
+    },
+    "DescribePrefetchTasks": {
+      "document": "This API is used to query the pre-warming task status.",
+      "input": "DescribePrefetchTasksRequest",
+      "name": "Queries the pre-warming task status",
+      "output": "DescribePrefetchTasksResponse"
     },
     "DescribePurgeTasks": {
       "document": "This API is used to query the cache purging history.",
@@ -17,6 +29,12 @@
       "input": "DescribeZonesRequest",
       "name": "Queries the list of user sites",
       "output": "DescribeZonesResponse"
+    },
+    "DownloadL7Logs": {
+      "document": "This API is used to query layer-7 logs.",
+      "input": "DownloadL7LogsRequest",
+      "name": "Downloads layer-7 logs",
+      "output": "DownloadL7LogsResponse"
     }
   },
   "metadata": {
@@ -25,6 +43,78 @@
     "serviceShortName": "teo"
   },
   "objects": {
+    "CreatePrefetchTaskRequest": {
+      "document": "CreatePrefetchTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the site",
+          "example": "8afj24jzg9",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of resources to be pre-warmed, for example:\nhttp://www.example.com/example.txt",
+          "example": "[\"http://www.qq.com/1.txt\"]",
+          "member": "string",
+          "name": "Targets",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to encode the URL\nNote that if it’s enabled, the purging is based on the converted URLs.",
+          "example": "true",
+          "member": "bool",
+          "name": "EncodeUrl",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "HTTP header information",
+          "example": "无",
+          "member": "Header",
+          "name": "Headers",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePrefetchTaskResponse": {
+      "document": "CreatePrefetchTask response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "example": "jkqj4hahfkaf",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of failed tasks\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "[]",
+          "member": "FailReason",
+          "name": "FailedList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreatePurgeTaskRequest": {
       "document": "CreatePurgeTask request structure.",
       "members": [
@@ -48,7 +138,7 @@
         },
         {
           "default": "",
-          "document": "The target resource to be purged. One target per line.",
+          "document": "Target resource to be purged, which depends on the `Type` field.\n1. When `Type = purge_host`:\nHostnames are purged, such as www.example.com and foo.bar.example.com.\n2. When `Type = purge_prefix`:\nPrefixes are purged, such as http://www.example.com/example.\n3. When `Type = purge_url`:\nURLs are purged, such as https://www.example.com/example.jpg.\n4. When `Type = purge_all`: All types of resources are purged.\n`Targets` is not a required field.",
           "example": "[\"http://www.qq.com/1.txt\"]",
           "member": "string",
           "name": "Targets",
@@ -87,6 +177,123 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrefetchTasksRequest": {
+      "document": "DescribePrefetchTasks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID",
+          "example": "ajjvjaf924",
+          "member": "string",
+          "name": "JobId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time of the query",
+          "example": "2022-02-09T02:35:00Z",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time of the query",
+          "example": "2022-02-09T02:35:00Z",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset of the query",
+          "example": "7",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of results returned",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Statuses of tasks to be queried. Values:\n`processing`, `success`, `failed`, `timeout` and `invalid`",
+          "example": "processing",
+          "member": "string",
+          "name": "Statuses",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "ID of the site",
+          "example": "jalfj2n42",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of domain names queried",
+          "example": "[\"www.qq.com\"]",
+          "member": "string",
+          "name": "Domains",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Resources queried",
+          "example": "http://www.qq.com/1.txt",
+          "member": "string",
+          "name": "Target",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrefetchTasksResponse": {
+      "document": "DescribePrefetchTasks response structure.",
+      "members": [
+        {
+          "document": "Total entries that match the specified query condition",
+          "example": "100",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of tasks returned",
+          "example": "无",
+          "member": "Task",
+          "name": "Tasks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -286,6 +493,123 @@
       ],
       "type": "object"
     },
+    "DownloadL7LogsRequest": {
+      "document": "DownloadL7Logs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time. It must conform to the RFC3339 standard.",
+          "example": "2022-05-04T03:27:00+08:00",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time. It must conform to the RFC3339 standard.",
+          "example": "2022-05-10T23:59:00+08:00",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "example": "12",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Current page",
+          "example": "2",
+          "member": "int64",
+          "name": "PageNo",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "List of sites",
+          "example": "[\"zone1\",\"zone2\"]",
+          "member": "string",
+          "name": "Zones",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of domain names",
+          "example": "[\"www.baidu.com\"]",
+          "member": "string",
+          "name": "Domains",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DownloadL7LogsResponse": {
+      "document": "DownloadL7Logs response structure.",
+      "members": [
+        {
+          "document": "Layer-7 offline log data\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "{}",
+          "member": "L7OfflineLog",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Page size\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Page number\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "success",
+          "member": "int64",
+          "name": "PageNo",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of pages\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Pages",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of entries\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "FailReason": {
       "document": "Failure reason",
       "members": [
@@ -301,13 +625,95 @@
         },
         {
           "default": "",
-          "document": "List of resources failed to be purged",
+          "document": "List of resources failed to be processed. \n ",
           "example": "[\"http://www.qq.com/1.txt\"]",
           "member": "string",
           "name": "Targets",
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Header": {
+      "document": "HTTP header, used as input for the CreatePrefetchTask API",
+      "members": [
+        {
+          "default": "",
+          "document": "HTTP header name",
+          "example": "User-Agent",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP header value",
+          "example": "TencentEdgeOne",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "L7OfflineLog": {
+      "document": "Layer-7 offline log details",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time of the log packaging\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "\"\"",
+          "member": "int64",
+          "name": "LogTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Site name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "\"baidu.com\"",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Log size, in bytes\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "12",
+          "member": "int64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Download address\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Log package name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "LogPacketName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

@@ -4468,6 +4468,7 @@
         {
           "default": "",
           "document": "Key pair `ID`, the unique identifier of a key pair.",
+          "example": "skey-q29u65hu",
           "member": "string",
           "name": "KeyId",
           "required": false,
@@ -4477,6 +4478,7 @@
         {
           "default": "",
           "document": "Key pair name.",
+          "example": "test",
           "member": "string",
           "name": "KeyName",
           "required": false,
@@ -4486,6 +4488,7 @@
         {
           "default": "",
           "document": "`ID` of the project to which a key pair belongs.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -4495,6 +4498,7 @@
         {
           "default": "",
           "document": "Key pair description.",
+          "example": "test",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -4504,6 +4508,7 @@
         {
           "default": "",
           "document": "Content of public key in a key pair.",
+          "example": "xxx",
           "member": "string",
           "name": "PublicKey",
           "required": false,
@@ -4513,6 +4518,7 @@
         {
           "default": "",
           "document": "Content of private key in a key pair. Tencent Cloud do not keep private keys. Please keep it properly.",
+          "example": "xxx",
           "member": "string",
           "name": "PrivateKey",
           "required": false,
@@ -4522,6 +4528,7 @@
         {
           "default": "",
           "document": "`ID` list of instances associated with a key.",
+          "example": "[]",
           "member": "string",
           "name": "AssociatedInstanceIds",
           "required": false,
@@ -4531,11 +4538,22 @@
         {
           "default": "",
           "document": "Creation time, which follows the `ISO8601` standard and uses `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.",
+          "example": "2022-03-21T08:41:45Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The list of tags bound to the key.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "[]",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
