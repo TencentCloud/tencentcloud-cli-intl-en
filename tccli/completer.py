@@ -3,6 +3,7 @@
 import os
 import re
 import tccli.options_define as OptionsDefine
+from tccli.utils import Utils
 from tccli.loaders import Loader
 loader = Loader()
 services = sorted(loader.get_available_services().keys())
@@ -30,7 +31,7 @@ def comp_two_arg(arg):
         pre_print(services, arg)
         return
     if arg == "configure":
-        pre_print(["get", "list", "set"], None)
+        pre_print(["get", "list", "set", "remove"], None)
     else:
         actions = loader.get_service_all_action_param(arg)
         pre_print(actions.keys(), None)
@@ -40,9 +41,9 @@ def comp_three_arg(arg_service, arg_cur):
     if arg_service not in services:
         return
     if arg_service == "configure":
-        if arg_cur in ["get", "list", "set"]:
+        if arg_cur in ["get", "list", "set", "remove"]:
             return
-        pre_print(["get", "list", "set"], arg_cur)
+        pre_print(["get", "list", "set", "remove"], arg_cur)
     else:
         action_list = []
         actions = loader.get_service_all_action_param(arg_service)
@@ -60,7 +61,8 @@ def comp_more_arg(arg_service, arg_action, arg_parma):
     if arg_service == "configure":
         return
 
-    actions = loader.get_service_all_action_param(arg_service)
+    mode = Utils.get_call_mode()
+    actions = loader.get_service_all_action_param(arg_service, mode)
 
     if arg_action in actions.keys():
         loc_params = ["--" + x for x in sorted(actions[arg_action])]

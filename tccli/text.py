@@ -1,5 +1,8 @@
 
 import six
+import sys
+
+PY2 = sys.version_info[0] == 2
 
 
 def format_text(data, stream):
@@ -64,7 +67,7 @@ def _format_dict(scalar_keys, item, identifier, stream):
     if scalars:
         if identifier is not None:
             scalars.insert(0, identifier.upper())
-        if six.PY2:
+        if PY2:
             import platform
             if 'Windows' in platform.system():
                 for m in range(len(scalars)):

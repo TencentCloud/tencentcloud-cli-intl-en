@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+import os
 import sys
 import copy
 import tccli.services as Services
@@ -42,9 +43,24 @@ class CLICommand(BaseCommand):
 
         # Resolve field conflicts between the product (--version) and tccli versions (--version)
         self._handle_service_version_argumnet(args, parser)
+        self._handle_warning(args)
 
         parsed_args, remaining = parser.parse_known_args(args)
         return command_map[parsed_args.command](remaining, parsed_args)
+
+    def _handle_warning(self, args):
+        profile = "default"
+        if "--profile" in args:
+            location = args.index("--profile") + 1
+            if location < len(args):
+                profile = args[location]
+        conf_path = os.path.join(os.path.expanduser("~"), ".tccli")
+        conf = {}
+        if Utils.file_existed(conf_path, profile+".configure")[0]:
+            conf = Utils.load_json_msg(os.path.join(conf_path, profile+".configure"))
+        if "--warning" not in args and conf.get("warning", "") != "on":
+            import warnings
+            warnings.filterwarnings("ignore")
 
     def _handle_service_version_argumnet(self, args, parser):
         if "--version" in args:
@@ -110,7 +126,9 @@ class CLICommand(BaseCommand):
             action=option_params.get('action'),
             required=option_params.get('required'),
             choices=option_params.get('choices'),
-            cli_type_name=option_params.get('type'))
+            cli_type_name=option_params.get('type'),
+            const=option_params.get('const'),
+            nargs=option_params.get('nargs'))
 
     def _build_argument_map(self):
         argument_map = OrderedDict()
@@ -164,7 +182,6 @@ class ServiceCommand(BaseCommand):
             )
         return command_map
 
-
     def __call__(self, args, parsed_globals):
         command_map = self._get_command_map()
         service_parser = self._create_parser(command_map)
@@ -215,8 +232,7 @@ class ActionCommand(BaseCommand):
     def _get_param_model(self):
         if self._call_mode == Options_define.CliUnfoldArgument:
             return self._cli_data.get_unfold_param_info(
-                self._service_name, self._version, self._action_name, profile=self.profile, param_array=True
-            )
+                self._service_name, self._version, self._action_name, profile=self.profile, param_array=True)
         else:
             return self._cli_data.get_param_info(self._service_name, self._version, self._action_name)
 
@@ -231,29 +247,19 @@ class ActionCommand(BaseCommand):
             if self._call_mode == Options_define.CliUnfoldArgument:
                 arg_class = self.ARG_TYPES.get(arg_info["type"], self.DEFAULT_ARG_CLASS)
             else:
-                arg_class = self.ARG_TYPES.get(arg_info["type"], self.DEFAULT_ARG_CLASS)
+                arg_class = self.DEFAULT_ARG_CLASS
             arg_object = arg_class(
                 name=arg_name,
                 argument_model=arg_info,
-                is_required=True if arg_info["required"] == "required" else False,
+                is_required=True if arg_info["required"] == "Required" else False,
                 action_model=self._action_model)
             arg_object.add_to_arg_map(argument_map)
-
-        # building-argument-table #
-        self.generate_cli_skeleton_argument.add_to_arg_map(argument_map)
-        self.cli_input_argument.add_to_arg_map(argument_map)
-        # building-argument-table #
-
         return argument_map
 
     def __call__(self, args, parsed_globals):
 
         self._call_mode = self._get_call_mode(parsed_globals)
-
-        # before-building-argument-table-parser
-        self.generate_cli_skeleton_argument.override_required_args(self.argument_map, args)
-        self.cli_input_argument.override_required_args(self.argument_map, args)
-        # before-building-argument-table-parser
+        self._get_profile(parsed_globals)
 
         action_parser = self._create_action_parser(self.argument_map)
         action_parser.add_argument('help', nargs='?')
@@ -277,19 +283,7 @@ class ActionCommand(BaseCommand):
             action_parameters = self.cli_unfold_argument.build_action_parameters(parsed_args)
         else:
             action_parameters = self._build_action_parameters(parsed_args, self.argument_map)
-        
-        # calling-command
-        override = self.generate_cli_skeleton_argument.generate_skeleton(
-            action_parameters, parsed_args, parsed_globals)
-        if override is not None:
-            if isinstance(override, Exception):
-                raise override
-            else:
-                return override
-        else:
-            self.cli_input_argument.add_to_call_parameters(
-                action_parameters, parsed_args)
-            return self._action_caller(action_parameters, vars(parsed_globals)) 
+        return self._action_caller(action_parameters, vars(parsed_globals))
 
     def create_help_command(self):
         return ActionHelpCommand(self._service_name, self._version, self._action_name)
@@ -304,11 +298,17 @@ class ActionCommand(BaseCommand):
                 argument_object.add_to_params(action_params, value)
         return action_params
 
+    def _get_profile(self, parsed_globals):
+        if getattr(parsed_globals, Options_define.Profile):
+            self.profile = getattr(parsed_globals, Options_define.Profile)
+        else:
+            self.profile = "default"
+
     def _get_call_mode(self, parsed_globals):
-        if getattr(parsed_globals, Options_define.GenerateCliSkeleton.replace('-','_'), None):
+        if getattr(parsed_globals, Options_define.GenerateCliSkeleton.replace('-', '_'), None):
             return Options_define.GenerateCliSkeleton
 
-        if getattr(parsed_globals, Options_define.CliInputJson.replace('-','_'), None):
+        if getattr(parsed_globals, Options_define.CliInputJson.replace('-', '_'), None):
             return Options_define.CliInputJson
 
         if getattr(parsed_globals, Options_define.CliUnfoldArgument.replace('-', '_'), None):

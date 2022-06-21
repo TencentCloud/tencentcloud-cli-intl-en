@@ -3,11 +3,13 @@
 
 import sys
 import argparse
+from tccli.log import init
 import six
 from difflib import get_close_matches
 from gettext import gettext
 from tccli.error_msg import USAGE
 
+log = init("tccli.argparser")
 
 class CustomAction(argparse.Action):
 
@@ -35,6 +37,9 @@ class BaseArgParser(argparse.ArgumentParser):
     def _check_value(self, action, value):
         if action.choices is not None and value not in action.choices:
             msg = ['Invalid choice, valid choices are:\n']
+            args = (' '.join(sys.argv[1:])).split(value)
+            help_msg = "you can run `tccli %shelp` to see valid choices" % args[0]
+            log.error(USAGE + msg[0] + help_msg)
             for i in range(len(action.choices))[::self.ChoicesPerLine]:
                 current = []
                 for choice in action.choices[i:i + self.ChoicesPerLine]:
@@ -46,6 +51,8 @@ class BaseArgParser(argparse.ArgumentParser):
                 for word in possible:
                     extra.append('  * %s' % word)
                 msg.extend(extra)
+            msg.append("Invalid choice: The specified command or option is not found, " \
+                       "try lastest version by running `pip install --upgrade tccli`.")
             raise argparse.ArgumentError(action, '\n'.join(msg))
 
     def parse_known_args(self, args=None, namespace=None):
@@ -134,10 +141,10 @@ class ArgMapArgParser(BaseArgParser):
             self.add_argument('subcommand', action=CustomAction, command_map=command_map, nargs='?')
 
     def parse_known_args(self, args=None, namespace=None):
-        if len(args) == 1 and args[0] == 'help':
+        if len(args) > 0 and args[0] == 'help':
             namespace = argparse.Namespace()
             namespace.help = 'help'
-            return namespace, []
+            return namespace, args[1:]
         else:
             return super(ArgMapArgParser, self).parse_known_args(
                 args, namespace)

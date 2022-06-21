@@ -5,7 +5,7 @@ import sys
 import six
 import tccli.options_define as OptionsDefine
 from tccli.base_command import BasicCommand
-from tccli.exceptions import ConfigurationError, ParamError
+from tccli.exceptions import ConfigurationError, ParamError, UnknownArgumentError
 from tccli.help_command import BaseHelpCommand
 from tccli.utils import Utils
 from tccli.loaders import Loader
@@ -23,8 +23,10 @@ class BasicConfigure(BasicCommand):
 
     def __init__(self):
         super(BasicConfigure, self).__init__()
-        self.config_list = [OptionsDefine.Region, OptionsDefine.Output]
-        self.cred_list = [OptionsDefine.SecretId, OptionsDefine.SecretKey, OptionsDefine.Token]
+        self.config_list = [
+            OptionsDefine.Region, OptionsDefine.Output, OptionsDefine.ArrayCount, OptionsDefine.Warnings]
+        self.cred_list = [OptionsDefine.SecretId, OptionsDefine.SecretKey, OptionsDefine.Token,
+                          OptionsDefine.RoleArn, OptionsDefine.RoleSessionName]
         self.conf_service_list = [OptionsDefine.Version, OptionsDefine.Endpoint]
         self.cli_path = os.path.join(os.path.expanduser("~"), ".tccli")
         self._cli_data = Loader()
@@ -193,7 +195,11 @@ class ConfigureSetCommand(BasicConfigure):
             if varname in self.cred_list:
                 cred[varname] = value
             elif varname in self.config_list:
-                config[varname] = value
+                if varname == OptionsDefine.Output and value not in ['json', 'text', 'table']:
+                    print('Output format must be json, text or table. Set as default: json')
+                    config[varname] = 'json'
+                else:
+                    config[varname] = value
             else:
                 extra[varname] = value
 
@@ -263,11 +269,42 @@ class ConfigureGetCommand(BasicConfigure):
             self._stream.write('\n')
 
 
+class ConfigureRemoveCommand(BasicConfigure):
+    NAME = 'remove'
+    DESCRIPTION = 'remove your profile: if you don\'t specify the file name, default file will be removed.'
+    USEAGE = 'tccli configure remove [--profile profile-name]'
+    EXAMPLES = "$ tccli configure remove\n" \
+               "$ tccli configure remove --profile test\n"
+
+    def __init__(self, error_stream=sys.stderr):
+        super(ConfigureRemoveCommand, self).__init__()
+        self._error_stream = error_stream
+
+    def _run_main(self, args, parsed_globals):
+        profile_name = parsed_globals.profile \
+            if parsed_globals.profile else "default"
+
+        configure_name = profile_name + '.configure'
+        credential_name = profile_name + '.credential'
+
+        configure_file = os.path.join(self.cli_path, configure_name)
+        credential_file = os.path.join(self.cli_path, credential_name)
+
+        if os.path.exists(configure_file):
+            os.remove(configure_file)
+        else:
+            self._error_stream.write("profile `%s` is not exist\n" % configure_name)
+        if os.path.exists(credential_file):
+            os.remove(credential_file)
+        else:
+            self._error_stream.write("profile `%s` is not exist\n" % credential_name)
+
+
 class ConfigureCommand(BasicConfigure):
     NAME = "configure"
     DESCRIPTION = "configure your profile(eg:secretId, secretKey, region, output)."
     USEAGE = "tccli configure [--profile profile-name]"
-    AVAILABLESUBCOMMAND = ["set", 'get', 'list']
+    AVAILABLESUBCOMMAND = ["set", 'get', 'list', 'remove']
     EXAMPLES = "To create a new configuration::\n" \
                "    $ tccli configure\n" \
                "    TencentCloud API secretId [None]: secretId\n" \
@@ -284,7 +321,8 @@ class ConfigureCommand(BasicConfigure):
     SUBCOMMANDS = [
         {'name': 'list', 'command_class': ConfigureListCommand},
         {'name': 'get', 'command_class': ConfigureGetCommand},
-        {'name': 'set', 'command_class': ConfigureSetCommand}
+        {'name': 'set', 'command_class': ConfigureSetCommand},
+        {'name': 'remove', 'command_class': ConfigureRemoveCommand}
     ]
 
     VALUES_TO_PROMPT = [
@@ -332,7 +370,18 @@ class ConfigureCommand(BasicConfigure):
         for index, prompt_text in self.VALUES_TO_PROMPT:
             if index in config:
                 response = self._compat_input("%s[%s]: " % (prompt_text, config[index]))
-                conf_data[index] = response if response else config[index]
+                if index == OptionsDefine.Output and response not in ['json', 'text', 'table']:
+                    if config[index] not in ['json', 'text', 'table']:
+                        print('Output format must be json, text or table. Set as default: json')
+                        conf_data[index] = 'json'
+                    else:
+                        conf_data[index] = config[index]
+                elif index == OptionsDefine.Region and not response:
+                    if not config[index]:
+                        print('Set region as default: %s' % config[index])
+                    conf_data[index] = config[index]
+                else:
+                    conf_data[index] = response if response else config[index]
             else:
                 response = self._compat_input(
                     "%s[%s]: " % (prompt_text, "*"+cred[index][-4:] if cred[index]!="None" else cred[index]))
@@ -347,6 +396,8 @@ class ConfigureCommand(BasicConfigure):
             config = {
                 "region": "ap-guangzhou",
                 "output": "json",
+                "array_count": 10,
+                "warning": "off"
             }
         self._init_configure("default.configure", config)
 
@@ -368,6 +419,14 @@ class ConfigureHelp(BaseHelpCommand):
 
     def _get_document_handler(self):
         return ConfigureDocumentHandler(self.doc, self.command_obj)
+
+    def __call__(self, args, parsed_globals):
+        if args:
+            raise UnknownArgumentError("Unknown options: %s" % ', '.join(args))
+
+        document_handle = self._get_document_handler()
+        document_handle.doc_help()
+        sys.stdout.write(self.doc.getvalue())
 
 
 class ConfigureDocumentHandler(object):
@@ -414,4 +473,7 @@ class ConfigureDocumentHandler(object):
         self.available_subcommand()
         self.available_config()
         self.example()
+
+
+
 

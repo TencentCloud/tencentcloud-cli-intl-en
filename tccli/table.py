@@ -1,9 +1,12 @@
+
 import os
 import sys
 import struct
 
 from . import colorama
 import six
+
+PY2 = sys.version_info[0] == 2
 
 
 def determine_terminal_width(default_width=80):
@@ -31,6 +34,7 @@ def is_a_tty():
 def center_text(text, length=80, left_edge='|', right_edge='|',
                 text_length=None):
     """Center text with specified edge chars.
+
     You can pass in the length of the text as an arg, otherwise it is computed
     automatically for you.  This can allow you to center a string not based
     on it's literal length (useful if you're using ANSI codes).
@@ -298,7 +302,7 @@ class MultiTable(object):
                 else:
                     left_edge = ''
                 stylized = self._styler.style_row_element(element)
-                if six.PY2:
+                if PY2:
                     import platform
                     if 'Windows' in platform.system():
                         stylized = stylized.encode('GBK')

@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
 
 import os
+import six
 import copy
 import json
 from tccli.utils import Utils
@@ -26,7 +28,32 @@ PARAM_TYPE_MAP = {
 }
 
 HELPER_MAP = {
+    "--profile": "specify a profile name",
+    "--secretId": "specify a SecretId",
+    "--secretKey": "specify a SecretKey",
+    "--token": "temporary certificate token",
+    "--role-arn": "specify a RoleArn",
+    "--role-session-name": "specify a RoleSessionName",
+    "--use-cvm-role": "use CVM Role to obtain the secret id and secret key",
+    "--region": "identify the region to which the instance you want to work with belongs.",
+    "--endpoint": "specify an access point domain name",
+    "--detail": "see detailed help information",
+    "--filter": "specify a filter field",
+    "--timeout": "specify a request timeout",
+    "--generate-cli-skeleton": "Prints a JSON skeleton to standard output without sending "
+                               "an API request. If provided with no value or the value "
+                               "input, prints a sample input JSON that can be used as an "
+                               "argument for --cli-input-json. If provided with the value "
+                               "output, it validates the command inputs and returns a "
+                               "sample output JSON for that command.",
+    "--cli-input-json": "Reads arguments from the JSON string provided. The JSON string "
+                        "follows the format provided by --generate-cli-skeleton. ",
     "--cli-unfold-argument": "complex type parameters are expanded with dots",
+    "--https-proxy": "specify a https proxy",
+    "--warning": "Open the warning log",
+    "--waiter": "Set param `expr`, `to`, `timeout` and `interval` to get the polling result."
+                "`expr` is the inquiry expresion, `to` is the ending status"
+                ".`timeout` and `interval` are optional params.",
 }
 
 class Loader(object):
@@ -45,7 +72,7 @@ class Loader(object):
         return "Before using tccli, you should use the command(tccli configure) to configure your profile " \
                "as the default For more information, please enter tccli configure help"
 
-    def get_useage(self):
+    def get_usage(self):
         return "tccli [options] <service> [options] <action> [options] [options and parameters]"
 
     def get_options(self):
@@ -57,7 +84,7 @@ class Loader(object):
     def get_cli_option(self):
         return {
             "filter": {
-                "help": "specify a filter field"
+                "help": HELPER_MAP['--filter'],
             },
             "output": {
                 "choices": [
@@ -68,38 +95,72 @@ class Loader(object):
                 "metavar": "output_format"
             },
             "secretId": {
-                "help": "specify a SecretId",
+                "help": HELPER_MAP['--secretId'],
             },
             "secretKey": {
-                "help": "specify a SecretKey",
+                "help": HELPER_MAP['--secretKey'],
             },
             "token": {
-                "help": "temporary certificate token",
+                "help": HELPER_MAP['--token'],
+            },
+            "role-arn": {
+                "help": HELPER_MAP['--role-arn'],
+            },
+            "role-session-name": {
+                "help": HELPER_MAP['--role-session-name'],
+            },
+            "use-cvm-role": {
+                "help": HELPER_MAP['--use-cvm-role'],
+                'action': 'store_true'
             },
             "version": {
                 "help": "specify a DescribeRegions api version",
                 "metavar": "version_name"
             },
+            "detail": {
+                "help": HELPER_MAP['--detail'],
+                'action': 'store_true'
+            },
             "profile": {
-                "help": "specify a profile name",
+                "help": HELPER_MAP['--profile'],
                 "metavar": "profile_name"
             },
             "region": {
-                "help": "identify the region to which the instance you want to work with belongs.",
+                "help": HELPER_MAP['--region'],
                 "metavar": "region_name"
             },
             "endpoint": {
-                "help": "specify an access point domain name",
+                "help": HELPER_MAP['--endpoint'],
                 "metavar": "endpoint_url"
             },
             "timeout": {
                 "type": "int",
-                "help": "specify a request timeout"
+                "help": HELPER_MAP['--timeout'],
+            },
+            "generate-cli-skeleton": {
+                'help': HELPER_MAP['--generate-cli-skeleton'],
+                'nargs': '?',
+                'const': 'input',
+                'choices': ['input'],
+            },
+            'cli-input-json': {
+                'help': HELPER_MAP['--cli-input-json'],
             },
             'cli-unfold-argument': {
                 'help': HELPER_MAP['--cli-unfold-argument'],
                 'action': 'store_true'
+            },
+            'https-proxy': {
+                'help': HELPER_MAP['--https-proxy'],
+            },
+            'warning': {
+                'help': HELPER_MAP['--warning'],
+                'action': 'store_true'
+            },
+            'waiter': {
+                'help': HELPER_MAP['--waiter'],
             }
+
         }
 
     def _version_transform(self, version):
@@ -118,15 +179,19 @@ class Loader(object):
         if not os.path.exists(apis_path):
             raise Exception("Not find service:%s version:%s model" % (service, version))
 
-        with open(apis_path, 'r') as f:
-            return json.load(f)
+        if six.PY2:
+            with open(apis_path, 'r') as f:
+                return json.load(f)
+        else:
+            with open(apis_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
 
     def get_service_description(self, service, version):
         service_model = self.get_service_model(service, version)
         description = service_model["metadata"].get("api_brief", '')
         return description
 
-    def get_service_useage(self, service):
+    def get_service_usage(self, service):
         return "tccli %s <action> [--param...]" % service
 
     def get_service_options(self, service):
@@ -184,37 +249,23 @@ class Loader(object):
     def get_action_description(self, service, version, action):
         return self.get_actions_info(service, version)[action]['document']
 
-    def get_action_useage(self, service, action):
+    def get_action_usage(self, service, action):
         return "tccli %s %s [--param...]" % (service, action)
 
     def get_action_options(self, service, action):
-        return {
-            "help": "show the tccli %s %s help info" % (service, action),
-            "--profile": "specify a profile name",
-            "--secretId": "specify a SecretId",
-            "--secretKey": "specify a SecretKey",
-            "--token": "temporary certificate token",
-            "--region": "identify the region to which the instance you want to work with belongs.",
-            "--endpoint": "specify an access point domain name",
-            "--version": "specify a %s api version" % action,
-            "--filter": "specify a filter field",
-            "--timeout": "specify a request timeout",
-            "--generate-cli-skeleton": "Prints a JSON skeleton to standard output without sending "
-                                       "an API request. If provided with no value or the value "
-                                       "input, prints a sample input JSON that can be used as an "
-                                       "argument for --cli-input-json. If provided with the value "
-                                       "output, it validates the command inputs and returns a "
-                                       "sample output JSON for that command.",
-            "--cli-input-json": "Reads arguments from the JSON string provided. The JSON string "
-                                "follows the format provided by --generate-cli-skeleton. ",
-            "--cli-unfold-argument": "complex type parameters are expanded with dots"
-        }
+        HELPER_MAP["help"] = "show the tccli %s %s help info" % (service, action)
+        HELPER_MAP["--version"] = "specify a %s api version" % action
+        return HELPER_MAP
 
     def _filling_param_info(self, param_info, para, param_type, member):
         param_info[para["name"]] = {}
         param_info[para["name"]]["document"] = para["document"]
-        param_info[para["name"]]["required"] = "Required" if para["required"] else "Optional"
-        param_info[para["name"]]["type_name"] = para["member"]
+        if "required" in para:
+            param_info[para["name"]]["required"] = "Required" if para["required"] else "Optional"
+        if "value_allowed_null" in para:
+            param_info[para["name"]]["value_allowed_null"] = \
+                "AllowedNull" if para["value_allowed_null"] else "NotAllowedNull"
+        param_info[para["name"]]["type_name"] = PARAM_TYPE_MAP.get(para["member"], para["member"])
         param_info[para["name"]]["type"] = PARAM_TYPE_MAP.get(param_type, param_type)
         param_info[para["name"]]["members"] = member
         return param_info
@@ -224,55 +275,64 @@ class Loader(object):
         for para in param_model:
             if para["type"] == "list":
                 if para["member"] not in BASE_TYPE:
-                    param_info = self._filling_param_info(
+                    self._filling_param_info(
                         param_info, para, "list",
-                        [self._recur_get_param_info(object_model, para["member"])])
+                        [self._get_param_info(object_model[para["member"]]["members"], object_model)])
                 else:
-                    param_info = self._filling_param_info(
-                        param_info, para, "list",
-                        [para["member"]])
+                    self._filling_param_info(
+                        param_info, para, "list", [para["member"]])
             else:
                 if para["member"] not in BASE_TYPE:
                     param_info = self._filling_param_info(
                         param_info, para, para["member"],
-                        self._recur_get_param_info(object_model, para["member"]))
+                        self._get_param_info(object_model[para["member"]]["members"], object_model))
                 else:
-                    param_info = self._filling_param_info(param_info, para, para["member"], para["member"])
+                    self._filling_param_info(param_info, para, para["member"], para["member"])
         return param_info
-
-    def _recur_get_param_info(self, param_model, name):
-        return self._get_param_info(param_model[name]["members"], param_model)
 
     def get_param_info(self, service, version, action):
         service_model = self.get_service_model(service, version)
         param_model = service_model["objects"]
         return self._get_param_info(param_model[action + "Request"]["members"], param_model)
 
+    def get_output_param_info(self, service, version, action):
+        service_model = self.get_service_model(service, version)
+        param_model = service_model["objects"]
+        return self._get_param_info(param_model[action + "Response"]["members"], param_model)
+
     def _generate_param_skeleton(self, param_model, name):
         param_skeleton = {}
         for para in param_model:
             if para["type"] == "list":
                 if para["member"] not in BASE_TYPE:
-                    param_skeleton[para["name"]] = [self._recur_generate_param_skeleton(name, para["member"])]
+                    param_skeleton[para["name"]] = \
+                        [self._generate_param_skeleton(name[para["member"]]["members"], name)]
                 else:
                     param_skeleton[para["name"]] = [PARAM_TYPE_MAP[para["member"]]]
             else:
                 if para["member"] not in BASE_TYPE:
-                    param_skeleton[para["name"]] = self._recur_generate_param_skeleton(name, para["member"])
+                    param_skeleton[para["name"]] = \
+                        self._generate_param_skeleton(name[para["member"]]["members"], name)
                 else:
                     param_skeleton[para["name"]] = PARAM_TYPE_MAP[para["member"]]
         return param_skeleton
+
+    def generate_param_skeleton(self, service, version, action):
+        service_model = self.get_service_model(service, version)
+        param_model = service_model["objects"]
+        return self._generate_param_skeleton(param_model[action + "Request"]["members"], param_model)
 
     def get_unfold_param_info(self, service, version, action, profile="default", param_array=False):
         service_model = self.get_service_model(service, version)
         object_model = service_model["objects"]
         all_param_list = []
-        for para in object_model[action+"Request"]["members"]:
+        for para in object_model[action + "Request"]["members"]:
             param_list = []
             self._get_unfold_param_info(object_model, all_param_list, param_list, para)
 
         if param_array:
             all_param_list = self._add_array_item(all_param_list, profile)
+
         return self._filling_unfold_param_info(all_param_list, service, version, action)
 
     def _add_array_item(self, param_list, profile):
@@ -351,11 +411,111 @@ class Loader(object):
             unfold_param[".".join(param)]["document"] = document
         return unfold_param
 
-    def _recur_generate_param_skeleton(self, param_model, name):
-        return self._generate_param_skeleton(param_model[name]["members"], param_model)
+    def get_action_example_model(self, service, version, action):
+        services_path = self.get_services_path()
+        version = "v" + version.replace('-', '')
+        example_path = os.path.join(services_path, service, version, "examples.json")
+        if not os.path.exists(example_path):
+            raise Exception("Not find service:%s version:%s model" % (service, version))
 
-    def generate_param_skeleton(self, service, version, action):
-        service_model = self.get_service_model(service, version)
-        param_model = service_model["objects"]
-        return self._generate_param_skeleton(param_model[action + "Request"]["members"], param_model)
+        with open(example_path, 'r') as f:
+            examples = json.load(f)
+        return examples['actions'][action]
+
+    def generate_cli_example(self, service, version, action):
+        examples = self.get_action_example_model(service, version, action)
+        for example in examples:
+            example["input"] = self.translate_cli_example(service, action, example)
+            try:
+                example["output"] = json.dumps(json.loads(example["output"], object_pairs_hook=OrderedDict),
+                                               indent=4, separators=(',', ': '), ensure_ascii=False)
+            except Exception:
+                pass
+        return examples
+
+    def translate_cli_example(self, module, action, example):
+        if example["input"].startswith("https"):
+            input_param_list = example["input"].replace("&<Common request parameters>", "").split("&")[1:]
+            return self.translate_get_cli_param(input_param_list)
+        elif example["input"].startswith("POST"):
+            input_param = example["input"].split('\n\n')[-1]
+            try:
+                input_param = json.loads(input_param, object_pairs_hook=OrderedDict)
+            except Exception as err:
+                raise Exception("service: %s, action: %s, err: %s" % (module, action, err))
+            return self.translate_post_cli_param(input_param)
+
+    def translate_get_cli_param(self, input_param_list):
+        param_list = [k.strip() for k in input_param_list]
+        param_dict = OrderedDict()
+        for item in param_list:
+            try:
+                key = item.split("=")[0]
+                value = item.split("=")[1]
+            except Exception:
+                continue
+            if key.split(".")[-1].isdigit():
+                key = ".".join(key.split(".")[:-1])
+                if key not in param_dict:
+                    param_dict[key] = [value]
+                else:
+                    param_dict[key].append(value)
+            else:
+                param_dict[key] = value
+
+        cli_param_list = []
+        for key, value in param_dict.items():
+            cli_param = "--" + key
+            if isinstance(value, list):
+                for item in value:
+                    if " " in str(item):
+                        cli_param += " " + "'" + str(item) + "'"
+                    else:
+                        cli_param += " " + str(item)
+            else:
+                if " " in str(value):
+                    cli_param += " " + "'" + str(value) + "'"
+                else:
+                    cli_param += " " + str(value)
+            cli_param_list.append(cli_param)
+        return cli_param_list
+
+    def translate_post_cli_param(self, input_param):
+        all_param_list = []
+        param_list = []
+        self._translate_post_cli_param(input_param, param_list, all_param_list)
+        cli_param_list = ["--" + ".".join(item[:-1]) + ' ' + item[-1] for item in all_param_list]
+        return cli_param_list
+
+    def _translate_post_cli_param(self, input_param, param_list, all_param_list):
+        # basic type
+        if not isinstance(input_param, list) and not isinstance(input_param, dict):
+            if isinstance(input_param, str) and " " in input_param:
+                input_param = "'" + input_param + "'"
+            param_list.append(str(input_param))
+            tmp = copy.deepcopy(param_list)
+            all_param_list.append(tmp)
+            param_list.pop()
+        # basic type array
+        elif isinstance(input_param, list) and len(input_param) > 0 and not isinstance(input_param[0], dict):
+            value = " ".join(["'"+str(param)+"'" if " " in str(param) else str(param) for param in input_param])
+            param_list.append(value)
+            tmp = copy.deepcopy(param_list)
+            all_param_list.append(tmp)
+            param_list.pop()
+        # complex object type array
+        elif isinstance(input_param, list) and len(input_param) > 0 and isinstance(input_param[0], dict):
+            for idx, param in enumerate(input_param):
+                param_list.append(str(idx))
+                self._translate_post_cli_param(param, param_list, all_param_list)
+                param_list.pop()
+        # complex object type
+        elif isinstance(input_param, dict):
+            for param in input_param:
+                param_list.append(param)
+                self._translate_post_cli_param(input_param[param], param_list, all_param_list)
+                param_list.pop()
+        # null array
+        else:
+            pass
 
