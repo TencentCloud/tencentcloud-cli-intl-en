@@ -210,6 +210,12 @@
       "name": "Queries a level-defining policy of CC attacks",
       "output": "DescribeCCLevelPolicyResponse"
     },
+    "DescribeCCPrecisionPlyList": {
+      "document": "This API is used to obtain a CC precise protection policy.",
+      "input": "DescribeCCPrecisionPlyListRequest",
+      "name": "Obtains a CC precise protection policy",
+      "output": "DescribeCCPrecisionPlyListResponse"
+    },
     "DescribeCCThresholdList": {
       "document": "This API is used to query the list of CC cleansing thresholds.",
       "input": "DescribeCCThresholdListRequest",
@@ -221,6 +227,18 @@
       "input": "DescribeCCTrendRequest",
       "name": "Gets CC attack data",
       "output": "DescribeCCTrendResponse"
+    },
+    "DescribeCcBlackWhiteIpList": {
+      "document": "This API is used to obtain a layer-4 access control list.",
+      "input": "DescribeCcBlackWhiteIpListRequest",
+      "name": "Obtains a layer-4 access control list",
+      "output": "DescribeCcBlackWhiteIpListResponse"
+    },
+    "DescribeCcGeoIPBlockConfigList": {
+      "document": "This API is used to obtain a list of regional blocking configurations.",
+      "input": "DescribeCcGeoIPBlockConfigListRequest",
+      "name": "Obtains a list of regional blocking configurations",
+      "output": "DescribeCcGeoIPBlockConfigListResponse"
     },
     "DescribeDDoSTrend": {
       "document": "This API is used to get DDoS attack traffic bandwidth and attack packet rate.",
@@ -245,6 +263,12 @@
       "input": "DescribeListBGPIPInstancesRequest",
       "name": "Gets a list of Anti-DDoS Advanced instances",
       "output": "DescribeListBGPIPInstancesResponse"
+    },
+    "DescribeListBGPInstances": {
+      "document": "This API is used to get a list of Anti-DDoS Pro instances.\n",
+      "input": "DescribeListBGPInstancesRequest",
+      "name": "Gets a list of Anti-DDoS Pro instances",
+      "output": "DescribeListBGPInstancesResponse"
     },
     "DescribeListBlackWhiteIpList": {
       "document": "This API is used to get a list of Anti-DDoS IP blocklists/allowlists.",
@@ -795,6 +819,241 @@
       ],
       "usage": "out"
     },
+    "BGPInstance": {
+      "document": "Anti-DDoS Pro instance details",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS instance details",
+          "example": "{\"EipList\":[\"175.27.164.158\"],\"InstanceId\":\"bgp-0000015a\"}",
+          "member": "InstanceRelation",
+          "name": "InstanceDetail",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance specifications",
+          "example": "{\"ProtectBandwidth\":30000,\"ProtectCountLimit\":10,\"ProtectIPNumbe",
+          "member": "BGPInstanceSpecification",
+          "name": "SpecificationLimit",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance usage statistics",
+          "example": "{\"ProtectCountUsage\":0,\"ProtectIPNumberUsage\":1,\"Last7DayAttackC",
+          "member": "BGPInstanceUsages",
+          "name": "Usage",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region of the Anti-DDoS instance",
+          "example": "{\"Region\":\"ap-nanjing\"}",
+          "member": "RegionInfo",
+          "name": "Region",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status of the Anti-DDoS instance. Valid values:\n`idle`: running\n`attacking`: under attacks\n`blocking`: blocked\n`creating`: creating\n`deblocking`: unblocked\n`isolate`: isolated",
+          "example": "idle",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Purchase Time",
+          "example": "2021-04-25 23:04:10",
+          "member": "datetime",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time",
+          "example": "2021-07-25 23:04:10",
+          "member": "datetime",
+          "name": "ExpiredTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the Anti-DDoS instance",
+          "example": "“”",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Package details of the Anti-DDoS instance.\nNote: This field is `null` for an Anti-DDoS instance without using a package.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "null",
+          "member": "PackInfo",
+          "name": "PackInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Details of the cloud product used by the EIP bound to the Anti-DDoS Pro instance",
+          "example": "[{\"Ip\":\"175.27.164.158\",\"BizType\":\"public\",\"DeviceType\":\"cvm\",\"I",
+          "member": "EipProductInfo",
+          "name": "EipProductInfos",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Binding status of the Anti-DDoS Pro instance\n`idle`: the instance is bound.\n `bounding`: the instance is in binding.\n`failed`: the binding failed.\n]",
+          "example": "idle",
+          "member": "string",
+          "name": "BoundStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Layer-4 protection level",
+          "example": "defalut",
+          "member": "string",
+          "name": "DDoSLevel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CC protection switch",
+          "example": "1",
+          "member": "int64",
+          "name": "CCEnable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BGPInstanceSpecification": {
+      "document": "Anti-DDoS Pro instance specifications",
+      "members": [
+        {
+          "default": "",
+          "document": "Base protection bandwidth (in Gbps)",
+          "example": "1",
+          "member": "uint64",
+          "name": "ProtectBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of protection chances",
+          "example": "10",
+          "member": "uint64",
+          "name": "ProtectCountLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of protection IPs",
+          "example": "10",
+          "member": "uint64",
+          "name": "ProtectIPNumberLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal status. Valid values:\n`0`: disabled\n`1`: enabled\n]",
+          "example": "0",
+          "member": "uint64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protection type of Anti-DDoS Pro. Valid values: `0` (general protection) and `1` (Lighthouse-based protection).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "UnionPackFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "ServiceBandWidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BGPInstanceUsages": {
+      "document": "Anti-DDoS Pro instance usage statistics",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of used protection chances",
+          "member": "uint64",
+          "name": "ProtectCountUsage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of protected IPs",
+          "member": "uint64",
+          "name": "ProtectIPNumberUsage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of attack times in the last 7 days",
+          "member": "uint64",
+          "name": "Last7DayAttackCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "BlackWhiteIpRelation": {
       "document": "IP blocklist/allowlist",
       "members": [
@@ -1012,6 +1271,93 @@
       ],
       "usage": "both"
     },
+    "CCPrecisionPolicy": {
+      "document": "CC precise protection policy information",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP address",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protocol",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain name",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Action of limiting request frequency. Valid values: `alg` (limit request frequency via verification codes) and `drop`(drop requests).",
+          "member": "string",
+          "name": "PolicyAction",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of policies",
+          "member": "CCPrecisionPlyRecord",
+          "name": "PolicyList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time",
+          "member": "datetime",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CCReqLimitPolicyRecord": {
       "document": "Configuration fields of CC frequency limit policies",
       "members": [
@@ -1166,6 +1512,112 @@
       ],
       "usage": "out"
     },
+    "CcBlackWhiteIpPolicy": {
+      "document": "Layer-4 access control list",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "example": "ccBlackWhite-0000000x",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP address",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain name",
+          "example": "www.xx.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protocol",
+          "example": "http",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP type. Valid values: `black` (blocklisted IP), `white`(allowlisted IP).",
+          "example": "black",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Blocklist/Allowlist IP address",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "BlackWhiteIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mask",
+          "example": "24",
+          "member": "uint64",
+          "name": "Mask",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2021-10-12 00:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time",
+          "example": "2021-10-12 00:00:00",
+          "member": "string",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CcGeoIPBlockConfig": {
       "document": "Anti-DDoS regional blocking configuration",
       "members": [
@@ -1211,6 +1663,112 @@
         }
       ],
       "usage": "both"
+    },
+    "CcGeoIpPolicyNew": {
+      "document": "Information of the policy list",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "example": "rule-0000011x",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP address",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "www.xx.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Protocol. Valid values: `HTTP` and `HTTPS`.",
+          "example": "http",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Action. Valid values: `drop` and `alg`.",
+          "example": "drop",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region type. Valid values: `china`, `oversea` and `customized`.",
+          "example": "china",
+          "member": "string",
+          "name": "RegionType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID list of regions to be blocked",
+          "example": "[0,1]",
+          "member": "uint64",
+          "name": "AreaList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2021-10-12 00:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time",
+          "example": "2021-10-12 00:00:00",
+          "member": "string",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "CertIdInsL7Rules": {
       "document": "Set of rules configured for certificates",
@@ -2979,6 +3537,105 @@
       ],
       "type": "object"
     },
+    "DescribeCCPrecisionPlyListRequest": {
+      "document": "DescribeCCPrecisionPlyList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS service type. Valid values: `bgpip-multip` (Anti-DDoS Pro) and `bgpip` (Anti-DDoS Advanced).",
+          "example": "bgp-multip",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results returned in one page",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP address, which is required when an Anti-DDoS Advanced instance is used.",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Domain name, which is required when an Anti-DDoS Advanced instance is used.",
+          "example": "www.qq.com",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Protocol, which is required when an Anti-DDoS Advanced instance is used.",
+          "example": "http",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCCPrecisionPlyListResponse": {
+      "document": "DescribeCCPrecisionPlyList response structure.",
+      "members": [
+        {
+          "document": "Number of policy lists",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Information of the policy list",
+          "example": "无",
+          "member": "CCPrecisionPolicy",
+          "name": "PrecisionPolicyList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeCCThresholdListRequest": {
       "document": "DescribeCCThresholdList request structure.",
       "members": [
@@ -3211,6 +3868,222 @@
           "name": "MetricName",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCcBlackWhiteIpListRequest": {
+      "document": "DescribeCcBlackWhiteIpList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS service type. Valid values: `bgpip-multip` (Anti-DDoS Pro) and `bgpip` (Anti-DDoS Advanced).",
+          "example": "bgp-multip",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results returned in one page",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "IP address, which is required when an Anti-DDoS Advanced instance is used.",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Domain name, which is required when an Anti-DDoS Advanced instance is used.",
+          "example": "www.xx.com",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Protocol, which is required when an Anti-DDoS Advanced instance is used.",
+          "example": "http",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies a blocklist/allowlist IP.",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "FilterIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether is an IP blocklist or IP allowlist.",
+          "example": "black",
+          "member": "string",
+          "name": "FilterType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCcBlackWhiteIpListResponse": {
+      "document": "DescribeCcBlackWhiteIpList response structure.",
+      "members": [
+        {
+          "document": "Number of policy lists",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Information of the policy list",
+          "example": "无",
+          "member": "CcBlackWhiteIpPolicy",
+          "name": "CcBlackWhiteIpList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCcGeoIPBlockConfigListRequest": {
+      "document": "DescribeCcGeoIPBlockConfigList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS service type. Valid values: `bgpip-multip` (Anti-DDoS Pro) and `bgpip` (Anti-DDoS Advanced).",
+          "example": "bgp-multip",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results returned in one page",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "bgpip-0000011x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IP address, which is required when an Anti-DDoS Advanced instance is used.",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Domain name, which is required when an Anti-DDoS Advanced instance is used.",
+          "example": "www.xx.com",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Protocol, which is required when an Anti-DDoS Advanced instance is used.",
+          "example": "http",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCcGeoIPBlockConfigListResponse": {
+      "document": "DescribeCcGeoIPBlockConfigList response structure.",
+      "members": [
+        {
+          "document": "Number of policy lists",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Information of the policy list",
+          "example": "无",
+          "member": "CcGeoIpPolicyNew",
+          "name": "CcGeoIpPolicyList",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -3595,6 +4468,123 @@
           "document": "List of Anti-DDoS Advanced instances",
           "example": "无",
           "member": "BGPIPInstance",
+          "name": "InstanceList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListBGPInstancesRequest": {
+      "document": "DescribeListBGPInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.",
+          "example": "25",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "IP filter",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "FilterIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS instance ID filter. For example, `bgp-00000001`.",
+          "example": "bgp-00000001",
+          "member": "string",
+          "name": "FilterInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region filter. For example, `ap-guangzhou`.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "FilterRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name filter",
+          "example": "test",
+          "member": "string",
+          "name": "FilterName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Line filter. Valid values: 1: BGP; 2: Non-BGP.",
+          "example": "1",
+          "member": "uint64",
+          "name": "FilterLine",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filters by instance status. `idle`: Running; `attacking`: Being attacked; `blocking`: Being blocked.",
+          "example": "attacking",
+          "member": "string",
+          "name": "FilterStatus",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filters by binding status. `bounding`: the instance is bound; `failed`: the binding failed.",
+          "example": "bounding",
+          "member": "string",
+          "name": "FilterBoundStatus",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListBGPInstancesResponse": {
+      "document": "DescribeListBGPInstances response structure.",
+      "members": [
+        {
+          "document": "Total number of lists",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of Anti-DDoS Pro instances",
+          "example": "无",
+          "member": "BGPInstance",
           "name": "InstanceList",
           "required": true,
           "type": "list",
@@ -4509,6 +5499,48 @@
         }
       ],
       "usage": "out"
+    },
+    "EipProductInfo": {
+      "document": "Details of the cloud product used by the EIP",
+      "members": [
+        {
+          "default": "",
+          "document": "IP address",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud product category. Valid values:\n`public`: CVM\n`bm`: BM\n`eni`: ENI\n`vpngw`: VPN gateway\n `natgw`: NAT gateway\n`waf`: WAF\n`fpc`: financial products\n`gaap`: GAAP \n`other`: hosted IP\n]",
+          "member": "string",
+          "name": "BizType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud sub-product category. Valid values: `cvm` (CVM), `lb` (Load balancer), `eni` (ENI), `vpngw` (VPN gateway), `natgw` (NAT gateway), `waf` (WAF), `fpc` (financial products), `gaap` (GAAP), `eip` (BM EIP) and `other` (hosted IP).",
+          "member": "string",
+          "name": "DeviceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud instance ID of the IP. This field InstanceId will be `eni-*` if the instance ID is bound to an ENI IP; `none` if there is no instance ID to bind to a hosted IP.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ForwardListener": {
       "document": "Forwarding listener",

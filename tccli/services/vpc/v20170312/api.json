@@ -54,6 +54,18 @@
       "name": "Binds a direct connect gateway to a NAT Gateway",
       "output": "AssociateDirectConnectGatewayNatGatewayResponse"
     },
+    "AssociateNatGatewayAddress": {
+      "document": "This API is used to bind an EIP to NAT Gateway.",
+      "input": "AssociateNatGatewayAddressRequest",
+      "name": "Binds a NAT gateway to an EIP",
+      "output": "AssociateNatGatewayAddressResponse"
+    },
+    "AssociateNetworkAclSubnets": {
+      "document": "This API is used to associate a network ACL with subnets in a VPC instance.",
+      "input": "AssociateNetworkAclSubnetsRequest",
+      "name": "Associates a network ACL with subnets",
+      "output": "AssociateNetworkAclSubnetsResponse"
+    },
     "AssociateNetworkInterfaceSecurityGroups": {
       "document": "This API (AssociateNetworkInterfaceSecurityGroups) is used to attach a security group to an ENI.",
       "input": "AssociateNetworkInterfaceSecurityGroupsRequest",
@@ -120,6 +132,12 @@
       "name": "Creates an ENI and binds it to a CVM",
       "output": "CreateAndAttachNetworkInterfaceResponse"
     },
+    "CreateAssistantCidr": {
+      "document": "This API (CreateAssistantCidr) is used to batch create secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)",
+      "input": "CreateAssistantCidrRequest",
+      "name": "Creates secondary CIDR blocks",
+      "output": "CreateAssistantCidrResponse"
+    },
     "CreateBandwidthPackage": {
       "document": "This API is used to create a [device bandwidth package](https://intl.cloud.tencent.com/document/product/684/15245?from_cn_redirect=1#bwptype) or an [IP bandwidth package](https://intl.cloud.tencent.com/document/product/684/15245?from_cn_redirect=1#bwptype).",
       "input": "CreateBandwidthPackageRequest",
@@ -174,11 +192,35 @@
       "name": "Creates a local gateway",
       "output": "CreateLocalGatewayResponse"
     },
+    "CreateNatGateway": {
+      "document": "This API is used to create a NAT Gateway.\nBefore taking actions on a NAT Gateway, ensure that it has been successfully created, namely, the `State` field in the response of the `DescribeNatGateway` API is `AVAILABLE`.",
+      "input": "CreateNatGatewayRequest",
+      "name": "Creates a NAT gateway",
+      "output": "CreateNatGatewayResponse"
+    },
+    "CreateNatGatewayDestinationIpPortTranslationNatRule": {
+      "document": "This API (CreateNatGatewayDestinationIpPortTranslationNatRule) is used to create a port forwarding rule for a NAT gateway.",
+      "input": "CreateNatGatewayDestinationIpPortTranslationNatRuleRequest",
+      "name": "Creates a port forwarding rule for a NAT gateway",
+      "output": "CreateNatGatewayDestinationIpPortTranslationNatRuleResponse"
+    },
+    "CreateNatGatewaySourceIpTranslationNatRule": {
+      "document": "This API is used to create a SNAT rule for the NAT Gateway.",
+      "input": "CreateNatGatewaySourceIpTranslationNatRuleRequest",
+      "name": "Creates a SNAT rule for the NAT Gateway",
+      "output": "CreateNatGatewaySourceIpTranslationNatRuleResponse"
+    },
     "CreateNetDetect": {
       "document": "This API is used to create a network detection instance.",
       "input": "CreateNetDetectRequest",
       "name": "CreateNetDetect",
       "output": "CreateNetDetectResponse"
+    },
+    "CreateNetworkAcl": {
+      "document": "This API is used to create a <a href=\"https://intl.cloud.tencent.com/document/product/215/20088?from_cn_redirect=1\">network ACL</a>.\n* The inbound and outbound rules for a new network ACL are \"Deny All\" by default. You need to call `ModifyNetworkAclEntries` after creation to set rules for the network ACL as needed.",
+      "input": "CreateNetworkAclRequest",
+      "name": "Creates a network ACL",
+      "output": "CreateNetworkAclResponse"
     },
     "CreateNetworkInterface": {
       "document": "This API is used to create an ENI.\n* You can specify private IP addresses and a primary IP when creating an ENI. The specified private IP must be in the same subnet as the ENI and is not occupied.\n* When creating an ENI, you can specify the number of private IP addresses that you want to apply for. The system will randomly generate private IP addresses.\n* An ENI can only be bound with a limited number of IP addresses. For more information about resource limits, see <a href=\"/document/product/576/18527\">ENI Use Limits</a>.\n* You can bind an existing security group when creating an ENI.\n* You can bind a tag when creating an ENI. The tag list in the response indicates the tags that have been successfully added.\n>?This API is async. You can call the [`DescribeVpcTaskResult`](https://intl.cloud.tencent.com/document/api/215/59037?from_cn_redirect=1) API to query the task result. When the task is completed, you can continue other tasks.\n>",
@@ -294,6 +336,12 @@
       "name": "Deletes an IP address template group",
       "output": "DeleteAddressTemplateGroupResponse"
     },
+    "DeleteAssistantCidr": {
+      "document": "This API (DeleteAssistantCidr) is used to delete secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)",
+      "input": "DeleteAssistantCidrRequest",
+      "name": "Deletes secondary CIDR blocks",
+      "output": "DeleteAssistantCidrResponse"
+    },
     "DeleteBandwidthPackage": {
       "document": "This API is used to delete bandwidth packages, including [device bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85) and [IP bandwidth packages](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85).",
       "input": "DeleteBandwidthPackageRequest",
@@ -342,11 +390,35 @@
       "name": "Deletes a local gateway",
       "output": "DeleteLocalGatewayResponse"
     },
+    "DeleteNatGateway": {
+      "document": "This API (DeleteNatGateway) is used to delete a NAT gateway.\nAfter the deletion of a NAT gateway, the system will automatically delete the routing entry that contains the NAT gateway from the route table. It will also unbind the Elastic IP.",
+      "input": "DeleteNatGatewayRequest",
+      "name": "Deletes a NAT gateway",
+      "output": "DeleteNatGatewayResponse"
+    },
+    "DeleteNatGatewayDestinationIpPortTranslationNatRule": {
+      "document": "This API (DeleteNatGatewayDestinationIpPortTranslationNatRule) is used to delete a port forwarding rule for a NAT gateway.",
+      "input": "DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest",
+      "name": "Deletes a port forwarding rule for a NAT gateway",
+      "output": "DeleteNatGatewayDestinationIpPortTranslationNatRuleResponse"
+    },
+    "DeleteNatGatewaySourceIpTranslationNatRule": {
+      "document": "This API is used to delete a SNAT forwarding rule of the NAT Gateway.",
+      "input": "DeleteNatGatewaySourceIpTranslationNatRuleRequest",
+      "name": "Deletes a SNAT forwarding rule of the NAT Gateway",
+      "output": "DeleteNatGatewaySourceIpTranslationNatRuleResponse"
+    },
     "DeleteNetDetect": {
       "document": "This API (DeleteNetDetect) is used to delete a network detection instance.",
       "input": "DeleteNetDetectRequest",
       "name": "DeleteNetDetect",
       "output": "DeleteNetDetectResponse"
+    },
+    "DeleteNetworkAcl": {
+      "document": "This API is used to delete a network ACL.",
+      "input": "DeleteNetworkAclRequest",
+      "name": "Deletes a network ACL",
+      "output": "DeleteNetworkAclResponse"
     },
     "DeleteNetworkInterface": {
       "document": "This API is used to delete an ENI.\n* An ENI cannot be deleted when it’s bound to a CVM.\n * After the deletion, all of its private IP addresses will be released.\n\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
@@ -576,6 +648,12 @@
       "name": "Queries the monitoring details of a gateway",
       "output": "DescribeGatewayFlowMonitorDetailResponse"
     },
+    "DescribeGatewayFlowQos": {
+      "document": "This API (DescribeGatewayFlowQos) is used to query the QoS bandwidth limit of inbound IP flow in a gateway.",
+      "input": "DescribeGatewayFlowQosRequest",
+      "name": "Queries the QoS bandwidth limit of inbound IP flow in a gateway.",
+      "output": "DescribeGatewayFlowQosResponse"
+    },
     "DescribeHaVips": {
       "document": "This API (DescribeHaVips) is used to query the list of highly available virtual IPs (HAVIP).",
       "input": "DescribeHaVipsRequest",
@@ -599,6 +677,24 @@
       "input": "DescribeLocalGatewayRequest",
       "name": "Queries local gateways",
       "output": "DescribeLocalGatewayResponse"
+    },
+    "DescribeNatGatewayDestinationIpPortTranslationNatRules": {
+      "document": "This API (DescribeNatGatewayDestinationIpPortTranslationNatRules) is used to query the array of objects of the port forwarding rules for a NAT gateway.",
+      "input": "DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest",
+      "name": "Queries the port forwarding rule of a NAT gateway",
+      "output": "DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse"
+    },
+    "DescribeNatGatewaySourceIpTranslationNatRules": {
+      "document": "This API is used to query the object arrays of SNAT forwarding rules of the NAT Gateway.",
+      "input": "DescribeNatGatewaySourceIpTranslationNatRulesRequest",
+      "name": "Queries the SNAT forwarding rules of the NAT Gateway",
+      "output": "DescribeNatGatewaySourceIpTranslationNatRulesResponse"
+    },
+    "DescribeNatGateways": {
+      "document": "This API (DescribeNatGateways) is used to query NAT gateways.",
+      "input": "DescribeNatGatewaysRequest",
+      "name": "Queries a NAT gateway",
+      "output": "DescribeNatGatewaysResponse"
     },
     "DescribeNetDetectStates": {
       "document": "This API (DescribeNetDetectStates) is used to query the list of network detection verification results.",
@@ -726,6 +822,12 @@
       "name": "Views VPC resources.",
       "output": "DescribeVpcResourceDashboardResponse"
     },
+    "DescribeVpcTaskResult": {
+      "document": "This API is used to query the execution result of a VPC task.",
+      "input": "DescribeVpcTaskResultRequest",
+      "name": "Queries VPC async task execution results",
+      "output": "DescribeVpcTaskResultResponse"
+    },
     "DescribeVpcs": {
       "document": "This API (DescribeVpcs) is used to query the VPC list.",
       "input": "DescribeVpcsRequest",
@@ -786,6 +888,12 @@
       "name": "Disables flow log",
       "output": "DisableFlowLogsResponse"
     },
+    "DisableGatewayFlowMonitor": {
+      "document": "This API (DisableGatewayFlowMonitor) is used to disable gateway flow monitor.",
+      "input": "DisableGatewayFlowMonitorRequest",
+      "name": "Disables gateway flow monitor",
+      "output": "DisableGatewayFlowMonitorResponse"
+    },
     "DisassociateAddress": {
       "document": "This API is used to unbind an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).\n* This API supports unbinding an EIP from CVM instances and ENIs.\n* This API does not support unbinding an EIP from a NAT Gateway. To unbind an EIP from a NAT Gateway, use the [`DisassociateNatGatewayAddress`](https://intl.cloud.tencent.com/document/api/215/36716?from_cn_redirect=1) API.\n* Only EIPs in BIND or BIND_ENI status can be unbound.\n* Blocked EIPs cannot be unbound.",
       "input": "DisassociateAddressRequest",
@@ -797,6 +905,18 @@
       "input": "DisassociateDirectConnectGatewayNatGatewayRequest",
       "name": "Unbinds a direct connect gateway from a NAT Gateway",
       "output": "DisassociateDirectConnectGatewayNatGatewayResponse"
+    },
+    "DisassociateNatGatewayAddress": {
+      "document": "This API (DisassociateNatGatewayAddress) is used to unbind an EIP from a NAT gateway.",
+      "input": "DisassociateNatGatewayAddressRequest",
+      "name": "Unbinds an EIP from a NAT gateway",
+      "output": "DisassociateNatGatewayAddressResponse"
+    },
+    "DisassociateNetworkAclSubnets": {
+      "document": "This API is used to disassociate a network ACL from subnets in a VPC instance.",
+      "input": "DisassociateNetworkAclSubnetsRequest",
+      "name": "Disassociates a network ACL from a subnet",
+      "output": "DisassociateNetworkAclSubnetsResponse"
     },
     "DisassociateNetworkInterfaceSecurityGroups": {
       "document": "This API (DisassociateNetworkInterfaceSecurityGroups) is used to detach (or fully detach if possible) a security group from an ENI.",
@@ -827,6 +947,12 @@
       "input": "EnableFlowLogsRequest",
       "name": "Enables flow log",
       "output": "EnableFlowLogsResponse"
+    },
+    "EnableGatewayFlowMonitor": {
+      "document": "This API (EnableGatewayFlowMonitor) is used to enable gateway flow monitor.",
+      "input": "EnableGatewayFlowMonitorRequest",
+      "name": "Enables gateway traffic monitoring",
+      "output": "EnableGatewayFlowMonitorResponse"
     },
     "EnableVpcEndPointConnect": {
       "document": "This API is used to determine whether to accept the request of connecting with an endpoint.",
@@ -912,6 +1038,12 @@
       "name": "Modifies the EIP bandwidth",
       "output": "ModifyAddressesBandwidthResponse"
     },
+    "ModifyAssistantCidr": {
+      "document": "This API (ModifyAssistantCidr) is used to batch modify (e.g. add and delete) secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)",
+      "input": "ModifyAssistantCidrRequest",
+      "name": "Modifies secondary CIDR blocks.",
+      "output": "ModifyAssistantCidrResponse"
+    },
     "ModifyBandwidthPackageAttribute": {
       "document": "This API is used to modify the attributes of a bandwidth package, including the bandwidth package name, and so on.",
       "input": "ModifyBandwidthPackageAttributeRequest",
@@ -954,6 +1086,12 @@
       "name": "Modifies the attributes of a flow log",
       "output": "ModifyFlowLogAttributeResponse"
     },
+    "ModifyGatewayFlowQos": {
+      "document": "This API (ModifyGatewayFlowQos) is used to adjust the QoS bandwidth limit in a gateway.",
+      "input": "ModifyGatewayFlowQosRequest",
+      "name": "Adjusts the QoS bandwidth limit in a gateway",
+      "output": "ModifyGatewayFlowQosResponse"
+    },
     "ModifyHaVipAttribute": {
       "document": "This API (ModifyHaVipAttribute) is used to modify HAVIP attributes.",
       "input": "ModifyHaVipAttributeRequest",
@@ -972,11 +1110,41 @@
       "name": "Modifies a local gateway",
       "output": "ModifyLocalGatewayResponse"
     },
+    "ModifyNatGatewayAttribute": {
+      "document": "This API (ModifyNatGatewayAttribute) is used to modify the attributes of a NAT gateway.",
+      "input": "ModifyNatGatewayAttributeRequest",
+      "name": "Modifies the attributes of a NAT gateway",
+      "output": "ModifyNatGatewayAttributeResponse"
+    },
+    "ModifyNatGatewayDestinationIpPortTranslationNatRule": {
+      "document": "This API (ModifyNatGatewayDestinationIpPortTranslationNatRule) is used to modify a port forwarding rule for a NAT gateway.",
+      "input": "ModifyNatGatewayDestinationIpPortTranslationNatRuleRequest",
+      "name": "Modifies a port forwarding rule for a NAT gateway",
+      "output": "ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse"
+    },
+    "ModifyNatGatewaySourceIpTranslationNatRule": {
+      "document": "This API is used to modify a SNAT forwarding rule of the NAT Gateway.",
+      "input": "ModifyNatGatewaySourceIpTranslationNatRuleRequest",
+      "name": "Modifies a SNAT forwarding rule of the NAT Gateway",
+      "output": "ModifyNatGatewaySourceIpTranslationNatRuleResponse"
+    },
     "ModifyNetDetect": {
       "document": "This API (ModifyNetDetect) is used to modify network detection parameters.",
       "input": "ModifyNetDetectRequest",
       "name": "ModifyNetDetect",
       "output": "ModifyNetDetectResponse"
+    },
+    "ModifyNetworkAclAttribute": {
+      "document": "This API is used to modify the attributes of a network ACL.",
+      "input": "ModifyNetworkAclAttributeRequest",
+      "name": "Modifies network ACL attributes",
+      "output": "ModifyNetworkAclAttributeResponse"
+    },
+    "ModifyNetworkAclEntries": {
+      "document": "This API is used to modify (add or delete) the inbound and outbound rules of a network ACL.",
+      "input": "ModifyNetworkAclEntriesRequest",
+      "name": "Modifies network ACL rules",
+      "output": "ModifyNetworkAclEntriesResponse"
     },
     "ModifyNetworkInterfaceAttribute": {
       "document": "This API (ModifyNetworkInterfaceAttribute) is used to modify ENI attributes.",
@@ -1074,6 +1242,12 @@
       "name": "Modifies the route status of a VPN gateway",
       "output": "ModifyVpnGatewayRoutesResponse"
     },
+    "NotifyRoutes": {
+      "document": "This API is used to publish a route to CCN. This can also be done by clicking the **Publish to CCN** button on the route table page.",
+      "input": "NotifyRoutesRequest",
+      "name": "Publishes a route to CCN",
+      "output": "NotifyRoutesResponse"
+    },
     "RejectAttachCcnInstances": {
       "document": "This API (RejectAttachCcnInstances) is used to reject association operations when instances are associated across accounts for the CCN owner.\n",
       "input": "RejectAttachCcnInstancesRequest",
@@ -1128,6 +1302,12 @@
       "name": "Re-applies for the instance association",
       "output": "ResetAttachCcnInstancesResponse"
     },
+    "ResetNatGatewayConnection": {
+      "document": "This API (ResetNatGatewayConnection) is used to adjust concurrent connection cap for the NAT gateway.",
+      "input": "ResetNatGatewayConnectionRequest",
+      "name": "Adjusts the concurrent connection cap for the NAT gateway",
+      "output": "ResetNatGatewayConnectionResponse"
+    },
     "ResetRoutes": {
       "document": "This API (ResetRoutes) is used to reset the name of a route table and all its routing policies.<br />\nNote: When this API is called, all routing policies in the current route table are deleted before new routing policies are saved, which may incur network interruption.",
       "input": "ResetRoutesRequest",
@@ -1181,6 +1361,12 @@
       "input": "UnassignPrivateIpAddressesRequest",
       "name": "Returns the private IPs of an ENI",
       "output": "UnassignPrivateIpAddressesResponse"
+    },
+    "WithdrawNotifyRoutes": {
+      "document": "This API is used to withdraw a route from CCN. This can also be done by clicking the **Withdraw from CCN** button on the route table page.",
+      "input": "WithdrawNotifyRoutesRequest",
+      "name": "Withdraws a route from CCN",
+      "output": "WithdrawNotifyRoutesResponse"
     }
   },
   "metadata": {
@@ -2177,6 +2363,121 @@
     },
     "AssociateDirectConnectGatewayNatGatewayResponse": {
       "document": "AssociateDirectConnectGatewayNatGateway response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateNatGatewayAddressRequest": {
+      "document": "AssociateNatGatewayAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the NAT gateway, such as `nat-df45454`.",
+          "example": "nat-mdbjfr0y",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of EIPs you want to apply for. The system will create the same number of EIPs as you require. Either `AddressCount` or `PublicAddresses` must be passed in.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AddressCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Array of the EIPs bound to the NAT gateway. Either `AddressCount` or `PublicAddresses` must be passed in.",
+          "example": "[\"139.199.232.212\\n\"]",
+          "member": "string",
+          "name": "PublicIpAddresses",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The availability zone of the EIP, which is passed in when the EIP is automatically assigned.",
+          "example": "10003",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The bandwidth size (in Mbps) of the EIP bound to the NAT gateway, which defaults to the maximum value applicable for the current user type.",
+          "example": "77",
+          "member": "uint64",
+          "name": "StockPublicIpAddressesBandwidthOut",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The requested size of the public network IP bandwidth (in Mbps), which defaults to the maximum value applicable for the current user type.",
+          "example": "77",
+          "member": "uint64",
+          "name": "PublicIpAddressesBandwidthOut",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "PublicIpFromSameZone",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateNatGatewayAddressResponse": {
+      "document": "AssociateNatGatewayAddress response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateNetworkAclSubnetsRequest": {
+      "document": "AssociateNetworkAclSubnets request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Network ACL instance ID. Example: acl-12345678.",
+          "member": "string",
+          "name": "NetworkAclId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of subnet instance IDs. Example: [subnet-12345678]",
+          "member": "string",
+          "name": "SubnetIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateNetworkAclSubnetsResponse": {
+      "document": "AssociateNetworkAclSubnets response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3575,6 +3876,47 @@
       ],
       "type": "object"
     },
+    "CreateAssistantCidrRequest": {
+      "document": "CreateAssistantCidr request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "`VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CIDR set, e.g. [\"10.0.0.0/16\", \"172.16.0.0/16\"]",
+          "member": "string",
+          "name": "CidrBlocks",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAssistantCidrResponse": {
+      "document": "CreateAssistantCidr response structure.",
+      "members": [
+        {
+          "document": "A set of secondary CIDR blocks.\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "AssistantCidr",
+          "name": "AssistantCidrSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateBandwidthPackageRequest": {
       "document": "CreateBandwidthPackage request structure.",
       "members": [
@@ -4184,6 +4526,214 @@
       ],
       "type": "object"
     },
+    "CreateNatGatewayDestinationIpPortTranslationNatRuleRequest": {
+      "document": "CreateNatGatewayDestinationIpPortTranslationNatRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the NAT gateway, such as `nat-df45454`.",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The port forwarding rules of the NAT gateway.",
+          "member": "DestinationIpPortTranslationNatRule",
+          "name": "DestinationIpPortTranslationNatRules",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateNatGatewayDestinationIpPortTranslationNatRuleResponse": {
+      "document": "CreateNatGatewayDestinationIpPortTranslationNatRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateNatGatewayRequest": {
+      "document": "CreateNatGateway request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "NAT gateway name",
+          "example": "test_name",
+          "member": "string",
+          "name": "NatGatewayName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API.",
+          "example": "vpc-abcdefgh",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The maximum outbound bandwidth of the NAT gateway (unit: Mbps). Supported parameter values: `20, 50, 100, 200, 500, 1000, 2000, 5000`. Default: `100Mbps`.",
+          "example": "10",
+          "member": "uint64",
+          "name": "InternetMaxBandwidthOut",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The concurrent connection cap of the NAT gateway. Supported parameter values: `1000000, 3000000, 10000000`. The default value is `100000`.",
+          "example": "1000000",
+          "member": "uint64",
+          "name": "MaxConcurrentConnection",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of EIPs that needs to be applied for. The system will create N number of EIPs according to your requirements. Either AddressCount or PublicAddresses must be passed in.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AddressCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The EIP array bound to the NAT gateway. Either AddressCount or PublicAddresses must be passed in.",
+          "example": "[\"139.199.232.119\\n\"]",
+          "member": "string",
+          "name": "PublicIpAddresses",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The availability zone, such as `ap-guangzhou-1`.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Subnet of the NAT gateway",
+          "example": "1215354",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The bandwidth size (in Mbps) of the EIP bound to the NAT gateway, which defaults to the maximum value applicable for the current user type.",
+          "example": "77",
+          "member": "uint64",
+          "name": "StockPublicIpAddressesBandwidthOut",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The requested size of the public network IP bandwidth (in Mbps), which defaults to the maximum value applicable for the current user type.",
+          "example": "77",
+          "member": "uint64",
+          "name": "PublicIpAddressesBandwidthOut",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "false",
+          "member": "bool",
+          "name": "PublicIpFromSameZone",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateNatGatewayResponse": {
+      "document": "CreateNatGateway response structure.",
+      "members": [
+        {
+          "document": "NAT gateway object array.",
+          "member": "NatGateway",
+          "name": "NatGatewaySet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of NAT gateway objects meeting the conditions.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateNatGatewaySourceIpTranslationNatRuleRequest": {
+      "document": "CreateNatGatewaySourceIpTranslationNatRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the NAT Gateway, such as `nat-df45454`",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The SNAT forwarding rule of the NAT Gateway",
+          "member": "SourceIpTranslationNatRule",
+          "name": "SourceIpTranslationNatRules",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateNatGatewaySourceIpTranslationNatRuleResponse": {
+      "document": "CreateNatGatewaySourceIpTranslationNatRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateNetDetectRequest": {
       "document": "CreateNetDetect request structure.",
       "members": [
@@ -4260,6 +4810,47 @@
           "document": "The network detection (NetDetect) object.",
           "member": "NetDetect",
           "name": "NetDetect",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateNetworkAclRequest": {
+      "document": "CreateNetworkAcl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of the DescribeVpcs API.",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the network ACL. The maximum length is 60 bytes.",
+          "member": "string",
+          "name": "NetworkAclName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateNetworkAclResponse": {
+      "document": "CreateNetworkAcl response structure.",
+      "members": [
+        {
+          "document": "Network ACL instance",
+          "member": "NetworkAcl",
+          "name": "NetworkAcl",
           "type": "object",
           "value_allowed_null": false
         },
@@ -5910,6 +6501,40 @@
       ],
       "type": "object"
     },
+    "DeleteAssistantCidrRequest": {
+      "document": "DeleteAssistantCidr request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "`VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CIDR set, e.g. [\"10.0.0.0/16\", \"172.16.0.0/16\"]",
+          "member": "string",
+          "name": "CidrBlocks",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAssistantCidrResponse": {
+      "document": "DeleteAssistantCidr response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteBandwidthPackageRequest": {
       "document": "DeleteBandwidthPackage request structure.",
       "members": [
@@ -6155,6 +6780,100 @@
       ],
       "type": "object"
     },
+    "DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest": {
+      "document": "DeleteNatGatewayDestinationIpPortTranslationNatRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the NAT gateway, such as `nat-df45454`.",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The port forwarding rules of the NAT gateway.",
+          "member": "DestinationIpPortTranslationNatRule",
+          "name": "DestinationIpPortTranslationNatRules",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteNatGatewayDestinationIpPortTranslationNatRuleResponse": {
+      "document": "DeleteNatGatewayDestinationIpPortTranslationNatRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteNatGatewayRequest": {
+      "document": "DeleteNatGateway request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the NAT gateway, such as `nat-df45454`.",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteNatGatewayResponse": {
+      "document": "DeleteNatGateway response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteNatGatewaySourceIpTranslationNatRuleRequest": {
+      "document": "DeleteNatGatewaySourceIpTranslationNatRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the NAT Gateway, such as `nat-df45454`",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The list of SNAT rule IDs of a NAT Gateway, such as `snat-df43254`",
+          "member": "string",
+          "name": "NatGatewaySnatIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteNatGatewaySourceIpTranslationNatRuleResponse": {
+      "document": "DeleteNatGatewaySourceIpTranslationNatRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteNetDetectRequest": {
       "document": "DeleteNetDetect request structure.",
       "members": [
@@ -6171,6 +6890,32 @@
     },
     "DeleteNetDetectResponse": {
       "document": "DeleteNetDetect response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteNetworkAclRequest": {
+      "document": "DeleteNetworkAcl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Network ACL instance ID. Example: acl-12345678.",
+          "member": "string",
+          "name": "NetworkAclId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteNetworkAclResponse": {
+      "document": "DeleteNetworkAcl response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -8131,6 +8876,70 @@
       ],
       "type": "object"
     },
+    "DescribeGatewayFlowQosRequest": {
+      "document": "DescribeGatewayFlowQos request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Gateway instance ID, which currently supports these types:\nID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;\nID of NAT gateway instance, e.g. `nat-ltjahce6`;\nID of VPN gateway instance, e.g. `vpn-ltjahce6`.",
+          "member": "string",
+          "name": "GatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CVM private IP addresses with limited bandwidth.",
+          "member": "string",
+          "name": "IpAddresses",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGatewayFlowQosResponse": {
+      "document": "DescribeGatewayFlowQos response structure.",
+      "members": [
+        {
+          "document": "List of instance details.",
+          "member": "GatewayQos",
+          "name": "GatewayQosSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of eligible instances.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeHaVipsRequest": {
       "document": "DescribeHaVips request structure.",
       "members": [
@@ -8340,6 +9149,198 @@
           "member": "int64",
           "name": "TotalCount",
           "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest": {
+      "document": "DescribeNatGatewayDestinationIpPortTranslationNatRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "NAT gateway ID.",
+          "member": "string",
+          "name": "NatGatewayIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter conditions:\n`NatGatewayIds` and `Filters` cannot be specified at the same time.\n<li> nat-gateway-id, the NAT gateway ID, such as `nat-0yi4hekt`.</li>\n<li> vpc-id, the VPC ID, such as `vpc-0yi4hekt`.</li>\n<li> public-ip-address, the EIP, such as `139.199.232.238`.</li>\n<li>public-port, the public network port.</li>\n<li>private-ip-address, the private IP, such as `10.0.0.1`.</li>\n<li>private-port, the private network port.</li>\n<li>description, the rule description.</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. The default value is 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of values to be returned. The default value is 20. Maximum is 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse": {
+      "document": "DescribeNatGatewayDestinationIpPortTranslationNatRules response structure.",
+      "members": [
+        {
+          "document": "The object array of port forwarding rules for the NAT gateway.",
+          "member": "NatGatewayDestinationIpPortTranslationNatRule",
+          "name": "NatGatewayDestinationIpPortTranslationNatRuleSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of object arrays of NAT port forwarding rules meeting the conditions.",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNatGatewaySourceIpTranslationNatRulesRequest": {
+      "document": "DescribeNatGatewaySourceIpTranslationNatRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The unique ID of the NAT Gateway, such as `nat-123xx454`.",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter conditions:\n<li> resource-id, the subnet ID (such as `subnet-0yi4hekt`) or CVM ID</li>\n<li> public-ip-address, the EIP, such as `139.199.232.238`</li>\n<li>description, the rule description</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default is 0.",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNatGatewaySourceIpTranslationNatRulesResponse": {
+      "document": "DescribeNatGatewaySourceIpTranslationNatRules response structure.",
+      "members": [
+        {
+          "document": "Object array of the SNAT rule for a NAT Gateway.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "SourceIpTranslationNatRule",
+          "name": "SourceIpTranslationNatRuleSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of object arrays of eligible forwarding rules for a NAT Gateway",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNatGatewaysRequest": {
+      "document": "DescribeNatGateways request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The unified ID of the NAT gateways, such as `nat-123xx454`.",
+          "member": "string",
+          "name": "NatGatewayIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter condition. `NatGatewayIds` and `Filters` cannot be specified at the same time.\n<li>nat-gateway-id - String - (Filter condition) The ID of the protocol port template instance, such as `nat-123xx454`.</li>\n<li>vpc-id - String - (Filter condition) The unique ID of the VPC, such as `vpc-123xx454`.</li>\n<li>nat-gateway-name - String - (Filter condition) The name of the protocol port template instance, such as `test_nat`.</li>\n<li>tag-key - String - (Filter condition) The tag key, such as `test-key`.</li>",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. The default value is 0.",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of values to be returned. The default value is 20. Maximum is 100.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNatGatewaysResponse": {
+      "document": "DescribeNatGateways response structure.",
+      "members": [
+        {
+          "document": "NAT gateway object array.",
+          "member": "NatGateway",
+          "name": "NatGatewaySet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of NAT gateway object sets meeting the conditions.",
+          "member": "uint64",
+          "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
@@ -9547,6 +10548,51 @@
       ],
       "type": "object"
     },
+    "DescribeVpcTaskResultRequest": {
+      "document": "DescribeVpcTaskResult request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "`RequestId` returned by an async task",
+          "example": "481e9b6e-81d1-4859-b8cf-a673e010b388",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpcTaskResultResponse": {
+      "document": "DescribeVpcTaskResult response structure.",
+      "members": [
+        {
+          "document": "Execution result of an async task Valid values: `SUCCESS`: the task has been successfully executed; `FAILED`: the job execution failed; `RUNNING`: the job is executing.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Output of the async task execution result",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Output",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeVpcsRequest": {
       "document": "DescribeVpcs request structure.",
       "members": [
@@ -9861,6 +10907,66 @@
         }
       ],
       "type": "object"
+    },
+    "DestinationIpPortTranslationNatRule": {
+      "document": "The port forwarding rules of the NAT gateway",
+      "members": [
+        {
+          "default": "",
+          "document": "Network protocol. Available choices: `TCP`, `UDP`.",
+          "member": "string",
+          "name": "IpProtocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "EIP.",
+          "member": "string",
+          "name": "PublicIpAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public port.",
+          "member": "uint64",
+          "name": "PublicPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private network address.",
+          "member": "string",
+          "name": "PrivateIpAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private network port.",
+          "member": "uint64",
+          "name": "PrivatePort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "NAT gateway forwarding rule description.",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "DetachCcnInstancesRequest": {
       "document": "DetachCcnInstances request structure.",
@@ -10307,6 +11413,32 @@
       ],
       "type": "object"
     },
+    "DisableGatewayFlowMonitorRequest": {
+      "document": "DisableGatewayFlowMonitor request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Gateway instance ID, which currently supports these types:\nID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;\nID of NAT gateway instance, e.g. `nat-ltjahce6`;\nID of VPN gateway instance, e.g. `vpn-ltjahce6`.",
+          "member": "string",
+          "name": "GatewayId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableGatewayFlowMonitorResponse": {
+      "document": "DisableGatewayFlowMonitor response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DisassociateAddressRequest": {
       "document": "DisassociateAddress request structure.",
       "members": [
@@ -10380,6 +11512,74 @@
     },
     "DisassociateDirectConnectGatewayNatGatewayResponse": {
       "document": "DisassociateDirectConnectGatewayNatGateway response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateNatGatewayAddressRequest": {
+      "document": "DisassociateNatGatewayAddress request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the NAT gateway, such as `nat-df45454`.",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of the EIPs to be unbound from the NAT gateway.",
+          "member": "string",
+          "name": "PublicIpAddresses",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateNatGatewayAddressResponse": {
+      "document": "DisassociateNatGatewayAddress response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateNetworkAclSubnetsRequest": {
+      "document": "DisassociateNetworkAclSubnets request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Network ACL instance ID. Example: acl-12345678.",
+          "member": "string",
+          "name": "NetworkAclId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of subnet instance IDs. Example: [subnet-12345678].",
+          "member": "string",
+          "name": "SubnetIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateNetworkAclSubnetsResponse": {
+      "document": "DisassociateNetworkAclSubnets response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -10568,6 +11768,32 @@
     },
     "EnableFlowLogsResponse": {
       "document": "EnableFlowLogs response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableGatewayFlowMonitorRequest": {
+      "document": "EnableGatewayFlowMonitor request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Gateway instance ID, which currently supports these types:\nID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;\nID of NAT gateway instance, e.g. `nat-ltjahce6`;\nID of VPN gateway instance, e.g. `vpn-ltjahce6`.",
+          "member": "string",
+          "name": "GatewayId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableGatewayFlowMonitorResponse": {
+      "document": "EnableGatewayFlowMonitor response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -11117,6 +12343,48 @@
           "name": "OutTraffic",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GatewayQos": {
+      "document": "Gateway bandwidth limit information",
+      "members": [
+        {
+          "default": "",
+          "document": "VPC instance ID.",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CVM Private IP.",
+          "member": "string",
+          "name": "IpAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Bandwidth limit value.",
+          "member": "int64",
+          "name": "Bandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The creation time.",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -12402,6 +13670,55 @@
       ],
       "type": "object"
     },
+    "ModifyAssistantCidrRequest": {
+      "document": "ModifyAssistantCidr request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "`VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of the secondary CIDR blocks to be added, such as [\"10.0.0.0/16\", \"172.16.0.0/16\"]. Either or both of `NewCidrBlocks` and `OldCidrBlocks` must be specified.",
+          "member": "string",
+          "name": "NewCidrBlocks",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Array of the secondary CIDR blocks to be deleted, such as [\"10.0.0.0/16\", \"172.16.0.0/16\"]. Either or both of `NewCidrBlocks` and `OldCidrBlocks` must be specified.",
+          "member": "string",
+          "name": "OldCidrBlocks",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAssistantCidrResponse": {
+      "document": "ModifyAssistantCidr response structure.",
+      "members": [
+        {
+          "document": "A set of secondary CIDR blocks.\nNote: This field may return null, indicating that no valid value was found.",
+          "member": "AssistantCidr",
+          "name": "AssistantCidrSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyBandwidthPackageAttributeRequest": {
       "document": "ModifyBandwidthPackageAttribute request structure.",
       "members": [
@@ -12709,6 +14026,48 @@
       ],
       "type": "object"
     },
+    "ModifyGatewayFlowQosRequest": {
+      "document": "ModifyGatewayFlowQos request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Gateway instance ID, which currently supports these types:\nID of Direct Connect gateway instance, e.g. `dcg-ltjahce6`;\nID of NAT gateway instance, e.g. `nat-ltjahce6`;\nID of VPN gateway instance, e.g. `vpn-ltjahce6`.",
+          "member": "string",
+          "name": "GatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Bandwidth limit value.",
+          "member": "int64",
+          "name": "Bandwidth",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "CVM private IP addresses with limited bandwidth.",
+          "member": "string",
+          "name": "IpAddresses",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGatewayFlowQosResponse": {
+      "document": "ModifyGatewayFlowQos response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyHaVipAttributeRequest": {
       "document": "ModifyHaVipAttribute request structure.",
       "members": [
@@ -12831,6 +14190,140 @@
       ],
       "type": "object"
     },
+    "ModifyNatGatewayAttributeRequest": {
+      "document": "ModifyNatGatewayAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the NAT gateway, such as `nat-df45454`.",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The NAT gateway name, such as `test_nat`.",
+          "member": "string",
+          "name": "NatGatewayName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The maximum outbound bandwidth of the NAT gateway. Unit: Mbps.",
+          "member": "uint64",
+          "name": "InternetMaxBandwidthOut",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to modify the security group bound to the NAT Gateway",
+          "member": "bool",
+          "name": "ModifySecurityGroup",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The final security groups bound to the NAT Gateway, such as `['sg-1n232323', 'sg-o4242424']`. An empty list indicates that all the security groups have been deleted.",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNatGatewayAttributeResponse": {
+      "document": "ModifyNatGatewayAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNatGatewayDestinationIpPortTranslationNatRuleRequest": {
+      "document": "ModifyNatGatewayDestinationIpPortTranslationNatRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the NAT gateway, such as `nat-df45454`.",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The port forwarding rule of the source NAT gateway.",
+          "member": "DestinationIpPortTranslationNatRule",
+          "name": "SourceNatRule",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The port forwarding rule of the destination NAT gateway.",
+          "member": "DestinationIpPortTranslationNatRule",
+          "name": "DestinationNatRule",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse": {
+      "document": "ModifyNatGatewayDestinationIpPortTranslationNatRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNatGatewaySourceIpTranslationNatRuleRequest": {
+      "document": "ModifyNatGatewaySourceIpTranslationNatRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the NAT Gateway, such as `nat-df453454`",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The SNAT forwarding rule of the NAT Gateway",
+          "member": "SourceIpTranslationNatRule",
+          "name": "SourceIpTranslationNatRule",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNatGatewaySourceIpTranslationNatRuleResponse": {
+      "document": "ModifyNatGatewaySourceIpTranslationNatRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyNetDetectRequest": {
       "document": "ModifyNetDetect request structure.",
       "members": [
@@ -12893,6 +14386,74 @@
     },
     "ModifyNetDetectResponse": {
       "document": "ModifyNetDetect response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNetworkAclAttributeRequest": {
+      "document": "ModifyNetworkAclAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Network ACL instance ID. Example: acl-12345678.",
+          "member": "string",
+          "name": "NetworkAclId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the network ACL. The maximum length is 60 bytes.",
+          "member": "string",
+          "name": "NetworkAclName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNetworkAclAttributeResponse": {
+      "document": "ModifyNetworkAclAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNetworkAclEntriesRequest": {
+      "document": "ModifyNetworkAclEntries request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Network ACL instance ID. Example: acl-12345678.",
+          "member": "string",
+          "name": "NetworkAclId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network ACL rule set.",
+          "member": "NetworkAclEntrySet",
+          "name": "NetworkAclEntrySet",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNetworkAclEntriesResponse": {
+      "document": "ModifyNetworkAclEntries response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -13713,6 +15274,312 @@
       ],
       "type": "object"
     },
+    "NatGateway": {
+      "document": "NAT gateway object.",
+      "members": [
+        {
+          "default": "",
+          "document": "NAT gateway ID.",
+          "example": "\"nat-12345678\"",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "NAT gateway name.",
+          "example": "\"test\"",
+          "member": "string",
+          "name": "NatGatewayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "NAT gateway creation time.",
+          "example": "\"2021-05-24 19:28:31\"",
+          "member": "string",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The status of the NAT gateway.\n 'PENDING': Creating, 'DELETING': Deleting, 'AVAILABLE': Operating, 'UPDATING': Upgrading,\n‘FAILED’: Failed.",
+          "example": "\"AVAILABLE\"",
+          "member": "string",
+          "name": "State",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The maximum outbound bandwidth of the gateway. Unit: Mbps.",
+          "example": "10",
+          "member": "uint64",
+          "name": "InternetMaxBandwidthOut",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The concurrent connections cap of the gateway.",
+          "example": "10000000",
+          "member": "uint64",
+          "name": "MaxConcurrentConnection",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The public IP object array of the bound NAT gateway.",
+          "example": " 无",
+          "member": "NatGatewayAddress",
+          "name": "PublicIpAddressSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The NAT gateway status. `AVAILABLE`: Operating, `UNAVAILABLE`: Unavailable, `INSUFFICIENT`: Account is in arrears and the service is suspended.",
+          "example": "\"AVAILABLE\"",
+          "member": "string",
+          "name": "NetworkState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The port forwarding rules of the NAT gateway.",
+          "example": "无",
+          "member": "DestinationIpPortTranslationNatRule",
+          "name": "DestinationIpPortTranslationNatRuleSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC instance ID.",
+          "example": "\"vpc-12345678\"",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The availability zone in which the NAT gateway is located.",
+          "example": "\"ap-guangzhou-2\"",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IDs of direct connect gateway associated.",
+          "example": "[\"dcg-12345678\"]",
+          "member": "string",
+          "name": "DirectConnectGatewayIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subnet ID.",
+          "example": "\"subnet-12345678\"",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag key-value pair.",
+          "example": "无",
+          "member": "Tag",
+          "name": "TagSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The list of the security groups bound to the NAT Gateway\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"sg-12345678\"]",
+          "member": "string",
+          "name": "SecurityGroupSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "SNAT forwarding rule of the NAT Gateway.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SourceIpTranslationNatRule",
+          "name": "SourceIpTranslationNatRuleSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the NAT Gateway is dedicated.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsExclusive",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Bandwidth of the gateway cluster where the dedicated NAT Gateway resides. Unit: Mbps. This field does not exist when the `IsExclusive` field is set to `false`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "example": "50000",
+          "member": "uint64",
+          "name": "ExclusiveGatewayBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "NatGatewayAddress": {
+      "document": "The EIP bound to the NAT gateway",
+      "members": [
+        {
+          "default": "",
+          "document": "The unique ID of the Elastic IP (EIP), such as `eip-11112222`.",
+          "member": "string",
+          "name": "AddressId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The public IP address, such as `123.121.34.33`.",
+          "member": "string",
+          "name": "PublicIpAddress",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The block status of the resource. `true` indicates the EIP is blocked. `false` indicates that the EIP is not blocked.",
+          "member": "bool",
+          "name": "IsBlocked",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "NatGatewayDestinationIpPortTranslationNatRule": {
+      "document": "The port forwarding rules of the NAT gateway",
+      "members": [
+        {
+          "default": "",
+          "document": "Network protocol. Available choices: `TCP`, `UDP`.",
+          "member": "string",
+          "name": "IpProtocol",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "EIP.",
+          "member": "string",
+          "name": "PublicIpAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public port.",
+          "member": "uint64",
+          "name": "PublicPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private network address.",
+          "member": "string",
+          "name": "PrivateIpAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private network port.",
+          "member": "uint64",
+          "name": "PrivatePort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "NAT gateway forwarding rule description.",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "NAT gateway ID.\nNote: This field may return null, indicating no valid value.",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VPC ID.\nNote: This field may return null, indicating no valid value.",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The creation time of the NAT gateway forwarding rule.\nNote: This field may return null, indicating no valid value.",
+          "member": "string",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "NetDetect": {
       "document": "The network detection object.",
       "members": [
@@ -14053,6 +15920,30 @@
       ],
       "usage": "both"
     },
+    "NetworkAclEntrySet": {
+      "document": "Network ACL rule set",
+      "members": [
+        {
+          "default": "",
+          "document": "Inbound rules.",
+          "member": "NetworkAclEntry",
+          "name": "Ingress",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Outbound rules.",
+          "member": "NetworkAclEntry",
+          "name": "Egress",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "NetworkInterface": {
       "document": "ENI",
       "members": [
@@ -14290,6 +16181,40 @@
         }
       ],
       "usage": "out"
+    },
+    "NotifyRoutesRequest": {
+      "document": "NotifyRoutes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The unique ID of the route table",
+          "member": "string",
+          "name": "RouteTableId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The unique ID of the routing policy",
+          "member": "string",
+          "name": "RouteItemIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "NotifyRoutesResponse": {
+      "document": "NotifyRoutes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "Price": {
       "document": "Price",
@@ -14776,6 +16701,40 @@
     },
     "ResetAttachCcnInstancesResponse": {
       "document": "ResetAttachCcnInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetNatGatewayConnectionRequest": {
+      "document": "ResetNatGatewayConnection request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "NAT gateway ID.",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Concurrent connections cap of the NAT gateway, such as 1000000, 3000000, 10000000.",
+          "member": "uint64",
+          "name": "MaxConcurrentConnection",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetNatGatewayConnectionResponse": {
+      "document": "ResetNatGatewayConnection response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -16135,6 +18094,93 @@
       ],
       "type": "object"
     },
+    "SourceIpTranslationNatRule": {
+      "document": "SNAT rule of a NAT Gateway",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource ID",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource type. Valid values: SUBNET, NETWORKINTERFACE\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Source IP/IP range",
+          "member": "string",
+          "name": "PrivateIpAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Elastic IP address pool",
+          "member": "string",
+          "name": "PublicIpAddresses",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SNAT rule ID",
+          "member": "string",
+          "name": "NatGatewaySnatId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "NAT Gateway ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VPC ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time of a SNAT rule for a NAT Gateway\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CreatedTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "Subnet": {
       "document": "Subnet object",
       "members": [
@@ -17364,6 +19410,40 @@
         }
       ],
       "usage": "both"
+    },
+    "WithdrawNotifyRoutesRequest": {
+      "document": "WithdrawNotifyRoutes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The unique ID of the route table",
+          "member": "string",
+          "name": "RouteTableId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The unique ID of the routing policy",
+          "member": "string",
+          "name": "RouteItemIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "WithdrawNotifyRoutesResponse": {
+      "document": "WithdrawNotifyRoutes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     }
   },
   "version": "1.0"
