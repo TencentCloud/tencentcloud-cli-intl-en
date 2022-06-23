@@ -37,7 +37,7 @@ class JSONResult(Response):
                 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,
                                               encoding='utf-8')
             stream = sys.stdout
-        if response:
+        if response is not None:
             ret = json.dumps(response, ensure_ascii=False, indent=4)
             if six.PY2:
                 import platform
@@ -47,7 +47,7 @@ class JSONResult(Response):
                     print(ret.encode('utf8'))
             else:
                 print(ret)
-            stream.write('\n')
+            #stream.write('\n')
 
 
 class TextResult (Response):
@@ -79,11 +79,11 @@ class TableResult (Response):
                 pass
 
     def _build_table(self, title, current, indent_level=0):
-        if not current:
+        if current is None:
             return False
         if title is not None:
             self.table.new_section(title, indent_level=indent_level)
-        if isinstance(current, list):
+        if isinstance(current, list) and len(current) > 0:
             if isinstance(current[0], dict):
                 self._build_sub_table_from_list(current, indent_level, title)
             else:
@@ -101,7 +101,6 @@ class TableResult (Response):
         return True
 
     def _build_sub_table_from_dict(self, current, indent_level):
-
         headers, more = self._group_scalar_keys(current)
         if len(headers) == 1:
             self.table.add_row([headers[0], current[headers[0]]])
@@ -181,3 +180,4 @@ def output(cmd, response, format, filter=None):
         response = expression.search(response)
     formatter = _get_result(format)
     formatter(cmd, response)
+
