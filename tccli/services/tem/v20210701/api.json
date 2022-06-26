@@ -1,5 +1,11 @@
 {
   "actions": {
+    "CreateApplication": {
+      "document": "This API is used to create an application.",
+      "input": "CreateApplicationRequest",
+      "name": "Creates an application",
+      "output": "CreateApplicationResponse"
+    },
     "CreateCosToken": {
       "document": "This API is used to generate a COS temporary key.",
       "input": "CreateCosTokenRequest",
@@ -17,6 +23,12 @@
       "input": "CreateResourceRequest",
       "name": "Binds a cloud resource",
       "output": "CreateResourceResponse"
+    },
+    "DeleteApplication": {
+      "document": "This API is used to delete an application.\n  - Stop the application if it’s running\n  - Delete resources associated with this application\n  - Delele the application",
+      "input": "DeleteApplicationRequest",
+      "name": "Deletes an application",
+      "output": "DeleteApplicationResponse"
     },
     "DeleteIngress": {
       "document": "This API is used to delete an ingress rule.",
@@ -210,6 +222,141 @@
         }
       ],
       "usage": "out"
+    },
+    "CreateApplicationRequest": {
+      "document": "CreateApplication request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Application name",
+          "example": "service-a",
+          "member": "string",
+          "name": "ApplicationName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "服务a",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to use the default image service. 1: yes; 0: no",
+          "example": "0",
+          "member": "int64",
+          "name": "UseDefaultImageService",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Type of the bound repository. 0: Personal Edition; 1: Enterprise Edition",
+          "example": "0",
+          "member": "int64",
+          "name": "RepoType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance ID of Enterprise Edition image service",
+          "example": "tr-123",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Address of the bound image server",
+          "example": "tcr.tencent.com",
+          "member": "string",
+          "name": "RepoServer",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the bound image repository",
+          "example": "tem-test/repo_te",
+          "member": "string",
+          "name": "RepoName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Source channel",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Application subnet",
+          "example": "['s1', 's2']",
+          "member": "string",
+          "name": "SubnetList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Programming language \n- JAVA\n- OTHER",
+          "example": "1",
+          "member": "string",
+          "name": "CodingLanguage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Deployment mode \n- IMAGE\n- JAR\n- WAR",
+          "example": "1",
+          "member": "string",
+          "name": "DeployMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the call chain feature",
+          "example": "1",
+          "member": "int64",
+          "name": "EnableTracing",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateApplicationResponse": {
+      "document": "CreateApplication response structure.",
+      "members": [
+        {
+          "document": "Service code",
+          "example": "service-3gn56p6v",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CreateCosTokenRequest": {
       "document": "CreateCosToken request structure.",
@@ -535,6 +682,69 @@
         }
       ],
       "usage": "both"
+    },
+    "DeleteApplicationRequest": {
+      "document": "DeleteApplication request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Service ID",
+          "example": "1",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment ID",
+          "example": "1",
+          "member": "string",
+          "name": "EnvironmentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Retain as default",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to delete this application automatically when there is no running version.",
+          "example": "false",
+          "member": "bool",
+          "name": "DeleteApplicationIfNoRunningVersion",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteApplicationResponse": {
+      "document": "DeleteApplication response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "example": "1",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DeleteIngressRequest": {
       "document": "DeleteIngress request structure.",

@@ -504,6 +504,14 @@
         "title": "Sample request"
       }
     ],
+    "DescribeLiveTimeShiftBillInfoList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLiveTimeShiftBillInfoList\n<Common request parameters>\n\n{\n    \"PushDomains\": [\n        \"start-push.elliotxing.com\"\n    ],\n    \"StartTime\": \"2022-05-06T00:30:00Z\",\n    \"EndTime\": \"2022-05-06T12:30:00Z\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DataInfoList\": [\n            {\n                \"Domain\": \"x.com\",\n                \"Duration\": 1,\n                \"StoragePeriod\": 1,\n                \"Time\": \"2022-05-06T10:30:00Z\"\n            },\n            {\n                \"Domain\": \"x.com\",\n                \"Duration\": 1,\n                \"StoragePeriod\": 1,\n                \"Time\": \"2022-05-06T10:35:00Z\"\n            }\n        ],\n        \"RequestId\": \"ca0bb85f-6b95-4b9f-b85f-fdsafasds\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "DescribeLiveTranscodeDetailInfo": [
       {
         "document": "",
@@ -707,7 +715,7 @@
     "ModifyLivePlayDomain": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=ModifyLivePlayDomain\n&DomainName=www.test.com\n&PlayType=1\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=ModifyLivePlayDomain\r\n&DomainName=www.test.com\r\n&PlayType=1\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Sample request"
       }

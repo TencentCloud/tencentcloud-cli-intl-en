@@ -1,5 +1,13 @@
 {
   "actions": {
+    "CreateApplication": [
+      {
+        "document": "This example shows you how to create an application.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplication\n<Common request parameters>\n\n{\n    \"ApplicationName\": \"xx\",\n    \"SubnetList\": [\n        \"xx\"\n    ],\n    \"Description\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"DeployMode\": \"xx\",\n    \"RepoServer\": \"xx\",\n    \"SourceChannel\": 0,\n    \"RepoType\": 0,\n    \"RepoName\": \"xx\",\n    \"UseDefaultImageService\": 0,\n    \"CodingLanguage\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Creating an application"
+      }
+    ],
     "CreateCosToken": [
       {
         "document": "This example shows you how to generate a COS temporary key for an uploaded JAR or WAR package.",
@@ -22,6 +30,14 @@
         "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateResource\n<Common request parameters>\n\n{\n    \"ResourceType\": \"xx\",\n    \"EnvironmentId\": \"xx\",\n    \"SourceChannel\": 0,\n    \"ResourceId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": true\n    }\n}",
         "title": "Binding a cloud resource"
+      }
+    ],
+    "DeleteApplication": [
+      {
+        "document": "This example deletes an application.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteApplication\n<Common request parameters>\n\n{\n    \"SourceChannel\": 0,\n    \"ApplicationId\": \"xx\",\n    \"DeleteApplicationIfNoRunningVersion\": true,\n    \"EnvironmentId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": true\n    }\n}",
+        "title": "Deleting an application"
       }
     ],
     "DeleteIngress": [

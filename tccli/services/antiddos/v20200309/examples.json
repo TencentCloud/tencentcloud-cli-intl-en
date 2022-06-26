@@ -269,7 +269,7 @@
         "document": "",
         "input": "https://antiddos.tencentcloudapi.com/?Action=DescribeCCLevelList\n&Business=edge\n&Offset=0\n&Limit=1\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\",\n        \"Total\": 1,\n        \"LevelList\": [\n            {\n                \"InstanceId\": \"edge-000000xe\",\n                \"Ip\": \"1.2.1.1\",\n                \"Protocol\": \"HTTP\",\n                \"Domain\": \"1.ase.com\",\n                \"Level\": \"loose\",\n                \"CreateTime\": \"2020-03-27 14:32:12\",\n                \"ModifyTime\": \"2020-03-27 14:32:32\"\n            }\n        ]\n    }\n}",
-        "title": "获取边界防护CC防护等级列表"
+        "title": "Querying the list of CC protection levels"
       }
     ],
     "DescribeCCLevelPolicy": [

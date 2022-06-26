@@ -56,6 +56,14 @@
         "title": "Creating instance snapshot"
       }
     ],
+    "CreateInstances": [
+      {
+        "document": "This example shows how to create a monthly subscribed Lighthouse instance.",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstances\n<Common request parameters>\n\n{\n    \"BundleId\": \"bundle_gen_03\",\n    \"BlueprintId\": \"lhbp-g0tn7djh\",\n    \"InstanceChargePrepaid\": {\n        \"Period\": \"1\",\n        \"RenewFlag\": \"NOTIFY_AND_MANUAL_RENEW\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceIdSet\": [\n            \"lhins-hx5wjw4g\"\n        ],\n        \"RequestId\": \"232b2817-ec08-43f3-8d78-41b1bfb6082c\"\n    }\n}",
+        "title": "Creating a Lighthouse instance"
+      }
+    ],
     "CreateKeyPair": [
       {
         "document": "",
@@ -198,6 +206,14 @@
         "title": "Querying a firewall rule template"
       }
     ],
+    "DescribeGeneralResourceQuotas": [
+      {
+        "document": "This example shows you how to query the resource quota information of an instance.",
+        "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeGeneralResourceQuotas\n&ResourceNames.0=INSTANCE\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"GeneralResourceQuotaSet\": [\n            {\n                \"ResourceName\": \"INSTANCE\",\n                \"ResourceQuotaAvailable\": 9,\n                \"ResourceQuotaTotal\": 10\n            }\n        ],\n        \"RequestId\": \"4dd1a440-39ca-49fb-9f2f-c995db3ae20b\"\n    }\n}",
+        "title": "Querying the quota information of general resources"
+      }
+    ],
     "DescribeInstanceLoginKeyPairAttribute": [
       {
         "document": "",
@@ -212,6 +228,14 @@
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeInstanceVncUrl\n&InstanceId=lhins-ruy9d2tw\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"InstanceVncUrl\": \"wss%3A%2F%2Fusevnc.qcloud.com%3A443%2Fvnc%3Fs%3DTnVQUEpVYkc4eUMvMEkyUERKUjhRbzJhbGcyWHFaWmVMU1dRbUQwd0hVVHo2WU4wOEpLWjlQd0JVSWQwUXZOK2FDcWlOdDJIbUJxSTZDL0RXcHZxYnZZMmRkWWZWcEZia2lyb09XMzdKNmM9%26password%3D%26isWindows%3Dfalse%26isUbuntu%3Dfalse\",\n        \"RequestId\": \"f9f6fa33-679c-40ea-bb30-b1e9a8989305\"\n    }\n}",
         "title": "Querying the VNC URL of an instance"
+      }
+    ],
+    "DescribeInstances": [
+      {
+        "document": "This example shows you how to limit the number of returned results to at most one.",
+        "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeInstances\n&Limit=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"InstanceSet\": [\n            {\n                \"InstanceId\": \"lhins-ruy9d2tw\",\n                \"BundleId\": \"bundle_bw_small1_1\",\n                \"BlueprintId\": \"lhbp-5e8807lo\",\n                \"Zone\": \"ap-guangzhou-2\"\n                \"CPU\": 1,\n                \"Memory\": 1,\n                \"InstanceName\": \"lighthouse-test\",\n                \"OsName\": \"CentOS 7.6 64bit\",\n                \"Platform\": \"CENTOS\",\n                \"PlatformType\": \"LINUX_UNIX\",\n                \"InstanceChargeType\": \"PREPAID\",\n                \"SystemDisk\": {\n                    \"DiskType\": \"CLOUD_PREMIUM\",\n                    \"DiskSize\": 50,\n                    \"DiskId\": \"lhdisk-gayq6kyd\"\n                },\n                \"PrivateAddresses\": [\n                    \"10.0.0.5\"\n                ],\n                \"PublicAddresses\": [\n                    \"170.106.15.201\"\n                ],\n                \"InternetAccessible\": {\n                    \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                    \"InternetMaxBandwidthOut\": 20,\n                    \"PublicIpAssigned\": true\n                },\n                \"RenewFlag\": \"NOTIFY_AND_MANUAL_RENEW\",\n                \"LoginSettings\": {\n                    \"KeyIds\": []\n                },\n                \"Tags\": [],\n                    {\n                        \"Key\": \"lighthouse\",\n                        \"Value\": \"great\"\n                    }\n                ],\n                \"InstanceState\": \"RUNNING\",\n                \"Uuid\": \"1322d32a-2641-45f3-a244-559405b32228\",\n                \"LatestOperation\": \"StartInstances\",\n                \"LatestOperationState\": \"SUCCESS\",\n                \"LatestOperationRequestId\": \"6b9a6dac-888a-4b4d-9739-0d0b66cbfa88\",\n                \"CreatedTime\": \"2020-04-28T03:46:09Z\",\n                \"ExpiredTime\": \"2020-05-28T03:46:09Z\",\n                \"IsolatedTime\": null\n            }\n        ],\n        \"RequestId\": \"c9aa9e9b-bb2b-4390-b8da-fc976ffc4608\"\n    }\n}",
+        "title": "Querying a list of instances"
       }
     ],
     "DescribeInstancesDeniedActions": [
@@ -364,6 +388,14 @@
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquirePriceRenewDisks\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-5vmz00i3\"\n    ],\n    \"RenewDiskChargePrepaid\": {\n        \"Period\": 1\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"DiskPrice\": {\n            \"OriginalDiskPrice\": 16.0,\n            \"OriginalPrice\": 16.0,\n            \"Discount\": 100,\n            \"DiscountPrice\": 16.0\n        },\n        \"RequestId\": \"4214ba7a-0784-4cbb-a342-e5cc288c484c\"\n    }\n}",
         "title": "Querying the price of renewing cloud disks"
+      }
+    ],
+    "InquirePriceRenewInstances": [
+      {
+        "document": "",
+        "input": "https://lighthouse.tencentcloudapi.com/?Action=InquirePriceRenewInstances\n&InstanceIds.0=lhins-11110001\n&InstanceChargePrepaid.RenewFlag=NOTIFY_AND_AUTO_RENEW\n&InstanceChargePrepaid.Period=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"InstancePrice\": {\n                \"OriginalBundlePrice\": 60.0,\n                \"OriginalPrice\": 1440.0,\n                \"Discount\": 100,\n                \"DiscountPrice\": 1440.0\n            }\n        },\n        \"RequestId\": \"96d188f2-caf0-4d63-ba6f-474d22a8b344\",\n        \"DataDiskPriceSet\": [\n            {\n                \"Discount\": 0.0,\n                \"OriginalDiskPrice\": 0.0,\n                \"OriginalPrice\": 0.0,\n                \"DiskId\": \"xx\",\n                \"DiscountPrice\": 0.0\n            }\n        ]\n    }\n}",
+        "title": "Querying the price of created instance (succeeded)"
       }
     ],
     "ModifyBlueprintAttribute": [

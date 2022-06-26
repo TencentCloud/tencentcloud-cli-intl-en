@@ -103,7 +103,7 @@
       "output": "CreateLiveWatermarkRuleResponse"
     },
     "CreateRecordTask": {
-      "document": "This API is used to create a recording task that starts and ends at specified times and records by using the configuration corresponding to a specified recording template ID.\n- Prerequisites\n1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.\n2. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) are charged according to the VOD billing method. For details, see the [corresponding document](https://intl.cloud.tencent.com/document/product/266/2837?from_cn_redirect=1).\n- Precautions\n1. An interruption will end the current recording and generate a recording file. The task will still be valid before the end time expires, and the stream will be recorded within this period as long as it is pushed, regardless of whether the push is interrupted or restarted multiple times.\n2. Avoid creating recording tasks with overlapping time periods. If there are multiple tasks with overlapping time periods for the same stream, the system will start three recording tasks at most to avoid repeated recording.\n3. The record of a created recording task will be retained for 3 months on the platform.\n4. The current recording task management APIs (CreateRecordTask/StopRecordTask/DeleteRecordTask) are not compatible with the legacy APIs (CreateLiveRecord/StopLiveRecord/DeleteLiveRecord), and they cannot be used together.\n5. Do not create recording tasks and push streams at the same time, or recording tasks might not take effect and be delayed. Wait at least 3 seconds between each action.",
+      "document": "This API is used to create a recording task that starts and ends at specific times and records videos according to a specific recording template.\n- Prerequisites\n1. Because recording files are saved in VOD, you must first activate VOD.\n2. Storage and playback traffic fees are charged for storing and playing the videos recorded. For details, see [Purchase Guide](https://intl.cloud.tencent.com/document/product/266/2837).\n- Notes\n1. If streaming is interrupted, the current recording will stop and a recording file will be generated. When streaming resumes, as long as it’s before the end time of the task, recording will start again.\n2. Avoid creating recording tasks with overlapping time periods. If there are multiple tasks with overlapping time periods for the same stream, the system will start three recording tasks at most to avoid repeated recording.\n3. Task records are kept for three months by the platform.\n4. Do not use the new [CreateRecordTask](https://intl.cloud.tencent.com/document/product/267/45983?from_cn_redirect=1), [StopRecordTask](https://intl.cloud.tencent.com/document/product/267/45981?from_cn_redirect=1), and [DeleteRecordTask] APIs together with the old `CreateLiveRecord`, `StopLiveRecord`, and `DeleteLiveRecord` APIs.\n5. Do not create recording tasks and push streams at the same time. After creating a recording task, we recommend you wait at least three seconds before pushing streams.",
       "input": "CreateRecordTaskRequest",
       "name": "Creates recording task (new)",
       "output": "CreateRecordTaskResponse"
@@ -359,6 +359,12 @@
       "input": "DescribeLiveStreamStateRequest",
       "name": "Queries stream status.",
       "output": "DescribeLiveStreamStateResponse"
+    },
+    "DescribeLiveTimeShiftBillInfoList": {
+      "document": "This API is used to query the time-shift video length, time-shift days, and total time-shift period of push domains. The data returned is on a five-minute basis. You can use it for reconciliation.",
+      "input": "DescribeLiveTimeShiftBillInfoListRequest",
+      "name": "Queries time shift billing data",
+      "output": "DescribeLiveTimeShiftBillInfoListResponse"
     },
     "DescribeLiveTranscodeDetailInfo": {
       "document": "This API is used to query the details of transcoding on a specified day or in a specified period of time.",
@@ -4626,6 +4632,60 @@
       ],
       "type": "object"
     },
+    "DescribeLiveTimeShiftBillInfoListRequest": {
+      "document": "DescribeLiveTimeShiftBillInfoList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start time for query. You can query data from the past three months. The longest time period that can be queried is one month.\n\nIt must be in UTC format.\nExample: 2019-01-08T10:00:00Z.\nNote: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.",
+          "example": "2006-01-02T15:04:05Z",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end time for query. You can query data from the past three months. The longest time period that can be queried is one month.\n\nIt must be in UTC format.\nExample: 2019-01-08T10:00:00Z.\nNote: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.",
+          "example": "2006-01-02T15:04:05Z",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The push domains to query. If you leave this empty, the time shifting billing data of all push domains will be returned.",
+          "example": "[\"5000.playdomain.com\"]",
+          "member": "string",
+          "name": "PushDomains",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLiveTimeShiftBillInfoListResponse": {
+      "document": "DescribeLiveTimeShiftBillInfoList response structure.",
+      "members": [
+        {
+          "document": "The time shifting billing data.",
+          "example": "无",
+          "member": "TimeShiftBillData",
+          "name": "DataInfoList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeLiveTranscodeDetailInfoRequest": {
       "document": "DescribeLiveTranscodeDetailInfo request structure.",
       "members": [
@@ -8700,6 +8760,62 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TimeShiftBillData": {
+      "document": "The time shifting billing data.",
+      "members": [
+        {
+          "default": "",
+          "document": "The push domain name.",
+          "example": "\"5000.playdomain.com\"",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The time-shift video length (minutes).",
+          "example": "3.25",
+          "member": "float",
+          "name": "Duration",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The time-shift days.",
+          "example": "1",
+          "member": "float",
+          "name": "StoragePeriod",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The time for the data returned. Format: YYYY-MM-DDThh:mm:ssZ.",
+          "example": "2022-02-21T17:37:43+08:00",
+          "member": "string",
+          "name": "Time",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "67.43",
+          "member": "float",
+          "name": "TotalDuration",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

@@ -78,6 +78,12 @@
       "name": "Gets the details of a template",
       "output": "GetEmailTemplateResponse"
     },
+    "GetSendEmailStatus": {
+      "document": "This API is used to get email sending status. Only data within 30 days can be queried.",
+      "input": "GetSendEmailStatusRequest",
+      "name": "Gets the email sending status",
+      "output": "GetSendEmailStatusResponse"
+    },
     "GetStatisticsReport": {
       "document": "This API is used to get the email sending statistics over a recent period, including data on sent emails, delivery success rate, open rate, bounce rate, and so on.",
       "input": "GetStatisticsReportRequest",
@@ -890,6 +896,71 @@
       ],
       "type": "object"
     },
+    "GetSendEmailStatusRequest": {
+      "document": "GetSendEmailStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sent date. This parameter is required. You can only query the sending status for a single date at a time.",
+          "member": "date",
+          "name": "RequestDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: `0`",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of pulled entries. The maximum value is `100`.",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "`MessageId` field returned by the `SendMail` API",
+          "member": "string",
+          "name": "MessageId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Recipient email address",
+          "member": "string",
+          "name": "ToEmailAddress",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetSendEmailStatusResponse": {
+      "document": "GetSendEmailStatus response structure.",
+      "members": [
+        {
+          "document": "Email sending status list",
+          "member": "SendEmailStatus",
+          "name": "EmailStatusList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "GetStatisticsReportRequest": {
       "document": "GetStatisticsReport request structure.",
       "members": [
@@ -1456,6 +1527,120 @@
         }
       ],
       "type": "object"
+    },
+    "SendEmailStatus": {
+      "document": "Describes the email sending status.",
+      "members": [
+        {
+          "default": "",
+          "document": "`MessageId` field returned by the `SendEmail` API",
+          "member": "string",
+          "name": "MessageId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recipient email address",
+          "member": "string",
+          "name": "ToEmailAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sender email address",
+          "member": "string",
+          "name": "FromEmailAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tencent Cloud processing status:\n0: successful.\n1001: internal system exception.\n1002: internal system exception.\n1003: internal system exception.\n1003: internal system exception.\n1004: email sending timeout.\n1005: internal system exception.\n1006: you have sent too many emails to the same address in a short period.\n1007: the email address is in the blocklist.\n1009: internal system exception.\n1010: daily email sending limit exceeded.\n1011: no permission to send custom content. Use a template.\n2001: no results found.\n3007: invalid template ID or unavailable template.\n3008: template status exception.\n3009: no permission to use this template.\n3010: the format of the `TemplateData` field is incorrect. \n3014: unable to send the email because the sender domain is not verified.\n3020: the recipient email address is in the blocklist.\n3024: failed to pre-check the email address format.\n3030: email sending is restricted temporarily due to high bounce rate.\n3033: the account has insufficient balance or overdue payment.",
+          "member": "int64",
+          "name": "SendStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recipient processing status:\n0: Tencent Cloud has accepted the request and added it to the send queue.\n1: the email is delivered successfully, `DeliverTime` indicates the time when the email is delivered successfully.\n2: the email is discarded. `DeliverMessage` indicates the reason for discarding.\n3: the recipient's ESP rejects the email, probably because the email address does not exist or due to other reasons.\n8: the email is delayed by the ESP. `DeliverMessage` indicates the reason for delay.",
+          "member": "int64",
+          "name": "DeliverStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description of the recipient processing status",
+          "member": "string",
+          "name": "DeliverMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timestamp when the request arrives at Tencent Cloud",
+          "member": "int64",
+          "name": "RequestTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Timestamp when Tencent Cloud delivers the email",
+          "member": "int64",
+          "name": "DeliverTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the recipient has opened the email",
+          "member": "bool",
+          "name": "UserOpened",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the recipient has clicked the links in the email",
+          "member": "bool",
+          "name": "UserClicked",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the recipient has unsubscribed from emails sent by the sender",
+          "member": "bool",
+          "name": "UserUnsubscribed",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the recipient has reported the sender",
+          "member": "bool",
+          "name": "UserComplainted",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "SendTaskData": {
       "document": "Email sending task data",
