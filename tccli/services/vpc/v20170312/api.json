@@ -55,9 +55,9 @@
       "output": "AssociateDirectConnectGatewayNatGatewayResponse"
     },
     "AssociateNatGatewayAddress": {
-      "document": "This API is used to bind an EIP to NAT Gateway.",
+      "document": "This API is used to bind an EIP to a NAT gateway.",
       "input": "AssociateNatGatewayAddressRequest",
-      "name": "Binds a NAT gateway to an EIP",
+      "name": "Binds an EIP to a NAT gateway",
       "output": "AssociateNatGatewayAddressResponse"
     },
     "AssociateNetworkAclSubnets": {
@@ -193,21 +193,21 @@
       "output": "CreateLocalGatewayResponse"
     },
     "CreateNatGateway": {
-      "document": "This API is used to create a NAT Gateway.\nBefore taking actions on a NAT Gateway, ensure that it has been successfully created, namely, the `State` field in the response of the `DescribeNatGateway` API is `AVAILABLE`.",
+      "document": "This API is used to create a NAT Gateway.\nBefore taking actions on a NAT gateway, ensure that it has been successfully created, namely, the `State` field in the response of the `DescribeNatGateway` API is `AVAILABLE`.",
       "input": "CreateNatGatewayRequest",
       "name": "Creates a NAT gateway",
       "output": "CreateNatGatewayResponse"
     },
     "CreateNatGatewayDestinationIpPortTranslationNatRule": {
-      "document": "This API (CreateNatGatewayDestinationIpPortTranslationNatRule) is used to create a port forwarding rule for a NAT gateway.",
+      "document": "This API is used to create the port forwarding rules of a NAT gateway.",
       "input": "CreateNatGatewayDestinationIpPortTranslationNatRuleRequest",
-      "name": "Creates a port forwarding rule for a NAT gateway",
+      "name": "Creates the port forwarding rule of a NAT gateway",
       "output": "CreateNatGatewayDestinationIpPortTranslationNatRuleResponse"
     },
     "CreateNatGatewaySourceIpTranslationNatRule": {
-      "document": "This API is used to create a SNAT rule for the NAT Gateway.",
+      "document": "This API is used to create SNAT rules for a NAT gateway.",
       "input": "CreateNatGatewaySourceIpTranslationNatRuleRequest",
-      "name": "Creates a SNAT rule for the NAT Gateway",
+      "name": "Creates SNAT rules for a NAT gateway",
       "output": "CreateNatGatewaySourceIpTranslationNatRuleResponse"
     },
     "CreateNetDetect": {
@@ -247,7 +247,7 @@
       "output": "CreateSecurityGroupResponse"
     },
     "CreateSecurityGroupPolicies": {
-      "document": "This API is used to create a security group policy (SecurityGroupPolicy).\n\nFor parameters of SecurityGroupPolicySet,\n<ul>\n<li>`Version`: the version number of a security group policy, which automatically increases by one each time you update the security policy, to prevent expiration of the updated routing policies. If it is left empty, any conflicts will be ignored.</li>\n<li>When creating the `Egress` and `Ingress` policies,<ul>\n<li>`Protocol`: allows `TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE`, or `ALL`.</li>\n<li>`CidrBlock`: a CIDR block in the correct format. In the classic network, if a `CidrBlock` contains private IPs of devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`Ipv6CidrBlock`: an IPv6 CIDR block in the correct format. In a classic network, if an `Ipv6CidrBlock` contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`SecurityGroupId`: ID of the security group. It can be the ID of security group to be modified, or the ID of another security group in the same project. All private IPs of all CVMs under the security group will be covered. If this field is used, the policy will automatically change according to the CVM associated with the group ID while being used to match network messages. You don’t need to change it manually.</li>\n<li>`Port`: a single port number such as 80, or a port range in the format of “8000-8010”. You may use this field only if the `Protocol` field takes the value `TCP` or `UDP`. Otherwise `Protocol` and `Port` are mutually exclusive.</li>\n<li>`Action`: only allows `ACCEPT` or `DROP`.</li>\n<li>`CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are mutually exclusive. `Protocol` + `Port` and `ServiceTemplate` are mutually exclusive.</li>\n<li>You can only create policies in one direction in each request. To specify the `PolicyIndex` parameter, use the same index number in policies.</li>\n</ul></li></ul>",
+      "document": "This API is used to create security group policies.\n\nFor parameters of SecurityGroupPolicySet,\n<ul>\n<li>`Version`: The version number of a security group policy, which automatically increases by one each time you update the security policy, to prevent expiration of the updated routing policies. If it is left empty, any conflicts will be ignored.</li>\n<li>When creating the `Egress` and `Ingress` polices,<ul>\n<li>`Protocol`: `TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE`, or `ALL`.</li>\n<li>`CidrBlock`: A CIDR block in the correct format. </li>For \n<li>`Ipv6CidrBlock`: An IPv6 CIDR block in the correct format. In a classic network, if an `Ipv6CidrBlock` contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`SecurityGroupId`: ID of the security group. It can be the ID of security group to be modified, or the ID of other security group in the same project. All private IPs of all CVMs under the security group will be covered. If this field is used, the policy will automatically change according to the CVM associated with the group ID while being used to match network messages. You don’t need to change it manually.</li>\n<li>`Port`: A single port number such as 80, or a port range in the format of \"8000-8010\". This parameter is only available when the `Protocol` is `TCP` or `UDP`. Otherwise, `Protocol` and `Port` are mutually exclusive.</li>\n<li>`Action`: `ACCEPT` or `DROP`.</li>\n<li>`CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are mutually exclusive. `Protocol` + `Port` and `ServiceTemplate` are mutually exclusive.</li>\n<li>You can only create policies in one direction in each request. To specify the `PolicyIndex` parameter, use the same index number in policies. If you want to insert a rule before the first rule, enter 0; if you want to add a rule after the last rule, leave it empty.</li>\n</ul></li></ul>",
       "input": "CreateSecurityGroupPoliciesRequest",
       "name": "Adds policies to a security group",
       "output": "CreateSecurityGroupPoliciesResponse"
@@ -391,21 +391,21 @@
       "output": "DeleteLocalGatewayResponse"
     },
     "DeleteNatGateway": {
-      "document": "This API (DeleteNatGateway) is used to delete a NAT gateway.\nAfter the deletion of a NAT gateway, the system will automatically delete the routing entry that contains the NAT gateway from the route table. It will also unbind the Elastic IP.",
+      "document": "This API is used to delete a NAT gateway.\nWhen a NAT gateway is deleted, all routes containing this gateway are deleted automatically, and the elastic IP is unbound.",
       "input": "DeleteNatGatewayRequest",
       "name": "Deletes a NAT gateway",
       "output": "DeleteNatGatewayResponse"
     },
     "DeleteNatGatewayDestinationIpPortTranslationNatRule": {
-      "document": "This API (DeleteNatGatewayDestinationIpPortTranslationNatRule) is used to delete a port forwarding rule for a NAT gateway.",
+      "document": "This API is used to delete the port forwarding rule of a NAT gateway.",
       "input": "DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest",
-      "name": "Deletes a port forwarding rule for a NAT gateway",
+      "name": "Deletes the port forwarding rule of a NAT gateway",
       "output": "DeleteNatGatewayDestinationIpPortTranslationNatRuleResponse"
     },
     "DeleteNatGatewaySourceIpTranslationNatRule": {
-      "document": "This API is used to delete a SNAT forwarding rule of the NAT Gateway.",
+      "document": "This API is used to delete a SNAT forwarding rule of a NAT gateway.",
       "input": "DeleteNatGatewaySourceIpTranslationNatRuleRequest",
-      "name": "Deletes a SNAT forwarding rule of the NAT Gateway",
+      "name": "Deletes a SNAT forwarding rule of a NAT Gateway",
       "output": "DeleteNatGatewaySourceIpTranslationNatRuleResponse"
     },
     "DeleteNetDetect": {
@@ -679,21 +679,27 @@
       "output": "DescribeLocalGatewayResponse"
     },
     "DescribeNatGatewayDestinationIpPortTranslationNatRules": {
-      "document": "This API (DescribeNatGatewayDestinationIpPortTranslationNatRules) is used to query the array of objects of the port forwarding rules for a NAT gateway.",
+      "document": "This API is used to query the array of objects of a NAT gateway's port forwarding rules.",
       "input": "DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest",
       "name": "Queries the port forwarding rule of a NAT gateway",
       "output": "DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse"
     },
+    "DescribeNatGatewayDirectConnectGatewayRoute": {
+      "document": "This API is used to query the routes between a NAT gateway and Direct Connect.",
+      "input": "DescribeNatGatewayDirectConnectGatewayRouteRequest",
+      "name": "Queries the routes between a NAT gateway and Direct Connect",
+      "output": "DescribeNatGatewayDirectConnectGatewayRouteResponse"
+    },
     "DescribeNatGatewaySourceIpTranslationNatRules": {
-      "document": "This API is used to query the object arrays of SNAT forwarding rules of the NAT Gateway.",
+      "document": "This API is used to query the NAT gateway's SNAT forwarding rules.",
       "input": "DescribeNatGatewaySourceIpTranslationNatRulesRequest",
-      "name": "Queries the SNAT forwarding rules of the NAT Gateway",
+      "name": "Queries a NAT gateway's SNAT forwarding rules",
       "output": "DescribeNatGatewaySourceIpTranslationNatRulesResponse"
     },
     "DescribeNatGateways": {
-      "document": "This API (DescribeNatGateways) is used to query NAT gateways.",
+      "document": "This API is used to query NAT gateways.",
       "input": "DescribeNatGatewaysRequest",
-      "name": "Queries a NAT gateway",
+      "name": "Queries NAT gateways",
       "output": "DescribeNatGatewaysResponse"
     },
     "DescribeNetDetectStates": {
@@ -907,7 +913,7 @@
       "output": "DisassociateDirectConnectGatewayNatGatewayResponse"
     },
     "DisassociateNatGatewayAddress": {
-      "document": "This API (DisassociateNatGatewayAddress) is used to unbind an EIP from a NAT gateway.",
+      "document": "This API is used to unbind an EIP from a NAT gateway.",
       "input": "DisassociateNatGatewayAddressRequest",
       "name": "Unbinds an EIP from a NAT gateway",
       "output": "DisassociateNatGatewayAddressResponse"
@@ -1111,21 +1117,21 @@
       "output": "ModifyLocalGatewayResponse"
     },
     "ModifyNatGatewayAttribute": {
-      "document": "This API (ModifyNatGatewayAttribute) is used to modify the attributes of a NAT gateway.",
+      "document": "This API is used to modify the attributes of a NAT gateway.",
       "input": "ModifyNatGatewayAttributeRequest",
       "name": "Modifies the attributes of a NAT gateway",
       "output": "ModifyNatGatewayAttributeResponse"
     },
     "ModifyNatGatewayDestinationIpPortTranslationNatRule": {
-      "document": "This API (ModifyNatGatewayDestinationIpPortTranslationNatRule) is used to modify a port forwarding rule for a NAT gateway.",
+      "document": "This API is used to modify the port forwarding rule of a NAT gateway.",
       "input": "ModifyNatGatewayDestinationIpPortTranslationNatRuleRequest",
-      "name": "Modifies a port forwarding rule for a NAT gateway",
+      "name": "Modifies the port forwarding rule of a NAT gateway",
       "output": "ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse"
     },
     "ModifyNatGatewaySourceIpTranslationNatRule": {
-      "document": "This API is used to modify a SNAT forwarding rule of the NAT Gateway.",
+      "document": "This API is used to modify a NAT gateway's SNAT forwarding rules.",
       "input": "ModifyNatGatewaySourceIpTranslationNatRuleRequest",
-      "name": "Modifies a SNAT forwarding rule of the NAT Gateway",
+      "name": "Modifies a NAT gateway's SNAT forwarding rules",
       "output": "ModifyNatGatewaySourceIpTranslationNatRuleResponse"
     },
     "ModifyNetDetect": {
@@ -1248,6 +1254,12 @@
       "name": "Publishes a route to CCN",
       "output": "NotifyRoutesResponse"
     },
+    "RefreshDirectConnectGatewayRouteToNatGateway": {
+      "document": "This API is used to refresh the route between a NAT gateway and  Direct Connect and update the associated route table.",
+      "input": "RefreshDirectConnectGatewayRouteToNatGatewayRequest",
+      "name": "Refreshes the routes of a NAT gateway associated with Direct Connect",
+      "output": "RefreshDirectConnectGatewayRouteToNatGatewayResponse"
+    },
     "RejectAttachCcnInstances": {
       "document": "This API (RejectAttachCcnInstances) is used to reject association operations when instances are associated across accounts for the CCN owner.\n",
       "input": "RejectAttachCcnInstancesRequest",
@@ -1303,7 +1315,7 @@
       "output": "ResetAttachCcnInstancesResponse"
     },
     "ResetNatGatewayConnection": {
-      "document": "This API (ResetNatGatewayConnection) is used to adjust concurrent connection cap for the NAT gateway.",
+      "document": "This API is used to adjust concurrent connection cap for the NAT gateway.",
       "input": "ResetNatGatewayConnectionRequest",
       "name": "Adjusts the concurrent connection cap for the NAT gateway",
       "output": "ResetNatGatewayConnectionResponse"
@@ -2387,7 +2399,7 @@
         },
         {
           "default": "",
-          "document": "The number of EIPs you want to apply for. The system will create the same number of EIPs as you require. Either `AddressCount` or `PublicAddresses` must be passed in.",
+          "document": "The number of EIPs you want to apply for. Either `AddressCount` or `PublicAddresses` must be passed in.",
           "example": "1",
           "member": "uint64",
           "name": "AddressCount",
@@ -2423,7 +2435,7 @@
         },
         {
           "default": "",
-          "document": "The requested size of the public network IP bandwidth (in Mbps), which defaults to the maximum value applicable for the current user type.",
+          "document": "The size of the public network IP bandwidth to be applied for (in Mbps), which defaults to the maximum value applicable for the current user type.",
           "example": "77",
           "member": "uint64",
           "name": "PublicIpAddressesBandwidthOut",
@@ -2432,7 +2444,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether the public IP and the NAT gateway must be in the same availability zone. Valid values: `true` and `false`. This parameter is valid only when `Zone` is specified.",
           "example": "true",
           "member": "bool",
           "name": "PublicIpFromSameZone",
@@ -4532,6 +4544,7 @@
         {
           "default": "",
           "document": "The ID of the NAT gateway, such as `nat-df45454`.",
+          "example": "nat-3isn9hr0",
           "member": "string",
           "name": "NatGatewayId",
           "required": true,
@@ -4540,6 +4553,7 @@
         {
           "default": "",
           "document": "The port forwarding rules of the NAT gateway.",
+          "example": "无",
           "member": "DestinationIpPortTranslationNatRule",
           "name": "DestinationIpPortTranslationNatRules",
           "required": true,
@@ -4574,7 +4588,7 @@
         },
         {
           "default": "",
-          "document": "The ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API.",
+          "document": "The ID of the VPC instance, which can be obtained from the `VpcId` field in response of the `DescribeVpcs` API.",
           "example": "vpc-abcdefgh",
           "member": "string",
           "name": "VpcId",
@@ -4583,7 +4597,7 @@
         },
         {
           "default": "",
-          "document": "The maximum outbound bandwidth of the NAT gateway (unit: Mbps). Supported parameter values: `20, 50, 100, 200, 500, 1000, 2000, 5000`. Default: `100Mbps`.",
+          "document": "The maximum outbound bandwidth of the NAT gateway (unit: Mbps). Supported parameter values: `20, 50, 100, 200, 500, 1000, 2000, 5000`. Default: `100`.",
           "example": "10",
           "member": "uint64",
           "name": "InternetMaxBandwidthOut",
@@ -4592,7 +4606,7 @@
         },
         {
           "default": "",
-          "document": "The concurrent connection cap of the NAT gateway. Supported parameter values: `1000000, 3000000, 10000000`. The default value is `100000`.",
+          "document": "The concurrent connection cap of the NAT gateway. Values: `1000000, 3000000, 10000000`. The default value is `1000000`.",
           "example": "1000000",
           "member": "uint64",
           "name": "MaxConcurrentConnection",
@@ -4601,7 +4615,7 @@
         },
         {
           "default": "",
-          "document": "The number of EIPs that needs to be applied for. The system will create N number of EIPs according to your requirements. Either AddressCount or PublicAddresses must be passed in.",
+          "document": "The number of EIPs that you want to apply for. Either `AddressCount` or `PublicIpAddresses` must be passed in.",
           "example": "1",
           "member": "uint64",
           "name": "AddressCount",
@@ -4610,7 +4624,7 @@
         },
         {
           "default": "",
-          "document": "The EIP array bound to the NAT gateway. Either AddressCount or PublicAddresses must be passed in.",
+          "document": "The EIP array bound to the NAT gateway. Either AddressCount or PublicIpAddresses must be passed in.",
           "example": "[\"139.199.232.119\\n\"]",
           "member": "string",
           "name": "PublicIpAddresses",
@@ -4628,7 +4642,7 @@
         },
         {
           "default": "",
-          "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
+          "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]",
           "example": "无",
           "member": "Tag",
           "name": "Tags",
@@ -4655,7 +4669,7 @@
         },
         {
           "default": "",
-          "document": "The requested size of the public network IP bandwidth (in Mbps), which defaults to the maximum value applicable for the current user type.",
+          "document": "The size of the public network IP bandwidth to be applied for (in Mbps), which defaults to the maximum value applicable for the current user type.",
           "example": "77",
           "member": "uint64",
           "name": "PublicIpAddressesBandwidthOut",
@@ -4664,7 +4678,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether the public IP and the NAT gateway must be in the same availability zone. Valid values: `true` and `false`. This parameter is valid only when `Zone` is specified.",
           "example": "false",
           "member": "bool",
           "name": "PublicIpFromSameZone",
@@ -4679,15 +4693,19 @@
       "members": [
         {
           "document": "NAT gateway object array.",
+          "example": "无",
           "member": "NatGateway",
           "name": "NatGatewaySet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The number of NAT gateway objects meeting the conditions.",
+          "document": "The number of eligible NAT gateway objects.",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4706,6 +4724,7 @@
         {
           "default": "",
           "document": "The ID of the NAT Gateway, such as `nat-df45454`",
+          "example": "nat-3isn9hr0",
           "member": "string",
           "name": "NatGatewayId",
           "required": true,
@@ -4714,6 +4733,7 @@
         {
           "default": "",
           "document": "The SNAT forwarding rule of the NAT Gateway",
+          "example": "无",
           "member": "SourceIpTranslationNatRule",
           "name": "SourceIpTranslationNatRules",
           "required": true,
@@ -4869,6 +4889,7 @@
         {
           "default": "",
           "document": "The ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API.",
+          "example": "vpc-0akbol5v",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -4877,6 +4898,7 @@
         {
           "default": "",
           "document": "The name of the ENI. The maximum length is 60 characters.",
+          "example": "TestNIC",
           "member": "string",
           "name": "NetworkInterfaceName",
           "required": true,
@@ -4885,6 +4907,7 @@
         {
           "default": "",
           "document": "The subnet instance ID of the ENI, such as `subnet-0ap8nwca`.",
+          "example": "subnet-76r802pg",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -4893,6 +4916,7 @@
         {
           "default": "",
           "document": "ENI description can be named freely, but the maximum length is 60 characters.",
+          "example": "TestDesc",
           "member": "string",
           "name": "NetworkInterfaceDescription",
           "required": false,
@@ -4901,6 +4925,7 @@
         {
           "default": "",
           "document": "The number of private IP addresses that is newly applied for. The total number of private IP addresses cannot exceed the quota.",
+          "example": "1",
           "member": "uint64",
           "name": "SecondaryPrivateIpAddressCount",
           "required": false,
@@ -4909,6 +4934,7 @@
         {
           "default": "",
           "document": "Specifies the security group to be bound with, such as ['sg-1dd51d'].",
+          "example": "[\"sg-05bb4upy\\r\\n\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
@@ -4917,6 +4943,7 @@
         {
           "default": "",
           "document": "The information of the specified private IPs. You can specify a maximum of 10 each time.",
+          "example": "无",
           "member": "PrivateIpAddressSpecification",
           "name": "PrivateIpAddresses",
           "required": false,
@@ -4925,10 +4952,20 @@
         {
           "default": "",
           "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Configuration of the ENI trunking mode. Valid values: `Enable` and `Disable`. Default value: `Disable`.",
+          "example": "Enable",
+          "member": "string",
+          "name": "TrunkingFlag",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -6786,6 +6823,7 @@
         {
           "default": "",
           "document": "The ID of the NAT gateway, such as `nat-df45454`.",
+          "example": "nat-3isn9hr0",
           "member": "string",
           "name": "NatGatewayId",
           "required": true,
@@ -6794,6 +6832,7 @@
         {
           "default": "",
           "document": "The port forwarding rules of the NAT gateway.",
+          "example": "无",
           "member": "DestinationIpPortTranslationNatRule",
           "name": "DestinationIpPortTranslationNatRules",
           "required": true,
@@ -6820,6 +6859,7 @@
         {
           "default": "",
           "document": "The ID of the NAT gateway, such as `nat-df45454`.",
+          "example": "nat-ig8xpno8",
           "member": "string",
           "name": "NatGatewayId",
           "required": true,
@@ -6846,6 +6886,7 @@
         {
           "default": "",
           "document": "The ID of the NAT Gateway, such as `nat-df45454`",
+          "example": "nat-3isn9hr0",
           "member": "string",
           "name": "NatGatewayId",
           "required": true,
@@ -6854,6 +6895,7 @@
         {
           "default": "",
           "document": "The list of SNAT rule IDs of a NAT Gateway, such as `snat-df43254`",
+          "example": "[\"snat-3ixd0hr0\\n\"]",
           "member": "string",
           "name": "NatGatewaySnatIds",
           "required": true,
@@ -9167,6 +9209,7 @@
         {
           "default": "",
           "document": "NAT gateway ID.",
+          "example": "[\"nat-3isn9hr0\\r\\n\"]",
           "member": "string",
           "name": "NatGatewayIds",
           "required": false,
@@ -9174,7 +9217,8 @@
         },
         {
           "default": "",
-          "document": "Filter conditions:\n`NatGatewayIds` and `Filters` cannot be specified at the same time.\n<li> nat-gateway-id, the NAT gateway ID, such as `nat-0yi4hekt`.</li>\n<li> vpc-id, the VPC ID, such as `vpc-0yi4hekt`.</li>\n<li> public-ip-address, the EIP, such as `139.199.232.238`.</li>\n<li>public-port, the public network port.</li>\n<li>private-ip-address, the private IP, such as `10.0.0.1`.</li>\n<li>private-port, the private network port.</li>\n<li>description, the rule description.</li>",
+          "document": "Filters:\n`NatGatewayIds` and `Filters` cannot be specified at the same time.\n<li> `nat-gateway-id`: The NAT gateway ID, such as `nat-0yi4hekt`.</li>\n<li> `vpc-id`: The VPC ID, such as `vpc-0yi4hekt`.</li>\n<li> `public-ip-address`: The EIP, such as `139.199.232.238`.</li>\n<li>`public-port`: The public network port.</li>\n<li>`private-ip-address`: The private IP, such as `10.0.0.1`.</li>\n<li>`private-port`. The private network port.</li>\n<li>`description`. The rule description.</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -9182,7 +9226,8 @@
         },
         {
           "default": "",
-          "document": "Offset. The default value is 0.",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -9190,7 +9235,8 @@
         },
         {
           "default": "",
-          "document": "Number of values to be returned. The default value is 20. Maximum is 100.",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -9204,15 +9250,91 @@
       "members": [
         {
           "document": "The object array of port forwarding rules for the NAT gateway.",
+          "example": "无",
           "member": "NatGatewayDestinationIpPortTranslationNatRule",
           "name": "NatGatewayDestinationIpPortTranslationNatRuleSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The number of object arrays of NAT port forwarding rules meeting the conditions.",
+          "document": "The number of eligible object arrays of NAT port forwarding rules.",
+          "example": "2",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNatGatewayDirectConnectGatewayRouteRequest": {
+      "document": "DescribeNatGatewayDirectConnectGatewayRoute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique ID of the NAT gateway",
+          "example": "nat-2jd1e1rm",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unique ID of VPC",
+          "example": "vpc-ofos1s33",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid range: 0-200",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Greater than 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNatGatewayDirectConnectGatewayRouteResponse": {
+      "document": "DescribeNatGatewayDirectConnectGatewayRoute response structure.",
+      "members": [
+        {
+          "document": "Route data",
+          "example": "无",
+          "member": "NatDirectConnectGatewayRoute",
+          "name": "NatDirectConnectGatewayRouteSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of routes",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -9231,6 +9353,7 @@
         {
           "default": "",
           "document": "The unique ID of the NAT Gateway, such as `nat-123xx454`.",
+          "example": "nat-3isn9hr0",
           "member": "string",
           "name": "NatGatewayId",
           "required": true,
@@ -9238,7 +9361,8 @@
         },
         {
           "default": "",
-          "document": "Filter conditions:\n<li> resource-id, the subnet ID (such as `subnet-0yi4hekt`) or CVM ID</li>\n<li> public-ip-address, the EIP, such as `139.199.232.238`</li>\n<li>description, the rule description</li>",
+          "document": "Filter:\n<li>`resource-id`: The subnet ID (such as `subnet-0yi4hekt`) or CVM ID</li>\n<li>`public-ip-address`: The EIP, such as `139.199.232.238`</li>\n<li>`description` The rule description</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -9246,7 +9370,8 @@
         },
         {
           "default": "",
-          "document": "Offset. Default is 0.",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -9255,6 +9380,7 @@
         {
           "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -9267,16 +9393,20 @@
       "document": "DescribeNatGatewaySourceIpTranslationNatRules response structure.",
       "members": [
         {
-          "document": "Object array of the SNAT rule for a NAT Gateway.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Array of objects of a NAT gateway's SNAT rules.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "SourceIpTranslationNatRule",
           "name": "SourceIpTranslationNatRuleSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
-          "document": "The number of object arrays of eligible forwarding rules for a NAT Gateway",
+          "document": "The number of eligible object arrays of a NAT gateway's forwarding rules.",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -9295,6 +9425,7 @@
         {
           "default": "",
           "document": "The unified ID of the NAT gateways, such as `nat-123xx454`.",
+          "example": "[\"nat-3isn9hr0\\r\\n\",\"nat-mxkohguo\\r\\n\"]",
           "member": "string",
           "name": "NatGatewayIds",
           "required": false,
@@ -9302,7 +9433,8 @@
         },
         {
           "default": "",
-          "document": "Filter condition. `NatGatewayIds` and `Filters` cannot be specified at the same time.\n<li>nat-gateway-id - String - (Filter condition) The ID of the protocol port template instance, such as `nat-123xx454`.</li>\n<li>vpc-id - String - (Filter condition) The unique ID of the VPC, such as `vpc-123xx454`.</li>\n<li>nat-gateway-name - String - (Filter condition) The name of the protocol port template instance, such as `test_nat`.</li>\n<li>tag-key - String - (Filter condition) The tag key, such as `test-key`.</li>",
+          "document": "Filters. `NatGatewayIds` and `Filters` cannot be specified at the same time.\n<li>nat-gateway-id - String - (Filter) The ID of the protocol port template instance, such as `nat-123xx454`.</li>\n<li>vpc-id - String - (Filter) The unique ID of the VPC, such as `vpc-123xx454`.</li>\n<li>nat-gateway-name - String - (Filter) The ID of the protocol port template instance, such as `test_nat`.</li>\n<li>tag-key - String - (Filter) The tag key, such as `test-key`.</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -9310,7 +9442,8 @@
         },
         {
           "default": "",
-          "document": "Offset. The default value is 0.",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -9318,7 +9451,8 @@
         },
         {
           "default": "",
-          "document": "Number of values to be returned. The default value is 20. Maximum is 100.",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -9332,15 +9466,19 @@
       "members": [
         {
           "document": "NAT gateway object array.",
+          "example": "无",
           "member": "NatGateway",
           "name": "NatGatewaySet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The number of NAT gateway object sets meeting the conditions.",
+          "document": "The number of eligible NAT gateway objects.",
+          "example": "2",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -9599,6 +9737,24 @@
           "value_allowed_null": true
         },
         {
+          "document": "The quota of relayed ENIs\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "20",
+          "member": "int64",
+          "name": "SubEniQuantity",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The quota of IPs that can be assigned to each relayed ENI.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "SubEniPrivateIpAddressQuantity",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -9613,6 +9769,7 @@
         {
           "default": "",
           "document": "Queries the ID of the ENI instance, such as `eni-pxir56ns`. Each request can have a maximum of 100 instances. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.",
+          "example": "-",
           "member": "string",
           "name": "NetworkInterfaceIds",
           "required": false,
@@ -9620,7 +9777,8 @@
         },
         {
           "default": "",
-          "document": "Filter condition. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.\n<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>subnet-id - String - (Filter condition) Subnet instance ID, such as `subnet-f49l6u0z`.</li>\n<li>network-interface-id - String - (Filter condition) ENI instance ID, such as `eni-5k56k7k7`.</li>\n<li>attachment.instance-id - String - (Filter condition) CVM instance ID, such as `ins-3nqpdn3i`.</li>\n<li>groups.security-group-id - String - (Filter condition) Instance ID of the security group, such as `sg-f9ekbxeq`.</li>\n<li>network-interface-name - String - (Filter condition) ENI instance name.</li>\n<li>network-interface-description - String - (Filter condition) ENI instance description.</li>\n<li>address-ip - String - (Filter condition) Private IPv4 address.</li>\n<li>tag-key - String - Required: no - (Filter condition) Filters by tag key. For more information, see Example 2.</li>\n<li> `tag:tag-key` - String - Required: no - (Filter condition) Filters by tag key pair. For this parameter, `tag-key` will be replaced with a specific tag key. For more information, see Example 3.</li>\n<li>is-primary - Boolean - Required: no - (Filter condition) Filters based on whether it is a primary ENI. If the value is ‘true’, filter only the primary ENI. If the value is ‘false’, filter only the secondary ENI. If the secondary filter parameter is provided, filter the both.</li>",
+          "document": "Filter. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.\n<li>`vpc-id` - String - VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>`subnet-id` - String - Subnet instance ID, such as `subnet-f49l6u0z`.</li>\n<li>`network-interface-id` - String - ENI instance ID, such as `eni-5k56k7k7`.</li>\n<li>`attachment.instance-id` - String - ID of the bound CVM instance, such as `ins-3nqpdn3i`.</li>\n<li>`groups.security-group-id` - String - ID of the bound security group, such as `sg-f9ekbxeq`.</li>\n<li>`network-interface-name` - String - ENI instance name.</li>\n<li>`network-interface-description` - String - ENI instance description.</li>\n<li>`address-ip` - String - Private IPv4 address. A single IP will be fuzzily matched with the suffix, while multiple IPs will be exactly matched. It can be used with `ip-exact-match` to query and exactly match a single IP.</li>\n<li>`ip-exact-match` - Boolean - Exact match by private IPv4 address. The first value will be returned if multiple values are found.</li>\n<li>`tag-key` - String - Optional - Filter by tag key. See Example 2 for the detailed usage.</li>\n<li>`tag:tag-key` - String - Optional - Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 3 for the detailed usage.</li>\n<li>`is-primary` - Boolean - Optional - Filter based on whether it is a primary ENI. If the value is `true`, filter only the primary ENI. If the value is `false`, filter only the secondary ENI. If this parameter is not specified, filter the both.</li>\n<li>`eni-type` - String - Optional - Filter by ENI type. \"0\" - secondary ENI, \"1\" - primary ENI, \"2\": relayed ENI</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -9629,6 +9787,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -9637,6 +9796,7 @@
         {
           "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -10913,7 +11073,7 @@
       "members": [
         {
           "default": "",
-          "document": "Network protocol. Available choices: `TCP`, `UDP`.",
+          "document": "Network protocol. Valid values: `TCP`, `UDP`.",
           "member": "string",
           "name": "IpProtocol",
           "required": true,
@@ -10931,7 +11091,7 @@
         },
         {
           "default": "",
-          "document": "Public port.",
+          "document": "Public network port.",
           "member": "uint64",
           "name": "PublicPort",
           "required": true,
@@ -10958,7 +11118,7 @@
         },
         {
           "default": "",
-          "document": "NAT gateway forwarding rule description.",
+          "document": "Description of NAT gateway forwarding rules.",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -11352,6 +11512,32 @@
       ],
       "usage": "out"
     },
+    "DirectConnectSubnet": {
+      "document": "IDC subnet information",
+      "members": [
+        {
+          "default": "",
+          "document": "The direct connect gateway ID.",
+          "example": "dcg-71awizmv",
+          "member": "string",
+          "name": "DirectConnectGatewayId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IDC subnet IP range",
+          "example": "99.99.99.77/32",
+          "member": "string",
+          "name": "CidrBlock",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DisableCcnRoutesRequest": {
       "document": "DisableCcnRoutes request structure.",
       "members": [
@@ -11528,6 +11714,7 @@
         {
           "default": "",
           "document": "The ID of the NAT gateway, such as `nat-df45454`.",
+          "example": "nat-mdbjfr0y",
           "member": "string",
           "name": "NatGatewayId",
           "required": true,
@@ -11536,6 +11723,7 @@
         {
           "default": "",
           "document": "Array of the EIPs to be unbound from the NAT gateway.",
+          "example": "[\"139.199.232.212\\n\"]",
           "member": "string",
           "name": "PublicIpAddresses",
           "required": true,
@@ -14196,6 +14384,7 @@
         {
           "default": "",
           "document": "The ID of the NAT gateway, such as `nat-df45454`.",
+          "example": "nat-ig8xpno8",
           "member": "string",
           "name": "NatGatewayId",
           "required": true,
@@ -14204,6 +14393,7 @@
         {
           "default": "",
           "document": "The NAT gateway name, such as `test_nat`.",
+          "example": "测试nat网关",
           "member": "string",
           "name": "NatGatewayName",
           "required": false,
@@ -14212,6 +14402,7 @@
         {
           "default": "",
           "document": "The maximum outbound bandwidth of the NAT gateway. Unit: Mbps.",
+          "example": "500",
           "member": "uint64",
           "name": "InternetMaxBandwidthOut",
           "required": false,
@@ -14219,7 +14410,8 @@
         },
         {
           "default": "",
-          "document": "Whether to modify the security group bound to the NAT Gateway",
+          "document": "Whether to modify the security group bound to the NAT gateway",
+          "example": "true",
           "member": "bool",
           "name": "ModifySecurityGroup",
           "required": false,
@@ -14228,6 +14420,7 @@
         {
           "default": "",
           "document": "The final security groups bound to the NAT Gateway, such as `['sg-1n232323', 'sg-o4242424']`. An empty list indicates that all the security groups have been deleted.",
+          "example": "['sg-1n232323']",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
@@ -14254,6 +14447,7 @@
         {
           "default": "",
           "document": "The ID of the NAT gateway, such as `nat-df45454`.",
+          "example": "nat-3isn9hr0",
           "member": "string",
           "name": "NatGatewayId",
           "required": true,
@@ -14262,6 +14456,7 @@
         {
           "default": "",
           "document": "The port forwarding rule of the source NAT gateway.",
+          "example": "无",
           "member": "DestinationIpPortTranslationNatRule",
           "name": "SourceNatRule",
           "required": true,
@@ -14270,6 +14465,7 @@
         {
           "default": "",
           "document": "The port forwarding rule of the destination NAT gateway.",
+          "example": "无",
           "member": "DestinationIpPortTranslationNatRule",
           "name": "DestinationNatRule",
           "required": true,
@@ -14296,6 +14492,7 @@
         {
           "default": "",
           "document": "The ID of the NAT Gateway, such as `nat-df453454`",
+          "example": "nat-3isn9hr0",
           "member": "string",
           "name": "NatGatewayId",
           "required": true,
@@ -14304,6 +14501,7 @@
         {
           "default": "",
           "document": "The SNAT forwarding rule of the NAT Gateway",
+          "example": "无",
           "member": "SourceIpTranslationNatRule",
           "name": "SourceIpTranslationNatRule",
           "required": true,
@@ -14470,6 +14668,7 @@
         {
           "default": "",
           "document": "The ID of the ENI instance, such as `eni-pxir56ns`.",
+          "example": "eni-afo43z61",
           "member": "string",
           "name": "NetworkInterfaceId",
           "required": true,
@@ -14478,6 +14677,7 @@
         {
           "default": "",
           "document": "The name of the ENI. The maximum length is 60 characters.",
+          "example": "NewName",
           "member": "string",
           "name": "NetworkInterfaceName",
           "required": false,
@@ -14486,6 +14686,7 @@
         {
           "default": "",
           "document": "ENI description can be named freely, but the maximum length is 60 characters.",
+          "example": "test",
           "member": "string",
           "name": "NetworkInterfaceDescription",
           "required": false,
@@ -14494,10 +14695,20 @@
         {
           "default": "",
           "document": "The specified security groups to be bound with, such as ['sg-1dd51d'].",
+          "example": "-",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Configuration of the ENI trunking mode. Valid values: `Enable` and `Disable`. Default value: `Disable`.",
+          "example": "Enable",
+          "member": "string",
+          "name": "TrunkingFlag",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -15274,6 +15485,62 @@
       ],
       "type": "object"
     },
+    "NatDirectConnectGatewayRoute": {
+      "document": "Query the returned object of a NAT route",
+      "members": [
+        {
+          "default": "",
+          "document": "The `IPv4` `CIDR` of the subnet.",
+          "example": "99.99.99.77/32",
+          "member": "string",
+          "name": "DestinationCidrBlock",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The type of the next-hop gateway. Supported types:\n`DIRECTCONNECT`: Direct connect gateway",
+          "example": "DIRECTCONNECT",
+          "member": "string",
+          "name": "GatewayType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the next-hop gateway",
+          "example": "dcg-71awizmv",
+          "member": "string",
+          "name": "GatewayId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The creation time of the route",
+          "example": "2021-08-23 19:38:31",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The update time of the route",
+          "example": "021-08-23 19:38:31",
+          "member": "datetime",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "NatGateway": {
       "document": "NAT gateway object.",
       "members": [
@@ -15309,7 +15576,7 @@
         },
         {
           "default": "",
-          "document": "The status of the NAT gateway.\n 'PENDING': Creating, 'DELETING': Deleting, 'AVAILABLE': Operating, 'UPDATING': Upgrading,\n‘FAILED’: Failed.",
+          "document": "The status of the NAT gateway.\n `PENDING`: Being created, `DELETING`: Being deleted, `AVAILABLE`: Running, `UPDATING`: Being upgraded,\n`FAILED`: Failed.",
           "example": "\"AVAILABLE\"",
           "member": "string",
           "name": "State",
@@ -15349,7 +15616,7 @@
         },
         {
           "default": "",
-          "document": "The NAT gateway status. `AVAILABLE`: Operating, `UNAVAILABLE`: Unavailable, `INSUFFICIENT`: Account is in arrears and the service is suspended.",
+          "document": "The NAT gateway status. `AVAILABLE`: Operating, `UNAVAILABLE`: Unavailable, `INSUFFICIENT`: Service suspended due to account overdue.",
           "example": "\"AVAILABLE\"",
           "member": "string",
           "name": "NetworkState",
@@ -15389,7 +15656,7 @@
         },
         {
           "default": "",
-          "document": "IDs of direct connect gateway associated.",
+          "document": "ID of the direct connect gateway bound.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[\"dcg-12345678\"]",
           "member": "string",
           "name": "DirectConnectGatewayIds",
@@ -15399,7 +15666,7 @@
         },
         {
           "default": "",
-          "document": "Subnet ID.",
+          "document": "Subnet ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"subnet-12345678\"",
           "member": "string",
           "name": "SubnetId",
@@ -15409,7 +15676,7 @@
         },
         {
           "default": "",
-          "document": "Tag key-value pair.",
+          "document": "Tag key-value pairs.",
           "example": "无",
           "member": "Tag",
           "name": "TagSet",
@@ -15419,7 +15686,7 @@
         },
         {
           "default": "",
-          "document": "The list of the security groups bound to the NAT Gateway\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The list of the security groups bound to the NAT Gateway\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[\"sg-12345678\"]",
           "member": "string",
           "name": "SecurityGroupSet",
@@ -15429,7 +15696,7 @@
         },
         {
           "default": "",
-          "document": "SNAT forwarding rule of the NAT Gateway.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "document": "SNAT forwarding rule of the NAT gateway.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SourceIpTranslationNatRule",
           "name": "SourceIpTranslationNatRuleSet",
@@ -15439,7 +15706,7 @@
         },
         {
           "default": "",
-          "document": "Whether the NAT Gateway is dedicated.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Whether the NAT gateway is dedicated.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
           "name": "IsExclusive",
@@ -15449,7 +15716,7 @@
         },
         {
           "default": "",
-          "document": "Bandwidth of the gateway cluster where the dedicated NAT Gateway resides. Unit: Mbps. This field does not exist when the `IsExclusive` field is set to `false`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Bandwidth of the gateway cluster where the dedicated NAT Gateway resides. Unit: Mbps. This field does not exist when the `IsExclusive` field is set to `false`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "50000",
           "member": "uint64",
           "name": "ExclusiveGatewayBandwidth",
@@ -15466,6 +15733,7 @@
         {
           "default": "",
           "document": "The unique ID of the Elastic IP (EIP), such as `eip-11112222`.",
+          "example": "eip-11112222",
           "member": "string",
           "name": "AddressId",
           "required": false,
@@ -15475,6 +15743,7 @@
         {
           "default": "",
           "document": "The public IP address, such as `123.121.34.33`.",
+          "example": "123.121.34.3",
           "member": "string",
           "name": "PublicIpAddress",
           "required": false,
@@ -15484,6 +15753,7 @@
         {
           "default": "",
           "document": "The block status of the resource. `true` indicates the EIP is blocked. `false` indicates that the EIP is not blocked.",
+          "example": "true",
           "member": "bool",
           "name": "IsBlocked",
           "required": false,
@@ -15525,7 +15795,7 @@
         },
         {
           "default": "",
-          "document": "Private network address.",
+          "document": "Private IP.",
           "member": "string",
           "name": "PrivateIpAddress",
           "required": true,
@@ -15534,7 +15804,7 @@
         },
         {
           "default": "",
-          "document": "Private network port.",
+          "document": "Private port.",
           "member": "uint64",
           "name": "PrivatePort",
           "required": true,
@@ -15552,7 +15822,7 @@
         },
         {
           "default": "",
-          "document": "NAT gateway ID.\nNote: This field may return null, indicating no valid value.",
+          "document": "NAT gateway ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "NatGatewayId",
           "required": true,
@@ -15561,7 +15831,7 @@
         },
         {
           "default": "",
-          "document": "VPC ID.\nNote: This field may return null, indicating no valid value.",
+          "document": "VPC ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -15570,7 +15840,7 @@
         },
         {
           "default": "",
-          "document": "The creation time of the NAT gateway forwarding rule.\nNote: This field may return null, indicating no valid value.",
+          "document": "The creation time of the NAT gateway forwarding rule.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "CreatedTime",
           "required": true,
@@ -16364,6 +16634,60 @@
       ],
       "usage": "out"
     },
+    "RefreshDirectConnectGatewayRouteToNatGatewayRequest": {
+      "document": "RefreshDirectConnectGatewayRouteToNatGateway request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "VPC ID",
+          "example": "vpc-3m6kvgrx",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The NAT gateway ID.",
+          "example": "nat-2jd1e1rm",
+          "member": "string",
+          "name": "NatGatewayId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether it is pre-refresh. Valid values: `True` (yes) and `False` (no)",
+          "example": "True",
+          "member": "bool",
+          "name": "DryRun",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RefreshDirectConnectGatewayRouteToNatGatewayResponse": {
+      "document": "RefreshDirectConnectGatewayRouteToNatGateway response structure.",
+      "members": [
+        {
+          "document": "IDC subnet information",
+          "example": "无",
+          "member": "DirectConnectSubnet",
+          "name": "DirectConnectSubnetSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "RejectAttachCcnInstancesRequest": {
       "document": "RejectAttachCcnInstances request structure.",
       "members": [
@@ -16716,7 +17040,8 @@
       "members": [
         {
           "default": "",
-          "document": "NAT gateway ID.",
+          "document": "The NAT gateway ID.",
+          "example": "nat-ig8xpno8",
           "member": "string",
           "name": "NatGatewayId",
           "required": true,
@@ -16725,6 +17050,7 @@
         {
           "default": "",
           "document": "Concurrent connections cap of the NAT gateway, such as 1000000, 3000000, 10000000.",
+          "example": "3000000",
           "member": "uint64",
           "name": "MaxConcurrentConnection",
           "required": true,
@@ -18108,7 +18434,7 @@
         },
         {
           "default": "",
-          "document": "Resource type. Valid values: SUBNET, NETWORKINTERFACE\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Resource type. Valid values: SUBNET, NETWORKINTERFACE\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ResourceType",
           "required": true,
@@ -18153,7 +18479,7 @@
         },
         {
           "default": "",
-          "document": "NAT Gateway ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "NAT gateway ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "NatGatewayId",
           "required": false,
@@ -18162,7 +18488,7 @@
         },
         {
           "default": "",
-          "document": "VPC ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "VPC ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -18171,7 +18497,7 @@
         },
         {
           "default": "",
-          "document": "Creation time of a SNAT rule for a NAT Gateway\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The creation time of a NAT gateway's SNAT rule.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "CreatedTime",
           "required": false,

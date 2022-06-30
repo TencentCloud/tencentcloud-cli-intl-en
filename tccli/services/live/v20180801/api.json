@@ -91,7 +91,7 @@
       "output": "CreateLiveTranscodeRuleResponse"
     },
     "CreateLiveTranscodeTemplate": {
-      "document": "After a transcoding template is created and a template ID is successfully returned, you need to call the [CreateLiveTranscodeRule](https://intl.cloud.tencent.com/document/product/267/32647?from_cn_redirect=1) API and bind the returned template ID to the stream.\n<br>Transcoding-related document: [LVB Remuxing and Transcoding](https://intl.cloud.tencent.com/document/product/267/32736?from_cn_redirect=1).",
+      "document": "This API is used to create a transcoding template. Up to 50 transcoding templates can be created in total. To use a template, you need to call [CreateLiveTranscodeRule](https://intl.cloud.tencent.com/document/product/267/32647?from_cn_redirect=1) to bind the template ID returned by this API to a stream.\n<br>For more information about transcoding, see [Live Remuxing and Transcoding](https://intl.cloud.tencent.com/document/product/267/32736?from_cn_redirect=1).",
       "input": "CreateLiveTranscodeTemplateRequest",
       "name": "Creating a transcoding template",
       "output": "CreateLiveTranscodeTemplateResponse"
@@ -2496,6 +2496,24 @@
           "name": "ShortEdgeAsHeight",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The DRM encryption type. Valid values: fairplay, normalaes, widevine.\nIf you do not pass this parameter or pass in an empty string, the existing configuration will be reset.",
+          "example": "normalaes",
+          "member": "string",
+          "name": "DRMType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. You can choose only one video track (SD, HD, UHD1, or UHD2).\nIf you do not pass this parameter or pass in an empty string, the existing configuration will be reset.",
+          "example": "AUDIO|HD",
+          "member": "string",
+          "name": "DRMTracks",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -7132,6 +7150,7 @@
         {
           "default": "",
           "document": "Template ID.",
+          "example": "1001",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -7140,6 +7159,7 @@
         {
           "default": "",
           "document": "Video codec. Valid values: h264, h265, origin (default)\n\norigin: original codec as the output codec",
+          "example": "h265",
           "member": "string",
           "name": "Vcodec",
           "required": false,
@@ -7148,6 +7168,7 @@
         {
           "default": "",
           "document": "Audio codec. Defaut value: aac.\nNote: this parameter is unsupported now.",
+          "example": "aac",
           "member": "string",
           "name": "Acodec",
           "required": false,
@@ -7156,6 +7177,7 @@
         {
           "default": "",
           "document": "Audio bitrate. Default value: 0.\nValue range: 0-500.",
+          "example": "600",
           "member": "int64",
           "name": "AudioBitrate",
           "required": false,
@@ -7164,6 +7186,7 @@
         {
           "default": "",
           "document": "Template description.",
+          "example": "test",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -7172,6 +7195,7 @@
         {
           "default": "",
           "document": "Video bitrate in Kbps. Value range: 100-8000.\nNote: the transcoding template requires that the bitrate be unique. Therefore, the final saved bitrate may be different from the input bitrate.",
+          "example": "1500",
           "member": "int64",
           "name": "VideoBitrate",
           "required": false,
@@ -7180,6 +7204,7 @@
         {
           "default": "",
           "document": "Width in pixels. Value range: 0-3000.\nIt must be a multiple of 2. The original width is 0.",
+          "example": "250",
           "member": "int64",
           "name": "Width",
           "required": false,
@@ -7188,6 +7213,7 @@
         {
           "default": "",
           "document": "Whether to keep the video. 0: no; 1: yes. Default value: 1.",
+          "example": "1",
           "member": "int64",
           "name": "NeedVideo",
           "required": false,
@@ -7196,6 +7222,7 @@
         {
           "default": "",
           "document": "Whether to keep the audio. 0: no; 1: yes. Default value: 1.",
+          "example": "1",
           "member": "int64",
           "name": "NeedAudio",
           "required": false,
@@ -7204,6 +7231,7 @@
         {
           "default": "",
           "document": "Height in pixels. Value range: 0-3000.\nIt must be a multiple of 2. The original height is 0.",
+          "example": "240",
           "member": "int64",
           "name": "Height",
           "required": false,
@@ -7212,6 +7240,7 @@
         {
           "default": "",
           "document": "Frame rate in fps. Default value: 0.\nValue range: 0-60",
+          "example": "30",
           "member": "int64",
           "name": "Fps",
           "required": false,
@@ -7220,6 +7249,7 @@
         {
           "default": "",
           "document": "Keyframe interval in seconds.\nValue range: 2-6",
+          "example": "3",
           "member": "int64",
           "name": "Gop",
           "required": false,
@@ -7228,6 +7258,7 @@
         {
           "default": "",
           "document": "Rotation angle. Default value: 0.\nValid values: 0, 90, 180, 270",
+          "example": "0",
           "member": "int64",
           "name": "Rotate",
           "required": false,
@@ -7236,6 +7267,7 @@
         {
           "default": "",
           "document": "Encoding quality:\nbaseline/main/high.",
+          "example": "main",
           "member": "string",
           "name": "Profile",
           "required": false,
@@ -7244,6 +7276,7 @@
         {
           "default": "",
           "document": "Whether to use the original bitrate when the set bitrate is larger than the original bitrate.\n0: no, 1: yes\nDefault value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "BitrateToOrig",
           "required": false,
@@ -7252,6 +7285,7 @@
         {
           "default": "",
           "document": "Whether to use the original height when the set height is higher than the original height.\n0: no, 1: yes\nDefault value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "HeightToOrig",
           "required": false,
@@ -7260,6 +7294,7 @@
         {
           "default": "",
           "document": "Whether to use the original frame rate when the set frame rate is larger than the original frame rate.\n0: no, 1: yes\nDefault value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "FpsToOrig",
           "required": false,
@@ -7268,6 +7303,7 @@
         {
           "default": "",
           "document": "Bitrate compression ratio of top speed codec video.\nTarget bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)\n\nValue range: 0.0-0.5.",
+          "example": "1.1",
           "member": "float",
           "name": "AdaptBitratePercent",
           "required": false,
@@ -7276,10 +7312,29 @@
         {
           "default": "",
           "document": "Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.",
+          "example": "1",
           "member": "int64",
           "name": "ShortEdgeAsHeight",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The DRM encryption type. Valid values: fairplay, normalaes, widevine.\nIf you do not pass this parameter or pass in an empty string, the existing configuration will be reset.",
+          "example": "fairplay",
+          "member": "string",
+          "name": "DRMType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. You can choose only one video track (SD, HD, UHD1, or UHD2).\nIf you do not pass this parameter or pass in an empty string, the existing configuration will be reset.",
+          "example": "AUDIO|HD",
+          "member": "string",
+          "name": "DRMTracks",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -8575,6 +8630,7 @@
         {
           "default": "",
           "document": "Codec: h264/h265/origin. Default value: h264.\n\norigin: keep the original codec.",
+          "example": "h264",
           "member": "string",
           "name": "Vcodec",
           "required": true,
@@ -8584,6 +8640,7 @@
         {
           "default": "",
           "document": "Video bitrate. Value range: 0–8,000 Kbps.\nIf the value is 0, the original bitrate will be retained.\nNote: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.",
+          "example": "0",
           "member": "int64",
           "name": "VideoBitrate",
           "required": true,
@@ -8593,6 +8650,7 @@
         {
           "default": "",
           "document": "Audio codec: aac. Default value: aac.\nNote: This parameter will not take effect for now and will be supported soon.",
+          "example": "aac",
           "member": "string",
           "name": "Acodec",
           "required": true,
@@ -8602,6 +8660,7 @@
         {
           "default": "",
           "document": "Audio bitrate. Value range: 0–500 Kbps.\n0 by default.",
+          "example": "0",
           "member": "int64",
           "name": "AudioBitrate",
           "required": true,
@@ -8611,6 +8670,7 @@
         {
           "default": "",
           "document": "Width. Default value: 0.\nValue range: [0-3,000].\nThe value must be a multiple of 2. The original width is 0.",
+          "example": "0",
           "member": "int64",
           "name": "Width",
           "required": true,
@@ -8620,6 +8680,7 @@
         {
           "default": "",
           "document": "Height. Default value: 0.\nValue range: [0-3,000].\nThe value must be a multiple of 2. The original width is 0.",
+          "example": "0",
           "member": "int64",
           "name": "Height",
           "required": true,
@@ -8629,6 +8690,7 @@
         {
           "default": "",
           "document": "Frame rate. Default value: 0.\nRange: 0-60 Fps.",
+          "example": "0",
           "member": "int64",
           "name": "Fps",
           "required": true,
@@ -8638,6 +8700,7 @@
         {
           "default": "",
           "document": "Keyframe interval, unit: second.\nOriginal interval by default\nRange: 2-6",
+          "example": "3",
           "member": "int64",
           "name": "Gop",
           "required": true,
@@ -8647,6 +8710,7 @@
         {
           "default": "",
           "document": "Rotation angle. Default value: 0.\nValue range: 0, 90, 180, 270",
+          "example": "0",
           "member": "int64",
           "name": "Rotate",
           "required": true,
@@ -8656,6 +8720,7 @@
         {
           "default": "",
           "document": "Encoding quality:\nbaseline/main/high. Default value: baseline.",
+          "example": "baseline",
           "member": "string",
           "name": "Profile",
           "required": true,
@@ -8665,6 +8730,7 @@
         {
           "default": "",
           "document": "Whether to use the original bitrate when the set bitrate is larger than the original bitrate.\n0: no, 1: yes\nDefault value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "BitrateToOrig",
           "required": true,
@@ -8674,6 +8740,7 @@
         {
           "default": "",
           "document": "Whether to use the original height when the set height is higher than the original height.\n0: no, 1: yes\nDefault value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "HeightToOrig",
           "required": true,
@@ -8683,6 +8750,7 @@
         {
           "default": "",
           "document": "Whether to use the original frame rate when the set frame rate is larger than the original frame rate.\n0: no, 1: yes\nDefault value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "FpsToOrig",
           "required": true,
@@ -8692,6 +8760,7 @@
         {
           "default": "",
           "document": "Whether to keep the video. 0: no; 1: yes.",
+          "example": "0",
           "member": "int64",
           "name": "NeedVideo",
           "required": true,
@@ -8701,6 +8770,7 @@
         {
           "default": "",
           "document": "Whether to keep the audio. 0: no; 1: yes.",
+          "example": "0",
           "member": "int64",
           "name": "NeedAudio",
           "required": true,
@@ -8710,6 +8780,7 @@
         {
           "default": "",
           "document": "Template ID.",
+          "example": "123",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -8719,6 +8790,7 @@
         {
           "default": "",
           "document": "Template name.",
+          "example": "xxx",
           "member": "string",
           "name": "TemplateName",
           "required": true,
@@ -8728,6 +8800,7 @@
         {
           "default": "",
           "document": "Template description.",
+          "example": "xx",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -8737,6 +8810,7 @@
         {
           "default": "",
           "document": "Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "AiTransCode",
           "required": true,
@@ -8746,6 +8820,7 @@
         {
           "default": "",
           "document": "Bitrate compression ratio of top speed code video.\nTarget bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)\n\nValue range: 0.0-0.5.",
+          "example": "0.5",
           "member": "float",
           "name": "AdaptBitratePercent",
           "required": true,
@@ -8755,10 +8830,31 @@
         {
           "default": "",
           "document": "Whether to take the shorter side as height. 0: no, 1: yes. Default value: 0.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "0",
           "member": "int64",
           "name": "ShortEdgeAsHeight",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The DRM encryption type. Valid values: fairplay, normalaes, widevine.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "widevine",
+          "member": "string",
+          "name": "DRMType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. Separate multiple tracks with “|”. You can choose only one video track (SD, HD, UHD1, or UHD2).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "AUDIO|UHD2",
+          "member": "string",
+          "name": "DRMTracks",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -8809,7 +8905,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The total time-shift duration (minutes).",
           "example": "67.43",
           "member": "float",
           "name": "TotalDuration",
