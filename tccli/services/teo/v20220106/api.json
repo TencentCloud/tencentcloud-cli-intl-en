@@ -1,5 +1,41 @@
 {
   "actions": {
+    "CheckCertificate": {
+      "document": "This API is used to verify a certificate.",
+      "input": "CheckCertificateRequest",
+      "name": "Verifies a certificate",
+      "output": "CheckCertificateResponse"
+    },
+    "CreateApplicationProxy": {
+      "document": "This API is used to create an application proxy.",
+      "input": "CreateApplicationProxyRequest",
+      "name": "Creates an application proxy",
+      "output": "CreateApplicationProxyResponse"
+    },
+    "CreateApplicationProxyRule": {
+      "document": "This API is used to create an application proxy rule.",
+      "input": "CreateApplicationProxyRuleRequest",
+      "name": "Creates an application proxy rule",
+      "output": "CreateApplicationProxyRuleResponse"
+    },
+    "CreateApplicationProxyRules": {
+      "document": "This API is used to batch create application proxy rules.",
+      "input": "CreateApplicationProxyRulesRequest",
+      "name": "Batch creates application proxy rules",
+      "output": "CreateApplicationProxyRulesResponse"
+    },
+    "CreateDnsRecord": {
+      "document": "This API is used to create a DNS record.",
+      "input": "CreateDnsRecordRequest",
+      "name": "Creates a DNS record",
+      "output": "CreateDnsRecordResponse"
+    },
+    "CreateLoadBalancing": {
+      "document": "This API is used to create a CLB instance.",
+      "input": "CreateLoadBalancingRequest",
+      "name": "Creates a CLB instance",
+      "output": "CreateLoadBalancingResponse"
+    },
     "CreatePrefetchTask": {
       "document": "This API is used to create a pre-warming task.",
       "input": "CreatePrefetchTaskRequest",
@@ -11,6 +47,114 @@
       "input": "CreatePurgeTaskRequest",
       "name": "Creates a cache purging task",
       "output": "CreatePurgeTaskResponse"
+    },
+    "CreateZone": {
+      "document": "This API is used to access a new site.",
+      "input": "CreateZoneRequest",
+      "name": "Creates a site",
+      "output": "CreateZoneResponse"
+    },
+    "DeleteApplicationProxy": {
+      "document": "This API is used to delete an application proxy.",
+      "input": "DeleteApplicationProxyRequest",
+      "name": "Deletes an application proxy",
+      "output": "DeleteApplicationProxyResponse"
+    },
+    "DeleteApplicationProxyRule": {
+      "document": "This API is used to delete an application proxy rule.",
+      "input": "DeleteApplicationProxyRuleRequest",
+      "name": "Deletes an application proxy rule",
+      "output": "DeleteApplicationProxyRuleResponse"
+    },
+    "DeleteDnsRecords": {
+      "document": "This API is used to batch delete DNS records.",
+      "input": "DeleteDnsRecordsRequest",
+      "name": "Batch deletes DNS records",
+      "output": "DeleteDnsRecordsResponse"
+    },
+    "DeleteLoadBalancing": {
+      "document": "This API is used to delete a CLB instance.",
+      "input": "DeleteLoadBalancingRequest",
+      "name": "Deletes a CLB instance",
+      "output": "DeleteLoadBalancingResponse"
+    },
+    "DeleteZone": {
+      "document": "This API is used to delete a site.",
+      "input": "DeleteZoneRequest",
+      "name": "Deletes a site",
+      "output": "DeleteZoneResponse"
+    },
+    "DescribeApplicationProxy": {
+      "document": "This API is used to obtain a list of application proxies.",
+      "input": "DescribeApplicationProxyRequest",
+      "name": "Obtains a list of application proxies",
+      "output": "DescribeApplicationProxyResponse"
+    },
+    "DescribeApplicationProxyDetail": {
+      "document": "This API is used to obtain the details of an application proxy.",
+      "input": "DescribeApplicationProxyDetailRequest",
+      "name": "Obtains the details of an application proxy",
+      "output": "DescribeApplicationProxyDetailResponse"
+    },
+    "DescribeCnameStatus": {
+      "document": "This API is used to query the CNAME status of a domain name.",
+      "input": "DescribeCnameStatusRequest",
+      "name": "Queries the CNAME status of a domain name",
+      "output": "DescribeCnameStatusResponse"
+    },
+    "DescribeDefaultCertificates": {
+      "document": "This API is used to query a list of default certificates.",
+      "input": "DescribeDefaultCertificatesRequest",
+      "name": "Queries a list of default certificates",
+      "output": "DescribeDefaultCertificatesResponse"
+    },
+    "DescribeDnsData": {
+      "document": "This API is used to obtain collected DNS requests.",
+      "input": "DescribeDnsDataRequest",
+      "name": "Obtains collected DNS requests",
+      "output": "DescribeDnsDataResponse"
+    },
+    "DescribeDnsRecords": {
+      "document": "This API is used to query DNS records. Paging, sorting and filtering are supported.",
+      "input": "DescribeDnsRecordsRequest",
+      "name": "Queries DNS records",
+      "output": "DescribeDnsRecordsResponse"
+    },
+    "DescribeDnssec": {
+      "document": "This API is used to query DNSSEC information.",
+      "input": "DescribeDnssecRequest",
+      "name": "Queries DNSSEC information",
+      "output": "DescribeDnssecResponse"
+    },
+    "DescribeHostsCertificate": {
+      "document": "This API is used to query certificates of domain names. Paging, sorting and filtering are supported.",
+      "input": "DescribeHostsCertificateRequest",
+      "name": "Queries certificates of domain names",
+      "output": "DescribeHostsCertificateResponse"
+    },
+    "DescribeHostsSetting": {
+      "document": "This API is used to query detailed domain name configuration.",
+      "input": "DescribeHostsSettingRequest",
+      "name": "Queries detailed domain name configuration",
+      "output": "DescribeHostsSettingResponse"
+    },
+    "DescribeIdentification": {
+      "document": "This API is used to query verification results.",
+      "input": "DescribeIdentificationRequest",
+      "name": "Queries verification results",
+      "output": "DescribeIdentificationResponse"
+    },
+    "DescribeLoadBalancing": {
+      "document": "This API is used to obtain a list of CLB instances.",
+      "input": "DescribeLoadBalancingRequest",
+      "name": "Obtains a list of CLB instances",
+      "output": "DescribeLoadBalancingResponse"
+    },
+    "DescribeLoadBalancingDetail": {
+      "document": "This API is used to query the details of a CLB instance.",
+      "input": "DescribeLoadBalancingDetailRequest",
+      "name": "Queries the details of a CLB instance",
+      "output": "DescribeLoadBalancingDetailResponse"
     },
     "DescribePrefetchTasks": {
       "document": "This API is used to query the pre-warming task status.",
@@ -24,6 +168,18 @@
       "name": "Queries the cache purging history",
       "output": "DescribePurgeTasksResponse"
     },
+    "DescribeZoneDetails": {
+      "document": "This API is used to query the details of a site by site ID.",
+      "input": "DescribeZoneDetailsRequest",
+      "name": "Queries the details of a site",
+      "output": "DescribeZoneDetailsResponse"
+    },
+    "DescribeZoneSetting": {
+      "document": "This API is used to query the site configuration.",
+      "input": "DescribeZoneSettingRequest",
+      "name": "Queries the site configuration",
+      "output": "DescribeZoneSettingResponse"
+    },
     "DescribeZones": {
       "document": "This API is used to query the list of user sites.",
       "input": "DescribeZonesRequest",
@@ -35,6 +191,114 @@
       "input": "DownloadL7LogsRequest",
       "name": "Downloads layer-7 logs",
       "output": "DownloadL7LogsResponse"
+    },
+    "IdentifyZone": {
+      "document": "This API is used to verify ownership of the site.",
+      "input": "IdentifyZoneRequest",
+      "name": "Verifies site ownership",
+      "output": "IdentifyZoneResponse"
+    },
+    "ImportDnsRecords": {
+      "document": "This API is used to import DNS records.",
+      "input": "ImportDnsRecordsRequest",
+      "name": "Imports DNS records",
+      "output": "ImportDnsRecordsResponse"
+    },
+    "ModifyApplicationProxy": {
+      "document": "This API is used to modify an application proxy.",
+      "input": "ModifyApplicationProxyRequest",
+      "name": "Modifies an application proxy",
+      "output": "ModifyApplicationProxyResponse"
+    },
+    "ModifyApplicationProxyRule": {
+      "document": "This API is used to modify an application proxy rule.",
+      "input": "ModifyApplicationProxyRuleRequest",
+      "name": "Modifies an application proxy rule",
+      "output": "ModifyApplicationProxyRuleResponse"
+    },
+    "ModifyApplicationProxyRuleStatus": {
+      "document": "This API is used to modify the status of an application proxy rule.",
+      "input": "ModifyApplicationProxyRuleStatusRequest",
+      "name": "Modifies the status of an application proxy rule",
+      "output": "ModifyApplicationProxyRuleStatusResponse"
+    },
+    "ModifyApplicationProxyStatus": {
+      "document": "This API is used to modify the status of an application proxy.",
+      "input": "ModifyApplicationProxyStatusRequest",
+      "name": "Modifies the status of an application proxy",
+      "output": "ModifyApplicationProxyStatusResponse"
+    },
+    "ModifyDefaultCertificate": {
+      "document": "This API is used to modify the status of a default certificate.",
+      "input": "ModifyDefaultCertificateRequest",
+      "name": "Modifies the status of a default certificate",
+      "output": "ModifyDefaultCertificateResponse"
+    },
+    "ModifyDnsRecord": {
+      "document": "This API is used to modify DNS records.",
+      "input": "ModifyDnsRecordRequest",
+      "name": "Modifies DNS records",
+      "output": "ModifyDnsRecordResponse"
+    },
+    "ModifyDnssec": {
+      "document": "This API is used to modify the DNSSEC status.",
+      "input": "ModifyDnssecRequest",
+      "name": "Modifies DNSSEC",
+      "output": "ModifyDnssecResponse"
+    },
+    "ModifyHostsCertificate": {
+      "document": "This API is used to modify the certificate of a domain name.",
+      "input": "ModifyHostsCertificateRequest",
+      "name": "Modifies the certificate of a domain name",
+      "output": "ModifyHostsCertificateResponse"
+    },
+    "ModifyLoadBalancing": {
+      "document": "This API is used to modify a CLB instance.",
+      "input": "ModifyLoadBalancingRequest",
+      "name": "Modifies a CLB instance",
+      "output": "ModifyLoadBalancingResponse"
+    },
+    "ModifyLoadBalancingStatus": {
+      "document": "This API is used to modify the status of a CLB instance.",
+      "input": "ModifyLoadBalancingStatusRequest",
+      "name": "Modifies the status of a CLB instance",
+      "output": "ModifyLoadBalancingStatusResponse"
+    },
+    "ModifyZone": {
+      "document": "This API is used to modify the site information.",
+      "input": "ModifyZoneRequest",
+      "name": "Modifies a site",
+      "output": "ModifyZoneResponse"
+    },
+    "ModifyZoneCnameSpeedUp": {
+      "document": "This API is used to modify the CNAME acceleration status.",
+      "input": "ModifyZoneCnameSpeedUpRequest",
+      "name": "Modifies the CNAME acceleration status",
+      "output": "ModifyZoneCnameSpeedUpResponse"
+    },
+    "ModifyZoneSetting": {
+      "document": "This API is used to modify the site configuration.",
+      "input": "ModifyZoneSettingRequest",
+      "name": "Modifies the site configuration",
+      "output": "ModifyZoneSettingResponse"
+    },
+    "ModifyZoneStatus": {
+      "document": "This API is used to change the site status.",
+      "input": "ModifyZoneStatusRequest",
+      "name": "Changes the site status",
+      "output": "ModifyZoneStatusResponse"
+    },
+    "ReclaimZone": {
+      "document": "This API is used to reclaim a site from other users after its ownership is verified.",
+      "input": "ReclaimZoneRequest",
+      "name": "Reclaims a site",
+      "output": "ReclaimZoneResponse"
+    },
+    "ScanDnsRecords": {
+      "document": "This API is used to scan resolution records.",
+      "input": "ScanDnsRecordsRequest",
+      "name": "Scans resolution records",
+      "output": "ScanDnsRecordsResponse"
     }
   },
   "metadata": {
@@ -43,6 +307,1158 @@
     "serviceShortName": "teo"
   },
   "objects": {
+    "ApplicationProxy": {
+      "document": "Application proxy instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "example": "a proxy",
+          "member": "string",
+          "name": "ProxyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Scheduling mode:\n`ip`: Anycast IP\n`domain`: CNAME",
+          "example": "ip",
+          "member": "string",
+          "name": "PlatType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`0`: Disable security protection; `1`: Enable security protection.",
+          "example": "1",
+          "member": "int64",
+          "name": "SecurityType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`0`: Disable acceleration; `1`: Enable acceleration.",
+          "example": "1",
+          "member": "int64",
+          "name": "AccelerateType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is moved to `Rule.ForwardClientIp`.",
+          "example": "TOA",
+          "member": "string",
+          "name": "ForwardClientIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This field is moved to `Rule.SessionPersist`.",
+          "example": "false",
+          "member": "bool",
+          "name": "SessionPersist",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule list",
+          "example": "无",
+          "member": "ApplicationProxyRule",
+          "name": "Rule",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status:\n`online`: Enable\n`offline`: Disable\n`progress`: Deploying\n`stopping`: Disabling\n`fail`: Deployment/Disabling failed\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Scheduling information\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "[]",
+          "member": "string",
+          "name": "ScheduleValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Update time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Site ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Site name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "123.com",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Session persistence duration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "3600",
+          "member": "uint64",
+          "name": "SessionPersistTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies how a layer-4 proxy is created.\n`hostname`: Subdomain name\n`instance`: Instance\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "hostname",
+          "member": "string",
+          "name": "ProxyType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the layer-7 domain name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "edge-xxx",
+          "member": "string",
+          "name": "HostId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ApplicationProxyRule": {
+      "document": "Application proxy rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Protocol. Valid values: `TCP` and `UDP`.",
+          "example": "TCP",
+          "member": "string",
+          "name": "Proto",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port. Valid values:\n`80`: Port 80\n`81-90`: Port range 81-90",
+          "example": "80",
+          "member": "string",
+          "name": "Port",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Origin server type. Valid values:\n`custom`: Specified origins\n`origins`: An origin group\n`load_balancing`: A load balancer",
+          "example": "custom",
+          "member": "string",
+          "name": "OriginType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Origin server information.\nWhen `OriginType=custom`, this field value indicates multiple origin servers in either of the following formats:\nIP:Port\nDomain name:Port\nWhen `OriginType=origins`, it indicates the origin group ID.\n ",
+          "example": "[\"1.1.1.1:80\",\"2.2.2.2:80\"]",
+          "member": "string",
+          "name": "OriginValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "rule-xxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Status:\n`online`: Enable\n`offline`: Disable\n`progress`: Deploying\n`stopping`: Disabling\n`fail`: Deployment/Disabling failed",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Passes the client IP. When `Proto=TCP`, valid values:\n`TOA`: Pass the client IP via TOA\n`PPV1`: Pass the client IP via Proxy Protocol V1\n`PPV2`: Pass the client IP via Proxy Protocol V2\n`OFF`: Do not pass the client IP.\nWhen `Proto=UDP`, valid values:\n`PPV2`: Pass the client IP via Proxy Protocol V2\n`OFF`: Do not pass the client IP.",
+          "example": "TOA",
+          "member": "string",
+          "name": "ForwardClientIp",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable session persistence",
+          "example": "false",
+          "member": "bool",
+          "name": "SessionPersist",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CacheConfig": {
+      "document": "Cache rule configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Cache configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "CacheConfigCache",
+          "name": "Cache",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "No-cache configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "CacheConfigNoCache",
+          "name": "NoCache",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Follows the origin server configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "CacheConfigFollowOrigin",
+          "name": "FollowOrigin",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CacheConfigCache": {
+      "document": "Cache time settings",
+      "members": [
+        {
+          "default": "",
+          "document": "Cache configuration switch\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cache expiration time settings\nUnit: second. The maximum value is 365 days.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "36000",
+          "member": "int64",
+          "name": "CacheTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable force cache\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "IgnoreCacheControl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CacheConfigFollowOrigin": {
+      "document": "Follows the origin server configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies whether to follow the origin server configuration\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CacheConfigNoCache": {
+      "document": "Do not cache the configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to cache the configuration\n`on`: Do not cache\n`off`: Cache\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CacheKey": {
+      "document": "Cache key configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies whether to enable full-path cache\n`on`: Enable full-path cache (i.e., disable Ignore Query String)\n`off`: Disable full-path cache (i.e., enable Ignore Query String)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "FullUrlCache",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies whether the cache key is case sensitive\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "IgnoreCase",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Request parameter contained in `CacheKey`\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "QueryString",
+          "name": "QueryString",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CachePrefresh": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "10",
+          "member": "int64",
+          "name": "Percent",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CertFilter": {
+      "document": "Query filter to search for certificates",
+      "members": [
+        {
+          "default": "",
+          "document": "Filters by the field name. Values:\n - `host`: Domain name\n - `certId`: Certificate ID\n - `certAlias`: Certificate alias\n - `certType: default`: Default certificate; `upload`: External certificate; `managed`: Tencent Cloud certificate.",
+          "example": "host",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filters by the field value",
+          "example": "test.com",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable fuzzy query, which only supports the `host` field.\nIf it is enabled, the length of `Value` must be 1.",
+          "example": "false",
+          "member": "bool",
+          "name": "Fuzzy",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CertSort": {
+      "document": "Sorting conditions for query results.",
+      "members": [
+        {
+          "default": "",
+          "document": "Fields that can be sorted. Values:\n`createTime`: Domain name creation time\n`certExpireTime`: Certificate expiration time\n`certDeployTime`: Certificate deployment time",
+          "example": "certExpireTime",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: `asc` and `desc` (default).",
+          "example": "desc",
+          "member": "string",
+          "name": "Sequence",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CheckCertificateRequest": {
+      "document": "CheckCertificate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Certificate",
+          "example": "无",
+          "member": "string",
+          "name": "Certificate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Private key",
+          "example": "无",
+          "member": "string",
+          "name": "PrivateKey",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckCertificateResponse": {
+      "document": "CheckCertificate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ClientIp": {
+      "document": "Client IP header",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies whether to enable client IP header\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Name of the origin-pull client IP request header\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "X-ClientIp",
+          "member": "string",
+          "name": "HeaderName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CnameStatus": {
+      "document": "CNAME status",
+      "members": [
+        {
+          "default": "",
+          "document": "Record name",
+          "example": "xxx.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CNAME address\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "xxx,com",
+          "member": "string",
+          "name": "Cname",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Status\n`active`: Activated\n`moved`: Not activated\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "active",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Compression": {
+      "document": "Smart compression",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable Smart compression\n`on`: Enable\n`off`: Disable",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CreateApplicationProxyRequest": {
+      "document": "CreateApplicationProxy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Site name",
+          "example": "123.com",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Layer-4 proxy name",
+          "example": "a proxy",
+          "member": "string",
+          "name": "ProxyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Scheduling mode. Values:\n`ip`: Anycast IP\n`domain`: CNAME",
+          "example": "cname",
+          "member": "string",
+          "name": "PlatType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "`0`: Disable security protection; `1`: Enable security protection.",
+          "example": "1",
+          "member": "int64",
+          "name": "SecurityType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "`0`: Disable acceleration; `1`: Enable acceleration.",
+          "example": "1",
+          "member": "int64",
+          "name": "AccelerateType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This field is moved to `Rule.ForwardClientIp`.",
+          "example": "TOA",
+          "member": "string",
+          "name": "ForwardClientIp",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This field is moved to `Rule.SessionPersist`.",
+          "example": "false",
+          "member": "bool",
+          "name": "SessionPersist",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Rule details",
+          "example": "无",
+          "member": "ApplicationProxyRule",
+          "name": "Rule",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Session persistence duration. Value range: 30-3600 (in seconds).",
+          "example": "3600",
+          "member": "uint64",
+          "name": "SessionPersistTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Specifies how a layer-4 proxy is created.\n`hostname`: Subdomain name\n`instance`: Instance",
+          "example": "hostname",
+          "member": "string",
+          "name": "ProxyType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateApplicationProxyResponse": {
+      "document": "CreateApplicationProxy response structure.",
+      "members": [
+        {
+          "document": "Layer-4 application proxy ID",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateApplicationProxyRuleRequest": {
+      "document": "CreateApplicationProxyRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Proxy ID",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Protocol. Valid values: `TCP` and `UDP`.",
+          "example": "TCP",
+          "member": "string",
+          "name": "Proto",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Port. Valid values:\n`80`: Port 80\n`81-90`: Port range 81-90",
+          "example": "[\"80\"]",
+          "member": "string",
+          "name": "Port",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Origin server type. Valid values:\n`custom`: Specified origins\n`origins`: An origin group\n`load_balancing`: A load balancer",
+          "example": "custom",
+          "member": "string",
+          "name": "OriginType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Origin server information.\nWhen `OriginType=custom`, this field value indicates multiple origin servers in either of the following formats:\nIP:Port\nDomain name:Port\nWhen `OriginType=origins`, it indicates the origin group ID.\n ",
+          "example": "[\"1.1.1.1:80\",\"2.2.2.2:80\"]",
+          "member": "string",
+          "name": "OriginValue",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Passes the client IP. When `Proto=TCP`, valid values:\n`TOA`: Pass the client IP via TOA\n`PPV1`: Pass the client IP via Proxy Protocol V1\n`PPV2`: Pass the client IP via Proxy Protocol V2\n`OFF`: Do not pass the client IP.\nWhen `Proto=UDP`, valid values:\n`PPV2`: Pass the client IP via Proxy Protocol V2\n`OFF`: Do not pass the client IP.",
+          "example": "TOA",
+          "member": "string",
+          "name": "ForwardClientIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable session persistence ",
+          "example": "false",
+          "member": "bool",
+          "name": "SessionPersist",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateApplicationProxyRuleResponse": {
+      "document": "CreateApplicationProxyRule response structure.",
+      "members": [
+        {
+          "document": "Rule ID",
+          "example": "rule-xxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateApplicationProxyRulesRequest": {
+      "document": "CreateApplicationProxyRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Proxy ID",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule list",
+          "example": "无",
+          "member": "ApplicationProxyRule",
+          "name": "Rule",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateApplicationProxyRulesResponse": {
+      "document": "CreateApplicationProxyRules response structure.",
+      "members": [
+        {
+          "document": "Array of rule IDs",
+          "example": "无",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDnsRecordRequest": {
+      "document": "CreateDnsRecord request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Record type",
+          "example": "A",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Record name",
+          "example": "www.example.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Record content",
+          "example": "1.2.3.4",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Proxy mode. Valid values: `dns_only`, `cdn_only`, and `secure_cdn`.",
+          "example": "dns",
+          "member": "string",
+          "name": "Mode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "300",
+          "member": "int64",
+          "name": "Ttl",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Priority",
+          "example": "10",
+          "member": "int64",
+          "name": "Priority",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDnsRecordResponse": {
+      "document": "CreateDnsRecord response structure.",
+      "members": [
+        {
+          "document": "Record ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Record type",
+          "example": "xxx",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Record name",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Record content",
+          "example": "xxx",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "",
+          "example": "xxx",
+          "member": "int64",
+          "name": "Ttl",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Priority",
+          "example": "xxx",
+          "member": "int64",
+          "name": "Priority",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Proxy mode",
+          "example": "dns",
+          "member": "string",
+          "name": "Mode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Resolution status. Valid values:\n`active`: Activated\n`pending`: Not activated",
+          "example": "xxx",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether the DNS record is locked",
+          "example": "xxx",
+          "member": "bool",
+          "name": "Locked",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creation time",
+          "example": "xxx",
+          "member": "datetime_iso",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Modification time",
+          "example": "xxx",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site name",
+          "example": "xxx",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CNAME address\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Cname",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLoadBalancingRequest": {
+      "document": "CreateLoadBalancing request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subdomain name. You can use @ to represent the root domain.",
+          "example": "loadbalancing.123.com",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Proxy mode. Valid values:\n`dns_only`: Only DNS\n`proxied`: Enable proxy",
+          "example": "cdn_only",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the origin group used",
+          "example": "[]",
+          "member": "string",
+          "name": "OriginId",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Indicates DNS TTL time when `Type=dns_only` ",
+          "example": "600",
+          "member": "uint64",
+          "name": "TTL",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLoadBalancingResponse": {
+      "document": "CreateLoadBalancing response structure.",
+      "members": [
+        {
+          "document": "CLB instance ID",
+          "example": "lb-xxx",
+          "member": "string",
+          "name": "LoadBalancingId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreatePrefetchTaskRequest": {
       "document": "CreatePrefetchTask request structure.",
       "members": [
@@ -177,6 +1593,1514 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateZoneRequest": {
+      "document": "CreateZone request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site name",
+          "example": "test.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Access mode. Valid values:\n- `full` (default): Access via NS\n- `partial`: Access via CNAME",
+          "example": "full",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to skip resolution record scanning",
+          "example": "false",
+          "member": "bool",
+          "name": "JumpStart",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateZoneResponse": {
+      "document": "CreateZone response structure.",
+      "members": [
+        {
+          "document": "Site ID",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site name",
+          "example": "test.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Specifies how the site is connected to EdgeOne.",
+          "example": "full",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site status\n- `pending`: The name server is not switched.\n- `active`: The name server is switched to another assigned.\n- `moved`: Move the NS out of Tencent Cloud",
+          "example": "pending",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of name servers",
+          "example": "[\"ns1.dp.com\"]",
+          "member": "string",
+          "name": "OriginalNameServers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of name servers assigned to users",
+          "example": "[\"ns1.dp.com\"]",
+          "member": "string",
+          "name": "NameServers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site creation date",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site update time",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DataItem": {
+      "document": "Data items in a DNS request curve",
+      "members": [
+        {
+          "default": "",
+          "document": "Time",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "Time",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Value",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DefaultServerCertInfo": {
+      "document": "HTTPS server certificate configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Server certificate ID, which is the ID of the default certificate. If you choose to upload an external certificate for SSL certificate management, a certificate ID will be generated.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "EO-dsfdsf",
+          "member": "string",
+          "name": "CertId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Certificate alias\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "默认证书",
+          "member": "string",
+          "name": "Alias",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Certificate type. Valid values:\n`default`: Default certificate\n`upload`: External certificate\n`managed`: Tencent Cloud managed certificate\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "default",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time when the certificate expires\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time when the certificate takes effect\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "EffectiveTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Certificate common name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "test.com",
+          "member": "string",
+          "name": "CommonName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Domain names added to the SAN certificate\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "test.com",
+          "member": "string",
+          "name": "SubjectAltName",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Certificate status. Valid values:\n`applying`: Application in progress\n`failed`: Application failed\n`processing`: Deploying certificate\n`deployed`: Certificate deployed\n`disabled`: Certificate disabled\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "deployed",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Returns a message to display failure causes when `Status=failed`\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "失败",
+          "member": "string",
+          "name": "Message",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DeleteApplicationProxyRequest": {
+      "document": "DeleteApplicationProxy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Proxy ID",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteApplicationProxyResponse": {
+      "document": "DeleteApplicationProxy response structure.",
+      "members": [
+        {
+          "document": "Proxy ID",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteApplicationProxyRuleRequest": {
+      "document": "DeleteApplicationProxyRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Proxy ID",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "rule-xxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteApplicationProxyRuleResponse": {
+      "document": "DeleteApplicationProxyRule response structure.",
+      "members": [
+        {
+          "document": "Rule ID",
+          "example": "rule-xxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDnsRecordsRequest": {
+      "document": "DeleteDnsRecords request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Record ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDnsRecordsResponse": {
+      "document": "DeleteDnsRecords response structure.",
+      "members": [
+        {
+          "document": "Record ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "Ids",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLoadBalancingRequest": {
+      "document": "DeleteLoadBalancing request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CLB instance ID",
+          "example": "lb-xxx",
+          "member": "string",
+          "name": "LoadBalancingId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLoadBalancingResponse": {
+      "document": "DeleteLoadBalancing response structure.",
+      "members": [
+        {
+          "document": "CLB instance ID",
+          "example": "lb-xxx",
+          "member": "string",
+          "name": "LoadBalancingId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteZoneRequest": {
+      "document": "DeleteZone request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteZoneResponse": {
+      "document": "DeleteZone response structure.",
+      "members": [
+        {
+          "document": "Site ID",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationProxyDetailRequest": {
+      "document": "DescribeApplicationProxyDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationProxyDetailResponse": {
+      "document": "DescribeApplicationProxyDetail response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance name",
+          "example": "name",
+          "member": "string",
+          "name": "ProxyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Proxy mode. Valid values:\n`ip`: Anycast IP\n`domain`: CNAME",
+          "example": "ip",
+          "member": "string",
+          "name": "PlatType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "`0`: Disable security protection; `1`: Enable security protection.",
+          "example": "1",
+          "member": "int64",
+          "name": "SecurityType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "`0`: Disable acceleration; `1`: Enable acceleration.",
+          "example": "1",
+          "member": "int64",
+          "name": "AccelerateType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "This field is moved to `Rule.ForwardClientIp`.",
+          "example": "TOA",
+          "member": "string",
+          "name": "ForwardClientIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "This field is moved to `Rule.SessionPersist`.",
+          "example": "false",
+          "member": "bool",
+          "name": "SessionPersist",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of rules",
+          "example": "[]",
+          "member": "ApplicationProxyRule",
+          "name": "Rule",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Status. Valid values:\n`online`: Enable\n`offline`: Disable\n`progress`: Deploying",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Scheduling information",
+          "example": "[]",
+          "member": "string",
+          "name": "ScheduleValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Update time",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site name",
+          "example": "123.com",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Session persistence time",
+          "example": "3600",
+          "member": "uint64",
+          "name": "SessionPersistTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Specifies how a layer-4 proxy is created.\n`hostname`: Subdomain name\n`instance`: Instance",
+          "example": "hostname",
+          "member": "string",
+          "name": "ProxyType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of the layer-7 domain name",
+          "example": "edgeone-xxx",
+          "member": "string",
+          "name": "HostId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationProxyRequest": {
+      "document": "DescribeApplicationProxy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pagination parameter",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination parameter",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationProxyResponse": {
+      "document": "DescribeApplicationProxy response structure.",
+      "members": [
+        {
+          "document": "List of data\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ApplicationProxy",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of records\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Indicates the number of instances that can be created by the site when `ZoneId` is specified\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Quota",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "IpCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "DomainCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCnameStatusRequest": {
+      "document": "DescribeCnameStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of domain names",
+          "example": "无",
+          "member": "string",
+          "name": "Names",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCnameStatusResponse": {
+      "document": "DescribeCnameStatus response structure.",
+      "members": [
+        {
+          "document": "List of CNAME statuses",
+          "example": "无",
+          "member": "CnameStatus",
+          "name": "Status",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDefaultCertificatesRequest": {
+      "document": "DescribeDefaultCertificates request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDefaultCertificatesResponse": {
+      "document": "DescribeDefaultCertificates response structure.",
+      "members": [
+        {
+          "document": "Total number of certificates",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of default certificates\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "DefaultServerCertInfo",
+          "name": "CertInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDnsDataRequest": {
+      "document": "DescribeDnsData request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter parameters",
+          "example": "无",
+          "member": "DnsDataFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Time granularity. The default value is `min`. The server can adapt to the time granularity specified.\nValid values:\n`min`: 1 minute\n`5min`: 5 minutes\n`hour`: 1 hour\n`day`: 1 day",
+          "example": "hour",
+          "member": "string",
+          "name": "Interval",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDnsDataResponse": {
+      "document": "DescribeDnsData response structure.",
+      "members": [
+        {
+          "document": "DNS request data\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "DataItem",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Interval\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "min",
+          "member": "string",
+          "name": "Interval",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDnsRecordsRequest": {
+      "document": "DescribeDnsRecords request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Query filter",
+          "example": "无",
+          "member": "DnsRecordFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Sorts the order",
+          "example": "name",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `asc`, and `desc`.",
+          "example": "asc",
+          "member": "string",
+          "name": "Direction",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `all`, and `any`.",
+          "example": "all",
+          "member": "string",
+          "name": "Match",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Limit on paginated queries. Default value: 100. Maximum value: 1000.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset for paginated queries. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDnsRecordsResponse": {
+      "document": "DescribeDnsRecords response structure.",
+      "members": [
+        {
+          "document": "Used for paginated query by total count",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of DNS records",
+          "example": "无",
+          "member": "DnsRecord",
+          "name": "Records",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDnssecRequest": {
+      "document": "DescribeDnssec request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDnssecResponse": {
+      "document": "DescribeDnssec response structure.",
+      "members": [
+        {
+          "document": "Site ID",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site name",
+          "example": "test.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "DNSSEC status. Valid values:\n- `enabled`: Enabled\n- `disabled`: Disabled",
+          "example": "enabled",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "",
+          "example": "无",
+          "member": "DnssecInfo",
+          "name": "Dnssec",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Modification time",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHostsCertificateRequest": {
+      "document": "DescribeHostsCertificate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the site",
+          "example": "8afj24jzg9",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset for paginated queries. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Limit on paginated queries. Default value: 100. Maximum value: 1000.",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Query filter",
+          "example": "无",
+          "member": "CertFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Sorting order",
+          "example": "无",
+          "member": "CertSort",
+          "name": "Sort",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHostsCertificateResponse": {
+      "document": "DescribeHostsCertificate response structure.",
+      "members": [
+        {
+          "document": "Used for paginated query by total count",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of certificate configurations for domain names\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "HostCertSetting",
+          "name": "Hosts",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHostsSettingRequest": {
+      "document": "DescribeHostsSetting request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset for paginated queries. Default value: 0",
+          "example": "100",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Limit on paginated queries. Default value: 100. Maximum value: 1000.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Specifies a domain name for the query",
+          "example": "[\"www.test.com\"]",
+          "member": "string",
+          "name": "Hosts",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHostsSettingResponse": {
+      "document": "DescribeHostsSetting response structure.",
+      "members": [
+        {
+          "document": "List of domain names",
+          "example": "无",
+          "member": "DetailHost",
+          "name": "Hosts",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of domain names",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIdentificationRequest": {
+      "document": "DescribeIdentification request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site name",
+          "example": "test.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIdentificationResponse": {
+      "document": "DescribeIdentification response structure.",
+      "members": [
+        {
+          "document": "Site name",
+          "example": "test.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Verification status. Valid values:\n- `pending`: Verifying\n- `finished`: The site is verified.",
+          "example": "success",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "",
+          "example": "reclaim",
+          "member": "string",
+          "name": "Subdomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Record type",
+          "example": "TXT",
+          "member": "string",
+          "name": "RecordType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Record value",
+          "example": "无",
+          "member": "string",
+          "name": "RecordValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "NS records of the domain name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OriginalNameServers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLoadBalancingDetailRequest": {
+      "document": "DescribeLoadBalancingDetail request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CLB instance ID",
+          "example": "lb-xxx",
+          "member": "string",
+          "name": "LoadBalancingId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLoadBalancingDetailResponse": {
+      "document": "DescribeLoadBalancingDetail response structure.",
+      "members": [
+        {
+          "document": "CLB instance ID",
+          "example": "lb-xxx",
+          "member": "string",
+          "name": "LoadBalancingId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Subdomain name. You can use @ to represent the root domain.",
+          "example": "loadbalancing.123.com",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Proxy mode. Valid values:\n`dns_only`: Only DNS\n`proxied`: Enable proxy",
+          "example": "dns_only",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Indicates DNS TTL time when `Type=dns_only`",
+          "example": "600",
+          "member": "uint64",
+          "name": "TTL",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "ID of the origin group used",
+          "example": "[]",
+          "member": "string",
+          "name": "OriginId",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Information of the origin server used",
+          "example": "无",
+          "member": "OriginGroup",
+          "name": "Origin",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Update time",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Status of the task",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Schedules domain names\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1.2.3.4.com",
+          "member": "string",
+          "name": "Cname",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLoadBalancingRequest": {
+      "document": "DescribeLoadBalancing request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pagination parameter",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination parameter",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Ignore query string parameter",
+          "example": "a.123.com",
+          "member": "string",
+          "name": "Host",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether the `Host` parameter supports fuzzy match",
+          "example": "true",
+          "member": "bool",
+          "name": "Fuzzy",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLoadBalancingResponse": {
+      "document": "DescribeLoadBalancing response structure.",
+      "members": [
+        {
+          "document": "Total number of records",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CLB information",
+          "example": "[]",
+          "member": "LoadBalancing",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -430,6 +3354,330 @@
       ],
       "type": "object"
     },
+    "DescribeZoneDetailsRequest": {
+      "document": "DescribeZoneDetails request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeZoneDetailsResponse": {
+      "document": "DescribeZoneDetails response structure.",
+      "members": [
+        {
+          "document": "Site ID",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site name",
+          "example": "example.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of name servers used\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "[example1.dp.com,example2.dp.com]",
+          "member": "string",
+          "name": "OriginalNameServers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of name servers assigned to users by Tencent Cloud\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "[example1.dp.com,example2.dp.com]",
+          "member": "string",
+          "name": "NameServers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Site status\n- `active`: The name server is switched.\n- `pending`: The name server is not switched.\n- `moved`: The name server is moved.\n- `deactivated`: The name server is blocked.",
+          "example": "active",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Specifies how the site is connected to EdgeOne.\n- `full`: The site is connected via name server.\n- `partial`: The site is connected via CNAME.",
+          "example": "full",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Indicates whether the site is disabled",
+          "example": "false",
+          "member": "bool",
+          "name": "Paused",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site creation date",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site modification date",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "User-defined name server information\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "VanityNameServers",
+          "name": "VanityNameServers",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "User-defined name server IP information\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "VanityNameServersIps",
+          "name": "VanityNameServersIps",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Specifies whether to enable CNAME acceleration\n- `enabled`: Enable\n- `disabled`: Disable",
+          "example": "disabled",
+          "member": "string",
+          "name": "CnameSpeedUp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Ownership verification status of the site when it accesses via CNAME.\n- `finished`: The site is verified.\n- `pending`: The site is waiting for verification.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "pending",
+          "member": "string",
+          "name": "CnameStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeZoneSettingRequest": {
+      "document": "DescribeZoneSetting request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeZoneSettingResponse": {
+      "document": "DescribeZoneSetting response structure.",
+      "members": [
+        {
+          "document": "Cache expiration time configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "CacheConfig",
+          "name": "Cache",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Node cache key configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "CacheKey",
+          "name": "CacheKey",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Browser cache configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "MaxAge",
+          "name": "MaxAge",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Offline cache\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "OfflineCache",
+          "name": "OfflineCache",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "QUIC access\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "Quic",
+          "name": "Quic",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "POST transport configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "PostMaxSize",
+          "name": "PostMaxSize",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Smart compression configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "Compression",
+          "name": "Compression",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "HTTP2 origin-pull configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "UpstreamHttp2",
+          "name": "UpstreamHttp2",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Force HTTPS redirect configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ForceRedirect",
+          "name": "ForceRedirect",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "HTTPS acceleration configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "Https",
+          "name": "Https",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Origin server configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "Origin",
+          "name": "Origin",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Dynamic acceleration configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SmartRouting",
+          "name": "SmartRouting",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Site ID",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Domain name of the site",
+          "example": "test.com",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "WebSocket configuration.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "WebSocket",
+          "name": "WebSocket",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Origin-pull client IP header configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ClientIp",
+          "name": "ClientIpHeader",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "无",
+          "member": "CachePrefresh",
+          "name": "CachePrefresh",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeZonesRequest": {
       "document": "DescribeZones request structure.",
       "members": [
@@ -492,6 +3740,376 @@
         }
       ],
       "type": "object"
+    },
+    "DetailHost": {
+      "document": "Domain name configuration information",
+      "members": [
+        {
+          "default": "",
+          "document": "Tencent Cloud account ID",
+          "example": "123456789",
+          "member": "int64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Acceleration service status\n`process`: Deploying\n`online`: Enabled\n`offline`: Disabled",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain name",
+          "example": "www.test.com",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DnsDataFilter": {
+      "document": "Ignore query string parameters for DNS data",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name. Valid values:\n`zone`: Site name\n`host`: Domain name\n`type`: DNS resolution type\n`code`: DNS response code\n`area`: Region of the resolution server",
+          "example": "zone",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter value\nWhen `Name=area`, valid values:\n`Asia`\n`Europe`\n`Africa`\n`Oceania`\n`Americas`\n\nWhen `Name=code`, valid values:\n`NoError`: Successful response.\n`NXDomain`: Non-existent domain in the request. It is only valid when the response is from the authoritative name server.\n`NotImp`: Request type not supported.\n`Refused`: The name server refuses to perform the requested operation for policy reasons.",
+          "example": "1.com",
+          "member": "string",
+          "name": "Value",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter value\nWhen `Name=area`, valid values:\n`Asia`\n`Europe`\n`Africa`\n`Oceania`\n`Americas`\n\nWhen `Name=code`, valid values:\n`NoError`: Successful response.\n`NXDomain`: Non-existent domain in the request. It is only valid when the response is from the authoritative name server.\n`NotImp`: Request type not supported.\n`Refused`: The name server refuses to perform the requested operation for policy reasons.",
+          "example": "[1.com]",
+          "member": "string",
+          "name": "Values",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "DnsRecord": {
+      "document": "DNS record",
+      "members": [
+        {
+          "default": "",
+          "document": "Record ID",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Record type",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Host record",
+          "example": "www.example.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Record value",
+          "example": "无",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Proxy mode",
+          "example": "无",
+          "member": "string",
+          "name": "Mode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "TTL value",
+          "example": "无",
+          "member": "int64",
+          "name": "Ttl",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Priority\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Priority",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain name lock",
+          "example": "无",
+          "member": "bool",
+          "name": "Locked",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "无",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Site name",
+          "example": "example.com",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resolution status\n`active`: Activated\n`pending`: Not activated",
+          "example": "active",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CNAME address\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Cname",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable load balancing, layer-4 proxy, or security protection for the domain name.\n- `lb`: Load balancing.\n- `security`: Security protection.\n- `l4`: Layer-4 proxy.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DomainStatus",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DnsRecordFilter": {
+      "document": "Query filter to search for DNS records",
+      "members": [
+        {
+          "default": "",
+          "document": "Filters by the field name. Vaules:\n- `name`: Site name.\n- `status`: Site status.",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filters by the field value",
+          "example": "www",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable fuzzy query. It’s only available when the filter name is `name`. If it’s enabled, the length of `Values` must be 1.",
+          "example": "false",
+          "member": "bool",
+          "name": "Fuzzy",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "DnssecInfo": {
+      "document": "DNSSEC information",
+      "members": [
+        {
+          "default": "",
+          "document": "Flag",
+          "example": "257",
+          "member": "int64",
+          "name": "Flags",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Encryption algorithm",
+          "example": "13",
+          "member": "string",
+          "name": "Algorithm",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Encryption type",
+          "example": "ECDSAP256SHA256",
+          "member": "string",
+          "name": "KeyType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Digest type",
+          "example": "2",
+          "member": "string",
+          "name": "DigestType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Digest algorithm",
+          "example": "SHA256",
+          "member": "string",
+          "name": "DigestAlgorithm",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Digest message",
+          "example": "48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
+          "member": "string",
+          "name": "Digest",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "DS record value",
+          "example": "example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DF",
+          "member": "string",
+          "name": "DS",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key tag",
+          "example": "2371",
+          "member": "int64",
+          "name": "KeyTag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public key",
+          "example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470Co",
+          "member": "string",
+          "name": "PublicKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "DownloadL7LogsRequest": {
       "document": "DownloadL7Logs request structure.",
@@ -636,6 +4254,32 @@
       ],
       "usage": "out"
     },
+    "ForceRedirect": {
+      "document": "Force HTTPS redirect configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Force redirect configuration switch\n`on`: Enable\n`off`: Disable",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Redirection status code\n301\n302\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "302",
+          "member": "int64",
+          "name": "RedirectStatusCode",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "Header": {
       "document": "HTTP header, used as input for the CreatePrefetchTask API",
       "members": [
@@ -661,6 +4305,232 @@
         }
       ],
       "usage": "in"
+    },
+    "HostCertSetting": {
+      "document": "Certificate configurations for domain names",
+      "members": [
+        {
+          "default": "",
+          "document": "Domain name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "xxxx.test.com",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Server certificate configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ServerCertInfo",
+          "name": "CertInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Hsts": {
+      "document": "HSTS configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies whether to enable. Valid values: `on` and `off`.",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`MaxAge` value.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "600",
+          "member": "int64",
+          "name": "MaxAge",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to include subdomain names. Valid values: `on` and `off`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "IncludeSubDomains",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to preload. Valid values: `on` and `off`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "Preload",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Https": {
+      "document": "Domain name HTTPS acceleration configuration. This is disabled by default.",
+      "members": [
+        {
+          "default": "",
+          "document": "HTTP2 configuration switch\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "Http2",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "OCSP configuration switch\n`on`: Enable\n`off`: Disable\nIt is disabled by default.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "OcspStapling",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TLS version settings. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "[\"TLSv1\", \"TLSv1.1\"]",
+          "member": "string",
+          "name": "TlsVersion",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "HSTS Configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "Hsts",
+          "name": "Hsts",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "IdentifyZoneRequest": {
+      "document": "IdentifyZone request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site name",
+          "example": "test.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "IdentifyZoneResponse": {
+      "document": "IdentifyZone response structure.",
+      "members": [
+        {
+          "document": "Site name",
+          "example": "test.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "",
+          "example": "reclaim",
+          "member": "string",
+          "name": "Subdomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Record type",
+          "example": "TXT",
+          "member": "string",
+          "name": "RecordType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Record value",
+          "example": "无",
+          "member": "string",
+          "name": "RecordValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImportDnsRecordsRequest": {
+      "document": "ImportDnsRecords request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "无",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File content",
+          "example": "无",
+          "member": "string",
+          "name": "File",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImportDnsRecordsResponse": {
+      "document": "ImportDnsRecords response structure.",
+      "members": [
+        {
+          "document": "Record ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "Ids",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "L7OfflineLog": {
       "document": "Layer-7 offline log details",
@@ -717,6 +4587,1934 @@
         }
       ],
       "usage": "out"
+    },
+    "LoadBalancing": {
+      "document": "CLB information",
+      "members": [
+        {
+          "default": "",
+          "document": "CLB instance ID",
+          "example": "lb-xxx",
+          "member": "string",
+          "name": "LoadBalancingId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subdomain name. You can use @ to represent the root domain.",
+          "example": "loadbalancing.123.com",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Proxy mode. Valid values:\n`dns_only`: Only DNS\n`proxied`: Enable proxy",
+          "example": "dns_only",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Indicates DNS TTL time when `Type=dns_only`",
+          "example": "600",
+          "member": "uint64",
+          "name": "TTL",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the origin group used",
+          "example": "[]",
+          "member": "string",
+          "name": "OriginId",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of the origin server used",
+          "example": "[]",
+          "member": "OriginGroup",
+          "name": "Origin",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Update time",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Schedules domain names\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1.2.3.com",
+          "member": "string",
+          "name": "Cname",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MaxAge": {
+      "document": "Browser cache rule configuration. ",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies the max age of the cache (in seconds). The maximum value is 365 days.\nNote: the value `0` means not to cache.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "600",
+          "member": "int64",
+          "name": "MaxAgeTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to follow the max cache age of the origin server. Valid values: `on` and `off`. If it's on, `MaxAgeTime` is ignored.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "FollowOrigin",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ModifyApplicationProxyRequest": {
+      "document": "ModifyApplicationProxy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Layer-4 proxy ID",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Layer-4 proxy name",
+          "example": "a proxy",
+          "member": "string",
+          "name": "ProxyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter is disused.",
+          "example": "TOA",
+          "member": "string",
+          "name": "ForwardClientIp",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter is disused.",
+          "example": "false",
+          "member": "bool",
+          "name": "SessionPersist",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Session persistence time. Value range: 30-3600 (in seconds).",
+          "example": "3600",
+          "member": "uint64",
+          "name": "SessionPersistTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Specifies how a layer-4 proxy is created.\n`hostname`: Subdomain name\n`instance`: Instance",
+          "example": "hostname",
+          "member": "string",
+          "name": "ProxyType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyApplicationProxyResponse": {
+      "document": "ModifyApplicationProxy response structure.",
+      "members": [
+        {
+          "document": "Layer-4 proxy ID",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyApplicationProxyRuleRequest": {
+      "document": "ModifyApplicationProxyRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Proxy ID",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "rule-xxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Protocol. Valid values: `TCP` and `UDP`.",
+          "example": "TCP",
+          "member": "string",
+          "name": "Proto",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Port. Valid values:\n`80`: Port 80\n`81-90`: Port range 81-90",
+          "example": "[\"90\"]",
+          "member": "string",
+          "name": "Port",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Origin server type. Valid values:\n`custom`: Specified origins\n`origins`: An origin group\n`load_balancing`: A load balancer",
+          "example": "custom",
+          "member": "string",
+          "name": "OriginType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Origin server information.\nWhen `OriginType=custom`, this field value indicates multiple origin servers in either of the following formats:\nIP:Port\nDomain name: Port\nWhen `OriginType=origins`, it indicates the origin group ID.\n ",
+          "example": "[\"1.1.1.1:80\",\"2.2.2.2:80\"]",
+          "member": "string",
+          "name": "OriginValue",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Passes the client IP. When `Proto=TCP`, valid values:\n`TOA`: Pass the client IP via TOA.\n`PPV1`: Pass the client IP via Proxy Protocol V1.\n`PPV2`: Pass the client IP via Proxy Protocol V2.\n`OFF`: Do not pass the client IP.\nWhen `Proto=UDP`, valid values:\n`PPV2`: Pass the client IP via Proxy Protocol V2.\n`OFF`: Do not pass the client IP.",
+          "example": "TOA",
+          "member": "string",
+          "name": "ForwardClientIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable session persistence",
+          "example": "false",
+          "member": "bool",
+          "name": "SessionPersist",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyApplicationProxyRuleResponse": {
+      "document": "ModifyApplicationProxyRule response structure.",
+      "members": [
+        {
+          "document": "Rule ID",
+          "example": "rule-xxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyApplicationProxyRuleStatusRequest": {
+      "document": "ModifyApplicationProxyRuleStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Layer-4 proxy ID",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "rule-xxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Status\n`offline`: Disabled\n`online`: Enabled",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyApplicationProxyRuleStatusResponse": {
+      "document": "ModifyApplicationProxyRuleStatus response structure.",
+      "members": [
+        {
+          "document": "Rule ID",
+          "example": "rule-xxx",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyApplicationProxyStatusRequest": {
+      "document": "ModifyApplicationProxyStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Layer-4 proxy ID",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Status\n`offline`: Disabled\n`online`: Enabled",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyApplicationProxyStatusResponse": {
+      "document": "ModifyApplicationProxyStatus response structure.",
+      "members": [
+        {
+          "document": "Layer-4 proxy ID",
+          "example": "proxy-xxx",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDefaultCertificateRequest": {
+      "document": "ModifyDefaultCertificate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the site",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Certificate ID",
+          "example": "EO-xxx",
+          "member": "string",
+          "name": "CertId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Certificate status\n`deployed`: The certificate is deployed.\n`disabled`: The certificate is disabled.\nIf the deployment fails, you can pass in `Status = deployed` again.",
+          "example": "deploy",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDefaultCertificateResponse": {
+      "document": "ModifyDefaultCertificate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDnsRecordRequest": {
+      "document": "ModifyDnsRecord request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Record ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Record type",
+          "example": "xxx",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Record name",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Record content",
+          "example": "xxx",
+          "member": "string",
+          "name": "Content",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "600",
+          "member": "int64",
+          "name": "Ttl",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Priority",
+          "example": "1",
+          "member": "int64",
+          "name": "Priority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Proxy mode",
+          "example": "true",
+          "member": "string",
+          "name": "Mode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDnsRecordResponse": {
+      "document": "ModifyDnsRecord response structure.",
+      "members": [
+        {
+          "document": "Record ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Record type",
+          "example": "xxx",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Record name",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Record content",
+          "example": "xxx",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "",
+          "example": "xxx",
+          "member": "int64",
+          "name": "Ttl",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Priority",
+          "example": "xxx",
+          "member": "int64",
+          "name": "Priority",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Proxy mode",
+          "example": "xxx",
+          "member": "string",
+          "name": "Mode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Resolution status",
+          "example": "xxx",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CNAME address\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Cname",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether the DNS record is locked",
+          "example": "xxx",
+          "member": "bool",
+          "name": "Locked",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creation time",
+          "example": "xxx",
+          "member": "datetime_iso",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Modification time",
+          "example": "xxx",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site name",
+          "example": "xxx",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDnssecRequest": {
+      "document": "ModifyDnssec request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "DNSSEC status\n- `enabled`: Enabled\n- `disabled`: Disabled",
+          "example": "enabled",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDnssecResponse": {
+      "document": "ModifyDnssec response structure.",
+      "members": [
+        {
+          "document": "Site ID",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site name",
+          "example": "test.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "DNSSEC status.\n- `enabled`: Enabled\n- `disabled`: Disabled",
+          "example": "enabled",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "DNSSEC information\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "DnssecInfo",
+          "name": "Dnssec",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Modification time",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyHostsCertificateRequest": {
+      "document": "ModifyHostsCertificate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the site",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Domain name that the certificate will be attached to",
+          "example": "xxx.test.com",
+          "member": "string",
+          "name": "Hosts",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Certificate information. Note that only `CertId` is required. If it is not specified, the default certificate will be used.",
+          "example": "teo-xxxxx",
+          "member": "ServerCertInfo",
+          "name": "CertInfo",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyHostsCertificateResponse": {
+      "document": "ModifyHostsCertificate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLoadBalancingRequest": {
+      "document": "ModifyLoadBalancing request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CLB instance ID",
+          "example": "lb-xxx",
+          "member": "string",
+          "name": "LoadBalancingId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Proxy mode.\n`dns_only`: Only DNS\n`proxied`: Enable proxy",
+          "example": "dns_only",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the origin group used",
+          "example": "origin-xxx",
+          "member": "string",
+          "name": "OriginId",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Indicates DNS TTL time when `Type=dns_only`",
+          "example": "600",
+          "member": "uint64",
+          "name": "TTL",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLoadBalancingResponse": {
+      "document": "ModifyLoadBalancing response structure.",
+      "members": [
+        {
+          "document": "CLB instance ID",
+          "example": "lb-xxx",
+          "member": "string",
+          "name": "LoadBalancingId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLoadBalancingStatusRequest": {
+      "document": "ModifyLoadBalancingStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CLB instance ID",
+          "example": "lb-xxx",
+          "member": "string",
+          "name": "LoadBalancingId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Status.\n`online`: Enabled\n`offline`: Disabled",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLoadBalancingStatusResponse": {
+      "document": "ModifyLoadBalancingStatus response structure.",
+      "members": [
+        {
+          "document": "CLB instance ID",
+          "example": "lb-xxx",
+          "member": "string",
+          "name": "LoadBalancingId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyZoneCnameSpeedUpRequest": {
+      "document": "ModifyZoneCnameSpeedUp request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CNAME acceleration status.\n- `enabled`: Enabled\n- `disabled`: Disabled",
+          "example": "enabled",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyZoneCnameSpeedUpResponse": {
+      "document": "ModifyZoneCnameSpeedUp response structure.",
+      "members": [
+        {
+          "document": "Site ID",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site name",
+          "example": "test.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CNAME acceleration status.\n- `enabled`: Enabled\n- `disabled`: Disabled",
+          "example": "enabled",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Update time",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyZoneRequest": {
+      "document": "ModifyZone request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID, which is used to identify the site.",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies how the site is connected to EdgeOne.\n- `full`: Connect via the name server.\n- `partial`: Connect via the CNAME.",
+          "example": "partial",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom site information",
+          "example": "无",
+          "member": "VanityNameServers",
+          "name": "VanityNameServers",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyZoneResponse": {
+      "document": "ModifyZone response structure.",
+      "members": [
+        {
+          "document": "Site ID",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site name",
+          "example": "test.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Name server used by the site",
+          "example": "[\"ns1.dp.com\",\"ns2.dp.com\"]",
+          "member": "string",
+          "name": "OriginalNameServers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site status.\n- `pending`: The name server is not connected.\n- `active`: The name server is connected.\n- `moved`: The name server is moved.",
+          "example": "active",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Specifies how the site is connected to EdgeOne.\n- `full`: Connect via the name server.\n- `partial`: Connect via the CNAME.",
+          "example": "full",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of name servers assigned by Tencent Cloud",
+          "example": "[\"ns1.dp.com\",\"ns2.dp.com\"]",
+          "member": "string",
+          "name": "NameServers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creation time",
+          "example": "xxx",
+          "member": "datetime_iso",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Modification time",
+          "example": "xxx",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CNAME access status.\n- `finished`: Ownership of the site is verified.\n- `pending`: Verifying the ownership of the site.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "pending",
+          "member": "string",
+          "name": "CnameStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyZoneSettingRequest": {
+      "document": "ModifyZoneSetting request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the site to be modified",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cache expiration time",
+          "example": "无",
+          "member": "CacheConfig",
+          "name": "Cache",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Node cache key",
+          "example": "无",
+          "member": "CacheKey",
+          "name": "CacheKey",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Browser cache configuration",
+          "example": "无",
+          "member": "MaxAge",
+          "name": "MaxAge",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Offline cache",
+          "example": "无",
+          "member": "OfflineCache",
+          "name": "OfflineCache",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "QUIC access",
+          "example": "无",
+          "member": "Quic",
+          "name": "Quic",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Maximum size of files transferred over POST request",
+          "example": "无",
+          "member": "PostMaxSize",
+          "name": "PostMaxSize",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Smart compression configuration",
+          "example": "无",
+          "member": "Compression",
+          "name": "Compression",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "HTTP2 origin-pull configuration",
+          "example": "无",
+          "member": "UpstreamHttp2",
+          "name": "UpstreamHttp2",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Force HTTPS redirect configuration",
+          "example": "无",
+          "member": "ForceRedirect",
+          "name": "ForceRedirect",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "HTTPS acceleration configuration",
+          "example": "无",
+          "member": "Https",
+          "name": "Https",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Origin server configuration",
+          "example": "无",
+          "member": "Origin",
+          "name": "Origin",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Smart acceleration configuration",
+          "example": "无",
+          "member": "SmartRouting",
+          "name": "SmartRouting",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "WebSocket configuration",
+          "example": "无",
+          "member": "WebSocket",
+          "name": "WebSocket",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Origin-pull client IP header configuration",
+          "example": "无",
+          "member": "ClientIp",
+          "name": "ClientIpHeader",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "CachePrefresh",
+          "name": "CachePrefresh",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyZoneSettingResponse": {
+      "document": "ModifyZoneSetting response structure.",
+      "members": [
+        {
+          "document": "Site ID",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyZoneStatusRequest": {
+      "document": "ModifyZoneStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Site status.\n- `false`: Enable the site.\n- `true`: Disable the site.",
+          "example": "false",
+          "member": "bool",
+          "name": "Paused",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyZoneStatusResponse": {
+      "document": "ModifyZoneStatus response structure.",
+      "members": [
+        {
+          "document": "Site ID",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site name",
+          "example": "test.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site status.\n- `false`: Enable the site.\n- `true`: Disable the site.",
+          "example": "false",
+          "member": "bool",
+          "name": "Paused",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Update time",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OfflineCache": {
+      "document": "Configuration of offline cache",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable offline cache. Valid values: `on` and `off`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Origin": {
+      "document": "Origin server configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Origin-pull protocol.\n`http`: Switch HTTPS requests to HTTP\n`follow`: Follow the protocol of the request.\n`https`: Switch HTTP requests to HTTPS. This only supports port 443 on the origin server.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "https",
+          "member": "string",
+          "name": "OriginPullProtocol",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "OriginCheckOriginStatus": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "healthy",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "OriginGroup": {
+      "document": "Origin group information",
+      "members": [
+        {
+          "default": "",
+          "document": "Origin group ID",
+          "example": "origin-xxx",
+          "member": "string",
+          "name": "OriginId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Origin group name",
+          "example": "name",
+          "member": "string",
+          "name": "OriginName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Origin server type",
+          "example": "area",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Record",
+          "example": "[]",
+          "member": "OriginRecord",
+          "name": "Record",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Update time",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Site name",
+          "example": "123.com",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Origin server type\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "self",
+          "member": "string",
+          "name": "OriginType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the origin group is used for layer-4 proxy\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "ApplicationProxyUsed",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the origin group is used for load balancing\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "LoadBalancingUsed",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "OriginCheckOriginStatus",
+          "name": "Status",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "none",
+          "member": "string",
+          "name": "LoadBalancingUsedType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "OriginRecord": {
+      "document": "Origin group record",
+      "members": [
+        {
+          "default": "",
+          "document": "Record value",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Record",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region of the origin group. It’s available when the origin group `Type` is `area`. \nIf it’s left empty, it means to use the default region.",
+          "example": "[]",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The weight of the origin group. It’s available when the `Type` is `weight`.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Weight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port",
+          "example": "80",
+          "member": "uint64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Record ID",
+          "example": "origin-xxx",
+          "member": "string",
+          "name": "RecordId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to run private origin authentication.\nIt is valid only when `OriginType=third_part`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "Private",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Private origin parameter.\nIt is valid only when `Private=true`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "OriginRecordPrivateParameter",
+          "name": "PrivateParameter",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "OriginRecordPrivateParameter": {
+      "document": "Private origin authentication parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the private origin authentication parameter.\n`AccessKeyId`: Access key ID\n`SecretAccessKey`: Secret access key",
+          "example": "AccessKeyId",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value of the private origin authentication parameter",
+          "example": "123",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "PostMaxSize": {
+      "document": "Maximum size of the file uploaded for streaming via a POST request",
+      "members": [
+        {
+          "default": "",
+          "document": "Specifies whether to enable custom setting of the maximum file size. \n`off`: Disable. In this case, the max size defaults to 32 MB.\n`on`: Enable. You can set a custom max size.",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum size. Value range: 1-500 MB.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "10000000",
+          "member": "int64",
+          "name": "MaxSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "QueryString": {
+      "document": "Request parameter contained in `CacheKey`",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to use `QueryString` as part of `CacheKey`. Valid values: `on` and `off`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "`includeCustom`: Include the specified query strings.\n`excludeCustom`: Exclude the specified query strings.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "includeCustom",
+          "member": "string",
+          "name": "Action",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Array of query strings used/excluded\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "key1;key2",
+          "member": "string",
+          "name": "Value",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Quic": {
+      "document": "QUIC configuration item",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable QUIC",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ReclaimZoneRequest": {
+      "document": "ReclaimZone request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site name",
+          "example": "example.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReclaimZoneResponse": {
+      "document": "ReclaimZone response structure.",
+      "members": [
+        {
+          "document": "Site name",
+          "example": "example.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ScanDnsRecordsRequest": {
+      "document": "ScanDnsRecords request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Site ID",
+          "example": "zone-xxxxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ScanDnsRecordsResponse": {
+      "document": "ScanDnsRecords response structure.",
+      "members": [
+        {
+          "document": "Scan status\n- `doing`: Scanning\n- `done`: Scanned",
+          "example": "doing",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of DNS records added after scanning",
+          "example": "10",
+          "member": "int64",
+          "name": "RecordsAdded",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ServerCertInfo": {
+      "document": "HTTPS server certificate configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Server certificate ID, which is the ID of the default certificate. If you choose to upload an external certificate for SSL certificate management, a certificate ID will be generated.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "EO-dsfdsf",
+          "member": "string",
+          "name": "CertId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Alias of the certificate\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "默认证书",
+          "member": "string",
+          "name": "Alias",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Certificate type.\n`default`: Default certificate\n`upload`: External certificate\n`managed`: Tencent Cloud managed certificate\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "default",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time when the certificate expires\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Certificate deployment time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "DeployTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Certificate deployment status.\n`processing`: Deploying\n`deployed`: Deployed\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "deployed",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "SmartRouting": {
+      "document": "Smart acceleration configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable smart acceleration\n`on`: Enable\n`off`: Disable",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "Task": {
       "document": "Content management task result",
@@ -783,6 +6581,100 @@
         }
       ],
       "usage": "out"
+    },
+    "UpstreamHttp2": {
+      "document": "HTTP2 origin-pull configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable HTTP2 origin-pull\n`on`: Enable\n`off`: Disable",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VanityNameServers": {
+      "document": "Custom name servers",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the custom name server\n`on`: Enable\n`off`: Disable",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of custom name servers",
+          "example": "[\"ns1.test.com\",\"ns2.test.com\"]",
+          "member": "string",
+          "name": "Servers",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "VanityNameServersIps": {
+      "document": "IP of the custom name server",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the custom name server",
+          "example": "example1.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IPv4 address of the custom name server",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "IPv4",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "WebSocket": {
+      "document": "WebSocket configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable custom WebSocket timeout setting. When it’s `off`: it means to keep the default WebSocket connection timeout period, which is 15 seconds. To change the timeout period, please set it to `on`.",
+          "example": "off",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sets timeout period in seconds. Maximum value: 120",
+          "example": "10",
+          "member": "int64",
+          "name": "Timeout",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "Zone": {
       "document": "Site information",
@@ -876,6 +6768,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Ownership verification status of the site when it is connected to EdgeOne via CNAME.\n- `finished`: The site is verified.\n- `pending`: Verifying the ownership of the site.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "finished",
+          "member": "string",
+          "name": "CnameStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
