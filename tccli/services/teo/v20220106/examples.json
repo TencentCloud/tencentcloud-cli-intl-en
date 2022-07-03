@@ -11,25 +11,25 @@
     "CreateApplicationProxy": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationProxy\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ZoneName\": \"zonename-123\",\n    \"ProxyName\": \"ins name\",\n    \"ProxyType\": \"instance\",\n    \"PlatType\": \"ip\",\n    \"SecurityType\": 1,\n    \"AccelerateType\": 1,\n    \"ForwardClientIp\": \"\",\n    \"SessionPersist\": false,\n    \"SessionPersistTime\": 3600,\n    \"Rule\": [\n        {\n            \"Proto\": \"TCP\",\n            \"Port\": [\n                \"80\",\n                \"90\",\n                \"99-110\"\n            ],\n            \"OriginType\": \"custom\",\n            \"OriginValue\": [\n                \"1.1.1.1:80\"\n            ]\n        },\n        {\n            \"Proto\": \"UDP\",\n            \"Port\": [\n                \"999\",\n                \"888\",\n                \"99-110\"\n            ],\n            \"OriginType\": \"custom\",\n            \"OriginValue\": [\n                \"1.1.1.1:80\",\n                \"2.2.2.2:80\"\n            ]\n        }\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationProxy\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ZoneName\": \"zonename-123\",\n    \"ProxyName\": \"ins name\",\n    \"ProxyType\": \"instance\",\n    \"PlatType\": \"ip\",\n    \"SecurityType\": 1,\n    \"AccelerateType\": 1,\n    \"ForwardClientIp\": \"\",\n    \"SessionPersist\": false,\n    \"SessionPersistTime\": 3600,\n    \"Rule\": [\n        {\n            \"Proto\": \"TCP\",\n            \"Port\": [\n                \"80\",\n                \"90\",\n                \"99-110\"\n            ],\n            \"OriginType\": \"custom\",\n            \"OriginValue\": [\n                \"1.1.1.1:80\"\n            ]\n        },\n        {\n            \"Proto\": \"UDP\",\n            \"Port\": [\n                \"999\",\n                \"888\",\n                \"99-110\"\n            ],\n            \"OriginType\": \"custom\",\n            \"OriginValue\": [\n                \"1.1.1.1:80\",\n                \"2.2.2.2:80\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"ProxyId\": \"proxy-xxx\"\n    }\n}",
-        "title": "创建应用代理"
+        "title": "Creating an application proxy"
       }
     ],
     "CreateApplicationProxyRule": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationProxyRule\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\",\n    \"Proto\": \"TCP\",\n    \"Port\": [\n        \"80\",\n        \"90\",\n        \"99-110\"\n    ],\n    \"OriginType\": \"custom\",\n    \"OriginValue\": [\n        \"1.1.1.1:80\"\n    ],\n    \"ForwardClientIp\": \"TOA\",\n    \"SessionPersist\": false\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationProxyRule\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\",\n    \"Proto\": \"TCP\",\n    \"Port\": [\n        \"80\",\n        \"90\",\n        \"99-110\"\n    ],\n    \"OriginType\": \"custom\",\n    \"OriginValue\": [\n        \"1.1.1.1:80\"\n    ],\n    \"ForwardClientIp\": \"TOA\",\n    \"SessionPersist\": false\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"RuleId\": \"rule-xxx\"\n    }\n}",
-        "title": "创建应用代理规则"
+        "title": "Creating an application proxy rule"
       }
     ],
     "CreateApplicationProxyRules": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationProxyRules\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\",\n    \"Rule\": [\n        {\n            \"Proto\": \"TCP\",\n            \"Port\": [\n                \"80\",\n                \"90\",\n                \"99-110\"\n            ],\n            \"OriginType\": \"custom\",\n            \"OriginValue\": [\n                \"1.1.1.1:80\"\n            ],\n            \"ForwardClientIp\": \"TOA\",\n            \"SessionPersist\": false\n        }\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationProxyRules\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\",\n    \"Rule\": [\n        {\n            \"Proto\": \"TCP\",\n            \"Port\": [\n                \"80\",\n                \"90\",\n                \"99-110\"\n            ],\n            \"OriginType\": \"custom\",\n            \"OriginValue\": [\n                \"1.1.1.1:80\"\n            ],\n            \"ForwardClientIp\": \"TOA\",\n            \"SessionPersist\": false\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"RuleId\": [\n            \"rule-xxx\"\n        ]\n    }\n}",
-        "title": "批量创建应用代理规则"
+        "title": "Batch creating application proxy rules"
       }
     ],
     "CreateDnsRecord": [
@@ -81,17 +81,17 @@
     "DeleteApplicationProxy": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteApplicationProxy\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\"\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteApplicationProxy\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"ProxyId\": \"proxy-xxx\"\n    }\n}",
-        "title": "删除应用代理"
+        "title": "Deleting an application proxy"
       }
     ],
     "DeleteApplicationProxyRule": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteApplicationProxyRule\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\",\n    \"RuleId\": \"rule-id123\"\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteApplicationProxyRule\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\",\n    \"RuleId\": \"rule-id123\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"RuleId\": \"rule-xxx\"\n    }\n}",
-        "title": "删除应用代理规则"
+        "title": "Deleting an application proxy rule"
       }
     ],
     "DeleteDnsRecords": [
@@ -121,17 +121,17 @@
     "DescribeApplicationProxy": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApplicationProxy\n<common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 0,\n    \"ZoneId\": \"xx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a84ae15a-aca5-4c24-a4f4-c419cf2c18af\",\n        \"Data\": [\n            {\n                \"AccelerateType\": 1,\n                \"PlatType\": \"domain\",\n                \"ProxyId\": \"proxy-34c74aa7-9a9f-11ec-bcb0-52540015711d\",\n                \"ProxyName\": \"zone-f835533b8998f\",\n                \"ZoneId\": \"zone-xxx\",\n                \"ZoneName\": \"123.com\",\n                \"Rule\": [\n                    {\n                        \"OriginType\": \"custom\",\n                        \"OriginValue\": [\n                            \"81.69.174.153:80\"\n                        ],\n                        \"Port\": [\n                            \"80\"\n                        ],\n                        \"Proto\": \"TCP\",\n                        \"Status\": \"online\",\n                        \"RuleId\": \"rule-34c74ab8-9a9f-11ec-bcb0-52540015711d\"\n                    },\n                    {\n                        \"OriginType\": \"custom\",\n                        \"OriginValue\": [\n                            \"81.69.174.153:553\"\n                        ],\n                        \"Port\": [\n                            \"553\"\n                        ],\n                        \"Proto\": \"UDP\",\n                        \"Status\": \"online\",\n                        \"RuleId\": \"rule-4bc1d3d6-9aa0-11ec-bcb0-52540015711d\"\n                    }\n                ],\n                \"ScheduleValue\": [],\n                \"SecurityType\": 1,\n                \"SessionPersist\": false,\n                \"Status\": \"progress\",\n                \"UpdateTime\": \"2022-03-03T06:06:10Z\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"IpCount\": 1,\n        \"DomainCount\": 1,\n        \"Quota\": 1\n    }\n}",
-        "title": "获取应用代理列表"
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApplicationProxy\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 0,\n    \"ZoneId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a84ae15a-aca5-4c24-a4f4-c419cf2c18af\",\n        \"Data\": [\n            {\n                \"AccelerateType\": 1,\n                \"PlatType\": \"domain\",\n                \"ProxyId\": \"proxy-34c74aa7-9a9f-11ec-bcb0-52540015711d\",\n                \"ProxyName\": \"zone-f835533b8998f\",\n                \"ZoneId\": \"zone-xxx\",\n                \"ZoneName\": \"123.com\",\n                \"Rule\": [\n                    {\n                        \"OriginType\": \"custom\",\n                        \"OriginValue\": [\n                            \"81.69.174.153:80\"\n                        ],\n                        \"Port\": [\n                            \"80\"\n                        ],\n                        \"Proto\": \"TCP\",\n                        \"Status\": \"online\",\n                        \"RuleId\": \"rule-34c74ab8-9a9f-11ec-bcb0-52540015711d\"\n                    },\n                    {\n                        \"OriginType\": \"custom\",\n                        \"OriginValue\": [\n                            \"81.69.174.153:553\"\n                        ],\n                        \"Port\": [\n                            \"553\"\n                        ],\n                        \"Proto\": \"UDP\",\n                        \"Status\": \"online\",\n                        \"RuleId\": \"rule-4bc1d3d6-9aa0-11ec-bcb0-52540015711d\"\n                    }\n                ],\n                \"ScheduleValue\": [],\n                \"SecurityType\": 1,\n                \"SessionPersist\": false,\n                \"Status\": \"progress\",\n                \"UpdateTime\": \"2022-03-03T06:06:10Z\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"Quota\": 1\n    }\n}",
+        "title": "Obtaining a list of application proxies"
       }
     ],
     "DescribeApplicationProxyDetail": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApplicationProxyDetail\n<common request parameters>\n\n{\n    \"ProxyId\": \"proxy-xxx\",\n    \"ZoneId\": \"zone-xxx\"\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApplicationProxyDetail\n<Common request parameters>\n\n{\n    \"ProxyId\": \"proxy-xxx\",\n    \"ZoneId\": \"zone-xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"ProxyId\": \"xx\",\n        \"ProxyName\": \"ins name\",\n        \"ProxyType\": \"instance\",\n        \"PlatType\": \"domain\",\n        \"SecurityType\": 1,\n        \"AccelerateType\": 0,\n        \"ForwardClientIp\": \"OFF\",\n        \"SessionPersist\": false,\n        \"SessionPersistTime\": 0,\n        \"Status\": \"xx\",\n        \"ZoneId\": \"zone-xxx\",\n        \"ZoneName\": \"123.com\",\n        \"UpdateTime\": \"2020-09-22T00:00:00+00:00\",\n        \"ScheduleValue\": [\n            \"xx\"\n        ],\n        \"Rule\": [],\n        \"HostId\": \"\"\n    }\n}",
-        "title": "获取应用代理详细信息"
+        "title": "Obtaining the details of an application proxy"
       }
     ],
     "DescribeCnameStatus": [
@@ -241,9 +241,9 @@
     "DescribeZoneSetting": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeZoneSetting\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-xxxx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Origin\": {\n            \"OriginPullProtocol\": \"xx\"\n        },\n        \"CacheKey\": {\n            \"FullUrlCache\": \"xx\",\n            \"IgnoreCase\": \"xx\",\n            \"QueryString\": {\n                \"Action\": \"xx\",\n                \"Switch\": \"xx\",\n                \"Value\": [\n                    \"xx\"\n                ]\n            }\n        },\n        \"WebSocket\": {\n            \"Switch\": \"xx\",\n            \"Timeout\": 0\n        },\n        \"Compression\": {\n            \"Switch\": \"xx\"\n        },\n        \"Zone\": \"xx\",\n        \"ForceRedirect\": {\n            \"Switch\": \"xx\",\n            \"RedirectStatusCode\": 0\n        },\n        \"Https\": {\n            \"Hsts\": {\n                \"IncludeSubDomains\": \"xx\",\n                \"Preload\": \"xx\",\n                \"Switch\": \"xx\",\n                \"MaxAge\": 0\n            },\n            \"OcspStapling\": \"xx\",\n            \"TlsVersion\": [\n                \"xx\"\n            ],\n            \"Http2\": \"xx\"\n        },\n        \"Cache\": {\n            \"FollowOrigin\": {\n                \"Switch\": \"xx\"\n            },\n            \"Cache\": {\n                \"CacheTime\": 0,\n                \"Switch\": \"xx\",\n                \"IgnoreCacheControl\": \"xx\"\n            },\n            \"NoCache\": {\n                \"Switch\": \"xx\"\n            }\n        },\n        \"PostMaxSize\": {\n            \"Switch\": \"xx\",\n            \"MaxSize\": 0\n        },\n        \"MaxAge\": {\n            \"FollowOrigin\": \"xx\",\n            \"MaxAgeTime\": 0\n        },\n        \"ZoneId\": \"xx\",\n        \"UpstreamHttp2\": {\n            \"Switch\": \"xx\"\n        },\n        \"ClientIpHeader\": {\n            \"HeaderName\": \"xx\",\n            \"Switch\": \"xx\"\n        },\n        \"OfflineCache\": {\n            \"Switch\": \"xx\"\n        },\n        \"Quic\": {\n            \"Switch\": \"xx\"\n        },\n        \"CachePrefresh\": {\n            \"Switch\": \"xx\",\n            \"Percent\": 0\n        },\n        \"SmartRouting\": {\n            \"Switch\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "查询站点配置"
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeZoneSetting\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-xxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Origin\": {\n            \"OriginPullProtocol\": \"xx\"\n        },\n        \"CacheKey\": {\n            \"FullUrlCache\": \"xx\",\n            \"IgnoreCase\": \"xx\",\n            \"QueryString\": {\n                \"Action\": \"xx\",\n                \"Switch\": \"xx\",\n                \"Value\": [\n                    \"xx\"\n                ]\n            }\n        },\n        \"WebSocket\": {\n            \"Switch\": \"xx\",\n            \"Timeout\": 0\n        },\n        \"Compression\": {\n            \"Switch\": \"xx\"\n        },\n        \"Zone\": \"xx\",\n        \"ForceRedirect\": {\n            \"Switch\": \"xx\",\n            \"RedirectStatusCode\": 0\n        },\n        \"Https\": {\n            \"Hsts\": {\n                \"IncludeSubDomains\": \"xx\",\n                \"Preload\": \"xx\",\n                \"Switch\": \"xx\",\n                \"MaxAge\": 0\n            },\n            \"OcspStapling\": \"xx\",\n            \"TlsVersion\": [\n                \"xx\"\n            ],\n            \"Http2\": \"xx\"\n        },\n        \"Cache\": {\n            \"FollowOrigin\": {\n                \"Switch\": \"xx\"\n            },\n            \"Cache\": {\n                \"CacheTime\": 0,\n                \"Switch\": \"xx\",\n                \"IgnoreCacheControl\": \"xx\"\n            },\n            \"NoCache\": {\n                \"Switch\": \"xx\"\n            }\n        },\n        \"PostMaxSize\": {\n            \"Switch\": \"xx\",\n            \"MaxSize\": 0\n        },\n        \"MaxAge\": {\n            \"FollowOrigin\": \"xx\",\n            \"MaxAgeTime\": 0\n        },\n        \"ZoneId\": \"xx\",\n        \"UpstreamHttp2\": {\n            \"Switch\": \"xx\"\n        },\n        \"OfflineCache\": {\n            \"Switch\": \"xx\"\n        },\n        \"Quic\": {\n            \"Switch\": \"xx\"\n        },\n        \"ClientIpHeader\": {\n            \"HeaderName\": \"xxx\",\n            \"Switch\": \"xx\"\n        },\n        \"SmartRouting\": {\n            \"Switch\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying the site configuration"
       }
     ],
     "DescribeZones": [
@@ -281,33 +281,33 @@
     "ModifyApplicationProxy": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxy\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\",\n    \"ProxyName\": \"123.123.com\",\n    \"ProxyType\": \"hostname\",\n    \"ForwardClientIp\": \"\",\n    \"SessionPersist\": false,\n    \"SessionPersistTime\": 3600\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxy\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\",\n    \"ProxyName\": \"123.123.com\",\n    \"ProxyType\": \"hostname\",\n    \"ForwardClientIp\": \"\",\n    \"SessionPersist\": false,\n    \"SessionPersistTime\": 3600\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"ProxyId\": \"proxy-xxx\"\n    }\n}",
-        "title": "修改应用代理"
+        "title": "Modifying an application proxy"
       }
     ],
     "ModifyApplicationProxyRule": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyRule\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\",\n    \"RuleId\": \"rule-id123\",\n    \"Proto\": \"TCP\",\n    \"Port\": [\n        \"80\",\n        \"90\",\n        \"99-110\"\n    ],\n    \"OriginType\": \"custom\",\n    \"OriginValue\": [\n        \"1.1.1.1:80\"\n    ],\n    \"ForwardClientIp\": \"TOA\",\n    \"SessionPersist\": false\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyRule\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\",\n    \"RuleId\": \"rule-id123\",\n    \"Proto\": \"TCP\",\n    \"Port\": [\n        \"80\",\n        \"90\",\n        \"99-110\"\n    ],\n    \"OriginType\": \"custom\",\n    \"OriginValue\": [\n        \"1.1.1.1:80\"\n    ],\n    \"ForwardClientIp\": \"TOA\",\n    \"SessionPersist\": false\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"RuleId\": \"rule-xxx\"\n    }\n}",
-        "title": "修改应用代理规则"
+        "title": "Modifying an application proxy rule"
       }
     ],
     "ModifyApplicationProxyRuleStatus": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyRuleStatus\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\",\n    \"RuleId\": \"rule-id123\",\n    \"Status\": \"offline\"\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyRuleStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\",\n    \"RuleId\": \"rule-id123\",\n    \"Status\": \"offline\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"RuleId\": \"rule-xxx\"\n    }\n}",
-        "title": "修改应用代理规则的状态"
+        "title": "Modifying the status of an application proxy rule"
       }
     ],
     "ModifyApplicationProxyStatus": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyStatus\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\",\n    \"Status\": \"online\"\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-id123\",\n    \"ProxyId\": \"proxy-id123\",\n    \"Status\": \"online\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"ProxyId\": \"proxy-xxx\"\n    }\n}",
-        "title": "修改应用代理的状态"
+        "title": "Modifying the status of an application proxy"
       }
     ],
     "ModifyDefaultCertificate": [
@@ -353,9 +353,9 @@
     "ModifyLoadBalancingStatus": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLoadBalancingStatus\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-xxx\",\n    \"LoadBalancingId\": \"lb-xxx\",\n    \"Status\": \"online\"\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLoadBalancingStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-xxx\",\n    \"LoadBalancingId\": \"lb-xxx\",\n    \"Status\": \"online\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"LoadBalancingId\": \"lb-xxx\"\n    }\n}",
-        "title": "修改负载均衡启用状态"
+        "title": "Modifying the status of a CLB instance"
       }
     ],
     "ModifyZone": [
@@ -377,9 +377,9 @@
     "ModifyZoneSetting": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyZoneSetting\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-xxxx\"\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyZoneSetting\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"ZoneId\": \"zone-xxxx\"\n    }\n}",
-        "title": "修改站点配置"
+        "title": "Modifying the site configuration"
       }
     ],
     "ModifyZoneStatus": [

@@ -1,11 +1,11 @@
 {
   "actions": {
-    "AddCdnDomain": [
+    "AddCLSTopicDomains": [
       {
         "document": "",
-        "input": "https://cdn.tencentcloudapi.com/?Action=AddCdnDomain\n&Domain=www.test.com\n&ServiceType=web\n&ProjectId=0\n&Area=mainland\n&Origin.Origins.0=1.1.1.1\n&Origin.OriginType=ip\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a4ac88a3-a159-47ac-9b87-19185d7deb09\"\n    }\n}",
-        "title": "Adding an acceleration domain name"
+        "input": "https://cdn.tencentcloudapi.com/?Action=AddCLSTopicDomains\n&LogsetId=6d04373b-ba59-4a4f-a96e-9fe53b59a536\n&TopicId=d2256449-c6ff-421b-93ef-aa3a7dde2de2\n&DomainAreaConfigs.0.Domain=a.b.com\n&DomainAreaConfigs.0.Area.0=mainland\n&DomainAreaConfigs.0.Area.1=overseas\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"57460798-8723-45e3-9c75-a0599ef9143a\"\n    }\n}",
+        "title": "Adding one or more domains to a specified log topic"
       }
     ],
     "CreateClsLogTopic": [
@@ -267,7 +267,7 @@
     "PurgePathCache": [
       {
         "document": "",
-        "input": "https://cdn.tencentcloudapi.com/?Action=PurgePathCache\n&Paths.0=http://www.test.com/test/\n&FlushType=flush\n&<Common request parameters>",
+        "input": "https://cdn.tencentcloudapi.com/?Action=PurgePathCache\r\n&Paths.0=http://www.test.com/test/&FlushType=flush\r\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4d5a83f8-a61f-445b-8036-5636be640bef\",\n        \"TaskId\": \"1533045796-i60rfmzm\"\n    }\n}",
         "title": "Submitting a directory purge task"
       }

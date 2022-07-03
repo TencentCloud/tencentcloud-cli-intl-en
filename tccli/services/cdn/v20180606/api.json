@@ -1,10 +1,10 @@
 {
   "actions": {
-    "AddCdnDomain": {
-      "document": "This API is used to add a CDN acceleration domain name.",
-      "input": "AddCdnDomainRequest",
-      "name": "Adds an acceleration domain name.",
-      "output": "AddCdnDomainResponse"
+    "AddCLSTopicDomains": {
+      "document": "This API is used to add one or more domains to a specified log topic.",
+      "input": "AddCLSTopicDomainsRequest",
+      "name": "Adds one or more domains to a specified log topic",
+      "output": "AddCLSTopicDomainsResponse"
     },
     "CreateClsLogTopic": {
       "document": "This API is used to create a log topic. Up to 10 log topics can be created under one logset.",
@@ -37,9 +37,9 @@
       "output": "DescribeBillingDataResponse"
     },
     "DescribeCdnData": {
-      "document": "This API (DescribeCdnData) is used to query CDN real-time access monitoring data and supports the following metrics:\n\n+ Traffic (in bytes)\n+ Bandwidth (in bps)\n+ Number of requests\n+ Number of hit requests\n+ Request hit rate (in %)\n+ Hit traffic (in bytes)\n+ Traffic hit rate (in %)\n+ Aggregate list of 2xx status codes and the details of status codes starting with 2 (in entries)\n+ Aggregate list of 3xx status codes and the details of status codes starting with 3 (in entries)\n+ Aggregate list of 4xx status codes and the details of status codes starting with 4 (in entries)\n+ Aggregate list of 5xx status codes and the details of status codes starting with 5 (in entries)",
+      "document": "This API is used to query CDN real-time access monitoring data and supports the following metrics:\n\n+ Traffic (in bytes)\n+ Bandwidth (in bps)\n+ Number of requests\n+ Number of hit requests\n+ Request hit rate (in %)\n+ Hit traffic (in bytes)\n+ Traffic hit rate (in %)\n+ Aggregate list of 2xx status codes and the details of status codes starting with 2 (in entries)\n+ Aggregate list of 3xx status codes and the details of status codes starting with 3 (in entries)\n+ Aggregate list of 4xx status codes and the details of status codes starting with 4 (in entries)\n+ Aggregate list of 5xx status codes and the details of status codes starting with 5 (in entries)",
       "input": "DescribeCdnDataRequest",
-      "name": "Queries access data",
+      "name": "Queries access data.",
       "output": "DescribeCdnDataResponse"
     },
     "DescribeCdnDomainLogs": {
@@ -81,7 +81,7 @@
     "DescribeIpStatus": {
       "document": "This API is used to query the status of the edge nodes and intermediate nodes. Note: Edge nodes are only available for beta users now.\n\n>? If you have migrated your ECDN service to CDN, you can use the <a href=\"https://intl.cloud.tencent.com/document/api/228/41954?from_cn_redirect=1\">corresponding CDN API</a>.",
       "input": "DescribeIpStatusRequest",
-      "name": "Queries domain name node status",
+      "name": "Queries the node status of the domain name",
       "output": "DescribeIpStatusResponse"
     },
     "DescribeIpVisit": {
@@ -97,9 +97,9 @@
       "output": "DescribeMapInfoResponse"
     },
     "DescribeOriginData": {
-      "document": "This API (DescribeOriginData) is used to query CDN real-time origin-pull monitoring data and supports the following metrics:\n\n+ Origin-pull traffic (in bytes)\n+ Origin-pull bandwidth (in bps)\n+ Number of origin-pull requests\n+ Number of failed origin-pull requests\n+ Origin-pull failure rate (in % with two decimal digits)\n+ Aggregate list of 2xx origin-pull status codes and the details of origin-pull status codes starting with 2 (in entries)\n+ Aggregate list of 3xx origin-pull status codes and the details of origin-pull status codes starting with 3 (in entries)\n+ Aggregate list of 4xx origin-pull status codes and the details of origin-pull status codes starting with 4 (in entries)\n+ Aggregate list of 5xx origin-pull status codes and the details of origin-pull status codes starting with 5 (in entries)",
+      "document": "This API is used to query CDN real-time origin-pull monitoring data and supports the following metrics:\n\n+ Origin-pull traffic (in bytes)\n+ Origin-pull bandwidth (in bps)\n+ Number of origin-pull requests\n+ Number of failed origin-pull requests\n+ Origin-pull failure rate (in % with two decimal digits)\n+ Aggregate list of 2xx origin-pull status codes and the details of origin-pull status codes starting with 2 (in entries)\n+ Aggregate list of 3xx origin-pull status codes and the details of origin-pull status codes starting with 3 (in entries)\n+ Aggregate list of 4xx origin-pull status codes and the details of origin-pull status codes starting with 4 (in entries)\n+ Aggregate list of 5xx origin-pull status codes and the details of origin-pull status codes starting with 5 (in entries)",
       "input": "DescribeOriginDataRequest",
-      "name": "Queries origin-pull data",
+      "name": "Queries origin-pull data.",
       "output": "DescribeOriginDataResponse"
     },
     "DescribePayType": {
@@ -334,338 +334,50 @@
       ],
       "usage": "both"
     },
-    "AddCdnDomainRequest": {
-      "document": "AddCdnDomain request structure.",
+    "AddCLSTopicDomainsRequest": {
+      "document": "AddCLSTopicDomains request structure.",
       "members": [
         {
           "default": "",
-          "document": "Domain name",
-          "example": "www.test.com",
+          "document": "Logset ID",
+          "example": "6d04373b-ba59-4a4f-a96e-9fe53b59a536",
           "member": "string",
-          "name": "Domain",
+          "name": "LogsetId",
           "required": true,
           "type": "string"
         },
         {
           "default": "",
-          "document": "Acceleration domain name service type\n`web`: Webpage file downloads\n`download`: Large file downloads\n`media`: Audio and video on demand acceleration\n`hybrid`: Dynamic and static content acceleration\n`dynamic`: Dynamic content acceleration",
-          "example": "web",
+          "document": "Log topic ID",
+          "example": "d2256449-c6ff-421b-93ef-aa3a7dde2de2",
           "member": "string",
-          "name": "ServiceType",
+          "name": "TopicId",
           "required": true,
           "type": "string"
         },
         {
           "default": "",
-          "document": "Origin server configuration",
+          "document": "Region configuration for domains",
           "example": "无",
-          "member": "Origin",
-          "name": "Origin",
+          "member": "DomainAreaConfig",
+          "name": "DomainAreaConfigs",
           "required": true,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Project ID. Default value: 0, indicating `Default Project`",
-          "example": "0",
-          "member": "int64",
-          "name": "ProjectId",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "IP blocklist/allowlist configuration",
-          "example": "无",
-          "member": "IpFilter",
-          "name": "IpFilter",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "IP access limit configuration",
-          "example": "无",
-          "member": "IpFreqLimit",
-          "name": "IpFreqLimit",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Status code cache configuration",
-          "example": "无",
-          "member": "StatusCodeCache",
-          "name": "StatusCodeCache",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Smart compression configuration",
-          "example": "无",
-          "member": "Compression",
-          "name": "Compression",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Bandwidth cap configuration",
-          "example": "无",
-          "member": "BandwidthAlert",
-          "name": "BandwidthAlert",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Range GETs configuration",
-          "example": "无",
-          "member": "RangeOriginPull",
-          "name": "RangeOriginPull",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "301/302 origin-pull follow-redirect configuration",
-          "example": "无",
-          "member": "FollowRedirect",
-          "name": "FollowRedirect",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Error code redirect configuration (This feature is in beta and not generally available yet.)",
-          "example": "无",
-          "member": "ErrorPage",
-          "name": "ErrorPage",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Request header configuration",
-          "example": "无",
-          "member": "RequestHeader",
-          "name": "RequestHeader",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Response header configuration",
-          "example": "无",
-          "member": "ResponseHeader",
-          "name": "ResponseHeader",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Download speed configuration",
-          "example": "无",
-          "member": "DownstreamCapping",
-          "name": "DownstreamCapping",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Node cache key configuration",
-          "example": "无",
-          "member": "CacheKey",
-          "name": "CacheKey",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Header cache configuration",
-          "example": "无",
-          "member": "ResponseHeaderCache",
-          "name": "ResponseHeaderCache",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Video dragging configuration",
-          "example": "无",
-          "member": "VideoSeek",
-          "name": "VideoSeek",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Cache expiration time configuration",
-          "example": "无",
-          "member": "Cache",
-          "name": "Cache",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Cross-border linkage optimization configuration",
-          "example": "无",
-          "member": "OriginPullOptimization",
-          "name": "OriginPullOptimization",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "HTTPS acceleration configuration",
-          "example": "无",
-          "member": "Https",
-          "name": "Https",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Timestamp hotlink protection configuration",
-          "example": "无",
-          "member": "Authentication",
-          "name": "Authentication",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "SEO configuration",
-          "example": "无",
-          "member": "Seo",
-          "name": "Seo",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Access protocol forced redirect configuration",
-          "example": "无",
-          "member": "ForceRedirect",
-          "name": "ForceRedirect",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Referer hotlink protection configuration",
-          "example": "无",
-          "member": "Referer",
-          "name": "Referer",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Browser cache configuration (This feature is in beta and not generally available yet.)",
-          "example": "无",
-          "member": "MaxAge",
-          "name": "MaxAge",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "IPv6 configuration (This feature is in beta and not generally available yet.)",
-          "example": "无",
-          "member": "Ipv6",
-          "name": "Ipv6",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Specific region configuration\nApplicable to cases where the acceleration domain name configuration differs for regions in and outside mainland China.",
-          "example": "无",
-          "member": "SpecificConfig",
-          "name": "SpecificConfig",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Domain name acceleration region\nmainland: acceleration inside mainland China\noverseas: acceleration outside mainland China\nglobal: global acceleration\nOverseas acceleration service must be enabled to use overseas acceleration and global acceleration.",
-          "example": "mainland",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Origin-pull timeout configuration",
-          "example": "无",
-          "member": "OriginPullTimeout",
-          "name": "OriginPullTimeout",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Tag configuration",
-          "example": "无",
-          "member": "Tag",
-          "name": "Tag",
-          "required": false,
           "type": "list"
         },
         {
           "default": "",
-          "document": "IPv6 access configuration",
-          "example": "无",
-          "member": "Ipv6Access",
-          "name": "Ipv6Access",
+          "document": "Specifies whether to access CDN or ECDN. Valid values: `cdn` (default) and `ecdn`.",
+          "example": "cdn",
+          "member": "string",
+          "name": "Channel",
           "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Offline cache",
-          "example": "无",
-          "member": "OfflineCache",
-          "name": "OfflineCache",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "QUIC access, which is a paid service. You can check the product document and Billing Overview for more information.",
-          "example": "无",
-          "member": "Quic",
-          "name": "Quic",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Access authentication for S3 origin",
-          "example": "无",
-          "member": "AwsPrivateAccess",
-          "name": "AwsPrivateAccess",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Access authentication for OSS origin",
-          "example": "无",
-          "member": "OssPrivateAccess",
-          "name": "OssPrivateAccess",
-          "required": false,
-          "type": "object"
+          "type": "string"
         }
       ],
       "type": "object"
     },
-    "AddCdnDomainResponse": {
-      "document": "AddCdnDomain response structure.",
+    "AddCLSTopicDomainsResponse": {
+      "document": "AddCLSTopicDomains response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2521,7 +2233,7 @@
       "members": [
         {
           "default": "",
-          "document": "Queries the specified metric:\nflux: traffic (in bytes)\nbandwidth: bandwidth (in bps)\nrequest: number of requests\nfluxHitRate: traffic hit rate (in %)\nstatusCode: status code. The aggregate data for 2xx, 3xx, 4xx, and 5xx status codes will be returned (in entries)\n2XX: Returns the aggregate list of 2xx status codes and the data for status codes starting with 2 (in entries)\n3XX: Returns the aggregate list of 3xx status codes and the data for status codes starting with 3 (in entries)\n4XX: Returns the aggregate list of 4xx status codes and the data for status codes starting with 4 (in entries)\n5XX: Returns the aggregate list of 5xx status codes and the data for status codes starting with 5 (in entries)\nAlternatively, you can specify a status code for querying.",
+          "document": "Queries by the specified metric:\n`flux`: Traffic (in bytes)\n`bandwidth`: Bandwidth (in bps)\n`request`: Number of requests\n`fluxHitRate`: Traffic hit rate (in %)\n`statusCode`: Status code. The aggregate data for 2xx, 3xx, 4xx, and 5xx status codes will be returned (in entries)\n`2XX`: Returns the aggregate list of 2xx status codes and the data for status codes starting with 2 (in entries)\n`3XX`: Returns the aggregate list of 3xx status codes and the data for status codes starting with 3 (in entries)\n`4XX`: Returns the aggregate list of 4xx status codes and the data for status codes starting with 4 (in entries)\n`5XX`: Returns the aggregate list of 5xx status codes and the data for status codes starting with 5 (in entries)\nYou can also specify a status code for querying.",
           "member": "string",
           "name": "Metric",
           "required": true,
@@ -3089,7 +2801,7 @@
       "members": [
         {
           "default": "",
-          "document": "Query start time, e.g., 2018-09-04 10:40:00. The returned result will be later than or equal to the specified time\nThe time will be rounded forward based on the granularity parameter `Interval`. For example, if the query start time is 2018-09-04 10:40:00 and the query time granularity is 1-hour, the time for the first returned entry will be 2018-09-04 10:00:00\nThe range between the start time and end time should be less than or equal to 90 days",
+          "document": "Start time of the query, e.g., 2018-09-04 10:40:00.\nThe specified start time will be rounded down based on the granularity parameter `Interval`. For example, if you set the start time to 2018-09-04 10:40:00 with 1-hour granularity, the time will be rounded down to 2018-09-04 10:00:00.\nThe period between the start time and end time can be up to 90 days.",
           "example": "2018-09-04 10:40:00",
           "member": "datetime",
           "name": "StartTime",
@@ -3098,7 +2810,7 @@
         },
         {
           "default": "",
-          "document": "Query end time, e.g. 2018-09-04 10:40:00. The returned result will be earlier than or equal to the specified time\nThe time will be rounded forward based on the granularity parameter `Interval`. For example, if the query end time is 2018-09-04 10:40:00 and the query time granularity is 1-hour, the time for the last returned entry will be 2018-09-04 10:00:00\nThe range between the start time and end time should be less than or equal to 90 days",
+          "document": "End time of the query, e.g. 2018-09-04 10:40:00.\nThe specified end time will be rounded down based on the granularity parameter `Interval`. For example, if you set the end time to 2018-09-04 10:40:00 with 1-hour granularity, the time will be rounded down to 2018-09-04 10:00:00.\nThe period between the start time and end time can be up to 90 days.",
           "example": "2018-09-04 10:40:00",
           "member": "datetime",
           "name": "EndTime",
@@ -3107,7 +2819,7 @@
         },
         {
           "default": "",
-          "document": "Time granularity, which can be:\n`min`: 1-minute granularity. The query period cannot exceed 24 hours.\n`5min`: 5-minute granularity. The query range cannot exceed 31 days.\n`hour`: 1-hour granularity. The query period cannot exceed 31 days.\n`day`: 1-day granularity. The query period cannot exceed 31 days.\n\nQuerying 1-minute granularity data is not supported if the `Area` field is `overseas`.",
+          "document": "Time granularity, which can be:\n`min`: 1-minute granularity. The query period cannot exceed 24 hours.\n`5min`: 5-minute granularity. The query range cannot exceed 31 days.\n`hour`: 1-hour granularity. The query period cannot exceed 31 days.\n`day`: 1-day granularity. The query period cannot exceed 31 days.\n\n`min` is not supported if the `Area` field is `overseas`.",
           "example": "5min",
           "member": "string",
           "name": "Interval",
@@ -3125,7 +2837,7 @@
         },
         {
           "default": "",
-          "document": "Project ID, which can be viewed [here](https://console.cloud.tencent.com/project)\nIf the `Domain` parameter is populated with specific domain name information, then the billing data of this domain name instead of the specified project will be returned",
+          "document": "Specifies the project ID to be queried. [Check project ID in the console](https://console.cloud.tencent.com/project)\nIf the `Domain` parameter is passed in, the `Proejct` parameter is ignored. Only the billing data of the specified domain name is returned. ",
           "example": "0",
           "member": "int64",
           "name": "Project",
@@ -3134,7 +2846,7 @@
         },
         {
           "default": "",
-          "document": "Acceleration region whose billing data is to be queried:\nmainland: in the mainland of China\noverseas: outside the mainland of China\nIf this parameter is left empty, `mainland` will be used by default",
+          "document": "Acceleration region whose billing data is to be queried:\n`mainland`: Regions within the Chinese mainland\n`overseas`: Regions outside the Chinese mainland\nIf this parameter is left empty, `mainland` will be used by default",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -3143,7 +2855,7 @@
         },
         {
           "default": "",
-          "document": "Country/region to be queried if `Area` is `overseas`\nFor district or country/region codes, please see [District Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)\nIf this parameter is left empty, all countries/regions will be queried",
+          "document": "Country/region to be queried if `Area` is `overseas`\nTo view codes of provinces or countries/regions, see [Province Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E7.9C.81.E4.BB.BD.E6.98.A0.E5.B0.84)\nIf this parameter is left empty, all countries/regions will be queried",
           "example": "10",
           "member": "int64",
           "name": "District",
@@ -3152,7 +2864,7 @@
         },
         {
           "default": "",
-          "document": "Billing statistics type\nflux: bill-by-traffic\nbandwidth: bill-by-bandwidth\nDefault value: `bandwidth`",
+          "document": "Billing statistics type\n`flux`: Bill by traffic\n`bandwidth`: Bill by bandwidth\nDefault value: `bandwidth`",
           "example": "bandwidth",
           "member": "string",
           "name": "Metric",
@@ -3167,6 +2879,15 @@
           "name": "Product",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "UTC+08:00",
+          "member": "string",
+          "name": "TimeZone",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3175,16 +2896,20 @@
       "document": "DescribeBillingData response structure.",
       "members": [
         {
-          "document": "Time granularity, which is specified by the parameter passed in during the query:\nmin: 1-minute\n5min: 5-minute\nhour: 1-hour\nday: 1-day",
+          "document": "Time granularity, which is specified by the parameter passed in during the query:\n`min`: 1 minute\n`5min`: 5 minutes\n`hour`: 1 hour\n`day`: 1 day",
+          "example": "5min",
           "member": "string",
           "name": "Interval",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Data details",
+          "example": "无",
           "member": "ResourceBillingData",
           "name": "Data",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3202,7 +2927,7 @@
       "members": [
         {
           "default": "",
-          "document": "Queries start time, such as 2018-09-04 10:40:00; the returned result is later than or equal to the specified time.\nAccording to the specified time granularity, forward rounding is applied; for example, if the query end time is 2018-09-04 10:40:00 and the query time granularity is 1 hour, the time for the first returned entry will be 2018-09-04 10:00:00.\nThe gap between the start time and end time should be less than or equal to 90 days.",
+          "document": "Start time of the query, e.g., 2018-09-04 10:40:00.\nThe specified start time will be rounded down based on the granularity parameter `Interval`. For example, if you set the start time to 2018-09-04 10:40:00 with 1-hour granularity, the time will be rounded down to 2018-09-04 10:00:00.\nThe period between the start time and end time can be up to 90 days.",
           "example": "2021-02-01 00:00:00",
           "member": "datetime",
           "name": "StartTime",
@@ -3211,7 +2936,7 @@
         },
         {
           "default": "",
-          "document": "Queries end time, such as 2018-09-04 10:40:00; the returned result is earlier than or equal to the specified time.\nAccording to the specified time granularity, forward rounding is applied; for example, if the query start time is 2018-09-04 10:40:00 and the query time granularity is 1 hour, the time for the last returned entry will be 2018-09-04 10:00:00.\nThe gap between the start time and end time should be less than or equal to 90 days.",
+          "document": "End time of the query, e.g. 2018-09-04 10:40:00.\nThe specified end time will be rounded down based on the granularity parameter `Interval`. For example, if you set the end time to 2018-09-04 10:40:00 with 1-hour granularity, the time will be rounded down to 2018-09-04 10:00:00.\nThe period between the start time and end time can be up to 90 days.",
           "example": "2021-02-01 00:00:00",
           "member": "datetime",
           "name": "EndTime",
@@ -3220,7 +2945,7 @@
         },
         {
           "default": "",
-          "document": "Specifies the metric to query, which can be:\n`flux`: traffic (in bytes)\n`fluxIn`: upstream traffic (in bytes), only used for the `ecdn` product\n`fluxOut`: downstream traffic (in bytes), only used for the `ecdn` product\n`bandwidth`: bandwidth (in bps)\n`bandwidthIn`: upstream bandwidth (in bps), only used for the `ecdn` product\n`bandwidthOut`: downstream bandwidth (in bps), only used for the `ecdn` product\n`request`: number of requests\n`hitRequest`: number of hit requests\n`requestHitRate`: request hit rate (in % with two decimal digits)\n`hitFlux`: hit traffic (in bytes)\n`fluxHitRate`: traffic hit rate (in % with two decimal digits)\n`statusCode`: status code. Number of 2xx, 3xx, 4xx, and 5xx status codes returned during the queried period.\n`2xx`: lists the number of all status codes starting with **2** returned during the queried period based on the specified interval (if any)\n`3xx`: lists the number of all status codes starting with **3** returned during the queried period based on the specified interval (if any)\n`4xx`: lists the number of all status codes starting with **4** returned during the queried period based on the specified interval (if any)\n`5xx`: lists the number of all status codes starting with **5** returned during the queried period based on the specified interval (if any)\nSpecifies the status code to query. The return will be empty if the status code has never been generated.",
+          "document": "Specifies the metric to query, which can be:\n`flux`: Traffic (in bytes)\n`fluxIn`: Upstream traffic (in bytes), only used for the `ecdn` product\n`fluxOut`: Downstream traffic (in bytes), only used for the `ecdn` product\n`bandwidth`: Bandwidth (in bps)\n`bandwidthIn`: Upstream bandwidth (in bps), only used for the `ecdn` product\n`bandwidthOut`: Downstream bandwidth (in bps), only used for the `ecdn` product\n`request`: Number of requests\n`hitRequest`: Number of hit requests\n`requestHitRate`: Request hit rate (in % with two decimal digits)\n`hitFlux`: Hit traffic (in bytes)\n`fluxHitRate`: Traffic hit rate (in % with two decimal digits)\n`statusCode`: Status code. The aggregate data for 2xx, 3xx, 4xx, and 5xx status codes will be returned (in entries)\n`2xx`: Returns the aggregate list of 2xx status codes and the data for status codes starting with 2 (in entries)\n`3xx`: Returns the aggregate list of 3xx status codes and the data for status codes starting with 3 (in entries)\n`4xx`: Returns the aggregate list of 4xx status codes and the data for status codes starting with 4 (in entries)\n`5xx`: Returns the aggregate list of 5xx status codes and the data for status codes starting with 5 (in entries)\nSpecifies the status code to query. The return will be empty if the status code has never been generated.",
           "example": "flux",
           "member": "string",
           "name": "Metric",
@@ -3229,7 +2954,7 @@
         },
         {
           "default": "",
-          "document": "Queries the information of specified domain names\nSpecifies a domain name to query\nSpecifies multiple domain names to query (30 at most at a time)\nQueries all Specifies an account to query all domain names",
+          "document": "Specifies the list of domain names to be queried\nYou can specify one or more domain names.\nUp to 30 domain names can be queried in one request.\nIf this parameter is not specified, it means to query all domain names under the current account.",
           "example": "无",
           "member": "string",
           "name": "Domains",
@@ -3238,7 +2963,7 @@
         },
         {
           "default": "",
-          "document": "Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)\nPlease note that if domain names are specified, this parameter will be ignored.",
+          "document": "Specifies the project ID to be queried. [Check project ID in the console](https://console.cloud.tencent.com/project)\nNote that `Project` will be ignored if `Domains` is specified.",
           "example": "0",
           "member": "int64",
           "name": "Project",
@@ -3247,7 +2972,7 @@
         },
         {
           "default": "",
-          "document": "Time granularity; valid values:\n`min`: data with 1-minute granularity is returned when the queried period is no longer than 24 hours. This value is not supported if the service region you want to query is outside Mainland China;\n`5min`: data with 5-minute granularity is returned when the queried period is no longer than 31 days;\n`hour`: data with 1-hour granularity is returned when the queried period is no longer than 31 days;\n`day`: data with 1-day granularity is returned when the queried period is longer than 31 days.",
+          "document": "Sampling interval. The available options vary for different query period. See below: \n`min`: Return data with 1-minute granularity. It’s available when the query period is  within 24 hours and `Area` is `mainland`.\n`5min`: Return data with 5-minute granularity. It’s available when the query period is within 31 days.\n`hour`: Return data with 1-hour granularity. It’s available when the query period is within 31 days.\n`day`: Return data with 1-day granularity. It’s available when the query period is longer than 31 days.",
           "example": "day",
           "member": "string",
           "name": "Interval",
@@ -3256,7 +2981,7 @@
         },
         {
           "default": "",
-          "document": "The aggregate data for multiple domain names is returned by default (false) during a multi-domain-name query.\nYou can set it to true to return the details for each Domain (the statusCode metric is currently not supported)",
+          "document": "The aggregate data for multiple domain names is returned by default (false) during a multi-domain-name query.\nYou can set it to true to return the details for each Domain (the statusCode metric is currently not supported).",
           "example": "false",
           "member": "bool",
           "name": "Detail",
@@ -3265,7 +2990,7 @@
         },
         {
           "default": "",
-          "document": "Specifies an ISP when you query the CDN data within Mainland China. If this is left blank, all ISPs will be queried.\nTo view ISP codes, see [ISP Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)\nIf you have specified an ISP, you cannot specify a province or an IP protocol for the same query.",
+          "document": "Specifies an ISP when you query the CDN data within the Chinese mainland. If this is left blank, all ISPs will be queried.\nTo view ISP codes, see [ISP Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)\nNote that only one of `District`, `Isp` and `IpProtocol` can be specified.",
           "example": "无",
           "member": "int64",
           "name": "Isp",
@@ -3274,7 +2999,7 @@
         },
         {
           "default": "",
-          "document": "Specifies a province when you query the CDN data within Mainland China. If this is left blank, all provinces will be queried.\nSpecifies a country/region when you query the CDN data outside Mainland China. If this is left blank, all countries/regions will be queried.\nTo view codes of provinces or countries/regions, see [Province Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)\nIf you have specified a province for your query on CDN data within mainland China, you cannot specify an ISP or an IP protocol for the same query.",
+          "document": "Specifies a province when you query the CDN data within the Chinese mainland. If this is left blank, all provinces will be queried.\nSpecifies a country/region when you query the CDN data outside the Chinese mainland. If this is left blank, all countries/regions will be queried.\nTo view codes of provinces or countries/regions, see [Province Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8).\nWhen `Area` is `mainland`, you can query by the province. Note that only one of `District`, `Isp` and `IpProtocol` can be specified.",
           "example": "无",
           "member": "int64",
           "name": "District",
@@ -3283,7 +3008,7 @@
         },
         {
           "default": "",
-          "document": "Specifies the protocol to be queried; if you leave it blank, all protocols will be queried.\nall: All protocols\nhttp: specifies the HTTP metric to be queried\nhttps: specifies the HTTPS metric to be queried",
+          "document": "Specifies the protocol to be queried; if you leave it blank, all protocols will be queried.\n`all`: All protocols\n`http`: Query HTTP data\n`https`: Query HTTPS data",
           "example": "无",
           "member": "string",
           "name": "Protocol",
@@ -3292,7 +3017,7 @@
         },
         {
           "default": "",
-          "document": "Specifies the data source to be queried, which can be seen as the allowlist function.",
+          "document": "Specifies the data source to be queried. It’s only open to beta users now. ",
           "example": "无",
           "member": "string",
           "name": "DataSource",
@@ -3301,7 +3026,7 @@
         },
         {
           "default": "",
-          "document": "Specified IP protocol to be queried. If this parameter is left empty, all protocols will be queried\nall: all protocols\nipv4: specifies to query IPv4 metrics\nipv6: specifies to query IPv6 metrics\nIf the IP protocol to be queried is specified, the district and ISP cannot be specified at the same time\nNote: non-IPv6 allowlisted users cannot specify `ipv4` and `ipv6` for query",
+          "document": "Specifies the IP protocol to be queried. If it’s not specified, data of all IP protocols are returned.\n`all`: All protocols\n`ipv4`: Query IPv4 data\n`ipv6`: Query IPv6 data\nIf `IpProtocol` is specified, `District` parameter can not be specified at the same time.\nNote: `ipv4` and `ipv6` are only available to beta users. ",
           "example": "无",
           "member": "string",
           "name": "IpProtocol",
@@ -3310,7 +3035,7 @@
         },
         {
           "default": "",
-          "document": "Specifies a service region. If this value is left blank, CDN data within Mainland China will be queried.\n`mainland`: specifies to query CDN data within Mainland China;\n`overseas`: specifies to query CDN data outside Mainland China.",
+          "document": "Specifies the service area. If it’s not specified, CDN data of the Chinese mainland are returned.\n`mainland`: Query CDN data in the Chinese mainland.\n`overseas`: Query CDN data outside the Chinese mainland.",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -3319,7 +3044,7 @@
         },
         {
           "default": "",
-          "document": "Specifies a region type for your query on CDN data outside Mainland China. If this parameter is left blank, data on the service region will be queried. This parameter is valid only when `Area` is `overseas`.\n`server`: specifies to query data on the service region where Tencent Cloud CDN nodes are located;\n`client`: specifies to query data on the client region where the request devices are located.",
+          "document": "Specify whether to query by the region of the server or client. This parameter is valid only when `Area` is `overseas`.\n`server`: Query by the location of server (Tencent Cloud CDN nodes)\n`client`: Query by the location of the client (where the request devices are located)",
           "example": "无",
           "member": "string",
           "name": "AreaType",
@@ -3334,6 +3059,15 @@
           "name": "Product",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies a time zone to query. The default time zone is UTC+08:00.",
+          "example": "UTC+08:00",
+          "member": "string",
+          "name": "TimeZone",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3342,16 +3076,20 @@
       "document": "DescribeCdnData response structure.",
       "members": [
         {
-          "document": "Time granularity of the returned data. Specify one of the following during querying:\nmin: 1 minute\n5min: 5 minutes\nhour: 1 hour\nday: 1 day",
+          "document": "Time granularity of the returned data. \n`min`: 1 minute\n`5min`: 5 minutes\n`hour`: 1 hour\n`day`: 1 day",
+          "example": "day",
           "member": "string",
           "name": "Interval",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Returned data details of the specified conditional query",
+          "example": "无",
           "member": "ResourceData",
           "name": "Data",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3709,7 +3447,7 @@
         },
         {
           "default": "",
-          "document": "Node type.\nedge: edge server\nlast: intermediate server\nIf this parameter is left empty, edge server information will be returned by default",
+          "document": "Node type.\n`edge`: Edge server\n`last`: Intermediate server\nIf this parameter is left empty, edge server information will be returned by default",
           "example": "edge",
           "member": "string",
           "name": "Layer",
@@ -3718,7 +3456,7 @@
         },
         {
           "default": "",
-          "document": "Region to be queried.\nmainland: domestic nodes\noverseas: overseas nodes\nglobal: global nodes",
+          "document": "Specifies a region to query.\n`mainland`: Nodes in the Chinese mainland\n`overseas`: Nodes outside the Chinese mainland\n`global`: Global nodes",
           "example": "last",
           "member": "string",
           "name": "Area",
@@ -3742,15 +3480,19 @@
       "members": [
         {
           "document": "Node list",
+          "example": "无",
           "member": "IpStatus",
           "name": "Ips",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Total number of nodes",
+          "example": "无",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3887,7 +3629,8 @@
       "members": [
         {
           "default": "",
-          "document": "Query start time, such as 2018-09-04 10:40:00; the returned result is later than or equal to the specified time.\nAccording to the specified time granularity, forward rounding is applied; for example, if the query end time is 2018-09-04 10:40:00 and the query time granularity is 1 hour, the time for the first returned entry will be 2018-09-04 10:00:00.\nThe gap between the start time and end time should be less than or equal to 90 days.",
+          "document": "Start time of the query, e.g., 2018-09-04 10:40:00.\nThe specified start time will be rounded down based on the granularity parameter `Interval`. For example, if you set the start time to 2018-09-04 10:40:00 with 1-hour granularity, the time will be rounded down to 2018-09-04 10:00:00.\nThe period between the start time and end time can be up to 90 days.",
+          "example": "2018-09-04 10:40:00",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -3895,7 +3638,8 @@
         },
         {
           "default": "",
-          "document": "Query end time, such as 2018-09-04 10:40:00; the returned result is earlier than or equal to the specified time.\nAccording to the specified time granularity, forward rounding is applied; for example, if the query start time is 2018-09-04 10:40:00 and the query time granularity is 1 hour, the time for the last returned entry will be 2018-09-04 10:00:00.\nThe gap between the start time and end time should be less than or equal to 90 days.",
+          "document": "End time of the query, e.g. 2018-09-04 10:40:00.\nThe specified end time will be rounded down based on the granularity parameter `Interval`. For example, if you set the end time to 2018-09-04 10:40:00 with 1-hour granularity, the time will be rounded down to 2018-09-04 10:00:00.\nThe period between the start time and end time can be up to 90 days.",
+          "example": "2018-09-04 10:40:00",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -3903,7 +3647,8 @@
         },
         {
           "default": "",
-          "document": "Specifies the query metric, which can be:\nflux: origin-pull traffic (in bytes)\nbandwidth: origin-pull bandwidth (in bps)\nrequest: number of origin-pull requests\nfailRequest: number of failed origin-pull requests\nfailRate: origin-pull failure rate (in %)\nstatusCode: origin-pull status code. The aggregate data for 2xx, 3xx, 4xx, and 5xx origin-pull status codes will be returned (in entries)\n2xx: Returns the aggregate list of 2xx origin-pull status codes and the data for origin-pull status codes starting with 2 (in entries)\n3xx: Returns the aggregate list of 3xx origin-pull status codes and the data for origin-pull status codes starting with 3 (in entries)\n4xx: Returns the aggregate list of 4xx origin-pull status codes and the data for origin-pull status codes starting with 4 (in entries)\n5xx: Returns the aggregate list of 5xx origin-pull status codes and the data for origin-pull status codes starting with 5 (in entries)\nIt is supported to specify a status code for query. The return will be empty if the status code has never been generated.",
+          "document": "Specifies the metric to query, which can be:\n`flux`: Origin-pull traffic (in bytes)\n`bandwidth`: Origin-pull bandwidth (in bps)\n`request`: Number of origin-pull requests\n`failRequest`: Number of failed origin-pull requests\n`failRate`: Origin-pull failure rate (in %)\n`statusCode`: Origin-pull status code. The aggregate data for 2xx, 3xx, 4xx, and 5xx origin-pull status codes will be returned (in entries)\n`2xx`: Returns the aggregate list of 2xx origin-pull status codes and the data for origin-pull status codes starting with 2 (in entries)\n`3xx`: Returns the aggregate list of 3xx origin-pull status codes and the data for origin-pull status codes starting with 3 (in entries)\n`4xx`: Returns the aggregate list of 4xx origin-pull status codes and the data for origin-pull status codes starting with 4 (in entries)\n`5xx`: Returns the aggregate list of 5xx origin-pull status codes and the data for origin-pull status codes starting with 5 (in entries)\nIt is supported to specify a status code for query. The return will be empty if the status code has never been generated.",
+          "example": "flux",
           "member": "string",
           "name": "Metric",
           "required": true,
@@ -3911,7 +3656,8 @@
         },
         {
           "default": "",
-          "document": "Specifies the list of domain names to be queried; up to 30 domain names can be queried at a time.",
+          "document": "Specifies the list of domain names to query. You can query up to 30 domain names at a time.",
+          "example": "无",
           "member": "string",
           "name": "Domains",
           "required": false,
@@ -3919,7 +3665,8 @@
         },
         {
           "default": "",
-          "document": "Project ID, which can be viewed [here](https://console.cloud.tencent.com/project)\nIf the domain name is not specified, the specified project will be queried. Up to 30 acceleration domain names can be queried at a time\nIf the domain name information is specified, the domain name will prevail",
+          "document": "Specifies the project ID to be queried. [Check project ID in the console](https://console.cloud.tencent.com/project)\nIf the domain name is not specified, the specified project will be queried. Up to 30 acceleration domain names can be queried at a time.\nIf the domain name information is specified, this parameter can be ignored.",
+          "example": "0",
           "member": "int64",
           "name": "Project",
           "required": false,
@@ -3927,7 +3674,8 @@
         },
         {
           "default": "",
-          "document": "Time granularity; valid values:\n`min`: data with 1-minute granularity is returned when the queried period is no longer than 24 hours. This value is not supported if the service region you want to query is outside Mainland China;\n`5min`: data with 5-minute granularity is returned when the queried period is no longer than 31 days;\n`hour`: data with 1-hour granularity is returned when the queried period is no longer than 31 days;\n`day`: data with 1-day granularity is returned when the queried period is longer than 31 days.",
+          "document": "Time granularity, which can be:\n`min`: Return data with 1-minute granularity. It’s available when the query period is  within 24 hours and `Area` is `mainland`.\n`5min`: Return data with 5-minute granularity. It’s available when the query period is within 31 days.\n`hour`: Return data with 1-hour granularity. It’s available when the query period is within 31 days.\n`day`: Return data with 1-day granularity. It’s available when the query period is longer than 31 days.",
+          "example": "5min",
           "member": "string",
           "name": "Interval",
           "required": false,
@@ -3936,6 +3684,7 @@
         {
           "default": "",
           "document": "The aggregate data for multiple domain names is returned by default (false) when multiple `Domains` are passed in.\nYou can set it to true to return the details for each Domain (the statusCode metric is currently not supported)",
+          "example": "false",
           "member": "bool",
           "name": "Detail",
           "required": false,
@@ -3943,9 +3692,19 @@
         },
         {
           "default": "",
-          "document": "Specifies a service region. If this value is left blank, CDN data within Mainland China will be queried.\n`mainland`: specifies to query CDN data within Mainland China;\n`overseas`: specifies to query CDN data outside Mainland China.",
+          "document": "Specifies the service region. If this value is left blank, it means to query CDN data within the Chinese mainland.\n`mainland`: Query CDN data in the Chinese mainland.\n`overseas`: Query CDN data outside the Chinese mainland.",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specifies a time zone to query. The default time zone is UTC+08:00.",
+          "example": "UTC+08:00",
+          "member": "string",
+          "name": "TimeZone",
           "required": false,
           "type": "string"
         }
@@ -3956,16 +3715,20 @@
       "document": "DescribeOriginData response structure.",
       "members": [
         {
-          "document": "Time granularity of data statistics, which supports min (1 minute), 5min (5 minutes), hour (1 hour), and day (1 day).",
+          "document": "Time granularity of data statistics, which supports `min` (1 minute), `5min` (5 minutes), `hour` (1 hour), and `day` (1 day).",
+          "example": "5min",
           "member": "string",
           "name": "Interval",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Origin-pull data details of each resource.",
+          "example": "无",
           "member": "ResourceOriginData",
           "name": "Data",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5210,7 +4973,7 @@
       "type": "object"
     },
     "DomainAreaConfig": {
-      "document": "Domain name region configuration",
+      "document": "Region configuration for domain names",
       "members": [
         {
           "default": "",
@@ -5223,7 +4986,7 @@
         },
         {
           "default": "",
-          "document": "Region list, where the element can be `mainland/overseas`",
+          "document": "Region list, where the element can be `mainland`/`overseas`",
           "member": "string",
           "name": "Area",
           "required": true,
@@ -6152,7 +5915,7 @@
         },
         {
           "default": "",
-          "document": "Node region",
+          "document": "Region of the node",
           "member": "string",
           "name": "District",
           "required": true,
@@ -6161,7 +5924,7 @@
         },
         {
           "default": "",
-          "document": "Node ISP",
+          "document": "ISP of the node",
           "member": "string",
           "name": "Isp",
           "required": true,
@@ -6170,7 +5933,7 @@
         },
         {
           "default": "",
-          "document": "Node city",
+          "document": "City of the node",
           "member": "string",
           "name": "City",
           "required": true,
@@ -6179,7 +5942,7 @@
         },
         {
           "default": "",
-          "document": "Node status\nonline: the node is online; scheduling service running\noffline: the node is offline",
+          "document": "Status of the node\n`online`: The node is active and scheduling normally.\n`offline`: The node is inactive.",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -8065,7 +7828,7 @@
         },
         {
           "default": "",
-          "document": "If this parameter is `middle` or left empty, prefetch will be performed onto the intermediate node.\nNote: resources prefetched outside the Chinese mainland will be cached to CDN nodes outside the Chinese mainland and the traffic generated will incur costs.",
+          "document": "By default, prefetch for regions in the Chinese mainland is performed onto the intermediate nodes, while prefetch for regions outside the Chinese mainland is performed onto the edge nodes and the traffic generated will be billed.\nIf this parameter is `middle` or left empty, prefetch will be performed onto the intermediate node.",
           "example": "middle",
           "member": "string",
           "name": "Layer",
@@ -8600,7 +8363,7 @@
       "members": [
         {
           "default": "",
-          "document": "Resource name, which is categorized as follows based on different query conditions:\nSpecific domain name: domain name details\nmultiDomains: aggregated details of multiple domain names\nProject ID: displays the ID of the specified project to be queried\nall: the details at the account level",
+          "document": "Resource name, which is classified as follows based on different query filters:\nWhen a domain name is specified: Details of the domain name\n`multiDomains`: Aggregated details of multiple domain names\nA specific project ID: ID of the specifically queried project\n`all`: Details at the account level",
           "member": "string",
           "name": "Resource",
           "required": true,
@@ -8620,11 +8383,11 @@
       "usage": "out"
     },
     "ResourceData": {
-      "document": "This API is used to query an object and its access details",
+      "document": "This API is used to query an object and its access details.",
       "members": [
         {
           "default": "",
-          "document": "Resource name, which is classified as follows based on different query filters:\nA single domain name: queries domain name details by a domain name. The details of the domain name will be displayed when the passed parameter `detail` is `true` (the `detail` parameter defaults to `false`).\nMultiple domain names: queries domain name details by multiple domain names. The aggregated details of the domain names will be displayed.\nProject ID: queries domain name details by a project ID. The aggregated details of the domain names of the project will be displayed.\n`all`: account-level data, which is aggregated details of all domain names of an account.",
+          "document": "Resource name. \nA single domain name: Queries domain name details by a domain name. The details of the domain name will be displayed when the passed parameter `detail` is `true`.\nMultiple domain names: Queries domain name details by multiple domain names. The aggregated details of the domain names will be displayed.\nProject ID: Queries domain name details by a project ID. The aggregated details of the domain names of the project will be displayed.\n`all`: Account-level data, which is aggregated details of all domain names of an account.",
           "example": "multiDomains",
           "member": "string",
           "name": "Resource",
@@ -8646,11 +8409,11 @@
       "usage": "out"
     },
     "ResourceOriginData": {
-      "document": "This API is used to query an object and its origin-pull details",
+      "document": "This API is used to query an object and its origin-pull details.",
       "members": [
         {
           "default": "",
-          "document": "Resource name, which is classified as follows based on different query conditions:\nA specific domain name: This indicates the details of this domain name\nmultiDomains: This indicates the aggregate details of multiple domain names\nProject ID: This displays the ID of the specifically queried project\nall: This indicates the details at the account level",
+          "document": "Resource name, which is classified as follows based on different query filters:\nA specific domain name: Details of the domain name\n`multiDomains`: Aggregated details of multiple domain names\nProject ID: ID of the specifically queried project\n`all`: Details at the account level",
           "member": "string",
           "name": "Resource",
           "required": true,
@@ -9856,11 +9619,11 @@
       "type": "object"
     },
     "SummarizedData": {
-      "document": "Aggregate values of details; each metric has different aggregation methods based on its characteristics",
+      "document": "Aggregated value, which is aggregated from all data of each metric. Aggregation methods are used depending on the metric attributes.",
       "members": [
         {
           "default": "",
-          "document": "Aggregation method, which can be:\nsum: aggregate summation\nmax: maximum value; in bandwidth mode, the peak bandwidth is calculated based on the aggregate data with 5-minute granularity.\navg: average value",
+          "document": "Aggregation method, which can be:\n`sum`: Aggregate summation\n`max`: Maximum value. In bandwidth mode, the peak bandwidth is calculated based on the data aggregated in 5 minutes.\n`avg`: Average value",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -9869,7 +9632,7 @@
         },
         {
           "default": "",
-          "document": "Aggregate data value",
+          "document": "Aggregated value",
           "member": "float",
           "name": "Value",
           "required": true,
@@ -9908,7 +9671,7 @@
       "members": [
         {
           "default": "",
-          "document": "Statistical point in time in forward rounding mode\nTaking the 5-minute granularity as an example, 13:35:00 indicates that the statistical interval is between 13:35:00 and 13:39:59.",
+          "document": "The start point of the sampling period. \nFor example, if the time is set to 13:35:00, and `interval` is `5min`, the data returned is collected between 13:35:00 and 13:39:59",
           "member": "datetime",
           "name": "Time",
           "required": true,
