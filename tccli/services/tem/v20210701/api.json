@@ -1102,7 +1102,7 @@
         },
         {
           "default": "",
-          "document": "Auto scaling policy",
+          "document": "Auto scaling policy. (Disused. Please use APIs for auto scaling policy combinations)",
           "example": "1",
           "member": "HorizontalAutoscaler",
           "name": "HorizontalAutoscaler",
@@ -1111,7 +1111,7 @@
         },
         {
           "default": "",
-          "document": "Scheduled auto scaling policy",
+          "document": "Scheduled scaling policy (Disused. Please use APIs for auto scaling policy combinations)",
           "example": "1",
           "member": "CronHorizontalAutoscaler",
           "name": "CronHorizontalAutoscaler",
@@ -1171,6 +1171,15 @@
           "name": "EnablePrometheusConf",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "`1`: Enable APM collection; `0`: Disable APM collection",
+          "example": "0",
+          "member": "int64",
+          "name": "EnableTracing",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2003,21 +2012,21 @@
       "members": [
         {
           "default": "",
-          "document": "Minimum number of instances",
+          "document": "(Optional) Minimum number of instances",
           "example": "1",
           "member": "int64",
           "name": "MinReplicas",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Maximum number of instances",
+          "document": "(Optional) Maximum number of instances",
           "example": "1",
           "member": "int64",
           "name": "MaxReplicas",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2027,7 +2036,7 @@
           "example": "1",
           "member": "string",
           "name": "Metrics",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2037,8 +2046,18 @@
           "example": "1",
           "member": "int64",
           "name": "Threshold",
-          "required": true,
+          "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is enabled",
+          "example": "1",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],

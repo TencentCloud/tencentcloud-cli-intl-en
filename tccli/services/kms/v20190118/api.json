@@ -603,6 +603,15 @@
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.",
+          "example": "cluster-123",
+          "member": "string",
+          "name": "HsmClusterId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -612,57 +621,82 @@
       "members": [
         {
           "document": "Globally unique CMK ID",
+          "example": "9999aed0-4956-11e9-bc70-5254005e86b4",
           "member": "string",
           "name": "KeyId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Alias that makes a key more recognizable and understandable",
+          "example": "test",
           "member": "string",
           "name": "Alias",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Key creation time in UNIX timestamp format",
+          "example": "1552897190",
           "member": "uint64",
           "name": "CreateTime",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "CMK description",
+          "example": "test",
           "member": "string",
           "name": "Description",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "CMK status",
+          "example": "Enabled",
           "member": "string",
           "name": "KeyState",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "CMK usage",
+          "example": "ENCRYPT_DECRYPT",
           "member": "string",
           "name": "KeyUsage",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Tag operation return code. 0: success; 1: internal error; 2: business processing error",
+          "example": "1",
           "member": "uint64",
           "name": "TagCode",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "document": "Tag operation return information",
+          "example": "success",
           "member": "string",
           "name": "TagMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "cls-hsm-1234abcd",
+          "member": "string",
+          "name": "HsmClusterId",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -792,7 +826,7 @@
         },
         {
           "default": "",
-          "document": "Asymmetric encryption algorithm. Valid values: `SM2(C1C3C2)`, `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, a SM2 public key will be used by default.",
+          "document": "Asymmetric encryption algorithm. Valid values: `SM2` (C1C3C2 ciphertext is returned), `SM2_C1C3C2_ASN1` (C1C3C2 ASN1 ciphertext is returned), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, an SM2 public key will be used by default.",
           "example": "SM2",
           "member": "string",
           "name": "EncryptionAlgorithm",
@@ -1587,7 +1621,7 @@
         },
         {
           "default": "",
-          "document": "Asymmetric encryption algorithm. Valid values: `SM2(C1C3C2)`, `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used with `EncryptionPublicKey` for encryption. If it is left empty, a SM2 public key will be used by default.",
+          "document": "Asymmetric encryption algorithm. Valid values: `SM2` (C1C3C2 ciphertext is returned)`, `SM2_C1C3C2_ASN1` (C1C3C2 ASN1 ciphertext is returned), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, an SM2 public key will be used by default.",
           "example": "SM2",
           "member": "string",
           "name": "EncryptionAlgorithm",
@@ -1853,44 +1887,74 @@
       "members": [
         {
           "document": "Whether the KMS service has been activated. true: activated",
+          "example": "1",
           "member": "bool",
           "name": "ServiceEnabled",
+          "required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
           "document": "Service unavailability type. 0: not purchased; 1: normal; 2: suspended due to arrears; 3: resource released",
+          "example": "1",
           "member": "int64",
           "name": "InvalidType",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "document": "0: Basic Edition, 1: Ultimate Edition",
+          "example": "0",
           "member": "uint64",
           "name": "UserLevel",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Ultimate Edition expiration time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1603701385",
           "member": "uint64",
           "name": "ProExpireTime",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "document": "Whether to automatically renew Ultimate Edition. 0: no, 1: yes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "uint64",
           "name": "ProRenewFlag",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "document": "Unique ID of the Ultimate Edition purchase record. If the Ultimate Edition is not activated, the returned value will be null.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "kms_pro_12345",
           "member": "string",
           "name": "ProResourceId",
+          "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to activate Managed KMS\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "ExclusiveVSMEnabled",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to activate Exclusive KMS\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "ExclusiveHSMEnabled",
+          "required": true,
+          "type": "bool",
           "value_allowed_null": true
         },
         {
@@ -2119,6 +2183,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "cls-hsm-1a2b3c4d",
+          "member": "string",
+          "name": "HsmClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2244,6 +2318,15 @@
           "name": "TagFilters",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.",
+          "example": "无",
+          "member": "string",
+          "name": "HsmClusterId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2280,6 +2363,7 @@
         {
           "default": "",
           "document": "This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the \"No. Offset value\" element of the array arranged in a certain order. The default value is 0",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -2288,6 +2372,7 @@
         {
           "default": "",
           "document": "This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200",
+          "example": "2",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -2296,10 +2381,20 @@
         {
           "default": "",
           "document": "Filter by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service",
+          "example": "无",
           "member": "uint64",
           "name": "Role",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.",
+          "example": "无",
+          "member": "string",
+          "name": "HsmClusterId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"

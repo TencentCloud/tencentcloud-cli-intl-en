@@ -47,6 +47,24 @@
       "input": "RemoveUserByStrRoomIdRequest",
       "name": "Removes a user from a room (by room ID in string type)",
       "output": "RemoveUserByStrRoomIdResponse"
+    },
+    "StartPublishCdnStream": {
+      "document": "This API is used to start a relaying task.\n1. To ensure the stability of relaying, you cannot switch between relaying audio only, relaying audio and video, and relaying video only for the same task.\n2. To ensure the stability of relaying, you cannot change the video codec, audio codec, sample rate, or number of sound channels during relay.\n3. The `StartPublishCdnStream` API will return a task ID, which uniquely identifies a relaying task. You need to pass this task ID when making a request to change the relaying parameters or stop the relaying task.\n4. When you relay a single stream, specify both `AudioParams` and `VideoParams` to publish both audio and video, and specify only `AudioParams` to publish audio only. You cannot switch between the two modes during the relaying process. For `VideoParams`, set `Width`, `Height`, `Fps`, `Bitrate`, and `Gop` according to the actual settings used for publishing.\n5. When you make a request to change the relaying parameters, set `AudioParams.SubscribeAudioList` to specify the audios to mix and set `VideoParams.LayoutParams` to specify the video layout.\n6. The `SequenceNumber` parameter is required when you make a request to change the relaying parameters. It ensures that multiple requests for the same relaying task are in the correct order. The value of `SequenceNumber` increases each time a new request is made for the same task. If `InternalError` is returned, try again using the same `SequenceNumber`. You don’t need to handle the `FailedOperation.OutdateRequest` error.\n7. In a request to change the relaying parameters, it is OK to pass only the parameters you want to change, but the value of each parameter you pass must be complete.\nFor example, to change the destination URLs, you only need to pass `PublishCdnParams` plus the required parameters of the `UpdatePublishCdnStream` API, but make sure `PublishCdnParams` includes all the URLs you want to relay to.\nPass the following parameters to change different relaying parameters:\n    a. WithTranscoding: Pass this parameter to switch from not transcoding to transcoding (this parameter is required).\n    b. AudioParams.UserInfoList: Pass this parameter to change the users whose audios you want to mix.\n    c. VideoParams.VideoEncode: Pass this parameter to change video parameters other than the codec, including the output resolution, bitrate, frame rate, and GOP. This parameter is valid only if streams are transcoded.\n    d. LayoutParams: Pass this parameter to change the video layout. This parameter is valid only if streams are transcoded.\n    e. BackGroundColor and BackgroundImageUrl: Pass these two parameters to change the background image and color. They are valid only when streams are transcoded.\n    f. WaterMarkList: Pass this parameter to change the watermarks. This parameter is valid only if streams are transcoded.\n    g. PublishCdnParams: Pass this parameter to change the destination URLs.\n8. You can create a relaying task even when there are no anchors in the room, but make sure you manually stop the task when relaying is finished. If you don’t, after all the users whose streams are mixed leave the room, the TRTC backend will wait for the timeout period to elapse before stopping the relaying task.\n9. You can specify at most 10 destination URLs for each relaying task.\n10. When making a request to switch from not transcoding to transcoding, you need to specify all the parameters of the relaying task.",
+      "input": "StartPublishCdnStreamRequest",
+      "name": "Starts a relaying task",
+      "output": "StartPublishCdnStreamResponse"
+    },
+    "StopPublishCdnStream": {
+      "document": "This API is used to stop a relaying task.",
+      "input": "StopPublishCdnStreamRequest",
+      "name": "Stops a relaying task",
+      "output": "StopPublishCdnStreamResponse"
+    },
+    "UpdatePublishCdnStream": {
+      "document": "This API is used to change the parameters of a relaying task.",
+      "input": "UpdatePublishCdnStreamRequest",
+      "name": "Changes relaying parameters",
+      "output": "UpdatePublishCdnStreamResponse"
     }
   },
   "metadata": {
@@ -55,6 +73,88 @@
     "serviceShortName": "trtc"
   },
   "objects": {
+    "AgentParams": {
+      "document": "The information of the relaying robot in the room.",
+      "members": [
+        {
+          "default": "",
+          "document": "The [user ID](https://intl.cloud.tencent.com/document/product/647/37714) of the relaying robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include the room ID in this user ID.",
+          "example": "room_1234_rtmp_1",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The signature (similar to a login password) required for the relaying robot to enter the room. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104). |",
+          "example": "xxxx",
+          "member": "string",
+          "name": "UserSig",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The timeout period (seconds) for relaying to stop automatically after all the users whose streams are mixed leave the room. The value cannot be smaller than 5 or larger than 86400 (24 hours). Default value: 30.",
+          "example": "50",
+          "member": "uint64",
+          "name": "MaxIdleTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "AudioEncode": {
+      "document": "The audio encoding parameters.",
+      "members": [
+        {
+          "default": "",
+          "document": "The audio sample rate (Hz). Valid values: 48000, 44100, 32000, 24000, 16000, 8000.",
+          "example": "48000",
+          "member": "uint64",
+          "name": "SampleRate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of sound channels. Valid values: 1 (mono), 2 (dual).",
+          "example": "2",
+          "member": "uint64",
+          "name": "Channel",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The audio bitrate (Kbps). Value range: 8-500.",
+          "example": "64",
+          "member": "uint64",
+          "name": "BitRate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The audio codec. Valid values: 0 (LC-AAC), 1 (HE-AAC), 2 (HE-AACv2). The default value is 0. If this parameter is set to 2, `Channel` must be 2. If it is set to 1 or 2, `SampleRate` can only be 48000, 44100, 32000, 24000, or 16000.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Codec",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "AudioParams": {
       "document": "The audio transcoding parameters for recording.",
       "members": [
@@ -475,6 +575,370 @@
       ],
       "type": "object"
     },
+    "MaxVideoUser": {
+      "document": "The information of the large video in screen sharing or floating layout mode.",
+      "members": [
+        {
+          "default": "",
+          "document": "The stream information.",
+          "example": "UserMediaStream",
+          "member": "UserMediaStream",
+          "name": "UserMediaStream",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "McuAudioParams": {
+      "document": "The audio parameters for relaying.",
+      "members": [
+        {
+          "default": "",
+          "document": "The audio encoding parameters.",
+          "example": "AudioEncode",
+          "member": "AudioEncode",
+          "name": "AudioEncode",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The users whose audios are mixed. For the `StartPublishCdnStream` API, if you do not pass this parameter or leave it empty, the audios of all anchors will be mixed. For the `UpdatePublishCdnStream` API, if you do not pass this parameter, TRTC will not change the users whose audios are mixed; if you pass in an empty string, the audios of all anchors will be mixed.",
+          "example": "SubscribeAudioList",
+          "member": "McuUserInfoParams",
+          "name": "SubscribeAudioList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "McuLayout": {
+      "document": "The layout parameters.",
+      "members": [
+        {
+          "default": "",
+          "document": "The information of the stream that is displayed. If you do not pass this parameter, TRTC will display the videos of anchors in the room according to their room entry sequence.",
+          "example": "UserMediaStream",
+          "member": "UserMediaStream",
+          "name": "UserMediaStream",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The video width (pixels). If you do not pass this parameter, 0 will be used.",
+          "example": "1280",
+          "member": "uint64",
+          "name": "ImageWidth",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The video height (pixels). If you do not pass this parameter, 0 will be used.",
+          "example": "720",
+          "member": "uint64",
+          "name": "ImageHeight",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The horizontal offset (pixels) of the video. The sum of `LocationX` and `ImageWidth` cannot exceed the width of the canvas. If you do not pass this parameter, 0 will be used.",
+          "example": "0",
+          "member": "uint64",
+          "name": "LocationX",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The vertical offset of the video. The sum of `LocationY` and `ImageHeight` cannot exceed the height of the canvas. If you do not pass this parameter, 0 will be used.",
+          "example": "0",
+          "member": "uint64",
+          "name": "LocationY",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The image layer of the video. If you do not pass this parameter, 0 will be used.",
+          "example": "0",
+          "member": "uint64",
+          "name": "ZOrder",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The rendering mode of the video. 0 (the video is scaled and the excess parts are cropped), 1 (the video is scaled), 2 (the video is scaled and the blank spaces are filled with black bars). If you do not pass this parameter, 0 will be used.",
+          "example": "0",
+          "member": "uint64",
+          "name": "RenderMode",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The background color of the video. Below are the values for some common colors:\nRed: 0xcc0033\nYellow: 0xcc9900\nGreen: 0xcccc33\nBlue: 0x99CCFF\nBlack: 0x000000\nWhite: 0xFFFFFF\nGrey: 0x999999",
+          "example": "0xFFFFFF",
+          "member": "string",
+          "name": "BackGroundColor",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The URL of the background image for the video. This parameter allows you to specify an image to display when the user’s camera is turned off or before the user enters the room. If the dimensions of the image specified are different from those of the video window, the image will be stretched to fit the space. This parameter has a higher priority than `BackGroundColor`.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "BackgroundImageUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "McuLayoutParams": {
+      "document": "The layout parameters.",
+      "members": [
+        {
+          "default": "",
+          "document": "The layout mode. Valid values: 1 (floating), 2 (screen sharing), 3 (grid), 4 (custom). Floating, screen sharing, and grid are dynamic layouts. Custom layouts are static layouts.",
+          "example": "4",
+          "member": "uint64",
+          "name": "MixLayoutMode",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to display users who publish only audio. 0: Yes; 1: No. This parameter is valid only if dynamic layouts are used. If you do not pass this parameter, 0 will be used.",
+          "example": "0",
+          "member": "uint64",
+          "name": "PureAudioHoldPlaceMode",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The details of a custom layout.",
+          "example": "MixLayoutList",
+          "member": "McuLayout",
+          "name": "MixLayoutList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The information of the large video in screen sharing or floating layout mode.",
+          "example": "MaxVideoUser",
+          "member": "MaxVideoUser",
+          "name": "MaxVideoUser",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "McuPublishCdnParam": {
+      "document": "The relaying parameters.",
+      "members": [
+        {
+          "default": "",
+          "document": "The URLs of the CDNs to relay to.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "PublishCdnUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to relay to Tencent Cloud’s CDN. 0 (default): No; 1: Yes. An optimized route will be assigned if you relay to Tencent Cloud’s CDN.",
+          "example": "1",
+          "member": "uint64",
+          "name": "IsTencentCdn",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "McuUserInfoParams": {
+      "document": "The users whose streams are mixed.",
+      "members": [
+        {
+          "default": "",
+          "document": "The user information.",
+          "example": "UserInfo",
+          "member": "MixUserInfo",
+          "name": "UserInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "McuVideoParams": {
+      "document": "The video parameters for relaying.",
+      "members": [
+        {
+          "default": "",
+          "document": "The video encoding parameters.",
+          "example": "VideoEncode",
+          "member": "VideoEncode",
+          "name": "VideoEncode",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The layout parameters.",
+          "example": "LayoutParams",
+          "member": "McuLayoutParams",
+          "name": "LayoutParams",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The canvas color. Below are the values for some common colors:\nRed: 0xcc0033\nYellow: 0xcc9900\nGreen: 0xcccc33\nBlue: 0x99CCFF\nBlack: 0x000000\nWhite: 0xFFFFFF\nGrey: 0x999999",
+          "example": "0xFFFFFF",
+          "member": "string",
+          "name": "BackGroundColor",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The URL of the background image for the canvas. This parameter has a higher priority than `BackGroundColor`.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "BackgroundImageUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark information for the mixed stream.",
+          "example": "WaterMarkList",
+          "member": "McuWaterMarkParams",
+          "name": "WaterMarkList",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "McuWaterMarkImage": {
+      "document": "The information of the watermark image.",
+      "members": [
+        {
+          "default": "",
+          "document": "The URL of the watermark image, which must be in PNG, JPG, or JPEG format and cannot exceed 5 MB.",
+          "example": "xxx.png",
+          "member": "string",
+          "name": "WaterMarkUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark width (pixels).",
+          "example": "64",
+          "member": "uint64",
+          "name": "WaterMarkWidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark height (pixels).",
+          "example": "64",
+          "member": "uint64",
+          "name": "WaterMarkHeight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The horizontal offset (pixels) of the watermark.",
+          "example": "0",
+          "member": "uint64",
+          "name": "LocationX",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The vertical offset (pixels) of the watermark.",
+          "example": "0",
+          "member": "uint64",
+          "name": "LocationY",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The image layer of the watermark. If you do not pass this parameter, 0 will be used.",
+          "example": "0",
+          "member": "uint64",
+          "name": "ZOrder",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "McuWaterMarkParams": {
+      "document": "The Watermark information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The information of the watermark image.",
+          "example": "WaterMarkImage",
+          "member": "McuWaterMarkImage",
+          "name": "WaterMarkImage",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "MixLayout": {
       "document": "The custom layout parameters.",
       "members": [
@@ -713,6 +1177,42 @@
       ],
       "usage": "in"
     },
+    "MixUserInfo": {
+      "document": "The user information.",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID.",
+          "example": "owen-test",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "If a dynamic layout is used, the value of this parameter should be the ID of the main room. If a custom layout is used, the value of this parameter should be the same as the room ID in `MixLayoutList`.",
+          "example": "room_1234",
+          "member": "string",
+          "name": "RoomId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The type of the `RoomId` parameter. 0: integer; 1: string.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RoomIdType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "ModifyCloudRecordingRequest": {
       "document": "ModifyCloudRecording request structure.",
       "members": [
@@ -916,6 +1416,175 @@
       ],
       "type": "object"
     },
+    "SingleSubscribeParams": {
+      "document": "The information of a single stream relayed.",
+      "members": [
+        {
+          "default": "",
+          "document": "The stream information.",
+          "example": "UserMediaStream",
+          "member": "UserMediaStream",
+          "name": "UserMediaStream",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "StartPublishCdnStreamRequest": {
+      "document": "StartPublishCdnStream request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.",
+          "example": "1400188366",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The ID of the room whose streams are relayed (the main room).",
+          "example": "room_1234",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The type of the `RoomId` parameter, which must be the same as the ID type of the room whose streams are relayed. 0: integer; 1: string.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RoomIdType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The information of the relaying robot in the room.",
+          "example": "AgentParams",
+          "member": "AgentParams",
+          "name": "AgentParams",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to transcode the streams. 0: No; 1: Yes.",
+          "example": "1",
+          "member": "uint64",
+          "name": "WithTranscoding",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The audio encoding parameters for relaying.",
+          "example": "AudioParams",
+          "member": "McuAudioParams",
+          "name": "AudioParams",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The video encoding parameters for relaying. If you do not pass this parameter, only audio will be relayed.",
+          "example": "VideoParams",
+          "member": "McuVideoParams",
+          "name": "VideoParams",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The information of a single stream relayed. When you relay a single stream, set `WithTranscoding` to 0.",
+          "example": "SingleSubscribeParams",
+          "member": "SingleSubscribeParams",
+          "name": "SingleSubscribeParams",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The CDN information.",
+          "example": "PublishCdnParams",
+          "member": "McuPublishCdnParam",
+          "name": "PublishCdnParams",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "StartPublishCdnStreamResponse": {
+      "document": "StartPublishCdnStream response structure.",
+      "members": [
+        {
+          "document": "The task ID, which is generated by the Tencent Cloud server. You need to pass in the task ID when making a request to update or stop a relaying task.",
+          "example": "5df46eb2-8e4b-490e-9c3c-dbd3b84faefc",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopPublishCdnStreamRequest": {
+      "document": "StopPublishCdnStream request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.",
+          "example": "1400188366",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The task ID.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopPublishCdnStreamResponse": {
+      "document": "StopPublishCdnStream response structure.",
+      "members": [
+        {
+          "document": "The task ID.",
+          "example": "xxxxx",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "StorageFile": {
       "document": "The information of the recording files, which is returned by the `DescribeCloudRecording` API.",
       "members": [
@@ -1105,6 +1774,187 @@
           "name": "SourceContext",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "UpdatePublishCdnStreamRequest": {
+      "document": "UpdatePublishCdnStream request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.",
+          "example": "1400188366",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The task ID.",
+          "example": "xxxxxxxx",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The sequence of a request. This parameter ensures the requests to change the parameters of the same relaying task are in the correct order. It increases each time a new request is made.",
+          "example": "2",
+          "member": "uint64",
+          "name": "SequenceNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to transcode the streams. 0: No; 1: Yes.",
+          "example": "1",
+          "member": "uint64",
+          "name": "WithTranscoding",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pass this parameter to change the users whose audios are mixed. If you do not pass this parameter, no changes will be made.",
+          "example": "AudioParams",
+          "member": "McuAudioParams",
+          "name": "AudioParams",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Pass this parameter to change video parameters other than the codec, including the video layout, background image, background color, and watermark information. This parameter is valid only if streams are transcoded. If you do not pass it, no changes will be made.",
+          "example": "VideoParams",
+          "member": "McuVideoParams",
+          "name": "VideoParams",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Pass this parameter to change the single stream that is relayed. This parameter is valid only if streams are not transcoded. If you do not pass this parameter, no changes will be made.",
+          "example": "SingleSubscribeParams",
+          "member": "SingleSubscribeParams",
+          "name": "SingleSubscribeParams",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Pass this parameter to change the CDNs to relay to. If you do not pass this parameter, no changes will be made.",
+          "example": "PublishCdnParams",
+          "member": "McuPublishCdnParam",
+          "name": "PublishCdnParams",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePublishCdnStreamResponse": {
+      "document": "UpdatePublishCdnStream response structure.",
+      "members": [
+        {
+          "document": "The task ID.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UserMediaStream": {
+      "document": "The stream information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The user information.",
+          "example": "MixUserInfo",
+          "member": "MixUserInfo",
+          "name": "UserInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The stream type. 0: Camera; 1: Screen sharing. If you do not pass this parameter, 0 will be used.",
+          "example": "0",
+          "member": "uint64",
+          "name": "StreamType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "VideoEncode": {
+      "document": "The video encoding parameters.",
+      "members": [
+        {
+          "default": "",
+          "document": "The width of the output stream (pixels). This parameter is required if audio and video are relayed. Value range: [0, 1920].",
+          "example": "1280",
+          "member": "uint64",
+          "name": "Width",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The height of the output stream (pixels). This parameter is required if audio and video are relayed. Value range: [0, 1080].",
+          "example": "720",
+          "member": "uint64",
+          "name": "Height",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The frame rate (fps) of the output stream. This parameter is required if audio and video are relayed. Value range: [0, 60].",
+          "example": "15",
+          "member": "uint64",
+          "name": "Fps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The bitrate (Kbps) of the output stream. This parameter is required if audio and video are relayed. Value range: [0, 10000].",
+          "example": "1500",
+          "member": "uint64",
+          "name": "BitRate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The GOP (seconds) of the output stream. This parameter is required if audio and video are relayed. Value range: [1, 5].",
+          "example": "2",
+          "member": "uint64",
+          "name": "Gop",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

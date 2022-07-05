@@ -4404,6 +4404,15 @@
           "name": "FlowLogStorage",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The region corresponding to the flow log storage ID. If not passed in, this field defaults to the current region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "CloudLogRegion",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -7600,7 +7609,7 @@
         },
         {
           "default": "",
-          "document": "The Offset. The default value is 0. For more information on `Offset`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/product/11646).",
+          "document": "The Offset. The default value is 0. For more information about `Offset`, see the relevant section in the API documentation.",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -7609,7 +7618,7 @@
         },
         {
           "default": "",
-          "document": "Number of returned results. The default value is 20. The maximum is 100. For more information on `Limit`, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/product/11646).",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API documentation.",
           "example": "20",
           "member": "int64",
           "name": "Limit",
@@ -8684,6 +8693,7 @@
         {
           "default": "",
           "document": "ID of the VPC instance",
+          "example": "vpc-7zayowkt",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -8692,6 +8702,7 @@
         {
           "default": "",
           "document": "The unique ID of the flow log.",
+          "example": "fl-hdtpam45",
           "member": "string",
           "name": "FlowLogId",
           "required": false,
@@ -8700,6 +8711,7 @@
         {
           "default": "",
           "document": "The name of the flow log instance.",
+          "example": "test_name",
           "member": "string",
           "name": "FlowLogName",
           "required": false,
@@ -8708,6 +8720,7 @@
         {
           "default": "",
           "document": "The resource type of the flow log. Valid values: 'VPC', 'SUBNET', and 'NETWORKINTERFACE'.",
+          "example": "VPC",
           "member": "string",
           "name": "ResourceType",
           "required": false,
@@ -8716,6 +8729,7 @@
         {
           "default": "",
           "document": "The unique ID of the resource.",
+          "example": "vpc-7zayowkt",
           "member": "string",
           "name": "ResourceId",
           "required": false,
@@ -8724,6 +8738,7 @@
         {
           "default": "",
           "document": "Type of flow logs to be collected. Valid values: 'ACCEPT', 'REJECT' and 'ALL'.",
+          "example": "ACCEPT",
           "member": "string",
           "name": "TrafficType",
           "required": false,
@@ -8732,6 +8747,7 @@
         {
           "default": "",
           "document": "The storage ID of the flow log.",
+          "example": "10acf9c5-ac0a-45ea-8aeb-bd00312aeebb",
           "member": "string",
           "name": "CloudLogId",
           "required": false,
@@ -8740,6 +8756,7 @@
         {
           "default": "",
           "document": "The storage ID status of the flow log.",
+          "example": "SUCCESS",
           "member": "string",
           "name": "CloudLogState",
           "required": false,
@@ -8748,6 +8765,7 @@
         {
           "default": "",
           "document": "Order by field. Valid values: 'flowLogName' and 'createTime'. Default value: 'createTime'.",
+          "example": "createTime",
           "member": "string",
           "name": "OrderField",
           "required": false,
@@ -8756,6 +8774,7 @@
         {
           "default": "",
           "document": "In ascending (`asc`) or descending (`desc`) order. Default value: 'desc'.",
+          "example": "desc",
           "member": "string",
           "name": "OrderDirection",
           "required": false,
@@ -8764,6 +8783,7 @@
         {
           "default": "",
           "document": "The offset. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -8772,6 +8792,7 @@
         {
           "default": "",
           "document": "The number of rows per page. Default value: 10.",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -8780,10 +8801,20 @@
         {
           "default": "",
           "document": "Filter condition. `FlowLogIds` and `Filters` cannot be specified at the same time.\n<li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>\n<li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key should be replaced with a specified tag key.</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The region corresponding to the flow log storage ID.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "CloudLogRegion",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -12454,6 +12485,16 @@
           "name": "FlowLogStorage",
           "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The region corresponding to the flow log storage ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "CloudLogRegion",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
