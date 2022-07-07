@@ -84,6 +84,14 @@
         "title": "Adding certificate"
       }
     ],
+    "CreateLivePullStreamTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLivePullStreamTask\n<common request parameters>\n\n{\n    \"SourceType\": \"PullLivePushLive\",\n    \"DomainName\": \"5000.livepush.myqcloud.com\",\n    \"SourceUrls\": [\n        \"rtmp://5000.liveplay.myqcloud.com/live/stream1\"\n    ],\n    \"StreamName\": \"test\",\n    \"AppName\": \"live\",\n    \"StartTime\": \"2019-12-16T11:02:00Z\",\n    \"Operator\": \"vinson\",\n    \"EndTime\": \"2019-12-17T12:02:00Z\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"10000\",\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "CreateLiveRecord": [
       {
         "document": "This example shows you how to use this API for scenarios with fixed start time and end time of recording, such as training courses, business events, shows, and performances.",
@@ -198,6 +206,14 @@
         "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveDomain\n&DomainName=www.test.com\n&DomainType=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Deleting domain name"
+      }
+    ],
+    "DeleteLivePullStreamTask": [
+      {
+        "document": "",
+        "input": "https://live.tencentcloudapi.com/?Action=DeleteLivePullStreamTask\n&TaskId=10000\n&Operator=zhangsan\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Sample request"
       }
     ],
     "DeleteLiveRecord": [
@@ -405,6 +421,14 @@
         "document": "",
         "input": "https://live.tencentcloudapi.com/?Action=DescribeLivePlayAuthKey\r\n&DomainName=5000.livepush.myqcloud.com\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"PlayAuthKeyInfo\": {\n            \"DomainName\": \"5000.livepush.myqcloud.com\",\n            \"Enable\": 1,\n            \"AuthKey\": \"xxxx\",\n            \"AuthDelta\": 300,\n            \"AuthBackKey\": \"xxx\"\n        },\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeLivePullStreamTasks": [
+      {
+        "document": "",
+        "input": "https://live.tencentcloudapi.com/?Action=DescribeLivePullStreamTasks\n&TaskId=123\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TaskInfos\": [\n            {\n                \"AppName\": \"live\",\n                \"Region\": \"ap-beijing\",\n                \"CallbackInfo\": \"\",\n                \"CallbackEvents\": [\n                    \"TaskStart\",\n                    \"TaskExit\"\n                ],\n                \"CallbackUrl\": \"\",\n                \"CreateBy\": \"yourname\",\n                \"DomainName\": \"yourdomain.com\",\n                \"EndTime\": \"2020-04-25T00:30:00Z\",\n                \"ErrorInfo\": \"\",\n                \"PushArgs\": \"txsecret=7cbb8f382a21e8d2f6cd8098100d3b8e&txtime=5ea0450d\",\n                \"SourceType\": \"PullLivePushLive\",\n                \"SourceUrls\": [\n                    \"http://yourdomain/live/test.flv\"\n                ],\n                \"StartTime\": \"2020-04-20T00:30:00Z\",\n                \"Status\": \"enable\",\n                \"StreamName\": \"teststream\",\n                \"Comment\": \"xx\",\n                \"TaskId\": \"10054\",\n                \"UpdateBy\": \"\",\n                \"UpdateTime\": \"2020-04-23T05:07:43Z\",\n                \"CreateTime\": \"2020-04-20T05:07:43Z\",\n                \"VodLoopTimes\": -1,\n                \"VodRefreshType\": \"ImmediateNewSource\",\n                \"RecentPullInfo\": {\n                    \"FileUrl\": \"http://yourdomain/live/test.flv\",\n                    \"OffsetTime\": 95,\n                    \"LoopedTimes\": 0,\n                    \"ReportTime\": \"2020-04-23T08:20:39Z\"\n                }\n            }\n        ],\n        \"PageNum\": 1,\n        \"PageSize\": 10,\n        \"TotalNum\": 1,\n        \"TotalPage\": 1,\n        \"LimitTaskNum\": 20,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -717,6 +741,14 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLivePlayDomain\n<Common request parameters>\n\n{\n    \"PlayType\": \"1\",\n    \"DomainName\": \"www.test.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyLivePullStreamTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLivePullStreamTask\n<common request parameters>\n\n{\n    \"Operator\": \"yourname\",\n    \"EndTime\": \"2020-04-17T12:02:00Z\",\n    \"StartTime\": \"2020-04-16T11:02:00Z\",\n    \"TaskId\": \"123\",\n    \"SourceUrls\": [\n        \"rtmp://your.domainname.com/live/stream1\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
     ],

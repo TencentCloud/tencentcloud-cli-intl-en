@@ -16,6 +16,20 @@
         "title": "Adding resource to a bandwidth package"
       }
     ],
+    "AdjustPublicAddress": [
+      {
+        "document": "This example show you how to change the public IP of a CVM instance.",
+        "input": "https://vpc.tencentcloudapi.com/?Action=AdjustPublicAddress\n&InstanceId=ins-1vogaxgk\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 5513621,\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
+        "title": "Changing the public IP"
+      },
+      {
+        "document": "This example show you how to change the EIP bound with a monthly bandwidth package.",
+        "input": "https://vpc.tencentcloudapi.com/?Action=AdjustPublicAddress\n&AddressId=eip-oy67r5oi\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 5312621,\n        \"RequestId\": \"6AF60BEC-0142-43AF-CB20-276271FB54A7\"\n    }\n}",
+        "title": "Changing the EIP bound with a monthly bandwidth package"
+      }
+    ],
     "AllocateAddresses": [
       {
         "document": "This example shows you how to create an Anycast Internet Acceleration (AIA) IP, provided that you are an AIA beta user.",
@@ -101,7 +115,7 @@
     "AssociateNetworkAclSubnets": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=AssociateNetworkAclSubnets\r\n&Version=2017-03-12\r\n&NetworkAclId=acl-12345678\r\n&SubnetIds.0=subnet-12345678\r\n&<Common request parameters>",
+        "input": "https://vpc.tencentcloudapi.com/?Action=AssociateNetworkAclSubnets\n&NetworkAclId=acl-12345678\n&SubnetIds.0=subnet-12345678\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f23d1450-ed00-4442-98d4-be409e625e6c\"\n    }\n}",
         "title": "Associating a network ACL with subnets"
       }
@@ -345,8 +359,8 @@
     "CreateNetworkAcl": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateNetworkAcl\r\n&Version=2017-03-12\r\n&VpcId=vpc-12345678\r\n&NetworkAclName=test\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"NetworkAcl\": {\n            \"NetworkAclId\": \"acl-12345678\",\n            \"VpcId\": \"vpc-12345678\",\n            \"NetworkAclName\": \"test\",\n            \"CreatedTime\": \"2020-01-01 10:00:00\"\n        },\n        \"RequestId\": \"5cf1a813-d4f8-4e0c-8f90-c155a84a3ea1\"\n    }\n}",
+        "input": "https://vpc.tencentcloudapi.com/?Action=CreateNetworkAcl\n&VpcId=vpc-12345678\n&NetworkAclName=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"NetworkAcl\": {\n            \"NetworkAclId\": \"acl-12345678\",\n            \"VpcId\": \"vpc-12345678\",\n            \"NetworkAclName\": \"test\",\n            \"CreatedTime\": \"2020-01-01 10:00:00\",\n            \"SubnetSet\": [],\n            \"IngressEntries\": [],\n            \"EgressEntries\": []\n        },\n        \"RequestId\": \"5cf1a813-d4f8-4e0c-8f90-c155a84a3ea1\"\n    }\n}",
         "title": "Creating a network ACL"
       }
     ],
@@ -423,17 +437,17 @@
     "CreateSubnet": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateSubnet\r\n&Version=2017-03-12\r\n&VpcId=vpc-m3ul053f\r\n&SubnetName=TestSubnet\r\n&CidrBlock=10.8.0.0/16\r\n&Zone=ap-guangzhou-1\r\n&Tags.0.Key=city\r\n&Tags.0.Value=shanghai\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Subnet\": {\n            \"VpcId\": \"vpc-m3ul053f\",\n            \"IsDefault\": false,\n            \"SubnetName\": \"TestSubnet\",\n            \"Zone\": \"ap-guangzhou-1\",\n            \"SubnetId\": \"subnet-2qhl25io\",\n            \"CidrBlock\": \"10.8.255.0/24\",\n            \"TotalIpAddressCount\": 253,\n            \"AvailableIpAddressCount\": 253,\n            \"TagSet\": [\n                {\n                    \"Key\": \"city\",\n                    \"Value\": \"shanghai\"\n                }\n            ]\n        }\n    }\n}",
+        "input": "https://vpc.tencentcloudapi.com/?Action=CreateSubnet\n&VpcId=vpc-m3ul053f\n&SubnetName=TestSubnet\n&CidrBlock=10.8.0.0/16\n&Zone=ap-guangzhou-1\n&Tags.0.Key=city\n&Tags.0.Value=shanghai\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Subnet\": {\n            \"NetworkAclId\": \"xx\",\n            \"RouteTableId\": \"xx\",\n            \"VpcId\": \"xx\",\n            \"EnableBroadcast\": true,\n            \"Zone\": \"xx\",\n            \"IsCdcSubnet\": 0,\n            \"Ipv6CidrBlock\": \"xx\",\n            \"CdcId\": \"xx\",\n            \"AvailableIpAddressCount\": 1,\n            \"IsRemoteVpcSnat\": true,\n            \"SubnetName\": \"xx\",\n            \"TotalIpAddressCount\": 1,\n            \"TagSet\": [\n                {\n                    \"Value\": \"xx\",\n                    \"Key\": \"xx\"\n                }\n            ],\n            \"CreatedTime\": \"xx\",\n            \"SubnetId\": \"xx\",\n            \"CidrBlock\": \"xx\",\n            \"IsDefault\": false\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Creating a subnet"
       }
     ],
     "CreateSubnets": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateSubnets\r\n&VpcId=vpc-6v2ht8q5\r\n&Subnets.0.CidrBlock=10.4.14.0/24\r\n&Subnets.0.SubnetName=t1\r\n&Subnets.0.Zone=ap-guangzhou-2\r\n&Subnets.1.CidrBlock=10.4.15.0/24\r\n&Subnets.1.SubnetName=t2\r\n&Subnets.1.Zone=ap-guangzhou-3\r\n&Tags.0.Key=city\r\n&Tags.0.Value=shanghai\r\n&<Common request parameter>",
-        "output": "{\n    \"Response\": {\n        \"SubnetSet\": [\n            {\n                \"VpcId\": \"vpc-6v2ht8q5\",\n                \"SubnetId\": \"subnet-bxxo9gik\",\n                \"SubnetName\": \"t1\",\n                \"CidrBlock\": \"10.4.14.0/24\",\n                \"IsDefault\": false,\n                \"EnableBroadcast\": false,\n                \"Zone\": \"ap-guangzhou-2\",\n                \"RouteTableId\": \"rtb-3ryrwzuu\",\n                \"CreatedTime\": \"2018-11-29 19:16:45\",\n                \"TotalIpAddressCount\": 253,\n                \"AvailableIpAddressCount\": 253,\n                \"TagSet\": [\n                    {\n                        \"Key\": \"city\",\n                        \"Value\": \"shanghai\"\n                    }\n                ]\n            },\n            {\n                \"VpcId\": \"vpc-6v2ht8q5\",\n                \"SubnetId\": \"subnet-f84xsjpa\",\n                \"SubnetName\": \"t2\",\n                \"CidrBlock\": \"10.4.15.0/24\",\n                \"IsDefault\": false,\n                \"EnableBroadcast\": false,\n                \"Zone\": \"ap-guangzhou-3\",\n                \"RouteTableId\": \"rtb-3ryrwzuu\",\n                \"CreatedTime\": \"2018-11-29 19:16:45\",\n                \"TotalIpAddressCount\": 253,\n                \"AvailableIpAddressCount\": 253,\n                \"TagSet\": [\n                    {\n                        \"Key\": \"city\",\n                        \"Value\": \"shanghai\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"158ac65e-d504-42f6-baac-b716f5855254\"\n    }\n}",
-        "title": "Creates subnets in batches"
+        "input": "https://vpc.tencentcloudapi.com/?Action=CreateSubnets\n&VpcId=vpc-6v2ht8q5\n&Subnets.0.CidrBlock=10.4.14.0/24\n&Subnets.0.SubnetName=t1\n&Subnets.0.Zone=ap-guangzhou-2\n&Subnets.1.CidrBlock=10.4.15.0/24\n&Subnets.1.SubnetName=t2\n&Subnets.1.Zone=ap-guangzhou-3\n&Tags.0.Key=city\n&Tags.0.Value=shanghai\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"SubnetSet\": [\n            {\n                \"NetworkAclId\": \"xx\",\n                \"RouteTableId\": \"xx\",\n                \"VpcId\": \"xx\",\n                \"EnableBroadcast\": false,\n                \"Zone\": \"xx\",\n                \"IsCdcSubnet\": 0,\n                \"Ipv6CidrBlock\": \"xx\",\n                \"CdcId\": \"xx\",\n                \"AvailableIpAddressCount\": 1,\n                \"IsRemoteVpcSnat\": true,\n                \"SubnetName\": \"xx\",\n                \"TotalIpAddressCount\": 1,\n                \"TagSet\": [\n                    {\n                        \"Key\": \"city\",\n                        \"Value\": \"shanghai\"\n                    }\n                ],\n                \"CreatedTime\": \"xx\",\n                \"SubnetId\": \"xx\",\n                \"CidrBlock\": \"xx\",\n                \"IsDefault\": false\n            },\n            {\n                \"NetworkAclId\": \"xx\",\n                \"IsRemoteVpcSnat\": true,\n                \"TotalIpAddressCount\": 253,\n                \"VpcId\": \"vpc-6v2ht8q5\",\n                \"SubnetId\": \"subnet-f84xsjpa\",\n                \"SubnetName\": \"t2\",\n                \"CidrBlock\": \"10.4.15.0/24\",\n                \"Ipv6CidrBlock\": \"xx\",\n                \"IsDefault\": false,\n                \"EnableBroadcast\": false,\n                \"Zone\": \"ap-guangzhou-3\",\n                \"RouteTableId\": \"rtb-3ryrwzuu\",\n                \"CreatedTime\": \"2018-11-29 19:16:45\",\n                \"AvailableIpAddressCount\": 253,\n                \"CdcId\": \"cluster-1234rdet\",\n                \"IsCdcSubnet\": 0,\n                \"TagSet\": [\n                    {\n                        \"Key\": \"city\",\n                        \"Value\": \"shanghai\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"158ac65e-d504-42f6-baac-b716f5855254\"\n    }\n}",
+        "title": "Batch creating subnets"
       }
     ],
     "CreateVpc": [
@@ -615,7 +629,7 @@
     "DeleteNetworkAcl": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteNetworkAcl\r\n&Version=2017-03-12\r\n&NetworkAclId=acl-12345678\r\n&<Common request parameters>",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteNetworkAcl\n&NetworkAclId=acl-12345678\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f23d1450-ed00-4442-98d4-be409e625e6c\"\n    }\n}",
         "title": "Deleting a network ACL"
       }
@@ -631,7 +645,7 @@
     "DeleteRouteTable": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteRouteTable\r\n&Version=2017-03-12\r\n&RouteTableId=rtb-azd4dt1c\r\n&<Common Request Parameters>",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteRouteTable\n&RouteTableId=rtb-azd4dt1c\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
         "title": "Deleting a route table"
       }
@@ -975,9 +989,9 @@
     "DescribeGatewayFlowQos": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeGatewayFlowQos\r\n&<Common request parameters>\r\n&GatewayId=vpngw-4je9dgin",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeGatewayFlowQos\n&GatewayId=vpngw-4je9dgin\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"GatewayQosSet\": [\n            {\n                \"VpcId\": \"vpc-mrzkofih\",\n                \"IpAddress\": \"10.0.0.12\",\n                \"Bandwidth\": 10,\n                \"CreateTime\": \"2020-01-01 10:00:00\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"5cf1a813-d4f8-4e0c-8f90-c155a84a3ea1\"\n    }\n}",
-        "title": "Querying the inbound bandwidth limit of a VPN gateway"
+        "title": "Querying the inbound IP bandwidth limit of a VPN gateway"
       }
     ],
     "DescribeHaVips": [
@@ -1369,7 +1383,7 @@
     "DisableGatewayFlowMonitor": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DisableGatewayFlowMonitor\r\n&<Common request parameters>\r\n&GatewayId=vpngw-gree226l",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DisableGatewayFlowMonitor\n&GatewayId=vpngw-gree226l\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"627c2362-890f-4f9e-9158-5e457b80d48b\"\n    }\n}",
         "title": "Disabling the VPN gateway traffic monitoring"
       }
@@ -1449,7 +1463,7 @@
     "EnableGatewayFlowMonitor": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=EnableGatewayFlowMonitor\r\n&<Common request parameters>\r\n&GatewayId=vpngw-gree226l",
+        "input": "https://vpc.tencentcloudapi.com/?Action=EnableGatewayFlowMonitor\n&GatewayId=vpngw-gree226l\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"627c2362-890f-4f9e-9158-5e457b80d48b\"\n    }\n}",
         "title": "Enabling the VPN gateway traffic monitoring"
       }
@@ -1651,7 +1665,7 @@
     "ModifyGatewayFlowQos": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyGatewayFlowQos\r\n&<Common request parameters>\r\n&GatewayId=vpngw-gree226l\r\n&Bandwidth=10\r\n&IpAddresses.0=10.0.0.12",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyGatewayFlowQos\n&GatewayId=vpngw-gree226l\n&Bandwidth=10\n&IpAddresses.0=10.0.0.12\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"627c2362-890f-4f9e-9158-5e457b80d48b\"\n    }\n}",
         "title": "Adjusting the bandwidth limit of a VPN gateway"
       }
@@ -1715,7 +1729,7 @@
     "ModifyNetworkAclAttribute": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyNetworkAclAttribute\r\n&Version=2017-03-12\r\n&NetworkAclId=acl-12345678\r\n&NetworkAclName=test modify\r\n&<Common request parameters>",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyNetworkAclAttribute\n&NetworkAclId=acl-12345678\n&NetworkAclName=test modify\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f23d1450-ed00-4442-98d4-be409e625e6c\"\n    }\n}",
         "title": "Changing the name of a network ACL"
       }
@@ -1723,19 +1737,19 @@
     "ModifyNetworkAclEntries": [
       {
         "document": "This example shows you how to modify network ACL rules by only passing in the rule you want to retain and discarding the ones you want to delete. For example, the `acl-12345678` has two inbound rules:\n* Rule 1: TCP 192.168.1.0/24 80 Accept\n* Rule 2: TCP 192.168.1.0/24 443 Accept\n<br/>If you want to delete the inbound rule 2, pass in parameters shown in the example.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyNetworkAclEntries\r\n&Version=2017-03-12\r\n&NetworkAclId=acl-12345678\r\n&NetworkAclEntrySet.Ingress.0.Protocol=TCP\r\n&NetworkAclEntrySet.Ingress.0.Port=80\r\n&NetworkAclEntrySet.Ingress.0.CidrBlock=192.168.1.0/24\r\n&NetworkAclEntrySet.Ingress.0.Action=Accept\r\n&NetworkAclEntrySet.Ingress.0.Description=test\r\n&NetworkAclEntrySet.Egress.0.Protocol=TCP\r\n&NetworkAclEntrySet.Egress.0.Port=80\r\n&NetworkAclEntrySet.Egress.0.CidrBlock=192.168.1.0/24\r\n&NetworkAclEntrySet.Egress.0.Action=Accept\r\n&NetworkAclEntrySet.Egress.0.Description=test\r\n&<Common request parameters>",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyNetworkAclEntries\n&NetworkAclId=acl-12345678\n&NetworkAclEntrySet.Ingress.0.Protocol=TCP\n&NetworkAclEntrySet.Ingress.0.Port=80\n&NetworkAclEntrySet.Ingress.0.CidrBlock=192.168.1.0/24\n&NetworkAclEntrySet.Ingress.0.Action=Accept\n&NetworkAclEntrySet.Ingress.0.Description=test\n&NetworkAclEntrySet.Ingress.0.ModifyTime=xx\n&NetworkAclEntrySet.Egress.0.Protocol=TCP\n&NetworkAclEntrySet.Egress.0.Port=80\n&NetworkAclEntrySet.Egress.0.CidrBlock=192.168.1.0/24\n&NetworkAclEntrySet.Egress.0.Action=Accept\n&NetworkAclEntrySet.Egress.0.Description=test\n&NetworkAclEntrySet.Egress.0.ModifyTime=xx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f23d1450-ed00-4442-98d4-be409e625e6c\"\n    }\n}",
         "title": "Adding inbound and outbound rules to a network ACL"
       },
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyNetworkAclEntries\r\n&Version=2017-03-12\r\n&NetworkAclId=acl-12345678\r\n&NetworkAclEntrySet.Ingress.0.Protocol=TCP\r\n&NetworkAclEntrySet.Ingress.0.Port=80\r\n&NetworkAclEntrySet.Ingress.0.CidrBlock=192.168.1.0/24\r\n&NetworkAclEntrySet.Ingress.0.Action=Accept\r\n&NetworkAclEntrySet.Ingress.0.Description=test\r\n&NetworkAclEntrySet.Ingress.1.Protocol=TCP\r\n&NetworkAclEntrySet.Ingress.1.Port=442\r\n&NetworkAclEntrySet.Ingress.1.CidrBlock=192.168.1.0/24\r\n&NetworkAclEntrySet.Ingress.1.Action=Accept\r\n&NetworkAclEntrySet.Ingress.1.Description=test\r\n&<Common request parameters>",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyNetworkAclEntries\n&NetworkAclId=acl-12345678\n&NetworkAclEntrySet.Ingress.0.Protocol=TCP\n&NetworkAclEntrySet.Ingress.0.Port=80\n&NetworkAclEntrySet.Ingress.0.CidrBlock=192.168.1.0/24\n&NetworkAclEntrySet.Ingress.0.Action=Accept\n&NetworkAclEntrySet.Ingress.0.Description=test\n&NetworkAclEntrySet.Ingress.0.ModifyTime=xx\n&NetworkAclEntrySet.Ingress.1.Protocol=TCP\n&NetworkAclEntrySet.Ingress.1.Port=442\n&NetworkAclEntrySet.Ingress.1.CidrBlock=192.168.1.0/24\n&NetworkAclEntrySet.Ingress.1.Action=Accept\n&NetworkAclEntrySet.Ingress.1.Description=test\n&NetworkAclEntrySet.Ingress.1.ModifyTime=xx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f23d1450-ed00-4442-98d4-be409e625e6c\"\n    }\n}",
         "title": "Adding only inbound rules to a network ACL"
       },
       {
         "document": "This example shows you how to modify network ACL rules by only passing in the rule you want to retain and discarding the ones you want to delete. For example, the `acl-12345678` has two inbound rules:\n* Rule 1: TCP 192.168.1.0/24 80 Accept\n* Rule 2: TCP 192.168.1.0/24 443 Accept\n<br/>If you want to delete the inbound rule 2, pass in parameters shown in the example.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyNetworkAclEntries\r\n&Version=2017-03-12\r\n&NetworkAclId=acl-12345678\r\n&NetworkAclEntrySet.Ingress.0.Protocol=TCP\r\n&NetworkAclEntrySet.Ingress.0.Port=80\r\n&NetworkAclEntrySet.Ingress.0.CidrBlock=192.168.1.0/24\r\n&NetworkAclEntrySet.Ingress.0.Action=Accept\r\n&NetworkAclEntrySet.Ingress.0.Description=test\r\n&<Common request parameters>",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyNetworkAclEntries\n&NetworkAclId=acl-12345678\n&NetworkAclEntrySet.Ingress.0.Protocol=TCP\n&NetworkAclEntrySet.Ingress.0.Port=80\n&NetworkAclEntrySet.Ingress.0.CidrBlock=192.168.1.0/24\n&NetworkAclEntrySet.Ingress.0.Action=Accept\n&NetworkAclEntrySet.Ingress.0.Description=test\n&NetworkAclEntrySet.Ingress.0.ModifyTime=xx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f23d1450-ed00-4442-98d4-be409e625e6c\"\n    }\n}",
         "title": "Deleting inbound rules of a network ACL"
       }

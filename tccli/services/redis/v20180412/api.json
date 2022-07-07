@@ -9,13 +9,13 @@
     "ApplyParamsTemplate": {
       "document": "This API is used to apply a parameter template to instances.",
       "input": "ApplyParamsTemplateRequest",
-      "name": "Applies a parameter template",
+      "name": "Applies parameter template",
       "output": "ApplyParamsTemplateResponse"
     },
     "AssociateSecurityGroups": {
-      "document": "This API is used to associate a security group with instances in batches.",
+      "document": "This API is used to bind a security group to instances in batches.",
       "input": "AssociateSecurityGroupsRequest",
-      "name": "Associates security groups with instances",
+      "name": "Binds security group",
       "output": "AssociateSecurityGroupsResponse"
     },
     "ChangeReplicaToMaster": {
@@ -25,69 +25,69 @@
       "output": "ChangeReplicaToMasterResponse"
     },
     "CleanUpInstance": {
-      "document": "This API is used to deactivate an instance in the recycle bin immediately.",
+      "document": "This API is used to eliminate an instance in the recycle bin immediately.",
       "input": "CleanUpInstanceRequest",
-      "name": "Deactivates an instance in the recycle bin immediately",
+      "name": "Eliminates instance in recycle bin immediately",
       "output": "CleanUpInstanceResponse"
     },
     "ClearInstance": {
       "document": "This API is used to clear the data of a Redis instance.",
       "input": "ClearInstanceRequest",
-      "name": "Clears a Redis instance",
+      "name": "Clears Redis instance",
       "output": "ClearInstanceResponse"
     },
     "CreateInstanceAccount": {
       "document": "This API is used to create an instance sub-account.",
       "input": "CreateInstanceAccountRequest",
-      "name": "Creates an instance sub-account",
+      "name": "Creates instance sub-account",
       "output": "CreateInstanceAccountResponse"
     },
     "CreateInstances": {
-      "document": "This API is used to create Redis instances.",
+      "document": "This API is used to create a Redis instance.",
       "input": "CreateInstancesRequest",
-      "name": "Creates a Redis instance",
+      "name": "Creates Redis instance",
       "output": "CreateInstancesResponse"
     },
     "CreateParamTemplate": {
       "document": "This API is used to create a parameter template.",
       "input": "CreateParamTemplateRequest",
-      "name": "Creates a parameter template",
+      "name": "Creates parameter template",
       "output": "CreateParamTemplateResponse"
     },
     "DeleteInstanceAccount": {
       "document": "This API is used to delete an instance sub-account.",
       "input": "DeleteInstanceAccountRequest",
-      "name": "Deletes an instance sub-account",
+      "name": "Deletes instance sub-account",
       "output": "DeleteInstanceAccountResponse"
     },
     "DeleteParamTemplate": {
       "document": "This API is used to delete a parameter template.",
       "input": "DeleteParamTemplateRequest",
-      "name": "Deletes a parameter template",
+      "name": "Deletes parameter template",
       "output": "DeleteParamTemplateResponse"
     },
     "DescribeAutoBackupConfig": {
       "document": "This API is used to get the backup configuration.",
       "input": "DescribeAutoBackupConfigRequest",
-      "name": "Gets the backup configuration",
+      "name": "Gets automatic backup configuration",
       "output": "DescribeAutoBackupConfigResponse"
     },
     "DescribeBackupUrl": {
-      "document": "This API is used to query the download address of a backup RDB (it is during beta test and can be used only after you apply for the eligibility).",
+      "document": "This API is used to query the download address of a backup RDB (it is in beta test and can be used only after you apply for the eligibility).",
       "input": "DescribeBackupUrlRequest",
-      "name": "Queries the download address of a backup RDB",
+      "name": "Queries the download address of backup RDB",
       "output": "DescribeBackupUrlResponse"
     },
     "DescribeCommonDBInstances": {
-      "document": "(Disused) Queries the list of instances",
+      "document": "This API has been disused. It was used to query the list of Redis instance information.",
       "input": "DescribeCommonDBInstancesRequest",
-      "name": "Queries information of the Redis instance list",
+      "name": "Queries the list of Redis instance information",
       "output": "DescribeCommonDBInstancesResponse"
     },
     "DescribeDBSecurityGroups": {
       "document": "This API is used to query the security group details of an instance.",
       "input": "DescribeDBSecurityGroupsRequest",
-      "name": "Queries the security group details of an instance",
+      "name": "Queries security group details",
       "output": "DescribeDBSecurityGroupsResponse"
     },
     "DescribeInstanceAccount": {
@@ -105,13 +105,13 @@
     "DescribeInstanceDTSInfo": {
       "document": "This API is used to query the DTS task details of an instance.",
       "input": "DescribeInstanceDTSInfoRequest",
-      "name": "Queries the DTS task details of an instance",
+      "name": "Queries the DTS task details of instance",
       "output": "DescribeInstanceDTSInfoResponse"
     },
     "DescribeInstanceDealDetail": {
       "document": "This API is used to query the order information.",
       "input": "DescribeInstanceDealDetailRequest",
-      "name": "Queries the order information",
+      "name": "Queries order information",
       "output": "DescribeInstanceDealDetailResponse"
     },
     "DescribeInstanceMonitorBigKey": {
@@ -183,19 +183,19 @@
     "DescribeInstanceSecurityGroup": {
       "document": "This API is used to query the security group information of an instance.",
       "input": "DescribeInstanceSecurityGroupRequest",
-      "name": "Queries the security group information of an instance",
+      "name": "Queries the security group information of instance",
       "output": "DescribeInstanceSecurityGroupResponse"
     },
     "DescribeInstanceShards": {
-      "document": "This API is used to get the information of cluster edition instance shards.",
+      "document": "This API is used to get the information of Cluster Edition instance shards.",
       "input": "DescribeInstanceShardsRequest",
-      "name": "Gets the information of cluster edition instance shards",
+      "name": "Gets the information of Cluster Edition instance shards",
       "output": "DescribeInstanceShardsResponse"
     },
     "DescribeInstanceZoneInfo": {
-      "document": "This API is used to query Redis node information.",
+      "document": "This API is used to query the Redis node details.",
       "input": "DescribeInstanceZoneInfoRequest",
-      "name": "Queries Redis node information",
+      "name": "Queries Redis node details",
       "output": "DescribeInstanceZoneInfoResponse"
     },
     "DescribeInstances": {
@@ -211,7 +211,7 @@
       "output": "DescribeMaintenanceWindowResponse"
     },
     "DescribeParamTemplateInfo": {
-      "document": "This API is used to query parameter template details.",
+      "document": "This API is used to query the parameter template details.",
       "input": "DescribeParamTemplateInfoRequest",
       "name": "Queries parameter template details",
       "output": "DescribeParamTemplateInfoResponse"
@@ -231,19 +231,19 @@
     "DescribeProjectSecurityGroup": {
       "document": "This API is used to query the security group information of a project.",
       "input": "DescribeProjectSecurityGroupRequest",
-      "name": "Queries the security group information of a project",
+      "name": "Queries the security group information of project",
       "output": "DescribeProjectSecurityGroupResponse"
     },
     "DescribeProjectSecurityGroups": {
       "document": "This API is used to query the security group details of a project.",
       "input": "DescribeProjectSecurityGroupsRequest",
-      "name": "Queries the security group information of a project",
+      "name": "Queries the security group details of project",
       "output": "DescribeProjectSecurityGroupsResponse"
     },
     "DescribeProxySlowLog": {
-      "document": "This API is used to query proxy slow logs.",
+      "document": "This API is used to query the slow queries of the proxy.",
       "input": "DescribeProxySlowLogRequest",
-      "name": "Queries proxy slow logs",
+      "name": "Queries the slow queries of proxy",
       "output": "DescribeProxySlowLogResponse"
     },
     "DescribeReplicationGroup": {
@@ -259,33 +259,27 @@
       "output": "DescribeSlowLogResponse"
     },
     "DescribeTaskInfo": {
-      "document": "This API is used to query a task result.",
+      "document": "This API is used to query the task result.",
       "input": "DescribeTaskInfoRequest",
-      "name": "Queries a Redis task result",
+      "name": "Queries Redis task result",
       "output": "DescribeTaskInfoResponse"
     },
-    "DescribeTaskList": {
-      "document": "This API is used to query the list of tasks.",
-      "input": "DescribeTaskListRequest",
-      "name": "Queries the list of tasks",
-      "output": "DescribeTaskListResponse"
-    },
     "DescribeTendisSlowLog": {
-      "document": "This API is used to query slow queries of a TencentDB for Tendis instance.",
+      "document": "This API is used to query slow queries of a Tendis instance.",
       "input": "DescribeTendisSlowLogRequest",
-      "name": "Queries slow queries of a TencentDB for Tendis instance",
+      "name": "Queries the slow queries of Tendis instance",
       "output": "DescribeTendisSlowLogResponse"
     },
     "DestroyPostpaidInstance": {
       "document": "This API is used to terminate a pay-as-you-go instance.",
       "input": "DestroyPostpaidInstanceRequest",
-      "name": "Terminates a pay-as-you-go instance",
+      "name": "Terminates pay-as-you-go instance",
       "output": "DestroyPostpaidInstanceResponse"
     },
     "DestroyPrepaidInstance": {
       "document": "This API is used to return a monthly subscribed instance.",
       "input": "DestroyPrepaidInstanceRequest",
-      "name": "Returns a monthly subscribed instance",
+      "name": "Returns monthly subscribed instance",
       "output": "DestroyPrepaidInstanceResponse"
     },
     "DisableReplicaReadonly": {
@@ -295,9 +289,9 @@
       "output": "DisableReplicaReadonlyResponse"
     },
     "DisassociateSecurityGroups": {
-      "document": "This API is used to unassociate security groups from instances in batches.",
+      "document": "This API is used to unbind a security group from instances in batches.",
       "input": "DisassociateSecurityGroupsRequest",
-      "name": "Unassociates security groups in batches",
+      "name": "Unbinds security group from instances in batches",
       "output": "DisassociateSecurityGroupsResponse"
     },
     "EnableReplicaReadonly": {
@@ -318,16 +312,10 @@
       "name": "Queries the price for scaling an instance",
       "output": "InquiryPriceUpgradeInstanceResponse"
     },
-    "KillMasterGroup": {
-      "document": "This API is used to perform a failure simulation.",
-      "input": "KillMasterGroupRequest",
-      "name": "Performs a failure simulation",
-      "output": "KillMasterGroupResponse"
-    },
     "ManualBackupInstance": {
       "document": "This API is used to manually back up a Redis instance.",
       "input": "ManualBackupInstanceRequest",
-      "name": "Manually backs up a Redis instance",
+      "name": "Manually backs up Redis instance",
       "output": "ManualBackupInstanceResponse"
     },
     "ModfiyInstancePassword": {
@@ -337,15 +325,15 @@
       "output": "ModfiyInstancePasswordResponse"
     },
     "ModifyAutoBackupConfig": {
-      "document": "This API is used to set an auto-backup schedule.",
+      "document": "This API is used to configure automatic backup.",
       "input": "ModifyAutoBackupConfigRequest",
-      "name": "Sets an auto-backup schedule",
+      "name": "Configures automatic backup",
       "output": "ModifyAutoBackupConfigResponse"
     },
     "ModifyDBInstanceSecurityGroups": {
-      "document": "This API is used to modify the security groups associated with an instance.",
+      "document": "This API is used to modify the security groups bound to an instance.",
       "input": "ModifyDBInstanceSecurityGroupsRequest",
-      "name": "Modifies the security groups associated with TencentDB",
+      "name": "Modifies security groups bound to instance",
       "output": "ModifyDBInstanceSecurityGroupsResponse"
     },
     "ModifyInstance": {
@@ -357,7 +345,7 @@
     "ModifyInstanceAccount": {
       "document": "This API is used to modify an instance sub-account.",
       "input": "ModifyInstanceAccountRequest",
-      "name": "Modifies an instance sub-account",
+      "name": "Modifies instance sub-account",
       "output": "ModifyInstanceAccountResponse"
     },
     "ModifyInstanceParams": {
@@ -373,21 +361,21 @@
       "output": "ModifyInstanceReadOnlyResponse"
     },
     "ModifyMaintenanceWindow": {
-      "document": "This API is used to modify instance maintenance window. The maintenance window specifies a time period during which compatible version upgrade, architecture upgrade, backend maintenance, and other operations can be performed to avoid affecting business. Note: if the compatible version upgrade or architecture upgrade task has been initiated for an instance, its maintenance window cannot be modified.",
+      "document": "This API is used to modify the instance maintenance time. The maintenance time specifies a time period during which compatible version upgrade, architecture upgrade, backend maintenance, and other operations can be performed to avoid affecting business. Note: if the compatible version upgrade or architecture upgrade task has been initiated for an instance, its maintenance time cannot be modified.",
       "input": "ModifyMaintenanceWindowRequest",
-      "name": "Modifies instance maintenance window",
+      "name": "Modifies instance maintenance time",
       "output": "ModifyMaintenanceWindowResponse"
     },
     "ModifyNetworkConfig": {
       "document": "This API is used to modify the network configuration of an instance.",
       "input": "ModifyNetworkConfigRequest",
-      "name": "Modifies the network configuration of an instance",
+      "name": "Modifies the network configuration of instance",
       "output": "ModifyNetworkConfigResponse"
     },
     "ModifyParamTemplate": {
       "document": "This API is used to modify a parameter template.",
       "input": "ModifyParamTemplateRequest",
-      "name": "Modifies a parameter template",
+      "name": "Modifies parameter template",
       "output": "ModifyParamTemplateResponse"
     },
     "ReleaseWanAddress": {
@@ -399,25 +387,25 @@
     "RenewInstance": {
       "document": "This API is used to renew an instance.",
       "input": "RenewInstanceRequest",
-      "name": "Renews an instance",
+      "name": "Renews instance",
       "output": "RenewInstanceResponse"
     },
     "ResetPassword": {
       "document": "This API is used to reset a password.",
       "input": "ResetPasswordRequest",
-      "name": "Resets a password",
+      "name": "Resets password",
       "output": "ResetPasswordResponse"
     },
     "RestoreInstance": {
       "document": "This API is used to restore a Redis instance.",
       "input": "RestoreInstanceRequest",
-      "name": "Restores a Redis instance",
+      "name": "Restores Redis instance",
       "output": "RestoreInstanceResponse"
     },
     "StartupInstance": {
       "document": "This API is used to deisolate an instance.",
       "input": "StartupInstanceRequest",
-      "name": "Deisolates an instance",
+      "name": "Deisolates instance",
       "output": "StartupInstanceResponse"
     },
     "SwitchInstanceVip": {
@@ -429,7 +417,7 @@
     "UpgradeInstance": {
       "document": "This API is used to upgrade an instance.",
       "input": "UpgradeInstanceRequest",
-      "name": "Upgrades an instance",
+      "name": "Upgrades instance",
       "output": "UpgradeInstanceResponse"
     },
     "UpgradeInstanceVersion": {
@@ -453,7 +441,7 @@
     "UpgradeVersionToMultiAvailabilityZones": {
       "document": "This API is used to upgrade an instance to support multi-AZ deployment.",
       "input": "UpgradeVersionToMultiAvailabilityZonesRequest",
-      "name": "Upgrades an instance to support multi-AZ deployment",
+      "name": "Upgrades instance to support multi-AZ deployment",
       "output": "UpgradeVersionToMultiAvailabilityZonesResponse"
     }
   },
@@ -573,7 +561,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance ID list",
+          "document": "List of instance IDs",
           "example": "无",
           "member": "string",
           "name": "InstanceIds",
@@ -582,7 +570,7 @@
         },
         {
           "default": "",
-          "document": "The ID of the parameter template to be applied",
+          "document": "ID of the parameter template to be applied",
           "example": "crs-cfg-rhlppeye",
           "member": "string",
           "name": "TemplateId",
@@ -619,6 +607,7 @@
         {
           "default": "",
           "document": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.",
+          "example": "redis",
           "member": "string",
           "name": "Product",
           "required": true,
@@ -627,6 +616,7 @@
         {
           "default": "",
           "document": "ID of the security group to be associated in the format of sg-efil73jd.",
+          "example": "sg-ajr1jzgj",
           "member": "string",
           "name": "SecurityGroupId",
           "required": true,
@@ -635,6 +625,7 @@
         {
           "default": "",
           "document": "ID(s) of the instance(s) to be associated in the format of ins-lesecurk. You can specify multiple instances.",
+          "example": "crs-eb2w7dto",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -680,7 +671,7 @@
         },
         {
           "default": "",
-          "document": "Address (valid for 6 hours) used to download the backup file over a public network",
+          "document": "Address (valid for six hours) used to download the backup file over the public network",
           "example": "https://redis-database-backup-1251937656.cos.ap-chengdu.myqcl",
           "member": "string",
           "name": "DownloadUrl",
@@ -690,7 +681,7 @@
         },
         {
           "default": "",
-          "document": "Address (valid for 6 hours) used to download the backup file over a private network",
+          "document": "Address (valid for six hours) used to download the backup file over the private network",
           "example": "https://redis-database-backup-1251937656.cos.ap-chengdu.myqcl",
           "member": "string",
           "name": "InnerDownloadUrl",
@@ -845,6 +836,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -858,8 +850,10 @@
       "members": [
         {
           "document": "Task ID",
+          "example": "10856",
           "member": "int64",
           "name": "TaskId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -878,6 +872,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -885,7 +880,8 @@
         },
         {
           "default": "",
-          "document": "Redis instance password (this parameter is not required for password-free instances but for password-enabled instances)",
+          "document": "Redis instance password (this parameter is required for password-enabled instances but not for password-free instances)",
+          "example": "zy456987",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -899,8 +895,10 @@
       "members": [
         {
           "document": "Task ID",
+          "example": "16658",
           "member": "int64",
           "name": "TaskId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -960,7 +958,7 @@
         },
         {
           "default": "",
-          "document": "1. The password must contain 8-30 characters. A password of 12 or more characters is recommended.\n2. The password cannot start with a slash (/).\n3. The password must contain at least two of the following four types:\n    a. Lowercase letters (a-z)\n    b. Uppercase letters (A-Z)\n    c. Digits (0-9)\n    d. ()`~!@#$%^&*-+=_|{}[]:;<>,.?/",
+          "document": "1. The password must contain 8–30 characters. A password of 12 or more characters is recommended.\n2. It cannot start with a slash (/).\n3. It must contain characters in at least two of the following types:\n    a. Lowercase letters (a–z)\n    b. Uppercase letters (A–Z)\n    c. Digits (0–9)\n    d. ()`~!@#$%^&*-+=_|{}[]:;<>,.?/",
           "example": "1234567aA",
           "member": "string",
           "name": "AccountPassword",
@@ -969,7 +967,7 @@
         },
         {
           "default": "",
-          "document": "Routing policy. Enter `master` for primary node or `replication` for secondary node",
+          "document": "Routing policy. Valid values: master (master node); replication (replica node)",
           "example": "[\"master\"]",
           "member": "string",
           "name": "ReadonlyPolicy",
@@ -978,7 +976,7 @@
         },
         {
           "default": "",
-          "document": "Read/write policy. Valid values: r (read-only), rw (read/write).",
+          "document": "Read/Write policy. Valid values: r (read-only); rw (read/write).",
           "example": "rw",
           "member": "string",
           "name": "Privilege",
@@ -1002,8 +1000,10 @@
       "members": [
         {
           "document": "Task ID",
+          "example": "123456",
           "member": "int64",
           "name": "TaskId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1021,7 +1021,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance type. Valid values: 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture).",
+          "document": "Instance type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture).",
           "example": "6",
           "member": "uint64",
           "name": "TypeId",
@@ -1030,7 +1030,7 @@
         },
         {
           "default": "",
-          "document": "Instance capacity in MB. The value should be a multiple of 1,024 and is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.",
+          "document": "Memory capacity in MB, which must be a multiple of 1,024. It is subject to the purchasable specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).\nIf `TypeId` is the standard architecture, `MemSize` indicates the total memory capacity of the instance; if `TypeId` is the cluster architecture, `MemSize` indicates the memory capacity per shard.",
           "example": "4096",
           "member": "uint64",
           "name": "MemSize",
@@ -1039,7 +1039,7 @@
         },
         {
           "default": "",
-          "document": "Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.",
+          "document": "Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).",
           "example": "1",
           "member": "uint64",
           "name": "GoodsNum",
@@ -1048,7 +1048,7 @@
         },
         {
           "default": "",
-          "document": "Purchased usage period in months. which is required when creating an instance. For pay-as-you-go instances, the valid value is 1; for monthly subscription instances, the value range is [1,2,3,4,5,6,7,8,9,10,11,12,24,36].",
+          "document": "Length of purchase in months, which is required when creating a monthly subscribed instance. Valid values: [1,2,3,4,5,6,7,8,9,10,11,12,24,36]. For pay-as-you-go instances, set the parameter to `1`.",
           "example": "1",
           "member": "uint64",
           "name": "Period",
@@ -1057,7 +1057,7 @@
         },
         {
           "default": "",
-          "document": "Billing method. 0: pay as you go",
+          "document": "Billing mode. 0: pay-as-you-go",
           "example": "0",
           "member": "int64",
           "name": "BillingMode",
@@ -1066,7 +1066,7 @@
         },
         {
           "default": "",
-          "document": "Availability zone ID of the instance. For more information, please see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).",
+          "document": "ID of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).",
           "example": "100002",
           "member": "uint64",
           "name": "ZoneId",
@@ -1075,7 +1075,7 @@
         },
         {
           "default": "",
-          "document": "Instance password. If the input parameter `NoAuth` is `true` and a VPC is used, the `Password` is optional; otherwise, it is required.\nIf the instance type parameter `TypeId` indicates Redis 2.8, 4.0, or 5.0, the password cannot start with \"/\" and must contain 8-30 characters which are comprised of at least two of the following: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/).\nIf the instance type parameter `TypeId` indicates CKV 3.2, the password contains 8-30 characters which must be comprised of only letters and digits.",
+          "document": "Instance password. If the input parameter `NoAuth` is `true` and a VPC is used, the `Password` is optional; otherwise, it is required.\nIf the instance `TypeId` is Redis 2.8, 4.0, or 5.0, the password cannot start with \"/\" and must contain 8–30 characters in at least two of the following character types: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/).\nIf the instance `TypeId` is CKV 3.2, the password can contain 8–30 letters and digits.",
           "example": "123456MyP@ssword",
           "member": "string",
           "name": "Password",
@@ -1084,7 +1084,7 @@
         },
         {
           "default": "",
-          "document": "VPC ID, such as \"vpc-sad23jfdfk\". If this parameter is not passed in, the classic network will be selected by default. The parameter value can be queried by the `DescribeVpcs` API.",
+          "document": "VPC ID such as vpc-sad23jfdfk. If this parameter is not passed in, the classic network will be selected by default. Use the VPC list querying API to query.",
           "example": "vpc-pxyzim13",
           "member": "string",
           "name": "VpcId",
@@ -1093,7 +1093,7 @@
         },
         {
           "default": "",
-          "document": "In a classic network, `subnetId` is invalid. In a VPC subnet, the value can be queried by the `DescribeSubnets` API, such as \"subnet-fdj24n34j2\".",
+          "document": "In the classic network, `subnetId` is invalid. In a VPC subnet, the value is the subnet ID, such as subnet-fdj24n34j2.",
           "example": "subnet-7jbabche",
           "member": "string",
           "name": "SubnetId",
@@ -1102,7 +1102,7 @@
         },
         {
           "default": "",
-          "document": "Project ID. The value is subject to the `projectId` returned by the `DescribeProject` API.",
+          "document": "Project ID. The value is subject to the `projectId` returned by user account > user account querying APIs > project list.",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -1111,7 +1111,7 @@
         },
         {
           "default": "",
-          "document": "Auto-renewal flag. Valid values: 0 (default status, indicating manual renewal), 1 (auto-renewal enabled), 2 (auto-renewal disabled)",
+          "document": "Auto-renewal flag. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled",
           "example": "0",
           "member": "uint64",
           "name": "AutoRenew",
@@ -1120,7 +1120,7 @@
         },
         {
           "default": "",
-          "document": "Array of security group IDs",
+          "document": "Array of security group IDs.",
           "example": "[\"sg-bmadczm1\"]",
           "member": "string",
           "name": "SecurityGroupIdList",
@@ -1129,7 +1129,7 @@
         },
         {
           "default": "",
-          "document": "User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024, 65535].",
+          "document": "User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024,65535].",
           "example": "6378",
           "member": "uint64",
           "name": "VPort",
@@ -1138,7 +1138,7 @@
         },
         {
           "default": "",
-          "document": "Number of shards in an instance. This parameter is required for instances in cluster architecture. Value range: [3,5,8,12,16,24,32,64,96,128].",
+          "document": "Number of shards in an instance. This parameter is required for Cluster Edition instances. Valid values: [3,5,8,12,16,24,32,64,96,128].",
           "example": "1",
           "member": "int64",
           "name": "RedisShardNum",
@@ -1147,7 +1147,7 @@
         },
         {
           "default": "",
-          "document": "Number of replicas in an instance. Redis 2.8 standard edition and CKV standard edition support 1 replica. Standard/cluster edition 4.0 and 5.0 support 1-5 replicas.",
+          "document": "Number of replicas in the instance. Redis 2.8 Standard Edition and CKV Standard Edition support 1 replica. Standard/Cluster Edition 4.0 and 5.0 support 1–5 replicas.",
           "example": "1",
           "member": "int64",
           "name": "RedisReplicasNum",
@@ -1156,7 +1156,7 @@
         },
         {
           "default": "",
-          "document": "Whether to support read-only replicas. Neither Redis 2.8 in standard architecture nor CKV in standard architecture supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the master node and read requests will be distributed on the replica nodes. To enable read-only replicas, we recommend that you create 2 or more replicas.",
+          "document": "Whether to support read-only replicas. Neither Redis 2.8 Standard Edition nor CKV Standard Edition supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the master node and read requests will be distributed to replica nodes. To enable read-only replicas, we recommend you create two or more replicas.",
           "example": "true",
           "member": "bool",
           "name": "ReplicasReadonly",
@@ -1165,7 +1165,7 @@
         },
         {
           "default": "",
-          "document": "Instance name. It contains only letters, digits, and symbols (-_) with a length of up to 60 characters.",
+          "document": "Instance name, which can contain up to 60 letters, digits, underscores, or hyphens.",
           "example": "MyInstanceName",
           "member": "string",
           "name": "InstanceName",
@@ -1183,7 +1183,7 @@
         },
         {
           "default": "",
-          "document": "Node information of an instance. Currently, information about the node type (master or replica) and node availability zone can be passed in. This parameter is not required for instances deployed in a single availability zone.",
+          "document": "Node information of the instance. Currently, information about the node type (master or replica) and node AZ can be passed in. This parameter is not required for single-AZ deployed instances.",
           "example": "无",
           "member": "RedisNodeInfo",
           "name": "NodeSet",
@@ -1192,7 +1192,7 @@
         },
         {
           "default": "",
-          "document": "The tag bound with the instance to be purchased",
+          "document": "Tag bound to the instance to be purchased",
           "example": "无",
           "member": "ResourceTag",
           "name": "ResourceTags",
@@ -1216,6 +1216,15 @@
           "name": "TemplateId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "false: send a normal request and create an instance directly after the check is passed (default value); true: send a check request without creating an instance.",
+          "example": "true",
+          "member": "bool",
+          "name": "DryRun",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -1273,7 +1282,7 @@
         },
         {
           "default": "",
-          "document": "Instance type. Valid values: `1` (Redis 2.8 memory edition in cluster architecture), `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `5` (Redis 2.8 memory edition in standalone architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture). If `TempateId` is specified, this parameter can be left blank; otherwise, it is required.",
+          "document": "Instance type. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture). If `TempateId` is specified, this parameter can be left blank; otherwise, it is required.",
           "example": "6",
           "member": "uint64",
           "name": "ProductType",
@@ -1282,7 +1291,7 @@
         },
         {
           "default": "",
-          "document": "ID of the source parameter template. You can create a template by copying the source parameter template.",
+          "document": "ID of the source parameter template.",
           "example": "crs-cfg-rhlppeye",
           "member": "string",
           "name": "TemplateId",
@@ -1361,6 +1370,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1369,6 +1379,7 @@
         {
           "default": "",
           "document": "Sub-account name",
+          "example": "test",
           "member": "string",
           "name": "AccountName",
           "required": true,
@@ -1382,8 +1393,10 @@
       "members": [
         {
           "document": "Task ID",
+          "example": "123456",
           "member": "int64",
           "name": "TaskId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1429,6 +1442,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1441,24 +1455,48 @@
       "document": "DescribeAutoBackupConfig response structure.",
       "members": [
         {
-          "document": "Backup type. Auto backup type: 1 \"scheduled rollback\"",
+          "document": "Backup type. Automatic backup type: 1 (scheduled rollback)",
+          "example": "1",
           "member": "int64",
           "name": "AutoBackupType",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.",
+          "example": "[\"Monday\",\"Tuesday\"]",
           "member": "string",
           "name": "WeekDays",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Time period.",
+          "example": "01:00-02:00",
           "member": "string",
           "name": "TimePeriod",
+          "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of days to retain full backup files",
+          "example": "7",
+          "member": "int64",
+          "name": "BackupStorageDays",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of days to retain Tendis binlog backup files",
+          "example": "7",
+          "member": "int64",
+          "name": "BinlogStorageDays",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -1476,6 +1514,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-4y9t57vt",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1484,6 +1523,7 @@
         {
           "default": "",
           "document": "Backup ID, which can be queried through the `DescribeInstanceBackups` API",
+          "example": "678362566696298532848117",
           "member": "string",
           "name": "BackupId",
           "required": true,
@@ -1496,7 +1536,7 @@
       "document": "DescribeBackupUrl response structure.",
       "members": [
         {
-          "document": "Public network download address (valid for six hours). This field will be deprecated soon.",
+          "document": "Public network download address (valid for six hours). This field will be disused soon.",
           "example": "[\"http://example.com/download/rdb/1.rdb\"]",
           "member": "string",
           "name": "DownloadUrl",
@@ -1505,7 +1545,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Private network download address (valid for six hours). This field will be deprecated soon.",
+          "document": "Private network download address (valid for six hours). This field will be disused soon.",
           "example": "[\"http://example.com/download/rdb/1.rdb\"]",
           "member": "string",
           "name": "InnerDownloadUrl",
@@ -1514,7 +1554,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Filename. This field will be deprecated soon.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Filename. This field will be disused soon.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"1.rdb\"]",
           "member": "string",
           "name": "Filenames",
@@ -1523,7 +1563,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "List of backup file information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "List of backup file information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "BackupDownloadInfo",
           "name": "BackupInfos",
@@ -1545,7 +1585,7 @@
       "members": [
         {
           "default": "",
-          "document": "List of instance VIPs",
+          "document": "List of VPC IDs",
           "example": "crs-deindi7de",
           "member": "int64",
           "name": "VpcIds",
@@ -1563,7 +1603,7 @@
         },
         {
           "default": "",
-          "document": "List of billing modes. Valid values: `0` (monthly subscription), `1` (pay-as-you-go)",
+          "document": "List of billing modes. 0: monthly subscription; 1: pay-as-you-go",
           "example": "0",
           "member": "int64",
           "name": "PayMode",
@@ -1599,7 +1639,7 @@
         },
         {
           "default": "",
-          "document": "Sort field",
+          "document": "Sorting field",
           "example": "null",
           "member": "string",
           "name": "OrderBy",
@@ -1608,7 +1648,7 @@
         },
         {
           "default": "",
-          "document": "Sort order",
+          "document": "Sorting order",
           "example": "null",
           "member": "string",
           "name": "OrderByType",
@@ -1644,7 +1684,7 @@
         },
         {
           "default": "",
-          "document": "Quantity limit. The default value `100` is recommended.",
+          "document": "Quantity limit. Recommended default value: 100.",
           "example": "20",
           "member": "int64",
           "name": "Limit",
@@ -1667,16 +1707,20 @@
       "document": "DescribeCommonDBInstances response structure.",
       "members": [
         {
-          "document": "Instance quantity",
+          "document": "Number of instances",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Instance information",
+          "example": "无",
           "member": "RedisCommonInstanceList",
           "name": "InstanceDetails",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1694,7 +1738,8 @@
       "members": [
         {
           "default": "",
-          "document": "Database engine name. For this API, its value is `redis`.",
+          "document": "Database engine name, which is `redis` for this API.",
+          "example": "crs-eb2w7dto",
           "member": "string",
           "name": "Product",
           "required": true,
@@ -1702,7 +1747,8 @@
         },
         {
           "default": "",
-          "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB Console.",
+          "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "redis",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1715,10 +1761,30 @@
       "document": "DescribeDBSecurityGroups response structure.",
       "members": [
         {
-          "document": "Security group rules.",
+          "document": "Security group rules",
+          "example": "无",
           "member": "SecurityGroup",
           "name": "Groups",
+          "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Private IP for which the security group takes effect",
+          "example": "10.10.0.1",
+          "member": "string",
+          "name": "VIP",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Private port for which the security group takes effect",
+          "example": "6379",
+          "member": "string",
+          "name": "VPort",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -1791,23 +1857,26 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the DescribeInstance API.",
+          "document": "ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the `DescribeInstance` API.",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
           "type": "string"
         },
         {
-          "default": "20",
+          "default": "",
           "document": "Instance list size. Default value: 20",
+          "example": "5",
           "member": "int64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
-          "default": "0",
-          "document": "Offset, which is an integral multiple of `Limit`",
+          "default": "",
+          "document": "Offset, which is an integral multiple of `Limit`.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -1816,6 +1885,7 @@
         {
           "default": "",
           "document": "Start time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-02-08 16:46:34. This parameter is used to query the list of instance backups started during the [beginTime, endTime] range.",
+          "example": "2017-02-08 16:46:34",
           "member": "string",
           "name": "BeginTime",
           "required": false,
@@ -1824,6 +1894,7 @@
         {
           "default": "",
           "document": "End time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-02-08 19:09:26. This parameter is used to query the list of instance backups started during the [beginTime, endTime] range.",
+          "example": "2017-02-08 19:09:26",
           "member": "string",
           "name": "EndTime",
           "required": false,
@@ -1832,6 +1903,7 @@
         {
           "default": "",
           "document": "1: backup in process; 2: backing up normally; 3: converting from backup to RDB file; 4: RDB conversion completed; -1: backup expired; -2: backup deleted.",
+          "example": "2",
           "member": "int64",
           "name": "Status",
           "required": false,
@@ -1845,15 +1917,19 @@
       "members": [
         {
           "document": "Total number of backups",
+          "example": "2",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Array of instance backups",
+          "example": "无",
           "member": "RedisBackupSet",
           "name": "BackupSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1872,6 +1948,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-6ia1c1c3",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1884,58 +1961,74 @@
       "document": "DescribeInstanceDTSInfo response structure.",
       "members": [
         {
-          "document": "DTS task ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "DTS task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "dts-l2g434lt",
           "member": "string",
           "name": "JobId",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "DTS task name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "DTS task name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "redis_dts_test28",
           "member": "string",
           "name": "JobName",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "Task status. Valid values: 1 (Creating), 3 (Checking), 4 (CheckPass), 5 (CheckNotPass), 7 (Running), 8 (ReadyComplete), 9 (Success), 10 (Failed), 11 (Stopping), 12 (Completing)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Task status. Valid values: 1 (Creating), 3 (Checking), 4 (CheckPass), 5 (CheckNotPass), 7 (Running), 8 (ReadyComplete), 9 (Success), 10 (Failed), 11 (Stopping), 12 (Completing)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
           "member": "int64",
           "name": "Status",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "document": "Status description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Status description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "已失败",
           "member": "string",
           "name": "StatusDesc",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "Synchronization latency in bytes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Sync latency in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "document": "Disconnection time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Disconnection time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2019-08-16 17:10:13",
           "member": "string",
           "name": "CutDownTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "Source instance information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Source instance information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "DescribeInstanceDTSInstanceInfo",
           "name": "SrcInfo",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
-          "document": "Target instance information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Target instance information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "DescribeInstanceDTSInstanceInfo",
           "name": "DstInfo",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -1949,11 +2042,11 @@
       "type": "object"
     },
     "DescribeInstanceDTSInstanceInfo": {
-      "document": "Details of instances in a DTS task",
+      "document": "Details of instances in the DTS task",
       "members": [
         {
           "default": "",
-          "document": "Region ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Region ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "RegionId",
           "required": true,
@@ -1962,7 +2055,7 @@
         },
         {
           "default": "",
-          "document": "Instance ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1971,7 +2064,7 @@
         },
         {
           "default": "",
-          "document": "Repository ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Repository ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "SetId",
           "required": true,
@@ -1980,7 +2073,7 @@
         },
         {
           "default": "",
-          "document": "Availability zone ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "AZ ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "ZoneId",
           "required": true,
@@ -1989,7 +2082,7 @@
         },
         {
           "default": "",
-          "document": "Instance type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Type",
           "required": true,
@@ -1998,7 +2091,7 @@
         },
         {
           "default": "",
-          "document": "Instance name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -2007,7 +2100,7 @@
         },
         {
           "default": "",
-          "document": "Instance access address\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance access address\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Vip",
           "required": true,
@@ -2016,7 +2109,7 @@
         },
         {
           "default": "",
-          "document": "Status\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -2031,7 +2124,8 @@
       "members": [
         {
           "default": "",
-          "document": "Array of order IDs. It is the same as the response parameter `DealId` in the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.",
+          "document": "Array of order transaction IDs, i.e., the `DealId` output parameter of the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.",
+          "example": "[\"6959052\\n\"]",
           "member": "string",
           "name": "DealIds",
           "required": true,
@@ -2045,8 +2139,10 @@
       "members": [
         {
           "document": "Order details",
+          "example": "无",
           "member": "TradeDealDetail",
           "name": "DealDetails",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2502,6 +2598,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2509,7 +2606,8 @@
         },
         {
           "default": "",
-          "document": "Number of entries per page",
+          "document": "Maximum number of results returned per page",
+          "example": "100",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -2517,7 +2615,8 @@
         },
         {
           "default": "",
-          "document": "Offset, which is an integral multiple of `Limit`",
+          "document": "Offset, which is an integral multiple of `Limit`.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -2531,15 +2630,19 @@
       "members": [
         {
           "document": "Total number of modifications.",
+          "example": "2",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Information of modifications.",
+          "example": "无",
           "member": "InstanceParamHistory",
           "name": "InstanceParamHistory",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2558,6 +2661,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2571,36 +2675,46 @@
       "members": [
         {
           "document": "Number of instance parameters",
+          "example": "10",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Instance parameter in Enum type",
+          "example": "无",
           "member": "InstanceEnumParam",
           "name": "InstanceEnumParam",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Instance parameter in Integer type",
+          "example": "无",
           "member": "InstanceIntegerParam",
           "name": "InstanceIntegerParam",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Instance parameter in Char type",
+          "example": "无",
           "member": "InstanceTextParam",
           "name": "InstanceTextParam",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Instance parameter in Multi type",
+          "example": "无",
           "member": "InstanceMultiParam",
           "name": "InstanceMultiParam",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2618,7 +2732,8 @@
       "members": [
         {
           "default": "",
-          "document": "Instance list",
+          "document": "List of instances",
+          "example": "[\"crs-f2ho5rsz\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -2631,9 +2746,11 @@
       "document": "DescribeInstanceSecurityGroup response structure.",
       "members": [
         {
-          "document": "Security group information of an instance",
+          "document": "Security group information of the instance",
+          "example": "无",
           "member": "InstanceSecurityGroupDetail",
           "name": "InstanceSecurityGroupsDetail",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2660,7 +2777,7 @@
         },
         {
           "default": "",
-          "document": "Whether to filter out the secondary node information",
+          "document": "Whether to filter out the replica node information",
           "example": "false",
           "member": "bool",
           "name": "FilterSlave",
@@ -2675,15 +2792,19 @@
       "members": [
         {
           "document": "Information list of instance shards",
+          "example": "无",
           "member": "InstanceClusterShard",
           "name": "InstanceShards",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Total number of instance shard nodes",
+          "example": "6",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2702,6 +2823,7 @@
         {
           "default": "",
           "document": "Instance ID, such as crs-6ubhgouj",
+          "example": "crs-6tl7uxxd",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -2714,16 +2836,20 @@
       "document": "DescribeInstanceZoneInfo response structure.",
       "members": [
         {
-          "document": "The number of instance node groups",
+          "document": "Number of instance node groups",
+          "example": "2",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "The list of instance node groups",
+          "document": "List of instance node groups",
+          "example": "无",
           "member": "ReplicaGroup",
           "name": "ReplicaGroups",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2741,7 +2867,8 @@
       "members": [
         {
           "default": "",
-          "document": "Instance list size. Default value: 20",
+          "document": "Size of the instance list. If no value is specified for this parameter, it will be 20 by default. If the specified value is greater than the `DescribeInstancesPageLimit` configuration item in the specific configuration file `etc/conf/component.properties` (which is 1,000 by default if the configuration cannot be read), then the configuration item shall prevail.",
+          "example": "1",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -2749,7 +2876,8 @@
         },
         {
           "default": "",
-          "document": "Offset, which is an integral multiple of `Limit`",
+          "document": "Offset, which is an integral multiple of `Limit`.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -2758,6 +2886,7 @@
         {
           "default": "",
           "document": "Instance ID, such as crs-6ubhgouj",
+          "example": "无",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -2766,6 +2895,7 @@
         {
           "default": "",
           "document": "Enumerated values: projectId, createtime, instancename, type, curDeadline",
+          "example": "无",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -2774,6 +2904,7 @@
         {
           "default": "",
           "document": "1: reverse; 0: sequential; reverse by default",
+          "example": "无",
           "member": "int64",
           "name": "OrderType",
           "required": false,
@@ -2781,7 +2912,8 @@
         },
         {
           "default": "",
-          "document": "Array of VPC IDs such as 47525. The array subscript starts from 0. If this parameter is not passed in, the basic network will be selected by default",
+          "document": "Array of VPC IDs such as 47525. The array subscript starts from 0. If this parameter is not passed in, the classic network will be selected by default",
+          "example": "无",
           "member": "string",
           "name": "VpcIds",
           "required": false,
@@ -2789,7 +2921,8 @@
         },
         {
           "default": "",
-          "document": "Array of subnet IDs such as 56854. The array subscript starts from 0",
+          "document": "Array of subnet IDs such as 56854. The array subscript starts from 0.",
+          "example": "无",
           "member": "string",
           "name": "SubnetIds",
           "required": false,
@@ -2797,7 +2930,8 @@
         },
         {
           "default": "",
-          "document": "Array of project IDs. The array subscript starts from 0",
+          "document": "Array of project IDs. The array subscript starts from 0.",
+          "example": "无",
           "member": "int64",
           "name": "ProjectIds",
           "required": false,
@@ -2806,6 +2940,7 @@
         {
           "default": "",
           "document": "ID of the instance to be searched for.",
+          "example": "无",
           "member": "string",
           "name": "SearchKey",
           "required": false,
@@ -2814,6 +2949,7 @@
         {
           "default": "",
           "document": "Instance name",
+          "example": "无",
           "member": "string",
           "name": "InstanceName",
           "required": false,
@@ -2821,7 +2957,8 @@
         },
         {
           "default": "",
-          "document": "Array of VPC IDs such as vpc-sad23jfdfk. The array subscript starts from 0. If this parameter is not passed in, the basic network will be selected by default",
+          "document": "Array of VPC IDs such as vpc-sad23jfdfk. The array subscript starts from 0. If this parameter is not passed in, the classic network will be selected by default",
+          "example": "无",
           "member": "string",
           "name": "UniqVpcIds",
           "required": false,
@@ -2829,7 +2966,8 @@
         },
         {
           "default": "",
-          "document": "Array of subnet IDs such as subnet-fdj24n34j2. The array subscript starts from 0",
+          "document": "Array of subnet IDs such as subnet-fdj24n34j2. The array subscript starts from 0.",
+          "example": "无",
           "member": "string",
           "name": "UniqSubnetIds",
           "required": false,
@@ -2837,7 +2975,8 @@
         },
         {
           "default": "",
-          "document": "Region ID, which has already been disused. The corresponding region can be queried through the common parameter `Region`",
+          "document": "Region ID, which has already been disused. The corresponding region can be queried through the common parameter `Region`.",
+          "example": "无",
           "member": "int64",
           "name": "RegionIds",
           "required": false,
@@ -2846,6 +2985,7 @@
         {
           "default": "",
           "document": "Instance status. 0: to be initialized; 1: in process; 2: running; -2: isolated; -3: to be deleted",
+          "example": "无",
           "member": "int64",
           "name": "Status",
           "required": false,
@@ -2853,7 +2993,8 @@
         },
         {
           "default": "",
-          "document": "Type edition. 1: standalone edition; 2: primary-secondary edition; 3: cluster edition",
+          "document": "Type edition. 1: Standalone Edition; 2: Master-Replica Edition; 3: Cluster Edition",
+          "example": "无",
           "member": "int64",
           "name": "TypeVersion",
           "required": false,
@@ -2862,6 +3003,7 @@
         {
           "default": "",
           "document": "Engine information: Redis-2.8, Redis-4.0, CKV",
+          "example": "无",
           "member": "string",
           "name": "EngineName",
           "required": false,
@@ -2870,6 +3012,7 @@
         {
           "default": "",
           "document": "Renewal mode. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled",
+          "example": "无",
           "member": "int64",
           "name": "AutoRenew",
           "required": false,
@@ -2877,7 +3020,8 @@
         },
         {
           "default": "",
-          "document": "Billing method. postpaid: pay-as-you-go; prepaid: monthly subscription",
+          "document": "Billing mode. postpaid: pay-as-you-go; prepaid: monthly subscription",
+          "example": "无",
           "member": "string",
           "name": "BillingMode",
           "required": false,
@@ -2885,7 +3029,8 @@
         },
         {
           "default": "",
-          "document": "Instance type. 1: legacy Redis Cluster Edition, 2: Redis 2.8 Master-Slave Edition, 3: CKV Master-Slave Edition, 4: CKV Cluster Edition, 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Slave Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Slave Edition, 9: Redis 5.0 Cluster Edition,",
+          "document": "Instance type. 1: legacy Redis Cluster Edition, 2: Redis 2.8 Master-Replica Edition, 3: CKV Master-Replica Edition, 4: CKV Cluster Edition, 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Replica Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Replica Edition, 9: Redis 5.0 Cluster Edition",
+          "example": "无",
           "member": "int64",
           "name": "Type",
           "required": false,
@@ -2893,7 +3038,8 @@
         },
         {
           "default": "",
-          "document": "Search keywords, which can be instance ID, instance name, or complete IP",
+          "document": "Search keywords, which can be instance ID, instance name, or complete IP.",
+          "example": "无",
           "member": "string",
           "name": "SearchKeys",
           "required": false,
@@ -2901,7 +3047,8 @@
         },
         {
           "default": "",
-          "document": "Internal parameter, which can be ignored",
+          "document": "Internal parameter, which can be ignored.",
+          "example": "无",
           "member": "int64",
           "name": "TypeList",
           "required": false,
@@ -2909,11 +3056,30 @@
         },
         {
           "default": "",
-          "document": "Internal parameter, which can be ignored",
+          "document": "Internal parameter, which can be ignored.",
+          "example": "无",
           "member": "string",
           "name": "MonitorVersion",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filters resources by tag key and value. If this parameter is not specified or is an empty array, resources will not be filtered.",
+          "example": "无",
+          "member": "InstanceTagInfo",
+          "name": "InstanceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filters resources by tag key. If this parameter is not specified or is an empty array, resources will not be filtered.",
+          "example": "无",
+          "member": "string",
+          "name": "TagKeys",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2923,15 +3089,19 @@
       "members": [
         {
           "document": "Number of instances",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "List of instance details",
+          "example": "无",
           "member": "InstanceSet",
           "name": "InstanceSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3012,7 +3182,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Parameter template ID",
+          "document": "Parameter template ID.",
           "example": "crs-cfg-rhlppeye",
           "member": "string",
           "name": "TemplateId",
@@ -3021,7 +3191,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Parameter template name",
+          "document": "Parameter template name.",
           "example": "CustomParamTemplate",
           "member": "string",
           "name": "Name",
@@ -3030,7 +3200,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Instance type. Valid values: `1` (Redis 2.8 memory edition in cluster architecture), `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `5` (Redis 2.8 memory edition in standalone architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture)",
+          "document": "Instance type. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture)",
           "example": "6",
           "member": "uint64",
           "name": "ProductType",
@@ -3070,7 +3240,7 @@
       "members": [
         {
           "default": "",
-          "document": "Array of instance types. Valid values: `1` (Redis 2.8 memory edition in cluster architecture), `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `5` (Redis 2.8 memory edition in standalone architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture).",
+          "document": "Array of instance types. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture).",
           "example": "无",
           "member": "int64",
           "name": "ProductTypes",
@@ -3158,6 +3328,7 @@
         {
           "default": "",
           "document": "0: default project; -1: all projects; >0: specified project",
+          "example": "15623",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -3166,6 +3337,7 @@
         {
           "default": "",
           "document": "Security group ID",
+          "example": "sg-gl1egaj1",
           "member": "string",
           "name": "SecurityGroupId",
           "required": false,
@@ -3178,9 +3350,11 @@
       "document": "DescribeProjectSecurityGroup response structure.",
       "members": [
         {
-          "document": "Security group of a project",
+          "document": "Security group of the project",
+          "example": "无",
           "member": "SecurityGroupDetail",
           "name": "SecurityGroupDetails",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3199,6 +3373,7 @@
         {
           "default": "",
           "document": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb.",
+          "example": "redis",
           "member": "string",
           "name": "Product",
           "required": true,
@@ -3207,6 +3382,7 @@
         {
           "default": "",
           "document": "Project ID.",
+          "example": "11954",
           "member": "uint64",
           "name": "ProjectId",
           "required": true,
@@ -3215,6 +3391,7 @@
         {
           "default": "",
           "document": "Offset.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -3222,7 +3399,8 @@
         },
         {
           "default": "",
-          "document": "The number of security groups to be pulled.",
+          "document": "Number of results to be pulled. Default value: 20",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -3231,6 +3409,7 @@
         {
           "default": "",
           "document": "Search criteria. You can enter a security group ID or name.",
+          "example": "无",
           "member": "string",
           "name": "SearchKey",
           "required": false,
@@ -3244,15 +3423,19 @@
       "members": [
         {
           "document": "Security group rules.",
+          "example": "无",
           "member": "SecurityGroup",
           "name": "Groups",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "Total number of the security groups meeting the condition.",
+          "document": "Total number of eligible security groups.",
+          "example": "1",
           "member": "uint64",
           "name": "Total",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3271,6 +3454,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-nujgp1vw",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3279,6 +3463,7 @@
         {
           "default": "",
           "document": "Start time",
+          "example": "2021-02-23 11:06:01",
           "member": "string",
           "name": "BeginTime",
           "required": true,
@@ -3287,6 +3472,7 @@
         {
           "default": "",
           "document": "End time",
+          "example": "2021-02-23 11:08:01",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -3294,7 +3480,8 @@
         },
         {
           "default": "",
-          "document": "Slow query threshold in microseconds",
+          "document": "Slow query threshold in milliseconds",
+          "example": "100",
           "member": "int64",
           "name": "MinQueryTime",
           "required": false,
@@ -3302,7 +3489,8 @@
         },
         {
           "default": "",
-          "document": "Page size",
+          "document": "Maximum number of results returned per page",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -3310,7 +3498,8 @@
         },
         {
           "default": "",
-          "document": "Offset, which is an integral multiple of `Limit`",
+          "document": "Offset, which is an integral multiple of `Limit`.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -3324,15 +3513,19 @@
       "members": [
         {
           "document": "Total number of slow queries",
+          "example": "10",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Slow query details",
+          "example": "无",
           "member": "InstanceProxySlowlogDetail",
           "name": "InstanceProxySlowLogDetail",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3503,6 +3696,7 @@
         {
           "default": "",
           "document": "Task ID",
+          "example": "18215",
           "member": "uint64",
           "name": "TaskId",
           "required": true,
@@ -3516,141 +3710,47 @@
       "members": [
         {
           "document": "Task status. preparing: to be run; running: running; succeed: succeeded; failed: failed; error: running error.",
+          "example": "succeed",
           "member": "string",
           "name": "Status",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Task start time",
+          "example": "2018-11-01 17:25:14",
           "member": "string",
           "name": "StartTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Task type",
+          "example": "redis缓存清空流程",
           "member": "string",
           "name": "TaskType",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Instance ID",
+          "example": "crs-09u2u96z",
           "member": "string",
           "name": "InstanceId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Task message, which is displayed in case of an error. It will be blank if the status is running or succeeded",
+          "document": "Task message, which is displayed in case of an error. It will be blank if the status is running or succeeded.",
+          "example": "ok",
           "member": "string",
           "name": "TaskMessage",
+          "required": true,
           "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeTaskListRequest": {
-      "document": "DescribeTaskList request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance ID",
-          "member": "string",
-          "name": "InstanceId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Instance name",
-          "member": "string",
-          "name": "InstanceName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Number of entries per page",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Offset, which is an integral multiple of `Limit` (rounded down automatically)",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Project ID",
-          "member": "int64",
-          "name": "ProjectIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Task type",
-          "member": "string",
-          "name": "TaskTypes",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Start time",
-          "member": "string",
-          "name": "BeginTime",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "End time",
-          "member": "string",
-          "name": "EndTime",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Task status",
-          "member": "int64",
-          "name": "TaskStatus",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeTaskListResponse": {
-      "document": "DescribeTaskList response structure.",
-      "members": [
-        {
-          "document": "Total number of tasks",
-          "member": "int64",
-          "name": "TotalCount",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Task details",
-          "member": "TaskInfoDetail",
-          "name": "Tasks",
-          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -3703,7 +3803,7 @@
         },
         {
           "default": "",
-          "document": "The maximum number of results returned per page. Default value: `20`",
+          "document": "Maximum number of results returned per page. Default value: 20.",
           "example": "20",
           "member": "int64",
           "name": "Limit",
@@ -3712,7 +3812,7 @@
         },
         {
           "default": "",
-          "document": "Offset, which is an integral multiple of `Limit`",
+          "document": "Offset, which is an integral multiple of `Limit`.",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -3758,6 +3858,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3771,8 +3872,10 @@
       "members": [
         {
           "document": "Task ID",
+          "example": "6954227",
           "member": "int64",
           "name": "TaskId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3791,6 +3894,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3804,8 +3908,10 @@
       "members": [
         {
           "document": "Order ID",
+          "example": "6977675",
           "member": "string",
           "name": "DealId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3823,7 +3929,8 @@
       "members": [
         {
           "default": "",
-          "document": "Serial ID of an instance",
+          "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3836,7 +3943,7 @@
       "document": "DisableReplicaReadonly response structure.",
       "members": [
         {
-          "document": "Task ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "15236",
           "member": "int64",
           "name": "TaskId",
@@ -3859,6 +3966,7 @@
         {
           "default": "",
           "document": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.",
+          "example": "redis",
           "member": "string",
           "name": "Product",
           "required": true,
@@ -3867,6 +3975,7 @@
         {
           "default": "",
           "document": "Security group ID.",
+          "example": "sg-ajr1jzgj",
           "member": "string",
           "name": "SecurityGroupId",
           "required": true,
@@ -3874,7 +3983,8 @@
         },
         {
           "default": "",
-          "document": "Instance ID list, which is an array of one or more instance IDs.",
+          "document": "List of instance IDs, which is an array of one or more instance IDs.",
+          "example": "[\"crs-eb2w7dto\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -3900,7 +4010,8 @@
       "members": [
         {
           "default": "",
-          "document": "Serial ID of an instance",
+          "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3908,7 +4019,8 @@
         },
         {
           "default": "",
-          "document": "Account routing policy. If `master` or `replication` is entered, it means to route to the primary or secondary node; if this is left blank, it means to write into the primary node and read from the secondary node by default",
+          "document": "Account routing policy. If `master` or `replication` is entered, it means to route to the master or replica node; if this parameter is left empty, it means to write into the master node and read from the replica node by default.",
+          "example": "[\"master\"]",
           "member": "string",
           "name": "ReadonlyPolicy",
           "required": false,
@@ -3921,16 +4033,20 @@
       "document": "EnableReplicaReadonly response structure.",
       "members": [
         {
-          "document": "Valid values: `ERROR`, `OK`. This field has been deprecated.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Valid values: `ERROR`, `OK`. This field has been disused.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "OK",
           "member": "string",
           "name": "Status",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "Task ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "16321",
           "member": "int64",
           "name": "TaskId",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4103,7 +4219,7 @@
         },
         {
           "default": "",
-          "document": "Network protocol, such as UDP and TCP, etc.",
+          "document": "Network protocol, such as UDP and TCP.",
           "member": "string",
           "name": "IpProtocol",
           "required": true,
@@ -4328,7 +4444,7 @@
         },
         {
           "default": "",
-          "document": "ID of the runtime node of an instance",
+          "document": "ID of the runtime node of the instance",
           "member": "string",
           "name": "RunId",
           "required": true,
@@ -4337,7 +4453,7 @@
         },
         {
           "default": "",
-          "document": "Cluster role. 0: primary; 1: secondary",
+          "document": "Cluster role. 0: master; 1: replica",
           "member": "int64",
           "name": "Role",
           "required": true,
@@ -4373,7 +4489,7 @@
         },
         {
           "default": "",
-          "document": "Node deactivation time",
+          "document": "Node elimination time",
           "member": "string",
           "name": "DownTime",
           "required": true,
@@ -4409,7 +4525,7 @@
         },
         {
           "default": "",
-          "document": "QPS slope of a node",
+          "document": "Node QPS slope",
           "member": "float",
           "name": "QpsSlope",
           "required": true,
@@ -4427,7 +4543,7 @@
         },
         {
           "default": "",
-          "document": "Storage slope of a node",
+          "document": "Node storage slope",
           "member": "float",
           "name": "StorageSlope",
           "required": true,
@@ -4505,7 +4621,7 @@
         },
         {
           "default": "",
-          "document": "ID of the runtime node of an instance",
+          "document": "ID of the runtime node of the instance",
           "member": "string",
           "name": "Runid",
           "required": true,
@@ -4525,7 +4641,7 @@
       "usage": "out"
     },
     "InstanceEnumParam": {
-      "document": "Descriptions of enumeration parameters of the instance",
+      "document": "Description of the instance parameter in Enum type",
       "members": [
         {
           "default": "",
@@ -4547,7 +4663,7 @@
         },
         {
           "default": "",
-          "document": "Whether restart is required after a modification is made. Value range: true, false",
+          "document": "Whether restart is required after a modification is made. Valid values: true, false",
           "member": "string",
           "name": "NeedRestart",
           "required": true,
@@ -4565,7 +4681,7 @@
         },
         {
           "default": "",
-          "document": "Current value of a parameter",
+          "document": "Current value",
           "member": "string",
           "name": "CurrentValue",
           "required": true,
@@ -4583,7 +4699,7 @@
         },
         {
           "default": "",
-          "document": "Value range of a parameter",
+          "document": "Valid values of the parameter",
           "member": "string",
           "name": "EnumValue",
           "required": true,
@@ -4603,7 +4719,7 @@
       "usage": "out"
     },
     "InstanceIntegerParam": {
-      "document": "Descriptions of integer parameters of the instance",
+      "document": "Description of the instance parameter in Integer type",
       "members": [
         {
           "default": "",
@@ -4625,7 +4741,7 @@
         },
         {
           "default": "",
-          "document": "Whether restart is required after a modification is made. Value range: true, false",
+          "document": "Whether restart is required after a modification is made. Valid values: true, false",
           "member": "string",
           "name": "NeedRestart",
           "required": true,
@@ -4643,7 +4759,7 @@
         },
         {
           "default": "",
-          "document": "Current value of a parameter",
+          "document": "Current value",
           "member": "string",
           "name": "CurrentValue",
           "required": true,
@@ -4661,7 +4777,7 @@
         },
         {
           "default": "",
-          "document": "Minimum value of a parameter",
+          "document": "Minimum value of the parameter",
           "member": "string",
           "name": "Min",
           "required": true,
@@ -4670,7 +4786,7 @@
         },
         {
           "default": "",
-          "document": "Maximum value of a parameter",
+          "document": "Maximum value of the parameter",
           "member": "string",
           "name": "Max",
           "required": true,
@@ -4688,7 +4804,7 @@
         },
         {
           "default": "",
-          "document": "Parameter unit\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Parameter unit\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Unit",
           "required": true,
@@ -4699,7 +4815,7 @@
       "usage": "out"
     },
     "InstanceMultiParam": {
-      "document": "Description of an instance parameter in Multi type",
+      "document": "Description of the instance parameter in Multi type",
       "members": [
         {
           "default": "",
@@ -4721,7 +4837,7 @@
         },
         {
           "default": "",
-          "document": "Whether restart is required after a modification is made. Value range: true, false",
+          "document": "Whether restart is required after a modification is made. Valid values: true, false",
           "member": "string",
           "name": "NeedRestart",
           "required": true,
@@ -4739,7 +4855,7 @@
         },
         {
           "default": "",
-          "document": "Current value of a parameter",
+          "document": "Current value",
           "member": "string",
           "name": "CurrentValue",
           "required": true,
@@ -4856,7 +4972,7 @@
         },
         {
           "default": "",
-          "document": "Status. 1: modifying parameter configuration; 2: parameter configuration modified successfully; 3: failed to modify parameter configuration",
+          "document": "Status. 1: modifying the parameter configuration; 2: modified the parameter configuration successfully; 3: failed to modify the parameter configuration",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -4916,7 +5032,7 @@
         },
         {
           "default": "",
-          "document": "Execution duration",
+          "document": "Execution time",
           "member": "string",
           "name": "ExecuteTime",
           "required": true,
@@ -4927,7 +5043,7 @@
       "usage": "out"
     },
     "InstanceSecurityGroupDetail": {
-      "document": "Security group information of an instance",
+      "document": "Security group information of the instance",
       "members": [
         {
           "default": "",
@@ -4956,6 +5072,7 @@
         {
           "default": "",
           "document": "Instance name",
+          "example": "test",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -4965,6 +5082,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-7asi981q",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -4973,7 +5091,8 @@
         },
         {
           "default": "",
-          "document": "User's Appid",
+          "document": "User `Appid`",
+          "example": "12345",
           "member": "int64",
           "name": "Appid",
           "required": true,
@@ -4983,6 +5102,7 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "12",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -4991,7 +5111,8 @@
         },
         {
           "default": "",
-          "document": "Region ID. 1: Guangzhou; 4: Shanghai; 5: Hong Kong, China; 6: Toronto; 7: Shanghai Finance; 8: Beijing; 9: Singapore; 11: Shenzhen Finance; 15: West US (Silicon Valley); 16: Chengdu; 17: Germany; 18: South Korea; 19: Chongqing; 21: India; 22: East US (Virginia); 23: Thailand; 24: Russia; 25: Japan",
+          "document": "Region ID. 1: Guangzhou; 4: Shanghai; 5: Hong Kong (China); 6: Toronto; 7: Shanghai Finance; 8: Beijing; 9: Singapore; 11: Shenzhen Finance; 15: West US (Silicon Valley); 16: Chengdu; 17: Germany; 18: South Korea; 19: Chongqing; 21: India; 22: East US (Virginia); 23: Thailand; 24: Russia; 25: Japan",
+          "example": "1",
           "member": "int64",
           "name": "RegionId",
           "required": true,
@@ -5001,6 +5122,7 @@
         {
           "default": "",
           "document": "Region ID",
+          "example": "100001",
           "member": "int64",
           "name": "ZoneId",
           "required": true,
@@ -5010,6 +5132,7 @@
         {
           "default": "",
           "document": "VPC ID, such as 75101",
+          "example": "1",
           "member": "int64",
           "name": "VpcId",
           "required": true,
@@ -5019,6 +5142,7 @@
         {
           "default": "",
           "document": "VPC subnet ID, such as 46315",
+          "example": "10",
           "member": "int64",
           "name": "SubnetId",
           "required": true,
@@ -5028,6 +5152,7 @@
         {
           "default": "",
           "document": "Current instance status. 0: to be initialized; 1: instance in process; 2: instance running; -2: instance isolated; -3: instance to be deleted",
+          "example": "2",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -5037,6 +5162,7 @@
         {
           "default": "",
           "document": "Instance VIP",
+          "example": "10.20.3.1",
           "member": "string",
           "name": "WanIp",
           "required": true,
@@ -5045,7 +5171,8 @@
         },
         {
           "default": "",
-          "document": "Port number of an instance",
+          "document": "Port number of the instance",
+          "example": "6379",
           "member": "int64",
           "name": "Port",
           "required": true,
@@ -5055,6 +5182,7 @@
         {
           "default": "",
           "document": "Instance creation time",
+          "example": "2020-01-15 10:20:00",
           "member": "string",
           "name": "Createtime",
           "required": true,
@@ -5064,6 +5192,7 @@
         {
           "default": "",
           "document": "Instance capacity in MB",
+          "example": "1451",
           "member": "float",
           "name": "Size",
           "required": true,
@@ -5073,6 +5202,7 @@
         {
           "default": "",
           "document": "This field has been disused",
+          "example": "0",
           "member": "float",
           "name": "SizeUsed",
           "required": true,
@@ -5081,7 +5211,8 @@
         },
         {
           "default": "",
-          "document": "Instance type. Valid values: 1 (Redis 2.8 Memory Edition in cluster architecture), 2 (Redis 2.8 Memory Edition in standard architecture), 3 (CKV 3.2 Memory Edition in standard architecture), 4 (CKV 3.2 Memory Edition in cluster architecture), 5 (Redis 2.8 Memory Edition in standalone architecture), 6 (Redis 4.0 Memory Edition in standard architecture), 7 (Redis 4.0 Memory Edition in cluster architecture), 8 (Redis 5.0 Memory Edition in standard architecture), 9 (Redis 5.0 Memory Edition in cluster architecture).",
+          "document": "Instance type. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture)",
+          "example": "7",
           "member": "int64",
           "name": "Type",
           "required": true,
@@ -5090,7 +5221,8 @@
         },
         {
           "default": "",
-          "document": "Whether to set the auto-renewal flag for an instance. 1: auto-renewal set; 0: auto-renewal not set",
+          "document": "Whether to set the auto-renewal flag for the instance. 1: yes; 0: no",
+          "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
           "required": true,
@@ -5100,6 +5232,7 @@
         {
           "default": "",
           "document": "Instance expiration time",
+          "example": "2020-02-15 10:20:00",
           "member": "string",
           "name": "DeadlineTime",
           "required": true,
@@ -5108,7 +5241,8 @@
         },
         {
           "default": "",
-          "document": "Engine: Redis community edition, Tencent Cloud CKV",
+          "document": "Engine: Redis Community Edition, Tencent Cloud CKV",
+          "example": "社区版Redis",
           "member": "string",
           "name": "Engine",
           "required": true,
@@ -5117,7 +5251,8 @@
         },
         {
           "default": "",
-          "document": "Instance type. Valid values: standalone (standard edition), cluster (cluster edition)",
+          "document": "Instance type. Valid values: standalone (Standard Edition); cluster (Cluster Edition)",
+          "example": "cluster",
           "member": "string",
           "name": "ProductType",
           "required": true,
@@ -5127,6 +5262,7 @@
         {
           "default": "",
           "document": "VPC ID, such as vpc-fk33jsf43kgv",
+          "example": "vpc-fk33jsf43kgv",
           "member": "string",
           "name": "UniqVpcId",
           "required": true,
@@ -5136,6 +5272,7 @@
         {
           "default": "",
           "document": "VPC subnet ID, such as subnet-fd3j6l35mm0",
+          "example": "subnet-fd3j6l35mm0",
           "member": "string",
           "name": "UniqSubnetId",
           "required": true,
@@ -5144,7 +5281,8 @@
         },
         {
           "default": "",
-          "document": "Billing method. 0: pay-as-you-go; 1: monthly subscription",
+          "document": "Billing mode. 0: pay-as-you-go; 1: monthly subscription",
+          "example": "1",
           "member": "int64",
           "name": "BillingMode",
           "required": true,
@@ -5153,7 +5291,8 @@
         },
         {
           "default": "",
-          "document": "Description of an instance status, such as \"instance running\"",
+          "document": "Description of the instance status, such as \"instance running\"",
+          "example": "实例运行中",
           "member": "string",
           "name": "InstanceTitle",
           "required": true,
@@ -5162,7 +5301,8 @@
         },
         {
           "default": "",
-          "document": "Scheduled deactivation time",
+          "document": "Planned elimination time",
+          "example": "2020-02-15 10:20:00",
           "member": "string",
           "name": "OfflineTime",
           "required": true,
@@ -5171,7 +5311,8 @@
         },
         {
           "default": "",
-          "document": "Sub-status returned for an instance in process",
+          "document": "Sub-status returned for the instance in process",
+          "example": "0",
           "member": "int64",
           "name": "SubStatus",
           "required": true,
@@ -5181,6 +5322,7 @@
         {
           "default": "",
           "document": "Anti-affinity tag",
+          "example": "无",
           "member": "string",
           "name": "Tags",
           "required": true,
@@ -5190,6 +5332,7 @@
         {
           "default": "",
           "document": "Instance node information",
+          "example": "无",
           "member": "InstanceNode",
           "name": "InstanceNode",
           "required": true,
@@ -5199,6 +5342,7 @@
         {
           "default": "",
           "document": "Shard size",
+          "example": "4096",
           "member": "int64",
           "name": "RedisShardSize",
           "required": true,
@@ -5208,6 +5352,7 @@
         {
           "default": "",
           "document": "Number of shards",
+          "example": "3",
           "member": "int64",
           "name": "RedisShardNum",
           "required": true,
@@ -5217,6 +5362,7 @@
         {
           "default": "",
           "document": "Number of replicas",
+          "example": "1",
           "member": "int64",
           "name": "RedisReplicasNum",
           "required": true,
@@ -5226,6 +5372,7 @@
         {
           "default": "",
           "document": "Billing ID",
+          "example": "114",
           "member": "int64",
           "name": "PriceId",
           "required": true,
@@ -5235,6 +5382,7 @@
         {
           "default": "",
           "document": "Isolation time",
+          "example": "0000-00-00 00:00:00",
           "member": "string",
           "name": "CloseTime",
           "required": true,
@@ -5243,7 +5391,8 @@
         },
         {
           "default": "",
-          "document": "Read weight of a secondary node",
+          "document": "Read weight of the replica node",
+          "example": "1",
           "member": "int64",
           "name": "SlaveReadWeight",
           "required": true,
@@ -5253,6 +5402,7 @@
         {
           "default": "",
           "document": "Instance tag information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "InstanceTagInfo",
           "name": "InstanceTags",
           "required": true,
@@ -5262,6 +5412,7 @@
         {
           "default": "",
           "document": "Project name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "default",
           "member": "string",
           "name": "ProjectName",
           "required": true,
@@ -5270,7 +5421,8 @@
         },
         {
           "default": "",
-          "document": "Whether an instance is password-free. true: yes; false: no\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether the instance is password-free. true: yes; false: no.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
           "member": "bool",
           "name": "NoAuth",
           "required": true,
@@ -5279,7 +5431,8 @@
         },
         {
           "default": "",
-          "document": "Number of client connections\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Number of client connections\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "30000",
           "member": "int64",
           "name": "ClientLimit",
           "required": true,
@@ -5288,7 +5441,8 @@
         },
         {
           "default": "",
-          "document": "DTS status (internal parameter, which can be ignored)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "DTS status (internal parameter, which can be ignored)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "DtsStatus",
           "required": true,
@@ -5297,7 +5451,8 @@
         },
         {
           "default": "",
-          "document": "Upper shard bandwidth limit in MB\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Shard bandwidth cap in MB\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1800",
           "member": "int64",
           "name": "NetLimit",
           "required": true,
@@ -5306,7 +5461,8 @@
         },
         {
           "default": "",
-          "document": "Password-free instance flag (internal parameter, which can be ignored)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Password-free instance flag (internal parameter, which can be ignored)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "PasswordFree",
           "required": true,
@@ -5315,7 +5471,8 @@
         },
         {
           "default": "",
-          "document": "Read-only instance flag (internal parameter, which can be ignored)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Read-only instance flag (internal parameter, which can be ignored)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "ReadOnly",
           "required": true,
@@ -5324,7 +5481,8 @@
         },
         {
           "default": "",
-          "document": "Internal parameter, which can be ignored\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Internal parameter, which can be ignored.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Vip6",
           "required": true,
@@ -5333,7 +5491,8 @@
         },
         {
           "default": "",
-          "document": "Internal parameter, which can be ignored\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Internal parameter, which can be ignored.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "RemainBandwidthDuration",
           "required": true,
@@ -5342,7 +5501,8 @@
         },
         {
           "default": "",
-          "document": "Disk size of the Tendis instance\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Disk size of the Tendis instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "400",
           "member": "int64",
           "name": "DiskSize",
           "required": true,
@@ -5351,7 +5511,8 @@
         },
         {
           "default": "",
-          "document": "Monitoring granularity type. Valid values: 1m (monitoring at 1-minute granularity), 5s (monitoring at 5-second granularity)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Monitoring version. Valid values: 1m (monitoring at 1-minute granularity); 5s (monitoring at 5-second granularity)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5s",
           "member": "string",
           "name": "MonitorVersion",
           "required": true,
@@ -5360,7 +5521,8 @@
         },
         {
           "default": "",
-          "document": "The minimum value of the range of maximum connections to the client\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Minimum value for the range of maximum connections to the client\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1000",
           "member": "int64",
           "name": "ClientLimitMin",
           "required": true,
@@ -5369,7 +5531,8 @@
         },
         {
           "default": "",
-          "document": "The maximum value of the range of maximum connections to the client\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Maximum value for the range of maximum connections to the client\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10000",
           "member": "int64",
           "name": "ClientLimitMax",
           "required": true,
@@ -5378,7 +5541,8 @@
         },
         {
           "default": "",
-          "document": "Instance node details\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Instance node details\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "RedisNodeInfo",
           "name": "NodeSet",
           "required": true,
@@ -5387,7 +5551,8 @@
         },
         {
           "default": "",
-          "document": "Region where the instance is deployed\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Instance region, such as ap-guangzhou\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -5482,7 +5647,7 @@
       "usage": "out"
     },
     "InstanceTextParam": {
-      "document": "Descriptions of text parameters of the instance",
+      "document": "Description of instance parameter in Char type",
       "members": [
         {
           "default": "",
@@ -5504,7 +5669,7 @@
         },
         {
           "default": "",
-          "document": "Whether restart is required after a modification is made. Value range: true, false",
+          "document": "Whether restart is required after a modification is made. Valid values: true, false",
           "member": "string",
           "name": "NeedRestart",
           "required": true,
@@ -5522,7 +5687,7 @@
         },
         {
           "default": "",
-          "document": "Current value of a parameter",
+          "document": "Current value",
           "member": "string",
           "name": "CurrentValue",
           "required": true,
@@ -5540,7 +5705,7 @@
         },
         {
           "default": "",
-          "document": "Value range of a parameter",
+          "document": "Valid values of the parameter",
           "member": "string",
           "name": "TextValue",
           "required": true,
@@ -5765,66 +5930,13 @@
       ],
       "usage": "out"
     },
-    "KillMasterGroupRequest": {
-      "document": "KillMasterGroup request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Instance ID",
-          "example": "crs-dfndi7de",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "1. The password must contain 8-30 characters. A password of 12 or more characters is recommended.\n2. The password cannot start with a slash (/).\n3. The password must contain at least two of the following four types:\n    a. Lowercase letters (a-z)\n    b. Uppercase letters (A-Z)\n    c. Digits (0-9)\n    d. ()`~!@#$%^&*-+=_|{}[]:;<>,.?/",
-          "example": "12345Aa",
-          "member": "string",
-          "name": "Password",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Node information of a single-AZ deployed instance",
-          "example": "null",
-          "member": "int64",
-          "name": "ShardIds",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "KillMasterGroupResponse": {
-      "document": "KillMasterGroup response structure.",
-      "members": [
-        {
-          "document": "Async task ID",
-          "example": "156156",
-          "member": "int64",
-          "name": "TaskId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "ManualBackupInstanceRequest": {
       "document": "ManualBackupInstance request structure.",
       "members": [
         {
           "default": "",
-          "document": "ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the DescribeInstance API.",
+          "document": "ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the `DescribeInstance` API.",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5833,10 +5945,20 @@
         {
           "default": "",
           "document": "Backup remarks",
+          "example": "xxxx",
           "member": "string",
           "name": "Remark",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Retention time in days. 0 indicates the default retention time.",
+          "example": "7",
+          "member": "int64",
+          "name": "StorageDays",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -5846,8 +5968,10 @@
       "members": [
         {
           "document": "Task ID",
+          "example": "6954227",
           "member": "int64",
           "name": "TaskId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5923,7 +6047,7 @@
         },
         {
           "default": "",
-          "document": "Date. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. However, this parameter is now invalid.",
+          "document": "Date. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. This parameter cannot be modified for now.",
           "example": "[\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\"]",
           "member": "string",
           "name": "WeekDays",
@@ -5941,7 +6065,7 @@
         },
         {
           "default": "",
-          "document": "Auto backup type: 1 \"scheduled rollback\"",
+          "document": "Automatic backup type: 1 (scheduled rollback)",
           "example": "1",
           "member": "int64",
           "name": "AutoBackupType",
@@ -5955,24 +6079,39 @@
       "document": "ModifyAutoBackupConfig response structure.",
       "members": [
         {
-          "document": "Auto backup type: 1 \"scheduled rollback\"",
+          "document": "Automatic backup type: 1 (scheduled rollback)",
+          "example": "1",
           "member": "int64",
           "name": "AutoBackupType",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Date. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.",
+          "example": "[\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\"]",
           "member": "string",
           "name": "WeekDays",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Time period. Value range: 00:00-01:00, 01:00-02:00...... 23:00-00:00",
+          "example": "04:00-05:00",
           "member": "string",
           "name": "TimePeriod",
+          "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Retention time of full backup files in days",
+          "example": "7",
+          "member": "int64",
+          "name": "BackupStorageDays",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -5990,6 +6129,7 @@
         {
           "default": "",
           "document": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.",
+          "example": "redis",
           "member": "string",
           "name": "Product",
           "required": true,
@@ -5997,7 +6137,8 @@
         },
         {
           "default": "",
-          "document": "The ID list of the security groups to be modified, which is an array of one or more security group IDs.",
+          "document": "ID list of the security groups to be modified, which is an array of one or more security group IDs.",
+          "example": "[\"sg-ajr1jzgj\\n\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": true,
@@ -6005,7 +6146,8 @@
         },
         {
           "default": "",
-          "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB Console.",
+          "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "crs-eb2w7dto",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6032,6 +6174,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6039,7 +6182,8 @@
         },
         {
           "default": "",
-          "document": "Sub-account name. If the root account is to be modified, enter `root`",
+          "document": "Sub-account name. If the root account is to be modified, enter `root`.",
+          "example": "test",
           "member": "string",
           "name": "AccountName",
           "required": true,
@@ -6048,6 +6192,7 @@
         {
           "default": "",
           "document": "Sub-account password",
+          "example": "无",
           "member": "string",
           "name": "AccountPassword",
           "required": false,
@@ -6056,6 +6201,7 @@
         {
           "default": "",
           "document": "Sub-account description information",
+          "example": "无",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -6063,7 +6209,8 @@
         },
         {
           "default": "",
-          "document": "Sub-account routing policy. Enter `master` to route to the primary node or `slave` to route to the secondary node",
+          "document": "Routing policy. Valid values: master (master node); replication (replica node)",
+          "example": "无",
           "member": "string",
           "name": "ReadonlyPolicy",
           "required": false,
@@ -6071,7 +6218,8 @@
         },
         {
           "default": "",
-          "document": "Sub-account read/write policy. Enter `r` for read-only, `w` for write-only, or `rw` for read/write",
+          "document": "Sub-account read/write policy. Valid values: r (read-only); w (write-only); rw (read/write).",
+          "example": "无",
           "member": "string",
           "name": "Privilege",
           "required": false,
@@ -6079,7 +6227,8 @@
         },
         {
           "default": "",
-          "document": "true: make the root account password-free. This is applicable to root accounts only; sub-accounts cannot be made password-free",
+          "document": "true: make the root account password-free. This is applicable to root accounts only. Sub-accounts cannot be made password-free.",
+          "example": "无",
           "member": "bool",
           "name": "NoAuth",
           "required": false,
@@ -6093,8 +6242,10 @@
       "members": [
         {
           "document": "Task ID",
+          "example": "123456",
           "member": "int64",
           "name": "TaskId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6113,6 +6264,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6121,6 +6273,7 @@
         {
           "default": "",
           "document": "List of instance parameters modified",
+          "example": "无",
           "member": "InstanceParam",
           "name": "InstanceParams",
           "required": true,
@@ -6134,15 +6287,19 @@
       "members": [
         {
           "document": "Whether a modification is successfully made.",
+          "example": "true",
           "member": "bool",
           "name": "Changed",
+          "required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
           "document": "Task ID",
+          "example": "327",
           "member": "int64",
           "name": "TaskId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6205,7 +6362,8 @@
       "members": [
         {
           "default": "",
-          "document": "Instance modification type. rename: rename an instance; modifyProject: modify the project of an instance; modifyAutoRenew: modify the auto-renewal flag of an instance",
+          "document": "Instance modification type. rename: rename an instance; modifyProject: modify the project of an instance; modifyAutoRenew: modify the auto-renewal flag of an instance.",
+          "example": "rename",
           "member": "string",
           "name": "Operation",
           "required": true,
@@ -6214,6 +6372,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "[\"crs-r3nqjq3n\",\"crs-9bvd9b8v\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -6221,15 +6380,17 @@
         },
         {
           "default": "",
-          "document": "New name of instance",
+          "document": "New name of the instance",
+          "example": "[\"newname1\",\"newname2\\r\\n\"]",
           "member": "string",
           "name": "InstanceNames",
           "required": false,
           "type": "list"
         },
         {
-          "default": "0",
+          "default": "",
           "document": "Project ID",
+          "example": "10035",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -6237,7 +6398,8 @@
         },
         {
           "default": "",
-          "document": "Auto-renewal flag. 0: default status (manual renewal), 1: auto-renewal enabled, 2: auto-renewal disabled",
+          "document": "Auto-renewal flag. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled",
+          "example": "[1,0]",
           "member": "int64",
           "name": "AutoRenews",
           "required": false,
@@ -6246,6 +6408,7 @@
         {
           "default": "",
           "document": "Disused",
+          "example": "crs-rhlppeye",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -6254,14 +6417,16 @@
         {
           "default": "",
           "document": "Disused",
+          "example": "crs-rhlppeye",
           "member": "string",
           "name": "InstanceName",
           "required": false,
           "type": "string"
         },
         {
-          "default": "0",
+          "default": "",
           "document": "Disused",
+          "example": "1",
           "member": "int64",
           "name": "AutoRenew",
           "required": false,
@@ -6288,6 +6453,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6295,7 +6461,8 @@
         },
         {
           "default": "",
-          "document": "Start time of the maintenance window, such as 17:00",
+          "document": "Maintenance start time, such as 17:00",
+          "example": "03:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -6303,7 +6470,8 @@
         },
         {
           "default": "",
-          "document": "End time of the maintenance window, such as 19:00",
+          "document": "Maintenance end time, such as 19:00",
+          "example": "06:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -6317,8 +6485,10 @@
       "members": [
         {
           "document": "Modification status. Valid values: success, failed.",
+          "example": "success",
           "member": "string",
           "name": "Status",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6337,6 +6507,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6344,7 +6515,8 @@
         },
         {
           "default": "",
-          "document": "Operation type. changeVip: modify the VIP of an instance; changeVpc: modify the subnet of an instance; changeBaseToVpc: change from basic network to VPC",
+          "document": "Operation type. changeVip: modify the VIP of an instance; changeVpc: modify the subnet of an instance; changeBaseToVpc: change from classic network to VPC",
+          "example": "changeVip",
           "member": "string",
           "name": "Operation",
           "required": true,
@@ -6352,7 +6524,8 @@
         },
         {
           "default": "",
-          "document": "VIP address, which is required for the `changeVip` operation. If this parameter is left blank, a random one will be assigned by default",
+          "document": "VIP address, which is required for the `changeVip` operation. If this parameter is left blank, a random one will be assigned by default.",
+          "example": "10.1.1.2",
           "member": "string",
           "name": "Vip",
           "required": false,
@@ -6360,7 +6533,8 @@
         },
         {
           "default": "",
-          "document": "VPC ID, which is required for `changeVpc` and `changeBaseToVpc` operations",
+          "document": "VPC ID, which is required for `changeVpc` and `changeBaseToVpc` operations.",
+          "example": "vpc-hu6khgap",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -6369,10 +6543,20 @@
         {
           "default": "",
           "document": "Subnet ID, which is required for `changeVpc` and `changeBaseToVpc` operations",
+          "example": "subnet-6mt7lir6",
           "member": "string",
           "name": "SubnetId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Retention time of the original VIP in days. Note that this parameter works only in the latest SDK. In earlier SDKs, the original VIP is released immediately. To view the SDK version, go to [SDK Center](https://intl.cloud.tencent.com/document/sdk?from_cn_redirect=1).",
+          "example": "7",
+          "member": "int64",
+          "name": "Recycle",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -6382,29 +6566,37 @@
       "members": [
         {
           "document": "Execution status: true or false",
+          "example": "true",
           "member": "bool",
           "name": "Status",
+          "required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
           "document": "Subnet ID",
+          "example": "subnet-6mt7lir6",
           "member": "string",
           "name": "SubnetId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "VPC ID",
+          "example": "vpc-hu6khgap",
           "member": "string",
           "name": "VpcId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "VIP address",
+          "example": "10.2.3.8",
           "member": "string",
           "name": "Vip",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6422,7 +6614,7 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the parameter template to be modified.",
+          "document": "ID of the source parameter template.",
           "example": "crs-cfg-rhlppeye",
           "member": "string",
           "name": "TemplateId",
@@ -6512,7 +6704,7 @@
         },
         {
           "default": "",
-          "document": "Network protocol, such as UDP and TCP, etc.",
+          "document": "Network protocol, such as UDP and TCP.",
           "member": "string",
           "name": "IpProtocol",
           "required": true,
@@ -6584,7 +6776,7 @@
         },
         {
           "default": "",
-          "document": "Instance type. Valid values: `1` (Redis 2.8 memory edition in cluster architecture), `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `5` (Redis 2.8 memory edition in standalone architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture)",
+          "document": "Instance type. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture)",
           "example": "6",
           "member": "uint64",
           "name": "ProductType",
@@ -6596,7 +6788,7 @@
       "usage": "out"
     },
     "ParameterDetail": {
-      "document": "Details of the parameters in a parameter template",
+      "document": "Details of the parameters in the parameter template",
       "members": [
         {
           "default": "",
@@ -6640,7 +6832,7 @@
         },
         {
           "default": "",
-          "document": "Current value of the parameter",
+          "document": "Current value",
           "example": "5",
           "member": "string",
           "name": "CurrentValue",
@@ -6650,7 +6842,7 @@
         },
         {
           "default": "",
-          "document": "Whether the database needs to be restarted for the modified parameter to take effect. Valid values: `0` (no),`1` (yes)",
+          "document": "Whether the database needs to be restarted for the modified parameter to take effect. Valid values: 0 (no); 1 (yes).",
           "example": "0",
           "member": "int64",
           "name": "NeedReboot",
@@ -6660,7 +6852,7 @@
         },
         {
           "default": "",
-          "document": "Maximum value of the parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Maximum value of the parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
           "name": "Max",
@@ -6670,7 +6862,7 @@
         },
         {
           "default": "",
-          "document": "Minimum value of the parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Minimum value of the parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
           "member": "string",
           "name": "Min",
@@ -6680,7 +6872,7 @@
         },
         {
           "default": "",
-          "document": "Enumerated values of the parameter. It is null if the parameter is non-enumerated\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Enumerated values of the parameter. It is null if the parameter is non-enumerated.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "string",
           "name": "EnumValue",
@@ -6835,6 +7027,7 @@
         {
           "default": "",
           "document": "Backup start time",
+          "example": "\"2022-03-24 11:52:20\"",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -6844,6 +7037,7 @@
         {
           "default": "",
           "document": "Backup ID",
+          "example": "\"999b6b89c60-f01a-11eb-9d37-7d65897b5c22\"",
           "member": "string",
           "name": "BackupId",
           "required": true,
@@ -6852,7 +7046,8 @@
         },
         {
           "default": "",
-          "document": "Backup type. manualBackupInstance: manual backup initiated by user; systemBackupInstance: midnight backup initiated by system",
+          "document": "Backup type. 1: manual backup initiated by the user; 0: automatic backup in the early morning initiated by the system",
+          "example": "\"1\"",
           "member": "string",
           "name": "BackupType",
           "required": true,
@@ -6862,6 +7057,7 @@
         {
           "default": "",
           "document": "Backup status. 1: backup is locked by another process; 2: backup is normal and not locked by any process; -1: backup has expired; 3: backup is being exported; 4: backup is exported successfully",
+          "example": "2",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -6871,6 +7067,7 @@
         {
           "default": "",
           "document": "Backup remarks",
+          "example": "\"\"",
           "member": "string",
           "name": "Remark",
           "required": true,
@@ -6879,18 +7076,49 @@
         },
         {
           "default": "",
-          "document": "Whether a backup is locked. 0: no; 1: yes",
+          "document": "Whether a backup is locked. 0: no; 1: yes.",
+          "example": "0",
           "member": "int64",
           "name": "Locked",
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Internal field, which can be ignored.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "BackupSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Internal field, which can be ignored.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "FullBackup",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Internal field, which can be ignored.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "InstanceType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
     },
     "RedisCommonInstanceList": {
-      "document": "Information of an instance",
+      "document": "Instance information",
       "members": [
         {
           "default": "",
@@ -6924,7 +7152,7 @@
         },
         {
           "default": "",
-          "document": "Project ID of the instance",
+          "document": "Instance project ID",
           "example": "000000000",
           "member": "int64",
           "name": "ProjectId",
@@ -6944,7 +7172,7 @@
         },
         {
           "default": "",
-          "document": "Instance availability zone",
+          "document": "Instance AZ",
           "example": "100001",
           "member": "string",
           "name": "Zone",
@@ -6974,7 +7202,7 @@
         },
         {
           "default": "",
-          "document": "Instance status. Valid values: `1` (task running), `2` (instance running), `-2` (instance isolated), `-3` (instance being eliminated), `-4` (instance eliminated)",
+          "document": "Instance status. 1: task running; 2: instance running; -2: instance isolated; -3: instance being eliminated; -4: instance eliminated",
           "example": "1",
           "member": "string",
           "name": "Status",
@@ -7014,7 +7242,7 @@
         },
         {
           "default": "",
-          "document": "Billing mode. Valid values: `0` (pay-as-you-go), `1` (monthly subscription)",
+          "document": "Billing mode. 0: pay-as-you-go; 1: monthly subscription",
           "example": "1",
           "member": "int64",
           "name": "PayMode",
@@ -7024,7 +7252,7 @@
         },
         {
           "default": "",
-          "document": "Network type. Valid values: `0` (classic network), `1` (VPC)",
+          "document": "Network type. Valid values: 0 (classic network); 1 (VPC).",
           "example": "1",
           "member": "int64",
           "name": "NetType",
@@ -7036,11 +7264,11 @@
       "usage": "out"
     },
     "RedisNode": {
-      "document": "The operation information of Redis nodes",
+      "document": "Running information of Redis nodes",
       "members": [
         {
           "default": "",
-          "document": "The number of keys on a node",
+          "document": "Number of keys on the node",
           "example": "1",
           "member": "int64",
           "name": "Keys",
@@ -7096,7 +7324,7 @@
       "members": [
         {
           "default": "",
-          "document": "Node type. Valid values: `0` (master node), `1` (replica node)",
+          "document": "Node type. 0: master node; 1: replica node",
           "example": "1",
           "member": "int64",
           "name": "NodeType",
@@ -7106,7 +7334,7 @@
         },
         {
           "default": "",
-          "document": "ID of the master or replica node, which is not required upon creation of the instance",
+          "document": "ID of the master or replica node, which is not required during instance creation",
           "example": "1",
           "member": "int64",
           "name": "NodeId",
@@ -7116,7 +7344,7 @@
         },
         {
           "default": "",
-          "document": "ID of the availability zone of the master or replica node",
+          "document": "AZ ID of the master or replica node",
           "example": "100001",
           "member": "uint64",
           "name": "ZoneId",
@@ -7126,7 +7354,7 @@
         },
         {
           "default": "",
-          "document": "ID of the availability zone of the master or replica node",
+          "document": "AZ name of the master or replica node",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "ZoneName",
@@ -7285,6 +7513,7 @@
         {
           "default": "",
           "document": "Length of purchase in months",
+          "example": "12",
           "member": "uint64",
           "name": "Period",
           "required": true,
@@ -7293,6 +7522,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -7306,8 +7536,10 @@
       "members": [
         {
           "document": "Transaction ID",
+          "example": "6954225",
           "member": "string",
           "name": "DealId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7334,7 +7566,7 @@
         },
         {
           "default": "",
-          "document": "Node group name",
+          "document": "Node group name, which is empty for the master node",
           "member": "string",
           "name": "GroupName",
           "required": true,
@@ -7343,7 +7575,7 @@
         },
         {
           "default": "",
-          "document": "Node availability zone ID, such as ap-guangzhou-1",
+          "document": "Node AZ ID, such as ap-guangzhou-1",
           "member": "string",
           "name": "ZoneId",
           "required": true,
@@ -7352,7 +7584,7 @@
         },
         {
           "default": "",
-          "document": "Node group type. Valid values: `master` (master node group), `replica` (replica node group)",
+          "document": "Node group type. Valid values: master (master node group); replica (replica node group)",
           "member": "string",
           "name": "Role",
           "required": true,
@@ -7361,7 +7593,7 @@
         },
         {
           "default": "",
-          "document": "The list of nodes in a node group",
+          "document": "List of nodes in the node group",
           "member": "RedisNode",
           "name": "RedisNodes",
           "required": true,
@@ -7377,6 +7609,7 @@
         {
           "default": "",
           "document": "Redis instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -7385,6 +7618,7 @@
         {
           "default": "",
           "document": "Password reset (this parameter can be left blank when switching to password-free instance mode and is required in other cases)",
+          "example": "zy456987",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -7392,7 +7626,8 @@
         },
         {
           "default": "",
-          "document": "Whether to switch to password-free instance mode. false: switch to password-enabled instance mode; true: switch to password-free instance mode. Default value: false",
+          "document": "Whether to switch to password-free instance mode. false: switch to password-enabled instance mode; true: switch to password-free instance mode. Default value: false.",
+          "example": "true",
           "member": "bool",
           "name": "NoAuth",
           "required": false,
@@ -7406,8 +7641,10 @@
       "members": [
         {
           "document": "Task ID (this parameter is the task ID when changing a password. If you are switching between password-free and password-enabled instance mode, you can leave this parameter alone)",
+          "example": "16657",
           "member": "int64",
           "name": "TaskId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7421,7 +7658,7 @@
       "type": "object"
     },
     "ResourceTag": {
-      "document": "The tag bound with the instance purchased via APIs",
+      "document": "Tag bound to the instance purchased via API",
       "members": [
         {
           "default": "",
@@ -7449,7 +7686,8 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the instance to be operated on, which can be obtained through the `redisId` field in the return value of the DescribeRedis API.",
+          "document": "ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the `DescribeInstances` API.",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -7457,7 +7695,8 @@
         },
         {
           "default": "",
-          "document": "Backup ID, which can be obtained through the `backupId` field in the return value of the GetRedisBackupList API",
+          "document": "Backup ID, which can be obtained through the `backupId` field in the return value of the `GetRedisBackupList` API.",
+          "example": "678362566696298532848117",
           "member": "string",
           "name": "BackupId",
           "required": true,
@@ -7466,6 +7705,7 @@
         {
           "default": "",
           "document": "Instance password, which needs to be validated during instance restoration (this parameter is not required for password-free instances)",
+          "example": "mypassword",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -7478,9 +7718,11 @@
       "document": "RestoreInstance response structure.",
       "members": [
         {
-          "document": "Task ID, which can be used to query the task execution status through the DescribeTaskInfo API",
+          "document": "Task ID, which can be used to query the task execution status through the `DescribeTaskInfo` API.",
+          "example": "6954227",
           "member": "int64",
           "name": "TaskId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7632,7 +7874,7 @@
       "usage": "out"
     },
     "SecurityGroupsInboundAndOutbound": {
-      "document": "Inbound and outbound rules of the security group",
+      "document": "Security group inbound/outbound rules",
       "members": [
         {
           "default": "",
@@ -7645,7 +7887,7 @@
         },
         {
           "default": "",
-          "document": "IP address",
+          "document": "IP addresses",
           "member": "string",
           "name": "Ip",
           "required": true,
@@ -7736,6 +7978,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-7ponppu3",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -7749,8 +7992,10 @@
       "members": [
         {
           "document": "Task ID",
+          "example": "1203",
           "member": "int64",
           "name": "TaskId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7768,7 +8013,8 @@
       "members": [
         {
           "default": "",
-          "document": "Source instance ID.",
+          "document": "Source instance ID",
+          "example": "crs-5a4py64p",
           "member": "string",
           "name": "SrcInstanceId",
           "required": true,
@@ -7776,7 +8022,8 @@
         },
         {
           "default": "",
-          "document": "Target instance ID.",
+          "document": "Target instance ID",
+          "example": "crs-1kl0iy0v",
           "member": "string",
           "name": "DstInstanceId",
           "required": true,
@@ -7784,7 +8031,8 @@
         },
         {
           "default": "",
-          "document": "The time that lapses in seconds since DTS is disconnected between the source instance and the target instance. If the DTS disconnection time period is greater than `TimeDelay`, the VIP will not be switched. We recommend setting an acceptable value based on the actual business conditions.",
+          "document": "The time that lapses in seconds since DTS is disconnected between the source instance and the target instance. If the DTS disconnection time period is greater than TimeDelay, the VIP will not be switched. We recommend you set an acceptable value based on the actual business conditions.",
+          "example": "100",
           "member": "int64",
           "name": "TimeDelay",
           "required": false,
@@ -7792,7 +8040,8 @@
         },
         {
           "default": "",
-          "document": "Whether to force the switch when DTS is disconnected. Valid values: 1 (yes), 0 (no).",
+          "document": "Whether to force the switch when DTS is disconnected. 1: yes; 0: no.",
+          "example": "1",
           "member": "int64",
           "name": "ForceSwitch",
           "required": false,
@@ -7800,7 +8049,8 @@
         },
         {
           "default": "",
-          "document": "Valid values: now (switch now), syncComplete (switch after sync is completed).",
+          "document": "now: switch now; syncComplete: switch after sync is completed",
+          "example": "now",
           "member": "string",
           "name": "SwitchTime",
           "required": false,
@@ -7814,8 +8064,10 @@
       "members": [
         {
           "document": "Task ID",
+          "example": "18491",
           "member": "int64",
           "name": "TaskId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7827,93 +8079,6 @@
         }
       ],
       "type": "object"
-    },
-    "TaskInfoDetail": {
-      "document": "Task details",
-      "members": [
-        {
-          "default": "",
-          "document": "Task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "int64",
-          "name": "TaskId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Start time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "StartTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Task type\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "TaskType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "InstanceName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Project ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "int64",
-          "name": "ProjectId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Task progress\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "float",
-          "name": "Progress",
-          "required": true,
-          "type": "float",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "End time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "EndTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Task status\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "int64",
-          "name": "Result",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
     },
     "TendisNodes": {
       "document": "Tendis node information",
@@ -7991,11 +8156,11 @@
       "usage": "out"
     },
     "TradeDealDetail": {
-      "document": "Order deal information",
+      "document": "Order transaction information",
       "members": [
         {
           "default": "",
-          "document": "Order ID, which is used when a TencentCloud API is called",
+          "document": "Order ID, which is used when a TencentCloud API is called.",
           "member": "string",
           "name": "DealId",
           "required": true,
@@ -8004,7 +8169,7 @@
         },
         {
           "default": "",
-          "document": "Long order ID, which is used when an order issue is submitted for assistance",
+          "document": "Long order ID, which is used when an order issue is submitted for assistance.",
           "member": "string",
           "name": "DealName",
           "required": true,
@@ -8022,7 +8187,7 @@
         },
         {
           "default": "",
-          "document": "Number of instances associated with an order",
+          "document": "Number of instances associated with the order",
           "member": "int64",
           "name": "GoodsNum",
           "required": true,
@@ -8031,7 +8196,7 @@
         },
         {
           "default": "",
-          "document": "Creates a user uin",
+          "document": "Creator UIN",
           "member": "string",
           "name": "Creater",
           "required": true,
@@ -8085,7 +8250,7 @@
         },
         {
           "default": "",
-          "document": "Actual total price of an order in 0.01 CNY",
+          "document": "Actual total price of the order in 0.01 CNY",
           "member": "int64",
           "name": "Price",
           "required": true,
@@ -8127,7 +8292,7 @@
         },
         {
           "default": "",
-          "document": "Shard quantity. This parameter is not required by standard architecture instances and cannot be passed in at the same time as `RedisReplicasNum`/`MemSize`.",
+          "document": "Number of shards. This parameter is not required by standard architecture instances and cannot be passed in at the same time as `RedisReplicasNum`/`MemSize`.",
           "example": "3",
           "member": "uint64",
           "name": "RedisShardNum",
@@ -8136,7 +8301,7 @@
         },
         {
           "default": "",
-          "document": "Replica quantity. This parameter cannot be passed in at the same time as `RedisShardNum`/`MemSize`. To modify the number of replicas in a multi-AZ instance, `NodeSet` must be passed in.",
+          "document": "Number of replicas. This parameter cannot be passed in at the same time as `RedisShardNum`/`MemSize`. To modify the number of replicas in a multi-AZ instance, `NodeSet` must be passed in.",
           "example": "2",
           "member": "uint64",
           "name": "RedisReplicasNum",
@@ -8145,7 +8310,7 @@
         },
         {
           "default": "",
-          "document": "The information of the replica to be added to a multi-AZ instance, such as replica availability zone and replica type (`NodeType` should be `1`). This parameter is required only when multi-AZ instances add replicas.",
+          "document": "Additional information for adding replicas for multi-AZ instances. This parameter is not required for single-AZ instances but is required when adding replicas for multi-AZ instances. It contains the information of the replicas to be added, including replica AZ and type (`NodeType` is 1).",
           "example": "无",
           "member": "RedisNodeInfo",
           "name": "NodeSet",
@@ -8160,8 +8325,10 @@
       "members": [
         {
           "document": "Order ID",
+          "example": "200010798",
           "member": "string",
           "name": "DealId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8179,7 +8346,8 @@
       "members": [
         {
           "default": "",
-          "document": "The target instance type to which the instance will change. It is the same as the `TypeId` parameter in the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.",
+          "document": "Target instance type after the change, which is the same as the `Type` of the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.",
+          "example": "6",
           "member": "string",
           "name": "TargetInstanceType",
           "required": true,
@@ -8187,7 +8355,8 @@
         },
         {
           "default": "",
-          "document": "Switch mode. Valid values: 1 (switch during the maintenance window), 2 (switch immediately).",
+          "document": "Switch mode. Valid values: 1 (switch during the maintenance time), 2 (switch now).",
+          "example": "2",
           "member": "int64",
           "name": "SwitchOption",
           "required": true,
@@ -8196,6 +8365,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-5qlrlhux",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -8209,8 +8379,10 @@
       "members": [
         {
           "document": "Order ID",
+          "example": "6954227",
           "member": "string",
           "name": "DealId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8360,6 +8532,15 @@
           "name": "InstanceId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to upgrade the proxy and Redis kernel. After the upgrade, the \"Read Local Nodes Only\" feature can be supported.",
+          "example": "true",
+          "member": "bool",
+          "name": "UpgradeProxyAndRedisServer",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"

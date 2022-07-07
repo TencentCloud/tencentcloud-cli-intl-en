@@ -336,6 +336,15 @@
           "name": "ReplicationRegionName",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to sync TCR cloud tags to the COS Bucket",
+          "example": "false",
+          "member": "bool",
+          "name": "SyncTag",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"

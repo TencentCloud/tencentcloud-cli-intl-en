@@ -54,6 +54,12 @@
       "name": "Adds certificate",
       "output": "CreateLiveCertResponse"
     },
+    "CreateLivePullStreamTask": {
+      "document": "This API is used to create a task to pull streams from video files or an external live streaming source and publish them to a specified destination URL.\nNotes:\n1. By default, you can have at most 20 stream pulling tasks at a time. You can submit a ticket to raise the limit.\n2. Only H.264 and H.265 are supported for video. If the source video is in a different format, please transcode it first.\n3. Only AAC is supported for audio. If the source audio is in a different format, please transcode it first.\n4. You can enable auto deletion in the console to delete expired tasks automatically.\n5. The pull and relay feature is a paid feature. For its billing details, see [Relay](https://intl.cloud.tencent.com/document/product/267/53308?from_cn_redirect=1).\n6. CSS is only responsible for pulling and relaying content. Please make sure that your content is authorized and complies with relevant laws and regulations. In case of copyright infringement or violation of laws or regulations, CSS will suspend its service for you and reserves the right to seek legal remedies.",
+      "input": "CreateLivePullStreamTaskRequest",
+      "name": "Creates a stream pulling task",
+      "output": "CreateLivePullStreamTaskResponse"
+    },
     "CreateLiveRecord": {
       "document": "- Prerequisites\n  1. Recording files are stored on the VOD platform, so if you need to use the recording feature, you must first activate the VOD service.\n  2. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing mode. For more information, please see the [corresponding document](https://intl.cloud.tencent.com/document/product/266/2838?from_cn_redirect=1).\n\n- Mode description\n  This API supports two recording modes:\n  1. Scheduled recording mode **(default mode)**.\n    The start time and end time need to be passed in, according to which the recording task will start and end automatically. Before the set end time expires (provided that `StopLiveRecord` is not called to terminate the task prematurely), the recording task is valid and will be started even after the push is interrupted and restarted multiple times.\n  2. Real-time video recording mode.\n    The start time passed in will be ignored, and recording will be started immediately after the recording task is created. The recording duration can be up to 30 minutes. If the end time passed in is more than 30 minutes after the current time, it will be counted as 30 minutes. Real-time video recording is mainly used for recording highlight scenes, and you are recommended to keep the duration within 5 minutes.\n\n- Precautions\n  1. The API call timeout period should be set to more than 3 seconds; otherwise, retries and calls by different start/end time values may result in repeated recording tasks and thus incur additional recording fees.\n  2. Subject to the audio and video file formats (FLV/MP4/HLS), the video codec of H.264 and audio codec of AAC are supported.\n  3. In order to avoid malicious or unintended frequent API requests, the maximum number of tasks that can be created in scheduled recording mode is limited: up to 4,000 tasks can be created per day (excluding deleted ones), and up to 400 ones can run concurrently. If you need a higher upper limit, please submit a ticket for application.\n  4. This calling method does not support recording streams outside Mainland China for the time being.",
       "input": "CreateLiveRecordRequest",
@@ -131,6 +137,12 @@
       "input": "DeleteLiveDomainRequest",
       "name": "Deletes domain name",
       "output": "DeleteLiveDomainResponse"
+    },
+    "DeleteLivePullStreamTask": {
+      "document": "This API is used to delete a task created by `CreateLivePullStreamTask`.\nNotes:\n1. For the `TaskId` request parameter, pass in the task ID returned by the `CreateLivePullStreamTask` API.\n2. You can query the ID of a task using the `DescribeLivePullStreamTasks` API.",
+      "input": "DeleteLivePullStreamTaskRequest",
+      "name": "Deletes a stream pulling task",
+      "output": "DeleteLivePullStreamTaskResponse"
     },
     "DeleteLiveRecord": {
       "document": "Note: The `DeleteLiveRecord` API is only used to delete the record of recording tasks but not stop recording or deleting an ongoing recording task. If you need to stop a recording task, please use the [StopLiveRecord](https://intl.cloud.tencent.com/document/product/267/30146?from_cn_redirect=1) API.",
@@ -287,6 +299,12 @@
       "input": "DescribeLivePlayAuthKeyRequest",
       "name": "Queries the playback authentication key",
       "output": "DescribeLivePlayAuthKeyResponse"
+    },
+    "DescribeLivePullStreamTasks": {
+      "document": "This API is used to query the stream pulling tasks created by `CreateLivePullStreamTask`.\nThe tasks returned are sorted by last updated time in descending order.",
+      "input": "DescribeLivePullStreamTasksRequest",
+      "name": "Queries stream pulling tasks",
+      "output": "DescribeLivePullStreamTasksResponse"
     },
     "DescribeLivePushAuthKey": {
       "document": "This API is used to query the LVB push authentication key.",
@@ -521,6 +539,12 @@
       "input": "ModifyLivePlayDomainRequest",
       "name": "Modifies playback domain name",
       "output": "ModifyLivePlayDomainResponse"
+    },
+    "ModifyLivePullStreamTask": {
+      "document": "This API is used to modify a stream pulling task. \n1. You cannot modify the destination URL. To publish to a new destination, please create a new task.\n2. You cannot modify the source type. To use a different source type, please create a new task.",
+      "input": "ModifyLivePullStreamTaskRequest",
+      "name": "Modifies a stream pulling task",
+      "output": "ModifyLivePullStreamTaskResponse"
     },
     "ModifyLivePushAuthKey": {
       "document": "This API is used to modify the LVB push authentication key.",
@@ -1811,6 +1835,195 @@
       ],
       "type": "object"
     },
+    "CreateLivePullStreamTaskRequest": {
+      "document": "CreateLivePullStreamTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The source type. Valid values:\nPullLivePushLive: Live streaming\nPullVodPushLive: Video files",
+          "example": "PullLivePushLive",
+          "member": "string",
+          "name": "SourceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The source URL(s).\nIf `SourceType` is `PullLivePushLive`, you can specify only one source URL.\nIf `SourceType` is `PullVodPushLive`, you can specify at most 30 source URLs.\nSupported file formats: FLV, MP4, HLS.\nSupported protocols: HTTP, HTTPS, RTMP, RTMPS, RTSP, SRT.\nNotes:\n1. We recommend you use FLV files as the source. Poorly interleaved MP4 files may result in playback stuttering. You can also re-interleave your MP4 files before adding them as the source.\n2. Do not use private network domains or malicious URLs. CSS will block accounts that do.\n3. To avoid push and playback issues, make sure the source files are properly interleaved.\n4. Supported video coding formats: H.264, H.265.\n5. Supported audio coding format: AAC.\n6. Use small video files, preferably not longer than one hour. Large files may take a long time to load or resume after pause. Relay may fail if the time consumed exceeds 15 seconds.",
+          "example": "http://5000.liveplay.myqcloud.com/live/testsrc.flv?txSecret=4d8e",
+          "member": "string",
+          "name": "SourceUrls",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The push domain name.\nThe pulled stream is pushed to this domain.\nUse a push domain you have added in the CSS console.",
+          "example": "5000.livepush.myqcloud.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The application to push to.\nThe pulled stream is pushed to this application.",
+          "example": "live",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The stream name.\nThe pulled stream is pushed under this name.",
+          "example": "teststream",
+          "member": "string",
+          "name": "StreamName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The start time.\nIt must be in UTC format.\nExample: 2019-01-08T10:00:00Z.\nNote: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.",
+          "example": "2021-02-07T08:00:00Z",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end time. Notes:\n1. The end time must be later than the start time.\n2. The end time and start time must be later than the current time.\n3. The end time and start time must be less than seven days apart.\nIt must be in UTC format.\nExample: 2019-01-08T10:00:00Z.\nNote: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.",
+          "example": "2021-02-09T08:00:00Z",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The operator.",
+          "example": "admin",
+          "member": "string",
+          "name": "Operator",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The push parameter.\nThis is a custom parameter carried during push.\nExample:\nbak=1&test=2",
+          "example": "无",
+          "member": "string",
+          "name": "PushArgs",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The events to listen for. If you do not pass this parameter, all events will be listened for.\nTaskStart: Callback for starting a task\nTaskExit: Callback for ending a task\nVodSourceFileStart: Callback for starting to pull from video files\nVodSourceFileFinish: Callback for stopping pulling from video files\nResetTaskConfig: Callback for modifying a task\n\n`TaskAlarm` indicates a warning event. `AlarmType` examples:\nPullFileUnstable: Pull from video files is unstable.\nPushStreamUnstable: Push is unstable.\nPullFileFailed: Error pulling from video files.\nPushStreamFailed: Push error.\nFileEndEarly: The video file ended prematurely.",
+          "example": "无",
+          "member": "string",
+          "name": "CallbackEvents",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The number of times to loop video files. Default value: -1.\n-1: Loop indefinitely\n0: Do not loop\n> 0: The number of loop times. A task will end either when the videos are looped for the specified number of times or at the specified task end time, whichever is earlier.\nThis parameter is valid only when the source is video files.",
+          "example": "-1",
+          "member": "string",
+          "name": "VodLoopTimes",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The behavior after the source video files (`SourceUrls`) are changed.\nImmediateNewSource: Play the new videos immediately\nContinueBreakPoint: Play the new videos after the current video is finished playing (the remaining videos in the old playlist will not be played).\n\nThis parameter is valid only if the source before the change is video files.",
+          "example": "ContinueBreakPoint",
+          "member": "string",
+          "name": "VodRefreshType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "A custom callback URL.\nCallbacks about pull and relay events will be sent to this URL.",
+          "example": "无",
+          "member": "string",
+          "name": "CallbackUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Other parameters.\nFor example, you can use `ignore_region` to ignore the region passed in and assign a region based on load distribution.",
+          "example": "无",
+          "member": "string",
+          "name": "ExtraCmd",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The remarks for a task, not longer than 512 bytes.",
+          "example": "任务描述",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The complete destination URL.\nIf you specify this parameter, make sure you pass in an empty string for `DomainName`, `AppName`, and `StreamName`.\n\nNote: Make sure that the expiration time of the signature is later than the task end time.",
+          "example": "无",
+          "member": "string",
+          "name": "ToUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The backup source type.\nPullLivePushLive: Live streaming\nPullVodPushLive: Video files\nNotes:\n1. Backup sources are supported only if the primary source type is live streaming.\n2. When pull from the primary source is interrupted, the system will pull from the backup source.\n3. If the backup source is a video file, each time the video is finished, the system will check if the primary source is recovered and will switch back if it is.",
+          "example": "PullLivePushLive",
+          "member": "string",
+          "name": "BackupSourceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The URL of the backup source.\nYou can specify only one backup source URL.",
+          "example": "http://5000.liveplay.myqcloud.com/live/backup.flv?txSecret=4d8e",
+          "member": "string",
+          "name": "BackupSourceUrl",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLivePullStreamTaskResponse": {
+      "document": "CreateLivePullStreamTask response structure.",
+      "members": [
+        {
+          "document": "The task ID.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateLiveRecordRequest": {
       "document": "CreateLiveRecord request structure.",
       "members": [
@@ -2924,6 +3137,42 @@
       ],
       "type": "object"
     },
+    "DeleteLivePullStreamTaskRequest": {
+      "document": "DeleteLivePullStreamTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task ID.",
+          "example": "123",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The operator.",
+          "example": "you_name",
+          "member": "string",
+          "name": "Operator",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLivePullStreamTaskResponse": {
+      "document": "DeleteLivePullStreamTask response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteLiveRecordRequest": {
       "document": "DeleteLiveRecord request structure.",
       "members": [
@@ -3966,6 +4215,105 @@
           "member": "PlayAuthKeyInfo",
           "name": "PlayAuthKeyInfo",
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLivePullStreamTasksRequest": {
+      "document": "DescribeLivePullStreamTasks request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task ID. \nA task ID is returned by the `CreateLivePullStreamTask` API.\nIf you do not pass this parameter, all tasks will be returned, sorted by last updated time in descending order.",
+          "example": "123",
+          "member": "string",
+          "name": "TaskId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of page to start from. Default value: 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of records per page. Default value: 10.\nValid values: Any integer between 1 and 20.",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLivePullStreamTasksResponse": {
+      "document": "DescribeLivePullStreamTasks response structure.",
+      "members": [
+        {
+          "document": "The information of stream pulling tasks.",
+          "example": "无",
+          "member": "PullStreamTaskInfo",
+          "name": "TaskInfos",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The page number.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of records per page.",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of records.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of pages.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalPage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The maximum number of tasks allowed.",
+          "example": "20",
+          "member": "uint64",
+          "name": "LimitTaskNum",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -6855,6 +7203,159 @@
       ],
       "type": "object"
     },
+    "ModifyLivePullStreamTaskRequest": {
+      "document": "ModifyLivePullStreamTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task ID.",
+          "example": "123",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The operator.",
+          "example": "yourname",
+          "member": "string",
+          "name": "Operator",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The source URL(s).\nIf `SourceType` is `PullLivePushLive`, you can specify only one source URL.\nIf `SourceType` is `PullVodPushLive`, you can specify at most 30 source URLs.",
+          "example": "[\"rtmp:\\/\\/your.domainname.com\\/live\\/stream1\\n\"]",
+          "member": "string",
+          "name": "SourceUrls",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The start time.\nIt must be in UTC format.\nExample: 2019-01-08T10:00:00Z.\nNote: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.",
+          "example": "2020-04-16T11:02:00Z",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end time. Notes:\n1. The end time must be later than the start time.\n2. The end time and start time must be later than the current time.\n3. The end time and start time must be less than seven days apart.\nIt must be in UTC format.\nExample: 2019-01-08T10:00:00Z.\nNote: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.",
+          "example": "2020-04-17T12:02:00Z",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of times to loop video files.\n-1: Loop indefinitely\n0: Do not loop\n> 0: The number of loop times. A task will end either when the videos are looped for the specified number of times or at the specified task end time, whichever is earlier.\nThis parameter is valid only if the source is video files.",
+          "example": "-1",
+          "member": "int64",
+          "name": "VodLoopTimes",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The behavior after the source video files (`SourceUrls`) are changed.\nImmediateNewSource: Play the new videos immediately\nContinueBreakPoint: Finish the current video first and then pull from the new source.\nThis parameter is valid only if the source is video files.",
+          "example": "ImmediateNewSource",
+          "member": "string",
+          "name": "VodRefreshType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable or pause the task. Valid values:\nenable\npause",
+          "example": "enable",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The events to listen for. If you do not pass this parameter, all events will be listened for.\nTaskStart: Callback for starting a task\nTaskExit: Callback for ending a task\nVodSourceFileStart: Callback for starting to pull from video files\nVodSourceFileFinish: Callback for stopping pulling from video files\nResetTaskConfig: Callback for modifying a task",
+          "example": "无",
+          "member": "string",
+          "name": "CallbackEvents",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "A custom callback URL.\nCallbacks will be sent to this URL.",
+          "example": "http://callback.com/interface",
+          "member": "string",
+          "name": "CallbackUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The index of the video to start from.\nThe value of this parameter cannot be smaller than 1 or larger than the number of elements in `SourceUrls`.",
+          "example": "0",
+          "member": "int64",
+          "name": "FileIndex",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The playback offset (seconds).\nNotes:\n1. This parameter should be used together with `FileIndex`.",
+          "example": "0",
+          "member": "int64",
+          "name": "OffsetTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The remarks for the task.",
+          "example": "备注",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The backup source type.\nPullLivePushLive: Live streaming\nPullVodPushLive: Video files\nNotes:\n1. Backup sources are supported only if the primary source type is live streaming.\n2. When pull from the primary source is interrupted, the system will pull from the backup source.\n3. If the backup source is a video file, each time the video is finished, the system will check if the primary source is recovered and will switch back if it is.",
+          "example": "PullLivePushLive",
+          "member": "string",
+          "name": "BackupSourceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The URL of the backup source.\nYou can specify only one backup source URL.",
+          "example": "http://5000.liveplay.myqcloud.com/live/backup.flv?txSecret=4d8e",
+          "member": "string",
+          "name": "BackupSourceUrl",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLivePullStreamTaskResponse": {
+      "document": "ModifyLivePullStreamTask response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyLivePushAuthKeyRequest": {
       "document": "ModifyLivePushAuthKey request structure.",
       "members": [
@@ -7600,6 +8101,242 @@
       ],
       "usage": "out"
     },
+    "PullStreamTaskInfo": {
+      "document": "The information of a stream pulling task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task ID.",
+          "example": "12345",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The source type. Valid values:\nPullLivePushLive: Live streaming\nPullVodPushLive: Video files",
+          "example": "PullLivePushLive",
+          "member": "string",
+          "name": "SourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The source URL(s).\nIf `SourceType` is `PullLiveToLive`, there can be only one source URL.\nIf `SourceType` is `PullVodToLive`, there can be at most 10 source URLs.",
+          "example": "http://test.domain/live/test.flv?txSecret=xx&txTime=xxx",
+          "member": "string",
+          "name": "SourceUrls",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The push domain name.\nThe pulled stream is pushed to this domain.",
+          "example": "5000.livepush.qcloud.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The application to push to.\nThe pulled stream is pushed to this application.",
+          "example": "live",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The stream name.\nThe pulled stream is pushed under this name.",
+          "example": "teststream",
+          "member": "string",
+          "name": "StreamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The push parameter.\nA custom push parameter.",
+          "example": "secret=abc&time=F7F78AE7",
+          "member": "string",
+          "name": "PushArgs",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The start time.\nIt must be in UTC format.\nExample: 2019-01-08T10:00:00Z.\nNote: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.",
+          "example": "2021-02-24T00:00:00Z",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The end time. Notes:\n1. The end time must be later than the start time.\n2. The end time and start time must be later than the current time.\n3. The end time and start time must be less than seven days apart.\nIt must be in UTC format.\nExample: 2019-01-08T10:00:00Z.\nNote: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.",
+          "example": "2021-02-28T00:00:00Z",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The region of the source (please choose the nearest region).\nap-beijing: North China (Beijing)\nap-shanghai: East China (Shanghai)\nap-guangzhou: South China (Guangzhou)\nap-mumbai: India",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of times to loop video files.\n-1: Loop indefinitely\n0: Do not loop\n> 0: The number of loop times. A task will end either when the videos are looped for the specified number of times or at the specified task end time, whichever is earlier.\nThis parameter is valid only if the source is video files.",
+          "example": "-1",
+          "member": "int64",
+          "name": "VodLoopTimes",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The behavior after the source video files (`SourceUrls`) are changed.\nImmediateNewSource: Play the new videos immediately\nContinueBreakPoint: Finish the current video first and then pull from the new source.\n\nThis parameter is valid only if the source is video files.",
+          "example": "ImmediateNewSource",
+          "member": "string",
+          "name": "VodRefreshType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The task creation time.\nIt must be in UTC format.\nExample: 2019-01-08T10:00:00Z.\nNote: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.",
+          "example": "2021-02-23T00:00:00Z",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The last updated time.\nIt must be in UTC format.\nExample: 2019-01-08T10:00:00Z.\nNote: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.",
+          "example": "2021-02-24T10:00:00Z",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The task creator.",
+          "example": "admin",
+          "member": "string",
+          "name": "CreateBy",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The operator of the last update.",
+          "example": "admin",
+          "member": "string",
+          "name": "UpdateBy",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The callback URL.",
+          "example": "http://you.callback.url",
+          "member": "string",
+          "name": "CallbackUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The events to listen for.\nTaskStart: Callback for starting a task\nTaskExit: Callback for ending a task\nVodSourceFileStart: Callback for starting to pull from video files\nVodSourceFileFinish: Callback for stopping pulling from video files\nResetTaskConfig: Callback for modifying a task",
+          "example": "无",
+          "member": "string",
+          "name": "CallbackEvents",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Note: This parameter is not returned currently.\nThe information of the last callback.",
+          "example": "无",
+          "member": "string",
+          "name": "CallbackInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Note: This parameter is not returned currently.\nError message.",
+          "example": "无",
+          "member": "string",
+          "name": "ErrorInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The task status.\nenable: Enabled\npause: Paused",
+          "example": "enable",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Note: This parameter is returned only if one task is queried.\nThe latest pull information.\nThe information includes the source URL, offset, and report time.",
+          "example": "无",
+          "member": "RecentPullInfo",
+          "name": "RecentPullInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The remarks for the task.",
+          "example": "直播活动任务",
+          "member": "string",
+          "name": "Comment",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "PushAuthKeyInfo": {
       "document": "Push authentication key information.",
       "members": [
@@ -7820,6 +8557,48 @@
           "example": "30",
           "member": "uint64",
           "name": "MetaFps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RecentPullInfo": {
+      "document": "The latest pull information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The URL of the file currently pulled.",
+          "member": "string",
+          "name": "FileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The offset of the file currently pulled.",
+          "member": "uint64",
+          "name": "OffsetTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The time when the offset is reported, in UTC format.\nExample: 2020-07-23T03:20:39Z\nNote: Beijing time is 8 hours ahead of UTC.",
+          "member": "string",
+          "name": "ReportTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of times looped.",
+          "member": "int64",
+          "name": "LoopedTimes",
           "required": true,
           "type": "int",
           "value_allowed_null": false
