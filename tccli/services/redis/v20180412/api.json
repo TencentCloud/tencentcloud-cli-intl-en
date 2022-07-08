@@ -264,6 +264,12 @@
       "name": "Queries Redis task result",
       "output": "DescribeTaskInfoResponse"
     },
+    "DescribeTaskList": {
+      "document": "This API is used to query the list of tasks.",
+      "input": "DescribeTaskListRequest",
+      "name": "Queries the list of tasks",
+      "output": "DescribeTaskListResponse"
+    },
     "DescribeTendisSlowLog": {
       "document": "This API is used to query slow queries of a Tendis instance.",
       "input": "DescribeTendisSlowLogRequest",
@@ -311,6 +317,12 @@
       "input": "InquiryPriceUpgradeInstanceRequest",
       "name": "Queries the price for scaling an instance",
       "output": "InquiryPriceUpgradeInstanceResponse"
+    },
+    "KillMasterGroup": {
+      "document": "This API is used to perform a failure simulation.",
+      "input": "KillMasterGroupRequest",
+      "name": "Performs failure simulation",
+      "output": "KillMasterGroupResponse"
     },
     "ManualBackupInstance": {
       "document": "This API is used to manually back up a Redis instance.",
@@ -3762,6 +3774,150 @@
       ],
       "type": "object"
     },
+    "DescribeTaskListRequest": {
+      "document": "DescribeTaskList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "crs-opcazbrb",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "example": "crs-rhlppeye",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of results returned per page. Default value: 20. Maximum value: 100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset, which is an integral multiple of `Limit` (rounded down automatically).",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "11322",
+          "member": "int64",
+          "name": "ProjectIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Task type",
+          "example": "无",
+          "member": "string",
+          "name": "TaskTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "2021-12-30 00:00:00",
+          "member": "string",
+          "name": "BeginTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "2021-12-30 20:59:35",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task status",
+          "example": "[0.1.2]",
+          "member": "int64",
+          "name": "TaskStatus",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Task status",
+          "example": "[0,1,2]",
+          "member": "int64",
+          "name": "Result",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Operator UIN",
+          "example": "[10002274123]",
+          "member": "int64",
+          "name": "OperatorUin",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "[\"10002274123\"]",
+          "member": "string",
+          "name": "OperateUin",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskListResponse": {
+      "document": "DescribeTaskList response structure.",
+      "members": [
+        {
+          "document": "Total number of tasks",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Task details",
+          "example": "无",
+          "member": "TaskInfoDetail",
+          "name": "Tasks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTendisSlowLogRequest": {
       "document": "DescribeTendisSlowLog request structure.",
       "members": [
@@ -5930,6 +6086,60 @@
       ],
       "usage": "out"
     },
+    "KillMasterGroupRequest": {
+      "document": "KillMasterGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "crs-dfndi7de",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "1. The password must contain 8–30 characters. A password of 12 or more characters is recommended.\n2. It cannot start with a slash (/).\n3. It must contain characters in at least two of the following types:\n    a. Lowercase letters (a–z)\n    b. Uppercase letters (A–Z)\n    c. Digits (0–9)\n    d. ()`~!@#$%^&*-+=_|{}[]:;<>,.?/",
+          "example": "12345Aa",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Node information of a single-AZ deployed instance",
+          "example": "null",
+          "member": "int64",
+          "name": "ShardIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "KillMasterGroupResponse": {
+      "document": "KillMasterGroup response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "156156",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ManualBackupInstanceRequest": {
       "document": "ManualBackupInstance request structure.",
       "members": [
@@ -8079,6 +8289,93 @@
         }
       ],
       "type": "object"
+    },
+    "TaskInfoDetail": {
+      "document": "Task details",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Start time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "TaskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Project ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task progress\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "float",
+          "name": "Progress",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "End time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Result",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "TendisNodes": {
       "document": "Tendis node information",

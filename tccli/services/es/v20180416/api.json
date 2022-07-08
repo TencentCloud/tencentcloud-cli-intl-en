@@ -2066,6 +2066,16 @@
         },
         {
           "default": "",
+          "document": "This parameter is not used on the global website",
+          "example": "NOTIFY_AND_AUTO_RENEW",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)",
           "example": "PREPAID",
           "member": "string",
@@ -2082,16 +2092,6 @@
           "name": "ChargePeriod",
           "required": true,
           "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "This parameter is not used on the global website",
-          "example": "NOTIFY_AND_AUTO_RENEW",
-          "member": "string",
-          "name": "RenewFlag",
-          "required": true,
-          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -2712,6 +2712,16 @@
           "name": "EsPrivateDomain",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Configuration set info of the cluster.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "EsConfigSetInfo",
+          "name": "EsConfigSets",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],

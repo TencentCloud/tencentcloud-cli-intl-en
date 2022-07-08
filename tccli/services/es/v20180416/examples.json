@@ -27,7 +27,7 @@
     "DeleteInstance": [
       {
         "document": "This example shows you how to delete a cluster instance with the specified ID.",
-        "input": "https://es.tencentcloudapi.com/?Action=DeleteInstance\r\n&InstanceId=es-xxxxxxxx\r\n&<Common request parameters>",
+        "input": "https://es.tencentcloudapi.com/?Action=DeleteInstance\n&InstanceId=es-xxxxxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6eb5c3b2-0bba-4f73-bafb-bd21esxxxxxx\"\n    }\n}",
         "title": "Deleting an ES cluster instance"
       }

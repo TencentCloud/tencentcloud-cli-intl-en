@@ -1,10 +1,28 @@
 {
   "actions": {
+    "CheckRule": {
+      "document": "This API is used to check a rule.",
+      "input": "CheckRuleRequest",
+      "name": "Checks rule",
+      "output": "CheckRuleResponse"
+    },
     "CheckTransformation": {
       "document": "This API is used to test rules and data on the ETL configuration page.",
       "input": "CheckTransformationRequest",
       "name": "Checks transformer",
       "output": "CheckTransformationResponse"
+    },
+    "CreateConnection": {
+      "document": "This API is used to create an event connector.",
+      "input": "CreateConnectionRequest",
+      "name": "Creates event connector",
+      "output": "CreateConnectionResponse"
+    },
+    "CreateEventBus": {
+      "document": "This API is used to create an event bus.",
+      "input": "CreateEventBusRequest",
+      "name": "Creates event bus",
+      "output": "CreateEventBusResponse"
     },
     "CreateRule": {
       "document": "This API is used to create an event rule.",
@@ -54,6 +72,12 @@
       "name": "Deletes transformer",
       "output": "DeleteTransformationResponse"
     },
+    "GetEventBus": {
+      "document": "This API is used to get the details of an event bus.",
+      "input": "GetEventBusRequest",
+      "name": "Gets event bus details",
+      "output": "GetEventBusResponse"
+    },
     "GetRule": {
       "document": "This API is used to get the details of an event rule.",
       "input": "GetRuleRequest",
@@ -95,6 +119,12 @@
       "input": "UpdateConnectionRequest",
       "name": "Updates event connector",
       "output": "UpdateConnectionResponse"
+    },
+    "UpdateEventBus": {
+      "document": "This API is used to update an event bus.",
+      "input": "UpdateEventBusRequest",
+      "name": "Updates event bus",
+      "output": "UpdateEventBusResponse"
     },
     "UpdateRule": {
       "document": "This API is used to update an event rule.",
@@ -146,6 +176,23 @@
         }
       ],
       "usage": "both"
+    },
+    "CheckRuleRequest": {
+      "document": "CheckRule request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "CheckRuleResponse": {
+      "document": "CheckRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CheckTransformationRequest": {
       "document": "CheckTransformation request structure.",
@@ -411,6 +458,132 @@
         }
       ],
       "usage": "both"
+    },
+    "CreateConnectionRequest": {
+      "document": "CreateConnection request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Connector description",
+          "example": "无",
+          "member": "ConnectionDescription",
+          "name": "ConnectionDescription",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Connector name",
+          "example": "connection",
+          "member": "string",
+          "name": "ConnectionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Switch",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "apigw",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateConnectionResponse": {
+      "document": "CreateConnection response structure.",
+      "members": [
+        {
+          "document": "Connector ID",
+          "example": "connection-xxxxxxxx",
+          "member": "string",
+          "name": "ConnectionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEventBusRequest": {
+      "document": "CreateEventBus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter",
+          "example": "EventBusName",
+          "member": "string",
+          "name": "EventBusName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event bus description, which can contain up to 200 characters of any type",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEventBusResponse": {
+      "document": "CreateEventBus response structure.",
+      "members": [
+        {
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CreateRuleRequest": {
       "document": "CreateRule request structure.",
@@ -959,6 +1132,105 @@
         }
       ],
       "usage": "in"
+    },
+    "GetEventBusRequest": {
+      "document": "GetEventBus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetEventBusResponse": {
+      "document": "GetEventBus response structure.",
+      "members": [
+        {
+          "document": "Update time",
+          "example": "2021-04-27T14:34:19+08:00",
+          "member": "datetime_iso",
+          "name": "ModTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event bus description",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Log topic ID",
+          "example": "78a5887e-357d-4bac-baca-1de008fa6ff0",
+          "member": "string",
+          "name": "ClsTopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creation time",
+          "example": "2021-04-27T14:34:19+08:00",
+          "member": "datetime_iso",
+          "name": "AddTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Logset ID",
+          "example": "78a5887e-357d-4bac-baca-1de008fa6ff0",
+          "member": "string",
+          "name": "ClsLogsetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event bus name",
+          "example": "eb",
+          "member": "string",
+          "name": "EventBusName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "(Disused) Event bus type",
+          "example": "Cloud",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "GetRuleRequest": {
       "document": "GetRule request structure.",
@@ -1947,6 +2219,51 @@
     },
     "UpdateConnectionResponse": {
       "document": "UpdateConnection response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateEventBusRequest": {
+      "document": "UpdateEventBus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Event bus ID",
+          "example": "eb-xxxxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event bus description, which can contain up to 200 characters of any type",
+          "example": "这是一个描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter",
+          "example": "EventBusName",
+          "member": "string",
+          "name": "EventBusName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateEventBusResponse": {
+      "document": "UpdateEventBus response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
