@@ -91,9 +91,9 @@
     "AssociateAddress": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=AssociateAddress\n&AddressId=eip-ek0cdz1g\n&InstanceId=ins-1bmpb9tu\n&<Common request parameters>",
+        "input": "https://vpc.tencentcloudapi.com/?Action=AssociateAddress\r\n&AddressId=eip-ek0cdz1g\r\n&InstanceId=ins-1bmpb9tu\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"50121411\",\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Binding an EIP with an instance"
+        "title": "Binding an EIP to an instance"
       }
     ],
     "AssociateDirectConnectGatewayNatGateway": [
@@ -245,16 +245,16 @@
     "CreateCcn": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateCcn\r\n&<Common request parameters>\r\n&CcnName=test+name\r\n&CcnDescription=test+description\r\n&QosLevel=PT\r\n&Tags.0.Key=city\r\n&Tags.0.Value=shanghai",
-        "output": "{\n    \"Response\": {\n        \"Ccn\": {\n            \"CcnId\": \"ccn-gjug0kul\",\n            \"CcnName\": \"test name\",\n            \"CcnDescription\": \"test description\",\n            \"InstanceCount\": 0,\n            \"QosLevel\": \"PT\",\n            \"InstanceChargeType\": \"POSTPAID\",\n            \"BandwidthLimitType\": \"OUTER_REGION_LIMIT\",\n            \"TagSet\": [\n                {\n                    \"Key\": \"city\",\n                    \"Value\": \"shanghai\"\n                }\n            ]\n        },\n        \"RequestId\": \"b8351d12-3c82-4d4b-9d88-972e02ca4620\"\n    }\n}",
-        "title": "Creating a CCN"
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCcn\n<Common request parameters>\n\n{\n    \"CcnDescription\": \"test+description\",\n    \"Tags\": [\n        {\n            \"Value\": \"shanghai\",\n            \"Key\": \"city\"\n        }\n    ],\n    \"CcnName\": \"test+name\",\n    \"QosLevel\": \"PT\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Ccn\": {\n            \"CcnId\": \"ccn-gjug0kul\",\n            \"CcnName\": \"test name\",\n            \"RoutePriorityFlag\": false,\n            \"CcnDescription\": \"test description\",\n            \"InstanceCount\": 0,\n            \"QosLevel\": \"PT\",\n            \"State\": 1,\n            \"InstanceChargeType\": \"POSTPAID\",\n            \"BandwidthLimitType\": \"OUTER_REGION_LIMIT\",\n            \"CreateTime\": \"2020-09-22 00:00:00\",\n            \"RouteTableFlag\": null,\n            \"RouteTableCount\": null,\n            \"TagSet\": [\n                {\n                    \"Key\": \"city\",\n                    \"Value\": \"shanghai\"\n                }\n            ]\n        },\n        \"RequestId\": \"b8351d12-3c82-4d4b-9d88-972e02ca4620\"\n    }\n}",
+        "title": "Creating a CCN instance"
       }
     ],
     "CreateCustomerGateway": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateCustomerGateway\r\n&Version=2017-03-12\r\n&CustomerGatewayName=test-cgw\r\n&IpAddress=58.211.1.12\r\n&Tags.0.Key=city\r\n&Tags.0.Value=shanghai\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"CustomerGateway\": {\n            \"CustomerGatewayId\": \"cgw-mgp33pll\",\n            \"IpAddress\": \"58.211.1.12\",\n            \"CustomerGatewayName\": \"test-cgw\"\n        },\n        \"RequestId\": \"5bd98433-263a-47b6-9a1c-84aa613a8ff6\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCustomerGateway\n<Common request parameters>\n\n{\n    \"IpAddress\": \"58.211.1.12\",\n    \"CustomerGatewayName\": \"test-cgw\",\n    \"Tags\": [\n        {\n            \"Value\": \"shanghai\",\n            \"Key\": \"city\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"CustomerGateway\": {\n            \"CustomerGatewayId\": \"cgw-mgp33pll\",\n            \"IpAddress\": \"58.211.1.12\",\n            \"CustomerGatewayName\": \"test-cgw\",\n            \"CreatedTime\": \"2018-04-18 10:00:00\"\n        },\n        \"RequestId\": \"5bd98433-263a-47b6-9a1c-84aa613a8ff6\"\n    }\n}",
         "title": "Creating a customer gateway"
       }
     ],
@@ -303,8 +303,8 @@
     "CreateFlowLog": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateFlowLog\n&CloudLogId=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n&FlowLogDescription=test-flowlog\n&FlowLogName=test\n&ResourceId=eni-xxxxxxxx\n&ResourceType=NETWORKINTERFACE\n&TrafficType=ACCEPT\n&VpcId=vpc-xxxxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"FlowLog\": [\n            {\n                \"VpcId\": \"vpc-pq9vxykj\",\n                \"FlowLogId\": \"fl-f42uhpkj\",\n                \"FlowLogName\": \"test\",\n                \"ResourceType\": \"NETWORKINTERFACE\",\n                \"ResourceId\": \"eni-78ysaex1\",\n                \"TrafficType\": \"ACCEPT\",\n                \"CloudLogId\": \"dfb8f1a2-8522-47c1-8571-67905167ab3f\",\n                \"CloudLogState\": \"\",\n                \"FlowLogDescription\": \"\",\n                \"Enable\": true,\n                \"StorageType\": \"cls\",\n                \"TagSet\": [\n                    {\n                        \"Key\": \"city\",\n                        \"Value\": \"shanghai\"\n                    }\n                ],\n                \"FlowLogStorage\": {\n                    \"StorageTopic\": \"\",\n                    \"StorageId\": \"\"\n                },\n                \"CreatedTime\": \"0000-00-00 00:00:00\"\n            }\n        ],\n        \"RequestId\": \"404428db-f850-40c2-803\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateFlowLog\n<Common request parameters>\n\n{\n    \"FlowLogName\": \"test\",\n    \"CloudLogId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    \"VpcId\": \"vpc-xxxxxx\",\n    \"FlowLogDescription\": \"test-flowlog\",\n    \"ResourceType\": \"NETWORKINTERFACE\",\n    \"ResourceId\": \"eni-xxxxxxxx\",\n    \"TrafficType\": \"ACCEPT\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowLog\": [\n            {\n                \"VpcId\": \"vpc-pq9vxykj\",\n                \"FlowLogId\": \"fl-f42uhpkj\",\n                \"FlowLogName\": \"test\",\n                \"ResourceType\": \"NETWORKINTERFACE\",\n                \"ResourceId\": \"eni-78ysaex1\",\n                \"TrafficType\": \"ACCEPT\",\n                \"CloudLogId\": \"dfb8f1a2-8522-47c1-8571-67905167ab3f\",\n                \"CloudLogState\": \"\",\n                \"CloudLogRegion\": \"\",\n                \"FlowLogDescription\": \"\",\n                \"Enable\": true,\n                \"StorageType\": \"cls\",\n                \"TagSet\": [\n                    {\n                        \"Key\": \"city\",\n                        \"Value\": \"shanghai\"\n                    }\n                ],\n                \"FlowLogStorage\": {\n                    \"StorageTopic\": \"\",\n                    \"StorageId\": \"\"\n                },\n                \"CreatedTime\": \"0000-00-00 00:00:00\"\n            }\n        ],\n        \"RequestId\": \"404428db-f850-40c2-803\"\n    }\n}",
         "title": "Creating a flow log"
       }
     ],
@@ -327,9 +327,9 @@
     "CreateNatGateway": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateNatGateway\n&NatGatewayName=test_name\n&VpcId=vpc-abcdefgh\n&InternetMaxBandwidthOut=10\n&MaxConcurrentConnection=1000000\n&AddressCount=1\n&PublicIpAddresses.0=139.199.232.119\n&Tags.0.Key=city\n&Tags.0.Value=shanghai\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateNatGateway\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-abcdefgh\",\n    \"PublicIpAddresses\": [\n        \"139.199.232.119\"\n    ],\n    \"MaxConcurrentConnection\": \"1000000\",\n    \"Tags\": [\n        {\n            \"Value\": \"shanghai\",\n            \"Key\": \"city\"\n        }\n    ],\n    \"InternetMaxBandwidthOut\": \"10\",\n    \"NatGatewayName\": \"test_name\",\n    \"AddressCount\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"NatGatewaySet\": [\n            {\n                \"NatGatewayId\": \"nat-cqbn23ju\",\n                \"NatGatewayName\": \"11111\",\n                \"VpcId\": \"vpc-qi4ja3sx\",\n                \"CreatedTime\": \"2019-07-16 09:40:00\",\n                \"State\": \"AVAILABLE\",\n                \"NetworkState\": \"AVAILABLE\",\n                \"InternetMaxBandwidthOut\": 10,\n                \"MaxConcurrentConnection\": 1000000,\n                \"SecurityGroupSet\": [],\n                \"PublicIpAddressSet\": [\n                    {\n                        \"AddressId\": \"eip-9uw5fwsu\",\n                        \"PublicIpAddress\": \"139.199.232.119\",\n                        \"IsBlocked\": false\n                    },\n                    {\n                        \"AddressId\": \"eip-9uw5fsss\",\n                        \"PublicIpAddress\": \"139.199.232.221\",\n                        \"IsBlocked\": false\n                    }\n                ],\n                \"DestinationIpPortTranslationNatRuleSet\": [],\n                \"DirectConnectGatewayIds\": [],\n                \"Zone\": \"ap-guangzhou-2\",\n                \"ExclusiveGatewayBandwidth\": 1,\n                \"IsExclusive\": true,\n                \"SourceIpTranslationNatRuleSet\": [],\n                \"SubnetId\": \"1215354\",\n                \"TagSet\": [\n                    {\n                        \"Key\": \"city\",\n                        \"Value\": \"shanghai\"\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"6f2a42cf-2905-4fa5-af49-0f01612550de\"\n    }\n}",
-        "title": "Creating a NAT Gateway"
+        "title": "Creating a NAT gateway"
       }
     ],
     "CreateNatGatewayDestinationIpPortTranslationNatRule": [
@@ -391,8 +391,8 @@
     "CreateSecurityGroup": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateSecurityGroup\r\n&Version=2017-03-12\r\n&GroupName=TestGroup\r\n&GroupDescription=test-group-desc\r\n&Tags.0.Key=city\r\n&Tags.0.Value=shanghai\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"SecurityGroup\": {\n            \"SecurityGroupId\": \"sg-3g7ftkp3\",\n            \"SecurityGroupName\": \"TestGroup\",\n            \"SecurityGroupDesc\": \"test-group-desc\",\n            \"ProjectId\": \"0\",\n            \"TagSet\": [\n                {\n                    \"Key\": \"city\",\n                    \"Value\": \"shanghai\"\n                }\n            ]\n        }\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSecurityGroup\n<Common request parameters>\n\n{\n    \"GroupName\": \"TestGroup\",\n    \"GroupDescription\": \"test-group-desc\",\n    \"Tags\": [\n        {\n            \"Value\": \"shanghai\",\n            \"Key\": \"city\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\",\n        \"SecurityGroup\": {\n            \"SecurityGroupId\": \"sg-3g7ftkp3\",\n            \"SecurityGroupName\": \"TestGroup\",\n            \"SecurityGroupDesc\": \"test-group-desc\",\n            \"ProjectId\": \"0\",\n            \"TagSet\": [\n                {\n                    \"Key\": \"city\",\n                    \"Value\": \"shanghai\"\n                }\n            ]\n        }\n    }\n}",
         "title": "Creating a security group"
       }
     ],
@@ -453,9 +453,9 @@
     "CreateVpc": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateVpc\r\n&Version=2017-03-12\r\n&VpcName=TestVPC\r\n&CidrBlock=10.8.0.0/16\r\n&Tags.0.Key=city\r\n&Tags.0.Value=shanghai\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\",\n        \"Vpc\": {\n            \"VpcId\": \"vpc-4tboefn3\",\n            \"VpcName\": \"TestVPC\",\n            \"EnableMulticast\": false,\n            \"CidrBlock\": \"10.8.0.0/16\",\n            \"TagSet\": [\n                {\n                    \"Key\": \"city\",\n                    \"Value\": \"shanghai\"\n                }\n            ]\n        }\n    }\n}",
-        "title": "Creating a VPC instance"
+        "input": "https://vpc.tencentcloudapi.com/?Action=CreateVpc\n&VpcName=TestVPC\n&CidrBlock=10.8.0.0/16\n&Tags.0.Key=city\n&Tags.0.Value=shanghai\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Vpc\": {\n            \"VpcId\": \"vpc-4tboefn3\",\n            \"VpcName\": \"TestVPC\",\n            \"CidrBlock\": \"10.8.0.0/16\",\n            \"Ipv6CidrBlock\": \"\",\n            \"IsDefault\": false,\n            \"EnableMulticast\": false,\n            \"CreatedTime\": \"2020-09-24 15:57:39\",\n            \"EnableDhcp\": true,\n            \"DhcpOptionsId\": \"dopt-5f5lzouo\",\n            \"DnsServerSet\": [\n                \"183.60.82.98\",\n                \"183.60.83.1\"\n            ],\n            \"DomainName\": \"\",\n            \"TagSet\": [],\n            \"AssistantCidrSet\": [\n                {\n                    \"CidrBlock\": \"172.16.0.0/16\",\n                    \"AssistantType\": 0,\n                    \"SubnetSet\": []\n                }\n            ]\n        },\n        \"RequestId\": \"680f4013-31a3-440a-bc09-fd9348a90900\"\n    }\n}",
+        "title": "Creating a VPC"
       }
     ],
     "CreateVpcEndPoint": [
@@ -485,8 +485,8 @@
     "CreateVpnConnection": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateVpnConnection\r\n&Version=2017-03-12\r\n&VpcId=vpc-gapcv96p\r\n&VpnGatewayId=vpngw-1w9tue3d\r\n&CustomerGatewayId=cgw-qa9sxpy7\r\n&VpnConnectionName=TEST_CONN\r\n&PreShareKey=654321\r\n&SecurityPolicyDatabases.0.LocalCidrBlock=10.8.4.0/24\r\n&SecurityPolicyDatabases.0.RemoteCidrBlock.0=58.211.1.0/24\r\n&IKEOptionsSpecification.DhGroupName=GROUP1\r\n&IKEOptionsSpecification.ExchangeMode=MAIN\r\n&IKEOptionsSpecification.IKEVersion=IKEV1\r\n&IKEOptionsSpecification.LocalAddress=58.211.2.5\r\n&IKEOptionsSpecification.LocalIdentity=ADDRESS\r\n&IKEOptionsSpecification.PropoAuthenAlgorithm=MD5\r\n&IKEOptionsSpecification.PropoEncryAlgorithm=3DES-CBC\r\n&IKEOptionsSpecification.RemoteAddress=1.2.3.4\r\n&IKEOptionsSpecification.RemoteIdentity=ADDRESS\r\n&IPSECOptionsSpecification.EncryptAlgorithm=3DES-CBC\r\n&IPSECOptionsSpecification.IntegrityAlgorith=MD5\r\n&IPSECOptionsSpecification.PfsDhGroup=NULL\r\n&Tags.0.Key=city\r\n&Tags.0.Value=shanghai\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"VpnConnection\": {\n            \"VpcId\": \"vpc-gapcv96p\",\n            \"VpnConnectionName\": \"TEST_CONN\",\n            \"VpnGatewayId\": \"vpngw-1w9tue3d\",\n            \"CustomerGatewayId\": \"cgw-qa9sxpy7\",\n            \"State\": \"PENDING\"\n        },\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateVpnConnection\n<Common request parameters>\n\n{\n    \"VpnConnectionName\": \"TEST_CONN\",\n    \"PreShareKey\": \"654321\",\n    \"VpcId\": \"vpc-gapcv96p\",\n    \"Tags\": [\n        {\n            \"Value\": \"shanghai\",\n            \"Key\": \"city\"\n        }\n    ],\n    \"IPSECOptionsSpecification\": {\n        \"PfsDhGroup\": \"NULL\",\n        \"EncryptAlgorithm\": \"3DES-CBC\",\n        \"IntegrityAlgorith\": \"MD5\"\n    },\n    \"SecurityPolicyDatabases\": [\n        {\n            \"LocalCidrBlock\": \"10.8.4.0/24\",\n            \"RemoteCidrBlock\": [\n                \"58.211.1.0/24\"\n            ]\n        }\n    ],\n    \"VpnGatewayId\": \"vpngw-1w9tue3d\",\n    \"CustomerGatewayId\": \"cgw-qa9sxpy7\",\n    \"IKEOptionsSpecification\": {\n        \"IKEVersion\": \"IKEV1\",\n        \"RemoteIdentity\": \"ADDRESS\",\n        \"PropoAuthenAlgorithm\": \"MD5\",\n        \"RemoteAddress\": \"1.2.3.4\",\n        \"LocalIdentity\": \"ADDRESS\",\n        \"LocalAddress\": \"58.211.2.5\",\n        \"ExchangeMode\": \"MAIN\",\n        \"PropoEncryAlgorithm\": \"3DES-CBC\",\n        \"DhGroupName\": \"GROUP1\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"VpnConnection\": {\n            \"VpnConnectionId\": \"vpnr-12ds042\",\n            \"VpnConnectionName\": \"TEST_CONN\",\n            \"PreShareKey\": \"654321\",\n            \"VpcId\": \"vpc-gapcv96p\",\n            \"HealthCheckRemoteIp\": \"\",\n            \"NetStatus\": \"\",\n            \"EnableHealthCheck\": true,\n            \"EncryptProto\": \"IKE\",\n            \"VpnProto\": \"IPSEC\",\n            \"IPSECOptionsSpecification\": {\n                \"PfsDhGroup\": \"\",\n                \"IPSECSaLifetimeTraffic\": 1,\n                \"EncryptAlgorithm\": \"\",\n                \"IPSECSaLifetimeSeconds\": 1,\n                \"IntegrityAlgorith\": \"\"\n            },\n            \"SecurityPolicyDatabaseSet\": [\n                {\n                    \"LocalCidrBlock\": \"10.8.4.0/24\",\n                    \"RemoteCidrBlock\": [\n                        \"58.211.1.0/24\"\n                    ]\n                }\n            ],\n            \"State\": \"PENGDING\",\n            \"HealthCheckLocalIp\": \"\",\n            \"HealthCheckStatus\": \"\",\n            \"VpnGatewayId\": \"vpngw-1w9tue3d\",\n            \"CreatedTime\": \"2020-09-22 00:00:00\",\n            \"CustomerGatewayId\": \"cgw-qa9sxpy7\",\n            \"IKEOptionsSpecification\": {\n                \"IKEVersion\": \"\",\n                \"RemoteIdentity\": \"\",\n                \"PropoAuthenAlgorithm\": \"\",\n                \"RemoteAddress\": \"\",\n                \"LocalFqdnName\": \"\",\n                \"LocalIdentity\": \"\",\n                \"LocalAddress\": \"\",\n                \"RemoteFqdnName\": \"\",\n                \"ExchangeMode\": \"\",\n                \"IKESaLifetimeSeconds\": 1,\n                \"PropoEncryAlgorithm\": \"\",\n                \"DhGroupName\": \"\"\n            },\n            \"RouteType\": \"STATIC\"\n        },\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
         "title": "Creating a VPN tunnel"
       }
     ],
@@ -837,9 +837,9 @@
     "DescribeBandwidthPackageQuota": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeBandwidthPackageQuota\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBandwidthPackageQuota\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"QuotaSet\": [\n            {\n                \"QuotaId\": \"TOTAL_BANDWIDTHPKG_QUOTA\",\n                \"QuotaCurrent\": 1,\n                \"QuotaLimit\": 20\n            }\n        ],\n        \"RequestId\": \"8882b478-0d3a-4fe2-bae3-ff93865a199c\"\n    }\n}",
-        "title": "Querying the bandwidth package quota"
+        "title": "Querying bandwidth package quotas"
       }
     ],
     "DescribeBandwidthPackageResources": [
@@ -1297,15 +1297,15 @@
     "DescribeVpcs": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeVpcs\r\n&Offset=0\r\n&Limit=2\r\n&Filters.0.Name=is-default\r\n&Filters.0.Values.0=false\r\n&Filters.1.Name=cidr-block\r\n&Filters.1.Values.0=10.8.0.0\r\n&Filters.1.Values.1=192.168.0.0\r\n&<Common request parameter>",
-        "output": "{\n    \"Response\": {\n        \"VpcSet\": [\n            {\n                \"VpcId\": \"vpc-p5sf61yj\",\n                \"VpcName\": \"Test dhcp\",\n                \"CidrBlock\": \"10.0.0.0/16\",\n                \"Ipv6CidrBlock\": \"3402:4e00:20:1200::/56\",\n                \"IsDefault\": false,\n                \"EnableMulticast\": false,\n                \"CreatedTime\": \"2018-04-25 10:26:26\",\n                \"DhcpOptionsId\": \"dopt-8g7k5qfq\",\n                \"DnsServerSet\": [\n                    \"10.0.0.1\",\n                    \"183.60.82.98\"\n                ],\n                \"DomainName\": \"aa.bb.cc\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"6a44afb7-0644-4ff9-9761-3502f99d3a15\"\n    }\n}",
-        "title": "Querying the VPC list"
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVpcs\n<Common request parameters>\n\n{\n    \"Limit\": \"2\",\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"192.168.0.0\",\n                \"10.8.0.0\"\n            ],\n            \"Name\": \"cidr-block\"\n        },\n        {\n            \"Values\": [\n                \"false\"\n            ],\n            \"Name\": \"is-default\"\n        }\n    ],\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"VpcSet\": [\n            {\n                \"VpcId\": \"vpc-p5sf61yj\",\n                \"VpcName\": \"Test dhcp\",\n                \"CidrBlock\": \"10.0.0.0/16\",\n                \"Ipv6CidrBlock\": \"3402:4e00:20:1200::/56\",\n                \"IsDefault\": false,\n                \"EnableMulticast\": false,\n                \"CreatedTime\": \"2018-04-25 10:26:26\",\n                \"EnableDhcp\": true,\n                \"DhcpOptionsId\": \"dopt-8g7k5qfq\",\n                \"DnsServerSet\": [\n                    \"10.0.0.1\",\n                    \"183.60.82.98\"\n                ],\n                \"DomainName\": \"aa.bb.cc\",\n                \"TagSet\": [],\n                \"AssistantCidrSet\": []\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"6a44afb7-0644-4ff9-9761-3502f99d3a15\"\n    }\n}",
+        "title": "Querying the list of VPCs"
       },
       {
-        "document": "This example shows you how to query VPCs bound to a tag-key pair (city: Shanghai).",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeVpcs\r\n&Offset=0\r\n&Limit=2\r\n&Filters.0.Name=tag:city\r\n&Filters.0.Values.0=shanghai\r\n&<Common request parameter>",
-        "output": "{\n    \"Response\": {\n        \"VpcSet\": [\n            {\n                \"VpcId\": \"vpc-p5sf61yj\",\n                \"VpcName\": \"Test dhcp\",\n                \"CidrBlock\": \"10.0.0.0/16\",\n                \"Ipv6CidrBlock\": \"3402:4e00:20:1200::/56\",\n                \"IsDefault\": false,\n                \"EnableMulticast\": false,\n                \"CreatedTime\": \"2018-04-25 10:26:26\",\n                \"DhcpOptionsId\": \"dopt-8g7k5qfq\",\n                \"DnsServerSet\": [\n                    \"10.0.0.1\",\n                    \"183.60.82.98\"\n                ],\n                \"TagSet\": [\n                    {\n                        \"Key\": \"city\",\n                        \"Value\": \"shanghai\"\n                    }\n                ],\n                \"AssistantCidrSet\": [\n                    {\n                        \"CidrBlock\": \"192.168.1.0/24\",\n                        \"AssistantType\": 0,\n                        \"SubnetSet\": []\n                    }\n                ],\n                \"DomainName\": \"aa.bb.cc\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"6a44afb7-0644-4ff9-9761-3502f99d3a15\"\n    }\n}",
-        "title": "Querying the list of VPCs bound to the tag"
+        "document": "This example shows you how to query VPCs bound to the tag `city:shanghai`.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVpcs\n<Common request parameters>\n\n{\n    \"Limit\": \"2\",\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"shanghai\"\n            ],\n            \"Name\": \"tag:city\"\n        }\n    ],\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"VpcSet\": [\n            {\n                \"VpcId\": \"vpc-p5sf61yj\",\n                \"VpcName\": \"Test dhcp\",\n                \"CidrBlock\": \"10.0.0.0/16\",\n                \"Ipv6CidrBlock\": \"3402:4e00:20:1200::/56\",\n                \"IsDefault\": false,\n                \"EnableDhcp\": true,\n                \"EnableMulticast\": false,\n                \"CreatedTime\": \"2018-04-25 10:26:26\",\n                \"DhcpOptionsId\": \"dopt-8g7k5qfq\",\n                \"DnsServerSet\": [\n                    \"10.0.0.1\",\n                    \"183.60.82.98\"\n                ],\n                \"TagSet\": [\n                    {\n                        \"Key\": \"city\",\n                        \"Value\": \"shanghai\"\n                    }\n                ],\n                \"AssistantCidrSet\": [\n                    {\n                        \"CidrBlock\": \"192.168.1.0/24\",\n                        \"AssistantType\": 0,\n                        \"SubnetSet\": []\n                    }\n                ],\n                \"DomainName\": \"aa.bb.cc\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"6a44afb7-0644-4ff9-9761-3502f99d3a15\"\n    }\n}",
+        "title": "Querying the list of VPCs bound to a tag"
       }
     ],
     "DescribeVpnConnections": [
@@ -1549,9 +1549,9 @@
     "ModifyAddressAttribute": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyAddressAttribute\n&AddressId=eip-p2x6wxc0\n&AddressName=test_eip\n&<common request parameters>",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyAddressAttribute\r\n&AddressId=eip-p2x6wxc0\r\n&AddressName=test_eip\r\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
-        "title": "Modifying EIP name"
+        "title": "Modifying an EIP name"
       }
     ],
     "ModifyAddressInternetChargeType": [
@@ -1813,7 +1813,7 @@
     "ModifySubnetAttribute": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifySubnetAttribute\r\n&Version=2017-03-12\r\n&SubnetId=subnet-test1234\r\n&SubnetName=NewSubnetName\r\n&EnableBroadcast=true\r\n&<Common request parameters>",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifySubnetAttribute\n&SubnetId=subnet-test1234\n&SubnetName=NewSubnetName\n&EnableBroadcast=true\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"20569756-56ba-4a13-b545-e1528d5cb239\"\n    }\n}",
         "title": "Modifying subnet attributes"
       }
@@ -1821,7 +1821,7 @@
     "ModifyVpcAttribute": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyVpcAttribute\r\n&Version=2017-03-12\r\n&VpcName=MyTest\r\n&VpcId=vpc-m7sr81gh\r\n&EnableMulticast=true\r\n&<Common Request Parameters>",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyVpcAttribute\n&VpcName=MyTest\n&VpcId=vpc-m7sr81gh\n&EnableMulticast=true\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"38b1a253-02b7-43d7-8524-7e07432ae31a\"\n    }\n}",
         "title": "Modifying VPC attributes"
       }
@@ -2025,9 +2025,9 @@
     "TransformAddress": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=TransformAddress\n&InstanceId=ins-3ea0qeu6\n&<Common request parameters>",
+        "input": "https://eip.tencentcloudapi.com/?Action=TransformAddress\r\n&InstanceId=ins-3ea0qeu6\r\n&<Common Request Parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
-        "title": "Converting a public IP to an EIP"
+        "title": "Switching an ordinary IP to an EIP"
       }
     ],
     "UnassignIpv6Addresses": [

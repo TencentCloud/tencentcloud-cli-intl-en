@@ -10870,7 +10870,7 @@
         },
         {
           "default": "",
-          "document": "Filter condition. `VpcIds` and `Filters` cannot be specified at the same time.\nValid filters include:\n<li>`vpc-name`: VPC instance name</li>\n<li>`is-default`: indicates whether it is the default VPC</li>\n<li>`vpc-id`: VPC instance ID, such as `vpc-f49l6u0z`</li>\n<li>`cidr-block`: VPC CIDR block</li>\n<li>`tag-key`: (optional) tag key</li>\n<li>`tag:tag-key`: (optional) tag key-value pair. Replace the `tag-key` with a specified tag value. For its usage, refer to the Example 2.</li>\n  **Note:** if one filter has multiple values, the logical relationship between these values is `OR`. The logical relationship between filters is `AND`.",
+          "document": "Filter condition. `VpcIds` and `Filters` cannot be specified at the same time.\nValid filters include:\n<li>`vpc-name`: VPC instance name, which supports fuzzy search.</li>\n<li>`is-default`: Indicates whether it is the default VPC</li>\n<li>`vpc-id`: VPC instance ID, such as `vpc-f49l6u0z`</li>\n<li>`cidr-block`: VPC CIDR block</li>\n<li>`tag-key`: (Optional) tag key</li>\n<li>`tag:tag-key`: (Optional) tag key-value pair. Replace the `tag-key` with a specified tag value. For its usage, refer to Example 2.</li>\n  **Note:** If one filter has multiple values, the logical relationship between these values is `OR`. The logical relationship between filters is `AND`.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
