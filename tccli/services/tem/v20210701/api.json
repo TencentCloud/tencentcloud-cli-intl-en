@@ -48,6 +48,12 @@
       "name": "Gets the list of application pods",
       "output": "DescribeApplicationPodsResponse"
     },
+    "DescribeApplicationsStatus": {
+      "document": "This API is used to query the status of all applications in an envrionment.",
+      "input": "DescribeApplicationsStatusRequest",
+      "name": "Queries the status of all applications in an environment",
+      "output": "DescribeApplicationsStatusResponse"
+    },
     "DescribeEnvironments": {
       "document": "This API is used to get the list of tenant environments.",
       "input": "DescribeEnvironmentsRequest",
@@ -1350,6 +1356,51 @@
           "name": "Result",
           "required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationsStatusRequest": {
+      "document": "DescribeApplicationsStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Source channel. Please keep the default value.",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Environment ID",
+          "example": "1",
+          "member": "string",
+          "name": "EnvironmentId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationsStatusResponse": {
+      "document": "DescribeApplicationsStatus response structure.",
+      "members": [
+        {
+          "document": "Returned result.",
+          "example": "1",
+          "member": "ServiceVersionBrief",
+          "name": "Result",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -3120,6 +3171,152 @@
           "name": "ContainerState",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ServiceVersionBrief": {
+      "document": "List of application versions",
+      "members": [
+        {
+          "default": "",
+          "document": "Version name",
+          "example": "1",
+          "member": "string",
+          "name": "VersionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status of version",
+          "example": "1",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "(Disused) Whether to enable elastic scaling",
+          "example": "1",
+          "member": "int64",
+          "name": "EnableEs",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of current instances",
+          "example": "10",
+          "member": "int64",
+          "name": "CurrentInstances",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Version ID",
+          "example": "10",
+          "member": "string",
+          "name": "VersionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "(Disused) Log output configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "LogOutputConf",
+          "name": "LogOutputConf",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Expected number of instances\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ExpectedInstances",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Deployment mode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "DeployMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "BuildTaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Environment ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "EnvironmentId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Environment name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "EnvironmentName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "ApplicationName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the application is being deployed\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "UnderDeploying",
+          "required": true,
+          "type": "bool",
           "value_allowed_null": true
         }
       ],

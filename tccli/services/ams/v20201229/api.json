@@ -153,6 +153,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of audio recognition results \nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "RecognitionResult",
+          "name": "RecognitionResults",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -617,7 +627,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Label of the malicious content detected. <br>Values: **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "{}",
           "member": "TaskLabel",
           "name": "Labels",
@@ -684,6 +694,15 @@
           "example": "2021-01-28T08:20:25.759Z",
           "member": "string",
           "name": "UpdatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "If the recognition result is normal, this parameter is returned with the value `Normal`. If malicious content is recognized, the tag with the highest priority in the result of `Labels` is returned.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "Normal",
+          "member": "string",
+          "name": "Label",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -879,6 +898,32 @@
       ],
       "usage": "out"
     },
+    "RecognitionResult": {
+      "document": "Information of the category label",
+      "members": [
+        {
+          "default": "",
+          "document": "Values: `Teenager`, `Gender`\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Label",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of recognized category labels\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "2",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "StorageInfo": {
       "document": "Indicates the information of data storage",
       "members": [
@@ -914,6 +959,52 @@
         }
       ],
       "usage": "in"
+    },
+    "Tag": {
+      "document": "Tag of the audio slice",
+      "members": [
+        {
+          "default": "",
+          "document": "The value of this parameter varies by `Label`.\nWhen `Label` is `Teenager`, `Name` can be `Teenager`. \nWhen `Label` is `Gender`, `Name` can be `Male` and `Female`.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "1",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Confidence score. Value: 1 to 100. \nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "2",
+          "member": "int64",
+          "name": "Score",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Start time for the recognition (ms)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "3",
+          "member": "float",
+          "name": "StartTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "End time for the recognition (ms)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "4",
+          "member": "float",
+          "name": "EndTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "TaskData": {
       "document": "Task data",

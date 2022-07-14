@@ -70,6 +70,14 @@
         "title": "Getting the list of application pods"
       }
     ],
+    "DescribeApplicationsStatus": [
+      {
+        "document": "This document shows you how to query the status of all application in the specified envirionment.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApplicationsStatus\n<Common request parameters>\n\n{\n    \"SourceChannel\": 0,\n    \"EnvironmentId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": [\n            {\n                \"Status\": \"xx\",\n                \"CurrentInstances\": 0,\n                \"LogOutputConf\": {\n                    \"ClsLogTopicId\": \"xx\",\n                    \"ClsLogsetName\": \"xx\",\n                    \"ClsLogsetId\": \"xx\",\n                    \"ClsLogTopicName\": \"xx\",\n                    \"OutputType\": \"xx\"\n                },\n                \"EnableEs\": 0,\n                \"EnvironmentId\": \"xx\",\n                \"BuildTaskId\": \"xx\",\n                \"DeployMode\": \"xx\",\n                \"VersionId\": \"xx\",\n                \"VersionName\": \"xx\",\n                \"ExpectedInstances\": 0,\n                \"ApplicationId\": \"xx\",\n                \"EnvironmentName\": \"xx\",\n                \"ApplicationName\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying the status of all applications in the specified environment"
+      }
+    ],
     "DescribeEnvironments": [
       {
         "document": "This example shows you how to get the list of tenant environments.",
@@ -112,10 +120,10 @@
     ],
     "ModifyApplicationInfo": [
       {
-        "document": "This example shows you how to modify the basic information of an application.",
+        "document": "This example shows you how to modify a service’s basic information.",
         "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationInfo\n<Common request parameters>\n\n{\n    \"SourceChannel\": 0,\n    \"ApplicationId\": \"xx\",\n    \"Description\": \"xx\",\n    \"EnableTracing\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": \"xx\",\n        \"RequestId\": \"true\"\n    }\n}",
-        "title": "Modifying the basic information of an application"
+        "title": "Modifying a service’s basic information"
       }
     ],
     "ModifyEnvironment": [
