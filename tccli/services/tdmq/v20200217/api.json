@@ -165,7 +165,7 @@
     "DeleteSubscriptions": {
       "document": "This API is used to delete a subscription.",
       "input": "DeleteSubscriptionsRequest",
-      "name": "Deletes subscription",
+      "name": "Deletes a subscription",
       "output": "DeleteSubscriptionsResponse"
     },
     "DeleteTopics": {
@@ -249,7 +249,7 @@
     "DescribeEnvironments": {
       "document": "This API is used to get the list of namespaces under a tenant.",
       "input": "DescribeEnvironmentsRequest",
-      "name": "Gets the list of namespaces",
+      "name": "Gets the list of namespaces under a tenant",
       "output": "DescribeEnvironmentsResponse"
     },
     "DescribePublisherSummary": {
@@ -303,13 +303,13 @@
     "DescribeSubscriptions": {
       "document": "This API is used to query the list of subscribers under the specified environment and topic.",
       "input": "DescribeSubscriptionsRequest",
-      "name": "Queries the list of consumption subscriptions",
+      "name": "Gets the consumer subscription list",
       "output": "DescribeSubscriptionsResponse"
     },
     "DescribeTopics": {
       "document": "This API is used to get the list of topics under an environment.",
       "input": "DescribeTopicsRequest",
-      "name": "Gets the list of topic",
+      "name": "Gets the topic list",
       "output": "DescribeTopicsResponse"
     },
     "ModifyCluster": {
@@ -391,7 +391,7 @@
       "output": "PublishCmqMsgResponse"
     },
     "ReceiveMessage": {
-      "document": "This API is used to receive messages sent to the specified topic.",
+      "document": "This API is used to receive messages sent to a specified topic. If this API is called when there are no messages in the topic, the `ReceiveTimeout` exception will be reported.\n\nInstructions on how to use `BatchReceivePolicy`:\n\n`BatchReceive` has the three parameters:\n\n● `MaxNumMessages`: The maximum number of messages returned by `Receive` when `BatchReceive` is used.\n● `MaxNumBytes`: The maximum size (in bytes) of the message returned by `Receive` when `BatchReceive` is used.\n● `Timeout`: The maximum timeout period (in milliseconds) of calling `Receive` when `BatchReceive` is used.\n\nBy default, if you don’t specify any of the three parameters, the `BatchReceive` feature is disabled; if one of the three parameter values is above zero, `BatchReceive` is enabled. `BatchReceive` will be disabled when any of the three parameter values reaches the threshold you specify.\n\nNote: The values of both `MaxNumMessages` and `MaxNumBytes` are subject to the value of `ReceiveQueueSize`. If the values of `ReceiveQueueSize` and `MaxNumMessages` are 5 and 10, respectively, you can receive up to five rather than 10 messages when `BatchReceive` is used.\n\n\n\nThe API configured with `BatchReceivePolicy` returns multiple messages at a time.\n\n1. These messages are separated by “###”. After receiving them, you can separate them with split tools in different languages.\n2. MessageIDs are separated by “###”. After receiving the messages, you can separate the MessageIDs with split tools in different languages, so that you can obtain the `MessageID` field information required for calling the `AcknowledgeMessage` API.\n",
       "input": "ReceiveMessageRequest",
       "name": "Receives messages",
       "output": "ReceiveMessageResponse"
@@ -506,11 +506,11 @@
       "type": "object"
     },
     "BindCluster": {
-      "document": "Dedicated cluster information",
+      "document": "Information of dedicated clusters",
       "members": [
         {
           "default": "",
-          "document": "Physical cluster name",
+          "document": "Name of a physical cluster.",
           "member": "string",
           "name": "ClusterName",
           "required": true,
@@ -1560,7 +1560,7 @@
       "members": [
         {
           "default": "",
-          "document": "The time when the consumer started connecting.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The time when the consumer started connecting.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "ConnectedSince",
@@ -1570,7 +1570,7 @@
         },
         {
           "default": "",
-          "document": "Consumer address.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Consumer address.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "ConsumerAddr",
@@ -1580,7 +1580,7 @@
         },
         {
           "default": "",
-          "document": "Consumer name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Consumer name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "ConsumerName",
@@ -1590,7 +1590,7 @@
         },
         {
           "default": "",
-          "document": "Consumer version.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Consumer version.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "ClientVersion",
@@ -1600,7 +1600,7 @@
         },
         {
           "default": "",
-          "document": "Serial number of the topic partition connected to the consumer.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Serial number of the topic partition connected to the consumer.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "Partition",
@@ -1616,7 +1616,7 @@
       "members": [
         {
           "default": "",
-          "document": "Current partition ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "ID of the current partition.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "Partitions",
           "required": true,
@@ -1625,7 +1625,7 @@
         },
         {
           "default": "",
-          "document": "Number of messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The number of messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "NumberOfEntries",
           "required": true,
@@ -1634,7 +1634,7 @@
         },
         {
           "default": "",
-          "document": "Number of retained messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The number of heaped messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "MsgBacklog",
           "required": true,
@@ -1643,7 +1643,7 @@
         },
         {
           "default": "",
-          "document": "Sum of the numbers of messages delivered by the consumer per second.",
+          "document": "The total number of messages delivered by the consumer per second.",
           "member": "string",
           "name": "MsgRateOut",
           "required": true,
@@ -1652,7 +1652,7 @@
         },
         {
           "default": "",
-          "document": "Number of bytes of messages consumed by the consumer per second.",
+          "document": "The size (in bytes) of messages consumed by the consumer per second.",
           "member": "string",
           "name": "MsgThroughputOut",
           "required": true,
@@ -1661,7 +1661,7 @@
         },
         {
           "default": "",
-          "document": "Percentage of messages discarded due to timeout.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Percentage of messages discarded due to timeout.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "MsgRateExpired",
           "required": true,
@@ -1892,7 +1892,7 @@
         },
         {
           "default": "",
-          "document": "Queue storage space configured for message rewind. Value range: 1,024-10,240 MB (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.",
+          "document": "Queue storage space configured for message rewind. Value range: 10,240-512,000 MB (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.",
           "example": "0",
           "member": "uint64",
           "name": "RetentionSizeInMB",
@@ -2117,7 +2117,7 @@
         },
         {
           "default": "",
-          "document": "Unconsumed message expiration time in seconds. Minimum value: 60; maximum value: 1296000 (15 days).",
+          "document": "Retention period for unconsumed messages in seconds. Value range: 60s to 1,296,000s.",
           "example": "60",
           "member": "uint64",
           "name": "MsgTTL",
@@ -2702,7 +2702,7 @@
         },
         {
           "default": "",
-          "document": "0: non-partitioned topic; other values: number of partitions in the partitioned topic (up to 128).",
+          "document": "The value “1” indicates a non-partitioned topic (a topic with no partitions) will be created. A value between 1 (exclusive) and 128 (inclusive) indicates the partition count of a partitioned topic.",
           "example": "2",
           "member": "uint64",
           "name": "Partitions",
@@ -2720,7 +2720,7 @@
         },
         {
           "default": "",
-          "document": "0: general message;\n1: globally sequential message;\n2: partitionally sequential message;\n3: retry letter queue;\n4: dead letter queue.",
+          "document": "This input parameter will be disused soon. You can use `PulsarTopicType` instead.\n0: General message;\n1: Globally sequential message;\n2: Partitionally sequential message;\n3: Retry letter topic;\n4: Dead letter topic.",
           "example": "0",
           "member": "uint64",
           "name": "TopicType",
@@ -2770,7 +2770,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "0: non-partitioned topic; other values: number of partitions in the partitioned topic.",
+          "document": "Valid value: 0 or 1. Non-partitioned topic: No partitions. A value greater than 1: The partition count of a partitioned topic. `0` is returned for existing non-partitioned topics, and `1` is returned for incremental non-partitioned topics.",
           "example": "2",
           "member": "uint64",
           "name": "Partitions",
@@ -2788,7 +2788,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "0: general message;\n1: globally sequential message;\n2: partitionally sequential message;\n3: retry letter queue;\n4: dead letter queue;\n5: transaction message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "0: General message;\n1: Globally sequential message;\n2: Partitionally sequential message;\n3: Retry letter topic;\n4: Dead letter topic.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "TopicType",
@@ -3224,7 +3224,7 @@
       "members": [
         {
           "default": "",
-          "document": "Set of subscriptions. Up to 20 subscriptions can be deleted at a time.",
+          "document": "Subscription set. Up to 20 subscriptions can be deleted at a time.",
           "example": "无",
           "member": "SubscriptionTopic",
           "name": "SubscriptionTopicSets",
@@ -3251,7 +3251,7 @@
         },
         {
           "default": "",
-          "document": "Whether to force deletion. Default value: false",
+          "document": "Whether to forcibly delete a subscription. Default value: `false`.",
           "example": "false",
           "member": "bool",
           "name": "Force",
@@ -3287,7 +3287,7 @@
       "members": [
         {
           "default": "",
-          "document": "Set of topics. Up to 20 topics can be deleted at a time.",
+          "document": "Topic set. Up to 20 topics can be deleted at a time.",
           "example": "无",
           "member": "TopicRecord",
           "name": "TopicSets",
@@ -3314,7 +3314,7 @@
         },
         {
           "default": "",
-          "document": "Whether to force deletion. Default value: false",
+          "document": "Whether to forcibly delete a topic. Default value: `false`.",
           "example": "false",
           "member": "bool",
           "name": "Force",
@@ -3354,7 +3354,7 @@
       "document": "DescribeBindClusters response structure.",
       "members": [
         {
-          "document": "Number of dedicated clusters",
+          "document": "The number of dedicated clusters",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
@@ -3477,7 +3477,7 @@
       "members": [
         {
           "default": "",
-          "document": "Offset. If this parameter is left empty, 0 will be used by default.",
+          "document": "Start offset, which defaults to 0 if left empty.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -3486,7 +3486,7 @@
         },
         {
           "default": "",
-          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.",
+          "document": "The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.",
           "example": "0",
           "member": "uint64",
           "name": "Limit",
@@ -3495,7 +3495,7 @@
         },
         {
           "default": "",
-          "document": "Filter by list of cluster IDs",
+          "document": "Filter by cluster ID.",
           "example": "无",
           "member": "string",
           "name": "ClusterIdList",
@@ -3504,7 +3504,7 @@
         },
         {
           "default": "",
-          "document": "Whether to filter by tag",
+          "document": "Whether to filter by tag.",
           "example": "true",
           "member": "bool",
           "name": "IsTagFilter",
@@ -3513,7 +3513,7 @@
         },
         {
           "default": "",
-          "document": "Filter. Currently, you can filter only by tag.",
+          "document": "Filter. Currently, you can filter by tag.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -3527,7 +3527,7 @@
       "document": "DescribeClusters response structure.",
       "members": [
         {
-          "document": "Number of clusters",
+          "document": "The number of clusters.",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
@@ -3536,7 +3536,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "List of cluster information",
+          "document": "Cluster information list",
           "example": "无",
           "member": "Cluster",
           "name": "ClusterSet",
@@ -3666,7 +3666,7 @@
       "members": [
         {
           "default": "",
-          "document": "Starting position of the list of queues to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default",
+          "document": "Starting position of a queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` must be specified. If this parameter is left empty, 0 will be used by default.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -3675,7 +3675,7 @@
         },
         {
           "default": "",
-          "document": "Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
+          "document": "The number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
           "example": "1",
           "member": "uint64",
           "name": "Limit",
@@ -3693,7 +3693,7 @@
         },
         {
           "default": "",
-          "document": "List of CMQ queue names",
+          "document": "Filter by CMQ queue name.",
           "example": "test",
           "member": "string",
           "name": "QueueNameList",
@@ -3702,7 +3702,7 @@
         },
         {
           "default": "",
-          "document": "For filtering by tag, this must be configured to `true`.",
+          "document": "For filtering by tag, this parameter must be set to `true`.",
           "example": "true",
           "member": "bool",
           "name": "IsTagFilter",
@@ -3711,7 +3711,7 @@
         },
         {
           "default": "",
-          "document": "Filter. Currently, you can filter only by tag.",
+          "document": "Filter. Currently, you can filter by tag. The tag name must be prefixed with “tag:”, such as “tag: owner”, “tag: environment”, or “tag: business”.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -3725,7 +3725,7 @@
       "document": "DescribeCmqQueues response structure.",
       "members": [
         {
-          "document": "Quantity",
+          "document": "The number of queues.",
           "example": "2",
           "member": "uint64",
           "name": "TotalCount",
@@ -3734,7 +3734,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "List of queues\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Queue list.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CmqQueue",
           "name": "QueueList",
@@ -3864,7 +3864,7 @@
       "members": [
         {
           "default": "",
-          "document": "Starting position of the list of queues to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default",
+          "document": "Starting position of a queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` must be specified. If this parameter is left empty, 0 will be used by default.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -3873,7 +3873,7 @@
         },
         {
           "default": "",
-          "document": "Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
+          "document": "The number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
           "example": "1",
           "member": "uint64",
           "name": "Limit",
@@ -3891,7 +3891,7 @@
         },
         {
           "default": "",
-          "document": "Filter by list of CMQ topic names",
+          "document": "Filter by CMQ topic name.",
           "example": "test",
           "member": "string",
           "name": "TopicNameList",
@@ -3900,7 +3900,7 @@
         },
         {
           "default": "",
-          "document": "For filtering by tag, this must be configured to `true`.",
+          "document": "For filtering by tag, this parameter must be set to `true`.",
           "example": "true",
           "member": "bool",
           "name": "IsTagFilter",
@@ -3909,7 +3909,7 @@
         },
         {
           "default": "",
-          "document": "Filter. Currently, you can filter only by tag.",
+          "document": "Filter. Currently, you can filter by tag. The tag name must be prefixed with “tag:”, such as “tag: owner”, “tag: environment”, or “tag: business”.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -3923,7 +3923,7 @@
       "document": "DescribeCmqTopics response structure.",
       "members": [
         {
-          "document": "List of topics\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Topic list.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CmqTopic",
           "name": "TopicList",
@@ -3932,7 +3932,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Total number of topics",
+          "document": "The total number of topics.",
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
@@ -4062,7 +4062,7 @@
       "members": [
         {
           "default": "",
-          "document": "Environment (namespace) name (required).",
+          "document": "Environment/namespace name (required).",
           "example": "default",
           "member": "string",
           "name": "EnvironmentId",
@@ -4071,7 +4071,7 @@
         },
         {
           "default": "",
-          "document": "Offset. If this parameter is left empty, 0 will be used by default.",
+          "document": "Offset, which defaults to 0 if left empty.",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -4080,7 +4080,7 @@
         },
         {
           "default": "",
-          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.",
+          "document": "The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -4089,7 +4089,7 @@
         },
         {
           "default": "",
-          "document": "Pulsar cluster ID (required)",
+          "document": "Pulsar cluster ID (required).",
           "example": "pulsar-ge3n43v3wj",
           "member": "string",
           "name": "ClusterId",
@@ -4098,7 +4098,7 @@
         },
         {
           "default": "",
-          "document": "Role name",
+          "document": "Role name.",
           "example": "role",
           "member": "string",
           "name": "RoleName",
@@ -4107,7 +4107,7 @@
         },
         {
           "default": "",
-          "document": "* RoleName\nFilter by role name for exact query.\nType: String\nRequired: no",
+          "document": "* RoleName\nFilter by role name for exact query.\nType: String\nRequired: No",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -4121,7 +4121,7 @@
       "document": "DescribeEnvironmentRoles response structure.",
       "members": [
         {
-          "document": "Number of records.",
+          "document": "The number of records.",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
@@ -4130,7 +4130,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Set of namespace roles.",
+          "document": "Namespace role set.",
           "example": "[]",
           "member": "EnvironmentRole",
           "name": "EnvironmentRoleSets",
@@ -4161,7 +4161,7 @@
         },
         {
           "default": "",
-          "document": "Offset. If this parameter is left empty, 0 will be used by default.",
+          "document": "Offset, which defaults to 0 if left empty.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -4170,7 +4170,7 @@
         },
         {
           "default": "",
-          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.",
+          "document": "The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.",
           "example": "5",
           "member": "uint64",
           "name": "Limit",
@@ -4188,7 +4188,7 @@
         },
         {
           "default": "",
-          "document": "* EnvironmentId\nFilter by namespace for exact query.\nType: String\nRequired: no",
+          "document": "* EnvironmentId\nFilter by namespace for exact query.\nType: String\nRequired: No",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -4202,7 +4202,7 @@
       "document": "DescribeEnvironments response structure.",
       "members": [
         {
-          "document": "Number of namespaces.",
+          "document": "The number of namespaces.",
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
@@ -4211,7 +4211,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Array set of namespaces.",
+          "document": "Array of namespace sets.",
           "example": "[]",
           "member": "Environment",
           "name": "EnvironmentSet",
@@ -4467,7 +4467,7 @@
       "members": [
         {
           "default": "",
-          "document": "Offset",
+          "document": "Offset.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -4476,7 +4476,7 @@
         },
         {
           "default": "",
-          "document": "Maximum number",
+          "document": "The max number of returned results.",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
@@ -4485,7 +4485,7 @@
         },
         {
           "default": "",
-          "document": "Search by cluster ID",
+          "document": "Search by cluster ID.",
           "example": "xxxx",
           "member": "string",
           "name": "IdKeyword",
@@ -4494,7 +4494,7 @@
         },
         {
           "default": "",
-          "document": "Search by cluster name",
+          "document": "Search by cluster name.",
           "example": "xxxx",
           "member": "string",
           "name": "NameKeyword",
@@ -4503,7 +4503,7 @@
         },
         {
           "default": "",
-          "document": "Filter by list of cluster IDs",
+          "document": "Filter by cluster ID.",
           "example": "无",
           "member": "string",
           "name": "ClusterIdList",
@@ -4512,7 +4512,7 @@
         },
         {
           "default": "",
-          "document": "For filtering by tag, this must be configured to `true`",
+          "document": "For filtering by tag, this parameter must be set to `true`.",
           "example": "无",
           "member": "bool",
           "name": "IsTagFilter",
@@ -4535,7 +4535,7 @@
       "document": "DescribeRocketMQClusters response structure.",
       "members": [
         {
-          "document": "Cluster information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Cluster information.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "RocketMQClusterDetail",
           "name": "ClusterList",
@@ -4544,7 +4544,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Total number",
+          "document": "The total number of returned results.",
           "example": "100",
           "member": "uint64",
           "name": "TotalCount",
@@ -4566,7 +4566,7 @@
       "members": [
         {
           "default": "",
-          "document": "Cluster ID",
+          "document": "Cluster ID.",
           "example": "rocketmq-xxxxx",
           "member": "string",
           "name": "ClusterId",
@@ -4575,7 +4575,7 @@
         },
         {
           "default": "",
-          "document": "Namespace",
+          "document": "Namespace.",
           "example": "prod",
           "member": "string",
           "name": "NamespaceId",
@@ -4584,7 +4584,7 @@
         },
         {
           "default": "",
-          "document": "Offset",
+          "document": "Offset.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -4593,7 +4593,7 @@
         },
         {
           "default": "",
-          "document": "Maximum number",
+          "document": "The max number of returned results.",
           "example": "20",
           "member": "uint64",
           "name": "Limit",
@@ -4620,7 +4620,7 @@
         },
         {
           "default": "",
-          "document": "Sort by specified field. Valid values: tps, accumulative.",
+          "document": "Sort by specified field. Valid values: `tps`, `accumulative`.",
           "example": "tps",
           "member": "string",
           "name": "SortedBy",
@@ -4629,7 +4629,7 @@
         },
         {
           "default": "",
-          "document": "Sort in ascending or descending order. Valid values: asc, desc.",
+          "document": "Sort in ascending or descending order. Valid values: `asc`, `desc`.",
           "example": "asc",
           "member": "string",
           "name": "SortOrder",
@@ -4638,7 +4638,7 @@
         },
         {
           "default": "",
-          "document": "Subscription group name. After it is specified, only the information of the corresponding subscription group will be returned.",
+          "document": "Subscription group name. After it is specified, the information of only this subscription group will be returned.",
           "example": "test",
           "member": "string",
           "name": "FilterOneGroup",
@@ -4652,7 +4652,7 @@
       "document": "DescribeRocketMQGroups response structure.",
       "members": [
         {
-          "document": "Total number",
+          "document": "The total number of subscription groups.",
           "example": "100",
           "member": "uint64",
           "name": "TotalCount",
@@ -4683,7 +4683,7 @@
       "members": [
         {
           "default": "",
-          "document": "Cluster ID",
+          "document": "Cluster ID.",
           "example": "rocketmq-xxxxx",
           "member": "string",
           "name": "ClusterId",
@@ -4692,7 +4692,7 @@
         },
         {
           "default": "",
-          "document": "Offset",
+          "document": "Offset.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -4701,7 +4701,7 @@
         },
         {
           "default": "",
-          "document": "Maximum number",
+          "document": "The max number of returned results.",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
@@ -4710,7 +4710,7 @@
         },
         {
           "default": "",
-          "document": "Search by name",
+          "document": "Search by name.",
           "example": "xxxx",
           "member": "string",
           "name": "NameKeyword",
@@ -4733,7 +4733,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Total number",
+          "document": "The total number of returned results.",
           "example": "100",
           "member": "uint64",
           "name": "TotalCount",
@@ -4755,7 +4755,7 @@
       "members": [
         {
           "default": "",
-          "document": "Query offset",
+          "document": "Offset for query.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -4764,7 +4764,7 @@
         },
         {
           "default": "",
-          "document": "Query limit",
+          "document": "Query limit.",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
@@ -4773,7 +4773,7 @@
         },
         {
           "default": "",
-          "document": "Cluster ID",
+          "document": "Cluster ID.",
           "example": "rocketmq-xxxxx",
           "member": "string",
           "name": "ClusterId",
@@ -4782,7 +4782,7 @@
         },
         {
           "default": "",
-          "document": "Namespace",
+          "document": "Namespace.",
           "example": "prod",
           "member": "string",
           "name": "NamespaceId",
@@ -4791,7 +4791,7 @@
         },
         {
           "default": "",
-          "document": "Filter by topic type. Valid values: Normal, GlobalOrder, PartitionedOrder, Transaction.",
+          "document": "Filter by topic type. Valid values: `Normal`, `GlobalOrder`, `PartitionedOrder`, `Transaction`.",
           "example": "无",
           "member": "string",
           "name": "FilterType",
@@ -4814,7 +4814,7 @@
       "document": "DescribeRocketMQTopics response structure.",
       "members": [
         {
-          "document": "Total number of records",
+          "document": "The total number of query records.",
           "example": "100",
           "member": "uint64",
           "name": "TotalCount",
@@ -4944,7 +4944,7 @@
         },
         {
           "default": "",
-          "document": "Offset. If this parameter is left empty, 0 will be used by default.",
+          "document": "Offset, which defaults to 0 if left empty.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -4953,7 +4953,7 @@
         },
         {
           "default": "",
-          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.",
+          "document": "The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
@@ -4994,7 +4994,7 @@
       "document": "DescribeSubscriptions response structure.",
       "members": [
         {
-          "document": "Array set of subscribers.",
+          "document": "Array of subscriber sets.",
           "example": "无",
           "member": "Subscription",
           "name": "SubscriptionSets",
@@ -5003,7 +5003,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Quantity.",
+          "document": "The total number of returned results.",
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
@@ -5043,7 +5043,7 @@
         },
         {
           "default": "",
-          "document": "Offset. If this parameter is left empty, 0 will be used by default.",
+          "document": "Offset, which defaults to 0 if left empty.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -5052,7 +5052,7 @@
         },
         {
           "default": "",
-          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.",
+          "document": "The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.",
           "example": "20",
           "member": "uint64",
           "name": "Limit",
@@ -5061,7 +5061,7 @@
         },
         {
           "default": "",
-          "document": "Topic type description:\n0: general message;\n1: globally sequential message;\n2: partitionally sequential message;\n3: retry letter queue;\n4: dead letter queue;\n5: transaction message.",
+          "document": "Topic type description:\n0: Non-persistent and non-partitioned topic;\n1: Non-persistent and partitioned topic;\n2: Persistent and non-partitioned topic;\n3: Persistent and partitioned topic.",
           "example": "1",
           "member": "uint64",
           "name": "TopicType",
@@ -5070,7 +5070,7 @@
         },
         {
           "default": "",
-          "document": "Pulsar cluster ID",
+          "document": "Pulsar cluster ID.",
           "example": "cluster1",
           "member": "string",
           "name": "ClusterId",
@@ -5079,12 +5079,21 @@
         },
         {
           "default": "",
-          "document": "* TopicName\nQuery by topic name for exact search.\nType: String\nRequired: no",
+          "document": "* TopicName\nQuery by topic name for exact search.\nType: String\nRequired: No",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Topic creator:\n1: User\n2: System",
+          "example": "1",
+          "member": "uint64",
+          "name": "TopicCreator",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -5093,7 +5102,7 @@
       "document": "DescribeTopics response structure.",
       "members": [
         {
-          "document": "Array set of topics.",
+          "document": "Array of topic sets.",
           "example": "无",
           "member": "Topic",
           "name": "TopicSets",
@@ -5102,7 +5111,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Number of topics.",
+          "document": "The number of topics.",
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
@@ -5124,7 +5133,7 @@
       "members": [
         {
           "default": "",
-          "document": "Namespace name",
+          "document": "Namespace name.",
           "example": "test",
           "member": "string",
           "name": "EnvironmentId",
@@ -5134,7 +5143,7 @@
         },
         {
           "default": "",
-          "document": "Remarks",
+          "document": "Description.",
           "example": "test",
           "member": "string",
           "name": "Remark",
@@ -5144,7 +5153,7 @@
         },
         {
           "default": "",
-          "document": "TTL for unconsumed messages in seconds. Maximum value: 1296000 seconds (i.e., 15 days)",
+          "document": "Retention period for unconsumed messages in seconds. Maximum value: 1,296,000 seconds (15 days).",
           "example": "2",
           "member": "int64",
           "name": "MsgTTL",
@@ -5154,7 +5163,7 @@
         },
         {
           "default": "",
-          "document": "Creation time",
+          "document": "Creation time.",
           "example": "2020-02-17 00:00:00",
           "member": "datetime",
           "name": "CreateTime",
@@ -5164,7 +5173,7 @@
         },
         {
           "default": "",
-          "document": "Modification time",
+          "document": "Last modified.",
           "example": "2020-02-17 00:00:00",
           "member": "datetime",
           "name": "UpdateTime",
@@ -5174,7 +5183,7 @@
         },
         {
           "default": "",
-          "document": "Namespace ID",
+          "document": "Namespace ID.",
           "example": "test",
           "member": "string",
           "name": "NamespaceId",
@@ -5184,7 +5193,7 @@
         },
         {
           "default": "",
-          "document": "Namespace name",
+          "document": "Namespace name.",
           "example": "test",
           "member": "string",
           "name": "NamespaceName",
@@ -5194,7 +5203,7 @@
         },
         {
           "default": "",
-          "document": "Number of topics\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The number of topics.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "int64",
           "name": "TopicNum",
@@ -5204,7 +5213,7 @@
         },
         {
           "default": "",
-          "document": "Message retention policy\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Message retention policy.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "RetentionPolicy",
           "name": "RetentionPolicy",
@@ -5302,11 +5311,11 @@
       "usage": "in"
     },
     "FilterSubscription": {
-      "document": "Filters subscriptions",
+      "document": "Filter subscriptions",
       "members": [
         {
           "default": "",
-          "document": "Whether to display only subscriptions that include real consumers.",
+          "document": "Whether to only display subscriptions that include real consumers.",
           "example": "false",
           "member": "bool",
           "name": "ConsumerHasCount",
@@ -5316,7 +5325,7 @@
         },
         {
           "default": "",
-          "document": "Whether to display only subscriptions with retained messages.",
+          "document": "Whether to only display subscriptions with heaped messages.",
           "example": "false",
           "member": "bool",
           "name": "ConsumerHasBacklog",
@@ -5326,7 +5335,7 @@
         },
         {
           "default": "",
-          "document": "Whether to display only subscriptions with messages discarded after expiration.",
+          "document": "Whether to only display subscriptions with messages discarded after expiration.",
           "example": "false",
           "member": "bool",
           "name": "ConsumerHasExpired",
@@ -5336,7 +5345,7 @@
         },
         {
           "default": "",
-          "document": "Filter by subscription name for exact search.",
+          "document": "Filter by subscription name for exact query.",
           "example": "false",
           "member": "string",
           "name": "SubscriptionNames",
@@ -5550,7 +5559,7 @@
         },
         {
           "default": "",
-          "document": "Queue storage space configured for message rewind. Value range: 1,024-10,240 MB (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.",
+          "document": "Queue storage space configured for message rewind. Value range: 10,240-512,000 MB (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.",
           "example": "0",
           "member": "uint64",
           "name": "RetentionSizeInMB",
@@ -5712,7 +5721,7 @@
         },
         {
           "default": "",
-          "document": "TTL for unconsumed messages in seconds. Maximum value: 1296000 seconds.",
+          "document": "Retention period for unconsumed messages in seconds. Value range: 60s to 1,296,000s.",
           "example": "60",
           "member": "uint64",
           "name": "MsgTTL",
@@ -6243,7 +6252,7 @@
       "members": [
         {
           "default": "",
-          "document": "Average size of the messages published in the last interval in bytes.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Average size of the messages published in the last interval in bytes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "AverageMsgSize",
           "required": true,
@@ -6252,7 +6261,7 @@
         },
         {
           "default": "",
-          "document": "Number of consumers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The number of consumers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ConsumerCount",
           "required": true,
@@ -6261,7 +6270,7 @@
         },
         {
           "default": "",
-          "document": "Total number of recorded messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The total number of recorded messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "LastConfirmedEntry",
           "required": true,
@@ -6270,7 +6279,7 @@
         },
         {
           "default": "",
-          "document": "Time when the last ledger was created.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Time when the last ledger was created.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "LastLedgerCreatedTimestamp",
           "required": true,
@@ -6279,7 +6288,7 @@
         },
         {
           "default": "",
-          "document": "Number of messages published by local and replicated publishers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The number of messages published by local and replicated publishers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "MsgRateIn",
           "required": true,
@@ -6288,7 +6297,7 @@
         },
         {
           "default": "",
-          "document": "Sum of the numbers of messages delivered by local and replicated consumers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The total number of messages delivered by local and replicated consumers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "MsgRateOut",
           "required": true,
@@ -6297,7 +6306,7 @@
         },
         {
           "default": "",
-          "document": "Number of bytes of messages published by local and replicated publishers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The size (in bytes) of messages published by local and replicated publishers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "MsgThroughputIn",
           "required": true,
@@ -6306,7 +6315,7 @@
         },
         {
           "default": "",
-          "document": "Number of bytes of messages delivered by local and replicated consumers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The size (in bytes) of messages delivered by local and replicated consumers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "MsgThroughputOut",
           "required": true,
@@ -6315,7 +6324,7 @@
         },
         {
           "default": "",
-          "document": "Total number of recorded messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The total number of recorded messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "NumberOfEntries",
           "required": true,
@@ -6324,7 +6333,7 @@
         },
         {
           "default": "",
-          "document": "Subpartition ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Subpartition ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Partitions",
           "required": true,
@@ -6333,7 +6342,7 @@
         },
         {
           "default": "",
-          "document": "Number of producers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The number of producers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ProducerCount",
           "required": true,
@@ -6342,7 +6351,7 @@
         },
         {
           "default": "",
-          "document": "Total amount of all stored messages in bytes.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Total size of all stored messages in bytes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "TotalSize",
           "required": true,
@@ -6351,7 +6360,7 @@
         },
         {
           "default": "",
-          "document": "Topic type description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Topic type description.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "TopicType",
           "required": true,
@@ -6375,7 +6384,7 @@
         },
         {
           "default": "",
-          "document": "Message content",
+          "document": "Message content. The total message size is up to 1,024 KB.",
           "example": "xxx",
           "member": "string",
           "name": "MsgContent",
@@ -6384,7 +6393,7 @@
         },
         {
           "default": "",
-          "document": "Message tag",
+          "document": "Message tag. You can pass in multiple tags or a single route. Each tag or route can contain up to 64 characters.",
           "example": "无",
           "member": "string",
           "name": "MsgTag",
@@ -6558,6 +6567,33 @@
           "name": "SubInitialPosition",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter is used to specify the maximum number of received messages in a batch for `BatchReceivePolicy`. The default value is 0, indicating that `BatchReceivePolicy` is disabled.",
+          "example": "100",
+          "member": "int64",
+          "name": "MaxNumMessages",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter is used to specify the maximum body size (in bytes) of received messages in a batch for `BatchReceivePolicy`. The default value is 0, indicating that `BatchReceivePolicy` is disabled.",
+          "example": "100000",
+          "member": "int64",
+          "name": "MaxNumBytes",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter is used to specify the maximum wait timeout (in milliseconds) for receiving a batch of messages for `BatchReceivePolicy`. The default value is 0, indicating that `BatchReceivePolicy` is disabled.",
+          "example": "100",
+          "member": "int64",
+          "name": "Timeout",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -6606,6 +6642,24 @@
           "example": "my-sub",
           "member": "string",
           "name": "SubName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "MessageIDs returned by `BatchReceivePolicy` at a time, which are separated by “###”.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": " \"71:12:0:0###71:13:0:0###71:16:0:0\"",
+          "member": "string",
+          "name": "MessageIDList",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Message contents returned by `BatchReceivePolicy` at a time, which are separated by “###”.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"hello-1###hello-2###hello-3\"",
+          "member": "string",
+          "name": "MessagesPayload",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -6922,11 +6976,11 @@
       "usage": "out"
     },
     "RocketMQClusterDetail": {
-      "document": "Tenant RocketMQ cluster details",
+      "document": "Details of the tenant’s RocketMQ cluster",
       "members": [
         {
           "default": "",
-          "document": "Cluster's basic information",
+          "document": "Basic cluster information.",
           "example": "无",
           "member": "RocketMQClusterInfo",
           "name": "Info",
@@ -6936,7 +6990,7 @@
         },
         {
           "default": "",
-          "document": "Cluster configuration information",
+          "document": "Cluster configuration information.",
           "example": "无",
           "member": "RocketMQClusterConfig",
           "name": "Config",
@@ -6946,7 +7000,7 @@
         },
         {
           "default": "",
-          "document": "Cluster status. 0: creating; 1: normal; 2: terminating; 3: deleted; 4. isolated; 5. creation failed; 6: deletion failed\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Cluster status. 0: Creating; 1: Normal; 2: Terminating; 3: Deleted; 4. Isolated; 5. Creation failed; 6: Deletion failed.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "Status",
@@ -7094,7 +7148,7 @@
       "members": [
         {
           "default": "",
-          "document": "Consumer group name",
+          "document": "Consumer group name.",
           "example": "test",
           "member": "string",
           "name": "Name",
@@ -7104,7 +7158,7 @@
         },
         {
           "default": "",
-          "document": "Number of online consumers",
+          "document": "The number of online consumers.",
           "example": "1",
           "member": "uint64",
           "name": "ConsumerNum",
@@ -7114,7 +7168,7 @@
         },
         {
           "default": "",
-          "document": "Consumption TPS",
+          "document": "Consumption TPS.",
           "example": "100",
           "member": "uint64",
           "name": "TPS",
@@ -7124,7 +7178,7 @@
         },
         {
           "default": "",
-          "document": "Total number of retained messages",
+          "document": "The total number of heaped messages.",
           "example": "100",
           "member": "int64",
           "name": "TotalAccumulative",
@@ -7134,7 +7188,7 @@
         },
         {
           "default": "",
-          "document": "0: cluster consumption mode; 1: broadcast consumption mode; -1: unknown",
+          "document": "0: Cluster consumption mode; 1: Broadcast consumption mode; -1: Unknown.",
           "example": "0",
           "member": "int64",
           "name": "ConsumptionMode",
@@ -7144,7 +7198,7 @@
         },
         {
           "default": "",
-          "document": "Whether to allow consumption",
+          "document": "Whether to allow consumption.",
           "example": "true",
           "member": "bool",
           "name": "ReadEnabled",
@@ -7154,7 +7208,7 @@
         },
         {
           "default": "",
-          "document": "Number of partitions in the retry letter topic\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The number of partitions in a retry topic.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "uint64",
           "name": "RetryPartitionNum",
@@ -7164,7 +7218,7 @@
         },
         {
           "default": "",
-          "document": "Creation time in milliseconds",
+          "document": "Creation time in milliseconds.",
           "example": "10000",
           "member": "uint64",
           "name": "CreateTime",
@@ -7174,7 +7228,7 @@
         },
         {
           "default": "",
-          "document": "Modification time in milliseconds",
+          "document": "Modification time in milliseconds.",
           "example": "修改时间",
           "member": "uint64",
           "name": "UpdateTime",
@@ -7184,7 +7238,7 @@
         },
         {
           "default": "",
-          "document": "Client protocol",
+          "document": "Client protocol.",
           "example": "tcp",
           "member": "string",
           "name": "ClientProtocol",
@@ -7194,7 +7248,7 @@
         },
         {
           "default": "",
-          "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Description.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "备注",
           "member": "string",
           "name": "Remark",
@@ -7204,7 +7258,7 @@
         },
         {
           "default": "",
-          "document": "Consumer type. Enumerated values: ACTIVELY, PASSIVELY\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Consumer type. Enumerated values: `ACTIVELY` or `PASSIVELY`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ACTIVELY",
           "member": "string",
           "name": "ConsumerType",
@@ -7214,7 +7268,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable broadcast consumption",
+          "document": "Whether to enable broadcast consumption.",
           "example": "false",
           "member": "bool",
           "name": "BroadcastEnabled",
@@ -7230,7 +7284,7 @@
       "members": [
         {
           "default": "",
-          "document": "Namespace name, which can contain 3–64 letters, digits, hyphens, and underscores",
+          "document": "Namespace name, which can contain 3–64 letters, digits, hyphens, and underscores.",
           "example": "prod",
           "member": "string",
           "name": "NamespaceId",
@@ -7250,7 +7304,7 @@
         },
         {
           "default": "",
-          "document": "Retention period for persisted messages in milliseconds",
+          "document": "Retention period for persistently stored messages in milliseconds.",
           "example": "10000",
           "member": "uint64",
           "name": "RetentionTime",
@@ -7260,10 +7314,30 @@
         },
         {
           "default": "",
-          "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Description.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "备注",
           "member": "string",
           "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network access point address.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PublicEndpoint",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "VPC access point address.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VpcEndpoint",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -7276,7 +7350,7 @@
       "members": [
         {
           "default": "",
-          "document": "Topic name",
+          "document": "Topic name.",
           "example": "test",
           "member": "string",
           "name": "Name",
@@ -7286,7 +7360,7 @@
         },
         {
           "default": "",
-          "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Description.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "备注",
           "member": "string",
           "name": "Remark",
@@ -7296,7 +7370,7 @@
         },
         {
           "default": "",
-          "document": "Number of read/write partitions",
+          "document": "The number of read/write partitions.",
           "example": "1",
           "member": "uint64",
           "name": "PartitionNum",
@@ -7306,7 +7380,7 @@
         },
         {
           "default": "",
-          "document": "Creation time in milliseconds",
+          "document": "Creation time in milliseconds.",
           "example": "100000",
           "member": "uint64",
           "name": "CreateTime",
@@ -7316,7 +7390,7 @@
         },
         {
           "default": "",
-          "document": "Creation time in milliseconds",
+          "document": "Creation time in milliseconds.",
           "example": "100000",
           "member": "uint64",
           "name": "UpdateTime",
@@ -7753,7 +7827,7 @@
         },
         {
           "default": "",
-          "document": "The time when the consumer started connecting.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The time when the consumer started connecting.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "ConnectedSince",
@@ -7763,7 +7837,7 @@
         },
         {
           "default": "",
-          "document": "Consumer address.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Consumer address.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "ConsumerAddr",
@@ -7773,7 +7847,7 @@
         },
         {
           "default": "",
-          "document": "Number of consumers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The number of consumers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "11",
           "member": "string",
           "name": "ConsumerCount",
@@ -7783,7 +7857,7 @@
         },
         {
           "default": "",
-          "document": "Consumer name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Consumer name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "ConsumerName",
@@ -7793,7 +7867,7 @@
         },
         {
           "default": "",
-          "document": "Number of retained messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The number of heaped messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
           "name": "MsgBacklog",
@@ -7803,7 +7877,7 @@
         },
         {
           "default": "",
-          "document": "Proportion of messages under this subscription that were discarded but not sent after TTL.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Percentage of messages under this subscription that were discarded but not sent after TTL.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
           "name": "MsgRateExpired",
@@ -7813,7 +7887,7 @@
         },
         {
           "default": "",
-          "document": "Sum of the numbers of messages delivered by the consumer per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The total number of messages delivered by the consumer per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
           "name": "MsgRateOut",
@@ -7823,7 +7897,7 @@
         },
         {
           "default": "",
-          "document": "Number of bytes of messages consumed by the consumer per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The size (in bytes) of messages consumed by the consumer per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
           "name": "MsgThroughputOut",
@@ -7833,7 +7907,7 @@
         },
         {
           "default": "",
-          "document": "Subscription name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Subscription name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "SubscriptionName",
@@ -7843,7 +7917,7 @@
         },
         {
           "default": "",
-          "document": "Set of consumers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Set of consumers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Consumer",
           "name": "ConsumerSets",
@@ -7853,7 +7927,7 @@
         },
         {
           "default": "",
-          "document": "Whether it is online.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether the consumer is online.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
           "name": "IsOnline",
@@ -7863,7 +7937,7 @@
         },
         {
           "default": "",
-          "document": "Set of consumption progress information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Set of consumption progress information.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ConsumersSchedule",
           "name": "ConsumersScheduleSets",
@@ -7873,7 +7947,7 @@
         },
         {
           "default": "",
-          "document": "Remarks.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Remarks.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "Remark",
@@ -7883,7 +7957,7 @@
         },
         {
           "default": "",
-          "document": "Creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "datetime",
           "name": "CreateTime",
@@ -7893,7 +7967,7 @@
         },
         {
           "default": "",
-          "document": "Modification time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Last modified.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "datetime",
           "name": "UpdateTime",
@@ -7903,7 +7977,7 @@
         },
         {
           "default": "",
-          "document": "Subscription type. Valid values: `Exclusive`, `Shared`, `Failover`, and `Key_Shared`. An empty string or `NULL`: Unknown.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Subscription type. Valid values: `Exclusive`, `Shared`, `Failover`, and `Key_Shared`. An empty string or `NULL`: Unknown.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Shared",
           "member": "string",
           "name": "SubType",
@@ -7913,7 +7987,7 @@
         },
         {
           "default": "",
-          "document": "Whether messages are blocked as the limit of unacknowledged messages has been reached.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether messages are blocked as the limit of unacknowledged messages has been reached.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
           "name": "BlockedSubscriptionOnUnackedMsgs",
@@ -7923,7 +7997,7 @@
         },
         {
           "default": "",
-          "document": "Maximum number of unacknowledged messages.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The maximum number of unacknowledged messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "5000",
           "member": "int64",
           "name": "MaxUnackedMsgNum",
@@ -7996,7 +8070,7 @@
       "members": [
         {
           "default": "",
-          "document": "Average size of the messages published in the last interval in bytes.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Average size of the messages published in the last interval in bytes.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "AverageMsgSize",
@@ -8006,7 +8080,7 @@
         },
         {
           "default": "",
-          "document": "Number of consumers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The number of consumers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "ConsumerCount",
@@ -8016,7 +8090,7 @@
         },
         {
           "default": "",
-          "document": "Total number of recorded messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The total number of recorded messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "LastConfirmedEntry",
@@ -8026,7 +8100,7 @@
         },
         {
           "default": "",
-          "document": "Time when the last ledger was created.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Time when the last ledger was created.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "LastLedgerCreatedTimestamp",
@@ -8036,7 +8110,7 @@
         },
         {
           "default": "",
-          "document": "Number of messages published by local and replicated publishers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The number of messages published by local and replicated publishers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "MsgRateIn",
@@ -8046,7 +8120,7 @@
         },
         {
           "default": "",
-          "document": "Sum of the numbers of messages delivered by local and replicated consumers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The total number of messages delivered by local and replicated consumers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "MsgRateOut",
@@ -8056,7 +8130,7 @@
         },
         {
           "default": "",
-          "document": "Number of bytes of messages published by local and replicated publishers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The size (in bytes) of messages published by local and replicated publishers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "MsgThroughputIn",
@@ -8066,7 +8140,7 @@
         },
         {
           "default": "",
-          "document": "Number of bytes of messages delivered by local and replicated consumers per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The size (in bytes) of messages delivered by local and replicated consumers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "MsgThroughputOut",
@@ -8076,7 +8150,7 @@
         },
         {
           "default": "",
-          "document": "Total number of recorded messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The total number of recorded messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "NumberOfEntries",
@@ -8086,7 +8160,7 @@
         },
         {
           "default": "",
-          "document": "Number of partitions ≤ 0: there are no subpartitions in the topic.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Partition count ≤ 0: there are no subpartitions in the topic.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "int64",
           "name": "Partitions",
@@ -8096,7 +8170,7 @@
         },
         {
           "default": "",
-          "document": "Number of producers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The number of producers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "ProducerCount",
@@ -8106,7 +8180,7 @@
         },
         {
           "default": "",
-          "document": "Total amount of all stored messages in bytes.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The size of all stored messages in bytes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "TotalSize",
@@ -8116,7 +8190,7 @@
         },
         {
           "default": "",
-          "document": "Subpartitions in a partitioned topic.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Subpartitions in a partitioned topic.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "PartitionsTopic",
           "name": "SubTopicSets",
@@ -8126,7 +8200,7 @@
         },
         {
           "default": "",
-          "document": "Topic type description:\n0: general message;\n1: globally sequential message;\n2: partitionally sequential message;\n3: retry letter queue;\n4: dead letter queue;\n5: transaction message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Topic type description:\n0: General message;\n1: Globally sequential message;\n2: Partitionally sequential message;\n3: Retry letter topic;\n4: Dead letter topic;\n5: Transaction message.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "uint64",
           "name": "TopicType",
@@ -8136,7 +8210,7 @@
         },
         {
           "default": "",
-          "document": "Environment (namespace) name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Environment (namespace) name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "EnvironmentId",
@@ -8146,7 +8220,7 @@
         },
         {
           "default": "",
-          "document": "Topic name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Topic name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "TopicName",
@@ -8156,7 +8230,7 @@
         },
         {
           "default": "",
-          "document": "Remarks (up to 128 characters).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Remarks (up to 128 characters).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "Remark",
@@ -8166,7 +8240,7 @@
         },
         {
           "default": "",
-          "document": "Creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "datetime",
           "name": "CreateTime",
@@ -8176,7 +8250,7 @@
         },
         {
           "default": "",
-          "document": "Modification time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Last modified.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "datetime",
           "name": "UpdateTime",
@@ -8186,7 +8260,7 @@
         },
         {
           "default": "",
-          "document": "Maximum number of producers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The maximum number of producers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "5000",
           "member": "string",
           "name": "ProducerLimit",
@@ -8196,7 +8270,7 @@
         },
         {
           "default": "",
-          "document": "Maximum number of consumers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The maximum number of consumers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "5000",
           "member": "string",
           "name": "ConsumerLimit",
@@ -8206,7 +8280,7 @@
         },
         {
           "default": "",
-          "document": "`0`: Non-persistent and non-partitioned\n`1`: Non-persistent and partitioned\n`2`: Persistent and non-partitioned\n`3`: Persistent and partitioned\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "`0`: Non-persistent and non-partitioned\n`1`: Non-persistent and partitioned\n`2`: Persistent and non-partitioned\n`3`: Persistent and partitioned\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "PulsarTopicType",

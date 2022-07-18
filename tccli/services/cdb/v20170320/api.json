@@ -534,6 +534,12 @@
       "name": "Deactivates isolated TencentDB instances",
       "output": "OfflineIsolatedInstancesResponse"
     },
+    "OpenAuditService": {
+      "document": "This API is used to enable the audit service.",
+      "input": "OpenAuditServiceRequest",
+      "name": "Enables the audit service",
+      "output": "OpenAuditServiceResponse"
+    },
     "OpenDBInstanceGTID": {
       "document": "This API (OpenDBInstanceGTID) is used to enable GTID for a TencentDB instance. Only instances on or above version 5.6 are supported.",
       "input": "OpenDBInstanceGTIDRequest",
@@ -2632,7 +2638,7 @@
         },
         {
           "default": "",
-          "document": "Instance name.",
+          "document": "Instance name. For multiple instances purchased at one time, they will be distinguished by the name suffix number, such as instnaceName=db and goodsNum=3, their instance name is db1, db2 respectively.",
           "example": "***",
           "member": "string",
           "name": "InstanceName",
@@ -8749,7 +8755,7 @@
         },
         {
           "default": "",
-          "document": "Retention period of local binlog. Value range: [72,168].",
+          "document": "Retention period of local binlog. Value range: [120,168].",
           "example": "100",
           "member": "int64",
           "name": "SaveHours",
@@ -8976,6 +8982,51 @@
     },
     "OfflineIsolatedInstancesResponse": {
       "document": "OfflineIsolatedInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenAuditServiceRequest": {
+      "document": "OpenAuditService request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "TencentDB for MySQL instance ID",
+          "example": "cdb-etxaaa12",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Retention period of audit logs. Valid values:\n7: seven days (a week);\n30: 30 days (a month);\n180: 180 days (six months);\n365: 365 days (a year);\n1095: 1095 days (three years);\n1825: 1825 days (five years).",
+          "example": "30",
+          "member": "uint64",
+          "name": "LogExpireDay",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Retention period of high-frequency audit logs. Valid values:\n7: seven days (a week);\n30: 30 days (a month);\n180: 180 days (six months);\n365: 365 days (a year);\n1095: 1095 days (three years);\n1825: 1825 days (five years).",
+          "example": "7",
+          "member": "uint64",
+          "name": "HighLogExpireDay",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenAuditServiceResponse": {
+      "document": "OpenAuditService response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

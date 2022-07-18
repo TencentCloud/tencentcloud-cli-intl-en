@@ -18,6 +18,12 @@
       "name": "Creates an account",
       "output": "CreateAccountsResponse"
     },
+    "CreateClusters": {
+      "document": "This API is used to create a cluster.",
+      "input": "CreateClustersRequest",
+      "name": "Creates cluster",
+      "output": "CreateClustersResponse"
+    },
     "DescribeAccounts": {
       "document": "This API is used to query database management accounts.",
       "input": "DescribeAccountsRequest",
@@ -30,11 +36,35 @@
       "name": "Queries backup configuration information",
       "output": "DescribeBackupConfigResponse"
     },
+    "DescribeBackupDownloadUrl": {
+      "document": "This API is used to query the download address of a cluster backup file.",
+      "input": "DescribeBackupDownloadUrlRequest",
+      "name": "Queries the download address of a backup file",
+      "output": "DescribeBackupDownloadUrlResponse"
+    },
     "DescribeBackupList": {
       "document": "This API is used to query the list of backup files.",
       "input": "DescribeBackupListRequest",
       "name": "Queries backup file list",
       "output": "DescribeBackupListResponse"
+    },
+    "DescribeBinlogDownloadUrl": {
+      "document": "This API is used to query the download address of a binlog.",
+      "input": "DescribeBinlogDownloadUrlRequest",
+      "name": "Queries the download address of a binlog",
+      "output": "DescribeBinlogDownloadUrlResponse"
+    },
+    "DescribeBinlogSaveDays": {
+      "document": "This API is used to query the binlog retention period of a cluster in days.",
+      "input": "DescribeBinlogSaveDaysRequest",
+      "name": "Queries the binlog retention period in days",
+      "output": "DescribeBinlogSaveDaysResponse"
+    },
+    "DescribeBinlogs": {
+      "document": "This API is used to query the list of binlogs in a cluster.",
+      "input": "DescribeBinlogsRequest",
+      "name": "Queries the list of binlogs",
+      "output": "DescribeBinlogsResponse"
     },
     "DescribeClusterDetail": {
       "document": "This API is used to display cluster details.",
@@ -65,6 +95,12 @@
       "input": "DescribeInstanceDetailRequest",
       "name": "Queries instance details",
       "output": "DescribeInstanceDetailResponse"
+    },
+    "DescribeInstanceSlowQueries": {
+      "document": "This API is used to query the slow query logs of an instance.",
+      "input": "DescribeInstanceSlowQueriesRequest",
+      "name": "Queries the slow query logs of an instance",
+      "output": "DescribeInstanceSlowQueriesResponse"
     },
     "DescribeInstanceSpecs": {
       "document": "This API is used to query instance specifications.",
@@ -108,6 +144,12 @@
       "name": "Queries whether rollback is possible based on specified time",
       "output": "DescribeRollbackTimeValidityResponse"
     },
+    "ExportInstanceSlowQueries": {
+      "document": "This API is used to export the slow logs of an instance.",
+      "input": "ExportInstanceSlowQueriesRequest",
+      "name": "Exports the slow logs of an instance",
+      "output": "ExportInstanceSlowQueriesResponse"
+    },
     "IsolateCluster": {
       "document": "This API is used to isolate a cluster.",
       "input": "IsolateClusterRequest",
@@ -125,6 +167,12 @@
       "input": "ModifyBackupConfigRequest",
       "name": "Modifies backup configuration",
       "output": "ModifyBackupConfigResponse"
+    },
+    "ModifyBackupName": {
+      "document": "This API is used to rename a backup file.",
+      "input": "ModifyBackupNameRequest",
+      "name": "Renames a backup file",
+      "output": "ModifyBackupNameResponse"
     },
     "ModifyClusterName": {
       "document": "This API is used to modify cluster name.",
@@ -256,7 +304,7 @@
         {
           "default": "",
           "document": "Cluster ID",
-          "example": "cynosdbpg-bzxxrmtq",
+          "example": "cynosdbmysql-bzxxrmtq",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -264,8 +312,8 @@
         },
         {
           "default": "",
-          "document": "Array of instance IDs",
-          "example": "[\"cynosdbpg-ins-7upukfpw\\r\\n\"]",
+          "document": "List of instance IDs in the format of `cynosdbmysql-ins-n7ocdslw` as displayed in the TDSQL-C for MySQL console. You can use the instance list querying API to query the ID, i.e., the `InstanceId` value in the output parameters.",
+          "example": "[\"cynosdbmysql-ins-7upukfpw\\r\\n\"]",
           "member": "string",
           "name": "InstanceIdList",
           "required": true,
@@ -318,7 +366,7 @@
         },
         {
           "default": "",
-          "document": "Memory",
+          "document": "Memory in GB",
           "example": "4",
           "member": "int64",
           "name": "Memory",
@@ -327,7 +375,7 @@
         },
         {
           "default": "",
-          "document": "Number of added read-only instances",
+          "document": "Number of added read-only instances. Value range: (0,16].",
           "example": "1",
           "member": "int64",
           "name": "ReadOnlyCount",
@@ -336,7 +384,7 @@
         },
         {
           "default": "",
-          "document": "Instance group ID, which is used when you add an instance in an existing RO group. If this parameter is left empty, an RO group will be created.",
+          "document": "Instance group ID, which is used when you add an instance to an existing RO group. If this parameter is left empty, an RO group will be created. We recommend you not pass in this value on the current version.",
           "example": "cynosmysql-grp-xxxxxxxx",
           "member": "string",
           "name": "InstanceGrpId",
@@ -345,7 +393,7 @@
         },
         {
           "default": "",
-          "document": "VPC ID",
+          "document": "VPC ID. This parameter has been disused.",
           "example": "vpc-1ptuei0b",
           "member": "string",
           "name": "VpcId",
@@ -354,7 +402,7 @@
         },
         {
           "default": "",
-          "document": "Subnet ID",
+          "document": "Subnet ID. If `VpcId` is set, `SubnetId` is required. This parameter has been disused.",
           "example": "subnet-1tmw9t4o",
           "member": "string",
           "name": "SubnetId",
@@ -363,7 +411,7 @@
         },
         {
           "default": "",
-          "document": "Port used when adding RO group",
+          "document": "The port used when adding an RO group. Value range: [0,65535).",
           "example": "2000",
           "member": "int64",
           "name": "Port",
@@ -372,7 +420,7 @@
         },
         {
           "default": "",
-          "document": "Instance name",
+          "document": "Instance name. String length range: [0,64).",
           "example": "cynosmysql-xxxxxxxx",
           "member": "string",
           "name": "InstanceName",
@@ -399,7 +447,7 @@
         },
         {
           "default": "",
-          "document": "Order source",
+          "document": "Order source. String length range: [0,64).",
           "example": "api",
           "member": "string",
           "name": "OrderSource",
@@ -593,6 +641,62 @@
       ],
       "usage": "out"
     },
+    "BinlogItem": {
+      "document": "Binlog description",
+      "members": [
+        {
+          "default": "",
+          "document": "Binlog filename",
+          "example": "无",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File size in bytes",
+          "example": "无",
+          "member": "int64",
+          "name": "FileSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Transaction start time",
+          "example": "无",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Transaction end time",
+          "example": "无",
+          "member": "string",
+          "name": "FinishTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Binlog file ID",
+          "example": "无",
+          "member": "int64",
+          "name": "BinlogId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ClusterInstanceDetail": {
       "document": "Cluster instance information",
       "members": [
@@ -698,6 +802,420 @@
     "CreateAccountsResponse": {
       "document": "CreateAccounts response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClustersRequest": {
+      "document": "CreateClusters request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "example": "vpc-1ptuei0b",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "example": "subnet-1tmw9t4o",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database type. Valid values: \n<li> MYSQL </li>",
+          "example": "MYSQL",
+          "member": "string",
+          "name": "DbType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database version. Valid values: \n<li> Valid values for `MYSQL`: 5.7 </li>",
+          "example": "5.7",
+          "member": "string",
+          "name": "DbVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "It is required when `DbMode` is set to `NORMAL` or left empty.\nNumber of CPU cores of a non-serverless instance",
+          "example": "1",
+          "member": "int64",
+          "name": "Cpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "It is required when `DbMode` is set to `NORMAL` or left empty.\nMemory of a non-serverless instance in GB",
+          "example": "4",
+          "member": "int64",
+          "name": "Memory",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been deprecated.\nStorage capacity in GB.",
+          "example": "100",
+          "member": "int64",
+          "name": "Storage",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Cluster name",
+          "example": "MyClusterName",
+          "member": "string",
+          "name": "ClusterName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Account password (it must contain 8-64 characters in at least three of the following four types: uppercase letters, lowercase letters, digits, and symbols (~!@#$%^&*_-+=`|\\(){}[]:;'<>,.?/).)",
+          "example": "passwd@admin",
+          "member": "string",
+          "name": "AdminPassword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Port. Default value: 5432",
+          "example": "3306",
+          "member": "int64",
+          "name": "Port",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Billing mode. 0: pay-as-you-go; 1: monthly subscription. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "PayMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of purchased items. Currently, only 1 can be passed in. If this parameter is left empty, 1 will be used by default.",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Rollback type:\nnoneRollback: no rollback\nsnapRollback: rollback by snapshot\ntimeRollback: rollback by time point",
+          "example": "noneRollback",
+          "member": "string",
+          "name": "RollbackStrategy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "`snapshotId` for snapshot rollback or `queryId` for time point rollback. 0 indicates to determine whether the time point is valid",
+          "example": "0",
+          "member": "uint64",
+          "name": "RollbackId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pass in the source cluster ID during rollback to find the source `poolId`",
+          "example": "cynosdbmysql-xxxxxxxx",
+          "member": "string",
+          "name": "OriginalClusterId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specified time for time point rollback or snapshot time for snapshot rollback",
+          "example": "2021-04-26 18:13:10",
+          "member": "string",
+          "name": "ExpectTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter has been deprecated.\nSpecified allowed time range for time point rollback",
+          "example": "0",
+          "member": "uint64",
+          "name": "ExpectTimeThresh",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum storage of a non-serverless instance in GB\nIf `DbType` is `MYSQL` and the storage billing mode is prepaid, the parameter value cannot exceed the maximum storage corresponding to the CPU and memory specifications.",
+          "example": "100",
+          "member": "int64",
+          "name": "StorageLimit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of instances",
+          "example": "1",
+          "member": "int64",
+          "name": "InstanceCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Purchase duration of monthly subscription plan",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Purchase duration unit of monthly subscription plan",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether auto-renewal is enabled for monthly subscription plan",
+          "example": "0",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of instances (this parameter has been disused and is retained only for compatibility with existing instances)",
+          "example": "1",
+          "member": "int64",
+          "name": "HaCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Order source",
+          "example": "MyOrderSource",
+          "member": "string",
+          "name": "OrderSource",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of tags to be bound to the created cluster",
+          "example": "无",
+          "member": "Tag",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Database type\nValid values when `DbType` is `MYSQL` (default value: NORMAL):\n<li>NORMAL</li>\n<li>SERVERLESS</li>",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "DbMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter is required if `DbMode` is `SERVERLESS`\nMinimum number of CPU cores. For the value range, please see the returned result of `DescribeServerlessInstanceSpecs`",
+          "example": "1.0",
+          "member": "float",
+          "name": "MinCpu",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "default": "",
+          "document": "This parameter is required if `DbMode` is `SERVERLESS`:\nMaximum number of CPU cores. For the value range, please see the returned result of `DescribeServerlessInstanceSpecs`",
+          "example": "2.0",
+          "member": "float",
+          "name": "MaxCpu",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "default": "",
+          "document": "This parameter specifies whether the cluster will be automatically paused if `DbMode` is `SERVERLESS`. Valid values:\n<li>yes</li>\n<li>no</li>\nDefault value: yes",
+          "example": "yes",
+          "member": "string",
+          "name": "AutoPause",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter specifies the delay for automatic cluster pause in seconds if `DbMode` is `SERVERLESS`. Value range: [600,691200]\nDefault value: 600",
+          "example": "600",
+          "member": "int64",
+          "name": "AutoPauseDelay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The billing mode of cluster storage. Valid values: `0` (postpaid), `1` (prepaid). Default value: `0`.\nIf `DbType` is `MYSQL` and the billing mode of cluster compute is pay-as-you-go (or the `DbMode` is `SERVERLESS`), the billing mode of cluster storage must be postpaid.\nClusters with storage billed in prepaid mode cannot be cloned or rolled back.",
+          "example": "0",
+          "member": "int64",
+          "name": "StoragePayMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Array of security group IDs",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Array of alarm policy IDs",
+          "example": "无",
+          "member": "string",
+          "name": "AlarmPolicyIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Array of parameters",
+          "example": "无",
+          "member": "ParamItem",
+          "name": "ClusterParams",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)",
+          "example": "0",
+          "member": "int64",
+          "name": "DealMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Parameter template ID",
+          "example": "0",
+          "member": "int64",
+          "name": "ParamTemplateId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClustersResponse": {
+      "document": "CreateClusters response structure.",
+      "members": [
+        {
+          "document": "Freezing transaction ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "20190522160000003106844584180998",
+          "member": "string",
+          "name": "TranId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Order ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"20190522112283\"]",
+          "member": "string",
+          "name": "DealNames",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of resource IDs (This field has been deprecated. Please use `dealNames` in the `DescribeResourcesByDealName` API to get resource IDs.)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"cynosdbpg-ins-67rmucgk\"]",
+          "member": "string",
+          "name": "ResourceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of cluster IDs (This field has been deprecated. Please use `dealNames` in the `DescribeResourcesByDealName` API to get cluster IDs.)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"cynosdbmysql-sls-9nts65r2\"]",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Big order ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"xxx\"]",
+          "member": "string",
+          "name": "BigDealIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -2288,6 +2806,51 @@
       ],
       "type": "object"
     },
+    "DescribeBackupDownloadUrlRequest": {
+      "document": "DescribeBackupDownloadUrl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-123",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup ID",
+          "example": "100",
+          "member": "int64",
+          "name": "BackupId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupDownloadUrlResponse": {
+      "document": "DescribeBackupDownloadUrl response structure.",
+      "members": [
+        {
+          "document": "Backup download address",
+          "example": "无",
+          "member": "string",
+          "name": "DownloadUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBackupListRequest": {
       "document": "DescribeBackupList request structure.",
       "members": [
@@ -2346,6 +2909,168 @@
           "name": "BackupList",
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBinlogDownloadUrlRequest": {
+      "document": "DescribeBinlogDownloadUrl request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-123",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Binlog file ID",
+          "example": "100",
+          "member": "int64",
+          "name": "BinlogId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBinlogDownloadUrlResponse": {
+      "document": "DescribeBinlogDownloadUrl response structure.",
+      "members": [
+        {
+          "document": "Download address",
+          "example": "无",
+          "member": "string",
+          "name": "DownloadUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBinlogSaveDaysRequest": {
+      "document": "DescribeBinlogSaveDays request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-123",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBinlogSaveDaysResponse": {
+      "document": "DescribeBinlogSaveDays response structure.",
+      "members": [
+        {
+          "document": "Binlog retention period in days",
+          "example": "7",
+          "member": "int64",
+          "name": "BinlogSaveDays",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBinlogsRequest": {
+      "document": "DescribeBinlogs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-123",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "2022-01-01 12:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "2022-01-01 14:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "example": "100",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBinlogsResponse": {
+      "document": "DescribeBinlogs response structure.",
+      "members": [
+        {
+          "document": "Total number of records",
+          "example": "100",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Binlog list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BinlogItem",
+          "name": "Binlogs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2434,7 +3159,8 @@
       "members": [
         {
           "default": "",
-          "document": "Engine type. Valid values: MYSQL, POSTGRESQL",
+          "document": "Engine type. Currently, `MYSQL` is supported.",
+          "example": "MYSQL",
           "member": "string",
           "name": "DbType",
           "required": false,
@@ -2443,6 +3169,7 @@
         {
           "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100",
+          "example": "20",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -2451,6 +3178,7 @@
         {
           "default": "",
           "document": "Record offset. Default value: 0",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2459,6 +3187,7 @@
         {
           "default": "",
           "document": "Sort by field. Valid values:\n<li> CREATETIME: creation time</li>\n<li> PERIODENDTIME: expiration time</li>",
+          "example": "\"CREATETIME\"",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -2467,6 +3196,7 @@
         {
           "default": "",
           "document": "Sorting order. Valid values:\n<li> ASC: ascending</li>\n<li> DESC: descending</li>",
+          "example": "\"DESC\"",
           "member": "string",
           "name": "OrderByType",
           "required": false,
@@ -2475,6 +3205,7 @@
         {
           "default": "",
           "document": "Filter. If more than one filter exists, the logical relationship between these filters is `AND`.",
+          "example": "无",
           "member": "QueryFilter",
           "name": "Filters",
           "required": false,
@@ -2575,6 +3306,132 @@
       ],
       "type": "object"
     },
+    "DescribeInstanceSlowQueriesRequest": {
+      "document": "DescribeInstanceSlowQueries request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "cynosdbmysql-ins-123",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Transaction start time",
+          "example": "2022-01-01 12:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Transaction end time",
+          "example": "2022-01-01 14:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum number",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Username",
+          "example": "root",
+          "member": "string",
+          "name": "Username",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Client host",
+          "example": "10.10.10.10",
+          "member": "string",
+          "name": "Host",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "db1",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting field. Valid values: QueryTime, LockTime, RowsExamined, RowsSent.",
+          "example": "QueryTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: asc, desc.",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceSlowQueriesResponse": {
+      "document": "DescribeInstanceSlowQueries response structure.",
+      "members": [
+        {
+          "document": "Total number",
+          "example": "100",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Slow query record",
+          "example": "无",
+          "member": "SlowQueriesItem",
+          "name": "SlowQueries",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeInstanceSpecsRequest": {
       "document": "DescribeInstanceSpecs request structure.",
       "members": [
@@ -2658,7 +3515,7 @@
         },
         {
           "default": "",
-          "document": "Engine type. Valid values: MYSQL, POSTGRESQL",
+          "document": "Engine type. Currently, `MYSQL` is supported.",
           "example": "xx",
           "member": "string",
           "name": "DbType",
@@ -2936,6 +3793,114 @@
       ],
       "type": "object"
     },
+    "ExportInstanceSlowQueriesRequest": {
+      "document": "ExportInstanceSlowQueries request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "cynosdbmysql-ins-123",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Transaction start time",
+          "example": "2022-01-01 12:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Transaction end time",
+          "example": "2022-01-01 14:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum number",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Username",
+          "example": "root",
+          "member": "string",
+          "name": "Username",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Client host",
+          "example": "10.10.10.10",
+          "member": "string",
+          "name": "Host",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "db1",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File type. Valid values: csv, original.",
+          "example": "csv",
+          "member": "string",
+          "name": "FileType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExportInstanceSlowQueriesResponse": {
+      "document": "ExportInstanceSlowQueries response structure.",
+      "members": [
+        {
+          "document": "Slow query export content",
+          "example": "无",
+          "member": "string",
+          "name": "FileContent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "InstanceSpec": {
       "document": "Details of purchasable instance specifications. `Cpu` and `Memory` determine the instance specification during instance creation. The value range of the storage capacity is [MinStorageSize,MaxStorageSize]",
       "members": [
@@ -2984,6 +3949,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cynosdbpg-bzxxrmtq",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -2991,7 +3957,8 @@
         },
         {
           "default": "",
-          "document": "Database type. Valid values: \n<li> MYSQL </li>",
+          "document": "This parameter has been disused.",
+          "example": "MYSQL",
           "member": "string",
           "name": "DbType",
           "required": false,
@@ -3032,6 +3999,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cynosdbmysql-ins-bzkxxrmt",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -3040,6 +4008,7 @@
         {
           "default": "",
           "document": "Instance ID array",
+          "example": "[\"cynosdbmysql-ixgbd0di\\n\"]",
           "member": "string",
           "name": "InstanceIdList",
           "required": true,
@@ -3047,7 +4016,8 @@
         },
         {
           "default": "",
-          "document": "Database type. Valid values: \n<li> MYSQL </li>",
+          "document": "This parameter has been disused.",
+          "example": "MYSQL",
           "member": "string",
           "name": "DbType",
           "required": false,
@@ -3088,7 +4058,7 @@
         {
           "default": "",
           "document": "Cluster ID",
-          "example": "cynosdbpg-45knmnra",
+          "example": "cynosdbmysql-45knmnra",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -3114,7 +4084,7 @@
         },
         {
           "default": "",
-          "document": "Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800",
+          "document": "Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800. Maximum value: 158112000.",
           "example": "604800",
           "member": "uint64",
           "name": "ReserveDuration",
@@ -3123,7 +4093,7 @@
         },
         {
           "default": "",
-          "document": "Backup frequency. It is an array of 7 elements corresponding to Monday through Sunday. full: full backup; increment: incremental backup",
+          "document": "Backup frequency. It is an array of 7 elements corresponding to Monday through Sunday. full: full backup; increment: incremental backup. This parameter cannot be modified currently and doesn't need to be entered.",
           "example": "[full,full,full,full,full,full,full]",
           "member": "string",
           "name": "BackupFreq",
@@ -3132,7 +4102,7 @@
         },
         {
           "default": "",
-          "document": "Backup mode. logic: logic backup; snapshot: snapshot backup",
+          "document": "Backup mode. logic: logic backup; snapshot: snapshot backup. This parameter cannot be modified currently and doesn't need to be entered.",
           "example": "snapshot",
           "member": "string",
           "name": "BackupType",
@@ -3144,6 +4114,51 @@
     },
     "ModifyBackupConfigResponse": {
       "document": "ModifyBackupConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupNameRequest": {
+      "document": "ModifyBackupName request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-123",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup file ID",
+          "example": "100",
+          "member": "int64",
+          "name": "BackupId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Backup name, which can contain up to 60 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "BackupName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupNameResponse": {
+      "document": "ModifyBackupName response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3196,7 +4211,7 @@
         {
           "default": "",
           "document": "Cluster ID",
-          "example": "cynosdbpg-ins-jhi2gdi0",
+          "example": "cynosdbmysql-ins-jhi2gdi0",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -3204,7 +4219,7 @@
         },
         {
           "default": "",
-          "document": "The list of parameters to be modified",
+          "document": "List of the parameters to be modified. Each element in the list is a combination of `ParamName`, `CurrentValue`, and `OldValue`.",
           "example": "无",
           "member": "ParamItem",
           "name": "ParamList",
@@ -3214,7 +4229,7 @@
         {
           "default": "",
           "document": "Valid values: `yes` (execute during maintenance time), `no` (execute now)",
-          "example": "无",
+          "example": "yes",
           "member": "string",
           "name": "IsInMaintainPeriod",
           "required": false,
@@ -3250,6 +4265,7 @@
         {
           "default": "",
           "document": "Instance group ID",
+          "example": "cynosdbmysql-ins-4senc2fm",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3257,7 +4273,8 @@
         },
         {
           "default": "",
-          "document": "List of IDs of the security groups to be modified, which is an array of one or more security group IDs.",
+          "document": "List of IDs of security groups to be modified, which is an array of one or more security group IDs.",
+          "example": "[\"sg-ajr1jzgj\\n\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": true,
@@ -3266,6 +4283,7 @@
         {
           "default": "",
           "document": "AZ",
+          "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -3328,6 +4346,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "cynosdbmysql-ins-n7ocdslw",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3336,6 +4355,7 @@
         {
           "default": "",
           "document": "Maintenance start time in seconds. For example, 03:00 AM is represented by 10800",
+          "example": "3600",
           "member": "int64",
           "name": "MaintainStartTime",
           "required": true,
@@ -3344,6 +4364,7 @@
         {
           "default": "",
           "document": "Maintenance duration in seconds. For example, one hour is represented by 3600",
+          "example": "3600",
           "member": "int64",
           "name": "MaintainDuration",
           "required": true,
@@ -3351,7 +4372,8 @@
         },
         {
           "default": "",
-          "document": "Maintenance days of the week",
+          "document": "Maintenance days of the week. Valid values: [Mon, Tue, Wed, Thu, Fri, Sat, Sun].",
+          "example": "[Mon]",
           "member": "string",
           "name": "MaintainWeekDays",
           "required": true,
@@ -3904,6 +4926,7 @@
         {
           "default": "",
           "document": "ID of the instance to be manipulated",
+          "example": "['cynosdbmysql-ins-xxxxxxxx']",
           "member": "string",
           "name": "ResourceIds",
           "required": true,
@@ -3911,7 +4934,8 @@
         },
         {
           "default": "",
-          "document": "Auto-Renewal flag",
+          "document": "Auto-renewal flag. 0: normal renewal, 1: auto-renewal, 2: no renewal.",
+          "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
           "required": true,
@@ -3938,6 +4962,122 @@
         }
       ],
       "type": "object"
+    },
+    "SlowQueriesItem": {
+      "document": "Slow query information of the instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Execution timestamp",
+          "example": "无",
+          "member": "int64",
+          "name": "Timestamp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Execution duration in seconds",
+          "example": "无",
+          "member": "float",
+          "name": "QueryTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SQL statement",
+          "example": "无",
+          "member": "string",
+          "name": "SqlText",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Client host",
+          "example": "无",
+          "member": "string",
+          "name": "UserHost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Username",
+          "example": "无",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "无",
+          "member": "string",
+          "name": "Database",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Lock duration in seconds",
+          "example": "无",
+          "member": "float",
+          "name": "LockTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of scanned rows",
+          "example": "无",
+          "member": "int64",
+          "name": "RowsExamined",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of returned rows",
+          "example": "无",
+          "member": "int64",
+          "name": "RowsSent",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SQL template",
+          "example": "无",
+          "member": "string",
+          "name": "SqlTemplate",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "MD5 value of the SQL statement",
+          "example": "无",
+          "member": "string",
+          "name": "SqlMd5",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "Tag": {
       "document": "Information of tags associated with cluster, including `TagKey` and `TagValue`",
@@ -3986,7 +5126,7 @@
         },
         {
           "default": "",
-          "document": "Database memory",
+          "document": "Database memory in GB",
           "example": "4",
           "member": "int64",
           "name": "Memory",
@@ -4004,7 +5144,7 @@
         },
         {
           "default": "",
-          "document": "Storage upper limit. 0 indicates to use the standard configuration",
+          "document": "This parameter has been disused.",
           "example": "1000",
           "member": "uint64",
           "name": "StorageLimit",
@@ -4022,7 +5162,7 @@
         },
         {
           "default": "",
-          "document": "Database type. Valid values: \n<li> MYSQL </li>",
+          "document": "This parameter has been disused.",
           "example": "MYSQL",
           "member": "string",
           "name": "DbType",
