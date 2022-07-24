@@ -2283,7 +2283,17 @@
     },
     "DescribeCkafkaZoneRequest": {
       "document": "DescribeCkafkaZone request structure.",
-      "members": [],
+      "members": [
+        {
+          "default": "",
+          "document": "Cloud Dedicated Cluster (CDC) business parameter.",
+          "example": "无",
+          "member": "string",
+          "name": "CdcId",
+          "required": false,
+          "type": "string"
+        }
+      ],
       "type": "object"
     },
     "DescribeCkafkaZoneResponse": {
@@ -2823,6 +2833,15 @@
           "example": "10",
           "member": "string",
           "name": "Business",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CDC business field, which can be ignored.",
+          "example": "cdc-test",
+          "member": "string",
+          "name": "CdcId",
           "required": false,
           "type": "string"
         }
@@ -4437,6 +4456,26 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ClusterType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Features",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -5407,7 +5446,7 @@
         },
         {
           "default": "",
-          "document": "Message content that is sent.",
+          "document": "Content of the message that has been sent. Up to 500 messages can be sent in a single request.",
           "example": "无",
           "member": "BatchContent",
           "name": "Message",

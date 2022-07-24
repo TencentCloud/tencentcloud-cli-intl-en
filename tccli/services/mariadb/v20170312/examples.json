@@ -43,7 +43,7 @@
     "CreateAccount": [
       {
         "document": "",
-        "input": "https://mariadb.tencentcloudapi.com/?Action=CreateAccount\n&InstanceId=tdsql-fdpjf5zh\n&UserName=testuser1\n&Host=172.17.%\n&Password=1234qweri#\n&Description=Test account\n&ReadOnly=0\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccount\n<Common request parameters>\n\n{\n    \"UserName\": \"testuser1\",\n    \"Description\": \"Test account\",\n    \"InstanceId\": \"tdsql-fdpjf5zh\",\n    \"ReadOnly\": \"0\",\n    \"Host\": \"172.17.%\",\n    &Password=1234qweri#\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2cc4e4dc-c3e9-4858-ab80-03e3526cf24d\",\n        \"InstanceId\": \"tdsql-fdpjf5zh\",\n        \"UserName\": \"testuser1\",\n        \"Host\": \"172.17.%\",\n        \"ReadOnly\": 0\n    }\n}",
         "title": "Creating an account for a TencentDB instance"
       }
@@ -75,7 +75,7 @@
     "DescribeAccounts": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccounts\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql-lyzax5rb\"\n}",
+        "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSubAccounts\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql-lyzax5rb\"\n}",
         "output": "{\n    \"Response\": {\n        \"InstanceId\": \"tdsql-lyzax5rb\",\n        \"RequestId\": \"8da4cad2-3f97-41b5-8ef5-a1d3d61e1fdb\",\n        \"Users\": [\n            {\n                \"CreateTime\": \"2022-03-24 15:39:02\",\n                \"DelayThresh\": 0,\n                \"Description\": \"\",\n                \"Host\": \"%\",\n                \"ReadOnly\": 0,\n                \"UpdateTime\": \"2022-03-24 15:39:02\",\n                \"UserName\": \"h1\"\n            }\n        ]\n    }\n}",
         "title": "None"
       }
@@ -182,6 +182,14 @@
         "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeProjectSecurityGroups\n&Product=mariadb\n&ProjectId=11988\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"RequestId\": \"31a60135-7057-47ae-8fd3-7a0617deca38\",\n        \"Groups\": [\n            {\n                \"ProjectId\": 11988,\n                \"CreateTime\": \"2017-04-13 15:00:06\",\n                \"Inbound\": [\n                    {\n                        \"Action\": \"\",\n                        \"CidrIp\": \"\",\n                        \"PortRange\": \"\",\n                        \"IpProtocol\": \"\"\n                    }\n                ],\n                \"Outbound\": [\n                    {\n                        \"Action\": \"\",\n                        \"CidrIp\": \"\",\n                        \"PortRange\": \"\",\n                        \"IpProtocol\": \"\"\n                    }\n                ],\n                \"SecurityGroupId\": \"sg-ajr1jzgj\",\n                \"SecurityGroupName\": \"mariadb\",\n                \"SecurityGroupRemark\": \"\"\n            }\n        ]\n    }\n}",
         "title": "Sample 1. Querying the security group details of a project"
+      }
+    ],
+    "DestroyDBInstance": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=DestroyDBInstance\n&InstanceId=tdsql-avw0207d\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8c4fba95-01e4-61d9-4146-59fc5afdf962\",\n        \"FlowId\": 100,\n        \"InstanceId\": \"tdsql-avw0207d\"\n    }\n}",
+        "title": "Sample request"
       }
     ],
     "DestroyHourDBInstance": [

@@ -138,6 +138,12 @@
       "name": "Queries the security group details of a project",
       "output": "DescribeProjectSecurityGroupsResponse"
     },
+    "DestroyDBInstance": {
+      "document": "This API is used to terminate an isolated monthly subscribed instance.",
+      "input": "DestroyDBInstanceRequest",
+      "name": "Terminates an isolated monthly subscribed instance",
+      "output": "DestroyDBInstanceResponse"
+    },
     "DestroyHourDBInstance": {
       "document": "This API is used to terminate a pay-as-you-go instance.",
       "input": "DestroyHourDBInstanceRequest",
@@ -638,6 +644,24 @@
           "name": "DelayThresh",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to specify a replica server for read-only account. Valid values: `0` (No replica server is specified, which means that the proxy will select another available replica server to keep connection with the client if the current replica server doesn’t meet the requirement). `1` (The replica server is specified, which means that the connection will be disconnected if the specified replica server doesn’t meet the requirement.)",
+          "example": "0",
+          "member": "int64",
+          "name": "SlaveConst",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of connections. If left empty or `0` is passed in, the connections will be unlimited. This parameter configuration is not supported for kernel version 10.1.",
+          "example": "0",
+          "member": "uint64",
+          "name": "MaxUserConnections",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -886,6 +910,7 @@
         {
           "default": "",
           "document": "Username",
+          "example": "无",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -895,6 +920,7 @@
         {
           "default": "",
           "document": "Host from which a user can log in (corresponding to the `host` field for a MySQL user; a user is uniquely identified by username and host; this parameter is in IP format and ends with % for IP range; % can be entered; if this parameter is left empty, % will be used by default).",
+          "example": "无",
           "member": "string",
           "name": "Host",
           "required": true,
@@ -904,6 +930,7 @@
         {
           "default": "",
           "document": "User remarks",
+          "example": "无",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -913,6 +940,7 @@
         {
           "default": "",
           "document": "Creation time",
+          "example": "无",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -922,6 +950,7 @@
         {
           "default": "",
           "document": "Last updated time",
+          "example": "无",
           "member": "datetime",
           "name": "UpdateTime",
           "required": true,
@@ -931,6 +960,7 @@
         {
           "default": "",
           "document": "Read-only flag. 0: no; 1: for the account's SQL requests, the replica will be used first, and if it is unavailable, the primary will be used; 2: the replica will be used first, and if it is unavailable, the operation will fail.",
+          "example": "无",
           "member": "int64",
           "name": "ReadOnly",
           "required": true,
@@ -940,11 +970,22 @@
         {
           "default": "",
           "document": "This field is meaningful for read-only accounts, indicating that a replica should be selected if its delay from the primary is less than this value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "DelayThresh",
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to specify a replica server for read-only account. Valid values: `0` (No replica server is specified, which means that the proxy will select another available replica server to keep connection with the client if the current replica server doesn’t meet the requirement). `1` (The replica server is specified, which means that the connection will be disconnected if the specified replica server doesn’t meet the requirement.)",
+          "example": "无",
+          "member": "int64",
+          "name": "SlaveConst",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3013,6 +3054,51 @@
           "example": "无",
           "member": "uint64",
           "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyDBInstanceRequest": {
+      "document": "DestroyDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of “tdsqlshard-c1nl9rpv”. It is the same as the instance ID displayed in the TencentDB for MariaDB console.",
+          "example": "tdsql-avw0207d",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyDBInstanceResponse": {
+      "document": "DestroyDBInstance response structure.",
+      "members": [
+        {
+          "document": "Instance ID, which is the same as the request parameter `InstanceId`.",
+          "example": "tdsql-avw0207d",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/557/56485?from_cn_redirect=1) API to query the async task result.",
+          "example": "100",
+          "member": "int64",
+          "name": "FlowId",
           "required": true,
           "type": "int",
           "value_allowed_null": false

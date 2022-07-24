@@ -51,7 +51,7 @@
     "CreateAccount": [
       {
         "document": "",
-        "input": "https://dcdb.tencentcloudapi.com/?Action=CreateAccount\n&InstanceId=dcdbt-fdpjf5zh\n&UserName=testuser1\n&Host=172.17.%\n&Password=1234qweri#\n&Description=Test account\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: dcdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccount\n<Common request parameters>\n\n{\n    \"InstanceId\": \"dcdbt-fdpjf5zh\",\n    \"UserName\": \"testuser1\",\n    \"Host\": \"172.17.%\",\n    \"Password\": \"1234qweri#\",\n    \"Description\": \"Test account\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2cc4e4dc-c3e9-4858-ab80-03e3526cf24d\",\n        \"InstanceId\": \"dcdbt-fdpjf5zh\",\n        \"UserName\": \"testuser1\",\n        \"Host\": \"172.17.%\",\n        \"ReadOnly\": 0\n    }\n}",
         "title": "Creating an account for a TencentDB instance"
       }
@@ -59,9 +59,9 @@
     "CreateHourDCDBInstance": [
       {
         "document": "",
-        "input": "https://dcdb.tencentcloudapi.com/?Action=CreateHourDCDBInstance\n&ShardMemory=2\n&ShardStorage=10\n&ShardNodeCount=2\n&ShardCount=2\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: dcdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateHourDCDBInstance\n<Common request parameters>\n\n{\n    \"ShardCount\": \"2\",\n    \"ShardMemory\": \"2\",\n    \"ShardNodeCount\": \"2\",\n    \"ShardStorage\": \"10\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"14f6980a-7fe1-11ea-b896-525400542aa6\",\n        \"InstanceIds\": [\n            \"tdsql-xxxxxx\"\n        ],\n        \"DealName\": \"20200409111543\",\n        \"FlowId\": 1122\n    }\n}",
-        "title": "None"
+        "title": "N/A"
       }
     ],
     "DeleteAccount": [
