@@ -27,7 +27,7 @@
     "CloseProxies": {
       "document": "This API (CloseProxies) is used to disable connections. If disabled, no traffic will be generated, but the basic configuration fee will still be incurred.",
       "input": "CloseProxiesRequest",
-      "name": "Disables a connection.",
+      "name": "Disables a connection",
       "output": "CloseProxiesResponse"
     },
     "CloseProxyGroup": {
@@ -37,15 +37,15 @@
       "output": "CloseProxyGroupResponse"
     },
     "CloseSecurityPolicy": {
-      "document": "This API is used to disable security policies.",
+      "document": "This API is used to disable a security policy.",
       "input": "CloseSecurityPolicyRequest",
-      "name": "Disables a security policy.",
+      "name": "Disables a security policy",
       "output": "CloseSecurityPolicyResponse"
     },
     "CreateCertificate": {
       "document": "This API (CreateCertificate) is used to create the GAAP certificates and configuration files, including basic authentication configuration files, client CA certificates, server SSL certificates, GAAP SSL certificates, and origin server CA certificates.",
       "input": "CreateCertificateRequest",
-      "name": "Creates a certificate.",
+      "name": "Creates a certificate",
       "output": "CreateCertificateResponse"
     },
     "CreateCustomHeader": {
@@ -127,9 +127,9 @@
       "output": "CreateUDPListenersResponse"
     },
     "DeleteCertificate": {
-      "document": "This API (DeleteCertificate) is used to delete certificates.",
+      "document": "This API is used to delete a certificate.",
       "input": "DeleteCertificateRequest",
-      "name": "Deletes a certificate.",
+      "name": "Deletes a certificate",
       "output": "DeleteCertificateResponse"
     },
     "DeleteDomain": {
@@ -163,9 +163,9 @@
       "output": "DeleteRuleResponse"
     },
     "DeleteSecurityPolicy": {
-      "document": "This API is used to delete security policies.",
+      "document": "This API is used to delete a security policy.",
       "input": "DeleteSecurityPolicyRequest",
-      "name": "Deletes a security policy.",
+      "name": "Deletes a security policy",
       "output": "DeleteSecurityPolicyResponse"
     },
     "DeleteSecurityRules": {
@@ -177,7 +177,7 @@
     "DescribeAccessRegions": {
       "document": "This API (DescribeAccessRegions) is used to query acceleration region (client access region).",
       "input": "DescribeAccessRegionsRequest",
-      "name": "Queries acceleration regions.",
+      "name": "Queries acceleration regions",
       "output": "DescribeAccessRegionsResponse"
     },
     "DescribeAccessRegionsByDestRegion": {
@@ -273,19 +273,19 @@
     "DescribeProxies": {
       "document": "This API (DescribeProxies) is used to query the connection instance list.",
       "input": "DescribeProxiesRequest",
-      "name": "Queries a connection instance list.",
+      "name": "Queries connection list",
       "output": "DescribeProxiesResponse"
     },
     "DescribeProxiesStatus": {
       "document": "This API (DescribeProxiesStatus) is used to query the connection status list.",
       "input": "DescribeProxiesStatusRequest",
-      "name": "Queries a connection status list.",
+      "name": "Queries connection status",
       "output": "DescribeProxiesStatusResponse"
     },
     "DescribeProxyAndStatisticsListeners": {
       "document": "This is an internal API. It is used to query the information of connections and listeners from which the statistics can be derived.",
       "input": "DescribeProxyAndStatisticsListenersRequest",
-      "name": "Queries the information of listeners and connections from which the statistics can be derived.",
+      "name": "This example shows you how to query the information of listeners and connections from which the statistics can be derived.",
       "output": "DescribeProxyAndStatisticsListenersResponse"
     },
     "DescribeProxyDetail": {
@@ -297,7 +297,7 @@
     "DescribeProxyGroupDetails": {
       "document": "This API (DescribeProxyGroupDetails) is used to query connection group details.",
       "input": "DescribeProxyGroupDetailsRequest",
-      "name": "Queries connection group details.",
+      "name": "Queries connection group details",
       "output": "DescribeProxyGroupDetailsResponse"
     },
     "DescribeProxyGroupList": {
@@ -309,13 +309,13 @@
     "DescribeProxyGroupStatistics": {
       "document": "This API is used to query listener statistics, including inbound/outbound bandwidth, inbound/outbound packets, and concurrence data. It supports granularities of 300, 3,600, and 86,400. Default value is the highest within the granularity range.",
       "input": "DescribeProxyGroupStatisticsRequest",
-      "name": "Queries connection group statistics.",
+      "name": "This example shows you how to query the connection group statistics.",
       "output": "DescribeProxyGroupStatisticsResponse"
     },
     "DescribeProxyStatistics": {
       "document": "This API is used to query listener statistics, including inbound/outbound bandwidth, inbound/outbound packets, concurrence, packet loss, and latency data. It supports granularities of 300, 3,600, and 86,400. Default value is the highest within the granularity range.",
       "input": "DescribeProxyStatisticsRequest",
-      "name": "Queries connection statistics.",
+      "name": "This example shows you how to query the connection statistics.",
       "output": "DescribeProxyStatisticsResponse"
     },
     "DescribeRealServerStatistics": {
@@ -327,13 +327,13 @@
     "DescribeRealServers": {
       "document": "This API is used to query origin server information. It can query all origin servers under the specified project name, and supports fuzzy query by specified IPs or domain names.",
       "input": "DescribeRealServersRequest",
-      "name": "Queries origin server information.",
+      "name": "Queries origin server information",
       "output": "DescribeRealServersResponse"
     },
     "DescribeRealServersStatus": {
       "document": "This API (DescribeRealServersStatus) is used to query whether an origin server has been bound to a rule or listener.",
       "input": "DescribeRealServersStatusRequest",
-      "name": "Queries origin server binding status.",
+      "name": "This example shows you how to query the binding status of the origin server.",
       "output": "DescribeRealServersStatusResponse"
     },
     "DescribeRegionAndPrice": {
@@ -345,13 +345,13 @@
     "DescribeResourcesByTag": {
       "document": "This API (DescribeResourcesByTag) is used to query corresponding resource information by tags, including connection, connection group, and origin server.",
       "input": "DescribeResourcesByTagRequest",
-      "name": "Pulls a resource list by tags.",
+      "name": "Pulls resource list based on tags",
       "output": "DescribeResourcesByTagResponse"
     },
     "DescribeRuleRealServers": {
       "document": "This API (DescribeRuleRealServers) is used to query forwarding rules-related origin server information, including information of origin servers that can be bound and have been bound.",
       "input": "DescribeRuleRealServersRequest",
-      "name": "Queries the origin server information related to forwarding rules.",
+      "name": "This example shows you how to query the origin server information of forwarding rules.",
       "output": "DescribeRuleRealServersResponse"
     },
     "DescribeRules": {
@@ -369,7 +369,7 @@
     "DescribeSecurityPolicyDetail": {
       "document": "This API is used to obtain security policy details.",
       "input": "DescribeSecurityPolicyDetailRequest",
-      "name": "Obtains security policy details.",
+      "name": "Obtains security policy details",
       "output": "DescribeSecurityPolicyDetailResponse"
     },
     "DescribeSecurityRules": {
@@ -381,13 +381,13 @@
     "DescribeTCPListeners": {
       "document": "This API (DescribeTCPListeners) is used to query the TCP listener information of a single connection or connection group.",
       "input": "DescribeTCPListenersRequest",
-      "name": "Queries a TCP listener list.",
+      "name": "Queries the TCP listener list",
       "output": "DescribeTCPListenersResponse"
     },
     "DescribeUDPListeners": {
       "document": "This API (DescribeUDPListeners) is used to query the UDP listener information of a single connection or connection group.",
       "input": "DescribeUDPListenersRequest",
-      "name": "Queries an UDP listener list.",
+      "name": "Queries the UDP listener list",
       "output": "DescribeUDPListenersResponse"
     },
     "DestroyProxies": {
@@ -411,7 +411,7 @@
     "ModifyCertificateAttributes": {
       "document": "This API is used to modify certificate name and content.",
       "input": "ModifyCertificateAttributesRequest",
-      "name": "Modifies certificate attributes.",
+      "name": "Modifies certificate attributes",
       "output": "ModifyCertificateAttributesResponse"
     },
     "ModifyDomain": {
@@ -447,7 +447,7 @@
     "ModifyProxiesProject": {
       "document": "This API (ModifyProxiesProject) is used to modify the project to which a connection belongs.",
       "input": "ModifyProxiesProjectRequest",
-      "name": "Modifies the project to which a connection belongs.",
+      "name": "Modifies the connection project",
       "output": "ModifyProxiesProjectResponse"
     },
     "ModifyProxyConfiguration": {
@@ -465,7 +465,7 @@
     "ModifyRealServerName": {
       "document": "This API (ModifyRealServerName) is used to modify origin server names.",
       "input": "ModifyRealServerNameRequest",
-      "name": "Modifies an origin server name.",
+      "name": "Modifies the origin server name",
       "output": "ModifyRealServerNameResponse"
     },
     "ModifyRuleAttribute": {
@@ -505,9 +505,9 @@
       "output": "OpenProxyGroupResponse"
     },
     "OpenSecurityPolicy": {
-      "document": "This API is used to enable security policies.",
+      "document": "This API is used to enable a security policy.",
       "input": "OpenSecurityPolicyRequest",
-      "name": "Enables a security policy.",
+      "name": "Enables a security policy",
       "output": "OpenSecurityPolicyResponse"
     },
     "RemoveRealServers": {
@@ -910,7 +910,7 @@
         },
         {
           "default": "",
-          "document": "Tag list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Tag list.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "TagPair",
           "name": "TagSet",
           "required": true,
@@ -1070,7 +1070,7 @@
       "members": [
         {
           "default": "",
-          "document": "Certificate ID.",
+          "document": "Certificate ID",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -1124,7 +1124,7 @@
         },
         {
           "default": "",
-          "document": "Certificate effective time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Time that the certificate takes effect. Using the UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (Midnight in UTC/GMT).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "BeginTime",
           "required": true,
@@ -1133,7 +1133,7 @@
         },
         {
           "default": "",
-          "document": "Certificate expiration time in the format of UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (midnight in UTC/GMT).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Certificate expiration time. Using the UNIX timestamp, indicating the number of seconds that have elapsed since January 1, 1970 (Midnight in UTC/GMT).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "EndTime",
           "required": true,
@@ -1142,7 +1142,7 @@
         },
         {
           "default": "",
-          "document": "Common name of the certificate's issuer.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Common name of the certificate’s issuer.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "IssuerCN",
           "required": true,
@@ -1272,7 +1272,8 @@
       "members": [
         {
           "default": "",
-          "document": "Connection instance ID; It's an old parameter, please switch to ProxyIds.",
+          "document": "Connection instance ID; It’s an old parameter, please switch to ProxyIds.",
+          "example": "xx",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -1280,7 +1281,8 @@
         },
         {
           "default": "",
-          "document": "A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.\nFor more information, please see How to Ensure Idempotence.",
+          "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.\nFor more information, please see How to Ensure Idempotence.",
+          "example": "xx",
           "member": "string",
           "name": "ClientToken",
           "required": false,
@@ -1288,7 +1290,8 @@
         },
         {
           "default": "",
-          "document": "Connection instance ID; It's a new parameter.",
+          "document": "Connection instance ID; It’s a new parameter.",
+          "example": "[\"link-11112222\\n\"]",
           "member": "string",
           "name": "ProxyIds",
           "required": false,
@@ -1302,15 +1305,19 @@
       "members": [
         {
           "document": "Only the running connection instance ID lists can be enabled.",
+          "example": "[]",
           "member": "string",
           "name": "InvalidStatusInstanceSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "ID list of connection instances failed to be enabled.",
+          "example": "[]",
           "member": "string",
           "name": "OperationFailedInstanceSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1369,6 +1376,7 @@
         {
           "default": "",
           "document": "Connection ID",
+          "example": "link-xxxx",
           "member": "string",
           "name": "ProxyId",
           "required": false,
@@ -1377,6 +1385,7 @@
         {
           "default": "",
           "document": "Security group policy ID",
+          "example": "xx",
           "member": "string",
           "name": "PolicyId",
           "required": false,
@@ -1390,8 +1399,10 @@
       "members": [
         {
           "document": "Async Process ID. Using DescribeAsyncTaskStatus to query process and status.",
+          "example": "1234.2",
           "member": "string",
           "name": "TaskId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1410,6 +1421,7 @@
         {
           "default": "",
           "document": "Country name.",
+          "example": "华北地区",
           "member": "string",
           "name": "NationCountryName",
           "required": true,
@@ -1419,6 +1431,7 @@
         {
           "default": "",
           "document": "Country code.",
+          "example": "101001",
           "member": "string",
           "name": "NationCountryInnerCode",
           "required": true,
@@ -1428,6 +1441,7 @@
         {
           "default": "",
           "document": "Region name.",
+          "example": "东亚",
           "member": "string",
           "name": "GeographicalZoneName",
           "required": true,
@@ -1437,6 +1451,7 @@
         {
           "default": "",
           "document": "Region code.",
+          "example": "101000",
           "member": "string",
           "name": "GeographicalZoneInnerCode",
           "required": true,
@@ -1446,6 +1461,7 @@
         {
           "default": "",
           "document": "Continent name.",
+          "example": "亚洲",
           "member": "string",
           "name": "ContinentName",
           "required": true,
@@ -1455,11 +1471,22 @@
         {
           "default": "",
           "document": "Continent code.",
+          "example": "100000",
           "member": "string",
           "name": "ContinentInnerCode",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remark information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "华北地区（包括北京、天津、河北、山西、内蒙古）",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1469,7 +1496,8 @@
       "members": [
         {
           "default": "",
-          "document": "Certificate type. Where:\n0: basic authentication configuration;\n1: indicates client CA certificate;\n2: server SSL certificate;\n3: origin server CA certificate;\n4: connection SSL certificate.",
+          "document": "Certificate type. Where:\n`0`: Basic authentication configuration;\n`1`: Client CA certificate;\n`2`: Server SSL certificate;\n`3`: Origin server CA certificate;\n`4`: Connection SSL certificate.",
+          "example": "2",
           "member": "int64",
           "name": "CertificateType",
           "required": true,
@@ -1477,7 +1505,8 @@
         },
         {
           "default": "",
-          "document": "Certificate content. URL encoding. Where:\nIf the certificate type is basic authentication, enter username/password pair for this parameter. Format: 'username:password', for example, root:FSGdT. The password is `htpasswd` or `openssl`, for example, openssl passwd -crypt 123456.\nWhen the certificate type is CA/SSL certificate, enter the certificate content for this parameter in the format of `pem`.",
+          "document": "Certificate content. URL encoding. Where:\nIf the certificate type is basic authentication, enter username/password pair for this parameter. Format: “username:password”, for example, root:FSGdT. The password is `htpasswd` or `openssl`, for example, openssl passwd -crypt 123456.\nWhen the certificate type is CA/SSL certificate, enter the certificate content for this parameter in the format of ‘pem’.",
+          "example": "%0A-----BEGIN%20CERTIFICATE-----%0AMIIFmDCCBICgAwIBAgIQC6TGAPV%2B4MO7NIhlkkKFljANBgkqhkiG9w0BAQsFADBy%0AMQswCQYDVQQGEwJDTjElMCMGA1UEChMcVHJ1c3RBc2lhIFRlY2hub2xvZ2llcywg%0ASW5jLjEdMBsGA1UECxMURG9tYWluIFZhbGlkYXRlZCBTU0wxHTAbBgNVBAMTFFRy%0AdXN0QXNpYSBUTFMgUlNBIENBMB4XDTE5MDQwMjAwMDAwMFoXDTIwMDQwMTEyMDAw%0AMFowGTEXMBUGA1UEAxMObGFnYW1lZnQwMS54eXowggEiMA0GCSqGSIb3DQEBAQUA%0AA4IBDwAwggEKAoIBAQCuSgglfAksbFSrvWp6cEFr8ulTWEND2KvXf6cCs3kBBCzE%0AMLhCw4792LMFY0%2BFE7a0j7i5nJ9%2BQvhX7GRiu1P9flyge0eUCOBOAtVCn0dvhbLy%0A7efWsmH3kp/owWXnZXeb/k5R1FvojCiV968MxMC%2B2Y7ejz5qMm5XlQPn3xQOEj2h%0AQmHwQ9XwO8qRsIuCD1oNrsXsyXuEhA2zkEvcgtYP35zPsXfjbBaBg7Iw3o0j3jXj%0AgdhD2Q2OzH05jDn3hDhSnej1jbWuGmDEOO%2Bu6W/xqnCOhBMjWLnuW2aUddiBiqsH%0A8BQK/Ge6HUp%2BmMdkdNAw5FN6ztIPzP6GFb0OOLitAgMBAAGjggKBMIICfTAfBgNV%0AHSMEGDAWgBR/05nzoEcOMQBWViKOt8ye3coBijAdBgNVHQ4EFgQUqYL1l3uFqYHC%0A2mJcZC26nLHtkjYwLQYDVR0RBCYwJIIObGFnYW1lZnQwMS54eXqCEnd3dy5sYWdh%0AbWVmdDAxLnh5ejAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEG%0ACCsGAQUFBwMCMEwGA1UdIARFMEMwNwYJYIZIAYb9bAECMCowKAYIKwYBBQUHAgEW%0AHGh0dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9DUFMwCAYGZ4EMAQIBMH0GCCsGAQUF%0ABwEBBHEwbzAhBggrBgEFBQcwAYYVaHR0cDovL29jc3AuZGNvY3NwLmNuMEoGCCsG%0AAQUFBzAChj5odHRwOi8vY2FjZXJ0cy5kaWdpdGFsY2VydHZhbGlkYXRpb24uY29t%0AL1RydXN0QXNpYVRMU1JTQUNBLmNydDAJBgNVHRMEAjAAMIIBAwYKKwYBBAHWeQIE%0AAgSB9ASB8QDvAHUAu9nfvB%2BKcbWTlCOXqpJ7RzhXlQqrUugakJZkNo4e0YUAAAFp%0A3cON9gAABAMARjBEAiABFpvdLsJKm6zxh5wLS6uN5%2BTnX8bXD5bj7CPVC4Kg/wIg%0AB%2BBzdsZL0UmuvbNAYkr8W53bJKhEgoHJ0RdSyoF5yZAAdgCHdb/nWXz4jEOZX73z%0Abv9WjUdWNv9KtWDBtOr/XqCDDwAAAWndw47mAAAEAwBHMEUCIQC%2BDdvaJ2kKvsVv%0AiivLe4W/YFa/K64HdnyOdHksEl9pSAIgTqLXfw6Tc7d%2BgiKMtt%2B6P/xdrvjGt5Du%0Aokvgu70INuQwDQYJKoZIhvcNAQELBQADggEBAHxewHgySBS5UoO6l/IcU95baR/O%0AYGLcCpgEbWj4MigIZcrkHsD7RddRDoyM/3hxKyzs3Dkes4wHTQDWnyrNuXdn8aNV%0AJAhrh/0yzAe3/UTJ/%2BSRoMg1K6rHWORmLa52d9u3Ei%2B1BF2qLi5L2tTmLrSQJXzB%0ANSIFd40x1mZLp9uqhcB9kcwwkHSFUtLjFwUSN6Zjn9FStlq06ezjgnVv2tP9/HoP%0AKWiRgRFDgqj8%2BROJPQvfuO2xdWoxYUmuMcx1o6IiSVn2F48ood029cyT%2Bt3TaYpb%0AhVI9JuYnHW9kN69xPNzamJVCdu4i/1ELvcr0p/wQf9ax63XsgX4YYhdYgMQ%3D%0A-----END%20CERTIFICATE-----%0A-----BEGIN%20CERTIFICATE-----%0AMIIErjCCA5agAwIBAgIQBYAmfwbylVM0jhwYWl7uLjANBgkqhkiG9w0BAQsFADBh%0AMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3%0Ad3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBD%0AQTAeFw0xNzEyMDgxMjI4MjZaFw0yNzEyMDgxMjI4MjZaMHIxCzAJBgNVBAYTAkNO%0AMSUwIwYDVQQKExxUcnVzdEFzaWEgVGVjaG5vbG9naWVzLCBJbmMuMR0wGwYDVQQL%0AExREb21haW4gVmFsaWRhdGVkIFNTTDEdMBsGA1UEAxMUVHJ1c3RBc2lhIFRMUyBS%0AU0EgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCgWa9X%2Bph%2BwAm8%0AYh1Fk1MjKbQ5QwBOOKVaZR/OfCh%2BF6f93u7vZHGcUU/lvVGgUQnbzJhR1UV2epJa%0Ae%2Bm7cxnXIKdD0/VS9btAgwJszGFvwoqXeaCqFoP71wPmXjjUwLT70%2BqvX4hdyYfO%0AJcjeTz5QKtg8zQwxaK9x4JT9CoOmoVdVhEBAiD3DwR5fFgOHDwwGxdJWVBvktnoA%0AzjdTLXDdbSVC5jZ0u8oq9BiTDv7jAlsB5F8aZgvSZDOQeFrwaOTbKWSEInEhnchK%0AZTD1dz6aBlk1xGEI5PZWAnVAba/ofH33ktymaTDsE6xRDnW97pDkimCRak6CEbfe%0A3dXw6OV5AgMBAAGjggFPMIIBSzAdBgNVHQ4EFgQUf9OZ86BHDjEAVlYijrfMnt3K%0AAYowHwYDVR0jBBgwFoAUA95QNVbRTLtm8KPiGxvDl7I90VUwDgYDVR0PAQH/BAQD%0AAgGGMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjASBgNVHRMBAf8ECDAG%0AAQH/AgEAMDQGCCsGAQUFBwEBBCgwJjAkBggrBgEFBQcwAYYYaHR0cDovL29jc3Au%0AZGlnaWNlcnQuY29tMEIGA1UdHwQ7MDkwN6A1oDOGMWh0dHA6Ly9jcmwzLmRpZ2lj%0AZXJ0LmNvbS9EaWdpQ2VydEdsb2JhbFJvb3RDQS5jcmwwTAYDVR0gBEUwQzA3Bglg%0AhkgBhv1sAQIwKjAoBggrBgEFBQcCARYcaHR0cHM6Ly93d3cuZGlnaWNlcnQuY29t%0AL0NQUzAIBgZngQwBAgEwDQYJKoZIhvcNAQELBQADggEBAK3dVOj5dlv4MzK2i233%0AlDYvyJ3slFY2X2HKTYGte8nbK6i5/fsDImMYihAkp6VaNY/en8WZ5qcrQPVLuJrJ%0ADSXT04NnMeZOQDUoj/NHAmdfCBB/h1bZ5OGK6Sf1h5Yx/5wR4f3TUoPgGlnU7EuP%0AISLNdMRiDrXntcImDAiRvkh5GJuH4YCVE6XEntqaNIgGkRwxKSgnU3Id3iuFbW9F%0AUQ9Qqtb1GX91AJ7i4153TikGgYCdwYkBURD8gSVe8OAco6IfZOYt/TEwii1Ivi1C%0AqnuUlWpsF1LdQNIdfbW3TSe0BhQa7ifbVIfvPWHYOu3rkg1ZeMo6XRU9B4n5VyJY%0ARmE%3D%0A-----END%20CERTIFICATE-----%0A",
           "member": "string",
           "name": "CertificateContent",
           "required": true,
@@ -1486,6 +1515,7 @@
         {
           "default": "",
           "document": "Certificate name",
+          "example": "xxx",
           "member": "string",
           "name": "CertificateAlias",
           "required": false,
@@ -1493,7 +1523,8 @@
         },
         {
           "default": "",
-          "document": "Key content. URL encoding. This parameter is required only when the certificate type is SSL certificate. The format is `pem`.",
+          "document": "URL-encoded key content. This parameter is required only when the certificate type is SSL certificate. Its format is `PEM`.",
+          "example": "%0A-----BEGIN%20RSA%20PRIVATE%20KEY-----%0Axxxxxxxxxxx%0A-----END%20RSA%20PRIVATE%20KEY-----%0A",
           "member": "string",
           "name": "CertificateKey",
           "required": false,
@@ -1507,8 +1538,10 @@
       "members": [
         {
           "document": "Certificate ID",
+          "example": "cert-xxx",
           "member": "string",
           "name": "CertificateId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1563,6 +1596,7 @@
         {
           "default": "",
           "document": "Listener ID",
+          "example": "0",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -1571,6 +1605,7 @@
         {
           "default": "",
           "document": "Domain name",
+          "example": "a.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -1579,6 +1614,7 @@
         {
           "default": "",
           "document": "Original error code",
+          "example": "[\"501\\n\",\"502\\n\"]",
           "member": "int64",
           "name": "ErrorNos",
           "required": true,
@@ -1587,6 +1623,7 @@
         {
           "default": "",
           "document": "New response packet",
+          "example": "helloword",
           "member": "string",
           "name": "Body",
           "required": true,
@@ -1595,6 +1632,7 @@
         {
           "default": "",
           "document": "New error code",
+          "example": "400",
           "member": "int64",
           "name": "NewErrorNo",
           "required": false,
@@ -1603,6 +1641,7 @@
         {
           "default": "",
           "document": "Response header to be deleted",
+          "example": "[]",
           "member": "string",
           "name": "ClearHeaders",
           "required": false,
@@ -1611,6 +1650,7 @@
         {
           "default": "",
           "document": "Response header to be set",
+          "example": "无",
           "member": "HttpHeaderParam",
           "name": "SetHeaders",
           "required": false,
@@ -1624,8 +1664,10 @@
       "members": [
         {
           "document": "Configuration ID of a custom error response",
+          "example": "errorPage-1fewf",
           "member": "string",
           "name": "ErrorPageId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2624,6 +2666,7 @@
         {
           "default": "",
           "document": "ID of the certificate to be deleted.",
+          "example": "xxxx",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -2650,6 +2693,7 @@
         {
           "default": "",
           "document": "Unique ID of a custom error page. For more information, please see the response to CreateDomainErrorPageInfo.",
+          "example": "errorPage-xxxx",
           "member": "string",
           "name": "ErrorPageId",
           "required": true,
@@ -2865,6 +2909,7 @@
         {
           "default": "",
           "document": "Policy ID",
+          "example": "sp-hw5czrxx",
           "member": "string",
           "name": "PolicyId",
           "required": true,
@@ -2988,15 +3033,19 @@
       "members": [
         {
           "document": "Total quantity of acceleration regions",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Acceleration region details list",
+          "example": "无",
           "member": "RegionDetail",
           "name": "AccessRegionSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3040,7 +3089,8 @@
       "members": [
         {
           "default": "",
-          "document": "Certificate ID.",
+          "document": "Certificate ID",
+          "example": "cert-d5y6ei3b",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -3054,8 +3104,10 @@
       "members": [
         {
           "document": "Certificate Details.",
+          "example": "无",
           "member": "CertificateDetail",
           "name": "CertificateDetail",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -3715,7 +3767,7 @@
       "members": [
         {
           "default": "",
-          "document": "Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It's an old parameter, please switch to ProxyIds.",
+          "document": "Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It’s an old parameter, please switch to ProxyIds.",
           "example": "无",
           "member": "string",
           "name": "InstanceIds",
@@ -3724,7 +3776,7 @@
         },
         {
           "default": "",
-          "document": "Offset. The default value is 0.",
+          "document": "Offset. Default value: 0.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -3733,7 +3785,7 @@
         },
         {
           "default": "",
-          "document": "Number of results to be returned. The default value is 20, and the maximum value is 100.",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "1",
           "member": "uint64",
           "name": "Limit",
@@ -3742,7 +3794,7 @@
         },
         {
           "default": "",
-          "document": "Filter condition   \nThe upper limit for `Filters` in each request is 10 and 5 for `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` with this parameter. \nProjectId - String - Required: No - Filter by project ID.   \nAccessRegion - String - Required: No - Filter by access region.    \nRealServerRegion - String - Required: No - Filter by origin server region.\nGroupId - String - Required: No - Filter by connection group ID.\nIPAddressVersion - String - Required: No - Filter by IP version.\nPackageType - String - Required: No - Filter by package type of connection groups.",
+          "document": "Filters   \nThe upper limit on Filters for each request is 10, and the upper limit on Filter.Values is 5. This parameter does not support specifying InstanceIds and Filters at the same time. \nProjectId - String - Required: No - Filter by a project ID.   \nAccessRegion - String - Required: No - Filter by an access region.    \nRealServerRegion - String - Required: No - Filter by an origin server region.\nGroupId - String - Required: No - Filter by a connection group ID.\nIPAddressVersion - String - Required: No - Filter by IP version.\nPackageType - String - Required: No - Filter by package type of connection groups.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -3751,7 +3803,7 @@
         },
         {
           "default": "",
-          "document": "Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It's a new parameter, and replaces InstanceIds.",
+          "document": "Queries by one or multiple instance IDs. The upper limit on the number of instances for each request is 100. This parameter does not support specifying InstanceIds and Filters at the same time. It’s a new parameter, and replaces InstanceIds.",
           "example": "[]",
           "member": "string",
           "name": "ProxyIds",
@@ -3778,7 +3830,7 @@
         },
         {
           "default": "",
-          "document": "Specifies how connections are listed. Valid values:\n`asc`: ascending order\n`desc`: descending order\nDefault: `desc`",
+          "document": "Specifies how connections are listed. Valid values:\n`asc`: Ascending order\n`desc`: Descending order\nDefault: `desc`",
           "example": "desc",
           "member": "string",
           "name": "Order",
@@ -3787,7 +3839,7 @@
         },
         {
           "default": "",
-          "document": "Sorting field. Valid values:\n`create_time`: sort by the creation time\n`proxy_id`: sort by the connection ID\n`bandwidth`:sort by the bandwidth limit\n`concurrent_connections`: sort by the number of concurrent connections\nDefault: `create_time`",
+          "document": "Sorting field. Valid values:\n`create_time`: Sort by creation time\n`proxy_id`: Sort by connection ID\n`bandwidth`:Sort by bandwidth limit\n`concurrent_connections`: Sort by number of concurrent connections\nDefault: `create_time`",
           "example": "create_time",
           "member": "string",
           "name": "OrderField",
@@ -3802,22 +3854,28 @@
       "members": [
         {
           "document": "Number of connections.",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Connection instance information list; It's an old parameter, please switch to ProxySet.",
+          "document": "Connection instance information list; It’s an old parameter, please switch to ProxySet.",
+          "example": "无",
           "member": "ProxyInfo",
           "name": "InstanceSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "Connection instance information list; It's a new parameter.",
+          "document": "Connection instance information list; It’s a new parameter.",
+          "example": "无",
           "member": "ProxyInfo",
           "name": "ProxySet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3835,7 +3893,8 @@
       "members": [
         {
           "default": "",
-          "document": "Connection ID list; It's an old parameter, please switch to ProxyIds.",
+          "document": "Connection ID list; It’s an old parameter, please switch to ProxyIds.",
+          "example": "xx",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -3843,7 +3902,8 @@
         },
         {
           "default": "",
-          "document": "Connection ID list; It's a new parameter.",
+          "document": "Connection ID list; It’s a new parameter.",
+          "example": "[\"link-1234abcd\\r\\n\"]",
           "member": "string",
           "name": "ProxyIds",
           "required": false,
@@ -3857,8 +3917,10 @@
       "members": [
         {
           "document": "Connection status list.",
+          "example": "无",
           "member": "ProxyStatus",
           "name": "InstanceStatusSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3877,6 +3939,7 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "0",
           "member": "uint64",
           "name": "ProjectId",
           "required": true,
@@ -3890,15 +3953,19 @@
       "members": [
         {
           "document": "Information of connections that the statistics can be derived from",
+          "example": "无",
           "member": "ProxySimpleInfo",
           "name": "ProxySet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Quantity of connections",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3950,6 +4017,7 @@
         {
           "default": "",
           "document": "Connection group ID.",
+          "example": "lg",
           "member": "string",
           "name": "GroupId",
           "required": true,
@@ -3963,8 +4031,10 @@
       "members": [
         {
           "document": "Connection group details",
+          "example": "无",
           "member": "ProxyGroupDetail",
           "name": "ProxyGroupDetail",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4060,6 +4130,7 @@
         {
           "default": "",
           "document": "Connection group ID",
+          "example": "lg-rfgt56hy",
           "member": "string",
           "name": "GroupId",
           "required": true,
@@ -4068,6 +4139,7 @@
         {
           "default": "",
           "document": "Start time",
+          "example": "2019-03-25 12:00:00",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -4076,6 +4148,7 @@
         {
           "default": "",
           "document": "End time",
+          "example": "2019-03-26 12:00:00",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -4084,6 +4157,7 @@
         {
           "default": "",
           "document": "Statistical metric name list. Values: InBandwidth (inbound bandwidth); OutBandwidth (outbound bandwidth); Concurrent (concurrence); InPackets (inbound packets); OutPackets (outbound packets).",
+          "example": "[\"InputBandwidth\\n\"]",
           "member": "string",
           "name": "MetricNames",
           "required": true,
@@ -4091,7 +4165,8 @@
         },
         {
           "default": "",
-          "document": "Monitoring granularity. It currently supports: 60, 300, 3,600, 86,400. Unit: seconds.\nTime range: <= 1 day, supported minimum granularity: 60 seconds;\nTime range: <= 7 days, supported minimum granularity: 3,600 seconds;\nTime range: <= 30 days, supported minimum granularity: 86,400 seconds;",
+          "document": "Monitoring granularity (in seconds). Valid values: 60s, 300s, 3,600s, 86,400s.\nTime range: ≤ 1 day. Supported minimum granularity: 60 seconds;\nTime range: ≤ 7 days. Supported minimum granularity: 3,600 seconds;\nTime range: ≤ 30 days. Supported minimum granularity: 86,400 seconds;",
+          "example": "300",
           "member": "uint64",
           "name": "Granularity",
           "required": true,
@@ -4105,8 +4180,10 @@
       "members": [
         {
           "document": "Connection group statistics",
+          "example": "无",
           "member": "MetricStatisticsInfo",
           "name": "StatisticsData",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4160,7 +4237,7 @@
         },
         {
           "default": "",
-          "document": "Monitoring granularity. It currently supports: 60, 300, 3,600, and 86,400. Unit: seconds.\nTime range: <= 1 day, supported minimum granularity: 60 seconds;\nTime range: <= 7 days, supported minimum granularity: 3,600 seconds;\nTime range: <= 30 days, supported minimum granularity: 86,400 seconds;",
+          "document": "Monitoring granularity. It currently supports: 60, 300, 3,600, and 86,400. Unit: seconds.\nTime range: ≤ 3 day. Supported minimum granularity: 60 seconds;\nTime range: ≤ 7 day. Supported minimum granularity: 300 seconds;\nTime range: ≤ 30 days. Supported minimum granularity: 36,00 seconds;",
           "example": "300",
           "member": "uint64",
           "name": "Granularity",
@@ -4184,8 +4261,10 @@
       "members": [
         {
           "document": "Connection statistics",
+          "example": "无",
           "member": "MetricStatisticsInfo",
           "name": "StatisticsData",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4292,6 +4371,7 @@
         {
           "default": "",
           "document": "Queries the project ID to which the origin server belongs. -1: all projects.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -4300,6 +4380,7 @@
         {
           "default": "",
           "document": "Origin server IP or domain name to be queried. The fuzzy match is supported.",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "SearchValue",
           "required": false,
@@ -4308,6 +4389,7 @@
         {
           "default": "",
           "document": "Offset, which is 0 by default.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -4316,6 +4398,7 @@
         {
           "default": "",
           "document": "Quantity of values to return. The default value is 20 and the maximum value is 50.",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -4324,6 +4407,7 @@
         {
           "default": "",
           "document": "Tag list. If this field exists, the list of the resources with the tag will be pulled.\nIt supports up to 5 tags. If there are two or more tags, the origin servers tagged any of them will be pulled.",
+          "example": "无",
           "member": "TagPair",
           "name": "TagSet",
           "required": false,
@@ -4332,6 +4416,7 @@
         {
           "default": "",
           "document": "Filter conditions. The value of the `name` of the `filter` (RealServerName, RealServerIP)",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -4345,15 +4430,19 @@
       "members": [
         {
           "document": "An information list of origin server",
+          "example": "无",
           "member": "BindRealServerInfo",
           "name": "RealServerSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "The quantity of origin servers",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4372,6 +4461,7 @@
         {
           "default": "",
           "document": "List of origin server IDs",
+          "example": "[\"rs-4ftghy6\\n\"]",
           "member": "string",
           "name": "RealServerIds",
           "required": true,
@@ -4385,15 +4475,19 @@
       "members": [
         {
           "document": "Quantity of origin server query results returned",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Binding status list of origin servers",
+          "example": "无",
           "member": "RealServerStatus",
           "name": "RealServerStatusSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4476,6 +4570,7 @@
         {
           "default": "",
           "document": "Tag key.",
+          "example": "testkey",
           "member": "string",
           "name": "TagKey",
           "required": true,
@@ -4484,6 +4579,7 @@
         {
           "default": "",
           "document": "Tag value.",
+          "example": "test",
           "member": "string",
           "name": "TagValue",
           "required": true,
@@ -4491,7 +4587,8 @@
         },
         {
           "default": "",
-          "document": "Resource type, including:\nProxy (connection);\nProxyGroup (connection group);\nRealServer (origin server).\nIf this field is not specified, all resources with the tag will be queried.",
+          "document": "Resource types:\nProxy (connection);\nProxyGroup (connection group);\nRealServer (origin server).\nIf this field is not specified, all resources with the tag will be queried.",
+          "example": "Proxy",
           "member": "string",
           "name": "ResourceType",
           "required": false,
@@ -4505,15 +4602,19 @@
       "members": [
         {
           "document": "Total resources",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Resource list corresponding to the tag",
+          "example": "无",
           "member": "TagResourceInfo",
           "name": "ResourceSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4532,6 +4633,7 @@
         {
           "default": "",
           "document": "Forwarding rule ID",
+          "example": "rule-hh5xg2yd",
           "member": "string",
           "name": "RuleId",
           "required": true,
@@ -4540,6 +4642,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -4547,7 +4650,8 @@
         },
         {
           "default": "",
-          "document": "Number of values to be returned. The default value is 20. Maximum is 1000.",
+          "document": "Number of returned results. Default value: 20. Maximum value: 1000.",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -4561,29 +4665,37 @@
       "members": [
         {
           "document": "Quantity of origin servers that can be bound",
+          "example": "2",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Information list of origin servers that can be bound",
+          "example": "无",
           "member": "RealServer",
           "name": "RealServerSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Quantity of bound origin servers",
+          "example": "2",
           "member": "uint64",
           "name": "BindRealServerTotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Bound origin server information list",
+          "example": "无",
           "member": "BindRealServer",
           "name": "BindRealServerSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4602,6 +4714,7 @@
         {
           "default": "",
           "document": "List of rule IDs. Up to 10 rules are supported.",
+          "example": "[\"rule-3bsuu01r\\n\"]",
           "member": "string",
           "name": "RuleIds",
           "required": true,
@@ -4615,15 +4728,19 @@
       "members": [
         {
           "document": "The number of returned rules.",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "List of returned rules.",
+          "example": "无",
           "member": "RuleInfo",
           "name": "RuleSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4682,6 +4799,7 @@
         {
           "default": "",
           "document": "Security policy ID",
+          "example": "sp-xxxx",
           "member": "string",
           "name": "PolicyId",
           "required": true,
@@ -4694,37 +4812,47 @@
       "document": "DescribeSecurityPolicyDetail response structure.",
       "members": [
         {
-          "document": "Connection ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Connection ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "link-gw4sxx8j",
           "member": "string",
           "name": "ProxyId",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Security policy status:\nBOUND (security policies enabled)\nUNBIND (security policies disabled)\nBINDING (enabling security policies)\nUNBINDING (disabling security policies)",
+          "example": "UNBIND",
           "member": "string",
           "name": "Status",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Default policy: ACCEPT or DROP.",
+          "example": "ACCEPT",
           "member": "string",
           "name": "DefaultAction",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Policy ID",
+          "example": "sp-9scxxhdh",
           "member": "string",
           "name": "PolicyId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "List of rules",
+          "example": "无",
           "member": "SecurityPolicyRuleOut",
           "name": "RuleList",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4743,6 +4871,7 @@
         {
           "default": "",
           "document": "List of security rule IDs. Up to 20 security rules are supported.",
+          "example": "[\"sr-xxxxxxxx\\n\"]",
           "member": "string",
           "name": "SecurityRuleIds",
           "required": true,
@@ -4756,15 +4885,19 @@
       "members": [
         {
           "document": "The number of returned security rules.",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "List of returned security rules.",
+          "example": "无",
           "member": "SecurityPolicyRuleOut",
           "name": "SecurityRuleSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4782,7 +4915,8 @@
       "members": [
         {
           "default": "",
-          "document": "Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.",
+          "document": "Filter condition that filters by connection ID. You must specify at least one filter condition (ProxyId/GroupId/ListenerId), but ProxyId and GroupId cannot be set at the same time.",
+          "example": "link-hwera8lq",
           "member": "string",
           "name": "ProxyId",
           "required": false,
@@ -4790,7 +4924,8 @@
         },
         {
           "default": "",
-          "document": "Filter condition. Exact query by listener IDs.",
+          "document": "Filter condition. Exact query by listener ID.\nWhen ProxyId is specified, the listener will be checked whether it belongs to the connection.\nWhen GroupId is specified, the listener will be checked whether it belongs to the connection group.",
+          "example": "listener-gkzl9e7t",
           "member": "string",
           "name": "ListenerId",
           "required": false,
@@ -4798,7 +4933,8 @@
         },
         {
           "default": "",
-          "document": "Filter condition. Exact query by listener names.",
+          "document": "Filter condition. Exact query by listener name.",
+          "example": "test",
           "member": "string",
           "name": "ListenerName",
           "required": false,
@@ -4806,7 +4942,8 @@
         },
         {
           "default": "",
-          "document": "Filter condition. Exact query by listener ports.",
+          "document": "Filter condition. Exact query by listener port.",
+          "example": "443",
           "member": "uint64",
           "name": "Port",
           "required": false,
@@ -4814,7 +4951,8 @@
         },
         {
           "default": "",
-          "document": "Offset. The default value is 0.",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -4823,6 +4961,7 @@
         {
           "default": "",
           "document": "Quantity limit. The default value is 20.",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -4830,7 +4969,8 @@
         },
         {
           "default": "",
-          "document": "Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.",
+          "document": "Filter condition that filters by connection group ID. You must specify at least one filter condition (ProxyId/GroupId/ListenerId), but ProxyId and GroupId cannot be set at the same time.",
+          "example": "lg-bjkpdum1",
           "member": "string",
           "name": "GroupId",
           "required": false,
@@ -4838,7 +4978,8 @@
         },
         {
           "default": "",
-          "document": "Filter condition. It supports fuzzy query by ports or listener names. This parameter cannot be used with `ListenerName` or `Port`.",
+          "document": "Filter condition. It supports fuzzy query by port or listener name. This parameter cannot be used with `ListenerName` or `Port`.",
+          "example": "link-bjkpdum1",
           "member": "string",
           "name": "SearchValue",
           "required": false,
@@ -4852,15 +4993,19 @@
       "members": [
         {
           "document": "Total quantity of listeners that matches the conditions",
+          "example": "2",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "TCP listener list",
+          "example": "无",
           "member": "TCPListener",
           "name": "ListenerSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4878,7 +5023,8 @@
       "members": [
         {
           "default": "",
-          "document": "Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.",
+          "document": "Filter condition that filters by connection ID. You must specify at least one filter condition (ProxyId/GroupId/ListenerId), but ProxyId and GroupId cannot be set at the same time.",
+          "example": "link-hwera8lq",
           "member": "string",
           "name": "ProxyId",
           "required": false,
@@ -4886,7 +5032,8 @@
         },
         {
           "default": "",
-          "document": "Filter condition. Exact query by listener IDs.",
+          "document": "Filter condition. Exact query by listener IDs.\nWhen ProxyId is specified, the listener will be checked whether it belongs to the connection.\nWhen GroupId is specified, the listener will be checked whether it belongs to the connection group.",
+          "example": "listener-pbsgn7ej",
           "member": "string",
           "name": "ListenerId",
           "required": false,
@@ -4895,6 +5042,7 @@
         {
           "default": "",
           "document": "Filter condition. Exact query by listener names.",
+          "example": "xx",
           "member": "string",
           "name": "ListenerName",
           "required": false,
@@ -4903,6 +5051,7 @@
         {
           "default": "",
           "document": "Filter condition. Exact query by listener ports.",
+          "example": "80",
           "member": "uint64",
           "name": "Port",
           "required": false,
@@ -4911,6 +5060,7 @@
         {
           "default": "",
           "document": "Offset. The default value is 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -4919,6 +5069,7 @@
         {
           "default": "",
           "document": "Quantity limit. The default value is 20.",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -4926,7 +5077,8 @@
         },
         {
           "default": "",
-          "document": "Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.",
+          "document": "Filter condition that filters by connection group ID. You must specify at least one filter condition (ProxyId/GroupId/ListenerId), but ProxyId and GroupId cannot be set at the same time.",
+          "example": "xx",
           "member": "string",
           "name": "GroupId",
           "required": false,
@@ -4935,6 +5087,7 @@
         {
           "default": "",
           "document": "Filter condition. It supports fuzzy query by ports or listener names. This parameter cannot be used with `ListenerName` or `Port`.",
+          "example": "xx",
           "member": "string",
           "name": "SearchValue",
           "required": false,
@@ -4948,15 +5101,19 @@
       "members": [
         {
           "document": "Quantity of listeners",
+          "example": "2",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "UDP listener list",
+          "example": "无",
           "member": "UDPListener",
           "name": "ListenerSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5957,6 +6114,7 @@
         {
           "default": "",
           "document": "Certificate ID.",
+          "example": "xxx",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -5965,6 +6123,7 @@
         {
           "default": "",
           "document": "Certificate name. Up to 50 characters.",
+          "example": "xxx",
           "member": "string",
           "name": "CertificateAlias",
           "required": false,
@@ -6323,6 +6482,7 @@
         {
           "default": "",
           "document": "The target project ID.",
+          "example": "12345",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -6330,7 +6490,8 @@
         },
         {
           "default": "",
-          "document": "ID of one or multiple connections to be operated; It's an old parameter, please switch to ProxyIds.",
+          "document": "ID of one or multiple connections to be operated; It’s an old parameter, please switch to ProxyIds.",
+          "example": "[]",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -6338,7 +6499,8 @@
         },
         {
           "default": "",
-          "document": "A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.\nFor more information, please see How to Ensure Idempotence.",
+          "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.\nFor more information, please see How to Ensure Idempotence.",
+          "example": "xx",
           "member": "string",
           "name": "ClientToken",
           "required": false,
@@ -6346,7 +6508,8 @@
         },
         {
           "default": "",
-          "document": "ID of one or multiple connections to be operated; It's a new parameter.",
+          "document": "ID of one or multiple connections to be operated; It’s a new parameter.",
+          "example": "[\"link-11112222\\n\",\"link-11113333\\n\"]",
           "member": "string",
           "name": "ProxyIds",
           "required": false,
@@ -6481,6 +6644,7 @@
         {
           "default": "",
           "document": "Origin server name",
+          "example": "‘namexxx’",
           "member": "string",
           "name": "RealServerName",
           "required": true,
@@ -6489,6 +6653,7 @@
         {
           "default": "",
           "document": "Origin server ID",
+          "example": "rsxxxx",
           "member": "string",
           "name": "RealServerId",
           "required": true,
@@ -6976,6 +7141,7 @@
         {
           "default": "",
           "document": "Connection group instance ID",
+          "example": "lg-11112222",
           "member": "string",
           "name": "GroupId",
           "required": true,
@@ -6988,16 +7154,20 @@
       "document": "OpenProxyGroup response structure.",
       "members": [
         {
-          "document": "List of IDs of the connection instances that are not disabled, which cannot be enabled.",
+          "document": "The connection instance ID list cannot be enabled if it’s not disabled.",
+          "example": "[]",
           "member": "string",
           "name": "InvalidStatusInstanceSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "List of IDs of the connection instances failed to be enabled.",
+          "document": "ID list of connection instances failed to be enabled.",
+          "example": "[]",
           "member": "string",
           "name": "OperationFailedInstanceSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -7016,6 +7186,7 @@
         {
           "default": "",
           "document": "ID of the connections requiring enabled security policies.",
+          "example": "link-xxxx",
           "member": "string",
           "name": "ProxyId",
           "required": false,
@@ -7024,6 +7195,7 @@
         {
           "default": "",
           "document": "Security policy ID",
+          "example": "xx",
           "member": "string",
           "name": "PolicyId",
           "required": false,
@@ -7037,8 +7209,10 @@
       "members": [
         {
           "document": "Async Process ID. Using DescribeAsyncTaskStatus to query process and status.",
+          "example": "1234.2",
           "member": "string",
           "name": "TaskId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7086,7 +7260,7 @@
         },
         {
           "default": "",
-          "document": "Connection group status:\n0: running normally;\n1: creating;\n4: terminating;\n11: migrating;",
+          "document": "Connection group status:\n`0`: Running normally\n`1`: Creating\n`4`: Terminating\n`11`: Migrating\n`12`: Deploying",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -7186,7 +7360,7 @@
         },
         {
           "default": "",
-          "document": "Security policy ID. This field exists if security policies are set.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Security policy ID. This field exists if security policies are set.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
           "name": "PolicyId",
@@ -7196,7 +7370,7 @@
         },
         {
           "default": "",
-          "document": "Connection group version\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Connection group version\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"1.0\"",
           "member": "string",
           "name": "Version",
@@ -7206,7 +7380,7 @@
         },
         {
           "default": "",
-          "document": "Describes how the connection obtains client IPs. 0: TOA; 1: Proxy Protocol.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Describes how the connection obtains client IPs. `0`: TOA; `1`: Proxy Protocol.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "ClientIPMethod",
@@ -7216,7 +7390,7 @@
         },
         {
           "default": "",
-          "document": "IP version. Valid values: `IPv4` (default), `IPv6`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "IP version. Valid values: `IPv4` (default), `IPv6`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "IPv4",
           "member": "string",
           "name": "IPAddressVersion",
@@ -7226,7 +7400,7 @@
         },
         {
           "default": "",
-          "document": "Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (silver connection group), and `CrossBorder` (cross-MLC-border connection group).\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Package type of connection groups. Valid values: `Thunder` (general connection group), `Accelerator` (silver connection group), and `CrossBorder` (cross-MLC-border connection group).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Thunder",
           "member": "string",
           "name": "PackageType",
@@ -7236,7 +7410,7 @@
         },
         {
           "default": "",
-          "document": "Specifies whether to enable HTTP3. Valid values:\n`0`: disable;\n`1`: enable.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies whether to enable HTTP3. Valid values:\n`0`: Disable\n`1`: Enable\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "Http3Supported",
@@ -7302,7 +7476,7 @@
         },
         {
           "default": "",
-          "document": "Connection group status.\nWhere:\n0: running;\n1: creating;\n4: terminating;\n11: connection migrating.",
+          "document": "Connection group status.\nWhere:\n`RUNNING`: Running\n`CREATING`: Creating\n`DESTROYING`: Terminating\n`MOVING`: Migrating\n`CHANGING`: Deploying",
           "example": "0",
           "member": "string",
           "name": "Status",
@@ -7352,7 +7526,7 @@
         },
         {
           "default": "",
-          "document": "Specifies whether to enable HTTP3. Valid values:\n`0`: disable HTTP3;\n`1`: enable HTTP3.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies whether to enable HTTP3. Valid values:\n`0`: Disable\n`1`: Enable\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "Http3Supported",
@@ -7463,7 +7637,7 @@
         },
         {
           "default": "",
-          "document": "Connection status. Valid values:\n`RUNNING`: Running\n`CREATING`: Creating\n`DESTROYING`: Terminating\n`OPENING`: Enabling\n`CLOSING`: Disabling\n`CLOSED`: Disabled\n`ADJUSTING`: Adjusting configuration\n`ISOLATING`: Isolating\n`ISOLATED`: Isolated\n`CLONING`: Copying\n`RECOVERING`: Maintaining",
+          "document": "Connection status. Valid values:\n`RUNNING`: Running\n`CREATING`: Creating\n`DESTROYING`: Terminating\n`OPENING`: Enabling\n`CLOSING`: Disabling\n`CLOSED`: Disabled\n`ADJUSTING`: Adjusting configuration\n`ISOLATING`: Isolating\n`ISOLATED`: Isolated\n`CLONING`: Copying\n`RECOVERING`: Maintaining\n`MOVING`: Migrating",
           "example": "\"RUNNING\"",
           "member": "string",
           "name": "Status",
@@ -7663,7 +7837,7 @@
         },
         {
           "default": "",
-          "document": "Network type. `normal`: general BGP; `cn2`: dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland); `secure_eip`: custom security EIP.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Network type. `normal`: general BGP; `cn2`: Dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland); `secure_eip`: Custom security EIP.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "\"normal\"",
           "member": "string",
           "name": "NetworkType",
@@ -7772,7 +7946,7 @@
         },
         {
           "default": "",
-          "document": "Connection status.\nValid values:\n`RUNNING`: running\n`CREATING`: creating\n`DESTROYING`: terminating\n`OPENING`: enabling\n`CLOSING`: disabling\n`CLOSED`: disabled\n`ADJUSTING`: adjusting configuration\n`ISOLATING`: isolating\n`ISOLATED`: isolated",
+          "document": "Connection status.\nWhere:\n`RUNNING`: Running\n`CREATING`: Creating\n`DESTROYING`: Terminating\n`OPENING`: Enabling\n`CLOSING`: Disabling\n`CLOSED`: Disabled\n`ADJUSTING`: Adjusting configuration\n`ISOLATING`: Isolating\n`ISOLATED`: Isolated\n`MOVING`: Migrating",
           "example": "RUNNING",
           "member": "string",
           "name": "Status",
@@ -7910,7 +8084,7 @@
         },
         {
           "default": "",
-          "document": "0: not bound, 1: bound to rule or listener.",
+          "document": "`0`: Not bound; `1`: Bound to rule or listener.",
           "example": "“”",
           "member": "int64",
           "name": "BindStatus",
@@ -7930,7 +8104,7 @@
         },
         {
           "default": "",
-          "document": "ID of the connection group bound to this origin server. This string is null if no connection groups are bound.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "ID of the connection group bound to this origin server. This string is null if no connection groups are bound.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "“”",
           "member": "string",
           "name": "GroupId",
@@ -8376,7 +8550,7 @@
         },
         {
           "default": "",
-          "document": "Security policy ID",
+          "document": "Security policy ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "PolicyId",
           "required": true,
@@ -8583,7 +8757,7 @@
         },
         {
           "default": "",
-          "document": "Listener status. Valid values:\n0: running;\n1: creating;\n2: terminating;\n3: adjusting origin server;\n4: adjusting configuration.",
+          "document": "Listener status:\n`0`: Running\n`1`: Creating\n`2`: Terminating\n`3`: Adjusting origin server\n`4`: Adjusting configuration",
           "example": "1",
           "member": "uint64",
           "name": "ListenerStatus",
@@ -8593,7 +8767,7 @@
         },
         {
           "default": "",
-          "document": "Origin server access policy of listener. Valid values:\nrr: round robin;\nwrr: weighted round robin;\nlc: least connection.",
+          "document": "Origin server access policy of listeners:\n`rr`: Round robin\n`wrr`: Weighted round robin\n`lc`: Least connection",
           "example": "rr",
           "member": "string",
           "name": "Scheduler",
@@ -8623,7 +8797,7 @@
         },
         {
           "default": "",
-          "document": "Whether health check is enabled for listener. Valid values:\n0: disabled;\n1: enabled",
+          "document": "Whether to enable the listener health check:\n`0`: Disable\n`1`: Enable",
           "example": "1",
           "member": "uint64",
           "name": "HealthCheck",
@@ -8633,7 +8807,7 @@
         },
         {
           "default": "",
-          "document": "Status of origin server bound to listener. Valid values:\n0: exceptional;\n1: normal.",
+          "document": "Status of the origin server bound to listeners:\n`0`: Abnormal\n`1`: Normal",
           "example": "1",
           "member": "uint64",
           "name": "BindStatus",
@@ -8653,7 +8827,7 @@
         },
         {
           "default": "",
-          "document": "Listener creation time; using UNIX timestamp.",
+          "document": "Listener creation time in the format of UNIX timestamp",
           "example": "1607071157",
           "member": "uint64",
           "name": "CreateTime",
@@ -8663,7 +8837,7 @@
         },
         {
           "default": "",
-          "document": "Describes how the listener obtains client IPs. 0: TOA; 1: Proxy Protocol.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Describes how the listener obtains client IPs. `0`: TOA; `1`: Proxy Protocol.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "ClientIPMethod",
@@ -8673,7 +8847,7 @@
         },
         {
           "default": "",
-          "document": "Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "5",
           "member": "uint64",
           "name": "HealthyThreshold",
@@ -8683,7 +8857,7 @@
         },
         {
           "default": "",
-          "document": "Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "UnhealthyThreshold",
@@ -8693,7 +8867,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "FailoverSwitch",
@@ -8703,7 +8877,7 @@
         },
         {
           "default": "",
-          "document": "Specifies whether to enable session persistence. Values: `0` (disable), `1` (enable)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Specifies whether to enable session persistence. Values: `0` (disable), `1` (enable)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "SessionPersist",
@@ -8743,7 +8917,7 @@
       "members": [
         {
           "default": "",
-          "document": "Resource types:\n`Proxy`: connections;\n`ProxyGroup`: connection groups;\n`RealServer`: origin servers.",
+          "document": "Resource types:\n`Proxy`: Connection\n`ProxyGroup`: Connection group\n`RealServer`: Origin server",
           "member": "string",
           "name": "ResourceType",
           "required": true,
@@ -8752,7 +8926,7 @@
         },
         {
           "default": "",
-          "document": "Resource ID",
+          "document": "Instance ID",
           "member": "string",
           "name": "ResourceId",
           "required": true,
@@ -8827,7 +9001,7 @@
         },
         {
           "default": "",
-          "document": "Listener status. Valid values:\n0: running;\n1: creating;\n2: terminating;\n3: adjusting origin server;\n4: adjusting configuration.",
+          "document": "Listener status:\n`0`: Running\n`1`: Creating\n`2`: Terminating\n`3`: Adjusting origin server\n`4`: Adjusting configuration",
           "example": "0",
           "member": "uint64",
           "name": "ListenerStatus",
@@ -8847,7 +9021,7 @@
         },
         {
           "default": "",
-          "document": "Status of origin server bound to listener. 0: normal, 1: exceptional IP, 2: exceptional domain name resolution",
+          "document": "Origin server binding status of listeners. `0`: Normal; `1`: IP exception; `2`: Domain name resolution exception.",
           "example": "0",
           "member": "uint64",
           "name": "BindStatus",
@@ -8867,7 +9041,7 @@
         },
         {
           "default": "",
-          "document": "Listener creation time; using UNIX timestamp.",
+          "document": "Listener creation time in the format of UNIX timestamp",
           "example": "0",
           "member": "uint64",
           "name": "CreateTime",
@@ -8877,7 +9051,7 @@
         },
         {
           "default": "",
-          "document": "Specifies whether to enable session persistence. Values: `0` (disable), `1` (enable)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies whether to enable session persistence. Values: `0` (disable), `1` (enable)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "SessionPersist",

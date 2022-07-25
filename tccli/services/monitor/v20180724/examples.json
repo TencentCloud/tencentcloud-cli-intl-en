@@ -1,5 +1,13 @@
 {
   "actions": {
+    "BindPrometheusManagedGrafana": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindPrometheusManagedGrafana\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-dafxx32\",\n    \"GrafanaId\": \"grafana-sf2fswer\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Binding a Grafana instance"
+      }
+    ],
     "BindingPolicyObject": [
       {
         "document": "",
@@ -24,12 +32,68 @@
         "title": "Creating an alarm policy"
       }
     ],
+    "CreateAlertRule": [
+      {
+        "document": "",
+        "input": "https://monitor.tencentcloudapi.com/?Action=CreateAlertRule\n&InstanceId=my-prom-gg\n&RuleState=2\n&Expr=\"up{service=\\\"rig-prometheus-agent\\\"}>0\"\n&Duration=5m\n&Receivers.0=34224\n&RuleName=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"hfd437lxxdj3455-qxdb3eyydvw4doxm\",\n        \"RuleId\": \"arule-f2vx2owo\"\n    }\n}",
+        "title": "Creating an alerting rule"
+      }
+    ],
+    "CreateExporterIntegration": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateExporterIntegration\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-1\",\n    \"KubeType\": 3,\n    \"ClusterId\": \"cls-xx\",\n    \"Kind\": \"blackbox-exporter\",\n    \"Content\": \"{\\\"name\\\":\\\"test\\\",\\\"kind\\\":\\\"blackbox-exporter\\\",\\\"spec\\\":{\\\"instanceSpec\\\":{\\\"module\\\":\\\"http_get\\\",\\\"urls\\\":[\\\"xx\\\"]}}}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"wpkysykx8k9tu1urmlyo54gq33f4kxwz\"\n    }\n}",
+        "title": "Creating an exporter integration"
+      }
+    ],
     "CreatePolicyGroup": [
       {
         "document": "",
         "input": "https://monitor.tencentcloudapi.com/?Action=CreatePolicyGroup\n&Module=monitor\n&GroupName=test_group\n&ViewName=cvm_device\n&ProjectId=0\n&Remark=backup_group\n&BackEndCall=0\n&IsUnionRule=1\n&Conditions.0.MetricId=19\n&Conditions.0.CalcType=1\n&Conditions.0.CalcValue=100\n&Conditions.0.CalcPeriod=1\n&Conditions.0.ContinuePeriod=1\n&Conditions.0.AlarmNotifyType=0\n&Conditions.0.AlarmNotifyPeriod=0\n&EventConditions.0.EventId=42\n&EventConditions.0.AlarmNotifyType=0\n&EventConditions.0.AlarmNotifyPeriod=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"GroupId\": 1288099,\n        \"RequestId\": \"a91f70ed-e385-4817-9928-994ff06e56ec\"\n    }\n}",
         "title": "Adding policy group"
+      }
+    ],
+    "CreatePrometheusAgent": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusAgent\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-sd234234\",\n    \"Name\": \"test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Creating a Prometheus agent"
+      }
+    ],
+    "CreatePrometheusMultiTenantInstancePostPayMode": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusMultiTenantInstancePostPayMode\n<Common request parameters>\n\n{\n    \"SubnetId\": \"subnet-hjkasfd\",\n    \"DataRetentionTime\": \"30\",\n    \"VpcId\": \"vpc-thnssd\",\n    \"InstanceName\": \"my-prom-gg\",\n    \"Zone\": \"ap-chengdu-1\",\n    \"GrafanaInstanceId\": \"grafana-xfa222\"\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceId\": \"prom-xxxxxx\",\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Creating a pay-as-you-go Prometheus instance"
+      }
+    ],
+    "CreatePrometheusScrapeJob": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrometheusScrapeJob\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"AgentId\": \"xx\",\n    \"Config\": \"job_name:xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Creating a Prometheus scrape task"
+      }
+    ],
+    "CreateRecordingRule": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRecordingRule\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-xxxxsfds\",\n    \"RuleState\": \"2\",\n    \"Group\": \"LS0tDQpuYW1lOiBleGFtcGxlDQpydWxlczoNCiAgLSByZWNvcmQ6IGpvYjpodHRwX2lucHJvZ3Jlc3NfcmVxdWVzdHM6c3VtDQogICAgZXhwcjogc3VtIGJ5IChqb2IpIChodHRwX2lucHJvZ3Jlc3NfcmVxdWVzdHMp\",\n    \"Name\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"69wmlimeh2g7qijbpr469yw8p17kn8ur\",\n        \"RuleId\": \"rrule-fzhp4p7c\"\n    }\n}",
+        "title": "Creating a recording rule"
+      }
+    ],
+    "CreateServiceDiscovery": [
+      {
+        "document": "",
+        "input": "https://monitor.tencentcloudapi.com/?Action=CreateServiceDiscovery\n&InstanceId=prom-sdfk2342a\n&KubeClusterId=cls-pwerf3k3\n&KubeType=1\n&Type=1\n&Yaml=yaml\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"ServiceDiscovery\": {\n            \"Kind\": \"ServiceMonitor\",\n            \"Name\": \"name\",\n            \"Namespace\": \"namespace\",\n            \"Selector\": \"{\\\"matchLabels\\\":{\\\"k8sapp\\\":\\\"mysql-exporter\\\"}}\",\n            \"Yaml\": \"apiVersion: monitoring.coreos.com...\",\n            \"NamespaceSelector\": \"{\\\"matchNames\\\":[\\\"demo-ns\\\"]}\",\n            \"Endpoints\": \"[{\\\"port\\\":\\\"tcp-port\\\",\\\"path\\\":\\\"/metrics\\\",\\\"interval\\\":\\\"30s\\\",\\\"bearerTokenSecret\\\":{\\\"key\\\":\\\"\\\"}}]\"\n        },\n        \"RequestId\": \"nrtlca1qmunlpf51noe13qp5vyvg7mq5\"\n    }\n}",
+        "title": "Creating a scrape configuration"
       }
     ],
     "DeleteAlarmNotices": [
@@ -48,12 +112,44 @@
         "title": "Deleting alarm policy"
       }
     ],
+    "DeleteAlertRules": [
+      {
+        "document": "",
+        "input": "https://monitor.tencentcloudapi.com/?Action=DeleteAlertRules\n&InstanceId=my-prom-gg\n&RuleIds.0=arule-m74lrt6g\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ljynf9quqfeko5pwcr24llmhy9rspzye\"\n    }\n}",
+        "title": "Deleting alerting rules"
+      }
+    ],
+    "DeleteExporterIntegration": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteExporterIntegration\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-1\",\n    \"KubeType\": 3,\n    \"ClusterId\": \"cls-xx\",\n    \"Kind\": \"mysql-exporter\",\n    \"Name\": \"test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"wpkysykx8k9tu1urmlyo54gq33f4kxwz\"\n    }\n}",
+        "title": "DeleteExporterIntegration"
+      }
+    ],
     "DeletePolicyGroup": [
       {
         "document": "",
         "input": "https://monitor.tencentcloudapi.com/?Action=DeletePolicyGroup\n&Module=monitor\n&GroupId.0=11111\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0dbb66c2-b4d6-4c2c-90a9-617d80347ab5\"\n    }\n}",
         "title": "Deleting alarm policy group"
+      }
+    ],
+    "DeletePrometheusScrapeJobs": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeletePrometheusScrapeJobs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"AgentId\": \"xx\",\n    \"JobIds\": [\n        \"xx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Deleting a Prometheus scrape task"
+      }
+    ],
+    "DeleteRecordingRules": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRecordingRules\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-xxxerwer\",\n    \"RuleIds\": [\n        \"rrule-m74lrt6g\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ljynf9quqfeko5pwcr24llmhy9rspzye\"\n    }\n}",
+        "title": "Deleting recording rules"
       }
     ],
     "DescribeAccidentEventList": [
@@ -74,16 +170,16 @@
     ],
     "DescribeAlarmHistories": [
       {
-        "document": "Monitoring type is a first-level concept, and policy type is a second-level concept. Therefore, the policy type is meaningful only after the monitoring type is specified in the `Namespaces` field.\n\nTo query the alarm records of “CVM - Basic Monitor”, the filter conditions should be: `Monitoring type` (Tencent Cloud service monitoring), `policy type` (CVM - Basic Monitor).\n\nEnter `[\"MT_QCE\"]` for `MonitorTypes`, the first-level filter condition.\n\nEnter `[{\"MonitorType\": \"MT_QCE\", \"Namespace\": \"cvm_device\"}]` for `Namespaces`, the second-level filter condition.",
+        "document": "Monitoring type is a first-level filter, and policy type is a second-level filter. Therefore, the policy type is meaningful only after the monitoring type is specified in the `Namespaces` field.\n\nTo query the alarm records of “CVM - Basic Monitor”, the filter conditions should be: Tencent Cloud service monitoring for `Monitoring type` and CVM - Basic Monitor for `policy type`.\n\nEnter `[\"MT_QCE\"]` for `MonitorTypes` as the first-level filter condition.\n\nEnter `[{\"MonitorType\": \"MT_QCE\", \"Namespace\": \"cvm_device\"}]` for `Namespaces` as the second-level filter condition.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlarmHistories\n<Common request parameters>\n\n{\n    \"Module\": \"monitor\",\n    \"PageNumber\": 1,\n    \"PageSize\": 10,\n    \"StartTime\": 1598976507,\n    \"EndTime\": 1599019707\n}",
-        "output": "{\n    \"Response\": {\n        \"Histories\": [\n            {\n                \"AlarmId\": \"c36494f8-ae38-45cb-8089-e14006bcfc67\",\n                \"MonitorType\": \"MT_QCE\",\n                \"Namespace\": \"cvm_device\",\n                \"AlarmObject\": \"10.104.126.8 (private) | CVM 01 | Classic network\",\n                \"Content\": \"CPU utilization > 0%\",\n                \"FirstOccurTime\": 1603117860,\n                \"LastOccurTime\": 1603162964,\n                \"AlarmStatus\": \"ALARM\",\n                \"PolicyId\": \"policy-abc01\",\n                \"PolicyName\": \"CVM alarm policy 1\",\n                \"VPC\": \"0\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"Default project\",\n                \"InstanceGroup\": [\n                    {\n                        \"Id\": 430,\n                        \"Name\": \"example-instance-group\"\n                    }\n                ],\n                \"ReceiverUids\": [],\n                \"ReceiverGroups\": [\n                    1544\n                ],\n                \"NoticeWays\": [\n                    \"SMS\",\n                    \"EMAIL\",\n                    \"WECHAT\"\n                ],\n                \"EventId\": 0,\n                \"AlarmType\": \"METRIC\",\n                \"OriginId\": \"1278441\",\n                \"Region\": \"gz\",\n                \"PolicyExists\": 1,\n                \"MetricsInfo\": [\n                    {\n                        \"QceNamespace\": \"qce/cvm\",\n                        \"MetricName\": \"CpuUsage\",\n                        \"Period\": 60,\n                        \"Value\": \"86.5\",\n                        \"Description\": \"CPU utilization\"\n                    }\n                ]\n            },\n            {\n                \"AlarmId\": \"779d129a-40a1-4acf-b226-d9c2ae26e63b\",\n                \"MonitorType\": \"MT_QCE\",\n                \"Namespace\": \"cvm_device\",\n                \"AlarmObject\": \"10.104.126.9 (private) | CVM 02 | Classic network\",\n                \"Content\": \"CPU utilization > 0%\",\n                \"FirstOccurTime\": 1603117860,\n                \"LastOccurTime\": 1603162964,\n                \"AlarmStatus\": \"ALARM\",\n                \"PolicyId\": \"policy-abc02\",\n                \"PolicyName\": \"CVM alarm policy 2\",\n                \"VPC\": \"0\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"Default project\",\n                \"InstanceGroup\": [\n                    {\n                        \"Id\": 430,\n                        \"Name\": \"example-instance-group\"\n                    }\n                ],\n                \"ReceiverUids\": [],\n                \"ReceiverGroups\": [],\n                \"NoticeWays\": [],\n                \"EventId\": 0,\n                \"AlarmType\": \"METRIC\",\n                \"OriginId\": \"1276973\",\n                \"Region\": \"gz\",\n                \"PolicyExists\": 1,\n                \"MetricsInfo\": null\n            }\n        ],\n        \"RequestId\": \"4bzogxhgsgs95hgmxne5ei6y9jjxvi1f\",\n        \"TotalCount\": 486\n    }\n}",
-        "title": "Querying alarm records"
+        "output": "{\n    \"Response\": {\n        \"Histories\": [\n            {\n                \"AlarmId\": \"c36494f8-ae38-45cb-8089-e14006bcfc67\",\n                \"MonitorType\": \"MT_QCE\",\n                \"Namespace\": \"cvm_device\",\n                \"AlarmObject\": \"10.104.126.8 (private) | CVM 01 | Classic network\",\n                \"Content\": \"CPU utilization > 0%\",\n                \"FirstOccurTime\": 1603117860,\n                \"LastOccurTime\": 1603162964,\n                \"AlarmStatus\": \"ALARM\",\n                \"PolicyId\": \"policy-abc01\",\n                \"PolicyName\": \"CVM alerting rule 1\",\n                \"VPC\": \"0\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"The default project\",\n                \"InstanceGroup\": [\n                    {\n                        \"Id\": 430,\n                        \"Name\": \"example-instance-group\"\n                    }\n                ],\n                \"ReceiverUids\": [],\n                \"ReceiverGroups\": [\n                    1544\n                ],\n                \"NoticeWays\": [\n                    \"SMS\",\n                    \"EMAIL\",\n                    \"WECHAT\"\n                ],\n                \"EventId\": 0,\n                \"AlarmType\": \"METRIC\",\n                \"OriginId\": \"1278441\",\n                \"Region\": \"gz\",\n                \"PolicyExists\": 1,\n                \"MetricsInfo\": [\n                    {\n                        \"QceNamespace\": \"qce/cvm\",\n                        \"MetricName\": \"CpuUsage\",\n                        \"Period\": 60,\n                        \"Value\": \"86.5\",\n                        \"Description\": \"CPU utilization\"\n                    }\n                ],\n                \"Dimensions\": null\n            },\n            {\n                \"AlarmId\": \"779d129a-40a1-4acf-b226-d9c2ae26e63b\",\n                \"MonitorType\": \"MT_QCE\",\n                \"Namespace\": \"cvm_device\",\n                \"AlarmObject\": \"10.104.126.9 (private) | CVM 02 | Classic network\",\n                \"Content\": \"CPU utilization > 0%\",\n                \"FirstOccurTime\": 1603117860,\n                \"LastOccurTime\": 1603162964,\n                \"AlarmStatus\": \"ALARM\",\n                \"PolicyId\": \"policy-abc02\",\n                \"PolicyName\": \"CVM alerting rule 2\",\n                \"VPC\": \"0\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"The default project\",\n                \"InstanceGroup\": [\n                    {\n                        \"Id\": 430,\n                        \"Name\": \"example-instance-group\"\n                    }\n                ],\n                \"ReceiverUids\": [],\n                \"ReceiverGroups\": [],\n                \"NoticeWays\": [],\n                \"EventId\": 0,\n                \"AlarmType\": \"METRIC\",\n                \"OriginId\": \"1276973\",\n                \"Region\": \"gz\",\n                \"PolicyExists\": 1,\n                \"MetricsInfo\": null,\n                \"Dimensions\": null\n            }\n        ],\n        \"RequestId\": \"4bzogxhgsgs95hgmxne5ei6y9jjxvi1f\",\n        \"TotalCount\": 486\n    }\n}",
+        "title": "Querying alert records"
       },
       {
-        "document": "Monitoring type is a first-level filter, and policy type is a second-level filter. Therefore, the policy type is meaningful only after the monitoring type is specified in the `Namespaces` field.\n\nTo query the alarm records of “CVM - Basic Monitor”, the filter conditions should be: Tencent Cloud service monitoring for `Monitoring type` and CVM - Basic Monitor for `policy type`.\n\nEnter `[\"MT_QCE\"]` for `MonitorTypes` as the first-level filter condition.\n\nEnter `[{\"MonitorType\": \"MT_QCE\", \"Namespace\": \"cvm_device\"}]` for `Namespaces` as the second-level filter condition.",
+        "document": "Monitoring type is a first-level filter, and policy type is a second-level filter. Therefore, the policy type is meaningful only after the monitoring type is specified in the `Namespaces` field.\n\nTo query the alert records of \"CVM - Basic Monitoring\", the filter should be monitoring type (Tencent Cloud service monitoring), policy type (CVM - Basic Monitor).\n\nEnter `[\"MT_QCE\"]` for `MonitorTypes` as the first-level filter.\n\nEnter `[{\"MonitorType\": \"MT_QCE\", \"Namespace\": \"cvm_device\"}]` for `Namespaces` as the second-level filter.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlarmHistories\n<Common request parameters>\n\n{\n    \"Module\": \"monitor\",\n    \"PageNumber\": 1,\n    \"PageSize\": 10,\n    \"StartTime\": 1598976507,\n    \"EndTime\": 1599019707,\n    \"MonitorTypes\": [\n        \"MT_QCE\"\n    ],\n    \"Namespaces\": [\n        {\n            \"MonitorType\": \"MT_QCE\",\n            \"Namespace\": \"cvm_device\"\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"Histories\": [\n            {\n                \"AlarmId\": \"c36494f8-ae38-45cb-8089-e14006bcfc67\",\n                \"MonitorType\": \"MT_QCE\",\n                \"Namespace\": \"cvm_device\",\n                \"AlarmObject\": \"10.104.126.8 (private) | CVM 01 | Classic network\",\n                \"Content\": \"CPU utilization > 0%\",\n                \"FirstOccurTime\": 1603117860,\n                \"LastOccurTime\": 1603162964,\n                \"AlarmStatus\": \"ALARM\",\n                \"PolicyId\": \"policy-abc01\",\n                \"PolicyName\": \"CVM alarm policy 1\",\n                \"VPC\": \"0\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"Default project\",\n                \"InstanceGroup\": [\n                    {\n                        \"Id\": 430,\n                        \"Name\": \"example-instance-group\"\n                    }\n                ],\n                \"ReceiverUids\": [],\n                \"ReceiverGroups\": [\n                    1544\n                ],\n                \"NoticeWays\": [\n                    \"SMS\",\n                    \"EMAIL\",\n                    \"WECHAT\"\n                ],\n                \"EventId\": 0,\n                \"AlarmType\": \"METRIC\",\n                \"OriginId\": \"1278441\",\n                \"Region\": \"gz\",\n                \"PolicyExists\": 1,\n                \"MetricsInfo\": [\n                    {\n                        \"QceNamespace\": \"qce/cvm\",\n                        \"MetricName\": \"CpuUsage\",\n                        \"Period\": 60,\n                        \"Value\": \"86.5\",\n                        \"Description\": \"CPU utilization\"\n                    }\n                ]\n            },\n            {\n                \"AlarmId\": \"779d129a-40a1-4acf-b226-d9c2ae26e63b\",\n                \"MonitorType\": \"MT_QCE\",\n                \"Namespace\": \"cvm_device\",\n                \"AlarmObject\": \"10.104.126.9 (private) | CVM 02 | Classic network\",\n                \"Content\": \"CPU utilization > 0%\",\n                \"FirstOccurTime\": 1603117860,\n                \"LastOccurTime\": 1603162964,\n                \"AlarmStatus\": \"ALARM\",\n                \"PolicyId\": \"policy-abc02\",\n                \"PolicyName\": \"CVM alarm policy 2\",\n                \"VPC\": \"0\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"Default project\",\n                \"InstanceGroup\": [\n                    {\n                        \"Id\": 430,\n                        \"Name\": \"example-instance-group\"\n                    }\n                ],\n                \"ReceiverUids\": [],\n                \"ReceiverGroups\": [],\n                \"NoticeWays\": [],\n                \"EventId\": 0,\n                \"AlarmType\": \"METRIC\",\n                \"OriginId\": \"1276973\",\n                \"Region\": \"gz\",\n                \"PolicyExists\": 1,\n                \"MetricsInfo\": null\n            }\n        ],\n        \"RequestId\": \"4bzogxhgsgs95hgmxne5ei6y9jjxvi1f\",\n        \"TotalCount\": 486\n    }\n}",
-        "title": "Querying the alarm records of “CVM - Basic Monitor”"
+        "output": "{\n    \"Response\": {\n        \"Histories\": [\n            {\n                \"AlarmId\": \"c36494f8-ae38-45cb-8089-e14006bcfc67\",\n                \"MonitorType\": \"MT_QCE\",\n                \"Namespace\": \"cvm_device\",\n                \"AlarmObject\": \"10.104.126.8 (private) | CVM 01 | Classic network\",\n                \"Content\": \"CPU utilization > 0%\",\n                \"FirstOccurTime\": 1603117860,\n                \"LastOccurTime\": 1603162964,\n                \"AlarmStatus\": \"ALARM\",\n                \"PolicyId\": \"policy-abc01\",\n                \"PolicyName\": \"CVM alerting rule 1\",\n                \"VPC\": \"0\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"The default project\",\n                \"InstanceGroup\": [\n                    {\n                        \"Id\": 430,\n                        \"Name\": \"example-instance-group\"\n                    }\n                ],\n                \"ReceiverUids\": [],\n                \"ReceiverGroups\": [\n                    1544\n                ],\n                \"NoticeWays\": [\n                    \"SMS\",\n                    \"EMAIL\",\n                    \"WECHAT\"\n                ],\n                \"EventId\": 0,\n                \"AlarmType\": \"METRIC\",\n                \"OriginId\": \"1278441\",\n                \"Region\": \"gz\",\n                \"PolicyExists\": 1,\n                \"MetricsInfo\": [\n                    {\n                        \"QceNamespace\": \"qce/cvm\",\n                        \"MetricName\": \"CpuUsage\",\n                        \"Period\": 60,\n                        \"Value\": \"86.5\",\n                        \"Description\": \"CPU utilization\"\n                    }\n                ]\n            },\n            {\n                \"AlarmId\": \"779d129a-40a1-4acf-b226-d9c2ae26e63b\",\n                \"MonitorType\": \"MT_QCE\",\n                \"Namespace\": \"cvm_device\",\n                \"AlarmObject\": \"10.104.126.9 (private) | CVM 02 | Classic network\",\n                \"Content\": \"CPU utilization > 0%\",\n                \"FirstOccurTime\": 1603117860,\n                \"LastOccurTime\": 1603162964,\n                \"AlarmStatus\": \"ALARM\",\n                \"PolicyId\": \"policy-abc02\",\n                \"PolicyName\": \"CVM alerting rule 2\",\n                \"VPC\": \"0\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"The default project\",\n                \"InstanceGroup\": [\n                    {\n                        \"Id\": 430,\n                        \"Name\": \"example-instance-group\"\n                    }\n                ],\n                \"ReceiverUids\": [],\n                \"ReceiverGroups\": [],\n                \"NoticeWays\": [],\n                \"EventId\": 0,\n                \"AlarmType\": \"METRIC\",\n                \"OriginId\": \"1276973\",\n                \"Region\": \"gz\",\n                \"PolicyExists\": 1,\n                \"MetricsInfo\": null\n            }\n        ],\n        \"RequestId\": \"4bzogxhgsgs95hgmxne5ei6y9jjxvi1f\",\n        \"TotalCount\": 486\n    }\n}",
+        "title": "Querying the alert records of \"CVM - Basic Monitoring\""
       }
     ],
     "DescribeAlarmMetrics": [
@@ -140,6 +236,14 @@
         "title": "Querying alarm policy details"
       }
     ],
+    "DescribeAlertRules": [
+      {
+        "document": "",
+        "input": "https://monitor.tencentcloudapi.com/?Action=DescribeAlertRules\n&InstanceId=my-prom-gg\n&RuleState=2\n&Limit=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"AlertRuleSet\": [\n            {\n                \"RuleId\": \"arule-c9qvmfm8\",\n                \"RuleName\": \"example6\",\n                \"RuleState\": 3,\n                \"Type\": \"\",\n                \"Labels\": [\n                    {\n                        \"Key\": \"k1\",\n                        \"Value\": \"v1\"\n                    },\n                    {\n                        \"Key\": \"k2\",\n                        \"Value\": \"v2\"\n                    }\n                ],\n                \"Expr\": \"up{service=\\\"rig-prometheus-agent\\\"} > 0\",\n                \"Annotations\": [\n                    {\n                        \"Key\": \"ak1\",\n                        \"Value\": \"av1\"\n                    },\n                    {\n                        \"Key\": \"ak2\",\n                        \"Value\": \"av2\"\n                    }\n                ],\n                \"Duration\": \"1m\",\n                \"Receivers\": [\n                    \"123\",\n                    \"456\"\n                ],\n                \"CreatedAt\": \"2020-08-24T09:39:27Z\",\n                \"UpdatedAt\": \"2020-08-24T09:39:27Z\"\n            },\n            {\n                \"RuleId\": \"arule-nnqzmis6\",\n                \"RuleName\": \"example5\",\n                \"RuleState\": 2,\n                \"Type\": \"\",\n                \"Labels\": [\n                    {\n                        \"Key\": \"k1\",\n                        \"Value\": \"v1\"\n                    },\n                    {\n                        \"Key\": \"k2\",\n                        \"Value\": \"v2\"\n                    }\n                ],\n                \"Expr\": \"up{service=\\\"rig-prometheus-agent\\\"} > 0\",\n                \"Annotations\": [\n                    {\n                        \"Key\": \"ak1\",\n                        \"Value\": \"av1\"\n                    },\n                    {\n                        \"Key\": \"ak2\",\n                        \"Value\": \"av2\"\n                    }\n                ],\n                \"Duration\": \"1m\",\n                \"Receivers\": [\n                    \"123\",\n                    \"456\"\n                ],\n                \"CreatedAt\": \"2020-08-24T09:39:17Z\",\n                \"UpdatedAt\": \"2020-08-24T09:39:17Z\"\n            }\n        ],\n        \"RequestId\": \"-fp6ttca3mlpv34ks85fv3661vja2bwg\",\n        \"TotalCount\": 2\n    }\n}",
+        "title": "Querying alerting rules"
+      }
+    ],
     "DescribeAllNamespaces": [
       {
         "document": "",
@@ -186,6 +290,14 @@
         "title": "Getting the alarm policy template list"
       }
     ],
+    "DescribeExporterIntegrations": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeExporterIntegrations\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Kind\": \"xx\",\n    \"ClusterId\": \"xx\",\n    \"KubeType\": 3\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"wpkysykx8k9tu1urmlyo54gq33f4kxwz\",\n        \"IntegrationSet\": []\n    }\n}",
+        "title": "Querying the list of exporter integrations"
+      }
+    ],
     "DescribeMonitorTypes": [
       {
         "document": "",
@@ -226,6 +338,46 @@
         "title": "Getting product event list"
       }
     ],
+    "DescribePrometheusAgents": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusAgents\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AgentSet\": [\n            {\n                \"AgentId\": \"xx\",\n                \"Name\": \"xx\",\n                \"InstanceId\": \"xx\",\n                \"HeartbeatTime\": \"xx\",\n                \"Ipv4\": \"xx\",\n                \"LastError\": \"xx\",\n                \"AgentVersion\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\",\n        \"TotalCount\": 12\n    }\n}",
+        "title": "Listing Prometheus agents"
+      }
+    ],
+    "DescribePrometheusInstances": [
+      {
+        "document": "",
+        "input": "https://monitor.tencentcloudapi.com/?Action=DescribePrometheusInstances\n&InstanceIds.0=prom-ncxkwqr8\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"InstanceSet\": [\n            {\n                \"InstanceName\": \"name\",\n                \"InstanceChargeType\": 1,\n                \"InstanceId\": \"prom-xxxxx\",\n                \"InstanceStatus\": 1,\n                \"RegionId\": 1,\n                \"Zone\": \"ap-guangzhou-1\",\n                \"VpcId\": \"vpcID\",\n                \"SubnetId\": \"subnetid\",\n                \"IPv4Address\": \"\",\n                \"DataRetentionTime\": 30,\n                \"EnableGrafana\": 0,\n                \"GrafanaURL\": \"\",\n                \"CreatedAt\": \"2020-07-07T10:39:18Z\"\n            }\n        ],\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Querying the list of Prometheus instances"
+      }
+    ],
+    "DescribePrometheusScrapeJobs": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusScrapeJobs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"AgentId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"RequestId\": \"xx\",\n        \"ScrapeJobSet\": [\n            {\n                \"AgentId\": \"xx\",\n                \"Config\": \"xx\",\n                \"Name\": \"xx\",\n                \"JobId\": \"xx\"\n            }\n        ]\n    }\n}",
+        "title": "Listing Prometheus scrape tasks"
+      }
+    ],
+    "DescribeRecordingRules": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRecordingRules\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-sdf342\",\n    \"RuleState\": \"2\",\n    \"Limit\": \"10\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RecordingRuleSet\": [\n            {\n                \"RuleId\": \"rrule-45hkgiyc\",\n                \"RuleState\": 2,\n                \"Name\": \"example6\",\n                \"Group\": \"LS0tDQpuYW1lOiBleGFtcGxlDQpydWxlczoNCiAgLSByZWNvcmQ6IGpvYjpodHRwX2lucHJvZ3Jlc3NfcmVxdWVzdHM6c3VtDQogICAgZXhwcjogc3VtIGJ5IChqb2IpIChodHRwX2lucHJvZ3Jlc3NfcmVxdWVzdHMp\",\n                \"Total\": 1,\n                \"UpdatedAt\": \"2020-08-10T17:50:06Z\",\n                \"CreatedAt\": \"2020-08-10T09:32:51Z\"\n            }\n        ],\n        \"RequestId\": \"-1y24pm54antkuiziyii7hxwv2974riq\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying recording rules"
+      }
+    ],
+    "DescribeServiceDiscovery": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeServiceDiscovery\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-sdfk2342a\",\n    \"KubeClusterId\": \"cls-pwerf3k3\",\n    \"KubeType\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0523dedd-1235-428d-885c-9443cf9175d1\",\n        \"ServiceDiscoverySet\": [\n            {\n                \"Kind\": \"ServiceMonitor\",\n                \"Name\": \"name\",\n                \"Namespace\": \"namespace\",\n                \"Selector\": \"{\\\"matchLabels\\\":{\\\"k8sapp\\\":\\\"mysql-exporter\\\"}}\",\n                \"Yaml\": \"apiVersion: monitoring.coreos.com...\",\n                \"NamespaceSelector\": \"{\\\"matchNames\\\":[\\\"demo-ns\\\"]}\",\n                \"Endpoints\": \"[{\\\"port\\\":\\\"tcp-port\\\",\\\"path\\\":\\\"/metrics\\\",\\\"interval\\\":\\\"30s\\\",\\\"bearerTokenSecret\\\":{\\\"key\\\":\\\"\\\"}}]\"\n            }\n        ]\n    }\n}",
+        "title": "Listing scrape configurations"
+      }
+    ],
     "DescribeStatisticData": [
       {
         "document": "",
@@ -234,24 +386,40 @@
         "title": "Querying monitoring data by dimension condition"
       }
     ],
+    "DestroyPrometheusInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DestroyPrometheusInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-w3rkj7835b\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Forcibly releasing a Prometheus instance"
+      }
+    ],
     "GetMonitorData": [
       {
-        "document": "This example shows you how to get the CPU utilization monitoring data of a CVM instance using a statistical period of 5 minutes for a specified length of time.",
+        "document": "This example shows you how to get the 5-minute CPU utilization monitoring data of one CVM instance in a specific period of time.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetMonitorData\n<Common request parameters>\n\n{\n    \"Namespace\": \"QCE/CVM\",\n    \"MetricName\": \"CPUUsage\",\n    \"Period\": 300,\n    \"Instances\": [\n        {\n            \"Dimensions\": [\n                {\n                    \"Name\": \"InstanceId\",\n                    \"Value\": \"ins-j0hk02zo\"\n                }\n            ]\n        }\n    ],\n    \"StartTime\": \"2019-03-24T10:51:23+08:00\",\n    \"EndTime\": \"2019-03-24T20:51:23+08:00\"\n}",
         "output": "{\n    \"Response\": {\n        \"StartTime\": \"2019-03-24T10:50:00+08:00\",\n        \"EndTime\": \"2019-03-24T20:50:00+08:00\",\n        \"Period\": 300,\n        \"MetricName\": \"CPUUsage\",\n        \"DataPoints\": [\n            {\n                \"Dimensions\": [\n                    {\n                        \"Name\": \"InstanceId\",\n                        \"Value\": \"ins-j0hk02zo\"\n                    }\n                ],\n                \"Timestamps\": [\n                    1535079000,\n                    1535079300,\n                    1535079600,\n                    1535079900,\n                    1535080200,\n                    1535080500\n                ],\n                \"Values\": [\n                    2.566,\n                    2.283,\n                    6.316,\n                    2.816,\n                    2.7,\n                    2.35\n                ]\n            }\n        ],\n        \"RequestId\": \"d96ec542-6547-4af2-91ac-fee85c1b8b85\"\n    }\n}",
-        "title": "Getting the monitoring data of a CVM Instance"
+        "title": "Getting the monitoring data of one CVM instance"
       },
       {
-        "document": "This example shows you how to get the CPU utilization monitoring data of multiple CVM instances using a statistical period of 5 minutes for a specified length of time.",
+        "document": "This example shows you how to get the 5-minute CPU utilization monitoring data of multiples CVM instances in a specific period of time.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetMonitorData\n<Common request parameters>\n\n{\n    \"Namespace\": \"QCE/CVM\",\n    \"MetricName\": \"CPUUsage\",\n    \"Period\": 300,\n    \"Instances\": [\n        {\n            \"Dimensions\": [\n                {\n                    \"Name\": \"InstanceId\",\n                    \"Value\": \"ins-j0hk02zo\"\n                }\n            ]\n        },\n        {\n            \"Dimensions\": [\n                {\n                    \"Name\": \"InstanceId\",\n                    \"Value\": \"ins-o8vv2w10\"\n                }\n            ]\n        }\n    ],\n    \"StartTime\": \"2018-09-22T19:51:23+08:00\",\n    \"EndTime\": \"2018-09-22T20:51:23+08:00\"\n}",
         "output": "{\n    \"Response\": {\n        \"StartTime\": \"2018-09-22T19:50:00+08:00\",\n        \"EndTime\": \"2018-09-22T20:50:00+08:00\",\n        \"Period\": 300,\n        \"MetricName\": \"CPUUsage\",\n        \"DataPoints\": [\n            {\n                \"Dimensions\": [\n                    {\n                        \"Name\": \"InstanceId\",\n                        \"Value\": \"ins-j0hk02zo\"\n                    }\n                ],\n                \"Timestamps\": [],\n                \"Values\": []\n            },\n            {\n                \"Dimensions\": [\n                    {\n                        \"Name\": \"InstanceId\",\n                        \"Value\": \"ins-o8vv2w10\"\n                    }\n                ],\n                \"Timestamps\": [],\n                \"Values\": []\n            }\n        ],\n        \"RequestId\": \"9ac53ccc-fbab-483d-980b-b763bcc2f83f\"\n    }\n}",
         "title": "Getting the monitoring data of multiple CVM instances"
       },
       {
-        "document": "This example shows you how to get the CPU utilization monitoring data of a TencentDB instance using a statistical period of 5 minutes for a specified length of time.",
+        "document": "This example shows you how to get the 5-minute CPU utilization monitoring data of one TencentDB instance in a specific period of time.",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetMonitorData\n<Common request parameters>\n\n{\n    \"Namespace\": \"QCE/CDB\",\n    \"MetricName\": \"SlowQueries\",\n    \"Period\": 300,\n    \"Instances\": [\n        {\n            \"Dimensions\": [\n                {\n                    \"Name\": \"InstanceId\",\n                    \"Value\": \"cdb-k5d6z7p0\"\n                },\n                {\n                    \"Name\": \"InstanceType\",\n                    \"Value\": \"2\"\n                }\n            ]\n        }\n    ],\n    \"StartTime\": \"2018-09-22T19:23:07+08:00\",\n    \"EndTime\": \"2018-09-22T20:23:07+08:00\"\n}",
         "output": "{\n    \"Response\": {\n        \"StartTime\": \"2018-09-22T19:20:00+08:00\",\n        \"EndTime\": \"2018-09-22T20:20:00+08:00\",\n        \"Period\": 300,\n        \"MetricName\": \"SlowQueries\",\n        \"DataPoints\": [\n            {\n                \"Dimensions\": [\n                    {\n                        \"Name\": \"InstanceType\",\n                        \"Value\": \"2\"\n                    },\n                    {\n                        \"Name\": \"InstanceId\",\n                        \"Value\": \"cdb-k5d6z7p0\"\n                    }\n                ],\n                \"Timestamps\": [],\n                \"Values\": []\n            }\n        ],\n        \"RequestId\": \"2bcfe8b7-8ea8-4488-9d17-f1aeb106eecd\"\n    }\n}",
-        "title": "Getting the monitoring data of a TencentDB instance"
+        "title": "Getting the monitoring data of one TencentDB instance"
+      }
+    ],
+    "GetPrometheusAgentManagementCommand": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetPrometheusAgentManagementCommand\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-23kdafdf\",\n    \"AgentId\": \"agent-23kdafdf\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Command\": {\n            \"Install\": \"xx\",\n            \"Restart\": \"xx\",\n            \"Stop\": \"xx\",\n            \"StatusCheck\": \"xx\",\n            \"LogCheck\": \"xx\"\n        },\n        \"RequestId\": \"as131asfjl23dsf342lxdsf\"\n    }\n}",
+        "title": "Getting the command line for Prometheus agent management"
       }
     ],
     "ModifyAlarmNotice": [
@@ -318,6 +486,14 @@
         "title": "Updating policy group"
       }
     ],
+    "ModifyPrometheusInstanceAttributes": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPrometheusInstanceAttributes\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-2rsas2\",\n    \"InstanceName\": \"my-prom-gg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Modifying the attributes of a Prometheus instance"
+      }
+    ],
     "PutMonitorData": [
       {
         "document": "",
@@ -342,6 +518,14 @@
         "title": "Setting default alarm policy"
       }
     ],
+    "TerminatePrometheusInstances": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TerminatePrometheusInstances\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"prom-w3rkj7835b\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Terminating a Prometheus instance"
+      }
+    ],
     "UnBindingAllPolicyObject": [
       {
         "document": "",
@@ -356,6 +540,78 @@
         "input": "https://monitor.tencentcloudapi.com/?Action=UnBindingPolicyObject\n&Module=monitor\n&GroupId=11111\n&UniqueId.0=3dd5113208fd467b2e5d0c1111111111\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0dbb66c2-1111-1111-1111-11111111111\"\n    }\n}",
         "title": "Deleting object bound to policy"
+      }
+    ],
+    "UnbindPrometheusManagedGrafana": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnbindPrometheusManagedGrafana\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-xfdafw\",\n    \"GrafanaId\": \"grafana-sdjl2r\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Unbinding a Grafana instance from an instance"
+      }
+    ],
+    "UninstallGrafanaDashboard": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UninstallGrafanaDashboard\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-c0wy130a\",\n    \"IntegrationCodes\": [\n        \"spring-mvc\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"49h8tychqjqzl63wzfvxfkyucee87tmz\"\n    }\n}",
+        "title": "Deleting a Grafana dashboard"
+      }
+    ],
+    "UpdateAlertRule": [
+      {
+        "document": "",
+        "input": "https://monitor.tencentcloudapi.com/?Action=UpdateAlertRule\n&InstanceId=my-prom-gg\n&RuleId=arule-omq28fcm\n&RuleState=2\n&RuleName=exampleName\n&Expr=job:request_latency_seconds:mean5m{job=\\\"myjob\\\"}>0.5\n&Duration=1m\n&Receivers.0=33432\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"qyh38g1ium4-41o5k994o7hcxuq96zab\",\n        \"RuleId\": \"arule-omq28fcm\"\n    }\n}",
+        "title": "Updating an alerting rule"
+      }
+    ],
+    "UpdateAlertRuleState": [
+      {
+        "document": "",
+        "input": "https://monitor.tencentcloudapi.com/?Action=UpdateAlertRuleState\n&InstanceId=my-prom-gg\n&RuleIds.0=arule-m74lrt6g\n&RuleState=3\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ljynf9quqfeko5pwcr24llmhy9rspzye\"\n    }\n}",
+        "title": "Updating the status of an alerting rule"
+      }
+    ],
+    "UpdateExporterIntegration": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateExporterIntegration\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-1\",\n    \"KubeType\": 3,\n    \"ClusterId\": \"cls-xx\",\n    \"Kind\": \"blackbox-exporter\",\n    \"Content\": \"{\\\"name\\\":\\\"test\\\",\\\"kind\\\":\\\"blackbox-exporter\\\",\\\"spec\\\":{\\\"instanceSpec\\\":{\\\"module\\\":\\\"http_get\\\",\\\"urls\\\":[\\\"xx\\\"]}}}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"wpkysykx8k9tu1urmlyo54gq33f4kxwz\"\n    }\n}",
+        "title": "Updating the exporter integration configuration"
+      }
+    ],
+    "UpdatePrometheusAgentStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdatePrometheusAgentStatus\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"AgentIds\": [\n        \"xx\"\n    ],\n    \"Status\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Updating the status of a Prometheus agent"
+      }
+    ],
+    "UpdatePrometheusScrapeJob": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdatePrometheusScrapeJob\n<Common request parameters>\n\n{\n    \"JobId\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"AgentId\": \"xx\",\n    \"Config\": \"job_name:xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Updating a Prometheus scrape task"
+      }
+    ],
+    "UpdateRecordingRule": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateRecordingRule\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-xrwerwe\",\n    \"RuleState\": \"2\",\n    \"Group\": \"LS0tDQpuYW1lOiBleGFtcGxlDQpydWxlczoNCiAgLSByZWNvcmQ6IGpvYjpodHRwX2lucHJvZ3Jlc3NfcmVxdWVzdHM6c3VtDQogICAgZXhwcjogc3VtIGJ5IChqb2IpIChodHRwX2lucHJvZ3Jlc3NfcmVxdWVzdHMp\",\n    \"Name\": \"1\",\n    \"RuleId\": \"rrule-m74lrt6g\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1z5ph-pcsxjbfy1y56525v5q-w5brnte\",\n        \"RuleId\": \"rrule-m74lrt6g\"\n    }\n}",
+        "title": "Updating a recording rule"
+      }
+    ],
+    "UpgradeGrafanaDashboard": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeGrafanaDashboard\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-gds3q53s\",\n    \"IntegrationCodes\": [\n        \"spring-mvc\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Updating a Grafana dashboard"
       }
     ]
   },

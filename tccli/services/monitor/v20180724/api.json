@@ -1,5 +1,11 @@
 {
   "actions": {
+    "BindPrometheusManagedGrafana": {
+      "document": "This API is used to bind a Grafana instance.",
+      "input": "BindPrometheusManagedGrafanaRequest",
+      "name": "Binds a Grafana instance",
+      "output": "BindPrometheusManagedGrafanaResponse"
+    },
     "BindingPolicyObject": {
       "document": "This API is used to bind an alarm policy to a specific object.",
       "input": "BindingPolicyObjectRequest",
@@ -18,11 +24,53 @@
       "name": "Creates a Cloud Monitor alarm policy",
       "output": "CreateAlarmPolicyResponse"
     },
+    "CreateAlertRule": {
+      "document": "This API is used to create a Prometheus alerting rule.\n\nNote that alert object and alert message are special fields of Prometheus Rule Annotations, which need to be passed in through `annotations` and correspond to `summary` and `description` keys respectively. For more information, see [Alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/).",
+      "input": "CreateAlertRuleRequest",
+      "name": "Creates an alerting rule",
+      "output": "CreateAlertRuleResponse"
+    },
+    "CreateExporterIntegration": {
+      "document": "This API is used to create an exporter integration.",
+      "input": "CreateExporterIntegrationRequest",
+      "name": "Creates an exporter integration",
+      "output": "CreateExporterIntegrationResponse"
+    },
     "CreatePolicyGroup": {
       "document": "This API is used to add a policy group.",
       "input": "CreatePolicyGroupRequest",
       "name": "Adds a policy group.",
       "output": "CreatePolicyGroupResponse"
+    },
+    "CreatePrometheusAgent": {
+      "document": "This API is used to create a Prometheus CVM agent.",
+      "input": "CreatePrometheusAgentRequest",
+      "name": "Creates a Prometheus CVM agent",
+      "output": "CreatePrometheusAgentResponse"
+    },
+    "CreatePrometheusMultiTenantInstancePostPayMode": {
+      "document": "This API is used to create a pay-as-you-go Prometheus instance.",
+      "input": "CreatePrometheusMultiTenantInstancePostPayModeRequest",
+      "name": "Creates a pay-as-you-go Prometheus instance",
+      "output": "CreatePrometheusMultiTenantInstancePostPayModeResponse"
+    },
+    "CreatePrometheusScrapeJob": {
+      "document": "This API is used to create a Prometheus scrape task.",
+      "input": "CreatePrometheusScrapeJobRequest",
+      "name": "Creates a Prometheus scrape task",
+      "output": "CreatePrometheusScrapeJobResponse"
+    },
+    "CreateRecordingRule": {
+      "document": "This API is used to create a Prometheus recording rule.",
+      "input": "CreateRecordingRuleRequest",
+      "name": "Creates a recording rule",
+      "output": "CreateRecordingRuleResponse"
+    },
+    "CreateServiceDiscovery": {
+      "document": "This API is used to create a Prometheus scrape configuration in TKE.\n<p>Note: The prerequisite is that the corresponding TKE service has been integrated through the Prometheus console. For more information, see\n<a href=\"https://intl.cloud.tencent.com/document/product/248/48859?from_cn_redirect=1\" target=\"_blank\">Agent Management</a>.</p>",
+      "input": "CreateServiceDiscoveryRequest",
+      "name": "Creates a scrape configuration",
+      "output": "CreateServiceDiscoveryResponse"
     },
     "DeleteAlarmNotices": {
       "document": "This API is used to delete alarm notification templates.",
@@ -36,11 +84,35 @@
       "name": "Deletes alarm policy",
       "output": "DeleteAlarmPolicyResponse"
     },
+    "DeleteAlertRules": {
+      "document": "This API is used to batch delete Prometheus alerting rules.",
+      "input": "DeleteAlertRulesRequest",
+      "name": "Deletes alerting rules",
+      "output": "DeleteAlertRulesResponse"
+    },
+    "DeleteExporterIntegration": {
+      "document": "This API is used to delete an exporter integration.",
+      "input": "DeleteExporterIntegrationRequest",
+      "name": "Deletes an exporter integration",
+      "output": "DeleteExporterIntegrationResponse"
+    },
     "DeletePolicyGroup": {
       "document": "This API is used to delete an alarm policy group.",
       "input": "DeletePolicyGroupRequest",
       "name": "Deletes an alarm policy group.",
       "output": "DeletePolicyGroupResponse"
+    },
+    "DeletePrometheusScrapeJobs": {
+      "document": "This API is used to delete a Prometheus scrape task.",
+      "input": "DeletePrometheusScrapeJobsRequest",
+      "name": "Deletes a Prometheus scrape task",
+      "output": "DeletePrometheusScrapeJobsResponse"
+    },
+    "DeleteRecordingRules": {
+      "document": "This API is used to batch delete Prometheus recording rules.",
+      "input": "DeleteRecordingRulesRequest",
+      "name": "Deletes recording rules",
+      "output": "DeleteRecordingRulesResponse"
     },
     "DescribeAccidentEventList": {
       "document": "This API is used to get the platform event list.",
@@ -96,6 +168,12 @@
       "name": "Gets the details of single alarm policy",
       "output": "DescribeAlarmPolicyResponse"
     },
+    "DescribeAlertRules": {
+      "document": "This API is used to query a Prometheus alerting rule.",
+      "input": "DescribeAlertRulesRequest",
+      "name": "Queries an alerting rule",
+      "output": "DescribeAlertRulesResponse"
+    },
     "DescribeAllNamespaces": {
       "document": "This API is used to query all namespaces.",
       "input": "DescribeAllNamespacesRequest",
@@ -125,6 +203,12 @@
       "input": "DescribeConditionsTemplateListRequest",
       "name": "Gets the trigger condition template",
       "output": "DescribeConditionsTemplateListResponse"
+    },
+    "DescribeExporterIntegrations": {
+      "document": "This API is used to query the list of exporter integrations.",
+      "input": "DescribeExporterIntegrationsRequest",
+      "name": "Queries the list of exporter integrations",
+      "output": "DescribeExporterIntegrationsResponse"
     },
     "DescribeMonitorTypes": {
       "document": "This API is used to list all the monitor types supported by CM.",
@@ -156,17 +240,59 @@
       "name": "Gets the list of product events.",
       "output": "DescribeProductEventListResponse"
     },
+    "DescribePrometheusAgents": {
+      "document": "This API is used to list Prometheus CVM agents.",
+      "input": "DescribePrometheusAgentsRequest",
+      "name": "Lists Prometheus CVM agents",
+      "output": "DescribePrometheusAgentsResponse"
+    },
+    "DescribePrometheusInstances": {
+      "document": "This API is used to query the details of one or multiple instances.\n<ul>\n<li>You can query the details of an instance by its ID, name, or status.</li>\n<li>If this parameter is empty, the information of a certain number of instances under the current account will be returned. The number is specified by `Limit` and is 20 by default.</li>\n</ul>",
+      "input": "DescribePrometheusInstancesRequest",
+      "name": "Queries the list of Prometheus instances",
+      "output": "DescribePrometheusInstancesResponse"
+    },
+    "DescribePrometheusScrapeJobs": {
+      "document": "This API is used to list Prometheus scrape tasks.",
+      "input": "DescribePrometheusScrapeJobsRequest",
+      "name": "Lists Prometheus scrape tasks",
+      "output": "DescribePrometheusScrapeJobsResponse"
+    },
+    "DescribeRecordingRules": {
+      "document": "This API is used to query Prometheus recording rules by filter.",
+      "input": "DescribeRecordingRulesRequest",
+      "name": "Queries recording rules",
+      "output": "DescribeRecordingRulesResponse"
+    },
+    "DescribeServiceDiscovery": {
+      "document": "This API is used to list Prometheus scrape configurations in TKE.\n<p>Note: The prerequisite is that the corresponding TKE service has been integrated through the Prometheus console. For more information, see\n<a href=\"https://intl.cloud.tencent.com/document/product/248/48859?from_cn_redirect=1\" target=\"_blank\">Agent Management</a>.</p>",
+      "input": "DescribeServiceDiscoveryRequest",
+      "name": "Lists scrape configurations",
+      "output": "DescribeServiceDiscoveryResponse"
+    },
     "DescribeStatisticData": {
       "document": "This API is used to query monitoring data by dimension conditions.",
       "input": "DescribeStatisticDataRequest",
       "name": "Queries monitoring data by dimension conditions",
       "output": "DescribeStatisticDataResponse"
     },
+    "DestroyPrometheusInstance": {
+      "document": "This API is used to delete the data of a Prometheus instance. The specified instance must be terminated first.",
+      "input": "DestroyPrometheusInstanceRequest",
+      "name": "Forcibly releases a Prometheus instance",
+      "output": "DestroyPrometheusInstanceResponse"
+    },
     "GetMonitorData": {
       "document": "This API is used to get the monitoring data of Tencent Cloud services except TKE. To pull TKE’s monitoring data, please use the API [DescribeStatisticData](https://intl.cloud.tencent.com/document/product/248/51845?from_cn_redirect=1).\nYou can get the monitoring data of a Tencent Cloud service by passing in its namespace, object dimension description, and monitoring metrics.\nAPI call rate limit: 20 calls/second (1,200 calls/minute). A single request can get the data of up to 10 instances for up to 1,440 data points.\nIf you need to call a large number of APIs to pull metrics or objects at a time, some APIs may fail to be called due to the rate limit. We suggest you evenly arrange API calls at a time granularity.",
       "input": "GetMonitorDataRequest",
       "name": "Pulls metric monitoring data",
       "output": "GetMonitorDataResponse"
+    },
+    "GetPrometheusAgentManagementCommand": {
+      "document": "This API is used to get the command line for Prometheus agent management.",
+      "input": "GetPrometheusAgentManagementCommandRequest",
+      "name": "Gets the command line for Prometheus agent management",
+      "output": "GetPrometheusAgentManagementCommandResponse"
     },
     "ModifyAlarmNotice": {
       "document": "This API is used to edit an alarm notification template.",
@@ -216,6 +342,12 @@
       "name": "Updates policy group",
       "output": "ModifyPolicyGroupResponse"
     },
+    "ModifyPrometheusInstanceAttributes": {
+      "document": "This API is used to modify the attributes of a Prometheus instance.",
+      "input": "ModifyPrometheusInstanceAttributesRequest",
+      "name": "Modifies the attributes of a Prometheus instance",
+      "output": "ModifyPrometheusInstanceAttributesResponse"
+    },
     "PutMonitorData": {
       "document": "The default API request rate limit is 50 requests/sec.\nThe default upper limit on metrics of a single tenant is 100.\nA maximum of 30 metric/value pairs can be reported at a time. When an error is returned for a request, no metrics/values in the request will be saved.\n\nThe reporting timestamp is the timestamp when you want to save the data. We recommend that you construct a timestamp at integer minutes.\nThe time range of a timestamp is from 300 seconds before the current time to the current time.\nThe data of the same IP metric/value pair must be reported by minute in chronological order.",
       "input": "PutMonitorDataRequest",
@@ -234,6 +366,12 @@
       "name": "Sets default alarm policy",
       "output": "SetDefaultAlarmPolicyResponse"
     },
+    "TerminatePrometheusInstances": {
+      "document": "This API is used to terminate a pay-as-you-go Prometheus instance.",
+      "input": "TerminatePrometheusInstancesRequest",
+      "name": "Terminates a pay-as-you-go Prometheus instance",
+      "output": "TerminatePrometheusInstancesResponse"
+    },
     "UnBindingAllPolicyObject": {
       "document": "This API is used to delete all bound objects.",
       "input": "UnBindingAllPolicyObjectRequest",
@@ -245,6 +383,60 @@
       "input": "UnBindingPolicyObjectRequest",
       "name": "Deletes an object that is bound to a policy.",
       "output": "UnBindingPolicyObjectResponse"
+    },
+    "UnbindPrometheusManagedGrafana": {
+      "document": "This API is used to unbind a Grafana instance from an instance.",
+      "input": "UnbindPrometheusManagedGrafanaRequest",
+      "name": "Unbinds a Grafana instance from an instance",
+      "output": "UnbindPrometheusManagedGrafanaResponse"
+    },
+    "UninstallGrafanaDashboard": {
+      "document": "This API is used to delete a Grafana dashboard.",
+      "input": "UninstallGrafanaDashboardRequest",
+      "name": "Deletes a Grafana dashboard",
+      "output": "UninstallGrafanaDashboardResponse"
+    },
+    "UpdateAlertRule": {
+      "document": "This API is used to update a Prometheus alerting rule.\n\nNote that alert object and alert message are special fields of Prometheus Rule Annotations, which need to be passed in through `annotations` and correspond to `summary` and `description` keys respectively. For more information, see [Alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/).",
+      "input": "UpdateAlertRuleRequest",
+      "name": "Updates an alerting rule",
+      "output": "UpdateAlertRuleResponse"
+    },
+    "UpdateAlertRuleState": {
+      "document": "This API is used to update the status of a Prometheus alerting rule.",
+      "input": "UpdateAlertRuleStateRequest",
+      "name": "Updates the status of an alerting rule",
+      "output": "UpdateAlertRuleStateResponse"
+    },
+    "UpdateExporterIntegration": {
+      "document": "This API is used to update the exporter integration configuration.",
+      "input": "UpdateExporterIntegrationRequest",
+      "name": "Updates the exporter integration configuration",
+      "output": "UpdateExporterIntegrationResponse"
+    },
+    "UpdatePrometheusAgentStatus": {
+      "document": "This API is used to update the status of a Prometheus CVM agent.",
+      "input": "UpdatePrometheusAgentStatusRequest",
+      "name": "Updates the status of a Prometheus CVM agent",
+      "output": "UpdatePrometheusAgentStatusResponse"
+    },
+    "UpdatePrometheusScrapeJob": {
+      "document": "This API is used to update a Prometheus scrape task.",
+      "input": "UpdatePrometheusScrapeJobRequest",
+      "name": "Updates a Prometheus scrape task",
+      "output": "UpdatePrometheusScrapeJobResponse"
+    },
+    "UpdateRecordingRule": {
+      "document": "This API is used to update a Prometheus recording rule.",
+      "input": "UpdateRecordingRuleRequest",
+      "name": "Updates a recording rule",
+      "output": "UpdateRecordingRuleResponse"
+    },
+    "UpgradeGrafanaDashboard": {
+      "document": "This API is used to update a Grafana dashboard.",
+      "input": "UpgradeGrafanaDashboardRequest",
+      "name": "Updates a Grafana dashboard",
+      "output": "UpgradeGrafanaDashboardResponse"
     }
   },
   "metadata": {
@@ -1273,6 +1465,42 @@
       ],
       "usage": "both"
     },
+    "BindPrometheusManagedGrafanaRequest": {
+      "document": "BindPrometheusManagedGrafana request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Prometheus instance ID",
+          "example": "prom-ads2xxd",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Grafana instance ID",
+          "example": "grafana-adf2adf",
+          "member": "string",
+          "name": "GrafanaId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BindPrometheusManagedGrafanaResponse": {
+      "document": "BindPrometheusManagedGrafana response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "BindingPolicyObjectDimension": {
       "document": "Dimensions of instances bound to a policy",
       "members": [
@@ -1885,6 +2113,186 @@
       ],
       "type": "object"
     },
+    "CreateAlertRuleRequest": {
+      "document": "CreateAlertRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Prometheus instance ID",
+          "example": "prom-123131",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule name",
+          "example": "告警规则测试",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule expression",
+          "example": "job:request_latency_seconds:mean5m{job=\"myjob\"} > 0.5",
+          "member": "string",
+          "name": "Expr",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of alert notification template IDs",
+          "example": "[\"Consumer-5sfs3242\"]",
+          "member": "string",
+          "name": "Receivers",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Rule status code. Valid values:\n<li>2=RuleEnabled</li>\n<li>3=RuleDisabled</li>",
+          "example": "2",
+          "member": "int64",
+          "name": "RuleState",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Rule alert duration",
+          "example": "5m",
+          "member": "string",
+          "name": "Duration",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of tags",
+          "example": "[{Key: \"ip\" Value: \"1.1.1.1\"}]",
+          "member": "PrometheusRuleKV",
+          "name": "Labels",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of annotations.\n\nAlert object and alert message are special fields of Prometheus Rule Annotations, which need to be passed in through `annotations` and correspond to `summary` and `description` keys respectively.",
+          "example": "[{Key: \"summary\" Value: \"规则名称\"}]",
+          "member": "PrometheusRuleKV",
+          "name": "Annotations",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Alerting rule template category",
+          "example": "TargetDown",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAlertRuleResponse": {
+      "document": "CreateAlertRule response structure.",
+      "members": [
+        {
+          "document": "Rule ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "arule-f2vx2owo",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateExporterIntegrationRequest": {
+      "document": "CreateExporterIntegration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "prom-xx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "mysql-exporter",
+          "member": "string",
+          "name": "Kind",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Integrated configuration",
+          "example": "{\"name\":\"test\",\"kind\":\"mysql-exporter\", \"instanceSpec\":{}}",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Kubernetes cluster type. Valid values:\n<li> 1 = TKE </li>\n<li> 2 = EKS </li>\n<li> 3 = MEKS </li>",
+          "example": "3",
+          "member": "int64",
+          "name": "KubeType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateExporterIntegrationResponse": {
+      "document": "CreateExporterIntegration response structure.",
+      "members": [
+        {
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Names",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreatePolicyGroupCondition": {
       "document": "Alarm threshold condition passed in when a policy is created.",
       "members": [
@@ -2126,6 +2534,323 @@
       ],
       "type": "object"
     },
+    "CreatePrometheusAgentRequest": {
+      "document": "CreatePrometheusAgent request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "prom-dfae2323",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Agent name",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePrometheusAgentResponse": {
+      "document": "CreatePrometheusAgent response structure.",
+      "members": [
+        {
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "AgentId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePrometheusMultiTenantInstancePostPayModeRequest": {
+      "document": "CreatePrometheusMultiTenantInstancePostPayMode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance name",
+          "example": "my-prom-instance",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "example": "vpc-345xdef",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "example": "subnet-axxersx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data retention period in days. Valid values: 15, 30, 45.",
+          "example": "30",
+          "member": "int64",
+          "name": "DataRetentionTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "AZ",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance tag",
+          "example": "无",
+          "member": "PrometheusTag",
+          "name": "TagSpecification",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The Grafana instance to be associated",
+          "example": "grafana-xxxx",
+          "member": "string",
+          "name": "GrafanaInstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePrometheusMultiTenantInstancePostPayModeResponse": {
+      "document": "CreatePrometheusMultiTenantInstancePostPayMode response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "prom-3xz2asxa",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePrometheusScrapeJobRequest": {
+      "document": "CreatePrometheusScrapeJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "xx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Agent ID",
+          "example": "xx",
+          "member": "string",
+          "name": "AgentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task content",
+          "example": "job_name:xx",
+          "member": "string",
+          "name": "Config",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePrometheusScrapeJobResponse": {
+      "document": "CreatePrometheusScrapeJob response structure.",
+      "members": [
+        {
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRecordingRuleRequest": {
+      "document": "CreateRecordingRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Recording rule name",
+          "example": "1",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Recording rule group content in YAML format",
+          "example": "LS0tDQpuYW1lOiBleGFtcGxlDQpydWxlczoNCiAgLSByZWNvcmQ6IGpvYjpodHRwX2lucHJvZ3Jlc3NfcmVxdWVzdHM6c3VtDQogICAgZXhwcjogc3VtIGJ5IChqb2IpIChodHRwX2lucHJvZ3Jlc3NfcmVxdWVzdHMp",
+          "member": "string",
+          "name": "Group",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Prometheus instance ID",
+          "example": "prom-x2323",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule status code. Valid values:\n<li>1=RuleDeleted</li>\n<li>2=RuleEnabled</li>\n<li>3=RuleDisabled</li>\nDefault value: 2 (enabled).",
+          "example": "2",
+          "member": "int64",
+          "name": "RuleState",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRecordingRuleResponse": {
+      "document": "CreateRecordingRule response structure.",
+      "members": [
+        {
+          "document": "Rule ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "rrule-fzhp4p7c",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateServiceDiscoveryRequest": {
+      "document": "CreateServiceDiscovery request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Prometheus instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "<li>TKE: ID of the integrated TKE cluster</li>",
+          "member": "string",
+          "name": "KubeClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Kubernetes cluster type:\n<li> 1 = TKE </li>",
+          "member": "int64",
+          "name": "KubeType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Scrape configuration type. Valid values:\n<li> 1 = ServiceMonitor</li>\n<li> 2 = PodMonitor</li>\n<li> 3 = JobMonitor</li>",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Scrape configuration information",
+          "member": "string",
+          "name": "Yaml",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateServiceDiscoveryResponse": {
+      "document": "CreateServiceDiscovery response structure.",
+      "members": [
+        {
+          "document": "The scrape configuration information returned after successful creation",
+          "member": "ServiceDiscoveryItem",
+          "name": "ServiceDiscovery",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DataPoint": {
       "document": "Monitoring data point",
       "members": [
@@ -2227,6 +2952,105 @@
       ],
       "type": "object"
     },
+    "DeleteAlertRulesRequest": {
+      "document": "DeleteAlertRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of rule IDs",
+          "example": "[\"arule-m74lrt6g\"]",
+          "member": "string",
+          "name": "RuleIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Prometheus instance ID",
+          "example": "prom-123123",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAlertRulesResponse": {
+      "document": "DeleteAlertRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteExporterIntegrationRequest": {
+      "document": "DeleteExporterIntegration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "prom-xx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Kubernetes cluster type. Valid values:\n<li> 1 = TKE </li>\n<li> 2 = EKS </li>\n<li> 3 = MEKS </li>",
+          "example": "3",
+          "member": "int64",
+          "name": "KubeType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "mysql-exporter",
+          "member": "string",
+          "name": "Kind",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteExporterIntegrationResponse": {
+      "document": "DeleteExporterIntegration response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeletePolicyGroupRequest": {
       "document": "DeletePolicyGroup request structure.",
       "members": [
@@ -2251,6 +3075,84 @@
     },
     "DeletePolicyGroupResponse": {
       "document": "DeletePolicyGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePrometheusScrapeJobsRequest": {
+      "document": "DeletePrometheusScrapeJobs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Agent ID",
+          "member": "string",
+          "name": "AgentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of task IDs",
+          "member": "string",
+          "name": "JobIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePrometheusScrapeJobsResponse": {
+      "document": "DeletePrometheusScrapeJobs response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRecordingRulesRequest": {
+      "document": "DeleteRecordingRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of rule IDs",
+          "example": "[\"rrule-m74lrt6g\"]",
+          "member": "string",
+          "name": "RuleIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Prometheus instance ID",
+          "example": "prom-xxxerwer",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRecordingRulesResponse": {
+      "document": "DeleteRecordingRules response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2578,7 +3480,7 @@
         },
         {
           "default": "",
-          "document": "Filter by monitoring type. Valid value: `MT_QCE` (Tencent Cloud service monitoring). If this parameter is left empty, all types will be queried by default.",
+          "document": "Filter by monitor type. Valid values: \"MT_QCE\" (Tencent Cloud service monitoring), \"MT_TAW\" (application performance monitoring), \"MT_RUM\" (frontend performance monitoring), \"MT_PROBE\" (cloud automated testing). If this parameter is left empty, all types will be queried by default.",
           "example": "MT_QCE",
           "member": "string",
           "name": "MonitorTypes",
@@ -3210,6 +4112,105 @@
           "name": "Policy",
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlertRulesRequest": {
+      "document": "DescribeAlertRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Prometheus instance ID",
+          "example": "my-prom-gg",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "arule-f2vx278",
+          "member": "string",
+          "name": "RuleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule status code. Valid values:\n<li>2=RuleEnabled</li>\n<li>3=RuleDisabled</li>",
+          "example": "2",
+          "member": "int64",
+          "name": "RuleState",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Rule name",
+          "example": "告警规则测试",
+          "member": "string",
+          "name": "RuleName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alerting rule template category",
+          "example": "TargetDown",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlertRulesResponse": {
+      "document": "DescribeAlertRules response structure.",
+      "members": [
+        {
+          "document": "Number of alerting rules",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alerting rule details\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PrometheusRuleSet",
+          "name": "AlertRuleSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4037,6 +5038,78 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeExporterIntegrationsRequest": {
+      "document": "DescribeExporterIntegrations request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "prom-xx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Kubernetes cluster type. Valid values:\n<li> 1 = TKE </li>\n<li> 2 = EKS </li>\n<li> 3 = MEKS </li>",
+          "example": "3",
+          "member": "int64",
+          "name": "KubeType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "mysql-exporter",
+          "member": "string",
+          "name": "Kind",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeExporterIntegrationsResponse": {
+      "document": "DescribeExporterIntegrations response structure.",
+      "members": [
+        {
+          "document": "List of integration configurations",
+          "example": "[]",
+          "member": "IntegrationConfiguration",
+          "name": "IntegrationSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -6059,6 +7132,423 @@
       ],
       "type": "object"
     },
+    "DescribePrometheusAgentsRequest": {
+      "document": "DescribePrometheusAgents request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "xx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Agent name",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of agent IDs",
+          "example": "无",
+          "member": "string",
+          "name": "AgentIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrometheusAgentsResponse": {
+      "document": "DescribePrometheusAgents response structure.",
+      "members": [
+        {
+          "document": "List of agents\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PrometheusAgent",
+          "name": "AgentSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of agents",
+          "example": "12",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrometheusInstancesRequest": {
+      "document": "DescribePrometheusInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Queries by instance ID or IDs. Instance ID is in the format of `prom-xxxxxxxx`. Up to 100 instances can be queried in one request.",
+          "example": "[\"prom-xxxxx\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by instance status\n<ul>\n<li>1: Creating</li>\n<li>2: Running</li>\n<li>3: Abnormal</li>\n<li>4: Rebooting</li>\n<li>5: Terminating</li>\n<li>6: Service suspended</li>\n<li>8: Suspending service for overdue payment</li>\n<li>9: Service suspended for overdue payment</li>\n</ul>",
+          "example": "[1,2]",
+          "member": "int64",
+          "name": "InstanceStatus",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by instance name",
+          "example": "1",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by AZ in the format of `ap-guangzhou-1`",
+          "example": "[\"ap-guangzhou-1\"]",
+          "member": "string",
+          "name": "Zones",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by tag key-value pair. The `tag-key` should be replaced with a specific tag key.",
+          "example": "无",
+          "member": "PrometheusTag",
+          "name": "TagFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter by instance IPv4 address",
+          "example": "[\"1.1.1.1\"]",
+          "member": "string",
+          "name": "IPv4Address",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter by billing mode\n<li>2: Monthly subscription</li>\n<li>3: Pay-as-you-go</li>",
+          "example": "2",
+          "member": "int64",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrometheusInstancesResponse": {
+      "document": "DescribePrometheusInstances response structure.",
+      "members": [
+        {
+          "document": "List of instance details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PrometheusInstancesItem",
+          "name": "InstanceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of eligible instances.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrometheusScrapeJobsRequest": {
+      "document": "DescribePrometheusScrapeJobs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Agent ID",
+          "member": "string",
+          "name": "AgentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Task name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of task IDs",
+          "member": "string",
+          "name": "JobIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrometheusScrapeJobsResponse": {
+      "document": "DescribePrometheusScrapeJobs response structure.",
+      "members": [
+        {
+          "document": "List of tasks\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "PrometheusScrapeJob",
+          "name": "ScrapeJobSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of tasks",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecordingRulesRequest": {
+      "document": "DescribeRecordingRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Prometheus instance ID",
+          "example": "prom-sdf342",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "无",
+          "member": "string",
+          "name": "RuleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule status code. Valid values:\n<li>1=RuleDeleted</li>\n<li>2=RuleEnabled</li>\n<li>3=RuleDisabled</li>",
+          "example": "2",
+          "member": "int64",
+          "name": "RuleState",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Rule name",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecordingRulesResponse": {
+      "document": "DescribeRecordingRules response structure.",
+      "members": [
+        {
+          "document": "Number of rule groups",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Rule group details\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RecordingRuleSet",
+          "name": "RecordingRuleSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeServiceDiscoveryRequest": {
+      "document": "DescribeServiceDiscovery request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Prometheus instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "<li>TKE: ID of the integrated TKE cluster</li>",
+          "member": "string",
+          "name": "KubeClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Kubernetes cluster type:\n<li> 1 = TKE </li>",
+          "member": "int64",
+          "name": "KubeType",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeServiceDiscoveryResponse": {
+      "document": "DescribeServiceDiscovery response structure.",
+      "members": [
+        {
+          "document": "List of returned scrape configurations\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "ServiceDiscoveryItem",
+          "name": "ServiceDiscoverySet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeStatisticDataRequest": {
       "document": "DescribeStatisticData request structure.",
       "members": [
@@ -6168,6 +7658,33 @@
           "type": "list",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyPrometheusInstanceRequest": {
+      "document": "DestroyPrometheusInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID. The instance must be terminated first.",
+          "example": "prom-w3rkj7835b",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyPrometheusInstanceResponse": {
+      "document": "DestroyPrometheusInstance response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -6374,6 +7891,47 @@
       ],
       "type": "object"
     },
+    "GetPrometheusAgentManagementCommandRequest": {
+      "document": "GetPrometheusAgentManagementCommand request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Prometheus instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Prometheus Agent ID",
+          "member": "string",
+          "name": "AgentId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetPrometheusAgentManagementCommandResponse": {
+      "document": "GetPrometheusAgentManagementCommand response structure.",
+      "members": [
+        {
+          "document": "Agent management command",
+          "member": "ManagementCommand",
+          "name": "Command",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Instance": {
       "document": "Array of instance dimension combinations",
       "members": [
@@ -6433,6 +7991,133 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "IntegrationConfiguration": {
+      "document": "Export integration configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Name",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "blackbox-exporter",
+          "member": "string",
+          "name": "Kind",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Content",
+          "example": "{\\\"name\\\":\\\"test\\\",\\\"kind\\\":\\\"blackbox-exporter\\\",\\\"spec\\\":{\\\"in",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance type",
+          "example": "MySQL",
+          "member": "string",
+          "name": "Category",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance description",
+          "example": "root:**@localhost:3306",
+          "member": "string",
+          "name": "InstanceDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Dashboard URL",
+          "example": "http://xx",
+          "member": "string",
+          "name": "GrafanaDashboardURL",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ManagementCommand": {
+      "document": "Prometheus agent management command line",
+      "members": [
+        {
+          "default": "",
+          "document": "Agent installation command\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Install",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Agent restart command\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Restart",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Agent stop command\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Stop",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Agent status detection command\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "StatusCheck",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Agent log detection command\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "LogCheck",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -7431,6 +9116,51 @@
       ],
       "type": "object"
     },
+    "ModifyPrometheusInstanceAttributesRequest": {
+      "document": "ModifyPrometheusInstanceAttributes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance name",
+          "example": "my-prom-gg",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "prom-2rsas2",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Storage period. Valid values: 15, 30, 45. This parameter is not applicable to monthly subscribed instances.",
+          "example": "15",
+          "member": "int64",
+          "name": "DataRetentionTime",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPrometheusInstanceAttributesResponse": {
+      "document": "ModifyPrometheusInstanceAttributes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "MonitorTypeNamespace": {
       "document": "Policy type",
       "members": [
@@ -7776,6 +9506,630 @@
       ],
       "usage": "out"
     },
+    "PrometheusAgent": {
+      "document": "prometheus agent",
+      "members": [
+        {
+          "default": "",
+          "document": "Agent name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Agent ID",
+          "member": "string",
+          "name": "AgentId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Agent IP\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Ipv4",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Heartbeat time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "HeartbeatTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Last error\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "LastError",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Agent version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AgentVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Agent status",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PrometheusInstanceGrantInfo": {
+      "document": "Instance authorization information",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether there is permission to operate on the billing information. Valid values: 1 (yes), 2 (no).",
+          "example": "1",
+          "member": "int64",
+          "name": "HasChargeOperation",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether there is permission to display the VPC information. Valid values: 1 (yes), 2 (no).",
+          "example": "1",
+          "member": "int64",
+          "name": "HasVpcDisplay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether there is permission to change the Grafana status. Valid values: 1 (yes), 2 (no).",
+          "example": "1",
+          "member": "int64",
+          "name": "HasGrafanaStatusChange",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether there is permission to manage agents. Valid values: 1 (yes), 2 (no).",
+          "example": "1",
+          "member": "int64",
+          "name": "HasAgentManage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether there is permission to manage TKE integrations. Valid values: 1 (yes), 2 (no).",
+          "example": "1",
+          "member": "int64",
+          "name": "HasTkeManage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether there is permission to display the API information. Valid values: 1 (yes), 2 (no).",
+          "example": "1",
+          "member": "int64",
+          "name": "HasApiOperation",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PrometheusInstancesItem": {
+      "document": "Prometheus service response body",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "prom-123456",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name.",
+          "example": "test",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid values:\n<ul>\n<li>2: Monthly subscription</li>\n<li>3: Pay-as-you-go</li>\n</ul>",
+          "example": "2",
+          "member": "int64",
+          "name": "InstanceChargeType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region ID",
+          "example": "1",
+          "member": "int64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "example": "vpc-123456",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "example": "subnet-123456",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage period\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "15",
+          "member": "int64",
+          "name": "DataRetentionTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance status. Valid values:\n<ul>\n<li>1: Creating</li>\n<li>2: Running</li>\n<li>3: Abnormal</li>\n<li>4: Rebooting</li>\n<li>5: Terminating</li>\n<li>6: Service suspended</li>\n<li>8: Suspending service for overdue payment</li>\n<li>9: Service suspended for overdue payment</li>\n</ul>",
+          "example": "2",
+          "member": "int64",
+          "name": "InstanceStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Grafana dashboard URL\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "https://url",
+          "member": "string",
+          "name": "GrafanaURL",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2021-01-01 00:00:00",
+          "member": "string",
+          "name": "CreatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether Grafana is enabled\n<li>0: Disabled</li>\n<li>1: Enabled</li>",
+          "example": "1",
+          "member": "int64",
+          "name": "EnableGrafana",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance IPv4 address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "192.168.1.2",
+          "member": "string",
+          "name": "IPv4Address",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of tags associated with the instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "PrometheusTag",
+          "name": "TagSpecification",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the purchased instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-01 00:00:00",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Billing status\n<ul>\n<li>1: Normal</li>\n<li>2: Expired</li>\n<li>3: Terminated</li>\n<li>4: Assigning</li>\n<li>5: Assignment failed</li>\n</ul>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ChargeStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specification name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "基础1",
+          "member": "string",
+          "name": "SpecName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal flag\n<ul>\n<li>0: Auto-renewal not enabled</li>\n<li>1: Auto-renewal enabled</li>\n<li>2: Auto-renewal prohibited</li>\n<li>-1: Invalid</ii>\n</ul>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Expiring soon\n<ul>\n<li>0: No</li>\n<li>1: Yes</li>\n</ul>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "IsNearExpire",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The token required for data writing\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "token",
+          "member": "string",
+          "name": "AuthToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Prometheus remote write address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "http://url",
+          "member": "string",
+          "name": "RemoteWrite",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Prometheus HTTP API root address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "http://url",
+          "member": "string",
+          "name": "ApiRootPath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Proxy address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "http://url",
+          "member": "string",
+          "name": "ProxyAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Grafana status\n<ul>\n<li>1: Creating</li>\n<li>2: Running</li>\n<li>3: Abnormal</li>\n<li>4: Restarting</li>\n<li>5: Terminating</li>\n<li>6: Service suspended</li>\n<li>7: Deleted</li>\n</ul>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "GrafanaStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Grafana IP allowlist, where IPs are separated by comma.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "192.168.1.2",
+          "member": "string",
+          "name": "GrafanaIpWhiteList",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance authorization information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "PrometheusInstanceGrantInfo",
+          "name": "Grant",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the bound Grafana instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "grafana-xxxx",
+          "member": "string",
+          "name": "GrafanaInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "PrometheusRuleKV": {
+      "document": "KV parameter of the Prometheus alerting rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "PrometheusRuleSet": {
+      "document": "Set of Prometheus alerting rules",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule ID",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule name",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule status code",
+          "member": "int64",
+          "name": "RuleState",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule category\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of rule tags\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "PrometheusRuleKV",
+          "name": "Labels",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of rule annotations\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "PrometheusRuleKV",
+          "name": "Annotations",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rule expression\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Expr",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rule alert duration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Duration",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of alert recipient groups\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Receivers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rule status. Valid values:\n<li>unknown: Unknown</li>\n<li>pending: Loading</li>\n<li>ok: Running</li>\n<li>err: Error</li>",
+          "member": "string",
+          "name": "Health",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "CreatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rule update time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "UpdatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "PrometheusScrapeJob": {
+      "document": "Prometheus scrape task",
+      "members": [
+        {
+          "default": "",
+          "document": "Task name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Agent ID",
+          "member": "string",
+          "name": "AgentId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task ID",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Config",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "PrometheusTag": {
+      "document": "TMP tag",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "PutMonitorDataRequest": {
       "document": "PutMonitorData request structure.",
       "members": [
@@ -7967,6 +10321,75 @@
       ],
       "usage": "in"
     },
+    "RecordingRuleSet": {
+      "document": "Response structure information of the Prometheus recording rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule ID",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule status code",
+          "member": "int64",
+          "name": "RuleState",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule group",
+          "member": "string",
+          "name": "Group",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of rules",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule creation time",
+          "member": "string",
+          "name": "CreatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule update time",
+          "member": "string",
+          "name": "UpdatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SendCustomAlarmMsgRequest": {
       "document": "SendCustomAlarmMsg request structure.",
       "members": [
@@ -8008,6 +10431,75 @@
         }
       ],
       "type": "object"
+    },
+    "ServiceDiscoveryItem": {
+      "document": "Prometheus scrape configuration information",
+      "members": [
+        {
+          "default": "",
+          "document": "Scrape configuration name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace of the scrape configuration",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Scrape configuration type: ServiceMonitor/PodMonitor",
+          "member": "string",
+          "name": "Kind",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace selection method\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "NamespaceSelector",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Label selection method\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Selector",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "`Endpoints` information (PodMonitor does not have this parameter)",
+          "member": "string",
+          "name": "Endpoints",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Scrape configuration information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Yaml",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "SetDefaultAlarmPolicyRequest": {
       "document": "SetDefaultAlarmPolicy request structure.",
@@ -8217,6 +10709,33 @@
       ],
       "usage": "out"
     },
+    "TerminatePrometheusInstancesRequest": {
+      "document": "TerminatePrometheusInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of instance IDs",
+          "example": "[\"prom-w3rkj7835b\\n\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminatePrometheusInstancesResponse": {
+      "document": "TerminatePrometheusInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "URLNotice": {
       "document": "Cloud Monitor alarm notification template - callback notification details",
       "members": [
@@ -8381,6 +10900,510 @@
     },
     "UnBindingPolicyObjectResponse": {
       "document": "UnBindingPolicyObject response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindPrometheusManagedGrafanaRequest": {
+      "document": "UnbindPrometheusManagedGrafana request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Prometheus instance ID",
+          "example": "prom-x2jlskf",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Grafana instance ID",
+          "example": "grafana-sdjl2r",
+          "member": "string",
+          "name": "GrafanaId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindPrometheusManagedGrafanaResponse": {
+      "document": "UnbindPrometheusManagedGrafana response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UninstallGrafanaDashboardRequest": {
+      "document": "UninstallGrafanaDashboard request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "prom-c0wy130a",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Prometheus integration code, indicating to delete the corresponding dashboard. Valid values:\n<li>spring_mvc</li>\n<li>mysql</li>\n<li>go</li>\n<li>redis</li>\n<li>jvm</li>\n<li>pgsql</li>\n<li>mongo</li>\n<li>kafka</li>\n<li>es</li>\n<li>flink</li>\n<li>blackbox</li>\n<li>consule</li>\n<li>memcached</li>\n<li>zk</li>\n<li>tps</li>\n<li>istio</li>\n<li>etcd</li>",
+          "example": "[\"spring_mvc\"]",
+          "member": "string",
+          "name": "IntegrationCodes",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UninstallGrafanaDashboardResponse": {
+      "document": "UninstallGrafanaDashboard response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAlertRuleRequest": {
+      "document": "UpdateAlertRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Prometheus alerting rule ID",
+          "example": "arule-omq28fcm",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Prometheus instance ID",
+          "example": "prom-123131",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule status code. Valid values:\n<li>1=RuleDeleted</li>\n<li>2=RuleEnabled</li>\n<li>3=RuleDisabled</li>\nDefault value: 2 (enabled).",
+          "example": "2",
+          "member": "int64",
+          "name": "RuleState",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Alerting rule name",
+          "example": "告警规则测试",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alerting rule expression",
+          "example": "job:request_latency_seconds:mean5m{job=\"myjob\"} > 0.5",
+          "member": "string",
+          "name": "Expr",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Alerting rule duration",
+          "example": "1m",
+          "member": "string",
+          "name": "Duration",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of alerting rule recipient groups",
+          "example": "[\"Consumer-5sfs3242\"]",
+          "member": "string",
+          "name": "Receivers",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of alerting rule tags",
+          "example": "[{Key: \"ip\" Value: \"1.1.1.1\"}]",
+          "member": "PrometheusRuleKV",
+          "name": "Labels",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of alerting rule annotations.\n\nAlert object and alert message are special fields of Prometheus Rule Annotations, which need to be passed in through `annotations` and correspond to `summary` and `description` keys respectively.",
+          "example": "[{Key: \"summary\" Value: \"规则名称\"}]",
+          "member": "PrometheusRuleKV",
+          "name": "Annotations",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Alerting rule template category",
+          "example": "TargetDown",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAlertRuleResponse": {
+      "document": "UpdateAlertRule response structure.",
+      "members": [
+        {
+          "document": "Rule ID",
+          "example": "arule-omq28fcm",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAlertRuleStateRequest": {
+      "document": "UpdateAlertRuleState request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of rule IDs",
+          "example": "[\"arule-m74lrt6g\"]",
+          "member": "string",
+          "name": "RuleIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Prometheus instance ID",
+          "example": "my-prom-gg",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule status code. Valid values:\n<li>2=RuleEnabled</li>\n<li>3=RuleDisabled</li>\nDefault value: 2 (enabled).",
+          "example": "3",
+          "member": "int64",
+          "name": "RuleState",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAlertRuleStateResponse": {
+      "document": "UpdateAlertRuleState response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateExporterIntegrationRequest": {
+      "document": "UpdateExporterIntegration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "prom-xx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Kubernetes cluster type. Valid values:\n<li> 1 = TKE </li>\n<li> 2 = EKS </li>\n<li> 3 = MEKS </li>",
+          "example": "1",
+          "member": "int64",
+          "name": "KubeType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Type",
+          "example": "mysql-exporter",
+          "member": "string",
+          "name": "Kind",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Configuration content",
+          "example": "{\"name\":\"test\",\"kind\":\"mysql-exporter\", \"instanceSpec\":{}}",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateExporterIntegrationResponse": {
+      "document": "UpdateExporterIntegration response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePrometheusAgentStatusRequest": {
+      "document": "UpdatePrometheusAgentStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "xx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of agent IDs",
+          "example": "[\"xx\"]",
+          "member": "string",
+          "name": "AgentIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Status to update\n<li> 1 = enabled </li>\n<li> 2 = disabled </li>",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePrometheusAgentStatusResponse": {
+      "document": "UpdatePrometheusAgentStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePrometheusScrapeJobRequest": {
+      "document": "UpdatePrometheusScrapeJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "xx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Agent ID",
+          "example": "xx",
+          "member": "string",
+          "name": "AgentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Scrape task ID",
+          "example": "xx",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Scrape task configuration",
+          "example": "job_name:xx",
+          "member": "string",
+          "name": "Config",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePrometheusScrapeJobResponse": {
+      "document": "UpdatePrometheusScrapeJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateRecordingRuleRequest": {
+      "document": "UpdateRecordingRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Recording rule name",
+          "example": "1",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Recording rule group content, which is in YAML format and is Base64-encoded.",
+          "example": "LS0tDQpuYW1lOiBleGFtcGxlDQpydWxlczoNCiAgLSByZWNvcmQ6IGpvYjpodHRwX2lucHJvZ3Jlc3NfcmVxdWVzdHM6c3VtDQogICAgZXhwcjogc3VtIGJ5IChqb2IpIChodHRwX2lucHJvZ3Jlc3NfcmVxdWVzdHMp",
+          "member": "string",
+          "name": "Group",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Prometheus instance ID",
+          "example": "prom-xrwerwe",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Prometheus recording rule ID",
+          "example": "rrule-m74lrt6g",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule status code. Valid values:\n<li>1=RuleDeleted</li>\n<li>2=RuleEnabled</li>\n<li>3=RuleDisabled</li>\nDefault value: 2 (enabled).",
+          "example": "2",
+          "member": "int64",
+          "name": "RuleState",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateRecordingRuleResponse": {
+      "document": "UpdateRecordingRule response structure.",
+      "members": [
+        {
+          "document": "Rule ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "rrule-m74lrt6g",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeGrafanaDashboardRequest": {
+      "document": "UpgradeGrafanaDashboard request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "prom-gds3q53s",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Prometheus integration code, indicating to upgrade to the corresponding dashboard. Valid values:\n<li>spring_mvc</li>\n<li>mysql</li>\n<li>go</li>\n<li>redis</li>\n<li>jvm</li>\n<li>pgsql</li>\n<li>mongo</li>\n<li>kafka</li>\n<li>es</li>\n<li>flink</li>\n<li>blackbox</li>\n<li>consule</li>\n<li>memcached</li>\n<li>zk</li>\n<li>tps</li>\n<li>istio</li>\n<li>etcd</li>",
+          "example": "[\"spring-mvc\"]",
+          "member": "string",
+          "name": "IntegrationCodes",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeGrafanaDashboardResponse": {
+      "document": "UpgradeGrafanaDashboard response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
