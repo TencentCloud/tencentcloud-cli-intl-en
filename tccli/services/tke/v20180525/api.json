@@ -24,6 +24,12 @@
       "name": "Adds the cluster subnets",
       "output": "AddVpcCniSubnetsResponse"
     },
+    "CheckEdgeClusterCIDR": {
+      "document": "This API is used to check if the CIDR block of a TKE Edge cluster conflicts with other CIDR blocks.",
+      "input": "CheckEdgeClusterCIDRRequest",
+      "name": "Checks if the CIDR block of a TKE Edge cluster conflicts with other CIDR blocks",
+      "output": "CheckEdgeClusterCIDRResponse"
+    },
     "CheckInstancesUpgradeAble": {
       "document": "This API is used to check which nodes can be upgraded in the given node list. ",
       "input": "CheckInstancesUpgradeAbleRequest",
@@ -72,11 +78,23 @@
       "name": "Creates a cluster route table.",
       "output": "CreateClusterRouteTableResponse"
     },
+    "CreateECMInstances": {
+      "document": "This API is used to create an ECM instance.",
+      "input": "CreateECMInstancesRequest",
+      "name": "Creates an ECM instance",
+      "output": "CreateECMInstancesResponse"
+    },
     "CreatePrometheusAlertRule": {
       "document": "This API is used to create an alarm rule.",
       "input": "CreatePrometheusAlertRuleRequest",
       "name": "Creates an alarm rule",
       "output": "CreatePrometheusAlertRuleResponse"
+    },
+    "CreateTKEEdgeCluster": {
+      "document": "This API is used to create a TKE Edge cluster.",
+      "input": "CreateTKEEdgeClusterRequest",
+      "name": "Creates a TKE Edge cluster",
+      "output": "CreateTKEEdgeClusterResponse"
     },
     "DeleteCluster": {
       "document": "This API is used to delete a cluster. (Cloud API v3).",
@@ -126,17 +144,47 @@
       "name": "Deletes a cluster route table.",
       "output": "DeleteClusterRouteTableResponse"
     },
+    "DeleteECMInstances": {
+      "document": "This API is used to delete one or more ECM instances.",
+      "input": "DeleteECMInstancesRequest",
+      "name": "Deletes one or more ECM instances",
+      "output": "DeleteECMInstancesResponse"
+    },
+    "DeleteEdgeCVMInstances": {
+      "document": "This API is used to delete one or more edge CVM instances.",
+      "input": "DeleteEdgeCVMInstancesRequest",
+      "name": "Deletes one or more edge CVM instances",
+      "output": "DeleteEdgeCVMInstancesResponse"
+    },
+    "DeleteEdgeClusterInstances": {
+      "document": "This API is used to delete one or more edge compute instances.",
+      "input": "DeleteEdgeClusterInstancesRequest",
+      "name": "Deletes one or more edge compute instances",
+      "output": "DeleteEdgeClusterInstancesResponse"
+    },
     "DeletePrometheusAlertRule": {
       "document": "This API is used to delete an alarm rule.",
       "input": "DeletePrometheusAlertRuleRequest",
       "name": "Deletes an alarm rule",
       "output": "DeletePrometheusAlertRuleResponse"
     },
+    "DeleteTKEEdgeCluster": {
+      "document": "This API is used to delete a TKE Edge cluster.",
+      "input": "DeleteTKEEdgeClusterRequest",
+      "name": "Deletes a TKE Edge cluster",
+      "output": "DeleteTKEEdgeClusterResponse"
+    },
     "DescribeAvailableClusterVersion": {
       "document": "This API is used to obtain all versions that the cluster can upgrade to.",
       "input": "DescribeAvailableClusterVersionRequest",
       "name": "Obtains all versions that the cluster can upgrade to",
       "output": "DescribeAvailableClusterVersionResponse"
+    },
+    "DescribeAvailableTKEEdgeVersion": {
+      "document": "This API is used to query the K8s versions supported by TKE Edge.",
+      "input": "DescribeAvailableTKEEdgeVersionRequest",
+      "name": "Queries the K8s versions supported by TKE Edge.",
+      "output": "DescribeAvailableTKEEdgeVersionResponse"
     },
     "DescribeClusterAsGroupOption": {
       "document": "Cluster auto scaling configuration",
@@ -240,6 +288,36 @@
       "name": "Queries clusters list.",
       "output": "DescribeClustersResponse"
     },
+    "DescribeECMInstances": {
+      "document": "This API is used to obtain the ECM instance information.",
+      "input": "DescribeECMInstancesRequest",
+      "name": "Obtains the ECM instance information",
+      "output": "DescribeECMInstancesResponse"
+    },
+    "DescribeEdgeAvailableExtraArgs": {
+      "document": "This API is used to query the custom parameters available for an edge cluster.",
+      "input": "DescribeEdgeAvailableExtraArgsRequest",
+      "name": "Queries the custom parameters available for an edge cluster",
+      "output": "DescribeEdgeAvailableExtraArgsResponse"
+    },
+    "DescribeEdgeCVMInstances": {
+      "document": "This API is used to obtain the edge CVM instance information.",
+      "input": "DescribeEdgeCVMInstancesRequest",
+      "name": "Obtains the edge CVM instance information",
+      "output": "DescribeEdgeCVMInstancesResponse"
+    },
+    "DescribeEdgeClusterExtraArgs": {
+      "document": "This API is used to query custom parameters of an edge cluster.",
+      "input": "DescribeEdgeClusterExtraArgsRequest",
+      "name": "Queries custom parameters of an edge cluster",
+      "output": "DescribeEdgeClusterExtraArgsResponse"
+    },
+    "DescribeEdgeClusterInstances": {
+      "document": "This API is used to query the TKE Edge cluster node information.",
+      "input": "DescribeEdgeClusterInstancesRequest",
+      "name": "Queries the TKE Edge cluster node information",
+      "output": "DescribeEdgeClusterInstancesResponse"
+    },
     "DescribeEnableVpcCniProgress": {
       "document": "This API is used to query the task progress of enabling VPC-CNI mode.",
       "input": "DescribeEnableVpcCniProgressRequest",
@@ -282,8 +360,32 @@
       "name": "Queries the list of route table conflicts.",
       "output": "DescribeRouteTableConflictsResponse"
     },
+    "DescribeTKEEdgeClusterCredential": {
+      "document": "This API is used to obtain the authentication information of a TKE Edge cluster.",
+      "input": "DescribeTKEEdgeClusterCredentialRequest",
+      "name": "Obtains the authentication information of a TKE Edge cluster",
+      "output": "DescribeTKEEdgeClusterCredentialResponse"
+    },
+    "DescribeTKEEdgeClusterStatus": {
+      "document": "This API is used to query the current status and process information of a TKE Edge cluster.",
+      "input": "DescribeTKEEdgeClusterStatusRequest",
+      "name": "Queries the TKE Edge cluster status",
+      "output": "DescribeTKEEdgeClusterStatusResponse"
+    },
+    "DescribeTKEEdgeClusters": {
+      "document": "This API is used to query the list of TKE Edge clusters.",
+      "input": "DescribeTKEEdgeClustersRequest",
+      "name": "Queries the list of TKE Edge clusters",
+      "output": "DescribeTKEEdgeClustersResponse"
+    },
+    "DescribeTKEEdgeExternalKubeconfig": {
+      "document": "This API is used to obtain the kubeconfig for access to a TKE Edge cluster through the public network.",
+      "input": "DescribeTKEEdgeExternalKubeconfigRequest",
+      "name": "Obtains the kubeconfig for access to a TKE Edge cluster through the public network",
+      "output": "DescribeTKEEdgeExternalKubeconfigResponse"
+    },
     "DescribeTKEEdgeScript": {
-      "document": "This API is used to query the URL of TKE edge script.",
+      "document": "This API is used to query the URL of TKE edge script. You can add external nodes to a TKE Edge cluster by downloading the URL.",
       "input": "DescribeTKEEdgeScriptRequest",
       "name": "Queries the URL of TKE edge script.",
       "output": "DescribeTKEEdgeScriptResponse"
@@ -317,6 +419,12 @@
       "input": "EnableVpcCniNetworkTypeRequest",
       "name": "Enables the VPC-CNI network mode",
       "output": "EnableVpcCniNetworkTypeResponse"
+    },
+    "ForwardTKEEdgeApplicationRequestV3": {
+      "document": "This API is used to work with the add-ons of a TKE Edge cluster.",
+      "input": "ForwardTKEEdgeApplicationRequestV3Request",
+      "name": "Works with the add-ons of a TKE Edge cluster",
+      "output": "ForwardTKEEdgeApplicationRequestV3Response"
     },
     "GetClusterLevelPrice": {
       "document": "Obtaining the price of specified cluster model",
@@ -749,6 +857,62 @@
       ],
       "usage": "out"
     },
+    "CheckEdgeClusterCIDRRequest": {
+      "document": "CheckEdgeClusterCIDR request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster VPC ID",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster Pod CIDR block",
+          "member": "string",
+          "name": "PodCIDR",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster service CIDR block",
+          "member": "string",
+          "name": "ServiceCIDR",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckEdgeClusterCIDRResponse": {
+      "document": "CheckEdgeClusterCIDR response structure.",
+      "members": [
+        {
+          "document": "Return code. Valid values:\n-1: Internal error\n0: No conflict\n1: Conflict between VPC and serviceCIDR\n2: Conflict between VPC and podCIDR\n3: Conflict between serviceCIDR and podCIDR",
+          "member": "int64",
+          "name": "ConflictCode",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CIDR block conflict description",
+          "member": "string",
+          "name": "ConflictMsg",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CheckInstancesUpgradeAbleRequest": {
       "document": "CheckInstancesUpgradeAble request structure.",
       "members": [
@@ -1055,6 +1219,16 @@
           "required": true,
           "type": "bool",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable qGPU Sharing\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "QGPUShareEnable",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1230,6 +1404,26 @@
           "name": "CiliumMode",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is a dual-stack cluster in VPC-CNI mode. Default value: `false`, which indicates it is not a dual-stack cluster.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsDualStack",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable qGPU Sharing",
+          "example": "false",
+          "member": "bool",
+          "name": "QGPUShareEnable",
+          "required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -1447,7 +1641,7 @@
       "members": [
         {
           "default": "",
-          "document": "Cluster operating system. CentOS 7.2x86_64 or Ubuntu 16.04.1 LTSx86_64. Default value: Ubuntu 16.04.1 LTSx86_64",
+          "document": "Cluster operating system. Public image (enter the image ID) and custom image (enter the image name) are supported. For details, see https://intl.cloud.tencent.com/document/product/457/68289?from_cn_redirect=1",
           "example": "tlinux2.4x86_64",
           "member": "string",
           "name": "ClusterOs",
@@ -1653,6 +1847,90 @@
         }
       ],
       "usage": "in"
+    },
+    "ClusterCondition": {
+      "document": "Cluster creation process",
+      "members": [
+        {
+          "default": "",
+          "document": "Process type",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Process status",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last time when the status is probed\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "datetime",
+          "name": "LastProbeTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Last time when transiting to the process\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "datetime",
+          "name": "LastTransitionTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Reasons for transiting to the process\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Reason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "More information on transition\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ClusterCredential": {
+      "document": "Authentication information for accessing K8s",
+      "members": [
+        {
+          "default": "",
+          "document": "CA root certificate",
+          "member": "string",
+          "name": "CACert",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Token for authentication",
+          "member": "string",
+          "name": "Token",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ClusterExtraArgs": {
       "document": "Cluster master custom parameter",
@@ -1993,6 +2271,26 @@
           "name": "IgnoreServiceCIDRConflict",
           "required": true,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is a dual-stack cluster in VPC-CNI mode. Default value: `false`, which indicates it is not a dual-stack cluster.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsDualStack",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "It is used to automatically assign the IP ranges for the service.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "10.0.0.0/24",
+          "member": "string",
+          "name": "Ipv6ServiceCIDR",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -2472,7 +2770,7 @@
         },
         {
           "default": "",
-          "document": "Operating system of the node pool",
+          "document": "Node pool operating system (enter the image ID for a custom image, and enter the OS name for a public image)",
           "example": "ubuntu18.04.1x86_64",
           "member": "string",
           "name": "NodePoolOs",
@@ -2496,6 +2794,15 @@
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether Deletion Protection is enabled",
+          "example": "false",
+          "member": "bool",
+          "name": "DeletionProtection",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -2675,6 +2982,127 @@
       ],
       "type": "object"
     },
+    "CreateECMInstancesRequest": {
+      "document": "CreateECMInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Module ID",
+          "member": "string",
+          "name": "ModuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance AZ, number of instances and ISP",
+          "member": "ECMZoneInstanceCountISP",
+          "name": "ZoneInstanceCountISPSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Password",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Public network bandwidth",
+          "member": "int64",
+          "name": "InternetMaxBandwidthOut",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Image ID",
+          "member": "string",
+          "name": "ImageId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Host name",
+          "member": "string",
+          "name": "HostName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Enhanced service (including CWP and Cloud Monitoring)",
+          "member": "ECMEnhancedService",
+          "name": "EnhancedService",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Custom script",
+          "member": "string",
+          "name": "UserData",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance extension information",
+          "member": "string",
+          "name": "External",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group of the instance",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateECMInstancesResponse": {
+      "document": "CreateECMInstances response structure.",
+      "members": [
+        {
+          "document": "ECM ID list",
+          "member": "string",
+          "name": "EcmIdSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreatePrometheusAlertRuleRequest": {
       "document": "CreatePrometheusAlertRule request structure.",
       "members": [
@@ -2707,6 +3135,114 @@
           "example": "alert-xx",
           "member": "string",
           "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTKEEdgeClusterRequest": {
+      "document": "CreateTKEEdgeCluster request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "1.12.4",
+          "member": "string",
+          "name": "K8SVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "example": "vpc-xxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster name",
+          "example": "for_test",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster Pod CIDR block",
+          "example": "172.16.0.0/20",
+          "member": "string",
+          "name": "PodCIDR",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster service CIDR block",
+          "example": "192.168.0.0/18",
+          "member": "string",
+          "name": "ServiceCIDR",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster description",
+          "example": "无",
+          "member": "string",
+          "name": "ClusterDesc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster advanced settings",
+          "example": "无",
+          "member": "EdgeClusterAdvancedSettings",
+          "name": "ClusterAdvancedSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of Pods on the node",
+          "example": "64",
+          "member": "int64",
+          "name": "MaxNodePodNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Public LB of the TKE Edge cluster",
+          "example": "无",
+          "member": "EdgeClusterPublicLB",
+          "name": "PublicLB",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTKEEdgeClusterResponse": {
+      "document": "CreateTKEEdgeCluster response structure.",
+      "members": [
+        {
+          "document": "TKE Edge cluster ID",
+          "example": "cls-xxx",
+          "member": "string",
+          "name": "ClusterId",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -3111,6 +3647,108 @@
       ],
       "type": "object"
     },
+    "DeleteECMInstancesRequest": {
+      "document": "DeleteECMInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IDs of ECMs to be deleted",
+          "member": "string",
+          "name": "EcmIdSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteECMInstancesResponse": {
+      "document": "DeleteECMInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEdgeCVMInstancesRequest": {
+      "document": "DeleteEdgeCVMInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IDs of CVMs to be deleted",
+          "member": "string",
+          "name": "CvmIdSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEdgeCVMInstancesResponse": {
+      "document": "DeleteEdgeCVMInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEdgeClusterInstancesRequest": {
+      "document": "DeleteEdgeClusterInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of instance IDs to be deleted",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEdgeClusterInstancesResponse": {
+      "document": "DeleteEdgeClusterInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeletePrometheusAlertRuleRequest": {
       "document": "DeletePrometheusAlertRule request structure.",
       "members": [
@@ -3137,6 +3775,32 @@
     },
     "DeletePrometheusAlertRuleResponse": {
       "document": "DeletePrometheusAlertRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTKEEdgeClusterRequest": {
+      "document": "DeleteTKEEdgeCluster request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTKEEdgeClusterResponse": {
+      "document": "DeleteTKEEdgeCluster response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3185,6 +3849,30 @@
           "name": "Clusters",
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAvailableTKEEdgeVersionRequest": {
+      "document": "DescribeAvailableTKEEdgeVersion request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeAvailableTKEEdgeVersionResponse": {
+      "document": "DescribeAvailableTKEEdgeVersion response structure.",
+      "members": [
+        {
+          "document": "Version list",
+          "member": "string",
+          "name": "Versions",
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4113,6 +4801,242 @@
       ],
       "type": "object"
     },
+    "DescribeECMInstancesRequest": {
+      "document": "DescribeECMInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter condition\nOnly filtering by an ECM ID is supported",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeECMInstancesResponse": {
+      "document": "DescribeECMInstances response structure.",
+      "members": [
+        {
+          "document": "Number of instances matched the condition",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of the returned instance information",
+          "member": "string",
+          "name": "InstanceInfoSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEdgeAvailableExtraArgsRequest": {
+      "document": "DescribeEdgeAvailableExtraArgs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster version",
+          "member": "string",
+          "name": "ClusterVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEdgeAvailableExtraArgsResponse": {
+      "document": "DescribeEdgeAvailableExtraArgs response structure.",
+      "members": [
+        {
+          "document": "Cluster version\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ClusterVersion",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Available custom parameters\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "EdgeAvailableExtraArgs",
+          "name": "AvailableExtraArgs",
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEdgeCVMInstancesRequest": {
+      "document": "DescribeEdgeCVMInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter condition\nOnly `cvm-id` is supported.",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEdgeCVMInstancesResponse": {
+      "document": "DescribeEdgeCVMInstances response structure.",
+      "members": [
+        {
+          "document": "Number of instances matched the condition",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of the returned instance information",
+          "member": "string",
+          "name": "InstanceInfoSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEdgeClusterExtraArgsRequest": {
+      "document": "DescribeEdgeClusterExtraArgs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-abc123",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEdgeClusterExtraArgsResponse": {
+      "document": "DescribeEdgeClusterExtraArgs response structure.",
+      "members": [
+        {
+          "document": "Custom parameters of the cluster\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "{}",
+          "member": "EdgeClusterExtraArgs",
+          "name": "ClusterExtraArgs",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEdgeClusterInstancesRequest": {
+      "document": "DescribeEdgeClusterInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Max number of returned entries",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter condition. Only `NodeName` is supported.",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEdgeClusterInstancesResponse": {
+      "document": "DescribeEdgeClusterInstances response structure.",
+      "members": [
+        {
+          "document": "Total number of nodes in the cluster",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Array of node information",
+          "member": "string",
+          "name": "InstanceInfoSet",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeEnableVpcCniProgressRequest": {
       "document": "DescribeEnableVpcCniProgress request structure.",
       "members": [
@@ -4534,6 +5458,242 @@
       ],
       "type": "object"
     },
+    "DescribeTKEEdgeClusterCredentialRequest": {
+      "document": "DescribeTKEEdgeClusterCredential request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xxxxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTKEEdgeClusterCredentialResponse": {
+      "document": "DescribeTKEEdgeClusterCredential response structure.",
+      "members": [
+        {
+          "document": "Access address of the cluster\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "IPAddress",
+          "name": "Addresses",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Cluster authentication information",
+          "example": "无",
+          "member": "ClusterCredential",
+          "name": "Credential",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Public network access information of the cluster",
+          "example": "无",
+          "member": "EdgeClusterPublicLB",
+          "name": "PublicLB",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Private network access information of the cluster",
+          "example": "无",
+          "member": "EdgeClusterInternalLB",
+          "name": "InternalLB",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CoreDns deployment information of the cluster",
+          "example": "yes",
+          "member": "string",
+          "name": "CoreDns",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Multi-region health check deployment information of the cluster",
+          "example": "yes",
+          "member": "string",
+          "name": "HealthRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Health check deployment information of the cluster",
+          "example": "yes",
+          "member": "string",
+          "name": "Health",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to deploy GridDaemon to support headless service",
+          "example": "yes",
+          "member": "string",
+          "name": "GridDaemon",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTKEEdgeClusterStatusRequest": {
+      "document": "DescribeTKEEdgeClusterStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Edge compute cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTKEEdgeClusterStatusResponse": {
+      "document": "DescribeTKEEdgeClusterStatus response structure.",
+      "members": [
+        {
+          "document": "Current cluster status",
+          "member": "string",
+          "name": "Phase",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Array of cluster processes",
+          "member": "ClusterCondition",
+          "name": "Conditions",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTKEEdgeClustersRequest": {
+      "document": "DescribeTKEEdgeClusters request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID list (when it is empty,\nall clusters under the account are obtained)",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: `0`",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of output entries. Default value: `20`",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter condition (only filtering by a single ClusterName is supported)",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTKEEdgeClustersResponse": {
+      "document": "DescribeTKEEdgeClusters response structure.",
+      "members": [
+        {
+          "document": "Total number of clusters",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster information list",
+          "member": "EdgeCluster",
+          "name": "Clusters",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTKEEdgeExternalKubeconfigRequest": {
+      "document": "DescribeTKEEdgeExternalKubeconfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTKEEdgeExternalKubeconfigResponse": {
+      "document": "DescribeTKEEdgeExternalKubeconfig response structure.",
+      "members": [
+        {
+          "document": "Kubeconfig file content",
+          "member": "string",
+          "name": "Kubeconfig",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTKEEdgeScriptRequest": {
       "document": "DescribeTKEEdgeScript request structure.",
       "members": [
@@ -4579,6 +5739,33 @@
     "DescribeTKEEdgeScriptResponse": {
       "document": "DescribeTKEEdgeScript response structure.",
       "members": [
+        {
+          "document": "Whether to download the link",
+          "example": "www.tencent.com",
+          "member": "string",
+          "name": "Link",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to download the desired token",
+          "example": "123456",
+          "member": "string",
+          "name": "Token",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to download the command",
+          "example": "wget www.tencent.com",
+          "member": "string",
+          "name": "Command",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -4711,6 +5898,396 @@
         }
       ],
       "type": "object"
+    },
+    "ECMEnhancedService": {
+      "document": "ECM enhanced services",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether Cloud Monitoring is enabled",
+          "member": "ECMRunMonitorServiceEnabled",
+          "name": "SecurityService",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether Cloud Workload Protection is enabled",
+          "member": "ECMRunSecurityServiceEnabled",
+          "name": "MonitorService",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ECMRunMonitorServiceEnabled": {
+      "document": "ECM Cloud Monitoring",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether it is enabled",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ECMRunSecurityServiceEnabled": {
+      "document": "ECM Cloud Workload Protection",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether it is enabled",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CWP version. Valid values: `0` (CWP Pro), `1` (CWP Pro)",
+          "member": "int64",
+          "name": "Version",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ECMZoneInstanceCountISP": {
+      "document": "Combination of the ECM instance AZ, number of instances, and ISP",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance AZ",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of instances to be created in the current AZ",
+          "member": "int64",
+          "name": "InstanceCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ISP",
+          "member": "string",
+          "name": "ISP",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "EdgeArgsFlag": {
+      "document": "Edge cluster parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Parameter type\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Parameter description\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Usage",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Default value of the parameter\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Default",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Valid value or range. Options: `[]` (it indicates a range, for example, “[1, 5]” indicates the parameter must be equal or larger than 1, and be equal or smaller than 5), and `()` (it indicates a valid value, for example, “('aa', 'bb')” indicates the parameter must be “aa” or “bb”. If it is left empty, the verification can be skipped.)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Constraint",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "EdgeAvailableExtraArgs": {
+      "document": "Custom parameters available for the edge cluster",
+      "members": [
+        {
+          "default": "",
+          "document": "kube-apiserver custom parameter\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "EdgeArgsFlag",
+          "name": "KubeAPIServer",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "kube-controller-manager custom parameter\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "EdgeArgsFlag",
+          "name": "KubeControllerManager",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "kube-scheduler custom parameter\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "EdgeArgsFlag",
+          "name": "KubeScheduler",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "kubelet custom parameter\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "EdgeArgsFlag",
+          "name": "Kubelet",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "EdgeCluster": {
+      "document": "Edge compute cluster information",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster name",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster Pod CIDR block",
+          "member": "string",
+          "name": "PodCIDR",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster service CIDR block",
+          "member": "string",
+          "name": "ServiceCIDR",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "member": "string",
+          "name": "K8SVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster status",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster description",
+          "member": "string",
+          "name": "ClusterDesc",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cluster creation time",
+          "member": "string",
+          "name": "CreatedTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Edge cluster version",
+          "member": "string",
+          "name": "EdgeClusterVersion",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of Pods on the node\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MaxNodePodNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "EdgeClusterAdvancedSettings": {
+      "document": "Edge cluster advanced settings",
+      "members": [
+        {
+          "default": "",
+          "document": "Custom parameters of the cluster\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "EdgeClusterExtraArgs",
+          "name": "ExtraArgs",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "EdgeClusterExtraArgs": {
+      "document": "Edge cluster master custom parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "kube-apiserver custom parameter, in the format of [\"k1=v1\", \"k1=v2\"], for example: [\"max-requests-inflight=500\",\"feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true\"]\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "KubeAPIServer",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "kube-controller-manager custom parameter\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "KubeControllerManager",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "kube-scheduler custom parameter\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "KubeScheduler",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "EdgeClusterInternalLB": {
+      "document": "Edge compute cluster private LB information",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether the private LB is enabled\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "Enabled",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the subnet associated with the private LB\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "EdgeClusterPublicLB": {
+      "document": "Edge compute cluster public LB information",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether the public LB is enabled\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "Enabled",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network CIDR block allowed to access\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AllowFromCidrs",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "EnableClusterDeletionProtectionRequest": {
       "document": "EnableClusterDeletionProtection request structure.",
@@ -5123,6 +6700,96 @@
       ],
       "usage": "in"
     },
+    "ForwardTKEEdgeApplicationRequestV3Request": {
+      "document": "ForwardTKEEdgeApplicationRequestV3 request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Access to request the cluster add-on",
+          "example": "GET",
+          "member": "string",
+          "name": "Method",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Path to request the cluster add-on",
+          "example": "/api/v1/namespaces",
+          "member": "string",
+          "name": "Path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data format allowed to receive the requested cluster add-on",
+          "example": "无",
+          "member": "string",
+          "name": "Accept",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data format for requesting the cluster add-on",
+          "example": "无",
+          "member": "string",
+          "name": "ContentType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data sent to request the cluster add-on",
+          "example": "无",
+          "member": "string",
+          "name": "RequestBody",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster name (for example, `cls-1234abcd`)",
+          "example": "cls-xxxxxxxx",
+          "member": "string",
+          "name": "ClusterName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to encode the request content",
+          "example": "无",
+          "member": "string",
+          "name": "EncodedBody",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ForwardTKEEdgeApplicationRequestV3Response": {
+      "document": "ForwardTKEEdgeApplicationRequestV3 response structure.",
+      "members": [
+        {
+          "document": "Data returned after requesting the cluster add-on",
+          "example": "[]",
+          "member": "string",
+          "name": "ResponseBody",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "GetClusterLevelPriceRequest": {
       "document": "GetClusterLevelPrice request structure.",
       "members": [
@@ -5244,6 +6911,39 @@
         }
       ],
       "type": "object"
+    },
+    "IPAddress": {
+      "document": "IP Address",
+      "members": [
+        {
+          "default": "",
+          "document": "Type. Valid values: `advertise`, `public`, and others",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IP Address",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network port",
+          "member": "uint64",
+          "name": "Port",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ImageInstance": {
       "document": "Image details",
@@ -5941,6 +7641,15 @@
           "name": "AutoUpgradeClusterLevel",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable qGPU Sharing",
+          "example": "false",
+          "member": "bool",
+          "name": "QGPUShareEnable",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -5991,6 +7700,15 @@
           "name": "AutoUpgradeClusterLevel",
           "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether to enable qGPU Sharing\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "QGPUShareEnable",
+          "required": true,
+          "type": "bool",
           "value_allowed_null": true
         },
         {
@@ -6191,6 +7909,15 @@
           "name": "Unschedulable",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether Deletion Protection is enabled",
+          "example": "false",
+          "member": "bool",
+          "name": "DeletionProtection",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -6503,6 +8230,16 @@
           "name": "Tags",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether Deletion Protection is enabled\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "DeletionProtection",
+          "required": true,
+          "type": "bool",
           "value_allowed_null": true
         }
       ],
