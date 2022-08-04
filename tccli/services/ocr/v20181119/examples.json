@@ -3,8 +3,8 @@
     "BankCardOCR": [
       {
         "document": "",
-        "input": "https://ocr.tencentcloudapi.com/?Action=BankCardOCR\n&ImageUrl=https://xx/a.jpg\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"BankInfo\": \"招商银行(03080000)\",\n        \"ValidDate\": \"07/2023\",\n        \"CardType\": \"贷记卡\",\n        \"CardName\": \"招商银行信用卡\",\n        \"BorderCutImage\": null,\n        \"CardNoImage\": null,\n        \"QualityValue\": 80,\n        \"WarningCode\": [\n            -9110\n        ],\n        \"CardNo\": \"6225768888888888\",\n        \"RequestId\": \"68f8fcbf-6004-0111a-ac18-6f1a9308fs100mab\"\n    }\n}",
+        "input": "https://ocr.tencentcloudapi.com/?Action=BankCardOCR\r\n&ImageUrl=https://xx/a.jpg\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"CardNo\": \"6225760088888888\",\n        \"BankInfo\": \"China Merchants Bank (03080000)\",\n        \"ValidDate\": \"08/2022\",\n        \"RequestId\": \"46ab2e62-11e3-4d04-9fab-0abe18e7c927\"\n    }\n}",
         "title": "Recognizing a bank card"
       }
     ],
@@ -27,17 +27,9 @@
     "HKIDCardOCR": [
       {
         "document": "",
-        "input": "https://ocr.tencentcloudapi.com/?Action=HKIDCardOCR\n&ImageUrl=https://xx/a.jpg\n&DetectFake=true\n&ReturnHeadImage=false\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: HKIDCardOCR\n<Common request parameters>\n\n{\n    \"DetectFake\": \"true\",\n    \"ReturnHeadImage\": \"false\",\n    \"ImageUrl\": \"https://xx/a.jpg\"\n}",
         "output": "{\n    \"Response\": {\n        \"CnName\": \"申能\",\n        \"EnName\": \"SAN, Nan\",\n        \"TelexCode\": \"300000000000\",\n        \"Sex\": \"女F\",\n        \"Birthday\": \"01-01-2001\",\n        \"Permanent\": 1,\n        \"IdNum\": \"C000000(E)\",\n        \"Symbol\": \"***AZ\",\n        \"FirstIssueDate\": \"(09-99)\",\n        \"CurrentIssueDate\": \"23-09-10\",\n        \"FakeDetectResult\": 1,\n        \"WarningCode\": [\n            -9102,\n            -9103\n        ],\n        \"HeadImage\": \"xx\",\n        \"RequestId\": \"fba1c9ad-aeb3-4418-9ecf-80ab1b5fc875\"\n    }\n}",
         "title": "Recognizing a Hong Kong (China) identity card"
-      }
-    ],
-    "MLIDCardOCR": [
-      {
-        "document": "",
-        "input": "https://ocr.tencentcloudapi.com/?Action=MLIDCardOCR\n&ImageUrl=https://xx/a.jpg\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Name\": \"KAVIN ONG KHI MN\",\n        \"ID\": \"710716-08-6085\",\n        \"Address\": \"NO 11 PERSIARN PERAJRIT 4 TAMA PERAK 31400 IPOH ERAK\",\n        \"Sex\": \"LEAKI\",\n        \"Birthday\": \"\",\n        \"Warn\": [],\n        \"Image\": \"\",\n        \"AdvancedInfo\": \"{\\\"ID\\\":{\\\"Confidence\\\":\\\"1.0000\\\"},\\\"Name\\\":{\\\"Confidence\\\":\\\"0.9996\\\"},\\\"Address\\\":{\\\"Confidence\\\":\\\"0.9997\\\"},\\\"Sex\\\":{\\\"Confidence\\\":\\\"0.9999\\\"}}\",\n        \"Type\": \"MyKad\",\n        \"RequestId\": \"c969da05-54e3-4d0a-a55d-b3ef90d4ebf5\"\n    }\n}",
-        "title": "Recognizing a Malaysian identity card"
       }
     ],
     "MLIDPassportOCR": [

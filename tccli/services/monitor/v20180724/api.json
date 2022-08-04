@@ -2276,7 +2276,7 @@
       "document": "CreateExporterIntegration response structure.",
       "members": [
         {
-          "document": "",
+          "document": "The list of successfully created integrations.",
           "example": "无",
           "member": "string",
           "name": "Names",
@@ -2562,7 +2562,7 @@
       "document": "CreatePrometheusAgent response structure.",
       "members": [
         {
-          "document": "",
+          "document": "ID of a successfully created agent.",
           "example": "无",
           "member": "string",
           "name": "AgentId",
@@ -2706,7 +2706,7 @@
       "document": "CreatePrometheusScrapeJob response structure.",
       "members": [
         {
-          "document": "",
+          "document": "ID of a successfully created scrape task.",
           "example": "无",
           "member": "string",
           "name": "JobId",

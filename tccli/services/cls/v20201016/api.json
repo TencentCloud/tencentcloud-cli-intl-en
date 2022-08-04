@@ -343,6 +343,32 @@
     "serviceShortName": "cls"
   },
   "objects": {
+    "AlarmAnalysisConfig": {
+      "document": "Alarm configuration for the multidimensional analysis",
+      "members": [
+        {
+          "default": "",
+          "document": "Key",
+          "example": "k",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value",
+          "example": "v",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "AlarmInfo": {
       "document": "Alarm policy description",
       "members": [
@@ -725,7 +751,7 @@
         },
         {
           "default": "",
-          "document": "Analysis type. Valid values: `query`, `field`",
+          "document": "Type of data being analyzed. Valid values: `query`; `field`; `original`",
           "example": "query",
           "member": "string",
           "name": "Type",
@@ -741,6 +767,16 @@
           "name": "Content",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration",
+          "example": "无",
+          "member": "AlarmAnalysisConfig",
+          "name": "ConfigInfo",
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -3529,7 +3565,7 @@
         },
         {
           "default": "",
-          "document": "Log download status. Valid values: `Processing`: exporting; `Complete`: completed; `Failed`: failed; `Expired`: expired (3-day validity period).",
+          "document": "Log download status. Valid values: `Processing`, `Completed`, `Failed`, `Expired` (three-day validity period), and `Queuing`.",
           "example": "Expired",
           "member": "string",
           "name": "Status",
@@ -3679,6 +3715,26 @@
           "example": "-1",
           "member": "int64",
           "name": "Backtracking",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to be encoded in GBK format. Valid values: `0` (No) and `1` (Yes).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "IsGBK",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to be formatted as JSON (standard). Valid values: `0` (No) and `1` (Yes).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "JsonStandard",
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -5710,7 +5766,7 @@
         },
         {
           "default": "",
-          "document": "You can pass through the `Context` value (validity: 1 hour) returned by the last API to continue to get logs, which can get up to 10,000 raw logs.\nNotes:\n* This parameter is valid only when the query statement (`Query`) does not contain an SQL statement.\n* To continue to get analysis results, see <a href=\"https://intl.cloud.tencent.com/document/product/614/58977?from_cn_redirect=1\" target=\"_blank\">SQL LIMIT Syntax</a>.",
+          "document": "You can pass through the `Context` value (validity: an hour) returned by the API last time to continue to get logs (up to 10,000 raw logs).\nNotes:\n* Do not modify any other parameters while passing through the `Context` parameter.\n* This parameter is valid only when the query statement (`Query`) does not contain an SQL statement.\n* To continue to get analysis results, see <a href=\"https://intl.cloud.tencent.com/document/product/614/58977?from_cn_redirect=1\" target=\"_blank\">SQL LIMIT Syntax</a>.",
           "example": "context",
           "member": "string",
           "name": "Context",

@@ -19,9 +19,9 @@
     "BatchDeregisterTargets": [
       {
         "document": "",
-        "input": "https://clb.tencentcloudapi.com/?Action=BatchDeregisterTargets\r\n&LoadBalancerId=lb-xxxx\r\n&Targets.0.ListenerId=lbl-xxxx\r\n&Targets.0.InstanceId=ins-xxx\r\n&Targets.0.Port=80\r\n&Targets.0.Weight=10\r\n&<common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BatchDeregisterTargets\n<Common request parameters>\n\n{\n    \"Targets\": [\n        {\n            \"InstanceId\": \"ins-xxx\",\n            \"ListenerId\": \"lbl-xxxx\",\n            \"Weight\": \"10\",\n            \"Port\": \"80\"\n        }\n    ],\n    \"LoadBalancerId\": \"lb-xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"FailListenerIdSet\": [],\n        \"RequestId\": \"83129908-a282-4f9f-8ab-131a3025ba22\"\n    }\n}",
-        "title": "Unbinding ENI"
+        "title": "Unbinding an ENI"
       }
     ],
     "BatchModifyTargetWeight": [
@@ -41,9 +41,9 @@
     "BatchRegisterTargets": [
       {
         "document": "",
-        "input": "https://clb.tencentcloudapi.com/?Action=BatchRegisterTargets\r\n&LoadBalancerId=lb-xxxx\r\n&Targets.0.ListenerId=lbl-xxxx\r\n&Targets.0.InstanceId=ins-xxx\r\n&Targets.0.Port=80\r\n&Targets.0.Weight=10\r\n&<common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BatchRegisterTargets\n<Common request parameters>\n\n{\n    \"Targets\": [\n        {\n            \"InstanceId\": \"ins-xxx\",\n            \"ListenerId\": \"lbl-xxxx\",\n            \"Weight\": \"10\",\n            \"Port\": \"80\"\n        }\n    ],\n    \"LoadBalancerId\": \"lb-xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"FailListenerIdSet\": [],\n        \"RequestId\": \"83129908-a282-4f9f-8ab-131a3025ba22\"\n    }\n}",
-        "title": "Binding CVM instance or ENI"
+        "title": "Binding a CVM or ENI"
       }
     ],
     "CloneLoadBalancer": [
@@ -531,13 +531,13 @@
     "ModifyListener": [
       {
         "document": "",
-        "input": "https://clb.tencentcloudapi.com/?Action=ModifyListener\n&LoadBalancerId=lb-cuxw2rm0\n&ListenerId=lbl-d1ubsydq\n&ListenerName=newlis\n&SessionExpireTime=120\n&Scheduler=LEAST_CONN\n&HealthCheck.HealthSwitch=1\n&HealthCheck.TimeOut=35\n&HealthCheck.IntervalTime=60\n&HealthCheck.HealthNum=5\n&HealthCheck.UnHealthNum=5\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyListener\n<Common request parameters>\n\n{\n    \"HealthCheck\": {\n        \"UnHealthNum\": \"5\",\n        \"HealthNum\": \"5\",\n        \"IntervalTime\": \"60\",\n        \"TimeOut\": \"35\",\n        \"HealthSwitch\": \"1\"\n    },\n    \"LoadBalancerId\": \"lb-cuxw2rm0\",\n    \"ListenerId\": \"lbl-d1ubsydq\",\n    \"ListenerName\": \"newlis\",\n    \"Scheduler\": \"LEAST_CONN\",\n    \"SessionExpireTime\": \"120\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8cd88c83-fd30-47c0-8e7a-89bf13a7a83c\"\n    }\n}",
         "title": "Modifying the name, health check parameters, and forwarding policy of a TCP listener"
       },
       {
         "document": "",
-        "input": "https://clb.tencentcloudapi.com/?Action=ModifyListener\n&LoadBalancerId=lb-cuxw2rm0\n&ListenerId=lbl-4fbxq45k\n&Certificate.SSLMode=UNIDIRECTIONAL\n&Certificate.CertId=Nb1DY3hQ\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyListener\n<Common request parameters>\n\n{\n    \"ListenerId\": \"lbl-4fbxq45k\",\n    \"Certificate\": {\n        \"SSLMode\": \"UNIDIRECTIONAL\",\n        \"CertId\": \"Nb1DY3hQ\"\n    },\n    \"LoadBalancerId\": \"lb-cuxw2rm0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b64574f9-5bc7-4a63-a9d7-3671b6a6d62b\"\n    }\n}",
         "title": "Modifying the certificate bound to an HTTPS listener"
       }

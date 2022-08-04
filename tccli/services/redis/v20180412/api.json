@@ -1237,6 +1237,24 @@
           "name": "DryRun",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `local` (local disk edition), `cloud` (cloud disk edition), `cdc` (dedicated cluster edition). Default value: `local` (local disk edition)",
+          "example": "cdc",
+          "member": "string",
+          "name": "ProductVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Dedicated cluster ID, which is required when `ProductVersion` is \"cdc\".",
+          "example": "crs-cdc-0xigvn3t",
+          "member": "string",
+          "name": "RedisClusterId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4511,6 +4529,15 @@
           "example": "ap-guangzhou",
           "member": "string",
           "name": "ZoneName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `local` (local disk edition), `cloud` (cloud disk edition), `cdc` (dedicated cluster edition). Default value: `local` (local disk edition)",
+          "example": "cloud",
+          "member": "string",
+          "name": "ProductVersion",
           "required": false,
           "type": "string"
         }

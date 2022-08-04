@@ -4469,7 +4469,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Instance feature list.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Features",
@@ -5079,6 +5079,15 @@
           "example": "30",
           "member": "int64",
           "name": "QuotaConsumerByteRate",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of topic replicas.",
+          "example": "2",
+          "member": "int64",
+          "name": "ReplicaNum",
           "required": false,
           "type": "int"
         }

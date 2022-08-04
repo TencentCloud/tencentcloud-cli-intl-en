@@ -440,7 +440,7 @@
         },
         {
           "default": "",
-          "document": "Valid values: `win-windows authentication`, `sql-sqlserver authentication`. Default value: `sql-sqlserver authentication`.",
+          "document": "Valid values: `win-windows authentication`, `sql-sqlserver authentication`. Default value: `sql-sqlserver authentication`",
           "example": "sql",
           "member": "string",
           "name": "Authentication",
@@ -817,6 +817,36 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The code of current region where the instance resides",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The download address of cross-region backup in target region",
+          "example": "[]",
+          "member": "CrossBackupAddr",
+          "name": "CrossBackupAddr",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The target region and status of cross-region backup",
+          "example": "[]",
+          "member": "CrossRegionStatus",
+          "name": "CrossBackupStatus",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -872,6 +902,26 @@
           "name": "DownloadLink",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The code of the region where current instance resides",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The target region and download address of cross-region backup",
+          "example": "[]",
+          "member": "CrossBackupAddr",
+          "name": "CrossBackupAddr",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -1480,6 +1530,68 @@
       ],
       "type": "object"
     },
+    "CrossBackupAddr": {
+      "document": "All Download addresses of cross-region backup",
+      "members": [
+        {
+          "default": "",
+          "document": "The target region of cross-region backup",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "CrossRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The address used to download the cross-region backup over a private network",
+          "example": " http://xxx",
+          "member": "string",
+          "name": "CrossInternalAddr",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The address used to download the cross-region backup over a public network",
+          "example": "http://xxx ",
+          "member": "string",
+          "name": "CrossExternalAddr",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CrossRegionStatus": {
+      "document": "The target region and status of cross-region backup",
+      "members": [
+        {
+          "default": "",
+          "document": "The target region of cross-region backup",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "CrossRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Synchronization status of cross-region backup. Valid values: `0` (creating), `1` (succeeded), `2`: (failed), `4` (syncing)",
+          "example": "0",
+          "member": "int64",
+          "name": "CrossStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DBCreateInfo": {
       "document": "Database creation information",
       "members": [
@@ -2026,6 +2138,56 @@
           "name": "InstanceType",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The target region of cross-region backup. If this parameter left empty, it indicates that cross-region backup is disabled.",
+          "example": "[ap-guangzhou]",
+          "member": "string",
+          "name": "CrossRegions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cross-region backup status. Valid values: `enable` (enabled), `disable` (disabed)",
+          "example": "enable",
+          "member": "string",
+          "name": "CrossBackupEnabled",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The retention period of cross-region backup. Default value: 7 days",
+          "example": "7",
+          "member": "uint64",
+          "name": "CrossBackupSaveDays",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "gz.xxx.sqlserver.tencent.com",
+          "member": "string",
+          "name": "DnsPodDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "2032",
+          "member": "int64",
+          "name": "TgwWanVPort",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

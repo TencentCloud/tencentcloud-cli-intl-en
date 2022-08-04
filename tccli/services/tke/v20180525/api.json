@@ -1787,7 +1787,7 @@
         },
         {
           "default": "",
-          "document": "Maximum number of pods on each node in the cluster",
+          "document": "Maximum number of Pods on each node. Value range: 16 to 256. When its power is not 2, it will round upward to the closest power of 2.",
           "example": "256",
           "member": "uint64",
           "name": "MaxNodePodNum",
@@ -6420,6 +6420,7 @@
         {
           "default": "",
           "document": "Whether the instance supports being added to the cluster (TRUE: support; FALSE: not support).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
           "member": "bool",
           "name": "Usable",
           "required": true,
@@ -6429,6 +6430,7 @@
         {
           "default": "",
           "document": "Reason that the instance does not support being added.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "UnusableReason",
           "required": true,
@@ -6438,6 +6440,7 @@
         {
           "default": "",
           "document": "ID of the cluster in which the instance currently resides.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "AlreadyInCluster",
           "required": true,
@@ -6447,6 +6450,7 @@
         {
           "default": "",
           "document": "Instance ID, in the format of ins-xxxxxxxx.",
+          "example": "ins-xxxx",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6456,6 +6460,7 @@
         {
           "default": "",
           "document": "Instance name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxxx",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -6465,6 +6470,7 @@
         {
           "default": "",
           "document": "List of private IPs of the instance's primary ENI.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "PrivateIpAddresses",
           "required": true,
@@ -6474,6 +6480,7 @@
         {
           "default": "",
           "document": "List of public IPs of the instance's primary ENI.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "PublicIpAddresses",
           "required": true,
@@ -6483,6 +6490,7 @@
         {
           "default": "",
           "document": "Creation time, which follows the ISO8601 standard and uses UTC time. Format: YYYY-MM-DDThh:mm:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "CreatedTime",
           "required": true,
@@ -6492,6 +6500,7 @@
         {
           "default": "",
           "document": "Instance's number of CPU cores. Unit: cores.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "uint64",
           "name": "CPU",
           "required": true,
@@ -6501,6 +6510,7 @@
         {
           "default": "",
           "document": "Instance's memory capacity. Unit: GB.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "uint64",
           "name": "Memory",
           "required": true,
@@ -6510,6 +6520,7 @@
         {
           "default": "",
           "document": "Operating system name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "OsName",
           "required": true,
@@ -6519,6 +6530,7 @@
         {
           "default": "",
           "document": "Instance model.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "InstanceType",
           "required": true,
@@ -6528,6 +6540,7 @@
         {
           "default": "",
           "document": "Auto scaling group ID\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "string",
           "name": "AutoscalingGroupId",
           "required": true,
@@ -6537,10 +6550,21 @@
         {
           "default": "",
           "document": "Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "string",
           "name": "InstanceChargeType",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IPv6 address of the instance\nNote: This field may return `null`, indicating that no valid values can be obtained.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IPv6Addresses",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],

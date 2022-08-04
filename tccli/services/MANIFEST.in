@@ -49,8 +49,12 @@ include tccli/services/dc/v20180410/api.json
 include tccli/services/dc/v20180410/examples.json
 include tccli/services/dcdb/v20180411/api.json
 include tccli/services/dcdb/v20180411/examples.json
+include tccli/services/dlc/v20210125/api.json
+include tccli/services/dlc/v20210125/examples.json
 include tccli/services/dms/v20200819/api.json
 include tccli/services/dms/v20200819/examples.json
+include tccli/services/dnspod/v20210323/api.json
+include tccli/services/dnspod/v20210323/examples.json
 include tccli/services/dts/v20180330/api.json
 include tccli/services/dts/v20180330/examples.json
 include tccli/services/eb/v20210416/api.json
@@ -157,6 +161,8 @@ include tccli/services/tms/v20201229/api.json
 include tccli/services/tms/v20201229/examples.json
 include tccli/services/trtc/v20190722/api.json
 include tccli/services/trtc/v20190722/examples.json
+include tccli/services/tts/v20190823/api.json
+include tccli/services/tts/v20190823/examples.json
 include tccli/services/vm/v20201229/api.json
 include tccli/services/vm/v20201229/examples.json
 include tccli/services/vod/v20180717/api.json

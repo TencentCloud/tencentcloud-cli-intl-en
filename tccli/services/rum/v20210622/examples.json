@@ -45,7 +45,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTawInstance\n<Common request parameters>\n\n{\n    \"AreaId\": 1,\n    \"InstanceName\": \"test\",\n    \"ChargeType\": 1,\n    \"DataRetentionDays\": 30,\n    \"InstanceDesc\": \"test\"\n}",
         "output": "{\n    \"Response\": {\n        \"InstanceId\": \"taw-4vVPH0Jn\",\n        \"RequestId\": \"57f4d8a2-13b6-4ac0-9f0b-0acc7bbc1d61\"\n    }\n}",
-        "title": "Querying instance"
+        "title": "Querying an instance"
       }
     ],
     "CreateWhitelist": [
@@ -147,17 +147,29 @@
     "DescribeDataFetchProject": [
       {
         "document": "",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeDataFetchProject\n&ID=1\n&StartTime=1625444040\n&EndTime=1625454840\n&Type=pagepv\n&Level=1\n&Isp=China Mobile\n&Area=China\n&NetType=2\n&Platform=2\n&Device=Samsung\n&VersionNum=Version\n&ExtFirst=Custom 1\n&ExtSecond=Custom 2\n&ExtThird=Custom 3\n&IsAbroad=1\n&Browser=ie\n&Os=apple\n&Engine=ie2\n&Brand=apple\n&From=index.html\n&CostType=avg\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataFetchProject\n<Common request parameters>\n\n{\n    \"ExtSecond\": \"Custom 2\",\n    \"Engine\": \"ie2\",\n    \"IsAbroad\": \"1\",\n    \"Area\": \"China\",\n    \"NetType\": \"2\",\n    \"CostType\": \"avg\",\n    \"Level\": \"1\",\n    \"Os\": \"apple\",\n    \"Brand\": \"apple\",\n    \"Isp\": \"China Mobile\",\n    \"VersionNum\": \"Version\",\n    \"Platform\": \"2\",\n    \"ExtThird\": \"Custom 3\",\n    \"ExtFirst\": \"Custom 1\",\n    \"StartTime\": \"1625444040\",\n    \"Device\": \"Samsung\",\n    \"From\": \"index.html\",\n    \"EndTime\": \"1625454840\",\n    \"Type\": \"pagepv\",\n    \"ID\": \"1\",\n    \"Browser\": \"ie\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting DescribeDataFetchProject information"
+        "title": "Getting `DescribeDataFetchProject` information"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataFetchProject\n<Common request parameters>\n\n{\n    \"EndTime\": \"1625454840\",\n    \"Type\": \"condition\",\n    \"ID\": \"1\",\n    \"StartTime\": \"1625444040\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9906759b-ea71-409e-b4e0-b877512713cf\",\n        \"Result\": \"{\\\"request_id\\\":\\\"9906759b-ea71-409e-b4e0-b877512713cf\\\",\\\"results\\\":[{\\\"statement_id\\\":0,\\\"series\\\":[{\\\"name\\\":\\\"fetch_project_statistics\\\",\\\"columns\\\":[\\\"key\\\",\\\"value\\\"]}],\\\"total\\\":0},{\\\"statement_id\\\":1,\\\"series\\\":[{\\\"name\\\":\\\"fetch_project_statistics\\\",\\\"columns\\\":[\\\"key\\\",\\\"value\\\"]}],\\\"total\\\":0},{\\\"statement_id\\\":2,\\\"series\\\":[{\\\"name\\\":\\\"fetch_project_statistics\\\",\\\"columns\\\":[\\\"key\\\",\\\"value\\\"]}],\\\"total\\\":0},{\\\"statement_id\\\":3,\\\"series\\\":[{\\\"name\\\":\\\"fetch_project_statistics\\\",\\\"columns\\\":[\\\"key\\\",\\\"value\\\"]}],\\\"total\\\":0},{\\\"statement_id\\\":4,\\\"series\\\":[{\\\"name\\\":\\\"fetch_project_statistics\\\",\\\"columns\\\":[\\\"key\\\",\\\"value\\\"]}],\\\"total\\\":0},{\\\"statement_id\\\":5,\\\"series\\\":[{\\\"name\\\":\\\"fetch_project_statistics\\\",\\\"columns\\\":[\\\"key\\\",\\\"value\\\"]}],\\\"total\\\":0},{\\\"statement_id\\\":6,\\\"series\\\":[{\\\"name\\\":\\\"fetch_project_statistics\\\",\\\"columns\\\":[\\\"key\\\",\\\"value\\\"]}],\\\"total\\\":0},{\\\"statement_id\\\":7,\\\"series\\\":[{\\\"name\\\":\\\"fetch_project_statistics\\\",\\\"columns\\\":[\\\"key\\\",\\\"value\\\"]}],\\\"total\\\":0},{\\\"statement_id\\\":8,\\\"series\\\":[{\\\"name\\\":\\\"fetch_project_statistics\\\",\\\"columns\\\":[\\\"key\\\",\\\"value\\\"]}],\\\"total\\\":0},{\\\"statement_id\\\":9,\\\"series\\\":[{\\\"name\\\":\\\"fetch_project_statistics\\\",\\\"columns\\\":[\\\"key\\\",\\\"value\\\"]}],\\\"total\\\":0}]}\"\n    }\n}",
+        "title": "111"
       }
     ],
     "DescribeDataFetchUrl": [
       {
         "document": "",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeDataFetchUrl\n&ID=1\n&StartTime=1625444040\n&EndTime=1625454840\n&Type=pagepv\n&Level=1\n&Isp=China Mobile\n&Area=China\n&NetType=2\n&Platform=2\n&Device=Samsung\n&VersionNum=Version\n&ExtFirst=Custom 1\n&ExtSecond=Custom 2\n&ExtThird=Custom 3\n&IsAbroad=1\n&Browser=ie\n&Os=apple\n&Engine=ie2\n&Brand=apple\n&From=index.html\n&CostType=avg\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataFetchUrl\n<Common request parameters>\n\n{\n    \"ExtSecond\": \"Custom 2\",\n    \"Engine\": \"ie2\",\n    \"IsAbroad\": \"1\",\n    \"Area\": \"China\",\n    \"NetType\": \"2\",\n    \"CostType\": \"avg\",\n    \"Level\": \"1\",\n    \"Os\": \"apple\",\n    \"Brand\": \"apple\",\n    \"Isp\": \"China Mobile\",\n    \"VersionNum\": \"Version\",\n    \"Platform\": \"2\",\n    \"ExtThird\": \"Custom 3\",\n    \"ExtFirst\": \"Custom 1\",\n    \"StartTime\": \"1625444040\",\n    \"Device\": \"Samsung\",\n    \"From\": \"index.html\",\n    \"EndTime\": \"1625454840\",\n    \"Type\": \"pagepv\",\n    \"ID\": \"1\",\n    \"Browser\": \"ie\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting DescribeDataFetchUrl information"
+        "title": "Getting `DescribeDataFetchUrl` information"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataFetchUrl\n<Common request parameters>\n\n{\n    \"EndTime\": \"1625454840\",\n    \"Type\": \"condition\",\n    \"ID\": \"1\",\n    \"StartTime\": \"1625444040\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d8b037d7-08ae-401d-84cf-071e7a133c00\",\n        \"Result\": \"{\\\"request_id\\\":\\\"d8b037d7-08ae-401d-84cf-071e7a133c00\\\",\\\"results\\\":[{\\\"statement_id\\\":0,\\\"total\\\":0},{\\\"statement_id\\\":1,\\\"total\\\":0}]}\"\n    }\n}",
+        "title": "333"
       }
     ],
     "DescribeDataFetchUrlInfo": [
@@ -227,9 +239,15 @@
     "DescribeDataSetUrlStatistics": [
       {
         "document": "",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeDataSetUrlStatistics\n&ID=1\n&StartTime=1625444040\n&EndTime=1625454840\n&Type=pagepv\n&Level=1\n&Isp=China Mobile\n&Area=China\n&NetType=2\n&Platform=2\n&Device=Samsung\n&VersionNum=Version\n&ExtFirst=Custom 1\n&ExtSecond=Custom 2\n&ExtThird=Custom 3\n&IsAbroad=1\n&Browser=ie\n&Os=apple\n&Engine=ie2\n&Brand=apple\n&From=index.html\n&CostType=avg\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataSetUrlStatistics\n<Common request parameters>\n\n{\n    \"ExtSecond\": \"Custom 2\",\n    \"Engine\": \"ie2\",\n    \"IsAbroad\": \"1\",\n    \"Area\": \"China\",\n    \"NetType\": \"2\",\n    \"CostType\": \"avg\",\n    \"Level\": \"1\",\n    \"Os\": \"apple\",\n    \"Brand\": \"apple\",\n    \"Isp\": \"China Mobile\",\n    \"VersionNum\": \"Version\",\n    \"Platform\": \"2\",\n    \"ExtThird\": \"Custom 3\",\n    \"ExtFirst\": \"Custom 1\",\n    \"StartTime\": \"1625444040\",\n    \"Device\": \"Samsung\",\n    \"From\": \"index.html\",\n    \"EndTime\": \"1625454840\",\n    \"Type\": \"pagepv\",\n    \"ID\": \"1\",\n    \"Browser\": \"ie\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting DescribeDataSetUrlStatistics information"
+        "title": "Getting `DescribeDataSetUrlStatistics` information"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataSetUrlStatistics\n<Common request parameters>\n\n{\n    \"EndTime\": \"1625454840\",\n    \"Type\": \"condition\",\n    \"ID\": \"1\",\n    \"StartTime\": \"1625444040\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"888d57f1-f544-4291-9a88-8638c050f208\",\n        \"Result\": \"{\\\"request_id\\\":\\\"888d57f1-f544-4291-9a88-8638c050f208\\\",\\\"results\\\":[{\\\"statement_id\\\":0,\\\"total\\\":0},{\\\"statement_id\\\":1,\\\"total\\\":0},{\\\"statement_id\\\":2,\\\"total\\\":0}]}\"\n    }\n}",
+        "title": "222"
       }
     ],
     "DescribeDataStaticProject": [
@@ -326,6 +344,20 @@
         "title": "Getting sample list"
       }
     ],
+    "DescribeProjects": [
+      {
+        "document": "",
+        "input": "https://rum.tencentcloudapi.com/?Action=DescribeProjects\n&Offset=1\n&Limit=20\n&Filters.0.Name='Name'\n&Filters.0.Values.0='Test project name'\n&Filters.0.Values.1='Test project name 2'\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"ProjectSet\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
+        "title": "Getting RUM project list by filter"
+      },
+      {
+        "document": "",
+        "input": "https://rum.tencentcloudapi.com/?Action=DescribeProjects\n&Offset=1\n&Limit=20\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"ProjectSet\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
+        "title": "Getting RUM project list"
+      }
+    ],
     "DescribePvList": [
       {
         "document": "",
@@ -348,6 +380,14 @@
         "input": "https://rum.tencentcloudapi.com/?Action=DescribeReleaseFiles\n&ProjectID=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Files\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
         "title": "Getting release file list"
+      }
+    ],
+    "DescribeScores": [
+      {
+        "document": "",
+        "input": "https://rum.tencentcloudapi.com/?Action=DescribeScores\n&ID=1\n&StartTime=2020011920\n&EndTime=2022051914\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"ScoreSet\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
+        "title": "Getting homepage score"
       }
     ],
     "DescribeTawAreas": [

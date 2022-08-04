@@ -1,0 +1,89 @@
+{
+  "actions": {
+    "CreateDomain": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDomain\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.com\",\n    \"IsMark\": \"no\",\n    \"GroupId\": 2\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"DomainInfo\": {\n            \"Id\": 62,\n            \"Punycode\": \"dnspod.com\",\n            \"Domain\": \"dnspod.com\",\n            \"GradeNsList\": [\n                \"source.dnspod.net\",\n                \"low.dnspod.net\"\n            ]\n        }\n    }\n}",
+        "title": "Adding a domain"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDomain\n<Common request parameters>\n\n{\n    \"Domain\": \"iceice.club\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"674a208e-4829-4c2d-a519-a85f2f9bb223\",\n        \"DomainInfo\": {\n            \"GradeNsList\": [\n                \"eunice.dnspod.net\",\n                \"country.dnspod.net\"\n            ],\n            \"Id\": 15,\n            \"Punycode\": \"iceice.club\",\n            \"Domain\": \"iceice.club\"\n        }\n    }\n}",
+        "title": "CreateDomain_success"
+      }
+    ],
+    "CreateRecord": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRecord\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"SubDomain\": \"bbbb\",\n    \"RecordType\": \"A\",\n    \"RecordLine\": \"Default\",\n    \"RecordLineId\": \"0\",\n    \"Value\": \"129.23.32.32\",\n    \"MX\": 0,\n    \"TTL\": 600,\n    \"Weight\": 10,\n    \"Status\": \"DISABLE\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"RecordId\": 162\n    }\n}",
+        "title": "Adding a record"
+      }
+    ],
+    "DeleteDomain": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDomain\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\"\n    }\n}",
+        "title": "Deleting the domain `dnspod.com`"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDomain\n<Common request parameters>\n\n{\n    \"Domain\": \"iceice.club\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5d459ba8-f335-4508-b6b2-efed8b531c8c\"\n    }\n}",
+        "title": "Deleting the domain `iceice.club`"
+      }
+    ],
+    "DeleteRecord": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRecord\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"RecordId\": 162\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\"\n    }\n}",
+        "title": "Deleting a DNS record"
+      }
+    ],
+    "DescribeDomain": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDomain\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"DomainInfo\": {\n            \"DnspodNsList\": [\n                \"source.dnspod.net\",\n                \"low.dnspod.net\"\n            ],\n            \"ActualNsList\": [\n                \"f1g1ns1.dnspod.net\",\n                \"f1g1ns2.dnspod.net\"\n            ],\n            \"RecordCount\": 2,\n            \"DomainId\": 61,\n            \"DnsStatus\": \"dnserror\",\n            \"IsVip\": \"no\",\n            \"Punycode\": \"tencent8.com\",\n            \"Grade\": \"DP_FREE\",\n            \"GradeLevel\": 2,\n            \"GradeTitle\": \"Free Edition\",\n            \"Status\": \"enable\",\n            \"GroupId\": 1,\n            \"IsMark\": \"no\",\n            \"Remark\": \"\",\n            \"UserId\": 1,\n            \"CreatedOn\": \"2021-04-06 15:51:45\",\n            \"UpdatedOn\": \"2021-04-06 15:51:45\",\n            \"TTL\": 600,\n            \"Owner\": \"qcloud_uin_100000014226@qcloud.com\",\n            \"CnameSpeedup\": \"disable\",\n            \"Uin\": \"100000014226\",\n            \"OwnerNick\": \"Loccsser\",\n            \"Domain\": \"tencent8.com\"\n        }\n    }\n}",
+        "title": "Getting the information of a domain"
+      }
+    ],
+    "DescribeRecord": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRecord\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"RecordId\": 162\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"RecordInfo\": {\n            \"Id\": 158,\n            \"SubDomain\": \"wwww\",\n            \"RecordType\": \"A\",\n            \"RecordLine\": \"Baidu\",\n            \"RecordLineId\": \"90=0\",\n            \"Value\": \"129.23.32.32\",\n            \"Weight\": null,\n            \"MX\": 0,\n            \"TTL\": 10,\n            \"Enabled\": 1,\n            \"MonitorStatus\": \"Ok\",\n            \"Remark\": \"\",\n            \"UpdatedOn\": \"2021-03-31 11:38:02\",\n            \"DomainId\": 62\n        }\n    }\n}",
+        "title": "Getting the information of a record"
+      }
+    ],
+    "ModifyDomainRemark": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainRemark\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"Remark\": \"This is the dedicated domain of XXX\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\"\n    }\n}",
+        "title": "Setting the remarks of a domain"
+      }
+    ],
+    "ModifyDomainStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainStatus\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.com\",\n    \"Status\": \"disable\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\"\n    }\n}",
+        "title": "Modifying the status of a domain"
+      }
+    ],
+    "ModifyRecord": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRecord\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.site\",\n    \"DomainId\": 62,\n    \"SubDomain\": \"bbbb\",\n    \"RecordType\": \"A\",\n    \"RecordLine\": \"Default\",\n    \"RecordLineId\": \"0\",\n    \"Value\": \"129.23.32.32\",\n    \"MX\": 0,\n    \"TTL\": 600,\n    \"Weight\": 10,\n    \"Status\": \"DISABLE\",\n    \"RecordId\": 162\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ab4f1426-ea15-42ea-8183-dc1b44151166\",\n        \"RecordId\": 162\n    }\n}",
+        "title": "Adding a record"
+      }
+    ]
+  },
+  "version": "1.0"
+}

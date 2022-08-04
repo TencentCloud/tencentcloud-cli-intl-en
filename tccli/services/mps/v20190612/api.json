@@ -613,6 +613,128 @@
       ],
       "usage": "out"
     },
+    "ActivityResItem": {
+      "document": "The execution results of the subtasks of a scheme.",
+      "members": [
+        {
+          "default": "",
+          "document": "The result of a transcoding task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "MediaProcessTaskTranscodeResult",
+          "name": "TranscodeTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The result of an animated image generating task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "MediaProcessTaskAnimatedGraphicResult",
+          "name": "AnimatedGraphicTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The result of a time point screenshot task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "MediaProcessTaskSampleSnapshotResult",
+          "name": "SnapshotByTimeOffsetTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The result of a sampled screenshot task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "MediaProcessTaskSampleSnapshotResult",
+          "name": "SampleSnapshotTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The result of an image sprite task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "MediaProcessTaskImageSpriteResult",
+          "name": "ImageSpriteTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The result of an adaptive bitrate streaming task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "MediaProcessTaskAdaptiveDynamicStreamingResult",
+          "name": "AdaptiveDynamicStreamingTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The result of a content recognition task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "ScheduleRecognitionTaskResult",
+          "name": "RecognitionTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The result of a content moderation task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "ScheduleReviewTaskResult",
+          "name": "ReviewTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The result of a content analysis task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "ScheduleAnalysisTaskResult",
+          "name": "AnalysisTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ActivityResult": {
+      "document": "The execution result of a scheme.",
+      "members": [
+        {
+          "default": "",
+          "document": "The type of the scheme’s subtask.\n<li>Transcode: Transcoding</li>\n<li>SampleSnapshot: Sampled screenshot</li>\n<li>AnimatedGraphics: Animated image generating</li>\n<li>SnapshotByTimeOffset: Time point screenshot</li>\n<li>ImageSprites: Image sprite generating</li>\n<li>AdaptiveDynamicStreaming: Adaptive bitrate streaming</li>\n<li>AiContentReview: Content moderation</li>\n<li>AIRecognition: Content recognition</li>\n<li>AIAnalysis: Content analysis</li>",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ActivityType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The execution results of the subtasks of the scheme.",
+          "example": "NULL",
+          "member": "ActivityResItem",
+          "name": "ActivityResItem",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "AdaptiveDynamicStreamingInfoItem": {
       "document": "Adaptive bitrate streaming information",
       "members": [
@@ -4066,6 +4188,32 @@
       ],
       "usage": "out"
     },
+    "ArtifactRepairConfig": {
+      "document": "Artifact removal (smoothing) configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The strength. Valid values:\n<li>weak</li>\n<li>strong</li>\nDefault value: weak.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "AsrFullTextConfigureInfo": {
       "document": "Control parameter of a full speech recognition task.",
       "members": [
@@ -4275,6 +4423,32 @@
         }
       ],
       "usage": "in"
+    },
+    "ColorEnhanceConfig": {
+      "document": "Color enhancement configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The strength. Valid values:\n<li>weak</li>\n<li>normal</li>\n<li>strong</li>\nDefault value: weak.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "ContentReviewTemplateItem": {
       "document": "Details of a content audit template",
@@ -5293,6 +5467,7 @@
         {
           "default": "",
           "document": "Container format. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.",
+          "example": "mp4",
           "member": "string",
           "name": "Container",
           "required": true,
@@ -5301,6 +5476,7 @@
         {
           "default": "",
           "document": "Name of a transcoding template. Length limit: 64 characters.",
+          "example": "转码模板1",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -5309,6 +5485,7 @@
         {
           "default": "",
           "document": "Template description. Length limit: 256 characters.",
+          "example": "无",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -5317,6 +5494,7 @@
         {
           "default": "",
           "document": "Whether to remove video data. Valid values:\n<li>0: Retain</li>\n<li>1: Remove</li>\nDefault value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "RemoveVideo",
           "required": false,
@@ -5325,6 +5503,7 @@
         {
           "default": "",
           "document": "Whether to remove audio data. Valid values:\n<li>0: Retain</li>\n<li>1: Remove</li>\nDefault value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "RemoveAudio",
           "required": false,
@@ -5333,6 +5512,7 @@
         {
           "default": "",
           "document": "Video stream configuration parameter. This field is required when `RemoveVideo` is 0.",
+          "example": "无",
           "member": "VideoTemplateInfo",
           "name": "VideoTemplate",
           "required": false,
@@ -5341,6 +5521,7 @@
         {
           "default": "",
           "document": "Audio stream configuration parameter. This field is required when `RemoveAudio` is 0.",
+          "example": "无",
           "member": "AudioTemplateInfo",
           "name": "AudioTemplate",
           "required": false,
@@ -5349,8 +5530,18 @@
         {
           "default": "",
           "document": "TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.",
+          "example": "无",
           "member": "TEHDConfig",
           "name": "TEHDConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Audio/Video enhancement configuration.",
+          "example": "“”",
+          "member": "EnhanceConfig",
+          "name": "EnhanceConfig",
           "required": false,
           "type": "object"
         }
@@ -6623,95 +6814,130 @@
       "document": "DescribeTaskDetail response structure.",
       "members": [
         {
-          "document": "Task type. Currently valid values:\n<li>WorkflowTask: Video workflow processing task.</li>\n<li>LiveStreamProcessTask: Live stream processing task.</li>",
+          "document": "The task type. Valid values:\n<li>WorkflowTask</li>\n<li>EditMediaTask</li>\n<li>LiveStreamProcessTask</li>\n<li>ScheduleTask (scheme)</li>",
+          "example": "WorkflowTask",
           "member": "string",
           "name": "TaskType",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Task status. Valid values:\n<li>WAITING: Waiting;</li>\n<li>PROCESSING: Processing;</li>\n<li>FINISH: Completed.</li>",
+          "example": "FINISH",
           "member": "string",
           "name": "Status",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Creation time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "2019-07-16T06:21:27Z",
           "member": "string",
           "name": "CreateTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Start time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "2019-07-16T06:21:28Z",
           "member": "string",
           "name": "BeginProcessTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "End time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "2019-07-16T06:21:46Z",
           "member": "string",
           "name": "FinishTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "WorkflowTask",
-          "name": "WorkflowTask",
+          "document": "Video editing task information. This field has a value only when `TaskType` is `EditMediaTask`.",
+          "example": "无",
+          "member": "EditMediaTask",
+          "name": "EditMediaTask",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
-          "document": "Video editing task information. This field has a value only when `TaskType` is `EditMediaTask`.",
-          "member": "EditMediaTask",
-          "name": "EditMediaTask",
+          "document": "Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "WorkflowTask",
+          "name": "WorkflowTask",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "document": "Information of a live stream processing task. This field has a value only when `TaskType` is `LiveStreamProcessTask`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "LiveStreamProcessTask",
           "name": "LiveStreamProcessTask",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "document": "Event notification information of a task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "TaskNotifyConfig",
           "name": "TaskNotifyConfig",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "document": "Task flow priority. Value range: [-10, 10].",
+          "example": "0",
           "member": "int64",
           "name": "TasksPriority",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.",
+          "example": "\"\"",
           "member": "string",
           "name": "SessionId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
+          "example": "\"\"",
           "member": "string",
           "name": "SessionContext",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Extended information field, used in specific scenarios.",
+          "example": "\"\"",
           "member": "string",
           "name": "ExtInfo",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "The information of a scheme. This parameter is valid only if `TaskType` is `ScheduleTask`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ScheduleTask",
+          "name": "ScheduleTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -6757,16 +6983,29 @@
       "members": [
         {
           "document": "Task overview list.",
+          "example": "无",
           "member": "TaskSimpleInfo",
           "name": "TaskSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Scrolling identifier. If a request does not return all the data entries, this field indicates the ID of the next entry. If this field is an empty string, there is no more data.",
+          "example": "taskId6",
           "member": "string",
           "name": "ScrollToken",
+          "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of records that meet the conditions.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -6784,6 +7023,7 @@
         {
           "default": "",
           "document": "Unique ID filter of transcoding templates. Array length limit: 100.",
+          "example": "[\"10\\n\"]",
           "member": "int64",
           "name": "Definitions",
           "required": false,
@@ -6792,6 +7032,7 @@
         {
           "default": "",
           "document": "Template type filter. Valid values:\n<li>Preset: Preset template;</li>\n<li>Custom: Custom template.</li>",
+          "example": "“”",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -6800,6 +7041,7 @@
         {
           "default": "",
           "document": "Container format filter. Valid values:\n<li>Video: Video container format that can contain both video stream and audio stream;</li>\n<li>PureAudio: Audio container format that can contain only audio stream.</li>",
+          "example": "“”",
           "member": "string",
           "name": "ContainerType",
           "required": false,
@@ -6808,6 +7050,7 @@
         {
           "default": "",
           "document": "TESHD filter, which is used to filter common transcoding or ultra-fast HD transcoding templates. Valid values:\n<li>Common: Common transcoding template;</li>\n<li>TEHD: TESHD template.</li>",
+          "example": "“”",
           "member": "string",
           "name": "TEHDType",
           "required": false,
@@ -6816,6 +7059,7 @@
         {
           "default": "",
           "document": "Paging offset. Default value: 0.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -6824,10 +7068,20 @@
         {
           "default": "",
           "document": "Number of returned entries. Default value: 10. Maximum value: 100.",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The template type (replacing `TEHDType`). Valid values:\n<li>Common: Common transcoding template</li>\n<li>TEHD: TESHD template</li>\n<li>Enhance: Audio/Video enhancement template.</li>\nThis parameter is left empty by default, which indicates to return all types of templates.",
+          "example": "“”",
+          "member": "string",
+          "name": "TranscodeType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -7355,6 +7609,22 @@
       ],
       "type": "object"
     },
+    "EnhanceConfig": {
+      "document": "Audio/Video enhancement configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Video enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VideoEnhanceConfig",
+          "name": "VideoEnhance",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "ExecuteFunctionRequest": {
       "document": "ExecuteFunction request structure.",
       "members": [
@@ -7508,6 +7778,58 @@
       ],
       "usage": "in"
     },
+    "FaceEnhanceConfig": {
+      "document": "Face enhancement configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The strength. Value range: 0.0-1.0\nDefault value: 0.0.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "float",
+          "name": "Intensity",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "FrameRateConfig": {
+      "document": "Frame interpolation configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The frame rate (Hz). Value range: [0, 100].\nDefault value: 0.\nNote: For transcoding, this parameter will overwrite `Fps` of `VideoTemplate`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Fps",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "FrameTagConfigureInfo": {
       "document": "Control parameter of intelligent frame-specific tagging task",
       "members": [
@@ -7538,6 +7860,32 @@
       ],
       "usage": "in"
     },
+    "HdrConfig": {
+      "document": "HDR configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The strength. Valid values:\n<li>HDR10</li>\n<li>HLG</li>\nDefault value: HDR10.\nNote: The video codec must be `libx265`.\nNote: The bit depth for video encoding is 10 bits.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "HeadTailParameter": {
       "document": "Opening and closing credits parameters",
       "members": [
@@ -7563,6 +7911,32 @@
         }
       ],
       "usage": "in"
+    },
+    "ImageQualityEnhanceConfig": {
+      "document": "Overall enhancement configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The strength. Valid values:\n<li>weak</li>\n<li>normal</li>\n<li>strong</li>\nDefault value: weak.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "ImageSpriteTaskInput": {
       "document": "Input parameter type of an image sprite generating task",
@@ -8708,6 +9082,32 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "LowLightEnhanceConfig": {
+      "document": "Low-light enhancement configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The strength. Valid values:\n<li>normal</li>\nDefault value: normal.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -11208,6 +11608,7 @@
         {
           "default": "",
           "document": "Unique ID of a transcoding template.",
+          "example": "1008",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -11216,6 +11617,7 @@
         {
           "default": "",
           "document": "Container format. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.",
+          "example": "mp4",
           "member": "string",
           "name": "Container",
           "required": false,
@@ -11224,6 +11626,7 @@
         {
           "default": "",
           "document": "Name of a transcoding template. Length limit: 64 characters.",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -11232,6 +11635,7 @@
         {
           "default": "",
           "document": "Template description. Length limit: 256 characters.",
+          "example": "无",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -11240,6 +11644,7 @@
         {
           "default": "",
           "document": "Whether to remove video data. Valid values:\n<li>0: Retain</li>\n<li>1: Remove</li>",
+          "example": "无",
           "member": "int64",
           "name": "RemoveVideo",
           "required": false,
@@ -11248,6 +11653,7 @@
         {
           "default": "",
           "document": "Whether to remove audio data. Valid values:\n<li>0: Retain</li>\n<li>1: Remove</li>",
+          "example": "无",
           "member": "int64",
           "name": "RemoveAudio",
           "required": false,
@@ -11256,6 +11662,7 @@
         {
           "default": "",
           "document": "Video stream configuration parameter.",
+          "example": "无",
           "member": "VideoTemplateInfoForUpdate",
           "name": "VideoTemplate",
           "required": false,
@@ -11264,6 +11671,7 @@
         {
           "default": "",
           "document": "Audio stream configuration parameter.",
+          "example": "无",
           "member": "AudioTemplateInfoForUpdate",
           "name": "AudioTemplate",
           "required": false,
@@ -11272,8 +11680,18 @@
         {
           "default": "",
           "document": "TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.",
+          "example": "无",
           "member": "TEHDConfigForUpdate",
           "name": "TEHDConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Audio/Video enhancement settings.",
+          "example": "无",
+          "member": "EnhanceConfig",
+          "name": "EnhanceConfig",
           "required": false,
           "type": "object"
         }
@@ -11780,39 +12198,58 @@
       "document": "ParseNotification response structure.",
       "members": [
         {
-          "document": "Supported event type. Valid values:\n<li>WorkflowTask: Video workflow processing task.</li>",
+          "document": "The event type. Valid values:\n<li>WorkflowTask</li>\n<li>EditMediaTask</li>\n<li>ScheduleTask (scheme)</li>",
+          "example": "WorkflowTask",
           "member": "string",
           "name": "EventType",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "WorkflowTask",
           "name": "WorkflowTaskEvent",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "document": "Video editing task information. This field has a value only when `TaskType` is `EditMediaTask`.",
+          "example": "无",
           "member": "EditMediaTask",
           "name": "EditMediaTaskEvent",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "document": "The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.",
+          "example": "\"xxxx\"",
           "member": "string",
           "name": "SessionId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
+          "example": "\"\"",
           "member": "string",
           "name": "SessionContext",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "The information of a scheme. This parameter is valid only if `TaskType` is `ScheduleTask`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ScheduleTask",
+          "name": "ScheduleTaskEvent",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -12603,6 +13040,15 @@
           "name": "SessionContext",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The scheme ID.\nNotes: 1. If output information is not specified for a scheme, the request parameters `OutputStorage` and `OutputDir` will be used.\n2. If a notification is not configured for a scheme, the request parameter `TaskNotifyConfig` will be used.\n3. The trigger configured for a scheme is for automatically starting a scheme. It stops working when you manually call this API to start a scheme.",
+          "example": "无",
+          "member": "int64",
+          "name": "ScheduleId",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -13243,6 +13689,312 @@
       ],
       "usage": "out"
     },
+    "ScheduleAnalysisTaskResult": {
+      "document": "The result of a content analysis task of a scheme.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task has failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. 0 indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error message.",
+          "example": "\"xx\"",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The input of the content analysis task.",
+          "example": "NULL",
+          "member": "AiAnalysisTaskInput",
+          "name": "Input",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The output of the content analysis task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "AiAnalysisResult",
+          "name": "Output",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ScheduleRecognitionTaskResult": {
+      "document": "The result of a content recognition task of a scheme.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task has failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. 0 indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error message.",
+          "example": "\"xx\"",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The input of the content recognition task.",
+          "example": "NULL",
+          "member": "AiRecognitionTaskInput",
+          "name": "Input",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The output of the content recognition task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "AiRecognitionResult",
+          "name": "Output",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ScheduleReviewTaskResult": {
+      "document": "The result of a content moderation task of a scheme.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task has failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. 0 indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error message.",
+          "example": "\"xx\"",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The input of the content moderation task.",
+          "example": "NULL",
+          "member": "AiContentReviewTaskInput",
+          "name": "Input",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The output of the content moderation task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "AiContentReviewResult",
+          "name": "Output",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ScheduleTask": {
+      "document": "The information of a scheme.",
+      "members": [
+        {
+          "default": "",
+          "document": "The scheme ID.",
+          "example": "NULL",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The scheme status. Valid values:\n<li>PROCESSING</li>\n<li>FINISH</li>",
+          "example": "NULL",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The information of the file processed.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "MediaInputInfo",
+          "name": "InputInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The metadata of the source video.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "MediaMetaData",
+          "name": "MetaData",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The output of the scheme.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "ActivityResult",
+          "name": "ActivityResultSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ScratchRepairConfig": {
+      "document": "Banding removal configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The strength. Value range: 0.0-1.0\nDefault value: 0.0\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "float",
+          "name": "Intensity",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "SharpEnhanceConfig": {
+      "document": "Detail enhancement configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The strength. Value range: 0.0-1.0\nDefault value: 0.0\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "float",
+          "name": "Intensity",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "SnapshotByTimeOffsetTaskInput": {
       "document": "Input parameter type of a time point screencapturing task",
       "members": [
@@ -13416,6 +14168,42 @@
         }
       ],
       "usage": "out"
+    },
+    "SuperResolutionConfig": {
+      "document": "Super resolution configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The strength. Valid values:\n<li>lq: For low-resolution videos with obvious noise</li>\n<li>hq: For high-resolution videos</li>\nDefault value: lq.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The ratio of the target resolution to the original resolution. Valid values:\n<li>2</li>\nDefault value: 2.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Size",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "SvgWatermarkInput": {
       "document": "Input parameter of an SVG watermarking template",
@@ -13598,7 +14386,7 @@
         },
         {
           "default": "",
-          "document": "The notification type. Valid values:\n<li>CMQ: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>\n<li>TDMQ-CMQ: Message queue</li>\n<li>URL: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>\nDefault value: `TDMQ-CMQ`.",
+          "document": "The notification type. Valid values:\n<li>CMQ: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>\n<li>TDMQ-CMQ: Message queue</li>\n<li>URL: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>\n<li>SCF: We do not recommend this notification type, which you need to configure in the SCF console.</li>\nDefault value: `TDMQ-CMQ`.",
           "example": "URL",
           "member": "string",
           "name": "NotifyType",
@@ -14128,6 +14916,7 @@
         {
           "default": "",
           "document": "Unique ID of a transcoding template.",
+          "example": "0",
           "member": "string",
           "name": "Definition",
           "required": true,
@@ -14137,6 +14926,7 @@
         {
           "default": "",
           "document": "Container format. Valid values: mp4, flv, hls, mp3, flac, ogg.",
+          "example": "“”",
           "member": "string",
           "name": "Container",
           "required": true,
@@ -14146,6 +14936,7 @@
         {
           "default": "",
           "document": "Name of a transcoding template.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "“”",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -14155,6 +14946,7 @@
         {
           "default": "",
           "document": "Template description.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "“”",
           "member": "string",
           "name": "Comment",
           "required": true,
@@ -14164,6 +14956,7 @@
         {
           "default": "",
           "document": "Template type. Valid values:\n<li>Preset: Preset template;</li>\n<li>Custom: Custom template.</li>",
+          "example": "“”",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -14173,6 +14966,7 @@
         {
           "default": "",
           "document": "Whether to remove video data. Valid values:\n<li>0: Retain;</li>\n<li>1: Remove.</li>",
+          "example": "0",
           "member": "int64",
           "name": "RemoveVideo",
           "required": true,
@@ -14182,6 +14976,7 @@
         {
           "default": "",
           "document": "Whether to remove audio data. Valid values:\n<li>0: Retain;</li>\n<li>1: Remove.</li>",
+          "example": "0",
           "member": "int64",
           "name": "RemoveAudio",
           "required": true,
@@ -14191,6 +14986,7 @@
         {
           "default": "",
           "document": "Video stream configuration parameter. This field is valid only when `RemoveVideo` is 0.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "VideoTemplateInfo",
           "name": "VideoTemplate",
           "required": true,
@@ -14200,6 +14996,7 @@
         {
           "default": "",
           "document": "Audio stream configuration parameter. This field is valid only when `RemoveAudio` is 0.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AudioTemplateInfo",
           "name": "AudioTemplate",
           "required": true,
@@ -14209,6 +15006,7 @@
         {
           "default": "",
           "document": "TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "TEHDConfig",
           "name": "TEHDConfig",
           "required": true,
@@ -14218,6 +15016,7 @@
         {
           "default": "",
           "document": "Container format filter. Valid values:\n<li>Video: Video container format that can contain both video stream and audio stream;</li>\n<li>PureAudio: Audio container format that can contain only audio stream.</li>",
+          "example": "“”",
           "member": "string",
           "name": "ContainerType",
           "required": true,
@@ -14227,6 +15026,7 @@
         {
           "default": "",
           "document": "Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "“”",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -14236,11 +15036,22 @@
         {
           "default": "",
           "document": "Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "“”",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Audio/Video enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "EnhanceConfig",
+          "name": "EnhanceConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -14579,12 +15390,154 @@
       ],
       "usage": "in"
     },
+    "VideoDenoiseConfig": {
+      "document": "Image noise removal configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The strength. Valid values:\n<li>weak</li>\n<li>strong</li>\nDefault value: weak.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "VideoEnhanceConfig": {
+      "document": "Video enhancement configuration.",
+      "members": [
+        {
+          "default": "",
+          "document": "Frame interpolation configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "FrameRateConfig",
+          "name": "FrameRate",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Super resolution configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SuperResolutionConfig",
+          "name": "SuperResolution",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "HDR configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "HdrConfig",
+          "name": "Hdr",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Image noise removal configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VideoDenoiseConfig",
+          "name": "Denoise",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Overall enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ImageQualityEnhanceConfig",
+          "name": "ImageQualityEnhance",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Color enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ColorEnhanceConfig",
+          "name": "ColorEnhance",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Detail enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SharpEnhanceConfig",
+          "name": "SharpEnhance",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Face enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "FaceEnhanceConfig",
+          "name": "FaceEnhance",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Low-light enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LowLightEnhanceConfig",
+          "name": "LowLightEnhance",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Banding removal configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ScratchRepairConfig",
+          "name": "ScratchRepair",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Artifact removal (smoothing) configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ArtifactRepairConfig",
+          "name": "ArtifactRepair",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "VideoTemplateInfo": {
       "document": "Video stream configuration parameter",
       "members": [
         {
           "default": "",
-          "document": "Video stream codec. Valid values:\n<li>`libx264`: H.264</li>\n<li>`libx265`: H.265</li>\n<li>`av1`: AOMedia Video 1</li>",
+          "document": "The video codec. Valid values:\n<li>`libx264`: H.264</li>\n<li>`libx265`: H.265</li>\n<li>`av1`: AOMedia Video 1</li>\nNote: You must specify a resolution (not higher than 640 x 480) if the H.265 codec is used.\nNote: You can only use the AOMedia Video 1 codec for MP4 files.",
           "example": "libx264",
           "member": "string",
           "name": "Codec",
@@ -14594,7 +15547,7 @@
         },
         {
           "default": "",
-          "document": "Video frame rate in Hz. Value range: [0, 100].\nIf the value is 0, the frame rate will be the same as that of the source video.",
+          "document": "The video frame rate (Hz). Value range: [0, 100].\nIf the value is 0, the frame rate will be the same as that of the source video.\nNote: For adaptive bitrate streaming, the value range of this parameter is [0, 60].",
           "example": "0",
           "member": "uint64",
           "name": "Fps",
@@ -14604,7 +15557,7 @@
         },
         {
           "default": "",
-          "document": "Video stream bitrate (Kbps). Valid values: `0`; [75, 35000]\nIf the value is `0`, the original video bitrate will be used.",
+          "document": "The video bitrate (Kbps). Value range: 0 and [128, 35000].\nIf the value is 0, the bitrate of the video will be the same as that of the source video.",
           "example": "0",
           "member": "uint64",
           "name": "Bitrate",
@@ -14614,7 +15567,7 @@
         },
         {
           "default": "",
-          "document": "Resolution adaption. Valid values:\n<li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open.",
+          "document": "Resolution adaption. Valid values:\n<li>open: Enabled. When resolution adaption is enabled, `Width` indicates the long side of a video, while `Height` indicates the short side.</li>\n<li>close: Disabled. When resolution adaption is disabled, `Width` indicates the width of a video, while `Height` indicates the height.</li>\nDefault value: open.\nNote: When resolution adaption is enabled, `Width` cannot be smaller than `Height`.",
           "example": "open",
           "member": "string",
           "name": "ResolutionAdaptive",
@@ -14654,7 +15607,7 @@
         },
         {
           "default": "",
-          "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black.",
+          "document": "The fill mode, which indicates how a video is resized when the video’s original aspect ratio is different from the target aspect ratio. Valid values:\n<li>stretch: Stretch the image frame by frame to fill the entire screen. The video image may become \"squashed\" or \"stretched\" after transcoding.</li>\n<li>black: Keep the image's original aspect ratio and fill the blank space with black bars.</li>\n<li>white: Keep the image’s original aspect ratio and fill the blank space with white bars.</li>\n<li>gauss: Keep the image’s original aspect ratio and apply Gaussian blur to the blank space.</li>\nDefault value: black.\nNote: Only `stretch` and `black` are supported for adaptive bitrate streaming.",
           "example": "black",
           "member": "string",
           "name": "FillType",
@@ -14680,7 +15633,7 @@
       "members": [
         {
           "default": "",
-          "document": "Video stream codec. Valid values:\n<li>libx264: H.264</li>\n<li>libx265: H.265</li>\nCurrently, a resolution within 640*480p must be specified for H.265.",
+          "document": "The video codec. Valid values:\n<li>libx264: H.264</li>\n<li>libx265: H.265</li>\n<li>av1: AOMedia Video 1</li>\nNote: You must specify a resolution (not higher than 640 x 480) if the H.265 codec is used.\nNote: You can only use the AOMedia Video 1 codec for MP4 files.",
           "example": "libx264",
           "member": "string",
           "name": "Codec",
@@ -14710,7 +15663,7 @@
         },
         {
           "default": "",
-          "document": "Resolution adaption. Valid values:\n<li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>",
+          "document": "Resolution adaption. Valid values:\n<li>open: Enabled. When resolution adaption is enabled, `Width` indicates the long side of a video, while `Height` indicates the short side.</li>\n<li>close: Disabled. When resolution adaption is disabled, `Width` indicates the width of a video, while `Height` indicates the height.</li>\nNote: When resolution adaption is enabled, `Width` cannot be smaller than `Height`.",
           "example": "open",
           "member": "string",
           "name": "ResolutionAdaptive",

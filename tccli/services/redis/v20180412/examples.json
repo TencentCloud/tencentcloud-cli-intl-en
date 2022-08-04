@@ -61,13 +61,13 @@
         "document": "",
         "input": "https://redis.tencentcloudapi.com/?Action=CreateInstances\n&ZoneId=100002\n&TypeId=6\n&MemSize=1024\n&GoodsNum=1\n&Period=1\n&BillingMode=0\n&Password=**********\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2a836c00-175f-11eb-aeb3-db134c8d8fec\",\n        \"InstanceIds\": [\n            \"crs-kic39axx\"\n        ],\n        \"DealId\": \"22716\"\n    }\n}",
-        "title": "Sample request: Purchasing a pay-as-you-go Memory Edition (Standard Architecture) TencentDB for Redis 4.0 instance"
+        "title": "Purchasing a pay-as-you-go TencentDB for Redis v4.0 instance on Memory Edition (standard architecture)"
       },
       {
         "document": "",
         "input": "https://redis.tencentcloudapi.com/?Action=CreateInstances\n&ZoneId=200002\n&TypeId=9\n&MemSize=2048\n&GoodsNum=1\n&Period=3\n&BillingMode=1\n&VpcId=vpc-fmh*****\n&SubnetId=subnet-680c****\n&RedisShardNum=3\n&RedisReplicasNum=1\n&NoAuth=true\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DealId\": \"154494263\",\n        \"InstanceIds\": [\n            \"crs-h9sn****\"\n        ],\n        \"RequestId\": \"d39baee1-e34f-4685-a810-5d27c510acb3\"\n    }\n}",
-        "title": "Sample request: Purchasing a monthly subscribed Memory Edition (Cluster Architecture) TencentDB for Redis 5.0 instance"
+        "title": "Purchasing a monthly subscribed TencentDB for Redis v5.0 instance on Memory Edition (cluster architecture) "
       }
     ],
     "CreateParamTemplate": [
@@ -553,9 +553,9 @@
     "RestoreInstance": [
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=RestoreInstance\n&InstanceId=crs-5a4py64p\n&Password=mypassword\n&BackupId=678362566696298532848117\n&<Common request parameters>",
+        "input": "https://redis.tencentcloudapi.com/?Action=RestoreInstance\r\n&InstanceId=crs-5a4py64p\r\n&Password=mypassword\r\n&BackupId=678362566696298532848117\r\n&<Common request parameter>",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"6954227\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
-        "title": "Restoring Redis instance"
+        "title": "Restoring a Redis Instance"
       }
     ],
     "StartupInstance": [

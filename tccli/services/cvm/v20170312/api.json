@@ -18,6 +18,18 @@
       "name": "Associates security groups with instances",
       "output": "AssociateSecurityGroupsResponse"
     },
+    "ConfigureChcAssistVpc": {
+      "document": "This API is used to configure the out-of-band network and deployment network of a CHC host.",
+      "input": "ConfigureChcAssistVpcRequest",
+      "name": "Configures the out-of-band network and deployment network of a CHC",
+      "output": "ConfigureChcAssistVpcResponse"
+    },
+    "ConfigureChcDeployVpc": {
+      "document": "This API is used to configure the deployment network of a CHC host.",
+      "input": "ConfigureChcDeployVpcRequest",
+      "name": "Configures the deployment network of a CHC host",
+      "output": "ConfigureChcDeployVpcResponse"
+    },
     "CreateDisasterRecoverGroup": {
       "document": "This API is used to create a [spread placement group](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1). After you create one, you can specify it for an instance when you [create the instance](https://intl.cloud.tencent.com/document/api/213/15730?from_cn_redirect=1), ",
       "input": "CreateDisasterRecoverGroupRequest",
@@ -71,6 +83,12 @@
       "input": "DeleteLaunchTemplateVersionsRequest",
       "name": "Deletes one or more instance launch template versions",
       "output": "DeleteLaunchTemplateVersionsResponse"
+    },
+    "DescribeChcHosts": {
+      "document": "This API is used to query the details of one or more CHC host.\n\n* You can filter the query results with the instance ID, name or device type. See `Filter` for more information.\n* If no parameter is defined, a certain number of instances under the current account will be returned. The number is specified by `Limit` and is `20` by default.",
+      "input": "DescribeChcHostsRequest",
+      "name": "Queries the details of CHC hosts",
+      "output": "DescribeChcHostsResponse"
     },
     "DescribeDisasterRecoverGroupQuota": {
       "document": "This API is used to query the quota of [spread placement groups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1).",
@@ -252,6 +270,12 @@
       "name": "Queries the capacity price of an instance after disk expansion",
       "output": "InquiryPriceResizeInstanceDisksResponse"
     },
+    "ModifyChcAttribute": {
+      "document": "This API is used to modify the CHC host attributes.",
+      "input": "ModifyChcAttributeRequest",
+      "name": "Modifies the CHC host attributes",
+      "output": "ModifyChcAttributeResponse"
+    },
     "ModifyDisasterRecoverGroupAttribute": {
       "document": "This API is used to modify the attributes of [spread placement groups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1).",
       "input": "ModifyDisasterRecoverGroupAttributeRequest",
@@ -283,7 +307,7 @@
       "output": "ModifyInstancesAttributeResponse"
     },
     "ModifyInstancesProject": {
-      "document": "This API is used to change the project to which an instance belongs.\n\n* Project is a virtual concept. You can create multiple projects under one account, manage different resources in each project, and assign different instances to different projects. You may use the [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API to query instances and use the project ID to filter results.\n* You cannot modify the project of an instance that is bound to a load balancer. You need to firstly unbind the load balancer from the instance by using the [`DeregisterInstancesFromLoadBalancer`](https://intl.cloud.tencent.com/document/api/214/1258?from_cn_redirect=1) API.\n[^_^]: # (If you modify the project of an instance, security groups associated with the instance will be automatically disassociated. You can use the [`ModifyInstancesAttribute`](https://intl.cloud.tencent.com/document/api/213/15739?from_cn_redirect=1) API to associate the instance with the security groups again.\n* Batch operations are supported. You can operate up to 100 instances in each request.\n* You can call the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) API and find the result of the operation in the response parameter `LatestOperationState`. If the value is `SUCCESS`, the operation is successful.",
+      "document": "This API is used to change the project to which an instance is assigned.\n\n* Project is a virtual concept. You can create multiple projects under one account, manage different resources in each project, and assign different instances to different projects. You may use the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API to query instances and use the project ID to filter the results.\n* You cannot modify the project of an instance that is bound to a load balancer. You need to unbind the load balancer from the instance by using the [DeregisterInstancesFromLoadBalancer](https://intl.cloud.tencent.com/document/api/214/1258?from_cn_redirect=1) API before using this API.\n* Batch operations are supported. Up to 100 instances per request is allowed.\n* You can use the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) to query the operation result. If the `LatestOperationState` in the response is `SUCCESS`, the operation is successful.",
       "input": "ModifyInstancesProjectRequest",
       "name": "Modifies the project of an instance",
       "output": "ModifyInstancesProjectResponse"
@@ -317,6 +341,18 @@
       "input": "RebootInstancesRequest",
       "name": "Restarts instances",
       "output": "RebootInstancesResponse"
+    },
+    "RemoveChcAssistVpc": {
+      "document": "This API is used to remove the out-of-band network and deployment network of a CHC host.",
+      "input": "RemoveChcAssistVpcRequest",
+      "name": "Removes the out-of-band network and deployment network of a CHC host",
+      "output": "RemoveChcAssistVpcResponse"
+    },
+    "RemoveChcDeployVpc": {
+      "document": "This API is used to remove the deployment network of a CHC host.",
+      "input": "RemoveChcDeployVpcRequest",
+      "name": "Removes the deployment network of a CHC",
+      "output": "RemoveChcDeployVpcResponse"
     },
     "ResetInstance": {
       "document": "This API is used to reinstall the operating system of the specified instance.\n\n* If you specify an `ImageId`, the specified image is used. Otherwise, the image used by the current instance is used.\n* The system disk will be formatted and reset. Therefore, make sure that no important files are stored on the system disk.\n* If the operating system switches between `Linux` and `Windows`, the system disk `ID` of the instance will change, and the snapshots that are associated with the system disk can no longer be used to roll back and restore data.\n* If no password is specified, you will get a random password via internal message.\n* You can only use this API to switch the operating system between `Linux` and `Windows` for instances whose [system disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#SystemDisk) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.\n* Currently, this API only supports instances in Mainland China regions.",
@@ -597,6 +633,345 @@
       ],
       "usage": "in"
     },
+    "ChcDeployExtraConfig": {
+      "document": "Configuration options for MiniOS of the CHC deployment network",
+      "members": [],
+      "usage": "in"
+    },
+    "ChcHost": {
+      "document": "CHC host information",
+      "members": [
+        {
+          "default": "",
+          "document": "CHC host ID",
+          "example": "chc-1a2b3c4d",
+          "member": "string",
+          "name": "ChcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "example": "托管服务器1",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Server serial number",
+          "example": "sn34asdfabd",
+          "member": "string",
+          "name": "SerialNumber",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CHC host status<br/>\n<ul>\n<li>REGISTERED: The CHC host is registered, but the out-of-band network and deployment network are not configured.</li>\n<li>VPC_READY: The out-of-band network and deployment network are configured.</li>\n<li>PREPARED: It’s ready and can be associated with a CVM.</li>\n<li>ONLINE: It’s already associated with a CVM.</li>\n</ul>",
+          "example": "ONLINE",
+          "member": "string",
+          "name": "InstanceState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Device type\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "CHC_HS1",
+          "member": "string",
+          "name": "DeviceType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Availability zone",
+          "example": "NA",
+          "member": "Placement",
+          "name": "Placement",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Out-of-band network\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NA",
+          "member": "VirtualPrivateCloud",
+          "name": "BmcVirtualPrivateCloud",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Out-of-band network IP\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "10.12.10.34",
+          "member": "string",
+          "name": "BmcIp",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Out-of-band network security group ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"sg-1a2b34af\"]",
+          "member": "string",
+          "name": "BmcSecurityGroupIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Deployment network\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "NA",
+          "member": "VirtualPrivateCloud",
+          "name": "DeployVirtualPrivateCloud",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Deployment network IP\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "10.12.10.34",
+          "member": "string",
+          "name": "DeployIp",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Deployment network security group ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"sg-1a2b34af\"]",
+          "member": "string",
+          "name": "DeploySecurityGroupIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID of the associated CVM\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ins-34as43at",
+          "member": "string",
+          "name": "CvmInstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Server creation time",
+          "example": "2020-03-10T02:43:51Z",
+          "member": "string",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance hardware description, including CPU cores, memory capacity and disk capacity.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "128C 22GB 2424GB",
+          "member": "string",
+          "name": "HardwareDescription",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CPU cores of the CHC host\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "128",
+          "member": "int64",
+          "name": "CPU",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Memory capacity of the CHC host (unit: GB)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "22",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk capacity of the CHC host\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Disk",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MAC address assigned under the out-of-band network\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "51:94:20:9C:B1:CB",
+          "member": "string",
+          "name": "BmcMAC",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MAC address assigned under the deployment network\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "51:94:20:9C:B1:CB",
+          "member": "string",
+          "name": "DeployMAC",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Management type\nHOSTING: Hosting\nTENANT: Leasing\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "HOSTING",
+          "member": "string",
+          "name": "TenantType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "CHC DHCP option, which is used for MiniOS debugging.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ChcDeployExtraConfig",
+          "name": "DeployExtraConfig",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ConfigureChcAssistVpcRequest": {
+      "document": "ConfigureChcAssistVpc request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CHC host IDs",
+          "example": "[\"chc-123a4d5f\"]",
+          "member": "string",
+          "name": "ChcIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Out-of-band network information",
+          "example": "NA",
+          "member": "VirtualPrivateCloud",
+          "name": "BmcVirtualPrivateCloud",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Out-of-band network security group list",
+          "example": "[\"sg-asda324a\"]",
+          "member": "string",
+          "name": "BmcSecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Deployment network information",
+          "example": "NA",
+          "member": "VirtualPrivateCloud",
+          "name": "DeployVirtualPrivateCloud",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Deployment network security group list",
+          "example": "[\"sg-asda324a\"]",
+          "member": "string",
+          "name": "DeploySecurityGroupIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ConfigureChcAssistVpcResponse": {
+      "document": "ConfigureChcAssistVpc response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ConfigureChcDeployVpcRequest": {
+      "document": "ConfigureChcDeployVpc request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CHC instance ID",
+          "example": "[\"chc-123a4d5f\"]",
+          "member": "string",
+          "name": "ChcIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Deployment network information",
+          "example": "NA",
+          "member": "VirtualPrivateCloud",
+          "name": "DeployVirtualPrivateCloud",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Deployment network security group list",
+          "example": "[\"sg-asda324a\"]",
+          "member": "string",
+          "name": "DeploySecurityGroupIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ConfigureChcDeployVpcResponse": {
+      "document": "ConfigureChcDeployVpc response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateDisasterRecoverGroupRequest": {
       "document": "CreateDisasterRecoverGroup request structure.",
       "members": [
@@ -793,6 +1168,7 @@
         {
           "default": "",
           "document": "Name of the key pair, which can contain numbers, letters, and underscores, with a maximum length of 25 characters.",
+          "example": "Tencent",
           "member": "string",
           "name": "KeyName",
           "required": true,
@@ -801,10 +1177,20 @@
         {
           "default": "",
           "document": "The ID of the project to which the new key pair belongs.\nYou can query the project IDs in two ways:\n<li>Query the project IDs in the project list.\n<li>Call `DescribeProject` and look for `projectId` in the response.",
+          "example": "0",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tag description list. This parameter is used to bind a tag to a key pair.",
+          "example": "无",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1132,7 +1518,7 @@
         },
         {
           "default": "",
-          "document": "Data disk ID. Note that it’s not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.\nThis parameter is only available for the `DescribeInstances` API.",
+          "document": "Data disk ID. Note that it’s not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.\nIt is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.",
           "example": "无",
           "member": "string",
           "name": "DiskId",
@@ -1354,6 +1740,78 @@
     "DeleteLaunchTemplateVersionsResponse": {
       "document": "DeleteLaunchTemplateVersions response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeChcHostsRequest": {
+      "document": "DescribeChcHosts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CHC host ID. Up to 100 instances per request is allowed. `ChcIds` and `Filters` cannot be specified at the same time.",
+          "example": "['chc-1a2b3c4d']",
+          "member": "string",
+          "name": "ChcIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "<li><strong>zone</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>availability zone</strong>, such as `ap-guangzhou-1`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p><p style=\"padding-left: 30px;\">Valid values: See <a href=\"https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1\">Regions and Availability Zones</a></p>\n<li><strong>instance-name</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>instance name</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>instance-state</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>instance status</strong>. For status details, see [InstanceStatus](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#InstanceStatus).</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>device-type</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>device type</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>vpc-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>unique VPC ID</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>subnet-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>unique VPC subnet ID</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>",
+          "example": "NA",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The offset. Default value: `0`. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of returned results. Default value: `20`. Maximum value: `100`. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeChcHostsResponse": {
+      "document": "DescribeChcHosts response structure.",
+      "members": [
+        {
+          "document": "Number of eligible instances",
+          "example": "5",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of returned instances",
+          "example": "NA",
+          "member": "ChcHost",
+          "name": "ChcHostSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -2097,7 +2555,7 @@
         },
         {
           "default": "",
-          "document": "<p style=\"padding-left: 30px;\">Filter by [<strong>LaunchTemplateNames</strong>].</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\nThe maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `LaunchTemplateIds` and `Filters` at the same time.",
+          "document": "<p style=\"padding-left: 30px;\">Filter by [<strong>LaunchTemplateName</strong>].</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\nThe maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `LaunchTemplateIds` and `Filters` at the same time.",
           "example": "NA",
           "member": "Filter",
           "name": "Filters",
@@ -3273,6 +3731,15 @@
           "name": "PublicKey",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag description list. This parameter is used to bind a tag to a key pair.",
+          "example": "无",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -5056,6 +5523,78 @@
       ],
       "usage": "both"
     },
+    "ModifyChcAttributeRequest": {
+      "document": "ModifyChcAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CHC host IDs",
+          "example": "[\"chc-1234abcd\"]",
+          "member": "string",
+          "name": "ChcIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "CHC host name",
+          "example": "服务器名称",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Server type",
+          "example": "CHC_HS1",
+          "member": "string",
+          "name": "DeviceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid characters: Letters, numbers, hyphens and underscores",
+          "example": "albert",
+          "member": "string",
+          "name": "BmcUser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The password can contain 8 to 16 characters, including letters, numbers and special symbols (()`~!@#$%^&*-+=_|{}).",
+          "example": "Test@1234",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "BMC network security group list",
+          "example": "[\"sg-1a2b34af\"]",
+          "member": "string",
+          "name": "BmcSecurityGroupIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyChcAttributeResponse": {
+      "document": "ModifyChcAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyDisasterRecoverGroupAttributeRequest": {
       "document": "ModifyDisasterRecoverGroupAttribute request structure.",
       "members": [
@@ -5756,6 +6295,60 @@
         }
       ],
       "usage": "out"
+    },
+    "RemoveChcAssistVpcRequest": {
+      "document": "RemoveChcAssistVpc request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CHC ID",
+          "example": "[\"chc-2324adf5\"]",
+          "member": "string",
+          "name": "ChcIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveChcAssistVpcResponse": {
+      "document": "RemoveChcAssistVpc response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveChcDeployVpcRequest": {
+      "document": "RemoveChcDeployVpc request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "CHC ID",
+          "example": "[\"chc-2324adf5\"]",
+          "member": "string",
+          "name": "ChcIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveChcDeployVpcResponse": {
+      "document": "RemoveChcDeployVpc response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ReservedInstanceConfigInfoItem": {
       "document": "Static configurations of the reserved instance. Currently, RIs are only offered to beta users.",
@@ -7021,7 +7614,7 @@
         },
         {
           "default": "",
-          "document": "System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter currently.",
+          "document": "System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter.\nIt is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.",
           "example": "无",
           "member": "string",
           "name": "DiskId",
@@ -7081,7 +7674,7 @@
       "members": [
         {
           "default": "",
-          "document": "The type of resource that the tag is bound to. Valid values: `instance` (for CVM), `host` (for CDH) and `image` (for image).",
+          "document": "The type of resource that the tag is bound to. Valid values: `instance` (for CVM), `host` (for CDH), `image` (for image), and `keypair` (for key).",
           "example": "instance",
           "member": "string",
           "name": "ResourceType",

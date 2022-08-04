@@ -13,7 +13,7 @@
       "output": "AutoRewriteResponse"
     },
     "BatchDeregisterTargets": {
-      "document": "This API is used to unbind layer-4 and layer-7 real servers in batches. Up to 500 servers can be unbound in a batch.",
+      "document": "This API is used to batch unbind real servers of the layer-4 and layer-7 VPC-based CLBs. Up to 500 real servers can be unbound in a batch.",
       "input": "BatchDeregisterTargetsRequest",
       "name": "Unbinds layer-4/layer-7 real servers in batches",
       "output": "BatchDeregisterTargetsResponse"
@@ -25,7 +25,7 @@
       "output": "BatchModifyTargetWeightResponse"
     },
     "BatchRegisterTargets": {
-      "document": "This API is used to bind CVM instances or ENIs in batches. Up to 500 servers can be bound in a batch. It supports cross-region binding, and layer-4 and layer-7 (TCP/UDP/HTTP/HTTPS) protocols.",
+      "document": "This API is used to batch bind CVM instances or ENIs. Up to 500 servers can be bound in a batch. It supports cross-region binding, layer-4 and layer-7 (TCP/UDP/HTTP/HTTPS) protocols, and VPC-based CLBs only.",
       "input": "BatchRegisterTargetsRequest",
       "name": "Binds CVM instances or ENIs in batches",
       "output": "BatchRegisterTargetsResponse"
@@ -6657,6 +6657,15 @@
         },
         {
           "default": "",
+          "document": "Target backend type. `NODE`: A single node; `TARGETGROUP`: A target group.",
+          "example": "NODE",
+          "member": "string",
+          "name": "TargetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "Whether to enable a persistent connection. This parameter is applicable only to HTTP and HTTPS listeners.",
           "example": "0",
           "member": "int64",
@@ -8306,7 +8315,7 @@
         },
         {
           "default": "",
-          "document": "Unique ID of a CVM instance, which is required when binding a CVM instance. It can be obtained from the `InstanceId` field in the response of the `DescribeInstances` API. It indicates binding the primary IP of the primary ENI.\nNote: either `InstanceId` or `EniIp` must be passed in.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Unique ID of a CVM instance, which is required when binding a CVM instance. It can be obtained from the `InstanceId` field in the response of the `DescribeInstances` API. It indicates binding the primary IP of the primary ENI.\nNote: Either `InstanceId` or `EniIp` can be passed in.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "lb-cuxw****",
           "member": "string",
           "name": "InstanceId",
@@ -8326,7 +8335,7 @@
         },
         {
           "default": "",
-          "document": "It is required when binding an IP. ENI IPs and other private IPs are supported. To bind an ENI IP, the ENI should be bound to a CVM instance before being bound to a CLB instance.\nNote: either `InstanceId` or `EniIp` must be passed in. It is required when binding a dual-stack IPv6 CVM instance.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "It is required when binding an IP. ENI IPs and other private IPs are supported. To bind an ENI IP, the ENI should be bound to a CVM instance before being bound to a CLB instance.\nNote: Either `InstanceId` or `EniIp` can be passed in. `EniIp` is required in a cross-region binding or when the dual-stack IPV6 CVM is bound.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "ip6-199z****",
           "member": "string",
           "name": "EniIp",

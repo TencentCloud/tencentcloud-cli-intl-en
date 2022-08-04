@@ -18,6 +18,12 @@
       "name": "Queries hardware node information",
       "output": "DescribeClusterNodesResponse"
     },
+    "DescribeEmrApplicationStatics": {
+      "document": " This API is used to query the Yarn application statistics.",
+      "input": "DescribeEmrApplicationStaticsRequest",
+      "name": "[Monitor] Queries application statistics",
+      "output": "DescribeEmrApplicationStaticsResponse"
+    },
     "DescribeInstances": {
       "document": "This API is used to query EMR instances.",
       "input": "DescribeInstancesRequest",
@@ -54,6 +60,12 @@
       "name": "Queries the price for renewal",
       "output": "InquiryPriceRenewInstanceResponse"
     },
+    "InquiryPriceScaleOutInstance": {
+      "document": "This API is used to query price of scale-out.",
+      "input": "InquiryPriceScaleOutInstanceRequest",
+      "name": "Queries price of scale-out",
+      "output": "InquiryPriceScaleOutInstanceResponse"
+    },
     "InquiryPriceUpdateInstance": {
       "document": "This API is used to query price of scaling.",
       "input": "InquiryPriceUpdateInstanceRequest",
@@ -71,6 +83,18 @@
       "input": "ModifyResourceSchedulerRequest",
       "name": "Modifies the YARN resource scheduler",
       "output": "ModifyResourceSchedulerResponse"
+    },
+    "ScaleOutInstance": {
+      "document": "This API is used to scale out instances.",
+      "input": "ScaleOutInstanceRequest",
+      "name": "Scales out instances",
+      "output": "ScaleOutInstanceResponse"
+    },
+    "TerminateInstance": {
+      "document": "This API is used to terminate EMR instances. It is only supported in the official paid edition of EMR.",
+      "input": "TerminateInstanceRequest",
+      "name": "Terminates EMR instances",
+      "output": "TerminateInstanceResponse"
     },
     "TerminateTasks": {
       "document": "This API is used to terminate a task node.",
@@ -138,6 +162,92 @@
         }
       ],
       "type": "object"
+    },
+    "ApplicationStatics": {
+      "document": "Yarn application statistics",
+      "members": [
+        {
+          "default": "",
+          "document": "Queue name",
+          "example": "root.default",
+          "member": "string",
+          "name": "Queue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Username",
+          "example": "hadoop",
+          "member": "string",
+          "name": "User",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application type",
+          "example": "MAPREDUCE",
+          "member": "string",
+          "name": "ApplicationType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`SumMemorySeconds` meaning",
+          "example": "58250",
+          "member": "int64",
+          "name": "SumMemorySeconds",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "33",
+          "member": "int64",
+          "name": "SumVCoreSeconds",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SumHDFSBytesWritten (with unit)",
+          "example": "48 bytes",
+          "member": "string",
+          "name": "SumHDFSBytesWritten",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "SumHDFSBytesRead (with unit)",
+          "example": "269.1 MB",
+          "member": "string",
+          "name": "SumHDFSBytesRead",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application count",
+          "example": "3",
+          "member": "int64",
+          "name": "CountApps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "COSSettings": {
       "document": "COS-related configuration",
@@ -1243,6 +1353,168 @@
       ],
       "type": "object"
     },
+    "DescribeEmrApplicationStaticsRequest": {
+      "document": "DescribeEmrApplicationStatics request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "emr-9kd5tnmq",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time in the format of timestamp. Unit: seconds.",
+          "example": "1621570097",
+          "member": "int64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "End time in the format of timestamp. Unit: seconds.",
+          "example": "1621590097",
+          "member": "int64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Queue name used for filtering",
+          "example": "[]",
+          "member": "string",
+          "name": "Queues",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Username used for filtering",
+          "example": "[]",
+          "member": "string",
+          "name": "Users",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Application type used for filtering",
+          "example": "[]",
+          "member": "string",
+          "name": "ApplicationTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Group field. Valid values: `queue`, `user`, and `applicationType`.",
+          "example": "[]",
+          "member": "string",
+          "name": "GroupBy",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Sorting field. Valid values: `sumMemorySeconds`, `sumVCoreSeconds`, `sumHDFSBytesWritten`, and `sumHDFSBytesRead`.",
+          "example": "sumMemorySeconds",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Order type. Valid values: `0` (descending) and `1`(ascending).",
+          "example": "1",
+          "member": "int64",
+          "name": "IsAsc",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page limit",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEmrApplicationStaticsResponse": {
+      "document": "DescribeEmrApplicationStatics response structure.",
+      "members": [
+        {
+          "document": "Application statistics",
+          "example": "无",
+          "member": "ApplicationStatics",
+          "name": "Statics",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total count",
+          "example": "3",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Available queue name",
+          "example": "[\"root.default\"]",
+          "member": "string",
+          "name": "Queues",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Available usernames",
+          "example": "[\"hadoop\"]",
+          "member": "string",
+          "name": "Users",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Available application type",
+          "example": "[\"MAPREDUCE\"]",
+          "member": "string",
+          "name": "ApplicationTypes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeInstancesListRequest": {
       "document": "DescribeInstancesList request structure.",
       "members": [
@@ -1571,6 +1843,52 @@
         }
       ],
       "type": "object"
+    },
+    "DynamicPodSpec": {
+      "document": "Pod floating specification",
+      "members": [
+        {
+          "default": "",
+          "document": "Minimum number of CPUs",
+          "example": "0.1234",
+          "member": "float",
+          "name": "RequestCpu",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of CPUs",
+          "example": "1.2345",
+          "member": "float",
+          "name": "LimitCpu",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum memory in MB",
+          "example": "1234.5678",
+          "member": "float",
+          "name": "RequestMemory",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum memory in MB",
+          "example": "8765.4321",
+          "member": "float",
+          "name": "LimitMemory",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "EmrListInstance": {
       "document": "Returned cluster list sample",
@@ -2114,6 +2432,21 @@
       ],
       "usage": "in"
     },
+    "HostVolumeContext": {
+      "document": "Description of `HostPath` mounting method in the pod",
+      "members": [
+        {
+          "default": "",
+          "document": "The directory for mounting the host in the pod, which is the mount point of the host in the resource. A specified mount point corresponds to the host path and is used as the data storage directory in the pod.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "VolumePath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "InquiryPriceCreateInstanceRequest": {
       "document": "InquiryPriceCreateInstance request structure.",
       "members": [
@@ -2411,6 +2744,150 @@
           "member": "int64",
           "name": "TimeSpan",
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceScaleOutInstanceRequest": {
+      "document": "InquiryPriceScaleOutInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Time unit of scale-out. Valid value:\n<li>s: Second. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>",
+          "example": "s",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Time span of scale-out, which needs to be used together with `TimeUnit`.\n<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>",
+          "example": "3600",
+          "member": "uint64",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "ID of the AZ where an instance resides.",
+          "example": "100003",
+          "member": "uint64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid value:\n<li>0: Pay-as-you-go.</li>",
+          "example": "0",
+          "member": "uint64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "emr-3ida6zmi",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of core nodes to be added.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CoreCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of task nodes to be added.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TaskCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Currency.",
+          "example": "CNY",
+          "member": "string",
+          "name": "Currency",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of router nodes to be added.",
+          "example": "0",
+          "member": "uint64",
+          "name": "RouterCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of master nodes to be added.",
+          "example": "0",
+          "member": "uint64",
+          "name": "MasterCount",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceScaleOutInstanceResponse": {
+      "document": "InquiryPriceScaleOutInstance response structure.",
+      "members": [
+        {
+          "document": "Original price.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OriginalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Discounted price.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DiscountCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Time unit of scale-out. Valid value:\n<li>s: Second.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Unit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Node spec queried for price.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PriceResource",
+          "name": "PriceSpec",
+          "required": true,
+          "type": "object",
           "value_allowed_null": true
         },
         {
@@ -3374,6 +3851,39 @@
       ],
       "usage": "out"
     },
+    "PersistentVolumeContext": {
+      "document": "Description of Pod `PVC` storage method",
+      "members": [
+        {
+          "default": "",
+          "document": "Disk size in GB.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "DiskSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk type. Valid values: `CLOUD_PREMIUM` and `CLOUD_SSD`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DiskType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DiskNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "Placement": {
       "document": "Location information of cluster instance",
       "members": [
@@ -3397,6 +3907,211 @@
         }
       ],
       "usage": "in"
+    },
+    "PodParameter": {
+      "document": "Custom pod permission and parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of TKE or EKS cluster",
+          "example": "cls-1234abcd",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom permissions\nExample:\n{\n  \"apiVersion\": \"v1\",\n  \"Clusters\": [\n    {\n      \"cluster\": {\n        \"certificate-authority-data\": \"xxxxxx==\",\n        \"server\": \"https://xxxxx.com\"\n      },\n      \"name\": \"cls-xxxxx\"\n    }\n  ],\n  \"contexts\": [\n    {\n      \"context\": {\n        \"cluster\": \"cls-xxxxx\",\n        \"user\": \"100014xxxxx\"\n      },\n      \"name\": \"cls-a44yhcxxxxxxxxxx\"\n    }\n  ],\n  \"current-context\": \"cls-a4xxxx-context-default\",\n  \"kind\": \"Config\",\n  \"preferences\": {},\n  \"users\": [\n    {\n      \"name\": \"100014xxxxx\",\n      \"user\": {\n        \"client-certificate-data\": \"xxxxxx\",\n        \"client-key-data\": \"xxxxxx\"\n      }\n    }\n  ]\n}",
+          "example": "{   \"apiVersion\": \"v1\",   \"clusters\": [     {       \"cluster\": {",
+          "member": "string",
+          "name": "Config",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom parameters\nExample:\n{\n    \"apiVersion\": \"apps/v1\",\n    \"kind\": \"Deployment\",\n    \"metadata\": {\n      \"name\": \"test-deployment\",\n      \"labels\": {\n        \"app\": \"test\"\n      }\n    },\n    \"spec\": {\n      \"replicas\": 3,\n      \"selector\": {\n        \"matchLabels\": {\n          \"app\": \"test-app\"\n        }\n      },\n      \"template\": {\n        \"metadata\": {\n          \"annotations\": {\n            \"your-organization.com/department-v1\": \"test-example-v1\",\n            \"your-organization.com/department-v2\": \"test-example-v2\"\n          },\n          \"labels\": {\n            \"app\": \"test-app\",\n            \"environment\": \"production\"\n          }\n        },\n        \"spec\": {\n          \"nodeSelector\": {\n            \"your-organization/node-test\": \"test-node\"\n          },\n          \"containers\": [\n            {\n              \"name\": \"nginx\",\n              \"image\": \"nginx:1.14.2\",\n              \"ports\": [\n                {\n                  \"containerPort\": 80\n                }\n              ]\n            }\n          ],\n          \"affinity\": {\n            \"nodeAffinity\": {\n              \"requiredDuringSchedulingIgnoredDuringExecution\": {\n                \"nodeSelectorTerms\": [\n                  {\n                    \"matchExpressions\": [\n                      {\n                        \"key\": \"disk-type\",\n                        \"operator\": \"In\",\n                        \"values\": [\n                          \"ssd\",\n                          \"sas\"\n                        ]\n                      },\n                      {\n                        \"key\": \"cpu-num\",\n                        \"operator\": \"Gt\",\n                        \"values\": [\n                          \"6\"\n                        ]\n                      }\n                    ]\n                  }\n                ]\n              }\n            }\n          }\n        }\n      }\n    }\n  }",
+          "example": "{   \"apiVersion\": \"apps/v1\",   \"kind\": \"Deployment\",   \"metadata",
+          "member": "string",
+          "name": "Parameter",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "PodSpec": {
+      "document": "Resource description for container resource scale-out",
+      "members": [
+        {
+          "default": "",
+          "document": "Identifier of external resource provider, such as \"cls-a1cd23fa\".",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ResourceProviderIdentifier",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Type of external resource provider, such as \"tke\". Currently, only \"tke\" is supported.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ResourceProviderType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Purpose of the resource, which means the node type and can only be \"TASK\".",
+          "example": "\"\"",
+          "member": "string",
+          "name": "NodeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of CPUs",
+          "example": "0",
+          "member": "uint64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Memory size in GB.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mount point of resources for the host. A specified mount point corresponds to the host path and is used as the data storage directory in the pod. (This parameter has been disused)",
+          "example": "[]",
+          "member": "string",
+          "name": "DataVolumes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "EKS cluster - CPU type. Valid values: `intel` and `amd`.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "CpuType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data directory mounting information of the pod node.",
+          "example": "[]",
+          "member": "PodVolume",
+          "name": "PodVolumes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether floating specification is used. `1`: Yes; `0`: No.",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsDynamicSpec",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Floating specification\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DynamicPodSpec",
+          "name": "DynamicPodSpec",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Unique VPC ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Unique VPC subnet ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "pod name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PodName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PodVolume": {
+      "document": "Description of Pod storage.",
+      "members": [
+        {
+          "default": "",
+          "document": "Storage type. Valid values: `pvc` and `hostpath`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "VolumeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field will take effect if `VolumeType` is `pvc`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "PersistentVolumeContext",
+          "name": "PVCVolume",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field will take effect if `VolumeType` is `hostpath`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "HostVolumeContext",
+          "name": "HostVolume",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "PreExecuteFileSettings": {
       "document": "Pre-execution script configuration",
@@ -3511,6 +4226,129 @@
         }
       ],
       "usage": "in"
+    },
+    "PriceResource": {
+      "document": "Resource queried for price",
+      "members": [
+        {
+          "default": "",
+          "document": "Target specification\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Spec",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "uint64",
+          "name": "StorageType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "System disk size\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RootSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Memory size.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "MemSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of CPUs.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk size.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of cloud disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "MultiDisk",
+          "name": "MultiDisks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DiskCnt",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specification\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "DiskNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of local disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "LocalDiskNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "Resource": {
       "document": "Resource details",
@@ -3638,6 +4476,294 @@
       ],
       "usage": "both"
     },
+    "ScaleOutInstanceRequest": {
+      "document": "ScaleOutInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Time unit of scale-out. Valid values:\n<li>s: Second. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>\n<li>m: Month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>",
+          "example": "s",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Time span of scale-out, which needs to be used together with `TimeUnit`.",
+          "example": "3600",
+          "member": "uint64",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "emr-5n3l5c83",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid value:\n<li>0: Pay-as-you-go.</li>",
+          "example": "0",
+          "member": "uint64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Client token.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ClientToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Bootstrap script settings.",
+          "example": "无",
+          "member": "PreExecuteFileSettings",
+          "name": "PreExecutedFileSettings",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Number of task nodes to be added.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TaskCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of core nodes to be added.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CoreCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Processes unnecessary for scale-out.",
+          "example": "[]",
+          "member": "uint64",
+          "name": "UnNecessaryNodeList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Number of router nodes to be added.",
+          "example": "0",
+          "member": "uint64",
+          "name": "RouterCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Deployed service.\n<li>`SoftDeployInfo` and `ServiceNodeInfo` are in the same group and mutually exclusive with `UnNecessaryNodeList`.</li>\n<li>The combination of `SoftDeployInfo` and `ServiceNodeInfo` is recommended.</li>",
+          "example": "[]",
+          "member": "uint64",
+          "name": "SoftDeployInfo",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Started process.",
+          "example": "[]",
+          "member": "uint64",
+          "name": "ServiceNodeInfo",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of spread placement group IDs. Only one can be specified currently.",
+          "example": "[]",
+          "member": "string",
+          "name": "DisasterRecoverGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of tags bound to added nodes.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Resource type selected for scaling. Valid values: `host` (general CVM resource) and `pod` (resource provided by TKE or EKS cluster).",
+          "example": "\"\"",
+          "member": "string",
+          "name": "HardwareResourceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specified information such as pod specification and source for scale-out with pod resources.",
+          "example": "无",
+          "member": "PodSpec",
+          "name": "PodSpec",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Server group name selected for ClickHouse cluster scale-out.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ClickHouseClusterName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Server group type selected for ClickHouse cluster scale-out. Valid values: `new` (create a group) and `old` (select an existing group).",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ClickHouseClusterType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Yarn node label specified for rule-based scale-out.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "YarnNodeLabel",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom pod permission and parameter",
+          "example": "无",
+          "member": "PodParameter",
+          "name": "PodParameter",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Number of master nodes to be added.\nWhen a ClickHouse cluster is scaled, this parameter does not take effect.\nWhen a Kafka cluster is scaled, this parameter does not take effect.\nWhen `HardwareResourceType` is `pod`, this parameter does not take effect.",
+          "example": "1",
+          "member": "uint64",
+          "name": "MasterCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to start the service after scale-out. `true`: Yes; `false`: No.",
+          "example": "\"true\"",
+          "member": "string",
+          "name": "StartServiceAfterScaleOut",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "AZ, which defaults to the primary AZ of the cluster.",
+          "example": "100002",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Subnet, which defaults to the subnet used when the cluster is created.",
+          "example": "sub-xxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pre-defined configuration set",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ScaleOutServiceConfAssign",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ScaleOutInstanceResponse": {
+      "document": "ScaleOutInstance response structure.",
+      "members": [
+        {
+          "document": "Instance ID.",
+          "example": "emr-5n3l5c83",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Order number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"20200309357833\",\"20200309357834\",\"20200309357835\",\"20200309357836\"]",
+          "member": "string",
+          "name": "DealNames",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Client token.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ClientToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Scale-out workflow ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Big order ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "BillId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "SearchItem": {
       "document": "Search field",
       "members": [
@@ -3737,6 +4863,42 @@
         }
       ],
       "usage": "both"
+    },
+    "TerminateInstanceRequest": {
+      "document": "TerminateInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "emr-4slr7ad7",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of terminated node. This parameter is reserved and does not need to be configured.",
+          "example": "无",
+          "member": "string",
+          "name": "ResourceIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateInstanceResponse": {
+      "document": "TerminateInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "TerminateTasksRequest": {
       "document": "TerminateTasks request structure.",
