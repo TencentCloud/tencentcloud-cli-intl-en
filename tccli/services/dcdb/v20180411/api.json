@@ -1592,6 +1592,16 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database engine version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
+          "member": "string",
+          "name": "DbVersionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
