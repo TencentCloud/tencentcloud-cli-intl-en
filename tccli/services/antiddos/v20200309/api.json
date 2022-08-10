@@ -114,12 +114,6 @@
       "name": "Adds Anti-DDoS watermark keys",
       "output": "CreateWaterPrintKeyResponse"
     },
-    "DeleteBlackWhiteIpList": {
-      "document": "This API is used to delete an Anti-DDoS IP blocklist/allowlist.",
-      "input": "DeleteBlackWhiteIpListRequest",
-      "name": "Deletes an Anti-DDoS IP blocklist/allowlist",
-      "output": "DeleteBlackWhiteIpListResponse"
-    },
     "DeleteCCLevelPolicy": {
       "document": "This API is used to delete a level-defining policy of CC attacks. ",
       "input": "DeleteCCLevelPolicyRequest",
@@ -199,7 +193,7 @@
       "output": "DescribeBlackWhiteIpListResponse"
     },
     "DescribeCCLevelList": {
-      "document": "This API is used to query the list of CC protection levels.",
+      "document": "Gets the list of CC protection levels",
       "input": "DescribeCCLevelListRequest",
       "name": "Queries the list of CC protection levels.",
       "output": "DescribeCCLevelListResponse"
@@ -403,6 +397,52 @@
     "serviceShortName": "antiddos"
   },
   "objects": {
+    "AnycastOutPackRelation": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "200",
+          "member": "uint64",
+          "name": "NormalBandwidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "60",
+          "member": "uint64",
+          "name": "ForwardRulesLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "2022-06-18 18:36:44",
+          "member": "string",
+          "name": "CurDeadline",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "AssociateDDoSEipAddressRequest": {
       "document": "AssociateDDoSEipAddress request structure.",
       "members": [
@@ -725,12 +765,32 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Tag that the Anti-DDoS Advanced instance is associated with\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "null",
           "member": "TagInfo",
           "name": "TagInfoList",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "AnycastOutPackRelation",
+          "name": "AnycastOutPackRelation",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "InstanceVersion",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -1121,6 +1181,16 @@
           "name": "Mask",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time",
+          "example": "2021-11-23 14:56:59",
+          "member": "string",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2058,6 +2128,15 @@
           "name": "Policy",
           "required": true,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether it’s a global CC frequency limit",
+          "example": "1",
+          "member": "int64",
+          "name": "IsGlobal",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2798,51 +2877,6 @@
       ],
       "usage": "both"
     },
-    "DeleteBlackWhiteIpListRequest": {
-      "document": "DeleteBlackWhiteIpList request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Anti-DDoS instance ID",
-          "example": "bgpip-00001001",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "List of IPs",
-          "example": "[\"1.1.1.1\\r\\n\"]",
-          "member": "string",
-          "name": "IpList",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "IP type. Valid values: `black` (blocklisted IP), `white`(allowlisted IP).",
-          "example": "black",
-          "member": "string",
-          "name": "Type",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteBlackWhiteIpListResponse": {
-      "document": "DeleteBlackWhiteIpList response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DeleteCCLevelPolicyRequest": {
       "document": "DeleteCCLevelPolicy request structure.",
       "members": [
@@ -3483,7 +3517,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Details of level-defining policies",
+          "document": "Total number of level-defining policies",
           "example": "无",
           "member": "CCLevelPolicy",
           "name": "LevelList",
@@ -4495,12 +4529,21 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Searches by tag",
           "example": "无",
           "member": "TagFilter",
           "name": "FilterTag",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "FilterPackType",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -6116,6 +6159,7 @@
         {
           "default": "",
           "document": "Domain name",
+          "example": "www.8cname.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -6124,7 +6168,8 @@
         },
         {
           "default": "",
-          "document": "Protocol. Value: htttps",
+          "document": "Protocol. Value: `https`.",
+          "example": "https",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -6134,6 +6179,7 @@
         {
           "default": "",
           "document": "Status. Valid values: `0` (disabled), `1` (enabled).",
+          "example": "1",
           "member": "int64",
           "name": "CCEnable",
           "required": true,
@@ -6143,6 +6189,7 @@
         {
           "default": "",
           "document": "CC protection threshold",
+          "example": "1",
           "member": "int64",
           "name": "CCThreshold",
           "required": true,
@@ -7096,6 +7143,7 @@
         {
           "default": "",
           "document": "Feature filtering configuration",
+          "example": "无",
           "member": "PacketFilterConfig",
           "name": "PacketFilterConfig",
           "required": true,
@@ -7105,10 +7153,21 @@
         {
           "default": "",
           "document": "Anti-DDoS instance configured",
+          "example": "无",
           "member": "InstanceRelation",
           "name": "InstanceDetailList",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time",
+          "example": "2021-11-23 14:56:59",
+          "member": "string",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -7632,11 +7691,11 @@
       "type": "object"
     },
     "TagFilter": {
-      "document": "",
+      "document": "Tag type",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Tag key",
           "example": "232",
           "member": "string",
           "name": "TagKey",
@@ -7646,7 +7705,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Tag value",
           "example": "无",
           "member": "string",
           "name": "TagValue",
@@ -7658,11 +7717,11 @@
       "usage": "in"
     },
     "TagInfo": {
-      "document": "",
+      "document": "Tag information, which is used to return the tag of the associated instance",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Tag key",
           "example": "sdf",
           "member": "string",
           "name": "TagKey",
@@ -7672,7 +7731,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Tag value",
           "example": "sdfss",
           "member": "string",
           "name": "TagValue",
