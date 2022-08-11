@@ -337,7 +337,7 @@
     "ImportImage": [
       {
         "document": "This example shows you how to import an image.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ImportImage\n&OsType=CentOS\n&OsVersion=6\n&ImageName=sample\n&ImageDescription=sampleimage\n&ImageUrl=http://111-1251233127.cosd.myqcloud.com/Windows%20Server%202008%20R2%20x64a.vmdk\n&Architecture=x86_64\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ImportImage\n<Common request parameters>\n\n{\n    \"ImageUrl\": \"http://111-1251233127.cosd.myqcloud.com/Windows%20Server%202008%20R2%20x64a.vmdk\",\n    \"ImageDescription\": \"sampleimage\",\n    \"ImageName\": \"sample\",\n    \"Architecture\": \"x86_64\",\n    \"OsType\": \"CentOS\",\n    \"OsVersion\": \"6\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"71e69b56-32be-4412-ab45-49eded6a87be\"\n    }\n}",
         "title": "Importing an image"
       }
@@ -535,7 +535,7 @@
     "ResetInstancesType": [
       {
         "document": "This example shows you how to adjust the configuration of an instance that fails to meet your business needs.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ResetInstancesType\n&InstanceIds.0=ins-r8hr2upy\n&InstanceType=S5.16XLARGE256\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetInstancesType\n<Common request parameters>\n\n{\n    \"InstanceType\": \"S5.16XLARGE256\",\n    \"InstanceIds\": [\n        \"ins-r8hr2upy\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d39d6c09-44e9-4e80-8661-77b5ff3cbc15\"\n    }\n}",
         "title": "Resetting the instance model"
       }

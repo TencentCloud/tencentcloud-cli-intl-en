@@ -1,0 +1,2125 @@
+{
+  "actions": {
+    "CreateApiImportUserJob": {
+      "document": "This API is used to create an API for user import task.",
+      "input": "CreateApiImportUserJobRequest",
+      "name": "Creates an API for user import task",
+      "output": "CreateApiImportUserJobResponse"
+    },
+    "CreateFileExportUserJob": {
+      "document": "This API is used to create a file for user export task.",
+      "input": "CreateFileExportUserJobRequest",
+      "name": "Creates a file for user export task",
+      "output": "CreateFileExportUserJobResponse"
+    },
+    "CreateUser": {
+      "document": "This API is used to create a user.",
+      "input": "CreateUserRequest",
+      "name": "Creates a user",
+      "output": "CreateUserResponse"
+    },
+    "DeleteUsers": {
+      "document": "This API is used to delete users in batches.",
+      "input": "DeleteUsersRequest",
+      "name": "Deletes users in batches",
+      "output": "DeleteUsersResponse"
+    },
+    "DescribeUserById": {
+      "document": "This API is used to query a user by ID.",
+      "input": "DescribeUserByIdRequest",
+      "name": "Queries a user by ID",
+      "output": "DescribeUserByIdResponse"
+    },
+    "LinkAccount": {
+      "document": "This API is used to merge accounts.",
+      "input": "LinkAccountRequest",
+      "name": "Merges accounts",
+      "output": "LinkAccountResponse"
+    },
+    "ListJobs": {
+      "document": "This API is used to query the details of a task.",
+      "input": "ListJobsRequest",
+      "name": "Queries the details of a task",
+      "output": "ListJobsResponse"
+    },
+    "ListLogMessageByCondition": {
+      "document": "This API is used to query a specified log.",
+      "input": "ListLogMessageByConditionRequest",
+      "name": "Queries a specified log",
+      "output": "ListLogMessageByConditionResponse"
+    },
+    "ListUser": {
+      "document": "This API is used to query the list of users.",
+      "input": "ListUserRequest",
+      "name": "Queries the list of users",
+      "output": "ListUserResponse"
+    },
+    "ListUserByProperty": {
+      "document": "This API is used to query the list of users by attribute.",
+      "input": "ListUserByPropertyRequest",
+      "name": "Queries the list of users by attribute",
+      "output": "ListUserByPropertyResponse"
+    },
+    "ResetPassword": {
+      "document": "This API is used to reset the password for a user.",
+      "input": "ResetPasswordRequest",
+      "name": "Resets the password for a user",
+      "output": "ResetPasswordResponse"
+    },
+    "SetPassword": {
+      "document": "This API is used to set the password for a user.",
+      "input": "SetPasswordRequest",
+      "name": "Sets the password for a user",
+      "output": "SetPasswordResponse"
+    },
+    "UpdateUser": {
+      "document": "This API is used to update a user.",
+      "input": "UpdateUserRequest",
+      "name": "Updates a user",
+      "output": "UpdateUserResponse"
+    },
+    "UpdateUserStatus": {
+      "document": "This API is used to update the status of a user.",
+      "input": "UpdateUserStatusRequest",
+      "name": "Updates the status of a user",
+      "output": "UpdateUserStatusResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2022-03-31",
+    "serviceNameCN": "账号风控平台",
+    "serviceShortName": "ciam"
+  },
+  "objects": {
+    "CreateApiImportUserJobRequest": {
+      "document": "CreateApiImportUserJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Imported user data",
+          "example": "xxx",
+          "member": "ImportUser",
+          "name": "DataFlowUserCreateList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateApiImportUserJobResponse": {
+      "document": "CreateApiImportUserJob response structure.",
+      "members": [
+        {
+          "document": "Data flow task",
+          "example": "无",
+          "member": "Job",
+          "name": "Job",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateFileExportUserJobRequest": {
+      "document": "CreateFileExportUserJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Exported data type\n\n<li> **JSON** </li>  JSON\n<li> **NDJSON** </li>  New-line Delimited JSON\n<li> **CSV** </li>  Comma-Separated Values",
+          "example": "xxx",
+          "member": "string",
+          "name": "Format",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid values of `Key`: `condition`, `userGroupId`.\n\n<li> **condition** </li>\tValues = Query condition, which can be user ID, username, mobile number, or email address.\n<li> **userGroupId** </li>\tValues = User group ID",
+          "example": "xxx",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Attributes and mapping names included in the exported user information. If this parameter is empty, all attributes will be included.",
+          "example": "xxx",
+          "member": "ExportPropertyMap",
+          "name": "ExportPropertyMaps",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateFileExportUserJobResponse": {
+      "document": "CreateFileExportUserJob response structure.",
+      "members": [
+        {
+          "document": "Data flow task",
+          "example": "无",
+          "member": "Job",
+          "name": "Job",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserRequest": {
+      "document": "CreateUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Mobile number",
+          "example": "xxx",
+          "member": "string",
+          "name": "PhoneNumber",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Email address",
+          "example": "xxx",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Password",
+          "example": "xxx",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Username",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Nickname",
+          "example": "xxx",
+          "member": "string",
+          "name": "Nickname",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Address",
+          "example": "xxx",
+          "member": "string",
+          "name": "Address",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User group ID",
+          "example": "[\"xxx\"]",
+          "member": "string",
+          "name": "UserGroup",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Date of birth",
+          "example": "0",
+          "member": "int64",
+          "name": "Birthdate",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom attribute",
+          "example": "无",
+          "member": "MemberMap",
+          "name": "CustomizationAttributes",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserResponse": {
+      "document": "CreateUser response structure.",
+      "members": [
+        {
+          "document": "Information of the created user\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "User",
+          "name": "User",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUsersRequest": {
+      "document": "DeleteUsers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of user IDs",
+          "example": "[xxx]",
+          "member": "string",
+          "name": "UserIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUsersResponse": {
+      "document": "DeleteUsers response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserByIdRequest": {
+      "document": "DescribeUserById request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "Original",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserByIdResponse": {
+      "document": "DescribeUserById response structure.",
+      "members": [
+        {
+          "document": "User information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "User",
+          "name": "User",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ErrorDetails": {
+      "document": "Failure details",
+      "members": [
+        {
+          "default": "",
+          "document": "User information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Failure cause",
+          "example": "xxx",
+          "member": "string",
+          "name": "Error",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ExportPropertyMap": {
+      "document": "Exported attribute mapping",
+      "members": [
+        {
+          "default": "",
+          "document": "User attribute code",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserPropertyCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User attribute mapping name",
+          "example": "xxx",
+          "member": "string",
+          "name": "ColumnName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "FailedUsers": {
+      "document": "Failed user",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the failed user\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "FailedUserIdentification",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Failure cause for user import\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "FailedReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Filter": {
+      "document": "Query condition",
+      "members": [
+        {
+          "default": "",
+          "document": "Key value",
+          "example": "xxx",
+          "member": "string",
+          "name": "Key",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value",
+          "example": "[xxx]",
+          "member": "string",
+          "name": "Values",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Logical value",
+          "example": "true",
+          "member": "bool",
+          "name": "Logic",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ImportUser": {
+      "document": "Imported user information\n1. One of the eight attributes of `UserName`, `PhoneNumber`, `Email`, `WechatOpenId`, `WechatUnionId`, `AlipayUserId`, `QqOpenId`, and `QqUnionId` must be included during import and comply with the regular expression rules for initializing custom attributes. The regular expressions for `UserName`, `PhoneNumber`, and `Email` can be queried in the custom attributes in the console.\n2. For password import, the imported password supports plaintext import, MD5 ciphertext import, SHA1 ciphertext import, and BCRYPT ciphertext import. This needs to be specified in the `PasswordEncryptTypeEnum` field.\n3. `IdentityVerified` and `IdentityVerificationMethod` can be imported.\nIf `IdentityVerified` is `true`, `IdentityVerificationMethod` is required.\nIf `IdentityVerificationMethod` is `nameAndIdCard`, `Name` and `ResidentIdentityCard` are required.\nIf `IdentityVerificationMethod` is `nameIdCardAndPhone`, `Name`, `PhoneNumber`, and `ResidentIdentityCard` are required.",
+      "members": [
+        {
+          "default": "",
+          "document": "Username",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mobile number",
+          "example": "xxx",
+          "member": "string",
+          "name": "PhoneNumber",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Email address",
+          "example": "xxx",
+          "member": "string",
+          "name": "Email",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID card number",
+          "example": "xxx",
+          "member": "string",
+          "name": "ResidentIdentityCard",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Nickname",
+          "example": "xxx",
+          "member": "string",
+          "name": "Nickname",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Address",
+          "example": "xxx",
+          "member": "string",
+          "name": "Address",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User group ID",
+          "example": "[xxx]",
+          "member": "string",
+          "name": "UserGroup",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`qqOpenId` on QQ",
+          "example": "xxx",
+          "member": "string",
+          "name": "QqOpenId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`qqUnionId` on QQ",
+          "example": "xxx",
+          "member": "string",
+          "name": "QqUnionId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`wechatOpenId` on WeChat",
+          "example": "xxx",
+          "member": "string",
+          "name": "WechatOpenId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`wechatUnionId` on WeChat",
+          "example": "xxx",
+          "member": "string",
+          "name": "WechatUnionId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`alipayUserId` on Alipay",
+          "example": "xxx",
+          "member": "string",
+          "name": "AlipayUserId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "xxx",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Date of birth",
+          "example": "xxx",
+          "member": "date",
+          "name": "Birthdate",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Coordinate",
+          "example": "xxx",
+          "member": "string",
+          "name": "Locale",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Gender. Valid values: `MALE`, `FEMALE`, `UNKNOWN`.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Gender",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Identity verification method",
+          "example": "xxx",
+          "member": "string",
+          "name": "IdentityVerificationMethod",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the identity is verified",
+          "example": "xxx",
+          "member": "bool",
+          "name": "IdentityVerified",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Job",
+          "example": "xxx",
+          "member": "string",
+          "name": "Job",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Country/Region",
+          "example": "xxx",
+          "member": "string",
+          "name": "Nationality",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time zone",
+          "example": "xxx",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Password ciphertext",
+          "example": "xxx",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom attribute",
+          "example": "无",
+          "member": "MemberMap",
+          "name": "CustomizationAttributes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Password salt",
+          "example": "无",
+          "member": "Salt",
+          "name": "Salt",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Password encryption method. Valid values: `SHA1`, `BCRYPT`.",
+          "example": "xxx",
+          "member": "string",
+          "name": "PasswordEncryptTypeEnum",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Job": {
+      "document": "Task details",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task status\n\n<li> **PENDING** </li>  Pending\n<li> **PROCESSING** </li>  Executing\n<li> **COMPLETED** </li>  Completed\n<li> **FAILED** </li>  Failed",
+          "example": "xxx",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task type\n\n<li> **IMPORT_USER** </li>  User import\n<li> **EXPORT_USER** </li>  User export",
+          "example": "xxx",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task creation time",
+          "example": "10",
+          "member": "int64",
+          "name": "CreatedDate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data type of the task\n\n<li> **JSON** </li>  JSON\n<li> **NDJSON** </li>  New-line Delimited JSON\n<li> **CSV** </li>  Comma-Separated Values\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Format",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task result download address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Location",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Failure details\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "ErrorDetails",
+          "name": "ErrorDetails",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Failed user\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "FailedUsers",
+          "name": "FailedUsers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LinkAccountRequest": {
+      "document": "LinkAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Primary user ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "PrimaryUserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Secondary user ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "SecondaryUserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Fusion attribute\n\n<li> **PHONENUMBER** </li>\t  Mobile number\n<li> **EMAIL** </li>  Email",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserLinkedOnAttribute",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "LinkAccountResponse": {
+      "document": "LinkAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListJobsRequest": {
+      "document": "ListJobs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of task IDs. If this parameter is empty, all tasks will be returned.",
+          "example": "[xxx]",
+          "member": "string",
+          "name": "JobIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListJobsResponse": {
+      "document": "ListJobs response structure.",
+      "members": [
+        {
+          "document": "List of tasks\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Job",
+          "name": "JobSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListLogMessageByConditionRequest": {
+      "document": "ListLogMessageByCondition request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User pool ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pagination data",
+          "example": "无",
+          "member": "Pageable",
+          "name": "Pageable",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Start timestamp accurate to the millisecond",
+          "example": "10",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Valid values of `Key`: `events`.\n\n<li> **events** </li>\tValues can be one or multiple items in [\"SIGNUP\", \"USER_UPDATE\", \"USER_DELETE\", \"USER_CREATE\", \"ACCOUNT_LINKING\"].",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListLogMessageByConditionResponse": {
+      "document": "ListLogMessageByCondition response structure.",
+      "members": [
+        {
+          "document": "Total number",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Pagination object",
+          "example": "无",
+          "member": "Pageable",
+          "name": "Pageable",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of logs\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LogMessage",
+          "name": "Content",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUserByPropertyRequest": {
+      "document": "ListUserByProperty request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query attribute\n\n<li> **phoneNumber** </li>\t  Mobile number\n<li> **email** </li>  Email",
+          "example": "xxx",
+          "member": "string",
+          "name": "PropertyCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Attribute value",
+          "example": "xxx",
+          "member": "string",
+          "name": "PropertyValue",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "Original",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUserByPropertyResponse": {
+      "document": "ListUserByProperty response structure.",
+      "members": [
+        {
+          "document": "List of users\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "User",
+          "name": "Users",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUserRequest": {
+      "document": "ListUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pagination data",
+          "example": "无",
+          "member": "Pageable",
+          "name": "Pageable",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Valid values of `Key`: `condition`, `userGroupId`.\n\n<li> **condition** </li>\tValues = Query condition, which can be user ID, username, mobile number, or email address.\n<li> **userGroupId** </li>\tValues = User group ID",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "Original",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ListUserResponse": {
+      "document": "ListUser response structure.",
+      "members": [
+        {
+          "document": "Total number\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Pagination object\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Pageable",
+          "name": "Pageable",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of users\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "User",
+          "name": "Content",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "LogMessage": {
+      "document": "Log details",
+      "members": [
+        {
+          "default": "",
+          "document": "Log ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "LogId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tenant ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "TenantId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User pool ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Event code\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "EventCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Event timestamp in milliseconds\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "EventDate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Event participant\n\n<li> **TENANT** </li>  Tenant\n<li> **USER** </li>  User\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Participant",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application `clientId`\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "ApplicationClientId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Application name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "ApplicationName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Authentication source ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "AuthSourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Authentication source name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "AuthSourceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Authentication source type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "AuthSourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Authentication source category\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "AuthSourceCategory",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IP address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User agent\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserAgent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Details\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Detail",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MemberMap": {
+      "document": "Map data type",
+      "members": [
+        {
+          "default": "",
+          "document": "Key",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value",
+          "example": "xxx",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Pageable": {
+      "document": "Pagination object",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current page number",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ResetPasswordRequest": {
+      "document": "ResetPassword request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetPasswordResponse": {
+      "document": "ResetPassword response structure.",
+      "members": [
+        {
+          "document": "User password after reset",
+          "example": "xxx",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Salt": {
+      "document": "Password salt",
+      "members": [
+        {
+          "default": "",
+          "document": "Salt value",
+          "example": "xxx",
+          "member": "string",
+          "name": "SaltValue",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Salt value location",
+          "example": "无",
+          "member": "SaltLocation",
+          "name": "SaltLocation",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "SaltLocation": {
+      "document": "Salt location",
+      "members": [
+        {
+          "default": "",
+          "document": "Password salt type. Valid values: `HEAD`, `TAIL`, `OTHER`.",
+          "example": "xxx",
+          "member": "string",
+          "name": "SaltLocationTypeEnum",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Salting rule",
+          "example": "xxx",
+          "member": "SaltLocationRule",
+          "name": "SaltLocationRule",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "SaltLocationRule": {
+      "document": "Salt location rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Expression",
+          "example": "xxx",
+          "member": "string",
+          "name": "Regex",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "SetPasswordRequest": {
+      "document": "SetPassword request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Password",
+          "example": "xxx",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetPasswordResponse": {
+      "document": "SetPassword response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateUserRequest": {
+      "document": "UpdateUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Username",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Mobile number",
+          "example": "xxx",
+          "member": "string",
+          "name": "PhoneNumber",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Email address",
+          "example": "xxx",
+          "member": "string",
+          "name": "Email",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Nickname",
+          "example": "xxx",
+          "member": "string",
+          "name": "Nickname",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Address",
+          "example": "xxx",
+          "member": "string",
+          "name": "Address",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User group",
+          "example": "[\"xxx\"]",
+          "member": "string",
+          "name": "UserGroup",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Date of birth",
+          "example": "0",
+          "member": "int64",
+          "name": "Birthdate",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Custom attribute",
+          "example": "无",
+          "member": "MemberMap",
+          "name": "CustomizationAttributes",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateUserResponse": {
+      "document": "UpdateUser response structure.",
+      "members": [
+        {
+          "document": "User information after update\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "User",
+          "name": "User",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateUserStatusRequest": {
+      "document": "UpdateUserStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User status\n\n<li> **NORMAL** </li>\t  Normal\n<li> **LOCK** </li>  Locked\n<li> **FREEZE** </li>\t  Frozen",
+          "example": "xxx",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateUserStatusResponse": {
+      "document": "UpdateUserStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "User": {
+      "document": "User information",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Username\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Mobile number\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "PhoneNumber",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Email address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Last login time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "int64",
+          "name": "LastSignOn",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "xxx",
+          "member": "int64",
+          "name": "CreatedDate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status",
+          "example": "xxx",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "User source",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserDataSourceEnum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Nickname\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Nickname",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Address",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Date of birth\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Birthdate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User group ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[xxx]",
+          "member": "string",
+          "name": "UserGroups",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Last modified time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "LastModifiedDate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Custom attribute\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "MemberMap",
+          "name": "CustomAttributes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "ID card number\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "ResidentIdentityCard",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "`OpenId` on QQ\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "QqOpenId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "`UnionId` on QQ\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "QqUnionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "`WechatOpenId` on WeChat\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "WechatOpenId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "`WechatUnionId` on WeChat\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "WechatUnionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "`AlipayUserId` on Alipay\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "AlipayUserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Coordinate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Locale",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Gender\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Gender",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Identity verification method\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "IdentityVerificationMethod",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the identity is verified\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IdentityVerified",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Job\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Job",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Country/Region\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Nationality",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the account is the primary account (after account merge, this parameter is `true` for primary accounts and `false` for secondary account).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "Primary",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time zone\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the account has ever logged in.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "AlreadyFirstLogin",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tenant ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "TenantId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User directory ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Version",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Lock type (locked by admin or locked by login policy)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "LockType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Lock time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "LockTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

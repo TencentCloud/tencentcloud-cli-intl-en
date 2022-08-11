@@ -21,7 +21,7 @@
     "CreateEventBus": {
       "document": "This API is used to create an event bus.",
       "input": "CreateEventBusRequest",
-      "name": "Creates event bus",
+      "name": "Creats an event bus",
       "output": "CreateEventBusResponse"
     },
     "CreateRule": {
@@ -75,7 +75,7 @@
     "GetEventBus": {
       "document": "This API is used to get the details of an event bus.",
       "input": "GetEventBusRequest",
-      "name": "Gets event bus details",
+      "name": "Gets details of an event bus",
       "output": "GetEventBusResponse"
     },
     "GetRule": {
@@ -123,7 +123,7 @@
     "UpdateEventBus": {
       "document": "This API is used to update an event bus.",
       "input": "UpdateEventBusRequest",
-      "name": "Updates event bus",
+      "name": "Updates an event bus",
       "output": "UpdateEventBusResponse"
     },
     "UpdateRule": {
@@ -500,7 +500,7 @@
         },
         {
           "default": "",
-          "document": "Switch",
+          "document": "Whether to enable",
           "example": "true",
           "member": "bool",
           "name": "Enable",
@@ -509,7 +509,7 @@
         },
         {
           "default": "",
-          "document": "Type",
+          "document": "Type of the connector",
           "example": "apigw",
           "member": "string",
           "name": "Type",
@@ -545,7 +545,7 @@
       "members": [
         {
           "default": "",
-          "document": "Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter",
+          "document": "Event bus name: it can contain 2-60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter.",
           "example": "EventBusName",
           "member": "string",
           "name": "EventBusName",
@@ -554,7 +554,7 @@
         },
         {
           "default": "",
-          "document": "Event bus description, which can contain up to 200 characters of any type",
+          "document": "Event bus description, which can contain up to 200 characters of any type.",
           "example": "这是一个描述",
           "member": "string",
           "name": "Description",
@@ -989,6 +989,72 @@
       ],
       "type": "object"
     },
+    "ESTargetParams": {
+      "document": "ES rule targets",
+      "members": [
+        {
+          "default": "",
+          "document": "Network connection type",
+          "example": "privatelink",
+          "member": "string",
+          "name": "NetMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Index prefix",
+          "example": "esindex",
+          "member": "string",
+          "name": "IndexPrefix",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ES log rotation interval",
+          "example": "none",
+          "member": "string",
+          "name": "RotationInterval",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "DTS event configuration",
+          "example": "default",
+          "member": "string",
+          "name": "OutputMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "DTS indexing configuration",
+          "example": "default",
+          "member": "string",
+          "name": "IndexSuffixMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ES template type",
+          "example": "_type",
+          "member": "string",
+          "name": "IndexTemplateType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "EtlFilter": {
       "document": "Describes how to filter data",
       "members": [
@@ -1179,7 +1245,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Creation time",
+          "document": "Creation time.",
           "example": "2021-04-27T14:34:19+08:00",
           "member": "datetime_iso",
           "name": "AddTime",
@@ -2084,6 +2150,16 @@
           "required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ElasticSearch parameters",
+          "example": "无",
+          "member": "ESTargetParams",
+          "name": "ESTargetParams",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -2243,7 +2319,7 @@
         },
         {
           "default": "",
-          "document": "Event bus description, which can contain up to 200 characters of any type",
+          "document": "Event bus description, which can contain up to 200 characters of any type.",
           "example": "这是一个描述",
           "member": "string",
           "name": "Description",
@@ -2252,7 +2328,7 @@
         },
         {
           "default": "",
-          "document": "Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter",
+          "document": "Event bus name: it can contain 2-60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter.",
           "example": "EventBusName",
           "member": "string",
           "name": "EventBusName",

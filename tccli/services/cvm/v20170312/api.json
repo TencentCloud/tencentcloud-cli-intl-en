@@ -3686,6 +3686,15 @@
           "name": "TagSpecification",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The license type used to activate the OS after importing an image.\nValid values:\n`TencentCloud`: Tencent Cloud official license\n`BYOL`: Bring Your Own License",
+          "example": "TencentCloud",
+          "member": "string",
+          "name": "LicenseType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"

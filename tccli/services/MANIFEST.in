@@ -23,6 +23,8 @@ include tccli/services/cfs/v20190719/api.json
 include tccli/services/cfs/v20190719/examples.json
 include tccli/services/chdfs/v20201112/api.json
 include tccli/services/chdfs/v20201112/examples.json
+include tccli/services/ciam/v20220331/api.json
+include tccli/services/ciam/v20220331/examples.json
 include tccli/services/ciam/v20210420/api.json
 include tccli/services/ciam/v20210420/examples.json
 include tccli/services/ckafka/v20190819/api.json

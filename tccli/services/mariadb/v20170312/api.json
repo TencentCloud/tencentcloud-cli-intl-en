@@ -896,6 +896,15 @@
           "value_allowed_null": true
         },
         {
+          "document": "Async task ID, which can be used in the [DescribeFlow](https://www.tencentcloud.com/document/product/237/16177) API to query the async task result.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "22051110000",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -1501,6 +1510,16 @@
           "name": "ResourceTags",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
+          "member": "string",
+          "name": "DbVersionId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],

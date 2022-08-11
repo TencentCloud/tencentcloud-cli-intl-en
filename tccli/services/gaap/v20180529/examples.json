@@ -16,18 +16,18 @@
     ],
     "BindListenerRealServers": [
       {
-        "document": "This example shows you how to bind a listener to one or more origin servers.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=BindListenerRealServers\n&ListenerId=listener-pbsgn7ej\n&RealServerBindSet.0.RealServerId=rs-04v3s12t\n&RealServerBindSet.0.RealServerIP=119.28.69.101\n&RealServerBindSet.0.RealServerPort=80\n&RealServerBindSet.0.RealServerWeight=1\n&RealServerBindSet.0.RealServerFailoverRole=master\n&<Common request parameters>",
+        "document": "Bind a listener to an origin server.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=BindListenerRealServers\r\n&ListenerId=listener-pbsgn7ej\r\n&RealServerBindSet.0.RealServerId=rs-04v3s12t\r\n&RealServerBindSet.0.RealServerIP=119.28.69.101\r\n&RealServerBindSet.0.RealServerPort=80\r\n&RealServerBindSet.0.RealServerWeight=1\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1f1e794d-a35e-41d2-8f40-fe32a2077329\"\n    }\n}",
-        "title": "Binding a listener to origin servers"
+        "title": "Binding Listeners to the Origin Server"
       }
     ],
     "BindRuleRealServers": [
       {
-        "document": "This example shows you how to bind a forwarding rule to origin servers.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=BindRuleRealServers\n&RuleId=0\n&RealServerBindSet.0.RealServerId=rs-i3658cdf\n&RealServerBindSet.0.RealServerPort=80\n&RealServerBindSet.0.RealServerIP=1.1.1.1\n&RealServerBindSet.0.RealServerWeight=1\n&<Common request parameters>",
+        "document": "Bind forwarding rules to an origin server.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=BindRuleRealServers\r\n&RuleId=0\r\n&RealServerBindSet.0.RealServerId=rs-i3658cdf\r\n&RealServerBindSet.0.RealServerPort=80\r\n&RealServerBindSet.0.RealServerIP=1.1.1.1\r\n&RealServerBindSet.0.RealServerWeight=1\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
-        "title": "Binding a forwarding rule to origin servers"
+        "title": "Binding Forwarding Rules to the Origin Server"
       }
     ],
     "CheckProxyCreate": [
@@ -57,9 +57,9 @@
     "CloseSecurityPolicy": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=CloseSecurityPolicy\n&ProxyId=link-xxxx\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=CloseSecurityPolicy\r\n&ProxyId=link-xxxx\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bdcb19c0-74db-47b1-a07c-bbe6985ef44c\",\n        \"TaskId\": \"1234.2\"\n    }\n}",
-        "title": "Disabling a security policy"
+        "title": "Disabling a Security Policy"
       }
     ],
     "CreateCertificate": [
@@ -81,13 +81,13 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCustomHeader\n<Common request parameters>\n\n{\n    \"RuleId\": \"rule-18vhg67\",\n    \"Headers\": [\n        {\n            \"HeaderName\": \"X-REAL_IP\",\n            \"HeaderValue\": \"$remote_addr\"\n        },\n        {\n            \"HeaderName\": \"X-FORWORD-IP\",\n            \"HeaderValue\": \"192.168.2.101\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
-        "title": "CreateCustomHeader"
+        "title": "CreateDomain"
       }
     ],
     "CreateDomain": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=CreateDomain\n&ListenerId=0\n&Domain=a.a.com\n&CertificateId=abc\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=CreateDomain\r\n&ListenerId=0\r\n&Domain=a.a.com\r\n&CertificateId=abc\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
         "title": "CreateDomain"
       }
@@ -95,31 +95,31 @@
     "CreateDomainErrorPageInfo": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=CreateDomainErrorPageInfo\n&ListenerId=0\n&Domain=a.com\n&ErrorNos.0=501\n&ErrorNos.1=502\n&NewErrorNo=400\n&Body=helloword\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=CreateDomainErrorPageInfo\r\n&ListenerId=0\r\n&Domain=a.com\r\n&ErrorNos.0=501\r\n&ErrorNos.1=502\r\n&NewErrorNo=400\r\n&Body=helloword\r\n&<Common request parameter>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\",\n        \"ErrorPageId\": \"errorPage-1fewf\"\n    }\n}",
         "title": "CreateDomainErrorPageInfo"
       }
     ],
     "CreateHTTPListener": [
       {
-        "document": "This example shows you how to create an HTTP listener.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=CreateHTTPListener\n&ProxyId=link-cuxw2rm0\n&ListenerName=listener-1\n&Port=443\n&<Common request parameters>",
+        "document": "Create an HTTP listener.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=CreateHTTPListener\r\n&ProxyId=link-cuxw2rm0\r\n&ListenerName=listener-1\r\n&Port=443\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9aeda369-17c7-429f-be39-745c1e92fc71\",\n        \"ListenerId\": \"listener-o0f3at99\"\n    }\n}",
-        "title": "Creating an HTTP listener"
+        "title": "Creating an HTTP Listener"
       }
     ],
     "CreateHTTPSListener": [
       {
-        "document": "This example shows you how to create an HTTPS listener.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=CreateHTTPSListener\n&ProxyId=link-cuxw2rm0\n&ListenerName=listener-1\n&Port=443\n&CertificateId=N4Al2mhF\n&ForwardProtocol=HTTP\n&<Common request parameters>",
+        "document": "Create an HTTPS listener.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=CreateHTTPSListener\r\n&InstanceId=link-cuxw2rm0\r\n&ListenerName=listener-1\r\n&Port=443\r\n&CertificateId=N4Al2mhF\r\n&ForwardProtocol=HTTP\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9aeda369-17c7-429f-be39-745c1e92fc71\",\n        \"ListenerId\": \"listener-o0f3at99\"\n    }\n}",
-        "title": "Creating an HTTPS listener"
+        "title": "Creating an HTTPS Listener"
       }
     ],
     "CreateProxy": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=CreateProxy\n&ProjectId=0\n&ProxyName=test\n&AccessRegion=SouthChina\n&Bandwidth=10\n&Concurrent=2\n&GroupId=lg-xxxx\n&<common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProxy\n<common request parameters>\n\n{\n    \"AccessRegion\": \"SouthChina\",\n    \"ProjectId\": \"0\",\n    \"Concurrent\": \"2\",\n    \"Bandwidth\": \"10\",\n    \"ProxyName\": \"test\",\n    \"GroupId\": \"lg-xxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"InstanceId\": \"link-11112222\",\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
         "title": "Create Connection"
       },
@@ -147,25 +147,25 @@
     "CreateProxyGroupDomain": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=CreateProxyGroupDomain\n&GroupId=lg-b7h4d02f\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=CreateProxyGroupDomain\r\n&GroupId=lg-b7h4d02f\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"19a021f8-dff3-4890-8e7a-ed5054e22e49\",\n        \"GroupId\": \"lg-okl0h0n1\"\n    }\n}",
-        "title": "Enabling connection group domain name"
+        "title": "Enabling a Connection Group Domain Name"
       }
     ],
     "CreateRule": [
       {
-        "document": "Create an HTTP/HTTPS listener forwarding rule.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=CreateRule\r\n&RealServerType=IP\r\n&ListenerId=listener-9jt0rtv9\r\n&Scheduler=rr\r\n&Path=%2Fimage\r\n&CheckParams.StatusCode.0=100\r\n&CheckParams.StatusCode.2=200\r\n&CheckParams.StatusCode.1=300\r\n&CheckParams.StatusCode.3=400\r\n&CheckParams.StatusCode.4=500\r\n&CheckParams.DelayLoop=39\r\n&CheckParams.Path=%2F\r\n&CheckParams.Method=HEAD\r\n&CheckParams.ConnectTimeout=4\r\n&Language=zh-CN\r\n&HealthCheck=1\r\n&Domain=www.bbb.com\r\n&<Common request parameters>",
+        "document": "This example shows you how to create an HTTP/HTTPS listener forwarding rule.",
+        "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRule\n<Common request parameters>\n\n{\n    \"Domain\": \"www.bbb.com\",\n    \"RealServerType\": \"IP\",\n    \"HealthCheck\": \"1\",\n    \"ListenerId\": \"listener-9jt0rtv9\",\n    \"CheckParams\": {\n        \"ConnectTimeout\": \"4\",\n        \"Path\": \"%2F\",\n        \"Method\": \"HEAD\",\n        \"DelayLoop\": \"39\",\n        \"StatusCode\": [\n            \"300\",\n            \"100\",\n            \"400\",\n            \"200\",\n            \"500\"\n        ]\n    },\n    \"Scheduler\": \"rr\",\n    \"Path\": \"%2Fimage\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f3ab4984-dfe0-4c6f-aca0-32100550f6fd\",\n        \"RuleId\": \"rule-qws4fmyl\"\n    }\n}",
-        "title": "Creating a Listener Forwarding Rule"
+        "title": "Creating a listener forwarding rule"
       }
     ],
     "CreateSecurityPolicy": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=CreateSecurityPolicy\n&ProxyId=link-1234\n&DefaultAction=Accept\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=CreateSecurityPolicy\r\n&ProxyId=link-1234\r\n&DefaultAction=Accept\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"PolicyId\": \"pl-xxxx\",\n        \"RequestId\": \"bdcb19c0-74db-47b1-a07c-bbe6985ef44c\"\n    }\n}",
-        "title": "Creating a security policy"
+        "title": "Creating a Security Policy"
       }
     ],
     "CreateSecurityRules": [
@@ -178,18 +178,18 @@
     ],
     "CreateTCPListeners": [
       {
-        "document": "This example shows you how to create a TCP listener.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=CreateTCPListeners\n&ProxyId=link-bjkpdum1\n&ListenerName=test1\n&RealServerType=IP\n&Scheduler=rr\n&DelayLoop=20\n&ConnectTimeout=20\n&HealthCheck=1\n&Ports.0=90\n&<Common request parameters>",
+        "document": "Create a TCP listener.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=CreateTCPListeners\r\n&ProxyId=link-bjkpdum1\r\n&ListenerName=test1\r\n&RealServerType=IP\r\n&Scheduler=rr\r\n&DelayLoop=20\r\n&ConnectTimeout=20\r\n&HealthCheck=1\r\n&Ports.0=90\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9aeda369-17c7-429f-be39-745c1e92fc71\",\n        \"ListenerIds\": [\n            \"listener-o0f3at99\"\n        ]\n    }\n}",
-        "title": "Creating TCP listeners"
+        "title": "Creating a TCP Listener"
       }
     ],
     "CreateUDPListeners": [
       {
-        "document": "This example shows you how to create an UDP listener.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=CreateUDPListeners\n&ProxyId=link-bjkpdum1\n&ListenerName=test1\n&RealServerType=IP\n&Scheduler=rr\n&Ports.0=90\n&<Common request parameters>",
+        "document": "Create an UDP listener.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=CreateUDPListeners\r\n&ProxyId=link-bjkpdum1\r\n&ListenerName=test1\r\n&RealServerType=IP\r\n&Scheduler=rr\r\n&Ports.0=90\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9aeda369-17c7-429f-be39-745c1e92fc71\",\n        \"ListenerIds\": [\n            \"listener-o0f3at99\"\n        ]\n    }\n}",
-        "title": "Creating UDP listeners"
+        "title": "Creating an UDP Listener"
       }
     ],
     "DeleteCertificate": [
@@ -203,25 +203,25 @@
     "DeleteDomain": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DeleteDomain\n&ListenerId=0\n&Domain=a.a.com\n&Force=1\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DeleteDomain\r\n&ListenerId=0\r\n&Domain=a.a.com\r\n&Force=1\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
-        "title": "Deleting forwarding rules based on domain names"
+        "title": "Deleting a Forwarding Rule Based on Domain Names"
       }
     ],
     "DeleteDomainErrorPageInfo": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DeleteDomainErrorPageInfo\n&ErrorPageId='errorPage-xxxx'\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DeleteDomainErrorPageInfo\r\n&ErrorPageId='errorPage-xxxx'\r\n&<Common request parameter>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
         "title": "DeleteDomainErrorPageInfo"
       }
     ],
     "DeleteListeners": [
       {
-        "document": "This example shows you how to delete a listener.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DeleteListeners\n&ProxyId=link-3d85gh\n&ListenerIds.0=listener-o0f3at99\n&Force=1\n&<Common request parameters>",
+        "document": "Delete a listener.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DeleteListeners\r\n&ProxyId=link-3d85gh\r\n&ListenerIds.0=listener-o0f3at99\r\n&Force=1\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"OperationFailedListenerSet\": [],\n        \"OperationSucceedListenerSet\": [\n            \"listener-o0f3at99\"\n        ],\n        \"InvalidStatusListenerSet\": [],\n        \"RequestId\": \"38fab584-8d14-4e2c-988c-4acdabbf2dff\"\n    }\n}",
-        "title": "Deleting listeners"
+        "title": "Deleting a Listener"
       }
     ],
     "DeleteProxyGroup": [
@@ -234,26 +234,26 @@
     ],
     "DeleteRule": [
       {
-        "document": "This example shows you how to delete a forwarding rule of a layer-7 listener.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DeleteRule\n&ListenerId=0\n&RuleId=rule-18vhg67\n&Force=1\n&<Common request parameters>",
+        "document": "Delete a forwarding rule of a layer-7 listener.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DeleteRule\r\n&ListenerId=0\r\n&RuleId=rule-18vhg67\r\n&Force=1\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
-        "title": "Deleting a forwarding rule of a layer-7 listener"
+        "title": "Deleting a Forwarding Rule of a Layer-7 Listener"
       }
     ],
     "DeleteSecurityPolicy": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DeleteSecurityPolicy\n&PolicyId=sp-hw5czrxx\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DeleteSecurityPolicy\r\n&PolicyId=sp-hw5czrxx\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bdcb19c0-74db-47b1-a07c-bbe6985ef44c\"\n    }\n}",
-        "title": "Deleting security policy"
+        "title": "Deleting a Security Policy"
       }
     ],
     "DeleteSecurityRules": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DeleteSecurityRules\n&PolicyId=sp-xxxx\n&RuleIdList.0=sr-xxx\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DeleteSecurityRules\r\n&PolicyId=sp-xxxx\r\n&RuleIdList.0=sr-xxx\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1eea4c85-e088-4512-9c6c-480dff91677e\"\n    }\n}",
-        "title": "Deleting access rules"
+        "title": "Deleting an Access Rule"
       }
     ],
     "DescribeAccessRegions": [
@@ -291,17 +291,17 @@
     "DescribeCertificates": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeCertificates\n&CertificateType=2\n&Offset=0\n&Limit=1\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeCertificates\r\n&CertificateType=2\r\n&Offset=0\r\n&Limit=1\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 19,\n        \"RequestId\": \"35d85baa-eeb8-4eb5-96a9-b6d27f4ff92c\",\n        \"CertificateSet\": [\n            {\n                \"CertificateId\": \"cert-8k1l0pat\",\n                \"SubjectCN\": \"lagameft01.xyz\",\n                \"CertificateAlias\": \"test\",\n                \"CertificateName\": \"test\",\n                \"BeginTime\": 1554134400,\n                \"CertificateType\": 2,\n                \"EndTime\": 1585713600,\n                \"CreateTime\": 1564557014,\n                \"IssuerCN\": \"TrustAsia TLS RSA CA\"\n            }\n        ]\n    }\n}",
-        "title": "Querying server certificate information"
+        "title": "Querying Server Certificate Information"
       }
     ],
     "DescribeCountryAreaMapping": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeCountryAreaMapping\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeCountryAreaMapping\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bdcb19c0-74db-47b1-a07c-bbe6985ef44c\",\n        \"CountryAreaMappingList\": [\n            {\n                \"NationCountryName\": \"Fiji Islands\",\n                \"GeographicalZoneInnerCode\": \"401000\",\n                \"ContinentName\": \"Oceania\",\n                \"ContinentInnerCode\": \"400000\",\n                \"NationCountryInnerCode\": \"401012\",\n                \"GeographicalZoneName\": \"Oceania\"\n            }\n        ]\n    }\n}",
-        "title": "Obtaining country/region code mapping table"
+        "title": "Obtaining Country/Region Code Mapping Table"
       }
     ],
     "DescribeCustomHeader": [
@@ -337,57 +337,57 @@
     "DescribeDomainErrorPageInfoByIds": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeDomainErrorPageInfoByIds\n&ErrorPageIds.0=errorPage-lhlnux1v\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8d9f4d84-b825-4a4f-8c4c-3c87c559c84c\",\n        \"ErrorPageSet\": [\n            {\n                \"Body\": \"sx\",\n                \"Status\": 0,\n                \"Domain\": \"test.domain\",\n                \"ClearHeaders\": [\n                    \"MyClearHeader\",\n                    \"MyClearHeader1\"\n                ],\n                \"ListenerId\": \"listener-23egjhxb\",\n                \"ErrorNos\": [\n                    501,\n                    502\n                ],\n                \"ErrorPageId\": \"errorPage-lhlnux1v\",\n                \"NewErrorNo\": 4123,\n                \"SetHeaders\": [\n                    {\n                        \"HeaderName\": \"MyName\",\n                        \"HeaderValue\": \"MyValue\"\n                    },\n                    {\n                        \"HeaderName\": \"MyName1\",\n                        \"HeaderValue\": \"MyValue1\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeDomainErrorPageInfoByIds\r\n&ErrorPageIds.0=errorPage-lhlnux1v\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8d9f4d84-b825-4a4f-8c4c-3c87c559c84c\",\n        \"ErrorPageSet\": [\n            {\n                \"Body\": null,\n                \"Domain\": \"test.domain\",\n                \"ClearHeaders\": [\n                    \"MyClearHeader\",\n                    \"MyClearHeader1\"\n                ],\n                \"ListenerId\": \"listener-23egjhxb\",\n                \"ErrorNos\": [\n                    501,\n                    502\n                ],\n                \"ErrorPageId\": \"errorPage-lhlnux1v\",\n                \"NewErrorNo\": null,\n                \"SetHeaders\": [\n                    {\n                        \"HeaderName\": \"MyName\",\n                        \"HeaderValue\": \"MyValue\"\n                    },\n                    {\n                        \"HeaderName\": \"MyName1\",\n                        \"HeaderValue\": \"MyValue1\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
         "title": "DescribeDomainErrorPageInfoByIds"
       }
     ],
     "DescribeGroupAndStatisticsProxy": [
       {
-        "document": "This example shows you how to query the information of connections and connection groups from which the statistics can be derived.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeGroupAndStatisticsProxy\n&ProjectId=0\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"GroupSet\": [\n            {\n                \"GroupId\": \"lg-r737geg\",\n                \"GroupName\": \"lg-test\",\n                \"ProxySet\": [\n                    {\n                        \"ProxyId\": \"link-mmu241ob\",\n                        \"ProxyName\": \"link-test\",\n                        \"ListenerList\": [\n                            {\n                                \"ListenerId\": \"listener-lmifrrmh\",\n                                \"ListenerName\": \"linstener-test\",\n                                \"Port\": 80,\n                                \"Protocol\": \"HTTP\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"5c680029-66b2-4be8-9630-7bd316ce70dd\",\n        \"TotalCount\": 1\n    }\n}",
-        "title": "Querying the information of connections and connection groups from which the statistics can be derived"
+        "document": "Query the information of connections and connection groups from which the statistics can be derived.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeGroupAndStatisticsProxy\r\n&ProjectId=0\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"GroupSet\": [\n            {\n                \"GroupId\": \"lg-r737geg\",\n                \"GroupName\": \"lg-test\",\n                \"ProxySet\": [\n                    {\n                        \"ProxyId\": \"link-mmu241ob\",\n                        \"ListenerList\": [\n                            {\n                                \"ListenerId\": \"listener-lmifrrmh\",\n                                \"ListenerName\": \"linstener-test\",\n                                \"Port\": 80,\n                                \"Protocol\": \"HTTP\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"5c680029-66b2-4be8-9630-7bd316ce70dd\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying the Information of Connections and Connection Groups from Which the Statistics Can Be Derived"
       }
     ],
     "DescribeGroupDomainConfig": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeGroupDomainConfig\n&GroupId=lg-b7h4d02f\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeGroupDomainConfig\r\n&GroupId=lg-b7h4d02f\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DefaultDnsIp\": \"lg-na2d00jf\",\n        \"AccessRegionCount\": 2,\n        \"RequestId\": \"74b5f95c-e976-4f78-b2ee-aad49eb844c4\",\n        \"AccessRegionList\": [\n            {\n                \"NationCountryInnerList\": [\n                    {\n                        \"NationCountryName\": \"North China\",\n                        \"NationCountryInnerCode\": \"101001\"\n                    },\n                    {\n                        \"NationCountryName\": \"East China\",\n                        \"NationCountryInnerCode\": \"101002\"\n                    },\n                    {\n                        \"NationCountryName\": \"South China\",\n                        \"NationCountryInnerCode\": \"101003\"\n                    },\n                    {\n                        \"NationCountryName\": \"West China\",\n                        \"NationCountryInnerCode\": \"101004\"\n                    }\n                ],\n                \"ContinentInnerCode\": \"100000\",\n                \"RegionId\": \"EastChina\",\n                \"GeographicalZoneInnerCode\": \"101000\",\n                \"ProxyList\": [\n                    {\n                        \"ProxyId\": \"link-4lzfc73l\"\n                    }\n                ],\n                \"RegionName\": \"East China\"\n            },\n            {\n                \"NationCountryInnerList\": [\n                    {\n                        \"NationCountryName\": \"Australia\",\n                        \"NationCountryInnerCode\": \"401000\"\n                    },\n                    {\n                        \"NationCountryName\": \"New Zealand\",\n                        \"NationCountryInnerCode\": \"401001\"\n                    }\n                ],\n                \"ContinentInnerCode\": \"400000\",\n                \"RegionId\": \"SL_Australia\",\n                \"GeographicalZoneInnerCode\": \"401000\",\n                \"ProxyList\": [\n                    {\n                        \"ProxyId\": \"link-ozvhjhp1\"\n                    }\n                ],\n                \"RegionName\": \"Australia (Sydney)\"\n            }\n        ],\n        \"GroupId\": \"lg-na2d00jf\"\n    }\n}",
-        "title": "Obtaining domain name resolution configuration details of connection group"
+        "title": "Obtaining Domain Name Resolution Configuration Details of a Connection Group"
       }
     ],
     "DescribeHTTPListeners": [
       {
-        "document": "This example shows you how to query the HTTP listener information.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeHTTPListeners\n&ProxyId=link-n9ha8jzl\n&Offset=0\n&Limit=20\n&<Common request parameters>",
+        "document": "Query the HTTP listener Information.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeHTTPListeners\r\n&ProxyId=link-n9ha8jzl\r\n&Offset=0\r\n&Limit=20\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 4,\n        \"ListenerSet\": [\n            {\n                \"Protocol\": \"HTTP\",\n                \"ListenerId\": \"listener-4e99n24b\",\n                \"Port\": 80,\n                \"ListenerStatus\": 0,\n                \"ListenerName\": \"http80\",\n                \"CreateTime\": 1563335063\n            },\n            {\n                \"Protocol\": \"HTTP\",\n                \"ListenerId\": \"listener-jmi21mrf\",\n                \"Port\": 8080,\n                \"ListenerStatus\": 0,\n                \"ListenerName\": \"http8080\",\n                \"CreateTime\": 1564590945\n            },\n            {\n                \"Protocol\": \"HTTP\",\n                \"ListenerId\": \"listener-1grazsz5\",\n                \"Port\": 18080,\n                \"ListenerStatus\": 0,\n                \"ListenerName\": \"http18080\",\n                \"CreateTime\": 1564590963\n            },\n            {\n                \"Protocol\": \"HTTP\",\n                \"ListenerId\": \"listener-l6z66uqb\",\n                \"Port\": 28080,\n                \"ListenerStatus\": 0,\n                \"ListenerName\": \"http28080\",\n                \"CreateTime\": 1564640821\n            }\n        ],\n        \"RequestId\": \"4c43a7f7-3527-4e2a-9998-bbd363e4b095\"\n    }\n}",
-        "title": "Querying HTTP listener information"
+        "title": "Querying the HTTP Listener Information"
       }
     ],
     "DescribeHTTPSListeners": [
       {
-        "document": "This example shows you how to query the HTTPS listener information.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeHTTPSListeners\n&ProxyId=link-n9ha8jzl\n&Offset=0\n&Limit=20\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 11,\n        \"ListenerSet\": [\n            {\n                \"ForwardProtocol\": \"HTTPS\",\n                \"ClientCertificateId\": \"123\",\n                \"CertificateId\": \"Sv8lFuYh\",\n                \"Protocol\": \"HTTPS\",\n                \"CertificateAlias\": \"lagameft01_test Do not delete\",\n                \"AuthType\": 0,\n                \"ListenerId\": \"listener-eqq49dct\",\n                \"ListenerStatus\": 0,\n                \"ListenerName\": \"Connectivity test httpstohttps443\",\n                \"ClientCertificateAlias\": \"sdvadf\",\n                \"CreateTime\": 1563340571,\n                \"Port\": 443,\n                \"PolyClientCertificateAliasInfo\": [\n                    {\n                        \"CertificateId\": \"123\",\n                        \"CertificateAlias\": \"alis\"\n                    }\n                ]\n            },\n            {\n                \"ForwardProtocol\": \"HTTPS\",\n                \"ClientCertificateId\": \"\",\n                \"CertificateId\": \"cert-r79xf99t\",\n                \"Protocol\": \"HTTPS\",\n                \"CertificateAlias\": \"boris server certificate user001\",\n                \"AuthType\": 0,\n                \"ListenerId\": \"listener-85646933\",\n                \"ListenerStatus\": 0,\n                \"ListenerName\": \"testcert001\",\n                \"ClientCertificateAlias\": null,\n                \"CreateTime\": 1564201158,\n                \"Port\": 1443,\n                \"PolyClientCertificateAliasInfo\": [\n                    {\n                        \"CertificateId\": \"123\",\n                        \"CertificateAlias\": \"alis\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"db5cebe8-b79a-401c-8704-388776fae938\"\n    }\n}",
-        "title": "Querying HTTPS listener information"
+        "document": "Query the HTTPS listener information.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeHTTPSListeners\r\n&ProxyId=link-n9ha8jzl\r\n&Offset=0\r\n&Limit=20\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 11,\n        \"ListenerSet\": [\n            {\n                \"ForwardProtocol\": \"HTTPS\",\n                \"ClientCertificateId\": null,\n                \"CertificateId\": \"Sv8lFuYh\",\n                \"Protocol\": \"HTTPS\",\n                \"CertificateAlias\": \"lagameft01_test勿删除\",\n                \"AuthType\": 0,\n                \"ListenerId\": \"listener-eqq49dct\",\n                \"ListenerStatus\": 0,\n                \"ListenerName\": \"连通性测试httpstohttps443\",\n                \"ClientCertificateAlias\": null,\n                \"CreateTime\": 1563340571,\n                \"Port\": 443\n            },\n            {\n                \"ForwardProtocol\": \"HTTPS\",\n                \"ClientCertificateId\": \"\",\n                \"CertificateId\": \"cert-r79xf99t\",\n                \"Protocol\": \"HTTPS\",\n                \"CertificateAlias\": \"boris服务器证书user001\",\n                \"AuthType\": 0,\n                \"ListenerId\": \"listener-85646933\",\n                \"ListenerStatus\": 0,\n                \"ListenerName\": \"testcert001\",\n                \"ClientCertificateAlias\": null,\n                \"CreateTime\": 1564201158,\n                \"Port\": 1443\n            }\n        ],\n        \"RequestId\": \"db5cebe8-b79a-401c-8704-388776fae938\"\n    }\n}",
+        "title": "Querying the HTTPS Listener Information"
       }
     ],
     "DescribeListenerRealServers": [
       {
-        "document": "This example shows you how to query the origin server list of a layer-4 listener.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeListenerRealServers\n&ListenerId=listener-pbsgn7ej\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RealServerSet\": [\n            {\n                \"ProjectId\": 1,\n                \"RealServerId\": \"xx\",\n                \"InBanBlacklist\": 0,\n                \"RealServerName\": \"xx\",\n                \"RealServerIP\": \"xx\"\n            },\n            {\n                \"ProjectId\": 1,\n                \"RealServerId\": \"xx\",\n                \"InBanBlacklist\": 0,\n                \"RealServerName\": \"xx\",\n                \"RealServerIP\": \"xx\"\n            }\n        ],\n        \"BindRealServerTotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"BindRealServerSet\": [\n            {\n                \"RealServerStatus\": 1,\n                \"RealServerPort\": 80,\n                \"RealServerId\": \"xx\",\n                \"DownIPList\": [\n                    \"1.1.1.1\"\n                ],\n                \"RealServerWeight\": 0,\n                \"RealServerIP\": \"xx\"\n            }\n        ]\n    }\n}",
-        "title": "Querying the origin server list of a layer-4 listener"
+        "document": "Query an origin server list of a layer-4 listener.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeListenerRealServers\r\n&ListenerId=listener-pbsgn7ej\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RealServerSet\": [\n            {\n                \"RealServerId\": \"rs-2k5qnys5\",\n                \"RealServerIP\": \"123.123.123.123\",\n                \"RealServerName\": \"rs_test\",\n                \"ProjectId\": 0\n            },\n            {\n                \"RealServerId\": \"rs-d5y6ei2u\",\n                \"RealServerIP\": \"118.89.46.86\",\n                \"RealServerName\": \"rs_test-2\",\n                \"ProjectId\": 0\n            }\n        ],\n        \"BindRealServerTotalCount\": 1,\n        \"BindRealServerSet\": [\n            {\n                \"RealServerId\": \"rs-d5y6ei2u\",\n                \"RealServerIP\": \"118.89.46.86\",\n                \"RealServerWeight\": 0,\n                \"RealServerPort\": 80\n            }\n        ],\n        \"RequestId\": \"38fab584-8d14-4e2c-988c-4acdabbf2dff\"\n    }\n}",
+        "title": "Querying the Origin Server List of a Layer-4 Listener"
       }
     ],
     "DescribeListenerStatistics": [
       {
-        "document": "This example shows you how to query the listener statistics.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeListenerStatistics\n&ListenerId=listener-rfgt56hy\n&MetricNames.0=InputBandwidth\n&MetricNames.1=OutputBandwidth\n&StartTime=2019-03-25 12:00:00\n&EndTime=2019-03-26 12:00:00\n&Granularity=300\n&<Common request parameters>",
+        "document": "Query the listener statistics.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeListenerStatistics\r\n&ListenerId=listener-rfgt56hy\r\n&MetricNames=[InputBandwidth,OutputBandwidth]\r\n&StartTime=2019-03-25 12:00:00\r\n&EndTime=2019-03-26 12:00:00\r\n&Granularity=300\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"StatisticsData\": [\n            {\n                \"MetricName\": \"InputBandwidth\",\n                \"MetricData\": [\n                    {\n                        \"Time\": 1564736040,\n                        \"Data\": 2000\n                    },\n                    {\n                        \"Time\": 1564735980,\n                        \"Data\": 2001\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"5c680029-66b2-4be8-9630-7bd316ce70dd\"\n    }\n}",
-        "title": "Querying listener statistics"
+        "title": "Querying the Listener Statistics"
       }
     ],
     "DescribeProxies": [
@@ -401,17 +401,17 @@
     "DescribeProxiesStatus": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeProxiesStatus\n&ProxyIds.0=link-1234abcd\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeProxiesStatus\r\n&ProxyIds.0=link-1234abcd\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"InstanceStatusSet\": [\n            {\n                \"InstanceId\": \"link-4ftf12sb\",\n                \"Status\": \"RUNNING\"\n            }\n        ],\n        \"RequestId\": \"caac3323-bda3-4edc-b063-f584eb5936a2\"\n    }\n}",
-        "title": "Querying connection status"
+        "title": "Querying a Connection Status List"
       }
     ],
     "DescribeProxyAndStatisticsListeners": [
       {
-        "document": "This example shows you how to query the information of listeners and connections from which the statistics can be derived.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeProxyAndStatisticsListeners\n&ProjectId=0\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"ProxySet\": [\n            {\n                \"ProxyId\": \"link-mmu241ob\",\n                \"ProxyName\": \"wegame\",\n                \"ListenerList\": [\n                    {\n                        \"ListenerId\": \"listener-lmifrrmh\",\n                        \"ListenerName\": \"wegame\",\n                        \"Protocol\": \"HTTP\",\n                        \"Port\": 80\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"5c680029-66b2-4be8-9630-7bd316ce70dd\",\n        \"TotalCount\": 1\n    }\n}",
-        "title": "Querying the information of listeners and connections from which the statistics can be derived"
+        "document": "Query the information of listeners and connections from which the statistics can be derived.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeProxyAndStatisticsListeners\r\n&ProjectId=0\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"ProxySet\": [\n            {\n                \"ProxyId\": \"link-mmu241ob\",\n                \"ListenerList\": [\n                    {\n                        \"ListenerId\": \"listener-lmifrrmh\",\n                        \"ListenerName\": \"wegame\",\n                        \"Protocol\": \"HTTP\",\n                        \"Port\": 80\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"5c680029-66b2-4be8-9630-7bd316ce70dd\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying the Information of Listeners and Connections from Which the Statistics Can Be Derived"
       }
     ],
     "DescribeProxyDetail": [
@@ -462,16 +462,16 @@
     ],
     "DescribeRealServerStatistics": [
       {
-        "document": "This example shows you how to query the health check results of the bound origin server.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeRealServerStatistics\n&RealServerId=rs-rfgt56hy\n&ListenerId=listener-gucvb6d\n&WithinTime=3\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RsStatisticsData\": [\n            {\n                \"MetricData\": [\n                    {\n                        \"Data\": 0.0,\n                        \"Time\": 1\n                    },\n                    {\n                        \"Data\": 0.0,\n                        \"Time\": 1\n                    }\n                ],\n                \"MetricName\": \"xx\"\n            },\n            {\n                \"MetricData\": [\n                    {\n                        \"Data\": 0.0,\n                        \"Time\": 1\n                    },\n                    {\n                        \"Data\": 0.0,\n                        \"Time\": 1\n                    }\n                ],\n                \"MetricName\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\",\n        \"StatisticsData\": [\n            {\n                \"Data\": 0.0,\n                \"Time\": 1\n            }\n        ]\n    }\n}",
-        "title": "Querying the health check result of the bound origin server"
+        "document": "Query the health check statistics of the bound origin server.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeRealServerStatistics\r\n&RealServerId=rs-rfgt56hy\r\n&ListenerId=listener-gucvb6d\r\n&WithinTime=3\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"StatisticsData\": [\n            {\n                \"Time\": 1564736040,\n                \"Data\": 2000\n            },\n            {\n                \"Time\": 1564735980,\n                \"Data\": 2001\n            }\n        ],\n        \"RequestId\": \"5c680029-66b2-4be8-9630-7bd316ce70dd\"\n    }\n}",
+        "title": "Querying the Health Check Statistics of the Bound Origin Server"
       }
     ],
     "DescribeRealServers": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeRealServers\n&ProjectId=0\n&SearchValue='1.1.1.1'\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeRealServers\r\n&ProjectId=0\r\n&SearchValue='1.1.1.1'\r\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RealServerSet\": [\n            {\n                \"RealServerId\": \"rs123\",\n                \"RealServerIP\": \"1.1.1.1\",\n                \"RealServerName\": \"rsname\",\n                \"ProjectId\": 0,\n                \"TagSet\": []\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"5c680029-66b2-4be8-9630-7bd316ce70dd\"\n    }\n}",
         "title": "Querying origin server information"
       }
@@ -501,65 +501,65 @@
     "DescribeResourcesByTag": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeResourcesByTag\n&TagKey=testkey\n&TagValue=test\n&ResourceType=Proxy\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeResourcesByTag\r\n&TagKey=testkey\r\n&TagValue=test\r\n&ResourceType=Proxy\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ResourceSet\": [\n            {\n                \"ResourceType\": \"Proxy\",\n                \"ResourceId\": \"link-12345678\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"5c680029-66b2-4be8-9630-7bd316ce70dd\"\n    }\n}",
-        "title": "Pulling resource list based on tags"
+        "title": "Pulling a Resource List Based on Tags"
       }
     ],
     "DescribeRuleRealServers": [
       {
-        "document": "This example shows you how to query the origin server information of forwarding rules.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeRuleRealServers\n&RuleId=rule-hh5xg2yd\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RealServerSet\": [\n            {\n                \"ProjectId\": 1,\n                \"RealServerId\": \"xx\",\n                \"InBanBlacklist\": 0,\n                \"RealServerName\": \"xx\",\n                \"RealServerIP\": \"xx\"\n            },\n            {\n                \"ProjectId\": 1,\n                \"RealServerId\": \"xx\",\n                \"InBanBlacklist\": 0,\n                \"RealServerName\": \"xx\",\n                \"RealServerIP\": \"xx\"\n            }\n        ],\n        \"BindRealServerTotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"BindRealServerSet\": [\n            {\n                \"RealServerStatus\": 1,\n                \"RealServerPort\": 234,\n                \"RealServerId\": \"xx\",\n                \"DownIPList\": [\n                    \"xx\"\n                ],\n                \"RealServerWeight\": 1,\n                \"RealServerIP\": \"xx\"\n            },\n            {\n                \"RealServerStatus\": 1,\n                \"RealServerPort\": 424,\n                \"RealServerId\": \"xx\",\n                \"RealServerWeight\": 1,\n                \"DownIPList\": [\n                    \"xx\"\n                ],\n                \"RealServerIP\": \"xx\"\n            }\n        ]\n    }\n}",
-        "title": "Querying the origin server information of forwarding rules"
+        "document": "Query the origin server information of forwarding rules.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeRuleRealServers\r\n&RuleId=rule-hh5xg2yd\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RealServerSet\": [\n            {\n                \"ProjectId\": 0,\n                \"RealServerId\": \"rs-04v3s12c\",\n                \"RealServerName\": \"\",\n                \"RealServerIP\": \"4.4.4.4\"\n            },\n            {\n                \"ProjectId\": 0,\n                \"RealServerId\": \"rs-04v3s12t\",\n                \"RealServerName\": \"\",\n                \"RealServerIP\": \"119.28.69.101\"\n            }\n        ],\n        \"BindRealServerTotalCount\": 2,\n        \"RequestId\": \"aca97028-559f-4cfb-9c33-3fc2baed13b8\",\n        \"BindRealServerSet\": [\n            {\n                \"RealServerStatus\": 1,\n                \"RealServerPort\": 234,\n                \"RealServerId\": \"rs-04v3s12c\",\n                \"DownIPList\": [],\n                \"RealServerWeight\": 1,\n                \"RealServerIP\": \"4.4.4.4\"\n            },\n            {\n                \"RealServerStatus\": 1,\n                \"RealServerPort\": 424,\n                \"RealServerId\": \"rs-10vtt5en\",\n                \"DownIPList\": [],\n                \"RealServerWeight\": 1,\n                \"RealServerIP\": \"5.5.5.6\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the Origin Server Information of Forwarding Rules"
       }
     ],
     "DescribeRules": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeRules\n&ListenerId=listener-9jt0rtv9\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DomainRuleSet\": [\n            {\n                \"GaapCertificateAlias\": \"xx\",\n                \"Http3Supported\": 0,\n                \"Domain\": \"xx\",\n                \"CertificateId\": \"xx\",\n                \"PolyRealServerCertificateAliasInfo\": [\n                    {\n                        \"CertificateId\": \"xx\",\n                        \"CertificateAlias\": \"xx\"\n                    }\n                ],\n                \"RealServerCertificateId\": \"xx\",\n                \"BanStatus\": \"xx\",\n                \"CertificateAlias\": \"xx\",\n                \"ClientCertificateId\": \"xx\",\n                \"GaapCertificateId\": \"xx\",\n                \"BasicAuth\": 1,\n                \"BasicAuthConfAlias\": \"xx\",\n                \"BasicAuthConfId\": \"xx\",\n                \"RealServerCertificateAlias\": \"xx\",\n                \"RuleSet\": [\n                    {\n                        \"BindStatus\": 1,\n                        \"Domain\": \"xx\",\n                        \"RealServerType\": \"xx\",\n                        \"ForwardHost\": \"xx\",\n                        \"RuleId\": \"xx\",\n                        \"HealthCheck\": 1,\n                        \"ServerNameIndication\": \"xx\",\n                        \"ListenerId\": \"xx\",\n                        \"CheckParams\": {\n                            \"Domain\": \"xx\",\n                            \"ConnectTimeout\": 1,\n                            \"BlockInter\": 1,\n                            \"FailedThreshold\": 1,\n                            \"Path\": \"xx\",\n                            \"FailedCountInter\": 1,\n                            \"Method\": \"xx\",\n                            \"DelayLoop\": 1,\n                            \"StatusCode\": [\n                                1,\n                                1,\n                                1,\n                                1,\n                                1\n                            ]\n                        },\n                        \"Scheduler\": \"xx\",\n                        \"Path\": \"xx\",\n                        \"RuleStatus\": 1,\n                        \"ServerNameIndicationSwitch\": \"xx\",\n                        \"RealServerSet\": [\n                            {\n                                \"RealServerStatus\": 0,\n                                \"RealServerPort\": 234,\n                                \"RealServerId\": \"xx\",\n                                \"DownIPList\": [\n                                    \"xx\"\n                                ],\n                                \"RealServerWeight\": 1,\n                                \"RealServerIP\": \"xx\"\n                            },\n                            {\n                                \"RealServerStatus\": 0,\n                                \"RealServerPort\": 424,\n                                \"RealServerId\": \"xx\",\n                                \"RealServerWeight\": 1,\n                                \"DownIPList\": [\n                                    \"xx\"\n                                ],\n                                \"RealServerIP\": \"xx\"\n                            }\n                        ]\n                    }\n                ],\n                \"PolyClientCertificateAliasInfo\": [\n                    {\n                        \"CertificateId\": \"xx\",\n                        \"CertificateAlias\": \"xx\"\n                    }\n                ],\n                \"GaapAuth\": 1,\n                \"ClientCertificateAlias\": \"xx\",\n                \"RealServerAuth\": 1,\n                \"RealServerCertificateDomain\": \"xx\",\n                \"DomainStatus\": 1\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Querying forwarding rule information"
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeRules\r\n&ListenerId=listener-9jt0rtv9\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DomainRuleSet\": [\n            {\n                \"GaapCertificateAlias\": \"gaap-casfdgs\",\n                \"Domain\": \"www.bbb.com\",\n                \"CertificateId\": \"cert-mqkdxhcl\",\n                \"RealServerCertificateId\": \"cert-76es2p6n\",\n                \"CertificateAlias\": \"test1\",\n                \"BasicAuth\": 1,\n                \"GaapCertificateId\": \"cert-47teq6gt\",\n                \"RealServerAuth\": 1,\n                \"BasicAuthConfAlias\": \"basicAuth\",\n                \"BasicAuthConfId\": \"cert-cqwokbyp\",\n                \"ClientCertificateId\": \"cert-5n7ifekx\",\n                \"RuleSet\": [\n                    {\n                        \"BindStatus\": 1,\n                        \"Domain\": \"www.bbb.com\",\n                        \"RealServerType\": \"IP\",\n                        \"RuleId\": \"rule-hh5xg2yd\",\n                        \"HealthCheck\": 0,\n                        \"ListenerId\": \"listener-9jt0rtv9\",\n                        \"CheckParams\": {\n                            \"Domain\": \"www.bbb.com\",\n                            \"ConnectTimeout\": 2,\n                            \"Path\": \"/\",\n                            \"Method\": \"HEAD\",\n                            \"DelayLoop\": 30,\n                            \"StatusCode\": [\n                                100,\n                                200,\n                                300,\n                                400,\n                                500\n                            ]\n                        },\n                        \"Scheduler\": \"rr\",\n                        \"Path\": \"/\",\n                        \"RuleStatus\": 0,\n                        \"RealServerSet\": [\n                            {\n                                \"RealServerStatus\": 0,\n                                \"RealServerPort\": 234,\n                                \"RealServerId\": \"rs-04v3s12c\",\n                                \"DownIPList\": [],\n                                \"RealServerWeight\": 1,\n                                \"RealServerIP\": \"4.4.4.4\"\n                            },\n                            {\n                                \"RealServerStatus\": 0,\n                                \"RealServerPort\": 424,\n                                \"RealServerId\": \"rs-10vtt5en\",\n                                \"DownIPList\": [],\n                                \"RealServerWeight\": 1,\n                                \"RealServerIP\": \"5.5.5.6\"\n                            }\n                        ]\n                    }\n                ],\n                \"GaapAuth\": 1,\n                \"ClientCertificateAlias\": \"clientCA\",\n                \"RealServerCertificateAlias\": \"rsca\",\n                \"RealServerCertificateDomain\": \"www.bbb.com\"\n            }\n        ],\n        \"RequestId\": \"6aecde5a-fd9a-4380-8fe9-1e9e4a98b7b5\"\n    }\n}",
+        "title": "Querying the Forwarding Rule Information"
       }
     ],
     "DescribeRulesByRuleIds": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeRulesByRuleIds\n&RuleIds.0=rule-3bsuu01r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RuleSet\": [\n            {\n                \"BindStatus\": 1,\n                \"Domain\": \"xx\",\n                \"RealServerType\": \"xx\",\n                \"ForwardHost\": \"xx\",\n                \"RuleId\": \"xx\",\n                \"HealthCheck\": 1,\n                \"ServerNameIndication\": \"xx\",\n                \"ListenerId\": \"xx\",\n                \"CheckParams\": {\n                    \"Domain\": \"xx\",\n                    \"ConnectTimeout\": 1,\n                    \"BlockInter\": 1,\n                    \"FailedThreshold\": 1,\n                    \"Path\": \"xx\",\n                    \"FailedCountInter\": 1,\n                    \"Method\": \"xx\",\n                    \"DelayLoop\": 1,\n                    \"StatusCode\": [\n                        1,\n                        1,\n                        1,\n                        1,\n                        1\n                    ]\n                },\n                \"Scheduler\": \"xx\",\n                \"Path\": \"xx\",\n                \"RuleStatus\": 1,\n                \"ServerNameIndicationSwitch\": \"xx\",\n                \"RealServerSet\": [\n                    {\n                        \"RealServerStatus\": 0,\n                        \"RealServerPort\": 0,\n                        \"RealServerId\": \"xx\",\n                        \"DownIPList\": [\n                            \"xx\"\n                        ],\n                        \"RealServerWeight\": 0,\n                        \"RealServerIP\": \"xx\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeRulesByRuleIds\r\n&RuleIds.0=rule-3bsuu01r\r\n&<Common request parameter>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"f0508c22-aba5-4eee-8365-a64018b1328f\",\n        \"RuleSet\": [\n            {\n                \"BindStatus\": 1,\n                \"Domain\": \"www.tt.com\",\n                \"RealServerType\": \"IP\",\n                \"Scheduler\": \"rr\",\n                \"RuleId\": \"rule-3bsuu01r\",\n                \"HealthCheck\": 0,\n                \"ListenerId\": \"listener-gwm92kvx\",\n                \"CheckParams\": {\n                    \"Domain\": \"www.tt.com\",\n                    \"ConnectTimeout\": 2,\n                    \"Path\": \"/\",\n                    \"Method\": \"HEAD\",\n                    \"DelayLoop\": 30,\n                    \"StatusCode\": [\n                        100,\n                        200,\n                        300,\n                        400,\n                        500\n                    ]\n                },\n                \"ForwardHost\": \"default\",\n                \"Path\": \"/\",\n                \"RealServerSet\": [],\n                \"RuleStatus\": 0\n            }\n        ]\n    }\n}",
         "title": "Pulling the list of rules based on rule ID"
       }
     ],
     "DescribeSecurityPolicyDetail": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeSecurityPolicyDetail\n&PolicyId=sp-xxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Status\": \"UNBIND\",\n        \"ProxyId\": \"link-gw4sxx8j\",\n        \"DefaultAction\": \"ACCEPT\",\n        \"RequestId\": \"1eea4c85-e088-4512-9c6c-480dff91677e\",\n        \"RuleList\": [\n            {\n                \"Action\": \"DROP\",\n                \"DestPortRange\": \"ALL\",\n                \"SourceCidr\": \"2.2.2.2\",\n                \"AliasName\": \"test1\",\n                \"RuleId\": \"sr-bf0yxxpp\",\n                \"PolicyId\": \"ssavdf\",\n                \"Protocol\": \"string\"\n            }\n        ],\n        \"PolicyId\": \"sp-9scxxhdh\"\n    }\n}",
-        "title": "Obtaining security policy details"
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeSecurityPolicyDetail\r\n&PolicyId=sp-xxxx\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Status\": \"UNBIND\",\n        \"ProxyId\": \"link-gw4sxx8j\",\n        \"DefaultAction\": \"ACCEPT\",\n        \"RequestId\": \"1eea4c85-e088-4512-9c6c-480dff91677e\",\n        \"RuleList\": [\n            {\n                \"Action\": \"DROP\",\n                \"DestPortRange\": null,\n                \"SourceCidr\": \"2.2.2.2\",\n                \"AliasName\": \"test1\",\n                \"RuleId\": \"sr-bf0yxxpp\"\n            },\n            {\n                \"Action\": \"ACCEPT\",\n                \"DestPortRange\": null,\n                \"SourceCidr\": \"1.1.1.1\",\n                \"AliasName\": \"test2\",\n                \"RuleId\": \"sr-ivgxkdxz\"\n            }\n        ],\n        \"PolicyId\": \"sp-9scxxhdh\"\n    }\n}",
+        "title": "Obtaining the Security Policy Details"
       }
     ],
     "DescribeSecurityRules": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeSecurityRules\n&SecurityRuleIds.0=sr-xxxxxxxx\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeSecurityRules\r\n&SecurityRuleIds.0=sr-xxxxxxxx\r\n&<Common request parameter>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"6dc6b074-9bcf-4120-9500-0583aebe375d\",\n        \"SecurityRuleSet\": [\n            {\n                \"Protocol\": \"TCP\",\n                \"SourceCidr\": \"1.1.1.101\",\n                \"RuleId\": \"sr-0vr5571x\",\n                \"DestPortRange\": \"6666,6667\",\n                \"AliasName\": \"\",\n                \"PolicyId\": \"sp-8k1l0pat\",\n                \"Action\": \"ACCEPT\"\n            }\n        ]\n    }\n}",
         "title": "Querying the list of security rules based on security rule ID"
       }
     ],
     "DescribeTCPListeners": [
       {
-        "document": "This example shows you how to query the TCP listener list.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeTCPListeners\n&ProxyId=link-hwera8lq\n&ListenerId=listener-gkzl9e7t\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ListenerSet\": [\n            {\n                \"HealthyThreshold\": 1,\n                \"BindStatus\": 1,\n                \"SessionPersist\": 1,\n                \"RealServerType\": \"xx\",\n                \"Protocol\": \"xx\",\n                \"ConnectTimeout\": 1,\n                \"RealServerPort\": 1,\n                \"HealthCheck\": 1,\n                \"ListenerId\": \"xx\",\n                \"UnhealthyThreshold\": 1,\n                \"ListenerStatus\": 1,\n                \"ListenerName\": \"xx\",\n                \"Scheduler\": \"xx\",\n                \"ClientIPMethod\": 1,\n                \"FailoverSwitch\": 1,\n                \"RealServerSet\": [\n                    {\n                        \"RealServerStatus\": 0,\n                        \"RealServerPort\": 111,\n                        \"RealServerId\": \"xx\",\n                        \"DownIPList\": [\n                            \"11.11.11.11:111\"\n                        ],\n                        \"RealServerWeight\": 1,\n                        \"RealServerIP\": \"xx\"\n                    }\n                ],\n                \"CreateTime\": 1,\n                \"Port\": 1,\n                \"DelayLoop\": 1\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Querying TCP listener list"
+        "document": "Query a TCP listener list.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeTCPListeners\r\n&ProxyId=link-hwera8lq\r\n&ListenerId=listener-gkzl9e7t\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"ListenerSet\": [\n            {\n                \"HealthCheck\": 1,\n                \"Protocol\": \"TCP\",\n                \"ListenerId\": \"listener-gkzl9e7t\",\n                \"Port\": 111,\n                \"RealServerType\": \"IP\",\n                \"RealServerPort\": null,\n                \"DelayLoop\": 30,\n                \"BindStatus\": 0,\n                \"Scheduler\": \"rr\",\n                \"ListenerStatus\": 0,\n                \"ListenerName\": \"111\",\n                \"ConnectTimeout\": 2\n            }\n        ],\n        \"RequestId\": \"38fab584-8d14-4e2c-988c-4acdabbf2dff\"\n    }\n}",
+        "title": "Querying a TCP Listener List"
       }
     ],
     "DescribeUDPListeners": [
       {
-        "document": "This example shows you how to query the UDP listener list.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeUDPListeners\n&ProxyId=link-hwera8lq\n&ListenerId=listener-pbsgn7ej\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ListenerSet\": [\n            {\n                \"BindStatus\": 1,\n                \"SessionPersist\": 1,\n                \"RealServerType\": \"xx\",\n                \"Protocol\": \"xx\",\n                \"RealServerPort\": 1,\n                \"ListenerId\": \"xx\",\n                \"CreateTime\": 1,\n                \"ListenerStatus\": 1,\n                \"ListenerName\": \"xx\",\n                \"Scheduler\": \"xx\",\n                \"RealServerSet\": [\n                    {\n                        \"RealServerStatus\": 0,\n                        \"RealServerPort\": 111,\n                        \"RealServerId\": \"xx\",\n                        \"DownIPList\": [\n                            \"11.11.11.11:111\"\n                        ],\n                        \"RealServerWeight\": 1,\n                        \"RealServerIP\": \"xx\"\n                    }\n                ],\n                \"Port\": 1\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Querying UDP listener list"
+        "document": "Query an UDP listener list.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=DescribeUDPListeners\r\n&ProxyId=link-hwera8lq\r\n&ListenerId=listener-pbsgn7ej\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"ListenerSet\": [\n            {\n                \"Protocol\": \"UDP\",\n                \"ListenerId\": \"listener-pbsgn7ej\",\n                \"Port\": 111,\n                \"RealServerType\": \"IP\",\n                \"RealServerPort\": null,\n                \"Scheduler\": \"rr\",\n                \"ListenerStatus\": 0,\n                \"ListenerName\": \"111\",\n                \"BindStatus\": 0\n            }\n        ],\n        \"RequestId\": \"38fab584-8d14-4e2c-988c-4acdabbf2dff\"\n    }\n}",
+        "title": "Querying an UDP Listener List"
       }
     ],
     "DestroyProxies": [
@@ -581,9 +581,9 @@
     "ModifyCertificate": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=ModifyCertificate\n&ListenerId=listener-xxx\n&Domain=www.test.com\n&CertificateId=cert-12345678\n&ClientCertificateId=cert-abcdefgh\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=ModifyCertificate\r\n&ListenerId=listener-xxx\r\n&Domain=www.test.com\r\n&CertificateId=cert-12345678\r\n&ClientCertificateId=cert-abcdefgh\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
-        "title": "Modifying domain name certificate"
+        "title": "Modifying the Certificate of a Domain Name"
       }
     ],
     "ModifyCertificateAttributes": [
@@ -596,34 +596,34 @@
     ],
     "ModifyDomain": [
       {
-        "document": "This example shows you how to modify the forwarding rule domain name of a layer-7 listener.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=ModifyDomain\n&ListenerId=0\n&OldDomain=a.a.com\n&NewDomain=b.b.com\n&CertificateId=default\n&<Common request parameters>",
+        "document": "Modify the forwarding rule domain name of a layer-7 listener.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=ModifyDomain\r\n&ListenerId=0\r\n&OldDomain=a.a.com\r\n&NewDomain=b.b.com\r\n&CertificateId=default\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
-        "title": "Modifying the forwarding rule domain name of a layer-7 listener"
+        "title": "Modifying the Forwarding Rule Domain Name of a Layer-7 Listener"
       }
     ],
     "ModifyGroupDomainConfig": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=ModifyGroupDomainConfig\n&GroupId=lg-b7h4d02f\n&DefaultDnsIp=1.1.1.1\n&AccessRegionList.0.RegionId=111\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=ModifyGroupDomainConfig\r\n&GroupId=lg-b7h4d02f\r\n&DefaultDnsIp=1.1.1.1\r\n&AccessRegionList=[]\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"74b5f95c-e976-4f78-b2ee-aad49eb844c4\"\n    }\n}",
-        "title": "Configuring the nearest access domain name of a connection group"
+        "title": "Configuring the Nearest Access Domain Name of a Connection Group"
       }
     ],
     "ModifyHTTPListenerAttribute": [
       {
-        "document": "This example shows you how to modify the HTTP listener configuration.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=ModifyHTTPListenerAttribute\n&ProxyId=link-3d85gh\n&ListenerId=listener-o0f3at99\n&ListenerName=‘test-2’\n&<Common request parameters>",
+        "document": "Modify the HTTP listener configuration.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=ModifyHTTPListenerAttribute\r\n&InstanceId=link-3d85gh\r\n&ListenerId=listener-o0f3at99\r\n&ListenerName=‘test-2’\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"38fab584-8d14-4e2c-988c-4acdabbf2dff\"\n    }\n}",
-        "title": "Modifying HTTP listener configuration"
+        "title": "Modifying the HTTP Listener Configuration"
       }
     ],
     "ModifyHTTPSListenerAttribute": [
       {
-        "document": "This example shows you how to modify the HTTPS listener configuration.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=ModifyHTTPSListenerAttribute\n&ProxyId=link-3d85gh\n&ListenerId=listener-o0f3at99\n&ListenerName=test-2\n&ForwardProtocol=HTTP\n&CertificateId=string\n&ClientCertificateId=string\n&PolyClientCertificateIds.0=casdfg\n&<Common request parameters>",
+        "document": "Modify the HTTPS listener configuration.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=ModifyHTTPSListenerAttribute\r\n&InstanceId=link-3d85gh\r\n&ListenerId=listener-o0f3at99\r\n&ListenerName=test-2\r\n&ForwardProtocol=HTTP\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"38fab584-8d14-4e2c-988c-4acdabbf2dff\"\n    }\n}",
-        "title": "Modifying HTTPS listener configuration"
+        "title": "Modifying the HTTPS Listener Configuration"
       }
     ],
     "ModifyProxiesAttribute": [
@@ -675,17 +675,17 @@
     "ModifyRuleAttribute": [
       {
         "document": "Modify the forwarding rule information.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=ModifyRuleAttribute\r\n&RuleId=rule-5g8dh58\r\n&ListenerId=listener-8fueuc9\r\n&Path=/\r\n&Scheduler=rr\r\n&HealthCheck=0\r\n&CheckParam=null\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: gaap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRuleAttribute\n<Common request parameters>\n\n{\n    \"RuleId\": \"rule-5g8dh58\",\n    \"HealthCheck\": \"0\",\n    \"ListenerId\": \"listener-8fueuc9\",\n    \"CheckParams\": {\n        \"Domain\": \"string\",\n        \"ConnectTimeout\": \"12\",\n        \"Path\": \"str\",\n        \"Method\": \"string\",\n        \"DelayLoop\": \"1\",\n        \"StatusCode\": [\n            \"1\"\n        ]\n    },\n    \"Scheduler\": \"rr\",\n    \"Path\": \"/\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
-        "title": "Modifying the Forwarding Rule Information"
+        "title": "Modifying forwarding rule information"
       }
     ],
     "ModifySecurityRule": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=ModifySecurityRule\n&PolicyId=sp-xxxx\n&RuleId=sr-xxxx\n&AliasName=t3\n&Protocol=TCP\n&SourceCidr=180.180.180.180/8\n&RuleAction=ACCEPT\n&DestPortRange=ALL\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=ModifySecurityRule\r\n&PolicyId=sp-xxxx\r\n&RuleId=sr-xxxx\r\n&AliasName=t3\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1eea4c85-e088-4512-9c6c-480dff91677e\"\n    }\n}",
-        "title": "Modifying rule name"
+        "title": "Modifying a Rule Name"
       }
     ],
     "ModifyTCPListenerAttribute": [
@@ -698,10 +698,10 @@
     ],
     "ModifyUDPListenerAttribute": [
       {
-        "document": "This example shows you how to modify the UDP listener configuration.",
-        "input": "https://gaap.tencentcloudapi.com/?Action=ModifyUDPListenerAttribute\n&ProxyId=link-bjkpdum1\n&ListenerId=listener-o0f3at99\n&ListenerName=test10\n&Scheduler=rr\n&<Common request parameters>",
+        "document": "Modify the UDP listener configuration.",
+        "input": "https://gaap.tencentcloudapi.com/?Action=ModifyUDPListenerAttribute\r\n&ProxyId=link-bjkpdum1\r\n&ListenerId=listener-o0f3at99\r\n&ListenerName=test10\r\n&Scheduler=rr\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3919ba30-85c4-4cb4-81bf-ff243b50f3dc\"\n    }\n}",
-        "title": "Modifying UDP listener configuration"
+        "title": "Modifying the UDP Listener Configuration"
       }
     ],
     "OpenProxies": [
@@ -723,9 +723,9 @@
     "OpenSecurityPolicy": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=OpenSecurityPolicy\n&ProxyId=link-xxxx\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=OpenSecurityPolicy\r\n&ProxyId=link-xxxx\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bdcb19c0-74db-47b1-a07c-bbe6985ef44c\",\n        \"TaskId\": \"1234.2\"\n    }\n}",
-        "title": "Enabling security policy"
+        "title": "Enabling a Security Policy"
       }
     ],
     "RemoveRealServers": [
@@ -739,9 +739,9 @@
     "SetAuthentication": [
       {
         "document": "",
-        "input": "https://gaap.tencentcloudapi.com/?Action=SetAuthentication\n&ListenerId=0\n&Domain=a.a.com\n&BasicAuth=1\n&BasicAuthConfId=xxx\n&GaapAuth=1\n&GaapCertificateId=xxx\n&<Common request parameters>",
+        "input": "https://gaap.tencentcloudapi.com/?Action=SetAuthentication\r\n&ListenerId=0\r\n&Domain=a.a.com\r\n&BasicAuth=1\r\n&BasicAuthConfId=xxx\r\n&GaapAuth=1\r\n&GaapCertificateId=xxx\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7bfcad5-3f20-472f-9afc-13a66faebad8\"\n    }\n}",
-        "title": "Advanced authentication configuration"
+        "title": "Advanced Authentication Configuration"
       }
     ]
   },
