@@ -120,6 +120,12 @@
       "name": "Queries instance maintenance window",
       "output": "DescribeMaintainPeriodResponse"
     },
+    "DescribeParamTemplates": {
+      "document": "This API is used to query all parameter templates information of a user-specified product.",
+      "input": "DescribeParamTemplatesRequest",
+      "name": "Queries the information of parameter templates",
+      "output": "DescribeParamTemplatesResponse"
+    },
     "DescribeProjectSecurityGroups": {
       "document": "This API is used to query the security group information of a project.",
       "input": "DescribeProjectSecurityGroupsRequest",
@@ -149,6 +155,18 @@
       "input": "ExportInstanceSlowQueriesRequest",
       "name": "Exports the slow logs of an instance",
       "output": "ExportInstanceSlowQueriesResponse"
+    },
+    "InquirePriceCreate": {
+      "document": "This API is used to query the purchasable price of a cluster.",
+      "input": "InquirePriceCreateRequest",
+      "name": "Queries the purchasable price of a cluster",
+      "output": "InquirePriceCreateResponse"
+    },
+    "InquirePriceRenew": {
+      "document": "This API is used to query the renewal price of a cluster.",
+      "input": "InquirePriceRenewRequest",
+      "name": "Queries the renewal price of a cluster",
+      "output": "InquirePriceRenewResponse"
     },
     "IsolateCluster": {
       "document": "This API is used to isolate a cluster.",
@@ -3637,6 +3655,41 @@
       ],
       "type": "object"
     },
+    "DescribeParamTemplatesRequest": {
+      "document": "DescribeParamTemplates request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeParamTemplatesResponse": {
+      "document": "DescribeParamTemplates response structure.",
+      "members": [
+        {
+          "document": "Number of parameter templates",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Parameter template information",
+          "example": "[{\"...\"}]",
+          "member": "ParamTemplateListInfo",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeProjectSecurityGroupsRequest": {
       "document": "DescribeProjectSecurityGroups request structure.",
       "members": [
@@ -3920,6 +3973,222 @@
           "name": "FileContent",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceCreateRequest": {
+      "document": "InquirePriceCreate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Purchase quantity",
+          "example": "1",
+          "member": "int64",
+          "name": "GoodsNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance type for purchase. Valid values: `PREPAID`, `POSTPAID`, `SERVERLESS`.",
+          "example": "PREPAID",
+          "member": "string",
+          "name": "InstancePayMode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Storage type for purchase. Valid values: `PREPAID`, `POSTPAID`.",
+          "example": "POSTPAID",
+          "member": "string",
+          "name": "StoragePayMode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of CPU cores, which is required when `InstancePayMode` is `PREPAID` or `POSTPAID`.",
+          "example": "1",
+          "member": "int64",
+          "name": "Cpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Memory size in GB, which is required when `InstancePayMode` is `PREPAID` or `POSTPAID`.",
+          "example": "1",
+          "member": "int64",
+          "name": "Memory",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "CCU size, which is required when `InstancePayMode` is `SERVERLESS`.",
+          "example": "0.5",
+          "member": "float",
+          "name": "Ccu",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "default": "",
+          "document": "Storage size, which is required when `StoragePayMode` is `PREPAID`.",
+          "example": "10",
+          "member": "int64",
+          "name": "StorageLimit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Validity period, which is required when `InstancePayMode` is `PREPAID`.",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Duration unit, which is required when `InstancePayMode` is `PREPAID`. Valid values: `m` (month), `d` (day).",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceCreateResponse": {
+      "document": "InquirePriceCreate response structure.",
+      "members": [
+        {
+          "document": "Instance price",
+          "example": "无",
+          "member": "TradePrice",
+          "name": "InstancePrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Storage price",
+          "example": "无",
+          "member": "TradePrice",
+          "name": "StoragePrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceRenewRequest": {
+      "document": "InquirePriceRenew request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Validity period, which needs to be used together with `TimeUnit`.",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Unit of validity period, which needs to be used together with `TimeSpan`. Valid values: `d` (day), `m` (month).",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceRenewResponse": {
+      "document": "InquirePriceRenew response structure.",
+      "members": [
+        {
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance ID list",
+          "example": "[\"cynosdbmysql-ins-2\",\"cynosdbmysql-ins-6\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Price of instance specification in array",
+          "example": "无",
+          "member": "TradePrice",
+          "name": "Prices",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total renewal price of compute node",
+          "example": "500",
+          "member": "int64",
+          "name": "InstanceRealTotalPrice",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total renewal price of storage node",
+          "example": "500",
+          "member": "int64",
+          "name": "StorageRealTotalPrice",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4680,6 +4949,52 @@
       ],
       "usage": "in"
     },
+    "ParamTemplateListInfo": {
+      "document": "Parameter template information",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter template ID",
+          "example": "1234",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter template name",
+          "example": "\"test\"",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter template description",
+          "example": "\"cynosdbmysqltemplste\"",
+          "member": "string",
+          "name": "TemplateDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Engine version",
+          "example": "\"5.7\"",
+          "member": "string",
+          "name": "EngineVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "PauseServerlessRequest": {
       "document": "PauseServerless request structure.",
       "members": [
@@ -5132,6 +5447,72 @@
         }
       ],
       "usage": "both"
+    },
+    "TradePrice": {
+      "document": "Billing details",
+      "members": [
+        {
+          "default": "",
+          "document": "The non-discounted total price of monthly subscribed resources (unit: US cent)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "6000",
+          "member": "int64",
+          "name": "TotalPrice",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Total discount. `100` means no discount.",
+          "example": "100",
+          "member": "float",
+          "name": "Discount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The discounted total price of monthly subscribed resources (unit: US cent). If a discount is applied, `TotalPriceDiscount` will be the product of `TotalPrice` and `Discount`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "6000",
+          "member": "int64",
+          "name": "TotalPriceDiscount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The non-discounted unit price of pay-as-you-go resources (unit: US cent)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "350",
+          "member": "int64",
+          "name": "UnitPrice",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The discounted unit price of pay-as-you-go resources (unit: US cent). If a discount is applied, `UnitPriceDiscount` will be the product of `UnitPrice` and `Discount`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "350",
+          "member": "int64",
+          "name": "UnitPriceDiscount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Price unit",
+          "example": "GB*h",
+          "member": "string",
+          "name": "ChargeUnit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "UpgradeInstanceRequest": {
       "document": "UpgradeInstance request structure.",

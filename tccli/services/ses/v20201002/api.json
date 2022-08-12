@@ -1,7 +1,7 @@
 {
   "actions": {
     "BatchSendEmail": {
-      "document": "This API is used to send a TEXT or HTML email to multiple recipients at a time for marketing or notification purposes. By default, you can send emails using a template only. To send custom content, please contact your sales rep to enable this feature. You need to create a recipient group with email addresses first and then send emails by group ID. SES supports scheduled and recurring email sending tasks. You need to pass in `TimedParam` for a scheduled task and `CycleParam` for a recurring one.",
+      "document": "This API is used to send a TEXT or HTML email to multiple recipients at a time for marketing or notification purposes. By default, you can send emails using a template only. You need to create a recipient group with email addresses first and then send emails by group ID. SES supports scheduled and recurring email sending tasks. You need to pass in `TimedParam` for a scheduled task and `CycleParam` for a recurring one.",
       "input": "BatchSendEmailRequest",
       "name": "Sends an email to multiple recipients at a time",
       "output": "BatchSendEmailResponse"
@@ -79,9 +79,9 @@
       "output": "GetEmailTemplateResponse"
     },
     "GetSendEmailStatus": {
-      "document": "This API is used to get email sending status. Only data within 30 days can be queried.",
+      "document": "This API is used to get email sending status. Only data within 30 days can be queried.\nDefault API request rate limit: 1 request/sec.",
       "input": "GetSendEmailStatusRequest",
-      "name": "Gets the email sending status",
+      "name": "Gets the email sending status (to be disused)",
       "output": "GetSendEmailStatusResponse"
     },
     "GetStatisticsReport": {
@@ -127,7 +127,7 @@
       "output": "ListSendTasksResponse"
     },
     "SendEmail": {
-      "document": "This API is used to send a TEXT or HTML email triggered for authentication or transaction. By default, you can send emails using a template only. To send custom content, please contact your sales rep to enable this feature.",
+      "document": "This API is used to send an HTML or TEXT email triggered for authentication or transaction. By default, you can send emails using a template only.",
       "input": "SendEmailRequest",
       "name": "Sends an email",
       "output": "SendEmailResponse"
@@ -218,7 +218,7 @@
         },
         {
           "default": "",
-          "document": "Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will be sent to Tencent Cloud.",
+          "document": "Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.",
           "example": "abc@ef.com",
           "member": "string",
           "name": "ReplyToAddresses",
@@ -236,7 +236,7 @@
         },
         {
           "default": "",
-          "document": "Email content when emails are sent by calling the API. This parameter is currently unavailable.",
+          "document": "Disused",
           "example": "无",
           "member": "Simple",
           "name": "Simple",
@@ -756,6 +756,7 @@
         {
           "default": "",
           "document": "Sender domain.",
+          "example": "mail.qcloud.com",
           "member": "string",
           "name": "IdentityName",
           "required": true,
@@ -765,6 +766,7 @@
         {
           "default": "",
           "document": "Verification type. The value is fixed to `DOMAIN`.",
+          "example": "DOMAIN",
           "member": "string",
           "name": "IdentityType",
           "required": true,
@@ -774,10 +776,31 @@
         {
           "default": "",
           "document": "Verification passed or not.",
+          "example": "false",
           "member": "bool",
           "name": "SendingEnabled",
           "required": true,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current reputation level",
+          "example": "10",
+          "member": "uint64",
+          "name": "CurrentReputationLevel",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of messages sent per day",
+          "example": "10000",
+          "member": "uint64",
+          "name": "DailyQuota",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -882,9 +905,20 @@
       "members": [
         {
           "document": "Template content.",
+          "example": "无",
           "member": "TemplateContent",
           "name": "TemplateContent",
+          "required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Template status. Valid values: `0` (approved); `1` (pending approval); `2` (rejected).",
+          "example": "0",
+          "member": "uint64",
+          "name": "TemplateStatus",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -901,7 +935,8 @@
       "members": [
         {
           "default": "",
-          "document": "Sent date. This parameter is required. You can only query the sending status for a single date at a time.",
+          "document": "Date sent. This parameter is required. You can only query the sending status for a single date at a time.",
+          "example": "2020-09-22",
           "member": "date",
           "name": "RequestDate",
           "required": true,
@@ -909,7 +944,8 @@
         },
         {
           "default": "",
-          "document": "Offset. Default value: `0`",
+          "document": "Offset. Default value: `0`.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": true,
@@ -917,7 +953,8 @@
         },
         {
           "default": "",
-          "document": "Maximum number of pulled entries. The maximum value is `100`.",
+          "document": "Maximum number of pulled entries. Maximum value: `100`.",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": true,
@@ -925,7 +962,8 @@
         },
         {
           "default": "",
-          "document": "`MessageId` field returned by the `SendMail` API",
+          "document": "The `MessageId` field returned by the `SendMail` API.",
+          "example": "qcloudses-30-4123414323-date-20210101094334-syNARhMTbKI1",
           "member": "string",
           "name": "MessageId",
           "required": false,
@@ -933,7 +971,8 @@
         },
         {
           "default": "",
-          "document": "Recipient email address",
+          "document": "Recipient email address.",
+          "example": "abc@ef.com",
           "member": "string",
           "name": "ToEmailAddress",
           "required": false,
@@ -946,9 +985,11 @@
       "document": "GetSendEmailStatus response structure.",
       "members": [
         {
-          "document": "Email sending status list",
+          "document": "Status of sent emails",
+          "example": "无",
           "member": "SendEmailStatus",
           "name": "EmailStatusList",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1139,9 +1180,29 @@
       "members": [
         {
           "document": "List of sender domains.",
+          "example": "无",
           "member": "EmailIdentity",
           "name": "EmailIdentities",
+          "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Maximum reputation level",
+          "example": "10",
+          "member": "uint64",
+          "name": "MaxReputationLevel",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Maximum number of emails sent per domain name",
+          "example": "10000",
+          "member": "uint64",
+          "name": "MaxDailyQuota",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -1159,6 +1220,7 @@
         {
           "default": "",
           "document": "Number of templates to get. This parameter is used for pagination.",
+          "example": "0",
           "member": "uint64",
           "name": "Limit",
           "required": true,
@@ -1167,6 +1229,7 @@
         {
           "default": "",
           "document": "Template offset to get. This parameter is used for pagination.",
+          "example": "10",
           "member": "uint64",
           "name": "Offset",
           "required": true,
@@ -1180,15 +1243,19 @@
       "members": [
         {
           "document": "List of email templates.",
+          "example": "无",
           "member": "TemplatesMetadata",
           "name": "TemplatesMetadata",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "Total number of templates.",
+          "document": "Total number of templates",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1452,7 +1519,7 @@
         },
         {
           "default": "",
-          "document": "Reply-to address. You can enter a valid personal email address that can receive emails. If this field is left empty, reply emails will be sent to Tencent Cloud.",
+          "document": "Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.",
           "example": "noreply@mail.qcloud.com",
           "member": "string",
           "name": "ReplyToAddresses",
@@ -1470,7 +1537,7 @@
         },
         {
           "default": "",
-          "document": "Email content when sending emails by calling the API.",
+          "document": "Disused",
           "example": "无",
           "member": "Simple",
           "name": "Simple",
@@ -1529,11 +1596,11 @@
       "type": "object"
     },
     "SendEmailStatus": {
-      "document": "Describes the email sending status.",
+      "document": "Describes the email sending status",
       "members": [
         {
           "default": "",
-          "document": "`MessageId` field returned by the `SendEmail` API",
+          "document": "The `MessageId` field returned by the `SendEmail` API",
           "member": "string",
           "name": "MessageId",
           "required": true,
@@ -1560,7 +1627,7 @@
         },
         {
           "default": "",
-          "document": "Tencent Cloud processing status:\n0: successful.\n1001: internal system exception.\n1002: internal system exception.\n1003: internal system exception.\n1003: internal system exception.\n1004: email sending timeout.\n1005: internal system exception.\n1006: you have sent too many emails to the same address in a short period.\n1007: the email address is in the blocklist.\n1009: internal system exception.\n1010: daily email sending limit exceeded.\n1011: no permission to send custom content. Use a template.\n2001: no results found.\n3007: invalid template ID or unavailable template.\n3008: template status exception.\n3009: no permission to use this template.\n3010: the format of the `TemplateData` field is incorrect. \n3014: unable to send the email because the sender domain is not verified.\n3020: the recipient email address is in the blocklist.\n3024: failed to pre-check the email address format.\n3030: email sending is restricted temporarily due to high bounce rate.\n3033: the account has insufficient balance or overdue payment.",
+          "document": "Tencent Cloud processing status\n0: Successful.\n1001: Internal system exception.\n1002: Internal system exception.\n1003: Internal system exception.\n1003: Internal system exception.\n1004: Email sending timed out.\n1005: Internal system exception.\n1006: You have sent too many emails to the same address in a short period.\n1007: The email address is in the blocklist.\n1009: Internal system exception.\n1010: The daily email sending limit is exceeded.\n1011: You have no permission to send custom content. Use a template.\n2001: No results were found.\n3007: The template ID is invalid or the template is unavailable.\n3008: Template status exception.\n3009: You have no permission to use this template.\n3010: The format of the `TemplateData` field is incorrect. \n3014: The email cannot be sent because the sender domain is not verified.\n3020: The recipient email address is in the blocklist.\n3024: Failed to precheck the email address format.\n3030: Email sending is restricted temporarily due to high bounce rate.\n3033: The account has insufficient balance or overdue payment.",
           "member": "int64",
           "name": "SendStatus",
           "required": true,
@@ -1569,7 +1636,7 @@
         },
         {
           "default": "",
-          "document": "Recipient processing status:\n0: Tencent Cloud has accepted the request and added it to the send queue.\n1: the email is delivered successfully, `DeliverTime` indicates the time when the email is delivered successfully.\n2: the email is discarded. `DeliverMessage` indicates the reason for discarding.\n3: the recipient's ESP rejects the email, probably because the email address does not exist or due to other reasons.\n8: the email is delayed by the ESP. `DeliverMessage` indicates the reason for delay.",
+          "document": "Recipient processing status\n0: Tencent Cloud has accepted the request and added it to the send queue.\n1: The email is delivered successfully. `DeliverTime` indicates the time when the email is delivered successfully.\n2: The email is discarded. `DeliverMessage` indicates the reason for discarding.\n3: The recipient's ESP rejects the email, probably because the email address does not exist or due to other reasons.\n8: The email is delayed by the ESP. `DeliverMessage` indicates the reason for delay.",
           "member": "int64",
           "name": "DeliverStatus",
           "required": true,
@@ -1623,7 +1690,7 @@
         },
         {
           "default": "",
-          "document": "Whether the recipient has unsubscribed from emails sent by the sender",
+          "document": "Whether the recipient has unsubscribed from the email sent by the sender",
           "member": "bool",
           "name": "UserUnsubscribed",
           "required": true,
