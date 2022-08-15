@@ -1,0 +1,89 @@
+{
+  "actions": {
+    "SendMessage": {
+      "document": "This API is used to report data to DIP via SDK.",
+      "input": "SendMessageRequest",
+      "name": "Reports data",
+      "output": "SendMessageResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2022-06-13",
+    "serviceNameCN": "数据接入平台",
+    "serviceShortName": "dataintegration"
+  },
+  "objects": {
+    "BatchContent": {
+      "document": "A batch of messages",
+      "members": [
+        {
+          "default": "",
+          "document": "Message body",
+          "example": "MessageIdContent",
+          "member": "string",
+          "name": "Body",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key of a message",
+          "example": "Message-key-439j9hj92",
+          "member": "string",
+          "name": "Key",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "SendMessageRequest": {
+      "document": "SendMessage request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the integrated resource",
+          "example": "datahub-rinibi1",
+          "member": "string",
+          "name": "DataHubId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "A batch of messages",
+          "example": "无",
+          "member": "BatchContent",
+          "name": "Message",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "SendMessageResponse": {
+      "document": "SendMessage response structure.",
+      "members": [
+        {
+          "document": "Message ID",
+          "example": "无",
+          "member": "string",
+          "name": "MessageId",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

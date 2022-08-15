@@ -23,6 +23,12 @@
       "input": "LivenessCompareRequest",
       "name": "Detects liveness and compares faces",
       "output": "LivenessCompareResponse"
+    },
+    "VideoLivenessCompare": {
+      "document": "This API is used to pass in URLs of a video and a photo, determine whether the person in the video is real, and if yes, then determine whether the person in the video is the same as that in the photo.",
+      "input": "VideoLivenessCompareRequest",
+      "name": "Detects liveness and compares face based on video",
+      "output": "VideoLivenessCompareResponse"
     }
   },
   "metadata": {
@@ -183,6 +189,42 @@
         }
       ],
       "type": "object"
+    },
+    "FileInfo": {
+      "document": "The description of a file, including a download URL and the MD5 checksum and size of the file.",
+      "members": [
+        {
+          "default": "",
+          "document": "The URL for downloading the file",
+          "example": "http://example.com",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The 32-bit MD5 checksum of the file",
+          "example": "c4f217871aaeb0180e40152f61658835",
+          "member": "string",
+          "name": "MD5",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The file size",
+          "example": "344443",
+          "member": "int64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "GenerateReflectSequenceRequest": {
       "document": "GenerateReflectSequence request structure.",
@@ -352,6 +394,114 @@
           "member": "string",
           "name": "BestFrameList",
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "VideoLivenessCompareRequest": {
+      "document": "VideoLivenessCompare request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The URL of the photo for face comparison. The downloaded image after Base64 encoding can be up to 3 MB and must be in JPG or PNG.\n\nThe image must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate an image URL by using `CreateUploadUrl` or purchase the COS service.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The 32-bit MD5 checksum of the image for comparison",
+          "example": "682e24b207acf1825286c1fceef5631c",
+          "member": "string",
+          "name": "ImageMd5",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The URL of the video for liveness detection. The downloaded video after Base64 encoding can be up to 8 MB and must be in MP4, AVI, or FLV. It takes no more than 4s to download the video.\n\nThe video must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate a video URL by using `CreateUploadUrl` or purchase the COS service.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "VideoUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The 32-bit MD5 checksum of the video",
+          "example": "682e24b207acf1825286c1fceef5631c",
+          "member": "string",
+          "name": "VideoMd5",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.\n`LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "LivenessType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "LIP parameter: Pass in a custom 4-digit verification code.\nACTION parameter: Pass in a custom action sequence (`2,1` or `1,2`).\nSILENT parameter: Null.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ValidateData",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "VideoLivenessCompareResponse": {
+      "document": "VideoLivenessCompare response structure.",
+      "members": [
+        {
+          "document": "The similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two persons are of the same person. You can adjust the threshold according to your specific scenario (the FARs at the thresholds of 70 and 80 are 0.1% and 0.01%, respectively).",
+          "example": "\"\"",
+          "member": "float",
+          "name": "Sim",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The service error code. `Success` will be returned for success. For error information, see the `FailedOperation` section in the error code list below.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The service result description",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The best video screenshot after successful verification\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "FileInfo",
+          "name": "BestFrame",
+          "required": true,
+          "type": "object",
           "value_allowed_null": true
         },
         {

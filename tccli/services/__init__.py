@@ -72,6 +72,9 @@ SERVICE_VERSIONS = {
     "cynosdb": [
         "2019-01-07"
     ],
+    "dataintegration": [
+        "2022-06-13"
+    ],
     "dayu": [
         "2018-07-09"
     ],

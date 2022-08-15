@@ -31,6 +31,14 @@
         "output": "{\n    \"Response\": {\n        \"Result\": \"Success\",\n        \"Description\": \"Success\",\n        \"BestFrameBase64\": \"Imagebase64\",\n        \"BestFrameList\": [\n            \"Imagebase64\"\n        ],\n        \"Sim\": 89.88,\n        \"RequestId\": \"f904f4cf-75db-4f8f-a5ec-dc4f942c7f7a\"\n    }\n}",
         "title": "Detecting silent liveness and comparing faces"
       }
+    ],
+    "VideoLivenessCompare": [
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=VideoLivenessCompare\n&ImageUrl=<ImageUrl>\n&VideoUrl=<VideoUrl>\n&LivenessType=SILENT\n&ImageMd5=682e24b207acf1825286c1fceef5631c\n&VideoMd5=682e24b207acf1825286c1fceef5631c\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"Success\",\n        \"Description\": \"Success\",\n        \"BestFrame\": {\n            \"Url\": \"https://intl-reflect-h5-1257237511.cos.ap-guangzhou.myqcloud.com\",\n            \"MD5\": \"682e24b207acf1825286c1fceef5631c\",\n            \"Size\": 9430792\n        },\n        \"Sim\": 89.88,\n        \"RequestId\": \"f904f4cf-75db-4f8f-a5ec-dc4f942c7f7a\"\n    }\n}",
+        "title": "Detecting liveness in silent mode and comparing face"
+      }
     ]
   },
   "version": "1.0"
