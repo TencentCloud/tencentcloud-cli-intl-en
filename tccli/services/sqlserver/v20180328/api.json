@@ -2172,7 +2172,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Domain name of the public network address",
           "example": "gz.xxx.sqlserver.tencent.com",
           "member": "string",
           "name": "DnsPodDomain",
@@ -2182,12 +2182,32 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Port number of the public network",
           "example": "2032",
           "member": "int64",
           "name": "TgwWanVPort",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "Chinese_PRC_CI_AS",
+          "member": "string",
+          "name": "Collation",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "China Standard Time",
+          "member": "string",
+          "name": "TimeZone",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

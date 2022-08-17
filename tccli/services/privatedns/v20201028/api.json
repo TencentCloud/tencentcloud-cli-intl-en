@@ -452,7 +452,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable subdomain recursive DNS. Valid values: ENABLED, DISABLED. Default value: DISABLED",
+          "document": "Whether to enable subdomain recursive DNS. Valid values: `ENABLED` (default) and `DISABLED`.",
           "example": "ENABLED",
           "member": "string",
           "name": "DnsForwardStatus",
@@ -476,6 +476,15 @@
           "name": "AccountVpcSet",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable CNAME flattening. Valid values: `ENABLED` (default) and `DISABLED`.",
+          "example": "ENABLED",
+          "member": "string",
+          "name": "CnameSpeedupStatus",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1119,6 +1128,15 @@
           "example": "ENABLED",
           "member": "string",
           "name": "DnsForwardStatus",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable CNAME flattening. Valid values: `ENABLED` and `DISABLED`.",
+          "example": "ENABLED",
+          "member": "string",
+          "name": "CnameSpeedupStatus",
           "required": false,
           "type": "string"
         }
