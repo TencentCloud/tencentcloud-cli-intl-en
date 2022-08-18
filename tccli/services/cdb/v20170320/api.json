@@ -36,6 +36,12 @@
       "name": "Disables public network access for an instance",
       "output": "CloseWanServiceResponse"
     },
+    "CreateAccounts": {
+      "document": "This API is used to create one or more TencentDB instance accounts. The account names, host addresses, and passwords are required, and account remarks and the maximum connections are optional.",
+      "input": "CreateAccountsRequest",
+      "name": "Creates TencentDB accounts",
+      "output": "CreateAccountsResponse"
+    },
     "CreateAuditPolicy": {
       "document": "This API is used to create an audit policy for a TencentDB instance by associating an audit rule with the TencentDB instance.",
       "input": "CreateAuditPolicyRequest",
@@ -107,6 +113,12 @@
       "input": "DescribeAccountPrivilegesRequest",
       "name": "Queries the information of TencentDB account permissions",
       "output": "DescribeAccountPrivilegesResponse"
+    },
+    "DescribeAccounts": {
+      "document": "This API (DescribeAccounts) is used to query information of all TencentDB accounts.",
+      "input": "DescribeAccountsRequest",
+      "name": "Queries the information of all TencentDB accounts",
+      "output": "DescribeAccountsResponse"
     },
     "DescribeAsyncRequestInfo": {
       "document": "This API (DescribeAsyncRequestInfo) is used to query the async task execution result of a TencentDB instance.",
@@ -492,11 +504,23 @@
       "name": "Modifies the security groups bound to a TencentDB instance",
       "output": "ModifyDBInstanceSecurityGroupsResponse"
     },
+    "ModifyDBInstanceVipVport": {
+      "document": "This API (ModifyDBInstanceVipVport) is used to modify the IP and port number of a TencentDB instance, switch from the basic network to VPC, or change VPC subnets.",
+      "input": "ModifyDBInstanceVipVportRequest",
+      "name": "Modifies the IP and port number of a TencentDB instance",
+      "output": "ModifyDBInstanceVipVportResponse"
+    },
     "ModifyInstanceParam": {
       "document": "This API (ModifyInstanceParam) is used to modify instance parameters.",
       "input": "ModifyInstanceParamRequest",
       "name": "Modifies instance parameters",
       "output": "ModifyInstanceParamResponse"
+    },
+    "ModifyInstancePasswordComplexity": {
+      "document": "This API is used to modify the password complexity of a TencentDB instance.",
+      "input": "ModifyInstancePasswordComplexityRequest",
+      "name": "Modifies the password complexity of a TencentDB instance",
+      "output": "ModifyInstancePasswordComplexityResponse"
     },
     "ModifyInstanceTag": {
       "document": "This API (ModifyInstanceTag) is used to add, modify, or delete an instance tag.",
@@ -509,6 +533,12 @@
       "input": "ModifyLocalBinlogConfigRequest",
       "name": "Modifies the retention policy of local binlog",
       "output": "ModifyLocalBinlogConfigResponse"
+    },
+    "ModifyNameOrDescByDpId": {
+      "document": "This API is used to modify the name or description of a placement group.",
+      "input": "ModifyNameOrDescByDpIdRequest",
+      "name": "Modifies the name or description of a placement group",
+      "output": "ModifyNameOrDescByDpIdResponse"
     },
     "ModifyParamTemplate": {
       "document": "This API is used to modify a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.",
@@ -688,6 +718,82 @@
         }
       ],
       "usage": "in"
+    },
+    "AccountInfo": {
+      "document": "Account details",
+      "members": [
+        {
+          "default": "",
+          "document": "Account remarks",
+          "example": "your note",
+          "member": "string",
+          "name": "Notes",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account domain name",
+          "example": "%",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account name",
+          "example": "root",
+          "member": "string",
+          "name": "User",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account information modification time",
+          "example": "2020-09-09 16:40:30",
+          "member": "datetime",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Password modification time",
+          "example": "2020-09-09 16:40:30",
+          "member": "datetime",
+          "name": "ModifyPasswordTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This parameter is no longer supported.",
+          "example": "''",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The maximum number of instance connections supported by an account",
+          "example": "10240",
+          "member": "int64",
+          "name": "MaxUserConnections",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "AddTimeWindowRequest": {
       "document": "AddTimeWindow request structure.",
@@ -2027,6 +2133,76 @@
       ],
       "usage": "out"
     },
+    "CreateAccountsRequest": {
+      "document": "CreateAccounts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+          "example": "cdb-f35wr6wj",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "TencentDB account.",
+          "example": "无",
+          "member": "Account",
+          "name": "Accounts",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Password of the new account",
+          "example": "fsdgfdgfd",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "example": "test description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Maximum connections of the new account. Default value: `10240`. Maximum value: `10240`.",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxUserConnections",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccountsResponse": {
+      "document": "CreateAccounts response structure.",
+      "members": [
+        {
+          "document": "Async task request ID, which can be used to query the execution result of an async task.",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateAuditPolicyRequest": {
       "document": "CreateAuditPolicy request structure.",
       "members": [
@@ -3273,6 +3449,83 @@
           "member": "ColumnPrivilege",
           "name": "ColumnPrivileges",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountsRequest": {
+      "document": "DescribeAccounts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Record offset. Default value: 0.",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of results to be returned for a single request. Value range: 1-100. Default value: 20.",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Regular expression for matching account names, which complies with the rules at MySQL official website.",
+          "member": "string",
+          "name": "AccountRegexp",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountsResponse": {
+      "document": "DescribeAccounts response structure.",
+      "members": [
+        {
+          "document": "Number of eligible accounts.",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Details of eligible accounts.",
+          "example": "无",
+          "member": "AccountInfo",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The maximum number of instance connections (set by the MySQL parameter `max_connections`)",
+          "example": "10240",
+          "member": "int64",
+          "name": "MaxUserConnections",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -8127,7 +8380,7 @@
         },
         {
           "default": "",
-          "document": "Switch for archive backup retention. Valid values: `off` (disable), `on` (enable). Default value:`off`.",
+          "document": "Switch for periodic archive. Valid values: `off` (disable), `on` (enable). Default value:`off`. When you enable the periodic archive policy for the first time, you need to enter the `BackupPeriodSaveDays`, `BackupPeriodSaveInterval`, `BackupPeriodSaveCount`, and `StartBackupPeriodSaveDate` parameters; otherwise, the policy will not take effect.",
           "example": "off",
           "member": "string",
           "name": "EnableBackupPeriodSave",
@@ -8642,6 +8895,79 @@
       ],
       "type": "object"
     },
+    "ModifyDBInstanceVipVportRequest": {
+      "document": "ModifyDBInstanceVipVport request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Destination IP. Either this parameter or `DstPort` must be passed in.",
+          "member": "string",
+          "name": "DstIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Destination port number. Value range: [1024-65535]. Either this parameter or `DstIp` must be passed in.",
+          "member": "int64",
+          "name": "DstPort",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Unified VPC ID",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Unified subnet ID.",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Repossession duration in hours for old IP in the original network when changing from the basic network to VPC or changing the VPC subnet. Value range: 0-168 hours. Default value: 24 hours.",
+          "member": "int64",
+          "name": "ReleaseDuration",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceVipVportResponse": {
+      "document": "ModifyDBInstanceVipVport response structure.",
+      "members": [
+        {
+          "document": "Async task ID. (This returned field has been disused)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyInstanceParamRequest": {
       "document": "ModifyInstanceParam request structure.",
       "members": [
@@ -8687,6 +9013,51 @@
           "document": "Async task ID, which can be used to query task progress.",
           "member": "string",
           "name": "AsyncRequestId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstancePasswordComplexityRequest": {
+      "document": "ModifyInstancePasswordComplexity request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID list",
+          "example": "[\"cdb-atjl8gns\\r\\n\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of parameters to be modified. Every element is a pair of `Name` (parameter name) and `CurrentValue` (new value).",
+          "example": "无",
+          "member": "Parameter",
+          "name": "ParamList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstancePasswordComplexityResponse": {
+      "document": "ModifyInstancePasswordComplexity response structure.",
+      "members": [
+        {
+          "document": "Async task ID, which can be used to query task progress.",
+          "example": "38265324-dd030463-3d46a793-4a0420b1",
+          "member": "string",
+          "name": "AsyncRequestId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8755,7 +9126,7 @@
         },
         {
           "default": "",
-          "document": "Retention period of local binlog. Value range: [120,168].",
+          "document": "Retention period of local binlog. Valid range: 72-168 hours. When there is disaster recovery instance, the valid range will be 120-168 hours.",
           "example": "100",
           "member": "int64",
           "name": "SaveHours",
@@ -8776,6 +9147,48 @@
     },
     "ModifyLocalBinlogConfigResponse": {
       "document": "ModifyLocalBinlogConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNameOrDescByDpIdRequest": {
+      "document": "ModifyNameOrDescByDpId request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of a placement group.",
+          "member": "string",
+          "name": "DeployGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of a placement group, which can contain up to 60 characters. The placement group name and description cannot both be empty.",
+          "member": "string",
+          "name": "DeployGroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description of a placement group, which can contain up to 200 characters. The placement group name and description cannot both be empty.",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNameOrDescByDpIdResponse": {
+      "document": "ModifyNameOrDescByDpId response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

@@ -48,6 +48,14 @@
         "title": "Disabling public network access for an instance"
       }
     ],
+    "CreateAccounts": [
+      {
+        "document": "",
+        "input": "https://cdb.tencentcloudapi.com/?Action=CreateAccounts\n&InstanceId=cdb-f35wr6wj\n&Accounts.0.User=ajnnw\n&Accounts.0.Host=127.0.0.1\n&Password=fsdgfdgfd\n&Description=description\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestId\": \"256117ed-efa08b54-61784d44-91781bbd\"\n    }\n}",
+        "title": "Creating a TencentDB account"
+      }
+    ],
     "CreateAuditPolicy": [
       {
         "document": "",
@@ -148,6 +156,14 @@
         "input": "https://cdb.tencentcloudapi.com/?Action=DescribeAccountPrivileges\n&InstanceId=cdb-f35wr6wj\n&User=ajnnw\n&Host=127.0.0.1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TablePrivileges\": [\n            {\n                \"Table\": \"user\",\n                \"Privileges\": [\n                    \"SELECT\",\n                    \"INSERT\"\n                ],\n                \"Database\": \"mysql\"\n            }\n        ],\n        \"GlobalPrivileges\": [\n            \"SELECT\",\n            \"INSERT\",\n            \"UPDATE\",\n            \"DELETE\",\n            \"CREATE\",\n            \"DROP\",\n            \"REFERENCES\",\n            \"INDEX\",\n            \"ALTER\",\n            \"SHOW DATABASES\",\n            \"CREATE TEMPORARY TABLES\",\n            \"LOCK TABLES\",\n            \"EXECUTE\",\n            \"CREATE VIEW\",\n            \"SHOW VIEW\",\n            \"CREATE ROUTINE\",\n            \"ALTER ROUTINE\",\n            \"EVENT\",\n            \"TRIGGER\"\n        ],\n        \"ColumnPrivileges\": [\n            {\n                \"Column\": \"Host\",\n                \"Table\": \"user\",\n                \"Privileges\": [\n                    \"SELECT\",\n                    \"INSERT\"\n                ],\n                \"Database\": \"mysql\"\n            }\n        ],\n        \"DatabasePrivileges\": [\n            {\n                \"Privileges\": [\n                    \"CREATE\",\n                    \"DROP\"\n                ],\n                \"Database\": \"jersey_test\"\n            }\n        ]\n    }\n}",
         "title": "Querying the information of TencentDB account permissions"
+      }
+    ],
+    "DescribeAccounts": [
+      {
+        "document": "",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeAccounts\n&InstanceId=cdb-f35wr6wj\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TotalCount\": 2,\n        \"MaxUserConnections\": 10240,\n        \"Items\": [\n            {\n                \"Notes\": \"test\",\n                \"Host\": \"localhost\",\n                \"User\": \"test_user\",\n                \"ModifyTime\": \"2020-11-10 01:00:00\",\n                \"ModifyPasswordTime\": \"2020-11-10 01:00:00\",\n                \"CreateTime\": \"2020-11-10 01:00:00\",\n                \"MaxUserConnections\": 20\n            },\n            {\n                \"Notes\": \"test2\",\n                \"Host\": \"localhost\",\n                \"User\": \"root\",\n                \"ModifyTime\": \"2020-11-10 01:00:00\",\n                \"ModifyPasswordTime\": \"2020-11-10 01:00:00\",\n                \"CreateTime\": \"2020-11-10 01:00:00\",\n                \"MaxUserConnections\": 20\n            }\n        ]\n    }\n}",
+        "title": "Querying the information of all TencentDB accounts"
       }
     ],
     "DescribeAsyncRequestInfo": [
@@ -593,7 +609,7 @@
     "ModifyBackupConfig": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=ModifyBackupConfig\n&InstanceId=cdb-c1nl9rpv\n&ExpireDays=10\n&BinlogExpireDays=8\n&StartTime=02:00-06:00\n&BackupMethod=logical\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBackupConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-c1nl9rpv\",\n    \"ExpireDays\": \"10\",\n    \"BinlogExpireDays\": \"8\",\n    \"BackupMethod\": \"logical\",\n    \"StartTime\": \"02:00-06:00\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Modifying the database backup configuration"
       }
@@ -662,12 +678,28 @@
         "title": "Modifying the security groups bound to a TencentDB instance"
       }
     ],
+    "ModifyDBInstanceVipVport": [
+      {
+        "document": "",
+        "input": "https://cdb.tencentcloudapi.com/?Action=ModifyDBInstanceVipVport\r\n&InstanceId=cdb-f35wr6wj\r\n&DstIp=10.0.1.1\r\n&DstPort=1025\r\n&UniqVpcId=11357\r\n&UniqSubnetId=23789\r\n&ReleaseDuration=12\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestId\": \"d2baf2fb-cbae62df-7dd0d736-9cbd3e31\"\n    }\n}",
+        "title": "Modifying the IP and port number of a TencentDB instance"
+      }
+    ],
     "ModifyInstanceParam": [
       {
         "document": "",
         "input": "https://cdb.tencentcloudapi.com/?Action=ModifyInstanceParam\r\n&InstanceIds.0=cdb-atjl8gns\r\n&ParamList.0.Name=auto_increment_increment\r\n&ParamList.0.CurrentValue=1\r\n&TemplateId=99\r\n&InTimeWindow=true\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestId\": \"38265324-dd030463-3d46a793-4a0420b1\"\n    }\n}",
         "title": "Modifying instance parameters"
+      }
+    ],
+    "ModifyInstancePasswordComplexity": [
+      {
+        "document": "",
+        "input": "InstanceIds.0=cdb-3gqxxxx&ParamList.0.Name=validate_password.number_count&ParamList.0.CurrentValue=14",
+        "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": \"02e874af-e4876fb4-4c672e64-86f17866\",\n        \"RequestId\": \"d5b053f3-d58e-4048-aef9-b8cc9f044951\"\n    }\n}",
+        "title": "Modifying the password complexity of a TencentDB instance"
       }
     ],
     "ModifyInstanceTag": [
@@ -681,9 +713,17 @@
     "ModifyLocalBinlogConfig": [
       {
         "document": "",
-        "input": "https://cdb.tencentcloudapi.com/?Action=ModifyLocalBinlogConfig\n&InstanceId=cdb-c1nl9rpv\n&SaveHours=72\n&MaxUsage=30\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLocalBinlogConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-c1nl9rpv\",\n    \"MaxUsage\": \"30\",\n    \"SaveHours\": \"72\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Modifying the retention policy of local binlog"
+      }
+    ],
+    "ModifyNameOrDescByDpId": [
+      {
+        "document": "",
+        "input": "https://cdb.tencentcloudapi.com/?Action=ModifyNameOrDescByDpId\n&DeployGroupName=cdb-ezq1vzem\n&Description=test\n&DeployGroupId=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b4a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
+        "title": "Modifying the name or description of a placement group"
       }
     ],
     "ModifyParamTemplate": [

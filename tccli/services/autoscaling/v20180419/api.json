@@ -1,7 +1,7 @@
 {
   "actions": {
     "AttachInstances": {
-      "document": "This API (AttachInstances) is used to add CVM instances to an auto scaling group.\n",
+      "document": "This API is used to add CVM instances to an auto scaling group.\n* Only CVM instances in `RUNNING` or `STOPPED` status can be added.\n* The added CVM instances must in the same VPC as the scaling group.\n",
       "input": "AttachInstancesRequest",
       "name": "Adds CVM instances to an auto scaling group",
       "output": "AttachInstancesResponse"
@@ -35,6 +35,12 @@
       "input": "CreateAutoScalingGroupFromInstanceRequest",
       "name": "Creates launch configurations and scaling groups based on an instance",
       "output": "CreateAutoScalingGroupFromInstanceResponse"
+    },
+    "CreateLaunchConfiguration": {
+      "document": "This API is used to create a launch configuration.\n\n* To modify a launch configuration, you can use `ModifyLaunchConfigurationAttributes`.\n\n* You can create up to 20 launch configurations for each project. For more information, see [Usage Limits](https://intl.cloud.tencent.com/document/product/377/3120?from_cn_redirect=1).\n",
+      "input": "CreateLaunchConfigurationRequest",
+      "name": "Creates a launch configuration",
+      "output": "CreateLaunchConfigurationResponse"
     },
     "CreateLifecycleHook": {
       "document": "This API (CreateLifeCycleHook) is used to create a lifecycle hook.\n\n* You can configure message notifications in the following format for lifecycle hooks, which will be sent to your CMQ queue by AS:\n\n```\n{\n\t\"Service\": \"Tencent Cloud Auto Scaling\",\n\t\"Time\": \"2019-03-14T10:15:11Z\",\n\t\"AppId\": \"1251783334\",\n\t\"ActivityId\": \"asa-fznnvrja\",\n\t\"AutoScalingGroupId\": \"asg-rrrrtttt\",\n\t\"LifecycleHookId\": \"ash-xxxxyyyy\",\n\t\"LifecycleHookName\": \"my-hook\",\n\t\"LifecycleActionToken\": \"3080e1c9-0efe-4dd7-ad3b-90cd6618298f\",\n\t\"InstanceId\": \"ins-aaaabbbb\",\n\t\"LifecycleTransition\": \"INSTANCE_LAUNCHING\",\n\t\"NotificationMetadata\": \"\"\n}\n```",
@@ -132,6 +138,12 @@
       "name": "Queries instances",
       "output": "DescribeAutoScalingInstancesResponse"
     },
+    "DescribeLaunchConfigurations": {
+      "document": "This API is used to query the information of launch configurations.\n\n* You can query the launch configuration details based on information such as launch configuration ID and name. For more information on filters, see `Filter`.\n* If the parameter is empty, a certain number (specified by `Limit` and 20 by default) of launch configurations of the current user will be returned.",
+      "input": "DescribeLaunchConfigurationsRequest",
+      "name": "Queries launch configurations",
+      "output": "DescribeLaunchConfigurationsResponse"
+    },
     "DescribeLifecycleHooks": {
       "document": "This API (DescribeLifecycleHooks) is used to query the information of lifecycle hooks.\n\n* You can query the details of lifecycle hooks based on information such as auto scaling group ID, lifecycle hook ID, or lifecycle hook name. For more information on filters, see `Filter`.\n* If the parameter is empty, a certain number (specified by `Limit` and 20 by default) of lifecycle hooks of the current user will be returned.",
       "input": "DescribeLifecycleHooksRequest",
@@ -167,6 +179,12 @@
       "input": "DetachLoadBalancersRequest",
       "name": "Unbinds one or more CLBs",
       "output": "DetachLoadBalancersResponse"
+    },
+    "DisableAutoScalingGroup": {
+      "document": "This API is used to disable the specified auto-scaling group.\n* When a scaling group is disabled, the following activities are not triggered automatically:\n    - Scaling activities triggered alert policies\n    - Scaling activities triggered by desired group capacity\n    - Replacement of unhealthy instances\n    - Scheduled actions\n* When the scaling group is disabled, you can trigger scaling activities manually, including: \n    - Scale out to the specify number of instances (ScaleOutInstances)\n    - Scale in to the specify number of instances (ScaleInInstances)\n    - Remove instances from the scaling group (DetachInstances)\n    - Delete instances from the scaling group (RemoveInstances)\n    - Add instances to a scaling group (AttachInstances)\n    - Shut down CVM instances in a scaling group (StopAutoScalingInstances)\n    - Start up CVM instances in a scaling group (StartAutoScalingInstances)",
+      "input": "DisableAutoScalingGroupRequest",
+      "name": "Disables an auto-scaling group",
+      "output": "DisableAutoScalingGroupResponse"
     },
     "EnableAutoScalingGroup": {
       "document": "This API (EnableAutoScalingGroup) is used to enable the specified auto scaling group.",
@@ -240,6 +258,18 @@
       "name": "Removes CVM instances from an auto scaling group",
       "output": "RemoveInstancesResponse"
     },
+    "ScaleInInstances": {
+      "document": "This API is used to reduce the specified number of instances from the scaling group.\n* There is no on going scaling task.\n* This API is valid even when the scaling group is disabled. For more details, see [DisableAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20435?from_cn_redirect=1).\n* You can specify the instances to remove in the scale-in activity by using `TerminationPolicies`. For more information, see [Scaling In Policies](https://intl.cloud.tencent.com/document/product/377/8563?from_cn_redirect=1).\n* Only the `IN_SERVICE` instances will be reduced. To reduce instances in other statues, use the [`DetachInstances`](https://intl.cloud.tencent.com/document/api/377/20436?from_cn_redirect=1) or [`RemoveInstances`](https://intl.cloud.tencent.com/document/api/377/20431?from_cn_redirect=1) API.\n* The desired capacity will be reduced accordingly. The new desired capacity should be no less than the minimum capacity.\n* If the scale-in activity failed or partially succeeded, the final desired capacity only deducts the instances that have been reduced successfully.",
+      "input": "ScaleInInstancesRequest",
+      "name": "Reduces the specified number of instances",
+      "output": "ScaleInInstancesResponse"
+    },
+    "ScaleOutInstances": {
+      "document": "This API is used to add the specified number of instances to the scaling group, which returns the scaling activity ID `ActivityId`.\n* There is no on going scaling task.\n* This API is valid even when the scaling group is disabled. For more details, see [DisableAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20435?from_cn_redirect=1).\n* The desired capacity will be increased accordingly. The new desired capacity should be no more than the maximum capacity.\n* If the scale-out activity failed or partially succeeded, the final desired capacity only includes the instances that have been added successfully.",
+      "input": "ScaleOutInstancesRequest",
+      "name": "Adds the specified number of instances",
+      "output": "ScaleOutInstancesResponse"
+    },
     "SetInstancesProtection": {
       "document": "This API is used to enable scale-in protection for an instance.\nWhen scale-in protection is enabled, the instance will not be removed in scale-in activities triggered by replacement of unhealthy instances, alarm threshold reached, change of desired quantity, etc.",
       "input": "SetInstancesProtectionRequest",
@@ -257,6 +287,12 @@
       "input": "StopAutoScalingInstancesRequest",
       "name": "Shuts down CVM instances in the scaling group",
       "output": "StopAutoScalingInstancesResponse"
+    },
+    "UpgradeLaunchConfiguration": {
+      "document": "This API is used to upgrade a launch configuration.\n\n* This API is used to upgrade a launch configuration in a \"completely overriding\" manner, i.e., it uniformly sets a new configuration according to the API parameters regardless of the original parameters. If optional fields are left empty, their default values will be used.\n* After the launch configuration is upgraded, the existing instances that have been created by it will not be changed, but new instances will be created according to the new configuration.",
+      "input": "UpgradeLaunchConfigurationRequest",
+      "name": "Upgrades a launch configuration",
+      "output": "UpgradeLaunchConfigurationResponse"
     },
     "UpgradeLifecycleHook": {
       "document": "This API (UpgradeLifecycleHook) is used to upgrade a lifecycle hook.\n\n* This API is used to upgrade a lifecycle hook in a \"completely overriding\" manner, i.e., it uniformly sets a new configuration according to the API parameters regardless of the original parameters. If optional fields are left empty, their default values will be used.\n",
@@ -296,7 +332,7 @@
         },
         {
           "default": "",
-          "document": "Type of the scaling activity. Valid values:<br>\n<li>SCALE_OUT: scales out. <li>SCALE_IN: scales in. <li>ATTACH_INSTANCES: adds an instance. <li>REMOVE_INSTANCES: terminates an instance. <li>DETACH_INSTANCES: removes an instance. <li>TERMINATE_INSTANCES_UNEXPECTEDLY: terminates an instance in the CVM console. <li>REPLACE_UNHEALTHY_INSTANCE: replaces an unhealthy instance.\n<li>START_INSTANCES: starts an instance.\n<li>STOP_INSTANCES: stops an instance.",
+          "document": "Type of the scaling activity. Valid values:<br>\n<li>`SCALE_OUT`: Scale out. <li>`SCALE_IN`: Scale in. <li>`ATTACH_INSTANCES`: Add instances. <li>`REMOVE_INSTANCES`: Terminate instances. <li>`DETACH_INSTANCES`: Remove instances. <li>`TERMINATE_INSTANCES_UNEXPECTEDLY`: Terminate instances in the CVM console. <li>`REPLACE_UNHEALTHY_INSTANCE`: Replace an unhealthy instance.\n<li>`START_INSTANCES`: Starts up instances.\n<li>`STOP_INSTANCES`: Shut down instances.\n<li>`INVOKE_COMMAND`: Execute commands",
           "example": "无",
           "member": "string",
           "name": "ActivityType",
@@ -410,6 +446,16 @@
           "example": "无",
           "member": "DetailedStatusMessage",
           "name": "DetailedStatusMessageSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Result of the command execution",
+          "example": "无",
+          "member": "InvocationResult",
+          "name": "InvocationResultSet",
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -924,6 +970,30 @@
       ],
       "usage": "out"
     },
+    "AutoScalingGroupAbstract": {
+      "document": "Brief information of a scaling group.",
+      "members": [
+        {
+          "default": "",
+          "document": "Scaling group ID",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto scaling group name.",
+          "member": "string",
+          "name": "AutoScalingGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "AutoScalingNotification": {
       "document": "AS event notification",
       "members": [
@@ -1424,6 +1494,240 @@
       ],
       "type": "object"
     },
+    "CreateLaunchConfigurationRequest": {
+      "document": "CreateLaunchConfiguration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Display name of the launch configuration, which can contain letters, digits, underscores and hyphens (-), and dots. Up to of 60 bytes allowed..",
+          "example": "as_test",
+          "member": "string",
+          "name": "LaunchConfigurationName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>",
+          "example": "img-8toqc6s3",
+          "member": "string",
+          "name": "ImageId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID of the launch configuration. The default project is used if it’s left blank.\nNote that this project ID is not the same as the project ID of the scaling group. ",
+          "example": "无",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).\n`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.",
+          "example": "S2.SMALL1",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "System disk configuration of the instance. If this parameter is not specified, the default value will be used.",
+          "example": "无",
+          "member": "SystemDisk",
+          "name": "SystemDisk",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Information of the instance's data disk configuration. If this parameter is not specified, no data disk is purchased by default. Up to 11 data disks can be supported.",
+          "example": "无",
+          "member": "DataDisk",
+          "name": "DataDisks",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.",
+          "example": "无",
+          "member": "InternetAccessible",
+          "name": "InternetAccessible",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.",
+          "example": "无",
+          "member": "LoginSettings",
+          "name": "LoginSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The security group to which the instance belongs. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). If this parameter is not specified, no security group will be bound by default.",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.",
+          "example": "无",
+          "member": "EnhancedService",
+          "name": "EnhancedService",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Base64-encoded custom data of up to 16 KB.",
+          "example": "无",
+          "member": "string",
+          "name": "UserData",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. CVM instances take `POSTPAID_BY_HOUR` by default. Valid values:\n<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly\n<br><li>SPOTPAID: spot instance",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.",
+          "example": "无",
+          "member": "InstanceMarketOptionsRequest",
+          "name": "InstanceMarketOptions",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "List of instance models. Different instance models specify different resource specifications. Up to 10 instance models can be supported.\n`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.",
+          "example": "无",
+          "member": "string",
+          "name": "CamRoleName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance type verification policy. Value range: ALL, ANY. Default value: ANY.\n<br><li> ALL: The verification will success only if all instance types (InstanceType) are available; otherwise, an error will be reported.\n<br><li> ANY: The verification will success if any instance type (InstanceType) is available; otherwise, an error will be reported.\n\nCommon reasons why an instance type is unavailable include stock-out of the instance type or the corresponding cloud disk.\nIf a model in InstanceTypes does not exist or has been discontinued, a verification error will be reported regardless of the value of InstanceTypesCheckPolicy.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceTypesCheckPolicy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of tags. This parameter is used to bind up to 10 tags to newly added instances.",
+          "example": "无",
+          "member": "InstanceTag",
+          "name": "InstanceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of tags. You can specify tags that you want to bind to the launch configuration. Each launch configuration can have up to 30 tags.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "CVM hostname settings.",
+          "example": "无",
+          "member": "HostNameSettings",
+          "name": "HostNameSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Settings of CVM instance names\nIf this field is configured in a launch configuration, the `InstanceName` of a CVM created by the scaling group will be generated according to the configuration; otherwise, it will be in the `as-{{AutoScalingGroupName }}` format.",
+          "example": "无",
+          "member": "InstanceNameSettings",
+          "name": "InstanceNameSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.",
+          "example": "无",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Selection policy of cloud disks. Default value: ORIGINAL. Valid values:\n<br><li>ORIGINAL: uses the configured cloud disk type\n<br><li>AUTOMATIC: automatically chooses an available cloud disk type",
+          "example": "ORIGINAL",
+          "member": "string",
+          "name": "DiskTypePolicy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "HpcClusterId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLaunchConfigurationResponse": {
+      "document": "CreateLaunchConfiguration response structure.",
+      "members": [
+        {
+          "document": "This parameter is returned when a launch configuration is created through this API, indicating the launch configuration ID.",
+          "example": "asc-23h37kyn",
+          "member": "string",
+          "name": "LaunchConfigurationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateLifecycleHookRequest": {
       "document": "CreateLifecycleHook request structure.",
       "members": [
@@ -1606,6 +1910,7 @@
         {
           "default": "",
           "document": "Auto scaling group ID.",
+          "example": "asg-12wjuh0s",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -1614,6 +1919,7 @@
         {
           "default": "",
           "document": "Alarm trigger policy name.",
+          "example": "cpu_policy_test",
           "member": "string",
           "name": "ScalingPolicyName",
           "required": true,
@@ -1622,6 +1928,7 @@
         {
           "default": "",
           "document": "The method to adjust the desired number of instances after the alarm is triggered. Value range: <br><li>CHANGE_IN_CAPACITY: Increase or decrease the desired number of instances </li><li>EXACT_CAPACITY: Adjust to the specified desired number of instances </li> <li>PERCENT_CHANGE_IN_CAPACITY: Adjust the desired number of instances by percentage </li>",
+          "example": " CHANGE_IN_CAPACITY",
           "member": "string",
           "name": "AdjustmentType",
           "required": true,
@@ -1630,6 +1937,7 @@
         {
           "default": "",
           "document": "The adjusted value of desired number of instances after the alarm is triggered. Value range: <br><li>When AdjustmentType is CHANGE_IN_CAPACITY, if AdjustmentValue is a positive value, some new instances will be added after the alarm is triggered, and if it is a negative value, some existing instances will be removed after the alarm is triggered </li> <li> When AdjustmentType is EXACT_CAPACITY, the value of AdjustmentValue is the desired number of instances after the alarm is triggered, which should be equal to or greater than 0 </li> <li> When AdjustmentType is PERCENT_CHANGE_IN_CAPACITY, if AdjusmentValue (in %) is a positive value, new instances will be added by percentage after the alarm is triggered; if it is a negative value, existing instances will be removed by percentage after the alarm is triggered.",
+          "example": "1",
           "member": "int64",
           "name": "AdjustmentValue",
           "required": true,
@@ -1638,6 +1946,7 @@
         {
           "default": "",
           "document": "Alarm monitoring metric.",
+          "example": "无",
           "member": "MetricAlarm",
           "name": "MetricAlarm",
           "required": true,
@@ -1646,6 +1955,7 @@
         {
           "default": "",
           "document": "Cooldown period in seconds. Default value: 300 seconds.",
+          "example": "60",
           "member": "uint64",
           "name": "Cooldown",
           "required": false,
@@ -1653,7 +1963,8 @@
         },
         {
           "default": "",
-          "document": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.",
+          "document": "This parameter is diused. Please use [CreateNotificationConfiguration](https://intl.cloud.tencent.com/document/api/377/33185?from_cn_redirect=1) instead.\nNotification group ID, which is the set of user group IDs.",
+          "example": "[\"1678\\n\"]",
           "member": "string",
           "name": "NotificationUserGroupIds",
           "required": false,
@@ -2318,6 +2629,78 @@
       ],
       "type": "object"
     },
+    "DescribeLaunchConfigurationsRequest": {
+      "document": "DescribeLaunchConfigurations request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Queries by one or more launch configuration IDs in the format of `asc-ouy1ax38`. The maximum quantity per request is 100. This parameter does not support specifying both `LaunchConfigurationIds` and `Filters` at the same time.",
+          "example": "[\"asc-fa28v4in\"]",
+          "member": "string",
+          "name": "LaunchConfigurationIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filters\n<li> `launch-configuration-id` - String - Required: No - Filter by launch configuration ID.</li>\n<li> `launch-configuration-name` - String - Required: No - Filter by launch configuration name.</li>\n<li> `launch-configuration-name` - String - Required: No - Fuzzy search by launch configuration name.</li>\n<li> `tag-key` - String - Required: No - Filter by the tag key.</li>\n<li> `tag-value` - String - Required: No - Filter by the tag value.</li>\n<li>tag:tag-key - String - Optional - Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 3 for the detailed usage.</li>\n</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `LaunchConfigurationIds` and `Filters` at the same time.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The number of returned results. Default value: `20`. Maximum value: `100`. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The offset. Default value: `0`. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLaunchConfigurationsResponse": {
+      "document": "DescribeLaunchConfigurations response structure.",
+      "members": [
+        {
+          "document": "Number of eligible launch configurations.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of launch configuration details.",
+          "example": "无",
+          "member": "LaunchConfiguration",
+          "name": "LaunchConfigurationSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeLifecycleHooksRequest": {
       "document": "DescribeLifecycleHooks request structure.",
       "members": [
@@ -2748,6 +3131,33 @@
         }
       ],
       "usage": "out"
+    },
+    "DisableAutoScalingGroupRequest": {
+      "document": "DisableAutoScalingGroup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Scaling group ID",
+          "example": "asg-nvnlpbb8",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableAutoScalingGroupResponse": {
+      "document": "DisableAutoScalingGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "EnableAutoScalingGroupRequest": {
       "document": "EnableAutoScalingGroup request structure.",
@@ -3182,6 +3592,30 @@
       ],
       "usage": "in"
     },
+    "InstanceTag": {
+      "document": "Instance tag. This parameter is used to bind tags to newly added instances.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "InternetAccessible": {
       "document": "This describes the internet accessibility of the instance created by a launch configuration and declares the internet usage billing method of the instance and the maximum bandwidth",
       "members": [
@@ -3223,6 +3657,368 @@
         }
       ],
       "usage": "both"
+    },
+    "InvocationResult": {
+      "document": "Result of the command execution",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ins-0lizunus",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Execution activity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "inv-0h9q6ahv",
+          "member": "string",
+          "name": "InvocationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Execution task ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "invt-4mqj9ekr",
+          "member": "string",
+          "name": "InvocationTaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Command ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cmd-5l44tu7j",
+          "member": "string",
+          "name": "CommandId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Execution Status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "TaskStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Execution exception information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ErrorMessage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LaunchConfiguration": {
+      "document": "Information set of eligible launch configurations.",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID of the instance.",
+          "example": "无",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Launch configuration ID",
+          "example": "无",
+          "member": "string",
+          "name": "LaunchConfigurationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Launch configuration name.",
+          "example": "无",
+          "member": "string",
+          "name": "LaunchConfigurationName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance model.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of the instance's system disk configuration.",
+          "example": "无",
+          "member": "SystemDisk",
+          "name": "SystemDisk",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of the instance's data disk configuration.",
+          "example": "无",
+          "member": "DataDisk",
+          "name": "DataDisks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance login settings.",
+          "example": "无",
+          "member": "LimitedLoginSettings",
+          "name": "LoginSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of the public network bandwidth configuration.",
+          "example": "无",
+          "member": "InternetAccessible",
+          "name": "InternetAccessible",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group of the instance.",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto scaling group associated with the launch configuration.",
+          "example": "无",
+          "member": "AutoScalingGroupAbstract",
+          "name": "AutoScalingGroupAbstractSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time of the launch configuration.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Conditions of enhancement services for the instance and their settings.",
+          "example": "无",
+          "member": "EnhancedService",
+          "name": "EnhancedService",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Image ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ImageId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current status of the launch configuration. Value range: <br><li>NORMAL: normal <br><li>IMAGE_ABNORMAL: Exception with the image of the launch configuration <br><li>CBS_SNAP_ABNORMAL: Exception with the data disk snapshot of the launch configuration <br><li>SECURITY_GROUP_ABNORMAL: Exception with the security group of the launch configuration<br>",
+          "example": "无",
+          "member": "string",
+          "name": "LaunchConfigurationStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. CVM instances take `POSTPAID_BY_HOUR` by default. Valid values:\n<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly\n<br><li>SPOTPAID: spot instance",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "InstanceMarketOptionsRequest",
+          "name": "InstanceMarketOptions",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of instance models.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceTypes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of instance tags, which will be added to instances created by the scale-out activity. Up to 10 tags allowed.",
+          "example": "无",
+          "member": "InstanceTag",
+          "name": "InstanceTags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Version",
+          "example": "无",
+          "member": "int64",
+          "name": "VersionNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Update time",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "UpdatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.",
+          "example": "无",
+          "member": "string",
+          "name": "CamRoleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value of InstanceTypesCheckPolicy upon the last operation.",
+          "example": "无",
+          "member": "string",
+          "name": "LastOperationInstanceTypesCheckPolicy",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CVM hostname settings.",
+          "example": "无",
+          "member": "HostNameSettings",
+          "name": "HostNameSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Settings of CVM instance names",
+          "example": "无",
+          "member": "InstanceNameSettings",
+          "name": "InstanceNameSettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.",
+          "example": "无",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Selection policy of cloud disks. Default value: ORIGINAL. Valid values:\n<br><li>ORIGINAL: uses the configured cloud disk type\n<br><li>AUTOMATIC: automatically chooses an available cloud disk type in the current availability zone",
+          "example": "无",
+          "member": "string",
+          "name": "DiskTypePolicy",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "HpcClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "LifecycleActionResultInfo": {
       "document": "Result information of the lifecycle hook action",
@@ -3370,6 +4166,54 @@
         }
       ],
       "usage": "out"
+    },
+    "LimitedLoginSettings": {
+      "document": "This describes the configuration and information related to instance login. For security reasons, sensitive information is not described.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of key IDs.",
+          "member": "string",
+          "name": "KeyIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LoginSettings": {
+      "document": "Describes login settings of an instance.",
+      "members": [
+        {
+          "default": "",
+          "document": "Login password of the instance. The password requirements vary among different operating systems: <br><li>For Linux instances, the password must be 8-16 characters long and contain at least one character from two of the following categories: [a-z, A-Z], [0-9] and [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]. <br><li>For Windows instances, the password must be 12-16 characters long and contain at least one character from three of the following categories: [a-z], [A-Z], [0-9] and [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.",
+          "member": "string",
+          "name": "KeyIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to keep the original settings of an image. You cannot specify this parameter and `Password` or `KeyIds.N` at the same time. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>TRUE: keep the login settings of the image <br><li>FALSE: do not keep the login settings of the image <br><br>Default value: FALSE.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "bool",
+          "name": "KeepImageLogin",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
     },
     "MetricAlarm": {
       "document": "Alarming metric of AS",
@@ -4403,6 +5247,96 @@
       ],
       "usage": "both"
     },
+    "ScaleInInstancesRequest": {
+      "document": "ScaleInInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Scaling group ID",
+          "example": "asg-12yqet78",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of instances to be reduced",
+          "example": "1",
+          "member": "uint64",
+          "name": "ScaleInNumber",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ScaleInInstancesResponse": {
+      "document": "ScaleInInstances response structure.",
+      "members": [
+        {
+          "document": "Scaling activity ID",
+          "example": "asa-k1q8oaz6",
+          "member": "string",
+          "name": "ActivityId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ScaleOutInstancesRequest": {
+      "document": "ScaleOutInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Scaling group ID",
+          "example": "asg-12yqet78",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of instances to be added",
+          "example": "1",
+          "member": "uint64",
+          "name": "ScaleOutNumber",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ScaleOutInstancesResponse": {
+      "document": "ScaleOutInstances response structure.",
+      "members": [
+        {
+          "document": "Scaling activity ID",
+          "example": "asa-n6w01f6m",
+          "member": "string",
+          "name": "ActivityId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ScalingPolicy": {
       "document": "Alarm trigger policy.",
       "members": [
@@ -4920,6 +5854,213 @@
         }
       ],
       "usage": "both"
+    },
+    "UpgradeLaunchConfigurationRequest": {
+      "document": "UpgradeLaunchConfiguration request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Launch configuration ID.",
+          "example": "asc-aaaabbbb",
+          "member": "string",
+          "name": "LaunchConfigurationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>",
+          "example": "img-aaaabbbb",
+          "member": "string",
+          "name": "ImageId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of instance models. Different instance models specify different resource specifications. Up to 5 instance models can be supported.",
+          "example": "[\"S5.SMALL2\"]",
+          "member": "string",
+          "name": "InstanceTypes",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Display name of the launch configuration, which can contain letters, digits, underscores and hyphens (-), and dots. Up to of 60 bytes allowed..",
+          "example": "myascname",
+          "member": "string",
+          "name": "LaunchConfigurationName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Information of the instance's data disk configuration. If this parameter is not specified, no data disk is purchased by default. Up to 11 data disks can be supported.",
+          "example": "无",
+          "member": "DataDisk",
+          "name": "DataDisks",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.",
+          "example": "无",
+          "member": "EnhancedService",
+          "name": "EnhancedService",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Instance billing type. CVM instances are POSTPAID_BY_HOUR by default.\n<br><li>POSTPAID_BY_HOUR: Pay-as-you-go on an hourly basis\n<br><li>SPOTPAID: Bidding",
+          "example": "POSTPAID_BY_HOUR",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.",
+          "example": "无",
+          "member": "InstanceMarketOptionsRequest",
+          "name": "InstanceMarketOptions",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Instance type verification policy. Value range: ALL, ANY. Default value: ANY.\n<br><li> ALL: The verification will success only if all instance types (InstanceType) are available; otherwise, an error will be reported.\n<br><li> ANY: The verification will success if any instance type (InstanceType) is available; otherwise, an error will be reported.\n\nCommon reasons why an instance type is unavailable include stock-out of the instance type or the corresponding cloud disk.\nIf a model in InstanceTypes does not exist or has been discontinued, a verification error will be reported regardless of the value of InstanceTypesCheckPolicy.",
+          "example": "ALL",
+          "member": "string",
+          "name": "InstanceTypesCheckPolicy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.",
+          "example": "无",
+          "member": "InternetAccessible",
+          "name": "InternetAccessible",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.",
+          "example": "无",
+          "member": "LoginSettings",
+          "name": "LoginSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Project ID of the instance. Leave it blank as the default.",
+          "example": "1222",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The security group to which the instance belongs. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). If this parameter is not specified, no security group will be bound by default.",
+          "example": "[\"sg-aaaabbbb\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "System disk configuration of the instance. If this parameter is not specified, the default value will be used.",
+          "example": "无",
+          "member": "SystemDisk",
+          "name": "SystemDisk",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Base64-encoded custom data of up to 16 KB.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "UserData",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of tags. This parameter is used to bind up to 10 tags to newly added instances.",
+          "example": "无",
+          "member": "InstanceTag",
+          "name": "InstanceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "CAM role name, which can be obtained from the roleName field in the return value of the DescribeRoleList API.",
+          "example": "myrolename",
+          "member": "string",
+          "name": "CamRoleName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CVM hostname settings.",
+          "example": "无",
+          "member": "HostNameSettings",
+          "name": "HostNameSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Settings of CVM instance names",
+          "example": "无",
+          "member": "InstanceNameSettings",
+          "name": "InstanceNameSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.",
+          "example": "无",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Selection policy of cloud disks. Default value: ORIGINAL. Valid values:\n<br><li>ORIGINAL: uses the configured cloud disk type\n<br><li>AUTOMATIC: automatically chooses an available cloud disk type",
+          "example": "无",
+          "member": "string",
+          "name": "DiskTypePolicy",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeLaunchConfigurationResponse": {
+      "document": "UpgradeLaunchConfiguration response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UpgradeLifecycleHookRequest": {
       "document": "UpgradeLifecycleHook request structure.",
