@@ -24,6 +24,12 @@
       "name": "Recognizes Hong Kong (China) identity card",
       "output": "HKIDCardOCRResponse"
     },
+    "MLIDCardOCR": {
+      "document": "This API is used to recognize a Malaysian identity card, including identity card number, name, gender, and address. It is also used to crop identity photos and give alarms for photographed or photocopied certificates.\n\nThis API is not fully available for the time being. For more information, contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
+      "input": "MLIDCardOCRRequest",
+      "name": "Recognizes a Malaysian identity card",
+      "output": "MLIDCardOCRResponse"
+    },
     "MLIDPassportOCR": {
       "document": "This API is used to recognize a passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions. Recognizable fields include passport ID, name, date of birth, gender, expiration date, issuing country/region, and nationality. It has the features of cropping identity photos and alarming for photographed or photocopied documents.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "MLIDPassportOCRRequest",
@@ -673,6 +679,132 @@
         }
       ],
       "usage": "out"
+    },
+    "MLIDCardOCRRequest": {
+      "document": "MLIDCardOCR request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.",
+          "example": "无",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The URL of an image. (This field is not available outside the Chinese mainland.)\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be low.",
+          "example": "https://xx/a.jpg",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to return an image. Default value: `false`.",
+          "example": "无",
+          "member": "bool",
+          "name": "RetImage",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "MLIDCardOCRResponse": {
+      "document": "MLIDCardOCR response structure.",
+      "members": [
+        {
+          "document": "ID number",
+          "example": "710716-08-6085",
+          "member": "string",
+          "name": "ID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Full name",
+          "example": "KAVIN ONG KHI MN",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Address",
+          "example": "NO 11 PERSIARN PERAJRIT 4 TAMA PERAK 31400 IPOH ERAK",
+          "member": "string",
+          "name": "Address",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Gender",
+          "example": "LEAKI",
+          "member": "string",
+          "name": "Sex",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Alarm codes\n-9103 Alarm for photographed certificate\n-9102 Alarm for photocopied certificate\n-9106 Alarm for covered certificate\n-9107 Alarm for blurry image",
+          "example": "[]",
+          "member": "int64",
+          "name": "Warn",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Identity photo",
+          "example": "无",
+          "member": "string",
+          "name": "Image",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "This is an extended field, \nwith the confidence of a field recognition result returned in the following format.\n{\n  Field name:{\n    Confidence:0.9999\n  }\n}",
+          "example": "{\"ID\":{\"Confidence\":\"1.0000\"},\"Name\":{\"Confidence\":\"0.9996\"},\"Address\":{\"Confidence\":\"0.9997\"},\"Sex\":{\"Confidence\":\"0.9999\"}}",
+          "member": "string",
+          "name": "AdvancedInfo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Certificate type\nMyKad  ID card\nMyPR    Permanent resident card\nMyTentera   Military identity card\nMyKAS    Temporary ID card\nPOLIS  Police card\nIKAD   Work permit\nMyKid   Kid card",
+          "example": "MyKad",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Date of birth. This field is available only for work permits (i-Kad) and ID cards (MyKad).",
+          "example": "无",
+          "member": "string",
+          "name": "Birthday",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "MLIDPassportOCRRequest": {
       "document": "MLIDPassportOCR request structure.",

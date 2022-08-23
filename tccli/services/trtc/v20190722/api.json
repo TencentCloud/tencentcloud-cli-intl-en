@@ -1,19 +1,19 @@
 {
   "actions": {
     "CreateCloudRecording": {
-      "document": "### API description\nThis API is used to start an on-cloud recording task. It records the audio and video streams in a room and saves them to the specified cloud storage. You can use this API to record the streams in a room separately, or you can mix the streams first and then record the mixed stream.\n\n### You can use this API to perform the following operations:\n* Specify the anchors whose streams you want or do not want to record by using the `RecordParams` parameter\n* Specify the storage service you want to save recording files to by using the `StorageParams` parameter\n* Specify transcoding settings for mixed-stream recording, including video resolution, video bitrate, frame rate, and audio quality, by using `MixTranscodeParams`\n* Specify the layout of different videos in mixed-stream recording mode or select an auto-arranged layout template\n\n### Key concepts\n* Single-stream recording: Record the audio and video of each subscribed user (`UserId`) in a room and save the recording files (M3U8/TS) to the cloud\n* Mixed-stream recording: Mix the audios and videos of subscribed users (`UserId`) in a room, record the mixed stream, and save the recording files (M3U8/TS) to the cloud",
+      "document": "API description:\nThis API is used to start an on-cloud recording task. It records the audio and video streams in a room and saves them to the specified cloud storage. You can use this API to record the streams in a room separately, or you can mix the streams first and then record the mixed stream.\n\nYou can use this API to perform the following operations:\n* Specify the anchors whose streams you want or do not want to record by using the `RecordParams` parameter\n* Specify the storage service you want to save recording files to by using the `StorageParams` parameter\n* Specify transcoding settings for mixed-stream recording, including video resolution, video bitrate, frame rate, and audio quality, by using `MixTranscodeParams`\n* Specify the layout of different videos in mixed-stream recording mode or select an auto-arranged layout template\n\nKey concepts:\n* Single-stream recording: Record the audio and video of each subscribed user (`UserId`) in a room and save the recording files to VOD.\n* Mixed-stream recording: Mix the audios and videos of subscribed users (`UserId`) in a room, record the mixed stream, and save the recording files to VOD.",
       "input": "CreateCloudRecordingRequest",
       "name": "Starts an on-cloud recording task",
       "output": "CreateCloudRecordingResponse"
     },
     "DeleteCloudRecording": {
-      "document": "This API is used to stop a recording task. It works only when a task is in progress. If the task has already ended when this API is called, an error will be returned. If a task is stopped successfully, but the uploading of recording files has not completed, the backend will continue to upload the files and will notify you via a callback when the upload is completed.",
+      "document": "This API is used to stop a recording task. If a task is stopped successfully, but the uploading of recording files has not completed, the backend will continue to upload the files and will notify you via a callback when the upload is completed.",
       "input": "DeleteCloudRecordingRequest",
       "name": "Stops an on-cloud recording task",
       "output": "DeleteCloudRecordingResponse"
     },
     "DescribeCloudRecording": {
-      "document": "This API is used to query the status of a recording task after it starts. It works only when a task is in progress. If the task has already ended when this API is called, an error will be returned.",
+      "document": "This API is used to query the status of a recording task after it starts. It works only when a task is in progress. If the task has already ended when this API is called, an error will be returned.\nIf a recording file is being uploaded to VOD, the response parameter `StorageFileList` will not contain the information of the recording file. Please listen for the recording file callback to get the information.",
       "input": "DescribeCloudRecordingRequest",
       "name": "Queries the status of a recording task",
       "output": "DescribeCloudRecordingResponse"
@@ -49,7 +49,7 @@
       "output": "RemoveUserByStrRoomIdResponse"
     },
     "StartPublishCdnStream": {
-      "document": "This API is used to start a relaying task.\n1. To ensure the stability of relaying, you cannot switch between relaying audio only, relaying audio and video, and relaying video only for the same task.\n2. To ensure the stability of relaying, you cannot change the video codec, audio codec, sample rate, or number of sound channels during relay.\n3. The `StartPublishCdnStream` API will return a task ID, which uniquely identifies a relaying task. You need to pass this task ID when making a request to change the relaying parameters or stop the relaying task.\n4. When you relay a single stream, specify both `AudioParams` and `VideoParams` to publish both audio and video, and specify only `AudioParams` to publish audio only. You cannot switch between the two modes during the relaying process. For `VideoParams`, set `Width`, `Height`, `Fps`, `Bitrate`, and `Gop` according to the actual settings used for publishing.\n5. When you make a request to change the relaying parameters, set `AudioParams.SubscribeAudioList` to specify the audios to mix and set `VideoParams.LayoutParams` to specify the video layout.\n6. The `SequenceNumber` parameter is required when you make a request to change the relaying parameters. It ensures that multiple requests for the same relaying task are in the correct order. The value of `SequenceNumber` increases each time a new request is made for the same task. If `InternalError` is returned, try again using the same `SequenceNumber`. You don’t need to handle the `FailedOperation.OutdateRequest` error.\n7. In a request to change the relaying parameters, it is OK to pass only the parameters you want to change, but the value of each parameter you pass must be complete.\nFor example, to change the destination URLs, you only need to pass `PublishCdnParams` plus the required parameters of the `UpdatePublishCdnStream` API, but make sure `PublishCdnParams` includes all the URLs you want to relay to.\nPass the following parameters to change different relaying parameters:\n    a. WithTranscoding: Pass this parameter to switch from not transcoding to transcoding (this parameter is required).\n    b. AudioParams.UserInfoList: Pass this parameter to change the users whose audios you want to mix.\n    c. VideoParams.VideoEncode: Pass this parameter to change video parameters other than the codec, including the output resolution, bitrate, frame rate, and GOP. This parameter is valid only if streams are transcoded.\n    d. LayoutParams: Pass this parameter to change the video layout. This parameter is valid only if streams are transcoded.\n    e. BackGroundColor and BackgroundImageUrl: Pass these two parameters to change the background image and color. They are valid only when streams are transcoded.\n    f. WaterMarkList: Pass this parameter to change the watermarks. This parameter is valid only if streams are transcoded.\n    g. PublishCdnParams: Pass this parameter to change the destination URLs.\n8. You can create a relaying task even when there are no anchors in the room, but make sure you manually stop the task when relaying is finished. If you don’t, after all the users whose streams are mixed leave the room, the TRTC backend will wait for the timeout period to elapse before stopping the relaying task.\n9. You can specify at most 10 destination URLs for each relaying task.\n10. When making a request to switch from not transcoding to transcoding, you need to specify all the parameters of the relaying task.",
+      "document": "This API is used to mix streams and relay the mixed stream to CDNs. You can use this API to do the following:\n1. Publish (also known as “relay”) the audio/video stream of one anchor to CDNs. For details, see example 2 (starting a task to relay the audio and video of a stream) and example 3 (starting a task to relay only the audio of a stream).\n2. Mix the streams of multiple anchors in a room or in different rooms and publish the mixed stream to CDNs. You can use `AudioParams.SubscribeAudioList` to specify the users whose audios are mixed, and use `VideoParams.LayoutParams` to specify the layout of the anchors’ videos. For details, see example 1 (mixing streams and publishing the mixed stream to a CDN).\n3. Mix multiple streams in a room according to a template and publish the mixed stream to CDNs. The TRTC backend will detect the change of anchors in the room and adjust the video layout automatically according to the stream mixing template. The following template types are supported:\n     - Floating: The entire screen is covered by the video image of the first user who enters the room, and the images of other users are displayed as small images in rows in the bottom-left corner in room entry sequence. The screen allows up to 4 rows of 4 small images, which float over the large main image. Up to 1 large image and 15 small images can be displayed.\n     - Grid: The images of all users split the screen evenly. The more the users, the smaller the image dimensions. Up to 16 images are supported.\n     - Screen sharing: This is designed for video conferencing and online education. The shared screen (or camera image of the anchor) is always displayed as the large main image, which occupies the left half of the screen, and the images of other users occupy the right half in up to two columns of up to eight small images each. Up to 1 large image and 15 small images can be displayed. If the upstream aspect ratio does not match the output, the large image on the left will be scaled and displayed in whole, while the small images on the right will be cropped.\n4. Publish audio/video streams to up to 10 CDNs at a time. You can use `PublishCdnParams.PublishCdnUrl` to specify the URLs of the CDNs to publish to. To publish to Tencent Cloud’s CDN, set `PublishCdnParams.IsTencentCdn` to 1.\n5. Configure a server-side callback to have Tencent Cloud send relay status updates to your server in the form of HTTP/HTTPS POST requests. To use the callback for relay events, please contact Technical Support.\nNotes:\n1. **Because On-Cloud MixTranscoding is a paid feature, calling this API will incur MixTranscoding fees. For details, see [Billing of MixTranscoding and Relay to CDN](https://intl.cloud.tencent.com/document/product/647/47631?lang=en&pg=).**\n2. **Relaying to third-party CDNs will incur relaying fees. For details, see [Billing of MixTranscoding and Relay to CDN](https://intl.cloud.tencent.com/document/product/647/47631?lang=en&pg=).**\n\nOthers:\n1. You need to first call `StartPublishCdnStream` to start a relay task and get the task ID before you can use the `UpdatePublishCdnStream` API to modify the task and `StopPublishCdnStream` to stop the task.\n2. To ensure the stability of relaying, you cannot switch between relaying audio only, relaying audio and video, and relaying video only for the same task.\n3. To ensure the stability of relaying, you cannot change the video codec, audio codec, audio sample rate, audio bitrate, or sound channels using the `UpdatePublishCdnStream` API.\n4. When you relay a single stream, specify both `AudioParams` and `VideoParams` to publish both audio and video, and specify only `AudioParams` to publish audio only. You cannot switch between the two modes during the relaying process. For `VideoParams`, set `Width`, `Height`, `Fps`, `Bitrate`, and `Gop` according to the actual settings used for publishing.\n5. The `SequenceNumber` parameter is required when you call `UpdatePublishCdnStream` to change the relaying parameters. It ensures that multiple requests for the same relaying task are in the correct order. The value of `SequenceNumber` increases each time a new request is made for the same task. If `InternalError` is returned, try again using the same `SequenceNumber`. You don’t need to handle the `FailedOperation.OutdateRequest` error.\n6. You can create a relay task before anchors enter a room, in which case you need to manually call `StopPublishCdnStream` to stop the task. If you don’t, after all the users whose streams are mixed leave the room, the TRTC backend will wait for the timeout period (`AgentParams.MaxIdleTime`) to elapse before stopping the relaying task.",
       "input": "StartPublishCdnStreamRequest",
       "name": "Starts a relaying task",
       "output": "StartPublishCdnStreamResponse"
@@ -296,7 +296,7 @@
         },
         {
           "default": "",
-          "document": "The [user ID](https://intl.cloud.tencent.com/document/product/647/37714) of the recording robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include this user ID in the room ID.",
+          "document": "The [user ID](https://intl.cloud.tencent.com/document/product/647/37714) of the recording robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include the room ID in the user ID.",
           "example": "recorder_1234",
           "member": "string",
           "name": "UserId",
@@ -305,7 +305,7 @@
         },
         {
           "default": "",
-          "document": "The signature (similar to login password) required for the recording robot to enter the room. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104). |",
+          "document": "The signature (similar to a login password) required for the recording robot to enter the room. Each user ID corresponds to a signature. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104).",
           "example": "recorder_1234_sig",
           "member": "string",
           "name": "UserSig",
@@ -323,7 +323,7 @@
         },
         {
           "default": "",
-          "document": "The cloud storage parameters.",
+          "document": "The cloud storage information of the recording file. Currently, you can only save recording files to Tencent Cloud VOD.",
           "example": "无",
           "member": "StorageParams",
           "name": "StorageParams",
@@ -759,6 +759,68 @@
       ],
       "usage": "in"
     },
+    "McuLayoutVolume": {
+      "document": "The SEI parameters for audio volume layout. You can specify the `AppData` and `PayloadType`.\nThis parameter may be empty, in which case the default SEI parameters for audio volume layout will be used.",
+      "members": [
+        {
+          "default": "",
+          "document": "The application data, which will be embedded in the `app_data` field of the custom SEI. It must be shorter than 4,096 characters.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "AppData",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The payload type of the SEI message. The default is 100. Value range: 100-254 (244 is used internally by Tencent Cloud for timestamps).",
+          "example": "100",
+          "member": "uint64",
+          "name": "PayloadType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "McuPassThrough": {
+      "document": "The custom pass-through SEI.",
+      "members": [
+        {
+          "default": "",
+          "document": "The payload of the pass-through SEI.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "PayloadContent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The payload type of the SEI message. Value range: 5 and 100-254 (244 is used internally by Tencent Cloud for timestamps).",
+          "example": "101",
+          "member": "uint64",
+          "name": "PayloadType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This parameter is required only if `PayloadType` is 5. It must be a 32-character hexadecimal string. If `PayloadType` is not 5, this parameter will be ignored.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "PayloadUuid",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "McuPublishCdnParam": {
       "document": "The relaying parameters.",
       "members": [
@@ -780,6 +842,32 @@
           "name": "IsTencentCdn",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "McuSeiParams": {
+      "document": "The stream mixing SEI parameters.",
+      "members": [
+        {
+          "default": "",
+          "document": "The audio volume layout SEI.",
+          "example": "LayoutVolume",
+          "member": "McuLayoutVolume",
+          "name": "LayoutVolume",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The pass-through SEI.",
+          "example": "PassThrough",
+          "member": "McuPassThrough",
+          "name": "PassThrough",
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -928,7 +1016,17 @@
       "members": [
         {
           "default": "",
-          "document": "The information of the watermark image.",
+          "document": "The watermark type. The default is 0, which indicates an image watermark.",
+          "example": "0",
+          "member": "uint64",
+          "name": "WaterMarkType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark image information. This parameter is required if `WaterMarkType` is 0.",
           "example": "WaterMarkImage",
           "member": "McuWaterMarkImage",
           "name": "WaterMarkImage",
@@ -1281,7 +1379,7 @@
       "members": [
         {
           "default": "",
-          "document": "The recording mode.\n1: Single-stream recording. Records the audio and video of each subscribed user (`UserId`) in a room and saves the recording files (M3U8/TS) to the cloud.\n2: Mixed-stream recording. Mixes the audios and videos of subscribed users (`UserId`) in a room, records the mixed stream, and saves the recording files (M3U8/TS) to the cloud.",
+          "document": "The recording mode.\n1: Single-stream recording. Records the audio and video of each subscribed user (`UserId`) in a room and saves the recording files to the cloud.\n2: Mixed-stream recording. Mixes the audios and videos of subscribed users (`UserId`) in a room, records the mixed stream, and saves the recording files to the cloud.",
           "example": "1",
           "member": "uint64",
           "name": "RecordMode",
@@ -1321,7 +1419,7 @@
         },
         {
           "default": "",
-          "document": "The format of recording files. 0 (default): HLS; 1: HLS + MP4 (recorded in HLS and converted to MP4).",
+          "document": "The format of recording files. 0 (default): HLS; 1: HLS + MP4 (recorded in HLS and converted to MP4). This parameter is invalid if recording files are saved to VOD.",
           "example": "0",
           "member": "uint64",
           "name": "OutputFormat",
@@ -1515,6 +1613,15 @@
           "name": "PublishCdnParams",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The stream mixing SEI parameters.",
+          "example": "SeiParams",
+          "member": "McuSeiParams",
+          "name": "SeiParams",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1853,6 +1960,15 @@
           "name": "PublishCdnParams",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The stream mixing SEI parameters.",
+          "example": "SeiParams",
+          "member": "McuSeiParams",
+          "name": "SeiParams",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"

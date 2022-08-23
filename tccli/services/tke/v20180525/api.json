@@ -84,6 +84,12 @@
       "name": "Creates an ECM instance",
       "output": "CreateECMInstancesResponse"
     },
+    "CreateEdgeLogConfig": {
+      "document": "This API is used to create log collection configuration for a TKE Edge cluster.",
+      "input": "CreateEdgeLogConfigRequest",
+      "name": "Creates log collection configuration for a TKE Edge cluster",
+      "output": "CreateEdgeLogConfigResponse"
+    },
     "CreatePrometheusAlertRule": {
       "document": "This API is used to create an alarm rule.",
       "input": "CreatePrometheusAlertRuleRequest",
@@ -222,6 +228,12 @@
       "name": "Query the progress of enabling the public network port for a managed cluster",
       "output": "DescribeClusterEndpointVipStatusResponse"
     },
+    "DescribeClusterEndpoints": {
+      "document": "This API is used to query cluster access addresses, including private network address, public network address, public network domain name, and security policy for public network access.",
+      "input": "DescribeClusterEndpointsRequest",
+      "name": "Queries cluster access addresses",
+      "output": "DescribeClusterEndpointsResponse"
+    },
     "DescribeClusterInstances": {
       "document": " This API is used to query information of one or more instances in a cluster. ",
       "input": "DescribeClusterInstancesRequest",
@@ -317,6 +329,12 @@
       "input": "DescribeEdgeClusterInstancesRequest",
       "name": "Queries the TKE Edge cluster node information",
       "output": "DescribeEdgeClusterInstancesResponse"
+    },
+    "DescribeEdgeLogSwitches": {
+      "document": "This API is used to query the status of events, audits and logs.",
+      "input": "DescribeEdgeLogSwitchesRequest",
+      "name": "Queries TKE Edge cluster log switches",
+      "output": "DescribeEdgeLogSwitchesResponse"
     },
     "DescribeEnableVpcCniProgress": {
       "document": "This API is used to query the task progress of enabling VPC-CNI mode.",
@@ -438,6 +456,12 @@
       "name": "Obtains the current progress of the node upgrade",
       "output": "GetUpgradeInstanceProgressResponse"
     },
+    "InstallEdgeLogAgent": {
+      "document": "This API is used to install the log collection add-on on TKE Edge cluster nodes.",
+      "input": "InstallEdgeLogAgentRequest",
+      "name": "Installs the log collection add-on on TKE Edge cluster nodes",
+      "output": "InstallEdgeLogAgentResponse"
+    },
     "ModifyClusterAsGroupAttribute": {
       "document": "Modify cluster scaling group attributes",
       "input": "ModifyClusterAsGroupAttributeRequest",
@@ -497,6 +521,12 @@
       "input": "SetNodePoolNodeProtectionRequest",
       "name": "Enabling removal protection for the nodes in a node pool",
       "output": "SetNodePoolNodeProtectionResponse"
+    },
+    "UninstallEdgeLogAgent": {
+      "document": "This API is used to uninstall the log collection add-on from TKE Edge cluster nodes.",
+      "input": "UninstallEdgeLogAgentRequest",
+      "name": "Uninstalls the log collection add-on from TKE Edge cluster nodes",
+      "output": "UninstallEdgeLogAgentResponse"
     },
     "UpdateClusterVersion": {
       "document": "This API is used to upgrade the master component of the cluster to the specified version.",
@@ -3103,6 +3133,48 @@
       ],
       "type": "object"
     },
+    "CreateEdgeLogConfigRequest": {
+      "document": "CreateEdgeLogConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log collection configuration in json form",
+          "member": "string",
+          "name": "LogConfig",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "CLS logset ID",
+          "member": "string",
+          "name": "LogsetId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEdgeLogConfigResponse": {
+      "document": "CreateEdgeLogConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreatePrometheusAlertRuleRequest": {
       "document": "CreatePrometheusAlertRule request structure.",
       "members": [
@@ -4171,6 +4243,78 @@
       ],
       "type": "object"
     },
+    "DescribeClusterEndpointsRequest": {
+      "document": "DescribeClusterEndpoints request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-65r1c5nu",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterEndpointsResponse": {
+      "document": "DescribeClusterEndpoints response structure.",
+      "members": [
+        {
+          "document": "CA certificate of cluster APIServer",
+          "example": "xxx",
+          "member": "string",
+          "name": "CertificationAuthority",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Public network access address of cluster APIServer",
+          "example": "12.34.56.78",
+          "member": "string",
+          "name": "ClusterExternalEndpoint",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Private network access address of cluster APIServer",
+          "example": "10.0.0.1",
+          "member": "string",
+          "name": "ClusterIntranetEndpoint",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Domain name of cluster APIServer\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "cls-65r1c5nu.ccs.tencent-cloud.com",
+          "member": "string",
+          "name": "ClusterDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Public network access ACL of cluster APIServer\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"10.0.0.0\\/24\"]",
+          "member": "string",
+          "name": "ClusterExternalACL",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeClusterInstancesRequest": {
       "document": "DescribeClusterInstances request structure.",
       "members": [
@@ -5037,6 +5181,42 @@
       ],
       "type": "object"
     },
+    "DescribeEdgeLogSwitchesRequest": {
+      "document": "DescribeEdgeLogSwitches request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of cluster IDs",
+          "example": "[\"cls-xxx1\",\"cls-xxx2\"]",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEdgeLogSwitchesResponse": {
+      "document": "DescribeEdgeLogSwitches response structure.",
+      "members": [
+        {
+          "document": "Array of TKE Edge cluster log switches\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[{\"ClusterId\":\"cls-xxx1\",\"Audit\":{\"Enable\":true,\"TopicSet\":\"xxxx",
+          "member": "string",
+          "name": "SwitchSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeEnableVpcCniProgressRequest": {
       "document": "DescribeEnableVpcCniProgress request structure.",
       "members": [
@@ -5732,6 +5912,15 @@
           "name": "Config",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "A legacy version of edgectl script can be downloaded. The latest version is downloaded by default. The version information can be checked in the script.",
+          "example": "v_20220725193138",
+          "member": "string",
+          "name": "ScriptVersion",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5765,6 +5954,15 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "Version of edgectl script. The latest version is obtained by default.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "v_20220725193138",
+          "member": "string",
+          "name": "ScriptVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -6094,6 +6292,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cls-xxxxxxxx",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -6103,6 +6302,7 @@
         {
           "default": "",
           "document": "Cluster name",
+          "example": "test",
           "member": "string",
           "name": "ClusterName",
           "required": true,
@@ -6112,6 +6312,7 @@
         {
           "default": "",
           "document": "VPC ID",
+          "example": "vpc-xxxxxxxx",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -6121,6 +6322,7 @@
         {
           "default": "",
           "document": "Cluster Pod CIDR block",
+          "example": "10.0.0.1/16",
           "member": "string",
           "name": "PodCIDR",
           "required": true,
@@ -6130,6 +6332,7 @@
         {
           "default": "",
           "document": "Cluster service CIDR block",
+          "example": "10.1.1.1/16",
           "member": "string",
           "name": "ServiceCIDR",
           "required": true,
@@ -6139,6 +6342,7 @@
         {
           "default": "",
           "document": "",
+          "example": "1.20.6",
           "member": "string",
           "name": "K8SVersion",
           "required": true,
@@ -6148,6 +6352,7 @@
         {
           "default": "",
           "document": "Cluster status",
+          "example": "Running",
           "member": "string",
           "name": "Status",
           "required": false,
@@ -6157,6 +6362,7 @@
         {
           "default": "",
           "document": "Cluster description",
+          "example": "test",
           "member": "string",
           "name": "ClusterDesc",
           "required": false,
@@ -6166,6 +6372,7 @@
         {
           "default": "",
           "document": "Cluster creation time",
+          "example": "2022-08-09 16:54:33",
           "member": "string",
           "name": "CreatedTime",
           "required": false,
@@ -6175,6 +6382,7 @@
         {
           "default": "",
           "document": "Edge cluster version",
+          "example": "2.2",
           "member": "string",
           "name": "EdgeClusterVersion",
           "required": false,
@@ -6184,10 +6392,21 @@
         {
           "default": "",
           "document": "Maximum number of Pods on the node\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "61",
           "member": "int64",
           "name": "MaxNodePodNum",
           "required": false,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cluster advanced settings\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "ClusterAdvancedSettings",
+          "member": "EdgeClusterAdvancedSettings",
+          "name": "ClusterAdvancedSettings",
+          "required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -6199,10 +6418,31 @@
         {
           "default": "",
           "document": "Custom parameters of the cluster\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "EdgeClusterExtraArgs",
           "member": "EdgeClusterExtraArgs",
           "name": "ExtraArgs",
           "required": false,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Runtime type. Valid values: \"docker\" (default), \"containerd\".\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "docker",
+          "member": "string",
+          "name": "Runtime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Forwarding mode of kube-proxy. Valid values: \"iptables\" (default), \"ipvs\".\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "iptables",
+          "member": "string",
+          "name": "ProxyMode",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -7010,6 +7250,32 @@
         }
       ],
       "usage": "out"
+    },
+    "InstallEdgeLogAgentRequest": {
+      "document": "InstallEdgeLogAgent request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InstallEdgeLogAgentResponse": {
+      "document": "InstallEdgeLogAgent response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "Instance": {
       "document": "Cluster's instance information",
@@ -9334,6 +9600,32 @@
         }
       ],
       "usage": "out"
+    },
+    "UninstallEdgeLogAgentRequest": {
+      "document": "UninstallEdgeLogAgent request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UninstallEdgeLogAgentResponse": {
+      "document": "UninstallEdgeLogAgent response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UpdateClusterVersionRequest": {
       "document": "UpdateClusterVersion request structure.",

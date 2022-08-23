@@ -35,9 +35,9 @@
     "CheckEdgeClusterCIDR": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=CheckEdgeClusterCIDR\r\n&VpcId=vpc-xxx\r\n&PodCIDR=10.0.1.10/24\r\n&ServiceCIDR=192.168.0.0/16\r\n&<Common request parameters>",
+        "input": "https://tke.tencentcloudapi.com/?Action=CheckEdgeClusterCIDR\n&VpcId=vpc-xxx\n&PodCIDR=10.0.1.10/24\n&ServiceCIDR=192.168.0.0/16\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"ConflictCode\": \"0\",\n        \"ConflictMsg\": \"OK\"\n    }\n}",
-        "title": "Checking the CIDR block conflict for an edge compute cluster"
+        "title": "Checking CIDR block conflict for a TKE Edge cluster"
       }
     ],
     "CheckInstancesUpgradeAble": [
@@ -122,6 +122,14 @@
         "input": "https://tke.tencentcloudapi.com/?Action=CreateECMInstances\n&ClusterID=cls-xxxxx\n&ZoneInstanceCountISPSet.0.Zone=ap-zhengzhou-1\n&ZoneInstanceCountISPSet.0.InstanceCount=3\n&ZoneInstanceCountISPSet.0.ISP=CMCC\n&ImageId=img-q9fy0if9\n&HostName=oldhen_4986\n&DataDiskSize=100\n&ModuleId=em-0vag13d1\n&InstanceName=Live on-screen commenting\n&EnhancedService.SecurityService.Enabled=false\n&EnhancedService.MonitorService.Enabled=false\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d40cdb72-7bc0-4b48-b3aa-25e8401f6999\",\n        \"EcmIdSet\": [\n            \"ecm-197252sp\",\n            \"ecm-19725win\",\n            \"ecm-19623ash\"\n        ]\n    }\n}",
         "title": "Creating ECM instances"
+      }
+    ],
+    "CreateEdgeLogConfig": [
+      {
+        "document": "",
+        "input": "https://tke.tencentcloudapi.com/?Action=CreateEdgeLogConfig\n&LogConfig=xxxxxx\n&ClusterId=xxxxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f12a6e20-f950-4af9-8f8b-b6329a4961c2\"\n    }\n}",
+        "title": "Creating log collection rule"
       }
     ],
     "CreatePrometheusAlertRule": [
@@ -308,6 +316,14 @@
         "title": "Querying the status of the cluster port enabling process"
       }
     ],
+    "DescribeClusterEndpoints": [
+      {
+        "document": "",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeClusterEndpoints\n&ClusterId=cls-65r1c5nu\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"CertificationAuthority\": \"xxx\",\n        \"ClusterExternalEndpoint\": \"12.34.56.78\",\n        \"ClusterIntranetEndpoint\": \"10.0.0.1\",\n        \"ClusterDomain\": \"cls-65r1c5nu.ccs.tencent-cloud.com\",\n        \"ClusterExternalACL\": [\n            \"10.0.0.0/24\"\n        ],\n        \"RequestId\": \"33483fde-efec-4d3c-8ff6-340d9dbc2d01\"\n    }\n}",
+        "title": "Querying cluster access addresses"
+      }
+    ],
     "DescribeClusterInstances": [
       {
         "document": "This example shows you how to query information of instances in a cluster.",
@@ -436,6 +452,14 @@
         "title": "Querying the edge compute cluster node information"
       }
     ],
+    "DescribeEdgeLogSwitches": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEdgeLogSwitches\n<Common request parameters>\n\n{\n    \"ClusterIds\": [\n        \"cls-xxx1\",\n        \"cls-xxx2\"\n    ]\n}",
+        "output": "{\r\n    \"Response\":{\r\n        \"SwitchSet\":[\r\n            {\r\n                \"ClusterId\":\"cls-xxx1\",\r\n                \"Audit\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                },\r\n                \"Event\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                },\r\n                \"Log\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                }\r\n            },\r\n            {\r\n                \"ClusterId\":\"cls-xxx2\",\r\n                \"Audit\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                },\r\n                \"Event\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                },\r\n                \"Log\":{\r\n                   \"Enable\": true,\r\n                   \"TopicSet\": \"xxxxx\",\r\n                   \"TopicId\": \"xxxxx\"\r\n                }\r\n            }\r\n        ],\r\n        \"RequestId\":\"eac6b301-a322-493a-8e36-83b295459397\"\r\n    }\r\n}",
+        "title": "Querying TKE Edge cluster log switches"
+      }
+    ],
     "DescribeEnableVpcCniProgress": [
       {
         "document": "This API is used to query the process of the async task created when the user calls EnableVpcCniNetworkType to enable VPC-CNI network mode for GR cluster. ",
@@ -503,9 +527,9 @@
     "DescribeTKEEdgeClusterStatus": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeTKEEdgeClusterStatus\r\n&ClusterId=cls-xxxxxx\r\n&<Common request parameters>",
+        "input": "https://tke.tencentcloudapi.com/?Action=DescribeTKEEdgeClusterStatus\n&ClusterId=cls-xxxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Phase\": \"Initializing\",\n        \"Conditions\": [\n            {\n                \"Type\": \"Initialize master deployment environment\",\n                \"Status\": \"True\",\n                \"LastProbeTime\": \"2020-02-25 12:10:15\",\n                \"LastTransitionTime\": \"2020-02-25 12:10:15\",\n                \"Reason\": \"WaitingProcess\",\n                \"Message\": \"waiting process\"\n            }\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Obtaining the current status and process information of an edge compute cluster"
+        "title": "Querying the status and process information of a TKE Edge cluster"
       }
     ],
     "DescribeTKEEdgeClusters": [
@@ -527,9 +551,9 @@
     "DescribeTKEEdgeScript": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTKEEdgeScript\n<Common request parameters>\n\n{\n    \"Interface\": \"eth0\",\n    \"Config\": \"{}\",\n    \"ClusterId\": \"cls123\",\n    \"NodeName\": \"node\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Link\": \"www.tencent.com\",\n        \"Token\": \"123456\",\n        \"Command\": \"wget www.tencent.com\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Querying the URL of TKE edge script"
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTKEEdgeScript\n<Common request parameters>\n\n{\n    \"Interface\": \"eth0\",\n    \"Config\": \"{\\\"Interface\\\":\\\"\\\",\\\"RuntimePath\\\":\\\"/var/lib/docker\\\",\\\"EdgeClusterVersion\\\":\\\"2.2\\\",\\\"TTL\\\":\\\"24h\\\", \\\"SkipInstallRuntime\\\":true}\",\n    \"ClusterId\": \"cls123\",\n    \"NodeName\": \"node\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Link\": \"www.tencent.com\",\n        \"Token\": \"123456\",\n        \"Command\": \"wget www.tencent.com\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"ScriptVersion\": \"xx\"\n    }\n}",
+        "title": "Querying the URL of TKE Edge script"
       }
     ],
     "DescribeVersions": [
@@ -594,6 +618,14 @@
         "input": "https://tke.tencentcloudapi.com/?Action=GetUpgradeInstanceProgress\n&ClusterId=cls-xxxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"LifeState\": \"xx\",\n        \"Instances\": [\n            {\n                \"StartAt\": \"xx\",\n                \"InstanceID\": \"xx\",\n                \"Detail\": [\n                    {\n                        \"StartAt\": \"xx\",\n                        \"Step\": \"xx\",\n                        \"LifeState\": \"xx\",\n                        \"EndAt\": \"xx\",\n                        \"FailedMsg\": \"xx\"\n                    },\n                    {\n                        \"LifeState\": \"xx\",\n                        \"Step\": \"xx\",\n                        \"StartAt\": \"xx\",\n                        \"EndAt\": \"xx\",\n                        \"FailedMsg\": \"xx\"\n                    },\n                    {\n                        \"LifeState\": \"xx\",\n                        \"Step\": \"xx\",\n                        \"StartAt\": \"xx\",\n                        \"EndAt\": \"xx\",\n                        \"FailedMsg\": \"xx\"\n                    },\n                    {\n                        \"LifeState\": \"xx\",\n                        \"Step\": \"xx\",\n                        \"StartAt\": \"xx\",\n                        \"EndAt\": \"xx\",\n                        \"FailedMsg\": \"xx\"\n                    }\n                ],\n                \"EndAt\": \"xx\",\n                \"CheckResult\": {\n                    \"Items\": [\n                        {\n                            \"WorkLoadKind\": \"xx\",\n                            \"After\": 1,\n                            \"Namespace\": \"xx\",\n                            \"WorkLoadName\": \"xx\",\n                            \"Pods\": [\n                                \"xx\"\n                            ],\n                            \"Before\": 1\n                        }\n                    ],\n                    \"CheckPass\": true,\n                    \"SinglePods\": [\n                        \"xx\"\n                    ]\n                },\n                \"LifeState\": \"xx\"\n            }\n        ],\n        \"Done\": 1,\n        \"RequestId\": \"xx\",\n        \"ClusterStatus\": {\n            \"PodTotal\": 0,\n            \"NotReadyPod\": 0\n        },\n        \"Total\": 3\n    }\n}",
         "title": "Querying the upgrade status"
+      }
+    ],
+    "InstallEdgeLogAgent": [
+      {
+        "document": "",
+        "input": "https://tke.tencentcloudapi.com/?Action=InstallEdgeLogAgent\n&ClusterId=\"\"\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f12a6e20-f950-4af9-8f8b-b6329a4961c2\"\n    }\n}",
+        "title": "Installing the log collection add-on on TKE Edge cluster nodes"
       }
     ],
     "ModifyClusterAsGroupAttribute": [
@@ -674,6 +706,14 @@
         "input": "https://tke.tencentcloudapi.com/?Action=SetNodePoolNodeProtection\n&ClusterId=cls-xxx\n&NodePoolId=np-xxx\n&InstanceIds.0=ins-xxx\n&ProtectedFromScaleIn=true\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"SucceedInstanceIds\": [\n            \"ins-xxx\"\n        ],\n        \"FailedInstanceIds\": [\n            \"xx\"\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Setting removal protection for the node in a node pool"
+      }
+    ],
+    "UninstallEdgeLogAgent": [
+      {
+        "document": "",
+        "input": "https://tke.tencentcloudapi.com/?Action=UninstallEdgeLogAgent\n&ClusterId=cls-65r1c5nu\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f12a6e20-f950-4af9-8f8b-b6329a4961c2\"\n    }\n}",
+        "title": "Uninstalling the log collection add-on from TKE Edge cluster nodes"
       }
     ],
     "UpdateClusterVersion": [

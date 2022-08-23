@@ -13,6 +13,62 @@
     "serviceShortName": "tts"
   },
   "objects": {
+    "Subtitle": {
+      "document": "The information about the timestamps.",
+      "members": [
+        {
+          "default": "",
+          "document": "The word in the text that is sent.",
+          "example": "你",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The start timestamp of the word in the synthesized audio data, in milliseconds.",
+          "example": "250",
+          "member": "int64",
+          "name": "BeginTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The end timestamp of the word in the synthesized audio data, in milliseconds.",
+          "example": "580,",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The start index of the character in the whole sentence, starting from 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "BeginIndex",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The end index of the character in the whole sentence, starting from 0.",
+          "example": "1",
+          "member": "int64",
+          "name": "EndIndex",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "TextToVoiceRequest": {
       "document": "TextToVoice request structure.",
       "members": [
@@ -105,6 +161,15 @@
           "name": "Codec",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the timestamp feature. Default value: `false`.",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableSubtitle",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -128,6 +193,15 @@
           "name": "SessionId",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Timestamp information. If the timestamp feature is not enabled, an empty array will be returned.",
+          "example": "无",
+          "member": "Subtitle",
+          "name": "Subtitles",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
