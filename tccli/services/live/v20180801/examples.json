@@ -11,7 +11,7 @@
     "AddLiveDomain": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=AddLiveDomain\n&DomainName=www.test.com\n&DomainType=0\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddLiveDomain\n<Common request parameters>\n\n{\n    \"DomainType\": \"0\",\n    \"DomainName\": \"www.test.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Adding a domain name"
       }
@@ -21,14 +21,6 @@
         "document": "",
         "input": "https://live.tencentcloudapi.com/?Action=AddLiveWatermark\n&PictureUrl=http://watermark-10005041.cos.myqcloud.com/1251830167/watermark_img_Alogo.png\n&XPosition=80\n&YPosition=10\n&WatermarkName=logo\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\",\n        \"WatermarkId\": 123\n    }\n}",
-        "title": "Sample request"
-      }
-    ],
-    "BindLiveDomainCert": [
-      {
-        "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=BindLiveDomainCert\r\n&CertId=1000\r\n&DomainName=5000.livepush.myqcloud.com\r\n&Status=1\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -76,18 +68,10 @@
         "title": "Sample request"
       }
     ],
-    "CreateLiveCert": [
-      {
-        "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=CreateLiveCert\r\n&CertType=0\r\n&CertName=name-crt\r\n&HttpsCrt=XXXXX\r\n&HttpsKey=YYYYYY\r\n&Description=detail\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"CertId\": 17\n    }\n}",
-        "title": "Adding certificate"
-      }
-    ],
     "CreateLivePullStreamTask": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLivePullStreamTask\n<common request parameters>\n\n{\n    \"SourceType\": \"PullLivePushLive\",\n    \"DomainName\": \"5000.livepush.myqcloud.com\",\n    \"SourceUrls\": [\n        \"rtmp://5000.liveplay.myqcloud.com/live/stream1\"\n    ],\n    \"StreamName\": \"test\",\n    \"AppName\": \"live\",\n    \"StartTime\": \"2019-12-16T11:02:00Z\",\n    \"Operator\": \"vinson\",\n    \"EndTime\": \"2019-12-17T12:02:00Z\"\n}",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLivePullStreamTask\n<Common request parameters>\n\n{\n    \"SourceType\": \"PullLivePushLive\",\n    \"DomainName\": \"5000.livepush.myqcloud.com\",\n    \"SourceUrls\": [\n        \"rtmp://5000.liveplay.myqcloud.com/live/stream1\"\n    ],\n    \"StreamName\": \"test\",\n    \"AppName\": \"live\",\n    \"StartTime\": \"2019-12-16T11:02:00Z\",\n    \"Operator\": \"vinson\",\n    \"EndTime\": \"2019-12-17T12:02:00Z\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"10000\",\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
@@ -190,14 +174,6 @@
         "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveCallbackTemplate\n&TemplateId=1000\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
-      }
-    ],
-    "DeleteLiveCert": [
-      {
-        "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DeleteLiveCert\r\n&CertId=1000\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Deleting certificate"
       }
     ],
     "DeleteLiveDomain": [
@@ -392,6 +368,14 @@
         "title": "Sample request"
       }
     ],
+    "DescribeLiveDomainCertBindings": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLiveDomainCertBindings\n<Common request parameters>\n\n{\n    \"DomainSearch\": \"\",\n    \"DomainName\": \"abc.com\",\n    \"Offset\": 0,\n    \"Length\": 50\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3b4a072b-9f74-4baa-9200-1e0858baa7a5\",\n        \"LiveDomainCertBindings\": [],\n        \"TotalNum\": 0\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "DescribeLiveDomainReferer": [
       {
         "document": "",
@@ -403,8 +387,8 @@
     "DescribeLiveDomains": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveDomains\n&DomainType=1\n&DomainStatus=1\n&PageSize=10\n&PageNum=1\n&IsDelayLive=0\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"AllCount\": 2,\n        \"CreateLimitCount\": 0,\n        \"DomainList\": [\n            {\n                \"Name\": \"abc.com\",\n                \"IsMiniProgramLive\": 0,\n                \"Type\": 1,\n                \"Status\": 1,\n                \"PlayType\": 1,\n                \"IsDelayLive\": 0,\n                \"CreateTime\": \"2018-08-29 10:00:00\",\n                \"BCName\": 1,\n                \"CurrentCName\": \"\",\n                \"TargetDomain\": \"abc.com.liveplay.myqcloud.com\",\n                \"RentTag\": 0,\n                \"RentExpireTime\": \"0000-00-00 00:00:00\"\n            }\n        ]\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLiveDomains\n<Common request parameters>\n\n{\n    \"IsDelayLive\": \"0\",\n    \"PageSize\": \"10\",\n    \"PageNum\": \"1\",\n    \"DomainStatus\": \"1\",\n    \"DomainType\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"AllCount\": 2,\n        \"CreateLimitCount\": 0,\n        \"PlayTypeCount\": [\n            1,\n            2,\n            3\n        ],\n        \"DomainList\": [\n            {\n                \"Name\": \"abc.com\",\n                \"IsMiniProgramLive\": 0,\n                \"Type\": 1,\n                \"Status\": 1,\n                \"PlayType\": 1,\n                \"IsDelayLive\": 0,\n                \"CreateTime\": \"2018-08-29 10:00:00\",\n                \"BCName\": 1,\n                \"CurrentCName\": \"\",\n                \"TargetDomain\": \"abc.com.liveplay.myqcloud.com\",\n                \"RentTag\": 0,\n                \"RentExpireTime\": \"0000-00-00 00:00:00\"\n            }\n        ]\n    }\n}",
         "title": "Querying the domain name list"
       }
     ],
@@ -643,7 +627,7 @@
     "DescribeStreamPlayInfoList": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeStreamPlayInfoList\n&PlayDomain=5000.playdomain.com\n&StreamName=stream1\n&StartTime=2019-03-01 00:00:00\n&EndTime=2019-03-01 00:03:00\n&<Common request parameters>",
+        "input": "https://live.tencentcloudapi.com/?Action=DescribeStreamPlayInfoList\r\n&PlayDomain=5000.playdomain.com\r\n&StreamName=stream1\r\n&StartTime=2019-03-01 00:00:00\r\n&EndTime=2019-03-01 00:03:00\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DataInfoList\": [\n            {\n                \"Time\": \"2019-03-01 00:00:00\",\n                \"Bandwidth\": 10.0,\n                \"Flux\": 75.0,\n                \"Request\": 50,\n                \"Online\": 10\n            },\n            {\n                \"Time\": \"2019-03-01 00:02:00\",\n                \"Bandwidth\": 20.0,\n                \"Flux\": 150.0,\n                \"Request\": 50,\n                \"Online\": 20\n            },\n            {\n                \"Time\": \"2019-03-01 00:03:00\",\n                \"Bandwidth\": 30.0,\n                \"Flux\": 225.0,\n                \"Request\": 50,\n                \"Online\": 30\n            }\n        ],\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
         "title": "Sample request"
       }
@@ -704,19 +688,11 @@
         "title": "Sample request"
       }
     ],
-    "ModifyLiveCert": [
+    "ModifyLiveDomainCertBindings": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=ModifyLiveCert\r\n&CertId=1000\r\n&CertType=1\r\n&CertName=name-crt\r\n&HttpsCrt=XXXXX\r\n&HttpsKey=YYYYYY\r\n&Description=detail\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Modifying certificate"
-      }
-    ],
-    "ModifyLiveDomainCert": [
-      {
-        "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=ModifyLiveDomainCert\r\n&DomainName=5000.livepush.myqcloud.com\r\n&CertId=1000\r\n&Status=0\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLiveDomainCertBindings\n<Common request parameters>\n\n{\n    \"CloudCertId\": \"hZy2N9vF\",\n    \"DomainInfos\": [\n        {\n            \"DomainName\": \"abc.tst.com.cn\",\n            \"Status\": 1\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"cb91d382-e9be-4688-9008-d57088271b5f\",\n        \"MismatchedDomainNames\": [],\n        \"Errors\": []\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -747,7 +723,7 @@
     "ModifyLivePullStreamTask": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLivePullStreamTask\n<common request parameters>\n\n{\n    \"Operator\": \"yourname\",\n    \"EndTime\": \"2020-04-17T12:02:00Z\",\n    \"StartTime\": \"2020-04-16T11:02:00Z\",\n    \"TaskId\": \"123\",\n    \"SourceUrls\": [\n        \"rtmp://your.domainname.com/live/stream1\"\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLivePullStreamTask\n<Common request parameters>\n\n{\n    \"Operator\": \"yourname\",\n    \"EndTime\": \"2020-04-17T12:02:00Z\",\n    \"StartTime\": \"2020-04-16T11:02:00Z\",\n    \"TaskId\": \"123\",\n    \"SourceUrls\": [\n        \"rtmp://your.domainname.com/live/stream1\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }

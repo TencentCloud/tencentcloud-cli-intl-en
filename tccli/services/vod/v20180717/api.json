@@ -19,7 +19,7 @@
       "output": "CommitUploadResponse"
     },
     "ComposeMedia": {
-      "document": "This API is used to compose a media file, including:\n\n1. Clipping a media file to generate a new media file;\n2. Clipping and splicing multiple media files to generate a new media file;\n3. Clipping and splicing the media streams of multiple media files to generate a new media file;",
+      "document": "This API is used to compose a media file. You can use it to do the following:\n\n1. **Rotation/Flipping**: Rotate a video or image by a specific angle or flip a video or image.\n2. **Audio control**: Increase/Lower the volume of an audio/video file or mute an audio/video file.\n3. **Overlaying**: Overlay videos/images in a specified sequence to achieve the picture-in-picture effect.\n4. **Audio mixing**: Mix the audios of audio/video files.\n5 **Audio extraction**: Extract audio from a video.\n6. **Clipping**: Clip segments from audio/video files according to a specified start and end time.\n7. **Splicing**: Splice videos/audios/images in a specified sequence.\n8. **Transition**: Add transition effects between video segments or images that are spliced together.\n\nThe output file is in MP4 or MP3 format. In the callback for media composition, the event type is [ComposeMediaComplete](https://intl.cloud.tencent.com/document/product/266/43000?from_cn_redirect=1).",
       "input": "ComposeMediaRequest",
       "name": "Composes a video",
       "output": "ComposeMediaResponse"
@@ -109,9 +109,9 @@
       "output": "CreateSubAppIdResponse"
     },
     "CreateSuperPlayerConfig": {
-      "document": "This API is used to create a superplayer configuration. Up to 100 configurations can be created.",
+      "document": "This API is used to create a player configuration. Up to 100 configurations can be created.",
       "input": "CreateSuperPlayerConfigRequest",
-      "name": "Creates superplayer configuration",
+      "name": "Creates a player configuration",
       "output": "CreateSuperPlayerConfigResponse"
     },
     "CreateTranscodeTemplate": {
@@ -211,9 +211,9 @@
       "output": "DeleteSnapshotByTimeOffsetTemplateResponse"
     },
     "DeleteSuperPlayerConfig": {
-      "document": "This API is used to delete a superplayer configuration.  \n*Note: preset player configurations cannot be deleted.*",
+      "document": "This API is used to delete a player configuration.  \n*Note: Preset player configurations cannot be deleted.*",
       "input": "DeleteSuperPlayerConfigRequest",
-      "name": "Deletes superplayer configuration",
+      "name": "Deletes a player configuration",
       "output": "DeleteSuperPlayerConfigResponse"
     },
     "DeleteTranscodeTemplate": {
@@ -287,6 +287,12 @@
       "input": "DescribeCdnLogsRequest",
       "name": "Queries CDN log download link list",
       "output": "DescribeCdnLogsResponse"
+    },
+    "DescribeClientUploadAccelerationUsageData": {
+      "document": "This API is used to query the usage of the client upload acceleration service in a specific time period.\n   1. You can query the usage of client upload acceleration in the last 365 days.\n   2. The maximum time period allowed for query is 90 days.\n   3. If the period specified is longer than one day, the statistics returned will be on a daily basis; otherwise, they will be on a 5-minute basis.\n",
+      "input": "DescribeClientUploadAccelerationUsageDataRequest",
+      "name": "Queries the usage of client upload acceleration",
+      "output": "DescribeClientUploadAccelerationUsageDataResponse"
     },
     "DescribeContentReviewTemplates": {
       "document": "This API is used to get the list of intelligent video content recognition template details according to unique template IDs. The return result includes all eligible custom and [preset intelligent video content recognition templates](https://intl.cloud.tencent.com/document/product/266/33932).",
@@ -391,9 +397,9 @@
       "output": "DescribeSubAppIdsResponse"
     },
     "DescribeSuperPlayerConfigs": {
-      "document": "This API is used to query the list of superplayer configurations and supports paginated queries by filters.",
+      "document": "This API is used to query player configurations. It supports pagination.",
       "input": "DescribeSuperPlayerConfigsRequest",
-      "name": "Gets superplayer configuration list",
+      "name": "Queries player configurations",
       "output": "DescribeSuperPlayerConfigsResponse"
     },
     "DescribeTaskDetail": {
@@ -547,9 +553,9 @@
       "output": "ModifySubAppIdStatusResponse"
     },
     "ModifySuperPlayerConfig": {
-      "document": "This API is used to modify a superplayer configuration.",
+      "document": "This API is used to modify a player configuration.",
       "input": "ModifySuperPlayerConfigRequest",
-      "name": "Modifies superplayer configuration",
+      "name": "Modifies a player configuration",
       "output": "ModifySuperPlayerConfigResponse"
     },
     "ModifyTranscodeTemplate": {
@@ -9647,6 +9653,69 @@
       ],
       "type": "object"
     },
+    "DescribeClientUploadAccelerationUsageDataRequest": {
+      "document": "DescribeClientUploadAccelerationUsageData request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start date for the query in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format).",
+          "example": "2020-09-07T00:00:00+08:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end date for the query in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format). The end date must be later than the start date.",
+          "example": "2020-09-09T23:59:59+08:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The client upload acceleration type. Valid values:\n<li> AccelerationWithHTTP: Acceleration of HTTP transmission</li>\n<li> AccelerationWithQUIC: Acceleration of QUIC transmission</li>\nIf you do not specify this parameter, the usage of both types will be queried.",
+          "example": "AccelarationWithHTTP",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClientUploadAccelerationUsageDataResponse": {
+      "document": "DescribeClientUploadAccelerationUsageData response structure.",
+      "members": [
+        {
+          "document": "The usage of client upload acceleration.",
+          "example": "无",
+          "member": "StatDataItem",
+          "name": "ClientUploadAccelerationUsageDataSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeContentReviewTemplatesRequest": {
       "document": "DescribeContentReviewTemplates request structure.",
       "members": [
@@ -10809,7 +10878,17 @@
       "members": [
         {
           "default": "",
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
           "document": "Player configuration name filter. Array length limit: 100.",
+          "example": "[\"test\\r\\n\"]",
           "member": "string",
           "name": "Names",
           "required": false,
@@ -10818,6 +10897,7 @@
         {
           "default": "",
           "document": "Pagination offset. Default value: 0.",
+          "example": "无",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -10826,6 +10906,7 @@
         {
           "default": "",
           "document": "Number of entries to be returned. Default value: 10. Maximum value: 100.",
+          "example": "无",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -10834,18 +10915,11 @@
         {
           "default": "",
           "document": "Player configuration type filter. Valid values:\n<li>Preset: preset configuration;</li>\n<li>Custom: custom configuration.</li>",
+          "example": "无",
           "member": "string",
           "name": "Type",
           "required": false,
           "type": "string"
-        },
-        {
-          "default": "",
-          "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
-          "member": "uint64",
-          "name": "SubAppId",
-          "required": false,
-          "type": "int"
         }
       ],
       "type": "object"
@@ -11976,7 +12050,7 @@
         },
         {
           "default": "",
-          "document": "<b>Supported event types:</b>\n<li>NewFileUpload: finished video upload</li>\n<li>ProcedureStateChanged: task flow status changed</li>\n<li>FileDeleted: finished video deletion</li>\n<li>PullComplete: finished pulling for upload</li>\n<li>EditMediaComplete: finished video editing</li>\n<li>SplitMediaComplete: finished video splitting</li>\n<li>WechatPublishComplete: finished publishing on WeChat</li>\n<li>ComposeMediaComplete: finished producing the media file</li>\n<li>WechatMiniProgramPublishComplete: finished publishing on WeChat Mini Program</li>\n<b>Support v2017 task types:</b>\n<li>TranscodeComplete: finished video transcoding</li>\n<li>ConcatComplete: finished video splicing</li>\n<li>ClipComplete: finished video clipping</li>\n<li>CreateImageSpriteComplete: finished image sprite generation</li>\n<li>CreateSnapshotByTimeOffsetComplete: finished point-in-time screencapturing</li>",
+          "document": "<b>Supported event types:</b>\n<li>NewFileUpload: Video uploaded.</li>\n<li>ProcedureStateChanged: Task flow status changed.</li>\n<li>FileDeleted: Video deleted.</li>\n<li>PullComplete: Finished video pulling.</li>\n<li>EditMediaComplete: Finished video editing.</li>\n<li>SplitMediaComplete: Finished video splitting.</li>\n<li>WechatPublishComplete: Published to WeChat.</li>\n<li>ComposeMediaComplete: Finished composition.</li>\n<li>FastClipMediaComplete: Finished quick clipping.</li>\n<b>v2017 task types:</b>\n<li>TranscodeComplete: Finished video transcoding.</li>\n<li>ConcatComplete: Finished video splicing.</li>\n<li>ClipComplete: Finished video clipping.</li>\n<li>CreateImageSpriteComplete: Finished image sprite generation.</li>\n<li>CreateSnapshotByTimeOffsetComplete: Finished time point screencapturing.</li>",
           "example": "null",
           "member": "string",
           "name": "EventType",
@@ -13713,7 +13787,8 @@
       "members": [
         {
           "default": "",
-          "document": "Category ID",
+          "document": "The category ID.",
+          "example": "0",
           "member": "int64",
           "name": "ClassId",
           "required": true,
@@ -13723,6 +13798,7 @@
         {
           "default": "",
           "document": "Parent category ID, which is -1 for a first-level category.",
+          "example": "0",
           "member": "int64",
           "name": "ParentId",
           "required": true,
@@ -13731,9 +13807,10 @@
         },
         {
           "default": "",
-          "document": "Category name",
+          "document": "The category name.",
+          "example": "\"SystemDefault\"",
           "member": "string",
-          "name": "ClassName",
+          "name": "Name",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -13741,6 +13818,7 @@
         {
           "default": "",
           "document": "Category level. 0 for first-level category, up to 3, i.e., up to 4 levels of categories are allowed.",
+          "example": "0",
           "member": "uint64",
           "name": "Level",
           "required": true,
@@ -13749,11 +13827,22 @@
         },
         {
           "default": "",
-          "document": "Set of IDs of the immediate subcategories in current category",
+          "document": "The IDs of the immediate subcategories of the current category.",
+          "example": "[4]",
           "member": "int64",
           "name": "SubClassIdSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The category name. This parameter is not recommended. Please use `Name` instead.",
+          "example": "\"其他\"",
+          "member": "string",
+          "name": "ClassName",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -17219,6 +17308,15 @@
         },
         {
           "default": "",
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
           "document": "Type of audio/video played. Valid values:\n<li>AdaptiveDynamicStreaming</li>\n<li>Transcode</li>\n<li>Original</li>",
           "example": "无",
           "member": "string",
@@ -17306,15 +17404,6 @@
           "name": "Comment",
           "required": false,
           "type": "string"
-        },
-        {
-          "default": "",
-          "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
-          "example": "无",
-          "member": "uint64",
-          "name": "SubAppId",
-          "required": false,
-          "type": "int"
         }
       ],
       "type": "object"
@@ -18085,6 +18174,7 @@
         {
           "default": "",
           "document": "Player configuration name.",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -18094,6 +18184,7 @@
         {
           "default": "",
           "document": "Player configuration type. Valid values:\n<li>Preset: preset configuration;</li>\n<li>Custom: custom configuration.</li>",
+          "example": "无",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -18102,7 +18193,18 @@
         },
         {
           "default": "",
+          "document": "The type of audio/video played. Valid values:\n<li>AdaptiveDynamicStreaming: Adaptive bitrate stream</li>\n<li>Transcode: Transcoded stream</li>\n<li>Original: The original stream</li>",
+          "example": "无",
+          "member": "string",
+          "name": "AudioVideoType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Switch of DRM-protected adaptive bitstream playback:\n<li>ON: enabled, indicating to play back only output adaptive bitstreams protected by DRM;</li>\n<li>OFF: disabled, indicating to play back unencrypted output adaptive bitstreams.</li>",
+          "example": "无",
           "member": "string",
           "name": "DrmSwitch",
           "required": true,
@@ -18112,6 +18214,7 @@
         {
           "default": "",
           "document": "ID of the unencrypted adaptive bitrate streaming template that allows output.",
+          "example": "无",
           "member": "uint64",
           "name": "AdaptiveDynamicStreamingDefinition",
           "required": true,
@@ -18121,6 +18224,7 @@
         {
           "default": "",
           "document": "Content of the DRM-protected adaptive bitrate streaming template that allows output.",
+          "example": "无",
           "member": "DrmStreamingsInfo",
           "name": "DrmStreamingsInfo",
           "required": true,
@@ -18129,7 +18233,18 @@
         },
         {
           "default": "",
+          "document": "The ID of the transcoding template allowed.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TranscodeDefinition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "ID of the image sprite generating template that allows output.",
+          "example": "无",
           "member": "uint64",
           "name": "ImageSpriteDefinition",
           "required": true,
@@ -18139,6 +18254,7 @@
         {
           "default": "",
           "document": "Display name of player for substreams with different resolutions.",
+          "example": "无",
           "member": "ResolutionNameInfo",
           "name": "ResolutionNameSet",
           "required": true,
@@ -18148,6 +18264,7 @@
         {
           "default": "",
           "document": "Creation time of player configuration in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "无",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -18157,6 +18274,7 @@
         {
           "default": "",
           "document": "Last modified time of player configuration in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "无",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -18166,6 +18284,7 @@
         {
           "default": "",
           "document": "Domain name used for playback. If its value is `Default`, the domain name configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used.",
+          "example": "无",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -18175,6 +18294,7 @@
         {
           "default": "",
           "document": "Scheme used for playback. Valid values:\n<li>Default: the scheme configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used;</li>\n<li>HTTP;</li>\n<li>HTTPS.</li>",
+          "example": "无",
           "member": "string",
           "name": "Scheme",
           "required": true,
@@ -18184,6 +18304,7 @@
         {
           "default": "",
           "document": "Template description.",
+          "example": "无",
           "member": "string",
           "name": "Comment",
           "required": true,
@@ -21504,6 +21625,7 @@
         {
           "default": "",
           "document": "Subapplication ID.",
+          "example": "无",
           "member": "uint64",
           "name": "SubAppId",
           "required": true,
@@ -21512,9 +21634,10 @@
         },
         {
           "default": "",
-          "document": "Subapplication name.",
+          "document": "The subapplication name.",
+          "example": "无",
           "member": "string",
-          "name": "Name",
+          "name": "SubAppIdName",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -21522,6 +21645,7 @@
         {
           "default": "",
           "document": "Subapplication overview.",
+          "example": "无",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -21531,6 +21655,7 @@
         {
           "default": "",
           "document": "Subapplication creation time of task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -21540,8 +21665,19 @@
         {
           "default": "",
           "document": "Subapplication status. Valid values:\n<li>On: enabled</li>\n<li>Off: disabled</li>\n<li>Destroying: terminating</li>\n<li>Destroyed: terminated</li>",
+          "example": "无",
           "member": "string",
           "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The subapplication name. This parameter is not recommended. Please use `SubAppIdName` instead.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -23014,7 +23150,7 @@
         },
         {
           "default": "",
-          "document": "Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The maximum video width (or long side) in pixels. Value range: 0 and [128, 8192].\n<li>If both `Width` and `Height` are 0, the output resolution will be the same as that of the source video.</li>\n<li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>\n<li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>\n<li>If neither `Width` nor `Height` is 0, the specified width and height will be used.</li>\nDefault value: 0.",
           "example": "0",
           "member": "uint64",
           "name": "Width",
@@ -23024,7 +23160,7 @@
         },
         {
           "default": "",
-          "document": "Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The maximum video height (or short side) in pixels. Value range: 0 and [128, 8192].\n<li>If both `Width` and `Height` are 0, the output resolution will be the same as that of the source video.</li>\n<li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>\n<li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>\n<li>If neither `Width` nor `Height` is 0, the specified width and height will be used.</li>\nDefault value: 0.",
           "example": "0",
           "member": "uint64",
           "name": "Height",
@@ -23060,6 +23196,16 @@
           "name": "Gop",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to output an HDR (high dynamic range) video if the source video is HDR. Valid values:\n<li>ON: If the source video is HDR, output an HDR video; if not, output an SDR (standard dynamic range) video.</li>\n<li>OFF: Output an SDR video regardless of whether the source video is HDR.</li>\nDefault value: OFF.",
+          "example": "ON",
+          "member": "string",
+          "name": "PreserveHDRSwitch",
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -23110,7 +23256,7 @@
         },
         {
           "default": "",
-          "document": "Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>",
+          "document": "The maximum video width (or long side) in pixels. Value range: 0 and [128, 8192].\n<li>If both `Width` and `Height` are 0, the output resolution will be the same as that of the source video.</li>\n<li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>\n<li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>\n<li>If neither `Width` nor `Height` is 0, the specified width and height will be used.</li>",
           "example": "0",
           "member": "uint64",
           "name": "Width",
@@ -23120,7 +23266,7 @@
         },
         {
           "default": "",
-          "document": "Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].",
+          "document": "The maximum video height (or short side) in pixels. Value range: 0 and [128, 8192].",
           "example": "0",
           "member": "uint64",
           "name": "Height",
@@ -23156,6 +23302,16 @@
           "name": "Gop",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to output an HDR (high dynamic range) video if the source video is HDR. Valid values:\n<li>ON: If the source video is HDR, output an HDR video; if not, output an SDR (standard dynamic range) video.</li>\n<li>OFF: Output an SDR video regardless of whether the source video is HDR.</li>",
+          "example": "ON",
+          "member": "string",
+          "name": "PreserveHDRSwitch",
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

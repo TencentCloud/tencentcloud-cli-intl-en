@@ -438,6 +438,12 @@
       "name": "Swaps the VIPs of instances",
       "output": "SwitchInstanceVipResponse"
     },
+    "SwitchProxy": {
+      "document": "This API is used to simulate the failure of a proxy node.",
+      "input": "SwitchProxyRequest",
+      "name": "Simulates the failure of a proxy node",
+      "output": "SwitchProxyResponse"
+    },
     "UpgradeInstance": {
       "document": "This API is used to upgrade an instance.",
       "input": "UpgradeInstanceRequest",
@@ -8437,6 +8443,42 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchProxyRequest": {
+      "document": "SwitchProxy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "crs-deindi7de",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ProxyID",
+          "example": "vbjxbsucvnkcndkbk",
+          "member": "string",
+          "name": "ProxyID",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchProxyResponse": {
+      "document": "SwitchProxy response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

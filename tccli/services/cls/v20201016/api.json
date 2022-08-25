@@ -968,7 +968,7 @@
       "members": [
         {
           "default": "",
-          "document": "Compression format. Valid values: `gzip`, `lzop`, `none` (no compression)",
+          "document": "Compression format. Valid values: `gzip`; `lzop`; `snappy`; `none` (no compression)",
           "example": "none",
           "member": "string",
           "name": "Format",
@@ -6010,6 +6010,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Shipping file naming configuration. Valid values: `0` (by random number); `1` (by shipping time). Default value: `0`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "FilenameMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

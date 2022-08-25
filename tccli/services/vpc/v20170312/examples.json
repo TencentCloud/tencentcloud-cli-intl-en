@@ -19,47 +19,47 @@
     "AdjustPublicAddress": [
       {
         "document": "This example show you how to change the public IP of a CVM instance.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=AdjustPublicAddress\n&InstanceId=ins-1vogaxgk\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AdjustPublicAddress\n<Common request parameters>\n\n{\n    \"InstanceId\": \"ins-1vogaxgk\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 5513621,\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Changing the public IP"
       },
       {
         "document": "This example show you how to change the EIP bound with a monthly bandwidth package.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=AdjustPublicAddress\n&AddressId=eip-oy67r5oi\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AdjustPublicAddress\n<Common request parameters>\n\n{\n    \"AddressId\": \"eip-oy67r5oi\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 5312621,\n        \"RequestId\": \"6AF60BEC-0142-43AF-CB20-276271FB54A7\"\n    }\n}",
         "title": "Changing the EIP bound with a monthly bandwidth package"
       }
     ],
     "AllocateAddresses": [
       {
-        "document": "This example shows you how to create an Anycast Internet Acceleration (AIA) IP, provided that you are an AIA beta user.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=AllocateAddresses\n&AddressCount=1\n&AddressType=AnycastEIP\n&<Common request parameters>",
+        "document": "This example shows you how to create an Anycast Internet Acceleration (AIA) IP. This is only available to beta users.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AllocateAddresses\n<Common request parameters>\n\n{\n    \"AddressCount\": \"1\"\n    \"AddressType\": \"AnycastEIP\"\n}",
         "output": "{\n    \"Response\": {\n        \"AddressSet\": [\n            \"eip-m44ku5d2\"\n        ],\n        \"TaskId\": \"61531428\",\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Creating an AIA IP"
       },
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=AllocateAddresses\n&AddressCount=1\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AllocateAddresses\n<Common request parameters>\n\n{\n    \"AddressCount\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"AddressSet\": [\n            \"eip-m44ku5d2\"\n        ],\n        \"TaskId\": \"61531421\",\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Creating a regular IP"
       },
       {
         "document": "This example shows you how to create a static single-line IP, provided that you are a static single-line IP beta user.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=AllocateAddresses\n&AddressCount=1\n&InternetServiceProvider=CTCC\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AllocateAddresses\n<Common request parameters>\n\n{\n    \"AddressCount\": \"1\"\n    \"InternetServiceProvider\": \"CTCC\"\n}",
         "output": "{\n    \"Response\": {\n        \"AddressSet\": [\n            \"eip-m44ku5d2\"\n        ],\n        \"TaskId\": \"61531429\",\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
-        "title": "Creating a static single-line IP"
+        "title": "Creating a static single-line IP address"
       }
     ],
     "AssignIpv6Addresses": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=AssignIpv6Addresses\n&NetworkInterfaceId=eni-5u5biujl\n&Ipv6Addresses.0.Address=3402:4e00:20:1202::1\n&Ipv6Addresses.0.Primary=false\n&Ipv6Addresses.0.Description=test1\n&Ipv6Addresses.1.Address=3402:4e00:20:1202::2\n&Ipv6Addresses.1.Primary=false\n&Ipv6Addresses.1.Description=test2\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssignIpv6Addresses\n<Common request parameters>\n\n{\n    \"Ipv6Addresses\": [\n        {\n            \"Description\": \"test2\",\n            \"Primary\": \"false\",\n            \"Address\": \"3402:4e00:20:1202::2\"\n        },\n        {\n            \"Description\": \"test1\",\n            \"Primary\": \"false\",\n            \"Address\": \"3402:4e00:20:1202::1\"\n        }\n    ],\n    \"NetworkInterfaceId\": \"eni-5u5biujl\"\n}",
         "output": "{\n    \"Response\": {\n        \"Ipv6AddressSet\": [\n            {\n                \"Address\": \"3402:4e00:20:1202::1\",\n                \"AddressId\": \"\",\n                \"Primary\": false,\n                \"Description\": \"test1\",\n                \"IsWanIpBlocked\": false,\n                \"State\": \"PENDING\"\n            },\n            {\n                \"Address\": \"3402:4e00:20:1202::2\",\n                \"AddressId\": \"\",\n                \"Primary\": false,\n                \"Description\": \"test2\",\n                \"IsWanIpBlocked\": false,\n                \"State\": \"PENDING\"\n            }\n        ],\n        \"RequestId\": \"4a8d6fc0-bc48-4394-b1f7-2818a217359a\"\n    }\n}",
         "title": "Assigning the specified IPv6 address"
       },
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=AssignIpv6Addresses\n&NetworkInterfaceId=eni-5u5biujl\n&Ipv6AddressCount=2\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssignIpv6Addresses\n<Common request parameters>\n\n{\n    \"NetworkInterfaceId\": \"eni-5u5biujl\",\n    \"Ipv6AddressCount\": \"2\"\n}",
         "output": "{\n    \"Response\": {\n        \"Ipv6AddressSet\": [\n            {\n                \"Address\": \"3402:4e00:20:1202:0:8d05:c272:f514\",\n                \"AddressId\": \"\",\n                \"Primary\": false,\n                \"Description\": \"\",\n                \"IsWanIpBlocked\": false,\n                \"State\": \"PENDING\"\n            },\n            {\n                \"Address\": \"3402:4e00:20:1202:0:8d05:c272:f559\",\n                \"AddressId\": \"\",\n                \"Primary\": false,\n                \"Description\": \"\",\n                \"IsWanIpBlocked\": false,\n                \"State\": \"PENDING\"\n            }\n        ],\n        \"RequestId\": \"4a8d6fc0-bc48-4394-b1f7-2818a217359a\"\n    }\n}",
         "title": "Assigning IPv6 addresses automatically based on `Ipv6AddressCount`"
       }
@@ -91,9 +91,9 @@
     "AssociateAddress": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=AssociateAddress\r\n&AddressId=eip-ek0cdz1g\r\n&InstanceId=ins-1bmpb9tu\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssociateAddress\n<Common request parameters>\n\n{\n    \"InstanceId\": \"ins-1bmpb9tu\",\n    \"AddressId\": \"eip-ek0cdz1g\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"50121411\",\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Binding an EIP to an instance"
+        "title": "Binding an EIP with an instance"
       }
     ],
     "AssociateDirectConnectGatewayNatGateway": [
@@ -311,7 +311,7 @@
     "CreateHaVip": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateHaVip\n&VpcId=vpc-6v2ht8q5\n&SubnetId=subnet-qq51iwr4\n&HaVipName=test+name\n&Vip=10.4.6.15\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateHaVip\n<Common request parameters>\n\n{\n    \"SubnetId\": \"subnet-qq51iwr4\",\n    \"Vip\": \"10.4.6.15\",\n    \"VpcId\": \"vpc-6v2ht8q5\",\n    \"HaVipName\": \"test+name\"\n}",
         "output": "{\n    \"Response\": {\n        \"HaVip\": {\n            \"HaVipId\": \"havip-72alakye\",\n            \"HaVipName\": \"test name\",\n            \"Vip\": \"10.4.6.15\",\n            \"VpcId\": \"vpc-6v2ht8q5\",\n            \"SubnetId\": \"subnet-qq51iwr4\",\n            \"NetworkInterfaceId\": \"\",\n            \"InstanceId\": \"\",\n            \"AddressIp\": \"\",\n            \"State\": \"UNBIND\",\n            \"CreatedTime\": \"2018-10-10 17:03:09\",\n            \"Business\": \"SCF\"\n        },\n        \"RequestId\": \"fcb47621-838b-428e-8c33-6e210d93c451\"\n    }\n}",
         "title": "Creating a HAVIP"
       }
@@ -359,9 +359,17 @@
     "CreateNetworkAcl": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateNetworkAcl\n&VpcId=vpc-12345678\n&NetworkAclName=test\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"NetworkAcl\": {\n            \"NetworkAclId\": \"acl-12345678\",\n            \"VpcId\": \"vpc-12345678\",\n            \"NetworkAclName\": \"test\",\n            \"CreatedTime\": \"2020-01-01 10:00:00\",\n            \"SubnetSet\": [],\n            \"IngressEntries\": [],\n            \"EgressEntries\": []\n        },\n        \"RequestId\": \"5cf1a813-d4f8-4e0c-8f90-c155a84a3ea1\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateNetworkAcl\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-12345678\",\n    \"NetworkAclName\": \"test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"NetworkAcl\": {\n            \"NetworkAclId\": \"acl-12345678\",\n            \"VpcId\": \"vpc-12345678\",\n            \"NetworkAclName\": \"test\",\n            \"CreatedTime\": \"2020-01-01 10:00:00\",\n            \"SubnetSet\": [],\n            \"IngressEntries\": [],\n            \"EgressEntries\": [],\n            \"NetworkAclType\": \"TRIPLE\"\n        },\n        \"RequestId\": \"5cf1a813-d4f8-4e0c-8f90-c155a84a3ea1\"\n    }\n}",
         "title": "Creating a network ACL"
+      }
+    ],
+    "CreateNetworkAclQuintupleEntries": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateNetworkAclQuintupleEntries\n<Common request parameters>\n\n{\n    \"NetworkAclId\": \"acl-12345678\",\n    \"NetworkAclQuintupleSet\": {\n        \"Ingress\": [\n            {\n                \"Protocol\": \"TCP\"\n            }\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f23d1450-ed00-4442-98d4-be409e625e6c\"\n    }\n}",
+        "title": "Adjusting the quintuple priority"
       }
     ],
     "CreateNetworkInterface": [
@@ -437,7 +445,7 @@
     "CreateSubnet": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=CreateSubnet\n&VpcId=vpc-m3ul053f\n&SubnetName=TestSubnet\n&CidrBlock=10.8.0.0/16\n&Zone=ap-guangzhou-1\n&Tags.0.Key=city\n&Tags.0.Value=shanghai\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSubnet\n<Common request parameters>\n\n{\n    \"SubnetName\": \"TestSubnet\",\n    \"VpcId\": \"vpc-m3ul053f\",\n    \"CidrBlock\": \"10.8.0.0/16\",\n    \"Zone\": \"ap-guangzhou-1\",\n    \"Tags\": [\n        {\n            \"Value\": \"shanghai\",\n            \"Key\": \"city\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Subnet\": {\n            \"NetworkAclId\": \"xx\",\n            \"RouteTableId\": \"xx\",\n            \"VpcId\": \"xx\",\n            \"EnableBroadcast\": true,\n            \"Zone\": \"xx\",\n            \"IsCdcSubnet\": 0,\n            \"Ipv6CidrBlock\": \"xx\",\n            \"CdcId\": \"xx\",\n            \"AvailableIpAddressCount\": 1,\n            \"IsRemoteVpcSnat\": true,\n            \"SubnetName\": \"xx\",\n            \"TotalIpAddressCount\": 1,\n            \"TagSet\": [\n                {\n                    \"Value\": \"xx\",\n                    \"Key\": \"xx\"\n                }\n            ],\n            \"CreatedTime\": \"xx\",\n            \"SubnetId\": \"xx\",\n            \"CidrBlock\": \"xx\",\n            \"IsDefault\": false\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Creating a subnet"
       }
@@ -485,8 +493,8 @@
     "CreateVpnConnection": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateVpnConnection\n<Common request parameters>\n\n{\n    \"VpnConnectionName\": \"TEST_CONN\",\n    \"PreShareKey\": \"654321\",\n    \"VpcId\": \"vpc-gapcv96p\",\n    \"Tags\": [\n        {\n            \"Value\": \"shanghai\",\n            \"Key\": \"city\"\n        }\n    ],\n    \"IPSECOptionsSpecification\": {\n        \"PfsDhGroup\": \"NULL\",\n        \"EncryptAlgorithm\": \"3DES-CBC\",\n        \"IntegrityAlgorith\": \"MD5\"\n    },\n    \"SecurityPolicyDatabases\": [\n        {\n            \"LocalCidrBlock\": \"10.8.4.0/24\",\n            \"RemoteCidrBlock\": [\n                \"58.211.1.0/24\"\n            ]\n        }\n    ],\n    \"VpnGatewayId\": \"vpngw-1w9tue3d\",\n    \"CustomerGatewayId\": \"cgw-qa9sxpy7\",\n    \"IKEOptionsSpecification\": {\n        \"IKEVersion\": \"IKEV1\",\n        \"RemoteIdentity\": \"ADDRESS\",\n        \"PropoAuthenAlgorithm\": \"MD5\",\n        \"RemoteAddress\": \"1.2.3.4\",\n        \"LocalIdentity\": \"ADDRESS\",\n        \"LocalAddress\": \"58.211.2.5\",\n        \"ExchangeMode\": \"MAIN\",\n        \"PropoEncryAlgorithm\": \"3DES-CBC\",\n        \"DhGroupName\": \"GROUP1\"\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"VpnConnection\": {\n            \"VpnConnectionId\": \"vpnr-12ds042\",\n            \"VpnConnectionName\": \"TEST_CONN\",\n            \"PreShareKey\": \"654321\",\n            \"VpcId\": \"vpc-gapcv96p\",\n            \"HealthCheckRemoteIp\": \"\",\n            \"NetStatus\": \"\",\n            \"EnableHealthCheck\": true,\n            \"EncryptProto\": \"IKE\",\n            \"VpnProto\": \"IPSEC\",\n            \"IPSECOptionsSpecification\": {\n                \"PfsDhGroup\": \"\",\n                \"IPSECSaLifetimeTraffic\": 1,\n                \"EncryptAlgorithm\": \"\",\n                \"IPSECSaLifetimeSeconds\": 1,\n                \"IntegrityAlgorith\": \"\"\n            },\n            \"SecurityPolicyDatabaseSet\": [\n                {\n                    \"LocalCidrBlock\": \"10.8.4.0/24\",\n                    \"RemoteCidrBlock\": [\n                        \"58.211.1.0/24\"\n                    ]\n                }\n            ],\n            \"State\": \"PENGDING\",\n            \"HealthCheckLocalIp\": \"\",\n            \"HealthCheckStatus\": \"\",\n            \"VpnGatewayId\": \"vpngw-1w9tue3d\",\n            \"CreatedTime\": \"2020-09-22 00:00:00\",\n            \"CustomerGatewayId\": \"cgw-qa9sxpy7\",\n            \"IKEOptionsSpecification\": {\n                \"IKEVersion\": \"\",\n                \"RemoteIdentity\": \"\",\n                \"PropoAuthenAlgorithm\": \"\",\n                \"RemoteAddress\": \"\",\n                \"LocalFqdnName\": \"\",\n                \"LocalIdentity\": \"\",\n                \"LocalAddress\": \"\",\n                \"RemoteFqdnName\": \"\",\n                \"ExchangeMode\": \"\",\n                \"IKESaLifetimeSeconds\": 1,\n                \"PropoEncryAlgorithm\": \"\",\n                \"DhGroupName\": \"\"\n            },\n            \"RouteType\": \"STATIC\"\n        },\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
+        "input": "https://vpc.tencentcloudapi.com/?Action=CreateVpnConnection\r\n&Version=2017-03-12\r\n&VpcId=vpc-gapcv96p\r\n&VpnGatewayId=vpngw-1w9tue3d\r\n&CustomerGatewayId=cgw-qa9sxpy7\r\n&VpnConnectionName=TEST_CONN\r\n&PreShareKey=654321\r\n&SecurityPolicyDatabases.0.LocalCidrBlock=10.8.4.0/24\r\n&SecurityPolicyDatabases.0.RemoteCidrBlock.0=58.211.1.0/24\r\n&IKEOptionsSpecification.DhGroupName=GROUP1\r\n&IKEOptionsSpecification.ExchangeMode=MAIN\r\n&IKEOptionsSpecification.IKEVersion=IKEV1\r\n&IKEOptionsSpecification.LocalAddress=58.211.2.5\r\n&IKEOptionsSpecification.LocalIdentity=ADDRESS\r\n&IKEOptionsSpecification.PropoAuthenAlgorithm=MD5\r\n&IKEOptionsSpecification.PropoEncryAlgorithm=3DES-CBC\r\n&IKEOptionsSpecification.RemoteAddress=1.2.3.4\r\n&IKEOptionsSpecification.RemoteIdentity=ADDRESS\r\n&IPSECOptionsSpecification.EncryptAlgorithm=3DES-CBC\r\n&IPSECOptionsSpecification.IntegrityAlgorith=MD5\r\n&IPSECOptionsSpecification.PfsDhGroup=NULL\r\n&Tags.0.Key=city\r\n&Tags.0.Value=shanghai\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"VpnConnection\": {\n            \"VpcId\": \"vpc-gapcv96p\",\n            \"VpnConnectionName\": \"TEST_CONN\",\n            \"VpnGatewayId\": \"vpngw-1w9tue3d\",\n            \"CustomerGatewayId\": \"cgw-qa9sxpy7\",\n            \"State\": \"PENDING\"\n        },\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
         "title": "Creating a VPN tunnel"
       }
     ],
@@ -634,6 +642,14 @@
         "title": "Deleting a network ACL"
       }
     ],
+    "DeleteNetworkAclQuintupleEntries": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteNetworkAclQuintupleEntries\n<Common request parameters>\n\n{\n    \"NetworkAclId\": \"acl-12345678\",\n    \"NetworkAclQuintupleSet\": {\n        \"Ingress\": [\n            {}\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f23d1450-ed00-4442-98d4-be409e625e6c\"\n    }\n}",
+        "title": "Deleting the specified ITEM of the network ACL quintuple"
+      }
+    ],
     "DeleteNetworkInterface": [
       {
         "document": "",
@@ -645,7 +661,7 @@
     "DeleteRouteTable": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteRouteTable\n&RouteTableId=rtb-azd4dt1c\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRouteTable\n<Common request parameters>\n\n{\n    \"RouteTableId\": \"rtb-azd4dt1c\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
         "title": "Deleting a route table"
       }
@@ -1019,7 +1035,7 @@
     "DescribeIpGeolocationInfos": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeIpGeolocationInfos\n&AddressIps.0=2001:1200::\n&AddressIps.1=8.8.8.8\n&Fields.Country=True\n&Fields.Province=True\n&Fields.City=True\n&Fields.Region=True\n&Fields.Isp=True\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIpGeolocationInfos\n<Common request parameters>\n\n{\n    \"AddressIps\": [\n        \"8.8.8.8\",\n        \"2001:1200::\"\n    ],\n    \"Fields\": {\n        \"Province\": \"True\",\n        \"Country\": \"True\",\n        \"Region\": \"True\",\n        \"Isp\": \"True\",\n        \"City\": \"True\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"Total\": 2,\n        \"AddressInfo\": [\n            {\n                \"AddressIp\": \"2001:1200::\",\n                \"Country\": \"Mexico\",\n                \"Province\": \"tabasco\",\n                \"City\": \"miguel hidalgo\",\n                \"Region\": \"Unknown\",\n                \"Isp\": \"protel i-next, s.a. de c.v., mx\"\n            },\n            {\n                \"AddressIp\": \"8.8.8.8\",\n                \"Country\": \"United States\",\n                \"Province\": \"california\",\n                \"City\": \"mountain view\",\n                \"Region\": \"Unknown\",\n                \"Isp\": \"google - google inc., us\"\n            }\n        ],\n        \"RequestId\": \"6d3e1ba5-a3d0-41d4-93f7-4992a2e18b9d\"\n    }\n}",
         "title": "Querying the IP location"
       }
@@ -1098,17 +1114,25 @@
         "title": "Querying network probes by ID"
       }
     ],
+    "DescribeNetworkAclQuintupleEntries": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeNetworkAclQuintupleEntries\n<Common request parameters>\n\n{\n    \"NetworkAclId\": \"acl-12345678\",\n    \"Limit\": \"20\",\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"NetworkAclQuintupleSet\": [\n            {\n                \"Protocol\": \"TCP\",\n                \"Description\": \"test\",\n                \"SourcePort\": \"80\",\n                \"SourceCidr\": \"192.168.0.0/24\",\n                \"DestinationPort\": \"80\",\n                \"DestinationCidr\": \"192.168.0.0/24\",\n                \"Action\": \"ACCEPT\",\n                \"CreateTime\": \"2019-11-11 22:16:17\",\n                \"NetworkAclQuintupleEntryId\": \"acli45-q1phngkz\",\n                \"NetworkAclDirection\": \"EGRESS\"\n            }\n        ],\n        \"RequestId\": \"cccb2665-5d02-4d87-b9e7-757bb06e5beb\"\n    }\n}",
+        "title": "Example 1. Querying the network ACL quintuple entries by filter"
+      }
+    ],
     "DescribeNetworkAcls": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeNetworkAcls\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"NetworkAclSet\": [\n            {\n                \"NetworkAclId\": \"acl-kmxukyv6\",\n                \"VpcId\": \"vpc-9it989fn\",\n                \"IngressEntries\": [\n                    {\n                        \"Protocol\": \"all\",\n                        \"Description\": \"Test1\",\n                        \"Ipv6CidrBlock\": \"::/0\",\n                        \"ModifyTime\": \"2020-01-21 14:26:22\",\n                        \"Action\": \"Drop\",\n                        \"CidrBlock\": \"0.0.0.0/0\",\n                        \"Port\": \"80\"\n                    }\n                ],\n                \"SubnetSet\": [\n                    {\n                        \"NetworkAclId\": \"acl-kmxukyv6\",\n                        \"RouteTableId\": \"rtb-we123456\",\n                        \"VpcId\": \"vpc-rt123456\",\n                        \"EnableBroadcast\": true,\n                        \"Zone\": \"ap-guangzhou\",\n                        \"Ipv6CidrBlock\": \"::/0\",\n                        \"AvailableIpAddressCount\": 1,\n                        \"IsRemoteVpcSnat\": true,\n                        \"SubnetName\": \"Subnet1\",\n                        \"TotalIpAddressCount\": 1,\n                        \"TagSet\": [\n                            {\n                                \"Value\": \"og\",\n                                \"Key\": \"ck\"\n                            }\n                        ],\n                        \"CreatedTime\": \"2020-01-20 14:26:22\",\n                        \"SubnetId\": \"subnet-qmqye6ew\",\n                        \"CidrBlock\": \"10.0.0.0/24\",\n                        \"IsDefault\": true\n                    }\n                ],\n                \"NetworkAclName\": \"Test001\",\n                \"CreatedTime\": \"2020-01-20 14:26:22\",\n                \"EgressEntries\": [\n                    {\n                        \"Protocol\": \"All\",\n                        \"Description\": \"Test222\",\n                        \"Ipv6CidrBlock\": \"::/0\",\n                        \"ModifyTime\": \"2020-01-20 14:26:22\",\n                        \"Action\": \"Drop\",\n                        \"CidrBlock\": \"10.0.0.0/24\",\n                        \"Port\": \"80\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"cccb2665-5d02-4d87-b9e7-757bb06e5beb\"\n    }\n}",
-        "title": "Querying the network ACL list"
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeNetworkAcls\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"NetworkAclSet\": [\n            {\n                \"NetworkAclId\": \"acl-kmxukyv6\",\n                \"VpcId\": \"vpc-9it989fn\",\n                \"NetworkAclType\": \"TRIPLE\",\n                \"IngressEntries\": [\n                    {\n                        \"Protocol\": \"all\",\n                        \"Description\": \"Test1\",\n                        \"Ipv6CidrBlock\": \"::/0\",\n                        \"ModifyTime\": \"2020-01-21 14:26:22\",\n                        \"Action\": \"Drop\",\n                        \"CidrBlock\": \"0.0.0.0/0\",\n                        \"Port\": \"80\"\n                    }\n                ],\n                \"SubnetSet\": [\n                    {\n                        \"NetworkAclId\": \"acl-kmxukyv6\",\n                        \"RouteTableId\": \"rtb-we123456\",\n                        \"VpcId\": \"vpc-rt123456\",\n                        \"EnableBroadcast\": true,\n                        \"Zone\": \"ap-guangzhou\",\n                        \"Ipv6CidrBlock\": \"::/0\",\n                        \"AvailableIpAddressCount\": 1,\n                        \"IsRemoteVpcSnat\": true,\n                        \"SubnetName\": \"Subnet1\",\n                        \"TotalIpAddressCount\": 1,\n                        \"IsCdcSubnet\": 0,\n                        \"CdcId\": \"xx\",\n                        \"TagSet\": [\n                            {\n                                \"Value\": \"og\",\n                                \"Key\": \"ck\"\n                            }\n                        ],\n                        \"CreatedTime\": \"2020-01-20 14:26:22\",\n                        \"SubnetId\": \"subnet-qmqye6ew\",\n                        \"CidrBlock\": \"10.0.0.0/24\",\n                        \"IsDefault\": true\n                    }\n                ],\n                \"NetworkAclName\": \"Test001\",\n                \"CreatedTime\": \"2020-01-20 14:26:22\",\n                \"EgressEntries\": [\n                    {\n                        \"Protocol\": \"All\",\n                        \"Description\": \"Test222\",\n                        \"Ipv6CidrBlock\": \"::/0\",\n                        \"ModifyTime\": \"2020-01-20 14:26:22\",\n                        \"Action\": \"Drop\",\n                        \"CidrBlock\": \"10.0.0.0/24\",\n                        \"Port\": \"80\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"cccb2665-5d02-4d87-b9e7-757bb06e5beb\"\n    }\n}",
+        "title": "Example 1. Querying the network ACL list"
       },
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeNetworkAcls\n&NetworkAclIds.0=acl-12345678\n&Offset=0\n&Limit=20\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"NetworkAclSet\": [\n            {\n                \"NetworkAclId\": \"\",\n                \"VpcId\": \"xx\",\n                \"IngressEntries\": [\n                    {\n                        \"Protocol\": \"xx\",\n                        \"Description\": \"xx\",\n                        \"Ipv6CidrBlock\": \"xx\",\n                        \"ModifyTime\": \"xx\",\n                        \"Action\": \"xx\",\n                        \"CidrBlock\": \"xx\",\n                        \"Port\": \"xx\"\n                    },\n                    {\n                        \"Protocol\": \"xx\",\n                        \"Description\": \"xx\",\n                        \"Ipv6CidrBlock\": \"xx\",\n                        \"ModifyTime\": \"xx\",\n                        \"Action\": \"xx\",\n                        \"CidrBlock\": \"xx\",\n                        \"Port\": \"xx\"\n                    }\n                ],\n                \"SubnetSet\": [\n                    {\n                        \"NetworkAclId\": \"acl-kmxukyv6\",\n                        \"RouteTableId\": \"rtb-we123456\",\n                        \"VpcId\": \"vpc-kj123456\",\n                        \"EnableBroadcast\": true,\n                        \"Zone\": \"ap-guangzhou\",\n                        \"Ipv6CidrBlock\": \"::/0\",\n                        \"AvailableIpAddressCount\": 1,\n                        \"IsRemoteVpcSnat\": true,\n                        \"SubnetName\": \"Test01\",\n                        \"TotalIpAddressCount\": 1,\n                        \"TagSet\": [\n                            {\n                                \"Value\": \"yt\",\n                                \"Key\": \"kj\"\n                            }\n                        ],\n                        \"CreatedTime\": \"2020-01-21 14:26:22\",\n                        \"SubnetId\": \"subnet-qmqye6ew\",\n                        \"CidrBlock\": \"10.0.0.0/24\",\n                        \"IsDefault\": true\n                    }\n                ],\n                \"NetworkAclName\": \"Test33\",\n                \"CreatedTime\": \"2020-01-21 14:26:22\",\n                \"EgressEntries\": [\n                    {\n                        \"Protocol\": \"All\",\n                        \"Description\": \"Test\",\n                        \"Ipv6CidrBlock\": \"::/0\",\n                        \"ModifyTime\": \"2020-01-21 14:26:22\",\n                        \"Action\": \"Drop\",\n                        \"CidrBlock\": \"10.0.0.0/24\",\n                        \"Port\": \"80\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"cccb2665-5d02-4d87-b9e7-757bb06e5beb\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeNetworkAcls\n<Common request parameters>\n\n{\n    \"NetworkAclIds\": [\n        \"acl-12345678\"\n    ],\n    \"Limit\": \"20\",\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"NetworkAclSet\": [\n            {\n                \"NetworkAclId\": \"\",\n                \"VpcId\": \"xx\",\n                \"NetworkAclType\": \"TRIPLE\",\n                \"IngressEntries\": [\n                    {\n                        \"Protocol\": \"xx\",\n                        \"Description\": \"xx\",\n                        \"Ipv6CidrBlock\": \"xx\",\n                        \"ModifyTime\": \"xx\",\n                        \"Action\": \"xx\",\n                        \"CidrBlock\": \"xx\",\n                        \"Port\": \"xx\"\n                    },\n                    {\n                        \"Protocol\": \"xx\",\n                        \"Description\": \"xx\",\n                        \"Ipv6CidrBlock\": \"xx\",\n                        \"ModifyTime\": \"xx\",\n                        \"Action\": \"xx\",\n                        \"CidrBlock\": \"xx\",\n                        \"Port\": \"xx\"\n                    }\n                ],\n                \"SubnetSet\": [\n                    {\n                        \"NetworkAclId\": \"acl-kmxukyv6\",\n                        \"RouteTableId\": \"rtb-we123456\",\n                        \"VpcId\": \"vpc-kj123456\",\n                        \"EnableBroadcast\": true,\n                        \"Zone\": \"ap-guangzhou\",\n                        \"Ipv6CidrBlock\": \"::/0\",\n                        \"AvailableIpAddressCount\": 1,\n                        \"IsCdcSubnet\": 0,\n                        \"CdcId\": \"xx\",\n                        \"IsRemoteVpcSnat\": true,\n                        \"SubnetName\": \"Test01\",\n                        \"TotalIpAddressCount\": 1,\n                        \"TagSet\": [\n                            {\n                                \"Value\": \"yt\",\n                                \"Key\": \"kj\"\n                            }\n                        ],\n                        \"CreatedTime\": \"2020-01-21 14:26:22\",\n                        \"SubnetId\": \"subnet-qmqye6ew\",\n                        \"CidrBlock\": \"10.0.0.0/24\",\n                        \"IsDefault\": true\n                    }\n                ],\n                \"NetworkAclName\": \"Test33\",\n                \"CreatedTime\": \"2020-01-21 14:26:22\",\n                \"EgressEntries\": [\n                    {\n                        \"Protocol\": \"All\",\n                        \"Description\": \"Test\",\n                        \"Ipv6CidrBlock\": \"::/0\",\n                        \"ModifyTime\": \"2020-01-21 14:26:22\",\n                        \"Action\": \"Drop\",\n                        \"CidrBlock\": \"10.0.0.0/24\",\n                        \"Port\": \"80\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"cccb2665-5d02-4d87-b9e7-757bb06e5beb\"\n    }\n}",
         "title": "Querying the network ACL list by conditions"
       }
     ],
@@ -1311,9 +1335,15 @@
     "DescribeVpnConnections": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeVpnConnections\r\n&Version=2017-03-12\r\n&<Common request parameters>",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeVpnConnections\r\n&Version=2017-03-12\r\n&<Common Request Parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\",\n        \"TotalCount\": 1,\n        \"VpnConnectionSet\": [\n            {\n                \"VpcId\": \"vpc-0a36uwkr\",\n                \"VpnConnectionId\": \"vpnx-5p7vkch8\",\n                \"VpnConnectionName\": \"testjoan\",\n                \"VpnGatewayId\": \"vpngw-p4lmqawn\",\n                \"CustomerGatewayId\": \"cgw-l4rblw63\",\n                \"PreShareKey\": \"123456\",\n                \"VpnProto\": \"IPSEC\",\n                \"EncryptProto\": \"IKE\",\n                \"RouteType\": \"STATIC\",\n                \"IKEOptionsSpecification\": {\n                    \"PropoAuthenAlgorithm\": \"MD5\",\n                    \"PropoEncryAlgorithm\": \"3DES-CBC\",\n                    \"ExchangeMode\": \"MAIN\",\n                    \"LocalIdentity\": \"ADDRESS\",\n                    \"RemoteIdentity\": \"ADDRESS\",\n                    \"LocalAddress\": \"183.60.249.17\",\n                    \"RemoteAddress\": \"183.60.249.126\",\n                    \"LocalFqdnName\": \"\",\n                    \"RemoteFqdnName\": \"\",\n                    \"DhGroupName\": \"GROUP1\",\n                    \"IKESaLifetimeSeconds\": \"86400\",\n                    \"IKEVersion\": \"IKEV1\"\n                },\n                \"IPSECOptionsSpecification\": {\n                    \"EncryptAlgorithm\": \"3DES-CBC\",\n                    \"IntegrityAlgorith\": \"MD5\",\n                    \"PfsDhGroup\": \"NULL\",\n                    \"IPSECSaLifetimeSeconds\": \"3600\",\n                    \"IPSECSaLifetimeTraffic\": \"1843200\"\n                },\n                \"CreatedTime\": \"2017-08-0510: 27: 32\",\n                \"State\": \"AVAILABLE\",\n                \"NetStatus\": \"UNAVAILABLE\",\n                \"SecurityPolicyDatabaseSet\": [\n                    {\n                        \"LocalCidrBlock\": \"172.16.0.0/16\",\n                        \"RemoteCidrBlock\": [\n                            \"10.10.0.0/16\"\n                        ]\n                    }\n                ]\n            }\n        ]\n    }\n}",
-        "title": "Querying the list of VPN tunnels"
+        "title": "Querying the VPN tunnel list"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVpnConnections\n<common request parameters>\n\n{\n    \"Limit\": \"5\",\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"VpnConnectionSet\": [\n            {\n                \"VpcId\": \"vpc-8ro3x6md\",\n                \"VpnConnectionId\": \"vpnx-df9oztok\",\n                \"VpnConnectionName\": \"testcon-1\",\n                \"VpnGatewayId\": \"vpngw-6x0wxvtp\",\n                \"CustomerGatewayId\": \"cgw-apytvc1n\",\n                \"PreShareKey\": \"123\",\n                \"VpnProto\": \"IPSEC\",\n                \"EncryptProto\": \"IKE\",\n                \"RouteType\": \"StaticRoute\",\n                \"IKEOptionsSpecification\": {\n                    \"PropoAuthenAlgorithm\": \"MD5\",\n                    \"PropoEncryAlgorithm\": \"AES-CBC-128\",\n                    \"ExchangeMode\": \"MAIN\",\n                    \"LocalIdentity\": \"ADDRESS\",\n                    \"RemoteIdentity\": \"ADDRESS\",\n                    \"LocalAddress\": \"6.6.6.6\",\n                    \"RemoteAddress\": \"1.1.3.2\",\n                    \"LocalFqdnName\": \"\",\n                    \"RemoteFqdnName\": \"\",\n                    \"DhGroupName\": \"GROUP1\",\n                    \"IKESaLifetimeSeconds\": 86400,\n                    \"IKEVersion\": \"IKEV1\"\n                },\n                \"IPSECOptionsSpecification\": {\n                    \"EncryptAlgorithm\": \"AES-CBC-128\",\n                    \"IntegrityAlgorith\": \"MD5\",\n                    \"PfsDhGroup\": \"NULL\",\n                    \"IPSECSaLifetimeSeconds\": 3600,\n                    \"IPSECSaLifetimeTraffic\": 1843200\n                },\n                \"CreatedTime\": \"2022-07-22 14:05:07\",\n                \"SecurityPolicyDatabaseSet\": [\n                    {\n                        \"LocalCidrBlock\": \"0.0.0.0/0\",\n                        \"RemoteCidrBlock\": [\n                            \"0.0.0.0/0\"\n                        ]\n                    }\n                ],\n                \"State\": \"AVAILABLE\",\n                \"NetStatus\": \"AVAILABLE\",\n                \"EnableHealthCheck\": false,\n                \"HealthCheckLocalIp\": \"\",\n                \"HealthCheckRemoteIp\": \"\",\n                \"HealthCheckStatus\": \"\"\n            },\n            {\n                \"VpcId\": \"vpc-8ro3x6md\",\n                \"VpnConnectionId\": \"vpnx-eal8tpn2\",\n                \"VpnConnectionName\": \"testcon-2\",\n                \"VpnGatewayId\": \"vpngw-6x0wxvtp\",\n                \"CustomerGatewayId\": \"cgw-876ql2tz\",\n                \"PreShareKey\": \"123\",\n                \"VpnProto\": \"IPSEC\",\n                \"EncryptProto\": \"IKE\",\n                \"RouteType\": \"StaticRoute\",\n                \"IKEOptionsSpecification\": {\n                    \"PropoAuthenAlgorithm\": \"MD5\",\n                    \"PropoEncryAlgorithm\": \"AES-CBC-128\",\n                    \"ExchangeMode\": \"MAIN\",\n                    \"LocalIdentity\": \"ADDRESS\",\n                    \"RemoteIdentity\": \"ADDRESS\",\n                    \"LocalAddress\": \"6.6.6.6\",\n                    \"RemoteAddress\": \"169.168.10.4\",\n                    \"LocalFqdnName\": \"\",\n                    \"RemoteFqdnName\": \"\",\n                    \"DhGroupName\": \"GROUP1\",\n                    \"IKESaLifetimeSeconds\": 86400,\n                    \"IKEVersion\": \"IKEV1\"\n                },\n                \"IPSECOptionsSpecification\": {\n                    \"EncryptAlgorithm\": \"AES-CBC-128\",\n                    \"IntegrityAlgorith\": \"MD5\",\n                    \"PfsDhGroup\": \"NULL\",\n                    \"IPSECSaLifetimeSeconds\": 3600,\n                    \"IPSECSaLifetimeTraffic\": 1843200\n                },\n                \"CreatedTime\": \"2022-07-22 14:14:48\",\n                \"SecurityPolicyDatabaseSet\": [\n                    {\n                        \"LocalCidrBlock\": \"0.0.0.0/0\",\n                        \"RemoteCidrBlock\": [\n                            \"0.0.0.0/0\"\n                        ]\n                    }\n                ],\n                \"State\": \"AVAILABLE\",\n                \"NetStatus\": \"AVAILABLE\",\n                \"EnableHealthCheck\": false,\n                \"HealthCheckLocalIp\": \"\",\n                \"HealthCheckRemoteIp\": \"\",\n                \"HealthCheckStatus\": \"\"\n            }\n        ],\n        \"RequestId\": \"1f4fa69d-0a9b-4342-83e1-002533feca94\"\n    }\n}",
+        "title": "DescribeVpnConnections返回示例"
       }
     ],
     "DescribeVpnGatewayCcnRoutes": [
@@ -1391,7 +1421,7 @@
     "DisassociateAddress": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DisassociateAddress\n&AddressId=eip-ek0cdz1g\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisassociateAddress\n<Common request parameters>\n\n{\n    \"AddressId\": \"eip-ek0cdz1g\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"61531411\",\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Unbinding an EIP"
       }
@@ -1493,7 +1523,7 @@
     "HaVipAssociateAddressIp": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=HaVipAssociateAddressIp\n&HaVipId=havip-9o233uri\n&AddressIp=119.29.93.218\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: HaVipAssociateAddressIp\n<Common request parameters>\n\n{\n    \"AddressIp\": \"119.29.93.218\",\n    \"HaVipId\": \"havip-9o233uri\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fcb47621-838b-428e-8c33-6e210d93c451\"\n    }\n}",
         "title": "Binding an EIP to an HAVIP"
       }
@@ -1549,9 +1579,9 @@
     "ModifyAddressAttribute": [
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyAddressAttribute\r\n&AddressId=eip-p2x6wxc0\r\n&AddressName=test_eip\r\n&<common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAddressAttribute\n<Common request parameters>\n\n{\n    \"AddressName\": \"test_eip\",\n    \"AddressId\": \"eip-p2x6wxc0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
-        "title": "Modifying an EIP name"
+        "title": "Modifying the EIP name"
       }
     ],
     "ModifyAddressInternetChargeType": [
@@ -1737,21 +1767,29 @@
     "ModifyNetworkAclEntries": [
       {
         "document": "This example shows you how to modify network ACL rules by only passing in the rule you want to retain and discarding the ones you want to delete. For example, the `acl-12345678` has two inbound rules:\n* Rule 1: TCP 192.168.1.0/24 80 Accept\n* Rule 2: TCP 192.168.1.0/24 443 Accept\n<br/>If you want to delete the inbound rule 2, pass in parameters shown in the example.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyNetworkAclEntries\n&NetworkAclId=acl-12345678\n&NetworkAclEntrySet.Ingress.0.Protocol=TCP\n&NetworkAclEntrySet.Ingress.0.Port=80\n&NetworkAclEntrySet.Ingress.0.CidrBlock=192.168.1.0/24\n&NetworkAclEntrySet.Ingress.0.Action=Accept\n&NetworkAclEntrySet.Ingress.0.Description=test\n&NetworkAclEntrySet.Ingress.0.ModifyTime=xx\n&NetworkAclEntrySet.Egress.0.Protocol=TCP\n&NetworkAclEntrySet.Egress.0.Port=80\n&NetworkAclEntrySet.Egress.0.CidrBlock=192.168.1.0/24\n&NetworkAclEntrySet.Egress.0.Action=Accept\n&NetworkAclEntrySet.Egress.0.Description=test\n&NetworkAclEntrySet.Egress.0.ModifyTime=xx\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyNetworkAclEntries\n<Common request parameters>\n\n{\n    \"NetworkAclId\": \"acl-12345678\",\n    \"NetworkAclEntrySet\": {\n        \"Ingress\": [\n            {\n                \"Protocol\": \"TCP\",\n                \"Description\": \"test\",\n                \"ModifyTime\": \"xx\",\n                \"Action\": \"Accept\",\n                \"CidrBlock\": \"192.168.1.0/24\",\n                \"Port\": \"80\"\n            }\n        ],\n        \"Egress\": [\n            {\n                \"Protocol\": \"TCP\",\n                \"Description\": \"test\",\n                \"ModifyTime\": \"xx\",\n                \"Action\": \"Accept\",\n                \"CidrBlock\": \"192.168.1.0/24\",\n                \"Port\": \"80\"\n            }\n        ]\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f23d1450-ed00-4442-98d4-be409e625e6c\"\n    }\n}",
         "title": "Adding inbound and outbound rules to a network ACL"
       },
       {
         "document": "",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyNetworkAclEntries\n&NetworkAclId=acl-12345678\n&NetworkAclEntrySet.Ingress.0.Protocol=TCP\n&NetworkAclEntrySet.Ingress.0.Port=80\n&NetworkAclEntrySet.Ingress.0.CidrBlock=192.168.1.0/24\n&NetworkAclEntrySet.Ingress.0.Action=Accept\n&NetworkAclEntrySet.Ingress.0.Description=test\n&NetworkAclEntrySet.Ingress.0.ModifyTime=xx\n&NetworkAclEntrySet.Ingress.1.Protocol=TCP\n&NetworkAclEntrySet.Ingress.1.Port=442\n&NetworkAclEntrySet.Ingress.1.CidrBlock=192.168.1.0/24\n&NetworkAclEntrySet.Ingress.1.Action=Accept\n&NetworkAclEntrySet.Ingress.1.Description=test\n&NetworkAclEntrySet.Ingress.1.ModifyTime=xx\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyNetworkAclEntries\n<Common request parameters>\n\n{\n    \"NetworkAclId\": \"acl-12345678\",\n    \"NetworkAclEntrySet\": {\n        \"Ingress\": [\n            {\n                \"Protocol\": \"TCP\",\n                \"Description\": \"test\",\n                \"ModifyTime\": \"xx\",\n                \"Action\": \"Accept\",\n                \"CidrBlock\": \"192.168.1.0/24\",\n                \"Port\": \"442\"\n            },\n            {\n                \"Protocol\": \"TCP\",\n                \"Description\": \"test\",\n                \"ModifyTime\": \"xx\",\n                \"Action\": \"Accept\",\n                \"CidrBlock\": \"192.168.1.0/24\",\n                \"Port\": \"80\"\n            }\n        ]\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f23d1450-ed00-4442-98d4-be409e625e6c\"\n    }\n}",
         "title": "Adding only inbound rules to a network ACL"
       },
       {
         "document": "This example shows you how to modify network ACL rules by only passing in the rule you want to retain and discarding the ones you want to delete. For example, the `acl-12345678` has two inbound rules:\n* Rule 1: TCP 192.168.1.0/24 80 Accept\n* Rule 2: TCP 192.168.1.0/24 443 Accept\n<br/>If you want to delete the inbound rule 2, pass in parameters shown in the example.",
-        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyNetworkAclEntries\n&NetworkAclId=acl-12345678\n&NetworkAclEntrySet.Ingress.0.Protocol=TCP\n&NetworkAclEntrySet.Ingress.0.Port=80\n&NetworkAclEntrySet.Ingress.0.CidrBlock=192.168.1.0/24\n&NetworkAclEntrySet.Ingress.0.Action=Accept\n&NetworkAclEntrySet.Ingress.0.Description=test\n&NetworkAclEntrySet.Ingress.0.ModifyTime=xx\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyNetworkAclEntries\n<Common request parameters>\n\n{\n    \"NetworkAclId\": \"acl-12345678\",\n    \"NetworkAclEntrySet\": {\n        \"Ingress\": [\n            {\n                \"Protocol\": \"TCP\",\n                \"Description\": \"test\",\n                \"ModifyTime\": \"xx\",\n                \"Action\": \"Accept\",\n                \"CidrBlock\": \"192.168.1.0/24\",\n                \"Port\": \"80\"\n            }\n        ]\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f23d1450-ed00-4442-98d4-be409e625e6c\"\n    }\n}",
         "title": "Deleting inbound rules of a network ACL"
+      }
+    ],
+    "ModifyNetworkAclQuintupleEntries": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyNetworkAclQuintupleEntries\n<Common request parameters>\n\n{\n    \"NetworkAclId\": \"acl-12345678\",\n    \"NetworkAclQuintupleSet\": {\n        \"Ingress\": [\n            {\n                \"Priority\": \"3\"\n            }\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f23d1450-ed00-4442-98d4-be409e625e6c\"\n    }\n}",
+        "title": "Adjusting the quintuple priority"
       }
     ],
     "ModifyNetworkInterfaceAttribute": [
@@ -2025,9 +2063,9 @@
     "TransformAddress": [
       {
         "document": "",
-        "input": "https://eip.tencentcloudapi.com/?Action=TransformAddress\r\n&InstanceId=ins-3ea0qeu6\r\n&<Common Request Parameters>",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TransformAddress\n<Common request parameters>\n\n{\n    \"InstanceId\": \"ins-3ea0qeu6\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
-        "title": "Switching an ordinary IP to an EIP"
+        "title": "Converting a public IP to an EIP"
       }
     ],
     "UnassignIpv6Addresses": [

@@ -5139,8 +5139,19 @@
       "members": [
         {
           "document": "Monitor type. Valid values: MT_QCE (Tencent Cloud service monitoring)",
+          "example": "[\"MT_QCE\"]",
           "member": "string",
           "name": "MonitorTypes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Monitoring type details",
+          "example": "无",
+          "member": "MonitorTypeInfo",
+          "name": "MonitorTypeInfos",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -9160,6 +9171,42 @@
         }
       ],
       "type": "object"
+    },
+    "MonitorTypeInfo": {
+      "document": "Monitoring type details",
+      "members": [
+        {
+          "default": "",
+          "document": "Monitoring type ID",
+          "example": "19023",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Monitoring type",
+          "example": "MT_QCE",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sort order",
+          "example": "1",
+          "member": "int64",
+          "name": "SortId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "MonitorTypeNamespace": {
       "document": "Policy type",

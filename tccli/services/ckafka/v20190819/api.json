@@ -204,6 +204,12 @@
       "name": "Querying messages",
       "output": "FetchMessageByOffsetResponse"
     },
+    "FetchMessageListByOffset": {
+      "document": "This API is used to query the message list based on an offset.",
+      "input": "FetchMessageListByOffsetRequest",
+      "name": "Queries the message list based on an offset",
+      "output": "FetchMessageListByOffsetResponse"
+    },
     "ModifyGroupOffsets": {
       "document": "This API is used to set the consumer group (Groups) offset.",
       "input": "ModifyGroupOffsetsRequest",
@@ -3415,6 +3421,71 @@
           "name": "Result",
           "required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "FetchMessageListByOffsetRequest": {
+      "document": "FetchMessageListByOffset request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Topic name",
+          "member": "string",
+          "name": "Topic",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Partition ID",
+          "member": "int64",
+          "name": "Partition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset information",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of messages that can be queried. Default value: 20. Maximum value: 20.",
+          "member": "int64",
+          "name": "SinglePartitionRecordNumber",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "FetchMessageListByOffsetResponse": {
+      "document": "FetchMessageListByOffset response structure.",
+      "members": [
+        {
+          "document": "Returned result. Note: The returned list does not display the message content (key and value). To query the message content, call the `FetchMessageByOffset` API.",
+          "member": "ConsumerRecord",
+          "name": "Result",
+          "type": "list",
           "value_allowed_null": false
         },
         {

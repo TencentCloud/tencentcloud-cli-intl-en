@@ -18,12 +18,6 @@
       "name": "Adds watermark",
       "output": "AddLiveWatermarkResponse"
     },
-    "BindLiveDomainCert": {
-      "document": "This API is used to bind a domain name certificate.\nNote: you need to call the `CreateLiveCert` API first to add a certificate. After getting the certificate ID, call this API for binding.",
-      "input": "BindLiveDomainCertRequest",
-      "name": "Binds domain name certificate",
-      "output": "BindLiveDomainCertResponse"
-    },
     "CancelCommonMixStream": {
       "document": "This API is used to cancel a stream mix. It can be used basically in the same way as `mix_streamv2.cancel_mix_stream`.",
       "input": "CancelCommonMixStreamRequest",
@@ -47,12 +41,6 @@
       "input": "CreateLiveCallbackTemplateRequest",
       "name": "Creates callback template",
       "output": "CreateLiveCallbackTemplateResponse"
-    },
-    "CreateLiveCert": {
-      "document": "This API is used to add a certificate.",
-      "input": "CreateLiveCertRequest",
-      "name": "Adds certificate",
-      "output": "CreateLiveCertResponse"
     },
     "CreateLivePullStreamTask": {
       "document": "This API is used to create a task to pull streams from video files or an external live streaming source and publish them to a specified destination URL.\nNotes:\n1. By default, you can have at most 20 stream pulling tasks at a time. You can submit a ticket to raise the limit.\n2. Only H.264 and H.265 are supported for video. If the source video is in a different format, please transcode it first.\n3. Only AAC is supported for audio. If the source audio is in a different format, please transcode it first.\n4. You can enable auto deletion in the console to delete expired tasks automatically.\n5. The pull and relay feature is a paid feature. For its billing details, see [Relay](https://intl.cloud.tencent.com/document/product/267/53308?from_cn_redirect=1).\n6. CSS is only responsible for pulling and relaying content. Please make sure that your content is authorized and complies with relevant laws and regulations. In case of copyright infringement or violation of laws or regulations, CSS will suspend its service for you and reserves the right to seek legal remedies.",
@@ -125,12 +113,6 @@
       "input": "DeleteLiveCallbackTemplateRequest",
       "name": "Deletes callback template",
       "output": "DeleteLiveCallbackTemplateResponse"
-    },
-    "DeleteLiveCert": {
-      "document": "This API is used to delete a certificate corresponding to the domain name.",
-      "input": "DeleteLiveCertRequest",
-      "name": "Delete certificate",
-      "output": "DeleteLiveCertResponse"
     },
     "DeleteLiveDomain": {
       "document": "This API is used to delete an added LVB domain name.",
@@ -275,6 +257,12 @@
       "input": "DescribeLiveDomainCertRequest",
       "name": "Gets domain name certificate information",
       "output": "DescribeLiveDomainCertResponse"
+    },
+    "DescribeLiveDomainCertBindings": {
+      "document": "This API is used to query domains bound with certificates.",
+      "input": "DescribeLiveDomainCertBindingsRequest",
+      "name": "Querying domains bound with certificates",
+      "output": "DescribeLiveDomainCertBindingsResponse"
     },
     "DescribeLiveDomainReferer": {
       "document": "This API is used to query referer allowlist/blocklist configuration of a live streaming domain name.\nReferer information is included in HTTP requests. After you enable referer configuration, live streams using RTMP or WebRTC for playback will not authenticate the referer and can be played back normally. To make the referer configuration effective, the HTTP-FLV or HLS protocol is recommended for playback.",
@@ -510,17 +498,11 @@
       "name": "Modifies callback template",
       "output": "ModifyLiveCallbackTemplateResponse"
     },
-    "ModifyLiveCert": {
-      "document": "This API is used to modify a certificate.",
-      "input": "ModifyLiveCertRequest",
-      "name": "Modifies certificate",
-      "output": "ModifyLiveCertResponse"
-    },
-    "ModifyLiveDomainCert": {
-      "document": "This API is used to modify the domain name and certificate binding information.",
-      "input": "ModifyLiveDomainCertRequest",
-      "name": "Modifies domain name and certificate binding information",
-      "output": "ModifyLiveDomainCertResponse"
+    "ModifyLiveDomainCertBindings": {
+      "document": "This API is used to bind a certificate to multiple playback domains and update the HTTPS configuration of the domains.\nIf a self-owned certificate is used, it will be automatically uploaded to Tencent Cloud’s SSL Certificate Service.",
+      "input": "ModifyLiveDomainCertBindingsRequest",
+      "name": "Binding a certificate to multiple playback domains",
+      "output": "ModifyLiveDomainCertBindingsResponse"
     },
     "ModifyLiveDomainReferer": {
       "document": "This API is used to configure referer allowlist/blocklist of a live streaming domain name.\nReferer information is included in HTTP requests. After you enable referer configuration, live streams using RTMP or WebRTC for playback will not authenticate the referer and can be played back normally. To make the referer configuration effective, the HTTP-FLV or HLS protocol is recommended for playback.",
@@ -826,47 +808,38 @@
       ],
       "usage": "out"
     },
-    "BindLiveDomainCertRequest": {
-      "document": "BindLiveDomainCert request structure.",
+    "BatchDomainOperateErrors": {
+      "document": "Error information for domains that a batch domain operation API fails to operate.",
       "members": [
         {
           "default": "",
-          "document": "Certificate ID, which can be obtained through the `CreateLiveCert` API.",
-          "member": "int64",
-          "name": "CertId",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Playback domain name.",
+          "document": "The domain that the API failed to operate.",
           "member": "string",
           "name": "DomainName",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "HTTPS status. 0: disabled, 1: enabled.",
-          "member": "int64",
-          "name": "Status",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "BindLiveDomainCertResponse": {
-      "document": "BindLiveDomainCert response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The API 3.0 error code.",
           "member": "string",
-          "name": "RequestId",
-          "type": "string"
+          "name": "Code",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The API 3.0 error message.",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
-      "type": "object"
+      "usage": "out"
     },
     "CallBackRuleInfo": {
       "document": "Rule information",
@@ -1762,79 +1735,6 @@
       ],
       "type": "object"
     },
-    "CreateLiveCertRequest": {
-      "document": "CreateLiveCert request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Certificate type. 0: user-added certificate, 1: Tencent Cloud-hosted certificate.\nNote: if the certificate type is 0, `HttpsCrt` and `HttpsKey` are required;\nIf the certificate type is 1, the certificate corresponding to `CloudCertId` will be used first. If `CloudCertId` is empty, `HttpsCrt` and `HttpsKey` will be used.",
-          "member": "uint64",
-          "name": "CertType",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Certificate name.",
-          "member": "string",
-          "name": "CertName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Certificate content, i.e., public key.",
-          "member": "string",
-          "name": "HttpsCrt",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Private key.",
-          "member": "string",
-          "name": "HttpsKey",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Description.",
-          "member": "string",
-          "name": "Description",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Tencent Cloud-hosted certificate ID.",
-          "member": "string",
-          "name": "CloudCertId",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateLiveCertResponse": {
-      "document": "CreateLiveCert response structure.",
-      "members": [
-        {
-          "document": "Certificate ID",
-          "member": "int64",
-          "name": "CertId",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "CreateLivePullStreamTaskRequest": {
       "document": "CreateLivePullStreamTask request structure.",
       "members": [
@@ -1858,7 +1758,7 @@
         },
         {
           "default": "",
-          "document": "The push domain name.\nThe pulled stream is pushed to this domain.\nUse a push domain you have added in the CSS console.",
+          "document": "The push domain name.\nThe pulled stream is pushed to this domain.\nNote: If the destination is not a CSS address and its format is different from that of CSS addresses, pass the full address to `ToUrl`. For details, see the description of the `ToUrl` parameter.",
           "example": "5000.livepush.myqcloud.com",
           "member": "string",
           "name": "DomainName",
@@ -1999,6 +1899,15 @@
           "name": "BackupSourceUrl",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "PullPushWatermarkInfo",
+          "name": "WatermarkList",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -3077,32 +2986,6 @@
       ],
       "type": "object"
     },
-    "DeleteLiveCertRequest": {
-      "document": "DeleteLiveCert request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Certificate ID obtained through the `DescribeLiveCerts` API.",
-          "member": "int64",
-          "name": "CertId",
-          "required": true,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteLiveCertResponse": {
-      "document": "DeleteLiveCert response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DeleteLiveDomainRequest": {
       "document": "DeleteLiveDomain request structure.",
       "members": [
@@ -3903,6 +3786,87 @@
       ],
       "type": "object"
     },
+    "DescribeLiveDomainCertBindingsRequest": {
+      "document": "DescribeLiveDomainCertBindings request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The keyword to use to search for domains.",
+          "example": "无",
+          "member": "string",
+          "name": "DomainSearch",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of records to skip before starting to return any results. 0 means to start from the first record and is the default.",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of records to return. The default is 50.\nIf this parameter is not specified, up to 50 records will be returned.",
+          "example": "无",
+          "member": "int64",
+          "name": "Length",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The name of a particular domain to query.",
+          "example": "无",
+          "member": "string",
+          "name": "DomainName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid values:\nExpireTimeAsc: Sort the records by certificate expiration time in ascending order.\nExpireTimeDesc: Sort the records by certificate expiration time in descending order.",
+          "example": "无",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLiveDomainCertBindingsResponse": {
+      "document": "DescribeLiveDomainCertBindings response structure.",
+      "members": [
+        {
+          "document": "The information of domains that meet the query criteria.",
+          "example": "无",
+          "member": "LiveDomainCertBindings",
+          "name": "LiveDomainCertBindings",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of records returned, which is needed for pagination.",
+          "example": "122",
+          "member": "int64",
+          "name": "TotalNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeLiveDomainCertRequest": {
       "document": "DescribeLiveDomainCert request structure.",
       "members": [
@@ -4102,6 +4066,15 @@
           "name": "CreateLimitCount",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of domains accelerated in the Chinese mainland, globally, and outside the Chinese mainland respectively.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[1,0,3]",
+          "member": "int64",
+          "name": "PlayTypeCount",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -6670,6 +6643,7 @@
         {
           "default": "",
           "document": "Stream name.",
+          "example": "test",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -6679,6 +6653,7 @@
         {
           "default": "",
           "document": "Creation time.",
+          "example": "2020-01-01 12:12:12",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -6688,11 +6663,32 @@
         {
           "default": "",
           "document": "Forbidding expiration time.",
+          "example": "2020-01-01 12:12:12",
           "member": "string",
           "name": "ExpireTime",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The push path.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The push domain name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -6850,6 +6846,116 @@
       ],
       "usage": "out"
     },
+    "LiveCertDomainInfo": {
+      "document": "The domains to bind to a certificate.",
+      "members": [
+        {
+          "default": "",
+          "document": "The domain name.",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable HTTPS for the domain.\n1: Enable\n0: Disable\n-1: Keep the current configuration",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "LiveDomainCertBindings": {
+      "document": "The domain and certificate information returned by `DescribeLiveDomainCertBindings` and `DescribeLiveDomainCertBindingsGray`.",
+      "members": [
+        {
+          "default": "",
+          "document": "The domain name.",
+          "example": "无",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The remarks for the certificate. This parameter is the same as `CertName`.",
+          "example": "无",
+          "member": "string",
+          "name": "CertificateAlias",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The certificate type.\n0: Self-owned certificate\n1: Tencent Cloud-hosted certificate",
+          "example": "无",
+          "member": "int64",
+          "name": "CertType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether HTTPS is enabled.\n1: Enabled\n0: Disabled",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The expiration time of the certificate.",
+          "example": "无",
+          "member": "datetime",
+          "name": "CertExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The certificate ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "CertId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The SSL certificate ID assigned by Tencent Cloud.",
+          "example": "无",
+          "member": "string",
+          "name": "CloudCertId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The last updated time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-05-06 17:00:00",
+          "member": "datetime",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "ModifyLiveCallbackTemplateRequest": {
       "document": "ModifyLiveCallbackTemplate request structure.",
       "members": [
@@ -6940,105 +7046,78 @@
       ],
       "type": "object"
     },
-    "ModifyLiveCertRequest": {
-      "document": "ModifyLiveCert request structure.",
+    "ModifyLiveDomainCertBindingsRequest": {
+      "document": "ModifyLiveDomainCertBindings request structure.",
       "members": [
         {
           "default": "",
-          "document": "Certificate ID.",
-          "member": "string",
-          "name": "CertId",
+          "document": "The playback domains to bind and whether to enable HTTPS for them.\nIf neither `CloudCertId` nor the public/private key is specified, and a domain is already bound with a certificate, this API will only update the HTTPS configuration of the domain and, if the certificate is a self-owned certificate, upload it to Tencent Cloud.",
+          "example": "无",
+          "member": "LiveCertDomainInfo",
+          "name": "DomainInfos",
           "required": true,
-          "type": "string"
-        },
-        {
-          "default": "0",
-          "document": "Certificate type. 0: user-added certificate, 1: Tencent Cloud-hosted certificate.",
-          "member": "uint64",
-          "name": "CertType",
-          "required": false,
-          "type": "int"
+          "type": "list"
         },
         {
           "default": "",
-          "document": "Certificate name.",
+          "document": "The SSL certificate ID assigned by Tencent Cloud.\nFor details, see https://intl.cloud.tencent.com/document/api/400/41665?from_cn_redirect=1",
+          "example": "无",
           "member": "string",
-          "name": "CertName",
+          "name": "CloudCertId",
           "required": false,
           "type": "string"
         },
         {
           "default": "",
-          "document": "Certificate content, i.e., public key.",
+          "document": "The public key of the certificate.\nYou can specify either `CloudCertId` or the public/private key. If both are specified, the private and public key parameters will be ignored. If you pass in only the public and private keys, the corresponding certificate will be uploaded to Tencent Cloud SSL Certificate Service, which will generate a `CloudCertId` for the certificate.",
+          "example": "无",
           "member": "string",
-          "name": "HttpsCrt",
+          "name": "CertificatePublicKey",
           "required": false,
           "type": "string"
         },
         {
           "default": "",
-          "document": "Private key.",
+          "document": "The private key of the certificate.\nYou can specify either `CloudCertId` or the public/private key. If both are specified, the private and public key parameters will be ignored. If you pass in only the public and private keys, the corresponding certificate will be uploaded to Tencent Cloud SSL Certificate Service, which will generate a `CloudCertId` for the certificate.",
+          "example": "无",
           "member": "string",
-          "name": "HttpsKey",
+          "name": "CertificatePrivateKey",
           "required": false,
           "type": "string"
         },
         {
           "default": "",
-          "document": "Description.",
+          "document": "The remarks for the certificate in Tencent Cloud SSL Certificate Service. This parameter will be ignored if `CloudCertId` is specified.",
+          "example": "无",
           "member": "string",
-          "name": "Description",
+          "name": "CertificateAlias",
           "required": false,
           "type": "string"
         }
       ],
       "type": "object"
     },
-    "ModifyLiveCertResponse": {
-      "document": "ModifyLiveCert response structure.",
+    "ModifyLiveDomainCertBindingsResponse": {
+      "document": "ModifyLiveDomainCertBindings response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The domains skipped due to certificate mismatch.",
+          "example": "无",
           "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyLiveDomainCertRequest": {
-      "document": "ModifyLiveDomainCert request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Playback domain name.",
-          "member": "string",
-          "name": "DomainName",
+          "name": "MismatchedDomainNames",
           "required": true,
-          "type": "string"
+          "type": "list",
+          "value_allowed_null": false
         },
         {
-          "default": "",
-          "document": "Certificate ID.",
-          "member": "int64",
-          "name": "CertId",
-          "required": false,
-          "type": "int"
+          "document": "The domains that the API failed to bind, including those in `MismatchedDomainNames`, and the error information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BatchDomainOperateErrors",
+          "name": "Errors",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
-        {
-          "default": "",
-          "document": "Status. 0: off, 1: on.",
-          "member": "int64",
-          "name": "Status",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyLiveDomainCertResponse": {
-      "document": "ModifyLiveDomainCert response structure.",
-      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -8100,6 +8179,93 @@
         }
       ],
       "usage": "out"
+    },
+    "PullPushWatermarkInfo": {
+      "document": "Watermark information\n",
+      "members": [
+        {
+          "default": "",
+          "document": "Watermark ID.",
+          "member": "int64",
+          "name": "WatermarkId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Watermark image URL.",
+          "member": "string",
+          "name": "PictureUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Display position: X-axis offset.",
+          "member": "int64",
+          "name": "XPosition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Display position: Y-axis offset.",
+          "member": "int64",
+          "name": "YPosition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Watermark name.",
+          "member": "string",
+          "name": "WatermarkName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current status. 0: not used. 1: in use.",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time.",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Watermark width",
+          "member": "int64",
+          "name": "Width",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Watermark height",
+          "member": "int64",
+          "name": "Height",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "PullStreamTaskInfo": {
       "document": "The information of a stream pulling task.",

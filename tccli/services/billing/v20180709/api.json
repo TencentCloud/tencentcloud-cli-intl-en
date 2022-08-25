@@ -1187,6 +1187,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Payment by commission credits",
+          "example": "0.00",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1240,6 +1250,16 @@
           "example": "0.00",
           "member": "string",
           "name": "TotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Payment by commission credits",
+          "example": "0.00",
+          "member": "string",
+          "name": "TransferPayAmount",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2221,6 +2241,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Payment by commission credits",
+          "example": "0.00",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2314,6 +2344,16 @@
           "example": "0.00",
           "member": "string",
           "name": "TotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Payment by commission credits",
+          "example": "0.00",
+          "member": "string",
+          "name": "TransferPayAmount",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2413,6 +2453,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Payment by commission credits",
+          "example": "0.00",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2482,6 +2532,46 @@
           "example": "0.00",
           "member": "string",
           "name": "TotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Payment by cash credits\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.00",
+          "member": "string",
+          "name": "CashPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Payment by free credits\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.00",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Payment by vouchers\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.00",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Payment by commission credits\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.00",
+          "member": "string",
+          "name": "TransferPayAmount",
           "required": true,
           "type": "string",
           "value_allowed_null": true

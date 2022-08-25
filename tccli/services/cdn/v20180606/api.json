@@ -5466,7 +5466,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Specifies a host header for 302 redirects. This feature is only available to beta users. To join the beta, please submit a ticket.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "RedirectConfig",
           "name": "RedirectConfig",
@@ -8378,11 +8378,11 @@
       "usage": "both"
     },
     "RedirectConfig": {
-      "document": "",
+      "document": "Host header for 302 redirects",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Configuration switch",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -8392,7 +8392,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The custom host header that is sent when the primary origin server follows 302 redirects",
           "example": "main.host.com",
           "member": "string",
           "name": "FollowRedirectHost",
@@ -8402,7 +8402,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The custom host header that is sent when the secondary origin server follows 302 redirects",
           "example": "backup.host.com",
           "member": "string",
           "name": "FollowRedirectBackupHost",

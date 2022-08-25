@@ -228,6 +228,12 @@
       "name": "Creates a network ACL",
       "output": "CreateNetworkAclResponse"
     },
+    "CreateNetworkAclQuintupleEntries": {
+      "document": "This API is used to add one or more in/outbound rules of the network ACL quintuple.",
+      "input": "CreateNetworkAclQuintupleEntriesRequest",
+      "name": "Adds rules of the network ACL quintuple",
+      "output": "CreateNetworkAclQuintupleEntriesResponse"
+    },
     "CreateNetworkInterface": {
       "document": "This API is used to create an ENI.\n* You can specify private IP addresses and a primary IP when creating an ENI. The specified private IP must be in the same subnet as the ENI and is not occupied.\n* When creating an ENI, you can specify the number of private IP addresses that you want to apply for. The system will randomly generate private IP addresses.\n* An ENI can only be bound with a limited number of IP addresses. For more information about resource limits, see <a href=\"/document/product/576/18527\">ENI Use Limits</a>.\n* You can bind an existing security group when creating an ENI.\n* You can bind a tag when creating an ENI. The tag list in the response indicates the tags that have been successfully added.\n>?This API is async. You can call the [`DescribeVpcTaskResult`](https://intl.cloud.tencent.com/document/api/215/59037?from_cn_redirect=1) API to query the task result. When the task is completed, you can continue other tasks.\n>",
       "input": "CreateNetworkInterfaceRequest",
@@ -425,6 +431,12 @@
       "input": "DeleteNetworkAclRequest",
       "name": "Deletes a network ACL",
       "output": "DeleteNetworkAclResponse"
+    },
+    "DeleteNetworkAclQuintupleEntries": {
+      "document": "This API is used to delete specified in/outbound rules of the network ACL quintuple. In the `NetworkAclQuintupleEntrySet` parameters, `NetworkAclQuintupleEntryId` is required for `NetworkAclQuintupleEntry`.",
+      "input": "DeleteNetworkAclQuintupleEntriesRequest",
+      "name": "Deletes specified rules of the network ACL quintuple.",
+      "output": "DeleteNetworkAclQuintupleEntriesResponse"
     },
     "DeleteNetworkInterface": {
       "document": "This API is used to delete an ENI.\n* An ENI cannot be deleted when it’s bound to a CVM.\n * After the deletion, all of its private IP addresses will be released.\n\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.",
@@ -673,7 +685,7 @@
       "output": "DescribeIpGeolocationDatabaseUrlResponse"
     },
     "DescribeIpGeolocationInfos": {
-      "document": "This API is used to query the location and network information of one or more IP addresses.\nThis API is currently in beta test. To use it, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=660&source=0&data_title=%E5%BC%B9%E6%80%A7%E5%85%AC%E7%BD%91%20EIP&level3_id=662&queue=96&scene_code=16400&step=2).",
+      "document": "This API is used to query the location and network information of one or more IP addresses.\nThis API is only available for existing customers. For any questions, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=660&source=0&data_title=%E5%BC%B9%E6%80%A7%E5%85%AC%E7%BD%91%20EIP&level3_id=662&queue=96&scene_code=16400&step=2).",
       "input": "DescribeIpGeolocationInfosRequest",
       "name": "Queries IP location",
       "output": "DescribeIpGeolocationInfosResponse"
@@ -719,6 +731,12 @@
       "input": "DescribeNetDetectsRequest",
       "name": "DescribeNetDetects",
       "output": "DescribeNetDetectsResponse"
+    },
+    "DescribeNetworkAclQuintupleEntries": {
+      "document": "This API is used to query the list of in/outbound network ACL quintuple entries.",
+      "input": "DescribeNetworkAclQuintupleEntriesRequest",
+      "name": "Queries the list of the network ACL quintuple entries",
+      "output": "DescribeNetworkAclQuintupleEntriesResponse"
     },
     "DescribeNetworkAcls": {
       "document": "This API is used to query a list of network ACLs.",
@@ -1157,6 +1175,12 @@
       "input": "ModifyNetworkAclEntriesRequest",
       "name": "Modifies network ACL rules",
       "output": "ModifyNetworkAclEntriesResponse"
+    },
+    "ModifyNetworkAclQuintupleEntries": {
+      "document": "This API is used to modify the in/outbound rules of the network ACL quintuple. In the `NetworkAclQuintupleEntrySet` parameters, `NetworkAclQuintupleEntryId` is required for `NetworkAclQuintupleEntry`.",
+      "input": "ModifyNetworkAclQuintupleEntriesRequest",
+      "name": "Updates the network ACL quintuple rules incrementally",
+      "output": "ModifyNetworkAclQuintupleEntriesResponse"
     },
     "ModifyNetworkInterfaceAttribute": {
       "document": "This API (ModifyNetworkInterfaceAttribute) is used to modify ENI attributes.",
@@ -4908,6 +4932,42 @@
       ],
       "type": "object"
     },
+    "CreateNetworkAclQuintupleEntriesRequest": {
+      "document": "CreateNetworkAclQuintupleEntries request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Network ACL instance ID, such as `acl-12345678`.",
+          "example": "acl-12345678",
+          "member": "string",
+          "name": "NetworkAclId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network ACL quintuple rule set.",
+          "example": "无",
+          "member": "NetworkAclQuintupleEntries",
+          "name": "NetworkAclQuintupleSet",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateNetworkAclQuintupleEntriesResponse": {
+      "document": "CreateNetworkAclQuintupleEntries response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateNetworkAclRequest": {
       "document": "CreateNetworkAcl request structure.",
       "members": [
@@ -4928,6 +4988,24 @@
           "name": "NetworkAclName",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network ACL type. Valid values: `TRIPLE` and `QUINTUPLE`.",
+          "example": "TRIPLE,QUINTUPLE",
+          "member": "string",
+          "name": "NetworkAclType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -7004,6 +7082,42 @@
     },
     "DeleteNetDetectResponse": {
       "document": "DeleteNetDetect response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteNetworkAclQuintupleEntriesRequest": {
+      "document": "DeleteNetworkAclQuintupleEntries request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Network ACL instance ID, such as `acl-12345678`.",
+          "example": "acl-12345678",
+          "member": "string",
+          "name": "NetworkAclId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network ACL quintuple rule set.",
+          "example": "无",
+          "member": "NetworkAclQuintupleEntries",
+          "name": "NetworkAclQuintupleSet",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteNetworkAclQuintupleEntriesResponse": {
+      "document": "DeleteNetworkAclQuintupleEntries response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -9712,6 +9826,78 @@
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNetworkAclQuintupleEntriesRequest": {
+      "document": "DescribeNetworkAclQuintupleEntries request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Network ACL instance ID, such as `acl-12345678`.",
+          "example": "acl-12345678",
+          "member": "string",
+          "name": "NetworkAclId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Returned quantity. Default: 20. Value range: 1-100.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter condition. `HaVipIds` and `Filters` cannot be specified at the same time.\n<li>`protocol` - String - Such as `TCP`</li>\n<li>`description` - String - Description</li>\n<li>`destination-cidr` - String - Destination CIDR block, such as `192.168.0.0/24`</li>\n<li>`source-cidr` - String - Source CIDR block, such as `192.168.0.0/24`</li>\n<li>`action` - String - ·Values: `ACCEPT`, `DROP`</li>\n<li>`network-acl-quintuple-entry-id` - String - Unique ID of the quintuple, such as `acli45-ahnu4rv5`</li>\n<li>`network-acl-direction` - String - Direction of the policy. Values: `INGRESS` or `EGRESS`.</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNetworkAclQuintupleEntriesResponse": {
+      "document": "DescribeNetworkAclQuintupleEntries response structure.",
+      "members": [
+        {
+          "document": "The list of the network ACL quintuple entries",
+          "example": "无",
+          "member": "NetworkAclQuintupleEntry",
+          "name": "NetworkAclQuintupleSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of eligible instances.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -14775,12 +14961,57 @@
           "name": "NetworkAclEntrySet",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Network ACL quintuple rule set. `NetworkAclEntrySet` and `NetworkAclQuintupleSet` cannot be entered at the same time.",
+          "example": "无",
+          "member": "NetworkAclQuintupleEntries",
+          "name": "NetworkAclQuintupleSet",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
     },
     "ModifyNetworkAclEntriesResponse": {
       "document": "ModifyNetworkAclEntries response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNetworkAclQuintupleEntriesRequest": {
+      "document": "ModifyNetworkAclQuintupleEntries request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Network ACL instance ID, such as `acl-12345678`.",
+          "example": "acl-12345678",
+          "member": "string",
+          "name": "NetworkAclId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network ACL quintuple rule set.",
+          "example": "无",
+          "member": "NetworkAclQuintupleEntries",
+          "name": "NetworkAclQuintupleSet",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNetworkAclQuintupleEntriesResponse": {
+      "document": "ModifyNetworkAclQuintupleEntries response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -16187,6 +16418,7 @@
         {
           "default": "",
           "document": "`ID` of the `VPC` instance.",
+          "example": "vpc-q26u781x",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -16196,6 +16428,7 @@
         {
           "default": "",
           "document": "`ID` of the network ACL instance.",
+          "example": "acl-fy0ys38q",
           "member": "string",
           "name": "NetworkAclId",
           "required": true,
@@ -16205,6 +16438,7 @@
         {
           "default": "",
           "document": "Name of the network ACL. The maximum length is 60 bytes.",
+          "example": "test",
           "member": "string",
           "name": "NetworkAclName",
           "required": true,
@@ -16214,6 +16448,7 @@
         {
           "default": "",
           "document": "Creation time.",
+          "example": "2021-03-22 20:59:55",
           "member": "string",
           "name": "CreatedTime",
           "required": true,
@@ -16223,6 +16458,7 @@
         {
           "default": "",
           "document": "Array of subnets associated with the network ACL.",
+          "example": "无",
           "member": "Subnet",
           "name": "SubnetSet",
           "required": true,
@@ -16232,6 +16468,7 @@
         {
           "default": "",
           "document": "Inbound rules of the network ACL.",
+          "example": "无",
           "member": "NetworkAclEntry",
           "name": "IngressEntries",
           "required": true,
@@ -16241,8 +16478,29 @@
         {
           "default": "",
           "document": "Outbound rules of the network ACL.",
+          "example": "无",
           "member": "NetworkAclEntry",
           "name": "EgressEntries",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network ACL type. Valid values: `TRIPLE` and `QUINTUPLE`.",
+          "example": "TRIPLE",
+          "member": "string",
+          "name": "NetworkAclType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag key-value pairs",
+          "example": "无",
+          "member": "Tag",
+          "name": "TagSet",
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -16342,6 +16600,148 @@
         }
       ],
       "usage": "in"
+    },
+    "NetworkAclQuintupleEntries": {
+      "document": "Network ACL quintuple",
+      "members": [
+        {
+          "default": "",
+          "document": "Network ACL quintuple inbound rule.",
+          "example": "[{ 'SourcePort':'446', 'SourceCidr': '10.0.0.2/24', 'Protocol': ",
+          "member": "NetworkAclQuintupleEntry",
+          "name": "Ingress",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network ACL quintuple outbound rule.",
+          "example": "[{ 'SourcePort':'446', 'SourceCidr': '10.0.0.2/24', 'Protocol': ",
+          "member": "NetworkAclQuintupleEntry",
+          "name": "Egress",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "NetworkAclQuintupleEntry": {
+      "document": "Network ACL quintuple entry",
+      "members": [
+        {
+          "default": "",
+          "document": "Protocol. Valid values: `TCP`, `UDP`, `ICMP`, `ALL`.",
+          "example": "UDP",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "example": "TEST",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source port. Valid values: all, single port, range. When `Protocol` is `ALL` or `ICMP`, `Port` cannot be specified.",
+          "example": "446",
+          "member": "string",
+          "name": "SourcePort",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source CIDR block.",
+          "example": "192.168.0.0/24",
+          "member": "string",
+          "name": "SourceCidr",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Destination port. Valid values: all, single port, range. When `Protocol` is `ALL` or `ICMP`, `Port` cannot be specified.",
+          "example": "446",
+          "member": "string",
+          "name": "DestinationPort",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Destination CIDR block.",
+          "example": "192.168.0.0/24",
+          "member": "string",
+          "name": "DestinationCidr",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Action. Valid values: `ACCEPT` and `DROP`.",
+          "example": "ACCEPT",
+          "member": "string",
+          "name": "Action",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unique ID of a network ACL entry.",
+          "example": "acli45-ahnu4rv5",
+          "member": "string",
+          "name": "NetworkAclQuintupleEntryId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Priority. `1` refers to the highest priority.",
+          "example": "1",
+          "member": "int64",
+          "name": "Priority",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time. It’s returned by `DescribeNetworkAclQuintupleEntries`.",
+          "example": "2021-03-02 14:41:15",
+          "member": "string",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Direction of the rule. It’s returned by `DescribeNetworkAclQuintupleEntries`. Valid values: `INGRESS` and `EGRESS`.",
+          "example": "INGRESS",
+          "member": "string",
+          "name": "NetworkAclDirection",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "NetworkInterface": {
       "document": "ENI",
