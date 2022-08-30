@@ -306,6 +306,12 @@
       "name": "Queries the download list of playback statistics files",
       "output": "DescribeDailyPlayStatFileListResponse"
     },
+    "DescribeDrmKeyProviderInfo": {
+      "document": "This API is used to query DRM key information.",
+      "input": "DescribeDrmKeyProviderInfoRequest",
+      "name": "Queries DRM key information",
+      "output": "DescribeDrmKeyProviderInfoResponse"
+    },
     "DescribeImageReviewUsageData": {
       "document": "This API is used to query your daily usage of the image recognition feature in a specified time period.\n   1. You can query statistics from the last 365 days.\n   2. The maximum query period is 90 days.\n   3. If the period specified is longer than one day, the statistics returned will be on a daily basis; otherwise, they will be on a 5-minute basis.\n",
       "input": "DescribeImageReviewUsageDataRequest",
@@ -636,6 +642,12 @@
       "name": "Purges URLs",
       "output": "RefreshUrlCacheResponse"
     },
+    "RemoveWatermark": {
+      "document": "This API is used to remove watermarks from a video.",
+      "input": "RemoveWatermarkRequest",
+      "name": "Removes watermarks from a video",
+      "output": "RemoveWatermarkResponse"
+    },
     "ResetProcedureTemplate": {
       "document": "This API is used to reset a custom task flow template.  ",
       "input": "ResetProcedureTemplateRequest",
@@ -649,13 +661,19 @@
       "output": "RestoreMediaResponse"
     },
     "SearchMedia": {
-      "document": "This API is used to search for media information and supports filtering and sorting the returned results in many ways. You can:\n- Specify the file ID set `FileIds` to return the media files with any ID in the set.\n- Fuzzily search by multiple media filenames `Names` or multiple descriptions `Descriptions`.\n- Search by multiple filename prefixes `NamePrefixes`.\n- Specify the category set `ClassIds` (please see the input parameters) to return the media files in any category in the set. For example, assuming that there are categories of `Movies`, `TV Series`, and `Variety Shows`, and there are subcategories of `History`, `Action`, and `Romance` in the category of `Movies`, if `Movies` and `TV Series` are specified in `ClassIds`, then all the subcategories under `Movies` and `TV Series` will be returned. However, if `History` and `Action` are specified in `ClassIds`, only the media files in these two subcategories will be returned.\n- Specify the tag set `Tags` (please see the input parameters) to return the media files with any tag in the set. For example, assuming that there are tags of `ACG`, `Drama`, and `YTPMV`, if `ACG` and `YTPMV` are specified in `Tags`, then any media files with either tag will be retrieved.\n- Specify the file type set `Categories` (please see the input parameters) to return the media files of any type in the set. For example, assuming that there are `Video`, `Audio`, and `Image` file types, if `Video` and `Audio` are specified in `Categories`, then all media files of these two types will be retrieved.\n- Specify the source set `SourceTypes` (please see the input parameters) to return the media files from any source in the set. For example, assuming that there are `Record` (live recording) and `Upload` (upload) sources, if `Record` and `Upload` are specified in `SourceTypes`, then all media files from these two sources will be retrieved.\n- Specify the live stream code set `StreamIds` (please see the input parameters) to filter live recording media files.\n- Specify the video ID set `Vids` (please see the input parameters) to filter live recording media files.\n- Specify the creation time range to filter media files.\n- Specify a text string `Text` for fuzzy search by media filenames or descriptions. (This is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead.)\n- Specify a media file source `SourceType` for search. (This is not recommended. `SourceTypes` should be used instead.)\n- Specify a live stream code `StreamId` for search. (This is not recommended. `StreamIds` should be used instead.)\n- Specify a video ID `Vid` for search. (This is not recommended. `Vids` should be used instead.)\n- Specify a creation start time `StartTime` for search. (This is not recommended. `CreateTime` should be used instead.)\n- Specify a creation end time `EndTime` for search. (This is not recommended. `CreateTime` should be used instead.)\n- Search by any combination of the parameters above. For example, you can search for the media files with the tags of \"Drama\" and \"Suspense\" in the category of \"Movies\" or \"TV Series\" created between 12:00:00, December 1, 2018 and 12:00:00, December 8, 2018. Please note that for any parameter that supports array input, the search logic between its elements is \"OR\", and the logical relationship between parameters is \"AND\".\n\n- Sort the results by creation time and return them in multiple pages by specifying `Offset` and `Limit` (please see the input parameters).\n- Specify `Filters` to return specified types of media information (all types will be returned by default). Valid values:\n    1. Basic information `basicInfo`: media name, category, playback address, cover image, etc.\n    2. Metadata `metaData`: size, duration, video stream information, audio stream information, etc.\n    3. Information of the transcoding result `transcodeInfo`: addresses, video stream parameters, and audio stream parameters of various specifications generated by the file transcoding.\n    4. Information of the animated image generating result `animatedGraphicsInfo`: information of an animated image (such as .gif) generated from a video.\n    5. Information of a sampled screenshot `sampleSnapshotInfo`: information of a sampled screenshot of a video.\n    6. Information of an image sprite `imageSpriteInfo`: information of an image sprite generated from a video.\n    7. Information of a point-in-time screenshot `snapshotByTimeOffsetInfo`: information of a point-in-time screenshot of a video.\n    8. Information of a timestamp `keyFrameDescInfo`: information of a timestamp configured for a video.\n    9. Information of transcoding to adaptive bitrate streaming `adaptiveDynamicStreamingInfo`: specification, encryption type, muxing format, etc.\n\n<div id=\"maxResultsDesc\">Upper limit of returned results:</div>\n- The <b><a href=\"#p_offset\">Offset</a> and <a href=\"#p_limit\">Limit</a> parameters determine the number of search results on one single page. Note: if both of them use the default value, this API will return up to 10 results.</b>\n- <b>Up to 5,000 search results can be returned, and excessive ones will not be displayed. If there are too many search results, you are recommended to use more filters to narrow down the search results.</b>",
+      "document": "This API is used to search for media files by specific criteria. You can sort the results and specify the information to return.\n- Specify a list of file IDs (`FileIds`). Any file that matches one of the IDs will be returned.\n- Specify one or multiple keywords for `Names` or `Descriptions` for fuzzy search by filename or description.\n- Specify multiple filename prefixes (`NamePrefixes`).\n- Specify a list of categories (`ClassIds`). Any file that matches one of the categories will be returned. For example, assume that there are categories `Movies`, `TV Series`, and `Variety Shows`, and `Movies` has subcategories including `History`, `Action`, and `Romance`. If `ClassIds` is set to `Movies` and `TV Series`, all media files in `Movies` (including its subcategories) and `TV Series` will be returned. If `ClassIds` is set to `History` and `Action`, only the files in those two subcategories will be returned.\n- Specify a list of tags (`Tags`). Any file that matches one or more of the tags will be returned. For example, assume that there are tags `ACG`, `Drama`, and `YTPMV`. If `Tags` is set to `ACG` and `YTPMV`, any media file with either tag will be returned.\n- Specify the types (`Categories`) of media files. Any file that matches one of the types will be returned. There are three file types: `Video`, `Audio`, and `Image`. If `Categories` is set to `Video` and `Audio`, all audio and video files will be returned.\n- Specify the source types (`SourceTypes`). Any file that matches one of the source types specified will be returned. For example, if you set `SourceTypes` to `Record` (live recording) and `Upload` (upload), all recording files and uploaded files will be returned.\n- Specify the stream IDs (`StreamIds`) of live recording files.\n- Specify the video IDs (`Vids`) of live recording files.\n- Specify a time range for search by file creation time.\n- Specify the TRTC application IDs.\n- Specify the TRTC room IDs.\n- Specify one keyword for `Text` for fuzzy search by filename or description. (This is not recommended. Please use `Names`, `NamePrefixes` or `Descriptions` instead.)\n- Specify one source (`SourceType`). (This is not recommended. Please use `SourceTypes` instead.)\n- Specify one stream ID (`StreamId`). (This is not recommended. Please use `StreamIds` instead.)\n- Specify one video ID (`Vid`). (This is not recommended. Please use `Vids` instead.)\n- Specify the start (`StartTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- Specify the end (`EndTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- You can search by any combination of the parameters above. For example, you can search for media files with the tag \"Drama\" or \"Suspense\" in the category of \"Movies\" and \"TV Series\" created between 12:00:00, December 1, 2018 and 12:00:00, December 8, 2018. Note that for parameters whose data type is array, the search logic between their elements is \"OR\". The search logic between parameters is \"AND\".\n\n- You can sort the results by creation time and return them in multiple pages by specifying `Offset` and `Limit`.\n- You can use `Filters` to specify the types of file information to return (all types are returned by default). Valid values:\n    1. `basicInfo`: The file name, category, playback URL, thumbnail, etc.\n    2. `metaData`: The file size, duration, video stream information, audio stream information, etc.\n    3. `transcodeInfo`: The URLs, video stream parameters, and audio stream parameters of transcoding outputs.\n    4. `animatedGraphicsInfo`: The information of the animated images (such as GIF images) generated.\n    5. `sampleSnapshotInfo`: The information of the sampled screenshots generated.\n    6. `imageSpriteInfo`: The information of the image sprites generated.\n    7. `snapshotByTimeOffsetInfo`: The information of the time point screenshots generated.\n    8. `keyFrameDescInfo`: The video timestamp information.\n    9. `adaptiveDynamicStreamingInfo`: The specification, encryption type, format, etc.\n\n<div id=\"maxResultsDesc\">Limits for returned records:</div>\n- The <b><a href=\"#p_offset\">Offset</a> and <a href=\"#p_limit\">Limit</a> parameters determine the number of records per page. If neither parameter is passed, this API will return up to 10 records.</b>\n- <b>Up to 5,000 records can be returned. If a request returns too many records, we recommend you use more specific search criteria to narrow down the results.</b>",
       "input": "SearchMediaRequest",
       "name": "Searches for media information",
       "output": "SearchMediaResponse"
     },
+    "SetDrmKeyProviderInfo": {
+      "document": "This API is used to configure DRM key information.",
+      "input": "SetDrmKeyProviderInfoRequest",
+      "name": "Configures DRM key information",
+      "output": "SetDrmKeyProviderInfoResponse"
+    },
     "SimpleHlsClip": {
-      "document": "This API is used to clip an HLS video by time period and then generate a new HLS video which developers can share right away or store persistently.\n\nVOD supports two types of clipping:\n- Clipping for persistent storage: the video clip is saved as an independent video file with a `FileId`.\n- Clipping for temporary sharing: the video clip is affiliated to the input file and has no `FileId`.\n\nNotes:\n- Clipping is based on the input M3U8 file that contains the list of TS segments, so the smallest clipping unit is one TS segment instead of in seconds or less.\n\n\n### Clipping for Persistent Storage\nIn this mode, a video clip is saved as an independent video file with a `FileId`, and its lifecycle is not subject to the input video. Even if the source video is deleted, the video clip still exists. Moreover, the video clip can be transcoded, published on WeChat, and processed in other ways.\n\nTake the video of a two-hour long football match for example. The customer may only want to store the original two-hour video for two months to save costs, but want to store clipped highlights for a specified longer time and also to transcode and publish such highlights on WeChat. Clipping for persistent storage is suitable for this customer.\n\nThe advantage of clipping for persistent storage is that the video clip has a lifecycle independent of the input video and can be managed independently and stored persistently.\n\n### Clipping for Temporary Sharing\nThe video clip (an M3U8 file) shares the same TS segments with the input video instead of being an independent video. It only has a playback URL but has no `FileId`, and its validity period is the same as that of the input video. Once the input video is deleted, the video clip cannot be played back.\n\nAs the video clip is not an independent video, it will not be managed as a VOD media asset. For example, it will not be counted in the total videos displayed on the VOD console, and also cannot be transcoded or published on WeChat.\n\nClipping for temporary sharing is lightweight and incurs no additional storage fees. However, the video clip has the same lifecycle as the source recording video and cannot be transcoded or processed in other ways.",
+      "document": "This API is used to cut a clip from an HLS video to generate a new video (in HLS format). You can either share the new video or save it.\n\nVOD supports two types of clipping:\n- Clipping for persistent storage: The video clip is saved as an independent video file with its own `FileId`.\n- Clipping for temporary sharing: The video clip shares `FileId` with the input file.\n\nNotes:\n- Clipping is based on the M3U8 file that contains a list of TS segments, so the smallest clipping unit is one TS segment instead of a second or less.\n\n\n### Clipping for persistent storage\nIn this mode, a video clip is saved as an independent video file with a `FileId`, and its lifecycle is not subject to the input video. Even if the source video is deleted, the video clip still exists. Moreover, the video clip can be transcoded, published on WeChat, and processed in other ways.\n\nSuppose you recorded a two-hour football match. You want to save the full video for only two months to save costs, but want to save the highlights for a longer time and perhaps transcode and publish the highlight clip to WeChat. In this case, you can choose clipping for persistent storage.\n\nThe advantage of clipping for persistent storage is that the video clip has a lifecycle independent of the input video and can be managed independently and stored persistently.\n\n### Clipping for temporary sharing\nThe video clip (an M3U8 file) shares the same TS segments with the input video instead of being an independent video. It only has a playback URL but has no `FileId`, and its validity period is the same as that of the input video. Once the input video is deleted, the video clip cannot be played back.\n\nBecause the video clip is not an independent video, it’s not displayed as a media asset in the VOD console, and cannot be transcoded or published to WeChat.\n\nClipping for temporary sharing is lightweight and incurs no additional storage fees. However, the video clip has the same lifecycle as the source recording video and cannot be transcoded or processed in other ways.",
       "input": "SimpleHlsClipRequest",
       "name": "Performs simple HLS clipping",
       "output": "SimpleHlsClipResponse"
@@ -1092,6 +1110,16 @@
           "example": "无",
           "member": "string",
           "name": "DrmType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The provider of the DRM key. Valid values:\n<li>SDMC</li>\n<li>VOD</li>\nThe default is `VOD`.",
+          "example": "无",
+          "member": "string",
+          "name": "DrmKeyProvider",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2154,7 +2182,7 @@
         },
         {
           "default": "",
-          "document": "Expiration time of the URL to the file of the list for full-text speech recognition segments, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732)",
+          "document": "The expiration time of the URLs of full-text speech recognition segments in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format).",
           "example": "2018-10-01T10:00:00Z",
           "member": "string",
           "name": "SegmentSetFileUrlExpireTime",
@@ -2164,10 +2192,46 @@
         },
         {
           "default": "",
-          "document": "Subtitles file URL.",
+          "document": "The subtitle files generated, whose format is determined by the `SubtitleFormats` parameter of [AsrFullTextConfigureInfo](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#AsrFullTextConfigureInfo).",
+          "example": "无",
+          "member": "AiRecognitionTaskAsrFullTextResultOutputSubtitleItem",
+          "name": "SubtitleSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The URLs of the subtitle files generated, whose format is determined by the `SubtitleFormats` parameter of [AsrFullTextConfigureInfo](https://intl.cloud.tencent.com/document/api/266/31773?from_cn_redirect=1#AsrFullTextConfigureInfo).",
           "example": "http://123xxx",
           "member": "string",
           "name": "SubtitleUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiRecognitionTaskAsrFullTextResultOutputSubtitleItem": {
+      "document": "The subtitle information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The format of the subtitle files. Valid values:\n<li>vtt</li>\n<li>srt</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Format",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The URL of a subtitle file.",
+          "example": "无",
+          "member": "string",
+          "name": "Url",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -5412,6 +5476,7 @@
         {
           "default": "",
           "document": "Switch of full speech recognition task. Valid values:\n<li>ON: enables intelligent full speech recognition task;</li>\n<li>OFF: disables intelligent full speech recognition task.</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -5420,7 +5485,18 @@
         },
         {
           "default": "",
-          "document": "Format of generated subtitles file. If this parameter is left empty or a blank string is entered, no subtitles files will be generated. Valid value:\n<li>vtt: generates a WebVTT subtitles file.</li>",
+          "document": "The formats of the subtitle files generated. If this parameter is not passed or an empty string is passed in, no subtitles files will be generated. Valid values:\n<li>vtt</li>\n<li>srt</li>",
+          "example": "无",
+          "member": "string",
+          "name": "SubtitleFormats",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The format of the subtitle file generated. If this parameter is not passed or an empty string is passed in, no subtitles files will be generated. Valid values:\n<li>vtt</li>\n<li>srt</li>\n<font color='red'>Note: This parameter has been deprecated. Please use `SubtitleFormats` instead.</font>",
+          "example": "无",
           "member": "string",
           "name": "SubtitleFormat",
           "required": false,
@@ -5436,6 +5512,7 @@
         {
           "default": "",
           "document": "Switch of full speech recognition task. Valid values:\n<li>ON: enables intelligent full speech recognition task;</li>\n<li>OFF: disables intelligent full speech recognition task.</li>",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -5444,7 +5521,18 @@
         },
         {
           "default": "",
-          "document": "Format of generated subtitles file. If an empty string is entered, no subtitles files will be generated. Valid values:\n<li>vtt: generates a WebVTT subtitles file.</li>",
+          "document": "The modification information of the subtitle format list.",
+          "example": "无",
+          "member": "SubtitleFormatsOperation",
+          "name": "SubtitleFormatsOperation",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The format of the subtitle file generated. <font color='red'>If you pass in an empty string</font>, no subtitle files will be generated. Valid values:\n<li>vtt</li>\n<li>srt</li>\n<font color='red'>Note: This parameter has been deprecated. Please use `SubtitleFormatsOperation` instead.</font>",
+          "example": "无",
           "member": "string",
           "name": "SubtitleFormat",
           "required": false,
@@ -6983,6 +7071,15 @@
           "example": "无",
           "member": "string",
           "name": "DrmType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The provider of the DRM key. Valid values:\n<li>SDMC</li>\n<li>VOD</li>\nThe default is `VOD`.",
+          "example": "无",
+          "member": "string",
+          "name": "DrmKeyProvider",
           "required": false,
           "type": "string"
         },
@@ -9836,6 +9933,42 @@
       ],
       "type": "object"
     },
+    "DescribeDrmKeyProviderInfoRequest": {
+      "document": "DescribeDrmKeyProviderInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
+          "example": "无",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDrmKeyProviderInfoResponse": {
+      "document": "DescribeDrmKeyProviderInfo response structure.",
+      "members": [
+        {
+          "document": "The DRM key information provided by SDMC.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SDMCDrmKeyProviderInfo",
+          "name": "SDMCInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeImageReviewUsageDataRequest": {
       "document": "DescribeImageReviewUsageData request structure.",
       "members": [
@@ -10956,6 +11089,7 @@
         {
           "default": "",
           "document": "Video processing task ID.",
+          "example": "无",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -10963,7 +11097,8 @@
         },
         {
           "default": "",
-          "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -10976,7 +11111,7 @@
       "document": "DescribeTaskDetail response structure.",
       "members": [
         {
-          "document": "The task type. Valid values:\n<li>Procedure: Video processing</li>\n<li>EditMedia: Video editing</li>\n<li>SplitMedia: Video splitting</li>\n<li>ComposeMedia: Media file producing</li>\n<li>WechatPublish: WeChat publishing</li>\n<li>WechatMiniProgramPublish: Publishing videos on WeChat Mini Program</li>\n<li>PullUpload: Pulling media files for upload</li>\n<li>FastClipMedia: Quick clipping</li>\n\nTask types for v2017:\n<li>Transcode: Transcoding</li>\n<li>SnapshotByTimeOffset: Screencapturing</li>\n<li>Concat: Video splicing</li>\n<li>Clip: Video clipping</li>\n<li>ImageSprites: Image sprite generating</li>",
+          "document": "The task type. Valid values:\n<li>Procedure: Video processing</li>\n<li>EditMedia: Video editing</li>\n<li>SplitMedia: Video splitting</li>\n<li>ComposeMedia: Media file producing</li>\n<li>WechatPublish: WeChat publishing</li>\n<li>PullUpload: Pulling media files for upload</li>\n<li>FastClipMedia: Quick clipping</li>\n<li>RemoveWatermarkTask: Watermark removal</li>",
           "example": "Procedure",
           "member": "string",
           "name": "TaskType",
@@ -11124,6 +11259,15 @@
           "example": "无",
           "member": "SnapshotByTimeOffsetTask2017",
           "name": "SnapshotByTimeOffsetTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The information of a watermark removal task. This parameter is valid only if `TaskType` is `RemoveWatermark`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RemoveWatermarkTask",
+          "name": "RemoveWatermarkTask",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -12200,6 +12344,16 @@
         },
         {
           "default": "",
+          "document": "Watermark removal completion event. This parameter is valid only if `TaskType` is `RemoveWatermark`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "RemoveWatermarkTask",
+          "name": "RemoveWatermarkCompleteEvent",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
           "document": "Callback for video retrieval. This parameter is valid when the event type is `RestoreMediaComplete`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "RestoreMediaTask",
@@ -13135,6 +13289,33 @@
         },
         {
           "default": "",
+          "document": "The ID of the media file’s category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.\n<li>The default value is `0`, which means the “Other” category.</li>\nThis parameter is valid only if `IsPersistence` is `1`.",
+          "example": "无",
+          "member": "int64",
+          "name": "ClassId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The source context, which is used to pass through user request information. The [NewFileUpload](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) callback will return the value of this parameter. It can contain up to 250 characters and is valid only if `IsPersistence` is `1`.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The session context, which is used to pass through user request information. If the `Procedure` parameter is specified, the [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1) callback will return the value of this parameter. It can contain up to 1,000 characters and is valid only if `IsPersistence` is `1`.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "Whether the metadata of clipped video needs to be returned. 0: no, 1: yes. Default value: no.",
           "example": "无",
           "member": "uint64",
@@ -13150,6 +13331,15 @@
           "name": "Host",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The information of the live stream to clip.\n<li>The video clip is cut from the original stream by default.</li>\n<li>If `Type` of `StreamInfo` is set to `Transcoding`, the video clip will be cut from the output stream of the transcoding template specified by `TemplateId`.</li>",
+          "example": "无",
+          "member": "LiveRealTimeClipStreamInfo",
+          "name": "StreamInfo",
+          "required": false,
+          "type": "object"
         },
         {
           "default": "",
@@ -13202,6 +13392,32 @@
         }
       ],
       "type": "object"
+    },
+    "LiveRealTimeClipStreamInfo": {
+      "document": "The information of the live stream to clip.",
+      "members": [
+        {
+          "default": "",
+          "document": "The type of live stream to clip. Valid values:\n<li>Original (<b>default</b>)</li>\n<li>Transcoding</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The transcoding template ID.\n<b>This is required if `Type` is `Transcoding`.</b>",
+          "example": "0",
+          "member": "uint64",
+          "name": "TemplateId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "ManageTaskRequest": {
       "document": "ManageTask request structure.",
@@ -15490,6 +15706,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The TRTC recording information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TrtcRecordInfo",
+          "name": "TrtcRecordInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -20128,6 +20354,225 @@
       ],
       "type": "object"
     },
+    "RemoveWaterMarkTaskInput": {
+      "document": "The input of a watermark removal task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the media file.",
+          "example": "123",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RemoveWaterMarkTaskOutput": {
+      "document": "The output of a watermark removal task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The file ID of the video.",
+          "example": "123",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The metadata of the video, including size, duration, video stream information, and audio stream information.",
+          "example": "null",
+          "member": "MediaMetaData",
+          "name": "MetaData",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RemoveWatermarkRequest": {
+      "document": "RemoveWatermark request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the media file.",
+          "example": "12xxx",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "123",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.",
+          "example": "abc",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.",
+          "example": "demo",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The priority of a task flow. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.",
+          "example": "1",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "This parameter is invalid now.",
+          "example": "Finish",
+          "member": "string",
+          "name": "TasksNotifyMode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveWatermarkResponse": {
+      "document": "RemoveWatermark response structure.",
+      "members": [
+        {
+          "document": "The task ID.",
+          "example": "125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveWatermarkTask": {
+      "document": "The information of a watermark removal task. This parameter is valid only if `TaskType` is `RemoveWatermark`.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task ID.",
+          "example": "125xxx-procedurev2-xxx",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The task flow status. Valid values:\n<li>PROCESSING</li>\n<li>FINISH</li>",
+          "example": "FINISH",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video processing error codes](https://intl.cloud.tencent.com/document/product/266/39145?lang=en&pg=#video-processing).",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code. 0: Successful; other values: Failed.\n<li>40000: Invalid input parameter.</li>\n<li>60000: Source file error (e.g., video data is corrupted).</li>\n<li>70000: Internal server error. Please try again.</li>",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error message.",
+          "example": "“”",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The input of a watermark removal task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "RemoveWaterMarkTaskInput",
+          "name": "Input",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The output of a watermark removal task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "RemoveWaterMarkTaskOutput",
+          "name": "Output",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.",
+          "example": "demo",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.",
+          "example": "demo",
+          "member": "string",
+          "name": "SessionContext",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ResetProcedureTemplateRequest": {
       "document": "ResetProcedureTemplate request structure.",
       "members": [
@@ -20379,6 +20824,52 @@
         }
       ],
       "usage": "out"
+    },
+    "SDMCDrmKeyProviderInfo": {
+      "document": "The DRM key information provided by SDMC.",
+      "members": [
+        {
+          "default": "",
+          "document": "The user ID assigned by SDMC, which can contain up to 128 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "Uid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The secret ID assigned by SDMC, which can contain up to 128 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "SecretId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The secret key assigned by SDMC, which can contain up to 128 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "SecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The URL of the FairPlay certificate issued by SDMC. It must be an HTTPS address and can contain up to 1,024 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "FairPlayCertificateUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "SampleSnapshotTaskInput": {
       "document": "Input parameter type of sampling screencapturing task",
@@ -20716,6 +21207,24 @@
         },
         {
           "default": "",
+          "document": "The TRTC application IDs. Any file that matches one of the application IDs will be returned.\n<li>Array length limit: 10</li>",
+          "example": "无",
+          "member": "uint64",
+          "name": "TrtcSdkAppIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The TRTC room IDs. Any file that matches one of the room IDs will be returned.\n<li>Element length limit: 64 characters.</li>\n<li>Array length limit: 10.</li>",
+          "example": "无",
+          "member": "string",
+          "name": "TrtcRoomIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
           "document": "(This is not recommended. `Names`, `NamePrefixes`, or `Descriptions` should be used instead)\nSearch text, which fuzzily matches the media file name or description. The more matching items and the higher the match rate, the higher-ranked the result. It can contain up to 64 characters.",
           "example": "无",
           "member": "string",
@@ -20831,6 +21340,42 @@
       ],
       "usage": "in"
     },
+    "SetDrmKeyProviderInfoRequest": {
+      "document": "SetDrmKeyProviderInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The DRM key information provided by SDMC.",
+          "example": "无",
+          "member": "SDMCDrmKeyProviderInfo",
+          "name": "SDMCInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "SetDrmKeyProviderInfoResponse": {
+      "document": "SetDrmKeyProviderInfo response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "SimpleHlsClipRequest": {
       "document": "SimpleHlsClip request structure.",
       "members": [
@@ -20878,6 +21423,51 @@
           "name": "IsPersistence",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The expiration time of the video clip that is to be saved, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). `9999-12-31T23:59:59Z` is the default value, which means the video clip will never expire. After expiration, the media file and its related resources (such as transcoding results and image sprites) will be permanently deleted. This parameter is valid only if `IsPersistence` is 1.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The task flow to execute on the video clipped for persistent storage. For details, see [Upload from Server](https://intl.cloud.tencent.com/document/product/266/33912). This parameter is valid only if `IsPersistence` is 1.",
+          "example": "无",
+          "member": "string",
+          "name": "Procedure",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The ID of the media file’s category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.\n<li>The default value is `0`, which means the “Other” category.</li>\nThis parameter is valid only if `IsPersistence` is `1`.",
+          "example": "无",
+          "member": "int64",
+          "name": "ClassId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The source context, which is used to pass through user request information. The [NewFileUpload](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) callback will return the value of this parameter. It can contain up to 250 characters and is valid only if `IsPersistence` is `1`.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The session context, which is used to pass through user request information. If the `Procedure` parameter is specified, the [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1) callback will return the value of this parameter. It can contain up to 1,000 characters and is valid only if `IsPersistence` is `1`.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -20887,22 +21477,37 @@
       "members": [
         {
           "document": "Address of clipped video.",
+          "example": "http://xxxxx.vod2.myqcloud.com/xxxxx/aaaaaa/10_50.m3u8",
           "member": "string",
           "name": "Url",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Metadata of clipped video. Currently, `Size`, `Rotate`, `VideoDuration`, and `AudioDuration` fields use default value with no actual data.",
+          "example": "无",
           "member": "MediaMetaData",
           "name": "MetaData",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "document": "Unique ID of a video clip for persistent storage.",
+          "example": "无",
           "member": "string",
           "name": "FileId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The ID of the task flow to execute on the video clipped for persistent storage.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -21684,6 +22289,32 @@
         }
       ],
       "usage": "out"
+    },
+    "SubtitleFormatsOperation": {
+      "document": "The modification of the subtitle format list.",
+      "members": [
+        {
+          "default": "",
+          "document": "The modification type. Valid values:\n<li>add: Add the formats specified by `Formats`.</li>\n<li>delete: Delete the formats specified by `Formats`.<l/i>\n<li>reset: Reset the format list to formats specified by `Formats`.</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The subtitle format list. Valid values:\n<li>vtt</li>\n<li>srt</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Formats",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "SvgWatermarkInput": {
       "document": "Input parameter of SVG watermarking template",
@@ -22730,6 +23361,52 @@
         }
       ],
       "usage": "both"
+    },
+    "TrtcRecordInfo": {
+      "document": "The TRTC recording information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The TRTC application ID.",
+          "example": "无",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The TRTC room ID.",
+          "example": "无",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The recording task ID.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The IDs of users whose streams are mixed.",
+          "example": "无",
+          "member": "string",
+          "name": "UserIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "UrlSignatureAuthPolicy": {
       "document": "Key hotlink protection information for generating the signature",

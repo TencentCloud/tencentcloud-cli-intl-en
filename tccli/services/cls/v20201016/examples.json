@@ -43,7 +43,7 @@
     "CreateConsumer": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateConsumer\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\",\n    \"Ckafka\": {\n        \"Vip\": \"10.123.123.123\",\n        \"Vport\": \"8888\",\n        \"InstanceId\": \"xxxxx\",\n        \"InstanceName\": \"myname\",\n        \"TopicId\": \"xxxxx\",\n        \"TopicName\": \"xxxxx\"\n    },\n    \"Content\": {\n        \"EnableTag\": true,\n        \"MetaFields\": [\n            \"__SOURCE__\"\n        ]\n    },\n    \"NeedContent\": true\n}",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateConsumer\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\",\n    \"Ckafka\": {\n        \"Vip\": \"10.123.123.123\",\n        \"Vport\": \"8888\",\n        \"InstanceId\": \"xxxxx\",\n        \"InstanceName\": \"myname\",\n        \"TopicId\": \"xxxxx\",\n        \"TopicName\": \"xxxxx\"\n    },\n    \"Content\": {\n        \"EnableTag\": true,\n        \"MetaFields\": [\n            \"__SOURCE__\"\n        ]\n    },\n    \"NeedContent\": true,\n    \"Compression\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\"\n    }\n}",
         "title": "Creating a shipping task"
       }
@@ -220,7 +220,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConsumer\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\",\n        \"Effective\": true,\n        \"Ckafka\": {\n            \"Vip\": \"10.123.123.123\",\n            \"Vport\": \"8888\",\n            \"InstanceId\": \"xxxxx\",\n            \"InstanceName\": \"myname\",\n            \"TopicId\": \"xxxxx\",\n            \"TopicName\": \"xxxxx\"\n        },\n        \"Content\": {\n            \"EnableTag\": true,\n            \"MetaFields\": [\n                \"__SOURCE__\"\n            ]\n        },\n        \"NeedContent\": true\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\",\n        \"Effective\": true,\n        \"Ckafka\": {\n            \"Vip\": \"10.123.123.123\",\n            \"Vport\": \"8888\",\n            \"InstanceId\": \"xxxxx\",\n            \"InstanceName\": \"myname\",\n            \"TopicId\": \"xxxxx\",\n            \"TopicName\": \"xxxxx\"\n        },\n        \"Content\": {\n            \"EnableTag\": true,\n            \"MetaFields\": [\n                \"__SOURCE__\"\n            ]\n        },\n        \"NeedContent\": true,\n        \"Compression\": 0\n    }\n}",
         "title": "Querying a shipping task"
       }
     ],
@@ -363,7 +363,7 @@
     "ModifyConsumer": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyConsumer\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\",\n    \"Effective\": true,\n    \"Ckafka\": {\n        \"Vip\": \"10.123.123.123\",\n        \"Vport\": \"8888\",\n        \"InstanceId\": \"xxxxx\",\n        \"InstanceName\": \"myname\",\n        \"TopicId\": \"xxxxx\",\n        \"TopicName\": \"xxxxx\"\n    },\n    \"Content\": {\n        \"EnableTag\": true,\n        \"MetaFields\": [\n            \"__SOURCE__\"\n        ]\n    },\n    \"NeedContent\": true\n}",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyConsumer\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\",\n    \"Effective\": true,\n    \"Ckafka\": {\n        \"Vip\": \"10.123.123.123\",\n        \"Vport\": \"8888\",\n        \"InstanceId\": \"xxxxx\",\n        \"InstanceName\": \"myname\",\n        \"TopicId\": \"xxxxx\",\n        \"TopicName\": \"xxxxx\"\n    },\n    \"Content\": {\n        \"EnableTag\": true,\n        \"MetaFields\": [\n            \"__SOURCE__\"\n        ]\n    },\n    \"NeedContent\": true,\n    \"Compression\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60xxx-0xxx-4xxx-bxxx-270359fb5xxx\"\n    }\n}",
         "title": "Modifying a shipping task"
       }

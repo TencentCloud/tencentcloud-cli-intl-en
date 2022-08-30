@@ -84,6 +84,12 @@
       "name": "Pulls SMS delivery status for one single number",
       "output": "PullSmsSendStatusByPhoneNumberResponse"
     },
+    "ReportConversion": {
+      "document": "This API is used to report the SMS conversion rate (SMS conversion rate = the number of returned verification codes / the number of verification codes sent) and report the serial numbers of received SMS messages to Tencent Cloud SMS.\n>- Note: To call this API, you need to be added to the allowlist first. If you have any questions, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
+      "input": "ReportConversionRequest",
+      "name": "Reports the SMS conversion rate",
+      "output": "ReportConversionResponse"
+    },
     "SendSms": {
       "document": "This API is used to send SMS verification codes, notification, or marketing messages to users.\n>- Note: Because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the [SDK](https://intl.cloud.tencent.com/document/product/382/43193?from_cn_redirect=1).\n>- Note: You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n>- Note: This API is currently on the 2021-01-11 version. If you are still using the [2019-07-11 version](https://intl.cloud.tencent.com/document/product/382/38778?from_cn_redirect=1), we recommend you use this latest version. For version differences, see [Version description](https://intl.cloud.tencent.com/document/product/382/63195?from_cn_redirect=1#.E7.89.88.E6.9C.AC.E6.8F.8F.E8.BF.B0).",
       "input": "SendSmsRequest",
@@ -1582,6 +1588,86 @@
       ],
       "type": "object"
     },
+    "ReportConversionRequest": {
+      "document": "ReportConversion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The SMS SdkAppId generated after an application is created in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as “1400006666”.",
+          "example": "1400000001",
+          "member": "string",
+          "name": "SmsSdkAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The serial number returned for a message sent.",
+          "example": "5000:1045710669157053657849499619",
+          "member": "string",
+          "name": "SerialNo",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The recipient’s reply time in seconds in the format of UNIX timestamp.",
+          "example": "1357702710187",
+          "member": "uint64",
+          "name": "ConversionTime",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ReportConversionResponse": {
+      "document": "ReportConversion response structure.",
+      "members": [
+        {
+          "document": "Response packet for conversion rate reporting.",
+          "example": "无",
+          "member": "ReportConversionStatus",
+          "name": "ReportConversionStatus",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReportConversionStatus": {
+      "document": "Response for conversion rate reporting",
+      "members": [
+        {
+          "default": "",
+          "document": "Error code. `ok` is returned if the conversion rate is successfully reported.",
+          "example": "ok",
+          "member": "string",
+          "name": "Code",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Error code description.",
+          "example": "report success",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SendSmsRequest": {
       "document": "SendSms request structure.",
       "members": [
@@ -1605,7 +1691,7 @@
         },
         {
           "default": "",
-          "document": "Template ID. You must enter the ID of an approved template, which can be viewed on the [Chinese Mainland SMS](https://console.cloud.tencent.com/smsv2/csms-template) or [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template) body template management page. If you need to send SMS messages to global mobile numbers, you can only use a Global SMS template.",
+          "document": "Template ID, which can be viewed on the **Body Templates** page in [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template). You must enter the ID of an approved template.",
           "example": "1234",
           "member": "string",
           "name": "TemplateId",
@@ -1614,7 +1700,7 @@
         },
         {
           "default": "",
-          "document": "Content of the SMS signature, which should be encoded in UTF-8. You must enter an approved signature, such as Tencent Cloud. The signature information can be viewed on the [Chinese Mainland SMS](https://console.cloud.tencent.com/smsv2/csms-sign) or [Global SMS](https://console.cloud.tencent.com/smsv2/isms-sign) signature management page.\n<dx-alert infotype=\"notice\" title=\"Note\">This parameter is required for Chinese Mainland SMS.</dx-alert>",
+          "document": "SMS signature information which is encoded in UTF-8. You must enter an approved signature (such as Tencent Cloud). The signing information can be viewed on the **Signatures** page in [Global SMS](https://console.cloud.tencent.com/smsv2/isms-sign).",
           "example": "腾讯云",
           "member": "string",
           "name": "SignName",
@@ -1650,7 +1736,7 @@
         },
         {
           "default": "",
-          "document": "This parameter is not required for Chinese Mainland SMS. For Global SMS, if you have applied for a separate `SenderId`, this parameter is required. By default, the public `SenderId` is used, in which case you don't need to enter this parameter.\nNote: if your monthly usage reaches the specified threshold, you can apply for an independent `SenderId`. For more information, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
+          "document": "For Global SMS, if you have applied for a separate `SenderId`, this parameter is required. By default, the public `SenderId` is used, in which case you don't need to enter this parameter.\nNote: If your monthly usage reaches the specified threshold, you can apply for an independent `SenderId`. For more information, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
           "example": "test",
           "member": "string",
           "name": "SenderId",

@@ -43,7 +43,7 @@
     "CreateDBInstances": [
       {
         "document": "",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=CreateDBInstances\n&Zone=ap-guangzhou-1\n&Memory=2\n&Storage=100\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDBInstances\n<Common request parameters>\n\n{\n    \"Collation\": \"Chinese_PRC_CI_AS\",\n    \"TimeZone\": \"China Standard Time\",\n    \"Storage\": 100,\n    \"Zone\": \"ap-guangzhou-1\",\n    \"Memory\": \"2\"\n}",
         "output": "{\n    \"Response\": {\n        \"DealName\": \"20200318114212\",\n        \"DealNames\": [\n            \"20200318114212\"\n        ],\n        \"RequestId\": \"2b6f7e2a-e909-4753-84b7-0db3e6099877\"\n    }\n}",
         "title": "Creating an instance"
       }

@@ -1100,7 +1100,7 @@
         },
         {
           "default": "",
-          "document": "List of metadata to ship. Only \\_\\_SOURCE\\_\\_, \\_\\_FILENAME\\_\\_, and \\_\\_TIMESTAMP\\_\\_ are supported.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List of metadata to ship. Supported metadata types: \\_\\_SOURCE\\_\\_, \\_\\_FILENAME\\_\\_, \\_\\_TIMESTAMP\\_\\_, \\_\\_HOSTNAME\\_\\_, and \\_\\_PKGID\\_\\_.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{\"__SOURCE__\", \"__FILENAME__\", \"__TIMESTAMP__\"}",
           "member": "string",
           "name": "MetaFields",
@@ -1494,6 +1494,15 @@
           "name": "Ckafka",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Compression mode. Valid values: `0` (no compression), `2` (snappy), `3` (LZ4).",
+          "example": "0",
+          "member": "int64",
+          "name": "Compression",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2654,6 +2663,15 @@
           "required": true,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "Compression mode. Valid values: `0` (no compression), `2` (snappy), `3` (LZ4).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Compression",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4947,6 +4965,15 @@
           "name": "Ckafka",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Compression mode. Valid values: `0` (no compression), `2` (snappy), `3` (LZ4).",
+          "example": "0",
+          "member": "int64",
+          "name": "Compression",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"

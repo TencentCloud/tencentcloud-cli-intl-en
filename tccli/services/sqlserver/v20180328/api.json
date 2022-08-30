@@ -1165,6 +1165,7 @@
         {
           "default": "",
           "document": "Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API",
+          "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -1173,6 +1174,7 @@
         {
           "default": "",
           "document": "Instance memory size in GB",
+          "example": "2",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -1181,6 +1183,7 @@
         {
           "default": "",
           "document": "Instance storage capacity in GB",
+          "example": "100",
           "member": "int64",
           "name": "Storage",
           "required": true,
@@ -1189,6 +1192,7 @@
         {
           "default": "",
           "document": "Billing mode. Valid value: POSTPAID (pay-as-you-go).",
+          "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
           "required": false,
@@ -1197,6 +1201,7 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "1003",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -1205,6 +1210,7 @@
         {
           "default": "",
           "document": "Number of instances purchased this time. Default value: 1. Maximum value: 10",
+          "example": "1",
           "member": "int64",
           "name": "GoodsNum",
           "required": false,
@@ -1213,6 +1219,7 @@
         {
           "default": "",
           "document": "VPC subnet ID in the format of subnet-bdoe83fa. `SubnetId` and `VpcId` should be set or ignored simultaneously",
+          "example": "subnet-bdoe83fa",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -1221,6 +1228,7 @@
         {
           "default": "",
           "document": "VPC ID in the format of vpc-dsp338hz. `SubnetId` and `VpcId` should be set or ignored simultaneously",
+          "example": "vpc-dsp338hz",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -1229,6 +1237,7 @@
         {
           "default": "",
           "document": "Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48",
+          "example": "1",
           "member": "int64",
           "name": "Period",
           "required": false,
@@ -1237,6 +1246,7 @@
         {
           "default": "",
           "document": "Whether to automatically use voucher. 0: no, 1: yes. Default value: no",
+          "example": "0",
           "member": "int64",
           "name": "AutoVoucher",
           "required": false,
@@ -1245,6 +1255,7 @@
         {
           "default": "",
           "document": "Array of voucher IDs (currently, only one voucher can be used per order)",
+          "example": "xxxxx",
           "member": "string",
           "name": "VoucherIds",
           "required": false,
@@ -1253,6 +1264,7 @@
         {
           "default": "",
           "document": "SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). The version purchasable varies by region and can be queried by calling the `DescribeProductConfig` API. If this parameter is left empty, 2008R2 will be used by default.",
+          "example": "2008R2",
           "member": "string",
           "name": "DBVersion",
           "required": false,
@@ -1261,6 +1273,7 @@
         {
           "default": "",
           "document": "Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.",
+          "example": "0",
           "member": "int64",
           "name": "AutoRenewFlag",
           "required": false,
@@ -1269,6 +1282,7 @@
         {
           "default": "",
           "document": "Security group list, which contains security group IDs in the format of sg-xxx.",
+          "example": "sg-xxxx",
           "member": "string",
           "name": "SecurityGroupList",
           "required": false,
@@ -1277,6 +1291,7 @@
         {
           "default": "",
           "document": "Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).",
+          "example": "1",
           "member": "int64",
           "name": "Weekly",
           "required": false,
@@ -1285,6 +1300,7 @@
         {
           "default": "",
           "document": "Configuration of the maintenance window, which specifies the start time of daily maintenance.",
+          "example": "2020-04-09 00:00:00",
           "member": "string",
           "name": "StartTime",
           "required": false,
@@ -1293,6 +1309,7 @@
         {
           "default": "",
           "document": "Configuration of the maintenance window, which specifies the maintenance duration in hours.",
+          "example": "2",
           "member": "int64",
           "name": "Span",
           "required": false,
@@ -1301,6 +1318,7 @@
         {
           "default": "",
           "document": "The type of purchased high-availability instance. Valid values: DUAL (dual-server high availability), CLUSTER (cluster). Default value: DUAL.",
+          "example": "DUAL",
           "member": "string",
           "name": "HAType",
           "required": false,
@@ -1309,6 +1327,7 @@
         {
           "default": "",
           "document": "Whether to deploy across availability zones. Default value: false.",
+          "example": "ture",
           "member": "bool",
           "name": "MultiZones",
           "required": false,
@@ -1317,10 +1336,29 @@
         {
           "default": "",
           "document": "Tags associated with the instances to be created",
+          "example": "无",
           "member": "ResourceTag",
           "name": "ResourceTags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.",
+          "example": "Chinese_PRC_CI_AS",
+          "member": "string",
+          "name": "Collation",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "System time zone. Default value: `China Standard Time`.",
+          "example": "China Standard Time",
+          "member": "string",
+          "name": "TimeZone",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2192,7 +2230,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.",
           "example": "Chinese_PRC_CI_AS",
           "member": "string",
           "name": "Collation",
@@ -2202,7 +2240,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "System time zone. Default value: `China Standard Time`.",
           "example": "China Standard Time",
           "member": "string",
           "name": "TimeZone",
