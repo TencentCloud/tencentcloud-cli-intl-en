@@ -1902,7 +1902,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The information of watermarks to add.\nNotes:\n1. You can add up to four watermarks to different locations of the video.\n2. Make sure you use publicly accessible URLs for the watermark images.\n3. Supported image formats include PNG, JPG, and GIF.",
           "example": "无",
           "member": "PullPushWatermarkInfo",
           "name": "WatermarkList",
@@ -7419,6 +7419,15 @@
           "name": "BackupSourceUrl",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The information of watermarks to add.\nNotes:\n1. You can add up to four watermarks to different locations of the video.\n2. Make sure you use publicly accessible URLs for the watermark images.\n3. Supported image formats include PNG and JPG.\n4. If you change the watermark configuration of a task whose source is a list of video files, the new configuration will take effect for the next file in the list.\n5. If you change the watermark configuration of a task whose source is a live stream, the new configuration will take effect immediately.\n6. If you want to stop using watermarks, pass in an empty array.\n7. Currently, animated watermarks are not supported.",
+          "example": "无",
+          "member": "PullPushWatermarkInfo",
+          "name": "WatermarkList",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -8181,20 +8190,12 @@
       "usage": "out"
     },
     "PullPushWatermarkInfo": {
-      "document": "Watermark information\n",
+      "document": "The watermark configuration for a relay task.",
       "members": [
         {
           "default": "",
-          "document": "Watermark ID.",
-          "member": "int64",
-          "name": "WatermarkId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Watermark image URL.",
+          "document": "The watermark image URL.\nCharacters not allowed:\n;(){}$>`#\"'|",
+          "example": "http://xxx.gifshow/pic.jpg",
           "member": "string",
           "name": "PictureUrl",
           "required": true,
@@ -8203,7 +8204,8 @@
         },
         {
           "default": "",
-          "document": "Display position: X-axis offset.",
+          "document": "The horizontal offset (%) of the watermark. The default value is 0.",
+          "example": "0",
           "member": "int64",
           "name": "XPosition",
           "required": true,
@@ -8212,7 +8214,8 @@
         },
         {
           "default": "",
-          "document": "Display position: Y-axis offset.",
+          "document": "The vertical offset (%) of the watermark. The default value is 0.",
+          "example": "0",
           "member": "int64",
           "name": "YPosition",
           "required": true,
@@ -8221,34 +8224,8 @@
         },
         {
           "default": "",
-          "document": "Watermark name.",
-          "member": "string",
-          "name": "WatermarkName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Current status. 0: not used. 1: in use.",
-          "member": "int64",
-          "name": "Status",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Creation time.",
-          "member": "string",
-          "name": "CreateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Watermark width",
+          "document": "The watermark width as a percentage of the video width. To avoid distorted images, we recommend you specify only the width or height so that the other side can be scaled proportionally. By default, the original width of the watermark image is used.",
+          "example": "100",
           "member": "int64",
           "name": "Width",
           "required": true,
@@ -8257,9 +8234,20 @@
         },
         {
           "default": "",
-          "document": "Watermark height",
+          "document": "The watermark height as a percentage of the video height. To avoid distorted images, we recommend you specify only the width or height so that the other side can be scaled proportionally. By default, the original height of the watermark image is used.",
+          "example": "100",
           "member": "int64",
           "name": "Height",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The origin. The default value is 0.\n0: Top left corner\n1: Top right corner\n2: Bottom right corner\n3: Bottom left corner",
+          "example": "0",
+          "member": "int64",
+          "name": "Location",
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -8499,6 +8487,36 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The backup source type. Valid values:\nPullLivePushLive: Live streaming\nPullVodPushLive: Video files\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "PullLivePushLive",
+          "member": "string",
+          "name": "BackupSourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The URL of the backup source.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "http://test.domain/live/test.flv?txSecret=xx&txTime=xxx",
+          "member": "string",
+          "name": "BackupSourceUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The information of watermarks to add.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PullPushWatermarkInfo",
+          "name": "WatermarkList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

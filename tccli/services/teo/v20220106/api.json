@@ -2736,7 +2736,7 @@
         },
         {
           "default": "",
-          "document": "Subdomain name. You can use @ to represent the root domain.",
+          "document": "Subdomain name",
           "example": "loadbalancing.123.com",
           "member": "string",
           "name": "Host",
@@ -3039,6 +3039,15 @@
           "name": "JumpStart",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Resource tag",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -9033,7 +9042,7 @@
           "name": "OriginalNameServers",
           "required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "List of name servers assigned to users by Tencent Cloud\nNote: This field may return `null`, indicating that no valid value can be obtained.",
@@ -9042,7 +9051,7 @@
           "name": "NameServers",
           "required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "Site status\n- `active`: The name server is switched.\n- `pending`: The name server is not switched.\n- `moved`: The name server is moved.\n- `deactivated`: The name server is blocked.",
@@ -9072,19 +9081,64 @@
           "value_allowed_null": false
         },
         {
-          "document": "Site creation date",
-          "example": "2014-08-03T12:00:00+08:00",
-          "member": "datetime_iso",
-          "name": "CreatedOn",
+          "document": "Specifies whether to enable CNAME acceleration\n- `enabled`: Enable\n- `disabled`: Disable",
+          "example": "disabled",
+          "member": "string",
+          "name": "CnameSpeedUp",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "Ownership verification status of the site when it accesses via CNAME.\n- `finished`: The site is verified.\n- `pending`: The site is waiting for verification.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "pending",
+          "member": "string",
+          "name": "CnameStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Resource tag\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "overseas",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Billable resource\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Resource",
+          "name": "Resources",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "Site modification date",
           "example": "2014-08-03T12:00:00+08:00",
           "member": "datetime_iso",
           "name": "ModifiedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Site creation date",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "CreatedOn",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9105,24 +9159,6 @@
           "name": "VanityNameServersIps",
           "required": true,
           "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Specifies whether to enable CNAME acceleration\n- `enabled`: Enable\n- `disabled`: Disable",
-          "example": "disabled",
-          "member": "string",
-          "name": "CnameSpeedUp",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Ownership verification status of the site when it accesses via CNAME.\n- `finished`: The site is verified.\n- `pending`: The site is waiting for verification.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "pending",
-          "member": "string",
-          "name": "CnameStatus",
-          "required": true,
-          "type": "string",
           "value_allowed_null": true
         },
         {
@@ -13017,6 +13053,112 @@
       ],
       "type": "object"
     },
+    "Resource": {
+      "document": "Billable resource",
+      "members": [
+        {
+          "default": "",
+          "document": "Resource ID",
+          "example": "edgeone-xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billing mode\n`0`: Pay-as-you-go",
+          "example": "0",
+          "member": "int64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Effective time",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "EnableTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Expiration time",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status of the plan",
+          "example": "normal",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Pricing query parameter",
+          "example": "无",
+          "member": "Sv",
+          "name": "Sv",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable auto-renewal\n`0`: Default\n`1`: Enable auto-renewal\n`2`: Disable auto-renewal",
+          "example": "1",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the plan",
+          "example": "edgeone-xxx",
+          "member": "string",
+          "name": "PlanId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "mainland",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ScanDnsRecordsRequest": {
       "document": "ScanDnsRecords request structure.",
       "members": [
@@ -13444,6 +13586,32 @@
       ],
       "usage": "both"
     },
+    "Sv": {
+      "document": "Pricing query parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter key",
+          "example": "sv_xxx",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter value",
+          "example": "1",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SwitchConfig": {
       "document": "Web security configuration switch",
       "members": [
@@ -13456,6 +13624,32 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Tag": {
+      "document": "Tag configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tag value\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -14244,7 +14438,7 @@
         {
           "default": "",
           "document": "Site ID",
-          "example": "zone-xxxxx",
+          "example": "zone-27q0p0bali16",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -14254,7 +14448,7 @@
         {
           "default": "",
           "document": "Site name",
-          "example": "test.com",
+          "example": "example.com",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -14264,7 +14458,7 @@
         {
           "default": "",
           "document": "List of name servers used by the site",
-          "example": "test1.com,test2.com",
+          "example": "[\"ns1.example.com.\",\"ns2.example.com.\"]",
           "member": "string",
           "name": "OriginalNameServers",
           "required": true,
@@ -14274,7 +14468,7 @@
         {
           "default": "",
           "document": "List of name servers assigned by Tencent Cloud",
-          "example": "无",
+          "example": "[\"ns1.teodns.com.\",\"\"ns2.teodns.com.\"]",
           "member": "string",
           "name": "NameServers",
           "required": true,
@@ -14313,6 +14507,46 @@
         },
         {
           "default": "",
+          "document": "Specifies whether to enable CNAME acceleration\n- `enabled`: Enable\n- `disabled`: Disable\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CnameSpeedUp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Ownership verification status of the site when it is connected to EdgeOne via CNAME.\n- `finished`: The site is verified.\n- `pending`: Verifying the ownership of the site.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "finished",
+          "member": "string",
+          "name": "CnameStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Resource tag\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billable resource\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "Resource",
+          "name": "Resources",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Site creation date",
           "example": "无",
           "member": "datetime_iso",
@@ -14333,13 +14567,13 @@
         },
         {
           "default": "",
-          "document": "Ownership verification status of the site when it is connected to EdgeOne via CNAME.\n- `finished`: The site is verified.\n- `pending`: Verifying the ownership of the site.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "finished",
+          "document": "",
+          "example": "overseas",
           "member": "string",
-          "name": "CnameStatus",
+          "name": "Area",
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -14349,7 +14583,7 @@
       "members": [
         {
           "default": "",
-          "document": "Filters by the field name. Vaules:\n- `name`: Site name.\n- `status`: Site status.",
+          "document": "Filters by the field name. Vaules:\n- `name`: Site name.\n- `status`: Site status.\n- `tagKey`: Tag key.\n- `tagValue`: Tag value.",
           "example": "name",
           "member": "string",
           "name": "Name",
@@ -14360,7 +14594,7 @@
         {
           "default": "",
           "document": "Filters by the field value",
-          "example": "test.com",
+          "example": "[\"test.com\"]",
           "member": "string",
           "name": "Values",
           "required": true,

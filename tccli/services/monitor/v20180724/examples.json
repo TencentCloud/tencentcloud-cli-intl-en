@@ -16,6 +16,14 @@
         "title": "Binding policy object"
       }
     ],
+    "CleanGrafanaInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CleanGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"my-grafana\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\"\n    }\n}",
+        "title": "Forcibly terminating a Grafana instance"
+      }
+    ],
     "CreateAlarmNotice": [
       {
         "document": "",
@@ -44,8 +52,32 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateExporterIntegration\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-1\",\n    \"KubeType\": 3,\n    \"ClusterId\": \"cls-xx\",\n    \"Kind\": \"blackbox-exporter\",\n    \"Content\": \"{\\\"name\\\":\\\"test\\\",\\\"kind\\\":\\\"blackbox-exporter\\\",\\\"spec\\\":{\\\"instanceSpec\\\":{\\\"module\\\":\\\"http_get\\\",\\\"urls\\\":[\\\"xx\\\"]}}}\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Names\": [\n            \"redis-exporter\"\n        ],\n        \"RequestId\": \"wpkysykx8k9tu1urmlyo54gq33f4kxwz\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Names\": [\n            \"redis-exporter\"\n        ],\n        \"RequestId\": \"xyz\"\n    }\n}",
         "title": "Creating an exporter integration"
+      }
+    ],
+    "CreateGrafanaInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGrafanaInstance\n<Common request parameters>\n\n{\n    \"SubnetIds\": [\n        \"xx\"\n    ],\n    \"VpcId\": \"xx\",\n    \"InstanceName\": \"xx\",\n    \"GrafanaInitPassword\": \"test\",\n    \"EnableInternet\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceId\": \"grafana-c1enzs01\",\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\"\n    }\n}",
+        "title": "Creating a Grafana instance"
+      }
+    ],
+    "CreateGrafanaIntegration": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGrafanaIntegration\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Content\": \"xx\",\n    \"Kind\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Creating a Grafana integration configuration"
+      }
+    ],
+    "CreateGrafanaNotificationChannel": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGrafanaNotificationChannel\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"ChannelName\": \"xx\",\n    \"OrgId\": 0,\n    \"Receivers\": [\n        \"xx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Creating a Grafana notification channel"
       }
     ],
     "CreatePolicyGroup": [
@@ -84,8 +116,16 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRecordingRule\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-xxxxsfds\",\n    \"RuleState\": \"2\",\n    \"Group\": \"LS0tDQpuYW1lOiBleGFtcGxlDQpydWxlczoNCiAgLSByZWNvcmQ6IGpvYjpodHRwX2lucHJvZ3Jlc3NfcmVxdWVzdHM6c3VtDQogICAgZXhwcjogc3VtIGJ5IChqb2IpIChodHRwX2lucHJvZ3Jlc3NfcmVxdWVzdHMp\",\n    \"Name\": \"1\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"69wmlimeh2g7qijbpr469yw8p17kn8ur\",\n        \"RuleId\": \"rrule-fzhp4p7c\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xyz\",\n        \"RuleId\": \"rrule-xyz\"\n    }\n}",
         "title": "Creating a recording rule"
+      }
+    ],
+    "CreateSSOAccount": [
+      {
+        "document": "This example shows you how to authorize a Grafana instance to another Tencent Cloud user.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSSOAccount\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"UserId\": \"100000000\",\n    \"Role\": [\n        {\n            \"Organization\": \"Org\",\n            \"Role\": \"Admin\"\n        }\n    ],\n    \"Notes\": \"Authorize this user\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"qmunlpf51noe13qp5vyvg7mq5t4t4w6u\"\n    }\n}",
+        "title": "Authorizing another Tencent Cloud user"
       }
     ],
     "CreateServiceDiscovery": [
@@ -124,8 +164,32 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteExporterIntegration\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-1\",\n    \"KubeType\": 3,\n    \"ClusterId\": \"cls-xx\",\n    \"Kind\": \"mysql-exporter\",\n    \"Name\": \"test\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"wpkysykx8k9tu1urmlyo54gq33f4kxwz\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xyz\"\n    }\n}",
         "title": "DeleteExporterIntegration"
+      }
+    ],
+    "DeleteGrafanaInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceIDs\": [\n        \"grafana-abcdefgh\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Deleting the specified instance"
+      }
+    ],
+    "DeleteGrafanaIntegration": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteGrafanaIntegration\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"IntegrationId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Deleting a Grafana integration configuration"
+      }
+    ],
+    "DeleteGrafanaNotificationChannel": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteGrafanaNotificationChannel\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"ChannelIDs\": [\n        \"xx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Deleting a Grafana notification channel"
       }
     ],
     "DeletePolicyGroup": [
@@ -147,9 +211,17 @@
     "DeleteRecordingRules": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRecordingRules\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-xxxerwer\",\n    \"RuleIds\": [\n        \"rrule-m74lrt6g\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ljynf9quqfeko5pwcr24llmhy9rspzye\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRecordingRules\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-xxxerwer\",\n    \"RuleIds\": [\n        \"rrule-xyz\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xyz\"\n    }\n}",
         "title": "Deleting recording rules"
+      }
+    ],
+    "DeleteSSOAccount": [
+      {
+        "document": "This example shows you how to delete an authorized TCMG user.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteSSOAccount\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"UserId\": \"100000000\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"qmunlpf51noe13qp5vyvg7mq5t4t4w6u\"\n    }\n}",
+        "title": "DeleteSSOAccount"
       }
     ],
     "DescribeAccidentEventList": [
@@ -248,7 +320,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAllNamespaces\n<Common request parameters>\n\n{\n    \"Module\": \"monitor\",\n    \"MonitorTypes\": [\n        \"MT_QCE\"\n    ],\n    \"SceneType\": \"ST_ALARM\"\n}",
-        "output": "{\n    \"Response\": {\n        \"QceNamespaces\": {\n            \"Id\": \"\",\n            \"Name\": \"\",\n            \"ProductName\": \"\",\n            \"Value\": \"\",\n            \"Config\": \"\",\n            \"AvailableRegions\": [],\n            \"DashboardId\": \"\",\n            \"SortId\": 0\n        },\n        \"QceNamespacesNew\": [\n            {\n                \"Id\": \"xxxxxxx\",\n                \"Name\": \"Direct Connect - dedicated tunnel\",\n                \"ProductName\": \"Direct Connect - dedicated tunnel\",\n                \"Value\": \"qce/dcx\",\n                \"Config\": \"……\",\n                \"AvailableRegions\": [\n                    \"gz\",\n                    \"sh\"\n                ],\n                \"DashboardId\": \"dcchannel\",\n                \"SortId\": 500\n            }\n        ],\n        \"CustomNamespaces\": {\n            \"Id\": \"\",\n            \"Name\": \"\",\n            \"ProductName\": \"\",\n            \"Value\": \"\",\n            \"Config\": \"\",\n            \"AvailableRegions\": [],\n            \"DashboardId\": \"\",\n            \"SortId\": 0\n        },\n        \"CustomNamespacesNew\": [\n            {\n                \"Id\": \"=wenlong_sidecar\",\n                \"Name\": \"=wenlong_sidecar\",\n                \"ProductName\": \"=wenlong_sidecar\",\n                \"Value\": \"=wenlong_sidecar\",\n                \"Config\": \"\",\n                \"AvailableRegions\": [],\n                \"DashboardId\": \"=wenlong_sidecar\",\n                \"SortId\": 0\n            }\n        ],\n        \"RequestId\": \"d96ec542-6547-4af2-91ac-fee85c1b8b85\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"QceNamespaces\": {\n            \"Id\": \"\",\n            \"Name\": \"\",\n            \"ProductName\": \"\",\n            \"Value\": \"\",\n            \"Config\": \"\",\n            \"AvailableRegions\": [],\n            \"DashboardId\": \"\",\n            \"SortId\": 0\n        },\n        \"QceNamespacesNew\": [\n            {\n                \"Id\": \"xxxxxxx\",\n                \"Name\": \"Direct Connect - dedicated tunnel\",\n                \"ProductName\": \"Direct Connect - dedicated tunnel\",\n                \"Value\": \"qce/dcx\",\n                \"Config\": \"...\",\n                \"AvailableRegions\": [\n                    \"gz\",\n                    \"sh\"\n                ],\n                \"DashboardId\": \"dcchannel\",\n                \"SortId\": 500\n            }\n        ],\n        \"CustomNamespaces\": {\n            \"Id\": \"\",\n            \"Name\": \"\",\n            \"ProductName\": \"\",\n            \"Value\": \"\",\n            \"Config\": \"\",\n            \"AvailableRegions\": [],\n            \"DashboardId\": \"\",\n            \"SortId\": 0\n        },\n        \"CustomNamespacesNew\": [\n            {\n                \"Id\": \"=wenlong_sidecar\",\n                \"Name\": \"=wenlong_sidecar\",\n                \"ProductName\": \"=wenlong_sidecar\",\n                \"Value\": \"=wenlong_sidecar\",\n                \"Config\": \"\",\n                \"AvailableRegions\": [],\n                \"DashboardId\": \"=wenlong_sidecar\",\n                \"SortId\": 0\n            }\n        ],\n        \"CommonNamespaces\": [\n            {\n                \"Id\": \"performance_metric\",\n                \"MonitorType\": \"MT_TAW\",\n                \"Name\": \"Performance metric\",\n                \"Dimensions\": []\n            }\n        ],\n        \"RequestId\": \"d96ec542-6547-4af2-91ac-fee85c1b8b85\"\n    }\n}",
         "title": "Getting all namespaces"
       }
     ],
@@ -269,9 +341,9 @@
     "DescribeBasicAlarmList": [
       {
         "document": "",
-        "input": "https://monitor.tencentcloudapi.com/?Action=DescribeBasicAlarmList\r\n&Module=monitor\r\n&StartTime=1573660800\r\n&EndTime=1573919999\r\n&Limit=20\r\n&Offset=0\r\n&OccurTimeOrder=DESC\r\n&ProjectIds.0=0\r\n&ViewNames.0=cvm_device\r\n&AlarmStatus.0=1\r\n\"MetricName\": \"mem_used\",\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Alarms\": [\n            {\n                \"AlarmStatus\": \"OK\",\n                \"AlarmType\": \"Used memory\",\n                \"Content\": \"Used memory >  66666 MB\",\n                \"Dimensions\": \"{\\\"unInstanceId\\\":\\\"ins-19a06nn8\\\"}\",\n                \"Duration\": 600,\n                \"FirstOccurTime\": \"2019-11-16T15:50:00+08:00\",\n                \"GroupId\": 1278966,\n                \"GroupName\": \"dddd\",\n                \"Id\": 30057956,\n                \"InstanceGroup\": [\n                    {\n                        \"InstanceGroupId\": 562,\n                        \"InstanceGroupName\": \"barad_nws_cvm\"\n                    }\n                ],\n                \"LastOccurTime\": \"2019-11-16T16:00:00+08:00\",\n                \"MetricId\": 24,\n                \"MetricName\": \"mem_used\",\n                \"NotifyWay\": [\n                    \"EMAIL\",\n                    \"SMS\"\n                ],\n                \"ObjId\": \"a961c198-e0e2-4989-a3b6-7b155b35ff6f\",\n                \"ObjName\": \"10.0.0.14(251008737 vm1)\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"Default project\",\n                \"Region\": \"gz\",\n                \"Status\": 1,\n                \"ViewName\": \"cvm_device\",\n                \"Vpc\": \"1\"\n            },\n            {\n                \"AlarmStatus\": \"OK\",\n                \"AlarmType\": \"Used memory\",\n                \"Content\": \"Used memory >=  200000 MB\",\n                \"Dimensions\": \"{\\\"unInstanceId\\\":\\\"ins-19a06nn8\\\"}\",\n                \"Duration\": 180,\n                \"FirstOccurTime\": \"2019-11-16T15:45:00+08:00\",\n                \"GroupId\": 1279043,\n                \"GroupName\": \"-\",\n                \"Id\": 30057955,\n                \"InstanceGroup\": [\n                    {\n                        \"InstanceGroupId\": 562,\n                        \"InstanceGroupName\": \"barad_nws_cvm\"\n                    }\n                ],\n                \"LastOccurTime\": \"2019-11-16T15:48:00+08:00\",\n                \"MetricId\": 24,\n                \"MetricName\": \"mem_used\",\n                \"NotifyWay\": [\n                    \"EMAIL\",\n                    \"SMS\",\n                    \"WECHAT\"\n                ],\n                \"ObjId\": \"a961c198-e0e2-4989-a3b6-7b155b35ff6f\",\n                \"ObjName\": \"10.0.0.14(251008737 vm1)\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"Default project\",\n                \"Region\": \"gz\",\n                \"Status\": 1,\n                \"ViewName\": \"cvm_device\",\n                \"Vpc\": \"1\"\n            }\n        ],\n        \"RequestId\": \"6b64cc24-0c60-483f-bdc3-2e55edbbc68c\",\n        \"Total\": 2\n    }\n}",
-        "title": "Getting the basic alarm list"
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBasicAlarmList\n<Common request parameters>\n\n{\n    \"AlarmStatus\": [\n        \"1\"\n    ],\n    \"MetricNames\": [\n        \"mem_used\"\n    ],\n    \"Module\": \"monitor\",\n    \"ViewNames\": [\n        \"cvm_device\"\n    ],\n    \"Limit\": \"20\",\n    \"StartTime\": \"1573660800\",\n    \"Offset\": \"0\",\n    \"ProjectIds\": [\n        \"0\"\n    ],\n    \"EndTime\": \"1573919999\",\n    \"OccurTimeOrder\": \"DESC\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Alarms\": [\n            {\n                \"AlarmStatus\": \"OK\",\n                \"AlarmType\": \"Memory usage\",\n                \"Content\": \"Memory usage >  66666 MB\",\n                \"Dimensions\": \"{\\\"unInstanceId\\\":\\\"ins-19a06nn8\\\"}\",\n                \"Duration\": 600,\n                \"FirstOccurTime\": \"2019-11-16T15:50:00+08:00\",\n                \"GroupId\": 1278966,\n                \"GroupName\": \"dddd\",\n                \"Id\": 30057956,\n                \"InstanceGroup\": [\n                    {\n                        \"InstanceGroupId\": 562,\n                        \"InstanceGroupName\": \"barad_nws_cvm\"\n                    }\n                ],\n                \"LastOccurTime\": \"2019-11-16T16:00:00+08:00\",\n                \"MetricId\": 24,\n                \"MetricName\": \"mem_used\",\n                \"NotifyWay\": [\n                    \"EMAIL\",\n                    \"SMS\"\n                ],\n                \"ObjId\": \"a961c198-e0e2-4989-a3b6-7b155b35ff6f\",\n                \"ObjName\": \"10.0.0.14(251008737 vm1)\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"Default project\",\n                \"Region\": \"gz\",\n                \"Status\": 1,\n                \"ViewName\": \"cvm_device\",\n                \"Vpc\": \"1\"\n            },\n            {\n                \"AlarmStatus\": \"OK\",\n                \"AlarmType\": \"Memory usage\",\n                \"Content\": \"Memory usage >=  200000 MB\",\n                \"Dimensions\": \"{\\\"unInstanceId\\\":\\\"ins-19a06nn8\\\"}\",\n                \"Duration\": 180,\n                \"FirstOccurTime\": \"2019-11-16T15:45:00+08:00\",\n                \"GroupId\": 1279043,\n                \"GroupName\": \"-\",\n                \"Id\": 30057955,\n                \"InstanceGroup\": [\n                    {\n                        \"InstanceGroupId\": 562,\n                        \"InstanceGroupName\": \"barad_nws_cvm\"\n                    }\n                ],\n                \"LastOccurTime\": \"2019-11-16T15:48:00+08:00\",\n                \"MetricId\": 24,\n                \"MetricName\": \"mem_used\",\n                \"NotifyWay\": [\n                    \"EMAIL\",\n                    \"SMS\",\n                    \"WECHAT\"\n                ],\n                \"ObjId\": \"a961c198-e0e2-4989-a3b6-7b155b35ff6f\",\n                \"ObjName\": \"10.0.0.14(251008737 vm1)\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"Default project\",\n                \"Region\": \"gz\",\n                \"Status\": 1,\n                \"ViewName\": \"cvm_device\",\n                \"Vpc\": \"1\"\n            }\n        ],\n        \"RequestId\": \"6b64cc24-0c60-483f-bdc3-2e55edbbc68c\",\n        \"Total\": 2,\n        \"Warning\": \"This method is deprecated! Use `DescribeAlarmHistories` instead!\"\n    }\n}",
+        "title": "Getting the list of basic alarms"
       }
     ],
     "DescribeBindingPolicyObjectList": [
@@ -290,12 +362,76 @@
         "title": "Getting the alarm policy template list"
       }
     ],
+    "DescribeDNSConfig": [
+      {
+        "document": "This example shows you how to list the instance's DNS configurations.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDNSConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\",\n        \"NameServers\": [\n            \"114.114.114.114\"\n        ]\n    }\n}",
+        "title": "Listing the instance's DNS configurations"
+      }
+    ],
     "DescribeExporterIntegrations": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeExporterIntegrations\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Kind\": \"xx\",\n    \"ClusterId\": \"xx\",\n    \"KubeType\": 3\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"wpkysykx8k9tu1urmlyo54gq33f4kxwz\",\n        \"IntegrationSet\": []\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xyz\",\n        \"IntegrationSet\": []\n    }\n}",
         "title": "Querying the list of exporter integrations"
+      }
+    ],
+    "DescribeGrafanaConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-mf9ji5jy\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Config\": \"{\\\"server\\\":{\\\"root_url\\\":\\\"http://balababbb\\\"}}\",\n        \"RequestId\": \"zcv6drxckn53gb61anxndsckjdwgfw6j\"\n    }\n}",
+        "title": "Listing Grafana settings"
+      }
+    ],
+    "DescribeGrafanaEnvironments": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaEnvironments\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"Envs\": \"{}\"\n    }\n}",
+        "title": "Listing Grafana environment variables"
+      }
+    ],
+    "DescribeGrafanaInstances": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaInstances\n<Common request parameters>\n\n{\n    \"Limit\": 20,\n    \"Offset\": 0,\n    \"TagFilters\": [\n        {\n            \"Key\": \"tagKeyTest\",\n            \"Value\": \"tagValueTest\"\n        }\n    ],\n    \"InstanceStatus\": [\n        2\n    ],\n    \"InstanceName\": \"xx\",\n    \"InstanceIds\": [\n        \"xx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceSet\": [\n            {\n                \"InstanceStatus\": 0,\n                \"VpcId\": \"xx\",\n                \"RootUrl\": \"xx\",\n                \"Version\": \"xx\",\n                \"Zone\": \"xx\",\n                \"TagSpecification\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"InstanceId\": \"xx\",\n                \"SubnetIds\": [\n                    \"xx\"\n                ],\n                \"RegionId\": 0,\n                \"InstanceChargeType\": 0,\n                \"InternalUrl\": \"xx\",\n                \"VpcName\": \"xx\",\n                \"EnableSSOCamCheck\": true,\n                \"SubnetName\": \"xx\",\n                \"InternetUrl\": \"xx\",\n                \"EnableSSO\": true,\n                \"InstanceName\": \"xx\",\n                \"Region\": \"xx\",\n                \"CreatedAt\": \"2020-09-22 00:00:00\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Instances\": [\n            {\n                \"InstanceStatus\": 0,\n                \"VpcId\": \"xx\",\n                \"RootUrl\": \"xx\",\n                \"Version\": \"xx\",\n                \"Zone\": \"xx\",\n                \"TagSpecification\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"InstanceId\": \"xx\",\n                \"SubnetIds\": [\n                    \"xx\"\n                ],\n                \"RegionId\": 0,\n                \"InstanceChargeType\": 0,\n                \"InternalUrl\": \"xx\",\n                \"VpcName\": \"xx\",\n                \"EnableSSOCamCheck\": true,\n                \"SubnetName\": \"xx\",\n                \"InternetUrl\": \"xx\",\n                \"EnableSSO\": true,\n                \"InstanceName\": \"xx\",\n                \"Region\": \"xx\",\n                \"CreatedAt\": \"2020-09-22 00:00:00\"\n            }\n        ]\n    }\n}",
+        "title": "Listing Grafana instances"
+      }
+    ],
+    "DescribeGrafanaIntegrations": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaIntegrations\n<Common request parameters>\n\n{\n    \"IntegrationId\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"Kind\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"IntegrationSet\": [\n            {\n                \"IntegrationId\": \"xx\",\n                \"Content\": \"xx\",\n                \"Kind\": \"xx\",\n                \"Description\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Listing installed Grafana integrations"
+      }
+    ],
+    "DescribeGrafanaNotificationChannels": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaNotificationChannels\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"ChannelState\": 0,\n    \"Limit\": 0,\n    \"Offset\": 0,\n    \"ChannelName\": \"xx\",\n    \"ChannelIDs\": [\n        \"xx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"NotificationChannelSet\": [\n            {\n                \"ChannelId\": \"xx\",\n                \"UpdatedAt\": \"2020-09-22\",\n                \"ChannelName\": \"xx\",\n                \"CreatedAt\": \"2020-09-22T00:00:00+00:00\",\n                \"Receivers\": [\n                    \"xx\"\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Listing Grafana notification channels"
+      }
+    ],
+    "DescribeGrafanaWhiteList": [
+      {
+        "document": "This example shows you how to list the Grafana allowlist.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaWhiteList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\",\n        \"WhiteList\": []\n    }\n}",
+        "title": "Listing the Grafana allowlist"
+      }
+    ],
+    "DescribeInstalledPlugins": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstalledPlugins\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-kleu3gt0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"PluginSet\": [\n            {\n                \"PluginId\": \"grafana-piechart-panel\",\n                \"Version\": \"1.6.1\"\n            },\n            {\n                \"PluginId\": \"grafana-clock-panel\",\n                \"Version\": \"1.1.1\"\n            }\n        ],\n        \"RequestId\": \"qmunlpf51noe13qp5vyvg7mq5t4t4w6u\"\n    }\n}",
+        "title": "Listing the installed plugins"
       }
     ],
     "DescribeMonitorTypes": [
@@ -325,9 +461,9 @@
     "DescribePolicyGroupList": [
       {
         "document": "",
-        "input": "https://monitor.tencentcloudapi.com/?Action=DescribePolicyGroupList\r\n&Module=monitor\r\n&Limit=2\r\n&Offset=0\r\n&<Common request parameter>",
-        "output": "{\n    \"Response\": {\n        \"GroupList\": [\n            {\n                \"CanSetDefault\": true,\n                \"Conditions\": [\n                    {\n                        \"AlarmNotifyPeriod\": 86400,\n                        \"AlarmNotifyType\": 0,\n                        \"CalcType\": 1,\n                        \"CalcValue\": \"0\",\n                        \"ContinueTime\": 60,\n                        \"MetricId\": 33,\n                        \"MetricShowName\": \"CPU usage\",\n                        \"Period\": 60,\n                        \"RuleId\": 1111111,\n                        \"Unit\": \"%\"\n                    }\n                ],\n                \"ConditionsTemp\": null,\n                \"EventConditions\": [\n                    {\n                        \"AlarmNotifyPeriod\": 0,\n                        \"AlarmNotifyType\": 0,\n                        \"EventId\": 42,\n                        \"EventShowName\": \"ping unreachable\",\n                        \"RuleId\": 1111112\n                    }\n                ],\n                \"GroupId\": 1111111,\n                \"GroupName\": \"Copying-test\",\n                \"InsertTime\": 1531122504,\n                \"InstanceGroup\": null,\n                \"IsDefault\": 0,\n                \"IsOpen\": true,\n                \"LastEditUin\": \"1500000000\",\n                \"NoShieldedSum\": 0,\n                \"ParentGroupId\": 0,\n                \"ProjectId\": 0,\n                \"ReceiverInfos\": [\n                    {\n                        \"EndTime\": 86400,\n                        \"NeedSendNotice\": 1,\n                        \"NotifyWay\": [\n                            \"EMAIL\",\n                            \"SMS\"\n                        ],\n                        \"PersonInterval\": 60,\n                        \"ReceiverGroupList\": [\n                            1111\n                        ],\n                        \"ReceiverType\": \"group\",\n                        \"ReceiverUserList\": [],\n                        \"RecoverNotify\": [\n                            \"SMS\"\n                        ],\n                        \"RoundInterval\": 60,\n                        \"RoundNumber\": 2,\n                        \"SendFor\": [],\n                        \"StartTime\": 0,\n                        \"UidList\": null\n                    }\n                ],\n                \"Remark\": \"\",\n                \"UpdateTime\": 1577689096,\n                \"UseSum\": 0,\n                \"ViewName\": \"cvm_device\"\n            },\n            {\n                \"CanSetDefault\": false,\n                \"Conditions\": [\n                    {\n                        \"AlarmNotifyPeriod\": 0,\n                        \"AlarmNotifyType\": 0,\n                        \"CalcType\": 1,\n                        \"CalcValue\": \"0.85\",\n                        \"ContinueTime\": 300,\n                        \"MetricId\": 1220,\n                        \"MetricShowName\": \"Disk usage\",\n                        \"Period\": 60,\n                        \"RuleId\": 1111113,\n                        \"Unit\": \"\"\n                    }\n                ],\n                \"ConditionsTemp\": null,\n                \"EventConditions\": null,\n                \"GroupId\": 1111112,\n                \"GroupName\": \"Default\",\n                \"InsertTime\": 1565792922,\n                \"InstanceGroup\": null,\n                \"IsDefault\": 1,\n                \"IsOpen\": true,\n                \"LastEditUin\": \"1500000687\",\n                \"NoShieldedSum\": 1,\n                \"ParentGroupId\": 0,\n                \"ProjectId\": 0,\n                \"ReceiverInfos\": null,\n                \"Remark\": \"\",\n                \"UpdateTime\": 1565792922,\n                \"UseSum\": 1,\n                \"ViewName\": \"CKAFKA_INSTANCE\"\n            }\n        ],\n        \"RequestId\": \"5fdf1257-6024-4b59-b924-2b995080f0bd\",\n        \"Total\": 142\n    }\n}",
-        "title": "Getting the first two lists of basic policy alarm groups"
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePolicyGroupList\n<Common request parameters>\n\n{\n    \"Limit\": \"2\",\n    \"Module\": \"monitor\",\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"GroupList\": [\n            {\n                \"CanSetDefault\": true,\n                \"Conditions\": [\n                    {\n                        \"AlarmNotifyPeriod\": 86400,\n                        \"AlarmNotifyType\": 0,\n                        \"CalcType\": 1,\n                        \"CalcValue\": \"0\",\n                        \"ContinueTime\": 60,\n                        \"MetricId\": 33,\n                        \"MetricShowName\": \"CPU utilization\",\n                        \"Period\": 60,\n                        \"RuleId\": 1111111,\n                        \"Unit\": \"%\"\n                    }\n                ],\n                \"ConditionsTemp\": null,\n                \"EventConditions\": [\n                    {\n                        \"AlarmNotifyPeriod\": 0,\n                        \"AlarmNotifyType\": 0,\n                        \"EventId\": 42,\n                        \"EventShowName\": \"Unreachable by ping\",\n                        \"RuleId\": 1111112\n                    }\n                ],\n                \"GroupId\": 1111111,\n                \"GroupName\": \"Copy-test\",\n                \"InsertTime\": 1531122504,\n                \"InstanceGroup\": null,\n                \"IsDefault\": 0,\n                \"IsOpen\": true,\n                \"LastEditUin\": \"1500000000\",\n                \"NoShieldedSum\": 0,\n                \"ParentGroupId\": 0,\n                \"ProjectId\": 0,\n                \"ReceiverInfos\": [\n                    {\n                        \"EndTime\": 86400,\n                        \"NeedSendNotice\": 1,\n                        \"NotifyWay\": [\n                            \"EMAIL\",\n                            \"SMS\"\n                        ],\n                        \"PersonInterval\": 60,\n                        \"ReceiverGroupList\": [\n                            1111\n                        ],\n                        \"ReceiverType\": \"group\",\n                        \"ReceiverUserList\": [],\n                        \"RecoverNotify\": [\n                            \"SMS\"\n                        ],\n                        \"RoundInterval\": 60,\n                        \"RoundNumber\": 2,\n                        \"SendFor\": [],\n                        \"StartTime\": 0,\n                        \"UidList\": null\n                    }\n                ],\n                \"Remark\": \"\",\n                \"UpdateTime\": 1577689096,\n                \"UseSum\": 0,\n                \"ViewName\": \"cvm_device\"\n            },\n            {\n                \"CanSetDefault\": false,\n                \"Conditions\": [\n                    {\n                        \"AlarmNotifyPeriod\": 0,\n                        \"AlarmNotifyType\": 0,\n                        \"CalcType\": 1,\n                        \"CalcValue\": \"0.85\",\n                        \"ContinueTime\": 300,\n                        \"MetricId\": 1220,\n                        \"MetricShowName\": \"Disk utilization\",\n                        \"Period\": 60,\n                        \"RuleId\": 1111113,\n                        \"Unit\": \"\"\n                    }\n                ],\n                \"ConditionsTemp\": null,\n                \"EventConditions\": null,\n                \"GroupId\": 1111112,\n                \"GroupName\": \"Default\",\n                \"InsertTime\": 1565792922,\n                \"InstanceGroup\": null,\n                \"IsDefault\": 1,\n                \"IsOpen\": true,\n                \"LastEditUin\": \"1500000687\",\n                \"NoShieldedSum\": 1,\n                \"ParentGroupId\": 0,\n                \"ProjectId\": 0,\n                \"ReceiverInfos\": null,\n                \"Remark\": \"\",\n                \"UpdateTime\": 1565792922,\n                \"UseSum\": 1,\n                \"ViewName\": \"CKAFKA_INSTANCE\"\n            }\n        ],\n        \"RequestId\": \"5fdf1257-6024-4b59-b924-2b995080f0bd\",\n        \"Total\": 142,\n        \"Warning\": \"This method is deprecated! Use `DescribeAlarmPolicies` instead!\"\n    }\n}",
+        "title": "Getting the first two items in the list of basic alarm policy groups"
       }
     ],
     "DescribeProductEventList": [
@@ -370,6 +506,14 @@
         "title": "Querying recording rules"
       }
     ],
+    "DescribeSSOAccount": [
+      {
+        "document": "This example shows you how to list all authorized accounts of the current Grafana instance.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSSOAccount\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AccountSet\": [\n            {\n                \"UserId\": \"100000000\",\n                \"Role\": [\n                    {\n                        \"Organization\": \"org\",\n                        \"Role\": \"Admin\"\n                    }\n                ],\n                \"Notes\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"qmunlpf51noe13qp5vyvg7mq5t4t4w6u\"\n    }\n}",
+        "title": "DescribeSSOAccount"
+      }
+    ],
     "DescribeServiceDiscovery": [
       {
         "document": "",
@@ -392,6 +536,30 @@
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DestroyPrometheusInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-w3rkj7835b\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
         "title": "Forcibly releasing a Prometheus instance"
+      }
+    ],
+    "EnableGrafanaInternet": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableGrafanaInternet\n<Common request parameters>\n\n{\n    \"InstanceID\": \"grafana-kleu3gt0\",\n    \"EnableInternet\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"qmunlpf51noe13qp5vyvg7mq5t4t4w6u\"\n    }\n}",
+        "title": "Enabling the public network access"
+      }
+    ],
+    "EnableGrafanaSSO": [
+      {
+        "document": "This example shows you how to enable the Grafana SSO.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableGrafanaSSO\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"EnableSSO\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"qmunlpf51noe13qp5vyvg7mq5t4t4w6u\"\n    }\n}",
+        "title": "Enabling the Grafana SSO"
+      }
+    ],
+    "EnableSSOCamCheck": [
+      {
+        "document": "This example shows you how to enable CAM authentication during SSO.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableSSOCamCheck\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"EnableSSOCamCheck\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"qmunlpf51noe13qp5vyvg7mq5t4t4w6u\"\n    }\n}",
+        "title": "EnableSSOCamCheck"
       }
     ],
     "GetMonitorData": [
@@ -420,6 +588,14 @@
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetPrometheusAgentManagementCommand\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-23kdafdf\",\n    \"AgentId\": \"agent-23kdafdf\"\n}",
         "output": "{\n    \"Response\": {\n        \"Command\": {\n            \"Install\": \"xx\",\n            \"Restart\": \"xx\",\n            \"Stop\": \"xx\",\n            \"StatusCheck\": \"xx\",\n            \"LogCheck\": \"xx\"\n        },\n        \"RequestId\": \"as131asfjl23dsf342lxdsf\"\n    }\n}",
         "title": "Getting the command line for Prometheus agent management"
+      }
+    ],
+    "InstallPlugins": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InstallPlugins\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"Plugins\": [\n        {\n            \"PluginId\": \"grafana-clock-panel\",\n            \"Version\": \"xx\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"r1xcta1opsb6qipjzb4h4x-kcegta6m2\"\n    }\n}",
+        "title": "Installing Grafana plugins"
       }
     ],
     "ModifyAlarmNotice": [
@@ -478,6 +654,14 @@
         "title": "Modifying alarm recipient"
       }
     ],
+    "ModifyGrafanaInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"InstanceName\": \"123\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Modifying the attributes of a Grafana instance"
+      }
+    ],
     "ModifyPolicyGroup": [
       {
         "document": "",
@@ -500,6 +684,14 @@
         "input": "https://monitor.tencentcloudapi.com/?Action=PutMonitorData\r\n&Version=2018-07-24\r\n&AnnounceIp=10.0.0.1\r\n&AnnounceTimestamp=1569379988\r\n&Metrics.0.MetricName=name1\r\n&Metrics.0.Value=value1\r\n&Metrics.1.MetricName=name2\r\n&Metrics.1.Value=value2\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"7cc6ae87-2aae-4394-8ccb-29777f5aeadx\"\n    }\n}",
         "title": "Reporting metric from client"
+      }
+    ],
+    "ResumeGrafanaInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResumeGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\"\n    }\n}",
+        "title": "Restoring a Grafana instance"
       }
     ],
     "SendCustomAlarmMsg": [
@@ -553,9 +745,17 @@
     "UninstallGrafanaDashboard": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UninstallGrafanaDashboard\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-c0wy130a\",\n    \"IntegrationCodes\": [\n        \"spring-mvc\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"49h8tychqjqzl63wzfvxfkyucee87tmz\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UninstallGrafanaDashboard\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-xyz\",\n    \"IntegrationCodes\": [\n        \"spring-mvc\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xyz\"\n    }\n}",
         "title": "Deleting a Grafana dashboard"
+      }
+    ],
+    "UninstallGrafanaPlugins": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UninstallGrafanaPlugins\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefg\",\n    \"PluginIds\": [\n        \"grafana-clock-panel\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"kq9u37984eql5yyp8fyilbb83nrtlca1\"\n    }\n}",
+        "title": "Deleting the specified plugin"
       }
     ],
     "UpdateAlertRule": [
@@ -574,12 +774,60 @@
         "title": "Updating the status of an alerting rule"
       }
     ],
+    "UpdateDNSConfig": [
+      {
+        "document": "This example shows you how to update the Grafana DNS configuration.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateDNSConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"NameServers\": [\n        \"xx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\"\n    }\n}",
+        "title": "Updating the Grafana DNS configuration"
+      }
+    ],
     "UpdateExporterIntegration": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateExporterIntegration\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-1\",\n    \"KubeType\": 3,\n    \"ClusterId\": \"cls-xx\",\n    \"Kind\": \"blackbox-exporter\",\n    \"Content\": \"{\\\"name\\\":\\\"test\\\",\\\"kind\\\":\\\"blackbox-exporter\\\",\\\"spec\\\":{\\\"instanceSpec\\\":{\\\"module\\\":\\\"http_get\\\",\\\"urls\\\":[\\\"xx\\\"]}}}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"wpkysykx8k9tu1urmlyo54gq33f4kxwz\"\n    }\n}",
         "title": "Updating the exporter integration configuration"
+      }
+    ],
+    "UpdateGrafanaConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Config\": \"{\\\"server\\\":{\\\"root_url\\\":\\\"http://balaba\\\"},\\\"server_haha\\\":\\\"heihei\\\"}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Updating the Grafana configuration"
+      }
+    ],
+    "UpdateGrafanaEnvironments": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaEnvironments\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Envs\": \"{}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Updating Grafana environment variables"
+      }
+    ],
+    "UpdateGrafanaIntegration": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaIntegration\n<Common request parameters>\n\n{\n    \"IntegrationId\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"Kind\": \"xx\",\n    \"Content\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Updating the Grafana integration configuration"
+      }
+    ],
+    "UpdateGrafanaNotificationChannel": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaNotificationChannel\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"ChannelId\": \"xx\",\n    \"ChannelName\": \"xx\",\n    \"Receivers\": [\n        \"xx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Updating the Grafana notification channel"
+      }
+    ],
+    "UpdateGrafanaWhiteList": [
+      {
+        "document": "This example shows you how to update the Grafana allowlist.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGrafanaWhiteList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Whitelist\": [\n        \"xx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fpllngzieyoh54e1244ols7k2hh3gdny\"\n    }\n}",
+        "title": "Updating the Grafana allowlist"
       }
     ],
     "UpdatePrometheusAgentStatus": [
@@ -606,12 +854,28 @@
         "title": "Updating a recording rule"
       }
     ],
+    "UpdateSSOAccount": [
+      {
+        "document": "This example shows you how to update permissions and remarks.",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateSSOAccount\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"UserId\": \"100000000\",\n    \"Role\": [\n        {\n            \"Organization\": \"Org\",\n            \"Role\": \"Admin\"\n        }\n    ],\n    \"Notes\": \"Authorize this user\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"qmunlpf51noe13qp5vyvg7mq5t4t4w6u\"\n    }\n}",
+        "title": "Updating the account information"
+      }
+    ],
     "UpgradeGrafanaDashboard": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeGrafanaDashboard\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-gds3q53s\",\n    \"IntegrationCodes\": [\n        \"spring-mvc\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
         "title": "Updating a Grafana dashboard"
+      }
+    ],
+    "UpgradeGrafanaInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeGrafanaInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Alias\": \"v7.4.2\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Upgrading a Grafana instance"
       }
     ]
   },

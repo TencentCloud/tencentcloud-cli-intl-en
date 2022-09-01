@@ -506,7 +506,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeZoneDetails\n<Common request parameters>\n\n{\n    \"Id\": \"xx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Status\": \"xx\",\n        \"ModifiedOn\": \"2020-09-22T00:00:00+00:00\",\n        \"Name\": \"xx\",\n        \"NameServers\": [\n            \"xx\"\n        ],\n        \"VanityNameServers\": {\n            \"Switch\": \"xx\",\n            \"Servers\": [\n                \"xx\"\n            ]\n        },\n        \"CreatedOn\": \"2020-09-22T00:00:00+00:00\",\n        \"OriginalNameServers\": [\n            \"xx\"\n        ],\n        \"Paused\": true,\n        \"CnameSpeedUp\": \"xx\",\n        \"RequestId\": \"xx\",\n        \"Type\": \"xx\",\n        \"Id\": \"xx\",\n        \"VanityNameServersIps\": [\n            {\n                \"Name\": \"xx\",\n                \"IPv4\": \"xx\"\n            }\n        ],\n        \"CnameStatus\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": \"xx\",\n        \"ModifiedOn\": \"2020-09-22T00:00:00+00:00\",\n        \"Name\": \"xx\",\n        \"Tags\": [\n            {\n                \"TagKey\": \"xx\",\n                \"TagValue\": \"xx\"\n            }\n        ],\n        \"NameServers\": [\n            \"xx\"\n        ],\n        \"VanityNameServers\": {\n            \"Switch\": \"xx\",\n            \"Servers\": [\n                \"xx\"\n            ]\n        },\n        \"CreatedOn\": \"2020-09-22T00:00:00+00:00\",\n        \"OriginalNameServers\": [\n            \"xx\"\n        ],\n        \"Paused\": true,\n        \"CnameSpeedUp\": \"xx\",\n        \"Resources\": [\n            {\n                \"EnableTime\": \"2020-09-22T00:00:00+00:00\",\n                \"Status\": \"xx\",\n                \"ExpireTime\": \"2020-09-22T00:00:00+00:00\",\n                \"PlanId\": \"xx\",\n                \"Sv\": [\n                    {\n                        \"Value\": \"xx\",\n                        \"Key\": \"xx\"\n                    }\n                ],\n                \"CreateTime\": \"2020-09-22T00:00:00+00:00\",\n                \"PayMode\": 0,\n                \"AutoRenewFlag\": 0,\n                \"Id\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\",\n        \"Type\": \"xx\",\n        \"Id\": \"xx\",\n        \"VanityNameServersIps\": [\n            {\n                \"Name\": \"xx\",\n                \"IPv4\": \"xx\"\n            }\n        ],\n        \"CnameStatus\": \"xx\"\n    }\n}",
         "title": "Querying the details of a site"
       }
     ],
@@ -584,10 +584,16 @@
     ],
     "ModifyDDoSPolicy": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDDoSPolicy\n<Common request parameters>\n\n{\n    \"DdosRule\": {\n        \"DdosAntiPly\": {\n            \"DestinationConnectLimit\": 0,\n            \"AbnormalSynNum\": 0,\n            \"ConnectTimeout\": 0,\n            \"DropOther\": \"xx\",\n            \"AbnormalConnectNum\": 0,\n            \"SourceCreateLimit\": 0,\n            \"DropTcp\": \"xx\",\n            \"DropUdp\": \"xx\",\n            \"EmptyConnectProtect\": \"xx\",\n            \"DropIcmp\": \"xx\",\n            \"SourceConnectLimit\": 0,\n            \"DestinationCreateLimit\": 1,\n            \"AbnormalSynRatio\": 0\n        },\n        \"DdosStatusInfo\": {\n            \"AiStatus\": \"xx\",\n            \"PlyLevel\": \"xx\",\n            \"Appid\": \"xx\"\n        },\n        \"Switch\": \"xx\",\n        \"DdosAcl\": {\n            \"Switch\": \"xx\",\n            \"Acl\": [\n                {\n                    \"Protocol\": \"xx\",\n                    \"DportStart\": 0,\n                    \"SportEnd\": 0,\n                    \"Action\": \"xx\",\n                    \"DportEnd\": 0,\n                    \"SportStart\": 0\n                }\n            ]\n        },\n        \"DdosGeoIp\": {\n            \"Switch\": \"xx\",\n            \"RegionId\": [\n                0\n            ]\n        },\n        \"DdosPacketFilter\": {\n            \"Switch\": \"xx\",\n            \"PacketFilter\": [\n                {\n                    \"DportStart\": 0,\n                    \"MatchType2\": \"xx\",\n                    \"MatchBegin2\": \"xx\",\n                    \"DportEnd\": 0,\n                    \"MatchLogic\": \"xx\",\n                    \"Offset2\": 0,\n                    \"Str2\": \"xx\",\n                    \"PacketMax\": 0,\n                    \"IsNot2\": 0,\n                    \"Depth2\": 0,\n                    \"Depth\": 0,\n                    \"MatchBegin\": \"xx\",\n                    \"SportEnd\": 0,\n                    \"Str\": \"xx\",\n                    \"Offset\": 0,\n                    \"Action\": \"xx\",\n                    \"Protocol\": \"xx\",\n                    \"IsNot\": 0,\n                    \"SportStart\": 0,\n                    \"MatchType\": \"xx\",\n                    \"PacketMin\": 0\n                }\n            ]\n        },\n        \"DdosAllowBlock\": {\n            \"Switch\": \"xx\",\n            \"UserAllowBlockIp\": [\n                {\n                    \"Ip\": \"xx\",\n                    \"UpdateTime\": 0,\n                    \"Type\": \"xx\",\n                    \"Mask\": 0\n                }\n            ]\n        }\n    },\n    \"PolicyId\": 542,\n    \"ZoneId\": \"xx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"cb1f63d0-9173-4a1e-adb9-bd1ee2642b58\",\n        \"PolicyId\": 542\n    }\n}",
-        "title": "Modifying DDoS mitigation configuration"
+        "document": "This example shows you how to set the 10K connections per second limit on new connections.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDDoSPolicy\n<Common request parameters>\n\n{\n    \"PolicyId\": 1,\n    \"ZoneId\": \"zone-27filz8zp3vi\",\n    \"DdosRule\": {\n        \"DdosAntiPly\": {\n            \"AbnormalConnectNum\": 0,\n            \"AbnormalSynNum\": 0,\n            \"AbnormalSynRatio\": 0,\n            \"ConnectTimeout\": 0,\n            \"DestinationConnectLimit\": 0,\n            \"DestinationCreateLimit\": 0,\n            \"DropIcmp\": \"on\",\n            \"DropOther\": \"off\",\n            \"DropTcp\": \"off\",\n            \"DropUdp\": \"off\",\n            \"EmptyConnectProtect\": 0,\n            \"SourceConnectLimit\": 0,\n            \"SourceCreateLimit\": 10000,\n            \"UdpShard\": \"off\"\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"cb1f63d0-9173-4a1e-adb9-bd1ee2642b58\",\n        \"PolicyId\": 1\n    }\n}",
+        "title": "Modifying connection protection configuration"
+      },
+      {
+        "document": "This example shows you how to add an IP to the blocklist.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDDoSPolicy\n<Common request parameters>\n\n{\n    \"PolicyId\": 1,\n    \"ZoneId\": \"zone-27filz8zp3vi\",\n    \"DdosRule\": {\n        \"DdosAllowBlock\": {\n            \"UserAllowBlockIp\": [\n                {\n                    \"Ip\": \"1.1.1.1\",\n                    \"Mask\": 0,\n                    \"Ip2\": \"\",\n                    \"Mask2\": 0,\n                    \"Type\": \"block\",\n                    \"UpdateTime\": 0\n                }\n            ]\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"cb1f63d0-9173-4a1e-adb9-bd1ee2642b58\",\n        \"PolicyId\": 1\n    }\n}",
+        "title": "Modifying IP blocklist/allowlist"
       }
     ],
     "ModifyDDoSPolicyHost": [
@@ -681,9 +687,21 @@
     "ModifyZoneSetting": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyZoneSetting\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-xxxx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"ZoneId\": \"zone-xxxx\"\n    }\n}",
-        "title": "Modifying the site configuration"
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyZoneSetting\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"Cache\": {\n        \"NoCache\": {\n            \"Switch\": \"on\"\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"ZoneId\": \"zone-21xfqlh4qjee\"\n    }\n}",
+        "title": "Modifying cache validity"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyZoneSetting\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"ZoneId\": \"zone-21xfqlh4qjee\"\n    }\n}",
+        "title": "Modifying IPv6 access configuration"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyZoneSetting\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"Quic\": {\n        \"Switch\": \"on\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"ZoneId\": \"zone-21xfqlh4qjee\"\n    }\n}",
+        "title": "Modifying QUIC access configuration"
       }
     ],
     "ModifyZoneStatus": [

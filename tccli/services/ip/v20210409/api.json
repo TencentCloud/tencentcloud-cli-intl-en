@@ -3,7 +3,7 @@
     "AllocateCustomerCredit": {
       "document": "This API is used for a partner to set credit for a customer, such as increasing or lowering the credit and setting it to 0.\n1. The credit is valid permanently and will not be zeroed regularly.\n2. The customer's service will be suspended when its available credit sets to 0, so caution should be exercised with this operation.\n3. To prevent the customer from making new purchases without affecting their use of previously purchased products, the partner can set their available credit to 0 after obtaining the non-stop feature privilege from the channel manager.\n4. The set credit is an increase to the current available credit and cannot exceed the remaining allocable credit. Setting the credit to a negative value indicates to repossess it. The available credit can be set to 0 at the minimum.",
       "input": "AllocateCustomerCreditRequest",
-      "name": "Sets customer's credit",
+      "name": "Allocates credit to customers by a partner",
       "output": "AllocateCustomerCreditResponse"
     },
     "CreateAccount": {
@@ -21,7 +21,7 @@
     "QueryCreditAllocationHistory": {
       "document": "This API is used to query all the credit allocation records of a single customer.",
       "input": "QueryCreditAllocationHistoryRequest",
-      "name": "Queries customer's credit allocation records",
+      "name": "Queries credit allocation records",
       "output": "QueryCreditAllocationHistoryResponse"
     },
     "QueryCustomersCredit": {
@@ -70,6 +70,24 @@
     "AllocateCustomerCreditResponse": {
       "document": "AllocateCustomerCredit response structure.",
       "members": [
+        {
+          "document": "The updated total credit",
+          "example": "20",
+          "member": "float",
+          "name": "TotalCredit",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The updated available credit",
+          "example": "10.23",
+          "member": "float",
+          "name": "RemainingCredit",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -292,6 +310,16 @@
           "required": true,
           "type": "float",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The allocated total credit",
+          "example": "123.45",
+          "member": "float",
+          "name": "AllocatedCredit",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -461,13 +489,89 @@
           "required": true,
           "type": "float",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "0: Identity not verified; 1: Individual identity verified; 2: Enterprise identity verified.",
+          "example": "1",
+          "member": "uint64",
+          "name": "IdentifyType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Customer remarks",
+          "example": "tencent",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Forced status",
+          "example": "1",
+          "member": "int64",
+          "name": "Force",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
     },
     "QueryCustomersCreditRequest": {
       "document": "QueryCustomersCredit request structure.",
-      "members": [],
+      "members": [
+        {
+          "default": "",
+          "document": "Search condition type. You can only search by UIN, name, or remarks.",
+          "example": "Uin|Name|Remark",
+          "member": "string",
+          "name": "FilterType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Search condition",
+          "example": "123456",
+          "member": "string",
+          "name": "Filter",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "A pagination parameter that specifies the current page number, with a value starting from 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "A pagination parameter that specifies the number of entries per page.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "A sort parameter that specifies the sort order. Valid values: `desc` (descending order), or `asc` (ascending order) based on `AssociationTime`. The value will be `desc` if left empty.",
+          "example": "desc",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        }
+      ],
       "type": "object"
     },
     "QueryCustomersCreditResponse": {
