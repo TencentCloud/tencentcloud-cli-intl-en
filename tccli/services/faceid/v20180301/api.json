@@ -1,5 +1,23 @@
 {
   "actions": {
+    "ApplyLivenessToken": {
+      "document": "This API is used to apply for a token before calling the liveness detection service each time. This token is required for initiating the verification process and getting the result after the verification is completed.",
+      "input": "ApplyLivenessTokenRequest",
+      "name": "Applies for tokens for liveness detection",
+      "output": "ApplyLivenessTokenResponse"
+    },
+    "ApplySdkVerificationToken": {
+      "document": "This API is used to apply for a token before calling the SDK-based verification service each time. This token is required for initiating the verification process and getting the result after the verification is completed.",
+      "input": "ApplySdkVerificationTokenRequest",
+      "name": "Applies for tokens for SDK-based verification",
+      "output": "ApplySdkVerificationTokenResponse"
+    },
+    "ApplyWebVerificationToken": {
+      "document": "This API is used to apply for a token before calling the web-based verification service each time. This token is required for initiating the verification process and getting the result after the verification is completed.",
+      "input": "ApplyWebVerificationTokenRequest",
+      "name": "Applies for tokens for web-based verification",
+      "output": "ApplyWebVerificationTokenResponse"
+    },
     "CreateUploadUrl": {
       "document": "This API is used to generate a temporary `UploadUrl` for uploading resource files (with the `HTTP PUT` method). After resource upload, `ResourceUrl` will be passed to the `TargetAction` API to complete the resource passing (specific fields vary by case). \nThe data will be stored in a COS bucket in the region specified by the parameter `Region` for two hours.",
       "input": "CreateUploadUrlRequest",
@@ -18,8 +36,26 @@
       "name": "Obtains light sequences",
       "output": "GenerateReflectSequenceResponse"
     },
+    "GetLivenessResult": {
+      "document": "This API is used to get the verification result with the corresponding token (SdkToken) after the liveness detection is completed. The token is valid for two hours after issuance and can be called multiple times.",
+      "input": "GetLivenessResultRequest",
+      "name": "Gets results of liveness detection",
+      "output": "GetLivenessResultResponse"
+    },
+    "GetSdkVerificationResult": {
+      "document": "This API is used to get the verification result with the corresponding token after the SDK-based verification is completed. The token is valid for three days after issuance and can be called multiple times.",
+      "input": "GetSdkVerificationResultRequest",
+      "name": "Get results of SDK-based verification",
+      "output": "GetSdkVerificationResultResponse"
+    },
+    "GetWebVerificationResult": {
+      "document": "This API is used to get the verification result with the corresponding token (BizToken) after the web-based verification is completed. The BizToken is valid for three days (3*24*3,600s) after issuance and can be called multiple times.",
+      "input": "GetWebVerificationResultRequest",
+      "name": "Gets results of web-based verification",
+      "output": "GetWebVerificationResultResponse"
+    },
     "LivenessCompare": {
-      "document": "This API is used to pass in a video and a photo, determine whether the person in the video is real, and if yes, then determine whether the person in the video is the same as that in the photo.",
+      "document": "This API is used to pass in a video and a photo, determine whether the person in the video is real, and if yes, then determine whether the person in the video is the same as that in the photo.\nThis API on the legacy version will continue to serve existing users but will be unavailable to new users. We recommend you use `VideoLivenessCompare` for better service quality.",
       "input": "LivenessCompareRequest",
       "name": "Detects liveness and compares faces",
       "output": "LivenessCompareResponse"
@@ -37,6 +73,379 @@
     "serviceShortName": "faceid"
   },
   "objects": {
+    "ApplyLivenessTokenRequest": {
+      "document": "ApplyLivenessToken request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Enumerated value. Valid values: `1`, `2`, `3`, and `4`.\nTheir meanings are as follows:\n1 - silent\n2 - blinking\n3 - light\n4 - blinking + light (default)",
+          "example": "1",
+          "member": "string",
+          "name": "SecureLevel",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyLivenessTokenResponse": {
+      "document": "ApplyLivenessToken response structure.",
+      "members": [
+        {
+          "document": "The token used to identify an SDK-based verification process. It is valid for 10 minutes and can be used to get the verification result after the process is completed.",
+          "example": "A561B769-C347-4724-A69A-6C3B3483E107",
+          "member": "string",
+          "name": "SdkToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplySdkVerificationTokenRequest": {
+      "document": "ApplySdkVerificationToken request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether ID card authentication is required. If not, only document OCR will be performed. Currently, authentication is available only when the value of `IdCardType` is `HK`.",
+          "example": "true",
+          "member": "bool",
+          "name": "NeedVerifyIdCard",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Card type. Valid values: `HK` (Hong Kong ID cards) (default), `ML` (Malaysian ID cards), `PhilippinesVoteID` (Philippine voters ID cards), and `PhilippinesDrivingLicense` (Philippine driving licenses).",
+          "example": "HK",
+          "member": "string",
+          "name": "IdCardType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Disable the modification of the OCR result by the user. Default value: `false` (modification allowed).",
+          "example": "true",
+          "member": "bool",
+          "name": "DisableChangeOcrResult",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned based on the warnings. If the value of `NeedVerifyIdCard` is `true`, the value of this field will also be `true`.",
+          "example": "true",
+          "member": "bool",
+          "name": "DisableCheckOcrWarnings",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.",
+          "example": "1",
+          "member": "string",
+          "name": "Extra",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplySdkVerificationTokenResponse": {
+      "document": "ApplySdkVerificationToken response structure.",
+      "members": [
+        {
+          "document": "The token used to identify an SDK-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.",
+          "example": "A561B769-C347-4724-A69A-6C3B3483E107",
+          "member": "string",
+          "name": "SdkToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyWebVerificationTokenRequest": {
+      "document": "ApplyWebVerificationToken request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The web redirect URL after the verification is completed.",
+          "example": "https://www.qq.com",
+          "member": "string",
+          "name": "RedirectUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The COS URL of the image for face comparison, which can be obtained with one of the following methods:\n1. Call the `CreateUploadUrl` API to generate a URL and call it again after the image is successfully uploaded.\n2. Use an existing COS URL. For a private bucket, grant the download permission with a pre-signed URL. The corresponding COS bucket must be in the same region as the input parameter `Region`.",
+          "example": "https://singapore-1257237511.cos.ap-singapore.myqcloud.com",
+          "member": "string",
+          "name": "CompareImageUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The MD5 hash values of the image for face comparison (CompareImageUrl).",
+          "example": "1",
+          "member": "string",
+          "name": "CompareImageMd5",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyWebVerificationTokenResponse": {
+      "document": "ApplyWebVerificationToken response structure.",
+      "members": [
+        {
+          "document": "The verification URL to be opened with a browser to start the verification process.",
+          "example": "无",
+          "member": "string",
+          "name": "VerificationUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The token used to identify a web-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.",
+          "example": "无",
+          "member": "string",
+          "name": "BizToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CardVerifyResult": {
+      "document": "The result of a single authentication or OCR process during the identity verification.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether the authentication or OCR process is successful.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsPass",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The video for ID card authentication. This field is returned only if the video-based ID card authentication is enabled. The URL is valid for 10 minutes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "FileInfo",
+          "name": "CardVideo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The identity document image. The URL is valid for 10 minutes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "FileInfo",
+          "name": "CardImage",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The OCR result (in JSON) of the identity document image. If authentication or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.\nWhen the value of `IdCardType` is `HK`:\n- CnName string: Chinese name\n- EnName string: English name\n- TelexCode string: The code corresponding to the Chinese name\n- Sex string: Gender. Valid values: `M` (male) and `F` (female).\n- Birthday string: Date of birth.\n- Permanent int: Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).\n- IdNum string: ID number.\n- Symbol string: The ID symbol below the date of birth, such as \"***AZ\".\n- FirstIssueDate string: The date of first issuance.\n- CurrentIssueDate string: The date of latest issuance.\n\nWhen the value of `IdCardType` is `ML`:\n- Sex string: `LELAKI` (male) and `PEREMPUAN` (female).\n- Birthday string: Date of birth.\n- ID string: ID number.\n- Name string: Name.\n- Address string: Address.\n- Type string: Identity document type.\n\nWhen the value of `IdCardType` is `PhilippinesVoteID`:\n- Birthday string: Date of birth.\n- Address string: Address.\n- LastName string: Family name.\n- FirstName string: First name.\n- VIN string: VIN number.\n- CivilStatus string: Marital status.\n- Citizenship string: Citizenship.\n- PrecinctNo string: Region.\n\nWhen the value of `IdCardType` is `PhilippinesDrivingLicense`:\n- Sex string: Gender.\n- Birthday string: Date of birth.\n- Name string: Name.\n- Address string: Address.\n- LastName string: Family name.\n- FirstName string: First name.\n- MiddleName string: Middle name.\n- Nationality string: Nationality.\n- LicenseNo string: License number.\n- ExpiresDate string: Validity period.\n- AgencyCode string: Agency code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "FileInfo",
+          "name": "CardInfoOcrJson",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The request ID of a single process.",
+          "example": "c6df4b3d-d1aa-4d49-a676-d44baf379613",
+          "member": "string",
+          "name": "RequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CompareResult": {
+      "document": "The description of a single comparison result.",
+      "members": [
+        {
+          "default": "",
+          "document": "The final comparison result.",
+          "example": "0",
+          "member": "string",
+          "name": "ErrorCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The description of the final comparison result.",
+          "example": "success",
+          "member": "string",
+          "name": "ErrorMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "FileInfo",
+          "name": "LiveData",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The video for this liveness detection process. The URL is valid for 10 minutes.",
+          "example": "无",
+          "member": "FileInfo",
+          "name": "LiveVideo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The code of the liveness detection result.",
+          "example": "0",
+          "member": "string",
+          "name": "LiveErrorCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The description of the liveness detection result.",
+          "example": "success",
+          "member": "string",
+          "name": "LiveErrorMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The best face screenshot in this liveness detection. The URL is valid for 10 minutes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "FileInfo",
+          "name": "BestFrame",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The profile photo screenshot from the identity document. The URL is valid for 10 minutes.",
+          "example": "无",
+          "member": "FileInfo",
+          "name": "ProfileImage",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The code of the face comparison result.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "CompareErrorCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The description of the face comparison result.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "success",
+          "member": "string",
+          "name": "CompareErrorMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Similarity\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "52.77",
+          "member": "float",
+          "name": "Sim",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field is disused.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsNeedCharge",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The identity document photo info edited by the user in JSON. If the value of `DisableChangeOcrResult` is `true`, the editing feature is disabled and this field does not exist. The URL is valid for 10 minutes.\nWhen the value of `IdCardType` is `HK`:\n- CnName string: Chinese name\n- EnName string: English name\n- TelexCode string: The code corresponding to the Chinese name\n- Sex string: Gender. Valid values: `M` (male) and `F` (female).\n- Birthday string: Date of birth.\n- Permanent int: Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).\n- IdNum string: ID number.\n- Symbol string: The ID symbol below the date of birth, such as \"***AZ\".\n- FirstIssueDate string: The date of first issuance.\n- CurrentIssueDate string: The date of latest issuance.\n\nWhen the value of `IdCardType` is `ML`:\n- Sex string: `LELAKI` (male) and `PEREMPUAN` (female).\n- Birthday string\n- ID string\n- Name string\n- Address string\n- Type string: Identity document type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "FileInfo",
+          "name": "CardInfoInputJson",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The request ID of this verification process.",
+          "example": "无",
+          "member": "string",
+          "name": "RequestId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CreateUploadUrlRequest": {
       "document": "CreateUploadUrl request structure.",
       "members": [
@@ -289,6 +698,240 @@
       ],
       "type": "object"
     },
+    "GetLivenessResultRequest": {
+      "document": "GetLivenessResult request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The token used to identify an SDK-based verification process.",
+          "example": "无",
+          "member": "string",
+          "name": "SdkToken",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetLivenessResultResponse": {
+      "document": "GetLivenessResult response structure.",
+      "members": [
+        {
+          "document": "The final verification result.",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The description of the final verification result.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The face screenshot.",
+          "example": "4",
+          "member": "FileInfo",
+          "name": "BestFrame",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The video for the detection.",
+          "example": "无",
+          "member": "FileInfo",
+          "name": "Video",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetSdkVerificationResultRequest": {
+      "document": "GetSdkVerificationResult request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The token used to identify an SDK-based verification process.",
+          "example": "无",
+          "member": "string",
+          "name": "SdkToken",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetSdkVerificationResultResponse": {
+      "document": "GetSdkVerificationResult response structure.",
+      "members": [
+        {
+          "document": "The result of the entire verification process.",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The result description.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The charge count.",
+          "example": "4",
+          "member": "int64",
+          "name": "ChargeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The results of multiple OCR processes (in order). The result of the final process is taken as the valid result.",
+          "example": "无",
+          "member": "CardVerifyResult",
+          "name": "CardVerifyResults",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The results of multiple liveness detection processes (in order). The result of the final process is taken as the valid result.",
+          "example": "无",
+          "member": "CompareResult",
+          "name": "CompareResults",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Info passed in the process of getting the token.",
+          "example": "无",
+          "member": "string",
+          "name": "Extra",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetWebVerificationResultRequest": {
+      "document": "GetWebVerificationResult request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The token for the web-based verification, which is generated with the `ApplyWebVerificationToken` API.",
+          "example": "C3451931-19A5-4E41-AB65-15E694A54F69",
+          "member": "string",
+          "name": "BizToken",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetWebVerificationResultResponse": {
+      "document": "GetWebVerificationResult response structure.",
+      "members": [
+        {
+          "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrorCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The description of the final verification result.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Success",
+          "member": "string",
+          "name": "ErrorMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The temporary URL of the best face screenshot collected from the video stream. It is valid for 10 minutes. Download the image if needed.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VideoBestFrameUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The MD5 hash value of the best face screenshot collected from the video stream. It can be used to check whether the image content is consistent with the file content.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VideoBestFrameMd5",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The details list of this verification process.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VerificationDetail",
+          "name": "VerificationDetailList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "VideoUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "VideoMd5",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "LivenessCompareRequest": {
       "document": "LivenessCompare request structure.",
       "members": [
@@ -404,6 +1047,102 @@
         }
       ],
       "type": "object"
+    },
+    "VerificationDetail": {
+      "document": "The details of the verification process.",
+      "members": [
+        {
+          "default": "",
+          "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrorCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The description of the final verification result.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Success",
+          "member": "string",
+          "name": "ErrorMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The result of this liveness detection process. `0` indicates success.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "LivenessErrorCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The result description of this liveness detection process.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Success",
+          "member": "string",
+          "name": "LivenessErrorMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The result of this comparison process. `0` indicates that the person in the best face screenshot collected from the video stream is the same as that in the uploaded image for comparison.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "CompareErrorCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The result description of this comparison process.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "success",
+          "member": "string",
+          "name": "CompareErrorMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The timestamp (ms) of this verification process.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1634884881441",
+          "member": "uint64",
+          "name": "ReqTimestamp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The similarity of the best face screenshot collected from the video stream and the uploaded image for comparison in this verification process. Valid range: [0.00, 100.00]. By default, the person in the screenshot is judged as the same person in the image if the similarity is greater than or equal to 70.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00",
+          "member": "float",
+          "name": "Similarity",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Unique ID of this verification process.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3d12da91-db34-4e55-81c3-993a41d7ccb7",
+          "member": "string",
+          "name": "Seq",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "VideoLivenessCompareRequest": {
       "document": "VideoLivenessCompare request structure.",

@@ -285,6 +285,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "This field returns the suggested action according to the check result. <br>Values: `Block`, `Review`, `Pass`.",
+          "example": "Pass",
+          "member": "string",
+          "name": "Suggestion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

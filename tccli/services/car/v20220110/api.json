@@ -1,0 +1,174 @@
+{
+  "actions": {
+    "ApplyConcurrent": {
+      "document": "This API is used to request concurrency quota.",
+      "input": "ApplyConcurrentRequest",
+      "name": "Requests concurrency quota",
+      "output": "ApplyConcurrentResponse"
+    },
+    "CreateSession": {
+      "document": "This API is used to create a session.",
+      "input": "CreateSessionRequest",
+      "name": "Creates a session",
+      "output": "CreateSessionResponse"
+    },
+    "DestroySession": {
+      "document": "This API is used to terminate a session.",
+      "input": "DestroySessionRequest",
+      "name": "Terminates a session",
+      "output": "DestroySessionResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2022-01-10",
+    "serviceNameCN": "应用云渲染",
+    "serviceShortName": "car"
+  },
+  "objects": {
+    "ApplyConcurrentRequest": {
+      "document": "ApplyConcurrent request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The user’s unique ID. Tencent Cloud does not parse the ID. You need to manage your own user IDs. Based on your needs, you can either define unique IDs for users or use timestamps to generate random IDs. Make sure the same ID is used when a user reconnects to your application.",
+          "example": "cg_user",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The user’s IP address.",
+          "example": "125.127.178.228",
+          "member": "string",
+          "name": "UserIp",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The project ID.",
+          "example": "cap-abcdefgh",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The application version ID.",
+          "example": "v1",
+          "member": "string",
+          "name": "ApplicationVersionId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyConcurrentResponse": {
+      "document": "ApplyConcurrent response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSessionRequest": {
+      "document": "CreateSession request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The user’s unique ID. Tencent Cloud does not parse the ID. You need to manage your own user IDs. Based on your needs, you can either define unique IDs for users or use timestamps to generate random IDs. Make sure the same ID is used when a user reconnects to your application.",
+          "example": "cg_user",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The user’s IP address.",
+          "example": "125.127.178.228",
+          "member": "string",
+          "name": "UserIp",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The client-side session data, which is obtained from the SDK.",
+          "example": "eyJhYmMiOjEyM30=",
+          "member": "string",
+          "name": "ClientSession",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The on-cloud running mode.\n`RunWithoutClient`: Keep the application running on the cloud even when there are no client connections.\nEmpty string (default): Keep the application running on the cloud only when there are client connections.",
+          "example": "RunWithoutClient",
+          "member": "string",
+          "name": "RunMode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSessionResponse": {
+      "document": "CreateSession response structure.",
+      "members": [
+        {
+          "document": "The server-side session data, which is returned to the SDK.",
+          "example": "eyJhYmMiOjEyM30=",
+          "member": "string",
+          "name": "ServerSession",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroySessionRequest": {
+      "document": "DestroySession request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The user’s unique ID. Tencent Cloud does not parse the ID. You need to manage your own user IDs. Based on your needs, you can either define unique IDs for users or use timestamps to generate random IDs. Make sure the same ID is used when a user reconnects to your application.",
+          "example": "cg_user",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroySessionResponse": {
+      "document": "DestroySession response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

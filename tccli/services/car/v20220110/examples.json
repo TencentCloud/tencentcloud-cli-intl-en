@@ -1,0 +1,29 @@
+{
+  "actions": {
+    "ApplyConcurrent": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplyConcurrent\n<Common request parameters>\n\n{\n    \"UserIp\": \"125.127.178.228\",\n    \"ProjectId\": \"cap-abcdefgh\",\n    \"UserId\": \"cg_user\",\n    \"ApplicationVersionId\": \"v1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fcf4146f-64d3-496c-88dc-d12f832de313\"\n    }\n}",
+        "title": "Requesting concurrency quota"
+      }
+    ],
+    "CreateSession": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSession\n<Common request parameters>\n\n{\n    \"UserIp\": \"125.127.178.228\",\n    \"ClientSession\": \"eyJhYmMiOjEyM30=\",\n    \"UserId\": \"cg_user\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ServerSession\": \"eyJ4dHoiOjc4OX0=\",\n        \"RequestId\": \"fcf4146f-64d3-496c-88dc-d12f832de313\"\n    }\n}",
+        "title": "Creating a session"
+      }
+    ],
+    "DestroySession": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DestroySession\n<Common request parameters>\n\n{\n    \"UserId\": \"cg_user\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fcf4146f-64d3-496c-88dc-d12f832de313\"\n    }\n}",
+        "title": "Terminating a session"
+      }
+    ]
+  },
+  "version": "1.0"
+}

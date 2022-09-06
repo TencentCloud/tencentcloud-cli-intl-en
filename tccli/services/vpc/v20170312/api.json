@@ -19723,6 +19723,7 @@
         {
           "default": "",
           "document": "Tunnel instance ID.",
+          "example": "vpnx-xxxxx",
           "member": "string",
           "name": "VpnConnectionId",
           "required": true,
@@ -19732,6 +19733,7 @@
         {
           "default": "",
           "document": "Tunnel name.",
+          "example": "xxxxx",
           "member": "string",
           "name": "VpnConnectionName",
           "required": true,
@@ -19741,6 +19743,7 @@
         {
           "default": "",
           "document": "VPC instance ID.",
+          "example": "vpc-xxxxx",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -19750,6 +19753,7 @@
         {
           "default": "",
           "document": "The ID of the VPN gateway instance.",
+          "example": "vpngw-xxxxx",
           "member": "string",
           "name": "VpnGatewayId",
           "required": true,
@@ -19759,6 +19763,7 @@
         {
           "default": "",
           "document": "Customer gateway instance ID.",
+          "example": "cgw-xxxxx",
           "member": "string",
           "name": "CustomerGatewayId",
           "required": true,
@@ -19768,6 +19773,7 @@
         {
           "default": "",
           "document": "The pre-shared key.",
+          "example": "xxxxx",
           "member": "string",
           "name": "PreShareKey",
           "required": true,
@@ -19777,6 +19783,7 @@
         {
           "default": "",
           "document": "Tunnel transmission protocol.",
+          "example": "IPSEC",
           "member": "string",
           "name": "VpnProto",
           "required": true,
@@ -19786,6 +19793,7 @@
         {
           "default": "",
           "document": "Tunnel encryption protocol.",
+          "example": "IKE",
           "member": "string",
           "name": "EncryptProto",
           "required": true,
@@ -19795,6 +19803,7 @@
         {
           "default": "",
           "document": "Route Type.",
+          "example": "StaticRoute",
           "member": "string",
           "name": "RouteType",
           "required": true,
@@ -19804,6 +19813,7 @@
         {
           "default": "",
           "document": "Creation Time.",
+          "example": "0000-00-00 00:00:00",
           "member": "datetime",
           "name": "CreatedTime",
           "required": true,
@@ -19813,6 +19823,7 @@
         {
           "default": "",
           "document": "Production status of the tunnel. PENDING: Creating; AVAILABLE: Running; DELETING: Deleting.",
+          "example": "AVAILABLE",
           "member": "string",
           "name": "State",
           "required": true,
@@ -19822,6 +19833,7 @@
         {
           "default": "",
           "document": "Connection status of the tunnel. AVAILABLE: Connected.",
+          "example": "AVAILABLE",
           "member": "string",
           "name": "NetStatus",
           "required": true,
@@ -19831,6 +19843,7 @@
         {
           "default": "",
           "document": "SPD.",
+          "example": "无",
           "member": "SecurityPolicyDatabase",
           "name": "SecurityPolicyDatabaseSet",
           "required": true,
@@ -19840,6 +19853,7 @@
         {
           "default": "",
           "document": "IKE options.",
+          "example": "无",
           "member": "IKEOptionsSpecification",
           "name": "IKEOptionsSpecification",
           "required": true,
@@ -19849,6 +19863,7 @@
         {
           "default": "",
           "document": "IPSEC options.",
+          "example": "无",
           "member": "IPSECOptionsSpecification",
           "name": "IPSECOptionsSpecification",
           "required": true,
@@ -19858,6 +19873,7 @@
         {
           "default": "",
           "document": "Whether the health check is supported.",
+          "example": "false",
           "member": "bool",
           "name": "EnableHealthCheck",
           "required": true,
@@ -19867,6 +19883,7 @@
         {
           "default": "",
           "document": "Local IP address for the health check",
+          "example": "0.0.0.0",
           "member": "string",
           "name": "HealthCheckLocalIp",
           "required": true,
@@ -19876,6 +19893,7 @@
         {
           "default": "",
           "document": "Peer IP address for the health check",
+          "example": "0.0.0.0",
           "member": "string",
           "name": "HealthCheckRemoteIp",
           "required": true,
@@ -19885,11 +19903,62 @@
         {
           "default": "",
           "document": "Tunnel health check status. Valid values: AVAILABLE: healthy; UNAVAILABLE: unhealthy. This parameter will be returned only after health check is enabled.",
+          "example": "AVAILABLE",
           "member": "string",
           "name": "HealthCheckStatus",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable DPD. Values: `0` (Disable) and `1` (Enable)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "DpdEnable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "DPD timeout period. \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "30",
+          "member": "string",
+          "name": "DpdTimeout",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The action to take in case of DPD timeout. Values: `clear` (Disconnect) and `restart` (retry). This parameter only takes effect when `DpdEnable` is set to `1`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "clear",
+          "member": "string",
+          "name": "DpdAction",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Array of tag key-value pairs",
+          "example": "无",
+          "member": "Tag",
+          "name": "TagSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Negotiation type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "flowTrigger",
+          "member": "string",
+          "name": "NegotiationType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
