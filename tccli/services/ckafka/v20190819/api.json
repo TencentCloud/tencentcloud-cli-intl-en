@@ -4854,6 +4854,15 @@
           "name": "DynamicDiskConfig",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The size of a single message in bytes at the instance level.",
+          "example": "8388680",
+          "member": "uint64",
+          "name": "MaxMessageByte",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"

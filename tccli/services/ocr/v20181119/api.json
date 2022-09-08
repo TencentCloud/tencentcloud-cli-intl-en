@@ -886,7 +886,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Nationality",
+          "document": "Country/region code",
           "example": "SGP",
           "member": "string",
           "name": "Nationality",

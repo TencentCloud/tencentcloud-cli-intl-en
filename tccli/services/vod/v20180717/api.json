@@ -11111,7 +11111,7 @@
       "document": "DescribeTaskDetail response structure.",
       "members": [
         {
-          "document": "The task type. Valid values:\n<li>Procedure: Video processing</li>\n<li>EditMedia: Video editing</li>\n<li>SplitMedia: Video splitting</li>\n<li>ComposeMedia: Media file producing</li>\n<li>WechatPublish: WeChat publishing</li>\n<li>PullUpload: Pulling media files for upload</li>\n<li>FastClipMedia: Quick clipping</li>\n<li>RemoveWatermarkTask: Watermark removal</li>",
+          "document": "The task type. Valid values:\n<li>Procedure: Video processing</li>\n<li>EditMedia: Video editing</li>\n<li>SplitMedia: Video splitting</li>\n<li>ComposeMedia: Media file production</li>\n<li>WechatPublish: WeChat publishing</li>\n<li>PullUpload: Pulling media files for upload</li>\n<li>FastClipMedia: Quick clipping</li>\n<li>RemoveWatermarkTask: Watermark removal</li>\n<li> ReviewAudioVideo: Moderation</li>",
           "example": "Procedure",
           "member": "string",
           "name": "TaskType",
@@ -11268,6 +11268,15 @@
           "example": "无",
           "member": "RemoveWatermarkTask",
           "name": "RemoveWatermarkTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The information of a moderation task. This parameter is valid only if `TaskType` is `ReviewAudioVideo`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReviewAudioVideoTask",
+          "name": "ReviewAudioVideoTask",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -12194,7 +12203,7 @@
         },
         {
           "default": "",
-          "document": "<b>Supported event types:</b>\n<li>NewFileUpload: Video uploaded.</li>\n<li>ProcedureStateChanged: Task flow status changed.</li>\n<li>FileDeleted: Video deleted.</li>\n<li>PullComplete: Finished video pulling.</li>\n<li>EditMediaComplete: Finished video editing.</li>\n<li>SplitMediaComplete: Finished video splitting.</li>\n<li>WechatPublishComplete: Published to WeChat.</li>\n<li>ComposeMediaComplete: Finished composition.</li>\n<li>FastClipMediaComplete: Finished quick clipping.</li>\n<b>v2017 task types:</b>\n<li>TranscodeComplete: Finished video transcoding.</li>\n<li>ConcatComplete: Finished video splicing.</li>\n<li>ClipComplete: Finished video clipping.</li>\n<li>CreateImageSpriteComplete: Finished image sprite generation.</li>\n<li>CreateSnapshotByTimeOffsetComplete: Finished time point screencapturing.</li>",
+          "document": "<b>Supported event types:</b>\n<li>NewFileUpload: Video uploaded.</li>\n<li>ProcedureStateChanged: Task flow status changed.</li>\n<li>FileDeleted: Video deleted.</li>\n<li>PullComplete: Finished video pulling.</li>\n<li>EditMediaComplete: Finished video editing.</li>\n<li>SplitMediaComplete: Finished video splitting.</li>\n<li>WechatPublishComplete: Published to WeChat.</li>\n<li>ComposeMediaComplete: Finished producing the media file.</li>\n<li>FastClipMediaComplete: Finished quick clipping.</li>\n<li>ReviewAudioVideoComplete: Finished moderation</li>\n<b>v2017 task types:</b>\n<li>TranscodeComplete: Finished video transcoding.</li>\n<li>ConcatComplete: Finished video splicing.</li>\n<li>ClipComplete: Finished video clipping.</li>\n<li>CreateImageSpriteComplete: Finished image sprite generation.</li>\n<li>CreateSnapshotByTimeOffsetComplete: Finished time point screencapturing.</li>",
           "example": "null",
           "member": "string",
           "name": "EventType",
@@ -12358,6 +12367,16 @@
           "example": "null",
           "member": "RestoreMediaTask",
           "name": "RestoreMediaCompleteEvent",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The callback for the completion of the moderation task. This parameter is valid only if `EventType` is `ReviewAudioVideoComplete`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "ReviewAudioVideoTask",
+          "name": "ReviewAudioVideoCompleteEvent",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -20818,6 +20837,254 @@
           "example": "\"\"",
           "member": "string",
           "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ReviewAudioVideoSegmentItem": {
+      "document": "The suspicious segment detected.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start time offset (seconds) of the segment.",
+          "example": "无",
+          "member": "float",
+          "name": "StartTimeOffset",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The end time offset (seconds) of the segment.",
+          "example": "无",
+          "member": "float",
+          "name": "EndTimeOffset",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The confidence score of the segment.",
+          "example": "无",
+          "member": "float",
+          "name": "Confidence",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The processing suggestion for the segment. Valid values:\n<li>review: The content may be non-compliant. Please review it.</li>\n<li>block: The content is non-compliant. We recommend you block it.</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Suggestion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The most likely label for the segment. Valid values:\n<li>Porn</li>\n<li>Terrorism</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Label",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The sublabel for the segment. This parameter is valid only if `Form` is `Image` or `Voice`.\nValid values when `Form` is `Image` and `Label` is `Porn`:\n<li>porn</li>\n<li>vulgar</li>\n\nValid values when `Form` is `Image` and `Label` is `Terrorism`:\n<li>guns</li>\n<li>bloody</li>\n<li>banners</li>\n<li>scenario (terrorist scenes)</li>\n<li>explosion</li>\n\nValid values when `Form` is `Voice` and `Label` is `Porn`:\n<li>moan</li>",
+          "example": "无",
+          "member": "string",
+          "name": "SubLabel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The format of the suspicious segment detected. Valid values:\n<li>Image</li>\n<li>OCR</li>\n<li>ASR</li>\n<li>Voice</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Form",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The pixel coordinates ([x1, y1, x2, y2]) of the top-left corner and bottom-right corner of the suspicious text. This parameter is valid only if `Form` is `OCR`.",
+          "example": "无",
+          "member": "int64",
+          "name": "AreaCoordSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The content of the suspicious text detected. This parameter is valid only if `Form` is `OCR` or `ASR`.",
+          "example": "无",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The keywords that match the suspicious text. This parameter is valid only if `Form` is `OCR` or `ASR`.",
+          "example": "无",
+          "member": "string",
+          "name": "KeywordSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ReviewAudioVideoTask": {
+      "document": "The information of a moderation task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task ID.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The task status. Valid values:\n<li>PROCESSING</li>\n<li>FINISH</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. An empty string indicates the task is successful; other values indicate that the task failed. For details, see [Video processing error codes](https://intl.cloud.tencent.com/document/product/266/39145?lang=en&pg=#video-processing).",
+          "example": "无",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error message.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The output of a moderation task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReviewAudioVideoTaskOutput",
+          "name": "Output",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionContext",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ReviewAudioVideoTaskOutput": {
+      "document": "The output of a moderation task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The handling suggestion. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Suggestion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The most likely label for the suspicious content. This parameter is valid only if `Suggestion` is `review` or `block`.\n<li>Porn</li>\n<li>Terrorism</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Label",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The most likely format of the suspicious content. This parameter is valid only if `Suggestion` is `review` or `block`.\n<li>Image</li>\n<li>OCR</li>\n<li>ASR</li>\n<li>Voice</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Form",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "A list of the suspicious segments detected.\n<font color=red>Note</font>: Only the first 10 results will be returned at most. You can get all the results from the file specified by `SegmentSetFileUrl`.",
+          "example": "无",
+          "member": "ReviewAudioVideoSegmentItem",
+          "name": "SegmentSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The URL of the file that contains suspicious segments. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time (`SegmentSetFileUrlExpireTime`).",
+          "example": "无",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The expiration time of the file that contains suspicious segments, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format).",
+          "example": "无",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
           "required": true,
           "type": "string",
           "value_allowed_null": false

@@ -205,9 +205,9 @@
       "output": "DescribeCCLevelPolicyResponse"
     },
     "DescribeCCPrecisionPlyList": {
-      "document": "This API is used to obtain a CC precise protection policy.",
+      "document": "This API is used to obtain the list of CC precise protection policies.",
       "input": "DescribeCCPrecisionPlyListRequest",
-      "name": "Obtains a CC precise protection policy",
+      "name": "Obtains the list of CC precise protection policies",
       "output": "DescribeCCPrecisionPlyListResponse"
     },
     "DescribeCCThresholdList": {
@@ -223,9 +223,9 @@
       "output": "DescribeCCTrendResponse"
     },
     "DescribeCcBlackWhiteIpList": {
-      "document": "This API is used to obtain a layer-4 access control list.",
+      "document": "This API is used to obtain the layer-4 access control list.",
       "input": "DescribeCcBlackWhiteIpListRequest",
-      "name": "Obtains a layer-4 access control list",
+      "name": "Obtains the layer-4 access control list",
       "output": "DescribeCcBlackWhiteIpListResponse"
     },
     "DescribeCcGeoIPBlockConfigList": {
@@ -398,11 +398,11 @@
   },
   "objects": {
     "AnycastOutPackRelation": {
-      "document": "",
+      "document": "Details of the Anycast package",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Application bandwidth (in Mbps).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "200",
           "member": "uint64",
           "name": "NormalBandwidth",
@@ -412,7 +412,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Number of forwarding rules\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "60",
           "member": "uint64",
           "name": "ForwardRulesLimit",
@@ -422,7 +422,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Auto-renewal flag\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "AutoRenewFlag",
@@ -432,7 +432,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Expiration date\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2022-06-18 18:36:44",
           "member": "string",
           "name": "CurDeadline",
@@ -775,7 +775,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "All-out package details of the instance\nWhen an all-out package is not used by the instance, this field is `null`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "AnycastOutPackRelation",
           "name": "AnycastOutPackRelation",
@@ -906,11 +906,11 @@
       "usage": "out"
     },
     "BGPInstance": {
-      "document": "Anti-DDoS Pro instance details",
+      "document": "Details of the Anti-DDoS Pro instance",
       "members": [
         {
           "default": "",
-          "document": "Anti-DDoS instance details",
+          "document": "Details of the Anti-DDoS Pro instance",
           "example": "{\"EipList\":[\"175.27.164.158\"],\"InstanceId\":\"bgp-0000015a\"}",
           "member": "InstanceRelation",
           "name": "InstanceDetail",
@@ -920,7 +920,7 @@
         },
         {
           "default": "",
-          "document": "Anti-DDoS instance specifications",
+          "document": "Specifications of the Anti-DDoS Pro instance",
           "example": "{\"ProtectBandwidth\":30000,\"ProtectCountLimit\":10,\"ProtectIPNumbe",
           "member": "BGPInstanceSpecification",
           "name": "SpecificationLimit",
@@ -930,7 +930,7 @@
         },
         {
           "default": "",
-          "document": "Anti-DDoS instance usage statistics",
+          "document": "Usage statistics of the Anti-DDoS Pro instance",
           "example": "{\"ProtectCountUsage\":0,\"ProtectIPNumberUsage\":1,\"Last7DayAttackC",
           "member": "BGPInstanceUsages",
           "name": "Usage",
@@ -940,7 +940,7 @@
         },
         {
           "default": "",
-          "document": "Region of the Anti-DDoS instance",
+          "document": "Region of the Anti-DDoS Pro instance",
           "example": "{\"Region\":\"ap-nanjing\"}",
           "member": "RegionInfo",
           "name": "Region",
@@ -950,7 +950,7 @@
         },
         {
           "default": "",
-          "document": "Status of the Anti-DDoS instance. Valid values:\n`idle`: running\n`attacking`: under attacks\n`blocking`: blocked\n`creating`: creating\n`deblocking`: unblocked\n`isolate`: isolated",
+          "document": "Status of the Anti-DDoS Pro instance. Valid values:\n`idle`: The instance is running normally.\n`attacking`: The instance is under attack.\n`blocking`: The instance is blocked.\n`creating`: The instance is being created.\n`deblocking`: Unblocking the instance\n`isolate`: The instance is being isolated.",
           "example": "idle",
           "member": "string",
           "name": "Status",
@@ -960,7 +960,7 @@
         },
         {
           "default": "",
-          "document": "Purchase Time",
+          "document": "Purchase time",
           "example": "2021-04-25 23:04:10",
           "member": "datetime",
           "name": "CreatedTime",
@@ -980,7 +980,7 @@
         },
         {
           "default": "",
-          "document": "Name of the Anti-DDoS instance",
+          "document": "Name of the Anti-DDoS Pro instance",
           "example": "“”",
           "member": "string",
           "name": "Name",
@@ -990,7 +990,7 @@
         },
         {
           "default": "",
-          "document": "Package details of the Anti-DDoS instance.\nNote: This field is `null` for an Anti-DDoS instance without using a package.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Details of the package to which the Anti-DDoS Pro instance belongs.\nWhen the package provided is not used by the instance, this field is `null`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "null",
           "member": "PackInfo",
           "name": "PackInfo",
@@ -1010,7 +1010,7 @@
         },
         {
           "default": "",
-          "document": "Binding status of the Anti-DDoS Pro instance\n`idle`: the instance is bound.\n `bounding`: the instance is in binding.\n`failed`: the binding failed.\n]",
+          "document": "Binding status of the Anti-DDoS Pro instance\n`idle`: The instance is bound.\n `bounding`: Binding the instance.\n`failed`: Failed to bind\n]",
           "example": "idle",
           "member": "string",
           "name": "BoundStatus",
@@ -1030,10 +1030,30 @@
         },
         {
           "default": "",
-          "document": "CC protection switch",
+          "document": "Status of CC protection",
           "example": "1",
           "member": "int64",
           "name": "CCEnable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tags associated with the resource",
+          "example": "null",
+          "member": "TagInfo",
+          "name": "TagInfoList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "New edition of Anti-DDoS Pro",
+          "example": "1",
+          "member": "uint64",
+          "name": "IpCountNewFlag",
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -1066,7 +1086,7 @@
         },
         {
           "default": "",
-          "document": "Number of protection IPs",
+          "document": "Number of protected IPs",
           "example": "10",
           "member": "uint64",
           "name": "ProtectIPNumberLimit",
@@ -1076,7 +1096,7 @@
         },
         {
           "default": "",
-          "document": "Auto-renewal status. Valid values:\n`0`: disabled\n`1`: enabled\n]",
+          "document": "Auto-renewal status. Values:\n`0`: Disabled\n`1`: Enabled\n]",
           "example": "0",
           "member": "uint64",
           "name": "AutoRenewFlag",
@@ -1086,7 +1106,7 @@
         },
         {
           "default": "",
-          "document": "Protection type of Anti-DDoS Pro. Valid values: `0` (general protection) and `1` (Lighthouse-based protection).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Protection type of Anti-DDoS Pro. Valid values: `0` (general protection) and `1` (Lighthouse-based protection).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "UnionPackFlag",
@@ -1096,10 +1116,50 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Application bandwidth\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "ServiceBandWidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it’s an Anti-DDoS Pro Premium edition. Values: `0` (General edition); `1` (Premium edition).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "BattleEditionFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it’s an Anti-DDoS Pro Standard edition. Values: `0` (General edition); `1` (Standard edition).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "ChannelEditionFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it’s an Anti-DDoS Pro Enterprise edition. Values: `0` (General edition); `1` (Enterprise edition).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "EnterpriseFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Elastic bandwidth threshold of the Anti-DDoS Pro Enterprise edition.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "ElasticLimit",
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -1231,7 +1291,7 @@
         },
         {
           "default": "",
-          "document": "Sub-product category. Valid values: `cvm` (CVM), `lb` (Load balancer), `eni` (ENI), `vpngw` (VPN gateway), `natgw` (NAT gateway), `waf` (WAF), `fpc` (financial products), `gaap` (GAAP), `eip` (BM EIP) and `other` (hosted IP). This field is required when you perform binding.",
+          "document": "Sub-product category. Valid values: `cvm` (CVM), `lb` (Load balancer), `eni` (ENI), `vpngw` (VPN gateway), `natgw` (NAT gateway), `waf` (WAF), `fpc` (financial products), `gaap` (GAAP), `eip` (BM EIP) and `other` (managed IP). This field is required when you perform binding.",
           "example": "cvm",
           "member": "string",
           "name": "DeviceType",
@@ -4538,7 +4598,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Filters by package type.",
           "example": "无",
           "member": "string",
           "name": "FilterPackType",
@@ -4601,7 +4661,7 @@
         },
         {
           "default": "",
-          "document": "IP filter",
+          "document": "Filters by IP.",
           "example": "1.1.1.1",
           "member": "string",
           "name": "FilterIp",
@@ -4619,7 +4679,7 @@
         },
         {
           "default": "",
-          "document": "Region filter. For example, `ap-guangzhou`.",
+          "document": "Filters by region. For example, `ap-guangzhou`.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "FilterRegion",
@@ -4628,7 +4688,7 @@
         },
         {
           "default": "",
-          "document": "Name filter",
+          "document": "Filters by name.",
           "example": "test",
           "member": "string",
           "name": "FilterName",
@@ -4655,12 +4715,39 @@
         },
         {
           "default": "",
-          "document": "Filters by binding status. `bounding`: the instance is bound; `failed`: the binding failed.",
+          "document": "Filters by binding status. `bounding`: The instance is bound; `failed`: The binding failed.",
           "example": "bounding",
           "member": "string",
           "name": "FilterBoundStatus",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of instance IDs",
+          "example": "[bgp-00000001]",
+          "member": "string",
+          "name": "FilterInstanceIdList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filters by Enterprise edition",
+          "example": "1",
+          "member": "uint64",
+          "name": "FilterEnterpriseFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filters by tag",
+          "example": "无",
+          "member": "TagFilter",
+          "name": "FilterTag",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -4669,7 +4756,7 @@
       "document": "DescribeListBGPInstances response structure.",
       "members": [
         {
-          "document": "Total number of lists",
+          "document": "Total number of Anti-DDoS Pro instances",
           "example": "1",
           "member": "uint64",
           "name": "Total",

@@ -1083,6 +1083,16 @@
         },
         {
           "default": "",
+          "document": "Backend AMP consumer ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Consumer-asfafasf",
+          "member": "string",
+          "name": "AMPConsumerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
           "document": "Channel to push alarm notifications to CLS.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CLSNotice",
@@ -1859,7 +1869,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance name",
+          "document": "Instance ID.",
           "example": "my-grafana",
           "member": "string",
           "name": "InstanceId",
@@ -2650,7 +2660,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance name",
+          "document": "Instance ID.",
           "example": "my-instance",
           "member": "string",
           "name": "InstanceId",
@@ -2682,6 +2692,15 @@
       "document": "CreateGrafanaIntegration response structure.",
       "members": [
         {
+          "document": "",
+          "example": "integration-xxxxxxxx",
+          "member": "string",
+          "name": "IntegrationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -2695,7 +2714,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance name",
+          "document": "Instance ID.",
           "example": "my-instance",
           "member": "string",
           "name": "InstanceId",
@@ -2737,6 +2756,15 @@
           "name": "ExtraOrgIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "[\"1\"]",
+          "member": "string",
+          "name": "OrganizationIds",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2744,6 +2772,15 @@
     "CreateGrafanaNotificationChannelResponse": {
       "document": "CreateGrafanaNotificationChannel response structure.",
       "members": [
+        {
+          "document": "",
+          "example": "channel-xxxxxxxx",
+          "member": "string",
+          "name": "ChannelId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -3291,6 +3328,15 @@
     "CreateSSOAccountResponse": {
       "document": "CreateSSOAccount response structure.",
       "members": [
+        {
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -5732,7 +5778,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance name",
+          "document": "Instance ID.",
           "example": "my-instance",
           "member": "string",
           "name": "InstanceId",
@@ -5840,7 +5886,7 @@
       "members": [
         {
           "default": "",
-          "document": "None",
+          "document": "Instance ID.",
           "example": "my-instance",
           "member": "string",
           "name": "InstanceId",
@@ -5876,7 +5922,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance name",
+          "document": "Instance ID.",
           "example": "my-instance",
           "member": "string",
           "name": "InstanceId",
@@ -6011,7 +6057,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance name",
+          "document": "Instance ID.",
           "example": "my-instance",
           "member": "string",
           "name": "InstanceId",
@@ -6065,7 +6111,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance name",
+          "document": "Instance ID.",
           "example": "my-instance",
           "member": "string",
           "name": "InstanceId",
@@ -6146,7 +6192,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance name",
+          "document": "Instance ID.",
           "example": "my-instance",
           "member": "string",
           "name": "InstanceId",
@@ -7037,6 +7083,7 @@
         {
           "default": "",
           "document": "List of alarm recipient group IDs.",
+          "example": " 无",
           "member": "int64",
           "name": "ReceiverGroupList",
           "required": true,
@@ -7046,6 +7093,7 @@
         {
           "default": "",
           "document": "List of alarm recipient IDs.",
+          "example": "无",
           "member": "int64",
           "name": "ReceiverUserList",
           "required": true,
@@ -7054,7 +7102,8 @@
         },
         {
           "default": "",
-          "document": "Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates '10:0:0'.",
+          "document": "Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates “10:0:0”.",
+          "example": "无",
           "member": "int64",
           "name": "StartTime",
           "required": true,
@@ -7064,6 +7113,7 @@
         {
           "default": "",
           "document": "End time of the alarm period. The meaning is the same as that of StartTime.",
+          "example": "无",
           "member": "int64",
           "name": "EndTime",
           "required": true,
@@ -7073,6 +7123,7 @@
         {
           "default": "",
           "document": "Recipient type. Valid values: group and user.",
+          "example": "无",
           "member": "string",
           "name": "ReceiverType",
           "required": true,
@@ -7082,6 +7133,7 @@
         {
           "default": "",
           "document": "Alarm notification method. Valid values: \"SMS\", \"SITE\", \"EMAIL\", \"CALL\", and \"WECHAT\".",
+          "example": "无",
           "member": "string",
           "name": "NotifyWay",
           "required": true,
@@ -7091,6 +7143,7 @@
         {
           "default": "",
           "document": "Uid of the alarm call recipient.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "int64",
           "name": "UidList",
           "required": true,
@@ -7100,6 +7153,7 @@
         {
           "default": "",
           "document": "Number of alarm call rounds.",
+          "example": "无",
           "member": "int64",
           "name": "RoundNumber",
           "required": true,
@@ -7109,6 +7163,7 @@
         {
           "default": "",
           "document": "Intervals of alarm call rounds in seconds.",
+          "example": "无",
           "member": "int64",
           "name": "RoundInterval",
           "required": true,
@@ -7118,6 +7173,7 @@
         {
           "default": "",
           "document": "Alarm call intervals for individuals in seconds.",
+          "example": "无",
           "member": "int64",
           "name": "PersonInterval",
           "required": true,
@@ -7127,6 +7183,7 @@
         {
           "default": "",
           "document": "Whether to send an alarm call delivery notice. The value 0 indicates that no notice needs to be sent. The value 1 indicates that a notice needs to be sent.",
+          "example": "无",
           "member": "int64",
           "name": "NeedSendNotice",
           "required": true,
@@ -7136,6 +7193,7 @@
         {
           "default": "",
           "document": "Alarm call notification time. Valid values: OCCUR (indicating that a notice is sent when the alarm is triggered) and RECOVER (indicating that a notice is sent when the alarm is recovered).",
+          "example": "无",
           "member": "string",
           "name": "SendFor",
           "required": true,
@@ -7145,6 +7203,7 @@
         {
           "default": "",
           "document": "Notification method when an alarm is recovered. Valid value: SMS.",
+          "example": "无",
           "member": "string",
           "name": "RecoverNotify",
           "required": true,
@@ -7154,6 +7213,7 @@
         {
           "default": "",
           "document": "Alarm language.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "无",
           "member": "string",
           "name": "ReceiveLanguage",
           "required": true,
@@ -9741,6 +9801,15 @@
       "document": "InstallPlugins response structure.",
       "members": [
         {
+          "document": "",
+          "example": "[\"grafana-piechart\"]",
+          "member": "string",
+          "name": "PluginIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -12100,7 +12169,8 @@
       "members": [
         {
           "default": "",
-          "document": "Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates '10:0:0'.",
+          "document": "Start time of the alarm period. Value range: [0,86400). Convert the Unix timestamp to Beijing time and then remove the date. For example, 7200 indicates “10:0:0”.",
+          "example": "无",
           "member": "int64",
           "name": "StartTime",
           "required": true,
@@ -12110,6 +12180,7 @@
         {
           "default": "",
           "document": "End time of the alarm period. The meaning is the same as that of StartTime.",
+          "example": "无",
           "member": "int64",
           "name": "EndTime",
           "required": true,
@@ -12119,6 +12190,7 @@
         {
           "default": "",
           "document": "Alarm notification method. Valid values: \"SMS\", \"SITE\", \"EMAIL\", \"CALL\", and \"WECHAT\".",
+          "example": "无",
           "member": "string",
           "name": "NotifyWay",
           "required": true,
@@ -12128,6 +12200,7 @@
         {
           "default": "",
           "document": "Recipient type. Valid values: group and user.",
+          "example": "无",
           "member": "string",
           "name": "ReceiverType",
           "required": true,
@@ -12137,6 +12210,7 @@
         {
           "default": "",
           "document": "ReceiverId",
+          "example": "无",
           "member": "int64",
           "name": "Id",
           "required": false,
@@ -12146,6 +12220,7 @@
         {
           "default": "",
           "document": "Alarm call notification time. Valid values: OCCUR (indicating that a notice is sent when the alarm is triggered) and RECOVER (indicating that a notice is sent when the alarm is recovered).",
+          "example": "无",
           "member": "string",
           "name": "SendFor",
           "required": false,
@@ -12154,7 +12229,8 @@
         },
         {
           "default": "",
-          "document": "Uid of the alarm call recipient.",
+          "document": "UID of the phone call alarm.",
+          "example": "无",
           "member": "int64",
           "name": "UidList",
           "required": false,
@@ -12164,6 +12240,7 @@
         {
           "default": "",
           "document": "Number of alarm call rounds.",
+          "example": "无",
           "member": "int64",
           "name": "RoundNumber",
           "required": false,
@@ -12173,6 +12250,7 @@
         {
           "default": "",
           "document": "Alarm call intervals for individuals in seconds.",
+          "example": "无",
           "member": "int64",
           "name": "PersonInterval",
           "required": false,
@@ -12182,6 +12260,7 @@
         {
           "default": "",
           "document": "Intervals of alarm call rounds in seconds.",
+          "example": "无",
           "member": "int64",
           "name": "RoundInterval",
           "required": false,
@@ -12191,6 +12270,7 @@
         {
           "default": "",
           "document": "Notification method when an alarm is recovered. Valid value: SMS.",
+          "example": "无",
           "member": "string",
           "name": "RecoverNotify",
           "required": false,
@@ -12200,6 +12280,7 @@
         {
           "default": "",
           "document": "Whether to send an alarm call delivery notice. The value 0 indicates that no notice needs to be sent. The value 1 indicates that a notice needs to be sent.",
+          "example": "无",
           "member": "int64",
           "name": "NeedSendNotice",
           "required": false,
@@ -12208,7 +12289,8 @@
         },
         {
           "default": "",
-          "document": "Recipient group list. The list of recipient group IDs that is queried by a platform API.",
+          "document": "Recipient group list. The list of recipient group IDs that is queried by API.",
+          "example": "无",
           "member": "int64",
           "name": "ReceiverGroupList",
           "required": false,
@@ -12217,7 +12299,8 @@
         },
         {
           "default": "",
-          "document": "Recipient list. The list of recipient IDs that is queried by a platform API.",
+          "document": "Recipient list. The list of recipient IDs that is queried by API.",
+          "example": "无",
           "member": "int64",
           "name": "ReceiverUserList",
           "required": false,
@@ -12227,6 +12310,7 @@
         {
           "default": "",
           "document": "Language of received alarms. Enumerated values: zh-CN and en-US.",
+          "example": "无",
           "member": "string",
           "name": "ReceiveLanguage",
           "required": false,
@@ -13127,7 +13211,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance name",
+          "document": "Instance ID.",
           "example": "my-instance",
           "member": "string",
           "name": "InstanceId",
@@ -13226,7 +13310,7 @@
       "members": [
         {
           "default": "",
-          "document": "None",
+          "document": "Instance ID.",
           "example": "my-instance",
           "member": "string",
           "name": "InstanceId",
@@ -13262,7 +13346,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance name",
+          "document": "Instance ID.",
           "example": "my-instance",
           "member": "string",
           "name": "InstanceId",
@@ -13361,7 +13445,7 @@
         },
         {
           "default": "",
-          "document": "Instance name",
+          "document": "Instance ID.",
           "example": "my-instance",
           "member": "string",
           "name": "InstanceId",
@@ -13392,6 +13476,15 @@
           "example": "[]",
           "member": "string",
           "name": "ExtraOrgIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "[\"1\", \"2\"]",
+          "member": "string",
+          "name": "OrganizationIds",
           "required": false,
           "type": "list"
         }
@@ -13712,7 +13805,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance name",
+          "document": "Instance ID.",
           "example": "my-instance",
           "member": "string",
           "name": "InstanceId",
