@@ -6,6 +6,12 @@
       "name": "Removes the isolation of an instance to make it accessible again",
       "output": "ActivateInstanceResponse"
     },
+    "AddClusterSlaveZone": {
+      "document": "This API is used to add the replica AZ.",
+      "input": "AddClusterSlaveZoneRequest",
+      "name": "Adds the replica AZ",
+      "output": "AddClusterSlaveZoneResponse"
+    },
     "AddInstances": {
       "document": "This API is used to add an instance in a cluster.",
       "input": "AddInstancesRequest",
@@ -77,6 +83,12 @@
       "input": "DescribeClusterInstanceGrpsRequest",
       "name": "Queries instance groups",
       "output": "DescribeClusterInstanceGrpsResponse"
+    },
+    "DescribeClusterParams": {
+      "document": "This API is used to query the parameters of a cluster.",
+      "input": "DescribeClusterParamsRequest",
+      "name": "Queries the parameters of a cluster",
+      "output": "DescribeClusterParamsResponse"
     },
     "DescribeClusters": {
       "document": "This API is used to the list of clusters.",
@@ -204,6 +216,12 @@
       "name": "Modifies the parameters of a cluster",
       "output": "ModifyClusterParamResponse"
     },
+    "ModifyClusterSlaveZone": {
+      "document": "This API is used to modify the replica AZ.",
+      "input": "ModifyClusterSlaveZoneRequest",
+      "name": "Modifies the replica AZ",
+      "output": "ModifyClusterSlaveZoneResponse"
+    },
     "ModifyDBInstanceSecurityGroups": {
       "document": "This API is used to modify the security groups bound to an instance.",
       "input": "ModifyDBInstanceSecurityGroupsRequest",
@@ -240,6 +258,12 @@
       "name": "Pauses a serverless cluster",
       "output": "PauseServerlessResponse"
     },
+    "RemoveClusterSlaveZone": {
+      "document": "This API is used to delete the replica AZ.",
+      "input": "RemoveClusterSlaveZoneRequest",
+      "name": "Deletes the replica AZ",
+      "output": "RemoveClusterSlaveZoneResponse"
+    },
     "ResumeServerless": {
       "document": "This API is used to resume a serverless cluster.",
       "input": "ResumeServerlessRequest",
@@ -251,6 +275,12 @@
       "input": "SetRenewFlagRequest",
       "name": "Sets auto-renewal",
       "output": "SetRenewFlagResponse"
+    },
+    "SwitchClusterZone": {
+      "document": "This API is used to switch to the replica AZ.",
+      "input": "SwitchClusterZoneRequest",
+      "name": "Switches to the replica AZ",
+      "output": "SwitchClusterZoneResponse"
     },
     "UpgradeInstance": {
       "document": "This API is used to upgrade an instance.",
@@ -346,6 +376,51 @@
         {
           "document": "Task flow ID",
           "example": "123",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddClusterSlaveZoneRequest": {
+      "document": "AddClusterSlaveZone request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-xxxxxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Replica AZ",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "SlaveZone",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddClusterSlaveZoneResponse": {
+      "document": "AddClusterSlaveZone response structure.",
+      "members": [
+        {
+          "document": "Async FlowId",
+          "example": "12345",
           "member": "int64",
           "name": "FlowId",
           "required": true,
@@ -3193,6 +3268,51 @@
       ],
       "type": "object"
     },
+    "DescribeClusterParamsRequest": {
+      "document": "DescribeClusterParams request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbpg-1xcycbu8",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterParamsResponse": {
+      "document": "DescribeClusterParams response structure.",
+      "members": [
+        {
+          "document": "Number of parameters",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance parameter list",
+          "example": "无",
+          "member": "ParamInfo",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeClustersRequest": {
       "document": "DescribeClusters request structure.",
       "members": [
@@ -3477,10 +3597,20 @@
         {
           "default": "",
           "document": "Database type. Valid values: \n<li> MYSQL </li>",
+          "example": "MYSQL",
           "member": "string",
           "name": "DbType",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to return the AZ information.",
+          "example": "False",
+          "member": "bool",
+          "name": "IncludeZoneStocks",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -3784,17 +3914,30 @@
       "document": "DescribeRollbackTimeRange response structure.",
       "members": [
         {
-          "document": "Start time point of valid rollback time range",
+          "document": "Start time of valid rollback time range (disused)",
+          "example": "2019-01-13 02:12:05",
           "member": "string",
           "name": "TimeRangeStart",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "End time point of valid rollback time range",
+          "document": "End time of valid rollback time range (disused)",
+          "example": "2019-01-20 02:10:12",
           "member": "string",
           "name": "TimeRangeEnd",
+          "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Time range available for rollback",
+          "example": "无",
+          "member": "RollbackTimeRange",
+          "name": "RollbackTimeRanges",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -4206,6 +4349,7 @@
         {
           "default": "",
           "document": "Number of instance CPU cores",
+          "example": "无",
           "member": "uint64",
           "name": "Cpu",
           "required": true,
@@ -4215,6 +4359,7 @@
         {
           "default": "",
           "document": "Instance memory in GB",
+          "example": "无",
           "member": "uint64",
           "name": "Memory",
           "required": true,
@@ -4224,6 +4369,7 @@
         {
           "default": "",
           "document": "Maximum instance storage capacity GB",
+          "example": "无",
           "member": "uint64",
           "name": "MaxStorageSize",
           "required": true,
@@ -4233,11 +4379,62 @@
         {
           "default": "",
           "document": "Minimum instance storage capacity GB",
+          "example": "无",
           "member": "uint64",
           "name": "MinStorageSize",
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether there is an inventory.",
+          "example": "无",
+          "member": "bool",
+          "name": "HasStock",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Machine type",
+          "example": "无",
+          "member": "string",
+          "name": "MachineType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum IOPS",
+          "example": "无",
+          "member": "int64",
+          "name": "MaxIops",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum bandwidth",
+          "example": "无",
+          "member": "int64",
+          "name": "MaxIoBandWidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Inventory information in a region\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ZoneStockInfo",
+          "name": "ZoneStockInfos",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4547,6 +4744,60 @@
           "name": "AsyncRequestId",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterSlaveZoneRequest": {
+      "document": "ModifyClusterSlaveZone request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-xxxxxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Old replica AZ",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "OldSlaveZone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New replica AZ",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "NewSlaveZone",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterSlaveZoneResponse": {
+      "document": "ModifyClusterSlaveZone response structure.",
+      "members": [
+        {
+          "document": "Async FlowId",
+          "example": "12345",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4946,6 +5197,111 @@
       ],
       "type": "object"
     },
+    "ParamInfo": {
+      "document": "Parameter information",
+      "members": [
+        {
+          "default": "",
+          "document": "Current value",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default value",
+          "member": "string",
+          "name": "Default",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of valid values when parameter type is `enum`, `string` or `bool`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "EnumValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum value when parameter type is `float` or `integer`.",
+          "member": "string",
+          "name": "Max",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum value when parameter type is `float` or `integer`.",
+          "member": "string",
+          "name": "Min",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter name",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to restart the instance for the modified parameters to take effect.",
+          "member": "int64",
+          "name": "NeedReboot",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter type: `integer`, `float`, `string`, `enum`, `bool`.",
+          "member": "string",
+          "name": "ParamType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Match type. Regex can be used when parameter type is `string`. Valid value: `multiVal`.",
+          "member": "string",
+          "name": "MatchType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Match values, which will be separated by semicolon when match type is `multiVal`.",
+          "member": "string",
+          "name": "MatchValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ParamItem": {
       "document": "Parameter to be modified",
       "members": [
@@ -5190,6 +5546,51 @@
       ],
       "usage": "in"
     },
+    "RemoveClusterSlaveZoneRequest": {
+      "document": "RemoveClusterSlaveZone request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-xxxxxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Replica AZ",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "SlaveZone",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveClusterSlaveZoneResponse": {
+      "document": "RemoveClusterSlaveZone response structure.",
+      "members": [
+        {
+          "document": "Async FlowId",
+          "example": "12345",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ResumeServerlessRequest": {
       "document": "ResumeServerless request structure.",
       "members": [
@@ -5225,6 +5626,32 @@
         }
       ],
       "type": "object"
+    },
+    "RollbackTimeRange": {
+      "document": "Rollback time range",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "无",
+          "member": "string",
+          "name": "TimeRangeStart",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "无",
+          "member": "string",
+          "name": "TimeRangeEnd",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "SecurityGroup": {
       "document": "Security group details",
@@ -5454,6 +5881,69 @@
       ],
       "usage": "out"
     },
+    "SwitchClusterZoneRequest": {
+      "document": "SwitchClusterZone request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-xxxxxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The current AZ",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "OldZone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New AZ",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "NewZone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `yes` (execute during maintenance time), `no` (execute now)",
+          "example": "false",
+          "member": "string",
+          "name": "IsInMaintainPeriod",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchClusterZoneResponse": {
+      "document": "SwitchClusterZone response structure.",
+      "members": [
+        {
+          "document": "Async FlowId",
+          "example": "12345",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Tag": {
       "document": "Information of tags associated with cluster, including `TagKey` and `TagValue`",
       "members": [
@@ -5654,6 +6144,32 @@
         }
       ],
       "type": "object"
+    },
+    "ZoneStockInfo": {
+      "document": "Inventory information in an AZ",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ",
+          "example": "无",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether there is an inventory.",
+          "example": "无",
+          "member": "bool",
+          "name": "HasStock",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     }
   },
   "version": "1.0"

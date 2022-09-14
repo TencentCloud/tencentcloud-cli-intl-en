@@ -783,6 +783,24 @@
           "name": "Protocol",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The maintenance time slot",
+          "example": "无",
+          "member": "OperationDuration",
+          "name": "OperationDuration",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the storage-computing separation feature.",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableHybridStorage",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -1380,6 +1398,15 @@
           "example": "无",
           "member": "int64",
           "name": "HealthStatus",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "VPC IDs",
+          "example": "vpc-gz5fa86l",
+          "member": "string",
+          "name": "VpcIds",
           "required": false,
           "type": "list"
         }
@@ -2723,6 +2750,46 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The maintenance time slot of the cluster\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OperationDuration",
+          "name": "OperationDuration",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Web node list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OptionalWebServiceInfo",
+          "name": "OptionalWebServiceInfos",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Autonomous index option\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoIndexEnabled",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the storage-computing separation feature is enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableHybridStorage",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3414,6 +3481,184 @@
       ],
       "usage": "out"
     },
+    "OperationDuration": {
+      "document": "The maintenance time slot of the cluster",
+      "members": [
+        {
+          "default": "",
+          "document": "Maintenance period, which can be one or more days from Monday to Sunday. Valid values: [0, 6].\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[0,1,2]",
+          "member": "uint64",
+          "name": "Periods",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The maintenance start time",
+          "example": "02:00",
+          "member": "string",
+          "name": "TimeStart",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The maintenance end time",
+          "example": "06:00",
+          "member": "string",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The time zone expressed in UTC.",
+          "example": "UTC+8",
+          "member": "string",
+          "name": "TimeZone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "OperationDurationUpdated": {
+      "document": "The maintenance time slot of the cluster",
+      "members": [
+        {
+          "default": "",
+          "document": "Maintenance period, which can be one or more days from Monday to Sunday. Valid values: [0, 6].",
+          "example": "[0,1,2]",
+          "member": "uint64",
+          "name": "Periods",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The maintenance start time",
+          "example": "02:00",
+          "member": "string",
+          "name": "TimeStart",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The maintenance end time",
+          "example": "06:00",
+          "member": "string",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The time zone expressed in UTC.",
+          "example": "UTC+8",
+          "member": "string",
+          "name": "TimeZone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The array of ES cluster IDs",
+          "example": "[es-c3tz27ww]",
+          "member": "string",
+          "name": "MoreInstances",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "OptionalWebServiceInfo": {
+      "document": "The information of optional web components",
+      "members": [
+        {
+          "default": "",
+          "document": "Type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cerebro",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public URL\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "https://es-xxxxxxxx.cerebro.tencentelasticsearch.com:9000",
+          "member": "string",
+          "name": "PublicUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Private URL\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "http://es-xxxxxxxx.interna.cerebro.tencentelasticsearch.com:9000",
+          "member": "string",
+          "name": "PrivateUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network access\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "OPEN",
+          "member": "string",
+          "name": "PublicAccess",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Private network access\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "CLOSE",
+          "member": "string",
+          "name": "PrivateAccess",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.9.4",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "RestartInstanceRequest": {
       "document": "RestartInstance request structure.",
       "members": [
@@ -3808,6 +4053,15 @@
           "name": "Password",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to roll over the backup index",
+          "example": "false",
+          "member": "bool",
+          "name": "RolloverBackingIndex",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -4094,6 +4348,15 @@
           "example": "无",
           "member": "EsConfigSetInfo",
           "name": "EsConfigSet",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The maintenance time slot",
+          "example": "无",
+          "member": "OperationDurationUpdated",
+          "name": "OperationDuration",
           "required": false,
           "type": "object"
         }
