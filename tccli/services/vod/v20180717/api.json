@@ -20995,6 +20995,16 @@
         },
         {
           "default": "",
+          "document": "The input of a moderation task.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReviewAudioVideoTaskInput",
+          "name": "Input",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
           "document": "The output of a moderation task.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ReviewAudioVideoTaskOutput",
@@ -21015,10 +21025,26 @@
         },
         {
           "default": "",
-          "document": "The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.",
+          "document": "The source context, which is used to pass through user request information. The `ReviewAudioVideoComplete` callback will return the value of this parameter. It can contain up to 1,000 characters.",
           "example": "无",
           "member": "string",
           "name": "SessionContext",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ReviewAudioVideoTaskInput": {
+      "document": "The input of a moderation task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The ID of the media file.",
+          "example": "无",
+          "member": "string",
+          "name": "FileId",
           "required": true,
           "type": "string",
           "value_allowed_null": false
