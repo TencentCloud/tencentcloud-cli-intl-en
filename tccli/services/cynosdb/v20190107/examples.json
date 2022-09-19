@@ -32,6 +32,14 @@
         "title": "Creating account"
       }
     ],
+    "CreateBackup": [
+      {
+        "document": "",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=CreateBackup\n&ClusterId=cynosdbpg-45knmnra\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"FlowId\": 12345\n    }\n}",
+        "title": "Creating a backup"
+      }
+    ],
     "CreateClusters": [
       {
         "document": "",

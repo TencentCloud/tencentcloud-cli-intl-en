@@ -1899,6 +1899,15 @@
           "name": "Content",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Naming a shipping file. Valid values: `0` (by random number); `1` (by shipping time). Default value: `0`.",
+          "example": "0",
+          "member": "uint64",
+          "name": "FilenameMode",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -4050,7 +4059,7 @@
         },
         {
           "default": "",
-          "document": "Metadata information list. Valid values: __SOURCE__; __FILENAME__; __TIMESTAMP__\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "List of metadata. Supported metadata types: __SOURCE__, __FILENAME__, __TIMESTAMP__, __HOSTNAME__.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "MetaFields",
@@ -5289,6 +5298,15 @@
           "name": "Content",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Naming a shipping file. Valid values: `0` (by random number), `1` (by shipping time). Default value: `0`.",
+          "example": "0",
+          "member": "uint64",
+          "name": "FilenameMode",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -5364,7 +5382,7 @@
         },
         {
           "default": "",
-          "document": "Lifecycle in days. Value range: 1-3600 (3640 indicates permanent retention)",
+          "document": "Lifecycle in days. Value range: 1–3600 (STANDARD storage); 7–3600 (IA storage). `3640` indicates permanent retention.",
           "example": "30",
           "member": "int64",
           "name": "Period",
@@ -5487,6 +5505,15 @@
           "name": "FromTopicId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Compression mode. Valid values: `0` (no compression); `2` (snappy); `3` (LZ4)",
+          "example": "1",
+          "member": "int64",
+          "name": "Compression",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"

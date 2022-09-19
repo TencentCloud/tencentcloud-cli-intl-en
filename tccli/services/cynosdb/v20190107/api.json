@@ -24,6 +24,12 @@
       "name": "Creates an account",
       "output": "CreateAccountsResponse"
     },
+    "CreateBackup": {
+      "document": "This API is used to create manual backup.",
+      "input": "CreateBackupRequest",
+      "name": "Creates manual backup",
+      "output": "CreateBackupResponse"
+    },
     "CreateClusters": {
       "document": "This API is used to create a cluster.",
       "input": "CreateClustersRequest",
@@ -907,6 +913,78 @@
     "CreateAccountsResponse": {
       "document": "CreateAccounts response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBackupRequest": {
+      "document": "CreateBackup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbpg-45knmnra",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup type. Valid values: `logic` (logic backup), `snapshot` (physical backup)",
+          "example": "logic",
+          "member": "string",
+          "name": "BackupType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup database, which is valid when `BackupType` is `logic`.",
+          "example": "无",
+          "member": "string",
+          "name": "BackupDatabases",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Backup table, which is valid when `BackupType` is `logic`.",
+          "example": "无",
+          "member": "DatabaseTables",
+          "name": "BackupTables",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Backup name",
+          "example": "备份备注",
+          "member": "string",
+          "name": "BackupName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBackupResponse": {
+      "document": "CreateBackup response structure.",
+      "members": [
+        {
+          "document": "Async task flow ID",
+          "example": "12345",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -2810,6 +2888,32 @@
       ],
       "usage": "out"
     },
+    "DatabaseTables": {
+      "document": "Database table information",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "db",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Table name list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Tables",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "DescribeAccountsRequest": {
       "document": "DescribeAccounts request structure.",
       "members": [
@@ -4141,7 +4245,7 @@
         },
         {
           "default": "",
-          "document": "Purchase quantity",
+          "document": "Number of compute node to purchase",
           "example": "1",
           "member": "int64",
           "name": "GoodsNum",

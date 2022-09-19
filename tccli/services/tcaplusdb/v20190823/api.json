@@ -4658,6 +4658,148 @@
       ],
       "usage": "out"
     },
+    "SyncTableField": {
+      "document": "Mapping of cache table field name",
+      "members": [
+        {
+          "default": "",
+          "document": "Field name of TcaplusDB table",
+          "example": "id",
+          "member": "string",
+          "name": "SourceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Field name of the target cache table",
+          "example": "id",
+          "member": "string",
+          "name": "TargetName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SyncTableInfo": {
+      "document": "TcaplusDB cache table information",
+      "members": [
+        {
+          "default": "",
+          "document": "Sharded table quantity of the target cache table",
+          "example": "1",
+          "member": "uint64",
+          "name": "TargetTableSplitNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Prefix of the target cache table name",
+          "example": "无",
+          "member": "string",
+          "name": "TargetTableNamePrefix",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID of the cache database",
+          "example": "cdb-70zdmgg1",
+          "member": "string",
+          "name": "TargetSyncDBInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the database where the cache table resides",
+          "example": "db",
+          "member": "string",
+          "name": "TargetDatabaseName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Caching status. Valid values: `0` (creating), `1` (caching), `2` (disabled), `-1` (deleted).",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of cluster where the table resides",
+          "example": "18641706761",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ID of the table group where the table resides",
+          "example": "1",
+          "member": "uint64",
+          "name": "TableGroupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table name",
+          "example": "tablename",
+          "member": "string",
+          "name": "TableName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table ID",
+          "example": "tcaplus-d753f0db",
+          "member": "string",
+          "name": "TableId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mapping from the primary key field of the TcaplusDB table to the field of the target cache table",
+          "example": "无",
+          "member": "SyncTableField",
+          "name": "KeyFieldMapping",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mapping of TcaplusDB table field to target cache table field",
+          "example": "无",
+          "member": "SyncTableField",
+          "name": "ValueFieldMapping",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "TableGroupInfo": {
       "document": "Table group details",
       "members": [
@@ -4990,6 +5132,16 @@
           "name": "TxhBackupExpireDay",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cached information of the table\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SyncTableInfo",
+          "name": "SyncTableInfo",
+          "required": true,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
