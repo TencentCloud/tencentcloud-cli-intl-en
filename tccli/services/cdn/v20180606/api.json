@@ -1058,6 +1058,16 @@
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the rule. Values: `on` (enable), `off` (disable).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -5633,6 +5643,32 @@
       ],
       "usage": "both"
     },
+    "HTTPHeader": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "User-Agent",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "TencentCDN",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "HeaderKey": {
       "document": "A part of `CacheKey`",
       "members": [
@@ -8156,6 +8192,24 @@
           "name": "DisableRange",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "HTTPHeader",
+          "name": "Headers",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to encode the URL",
+          "example": "false",
+          "member": "bool",
+          "name": "UrlEncode",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -9264,6 +9318,16 @@
           "example": "null",
           "member": "AdvancedCCRules",
           "name": "AdvancedRules",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Global advanced CC protection rules\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AdvancedCCRules",
+          "name": "GlobalAdvancedRules",
           "required": false,
           "type": "list",
           "value_allowed_null": true

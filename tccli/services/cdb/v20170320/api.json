@@ -37,9 +37,9 @@
       "output": "CloseWanServiceResponse"
     },
     "CreateAccounts": {
-      "document": "This API is used to create one or more TencentDB instance accounts. The account names, host addresses, and passwords are required, and account remarks and the maximum connections are optional.",
+      "document": "This API is used to create a TencentDB account. The account name, host address, and password are required. Account remarks and maximum connections can also be configured.",
       "input": "CreateAccountsRequest",
-      "name": "Creates TencentDB accounts",
+      "name": "Creates a TencentDB account",
       "output": "CreateAccountsResponse"
     },
     "CreateAuditPolicy": {
@@ -115,7 +115,7 @@
       "output": "DescribeAccountPrivilegesResponse"
     },
     "DescribeAccounts": {
-      "document": "This API (DescribeAccounts) is used to query information of all TencentDB accounts.",
+      "document": "This API is used to query information of all TencentDB accounts.",
       "input": "DescribeAccountsRequest",
       "name": "Queries the information of all TencentDB accounts",
       "output": "DescribeAccountsResponse"
@@ -234,6 +234,12 @@
       "name": "Queries the list of instances",
       "output": "DescribeDBInstancesResponse"
     },
+    "DescribeDBPrice": {
+      "document": "This API (DescribeDBPrice) is used to query the prices of pay-as-you-go or monthly subscribed TencentDB instances by passing in information such as instance type, purchased duration, number of purchased instances, memory size, disk size, and AZ.\n\nNote: To query prices in a specific region, please use the access point of the region. For more information on access points, see <a href=\"https://cloud.tencent.com/document/api/236/15832\">Service Addresses</a>. For example, to query prices in Guangzhou, send a request to: cdb.ap-guangzhou.tencentcloudapi.com. Likewise, to query prices in Shanghai, send a request to: cdb.ap-shanghai.tencentcloudapi.com.",
+      "input": "DescribeDBPriceRequest",
+      "name": "Queries the prices of TencentDB instances",
+      "output": "DescribeDBPriceResponse"
+    },
     "DescribeDBSecurityGroups": {
       "document": "This API (DescribeDBSecurityGroups) is used to query the security group details of an instance.",
       "input": "DescribeDBSecurityGroupsRequest",
@@ -245,12 +251,6 @@
       "input": "DescribeDBSwitchRecordsRequest",
       "name": "Queries the instance switch records",
       "output": "DescribeDBSwitchRecordsResponse"
-    },
-    "DescribeDBZoneConfig": {
-      "document": "This API (DescribeDBZoneConfig) is used to query the specifications of TencentDB instances purchasable in a region.",
-      "input": "DescribeDBZoneConfigRequest",
-      "name": "Queries the specifications of purchasable TencentDB instances",
-      "output": "DescribeDBZoneConfigResponse"
     },
     "DescribeDataBackupOverview": {
       "document": "This API is used to query the data backup overview of a user in the current region.",
@@ -505,7 +505,7 @@
       "output": "ModifyDBInstanceSecurityGroupsResponse"
     },
     "ModifyDBInstanceVipVport": {
-      "document": "This API (ModifyDBInstanceVipVport) is used to modify the IP and port number of a TencentDB instance, switch from the basic network to VPC, or change VPC subnets.",
+      "document": "This API is used to modify the IP and port number of a TencentDB instance, switch from classic network to VPC, or change VPC subnets.",
       "input": "ModifyDBInstanceVipVportRequest",
       "name": "Modifies the IP and port number of a TencentDB instance",
       "output": "ModifyDBInstanceVipVportResponse"
@@ -774,7 +774,7 @@
         },
         {
           "default": "",
-          "document": "This parameter is no longer supported.",
+          "document": "This parameter is deprecated.",
           "example": "''",
           "member": "datetime",
           "name": "CreateTime",
@@ -2138,7 +2138,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
           "example": "cdb-f35wr6wj",
           "member": "string",
           "name": "InstanceId",
@@ -2147,7 +2147,7 @@
         },
         {
           "default": "",
-          "document": "TencentDB account.",
+          "document": "List of TencentDB accounts",
           "example": "无",
           "member": "Account",
           "name": "Accounts",
@@ -2188,9 +2188,11 @@
       "document": "CreateAccounts response structure.",
       "members": [
         {
-          "document": "Async task request ID, which can be used to query the execution result of an async task.",
+          "document": "Async task request ID, which can be used to query the execution result of an async task",
+          "example": "256117ed-efa08b54-61784d44-91781bbd",
           "member": "string",
           "name": "AsyncRequestId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2715,7 +2717,7 @@
         },
         {
           "default": "",
-          "document": "AZ information of the primary instance, which is required for purchasing disaster recovery instances.",
+          "document": "AZ information of the source instance, which is required for purchasing disaster recovery instances and read-only instances.",
           "example": "ap-beijing",
           "member": "string",
           "name": "MasterRegion",
@@ -2868,7 +2870,7 @@
         },
         {
           "default": "",
-          "document": "The array of alarm policy IDs.",
+          "document": "Array of alarm policy IDs, which is `OriginId` obtained through the `DescribeAlarmPolicy` API.",
           "example": "[]",
           "member": "int64",
           "name": "AlarmPolicyList",
@@ -3465,7 +3467,8 @@
       "members": [
         {
           "default": "",
-          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.",
+          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "cdb-f35wr6wj",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3473,7 +3476,8 @@
         },
         {
           "default": "",
-          "document": "Record offset. Default value: 0.",
+          "document": "Record offset. Default value: `0`.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -3481,7 +3485,8 @@
         },
         {
           "default": "",
-          "document": "Number of results to be returned for a single request. Value range: 1-100. Default value: 20.",
+          "document": "Number of results to be returned for a single request. Value range: 1-100. Default value: `20`.",
+          "example": "1",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -3489,7 +3494,8 @@
         },
         {
           "default": "",
-          "document": "Regular expression for matching account names, which complies with the rules at MySQL official website.",
+          "document": "Regex for matching account names, which complies with the rules at MySQL's official website",
+          "example": "\"\"",
           "member": "string",
           "name": "AccountRegexp",
           "required": false,
@@ -3502,7 +3508,7 @@
       "document": "DescribeAccounts response structure.",
       "members": [
         {
-          "document": "Number of eligible accounts.",
+          "document": "Number of eligible accounts",
           "example": "2",
           "member": "int64",
           "name": "TotalCount",
@@ -3511,7 +3517,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Details of eligible accounts.",
+          "document": "Details of eligible accounts",
           "example": "无",
           "member": "AccountInfo",
           "name": "Items",
@@ -3520,7 +3526,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The maximum number of instance connections (set by the MySQL parameter `max_connections`)",
+          "document": "The maximum number of instance connections",
           "example": "10240",
           "member": "int64",
           "name": "MaxUserConnections",
@@ -5022,6 +5028,102 @@
       ],
       "type": "object"
     },
+    "DescribeDBPriceRequest": {
+      "document": "DescribeDBPrice request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ information in the format of \"ap-guangzhou-2\". You can use the <a href=\"https://cloud.tencent.com/document/api/236/17229\">DescribeDBZoneConfig</a> API to query the values that can be set.",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of instances. Value range: 1-100. Default value: 1.",
+          "member": "int64",
+          "name": "GoodsNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance memory size in MB.",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance disk size in GB.",
+          "member": "int64",
+          "name": "Volume",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Billing method. Value range: PRE_PAID (monthly subscribed), HOUR_PAID (pay-as-you-go).",
+          "member": "string",
+          "name": "PayType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance validity period in months. Value range: 1-36. This field is invalid when querying prices of pay-as-you-go instances.",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance type. Value range: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.",
+          "member": "string",
+          "name": "InstanceRole",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data replication mode. Value range: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0.",
+          "member": "int64",
+          "name": "ProtectMode",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBPriceResponse": {
+      "document": "DescribeDBPrice response structure.",
+      "members": [
+        {
+          "document": "Price of the instance in 0.01 CNY.",
+          "member": "int64",
+          "name": "Price",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Original price of the instance in 0.01 CNY",
+          "member": "int64",
+          "name": "OriginalPrice",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBSecurityGroupsRequest": {
       "document": "DescribeDBSecurityGroups request structure.",
       "members": [
@@ -5108,37 +5210,6 @@
         {
           "document": "Details of instance switches.",
           "member": "DBSwitchInfo",
-          "name": "Items",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeDBZoneConfigRequest": {
-      "document": "DescribeDBZoneConfig request structure.",
-      "members": [],
-      "type": "object"
-    },
-    "DescribeDBZoneConfigResponse": {
-      "document": "DescribeDBZoneConfig response structure.",
-      "members": [
-        {
-          "document": "Number of configurations in purchasable regions",
-          "member": "int64",
-          "name": "TotalCount",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Details of configurations in purchasable regions",
-          "member": "RegionSellConf",
           "name": "Items",
           "type": "list",
           "value_allowed_null": false
@@ -5739,6 +5810,33 @@
           "example": "[\"5.5\"]",
           "member": "string",
           "name": "EngineVersions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Engine type. If it is left empty, all engine types will be queried.",
+          "example": "[\"innodb\"]",
+          "member": "string",
+          "name": "EngineTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Template name. If it is left empty, all template names will be queried.",
+          "example": "[\"test\"]",
+          "member": "string",
+          "name": "TemplateNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Template ID. If it is left empty, all template IDs will be queried.",
+          "example": "[1]",
+          "member": "int64",
+          "name": "TemplateIds",
           "required": false,
           "type": "list"
         }
@@ -8900,7 +8998,8 @@
       "members": [
         {
           "default": "",
-          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.",
+          "document": "Instance ID in the format of cdb-c1nl9rpv, cdbro-c2nl9rpv, or cdbrg-c3nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872) API to query the ID, which is the value of the `InstanceId` output parameter.",
+          "example": "cdb-f35wr6wj",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -8908,7 +9007,8 @@
         },
         {
           "default": "",
-          "document": "Destination IP. Either this parameter or `DstPort` must be passed in.",
+          "document": "Target IP. Either this parameter or `DstPort` must be passed in.",
+          "example": "10.0.1.1",
           "member": "string",
           "name": "DstIp",
           "required": false,
@@ -8916,7 +9016,8 @@
         },
         {
           "default": "",
-          "document": "Destination port number. Value range: [1024-65535]. Either this parameter or `DstIp` must be passed in.",
+          "document": "Target port number. Value range: 1024-65535. Either this parameter or `DstIp` must be passed in.",
+          "example": "1025",
           "member": "int64",
           "name": "DstPort",
           "required": false,
@@ -8925,6 +9026,7 @@
         {
           "default": "",
           "document": "Unified VPC ID",
+          "example": "11357",
           "member": "string",
           "name": "UniqVpcId",
           "required": false,
@@ -8932,7 +9034,8 @@
         },
         {
           "default": "",
-          "document": "Unified subnet ID.",
+          "document": "Unified subnet ID",
+          "example": "23789",
           "member": "string",
           "name": "UniqSubnetId",
           "required": false,
@@ -8940,7 +9043,8 @@
         },
         {
           "default": "",
-          "document": "Repossession duration in hours for old IP in the original network when changing from the basic network to VPC or changing the VPC subnet. Value range: 0-168 hours. Default value: 24 hours.",
+          "document": "Repossession duration in hours for old IP in the original network when changing from classic network to VPC or changing the VPC subnet. Value range: 0–168. Default value: `24`.",
+          "example": "12",
           "member": "int64",
           "name": "ReleaseDuration",
           "required": false,
@@ -8953,9 +9057,11 @@
       "document": "ModifyDBInstanceVipVport response structure.",
       "members": [
         {
-          "document": "Async task ID. (This returned field has been disused)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Async task ID. This parameter is deprecated.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "d2baf2fb-cbae62df-7dd0d736-9cbd3e31",
           "member": "string",
           "name": "AsyncRequestId",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -9162,7 +9268,8 @@
       "members": [
         {
           "default": "",
-          "document": "ID of a placement group.",
+          "document": "Placement group ID",
+          "example": "test",
           "member": "string",
           "name": "DeployGroupId",
           "required": true,
@@ -9170,7 +9277,8 @@
         },
         {
           "default": "",
-          "document": "Name of a placement group, which can contain up to 60 characters. The placement group name and description cannot both be empty.",
+          "document": "Name of a placement group, which can contain up to 60 characters. The placement group name and description can’t be empty.",
+          "example": "cdb-ezq1vzem",
           "member": "string",
           "name": "DeployGroupName",
           "required": false,
@@ -9178,7 +9286,8 @@
         },
         {
           "default": "",
-          "document": "Description of a placement group, which can contain up to 200 characters. The placement group name and description cannot both be empty.",
+          "document": "Description of a placement group, which can contain up to 200 characters. The placement group name and description can’t be empty.",
+          "example": "test",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -10293,57 +10402,6 @@
       "members": [],
       "usage": "out"
     },
-    "RegionSellConf": {
-      "document": "Sale configuration of the region",
-      "members": [
-        {
-          "default": "",
-          "document": "Region name",
-          "member": "string",
-          "name": "RegionName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Area",
-          "member": "string",
-          "name": "Area",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether it is a default region",
-          "member": "int64",
-          "name": "IsDefaultRegion",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Region name",
-          "member": "string",
-          "name": "Region",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Sale configuration of the AZ",
-          "member": "ZoneSellConf",
-          "name": "ZonesConf",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
     "ReleaseIsolatedDBInstancesRequest": {
       "document": "ReleaseIsolatedDBInstances request structure.",
       "members": [
@@ -11334,215 +11392,6 @@
           "name": "SecurityGroupRemark",
           "required": true,
           "type": "string"
-        }
-      ],
-      "usage": "out"
-    },
-    "SellConfig": {
-      "document": "Purchasable configuration details",
-      "members": [
-        {
-          "default": "",
-          "document": "(Disused) Device type",
-          "example": "Z3",
-          "member": "string",
-          "name": "Device",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "(Disused) Purchasable specification description ",
-          "example": "高可用版",
-          "member": "string",
-          "name": "Type",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "(Disused) Instance type ",
-          "example": "CUSTOM",
-          "member": "string",
-          "name": "CdbType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Memory size in MB",
-          "example": "1000",
-          "member": "int64",
-          "name": "Memory",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "CPU core count",
-          "example": "1",
-          "member": "int64",
-          "name": "Cpu",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Minimum disk size in GB",
-          "example": "50",
-          "member": "int64",
-          "name": "VolumeMin",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Maximum disk size in GB",
-          "example": "3000",
-          "member": "int64",
-          "name": "VolumeMax",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Disk increment in GB",
-          "example": "5",
-          "member": "int64",
-          "name": "VolumeStep",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Number of connections",
-          "example": "600",
-          "member": "int64",
-          "name": "Connection",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Queries per second",
-          "example": "1000",
-          "member": "int64",
-          "name": "Qps",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "IOs per second",
-          "example": "900",
-          "member": "int64",
-          "name": "Iops",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Application scenario description",
-          "example": "***",
-          "member": "string",
-          "name": "Info",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Status. Value `0` indicates that this specification is purchasable.",
-          "example": "0",
-          "member": "int64",
-          "name": "Status",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "(Disused) Tag value",
-          "example": "0",
-          "member": "int64",
-          "name": "Tag",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Instance resource isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance).\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "UNIVERSAL",
-          "member": "string",
-          "name": "DeviceType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Instance resource isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance).\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "通用型",
-          "member": "string",
-          "name": "DeviceTypeName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Engine type. Valid values: `Innodb`,`RocksDB`.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "InnoDB",
-          "member": "string",
-          "name": "EngineType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "SellType": {
-      "document": "Purchasable instance type",
-      "members": [
-        {
-          "default": "",
-          "document": "Name of the purchasable instance",
-          "member": "string",
-          "name": "TypeName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Kernel version number",
-          "member": "string",
-          "name": "EngineVersion",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Configuration details of a purchasable specification",
-          "member": "SellConfig",
-          "name": "Configs",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -12872,240 +12721,6 @@
           "name": "CompleteNum",
           "required": true,
           "type": "int"
-        }
-      ],
-      "usage": "out"
-    },
-    "ZoneConf": {
-      "document": "Multi-AZ information",
-      "members": [
-        {
-          "default": "",
-          "document": "AZ deployment mode. Value range: 0 (single-AZ), 1 (multi-AZ)",
-          "member": "int64",
-          "name": "DeployMode",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "AZ where the primary instance is located",
-          "member": "string",
-          "name": "MasterZone",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "AZ where salve database 1 is located when the instance is deployed in multi-AZ mode",
-          "member": "string",
-          "name": "SlaveZone",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "AZ where salve database 2 is located when the instance is deployed in multi-AZ mode",
-          "member": "string",
-          "name": "BackupZone",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "usage": "both"
-    },
-    "ZoneSellConf": {
-      "document": "AZ sale configurations",
-      "members": [
-        {
-          "default": "",
-          "document": "AZ status used to indicate whether instances are purchasable. Value range: `1` (purchasable), `3` (not purchasable), `4` (AZ not displayed)",
-          "example": "1",
-          "member": "int64",
-          "name": "Status",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "AZ name",
-          "example": "广州二区",
-          "member": "string",
-          "name": "ZoneName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether it is a custom instance type",
-          "example": "true",
-          "member": "bool",
-          "name": "IsCustom",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether disaster recovery is supported",
-          "example": "true",
-          "member": "bool",
-          "name": "IsSupportDr",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether VPC is supported",
-          "example": "true",
-          "member": "bool",
-          "name": "IsSupportVpc",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Maximum purchasable quantity of hourly billed instances",
-          "example": "100",
-          "member": "int64",
-          "name": "HourInstanceSaleMaxNum",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether it is a default AZ",
-          "example": "true",
-          "member": "bool",
-          "name": "IsDefaultZone",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether it is a BM zone",
-          "example": "true",
-          "member": "bool",
-          "name": "IsBm",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Supported billing method. Value range: 0 (monthly subscribed), 1 (hourly), 2 (postpaid)",
-          "example": "[\"0\",\"1\"]",
-          "member": "string",
-          "name": "PayType",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Data replication type. Value range: 0 (async), 1 (semi-sync), 2 (strong sync)",
-          "example": "[\"0\",\"1\",\"2\"]",
-          "member": "string",
-          "name": "ProtectMode",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "AZ name",
-          "example": "ap-guangzhou-2",
-          "member": "string",
-          "name": "Zone",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Array of purchasable instance types",
-          "example": "[]",
-          "member": "SellType",
-          "name": "SellType",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Multi-AZ information",
-          "example": "{}",
-          "member": "ZoneConf",
-          "name": "ZoneConf",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Information of the supported disaster recovery AZ",
-          "example": "[\"ap-guangzhou-2\"]",
-          "member": "string",
-          "name": "DrZone",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Whether cross-AZ read-only access is supported",
-          "example": "true",
-          "member": "bool",
-          "name": "IsSupportRemoteRo",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Information of supported cross-AZ read-only zone\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "[\"ap-guangzhou-2\"]",
-          "member": "string",
-          "name": "RemoteRoZone",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "AZ status used to indicate whether dedicated instances are purchasable. Valid values: `1 (purchasable), `3` (not purchasable), `4` (AZ not displayed)",
-          "example": "1",
-          "member": "int64",
-          "name": "ExClusterStatus",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "AZ information of the cross-AZ deployed read-only instances which are associated with a dedicated instance\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "[\"ap-guangzhou-2\"]",
-          "member": "string",
-          "name": "ExClusterRemoteRoZone",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "AZ information of a multi-AZ deployed dedicated instance.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "{}",
-          "member": "ZoneConf",
-          "name": "ExClusterZoneConf",
-          "required": true,
-          "type": "object",
-          "value_allowed_null": true
         }
       ],
       "usage": "out"

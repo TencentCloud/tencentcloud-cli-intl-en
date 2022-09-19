@@ -84,6 +84,12 @@
       "name": "Creates an ECM instance",
       "output": "CreateECMInstancesResponse"
     },
+    "CreateEdgeCVMInstances": {
+      "document": "This API is used to create CVM instances in the specified TKE edge cluster.",
+      "input": "CreateEdgeCVMInstancesRequest",
+      "name": "Creates CVM instances in a TKE edge cluster",
+      "output": "CreateEdgeCVMInstancesResponse"
+    },
     "CreateEdgeLogConfig": {
       "document": "This API is used to create log collection configuration for a TKE Edge cluster.",
       "input": "CreateEdgeLogConfigRequest",
@@ -887,6 +893,52 @@
       ],
       "usage": "out"
     },
+    "CUDNN": {
+      "document": "cuDNN version information",
+      "members": [
+        {
+          "default": "",
+          "document": "cuDNN version",
+          "example": "7.5.0",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "cuDNN name",
+          "example": "libcudnn7_7.5.0.56-1+cuda10.1_amd64.deb",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Doc name of cuDNN",
+          "example": "libcudnn7-doc_7.5.0.56-1+cuda10.1_amd64.deb",
+          "member": "string",
+          "name": "DocName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Dev name of cuDNN",
+          "example": "libcudnn7-dev_7.5.0.56-1+cuda10.1_amd64.deb",
+          "member": "string",
+          "name": "DevName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "CheckEdgeClusterCIDRRequest": {
       "document": "CheckEdgeClusterCIDR request structure.",
       "members": [
@@ -1258,6 +1310,16 @@
           "name": "QGPUShareEnable",
           "required": true,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Runtime version\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1.4.3",
+          "member": "string",
+          "name": "RuntimeVersion",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -3133,6 +3195,96 @@
       ],
       "type": "object"
     },
+    "CreateEdgeCVMInstancesRequest": {
+      "document": "CreateEdgeCVMInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xxxxx",
+          "member": "string",
+          "name": "ClusterID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pass-through parameter for CVM creation in the format of a JSON string. To ensure the idempotency of requests for adding cluster nodes, you need to add the `ClientToken` field in this parameter. For more information, see the documentation for [RunInstances](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API.",
+          "example": "{}",
+          "member": "string",
+          "name": "RunInstancePara",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region of the CVM instances to create",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "CvmRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Quantity of CVM instances to create",
+          "example": "3",
+          "member": "int64",
+          "name": "CvmCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance extension information",
+          "example": "{}",
+          "member": "string",
+          "name": "External",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom script",
+          "example": "whoami",
+          "member": "string",
+          "name": "UserScript",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable ENI",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableEni",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEdgeCVMInstancesResponse": {
+      "document": "CreateEdgeCVMInstances response structure.",
+      "members": [
+        {
+          "document": "List of CVM IDs",
+          "example": "[\"cvm-197252sp\",\"cvm-19725win\",\"cvm-19623ash\"]",
+          "member": "string",
+          "name": "CvmIdSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateEdgeLogConfigRequest": {
       "document": "CreateEdgeLogConfig request structure.",
       "members": [
@@ -3303,6 +3455,33 @@
           "name": "PublicLB",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Cluster specification level",
+          "example": "L5",
+          "member": "string",
+          "name": "ClusterLevel",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether auto upgrade is supported",
+          "example": "flase",
+          "member": "bool",
+          "name": "AutoUpgradeClusterLevel",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Cluster billing mode",
+          "example": "POSTPAID_BY_HOUR",
+          "member": "string",
+          "name": "ChargeType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3327,6 +3506,22 @@
         }
       ],
       "type": "object"
+    },
+    "CustomDriver": {
+      "document": "Custom driver information",
+      "members": [
+        {
+          "default": "",
+          "document": "URL of custom GPU driver address\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "https://abc.com/NVIDIA-Linux-x86_64-460.32.03.run",
+          "member": "string",
+          "name": "Address",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "DataDisk": {
       "document": "Described the configuration and information of k8s node data disk.",
@@ -4304,6 +4499,33 @@
           "name": "ClusterExternalACL",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Public network domain name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "cls.domain",
+          "member": "string",
+          "name": "ClusterExternalDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Private network domain name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "cls.domain",
+          "member": "string",
+          "name": "ClusterIntranetDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Public network security group\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "sg-xxx",
+          "member": "string",
+          "name": "SecurityGroup",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         },
         {
@@ -6097,6 +6319,32 @@
       ],
       "type": "object"
     },
+    "DriverVersion": {
+      "document": "Version information of GPU driver and CUDA",
+      "members": [
+        {
+          "default": "",
+          "document": "Version of GPU driver or CUDA",
+          "example": "418.126.02",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of GPU driver or CUDA",
+          "example": "NVIDIA-Linux-x86_64-418.126.02.run",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "ECMEnhancedService": {
       "document": "ECM enhanced services",
       "members": [
@@ -7054,6 +7302,62 @@
       ],
       "type": "object"
     },
+    "GPUArgs": {
+      "document": "GPU parameters, including GPU driver version, CDUA version, cuDNN version and whether to enable MIG.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable MIG\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "MIGEnable",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "GPU driver version",
+          "example": "无",
+          "member": "DriverVersion",
+          "name": "Driver",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CUDA version\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DriverVersion",
+          "name": "CUDA",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "cuDNN version\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CUDNN",
+          "name": "CUDNN",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Custom GPU driver\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CustomDriver",
+          "name": "CustomDriver",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "GetClusterLevelPriceRequest": {
       "document": "GetClusterLevelPrice request structure.",
       "members": [
@@ -7454,6 +7758,16 @@
           "name": "DesiredPodNumber",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "GPU driver parameters\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "GPUArgs",
+          "name": "GPUArgs",
+          "required": true,
+          "type": "object",
           "value_allowed_null": true
         },
         {
@@ -8052,6 +8366,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cls-xxxxxxxx",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -8060,10 +8375,20 @@
         {
           "default": "",
           "document": "Security policy opens single IP or CIDR block to the Internet (for example: '192.168.1.0/24', with 'reject all' as the default).",
+          "example": "[\"192.168.1.0\\/24\\r\\n\"]",
           "member": "string",
           "name": "SecurityPolicies",
-          "required": true,
+          "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Modify public network security group",
+          "example": "sg-xxx",
+          "member": "string",
+          "name": "SecurityGroup",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
