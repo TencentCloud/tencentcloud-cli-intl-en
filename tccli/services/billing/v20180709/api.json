@@ -1,5 +1,11 @@
 {
   "actions": {
+    "DescribeAccountBalance": {
+      "document": "This API is used to check the Tencent Cloud account balance.",
+      "input": "DescribeAccountBalanceRequest",
+      "name": "Checks account balance",
+      "output": "DescribeAccountBalanceResponse"
+    },
     "DescribeBillDetail": {
       "document": "This API is used to query bill details.",
       "input": "DescribeBillDetailRequest",
@@ -1266,6 +1272,140 @@
         }
       ],
       "usage": "out"
+    },
+    "DescribeAccountBalanceRequest": {
+      "document": "DescribeAccountBalance request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeAccountBalanceResponse": {
+      "document": "DescribeAccountBalance response structure.",
+      "members": [
+        {
+          "document": "Available account balance in cents, which takes the same calculation rules as `RealBalance`, `CreditBalance`, and `RealCreditBalance`.",
+          "example": "10000",
+          "member": "int64",
+          "name": "Balance",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The UIN to query.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Uin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Available account balance in cents, which takes the same calculation rules as `Balance`, `CreditBalance`, and `RealCreditBalance`.",
+          "example": "1",
+          "member": "float",
+          "name": "RealBalance",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cash account balance in cents. Currently, this field is not applied.",
+          "example": "1",
+          "member": "float",
+          "name": "CashAccountBalance",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Income account balance in cents. Currently, this field is not applied.",
+          "example": "1",
+          "member": "float",
+          "name": "IncomeIntoAccountBalance",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Present account balance in cents. Currently, this field is not applied.",
+          "example": "1",
+          "member": "float",
+          "name": "PresentAccountBalance",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Frozen amount in cents.",
+          "example": "1",
+          "member": "float",
+          "name": "FreezeAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Overdue amount in cents, which is when the available credit balance is negative.",
+          "example": "1",
+          "member": "float",
+          "name": "OweAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether overdue payments are allowed. Currently, this field is not applied.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsAllowArrears",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether you have a credit limit. Currently, this field is not applied.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsCreditLimited",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Credit limit. Credit limit－available credit balance = consumption amount",
+          "example": "1",
+          "member": "float",
+          "name": "CreditAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Available credit balance in cents, which takes the same calculation rules as `Balance`, `RealBalance`, and `RealCreditBalance`.",
+          "example": "1",
+          "member": "float",
+          "name": "CreditBalance",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Available account balance in cents, which takes the same calculation rules as `Balance`, `RealBalance`, and `CreditBalance`.",
+          "example": "1",
+          "member": "float",
+          "name": "RealCreditBalance",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DescribeBillDetailRequest": {
       "document": "DescribeBillDetail request structure.",

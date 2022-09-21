@@ -186,6 +186,12 @@
       "name": "Queries the information of database proxy",
       "output": "DescribeCDBProxyResponse"
     },
+    "DescribeCdbZoneConfig": {
+      "document": "This API is used to query the purchasable specifications of TencentDB instances in a region.",
+      "input": "DescribeCdbZoneConfigRequest",
+      "name": "Queries the AZ and the purchasable specifications of the database.",
+      "output": "DescribeCdbZoneConfigResponse"
+    },
     "DescribeCloneList": {
       "document": "This API is used to query the clone task list of an instance.",
       "input": "DescribeCloneListRequest",
@@ -235,7 +241,7 @@
       "output": "DescribeDBInstancesResponse"
     },
     "DescribeDBPrice": {
-      "document": "This API (DescribeDBPrice) is used to query the prices of pay-as-you-go or monthly subscribed TencentDB instances by passing in information such as instance type, purchased duration, number of purchased instances, memory size, disk size, and AZ.\n\nNote: To query prices in a specific region, please use the access point of the region. For more information on access points, see <a href=\"https://cloud.tencent.com/document/api/236/15832\">Service Addresses</a>. For example, to query prices in Guangzhou, send a request to: cdb.ap-guangzhou.tencentcloudapi.com. Likewise, to query prices in Shanghai, send a request to: cdb.ap-shanghai.tencentcloudapi.com.",
+      "document": "This API is used to query the purchase or renewal price of a pay-as-you-go or monthly subscribed TencentDB instance by passing in information such as instance type, purchase duration, number of instances to purchase, memory size, disk size, and AZ. For the price of instance renewal, you can pass in instance name to query.\n\nNote: To query prices in a specific region, you need to use the access point of the region. For more information on access points, see <a href=\"https://www.tencentcloud.com/document/product/236/15832\">Service Address</a>. For example, to query prices in Guangzhou, send a request to: cdb.ap-guangzhou.tencentcloudapi.com. Likewise, to query prices in Shanghai, send a request to: cdb.ap-shanghai.tencentcloudapi.com.",
       "input": "DescribeDBPriceRequest",
       "name": "Queries the prices of TencentDB instances",
       "output": "DescribeDBPriceResponse"
@@ -1829,6 +1835,466 @@
           "name": "BinlogFinishTime",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CdbRegionSellConf": {
+      "document": "The purchasable configuration in a region",
+      "members": [
+        {
+          "default": "",
+          "document": "Region name",
+          "example": "广州",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Area",
+          "example": "华南地区",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is a default region",
+          "example": "1",
+          "member": "int64",
+          "name": "IsDefaultRegion",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The purchasable configuration in an AZ in a region",
+          "example": "[]",
+          "member": "CdbZoneSellConf",
+          "name": "RegionConfig",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CdbSellConfig": {
+      "document": "The details of purchasable configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "Memory size in MB",
+          "example": "1000",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CPU core count",
+          "example": "1",
+          "member": "int64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Minimum disk size in GB",
+          "example": "50",
+          "member": "int64",
+          "name": "VolumeMin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum disk size in GB",
+          "example": "3000",
+          "member": "int64",
+          "name": "VolumeMax",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Disk capacity increment in GB",
+          "example": "5",
+          "member": "int64",
+          "name": "VolumeStep",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IO operations per second",
+          "example": "6000",
+          "member": "int64",
+          "name": "Iops",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application scenario description",
+          "example": "***",
+          "member": "string",
+          "name": "Info",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status. The value `0` indicates that this specification is available.",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "UNIVERSAL",
+          "member": "string",
+          "name": "DeviceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Engine type description. Valid values: `Innodb`, `RocksDB`.",
+          "example": "InnoDB",
+          "member": "string",
+          "name": "EngineType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Purchasable specifications ID",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CdbSellType": {
+      "document": "Purchasable instance type",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the purchasable instance",
+          "example": "Z3",
+          "member": "string",
+          "name": "TypeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Engine version number",
+          "example": "[\"5.6\",\"5.7\"]",
+          "member": "string",
+          "name": "EngineVersion",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Purchasable specifications ID",
+          "example": "[1,2,3]",
+          "member": "int64",
+          "name": "ConfigIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CdbZoneDataResult": {
+      "document": "The purchasable specifications in a region",
+      "members": [
+        {
+          "default": "",
+          "document": "List of purchasable specifications",
+          "example": "[]",
+          "member": "CdbSellConfig",
+          "name": "Configs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of AZs in purchasable regions",
+          "example": "[]",
+          "member": "CdbRegionSellConf",
+          "name": "Regions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CdbZoneSellConf": {
+      "document": "Purchasable specifications in an AZ",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ status, which is used to indicate whether instances are purchasable. Valid values: `1` (purchasable), `3` (not purchasable), `4` (AZ not displayed)",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ name",
+          "example": "广州二区",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is a custom instance type",
+          "example": "true",
+          "member": "bool",
+          "name": "IsCustom",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether disaster recovery is supported",
+          "example": "true",
+          "member": "bool",
+          "name": "IsSupportDr",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether VPC is supported",
+          "example": "true",
+          "member": "bool",
+          "name": "IsSupportVpc",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum purchasable quantity of hourly billed instances",
+          "example": "100",
+          "member": "int64",
+          "name": "HourInstanceSaleMaxNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is a default AZ",
+          "example": "true",
+          "member": "bool",
+          "name": "IsDefaultZone",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is a BM zone",
+          "example": "true",
+          "member": "bool",
+          "name": "IsBm",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Supported billing method. Valid values: `0` (monthly subscribed), `1` (hourly billed), `2` (pay-as-you-go)",
+          "example": "[\"0\",\"1\"]",
+          "member": "string",
+          "name": "PayType",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Data replication type. Valid values: `0` (async), `1` (semi-sync), `2` (strong sync)",
+          "example": "[\"0\",\"1\",\"2\"]",
+          "member": "string",
+          "name": "ProtectMode",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ name",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Multi-AZ information",
+          "example": "{}",
+          "member": "ZoneConf",
+          "name": "ZoneConf",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of supported disaster recovery AZs",
+          "example": "[\"ap-guangzhou-2\"]",
+          "member": "string",
+          "name": "DrZone",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether cross-AZ read-only access is supported",
+          "example": "true",
+          "member": "bool",
+          "name": "IsSupportRemoteRo",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of supported cross-AZ read-only zone",
+          "example": "[\"ap-guangzhou-2\"]",
+          "member": "string",
+          "name": "RemoteRoZone",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ status, which is used to indicate whether dedicated instances are purchasable. Valid values: `1 (purchasable), `3` (not purchasable), `4` (AZ not displayed)",
+          "example": "1",
+          "member": "int64",
+          "name": "ExClusterStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of cross-AZ read-only zones supported by a dedicated instance",
+          "example": "[\"ap-guangzhou-2\"]",
+          "member": "string",
+          "name": "ExClusterRemoteRoZone",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ information of a multi-AZ deployed dedicated instance.",
+          "example": "{}",
+          "member": "ZoneConf",
+          "name": "ExClusterZoneConf",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Array of purchasable instance types. The value of `configIds` and `configs` have a one-to-one correspondence.",
+          "example": "[]",
+          "member": "CdbSellType",
+          "name": "SellType",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ ID",
+          "example": "200001",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether IPv6 is supported",
+          "example": "fasle",
+          "member": "bool",
+          "name": "IsSupportIpv6",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Supported engine types for purchasable database",
+          "example": "[\"InnoDB\",\"RocksDB\"]",
+          "member": "string",
+          "name": "EngineType",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -4146,16 +4612,38 @@
       "document": "DescribeBinlogBackupOverview response structure.",
       "members": [
         {
-          "document": "Total capacity of log backups in bytes.",
+          "document": "Total capacity of log backups in bytes (including remote log backups)",
+          "example": "6000",
           "member": "int64",
           "name": "BinlogBackupVolume",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Total number of log backups.",
+          "document": "Total number of log backups (include remote log backups)",
+          "example": "15",
           "member": "int64",
           "name": "BinlogBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Capacity of remote log backups in bytes",
+          "example": "6000",
+          "member": "int64",
+          "name": "RemoteBinlogVolume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of remote backups",
+          "example": "1",
+          "member": "int64",
+          "name": "RemoteBinlogCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4313,6 +4801,32 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCdbZoneConfigRequest": {
+      "document": "DescribeCdbZoneConfig request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeCdbZoneConfigResponse": {
+      "document": "DescribeCdbZoneConfig response structure.",
+      "members": [
+        {
+          "document": "List of purchasable specification and region information",
+          "example": "{}",
+          "member": "CdbZoneDataResult",
+          "name": "DataResult",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -5033,47 +5547,8 @@
       "members": [
         {
           "default": "",
-          "document": "AZ information in the format of \"ap-guangzhou-2\". You can use the <a href=\"https://cloud.tencent.com/document/api/236/17229\">DescribeDBZoneConfig</a> API to query the values that can be set.",
-          "member": "string",
-          "name": "Zone",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Number of instances. Value range: 1-100. Default value: 1.",
-          "member": "int64",
-          "name": "GoodsNum",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Instance memory size in MB.",
-          "member": "int64",
-          "name": "Memory",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Instance disk size in GB.",
-          "member": "int64",
-          "name": "Volume",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Billing method. Value range: PRE_PAID (monthly subscribed), HOUR_PAID (pay-as-you-go).",
-          "member": "string",
-          "name": "PayType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Instance validity period in months. Value range: 1-36. This field is invalid when querying prices of pay-as-you-go instances.",
+          "document": "Instance validity period in months. Value range: 1-36. This field is invalid when querying the prices of pay-as-you-go instances.",
+          "example": "1",
           "member": "int64",
           "name": "Period",
           "required": true,
@@ -5081,7 +5556,44 @@
         },
         {
           "default": "",
-          "document": "Instance type. Value range: master (master instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.",
+          "document": "AZ information in the format of \"ap-guangzhou-2\". You can use the <a href=\"https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1\">DescribeDBZoneConfig</a> API to query the configurable values. This parameter is required when `InstanceId` is empty.",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of instances. Value range: 1-100. Default value: 1. This parameter is required when `InstanceId` is empty.",
+          "example": "1",
+          "member": "int64",
+          "name": "GoodsNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance memory size in MB. This parameter is required when `InstanceId` is empty.",
+          "example": "1000",
+          "member": "int64",
+          "name": "Memory",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance disk size in GB. This parameter is required when `InstanceId` is empty.",
+          "example": "50",
+          "member": "int64",
+          "name": "Volume",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance type. Valid values: `master` (source instance), `dr` (disaster recovery instance), `ro` (read-only instance). Default value: `master`. This parameter is required when `InstanceId` is empty.",
+          "example": "master",
           "member": "string",
           "name": "InstanceRole",
           "required": false,
@@ -5089,9 +5601,64 @@
         },
         {
           "default": "",
-          "document": "Data replication mode. Value range: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0.",
+          "document": "Billing mode. Valid values: `PRE_PAID` (monthly subscribed), `HOUR_PAID` (pay-as-you-go). This parameter is required when `InstanceId` is empty.",
+          "example": "PRE_PAID",
+          "member": "string",
+          "name": "PayType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data replication mode. Valid values: `0` (async), 1 (semi-sync), `2` (strong sync). Default value: `0`.",
+          "example": "0",
           "member": "int64",
           "name": "ProtectMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.",
+          "example": "UNIVERSAL",
+          "member": "string",
+          "name": "DeviceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of the instance. Valid values: `1` (for read-only and basic instances), `2` (for other source instances). To query the price of a three-node instance, set this value to `3`.",
+          "example": "2",
+          "member": "int64",
+          "name": "InstanceNodes",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "CPU core count of the price-queried instance. To ensure that the CPU value to be passed in is valid, use the [DescribeDBZoneConfig](https://www.tencentcloud.com/document/product/236/17229) API to query the number of purchasable cores. If this value is not specified, a default value based on memory size will be set.",
+          "example": "4",
+          "member": "int64",
+          "name": "Cpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance ID for querying renewal price. To query the renewal price of the instance, pass in the values of `InstanceId` and `Period`.",
+          "example": "\"cdb-xxx\"",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tiered pay-as-you-go pricing, which is valid only when `PayType` is set to `HOUR_PAID`. Valid values: `1`, `2`, `3`. For more information on tiered duration, visit https://intl.cloud.tencent.com/document/product/236/18335.?from_cn_redirect=1",
+          "example": "1",
+          "member": "uint64",
+          "name": "Ladder",
           "required": false,
           "type": "int"
         }
@@ -5102,17 +5669,30 @@
       "document": "DescribeDBPrice response structure.",
       "members": [
         {
-          "document": "Price of the instance in 0.01 CNY.",
+          "document": "Instance price. If `Currency` is set to `CNY`, the unit will be 0.01 CNY. If `Currency` is set to `USD`, the unit will be US Cent.",
+          "example": "48000",
           "member": "int64",
           "name": "Price",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Original price of the instance in 0.01 CNY",
+          "document": "Original price of the instance. If `Currency` is set to `CNY`, the unit will be 0.01 CNY. If `Currency` is set to `USD`, the unit will be US Cent.",
+          "example": "460800",
           "member": "int64",
           "name": "OriginalPrice",
+          "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Currency: `CNY`, `USD`.",
+          "example": "CNY",
+          "member": "string",
+          "name": "Currency",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -5242,43 +5822,73 @@
       "members": [
         {
           "document": "Total capacity of data backups in bytes in the current region (including automatic backups and manual backups).",
+          "example": "5000",
           "member": "int64",
           "name": "DataBackupVolume",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Total number of data backups in the current region.",
+          "example": "5",
           "member": "int64",
           "name": "DataBackupCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Total capacity of automatic backups in the current region.",
+          "example": "3000",
           "member": "int64",
           "name": "AutoBackupVolume",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Total number of automatic backups in the current region.",
+          "example": "3",
           "member": "int64",
           "name": "AutoBackupCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Total capacity of manual backups in the current region.",
+          "example": "2000",
           "member": "int64",
           "name": "ManualBackupVolume",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Total number of manual backups in the current region.",
+          "example": "2",
           "member": "int64",
           "name": "ManualBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total capacity of remote backups in the current region",
+          "example": "1000",
+          "member": "int64",
+          "name": "RemoteBackupVolume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of remote backups in the current region",
+          "example": "2",
+          "member": "int64",
+          "name": "RemoteBackupCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7827,6 +8437,26 @@
           "name": "TagList",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Engine type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "InnoDB",
+          "member": "string",
+          "name": "EngineType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum delay threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxDelayTime",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -12724,6 +13354,44 @@
         }
       ],
       "usage": "out"
+    },
+    "ZoneConf": {
+      "document": "Multi-AZ information",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ deployment mode. Value range: 0 (single-AZ), 1 (multi-AZ)",
+          "member": "int64",
+          "name": "DeployMode",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "AZ where the primary instance is located",
+          "member": "string",
+          "name": "MasterZone",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "AZ where salve database 1 is located when the instance is deployed in multi-AZ mode",
+          "member": "string",
+          "name": "SlaveZone",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "AZ where salve database 2 is located when the instance is deployed in multi-AZ mode",
+          "member": "string",
+          "name": "BackupZone",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "usage": "both"
     }
   },
   "version": "1.0"

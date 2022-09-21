@@ -928,7 +928,7 @@
         },
         {
           "default": "",
-          "document": "Pagination information returned by the last response. This parameter can be omitted for the first response, where the data will be returned from the beginning. 1,000 rows of data are returned each time.",
+          "document": "The pagination information returned by the last response. This parameter can be omitted for the first response, where the data will be returned from the beginning. The data with a volume set by the `MaxResults` field is returned each time.",
           "example": "nextMarker=\\u0026nextKey=test/DLCQueryResults/2021/10/15/2c60388",
           "member": "string",
           "name": "NextToken",
@@ -1066,6 +1066,15 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "The task overview.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TasksOverview",
+          "name": "TasksOverview",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1867,7 +1876,7 @@
       "usage": "in"
     },
     "TaskResponseInfo": {
-      "document": "Task instance",
+      "document": "The task instance.",
       "members": [
         {
           "default": "",
@@ -1901,7 +1910,7 @@
         },
         {
           "default": "",
-          "document": "Computing time in ms",
+          "document": "The compute time in ms.",
           "example": "60000",
           "member": "int64",
           "name": "UsedTime",
@@ -2168,12 +2177,32 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The task time in ms.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "80000",
+          "member": "int64",
+          "name": "TotalTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The program entry parameter for running a task under a Spark job.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "spark.sql.shuffle.partitions",
+          "member": "string",
+          "name": "CmdArgs",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
     },
     "TaskResultInfo": {
-      "document": "Task result information",
+      "document": "The task result information.",
       "members": [
         {
           "default": "",
@@ -2247,7 +2276,7 @@
         },
         {
           "default": "",
-          "document": "Task execution time in seconds",
+          "document": "The compute time in ms.",
           "example": "42",
           "member": "int64",
           "name": "UsedTime",
@@ -2354,6 +2383,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The task time in ms.",
+          "example": "1000",
+          "member": "int64",
+          "name": "TotalTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2413,6 +2452,52 @@
         }
       ],
       "usage": "in"
+    },
+    "TasksOverview": {
+      "document": "The task overview.",
+      "members": [
+        {
+          "default": "",
+          "document": "The number of tasks in queue.",
+          "example": "1",
+          "member": "int64",
+          "name": "TaskQueuedCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of initialized tasks.",
+          "example": "1",
+          "member": "int64",
+          "name": "TaskInitCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of tasks in progress.",
+          "example": "1",
+          "member": "int64",
+          "name": "TaskRunningCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The total number of tasks in this time range.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalTaskCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     }
   },
   "version": "1.0"

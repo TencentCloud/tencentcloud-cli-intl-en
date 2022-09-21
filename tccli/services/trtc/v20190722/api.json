@@ -1,7 +1,7 @@
 {
   "actions": {
     "CreateCloudRecording": {
-      "document": "API description:\nThis API is used to start an on-cloud recording task. It records the audio and video streams in a room and saves them to the specified cloud storage. You can use this API to record the streams in a room separately, or you can mix the streams first and then record the mixed stream.\n\nYou can use this API to perform the following operations:\n* Specify the anchors whose streams you want or do not want to record by using the `RecordParams` parameter\n* Specify the storage service you want to save recording files to by using the `StorageParams` parameter\n* Specify transcoding settings for mixed-stream recording, including video resolution, video bitrate, frame rate, and audio quality, by using `MixTranscodeParams`\n* Specify the layout of different videos in mixed-stream recording mode or select an auto-arranged layout template\n\nKey concepts:\n* Single-stream recording: Record the audio and video of each subscribed user (`UserId`) in a room and save the recording files to VOD.\n* Mixed-stream recording: Mix the audios and videos of subscribed users (`UserId`) in a room, record the mixed stream, and save the recording files to VOD.",
+      "document": "API description:\nThis API is used to start an on-cloud recording task. It records the audio and video streams in a room and saves them to the specified cloud storage. You can use this API to record the streams in a room separately, or you can mix the streams first and then record the mixed stream.\n\nYou can use this API to perform the following operations:\n* Specify the anchors whose streams you want or do not want to record by using the `RecordParams` parameter\n* Specify the storage service you want to save recording files to by using the `StorageParams` parameter. Currently, you can only save recording files to VOD (`CloudVod`).\n* Specify transcoding settings for mixed-stream recording, including video resolution, video bitrate, frame rate, and audio quality, by using `MixTranscodeParams`\n* Specify the layout of different videos in mixed-stream recording mode or select an auto-arranged layout template\n\nKey concepts:\n* Single-stream recording: Record the audio and video of each subscribed user (`UserId`) in a room and save the recording files to VOD.\n* Mixed-stream recording: Mix the audios and videos of subscribed users (`UserId`) in a room, record the mixed stream, and save the recording files to VOD. After a recording task ends, you can go to the VOD console (https://console.cloud.tencent.com/vod/media) to view the recording files.",
       "input": "CreateCloudRecordingRequest",
       "name": "Starts an on-cloud recording task",
       "output": "CreateCloudRecordingResponse"
@@ -296,7 +296,7 @@
         },
         {
           "default": "",
-          "document": "The [user ID](https://intl.cloud.tencent.com/document/product/647/37714) of the recording robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include the room ID in the user ID.",
+          "document": "The [user ID](https://www.tencentcloud.com/document/product/647/37714#userid) of the recording robot in the TRTC room, which cannot be identical to the user IDs of anchors in the room or other recording robots. To distinguish this user ID from others, we recommend you include the room ID in the user ID.",
           "example": "recorder_1234",
           "member": "string",
           "name": "UserId",
@@ -617,6 +617,52 @@
       ],
       "usage": "in"
     },
+    "McuCustomCrop": {
+      "document": "The cropping parameters for mixed videos.",
+      "members": [
+        {
+          "default": "",
+          "document": "The horizontal offset (pixels) of the starting point for cropping. This parameter must be greater than 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "LocationX",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The vertical offset (pixels) of the starting point for cropping. This parameter must be greater than 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "LocationY",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The video width (pixels) after cropping. The sum of this parameter and `LocationX` cannot be greater than 10000.",
+          "example": "168",
+          "member": "uint64",
+          "name": "Width",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The video height (pixels) after cropping. The sum of this parameter and `LocationY` cannot be greater than 10000.",
+          "example": "168",
+          "member": "uint64",
+          "name": "Height",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "McuLayout": {
       "document": "The layout parameters.",
       "members": [
@@ -708,6 +754,16 @@
           "name": "BackgroundImageUrl",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom cropping.",
+          "example": "xxx",
+          "member": "McuCustomCrop",
+          "name": "CustomCrop",
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -1419,10 +1475,20 @@
         },
         {
           "default": "",
-          "document": "The format of recording files. 0 (default): HLS; 1: HLS + MP4 (recorded in HLS and converted to MP4). This parameter is invalid if recording files are saved to VOD.",
+          "document": "The output format. 0 (default): HLS; 1: HLS + MP4 (recorded in HLS and converted to MP4). This parameter is invalid if you save recording files to VOD. To specify the format of files saved to VOD, use `MediaType` of `TencentVod`.",
           "example": "0",
           "member": "uint64",
           "name": "OutputFormat",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to merge the audio and video of a user in the single-stream recording mode. 0 (default): Do not mix the audio and video; 1: Mix the audio and video into one TS file. You don’t need to specify this parameter for mixed-stream recording, which merges audios and videos by default.",
+          "example": "0",
+          "member": "uint64",
+          "name": "AvMerge",
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1743,7 +1809,7 @@
       "members": [
         {
           "default": "",
-          "document": "The cloud storage information.",
+          "document": "The third-party cloud storage information (not supported currently).",
           "example": "无",
           "member": "CloudStorage",
           "name": "CloudStorage",
@@ -1881,6 +1947,16 @@
           "name": "SourceContext",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The format of recording files saved to VOD. 0 (default): MP4; 1: HLS.",
+          "example": "1",
+          "member": "uint64",
+          "name": "MediaType",
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
