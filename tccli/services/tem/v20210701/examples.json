@@ -80,10 +80,10 @@
     ],
     "DescribeEnvironments": [
       {
-        "document": "This example shows you how to get the list of tenant environments.",
-        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEnvironments\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"Records\": [\n                {\n                    \"Status\": 0,\n                    \"EnvironmentId\": \"xx\",\n                    \"ModifyDate\": \"xx\",\n                    \"Description\": \"xx\",\n                    \"EnvironmentName\": \"xx\",\n                    \"Region\": \"xx\",\n                    \"Creator\": \"xx\",\n                    \"EnableTswTraceService\": true,\n                    \"RunInstancesNum\": 0,\n                    \"Vpc\": \"xx\",\n                    \"SubnetId\": \"xx\",\n                    \"ClusterStatus\": \"xx\",\n                    \"Modifier\": \"xx\",\n                    \"ApplicationNum\": 0,\n                    \"CreateDate\": \"xx\",\n                    \"Channel\": \"xx\"\n                }\n            ],\n            \"Total\": 0,\n            \"Pages\": 0,\n            \"Size\": 0\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Getting the list of tenant environments"
+        "document": "获取环境列表",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEnvironments\n<common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"Records\": [\n                {\n                    \"Status\": 0,\n                    \"EnvironmentId\": \"xx\",\n                    \"Locked\": 0,\n                    \"Description\": \"xx\",\n                    \"EnvironmentName\": \"xx\",\n                    \"Region\": \"xx\",\n                    \"Creator\": \"xx\",\n                    \"EnableTswTraceService\": true,\n                    \"RunInstancesNum\": 0,\n                    \"Vpc\": \"xx\",\n                    \"ModifyDate\": \"xx\",\n                    \"SubnetId\": \"xx\",\n                    \"ClusterStatus\": \"xx\",\n                    \"Modifier\": \"xx\",\n                    \"ApplicationNum\": 0,\n                    \"CreateDate\": \"xx\",\n                    \"Channel\": \"xx\"\n                }\n            ],\n            \"Total\": 0,\n            \"Pages\": 0,\n            \"Size\": 0\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "获取环境列表"
       }
     ],
     "DescribeIngress": [
@@ -110,6 +110,14 @@
         "title": "Querying the list of ingress rules associated with the application"
       }
     ],
+    "DestroyEnvironment": [
+      {
+        "document": "销毁环境",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DestroyEnvironment\n<common request parameters>\n\n{\n    \"EnvironmentId\": \"xx\",\n    \"SourceChannel\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": true\n    }\n}",
+        "title": "销毁环境"
+      }
+    ],
     "GenerateApplicationPackageDownloadUrl": [
       {
         "document": "This example shows you how to generate the pre-signed download URL for the specified application package.",
@@ -120,10 +128,10 @@
     ],
     "ModifyApplicationInfo": [
       {
-        "document": "This example shows you how to modify a service’s basic information.",
+        "document": "This example shows you how to modify the basic information of an application.",
         "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationInfo\n<Common request parameters>\n\n{\n    \"SourceChannel\": 0,\n    \"ApplicationId\": \"xx\",\n    \"Description\": \"xx\",\n    \"EnableTracing\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": \"xx\",\n        \"RequestId\": \"true\"\n    }\n}",
-        "title": "Modifying a service’s basic information"
+        "title": "Modifying the basic information of an application"
       }
     ],
     "ModifyEnvironment": [

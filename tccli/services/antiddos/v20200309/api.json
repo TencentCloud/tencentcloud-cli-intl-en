@@ -84,6 +84,12 @@
       "name": "Configures certificates with layer-7 forwarding rules in a batch",
       "output": "CreateL7RuleCertsResponse"
     },
+    "CreateNewL7Rules": {
+      "document": "This API is used to add layer-7 forwarding rules.",
+      "input": "CreateNewL7RulesRequest",
+      "name": "Adds layer-7 forwarding rules",
+      "output": "CreateNewL7RulesResponse"
+    },
     "CreatePacketFilterConfig": {
       "document": "This API is used to add Anti-DDoS feature filtering rules.",
       "input": "CreatePacketFilterConfigRequest",
@@ -179,6 +185,12 @@
       "input": "DescribeBasicDeviceStatusRequest",
       "name": "Gets the Anti-DDoS protection status",
       "output": "DescribeBasicDeviceStatusResponse"
+    },
+    "DescribeBgpBizTrend": {
+      "document": "This API is used to obtain Anti-DDoS Pro traffic data.",
+      "input": "DescribeBgpBizTrendRequest",
+      "name": "Obtains Anti-DDoS Pro traffic data",
+      "output": "DescribeBgpBizTrendResponse"
     },
     "DescribeBizTrend": {
       "document": "This API is used to get the traffic flow data collected in the specified period.",
@@ -329,6 +341,12 @@
       "input": "DescribeListWaterPrintConfigRequest",
       "name": "Gets a list of Anti-DDoS watermark configurations",
       "output": "DescribeListWaterPrintConfigResponse"
+    },
+    "DescribeNewL7Rules": {
+      "document": "This API is used to obtain layer-7 forwarding rules.",
+      "input": "DescribeNewL7RulesRequest",
+      "name": "Obtains layer-7 forwarding rules",
+      "output": "DescribeNewL7RulesResponse"
     },
     "DescribeOverviewDDoSEventList": {
       "document": "This API is used to obtain the list of DDoS attacks.",
@@ -785,7 +803,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Edition of the instance\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "InstanceVersion",
@@ -2564,6 +2582,69 @@
       ],
       "type": "object"
     },
+    "CreateNewL7RulesRequest": {
+      "document": "CreateNewL7Rules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of rules",
+          "example": "无",
+          "member": "L7RuleEntry",
+          "name": "Rules",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)",
+          "example": "bgpip",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of resource IDs",
+          "example": "[\"bgpip-000001\\r\\n\"]",
+          "member": "string",
+          "name": "IdList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of resource IPs",
+          "example": "[\"192.168.1.1\\r\\n\"]",
+          "member": "string",
+          "name": "VipList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateNewL7RulesResponse": {
+      "document": "CreateNewL7Rules response structure.",
+      "members": [
+        {
+          "document": "Success code",
+          "example": "无",
+          "member": "SuccessCode",
+          "name": "Success",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreatePacketFilterConfigRequest": {
       "document": "CreatePacketFilterConfig request structure.",
       "members": [
@@ -3349,6 +3430,114 @@
           "name": "Data",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBgpBizTrendRequest": {
+      "document": "DescribeBgpBizTrend request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS service code. `bgp-multip` indicates Anti-DDos Pro.",
+          "example": "bgp-multip",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Beginning of the time range for the query, such as `2020-09-22 00:00:00`.",
+          "example": "2020-09-22 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End of the time range for the query, such as `2020-09-22 00:00:00`.",
+          "example": "2020-09-22 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Statistical metric. Values: `intraffic`, `outtraffic`, `inpkg`, and `outpkg`.",
+          "example": "outtraffic",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "bgp-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "`0`: Fixed time. `1`: Custom time.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Flag",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBgpBizTrendResponse": {
+      "document": "DescribeBgpBizTrend response structure.",
+      "members": [
+        {
+          "document": "Values of the samples",
+          "example": "无",
+          "member": "uint64",
+          "name": "DataList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of samples",
+          "example": "10",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Statistical metric",
+          "example": "intraffic",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Maximum value of the arrays returned",
+          "example": "1",
+          "member": "uint64",
+          "name": "MaxData",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -5564,6 +5753,123 @@
       ],
       "type": "object"
     },
+    "DescribeNewL7RulesRequest": {
+      "document": "DescribeNewL7Rules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)",
+          "example": "bgpip",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "(Optional) Searches by rule status. Valid values: `0` (Successfully configured), `1` (Being configured), `2` (Configuration failed), `3` (Being deleted), `5` (Deletion failed), `6` (awaiting configuration), `7` (awaiting deletion), and `8` (awaiting certificate configuration).",
+          "example": "无",
+          "member": "uint64",
+          "name": "StatusList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "(Optional) Searches by domain name.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "(Optional) Searches by IP.",
+          "example": "无",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of items in a page. Returned results are not paged if you enter “0”.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "(Optional) Searches by forwarding protocol. Values: [http, https, http/https]",
+          "example": "无",
+          "member": "string",
+          "name": "ProtocolList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "CNAME of the Anti-DDoS Advanced instance",
+          "example": "abcdefg",
+          "member": "string",
+          "name": "Cname",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNewL7RulesResponse": {
+      "document": "DescribeNewL7Rules response structure.",
+      "members": [
+        {
+          "document": "List of forwarding rules",
+          "example": "无",
+          "member": "NewL7RuleEntry",
+          "name": "Rules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of health check settings",
+          "example": "无",
+          "member": "L7RuleHealth",
+          "name": "Healths",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of rules",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeOverviewDDoSEventListRequest": {
       "document": "DescribeOverviewDDoSEventList request structure.",
       "members": [
@@ -6114,6 +6420,398 @@
           "required": false,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Secondary origin server. `1`: secondary origin server; `0`: general origin server.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Backup",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "L7RuleEntry": {
+      "document": "Layer-7 forwarding rule.",
+      "members": [
+        {
+          "default": "",
+          "document": "Session persistence duration, in seconds.",
+          "example": "无",
+          "member": "uint64",
+          "name": "KeepTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Forwarding domain name.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Forwarding protocol. Valid values: `http` and `https`.",
+          "example": "无",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Forwarding method. Valid values: `1` (by domain name); `2` (by IP).",
+          "example": "无",
+          "member": "uint64",
+          "name": "SourceType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Load balancing method. Valid value: `1` (weighed polling).",
+          "example": "无",
+          "member": "uint64",
+          "name": "LbType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of origins",
+          "example": "无",
+          "member": "L4RuleSource",
+          "name": "SourceList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).",
+          "example": "无",
+          "member": "uint64",
+          "name": "KeepEnable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule status. Valid values: `0` (the rule was successfully configured), `1` (configuring the rule), `2` (rule configuration failed), `3` (deleting the rule), `5` (failed to delete rule), `6` (rule awaiting configuration), `7` (rule awaiting deletion), and `8` (rule awaiting certificate configuration).",
+          "example": "无",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.",
+          "example": "无",
+          "member": "string",
+          "name": "RuleId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CC protection threshold based on HTTPS.",
+          "example": "无",
+          "member": "uint64",
+          "name": "CCThreshold",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "[Disused] When the certificate is an external certificate, the certificate key should be provided here. ",
+          "example": "无",
+          "member": "string",
+          "name": "PrivateKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CC protection status based on HTTPS. Valid values: `0` (disabled) and `1` (enabled).",
+          "example": "无",
+          "member": "uint64",
+          "name": "CCEnable",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disable) and `1` (enable). It defaults to `0`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "HttpsToHttpEnable",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.",
+          "example": "无",
+          "member": "uint64",
+          "name": "CertType",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "[Disused] When the certificate is an external certificate, the certificate content should be provided here. ",
+          "example": "无",
+          "member": "string",
+          "name": "Cert",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CC protection level based on HTTPS.",
+          "example": "无",
+          "member": "string",
+          "name": "CCLevel",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule description.",
+          "example": "无",
+          "member": "string",
+          "name": "RuleName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CC protection status. Valid values: `0` (disabled) and `1` (enabled).",
+          "example": "无",
+          "member": "uint64",
+          "name": "CCStatus",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Access port number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "VirtualPort",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "When the certificate is managed by Tencent Cloud, this field must be set to the ID of the managed certificate.",
+          "example": "无",
+          "member": "string",
+          "name": "SSLId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the rule",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Intelligent CC protection status. Valid values: `0` (disabled) and `1` (enabled).",
+          "example": "无",
+          "member": "uint64",
+          "name": "CCAIEnable",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "L7RuleHealth": {
+      "document": "Health check parameters of layer-7 forwarding rules",
+      "members": [
+        {
+          "default": "",
+          "document": "Configuration status. Values: `0` (normal), `1` (configuration in progress) and `2` (configuration failed).",
+          "example": "无",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Switch. Values: `1`: Enable; `0`: Disable.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Enable",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the rule",
+          "example": "无",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP request path. The default value is /.",
+          "example": "无",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Health check interval. Unit: second.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Interval",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Healthy threshold, which specifies the number of consecutive successful health checks.",
+          "example": "无",
+          "member": "uint64",
+          "name": "AliveNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unhealthy threshold, which specifies the number of consecutive failed health checks.",
+          "example": "无",
+          "member": "uint64",
+          "name": "KickNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "HTTP request method. Values: `HEAD` and `GET`.",
+          "example": "无",
+          "member": "string",
+          "name": "Method",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status code that signifies a normal state. Values: `1` (1xx), `2` (2xx), `4` (3xx), `8` (4xx), and `16` (5xx).",
+          "example": "无",
+          "member": "uint64",
+          "name": "StatusCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to deploy both HTTP and HTTPS health check rules",
+          "example": "无",
+          "member": "uint64",
+          "name": "ProtocolFlag",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Enables passive detection. Values: `1` (enable) and `0` (disable).",
+          "example": "无",
+          "member": "uint64",
+          "name": "PassiveEnable",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Blocking period in the passive detection configuration",
+          "example": "无",
+          "member": "uint64",
+          "name": "BlockInter",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Time interval between passive detections",
+          "example": "无",
+          "member": "uint64",
+          "name": "FailedCountInter",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unhealthy threshold in the passive detection configuration",
+          "example": "无",
+          "member": "uint64",
+          "name": "FailedThreshold",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status code that signals that the passive detection considers the status normal. Values: `1` (1xx), `2` (2xx), `4` (3xx), `8` (4xx), and `16` (5xx).",
+          "example": "无",
+          "member": "uint64",
+          "name": "PassiveStatusCode",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"

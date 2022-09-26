@@ -634,7 +634,8 @@
       "members": [
         {
           "default": "",
-          "document": "Snapshot file ID used for rollback",
+          "document": "Snapshot file ID, which is deprecated. You need to use `BackupId`.",
+          "example": "无",
           "member": "uint64",
           "name": "SnapshotId",
           "required": true,
@@ -643,7 +644,8 @@
         },
         {
           "default": "",
-          "document": "Snapshot file name",
+          "document": "Backup file name",
+          "example": "无",
           "member": "string",
           "name": "FileName",
           "required": true,
@@ -652,7 +654,8 @@
         },
         {
           "default": "",
-          "document": "Snapshot file size",
+          "document": "Backup file size",
+          "example": "无",
           "member": "uint64",
           "name": "FileSize",
           "required": true,
@@ -661,7 +664,8 @@
         },
         {
           "default": "",
-          "document": "Snapshot backup start time",
+          "document": "Backup start time",
+          "example": "无",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -670,7 +674,8 @@
         },
         {
           "default": "",
-          "document": "Snapshot backup end time",
+          "document": "Backup end time",
+          "example": "无",
           "member": "string",
           "name": "FinishTime",
           "required": true,
@@ -679,7 +684,8 @@
         },
         {
           "default": "",
-          "document": "Backup type. snapshot: snapshot backup; timepoint: time point backup",
+          "document": "Backup type. Valid values: `snapshot` (snapshot backup), `logic` (logic backup).",
+          "example": "无",
           "member": "string",
           "name": "BackupType",
           "required": true,
@@ -689,6 +695,7 @@
         {
           "default": "",
           "document": "Back mode. auto: auto backup; manual: manual backup",
+          "example": "无",
           "member": "string",
           "name": "BackupMethod",
           "required": true,
@@ -698,6 +705,7 @@
         {
           "default": "",
           "document": "Backup file status. success: backup succeeded; fail: backup failed; creating: creating backup file; deleting: deleting backup file",
+          "example": "无",
           "member": "string",
           "name": "BackupStatus",
           "required": true,
@@ -707,11 +715,42 @@
         {
           "default": "",
           "document": "Backup file time",
+          "example": "无",
           "member": "string",
           "name": "SnapshotTime",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "BackupId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "SnapShotType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Backup file alias\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "BackupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3083,20 +3122,20 @@
         },
         {
           "default": "",
-          "document": "Backup file list offset",
+          "document": "The number of results to be returned. Value range: (0,100]",
           "example": "10",
           "member": "int64",
           "name": "Limit",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
           "default": "",
-          "document": "Backup file list start",
+          "document": "Record offset. Value range: [0,INF)",
           "example": "0",
           "member": "int64",
           "name": "Offset",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
@@ -3107,6 +3146,78 @@
           "name": "DbType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup ID",
+          "example": "无",
+          "member": "int64",
+          "name": "BackupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Backup type. Valid values: `snapshot` (snapshot backup), `logic` (logic backup).",
+          "example": "snapshot",
+          "member": "string",
+          "name": "BackupType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Back mode. Valid values: `auto` (automatic backup), `manual` (manual backup)",
+          "example": "auto",
+          "member": "string",
+          "name": "BackupMethod",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "full",
+          "member": "string",
+          "name": "SnapShotType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup start time",
+          "example": "2022-01-01 12:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup end time",
+          "example": "2022-01-01 14:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "FileNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Backup alias, which supports fuzzy query.",
+          "example": "无",
+          "member": "string",
+          "name": "BackupNames",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"

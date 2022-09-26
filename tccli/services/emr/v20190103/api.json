@@ -1265,6 +1265,7 @@
         {
           "default": "",
           "document": "Cluster instance ID in the format of emr-xxxxxxxx",
+          "example": "emr-6deluvd4",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1273,6 +1274,7 @@
         {
           "default": "",
           "document": "Node flag. Valid values:\n<li>all: gets the information of nodes in all types except TencentDB information.</li>\n<li>master: gets master node information.</li>\n<li>core: gets core node information.</li>\n<li>task: gets task node information.</li>\n<li>common: gets common node information.</li>\n<li>router: gets router node information.</li>\n<li>db: gets TencentDB information in normal status.</li>\nNote: only the above values are supported for the time being. Entering other values will cause errors.",
+          "example": "all",
           "member": "string",
           "name": "NodeFlag",
           "required": true,
@@ -1281,6 +1283,7 @@
         {
           "default": "",
           "document": "Page number. Default value: 0, indicating the first page.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -1289,6 +1292,7 @@
         {
           "default": "",
           "document": "Number of returned results per page. Default value: 100. Maximum value: 100",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -1297,6 +1301,7 @@
         {
           "default": "",
           "document": "Resource type. Valid values: all, host, pod. Default value: all",
+          "example": "all",
           "member": "string",
           "name": "HardwareResourceType",
           "required": false,
@@ -1305,10 +1310,29 @@
         {
           "default": "",
           "document": "Searchable field",
+          "example": "无",
           "member": "SearchItem",
           "name": "SearchFields",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "None",
+          "example": "无",
+          "member": "string",
+          "name": "OrderField",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "None",
+          "example": "无",
+          "member": "int64",
+          "name": "Asc",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -3757,6 +3781,46 @@
           "example": "\"\"",
           "member": "string",
           "name": "Clients",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The current system time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CurrentTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the hardware node is used in a federation. Valid values: `0` (no), `1` (yes).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "IsFederation",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Device name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Service\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ServiceClient",
           "required": true,
           "type": "string",
           "value_allowed_null": true

@@ -25,7 +25,7 @@
       "output": "CreateResourceResponse"
     },
     "DeleteApplication": {
-      "document": "This API is used to delete an application.\n  - Stop the application if it’s running\n  - Delete resources associated with this application\n  - Delele the application",
+      "document": "This API is used to delete an application.\n  - Stop running the current application\n  - Delete resources related to the application\n  - Delete the application",
       "input": "DeleteApplicationRequest",
       "name": "Deletes an application",
       "output": "DeleteApplicationResponse"
@@ -77,6 +77,12 @@
       "input": "DescribeRelatedIngressesRequest",
       "name": "Queries the list of ingress rules associated with the application",
       "output": "DescribeRelatedIngressesResponse"
+    },
+    "DestroyEnvironment": {
+      "document": "This API is used to terminate a namespace.",
+      "input": "DestroyEnvironmentRequest",
+      "name": "Terminates a namespace",
+      "output": "DestroyEnvironmentResponse"
     },
     "GenerateApplicationPackageDownloadUrl": {
       "document": "This API is used to generate the pre-signed download URL for the specified application package.",
@@ -252,7 +258,7 @@
         },
         {
           "default": "",
-          "document": "Whether to use the default image service. 1: yes; 0: no",
+          "document": "Whether to use the default image service. `1`: yes; `0`: no",
           "example": "0",
           "member": "int64",
           "name": "UseDefaultImageService",
@@ -261,7 +267,7 @@
         },
         {
           "default": "",
-          "document": "Type of the bound repository. 0: Personal Edition; 1: Enterprise Edition",
+          "document": "Type of the bound repository. `0`: TCR Personal; `1`: TCR Enterprise",
           "example": "0",
           "member": "int64",
           "name": "RepoType",
@@ -270,7 +276,7 @@
         },
         {
           "default": "",
-          "document": "Instance ID of Enterprise Edition image service",
+          "document": "TCR Enterprise instance ID",
           "example": "tr-123",
           "member": "string",
           "name": "InstanceId",
@@ -333,12 +339,21 @@
         },
         {
           "default": "",
-          "document": "Whether to enable the call chain feature",
+          "document": "Whether to enable APM tracing for the Java application. `1`: Enable, `0`: Disable",
           "example": "1",
           "member": "int64",
           "name": "EnableTracing",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Parameters of the default image service",
+          "example": "{}",
+          "member": "UseDefaultRepoParameters",
+          "name": "UseDefaultImageServiceParameters",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -347,7 +362,7 @@
       "document": "CreateApplication response structure.",
       "members": [
         {
-          "document": "Service code",
+          "document": "ID of the created application",
           "example": "service-3gn56p6v",
           "member": "string",
           "name": "Result",
@@ -694,7 +709,7 @@
       "members": [
         {
           "default": "",
-          "document": "Service ID",
+          "document": "Application ID.",
           "example": "1",
           "member": "string",
           "name": "ApplicationId",
@@ -712,7 +727,7 @@
         },
         {
           "default": "",
-          "document": "Retain as default",
+          "document": "Source channel. Please keep the default value.",
           "example": "0",
           "member": "int64",
           "name": "SourceChannel",
@@ -735,7 +750,7 @@
       "document": "DeleteApplication response structure.",
       "members": [
         {
-          "document": "Returned result",
+          "document": "Returned result.",
           "example": "1",
           "member": "bool",
           "name": "Result",
@@ -1180,10 +1195,46 @@
         },
         {
           "default": "",
-          "document": "`1`: Enable APM collection; `0`: Disable APM collection",
+          "document": "`1`: Enable APM tracing (Skywalking)\n`0`: Disable APM tracing",
           "example": "0",
           "member": "int64",
           "name": "EnableTracing",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "EnableMetrics",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "tcr-123",
+          "member": "string",
+          "name": "TcrInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "ccr.ccs.tencentcryun.com",
+          "member": "string",
+          "name": "RepoServer",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "RepoType",
           "required": false,
           "type": "int"
         }
@@ -1710,6 +1761,51 @@
         }
       ],
       "usage": "out"
+    },
+    "DestroyEnvironmentRequest": {
+      "document": "DestroyEnvironment request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Namespace ID.",
+          "example": "1",
+          "member": "string",
+          "name": "EnvironmentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "example": "0",
+          "member": "int64",
+          "name": "SourceChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyEnvironmentResponse": {
+      "document": "DestroyEnvironment response structure.",
+      "members": [
+        {
+          "document": "Returned result.",
+          "example": "1",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "EksService": {
       "document": "EKS service information",
@@ -2468,7 +2564,7 @@
         },
         {
           "default": "",
-          "document": "Whether to enable the call chain. Valid values: `0`: disable; `1`: enable",
+          "document": "(Disused) Whether to enable the call chain. ",
           "example": "1",
           "member": "uint64",
           "name": "EnableTracing",
@@ -2803,6 +2899,16 @@
           "member": "string",
           "name": "Protocol",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "K8s service name",
+          "example": "service123",
+          "member": "string",
+          "name": "ServiceName",
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -3610,6 +3716,42 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "UseDefaultRepoParameters": {
+      "document": "Repository parameters ",
+      "members": [
+        {
+          "default": "",
+          "document": "TCR Enterprise instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "EnterpriseInstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TCR Enterprise billing mode. `0`: Pay-as-you-go \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "EnterpriseInstanceChargeType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Edition of the TCR Enterprise. Values: `basic`, `standard`, `premium` (Advanced edition)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "basic",
+          "member": "string",
+          "name": "EnterpriseInstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
