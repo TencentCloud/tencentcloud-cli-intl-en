@@ -360,6 +360,15 @@
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Name of the SSH key pair, which only contains digits, letters and underscores and must start with a digit or letter. The maximum length is 25 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "SSHKeyName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1267,7 +1276,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "`true`: allow SSM to manage Tencent Cloud API key secrets.\n`false`: forbid SSM to manage Tencent Cloud API key secrets.",
+          "document": "`true`: Allow SSM to manage Tencent Cloud API key secrets.\n`false`: Forbid SSM to manage Tencent Cloud API key secrets.",
           "example": "true",
           "member": "bool",
           "name": "AccessKeyEscrowEnabled",

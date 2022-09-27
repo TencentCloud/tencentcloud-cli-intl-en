@@ -13,6 +13,8 @@ include tccli/services/billing/v20180709/api.json
 include tccli/services/billing/v20180709/examples.json
 include tccli/services/cam/v20190116/api.json
 include tccli/services/cam/v20190116/examples.json
+include tccli/services/captcha/v20190722/api.json
+include tccli/services/captcha/v20190722/examples.json
 include tccli/services/car/v20220110/api.json
 include tccli/services/car/v20220110/examples.json
 include tccli/services/cbs/v20170312/api.json

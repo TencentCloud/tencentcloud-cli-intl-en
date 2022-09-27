@@ -1,0 +1,13 @@
+{
+  "actions": {
+    "DescribeCaptchaResult": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: captcha.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCaptchaResult\n<Common request parameters>\n\n{\n    \"CaptchaAppId\": \"201111111\",\n    \"CaptchaType\": \"9\",\n    \"NeedGetCaptchaTime\": \"1\",\n    \"Randstr\": \"xxx\",\n    \"UserIp\": \"127.0.0.1\",\n    \"Ticket\": \"xxxx\",\n    \"AppSecretKey\": \"xxxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3b61a17b-cb38-470e-802c-b6242faf81ac\",\n        \"CaptchaCode\": 1,\n        \"CaptchaMsg\": \"OK\",\n        \"EvilLevel\": 0,\n        \"GetCaptchaTime\": 1583749870\n    },\n    \"retcode\": 0,\n    \"retmsg\": \"success\"\n}",
+        "title": "Request and response examples"
+      }
+    ]
+  },
+  "version": "1.0"
+}

@@ -11,7 +11,7 @@
     "AssociateInstancesKeyPairs": [
       {
         "document": "This example shows you how to bind a key pair to an instance.",
-        "input": "https://lighthouse.tencentcloudapi.com/?Action=AssociateInstancesKeyPairs\n&InstanceIds.0=lhins-ruy9d2tw\n&KeyIds.0=lhkp-f7rjie1q\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssociateInstancesKeyPairs\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"lhins-ruy9d2tw\"\n    ],\n    \"KeyIds\": [\n        \"lhkp-f7rjie1q\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f192c1a9-580e-4653-9d54-ba42cd4353a3\"\n    }\n}",
         "title": "Binding key pair to instance"
       }
@@ -115,8 +115,8 @@
     "DescribeBlueprints": [
       {
         "document": "",
-        "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeBlueprints\n&BlueprintIds.0=lhbp-5e8807sc\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"BlueprintSet\": [\n            {\n                \"BlueprintId\": \"lhbp-5e8807sc\",\n                \"DisplayTitle\": \"wordpress\",\n                \"DisplayVersion\": \"5.3.2\",\n                \"Description\": \"Personal blog website construction\",\n                \"OsName\": \"CentOS-7.6-64bit\",\n                \"Platform\": \"CENTOS\",\n                \"PlatformType\": \"LINUX_UNIX\",\n                \"BlueprintType\": \"APP_OS\",\n                \"ImageUrl\": \"http://www.wordpress.com/image\",\n                \"RequiredSystemDiskSize\": 50,\n                \"BlueprintState\": \"NORMAL\",\n                \"CreatedTime\": \"2020-04-28T03:46:09Z\",\n                \"BlueprintName\": \"Wordpress\",\n                \"SupportAutomationTools\": true,\n                \"RequiredMemorySize\": 1,\n                \"ImageId\": \"\"\n            }\n        ],\n        \"RequestId\": \"3df9cd92-cec1-4864-a2a1-358084f41551\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBlueprints\n<Common request parameters>\n\n{\n    \"BlueprintIds\": [\n        \"lhbp-5e8807sc\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"BlueprintSet\": [\n            {\n                \"BlueprintId\": \"lhbp-5e8807sc\",\n                \"DisplayTitle\": \"wordpress\",\n                \"DisplayVersion\": \"5.3.2\",\n                \"Description\": \"Personal blog website construction\",\n                \"OsName\": \"CentOS-7.6-64bit\",\n                \"Platform\": \"CENTOS\",\n                \"PlatformType\": \"LINUX_UNIX\",\n                \"BlueprintType\": \"APP_OS\",\n                \"ImageUrl\": \"http://www.wordpress.com/image\",\n                \"RequiredSystemDiskSize\": 50,\n                \"BlueprintState\": \"NORMAL\",\n                \"CreatedTime\": \"2020-04-28T03:46:09Z\",\n                \"BlueprintName\": \"Wordpress\",\n                \"SupportAutomationTools\": true,\n                \"RequiredMemorySize\": 1,\n                \"ImageId\": \"\",\n                \"SceneIdSet\": [],\n                \"CommunityUrl\": \"CommunityUrl_test\",\n                \"GuideUrl\": \"GuideUrl_test\"\n            }\n        ],\n        \"RequestId\": \"3df9cd92-cec1-4864-a2a1-358084f41551\"\n    }\n}",
         "title": "Querying image information"
       }
     ],
@@ -164,7 +164,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDisks\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-p1zflrif\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DiskSet\": [\n            {\n                \"DiskId\": \"lhdisk-p1zflrif\",\n                \"InstanceId\": \"lhins-anxwfvxh\",\n                \"Zone\": \"ap-guangzhou-3\",\n                \"DiskName\": \"lhdisk-p1zflrif-system-disk\",\n                \"DiskUsage\": \"DATA_DISK\",\n                \"DiskType\": \"CLOUD_PREMIUM\",\n                \"DiskChargeType\": \"PREPAID\",\n                \"DiskSize\": 30,\n                \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\",\n                \"DiskState\": \"ATTACHED\",\n                \"Attached\": true,\n                \"DeleteWithInstance\": false,\n                \"LatestOperation\": \"DetachDisks\",\n                \"LatestOperationState\": \"FAILED\",\n                \"LatestOperationRequestId\": \"54118bb6-7206-43f7-bf53-b77a394ad51e\",\n                \"CreatedTime\": \"2021-08-25T08:50:57Z\",\n                \"ExpiredTime\": \"2021-10-28T09:11:37Z\",\n                \"IsolatedTime\": null\n            }\n        ],\n        \"RequestId\": \"b362f486-571c-4094-afd5-22a38bd63046\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DiskSet\": [\n            {\n                \"DiskId\": \"lhdisk-p1zflrif\",\n                \"InstanceId\": \"lhins-anxwfvxh\",\n                \"Zone\": \"ap-guangzhou-3\",\n                \"DiskName\": \"lhdisk-p1zflrif-system-disk\",\n                \"DiskUsage\": \"DATA_DISK\",\n                \"DiskType\": \"CLOUD_PREMIUM\",\n                \"DiskChargeType\": \"PREPAID\",\n                \"DiskSize\": 30,\n                \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\",\n                \"DiskState\": \"ATTACHED\",\n                \"Attached\": true,\n                \"DeleteWithInstance\": false,\n                \"DiskBackupCount\": 1,\n                \"DiskBackupQuota\": 1,\n                \"LatestOperation\": \"DetachDisks\",\n                \"LatestOperationState\": \"FAILED\",\n                \"LatestOperationRequestId\": \"54118bb6-7206-43f7-bf53-b77a394ad51e\",\n                \"CreatedTime\": \"2021-08-25T08:50:57Z\",\n                \"ExpiredTime\": \"2021-10-28T09:11:37Z\",\n                \"IsolatedTime\": null\n            }\n        ],\n        \"RequestId\": \"b362f486-571c-4094-afd5-22a38bd63046\"\n    }\n}",
         "title": "Querying disks"
       }
     ],
@@ -209,8 +209,8 @@
     "DescribeGeneralResourceQuotas": [
       {
         "document": "This example shows you how to query the resource quota information of an instance.",
-        "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeGeneralResourceQuotas\n&ResourceNames.0=INSTANCE\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"GeneralResourceQuotaSet\": [\n            {\n                \"ResourceName\": \"INSTANCE\",\n                \"ResourceQuotaAvailable\": 9,\n                \"ResourceQuotaTotal\": 10\n            }\n        ],\n        \"RequestId\": \"4dd1a440-39ca-49fb-9f2f-c995db3ae20b\"\n    }\n}",
+        "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeGeneralResourceQuotas\n&ResourceNames.0=GENERAL_BUNDLE_INSTANCE\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"GeneralResourceQuotaSet\": [\n            {\n                \"ResourceName\": \"GENERAL_BUNDLE_INSTANCE\",\n                \"ResourceQuotaAvailable\": 9,\n                \"ResourceQuotaTotal\": 10\n            }\n        ],\n        \"RequestId\": \"4dd1a440-39ca-49fb-9f2f-c995db3ae20b\"\n    }\n}",
         "title": "Querying the quota information of general resources"
       }
     ],
@@ -225,7 +225,7 @@
     "DescribeInstanceVncUrl": [
       {
         "document": "This example shows you how to query the VNC URL of an instance.",
-        "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeInstanceVncUrl\n&InstanceId=lhins-ruy9d2tw\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceVncUrl\n<Common request parameters>\n\n{\n    \"InstanceId\": \"lhins-ruy9d2tw\"\n}",
         "output": "{\n    \"Response\": {\n        \"InstanceVncUrl\": \"wss%3A%2F%2Fusevnc.qcloud.com%3A443%2Fvnc%3Fs%3DTnVQUEpVYkc4eUMvMEkyUERKUjhRbzJhbGcyWHFaWmVMU1dRbUQwd0hVVHo2WU4wOEpLWjlQd0JVSWQwUXZOK2FDcWlOdDJIbUJxSTZDL0RXcHZxYnZZMmRkWWZWcEZia2lyb09XMzdKNmM9%26password%3D%26isWindows%3Dfalse%26isUbuntu%3Dfalse\",\n        \"RequestId\": \"f9f6fa33-679c-40ea-bb30-b1e9a8989305\"\n    }\n}",
         "title": "Querying the VNC URL of an instance"
       }
@@ -234,8 +234,8 @@
       {
         "document": "This example shows you how to limit the number of returned results to at most one.",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeInstances\n&Limit=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"InstanceSet\": [\n            {\n                \"InstanceId\": \"lhins-ruy9d2tw\",\n                \"BundleId\": \"bundle_bw_small1_1\",\n                \"BlueprintId\": \"lhbp-5e8807lo\",\n                \"Zone\": \"ap-guangzhou-2\"\n                \"CPU\": 1,\n                \"Memory\": 1,\n                \"InstanceName\": \"lighthouse-test\",\n                \"OsName\": \"CentOS 7.6 64bit\",\n                \"Platform\": \"CENTOS\",\n                \"PlatformType\": \"LINUX_UNIX\",\n                \"InstanceChargeType\": \"PREPAID\",\n                \"SystemDisk\": {\n                    \"DiskType\": \"CLOUD_PREMIUM\",\n                    \"DiskSize\": 50,\n                    \"DiskId\": \"lhdisk-gayq6kyd\"\n                },\n                \"PrivateAddresses\": [\n                    \"10.0.0.5\"\n                ],\n                \"PublicAddresses\": [\n                    \"170.106.15.201\"\n                ],\n                \"InternetAccessible\": {\n                    \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                    \"InternetMaxBandwidthOut\": 20,\n                    \"PublicIpAssigned\": true\n                },\n                \"RenewFlag\": \"NOTIFY_AND_MANUAL_RENEW\",\n                \"LoginSettings\": {\n                    \"KeyIds\": []\n                },\n                \"Tags\": [],\n                    {\n                        \"Key\": \"lighthouse\",\n                        \"Value\": \"great\"\n                    }\n                ],\n                \"InstanceState\": \"RUNNING\",\n                \"Uuid\": \"1322d32a-2641-45f3-a244-559405b32228\",\n                \"LatestOperation\": \"StartInstances\",\n                \"LatestOperationState\": \"SUCCESS\",\n                \"LatestOperationRequestId\": \"6b9a6dac-888a-4b4d-9739-0d0b66cbfa88\",\n                \"CreatedTime\": \"2020-04-28T03:46:09Z\",\n                \"ExpiredTime\": \"2020-05-28T03:46:09Z\",\n                \"IsolatedTime\": null\n            }\n        ],\n        \"RequestId\": \"c9aa9e9b-bb2b-4390-b8da-fc976ffc4608\"\n    }\n}",
-        "title": "Querying a list of instances"
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"InstanceSet\": [\n            {\n                \"InstanceId\": \"lhins-ruy9d2tw\",\n                \"BundleId\": \"bundle_bw_small1_1\",\n                \"BlueprintId\": \"lhbp-5e8807lo\",\n                \"Zone\": \"ap-guangzhou-3\",\n                \"CPU\": 1,\n                \"Memory\": 1,\n                \"InstanceName\": \"lighthouse-test\",\n                \"OsName\": \"CentOS 7.6 64bit\",\n                \"Platform\": \"CENTOS\",\n                \"PlatformType\": \"LINUX_UNIX\",\n                \"InstanceChargeType\": \"PREPAID\",\n                \"SystemDisk\": {\n                    \"DiskType\": \"CLOUD_PREMIUM\",\n                    \"DiskSize\": 50,\n                    \"DiskId\": \"lhdisk-gayq6kyd\"\n                },\n                \"PrivateAddresses\": [\n                    \"10.0.0.5\"\n                ],\n                \"PublicAddresses\": [\n                    \"170.106.15.201\"\n                ],\n                \"InternetAccessible\": {\n                    \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                    \"InternetMaxBandwidthOut\": 20,\n                    \"PublicIpAssigned\": true\n                },\n                \"RenewFlag\": \"NOTIFY_AND_MANUAL_RENEW\",\n                \"LoginSettings\": {\n                    \"KeyIds\": []\n                },\n                \"Tags\": [\n                    {\n                        \"Key\": \"lighthouse\",\n                        \"Value\": \"great\"\n                    }\n                ],\n                \"InstanceState\": \"RUNNING\",\n                \"InstanceRestrictState\": \"NORMAL\",\n                \"Uuid\": \"1322d32a-2641-45f3-a244-559405b32228\",\n                \"LatestOperation\": \"StartInstances\",\n                \"LatestOperationState\": \"SUCCESS\",\n                \"LatestOperationRequestId\": \"6b9a6dac-888a-4b4d-9739-0d0b66cbfa88\",\n                \"CreatedTime\": \"2020-04-28T03:46:09Z\",\n                \"ExpiredTime\": \"2020-05-28T03:46:09Z\",\n                \"IsolatedTime\": null\n            }\n        ],\n        \"RequestId\": \"c9aa9e9b-bb2b-4390-b8da-fc976ffc4608\"\n    }\n}",
+        "title": "Querying the list of instances"
       }
     ],
     "DescribeInstancesDeniedActions": [
@@ -370,7 +370,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquirePriceCreateDisks\n<Common request parameters>\n\n{\n    \"DiskSize\": 20,\n    \"DiskType\": \"CLOUD_SSD\",\n    \"DiskChargePrepaid\": {\n        \"Period\": 1\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"DiskPrice\": {\n            \"OriginalDiskPrice\": 16.0,\n            \"OriginalPrice\": 16.0,\n            \"Discount\": 100,\n            \"DiscountPrice\": 16.0\n        },\n        \"RequestId\": \"4214ba7a-0784-4cbb-a342-e5cc288c484c\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"DiskPrice\": {\n            \"OriginalDiskPrice\": 20.0,\n            \"OriginalPrice\": 20.0,\n            \"Discount\": 100,\n            \"DiscountPrice\": 20.0,\n            \"DetailPrices\": [\n                {\n                    \"PriceName\": \"DiskSpace\",\n                    \"OriginUnitPrice\": 20.0,\n                    \"OriginalPrice\": 20.0,\n                    \"Discount\": 100,\n                    \"DiscountPrice\": 20.0\n                }\n            ]\n        },\n        \"RequestId\": \"25a4f680-0477-4f27-a494-1369eb310fe8\"\n    }\n}",
         "title": "Querying the price of purchasing cloud disks"
       }
     ],
@@ -386,7 +386,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquirePriceRenewDisks\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-5vmz00i3\"\n    ],\n    \"RenewDiskChargePrepaid\": {\n        \"Period\": 1\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"DiskPrice\": {\n            \"OriginalDiskPrice\": 16.0,\n            \"OriginalPrice\": 16.0,\n            \"Discount\": 100,\n            \"DiscountPrice\": 16.0\n        },\n        \"RequestId\": \"4214ba7a-0784-4cbb-a342-e5cc288c484c\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"DiskPrice\": {\n            \"OriginalDiskPrice\": 22.0,\n            \"OriginalPrice\": 22.0,\n            \"Discount\": 100,\n            \"DiscountPrice\": 22.0,\n            \"DetailPrices\": [\n                {\n                    \"PriceName\": \"DiskSpace\",\n                    \"OriginUnitPrice\": 20.0,\n                    \"OriginalPrice\": 20.0,\n                    \"Discount\": 100,\n                    \"DiscountPrice\": 20.0\n                },\n                {\n                    \"PriceName\": \"DiskBackupQuota\",\n                    \"OriginUnitPrice\": 2.0,\n                    \"OriginalPrice\": 2.0,\n                    \"Discount\": 100,\n                    \"DiscountPrice\": 2.0\n                }\n            ]\n        },\n        \"RequestId\": \"03da2972-121e-4dcc-9a10-4cbec5c8991a\"\n    }\n}",
         "title": "Querying the price of renewing cloud disks"
       }
     ],
@@ -491,7 +491,7 @@
         "document": "This example shows how to reinstall an instance by specifying the image.",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=ResetInstance\n&InstanceId=lhins-ruy9d2tw\n&BlueprintId=lhbp-5e8807lo\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"cb7aaa99-b31a-4767-9d41-4ebdbdf3ba9c\"\n    }\n}",
-        "title": "Reinstalling instance"
+        "title": "Reinstalling an instance"
       }
     ],
     "ResetInstancesPassword": [
