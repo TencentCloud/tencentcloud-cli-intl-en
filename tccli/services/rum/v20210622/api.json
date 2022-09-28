@@ -6220,6 +6220,36 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region ID.",
+          "example": "1",
+          "member": "string",
+          "name": "AreaRegionID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region code, such as “ap-xxx” (xxx is the region name).",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "AreaRegionCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region abbreviation.",
+          "example": "gz",
+          "member": "string",
+          "name": "AreaAbbr",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

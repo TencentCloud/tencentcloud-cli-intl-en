@@ -24,6 +24,12 @@
       "name": "Deletes a device",
       "output": "DeleteDeviceResponse"
     },
+    "DeleteDeviceShadow": {
+      "document": "This API is used to delete a device shadow. ",
+      "input": "DeleteDeviceShadowRequest",
+      "name": "Deletes a device shadow",
+      "output": "DeleteDeviceShadowResponse"
+    },
     "DeletePrivateCA": {
       "document": "This API is used to delete a private CA certificate.",
       "input": "DeletePrivateCARequest",
@@ -590,6 +596,42 @@
     },
     "DeleteDeviceResponse": {
       "document": "DeleteDevice response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDeviceShadowRequest": {
+      "document": "DeleteDeviceShadow request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Product ID",
+          "example": "ABCDE12345",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Device name",
+          "example": "abc",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDeviceShadowResponse": {
+      "document": "DeleteDeviceShadow response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

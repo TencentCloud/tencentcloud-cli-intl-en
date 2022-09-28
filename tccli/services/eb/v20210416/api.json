@@ -2391,6 +2391,15 @@
         },
         {
           "default": "",
+          "document": "See [CKafka Target](https://intl.cloud.tencent.com/document/product/1359/56084?from_cn_redirect=1)",
+          "example": "{   \"detail\": {     \"source-ip\": [ { \"cidr\": \"10.0.0.0/24\" } ]  ",
+          "member": "string",
+          "name": "EventPattern",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "Event rule name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter",
           "example": "rule",
           "member": "string",

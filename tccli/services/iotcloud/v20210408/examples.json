@@ -38,6 +38,14 @@
         "title": "Deleting a device"
       }
     ],
+    "DeleteDeviceShadow": [
+      {
+        "document": "",
+        "input": "https://iotcloud.tencentcloudapi.com/?Action=DeleteDeviceShadow\n&ProductId=ABCDE12345\n&DeviceName=abc\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxxxxxxxxxxxxxxxxxxxxx\"\n    }\n}",
+        "title": "Deleting a device shadow"
+      }
+    ],
     "DeletePrivateCA": [
       {
         "document": "",
