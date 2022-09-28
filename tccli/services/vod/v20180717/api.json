@@ -450,6 +450,12 @@
       "name": "Runs a custom API",
       "output": "ExecuteFunctionResponse"
     },
+    "ExtractTraceWatermark": {
+      "document": "This API is used to extract the user ID of a user that distributed a video containing a digital watermark.",
+      "input": "ExtractTraceWatermarkRequest",
+      "name": "Extracts the user ID of a user that distributed a video containing a digital watermark",
+      "output": "ExtractTraceWatermarkResponse"
+    },
     "ForbidMediaDistribution": {
       "document": "* After a media file is forbidden, except previewing it in the VOD Console, accessing the URLs of its various resources (such as source file, output files, and screenshots) in other scenarios will return error 403.\n  It takes about 5-10 minutes for a forbidding/unblocking operation to take effect across the entire network.",
       "input": "ForbidMediaDistributionRequest",
@@ -1000,6 +1006,16 @@
           "name": "Size",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark type. Valid values:\n<li>Trace: Digital watermark</li>\n<li>None: Regular watermark</li>",
+          "example": "Trace",
+          "member": "string",
+          "name": "DigitalWatermarkType",
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -11111,7 +11127,7 @@
       "document": "DescribeTaskDetail response structure.",
       "members": [
         {
-          "document": "The task type. Valid values:\n<li>Procedure: Video processing</li>\n<li>EditMedia: Video editing</li>\n<li>SplitMedia: Video splitting</li>\n<li>ComposeMedia: Media file production</li>\n<li>WechatPublish: WeChat publishing</li>\n<li>PullUpload: Pulling media files for upload</li>\n<li>FastClipMedia: Quick clipping</li>\n<li>RemoveWatermarkTask: Watermark removal</li>\n<li> ReviewAudioVideo: Moderation</li>",
+          "document": "The task type. Valid values:\n<li>Procedure: Video processing</li>\n<li>EditMedia: Video editing</li>\n<li>SplitMedia: Video splitting</li>\n<li>ComposeMedia: Media file production</li>\n<li>WechatPublish: WeChat publishing</li>\n<li>WechatMiniProgramPublish: Publishing videos on WeChat Mini Program</li>\n<li>PullUpload: Pulling media files for upload</li>\n<li>FastClipMedia: Quick clipping</li>\n<li>RemoveWatermarkTask: Watermark removal</li>\n<li> ReviewAudioVideo: Moderation</li>\n<li> ReduceMediaBitrate: Bitrate reduction</li>",
           "example": "Procedure",
           "member": "string",
           "name": "TaskType",
@@ -11273,10 +11289,28 @@
           "value_allowed_null": true
         },
         {
+          "document": "The information of a digital watermark extraction task. This parameter is valid only if `TaskType` is `ExtractTraceWatermark`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ExtractTraceWatermarkTask",
+          "name": "ExtractTraceWatermarkTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
           "document": "The information of a moderation task. This parameter is valid only if `TaskType` is `ReviewAudioVideo`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ReviewAudioVideoTask",
           "name": "ReviewAudioVideoTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The information of a bitrate reduction task. This parameter is valid only if `TaskType` is `ReduceMediaBitrate`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReduceMediaBitrateTask",
+          "name": "ReduceMediaBitrateTask",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -12203,7 +12237,7 @@
         },
         {
           "default": "",
-          "document": "<b>Supported event types:</b>\n<li>NewFileUpload: Video uploaded.</li>\n<li>ProcedureStateChanged: Task flow status changed.</li>\n<li>FileDeleted: Video deleted.</li>\n<li>PullComplete: Finished video pulling.</li>\n<li>EditMediaComplete: Finished video editing.</li>\n<li>SplitMediaComplete: Finished video splitting.</li>\n<li>WechatPublishComplete: Published to WeChat.</li>\n<li>ComposeMediaComplete: Finished producing the media file.</li>\n<li>FastClipMediaComplete: Finished quick clipping.</li>\n<li>ReviewAudioVideoComplete: Finished moderation</li>\n<b>v2017 task types:</b>\n<li>TranscodeComplete: Finished video transcoding.</li>\n<li>ConcatComplete: Finished video splicing.</li>\n<li>ClipComplete: Finished video clipping.</li>\n<li>CreateImageSpriteComplete: Finished image sprite generation.</li>\n<li>CreateSnapshotByTimeOffsetComplete: Finished time point screencapturing.</li>",
+          "document": "<b>Supported event types:</b>\n<li>NewFileUpload: Video uploaded.</li>\n<li>ProcedureStateChanged: Task flow status changed.</li>\n<li>FileDeleted: Video deleted.</li>\n<li>PullComplete: Finished video pulling.</li>\n<li>EditMediaComplete: Finished video editing.</li>\n<li>SplitMediaComplete: Finished video splitting.</li>\n<li>WechatPublishComplete: Published to WeChat.</li>\n<li>ComposeMediaComplete: Finished producing the media file.</li>\n<li>WechatMiniProgramPublishComplete: Finished publishing on WeChat Mini Program</li>\n<li>FastClipMediaComplete: Finished quick clipping.</li>\n<li>ReviewAudioVideoComplete: Finished moderation.</li>\n<li>ExtractTraceWatermarkComplete: Finished digital watermark extraction.</li>\n<b>v2017 task types:</b>\n<li>TranscodeComplete: Finished video transcoding.</li>\n<li>ConcatComplete: Finished video splicing.</li>\n<li>ClipComplete: Finished video clipping.</li>\n<li>CreateImageSpriteComplete: Finished image sprite generation.</li>\n<li>CreateSnapshotByTimeOffsetComplete: Finished time point screencapturing.</li>",
           "example": "null",
           "member": "string",
           "name": "EventType",
@@ -12373,10 +12407,30 @@
         },
         {
           "default": "",
+          "document": "The callback for the completion of digital watermark extraction. This parameter is valid only if `EventType` is `ExtractTraceWatermarkComplete`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "ExtractTraceWatermarkTask",
+          "name": "ExtractTraceWatermarkCompleteEvent",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
           "document": "The callback for the completion of the moderation task. This parameter is valid only if `EventType` is `ReviewAudioVideoComplete`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "ReviewAudioVideoTask",
           "name": "ReviewAudioVideoCompleteEvent",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The callback for the completion of bitrate reduction. This parameter is valid only if `EventType` is `ReduceMediaBitrateComplete`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "ReduceMediaBitrateTask",
+          "name": "ReduceMediaBitrateCompleteEvent",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -12462,6 +12516,225 @@
         }
       ],
       "type": "object"
+    },
+    "ExtractTraceWatermarkRequest": {
+      "document": "ExtractTraceWatermark request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The URL of the media on which digital watermark extraction is to be performed.",
+          "example": "http://xxx/xx.mp4",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "123",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The source context, which is used to pass through user request information. The `ExtractTraceWatermarkComplete` callback and the `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.",
+          "example": "sessionContext",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The session ID, which is used for de-duplication. If there was a request with the same session ID in the last three days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.",
+          "example": "sessionId",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The task priority, which can be a value from -10 to 10. The higher the value, the higher the priority. If this parameter is left empty, 0 will be used.",
+          "example": "0",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "A reserved parameter.",
+          "example": "1",
+          "member": "string",
+          "name": "ExtInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExtractTraceWatermarkResponse": {
+      "document": "ExtractTraceWatermark response structure.",
+      "members": [
+        {
+          "document": "The task ID.",
+          "example": "125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExtractTraceWatermarkTask": {
+      "document": "A digital watermark extraction task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task ID.",
+          "example": "123-xxx-xx",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The task status. Valid values:\n<li>PROCESSING</li>\n<li>FINISH</li>",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. `0` indicates the task is successful. Other values indicate that the task failed.\n<li>40000: Invalid input parameter.</li>\n<li>60000: Source file error (e.g., video data is corrupted).</li>\n<li>70000: Internal server error. Please try again.</li>",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error message.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. An empty string indicates the task is successful; other values indicate that the task failed. For details, see [Video processing error codes](https://intl.cloud.tencent.com/document/product/266/39145?lang=en&pg=#video-processing).",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The information of a digital watermark extraction task.",
+          "example": "无",
+          "member": "ExtractTraceWatermarkTaskInput",
+          "name": "Input",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The output of a digital watermark extraction task.",
+          "example": "无",
+          "member": "ExtractTraceWatermarkTaskOutput",
+          "name": "Output",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.",
+          "example": "sid",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.",
+          "example": "scontext",
+          "member": "string",
+          "name": "SessionContext",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ExtractTraceWatermarkTaskInput": {
+      "document": "The input of digital watermark extraction.",
+      "members": [
+        {
+          "default": "",
+          "document": "The URL of the media on which digital watermark extraction is to be performed.",
+          "example": "123abc",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ExtractTraceWatermarkTaskOutput": {
+      "document": "The output of digital watermark extraction.",
+      "members": [
+        {
+          "default": "",
+          "document": "The distributor’s user ID, which is a six-digit hex number. This parameter is relevant when [digital watermarks](https://intl.cloud.tencent.com/document/product/266/75789?from_cn_redirect=1) are used.",
+          "example": "abc",
+          "member": "string",
+          "name": "Uv",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This parameter has been deprecated.",
+          "example": "abc",
+          "member": "string",
+          "name": "Uid",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "FaceConfigureInfo": {
       "document": "Control parameter of face recognition task",
@@ -16077,6 +16350,16 @@
           "name": "AudioStreamSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The watermark type. Valid values:\n<li>Trace: Digital watermark</li>\n<li>None: Regular watermark</li>",
+          "example": "Trace",
+          "member": "string",
+          "name": "DigitalWatermarkType",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -20291,6 +20574,300 @@
       ],
       "type": "object"
     },
+    "ReduceMediaBitrateAdaptiveDynamicStreamingResult": {
+      "document": "The information of an adaptive bitrate (bitrate reduction) task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. An empty string indicates the task is successful; other values indicate that the task failed. For details, see [Video processing error codes](https://intl.cloud.tencent.com/document/product/266/39145?lang=en&pg=#video-processing).",
+          "example": "无",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error message.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The input of an adaptive bitrate task.",
+          "example": "无",
+          "member": "AdaptiveDynamicStreamingTaskInput",
+          "name": "Input",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The output of an adaptive bitrate task.",
+          "example": "无",
+          "member": "AdaptiveDynamicStreamingInfoItem",
+          "name": "Output",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ReduceMediaBitrateMediaProcessTaskResult": {
+      "document": "The result of a bitrate reduction task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task type. Valid values:\n<li>Transcode</li>\n<li>AdaptiveDynamicStreaming</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The result of a transcoding task. This parameter is valid if `Type` is `Transcode`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReduceMediaBitrateTranscodeResult",
+          "name": "TranscodeTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The result of an adaptive bitrate task. This parameter is valid if `Type` is `AdaptiveDynamicStreaming`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReduceMediaBitrateAdaptiveDynamicStreamingResult",
+          "name": "AdaptiveDynamicStreamingTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ReduceMediaBitrateTask": {
+      "document": "The information of a bitrate reduction task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task ID.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The task flow status. Valid values:\n<li>PROCESSING</li>\n<li>FINISH</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ID of the media file.",
+          "example": "无",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The name of the media file.",
+          "example": "无",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The address of the media file.",
+          "example": "无",
+          "member": "string",
+          "name": "FileUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The metadata of the source video.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MediaMetaData",
+          "name": "MetaData",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The execution status and result of the bitrate reduction task.",
+          "example": "无",
+          "member": "ReduceMediaBitrateMediaProcessTaskResult",
+          "name": "MediaProcessResultSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The task priority, which can be a value from -10 to 10.",
+          "example": "无",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The notification mode for the change of task status. Valid values:\n<li>Finish: Send a notification after the task is completed.</li>\n<li>None: Do not send status change notifications for this task.</li>",
+          "example": "无",
+          "member": "string",
+          "name": "TasksNotifyMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionContext",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ReduceMediaBitrateTranscodeResult": {
+      "document": "The information of a transcoding (bitrate reduction) task.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. An empty string indicates the task is successful; other values indicate that the task failed. For details, see [Video processing error codes](https://intl.cloud.tencent.com/document/product/266/39145?lang=en&pg=#video-processing).",
+          "example": "无",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error message.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The input of a transcoding task.",
+          "example": "无",
+          "member": "TranscodeTaskInput",
+          "name": "Input",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The output of a transcoding task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MediaTranscodeItem",
+          "name": "Output",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The transcoding progress. Value range: 0-100.",
+          "example": "无",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The start time of the transcoding task, in [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).",
+          "example": "无",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The end time of the transcoding task, in [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).",
+          "example": "无",
+          "member": "string",
+          "name": "FinishTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "RefererAuthPolicy": {
       "document": "Referer hotlink protection configuration",
       "members": [
@@ -22778,6 +23355,7 @@
         {
           "default": "",
           "document": "Task ID.",
+          "example": "无",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -22787,6 +23365,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: `WAITING` (waiting), `PROCESSING` (processing), `FINISH` (completed)",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -22796,6 +23375,7 @@
         {
           "default": "",
           "document": "Video ID",
+          "example": "无",
           "member": "string",
           "name": "FileId",
           "required": true,
@@ -22804,7 +23384,8 @@
         },
         {
           "default": "",
-          "document": "Task type. Valid values:\n<li>Procedure: video processing task;</li>\n<li>EditMedia: video editing task</li>\n<li>WechatDistribute: release on WeChat task.</li>\nTask types compatible with v2017:\n<li>Transcode: transcoding task;</li>\n<li>SnapshotByTimeOffset: video screencapturing task</li>\n<li>Concat: video splicing task;</li>\n<li>Clip: video clipping task;</li>\n<li>ImageSprites: image sprite generating task.</li>",
+          "document": "The task type. Valid values:\n<li>Procedure: Video processing</li>\n<li>EditMedia: Video editing</li>\n<li> ReduceMediaBitrate: Bitrate reduction</li>\n<li>WechatDistribute: Publishing to WeChat</li>\nTask types for v2017:\n<li>Transcode: Transcoding</li>\n<li>SnapshotByTimeOffset: Screencapturing</li>\n<li>Concat: Video splicing</li>\n<li>Clip: Video clipping</li>\n<li>ImageSprites: Image sprite generating</li>",
+          "example": "无",
           "member": "string",
           "name": "TaskType",
           "required": true,
@@ -22814,6 +23395,7 @@
         {
           "default": "",
           "document": "Creation time of task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -22823,6 +23405,7 @@
         {
           "default": "",
           "document": "Start time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). If the task has not been started yet, this field will be empty.",
+          "example": "无",
           "member": "string",
           "name": "BeginProcessTime",
           "required": true,
@@ -22832,6 +23415,7 @@
         {
           "default": "",
           "document": "End time of task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). If the task has not been completed yet, this field will be empty.",
+          "example": "无",
           "member": "string",
           "name": "FinishTime",
           "required": true,
@@ -22841,6 +23425,7 @@
         {
           "default": "",
           "document": "ID used for deduplication if there was a request with the same ID in the last seven days.",
+          "example": "无",
           "member": "string",
           "name": "SessionId",
           "required": true,
@@ -22850,6 +23435,7 @@
         {
           "default": "",
           "document": "Source context, which is used to pass through the user request information.",
+          "example": "无",
           "member": "string",
           "name": "SessionContext",
           "required": true,
@@ -23301,11 +23887,21 @@
       "members": [
         {
           "default": "",
-          "document": "The watermark template ID.",
+          "document": "Whether to use digital watermarks. This parameter is required. Valid values:\n<li>ON</li>\n<li>OFF</li>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "This parameter has been deprecated.",
           "example": "100",
           "member": "uint64",
           "name": "Definition",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         }
