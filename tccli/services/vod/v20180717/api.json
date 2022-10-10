@@ -666,6 +666,12 @@
       "name": "Restores media files",
       "output": "RestoreMediaResponse"
     },
+    "ReviewAudioVideo": {
+      "document": "This API is used to start a moderation task on a file stored in VOD to detect non-compliant content in images, text, and speech.\n\nIf event notifications are used, the event type is [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).\n",
+      "input": "ReviewAudioVideoRequest",
+      "name": "Starts a moderation task",
+      "output": "ReviewAudioVideoResponse"
+    },
     "SearchMedia": {
       "document": "This API is used to search for media files by specific criteria. You can sort the results and specify the information to return.\n- Specify a list of file IDs (`FileIds`). Any file that matches one of the IDs will be returned.\n- Specify one or multiple keywords for `Names` or `Descriptions` for fuzzy search by filename or description.\n- Specify multiple filename prefixes (`NamePrefixes`).\n- Specify a list of categories (`ClassIds`). Any file that matches one of the categories will be returned. For example, assume that there are categories `Movies`, `TV Series`, and `Variety Shows`, and `Movies` has subcategories including `History`, `Action`, and `Romance`. If `ClassIds` is set to `Movies` and `TV Series`, all media files in `Movies` (including its subcategories) and `TV Series` will be returned. If `ClassIds` is set to `History` and `Action`, only the files in those two subcategories will be returned.\n- Specify a list of tags (`Tags`). Any file that matches one or more of the tags will be returned. For example, assume that there are tags `ACG`, `Drama`, and `YTPMV`. If `Tags` is set to `ACG` and `YTPMV`, any media file with either tag will be returned.\n- Specify the types (`Categories`) of media files. Any file that matches one of the types will be returned. There are three file types: `Video`, `Audio`, and `Image`. If `Categories` is set to `Video` and `Audio`, all audio and video files will be returned.\n- Specify the source types (`SourceTypes`). Any file that matches one of the source types specified will be returned. For example, if you set `SourceTypes` to `Record` (live recording) and `Upload` (upload), all recording files and uploaded files will be returned.\n- Specify the stream IDs (`StreamIds`) of live recording files.\n- Specify the video IDs (`Vids`) of live recording files.\n- Specify a time range for search by file creation time.\n- Specify the TRTC application IDs.\n- Specify the TRTC room IDs.\n- Specify one keyword for `Text` for fuzzy search by filename or description. (This is not recommended. Please use `Names`, `NamePrefixes` or `Descriptions` instead.)\n- Specify one source (`SourceType`). (This is not recommended. Please use `SourceTypes` instead.)\n- Specify one stream ID (`StreamId`). (This is not recommended. Please use `StreamIds` instead.)\n- Specify one video ID (`Vid`). (This is not recommended. Please use `Vids` instead.)\n- Specify the start (`StartTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- Specify the end (`EndTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- You can search by any combination of the parameters above. For example, you can search for media files with the tag \"Drama\" or \"Suspense\" in the category of \"Movies\" and \"TV Series\" created between 12:00:00, December 1, 2018 and 12:00:00, December 8, 2018. Note that for parameters whose data type is array, the search logic between their elements is \"OR\". The search logic between parameters is \"AND\".\n\n- You can sort the results by creation time and return them in multiple pages by specifying `Offset` and `Limit`.\n- You can use `Filters` to specify the types of file information to return (all types are returned by default). Valid values:\n    1. `basicInfo`: The file name, category, playback URL, thumbnail, etc.\n    2. `metaData`: The file size, duration, video stream information, audio stream information, etc.\n    3. `transcodeInfo`: The URLs, video stream parameters, and audio stream parameters of transcoding outputs.\n    4. `animatedGraphicsInfo`: The information of the animated images (such as GIF images) generated.\n    5. `sampleSnapshotInfo`: The information of the sampled screenshots generated.\n    6. `imageSpriteInfo`: The information of the image sprites generated.\n    7. `snapshotByTimeOffsetInfo`: The information of the time point screenshots generated.\n    8. `keyFrameDescInfo`: The video timestamp information.\n    9. `adaptiveDynamicStreamingInfo`: The specification, encryption type, format, etc.\n\n<div id=\"maxResultsDesc\">Limits for returned records:</div>\n- The <b><a href=\"#p_offset\">Offset</a> and <a href=\"#p_limit\">Limit</a> parameters determine the number of records per page. If neither parameter is passed, this API will return up to 10 records.</b>\n- <b>Up to 5,000 records can be returned. If a request returns too many records, we recommend you use more specific search criteria to narrow down the results.</b>",
       "input": "SearchMediaRequest",
@@ -10330,21 +10336,21 @@
         },
         {
           "default": "",
-          "document": "The type of media processing task. Valid values:\n<li>Transcoding: General transcoding</li>\n<li>Transcoding-TESHD: TESHD transcoding</li>\n<li>Editing: Video editing</li>\n<li>Editing-TESHD: TESHD editing</li>\n<li>AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>\n<li>ContentAudit: Content moderation</li>\n<li>RemoveWatermark: Watermark removal</li>\n<li>Transcode: Transcoding, including general transcoding, TESHD transcoding, and video editing. This value is not recommended.</li>",
-          "example": "Transcoding-TESHD",
-          "member": "string",
-          "name": "Type",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
           "example": "无",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The type of media processing task. Valid values:\n<li>Transcoding: General transcoding</li>\n<li>Transcoding-TESHD: Top Speed Codec transcoding</li>\n<li>Editing: Video editing</li>\n<li>Editing-TESHD: Top Speed Codec editing</li>\n<li>AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>\n<li>ContentAudit: Content moderation</li>\n<li> ContentRecognition: Content recognition</li>\n<li>RemoveWatermark: Watermark removal</li>\n<li> ExtractTraceWatermark: Digital watermark extraction</li>\n<li> AddTraceWatermark: Digital watermarking</li>\n<li>Transcode: Transcoding, including general transcoding, Top Speed Codec transcoding, and video editing. This value is not recommended.</li>",
+          "example": "Transcoding-TESHD",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -21421,6 +21427,87 @@
       ],
       "usage": "out"
     },
+    "ReviewAudioVideoRequest": {
+      "document": "ReviewAudioVideo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The media file ID, which is assigned after upload and uniquely identifies a file in VOD. You can view the ID of a file in the [NewFileUpload](https://www.tencentcloud.com/document/product/266/33950) callback or in the [VOD console](https://console.tencentcloud.com/vod/media).",
+          "example": "无",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "<b>The VOD [subapplication](https://www.tencentcloud.com/document/product/266/33987) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "无",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The priority of a task flow. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.",
+          "example": "无",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The source context, which is used to pass through user request information. The `ReviewAudioVideoComplete` callback will return the value of this parameter. It can contain up to 1,000 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The session ID, which is used to identify duplicate requests. If there was a request with the same session ID in the last three days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "A reserved parameter.",
+          "example": "无",
+          "member": "string",
+          "name": "ExtInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReviewAudioVideoResponse": {
+      "document": "ReviewAudioVideo response structure.",
+      "members": [
+        {
+          "document": "The task ID.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ReviewAudioVideoSegmentItem": {
       "document": "The suspicious segment detected.",
       "members": [
@@ -21496,7 +21583,7 @@
         },
         {
           "default": "",
-          "document": "The pixel coordinates ([x1, y1, x2, y2]) of the top-left corner and bottom-right corner of the suspicious text. This parameter is valid only if `Form` is `OCR`.",
+          "document": "The pixel coordinates ([x1, y1, x2, y2]) of the top-left corner and bottom-right corner of the suspicious text. This parameter is valid only if `Form` is `OCR`.\n<font color=red>Note</font>: This parameter is not supported currently.",
           "example": "无",
           "member": "int64",
           "name": "AreaCoordSet",
@@ -23450,7 +23537,7 @@
       "members": [
         {
           "default": "",
-          "document": "The task type.\n<li>Transcoding: General transcoding</li>\n<li>Transcoding-TESHD: TESHD transcoding</li>\n<li>Editing: Video editing</li>\n<li>Editing-TESHD: TESHD editing</li>\n<li>AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>\n<li>ContentAudit: Content moderation</li>\n<li>RemoveWatermark: Watermark removal</li>\n<li>Transcode: Transcoding, including general transcoding, TESHD transcoding, and video editing. This value is not recommended.</li>",
+          "document": "The task type.\n<li>Transcoding: General transcoding</li>\n<li>Transcoding-TESHD: Top Speed Codec transcoding</li>\n<li>Editing: Video editing</li>\n<li>Editing-TESHD: Top Speed Codec editing</li>\n<li>AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>\n<li>ContentAudit: Content moderation</li>\n<li> ContentRecognition: Content recognition</li>\n<li>RemoveWatermark: Watermark removal</li>\n<li> ExtractTraceWatermark: Digital watermark extraction</li>\n<li> AddTraceWatermark: Digital watermarking</li>\n<li>Transcode: Transcoding, including general transcoding, Top Speed Codec transcoding, and video editing. This value is not recommended.</li>",
           "example": "无",
           "member": "string",
           "name": "TaskType",

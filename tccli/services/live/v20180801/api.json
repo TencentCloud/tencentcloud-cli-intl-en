@@ -18,6 +18,12 @@
       "name": "Adds watermark",
       "output": "AddLiveWatermarkResponse"
     },
+    "AuthenticateDomainOwner": {
+      "document": "This API is used to verify the ownership of a domain.",
+      "input": "AuthenticateDomainOwnerRequest",
+      "name": "Verifies the ownership of a domain",
+      "output": "AuthenticateDomainOwnerResponse"
+    },
     "CancelCommonMixStream": {
       "document": "This API is used to cancel a stream mix. It can be used basically in the same way as `mix_streamv2.cancel_mix_stream`.",
       "input": "CancelCommonMixStreamRequest",
@@ -73,7 +79,7 @@
       "output": "CreateLiveSnapshotRuleResponse"
     },
     "CreateLiveSnapshotTemplate": {
-      "document": "After a screencapturing template is created and a template ID is successfully returned, you need to call the [CreateLiveSnapshotRule](https://intl.cloud.tencent.com/document/product/267/32625?from_cn_redirect=1) API and bind the template ID to the stream.\n<br>Screencapturing-related document: [LVB Screencapturing](https://intl.cloud.tencent.com/document/product/267/32737?from_cn_redirect=1).",
+      "document": "This API is used to create a screencapture template. After a template ID is returned, you need to call the [CreateLiveSnapshotRule](https://intl.cloud.tencent.com/document/product/267/32625?from_cn_redirect=1) API to bind the template ID to a stream. You can create up to 50 screencapture templates.\n<br>To learn more about the live screencapture feature, see [Live Screencapture](https://intl.cloud.tencent.com/document/product/267/32737?from_cn_redirect=1).",
       "input": "CreateLiveSnapshotTemplateRequest",
       "name": "Creates screencapturing template",
       "output": "CreateLiveSnapshotTemplateResponse"
@@ -397,7 +403,7 @@
       "output": "DescribeLiveTranscodeTemplatesResponse"
     },
     "DescribeLiveTranscodeTotalInfo": {
-      "document": "This API is used to query your total usage of the transcoding service in the last 30 days.\nNotes:\nIf the start time and end time are on the same day, the data returned will be on a 5-minute basis.\nIf not or if the data of specified domains is queried, the data returned will be on an hourly basis.",
+      "document": "This API is used to query transcoding usage. You can use it to query data in the past three months.\nNotes:\nIf the start time and end time are on the same day, the data returned will be on a 5-minute basis.\nIf the start time and end time are not on the same day or if the data of specified domains is queried, the data returned will be on an hourly basis.",
       "input": "DescribeLiveTranscodeTotalInfoRequest",
       "name": "Queries total usage of the transcoding service",
       "output": "DescribeLiveTranscodeTotalInfoResponse"
@@ -461,6 +467,12 @@
       "input": "DescribeTopClientIpSumInfoListRequest",
       "name": "Queries the information of top n client IPs in certain period of time",
       "output": "DescribeTopClientIpSumInfoListResponse"
+    },
+    "DescribeTranscodeTaskNum": {
+      "document": "This API is used to query the number of transcoding tasks.",
+      "input": "DescribeTranscodeTaskNumRequest",
+      "name": "Queries the number of transcoding tasks",
+      "output": "DescribeTranscodeTaskNumResponse"
     },
     "DescribeUploadStreamNums": {
       "document": "This API is used to query the number of LVB upstream channels.",
@@ -659,6 +671,7 @@
         {
           "default": "",
           "document": "Domain name.",
+          "example": "www.test.com",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -667,6 +680,7 @@
         {
           "default": "",
           "document": "Domain name type.\n0: push domain name.\n1: playback domain name.",
+          "example": "0",
           "member": "uint64",
           "name": "DomainType",
           "required": true,
@@ -675,6 +689,7 @@
         {
           "default": "",
           "document": "Pull domain name type:\n1: Mainland China.\n2: global.\n3: outside Mainland China.\nDefault value: 1.",
+          "example": "1",
           "member": "uint64",
           "name": "PlayType",
           "required": false,
@@ -683,6 +698,7 @@
         {
           "default": "",
           "document": "Whether it is LCB:\n0: LVB,\n1: LCB.\nDefault value: 0.",
+          "example": "1",
           "member": "int64",
           "name": "IsDelayLive",
           "required": false,
@@ -691,10 +707,20 @@
         {
           "default": "",
           "document": "Whether it is LVB on Mini Program.\n0: LVB.\n1: LVB on Mini Program.\nDefault value: 0.",
+          "example": "1",
           "member": "int64",
           "name": "IsMiniProgramLive",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The domain verification type.\nValid values (the value of this parameter must be the same as `VerifyType` of the `AuthenticateDomainOwner` API):\ndnsCheck: Check immediately whether the verification DNS record has been added successfully. If so, record this verification result.\nfileCheck: Check immediately whether the verification HTML file has been uploaded successfully. If so, record this verification result.\ndbCheck: Check whether the domain has already been verified.\nIf you do not pass a value, `dbCheck` will be used.",
+          "example": "dbCheck",
+          "member": "string",
+          "name": "VerifyOwnerType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -773,6 +799,69 @@
           "member": "uint64",
           "name": "WatermarkId",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AuthenticateDomainOwnerRequest": {
+      "document": "AuthenticateDomainOwner request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The domain to verify.",
+          "example": "xxx.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The verification type. Valid values:\ndnsCheck: Check immediately whether the verification DNS record has been added successfully. If so, record this verification result.\nfileCheck: Check immediately whether the verification HTML file has been uploaded successfully. If so, record this verification result.\ndbCheck: Check whether the domain has already been successfully verified.",
+          "example": "dnsCheck",
+          "member": "string",
+          "name": "VerifyType",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AuthenticateDomainOwnerResponse": {
+      "document": "AuthenticateDomainOwner response structure.",
+      "members": [
+        {
+          "document": "The content verified.\nIf `VerifyType` is `dnsCheck`, this is the TXT record that should be added for verification.\nIf `VerifyType` is `fileCheck`, this is the file that should be uploaded for verification.",
+          "example": "无",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The verification status.\nIf the value of this parameter is 0 or greater, the domain has been verified.\nIf the value of this parameter is smaller than 0, the domain has not been verified.",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The primary domain of the domain verified.\nVerification is not required if another domain under the same primary domain has been successfully verified.",
+          "example": "无",
+          "member": "string",
+          "name": "MainDomain",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -5918,7 +6007,7 @@
         },
         {
           "default": "",
-          "document": "End time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS\nThe start time and end time cannot be more than 24 hours apart and must be within the last 15 days.",
+          "document": "The end time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS.\nThe start time and end time cannot be more than 24 hours apart and must be within the past month.",
           "example": "2019-03-01 00:03:00",
           "member": "string",
           "name": "EndTime",
@@ -6095,6 +6184,60 @@
           "document": "Data content.",
           "member": "ClientIpPlaySumInfo",
           "name": "DataInfoList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTranscodeTaskNumRequest": {
+      "document": "DescribeTranscodeTaskNum request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start time in the format of yyyy-mm-dd HH:MM:SS.",
+          "example": "2022-01-09 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end time in the format of yyyy-mm-dd HH:MM:SS.",
+          "example": "2022-01-09 23:00:0",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The push domains to query. If you do not pass a value, all push domains will be queried.",
+          "example": "[\"5000.livepush.com\"]",
+          "member": "string",
+          "name": "PushDomains",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTranscodeTaskNumResponse": {
+      "document": "DescribeTranscodeTaskNum response structure.",
+      "members": [
+        {
+          "document": "The number of tasks.",
+          "example": "无",
+          "member": "TranscodeTaskNum",
+          "name": "DataInfoList",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -7625,6 +7768,7 @@
         {
           "default": "",
           "document": "Template ID.",
+          "example": "1000",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -7632,7 +7776,35 @@
         },
         {
           "default": "",
+          "document": "The COS application ID.\n**Please note that this parameter is required now**.",
+          "example": "123",
+          "member": "int64",
+          "name": "CosAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The COS bucket name.\nNote: Do not include the `-[appid]` part in the value of `CosBucket`.\n**Please note that this parameter is required now**.",
+          "example": "bucket",
+          "member": "string",
+          "name": "CosBucket",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The COS region.\n**Please note that this parameter is required now**.",
+          "example": "beijing",
+          "member": "string",
+          "name": "CosRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "Template name.\nMaximum length: 255 bytes.",
+          "example": "testName",
           "member": "string",
           "name": "TemplateName",
           "required": false,
@@ -7641,6 +7813,7 @@
         {
           "default": "",
           "document": "Description.\nMaximum length: 1,024 bytes.",
+          "example": "testDesc",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -7649,6 +7822,7 @@
         {
           "default": "",
           "document": "Screencapturing interval in seconds. Default value: 10s.\nValue range: 5-300s.",
+          "example": "10",
           "member": "int64",
           "name": "SnapshotInterval",
           "required": false,
@@ -7657,6 +7831,7 @@
         {
           "default": "",
           "document": "Screenshot width. Default value: 0 (original width).",
+          "example": "250",
           "member": "int64",
           "name": "Width",
           "required": false,
@@ -7665,6 +7840,7 @@
         {
           "default": "",
           "document": "Screenshot height. Default value: 0 (original height).",
+          "example": "250",
           "member": "int64",
           "name": "Height",
           "required": false,
@@ -7673,6 +7849,7 @@
         {
           "default": "",
           "document": "Whether to enable porn detection. Default value: 0.\n0: do not enable.\n1: enable.",
+          "example": "0",
           "member": "int64",
           "name": "PornFlag",
           "required": false,
@@ -7680,31 +7857,8 @@
         },
         {
           "default": "",
-          "document": "COS application ID.",
-          "member": "int64",
-          "name": "CosAppId",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "COS bucket name.\nNote: the value of `CosBucket` cannot contain `-[appid]`.",
-          "member": "string",
-          "name": "CosBucket",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "COS region.",
-          "member": "string",
-          "name": "CosRegion",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "COS bucket folder prefix.",
+          "example": "12",
           "member": "string",
           "name": "CosPrefix",
           "required": false,
@@ -7713,6 +7867,7 @@
         {
           "default": "",
           "document": "COS filename.",
+          "example": "12",
           "member": "string",
           "name": "CosFileName",
           "required": false,
@@ -9985,6 +10140,42 @@
           "name": "Resolution",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TranscodeTaskNum": {
+      "document": "The number of tasks.",
+      "members": [
+        {
+          "default": "",
+          "document": "The time of query.",
+          "example": "2022-01-09 21:45",
+          "member": "string",
+          "name": "Time",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The bitrate.",
+          "example": "2000",
+          "member": "uint64",
+          "name": "CodeRate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of tasks.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Num",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

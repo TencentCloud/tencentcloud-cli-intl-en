@@ -131,31 +131,31 @@
     "UpdateInstance": [
       {
         "document": "This example shows you how to rename an ES cluster instance.",
-        "input": "https://es.tencentcloudapi.com/?Action=UpdateInstance\n&InstanceId=es-xxxxxx\n&InstanceName=newName\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxx\",\n    \"InstanceName\": \"newName\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"DealName\": \"xx\"\n    }\n}",
         "title": "Renaming an ES cluster instance"
       },
       {
-        "document": "This example shows you how to scale out/in or scale up/down an ES cluster instance or a dedicated master node or to add a dedicated master node. `NodeInfoList` must contain the information of all target nodes to be passed in.",
-        "input": "https://es.tencentcloudapi.com/?Action=UpdateInstance\n&InstanceId=es-xxxxxx\n&NodeInfoList.0.Type=hotData\n&NodeInfoList.0.NodeNum=2\n&NodeInfoList.0.NodeType=ES.S1.SMALL2\n&NodeInfoList.0.DiskType=CLOUD_SSD\n&NodeInfoList.0.DiskSize=100\n&NodeInfoList.1.Type=dedicatedMaster\n&NodeInfoList.1.NodeNum=3\n&NodeInfoList.1.NodeType=ES.S1.SMALL2\n&<Common request parameters>",
+        "document": "This example shows you how to scale out/in or scale up/down an ES cluster instance or a dedicated master node, or to add a dedicated master node. `NodeInfoList` must contain the information of all target nodes to be passed in.",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxx\",\n    \"NodeInfoList\": [\n        {\n            \"NodeType\": \"ES.S1.SMALL2\",\n            \"NodeNum\": \"3\",\n            \"Type\": \"dedicatedMaster\"\n        },\n        {\n            \"DiskSize\": \"100\",\n            \"NodeType\": \"ES.S1.SMALL2\",\n            \"NodeNum\": \"2\",\n            \"Type\": \"hotData\",\n            \"DiskType\": \"CLOUD_SSD\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"DealName\": \"xx\"\n    }\n}",
         "title": "Modifying the node specification of an ES cluster"
       },
       {
         "document": "This example shows you how to modify the configuration of an ES cluster instance.",
-        "input": "https://es.tencentcloudapi.com/?Action=UpdateInstance\n&InstanceId=es-xxxxxxxx\n&EsConfig={\"action.destructive_requires_name\":\"true\"}\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxxxx\",\n    \"EsConfig\": \"{\\\"action.destructive_requires_name\\\":\\\"true\\\"}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"DealName\": \"xx\"\n    }\n}",
-        "title": "Modifying ES cluster instance configuration"
+        "title": "Modifying the configuration of an ES cluster instance"
       },
       {
         "document": "This example shows you how to reset the Kibana password of an ES cluster instance.",
-        "input": "https://es.tencentcloudapi.com/?Action=UpdateInstance\n&InstanceId=es-xxxxxxxx\n&Password=newPwd_123\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxxxx\",\n    \"Password\": \"newPwd_123\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"DealName\": \"xx\"\n    }\n}",
         "title": "Resetting the Kibana password"
       },
       {
         "document": "This example shows you how to scale up/down a cluster in terms of its node spec (number of cores, memory size) and disk size.",
-        "input": "https://es.tencentcloudapi.com/?Action=UpdateInstance\n&InstanceId=es-xxxxxxxx\n&NodeType=ES.S1.MEDIUM4\n&DiskSize=150\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxxxx\",\n    \"DiskSize\": \"150\",\n    \"NodeType\": \"ES.S1.MEDIUM4\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"DealName\": \"xx\"\n    }\n}",
         "title": "Scaling up/down an ES cluster"
       }
@@ -185,7 +185,7 @@
     "UpgradeInstance": [
       {
         "document": "",
-        "input": "https://es.tencentcloudapi.com/?Action=UpgradeInstance\n&InstanceId=es-xxxxxxxx\n&EsVersion=6.4.3\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxxxx\",\n    \"EsVersion\": \"6.4.3\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c96a110c-7493-452d-a99b-683d07xxxxxx\"\n    }\n}",
         "title": "Upgrading ES cluster version"
       }

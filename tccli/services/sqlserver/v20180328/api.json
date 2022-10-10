@@ -6,6 +6,12 @@
       "name": "Clones databases",
       "output": "CloneDBResponse"
     },
+    "CloseInterCommunication": {
+      "document": "This API is used to disable instance interconnection.",
+      "input": "CloseInterCommunicationRequest",
+      "name": "Disables instance interconnection",
+      "output": "CloseInterCommunicationResponse"
+    },
     "CreateAccount": {
       "document": "This API is used to create an instance account.",
       "input": "CreateAccountRequest",
@@ -23,6 +29,18 @@
       "input": "CreateBackupMigrationRequest",
       "name": "Creates backup import tasks",
       "output": "CreateBackupMigrationResponse"
+    },
+    "CreateBusinessDBInstances": {
+      "document": "This API is used to create a business intelligence service instance.",
+      "input": "CreateBusinessDBInstancesRequest",
+      "name": "Creates a business intelligence service instance",
+      "output": "CreateBusinessDBInstancesResponse"
+    },
+    "CreateBusinessIntelligenceFile": {
+      "document": "This API is used to add a business intelligence service file.",
+      "input": "CreateBusinessIntelligenceFileRequest",
+      "name": "Creates a business intelligence service file",
+      "output": "CreateBusinessIntelligenceFileResponse"
     },
     "CreateDB": {
       "document": "This API is used to create a database.",
@@ -59,6 +77,12 @@
       "input": "DeleteBackupMigrationRequest",
       "name": "Deletes backup import tasks",
       "output": "DeleteBackupMigrationResponse"
+    },
+    "DeleteBusinessIntelligenceFile": {
+      "document": "This API is used to delete a business intelligence service file.",
+      "input": "DeleteBusinessIntelligenceFileRequest",
+      "name": "Deletes a business intelligence service file",
+      "output": "DeleteBusinessIntelligenceFileResponse"
     },
     "DeleteDB": {
       "document": "This API is used to drop a database.",
@@ -114,11 +138,23 @@
       "name": "Queries list of backups",
       "output": "DescribeBackupsResponse"
     },
+    "DescribeBusinessIntelligenceFile": {
+      "document": "This API is used to query the files required by business intelligence service.",
+      "input": "DescribeBusinessIntelligenceFileRequest",
+      "name": "Queries the files required by business intelligence service",
+      "output": "DescribeBusinessIntelligenceFileResponse"
+    },
     "DescribeDBCharsets": {
       "document": "This API is used to query the database character sets supported by an instance.",
       "input": "DescribeDBCharsetsRequest",
       "name": "Queries the supported database character sets",
       "output": "DescribeDBCharsetsResponse"
+    },
+    "DescribeDBInstanceInter": {
+      "document": "This API is used to query the information of the interconnected instances.",
+      "input": "DescribeDBInstanceInterRequest",
+      "name": "Queries the information of the interconnected instances",
+      "output": "DescribeDBInstanceInterResponse"
     },
     "DescribeDBInstances": {
       "document": "This API is used to query the list of instances.",
@@ -317,6 +353,12 @@
       "input": "ModifyMigrationRequest",
       "name": "Modifies migration task",
       "output": "ModifyMigrationResponse"
+    },
+    "OpenInterCommunication": {
+      "document": "This API is used to enable instance interconnection, which can interconnect business intelligence services.",
+      "input": "OpenInterCommunicationRequest",
+      "name": "Enables instance interconnection",
+      "output": "OpenInterCommunicationResponse"
     },
     "RecycleDBInstance": {
       "document": "This API is used to return a deactivated SQL Server instance.",
@@ -927,6 +969,152 @@
       ],
       "usage": "out"
     },
+    "BusinessIntelligenceFile": {
+      "document": "Business intelligence service file type",
+      "members": [
+        {
+          "default": "",
+          "document": "File name",
+          "example": "FileName",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File type",
+          "example": "FLAT",
+          "member": "string",
+          "name": "FileType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File COS_URL",
+          "example": "http://bucket/file.txt",
+          "member": "string",
+          "name": "FileURL",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The file path on the server",
+          "example": "D:\\SISI\\",
+          "member": "string",
+          "name": "FilePath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File size in bytes",
+          "example": "0",
+          "member": "int64",
+          "name": "FileSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File MD5 value",
+          "example": "sdfgefdgrferw",
+          "member": "string",
+          "name": "FileMd5",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File deployment status. Valid values: `1`(Initialize to be deployed), `2` (Deploying), `3` (Deployment successful), `4` (Deployment failed).",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "example": "Remark",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File creation time",
+          "example": "2020-04-09 00:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Start time of file deployment",
+          "example": "2020-04-09 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "End time of file deployment",
+          "example": "2020-04-09 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Returned error message",
+          "example": "Message",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Business intelligence instance ID",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operation information",
+          "example": "无",
+          "member": "FileAction",
+          "name": "Action",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CloneDBRequest": {
       "document": "CloneDB request structure.",
       "members": [
@@ -961,6 +1149,42 @@
           "name": "FlowId",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloseInterCommunicationRequest": {
+      "document": "CloseInterCommunication request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "IDs of instances with interconnection disabled",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CloseInterCommunicationResponse": {
+      "document": "CloseInterCommunication response structure.",
+      "members": [
+        {
+          "document": "IDs of instance and async task",
+          "example": "无",
+          "member": "InterInstanceFlow",
+          "name": "InterInstanceFlowSet",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -1148,6 +1372,231 @@
           "member": "int64",
           "name": "FlowId",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBusinessDBInstancesRequest": {
+      "document": "CreateBusinessDBInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance memory size in GB",
+          "example": "2",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Instance disk size in GB",
+          "example": "100",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of CPU cores of the instance you want to purchase.",
+          "example": "1",
+          "member": "int64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The host type of purchased instance. Valid values: `CLOUD_PREMIUM` (virtual machine with premium cloud disk), `CLOUD_SSD` (virtual machine with SSD).",
+          "example": "CLOUD_PREMIUM",
+          "member": "string",
+          "name": "MachineType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "1003",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of instances purchased this time. Default value: `1`.",
+          "example": "1",
+          "member": "int64",
+          "name": "GoodsNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID in the format of subnet-bdoe83fa. Both `SubnetId` and `VpcId` need to be set or unset at the same time.",
+          "example": "subnet-bdoe83fa",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID in the format of vpc-dsp338hz. Both `SubnetId` and `VpcId` need to be set or unset at the same time.",
+          "example": "vpc-dsp338hz",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "- Supported versions of business intelligence server. Valid values: `201603` (SQL Server 2016 Integration Services), `201703` (SQL Server 2017 Integration Services), `201903` (SQL Server 2019 Integration Services). Default value: `201903`. As the purchasable versions are region-specific, you can use the `DescribeProductConfig` API to query the information of purchasable versions in each region.",
+          "example": "2008R2",
+          "member": "string",
+          "name": "DBVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Security group list, which contains security group IDs in the format of sg-xxx.",
+          "example": "sg-xxxx",
+          "member": "string",
+          "name": "SecurityGroupList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: `1` (Monday), `2` (Tuesday), `3` (Wednesday), `4` (Thursday), `5` (Friday), `6` (Saturday), `7` (Sunday).",
+          "example": "1",
+          "member": "int64",
+          "name": "Weekly",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Configuration of the maintenance window, which specifies the start time of daily maintenance.",
+          "example": "2020-04-09 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Configuration of the maintenance window, which specifies the maintenance duration in hours.",
+          "example": "2",
+          "member": "int64",
+          "name": "Span",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tags associated with the instances to be created",
+          "example": "无",
+          "member": "ResourceTag",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBusinessDBInstancesResponse": {
+      "document": "CreateBusinessDBInstances response structure.",
+      "members": [
+        {
+          "document": "Order name",
+          "example": "20200318114212",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBusinessIntelligenceFileRequest": {
+      "document": "CreateBusinessIntelligenceFile request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "http://bucket/file.txt",
+          "member": "string",
+          "name": "FileURL",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File type. Valid values: `FLAT` (flat file as data source), `SSIS` (.ispac SSIS package file)",
+          "example": "FLAT",
+          "member": "string",
+          "name": "FileType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "example": "Remark",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBusinessIntelligenceFileResponse": {
+      "document": "CreateBusinessIntelligenceFile response structure.",
+      "members": [
+        {
+          "document": "File name",
+          "example": "FileName",
+          "member": "string",
+          "name": "FileTaskId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -2677,6 +3126,42 @@
       ],
       "type": "object"
     },
+    "DeleteBusinessIntelligenceFileRequest": {
+      "document": "DeleteBusinessIntelligenceFile request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File name set",
+          "example": "无",
+          "member": "string",
+          "name": "FileNameSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBusinessIntelligenceFileResponse": {
+      "document": "DeleteBusinessIntelligenceFile response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteDBRequest": {
       "document": "DeleteDB request structure.",
       "members": [
@@ -3328,6 +3813,114 @@
       ],
       "type": "object"
     },
+    "DescribeBusinessIntelligenceFileRequest": {
+      "document": "DescribeBusinessIntelligenceFile request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File name",
+          "example": "file.txt",
+          "member": "string",
+          "name": "FileName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Migration task status set. Valid values: `1` (Initialize to be deployed), `2` (Deploying), `3` (Deployment successful), `4` (Deployment failed)",
+          "example": "1",
+          "member": "int64",
+          "name": "StatusSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "File type. Valid values: `FLAT` (flat files), `SSIS` (project file for business intelligence service).",
+          "example": "FLAT",
+          "member": "string",
+          "name": "FileType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of results returned per page. Value range: 1-100.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number. Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting field. Valid values: `file_name`, `create_time`, `start_time`.",
+          "example": "file_name",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order: Valid values: `desc`, `asc`.",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBusinessIntelligenceFileResponse": {
+      "document": "DescribeBusinessIntelligenceFile response structure.",
+      "members": [
+        {
+          "document": "Total number of file deployment tasks",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "File deployment task set",
+          "example": "无",
+          "member": "BusinessIntelligenceFile",
+          "name": "BackupMigrationSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBCharsetsRequest": {
       "document": "DescribeDBCharsets request structure.",
       "members": [
@@ -3351,6 +3944,96 @@
           "example": "[\"SQL_EBCDIC1141_CP1_CS_AS\"]",
           "member": "string",
           "name": "DatabaseCharsets",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstanceInterRequest": {
+      "document": "DescribeDBInstanceInter request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The maximum number of results returned per page. Value range: 1-100.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter by instance ID",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by status. Valid values: `1` (Enabling interworking IP), `2` (Enabled interworking IP), `3` (Adding to interworking group), `4` (Added to interworking group), `5` (Reclaiming interworking IP), `6` (Reclaimed interworking IP), `7` (Removing from interworking group), `8` (Removed from interworking group).",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The list of instance version numbers",
+          "example": "无",
+          "member": "string",
+          "name": "VersionSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance AZ ID in the format of ap-guangzhou-2",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Page number. Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstanceInterResponse": {
+      "document": "DescribeDBInstanceInter response structure.",
+      "members": [
+        {
+          "document": "Number of records returned",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Details of instance in the interworking group",
+          "example": "无",
+          "member": "InterInstance",
+          "name": "InterInstanceSet",
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -4452,6 +5135,32 @@
       ],
       "type": "object"
     },
+    "FileAction": {
+      "document": "Information of allowed operation",
+      "members": [
+        {
+          "default": "",
+          "document": "Allowed operations. Valid values: `view` (view list), `remark` (modify remark), `deploy` (deploy files), `delete` (delete files).",
+          "example": "view",
+          "member": "string",
+          "name": "AllAction",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operation allowed in the current status. If the subset of `AllAction` is empty, no operations will be allowed.",
+          "example": "无",
+          "member": "string",
+          "name": "AllowedAction",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "InquiryPriceCreateDBInstancesRequest": {
       "document": "InquiryPriceCreateDBInstances request structure.",
       "members": [
@@ -4647,6 +5356,148 @@
           "name": "DBDetails",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InterInstance": {
+      "document": "Details of instances in the interwoking group",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance interworking IP, which can be accessed after the instance is added to the interworking group.",
+          "example": "192.168.0.1",
+          "member": "string",
+          "name": "InterVip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance interworking port, which can be accessed after the instance is added to the interworking group.",
+          "example": "1433",
+          "member": "int64",
+          "name": "InterPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance interworking status. Valid values: `1` (Enabling interworking IP), `2` (Enabled interworking IP), `3` (Adding to interworking group), `4` (Added to interworking group), `5` (Reclaiming interworking IP), `6`(Reclaimed interworking IP), `7` (Removing from interworking group), `8` (Removed from interworking group).",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance region, such as ap-guangzhou.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance AZ name, such as ap-guangzhou-1.",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance version code",
+          "example": "2008R2",
+          "member": "string",
+          "name": "Version",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance version",
+          "example": "SQL Server 2008 R2 Enterprise",
+          "member": "string",
+          "name": "VersionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "example": "Name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance access IP",
+          "example": "192.168.0.2",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance access port",
+          "example": "1433",
+          "member": "int64",
+          "name": "Vport",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InterInstanceFlow": {
+      "document": "Instance status after enabling or disabling the interworking group",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID, such as mssql-sdf32n1d.",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance task ID for enabling or disabling the interworking group. When `FlowId` is less than 0, the interworking group will be enabled or disabled successfully; otherwise, the operation failed.",
+          "example": "558800",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -6035,6 +6886,42 @@
           "member": "uint64",
           "name": "MigrateId",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenInterCommunicationRequest": {
+      "document": "OpenInterCommunication request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "IDs of instances with interwoking group enabled",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenInterCommunicationResponse": {
+      "document": "OpenInterCommunication response structure.",
+      "members": [
+        {
+          "document": "IDs of instance and async task",
+          "example": "无",
+          "member": "InterInstanceFlow",
+          "name": "InterInstanceFlowSet",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {

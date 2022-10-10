@@ -71,9 +71,9 @@
     "CreateEnvironment": [
       {
         "document": "",
-        "input": "https://tdmq.tencentcloudapi.com/?Action=CreateEnvironment\n&EnvironmentId=test1\n&MsgTTL=100\n&ClusterId=pulsar-xxxxxxxx\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEnvironment\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"test1\",\n    \"MsgTTL\": \"100\",\n    \"ClusterId\": \"pulsar-xxxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"EnvironmentId\": \"test1\",\n        \"NamespaceId\": \"namespace-8893gp3428\",\n        \"MsgTTL\": 100,\n        \"Remark\": \"\",\n        \"RequestId\": \"0843ea4f-d6ba-463b-952c-75708a7e8901\"\n    }\n}",
-        "title": "Creating namespace"
+        "title": "Creating a namespace"
       }
     ],
     "CreateEnvironmentRole": [
@@ -404,6 +404,14 @@
         "title": "Getting the topic list"
       }
     ],
+    "DescribeRocketMQVipInstances": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQVipInstances\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"xx\"\n            ],\n            \"Name\": \"xx\"\n        }\n    ],\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Instances\": [\n            {\n                \"Status\": 1,\n                \"PayMode\": 1,\n                \"Remark\": \"xx\",\n                \"AutoRenewFlag\": 1,\n                \"InstanceId\": \"xx\",\n                \"NodeCount\": 1,\n                \"ExpireTime\": 1,\n                \"InstanceVersion\": \"xx\",\n                \"MaxStorage\": 1,\n                \"MaxBandWidth\": 1,\n                \"SpecName\": \"xx\",\n                \"ConfigDisplay\": \"xx\",\n                \"InstanceName\": \"xx\",\n                \"MaxTps\": 1\n            }\n        ]\n    }\n}",
+        "title": "Getting the instance list"
+      }
+    ],
     "DescribeRoles": [
       {
         "document": "",
@@ -463,9 +471,9 @@
     "ModifyEnvironmentAttributes": [
       {
         "document": "",
-        "input": "https://tdmq.tencentcloudapi.com/?Action=ModifyEnvironmentAttributes\n&EnvironmentId=test\n&ClusterId=pulsar-xxxxxxxx\n&MsgTTL=100\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyEnvironmentAttributes\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"test\",\n    \"MsgTTL\": \"100\",\n    \"ClusterId\": \"pulsar-xxxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"EnvironmentId\": \"test\",\n        \"NamespaceId\": \"namespace-5r59xen74x\",\n        \"MsgTTL\": 100,\n        \"Remark\": \"\",\n        \"RequestId\": \"7db00a30-933c-4f6f-bba9-79cdf6be7d8c\"\n    }\n}",
-        "title": "Modifying the attributes of specified namespace"
+        "title": "Modifying the attributes of a specified namespace"
       }
     ],
     "ModifyEnvironmentRole": [
@@ -583,7 +591,7 @@
     "SendMessages": [
       {
         "document": "",
-        "input": "https://tdmq.tencentcloudapi.com/?Action=SendMessages\n&Topic=tenant/namespace/topic\n&Payload=\"hello TDMQ\"\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SendMessages\n<Common request parameters>\n\n{\n    \"Topic\": \"tenant/namespace/topic\",\n    \"Payload\": \"\\\"hello TDMQ\\\"\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"36713f94-d07d-4b96-babf-42d139276f23\",\n        \"MessageId\": \"71:11:0:0\",\n        \"ErrorMsg\": \"\"\n    }\n}",
         "title": "Sending one message successfully"
       }

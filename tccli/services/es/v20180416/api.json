@@ -3880,6 +3880,7 @@
         {
           "default": "",
           "document": "Task name",
+          "example": "xx",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -3889,6 +3890,7 @@
         {
           "default": "",
           "document": "Task progress",
+          "example": "1.2",
           "member": "float",
           "name": "Progress",
           "required": true,
@@ -3898,6 +3900,7 @@
         {
           "default": "",
           "document": "Task completion time",
+          "example": "xx",
           "member": "string",
           "name": "FinishTime",
           "required": true,
@@ -3907,11 +3910,22 @@
         {
           "default": "",
           "document": "Subtask",
+          "example": "xx",
           "member": "SubTaskDetail",
           "name": "SubTasks",
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The task time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ElapsedTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4359,6 +4373,15 @@
           "name": "OperationDuration",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the option for sending alerting messages over the public network.",
+          "example": "OPEN",
+          "member": "string",
+          "name": "KibanaAlteringPublicAccess",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4553,6 +4576,15 @@
           "example": "false",
           "member": "bool",
           "name": "CosBackup",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to skip the check and perform a force restart in the rolling mode. Default value: `false`.",
+          "example": "false",
+          "member": "bool",
+          "name": "SkipCheckForceRestart",
           "required": false,
           "type": "bool"
         }

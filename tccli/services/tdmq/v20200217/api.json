@@ -294,6 +294,12 @@
       "name": "Gets the list of RocketMQ topics",
       "output": "DescribeRocketMQTopicsResponse"
     },
+    "DescribeRocketMQVipInstances": {
+      "document": "This API is used to query the list of the purchased TDMQ for RocketMQ exclusive instances.",
+      "input": "DescribeRocketMQVipInstancesRequest",
+      "name": "Queries the list of TDMQ for RocketMQ exclusive instances",
+      "output": "DescribeRocketMQVipInstancesResponse"
+    },
     "DescribeRoles": {
       "document": "This API is used to get the list of roles.",
       "input": "DescribeRolesRequest",
@@ -391,7 +397,7 @@
       "output": "PublishCmqMsgResponse"
     },
     "ReceiveMessage": {
-      "document": "This API is used to receive messages sent to a specified topic. If this API is called when there are no messages in the topic, the `ReceiveTimeout` exception will be reported.\n\nInstructions on how to use `BatchReceivePolicy`:\n\n`BatchReceive` has the three parameters:\n\n● `MaxNumMessages`: The maximum number of messages returned by `Receive` when `BatchReceive` is used.\n● `MaxNumBytes`: The maximum size (in bytes) of the message returned by `Receive` when `BatchReceive` is used.\n● `Timeout`: The maximum timeout period (in milliseconds) of calling `Receive` when `BatchReceive` is used.\n\nBy default, if you don’t specify any of the three parameters, the `BatchReceive` feature is disabled; if one of the three parameter values is above zero, `BatchReceive` is enabled. `BatchReceive` will be disabled when any of the three parameter values reaches the threshold you specify.\n\nNote: The values of both `MaxNumMessages` and `MaxNumBytes` are subject to the value of `ReceiveQueueSize`. If the values of `ReceiveQueueSize` and `MaxNumMessages` are 5 and 10, respectively, you can receive up to five rather than 10 messages when `BatchReceive` is used.\n\n\n\nThe API configured with `BatchReceivePolicy` returns multiple messages at a time.\n\n1. These messages are separated by “###”. After receiving them, you can separate them with split tools in different languages.\n2. MessageIDs are separated by “###”. After receiving the messages, you can separate the MessageIDs with split tools in different languages, so that you can obtain the `MessageID` field information required for calling the `AcknowledgeMessage` API.\n",
+      "document": "Currently, the `ReceiveMessage` API only supports partitioned topics. It is used to receive messages sent to a specified partitioned topic. If it is called when there are no messages in the partitioned topic, the `ReceiveTimeout` exception will be reported.\n\nInstructions on how to use `BatchReceivePolicy`:\n\n`BatchReceive` has three parameters:\n\n● `MaxNumMessages`: The maximum number of messages returned by `Receive` when `BatchReceive` is used.\n● `MaxNumBytes`: The maximum size (in bytes) of the message returned by `Receive` when `BatchReceive` is used.\n● `Timeout`: The maximum timeout period (in milliseconds) of calling `Receive` when `BatchReceive` is used.\n\nBy default, if you don’t specify any of the three parameters, the `BatchReceive` feature is disabled; if one of the three parameter values is above zero, `BatchReceive` is enabled. `BatchReceive` will be disabled when any of the three parameter values reaches the threshold you specify.\n\nNote: The values of both `MaxNumMessages` and `MaxNumBytes` are subject to the value of `ReceiveQueueSize`. If the values of `ReceiveQueueSize` and `MaxNumMessages` are 5 and 10, respectively, you can receive up to five rather than 10 messages when `BatchReceive` is used.\n\n\n\nThe API configured with `BatchReceivePolicy` returns multiple messages at a time.\n\n1. These messages are separated by “###”. After receiving them, you can separate them with split tools in different languages.\n2. MessageIDs are separated by “###”. After receiving the messages, you can separate the MessageIDs with split tools in different languages, so that you can obtain the `MessageID` field information required for calling the `AcknowledgeMessage` API.\n",
       "input": "ReceiveMessageRequest",
       "name": "Receives messages",
       "output": "ReceiveMessageResponse"
@@ -2117,7 +2123,7 @@
         },
         {
           "default": "",
-          "document": "Retention period for unconsumed messages in seconds. Value range: 60s to 1,296,000s.",
+          "document": "Retention period for unconsumed messages in seconds. Value range: 60s to 1,296,000s (or 15 days).",
           "example": "60",
           "member": "uint64",
           "name": "MsgTTL",
@@ -4840,6 +4846,69 @@
       ],
       "type": "object"
     },
+    "DescribeRocketMQVipInstancesRequest": {
+      "document": "DescribeRocketMQVipInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Query condition filter",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of queried items, which defaults to 20.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Start offset for query",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRocketMQVipInstancesResponse": {
+      "document": "DescribeRocketMQVipInstances response structure.",
+      "members": [
+        {
+          "document": "The total number of unpaginated items",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance information list",
+          "example": "无",
+          "member": "RocketMQVipInstance",
+          "name": "Instances",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeRolesRequest": {
       "document": "DescribeRoles request structure.",
       "members": [
@@ -5721,7 +5790,7 @@
         },
         {
           "default": "",
-          "document": "Retention period for unconsumed messages in seconds. Value range: 60s to 1,296,000s.",
+          "document": "Retention period for unconsumed messages in seconds. Value range: 60s to 1,296,000s (or 15 days).",
           "example": "60",
           "member": "uint64",
           "name": "MsgTTL",
@@ -6561,7 +6630,7 @@
         },
         {
           "default": "",
-          "document": "Default value: Latest. It is used to determine the position where the consumer initially receives messages. Valid values: Earliest, Latest.",
+          "document": "A parameter used to determine the position where the consumer initially receives messages. Valid values: `Earliest` (default), `Latest`.",
           "example": "Latest",
           "member": "string",
           "name": "SubInitialPosition",
@@ -7401,6 +7470,152 @@
       ],
       "usage": "out"
     },
+    "RocketMQVipInstance": {
+      "document": "Information of TDMQ for RocketMQ exclusive instances",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "rocketmq-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "example": "abc",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "4.9.3",
+          "member": "string",
+          "name": "InstanceVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance status. Valid values: `0` (Creating), `1` (Normal), `2` (Isolated), `3` (Terminated), `4` (Abnormal).",
+          "example": "0",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of nodes",
+          "example": "5",
+          "member": "uint64",
+          "name": "NodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance specification name",
+          "example": "基础型",
+          "member": "string",
+          "name": "ConfigDisplay",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Peak TPS",
+          "example": "10000",
+          "member": "uint64",
+          "name": "MaxTps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Peak bandwidth in Mbps",
+          "example": "1200",
+          "member": "uint64",
+          "name": "MaxBandWidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage capacity in GB",
+          "example": "100",
+          "member": "uint64",
+          "name": "MaxStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance expiration time in milliseconds",
+          "example": "100000",
+          "member": "uint64",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Renewal mode. Valid values: `0` (Manual renewal, which is the default mode), `1` (Auto-renewal), `2` (Manual renewal, which is specified by users).",
+          "example": "0",
+          "member": "uint64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Payment mode. 0: Postpaid; 1: Prepaid.",
+          "example": "0",
+          "member": "uint64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance specification ID",
+          "example": "vip-basic-1",
+          "member": "string",
+          "name": "SpecName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "Role": {
       "document": "Role instance",
       "members": [
@@ -7664,7 +7879,7 @@
         },
         {
           "default": "",
-          "document": "Producer name, which must be globally unique. If it is not configured, the system will randomly generate one.",
+          "document": "Producer name, which is randomly generated and must be globally unique. If you set the producer name manually, the producer may fail to be created, causing message sending failure.\nThis parameter is used only when a specific producer is allowed to produce messages. It won’t be used in most cases.",
           "example": "producer",
           "member": "string",
           "name": "ProducerName",

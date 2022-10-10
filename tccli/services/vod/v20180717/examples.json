@@ -597,7 +597,7 @@
     "DescribeMediaProcessUsageData": [
       {
         "document": "",
-        "input": "https://vod.tencentcloudapi.com/?Action=DescribeMediaProcessUsageData\n&StartTime=2020-09-07T00:00:00+08:00\n&EndTime=2020-09-09T23:59:59+08:00\n&Type=Transcoding-TESHD\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMediaProcessUsageData\n<Common request parameters>\n\n{\n    \"EndTime\": \"2020-09-09T23:59:59+08:00\",\n    \"Type\": \"Transcoding-TESHD\",\n    \"StartTime\": \"2020-09-07T00:00:00+08:00\"\n}",
         "output": "{\n    \"Response\": {\n        \"MediaProcessDataSet\": [\n            {\n                \"TaskType\": \"Transcoding-TESHD\",\n                \"Summary\": [\n                    {\n                        \"Time\": \"2020-09-07T00:00:00+08:00\",\n                        \"Count\": 2,\n                        \"Usage\": 26\n                    },\n                    {\n                        \"Time\": \"2020-09-08T00:00:00+08:00\",\n                        \"Count\": 2,\n                        \"Usage\": 168\n                    },\n                    {\n                        \"Time\": \"2020-09-09T00:00:00+08:00\",\n                        \"Count\": 2,\n                        \"Usage\": 26\n                    }\n                ],\n                \"Details\": [\n                    {\n                        \"Specification\": \"TESHD-10.H264.SD\",\n                        \"Data\": [\n                            {\n                                \"Time\": \"2020-09-07T00:00:00+08:00\",\n                                \"Count\": 2,\n                                \"Usage\": 26\n                            },\n                            {\n                                \"Time\": \"2020-09-08T00:00:00+08:00\",\n                                \"Count\": 1,\n                                \"Usage\": 84\n                            },\n                            {\n                                \"Time\": \"2020-09-09T00:00:00+08:00\",\n                                \"Count\": 2,\n                                \"Usage\": 26\n                            }\n                        ]\n                    },\n                    {\n                        \"Specification\": \"TESHD-10.H264.HD\",\n                        \"Data\": [\n                            {\n                                \"Time\": \"2020-09-07T00:00:00+08:00\",\n                                \"Count\": 0,\n                                \"Usage\": 0\n                            },\n                            {\n                                \"Time\": \"2020-09-08T00:00:00+08:00\",\n                                \"Count\": 1,\n                                \"Usage\": 84\n                            },\n                            {\n                                \"Time\": \"2020-09-09T00:00:00+08:00\",\n                                \"Count\": 0,\n                                \"Usage\": 0\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"requestId\"\n    }\n}",
         "title": "Querying video processing usage"
       }
@@ -1210,6 +1210,14 @@
         "input": "https://vod.tencentcloudapi.com/?Action=RestoreMedia\n&FileIds.0=5285485487985271487\n&RestoreDay=1\n&RestoreTier=Expedited\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"requestId\"\n    }\n}",
         "title": "Restoring a media file in the expedited mode"
+      }
+    ],
+    "ReviewAudioVideo": [
+      {
+        "document": "This example shows you how to start a moderation task on a file whose file ID is `5285485487985271487`.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ReviewAudioVideo\n<Common request parameters>\n\n{\n    \"FileId\": \"5285485487985271487\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-ReviewAudioVideo-bffb15f07530b57bc1aabb01fac74bcb\"\n    }\n}",
+        "title": "Starting a moderation task"
       }
     ],
     "SearchMedia": [
