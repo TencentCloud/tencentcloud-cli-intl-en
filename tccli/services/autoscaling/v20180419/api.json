@@ -43,7 +43,7 @@
       "output": "CreateLaunchConfigurationResponse"
     },
     "CreateLifecycleHook": {
-      "document": "This API (CreateLifeCycleHook) is used to create a lifecycle hook.\n\n* You can configure message notifications in the following format for lifecycle hooks, which will be sent to your CMQ queue by AS:\n\n```\n{\n\t\"Service\": \"Tencent Cloud Auto Scaling\",\n\t\"Time\": \"2019-03-14T10:15:11Z\",\n\t\"AppId\": \"1251783334\",\n\t\"ActivityId\": \"asa-fznnvrja\",\n\t\"AutoScalingGroupId\": \"asg-rrrrtttt\",\n\t\"LifecycleHookId\": \"ash-xxxxyyyy\",\n\t\"LifecycleHookName\": \"my-hook\",\n\t\"LifecycleActionToken\": \"3080e1c9-0efe-4dd7-ad3b-90cd6618298f\",\n\t\"InstanceId\": \"ins-aaaabbbb\",\n\t\"LifecycleTransition\": \"INSTANCE_LAUNCHING\",\n\t\"NotificationMetadata\": \"\"\n}\n```",
+      "document": "This API is used to create a lifecycle hook.\n\n* You can configure notifications or automation commands (TAT) for the lifecycle hook.\n\nIf you configured a notification, Auto Scaling will notify the TDMQ queue of the following information:\n\n```\n{\n\t\"Service\": \"Tencent Cloud Auto Scaling\",\n\t\"Time\": \"2019-03-14T10:15:11Z\",\n\t\"AppId\": \"1251783334\",\n\t\"ActivityId\": \"asa-fznnvrja\",\n\t\"AutoScalingGroupId\": \"asg-rrrrtttt\",\n\t\"LifecycleHookId\": \"ash-xxxxyyyy\",\n\t\"LifecycleHookName\": \"my-hook\",\n\t\"LifecycleActionToken\": \"3080e1c9-0efe-4dd7-ad3b-90cd6618298f\",\n\t\"InstanceId\": \"ins-aaaabbbb\",\n\t\"LifecycleTransition\": \"INSTANCE_LAUNCHING\",\n\t\"NotificationMetadata\": \"\"\n}\n```",
       "input": "CreateLifecycleHookRequest",
       "name": "Creating a Lifecycle Hook",
       "output": "CreateLifecycleHookResponse"
@@ -1778,7 +1778,7 @@
         },
         {
           "default": "",
-          "document": "Additional information of a notification that Auto Scaling sends to targets. This parameter is left empty by default. Up to 1024 characters are allowed.",
+          "document": "Additional information of a notification that Auto Scaling sends to targets. This parameter is set when you configure a notification (default value: \"\"). Up to 1024 characters are allowed.",
           "example": "\"\"",
           "member": "string",
           "name": "NotificationMetadata",
@@ -1787,7 +1787,7 @@
         },
         {
           "default": "",
-          "document": "Notification target",
+          "document": "Notification target. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.",
           "example": "无",
           "member": "NotificationTarget",
           "name": "NotificationTarget",
@@ -1802,6 +1802,15 @@
           "name": "LifecycleTransitionType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remote command execution object. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.",
+          "example": "无",
+          "member": "LifecycleCommand",
+          "name": "LifecycleCommand",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -4026,6 +4035,7 @@
         {
           "default": "",
           "document": "ID of the lifecycle hook",
+          "example": "ash-xxxxxxxx",
           "member": "string",
           "name": "LifecycleHookId",
           "required": true,
@@ -4035,6 +4045,7 @@
         {
           "default": "",
           "document": "ID of the instance",
+          "example": "ins-xxxxxxxx",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -4043,7 +4054,28 @@
         },
         {
           "default": "",
-          "document": "Whether the notification is sent to CMQ successfully",
+          "document": "Execution task ID. You can query the result by using the [DescribeInvocations](https://intl.cloud.tencent.com/document/api/1340/52679?from_cn_redirect=1) API of TAT. ",
+          "example": "inv-xxxxxxxx",
+          "member": "string",
+          "name": "InvocationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Result of command invocation,\n<li>`SUCCESSFUL`: Successful command invocation. It does mean that the task is successfully. You can query the task result with the `InvocationId.</li>\n<li>`FAILED`: Failed to invoke the command</li>\n<li>`NONE`</li>",
+          "example": "SUCCESSFUL",
+          "member": "string",
+          "name": "InvokeCommandResult",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Notification result, which indicates whether it is successful to notify CMQ/TDMQ.<br>\n<li>SUCCESSFUL: It is successful to notify CMQ/TDMQ.</li>\n<li>FAILED: It is failed to notify CMQ/TDMQ.</li>\n<li>NONE</li>",
+          "example": "null",
           "member": "string",
           "name": "NotificationResult",
           "required": true,
@@ -4053,6 +4085,7 @@
         {
           "default": "",
           "document": "Result of the lifecyle hook action. Values: CONTINUE, ABANDON",
+          "example": "CONTINUE",
           "member": "string",
           "name": "LifecycleActionResult",
           "required": true,
@@ -4061,7 +4094,8 @@
         },
         {
           "default": "",
-          "document": "Cause of the result",
+          "document": "Reason of the result <br>\n<li>`HEARTBEAT_TIMEOUT`: Heartbeat timed out. The setting of `DefaultResult` is used.</li>\n<li>`NOTIFICATION_FAILURE`: Failed to send the notification. The setting of `DefaultResult` is used.</li>\n<li>`CALL_INTERFACE`: Calls the `CompleteLifecycleAction` to set the result</li>\n<li>ANOTHER_ACTION_ABANDON: It has been set to `ABANDON` by another operation.</li>\n<li>COMMAND_CALL_FAILURE: Failed to call the command. The DefaultResult is applied.</li>\n<li>COMMAND_EXEC_FINISH: Command completed</li>\n<li>COMMAND_CALL_FAILURE: Failed to execute the command. The DefaultResult is applied.</li>\n<li>COMMAND_EXEC_RESULT_CHECK_FAILURE: Failed to check the command result. The DefaultResult is applied.</li>",
+          "example": "HEARTBEAT_TIMEOUT",
           "member": "string",
           "name": "ResultReason",
           "required": true,
@@ -4071,12 +4105,39 @@
       ],
       "usage": "out"
     },
+    "LifecycleCommand": {
+      "document": "Remote command execution object.",
+      "members": [
+        {
+          "default": "",
+          "document": "Remote command ID. It’s required to execute a command.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cmd-xxxxxxxx",
+          "member": "string",
+          "name": "CommandId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Custom parameter. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.\n`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.\nIf this parameter is not specified, the `DefaultParameters` of `Command` is used.\nUp to 20 customer parameters allowed. The parameter name can contain up to 64 characters, including [a-z], [A-Z], [0-9] and [-_].\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Parameters",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "LifecycleHook": {
       "document": "Lifecycle hook",
       "members": [
         {
           "default": "",
           "document": "Lifecycle hook ID",
+          "example": "ash-ck4bkcjt",
           "member": "string",
           "name": "LifecycleHookId",
           "required": true,
@@ -4086,6 +4147,7 @@
         {
           "default": "",
           "document": "Lifecycle hook name",
+          "example": "demo",
           "member": "string",
           "name": "LifecycleHookName",
           "required": true,
@@ -4095,6 +4157,7 @@
         {
           "default": "",
           "document": "Auto scaling group ID",
+          "example": "asg-lk5nn4xi",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -4104,6 +4167,7 @@
         {
           "default": "",
           "document": "Default result of the lifecycle hook",
+          "example": "CONTINUE",
           "member": "string",
           "name": "DefaultResult",
           "required": true,
@@ -4113,6 +4177,7 @@
         {
           "default": "",
           "document": "Wait timeout period of the lifecycle hook",
+          "example": "300",
           "member": "int64",
           "name": "HeartbeatTimeout",
           "required": true,
@@ -4122,6 +4187,7 @@
         {
           "default": "",
           "document": "Applicable scenario of the lifecycle hook",
+          "example": "INSTANCE_TERMINATING",
           "member": "string",
           "name": "LifecycleTransition",
           "required": true,
@@ -4131,6 +4197,7 @@
         {
           "default": "",
           "document": "Additional information for the notification target",
+          "example": "\"\"",
           "member": "string",
           "name": "NotificationMetadata",
           "required": true,
@@ -4140,6 +4207,7 @@
         {
           "default": "",
           "document": "Creation time",
+          "example": "无",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "required": true,
@@ -4149,6 +4217,7 @@
         {
           "default": "",
           "document": "Notification target",
+          "example": "无",
           "member": "NotificationTarget",
           "name": "NotificationTarget",
           "required": true,
@@ -4158,11 +4227,22 @@
         {
           "default": "",
           "document": "Applicable scenario of the lifecycle hook",
+          "example": "NORMAL",
           "member": "string",
           "name": "LifecycleTransitionType",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remote command execution object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LifecycleCommand",
+          "name": "LifecycleCommand",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4806,6 +4886,15 @@
           "example": "无",
           "member": "NotificationTarget",
           "name": "NotificationTarget",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Remote command execution object.",
+          "example": "无",
+          "member": "LifecycleCommand",
+          "name": "LifecycleCommand",
           "required": false,
           "type": "object"
         }
@@ -6121,7 +6210,7 @@
         },
         {
           "default": "",
-          "document": "Additional information of a notification that Auto Scaling sends to targets. This parameter is left empty by default.",
+          "document": "Additional information of a notification that Auto Scaling sends to targets. This parameter is set when you configure a notification (default value: \"\").",
           "example": "\"\"",
           "member": "string",
           "name": "NotificationMetadata",
@@ -6130,7 +6219,7 @@
         },
         {
           "default": "",
-          "document": "Notification target",
+          "document": "Notification result. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.",
           "example": "无",
           "member": "NotificationTarget",
           "name": "NotificationTarget",
@@ -6145,6 +6234,15 @@
           "name": "LifecycleTransitionType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remote command execution object. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.",
+          "example": "无",
+          "member": "LifecycleCommand",
+          "name": "LifecycleCommand",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"

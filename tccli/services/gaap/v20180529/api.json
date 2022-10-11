@@ -3,7 +3,7 @@
     "AddRealServers": {
       "document": "This API is used to add the information of the origin server (server), which supports IP or the domain name.",
       "input": "AddRealServersRequest",
-      "name": "Adds an origin server.",
+      "name": "Adds an origin server",
       "output": "AddRealServersResponse"
     },
     "BindListenerRealServers": {
@@ -79,15 +79,15 @@
       "output": "CreateHTTPSListenerResponse"
     },
     "CreateProxy": {
-      "document": "This API (CreateProxy) is used to create an acceleration connection with specified configuration.",
+      "document": "This API is used to create/replicate an acceleration connection with the specified configuration. To replicate a connection, the basic configuration parameters need to be set for the new connection, and `ClonedProxyId` is needed to identify the replicated connection.",
       "input": "CreateProxyRequest",
-      "name": "Creates a connection.",
+      "name": "Creates a connection",
       "output": "CreateProxyResponse"
     },
     "CreateProxyGroup": {
       "document": "This API (CreateProxyGroup) is used to create a connection group.",
       "input": "CreateProxyGroupRequest",
-      "name": "Creates a connection group.",
+      "name": "Creates a connection group",
       "output": "CreateProxyGroupResponse"
     },
     "CreateProxyGroupDomain": {
@@ -153,7 +153,7 @@
     "DeleteProxyGroup": {
       "document": "This API (DeleteProxyGroup) is used to delete a connection group.",
       "input": "DeleteProxyGroupRequest",
-      "name": "Deletes a connection group.",
+      "name": "Deletes a connection group",
       "output": "DeleteProxyGroupResponse"
     },
     "DeleteRule": {
@@ -513,7 +513,7 @@
     "RemoveRealServers": {
       "document": "This API is used to delete the added origin server (server) IP or domain name.",
       "input": "RemoveRealServersRequest",
-      "name": "Deletes an origin server.",
+      "name": "Deletes an origin server",
       "output": "RemoveRealServersResponse"
     },
     "SetAuthentication": {
@@ -544,7 +544,7 @@
         },
         {
           "default": "",
-          "document": "Connection bandwidth upper limit in Mbps.",
+          "document": "Connection bandwidth cap. Unit: Mbps.",
           "example": "10",
           "member": "uint64",
           "name": "Bandwidth",
@@ -554,7 +554,7 @@
         },
         {
           "default": "",
-          "document": "Concurrent connection upper limit in 10,000 connections, which indicates the allowed number of concurrently online connections.",
+          "document": "Connection concurrence cap, which indicates the maximum number of simultaneous online connections. Unit: 10,000 connections.",
           "example": "2",
           "member": "uint64",
           "name": "Concurrent",
@@ -691,6 +691,7 @@
         {
           "default": "",
           "document": "Project ID corresponding to origin server",
+          "example": "0",
           "member": "uint64",
           "name": "ProjectId",
           "required": true,
@@ -699,6 +700,7 @@
         {
           "default": "",
           "document": "IP or domain name corresponding to origin server",
+          "example": "[\"1.1.1.1\\n\"]",
           "member": "string",
           "name": "RealServerIP",
           "required": true,
@@ -706,7 +708,8 @@
         },
         {
           "default": "",
-          "document": "Origin server name",
+          "document": "Name of the origin server",
+          "example": "test",
           "member": "string",
           "name": "RealServerName",
           "required": true,
@@ -714,7 +717,8 @@
         },
         {
           "default": "",
-          "document": "Tag list",
+          "document": "List of tags",
+          "example": "无",
           "member": "TagPair",
           "name": "TagSet",
           "required": false,
@@ -727,9 +731,11 @@
       "document": "AddRealServers response structure.",
       "members": [
         {
-          "document": "Origin server information list",
+          "document": "An information list of origin server",
+          "example": "无",
           "member": "NewRealServer",
           "name": "RealServerSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -815,6 +821,7 @@
         {
           "default": "",
           "document": "Origin server ID",
+          "example": "rs-123456",
           "member": "string",
           "name": "RealServerId",
           "required": true,
@@ -824,6 +831,7 @@
         {
           "default": "",
           "document": "Origin server IP or domain name",
+          "example": "192.168.1.1",
           "member": "string",
           "name": "RealServerIP",
           "required": true,
@@ -833,6 +841,7 @@
         {
           "default": "",
           "document": "Origin server weight",
+          "example": "1",
           "member": "int64",
           "name": "RealServerWeight",
           "required": true,
@@ -842,6 +851,7 @@
         {
           "default": "",
           "document": "Origin server health check status. Valid values:\n0: normal;\n1: exceptional.\nIf health check is not enabled, this status will always be normal.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "RealServerStatus",
           "required": true,
@@ -851,6 +861,7 @@
         {
           "default": "",
           "document": "Origin server port number\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "443",
           "member": "int64",
           "name": "RealServerPort",
           "required": true,
@@ -860,10 +871,21 @@
         {
           "default": "",
           "document": "If the origin server is a domain name, the domain name will be resolved to one or multiple IPs. This field indicates the exceptional IP list.",
+          "example": "[]",
           "member": "string",
           "name": "DownIPList",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Role of the origin server. Values: `master` (primary origin server); `slave` (secondary origin server). This parameter only takes effect when origin failover is enabled for the listener.",
+          "example": "master",
+          "member": "string",
+          "name": "RealServerFailoverRole",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -1238,7 +1260,7 @@
         },
         {
           "default": "",
-          "document": "Specifies whether to enable HTTP3. Valid values: `0` (disable HTTP3); `1` (enable HTTP3). Note: If HTTP3 is enabled for a connection, TCP/UDP access will not be allowed. After the connection is created, you cannot change your HTTP3 setting.",
+          "document": "(Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.",
           "example": "0",
           "member": "int64",
           "name": "Http3Supported",
@@ -1989,7 +2011,7 @@
         },
         {
           "default": "",
-          "document": "Tag list",
+          "document": "List of tags",
           "example": "无",
           "member": "TagPair",
           "name": "TagSet",
@@ -2025,7 +2047,7 @@
         },
         {
           "default": "",
-          "document": "Specifies whether to enable HTTP3. Valid values:\n`0`: disable HTTP3;\n`1`: enable HTTP3.\nNote that if HTTP3 is enabled for a connection, TCP/UDP access will not be allowed.\nAfter the connection is created, you cannot change your HTTP3 setting.",
+          "document": "(Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.",
           "example": "0",
           "member": "int64",
           "name": "Http3Supported",
@@ -2039,9 +2061,11 @@
       "document": "CreateProxyGroup response structure.",
       "members": [
         {
-          "document": "Connection Group ID",
+          "document": "ID of the connection group",
+          "example": "lg-xxx",
           "member": "string",
           "name": "GroupId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2068,7 +2092,7 @@
         },
         {
           "default": "",
-          "document": "Connection name.",
+          "document": "Name of the connection",
           "example": "test",
           "member": "string",
           "name": "ProxyName",
@@ -2113,7 +2137,7 @@
         },
         {
           "default": "",
-          "document": "A string used to ensure the idempotency of the request, which is generated by the user and must be unique to each request. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.\nFor more information, please see How to Ensure Idempotence.",
+          "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.\nFor more information, please see How to Ensure Idempotence.",
           "example": "\"\"",
           "member": "string",
           "name": "ClientToken",
@@ -2185,7 +2209,7 @@
         },
         {
           "default": "",
-          "document": "Specifies whether to enable HTTP3. Valid values: `0` (disable HTTP3); `1` (enable HTTP3). Note: If HTTP3 is enabled for a connection, TCP/UDP access will not be allowed. After the connection is created, you cannot change your HTTP3 setting.",
+          "document": "(Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.",
           "example": "0",
           "member": "int64",
           "name": "Http3Supported",
@@ -2200,8 +2224,10 @@
       "members": [
         {
           "document": "Instance ID of connection.",
+          "example": "link-11112222",
           "member": "string",
           "name": "InstanceId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2255,7 +2281,7 @@
         },
         {
           "default": "",
-          "document": "Forwarding rules of origin server, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).",
+          "document": "The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).",
           "example": "rr",
           "member": "string",
           "name": "Scheduler",
@@ -2460,7 +2486,7 @@
         },
         {
           "default": "",
-          "document": "Origin server scheduling policy of listeners, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).",
+          "document": "The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).",
           "example": "rr",
           "member": "string",
           "name": "Scheduler",
@@ -2478,7 +2504,7 @@
         },
         {
           "default": "",
-          "document": "The origin server type of listeners, supporting IP or DOMAIN type. The DOMAIN origin servers do not support the weighted round robin.",
+          "document": "The origin server type. Values: `IP` (IP address); `DOMAIN` (domain name).",
           "example": "IP",
           "member": "string",
           "name": "RealServerType",
@@ -2594,6 +2620,7 @@
         {
           "default": "",
           "document": "Listener name",
+          "example": "test1",
           "member": "string",
           "name": "ListenerName",
           "required": true,
@@ -2602,6 +2629,7 @@
         {
           "default": "",
           "document": "List of listener ports",
+          "example": "[\"90\\n\"]",
           "member": "uint64",
           "name": "Ports",
           "required": true,
@@ -2609,7 +2637,8 @@
         },
         {
           "default": "",
-          "document": "Origin server scheduling policy of listeners, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).",
+          "document": "The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).",
+          "example": "rr",
           "member": "string",
           "name": "Scheduler",
           "required": true,
@@ -2617,7 +2646,8 @@
         },
         {
           "default": "",
-          "document": "Origin server type of listeners, which supports IP or DOMAIN type.",
+          "document": "The origin server type. Values: `IP` (IP address); `DOMAIN` (domain name).",
+          "example": "IP",
           "member": "string",
           "name": "RealServerType",
           "required": true,
@@ -2626,6 +2656,7 @@
         {
           "default": "",
           "document": "Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.",
+          "example": "link-bjkpdum1",
           "member": "string",
           "name": "ProxyId",
           "required": false,
@@ -2634,6 +2665,7 @@
         {
           "default": "",
           "document": "Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.",
+          "example": "lg-xxxx",
           "member": "string",
           "name": "GroupId",
           "required": false,
@@ -2642,10 +2674,110 @@
         {
           "default": "",
           "document": "List of origin server ports, which only supports the listeners of version 1.0 and connection group.",
+          "example": "[80]",
           "member": "uint64",
           "name": "RealServerPorts",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Time interval of origin server health check (unit: seconds). Value range: [5, 300].",
+          "example": "20",
+          "member": "uint64",
+          "name": "DelayLoop",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.",
+          "example": "20",
+          "member": "uint64",
+          "name": "ConnectTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.",
+          "example": "5",
+          "member": "uint64",
+          "name": "HealthyThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.",
+          "example": "1",
+          "member": "uint64",
+          "name": "UnhealthyThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.",
+          "example": "0",
+          "member": "int64",
+          "name": "FailoverSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether the health check is enabled for the origin server. Values: `1` (enabled); `0` (disabled).",
+          "example": "1",
+          "member": "uint64",
+          "name": "HealthCheck",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The health check type. Values: `PORT` (port); `PING` (ping).",
+          "example": "PING",
+          "member": "string",
+          "name": "CheckType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The health probe port.",
+          "example": "8888",
+          "member": "int64",
+          "name": "CheckPort",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The UDP message type. Values: `TEXT` (text). This parameter is used only when `CheckType = PORT`.",
+          "example": "TEXT",
+          "member": "string",
+          "name": "ContextType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The UDP message sent by the health probe port. This parameter is used only when `CheckType = PORT`.",
+          "example": "helloworld",
+          "member": "string",
+          "name": "SendContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The UDP message received by the health probe port. This parameter is used only when `CheckType = PORT`.",
+          "example": "helloworld",
+          "member": "string",
+          "name": "RecvContext",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2842,6 +2974,7 @@
         {
           "default": "",
           "document": "ID of the connection group to be deleted.",
+          "example": "lg-b7h4d02f",
           "member": "string",
           "name": "GroupId",
           "required": false,
@@ -2849,7 +2982,8 @@
         },
         {
           "default": "",
-          "document": "Whether to enable forced deletion. Valid values:\n0: no;\n1: yes.\nDefault value: 0. If there is a connection or listener/rule bound to an origin server in the connection group and `Force` is 0, the operation will return a failure.",
+          "document": "Whether to enable forced deletion. Valid values:\n`0`: No;\n`1`: Yes.\nDefault value: 0. If there is a connection or listener/rule bound to an origin server in the connection group and `Force` is 0, the operation will return a failure.",
+          "example": "0",
           "member": "uint64",
           "name": "Force",
           "required": false,
@@ -5685,6 +5819,7 @@
         {
           "default": "",
           "document": "Listener ID",
+          "example": "listener-xxxx",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -5694,6 +5829,7 @@
         {
           "default": "",
           "document": "Listener name",
+          "example": "test",
           "member": "string",
           "name": "ListenerName",
           "required": true,
@@ -5703,6 +5839,7 @@
         {
           "default": "",
           "document": "Listener port",
+          "example": "443",
           "member": "uint64",
           "name": "Port",
           "required": true,
@@ -5712,6 +5849,7 @@
         {
           "default": "",
           "document": "Listener protocol. Valid values: HTTP, HTTPS. The value `HTTPS` is used for this structure",
+          "example": "HTTPS",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -5721,6 +5859,7 @@
         {
           "default": "",
           "document": "Listener status:\n0: running;\n1: creating;\n2: terminating;\n3: adjusting origin server;\n4: modifying configuration.",
+          "example": "0",
           "member": "uint64",
           "name": "ListenerStatus",
           "required": true,
@@ -5730,6 +5869,7 @@
         {
           "default": "",
           "document": "Server SSL certificate ID of the listener",
+          "example": "cert-xxxx",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -5739,6 +5879,7 @@
         {
           "default": "",
           "document": "Protocol used in the forwarding from connections to origin servers",
+          "example": "HTTPS",
           "member": "string",
           "name": "ForwardProtocol",
           "required": true,
@@ -5748,6 +5889,7 @@
         {
           "default": "",
           "document": "Listener creation time; using UNIX timestamp.",
+          "example": "1661788772",
           "member": "uint64",
           "name": "CreateTime",
           "required": true,
@@ -5757,6 +5899,7 @@
         {
           "default": "",
           "document": "Server SSL certificate alias\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "testcert",
           "member": "string",
           "name": "CertificateAlias",
           "required": true,
@@ -5766,6 +5909,7 @@
         {
           "default": "",
           "document": "Client CA certificate ID of the listener\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cert-xxxx",
           "member": "string",
           "name": "ClientCertificateId",
           "required": true,
@@ -5775,6 +5919,7 @@
         {
           "default": "",
           "document": "Listener authentication mode. Valid values:\n0: one-way authentication;\n1: mutual authentication.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "AuthType",
           "required": true,
@@ -5784,6 +5929,7 @@
         {
           "default": "",
           "document": "Client CA certificate alias\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "testcert",
           "member": "string",
           "name": "ClientCertificateAlias",
           "required": true,
@@ -5793,10 +5939,21 @@
         {
           "default": "",
           "document": "Alias information of multiple client CA certificates.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
           "member": "CertificateAliasInfo",
           "name": "PolyClientCertificateAliasInfo",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to support HTTP3. Values:\n`0`: Do not support HTTP3 access;\n`1`: Support HTTP3 access.\nIf HTTP3 is supported for a connection, the listener will use the port that is originally accessed to UDP, and a UDP listener with the same port cannot be created.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Http3Supported",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -5957,7 +6114,7 @@
         },
         {
           "default": "",
-          "document": "Specifies whether to enable HTTP3. Valid values: `0` (disable HTTP3); `1` (enable HTTP3). Note: If HTTP3 is enabled for a connection, TCP/UDP access will not be allowed. After the connection is created, you cannot change your HTTP3 setting.",
+          "document": "(Disused) HTTP3.0 is supported by default when `IPAddressVersion` is `IPv4`.",
           "example": "0",
           "member": "int64",
           "name": "Http3Supported",
@@ -6706,7 +6863,7 @@
         },
         {
           "default": "",
-          "document": "Scheduling policy:\nrr: round robin;\nwrr: weighted round robin;\nlc: least connections.",
+          "document": "The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).",
           "example": "rr",
           "member": "string",
           "name": "Scheduler",
@@ -6915,7 +7072,7 @@
         },
         {
           "default": "",
-          "document": "Origin server scheduling policy of listeners, which supports round robin (rr), weighted round robin (wrr), and least connections (lc).",
+          "document": "The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).",
           "example": "rr",
           "member": "string",
           "name": "Scheduler",
@@ -6997,6 +7154,7 @@
         {
           "default": "",
           "document": "Listener ID",
+          "example": "listener-o0f3at99",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -7005,6 +7163,7 @@
         {
           "default": "",
           "document": "Connection group ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.",
+          "example": "lg-xxx",
           "member": "string",
           "name": "GroupId",
           "required": false,
@@ -7013,6 +7172,7 @@
         {
           "default": "",
           "document": "Connection ID; Either `ProxyId` or `GroupId` must be set, but you cannot set both.",
+          "example": "link-bjkpdum1",
           "member": "string",
           "name": "ProxyId",
           "required": false,
@@ -7021,6 +7181,7 @@
         {
           "default": "",
           "document": "Listener name",
+          "example": "test10",
           "member": "string",
           "name": "ListenerName",
           "required": false,
@@ -7028,9 +7189,109 @@
         },
         {
           "default": "",
-          "document": "Origin server scheduling policy of listeners",
+          "document": "The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).",
+          "example": "rr",
           "member": "string",
           "name": "Scheduler",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Time interval of origin server health check (unit: seconds). Value range: [5, 300].",
+          "example": "20",
+          "member": "uint64",
+          "name": "DelayLoop",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.",
+          "example": "20",
+          "member": "uint64",
+          "name": "ConnectTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.",
+          "example": "5",
+          "member": "uint64",
+          "name": "HealthyThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.",
+          "example": "1",
+          "member": "uint64",
+          "name": "UnhealthyThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.",
+          "example": "0",
+          "member": "int64",
+          "name": "FailoverSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether the health check is enabled for the origin server. Values: `1` (enabled); `0` (disabled).",
+          "example": "1",
+          "member": "uint64",
+          "name": "HealthCheck",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The health check type. Values: `PORT` (port); `PING` (ping).",
+          "example": "PING",
+          "member": "string",
+          "name": "CheckType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The health probe port.",
+          "example": "8888",
+          "member": "int64",
+          "name": "CheckPort",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The UDP message type. Values: `TEXT` (text). This parameter is used only when `CheckType = PORT`.",
+          "example": "TEXT",
+          "member": "string",
+          "name": "ContextType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The UDP message sent by the health probe port. This parameter is used only when `CheckType = PORT`.",
+          "example": "helloworld",
+          "member": "string",
+          "name": "SendContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The UDP message received by the health probe port. This parameter is used only when `CheckType = PORT`.",
+          "example": "helloworld",
+          "member": "string",
+          "name": "RecvContext",
           "required": false,
           "type": "string"
         }
@@ -7435,6 +7696,16 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Feature bitmap. Valid values:\n`0`: Feature not supported\n`1`: Feature supported\nEach bit in the bitmap represents a feature:\n1st bit: Layer-4 acceleration;\n2nd bit: Layer-7 acceleration;\n3rd bit: HTTP3 access;\n4th bit: IPv6;\n5th bit: Dedicated BGP access;\n6th bit: Non-BGP access;\n7th bit: QoS acceleration.\nNote: This field may return null, indicating that no valid values can be obtained.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "FeatureBitmap",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -7551,6 +7822,16 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Feature bitmap. Valid values:\n`0`: Feature not supported\n`1`: Feature supported\nEach bit in the bitmap represents a feature:\n1st bit: Layer-4 acceleration;\n2nd bit: Layer-7 acceleration;\n3rd bit: HTTP3 access;\n4th bit: IPv6;\n5th bit: Dedicated BGP access;\n6th bit: Non-BGP access;\n7th bit: QoS acceleration.\nNote: this field may return `null`, indicating that no valid values can be obtained.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "FeatureBitmap",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -7645,7 +7926,7 @@
         },
         {
           "default": "",
-          "document": "Concurrence. Unit: requests/second.",
+          "document": "Concurrence. Unit: 10K requests/second.",
           "example": "2",
           "member": "int64",
           "name": "Concurrent",
@@ -7912,6 +8193,16 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Feature bitmap. Valid values:\n`0`: Feature not supported\n`1`: Feature supported\nEach bit in the bitmap represents a feature:\n1st bit: Layer-4 acceleration;\n2nd bit: Layer-7 acceleration;\n3rd bit: HTTP3 access;\n4th bit: IPv6;\n5th bit: Dedicated BGP access;\n6th bit: Non-BGP access;\n7th bit: QoS acceleration.\nNote: This field may return `null`, indicating that no valid value can be obtained.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "FeatureBitmap",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -8076,7 +8367,7 @@
         },
         {
           "default": "",
-          "document": "Origin server role: master (primary origin server); slave (secondary origin server). This parameter is applicable when the primary/secondary origin server mode is enabled for a TCP listener.",
+          "document": "Role of the origin server. Values: `master` (primary origin server); `slave` (secondary origin server). This parameter only takes effect when origin failover is enabled for the listener.",
           "example": "master",
           "member": "string",
           "name": "RealServerFailoverRole",
@@ -8205,6 +8496,7 @@
         {
           "default": "",
           "document": "List of origin server IDs",
+          "example": "[\"rs-fgerw3dt\\n\"]",
           "member": "string",
           "name": "RealServerIds",
           "required": true,
@@ -8367,7 +8659,7 @@
         },
         {
           "default": "",
-          "document": "Forwarding policy of the origin server",
+          "document": "The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).",
           "example": "xx",
           "member": "string",
           "name": "Scheduler",
@@ -8795,7 +9087,7 @@
         },
         {
           "default": "",
-          "document": "Origin server access policy of listeners:\n`rr`: Round robin\n`wrr`: Weighted round robin\n`lc`: Least connection",
+          "document": "The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).",
           "example": "rr",
           "member": "string",
           "name": "Scheduler",
@@ -9039,7 +9331,7 @@
         },
         {
           "default": "",
-          "document": "Origin server access policy of listeners",
+          "document": "The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).",
           "example": "rr",
           "member": "string",
           "name": "Scheduler",
@@ -9085,6 +9377,116 @@
           "name": "SessionPersist",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Time interval of origin server health check (unit: seconds). Value range: [5, 300].\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "20",
+          "member": "uint64",
+          "name": "DelayLoop",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Response timeout of origin server health check (unit: seconds). Value range: [2, 60]. The timeout value shall be less than the time interval for health check DelayLoop.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "20",
+          "member": "uint64",
+          "name": "ConnectTimeout",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Healthy threshold. The number of consecutive successful health checks required before considering an origin server healthy. Value range: 1 - 10.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5",
+          "member": "uint64",
+          "name": "HealthyThreshold",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Unhealthy threshold. The number of consecutive failed health checks required before considering an origin server unhealthy. Value range: 1 - 10.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "UnhealthyThreshold",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the primary/secondary origin server mode for failover. Values: `1` (enabled); `0` (disabled). It’s not available if the origin type is `DOMAIN`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "FailoverSwitch",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the health check is enabled for the origin server. Values: `1` (enabled); `0` (disabled).\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "HealthCheck",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The health check type. Values: `PORT` (port); `PING` (ping).\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "PING",
+          "member": "string",
+          "name": "CheckType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The health probe port.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "8888",
+          "member": "int64",
+          "name": "CheckPort",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The UDP message type. Values: `TEXT` (text). This parameter is used only when `CheckType = PORT`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "TEXT",
+          "member": "string",
+          "name": "ContextType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The UDP message sent by the health probe port. This parameter is used only when `CheckType = PORT`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "helloworld",
+          "member": "string",
+          "name": "SendContext",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The UDP message received by the health probe port. This parameter is used only when `CheckType = PORT`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "helloworld",
+          "member": "string",
+          "name": "RecvContext",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
