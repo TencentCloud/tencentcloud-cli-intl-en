@@ -198,6 +198,12 @@
       "name": "Querying configuration details",
       "output": "DescribeCustomizedConfigListResponse"
     },
+    "DescribeIdleLoadBalancers": {
+      "document": "Idle CLB instances are pay-as-you-go load balancers that, within seven days after the creation, do not have rules configured or the configured rules are not associated with any servers. ",
+      "input": "DescribeIdleLoadBalancersRequest",
+      "name": "Queries the list of CLB instances",
+      "output": "DescribeIdleLoadBalancersResponse"
+    },
     "DescribeLBListeners": {
       "document": "This API is used to query CLB instances bound to the CVM or ENI.",
       "input": "DescribeLBListenersRequest",
@@ -2429,6 +2435,15 @@
           "name": "Period",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Log topic storage type. Valid values: `hot` (STANDARD storage); `cold` (IA storage). Default value: `hot`.",
+          "example": "HOT",
+          "member": "string",
+          "name": "StorageType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2761,7 +2776,7 @@
         },
         {
           "default": "",
-          "document": "Specifies the target domain name. Only one domain name is allowed. This field is invalid when `LocationIds` is specified.",
+          "document": "The domain name associated with the forwarding rule to delete. If the rule is associated with multiple domain names, specify any one of them.",
           "example": "foo.net",
           "member": "string",
           "name": "Domain",
@@ -2770,7 +2785,7 @@
         },
         {
           "default": "",
-          "document": "Forwarding path of the forwarding rule to be deleted. This parameter does not take effect if LocationIds is specified.",
+          "document": "The forwarding path of the forwarding rule to delete.",
           "example": "/bar2",
           "member": "string",
           "name": "Url",
@@ -3503,6 +3518,69 @@
           "document": "Number of configurations.",
           "example": "1",
           "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIdleLoadBalancersRequest": {
+      "document": "DescribeIdleLoadBalancers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Data offset. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned CLB instances. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "CLB instance region",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "LoadBalancerRegion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIdleLoadBalancersResponse": {
+      "document": "DescribeIdleLoadBalancers response structure.",
+      "members": [
+        {
+          "document": "List of idle CLBs\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "IdleLoadBalancer",
+          "name": "IdleLoadBalancers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of idle CLB instances",
+          "example": "5",
+          "member": "uint64",
           "name": "TotalCount",
           "required": true,
           "type": "int",
@@ -4636,7 +4714,7 @@
         },
         {
           "default": "",
-          "document": "Health check status code (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners). Value range: 1-31. Default value: 31.\n1 means that the return value of 1xx after detection means healthy, 2 for returning 2xx for healthy, 4 for returning 3xx for healthy, 8 for returning 4xx for healthy, and 16 for returning 5xx for healthy. If you want multiple return codes to represent healthy, sum up the corresponding values. Note: The HTTP health check mode of TCP listeners only supports specifying one kind of health check status code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Health check status code (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners). Value range: 1-31. Default value: 31.\n`1`: Returns code 1xx for healthy status. `2`: Returns code 2xx for healthy status. `4`: Returns code 3xx for healthy status. `8`: Returns code 4xx for healthy status. `16`: Returns code 5xx for healthy status. If you want multiple return codes to represent healthy, sum up the corresponding values. \nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "504",
           "member": "int64",
           "name": "HttpCode",
@@ -4656,7 +4734,7 @@
         },
         {
           "default": "",
-          "document": "Health check domain name (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The target domain name for health check. It’s applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners. It’s required for TCP listeners.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "www.xxxx.com",
           "member": "string",
           "name": "HttpCheckDomain",
@@ -4756,6 +4834,82 @@
         }
       ],
       "usage": "both"
+    },
+    "IdleLoadBalancer": {
+      "document": "ID of the idle CLB instance",
+      "members": [
+        {
+          "default": "",
+          "document": "CLB instance ID",
+          "example": "lb-abcedf",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CLB instance name",
+          "example": "test-name",
+          "member": "string",
+          "name": "LoadBalancerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CLB instance region",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CLB instance VIP",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The reason why the load balancer is considered idle. `NO_RULES`: No rules configured. `NO_RS`: The rules are not associated with servers.",
+          "example": "NO_RULES",
+          "member": "string",
+          "name": "IdleReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CLB instance status, including:\n`0`: Creating; `1`: Running.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "CLB type. Value range: `1` (CLB); `0` (classic CLB).",
+          "example": "1",
+          "member": "uint64",
+          "name": "Forward",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "InternetAccessible": {
       "document": "Network billing mode based on maximum outbound bandwidth",

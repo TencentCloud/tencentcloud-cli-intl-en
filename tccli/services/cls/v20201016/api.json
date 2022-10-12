@@ -3765,6 +3765,36 @@
           "required": false,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Syslog protocol. Valid values: `tcp`, `udp`.\nThis field can be used when you create/modify collection rule configurations.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "tcp",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Listening address and port specified by the syslog collection. Format: [ip]:[port]. Example: 127.0.0.1:9000.\nThis field can be used when you create/modify collection rule configurations.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "127.0.0.1:9000",
+          "member": "string",
+          "name": "Address",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "`rfc3164`: Resolve logs by using the RFC3164 protocol during the syslog collection.\n`rfc5424`: Resolve logs by using the RFC5424 protocol during the syslog collection.\n`auto`: Automatically match either the RFC3164 or RFC5424 protocol.\nThis field can be used when you create/modify collection rule configurations.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "RFC3164",
+          "member": "string",
+          "name": "ParseProtocol",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"

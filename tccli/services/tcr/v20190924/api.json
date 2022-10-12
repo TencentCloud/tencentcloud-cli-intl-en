@@ -6,11 +6,35 @@
       "name": "Verifies instance information",
       "output": "CheckInstanceResponse"
     },
+    "CheckInstanceName": {
+      "document": "This API is used to check whether the name of the instance to be created meets the specifications.",
+      "input": "CheckInstanceNameRequest",
+      "name": "Checks whether the name of the instance to be created meets the specifications",
+      "output": "CheckInstanceNameResponse"
+    },
+    "CreateImageAccelerationService": {
+      "document": "This API is used to create an image acceleration service.",
+      "input": "CreateImageAccelerationServiceRequest",
+      "name": "Creates an image acceleration service",
+      "output": "CreateImageAccelerationServiceResponse"
+    },
     "CreateImmutableTagRules": {
       "document": "This API is used to create the tag immutability rule.",
       "input": "CreateImmutableTagRulesRequest",
       "name": "Creates tag immutability rule",
       "output": "CreateImmutableTagRulesResponse"
+    },
+    "CreateInstance": {
+      "document": "This API is used to create an instance.",
+      "input": "CreateInstanceRequest",
+      "name": "Creates an instance",
+      "output": "CreateInstanceResponse"
+    },
+    "CreateInstanceCustomizedDomain": {
+      "document": "This API is used to create a custom domain name.",
+      "input": "CreateInstanceCustomizedDomainRequest",
+      "name": "Creates a custom domain name",
+      "output": "CreateInstanceCustomizedDomainResponse"
     },
     "CreateInstanceToken": {
       "document": "This API is used to create a temporary or long-term instance access credential.",
@@ -24,11 +48,77 @@
       "name": "Creates multiple public network access allowlist policies of the instance",
       "output": "CreateMultipleSecurityPolicyResponse"
     },
+    "CreateNamespace": {
+      "document": "This API is used to create a namespace in an Enterprise Edition instance.",
+      "input": "CreateNamespaceRequest",
+      "name": "Creates a namespace",
+      "output": "CreateNamespaceResponse"
+    },
     "CreateReplicationInstance": {
       "document": "This API is used to create a replication instance.",
       "input": "CreateReplicationInstanceRequest",
       "name": "Creates a replication instance",
       "output": "CreateReplicationInstanceResponse"
+    },
+    "CreateRepository": {
+      "document": "This API is used to create an image repository in an Enterprise Edition instance.",
+      "input": "CreateRepositoryRequest",
+      "name": "Creates an image repository",
+      "output": "CreateRepositoryResponse"
+    },
+    "CreateSecurityPolicies": {
+      "document": "This API is used to create public network access allowlist policies for an instance.",
+      "input": "CreateSecurityPoliciesRequest",
+      "name": "Creates public network access allowlist policies for an instance",
+      "output": "CreateSecurityPoliciesResponse"
+    },
+    "CreateSecurityPolicy": {
+      "document": "This API is used to create a public network access allowlist policy for an instance.",
+      "input": "CreateSecurityPolicyRequest",
+      "name": "Creates a public network access allowlist policy for an instance",
+      "output": "CreateSecurityPolicyResponse"
+    },
+    "CreateSignature": {
+      "document": "This API is used to create a signature for an image tag.",
+      "input": "CreateSignatureRequest",
+      "name": "Creates an image signature",
+      "output": "CreateSignatureResponse"
+    },
+    "CreateSignaturePolicy": {
+      "document": "This API is used to create an image signature policy.",
+      "input": "CreateSignaturePolicyRequest",
+      "name": "Creates a signature policy",
+      "output": "CreateSignaturePolicyResponse"
+    },
+    "CreateTagRetentionExecution": {
+      "document": "This API is used to execute tag retention manually.",
+      "input": "CreateTagRetentionExecutionRequest",
+      "name": "Executes tag retention manually",
+      "output": "CreateTagRetentionExecutionResponse"
+    },
+    "CreateTagRetentionRule": {
+      "document": "This API is used to create a tag retention rule.",
+      "input": "CreateTagRetentionRuleRequest",
+      "name": "Creates a tag retention rule",
+      "output": "CreateTagRetentionRuleResponse"
+    },
+    "CreateWebhookTrigger": {
+      "document": "This API is used to create a trigger.",
+      "input": "CreateWebhookTriggerRequest",
+      "name": "Creates a trigger",
+      "output": "CreateWebhookTriggerResponse"
+    },
+    "DeleteImage": {
+      "document": "This API is used to delete the specified image.",
+      "input": "DeleteImageRequest",
+      "name": "Deletes the specified image",
+      "output": "DeleteImageResponse"
+    },
+    "DeleteImageAccelerateService": {
+      "document": "This API is used to delete an image acceleration service.",
+      "input": "DeleteImageAccelerateServiceRequest",
+      "name": "Deletes an image acceleration service",
+      "output": "DeleteImageAccelerateServiceResponse"
     },
     "DeleteImmutableTagRules": {
       "document": " This API is used to delete the tag immutability rule.",
@@ -36,17 +126,173 @@
       "name": "Deletes tag immutability rule",
       "output": "DeleteImmutableTagRulesResponse"
     },
+    "DeleteInstance": {
+      "document": "This API is used to delete a TCR Enterprise Edition instance.",
+      "input": "DeleteInstanceRequest",
+      "name": "Deletes an instance",
+      "output": "DeleteInstanceResponse"
+    },
+    "DeleteInstanceCustomizedDomain": {
+      "document": "This API is used to delete a custom domain name.",
+      "input": "DeleteInstanceCustomizedDomainRequest",
+      "name": "Deletes a custom domain name",
+      "output": "DeleteInstanceCustomizedDomainResponse"
+    },
+    "DeleteInstanceToken": {
+      "document": "This API is used to delete a long-term access credential.",
+      "input": "DeleteInstanceTokenRequest",
+      "name": "Deletes a long-term access credential",
+      "output": "DeleteInstanceTokenResponse"
+    },
     "DeleteMultipleSecurityPolicy": {
       "document": "This API is used to delete multiple public network access allowlist policies of the instance.",
       "input": "DeleteMultipleSecurityPolicyRequest",
       "name": "Deletes multiple public network access allowlist policies of the instance",
       "output": "DeleteMultipleSecurityPolicyResponse"
     },
+    "DeleteNamespace": {
+      "document": "This API is used to delete a namespace.",
+      "input": "DeleteNamespaceRequest",
+      "name": "Deletes a namespace",
+      "output": "DeleteNamespaceResponse"
+    },
+    "DeleteReplicationInstance": {
+      "document": "This API is used to delete a replica instance.",
+      "input": "DeleteReplicationInstanceRequest",
+      "name": "Deletes a replica instance",
+      "output": "DeleteReplicationInstanceResponse"
+    },
+    "DeleteRepository": {
+      "document": "This API is used to delete an image repository.",
+      "input": "DeleteRepositoryRequest",
+      "name": "Deletes an image repository",
+      "output": "DeleteRepositoryResponse"
+    },
+    "DeleteRepositoryTags": {
+      "document": "This API is used to batch delete repository tags in an Enterprise Edition instance.",
+      "input": "DeleteRepositoryTagsRequest",
+      "name": "Batch deletes repository tags",
+      "output": "DeleteRepositoryTagsResponse"
+    },
+    "DeleteSecurityPolicy": {
+      "document": "This API is used to delete a public network access allowlist policy of an instance.",
+      "input": "DeleteSecurityPolicyRequest",
+      "name": "Deletes a public network access allowlist policy of an instance",
+      "output": "DeleteSecurityPolicyResponse"
+    },
+    "DeleteSignaturePolicy": {
+      "document": "This API is used to delete a namespace signing policy.",
+      "input": "DeleteSignaturePolicyRequest",
+      "name": "Deletes a namespace signing policy",
+      "output": "DeleteSignaturePolicyResponse"
+    },
+    "DeleteTagRetentionRule": {
+      "document": "This API is used to delete a tag retention rule.",
+      "input": "DeleteTagRetentionRuleRequest",
+      "name": "Deletes a tag retention rule",
+      "output": "DeleteTagRetentionRuleResponse"
+    },
+    "DeleteWebhookTrigger": {
+      "document": "This API is used to delete a trigger.",
+      "input": "DeleteWebhookTriggerRequest",
+      "name": "Deletes a trigger",
+      "output": "DeleteWebhookTriggerResponse"
+    },
+    "DescribeChartDownloadInfo": {
+      "document": "This API is used to return the chart download information in an Enterprise Edition instance.",
+      "input": "DescribeChartDownloadInfoRequest",
+      "name": "Queries the download information of a chart",
+      "output": "DescribeChartDownloadInfoResponse"
+    },
+    "DescribeExternalEndpointStatus": {
+      "document": "This API is used to query the public network access entry status of an instance.",
+      "input": "DescribeExternalEndpointStatusRequest",
+      "name": "Queries the public network access entry status of an instance",
+      "output": "DescribeExternalEndpointStatusResponse"
+    },
+    "DescribeGCJobs": {
+      "document": "This API is used to query the last ten garbage collection (GC) records.",
+      "input": "DescribeGCJobsRequest",
+      "name": "Queries the GC history",
+      "output": "DescribeGCJobsResponse"
+    },
+    "DescribeImageAccelerateService": {
+      "document": "This API is used to query the status of an image acceleration service.",
+      "input": "DescribeImageAccelerateServiceRequest",
+      "name": "Queries the status of an image acceleration service.",
+      "output": "DescribeImageAccelerateServiceResponse"
+    },
+    "DescribeImageManifests": {
+      "document": "This API is used to query the manifest information of a container image.",
+      "input": "DescribeImageManifestsRequest",
+      "name": "Queries the manifest information of a container image",
+      "output": "DescribeImageManifestsResponse"
+    },
+    "DescribeImages": {
+      "document": "This API is used to query the list of image tags or the information of the specified container image.",
+      "input": "DescribeImagesRequest",
+      "name": "Queries the information of a container image",
+      "output": "DescribeImagesResponse"
+    },
     "DescribeImmutableTagRules": {
       "document": "This API is used to list the tag immutability rule.",
       "input": "DescribeImmutableTagRulesRequest",
       "name": "Lists tag immutability rule",
       "output": "DescribeImmutableTagRulesResponse"
+    },
+    "DescribeInstanceAll": {
+      "document": "This API is used to query the information of all instances.",
+      "input": "DescribeInstanceAllRequest",
+      "name": "Queries the information of all instances",
+      "output": "DescribeInstanceAllResponse"
+    },
+    "DescribeInstanceAllNamespaces": {
+      "document": "This API is used to query the list of all instance namespaces.",
+      "input": "DescribeInstanceAllNamespacesRequest",
+      "name": "Queries all instance namespaces",
+      "output": "DescribeInstanceAllNamespacesResponse"
+    },
+    "DescribeInstanceCustomizedDomain": {
+      "document": "This API is used to query the list of custom domain names of an instance.",
+      "input": "DescribeInstanceCustomizedDomainRequest",
+      "name": "Queries the list of custom domain names of an instance",
+      "output": "DescribeInstanceCustomizedDomainResponse"
+    },
+    "DescribeInstanceStatus": {
+      "document": "This API is used to query the current status and process information of an instance.",
+      "input": "DescribeInstanceStatusRequest",
+      "name": "Queries the instance status",
+      "output": "DescribeInstanceStatusResponse"
+    },
+    "DescribeInstanceToken": {
+      "document": "This API is used to query the information of long-term access credentials.",
+      "input": "DescribeInstanceTokenRequest",
+      "name": "Queries the information of long-term access credentials",
+      "output": "DescribeInstanceTokenResponse"
+    },
+    "DescribeInstances": {
+      "document": "This API is used to query the instance information.",
+      "input": "DescribeInstancesRequest",
+      "name": "Queries the instance information",
+      "output": "DescribeInstancesResponse"
+    },
+    "DescribeInternalEndpoints": {
+      "document": "This API is used to query the VPC URLs for private network access to an instance.",
+      "input": "DescribeInternalEndpointsRequest",
+      "name": "Queries the VPC URLs for private network access to an instance",
+      "output": "DescribeInternalEndpointsResponse"
+    },
+    "DescribeNamespaces": {
+      "document": "This API is used to query the namespace list or the information of the specified namespace.",
+      "input": "DescribeNamespacesRequest",
+      "name": "Queries the namespace information",
+      "output": "DescribeNamespacesResponse"
+    },
+    "DescribeRegions": {
+      "document": "This API is used to get the available regions in TCR.",
+      "input": "DescribeRegionsRequest",
+      "name": "Lists the regions where TCR is available",
+      "output": "DescribeRegionsResponse"
     },
     "DescribeReplicationInstanceCreateTasks": {
       "document": "This API is used to query the task status of creating a replication instance.",
@@ -66,6 +312,66 @@
       "name": "Queries the list of replication instances",
       "output": "DescribeReplicationInstancesResponse"
     },
+    "DescribeRepositories": {
+      "document": "This API is used to query the image repository list or the information of the specified image repository.",
+      "input": "DescribeRepositoriesRequest",
+      "name": "Queries the image repository information",
+      "output": "DescribeRepositoriesResponse"
+    },
+    "DescribeSecurityPolicies": {
+      "document": "This API is used to query the public network access allowlist policies of an instance.",
+      "input": "DescribeSecurityPoliciesRequest",
+      "name": "Queries the public network access allowlist policies of an instance",
+      "output": "DescribeSecurityPoliciesResponse"
+    },
+    "DescribeTagRetentionExecution": {
+      "document": "This API is used to query tag retention execution records.",
+      "input": "DescribeTagRetentionExecutionRequest",
+      "name": "Queries tag retention execution records",
+      "output": "DescribeTagRetentionExecutionResponse"
+    },
+    "DescribeTagRetentionExecutionTask": {
+      "document": "This API is used to query tag retention execution tasks.",
+      "input": "DescribeTagRetentionExecutionTaskRequest",
+      "name": "Queries tag retention execution tasks",
+      "output": "DescribeTagRetentionExecutionTaskResponse"
+    },
+    "DescribeTagRetentionRules": {
+      "document": "This API is used to query tag retention rules.",
+      "input": "DescribeTagRetentionRulesRequest",
+      "name": "Queries tag retention rules",
+      "output": "DescribeTagRetentionRulesResponse"
+    },
+    "DescribeWebhookTrigger": {
+      "document": "This API is used to query triggers.",
+      "input": "DescribeWebhookTriggerRequest",
+      "name": "Queries triggers",
+      "output": "DescribeWebhookTriggerResponse"
+    },
+    "DescribeWebhookTriggerLog": {
+      "document": "This API is used to get trigger logs.",
+      "input": "DescribeWebhookTriggerLogRequest",
+      "name": "Gets trigger logs",
+      "output": "DescribeWebhookTriggerLogResponse"
+    },
+    "DownloadHelmChart": {
+      "document": "This API is used to download a Helm chart in TCR.",
+      "input": "DownloadHelmChartRequest",
+      "name": "Downloads a Helm chart",
+      "output": "DownloadHelmChartResponse"
+    },
+    "ManageExternalEndpoint": {
+      "document": "This API is used to manage the public network access of an instance.",
+      "input": "ManageExternalEndpointRequest",
+      "name": "Manages the public network access of an instance",
+      "output": "ManageExternalEndpointResponse"
+    },
+    "ManageInternalEndpoint": {
+      "document": "This API is used to manage VPC URLs for private network access to an instance.",
+      "input": "ManageInternalEndpointRequest",
+      "name": "Manages VPC URLs for private network access to an instance",
+      "output": "ManageInternalEndpointResponse"
+    },
     "ManageReplication": {
       "document": "This API is used to manage the instance synchronization rule.",
       "input": "ManageReplicationRequest",
@@ -83,6 +389,48 @@
       "input": "ModifyInstanceRequest",
       "name": "Updates instance information",
       "output": "ModifyInstanceResponse"
+    },
+    "ModifyInstanceToken": {
+      "document": "This API is used to update the status of the specified long-term access credential in an instance.",
+      "input": "ModifyInstanceTokenRequest",
+      "name": "Updates a long-term access credential in an instance",
+      "output": "ModifyInstanceTokenResponse"
+    },
+    "ModifyNamespace": {
+      "document": "This API is used to update the information of a namespace. Currently, only the namespace access level can be modified.",
+      "input": "ModifyNamespaceRequest",
+      "name": "Updates the namespace information",
+      "output": "ModifyNamespaceResponse"
+    },
+    "ModifyRepository": {
+      "document": "This API is used to update the information of an image repository. The repository description can be modified.",
+      "input": "ModifyRepositoryRequest",
+      "name": "Updates the image repository information",
+      "output": "ModifyRepositoryResponse"
+    },
+    "ModifySecurityPolicy": {
+      "document": "This API is used to update the public network access allowlist of an instance.",
+      "input": "ModifySecurityPolicyRequest",
+      "name": "Updates the public network access allowlist of an instance",
+      "output": "ModifySecurityPolicyResponse"
+    },
+    "ModifyTagRetentionRule": {
+      "document": "This API is used to update a tag retention rule.",
+      "input": "ModifyTagRetentionRuleRequest",
+      "name": "Updates a tag retention rule",
+      "output": "ModifyTagRetentionRuleResponse"
+    },
+    "ModifyWebhookTrigger": {
+      "document": "This API is used to update a trigger.",
+      "input": "ModifyWebhookTriggerRequest",
+      "name": "Updates a trigger",
+      "output": "ModifyWebhookTriggerResponse"
+    },
+    "RenewInstance": {
+      "document": "This API is used to renew a prepaid instance or change the billing mode from pay-as-you-go billing to monthly subscription billing.",
+      "input": "RenewInstanceRequest",
+      "name": "Renews an instance",
+      "output": "RenewInstanceResponse"
     }
   },
   "metadata": {
@@ -91,6 +439,81 @@
     "serviceShortName": "tcr"
   },
   "objects": {
+    "AccessVpc": {
+      "document": "Private network access information",
+      "members": [
+        {
+          "default": "",
+          "document": "VPC ID",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Subnet ID",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private network access status",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private network access IP",
+          "member": "string",
+          "name": "AccessIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CheckInstanceNameRequest": {
+      "document": "CheckInstanceName request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Name of the instance to be created",
+          "member": "string",
+          "name": "RegistryName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckInstanceNameResponse": {
+      "document": "CheckInstanceName response structure.",
+      "members": [
+        {
+          "document": "Verification result. Valid values: true: Valid; false: Invalid.",
+          "member": "bool",
+          "name": "IsValidated",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CheckInstanceRequest": {
       "document": "CheckInstance request structure.",
       "members": [
@@ -125,6 +548,87 @@
           "name": "RegionId",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateImageAccelerationServiceRequest": {
+      "document": "CreateImageAccelerationService request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the VPC where the CFS file system to be created resides",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the subnet where the CFS file system to be created resides",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Storage class of the CFS file system to be created. Valid values: SD: Standard; HP: High-Performance.",
+          "member": "string",
+          "name": "StorageType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Permission group ID",
+          "member": "string",
+          "name": "PGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "AZ name, such as `ap-beijing-1`. For more information, see the list of regions and AZs in Overview.",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cloud tag description",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateImageAccelerationServiceResponse": {
+      "document": "CreateImageAccelerationService response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -172,6 +676,123 @@
     "CreateImmutableTagRulesResponse": {
       "document": "CreateImmutableTagRules response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceCustomizedDomainRequest": {
+      "document": "CreateInstanceCustomizedDomain request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Primary instance ID",
+          "example": "tcr-test123",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom domain name",
+          "example": "test.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Certificate ID",
+          "example": "kWGTVuU3",
+          "member": "string",
+          "name": "CertificateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceCustomizedDomainResponse": {
+      "document": "CreateInstanceCustomizedDomain response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceRequest": {
+      "document": "CreateInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Enterprise Edition instance name",
+          "example": "tcr-test",
+          "member": "string",
+          "name": "RegistryName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Enterprise Edition instance type. Valid values: basic: Basic; standard: Standard; premium: Premium.",
+          "example": "basic",
+          "member": "string",
+          "name": "RegistryType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cloud tag description",
+          "example": "test",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid values: 0: Pay-as-you-go billing; 1: Prepaid. Default value: 0.",
+          "example": "1",
+          "member": "int64",
+          "name": "RegistryChargeType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to sync TCR cloud tags to the COS bucket",
+          "example": "false",
+          "member": "bool",
+          "name": "SyncTag",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceResponse": {
+      "document": "CreateInstance response structure.",
+      "members": [
+        {
+          "document": "Enterprise Edition instance ID",
+          "example": "tcr-123456",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -307,6 +928,60 @@
       ],
       "type": "object"
     },
+    "CreateNamespaceRequest": {
+      "document": "CreateNamespace request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-okmj78",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name, which can contain 2–30 lowercase letters, digits, and separators (\".\", \"_\", and \"-\") but can neither start or end with a separator nor contain consecutive separators.",
+          "example": "mytest",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to make public. Valid values: true: Yes; false: No.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsPublic",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Cloud tag description",
+          "example": "无",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateNamespaceResponse": {
+      "document": "CreateNamespace response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateReplicationInstanceRequest": {
       "document": "CreateReplicationInstance request structure.",
       "members": [
@@ -370,6 +1045,591 @@
       ],
       "type": "object"
     },
+    "CreateRepositoryRequest": {
+      "document": "CreateRepository request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-okmju7",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "team-01",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Repository name",
+          "example": "nginx",
+          "member": "string",
+          "name": "RepositoryName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brief repository description",
+          "example": "this is brief description",
+          "member": "string",
+          "name": "BriefDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Detailed repository description",
+          "example": "this is description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRepositoryResponse": {
+      "document": "CreateRepository response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSecurityPoliciesRequest": {
+      "document": "CreateSecurityPolicies request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "192.168.0.0/24",
+          "member": "string",
+          "name": "CidrBlock",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSecurityPoliciesResponse": {
+      "document": "CreateSecurityPolicies response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSecurityPolicyRequest": {
+      "document": "CreateSecurityPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "192.168.0.0/24",
+          "example": "192.168.0.0/24",
+          "member": "string",
+          "name": "CidrBlock",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "example": "test",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSecurityPolicyResponse": {
+      "document": "CreateSecurityPolicy response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSignaturePolicyRequest": {
+      "document": "CreateSignaturePolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Policy name",
+          "example": "library加签",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "library",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "KMS key",
+          "example": "08408a30-0416-11ed-abdc-52540036b432",
+          "member": "string",
+          "name": "KmsId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region of the KMS key",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "KmsRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom domain name. If this parameter is left empty, the default domain name of the TCR instance will be used to generate the signature.",
+          "example": "tcr.tencentcloudcr.com",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to disable the signing policy. Default value: false.",
+          "example": "false",
+          "member": "bool",
+          "name": "Disabled",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSignaturePolicyResponse": {
+      "document": "CreateSignaturePolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSignatureRequest": {
+      "document": "CreateSignature request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-okmju7",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "library",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Repository name",
+          "example": "nginx",
+          "member": "string",
+          "name": "RepositoryName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag name",
+          "example": "v1.2.0",
+          "member": "string",
+          "name": "ImageVersion",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSignatureResponse": {
+      "document": "CreateSignature response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTagRetentionExecutionRequest": {
+      "document": "CreateTagRetentionExecution request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Primary instance ID",
+          "example": "tcr-test123",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag retention rule ID",
+          "example": "1",
+          "member": "int64",
+          "name": "RetentionId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether the execution is simulated. Default value: false (not simulated)",
+          "example": "false",
+          "member": "bool",
+          "name": "DryRun",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTagRetentionExecutionResponse": {
+      "document": "CreateTagRetentionExecution response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTagRetentionRuleRequest": {
+      "document": "CreateTagRetentionRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Primary instance ID",
+          "example": "tcr-test123",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace ID",
+          "example": "1",
+          "member": "int64",
+          "name": "NamespaceId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Retention policy",
+          "example": "无",
+          "member": "RetentionRule",
+          "name": "RetentionRule",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Execution cycle. Valid values: manual, daily, weekly, monthly.",
+          "example": "manual",
+          "member": "string",
+          "name": "CronSetting",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to disable the rule. Default value: false.",
+          "example": "false",
+          "member": "bool",
+          "name": "Disabled",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTagRetentionRuleResponse": {
+      "document": "CreateTagRetentionRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateWebhookTriggerRequest": {
+      "document": "CreateWebhookTrigger request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-7s2d14fn",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Trigger parameter",
+          "example": "无",
+          "member": "WebhookTrigger",
+          "name": "Trigger",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "example": "someNs",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateWebhookTriggerResponse": {
+      "document": "CreateWebhookTrigger response structure.",
+      "members": [
+        {
+          "document": "Newly created trigger",
+          "example": "无",
+          "member": "WebhookTrigger",
+          "name": "Trigger",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CustomizedDomainInfo": {
+      "document": "Custom domain name information",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Certificate ID",
+          "example": "46Gddd",
+          "member": "string",
+          "name": "CertId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain name",
+          "example": "test.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Domain name creation status. Valid values: SUCCESS, FAILURE, CREATING, DELETING.",
+          "example": "Success",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DeleteImageAccelerateServiceRequest": {
+      "document": "DeleteImageAccelerateService request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteImageAccelerateServiceResponse": {
+      "document": "DeleteImageAccelerateService response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteImageRequest": {
+      "document": "DeleteImage request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image repository name",
+          "member": "string",
+          "name": "RepositoryName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image tag",
+          "member": "string",
+          "name": "ImageVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteImageResponse": {
+      "document": "DeleteImage response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteImmutableTagRulesRequest": {
       "document": "DeleteImmutableTagRules request structure.",
       "members": [
@@ -405,6 +1665,130 @@
     },
     "DeleteImmutableTagRulesResponse": {
       "document": "DeleteImmutableTagRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceCustomizedDomainRequest": {
+      "document": "DeleteInstanceCustomizedDomain request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Primary instance ID",
+          "example": "tcr-test123",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom domain name",
+          "example": "test.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Certificate ID",
+          "example": "kWGTVuU3",
+          "member": "string",
+          "name": "CertificateId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceCustomizedDomainResponse": {
+      "document": "DeleteInstanceCustomizedDomain response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceRequest": {
+      "document": "DeleteInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-abc123",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to delete the bucket. Default value: false.",
+          "example": "true",
+          "member": "bool",
+          "name": "DeleteBucket",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the `dryRun` mode. Default value: false.",
+          "example": "false",
+          "member": "bool",
+          "name": "DryRun",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceResponse": {
+      "document": "DeleteInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceTokenRequest": {
+      "document": "DeleteInstanceToken request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Access credential ID",
+          "member": "string",
+          "name": "TokenId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceTokenResponse": {
+      "document": "DeleteInstanceToken response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -460,6 +1844,708 @@
       ],
       "type": "object"
     },
+    "DeleteNamespaceRequest": {
+      "document": "DeleteNamespace request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-okmj78",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "mytest",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteNamespaceResponse": {
+      "document": "DeleteNamespace response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteReplicationInstanceRequest": {
+      "document": "DeleteReplicationInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-12345",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Replica instance ID",
+          "example": "tcr-12345-5",
+          "member": "string",
+          "name": "ReplicationRegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Region ID of the replica instance",
+          "example": "5",
+          "member": "uint64",
+          "name": "ReplicationRegionId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteReplicationInstanceResponse": {
+      "document": "DeleteReplicationInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRepositoryRequest": {
+      "document": "DeleteRepository request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-okmj78",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "test",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image repository name",
+          "example": "mytest",
+          "member": "string",
+          "name": "RepositoryName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRepositoryResponse": {
+      "document": "DeleteRepository response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRepositoryTagsRequest": {
+      "document": "DeleteRepositoryTags request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-xxx",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "demo",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Repository name",
+          "example": "Nginx",
+          "member": "string",
+          "name": "RepositoryName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of tags. Up to 20 tags can be returned for a request.",
+          "example": "[\"tag1\", \"tag2\"]",
+          "member": "string",
+          "name": "Tags",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRepositoryTagsResponse": {
+      "document": "DeleteRepositoryTags response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSecurityPolicyRequest": {
+      "document": "DeleteSecurityPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Allowlist ID",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyIndex",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Allowlist version",
+          "example": "10",
+          "member": "string",
+          "name": "PolicyVersion",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSecurityPolicyResponse": {
+      "document": "DeleteSecurityPolicy response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSignaturePolicyRequest": {
+      "document": "DeleteSignaturePolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-okmj78",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "library",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSignaturePolicyResponse": {
+      "document": "DeleteSignaturePolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTagRetentionRuleRequest": {
+      "document": "DeleteTagRetentionRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Primary instance ID",
+          "example": "tcr-test123",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag retention rule ID",
+          "example": "1",
+          "member": "int64",
+          "name": "RetentionId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTagRetentionRuleResponse": {
+      "document": "DeleteTagRetentionRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteWebhookTriggerRequest": {
+      "document": "DeleteWebhookTrigger request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Trigger ID",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteWebhookTriggerResponse": {
+      "document": "DeleteWebhookTrigger response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeChartDownloadInfoRequest": {
+      "document": "DescribeChartDownloadInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "example": "testgroup",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Chart name",
+          "example": "mychart",
+          "member": "string",
+          "name": "ChartName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Chart version",
+          "example": "1.0",
+          "member": "string",
+          "name": "ChartVersion",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeChartDownloadInfoResponse": {
+      "document": "DescribeChartDownloadInfo response structure.",
+      "members": [
+        {
+          "document": "Presigned URL for download",
+          "example": "https://cos.com",
+          "member": "string",
+          "name": "PreSignedDownloadURL",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeExternalEndpointStatusRequest": {
+      "document": "DescribeExternalEndpointStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test123",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeExternalEndpointStatusResponse": {
+      "document": "DescribeExternalEndpointStatus response structure.",
+      "members": [
+        {
+          "document": "Public network access status. Valid values: Opening, Opened, Closed.",
+          "example": "Opened",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Reason\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "error",
+          "member": "string",
+          "name": "Reason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGCJobsRequest": {
+      "document": "DescribeGCJobs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGCJobsResponse": {
+      "document": "DescribeGCJobs response structure.",
+      "members": [
+        {
+          "document": "List of GC jobs",
+          "example": "无",
+          "member": "GCJobInfo",
+          "name": "Jobs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImageAccelerateServiceRequest": {
+      "document": "DescribeImageAccelerateService request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImageAccelerateServiceResponse": {
+      "document": "DescribeImageAccelerateService response structure.",
+      "members": [
+        {
+          "document": "Image acceleration status",
+          "member": "string",
+          "name": "Status",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "CFS VIP",
+          "member": "string",
+          "name": "CFSVIP",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to enable",
+          "member": "bool",
+          "name": "IsEnable",
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImageManifestsRequest": {
+      "document": "DescribeImageManifests request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image repository name",
+          "member": "string",
+          "name": "RepositoryName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image tag",
+          "member": "string",
+          "name": "ImageVersion",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImageManifestsResponse": {
+      "document": "DescribeImageManifests response structure.",
+      "members": [
+        {
+          "document": "Image manifest information",
+          "member": "string",
+          "name": "Manifest",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Image configuration information",
+          "member": "string",
+          "name": "Config",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImagesRequest": {
+      "document": "DescribeImages request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-okmj78",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "team-01",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image repository name",
+          "example": "nginx",
+          "member": "string",
+          "name": "RepositoryName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image tag specified for fuzzy search",
+          "example": "1.0",
+          "member": "string",
+          "name": "ImageVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page, which is used for pagination. Default value: 20.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number. Default value: 1.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Image digest specified for search",
+          "example": "sha256:a1801b843b1bfaf77c501e7a6d3f709401a1e0c83863037fa3aab063a",
+          "member": "string",
+          "name": "Digest",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImagesResponse": {
+      "document": "DescribeImages response structure.",
+      "members": [
+        {
+          "document": "List of container images",
+          "example": "无",
+          "member": "TcrImageInfo",
+          "name": "ImageInfoList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of container images",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeImmutableTagRulesRequest": {
       "document": "DescribeImmutableTagRules request structure.",
       "members": [
@@ -503,6 +2589,503 @@
           "name": "Total",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceAllNamespacesRequest": {
+      "document": "DescribeInstanceAllNamespaces request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeInstanceAllNamespacesResponse": {
+      "document": "DescribeInstanceAllNamespaces response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceAllRequest": {
+      "document": "DescribeInstanceAll request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of instance IDs (if it is empty,\nit indicates to get all instances under the current account)",
+          "example": "tcr-xxxxxxxx",
+          "member": "string",
+          "name": "Registryids",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of output entries. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filters",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to get the instances in all regions. Default value: False.",
+          "example": "false",
+          "member": "bool",
+          "name": "AllRegion",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceAllResponse": {
+      "document": "DescribeInstanceAll response structure.",
+      "members": [
+        {
+          "document": "Total number of instances",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of instances\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Registry",
+          "name": "Registries",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceCustomizedDomainRequest": {
+      "document": "DescribeInstanceCustomizedDomain request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Primary instance ID",
+          "example": "tcr-test123",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pagination limit",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceCustomizedDomainResponse": {
+      "document": "DescribeInstanceCustomizedDomain response structure.",
+      "members": [
+        {
+          "document": "List of domain names\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CustomizedDomainInfo",
+          "name": "DomainInfoList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceStatusRequest": {
+      "document": "DescribeInstanceStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Array of instance IDs",
+          "member": "string",
+          "name": "RegistryIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceStatusResponse": {
+      "document": "DescribeInstanceStatus response structure.",
+      "members": [
+        {
+          "document": "List of instance statuses\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "RegistryStatus",
+          "name": "RegistryStatusSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceTokenRequest": {
+      "document": "DescribeInstanceToken request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceTokenResponse": {
+      "document": "DescribeInstanceToken response structure.",
+      "members": [
+        {
+          "document": "Total number of long-term access credentials",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of long-term access credentials",
+          "member": "TcrInstanceToken",
+          "name": "Tokens",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesRequest": {
+      "document": "DescribeInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of instance IDs (if it is empty,\nit indicates to get all instances under the current account)",
+          "member": "string",
+          "name": "Registryids",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0.",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of output entries. Default value: 20. Maximum value: 100.",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filters",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to get the instances in all regions. Default value: False.",
+          "member": "bool",
+          "name": "AllRegion",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesResponse": {
+      "document": "DescribeInstances response structure.",
+      "members": [
+        {
+          "document": "Total number of instances",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of instances\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "Registry",
+          "name": "Registries",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInternalEndpointsRequest": {
+      "document": "DescribeInternalEndpoints request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-xxxx",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInternalEndpointsResponse": {
+      "document": "DescribeInternalEndpoints response structure.",
+      "members": [
+        {
+          "document": "List of private network access addresses\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AccessVpc",
+          "name": "AccessVpcSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of private network access addresses",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNamespacesRequest": {
+      "document": "DescribeNamespaces request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-f7g1ir99",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specified namespace. If this parameter is left empty, all namespaces will be queried.",
+          "example": "project1",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page offset (page number from which to return the results)",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to list all namespaces",
+          "example": "0",
+          "member": "bool",
+          "name": "All",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Filters",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to query only namespaces for which the KMS image signature is enabled",
+          "example": "false",
+          "member": "bool",
+          "name": "KmsSignPolicy",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNamespacesResponse": {
+      "document": "DescribeNamespaces response structure.",
+      "members": [
+        {
+          "document": "List of namespaces",
+          "example": "无",
+          "member": "TcrNamespaceInfo",
+          "name": "NamespaceList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRegionsRequest": {
+      "document": "DescribeRegions request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeRegionsResponse": {
+      "document": "DescribeRegions response structure.",
+      "members": [
+        {
+          "document": "Total number of returned results",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of regions",
+          "member": "Region",
+          "name": "Regions",
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -730,6 +3313,721 @@
       ],
       "type": "object"
     },
+    "DescribeRepositoriesRequest": {
+      "document": "DescribeRepositories request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specified namespace. If this parameter is left empty, image repositories in all namespaces will be queried.",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Specified image repository. If this parameter is left empty, all image repositories in the specified namespace will be queried.",
+          "member": "string",
+          "name": "RepositoryName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Page number, which is used for pagination",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page, which is used for pagination",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sort field. Valid values: -creation_time, -name, -update_time.",
+          "member": "string",
+          "name": "SortBy",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRepositoriesResponse": {
+      "document": "DescribeRepositories response structure.",
+      "members": [
+        {
+          "document": "Repository information list",
+          "member": "TcrRepositoryInfo",
+          "name": "RepositoryList",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecurityPoliciesRequest": {
+      "document": "DescribeSecurityPolicies request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecurityPoliciesResponse": {
+      "document": "DescribeSecurityPolicies response structure.",
+      "members": [
+        {
+          "document": "Instance security policy group\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SecurityPolicy",
+          "name": "SecurityPolicySet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagRetentionExecutionRequest": {
+      "document": "DescribeTagRetentionExecution request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Primary instance ID",
+          "example": "tcr-test123",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "1",
+          "member": "int64",
+          "name": "RetentionId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "`PageSize` for pagination",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page offset",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagRetentionExecutionResponse": {
+      "document": "DescribeTagRetentionExecution response structure.",
+      "members": [
+        {
+          "document": "List of tag retention execution records",
+          "example": "无",
+          "member": "RetentionExecution",
+          "name": "RetentionExecutionList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of tag retention execution records",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagRetentionExecutionTaskRequest": {
+      "document": "DescribeTagRetentionExecutionTask request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Primary instance ID",
+          "example": "tcr-test123",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "1",
+          "member": "int64",
+          "name": "RetentionId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Rule execution ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ExecutionId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page offset",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "`PageSize` for pagination",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagRetentionExecutionTaskResponse": {
+      "document": "DescribeTagRetentionExecutionTask response structure.",
+      "members": [
+        {
+          "document": "List of tag retention execution tasks",
+          "example": "无",
+          "member": "RetentionTask",
+          "name": "RetentionTaskList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of tag retention execution tasks",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagRetentionRulesRequest": {
+      "document": "DescribeTagRetentionRules request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Primary instance ID",
+          "example": "tcr-test123",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "mytest",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "`PageSize` for pagination",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page offset",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagRetentionRulesResponse": {
+      "document": "DescribeTagRetentionRules response structure.",
+      "members": [
+        {
+          "document": "List of tag retention policies",
+          "example": "无",
+          "member": "RetentionPolicy",
+          "name": "RetentionPolicyList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of tag retention policies",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWebhookTriggerLogRequest": {
+      "document": "DescribeWebhookTriggerLog request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Trigger ID",
+          "member": "int64",
+          "name": "Id",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWebhookTriggerLogResponse": {
+      "document": "DescribeWebhookTriggerLog response structure.",
+      "members": [
+        {
+          "document": "Total number",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of logs",
+          "member": "WebhookTriggerLog",
+          "name": "Logs",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWebhookTriggerRequest": {
+      "document": "DescribeWebhookTrigger request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-7s2d14fn",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination offset",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "example": "someNs",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWebhookTriggerResponse": {
+      "document": "DescribeWebhookTrigger response structure.",
+      "members": [
+        {
+          "document": "Total number of triggers",
+          "example": "130",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of triggers",
+          "example": "无",
+          "member": "WebhookTrigger",
+          "name": "Triggers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DownloadHelmChartRequest": {
+      "document": "DownloadHelmChart request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-xxx",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "mytest",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Helm chart name",
+          "example": "test",
+          "member": "string",
+          "name": "ChartName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Helm chart version",
+          "example": "1.0",
+          "member": "string",
+          "name": "ChartVersion",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DownloadHelmChartResponse": {
+      "document": "DownloadHelmChart response structure.",
+      "members": [
+        {
+          "document": "Temporary token",
+          "example": "yyy",
+          "member": "string",
+          "name": "TmpToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Temporary `secretId`",
+          "example": "ddd",
+          "member": "string",
+          "name": "TmpSecretId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Temporary `secretKey`",
+          "example": "eeee",
+          "member": "string",
+          "name": "TmpSecretKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Bucket information",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "Bucket",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance ID",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Chart information",
+          "example": "tcr-test/test-1.0.tgz",
+          "member": "string",
+          "name": "Path",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Start timestamp",
+          "example": "12345",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Token expiration timestamp",
+          "example": "123456",
+          "member": "int64",
+          "name": "ExpiredTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Filter": {
+      "document": "Filter",
+      "members": [
+        {
+          "default": "",
+          "document": "Attribute name. If more than one filter exists, the logical relationship between these filters is `AND`.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Attribute value. If multiple values exist in one filter, the logical relationship between these values is `OR`.",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "GCJobInfo": {
+      "document": "GC execution information",
+      "members": [
+        {
+          "default": "",
+          "document": "Job ID",
+          "example": "123",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Job status",
+          "example": "finished",
+          "member": "string",
+          "name": "JobStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2021-05-14T08:20:01Z",
+          "member": "string",
+          "name": "CreationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Update time",
+          "example": "2021-05-14T08:20:02.387203Z",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Scheduling information",
+          "example": "无",
+          "member": "Schedule",
+          "name": "Schedule",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Header": {
+      "document": "Header KV",
+      "members": [
+        {
+          "default": "",
+          "document": "Header Key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Header Values",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ImmutableTagRule": {
       "document": "Tag immutability rule",
       "members": [
@@ -805,6 +4103,158 @@
         }
       ],
       "usage": "both"
+    },
+    "KeyValueString": {
+      "document": "String key-value pair of a common parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Key",
+          "example": "foo",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Value",
+          "example": "bar",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ManageExternalEndpointRequest": {
+      "document": "ManageExternalEndpoint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Operation. Valid values: Create, Delete.",
+          "example": "Create",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ManageExternalEndpointResponse": {
+      "document": "ManageExternalEndpoint response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ManageInternalEndpointRequest": {
+      "document": "ManageInternalEndpoint request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-xxx",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Create/Delete",
+          "example": "Create",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the VPC to be connected to",
+          "example": "xxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the subnet to be connected to",
+          "example": "xxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the requested region, which is used as the region of the replica instance",
+          "example": "5",
+          "member": "uint64",
+          "name": "RegionId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Name of the requested region, which is used as the region of the replica instance",
+          "example": "ap-beijing",
+          "member": "string",
+          "name": "RegionName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ManageInternalEndpointResponse": {
+      "document": "ManageInternalEndpoint response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "XXXX",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ManageReplicationRequest": {
       "document": "ManageReplication request structure.",
@@ -968,6 +4418,346 @@
       ],
       "type": "object"
     },
+    "ModifyInstanceTokenRequest": {
+      "document": "ModifyInstanceToken request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the long-term access credential of the instance",
+          "example": "2ab3af0d-893d-423f-91b1-27713566f95f",
+          "member": "string",
+          "name": "TokenId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-12345",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the long-term access credential of the instance",
+          "example": "false",
+          "member": "bool",
+          "name": "Enable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Access credential description",
+          "example": "test",
+          "member": "string",
+          "name": "Desc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid values: 1: Modify the description; 2: Enable/Disable. Default value: 2.",
+          "example": "1",
+          "member": "int64",
+          "name": "ModifyFlag",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceTokenResponse": {
+      "document": "ModifyInstanceToken response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNamespaceRequest": {
+      "document": "ModifyNamespace request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Access level. Valid values: True: Public; False: Private.",
+          "member": "bool",
+          "name": "IsPublic",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyNamespaceResponse": {
+      "document": "ModifyNamespace response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRepositoryRequest": {
+      "document": "ModifyRepository request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Image repository name",
+          "member": "string",
+          "name": "RepositoryName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Brief repository description",
+          "member": "string",
+          "name": "BriefDescription",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Detailed repository description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRepositoryResponse": {
+      "document": "ModifyRepository response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySecurityPolicyRequest": {
+      "document": "ModifySecurityPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "PolicyId",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyIndex",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Allowed IP, such as `192.168.0.0/24`",
+          "example": "192.168.0.0/24",
+          "member": "string",
+          "name": "CidrBlock",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remarks",
+          "example": "test",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySecurityPolicyResponse": {
+      "document": "ModifySecurityPolicy response structure.",
+      "members": [
+        {
+          "document": "Instance ID",
+          "example": "tcr-test134",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTagRetentionRuleRequest": {
+      "document": "ModifyTagRetentionRule request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Primary instance ID",
+          "example": "tcr-test123",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the original namespace",
+          "example": "1",
+          "member": "int64",
+          "name": "NamespaceId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Retention policy",
+          "example": "无",
+          "member": "RetentionRule",
+          "name": "RetentionRule",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Original execution cycle",
+          "example": "manual",
+          "member": "string",
+          "name": "CronSetting",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "1",
+          "member": "int64",
+          "name": "RetentionId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to disable the rule",
+          "example": "false",
+          "member": "bool",
+          "name": "Disabled",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTagRetentionRuleResponse": {
+      "document": "ModifyTagRetentionRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyWebhookTriggerRequest": {
+      "document": "ModifyWebhookTrigger request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Trigger parameter",
+          "member": "WebhookTrigger",
+          "name": "Trigger",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Namespace",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyWebhookTriggerResponse": {
+      "document": "ModifyWebhookTrigger response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "PeerReplicationOption": {
       "document": "Parameters for cross-account synchronization",
       "members": [
@@ -1003,6 +4793,369 @@
         }
       ],
       "usage": "in"
+    },
+    "Region": {
+      "document": "Region information",
+      "members": [
+        {
+          "default": "",
+          "document": "gz",
+          "member": "string",
+          "name": "Alias",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "1",
+          "member": "uint64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ap-guangzhou",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "alluser",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "remark",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime_iso",
+          "name": "CreatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Update time",
+          "member": "datetime_iso",
+          "name": "UpdatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "id",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Registry": {
+      "document": "Instance information structure",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "member": "string",
+          "name": "RegistryName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance specification",
+          "member": "string",
+          "name": "RegistryType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public access URL of the instance",
+          "member": "string",
+          "name": "PublicDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance creation time",
+          "member": "datetime_iso",
+          "name": "CreatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region ID",
+          "member": "uint64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable anonymity",
+          "member": "bool",
+          "name": "EnableAnonymous",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Token validity period",
+          "member": "uint64",
+          "name": "TokenValidTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Internal access address of the instance",
+          "member": "string",
+          "name": "InternalEndpoint",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud tag of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance expiration time (for prepayment)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ExpiredAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid values: 0: Postpayment; 1: Prepayment.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "PayMod",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Prepayment renewal flag. Valid values: 0: Manual renewal; 1: Auto-renewal; 2: No renewal and no notification.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "int64",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RegistryChargePrepaid": {
+      "document": "Instance prepayment mode",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance purchase duration in months",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal flag. Valid values: 0: Manual renewal; 1: Auto-renewal; 2: No renewal and no notification.",
+          "member": "int64",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "RegistryCondition": {
+      "document": "Instance creation process",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance creation process type",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance creation process status",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Reasons for transiting to the process\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "Reason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RegistryStatus": {
+      "document": "Instance status",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance status",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Additional status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "RegistryCondition",
+          "name": "Conditions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RenewInstanceRequest": {
+      "document": "RenewInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tcr-12345",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal flag and purchase duration in months for prepayment. Valid values: 0: Manual renewal; 1: Auto-renewal; 2: No renewal and no notification.",
+          "example": "无",
+          "member": "RegistryChargePrepaid",
+          "name": "RegistryChargePrepaid",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Valid values: 0: renewal; 1: change from pay-as-you-go to monthly subscription billing",
+          "example": "0",
+          "member": "int64",
+          "name": "Flag",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewInstanceResponse": {
+      "document": "RenewInstance response structure.",
+      "members": [
+        {
+          "document": "Enterprise Edition instance ID",
+          "example": "tcr-12345",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ReplicationFilter": {
       "document": "Synchronization rule filter",
@@ -1196,6 +5349,256 @@
       ],
       "usage": "in"
     },
+    "RetentionExecution": {
+      "document": "Tag retention rule execution",
+      "members": [
+        {
+          "default": "",
+          "document": "Execution ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ExecutionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule ID",
+          "example": "1",
+          "member": "int64",
+          "name": "RetentionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Execution start time",
+          "example": "“2021-12-02”",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Execution end time",
+          "example": "“2021-12-02”",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Execution status. Valid values: Failed, Succeed, Stopped, InProgress.",
+          "example": "Successed",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RetentionPolicy": {
+      "document": "Tag retention policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag retention policy ID",
+          "example": "1",
+          "member": "int64",
+          "name": "RetentionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "mytest",
+          "member": "string",
+          "name": "NamespaceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of rules",
+          "example": "无",
+          "member": "RetentionRule",
+          "name": "RetentionRuleList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Regular execution mode",
+          "example": "manual",
+          "member": "string",
+          "name": "CronSetting",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the rule",
+          "example": "false",
+          "member": "bool",
+          "name": "Disabled",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The execution time of the next task based on the current time and `cronSetting`, which is for reference only",
+          "example": "2021-02-03",
+          "member": "string",
+          "name": "NextExecutionTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RetentionRule": {
+      "document": "Tag retention rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Supported policy. Valid values: latestPushedK: Retain the latest specified number of pushed tags; nDaysSinceLastPush: Retain the tags pushed in the past specified number of days.",
+          "example": "latestPushedK",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule value",
+          "example": "0",
+          "member": "int64",
+          "name": "Value",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "RetentionTask": {
+      "document": "Rule of tag retention task execution",
+      "members": [
+        {
+          "default": "",
+          "document": "Task ID",
+          "example": "1",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule execution ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ExecutionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task start time",
+          "example": "“2021-01-22”",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task end time",
+          "example": "\"2021-01-22\"",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task execution status. Valid values: Failed, Succeed, Stopped, InProgress.",
+          "example": "Succeed",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number of tags",
+          "example": "64",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of retained tags",
+          "example": "1",
+          "member": "int64",
+          "name": "Retained",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Application repository",
+          "example": "mytest",
+          "member": "string",
+          "name": "Repository",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Schedule": {
+      "document": " Job scheduling information",
+      "members": [
+        {
+          "default": "",
+          "document": "Type. Valid values: Hourly, Daily, Weekly, Custom, Manual, Dryrun, None.",
+          "example": "Manual",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SecurityPolicy": {
       "document": "Security policy",
       "members": [
@@ -1238,6 +5641,54 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Tag": {
+      "document": "Cloud tag",
+      "members": [
+        {
+          "default": "",
+          "document": "Cloud tag key",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud tag value",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "TagSpecification": {
+      "document": "Cloud tag",
+      "members": [
+        {
+          "default": "",
+          "document": "Default value: instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cloud tag array\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -1298,6 +5749,454 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TcrImageInfo": {
+      "document": "Image information",
+      "members": [
+        {
+          "default": "",
+          "document": "Hash value",
+          "example": "sha256:c8a612b2a2e52cedd86d6df10d4e796942023d443a0e7f79b14cb478f",
+          "member": "string",
+          "name": "Digest",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Image size in bytes",
+          "example": "1050748",
+          "member": "int64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag name",
+          "example": "v1.2.0",
+          "member": "string",
+          "name": "ImageVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Update time",
+          "example": "2022-07-19 15:16:17",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Artifact type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Artifact::application/vnd.docker.distribution.manifest.v2+json",
+          "member": "string",
+          "name": "Kind",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "KMS signature information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "wMRjrFQbuKLY3D95E9HkGzqhr/bJ4P2ahDlkWzy1nxDxSwqUKR4kxGby+wxMwtcp",
+          "member": "string",
+          "name": "KmsSignature",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TcrInstanceToken": {
+      "document": "Instance login token",
+      "members": [
+        {
+          "default": "",
+          "document": "Token ID",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Token description",
+          "member": "string",
+          "name": "Desc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the instance of the token",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Token status",
+          "member": "bool",
+          "name": "Enabled",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Token creation time",
+          "member": "datetime_iso",
+          "name": "CreatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Token expiration timestamp",
+          "member": "int64",
+          "name": "ExpiredAt",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TcrNamespaceInfo": {
+      "document": "TCR namespace description",
+      "members": [
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "ns1",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2022-07-06 14:20:38",
+          "member": "datetime_iso",
+          "name": "CreationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Access level",
+          "example": "true",
+          "member": "bool",
+          "name": "Public",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace ID",
+          "example": "1",
+          "member": "int64",
+          "name": "NamespaceId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud tag of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Namespace metadata\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "KeyValueString",
+          "name": "Metadata",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TcrRepositoryInfo": {
+      "document": "TCR image repository information",
+      "members": [
+        {
+          "default": "",
+          "document": "Repository name",
+          "example": "ns/repoName",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Namespace name",
+          "example": "ns",
+          "member": "string",
+          "name": "Namespace",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time, such as `2006-01-02 15:04:05.999999999 -0700 MST`",
+          "example": "2022-07-16 10:34:42.697947 +0000 UTC",
+          "member": "string",
+          "name": "CreationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to make public",
+          "example": "false",
+          "member": "bool",
+          "name": "Public",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detailed repository description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "this is a description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Brief description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "this is a brief description",
+          "member": "string",
+          "name": "BriefDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Update time, such as `2006-01-02 15:04:05.999999999 -0700 MST`",
+          "example": "2022-07-16 10:34:42.697947 +0000 UTC",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "WebhookTarget": {
+      "document": "Trigger target",
+      "members": [
+        {
+          "default": "",
+          "document": "Target address",
+          "member": "string",
+          "name": "Address",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom headers",
+          "member": "Header",
+          "name": "Headers",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "WebhookTrigger": {
+      "document": "Webhook trigger",
+      "members": [
+        {
+          "default": "",
+          "document": "Trigger name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trigger target",
+          "member": "WebhookTarget",
+          "name": "Targets",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Action to be triggered",
+          "member": "string",
+          "name": "EventTypes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trigger rule",
+          "member": "string",
+          "name": "Condition",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the trigger",
+          "member": "bool",
+          "name": "Enabled",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trigger ID",
+          "member": "int64",
+          "name": "Id",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trigger description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the namespace of the trigger",
+          "member": "int64",
+          "name": "NamespaceId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "WebhookTriggerLog": {
+      "document": "Trigger log",
+      "members": [
+        {
+          "default": "",
+          "document": "Log ID",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Trigger ID",
+          "member": "int64",
+          "name": "TriggerId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Event type",
+          "member": "string",
+          "name": "EventType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Notification type",
+          "member": "string",
+          "name": "NotifyType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Details",
+          "member": "string",
+          "name": "Detail",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "string",
+          "name": "CreationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Update time",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
