@@ -402,6 +402,12 @@
       "name": "Generates documents and SDKs",
       "output": "GenerateApiDocumentResponse"
     },
+    "ImportOpenApi": {
+      "document": "This API is used to import an OpenAPI to API gateway. ",
+      "input": "ImportOpenApiRequest",
+      "name": "Imports OpenAPI",
+      "output": "ImportOpenApiResponse"
+    },
     "ModifyAPIDoc": {
       "document": "This API is used to modify an API document.",
       "input": "ModifyAPIDocRequest",
@@ -3497,6 +3503,32 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateApiRspSet": {
+      "document": "Information of the APIs created",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number of APIs",
+          "example": "0",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of created APIs",
+          "example": "[]",
+          "member": "CreateApiRsp",
+          "name": "ApiSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -7707,6 +7739,69 @@
         }
       ],
       "usage": "out"
+    },
+    "ImportOpenApiRequest": {
+      "document": "ImportOpenApi request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The unique ID of the service associated with the API",
+          "example": "service-xxx",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Content of the openAPI",
+          "example": "xxx",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Format of the content. Values: `YAML` (default), `JSON`",
+          "example": "YAML",
+          "member": "string",
+          "name": "EncodeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Version of the content. It can only be `openAPI` for now.",
+          "example": "openAPI",
+          "member": "string",
+          "name": "ContentVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImportOpenApiResponse": {
+      "document": "ImportOpenApi response structure.",
+      "members": [
+        {
+          "document": "The result of importing the OpenAPI",
+          "example": "无",
+          "member": "CreateApiRspSet",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "K8sLabel": {
       "document": "K8s Label",

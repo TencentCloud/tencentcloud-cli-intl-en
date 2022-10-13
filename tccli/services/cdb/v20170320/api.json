@@ -9723,6 +9723,7 @@
         {
           "default": "",
           "document": "List of short instance IDs.",
+          "example": "[\"cdb-atjl8gns\\r\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -9731,6 +9732,7 @@
         {
           "default": "",
           "document": "List of parameters to be modified. Every element is a combination of `Name` (parameter name) and `CurrentValue` (new value).",
+          "example": "无",
           "member": "Parameter",
           "name": "ParamList",
           "required": false,
@@ -9739,6 +9741,7 @@
         {
           "default": "",
           "document": "Template ID. At least one of `ParamList` and `TemplateId` must be passed in.",
+          "example": "99",
           "member": "int64",
           "name": "TemplateId",
           "required": false,
@@ -9747,10 +9750,29 @@
         {
           "default": "",
           "document": "When to perform the parameter adjustment task. Default value: 0. Valid values: 0 - execute immediately, 1 - execute during window. When its value is 1, only one instance ID can be passed in (i.e., only one `InstanceIds` can be passed in).",
+          "example": "0",
           "member": "int64",
           "name": "WaitSwitch",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to sync the parameters to read-only instance of the source instance. Valid values: `true` (not sync), `false` (sync). Default value: `false`.",
+          "example": "true",
+          "member": "bool",
+          "name": "NotSyncRo",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to sync the parameters to disaster recovery instance of the source instance. Valid values: `true` (not sync), `false` (sync). Default value: `false`.",
+          "example": "true",
+          "member": "bool",
+          "name": "NotSyncDr",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
