@@ -265,7 +265,7 @@
       "output": "DescribeReplicationGroupResponse"
     },
     "DescribeSlowLog": {
-      "document": "This API is used to query the slow log.",
+      "document": "This API is used to query the records of slow query.",
       "input": "DescribeSlowLogRequest",
       "name": "Queries the slow log",
       "output": "DescribeSlowLogResponse"
@@ -373,7 +373,7 @@
       "output": "ModifyInstanceAccountResponse"
     },
     "ModifyInstanceParams": {
-      "document": "This API is used to modify instance parameters.",
+      "document": "This API is used to modify the parameters of TencentDB for Redis instances",
       "input": "ModifyInstanceParamsRequest",
       "name": "Modifies instance parameters",
       "output": "ModifyInstanceParamsResponse"
@@ -1150,7 +1150,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture).",
+          "document": "Instance type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture), `15` (Redis 6.0 Memory Edition in standard architecture), `16` (Redis 6.0 Memory Edition in cluster architecture)",
           "example": "6",
           "member": "uint64",
           "name": "TypeId",
@@ -3781,6 +3781,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "crs-asdasdas",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3788,7 +3789,8 @@
         },
         {
           "default": "",
-          "document": "Start time",
+          "document": "The start time",
+          "example": "2019-09-08 12:12:41",
           "member": "string",
           "name": "BeginTime",
           "required": true,
@@ -3796,7 +3798,8 @@
         },
         {
           "default": "",
-          "document": "End time",
+          "document": "The end time",
+          "example": "2019-09-09 12:12:41",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -3804,7 +3807,8 @@
         },
         {
           "default": "",
-          "document": "Slow log threshold in microseconds",
+          "document": "The average execution time threshold of slow query in microseconds",
+          "example": "100",
           "member": "int64",
           "name": "MinQueryTime",
           "required": false,
@@ -3812,7 +3816,8 @@
         },
         {
           "default": "",
-          "document": "Number of entries per page",
+          "document": "Number of slow queries displayed per page. Default value: `20`.",
+          "example": "20",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -3820,11 +3825,21 @@
         },
         {
           "default": "",
-          "document": "Offset, which is an integral multiple of `Limit`",
+          "document": "Slow query offset, which is an integral multiple of `Limit`.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Node role. <ul><li>`Master`: Master node</li><li>`Slave`: Replica node</li></ul>",
+          "example": "master",
+          "member": "string",
+          "name": "Role",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3833,16 +3848,20 @@
       "document": "DescribeSlowLog response structure.",
       "members": [
         {
-          "document": "Total number of slow logs",
+          "document": "Total number of slow queries",
+          "example": "30",
           "member": "int64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Slow log details",
+          "document": "Slow query details",
+          "example": "无",
           "member": "InstanceSlowlogDetail",
           "name": "InstanceSlowlogDetail",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5239,7 +5258,8 @@
       "members": [
         {
           "default": "",
-          "document": "Sets a parameter name",
+          "document": "Parameter name, such as “timeout”. For supported custom parameters, see <a href=\"https://www.tencentcloud.com/document/product/239/39796\">Setting Instance Parameters</a>",
+          "example": "timeout",
           "member": "string",
           "name": "Key",
           "required": true,
@@ -5248,7 +5268,8 @@
         },
         {
           "default": "",
-          "document": "Sets a parameter value",
+          "document": "Current parameter value. For example, if you set the current value of “timeout” to 120 (in seconds), the client connections that remain idle longer than 120 seconds will be closed. For more information on parameter values, see <a href=\"https://www.tencentcloud.com/document/product/239/39796\">Setting Instance Parameters</a>",
+          "example": "120",
           "member": "string",
           "name": "Value",
           "required": true,
@@ -6658,7 +6679,7 @@
       "document": "ModifyInstanceParams response structure.",
       "members": [
         {
-          "document": "Whether a modification is successfully made.",
+          "document": "Whether the parameter is modified successfully. <br><li>`True`: Yes<br><li>`False`: No<br>",
           "example": "true",
           "member": "bool",
           "name": "Changed",
@@ -6667,7 +6688,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Task ID",
+          "document": "ID of the task",
           "example": "327",
           "member": "int64",
           "name": "TaskId",

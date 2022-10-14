@@ -1,5 +1,13 @@
 {
   "actions": {
+    "ApplyDiskBackup": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplyDiskBackup\n<Common request parameters>\n\n{\n    \"DiskId\": \"disk-xxxxxxxx\",\n    \"DiskBackupId\": \"dbp-xxxxxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5d41fd68-372a-4c90-81c6-a6f982328058\"\n    }\n}",
+        "title": "Rolling back a backup point to the original cloud disk"
+      }
+    ],
     "ApplySnapshot": [
       {
         "document": "",
@@ -42,28 +50,28 @@
     ],
     "CreateDisks": [
       {
-        "document": "This example shows you how to purchase a 50-GB HDD cloud disk in Guangzhou Zone 2 for one month with upfront payment, assign it to the project “0”, get a notification upon expiration and configure it for automatic renewal.",
-        "input": "https://cbs.tencentcloudapi.com/?Action=CreateDisks\n&DiskType=CLOUD_HSSD\n&DiskCount=1\n&DiskSize=500\n&Placement.Zone=ap-guangzhou-2\n&Placement.ProjectId=0\n&DiskChargeType=PREPAID\n&DiskChargePrepaid.Period=1\n&DiskChargePrepaid.RenewFlag=NOTIFY_AND_AUTO_RENEW\n&ThroughputPerformance=100\n&<Common request parameters>",
+        "document": "This example shows you how to purchase a prepaid 50 GB HDD cloud disk in Guangzhou Zone 2 for one month, assign it to project 0, get a notification upon expiration, and enable automatic renewal for it.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDisks\n<Common request parameters>\n\n{\n    \"Placement\": {\n        \"ProjectId\": \"0\",\n        \"Zone\": \"ap-guangzhou-2\"\n    },\n    \"DiskChargeType\": \"PREPAID\",\n    \"DiskCount\": \"1\",\n    \"DiskType\": \"CLOUD_HSSD\",\n    \"ThroughputPerformance\": \"100\",\n    \"DiskSize\": \"500\",\n    \"DiskChargePrepaid\": {\n        \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\",\n        \"Period\": \"1\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"DiskIdSet\": [\n            \"disk-lzrg2pwi\"\n        ],\n        \"RequestId\": \"6a57da9a-2049-7182-2de3-5a1f8014ccfd\"\n    }\n}",
         "title": "Purchasing a cloud disk with basic parameters"
       },
       {
-        "document": "This example shows you how to create a pay-as-you-go 100 GB premium cloud disk billed hourly in Guangzhou Zone 3.",
-        "input": "https://cbs.tencentcloudapi.com/?Action=CreateDisks\n&DiskType=CLOUD_PREMIUM\n&DiskCount=1\n&Placement.Zone=ap-guangzhou-3\n&Placement.ProjectId=0\n&DiskChargeType=POSTPAID_BY_HOUR\n&DiskName=postPayDisk\n&DiskSize=100\n&<Common Request Parameters>",
+        "document": "This example shows you how to create an hourly pay-as-you-go 100 GB premium cloud disk in Guangzhou Zone 3.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDisks\n<Common request parameters>\n\n{\n    \"DiskName\": \"postPayDisk\",\n    \"Placement\": {\n        \"ProjectId\": \"0\",\n        \"Zone\": \"ap-guangzhou-3\"\n    },\n    \"DiskChargeType\": \"POSTPAID_BY_HOUR\",\n    \"DiskCount\": \"1\",\n    \"DiskType\": \"CLOUD_PREMIUM\",\n    \"DiskSize\": \"100\"\n}",
         "output": "{\n    \"Response\": {\n        \"DiskIdSet\": [\n            \"disk-ecjc4cpw\"\n        ],\n        \"RequestId\": \"fe2274fa-eaec-4009-807b-6ffc00963fec\"\n    }\n}",
-        "title": "Creating a pay-as-you-go cloud disk billed hourly"
+        "title": "Creating an hourly pay-as-you-go cloud disk"
       },
       {
-        "document": "This example shows you how to create a cloud disk by specifying a snapshot without specifying `DiskSize`. In this example, the size of the new cloud disk will be the same as that of the snapshot, and the snapshot data will be copied to the new cloud disk.",
-        "input": "https://cbs.tencentcloudapi.com/?Action=CreateDisks\n&DiskType=CLOUD_BASIC\n&DiskCount=1\n&SnapshotId=snap-iepc4w3h\n&Placement.Zone=ap-guangzhou-2\n&Placement.ProjectId=0\n&DiskChargeType=PREPAID\n&DiskChargePrepaid.Period=1\n&DiskChargePrepaid.RenewFlag=NOTIFY_AND_AUTO_RENEW\n&<Common Request Parameters>",
+        "document": "This example shows you how to create a cloud disk by specifying a snapshot without specifying `DiskSize`. In this example, the size of the new cloud disk is the same as that of the snapshot, and the snapshot data will be copied to the new cloud disk.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDisks\n<Common request parameters>\n\n{\n    \"Placement\": {\n        \"ProjectId\": \"0\",\n        \"Zone\": \"ap-guangzhou-2\"\n    },\n    \"DiskChargeType\": \"PREPAID\",\n    \"DiskCount\": \"1\",\n    \"DiskType\": \"CLOUD_BASIC\",\n    \"DiskChargePrepaid\": {\n        \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\",\n        \"Period\": \"1\"\n    },\n    \"SnapshotId\": \"snap-iepc4w3h\"\n}",
         "output": "{\n    \"Response\": {\n        \"DiskIdSet\": [\n            \"disk-6rz0ilvu\"\n        ],\n        \"RequestId\": \"5e93a212-ca01-0fdc-eedd-5a1fce5e83e6\"\n    }\n}",
-        "title": "Creating a cloud disk with a snapshot"
+        "title": "Creating a cloud disk by using a snapshot"
       }
     ],
     "CreateSnapshot": [
       {
         "document": "",
-        "input": "https://cbs.tencentcloudapi.com/?Action=CreateSnapshot\n&DiskId=disk-lzrg2pwi\n&SnapshotName=snap_201711301015\n&Deadline=2022-01-08T09:47:55+00:00\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSnapshot\n<Common request parameters>\n\n{\n    \"SnapshotName\": \"snap_201711301015\",\n    \"Deadline\": \"2022-01-08T09:47:55+00:00\",\n    \"DiskId\": \"disk-lzrg2pwi\"\n}",
         "output": "{\n    \"Response\": {\n        \"SnapshotId\": \"snap-gybrif0z\",\n        \"RequestId\": \"1bd35eca-0c9a-6e0b-938a-5a1f80511c19\"\n    }\n}",
         "title": "Creating a snapshot"
       }
@@ -74,6 +82,14 @@
         "input": "https://cbs.tencentcloudapi.com/?Action=DeleteAutoSnapshotPolicies\n&AutoSnapshotPolicyIds.0=asp-mrsrn243\n&AutoSnapshotPolicyIds.1=asp-3lpl7ev3\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"60874256-0230-6c3b-371d-5a1fa64e6b8c\"\n    }\n}",
         "title": "Batch deleting scheduled snapshot policies"
+      }
+    ],
+    "DeleteDiskBackups": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDiskBackups\n<Common request parameters>\n\n{\n    \"DiskBackupIds\": [\n        \"dbp-xxxxxxxx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a79a4333-ac8e-426c-8cfe-2923c4010d64\"\n    }\n}",
+        "title": "Deleting the backup points of a cloud disk"
       }
     ],
     "DeleteSnapshots": [
@@ -98,6 +114,14 @@
         "input": "https://cbs.tencentcloudapi.com/?Action=DescribeDiskAssociatedAutoSnapshotPolicy\r\n&DiskId=disk-dw0bbzws\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"AutoSnapshotPolicySet\": [\n            {\n                \"IsActivated\": 1,\n                \"AutoSnapshotPolicyName\": \"sds\",\n                \"IsPermanent\": 0,\n                \"NextTriggerTime\": \"2017-12-03 00:00:00\",\n                \"AutoSnapshotPolicyId\": \"asp-mrsrn243\",\n                \"Policy\": [\n                    {\n                        \"DayOfWeek\": [\n                            0\n                        ],\n                        \"Hour\": [\n                            0\n                        ]\n                    }\n                ],\n                \"CreateTime\": \"2017-11-17 15:09:12\",\n                \"RetentionDays\": 7\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"8612f14a-fd07-85b5-39f9-5a1fa51efa14\"\n    }\n}",
         "title": "Querying the scheduled snapshot policies associated with a cloud disk whose ID is `disk-dw0bbzws`"
+      }
+    ],
+    "DescribeDiskBackups": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDiskBackups\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DiskBackupSet\": [\n            {\n                \"DiskBackupName\": \"11111\",\n                \"Encrypt\": false,\n                \"Percent\": 100,\n                \"DiskBackupId\": \"dbp-xxxxxxxx\",\n                \"DiskSize\": 100,\n                \"DiskBackupState\": \"NORMAL\",\n                \"DiskUsage\": \"DATA_DISK\",\n                \"CreateTime\": \"2022-04-02T17:44:55+00:00\",\n                \"DiskId\": \"disk-xxxxxxxx\"\n            }\n        ],\n        \"RequestId\": \"6cd062f5-aa65-4477-a253-1ab41ab963fd\"\n    }\n}",
+        "title": "Querying the list of backup points"
       }
     ],
     "DescribeDiskConfigQuota": [
@@ -180,6 +204,14 @@
         "title": "Reinitializing cloud disks"
       }
     ],
+    "InquirePriceModifyDiskBackupQuota": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquirePriceModifyDiskBackupQuota\n<Common request parameters>\n\n{\n    \"DiskId\": \"disk-xxxxxxxx\",\n    \"DiskBackupQuota\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0195b2d8-fec5-490a-ace9-579f49435e69\",\n        \"DiskPrice\": {\n            \"UnitPriceDiscountHigh\": \"0.059\",\n            \"DiscountPrice\": null,\n            \"UnitPriceHigh\": \"0.059\",\n            \"OriginalPriceHigh\": null,\n            \"ChargeUnit\": \"HOUR\",\n            \"OriginalPrice\": null,\n            \"UnitPriceDiscount\": 0.06,\n            \"DiscountPriceHigh\": null,\n            \"UnitPrice\": 0.06\n        }\n    }\n}",
+        "title": "Querying the price of a cloud disk after its backup point quota is modified"
+      }
+    ],
     "InquirePriceModifyDiskExtraPerformance": [
       {
         "document": "",
@@ -193,13 +225,13 @@
         "document": "",
         "input": "https://cbs.tencentcloudapi.com/?Action=InquiryPriceCreateDisks\n&DiskType=CLOUD_TSSD\n&DiskCount=1\n&DiskSize=500\n&DiskChargeType=PREPAID\n&DiskChargePrepaid.Period=1\n&ThroughputPerformance=100\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"55e84d71-26f1-4b7c-8dc4-6bc2611d0a2411\",\n        \"DiskPrice\": {\n            \"DiscountPrice\": 800.0,\n            \"UnitPriceHigh\": null,\n            \"OriginalPriceHigh\": \"800\",\n            \"OriginalPrice\": 800.0,\n            \"UnitPriceDiscount\": null,\n            \"UnitPriceDiscountHigh\": null,\n            \"DiscountPriceHigh\": \"800\",\n            \"UnitPrice\": null,\n            \"ChargeUnit\": null\n        }\n    }\n}",
-        "title": "Querying the price of purchasing one 500 GB TSSD cloud disk with the extra performance of 100 MB for one month"
+        "title": "Querying the price of purchasing a 500 GB ulTra SSD cloud disk with the extra performance of 100 MB/s for one month"
       },
       {
-        "document": "This example shows you how to query the price of a pay-as-you-go premium cloud disk billed hourly with the capacity of 100 GB ",
-        "input": "https://cbs.tencentcloudapi.com/?Action=InquiryPriceCreateDisks\n&DiskType=CLOUD_PREMIUM\n&DiskSize=100\n&DiskCount=1\n&DiskChargeType=POSTPAID_BY_HOUR\n&<Common Request Parameters>",
+        "document": "This example shows you how to query the price of purchasing an hourly pay-as-you-go 100 GB premium cloud disk.",
+        "input": "https://cbs.tencentcloudapi.com/?Action=InquiryPriceCreateDisks\n&DiskType=CLOUD_PREMIUM\n&DiskSize=100\n&DiskCount=1\n&DiskChargeType=POSTPAID_BY_HOUR\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"55e84d71-26f1-4b7c-8dc4-6bc26d0a2411\",\n        \"DiskPrice\": {\n            \"DiscountPrice\": null,\n            \"UnitPrice\": 0.04,\n            \"UnitPriceHigh\": \"0.042\",\n            \"OriginalPriceHigh\": null,\n            \"OriginalPrice\": null,\n            \"UnitPriceDiscount\": 0.04,\n            \"UnitPriceDiscountHigh\": \"0.042\",\n            \"DiscountPriceHigh\": null,\n            \"ChargeUnit\": \"HOUR\"\n        }\n    }\n}",
-        "title": "Querying the price of a pay-as-you-go cloud disk billed hourly"
+        "title": "Querying the price of purchasing an hourly pay-as-you-go cloud disk"
       }
     ],
     "InquiryPriceResizeDisk": [
@@ -232,10 +264,18 @@
     ],
     "ModifyDiskAttributes": [
       {
-        "document": "This example shows you how to upgrade a pay-as-you-go 100 GB HDD cloud data disk to Premium Cloud Storage. The data disk is not mounted.",
-        "input": "https://cbs.tencentcloudapi.com/?Action=ModifyDiskAttributes\n&DiskIds.0=disk-fyctkqsf\n&DiskName=test_data_disk\n&<Common request parameters>",
+        "document": "This example shows you how to rename the specified cloud disk `test_data_disk`.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDiskAttributes\n<Common request parameters>\n\n{\n    \"DiskName\": \"test_data_disk\",\n    \"DiskIds\": [\n        \"disk-fyctkqsf\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bf84fb00-6949-c0f6-aea8-5a1f806401c2\"\n    }\n}",
         "title": "Renaming a cloud disk"
+      }
+    ],
+    "ModifyDiskBackupQuota": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDiskBackupQuota\n<Common request parameters>\n\n{\n    \"DiskId\": \"disk-xxxxxxxx\",\n    \"DiskBackupQuota\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5d41fd68-372a-4c90-81c6-a6f982328058\"\n    }\n}",
+        "title": "Adjusting the cloud disk backup point quota"
       }
     ],
     "ModifyDiskExtraPerformance": [

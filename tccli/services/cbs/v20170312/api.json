@@ -1,5 +1,11 @@
 {
   "actions": {
+    "ApplyDiskBackup": {
+      "document": "This API is used to roll back a backup point to the original cloud disk.\n\n* Only rollback to the original cloud disk is supported. For a data disk backup point, if you want to copy the backup point data to another cloud disk, use the `CreateSnapshot` API to convert the backup point into a snapshot, use the `CreateDisks` API to create an elastic cloud disk, and then copy the snapshot data to it.\n* Only backup points in `NORMAL` status can be rolled back. To query the status of a backup point, call the `DescribeDiskBackups` API and see the `BackupState` field in the response.\n* For an elastic cloud disk, it must be in unattached status. To query the status of the cloud disk, call the `DescribeDisks` API and see the `Attached` field in the response. For a non-elastic cloud disk purchased together with an instance, the instance must be in shutdown status, which can be queried through the `DescribeInstancesStatus` API.",
+      "input": "ApplyDiskBackupRequest",
+      "name": "Rolls back a backup point",
+      "output": "ApplyDiskBackupResponse"
+    },
     "ApplySnapshot": {
       "document": "This API (ApplySnapshot) is used to roll back a snapshot to the original cloud disk.\n\n* The snapshot can only be rolled back to the original cloud disk. For data disk snapshots, if you need to copy the snapshot data to other cloud disks, use the API [CreateDisks](https://intl.cloud.tencent.com/document/product/362/16312?from_cn_redirect=1) to create an elastic cloud disk and then copy the snapshot data to the created cloud disk. \n* The snapshot for rollback must be in NORMAL status. The snapshot status can be queried in the SnapshotState field in the output parameters through the API [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1).\n* For elastic cloud disks, the cloud disk must be in UNMOUNTED status. The cloud disk status can be queried in the Attached field returned by the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1). For non-elastic cloud disks purchased together with instances, the instance must be in SHUTDOWN status. The instance status can be queried through the API [DescribeInstancesStatus](https://intl.cloud.tencent.com/document/product/213/15738?from_cn_redirect=1).",
       "input": "ApplySnapshotRequest",
@@ -31,15 +37,15 @@
       "output": "CreateAutoSnapshotPolicyResponse"
     },
     "CreateDisks": {
-      "document": "This API is used to create one or more cloud disks.\n\n* This API supports creating a cloud disk with a data disk snapshot so that the snapshot data can be copied to the purchased cloud disk.\n* This API is an async API. A cloud disk ID list will be returned when a request is made successfully, but it does not mean that the creation has been completed. You can call the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API to query cloud disks by `DiskId`. If a new cloud disk can be found and its state is 'UNATTACHED' or 'ATTACHED', it means that the cloud disk has been created successfully.",
+      "document": "This API is used to create cloud disks.\n\n* This API supports creating a cloud disk with a data disk snapshot so that the snapshot data can be copied to the purchased cloud disk.\n* This API is async. A cloud disk ID list will be returned when a request is made successfully, but it does not mean that the creation has been completed. You can call the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API to query cloud disks by `DiskId`. If a new cloud disk can be found and its status is `UNATTACHED` or `ATTACHED`, the cloud disk has been created successfully.",
       "input": "CreateDisksRequest",
-      "name": "Creating a Cloud Disk",
+      "name": "Creates cloud disks",
       "output": "CreateDisksResponse"
     },
     "CreateSnapshot": {
-      "document": "This API (CreateSnapshot) is used to create a snapshot of a specified cloud disk.\n\n* Snapshots can only be created for cloud disks with the snapshot capability. To check whether a cloud disk has the snapshot capability, see the SnapshotAbility field returned by the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1).\n* For the number of snapshots that can be created, please see [Product Usage Restriction](https://intl.cloud.tencent.com/doc/product/362/5145?from_cn_redirect=1).",
+      "document": "This API is used to create a snapshot for the specified cloud disk.\n\n* You can only create snapshots for cloud disks with the snapshot capability. To check whether a cloud disk is snapshot-enabled, call the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API and see the `SnapshotAbility` field in the response.\n* For the maximum number of snapshots that can be created, see [Use Limits](https://intl.cloud.tencent.com/doc/product/362/5145?from_cn_redirect=1).\n* Currently, you can convert backup points into general snapshots. After the conversion, snapshot usage fees may be charged, backup points will not be retained, and the occupied backup point quota will be released.",
       "input": "CreateSnapshotRequest",
-      "name": "Create a snapshot",
+      "name": "Creates a snapshot",
       "output": "CreateSnapshotResponse"
     },
     "DeleteAutoSnapshotPolicies": {
@@ -47,6 +53,12 @@
       "input": "DeleteAutoSnapshotPoliciesRequest",
       "name": "Deleting a Scheduled Snapshot Policy",
       "output": "DeleteAutoSnapshotPoliciesResponse"
+    },
+    "DeleteDiskBackups": {
+      "document": "This API is used to delete the backup points of the specified cloud disk in batches.",
+      "input": "DeleteDiskBackupsRequest",
+      "name": "Deletes the backup points of a cloud disk",
+      "output": "DeleteDiskBackupsResponse"
     },
     "DeleteSnapshots": {
       "document": "This API is used to delete snapshots.\n\n* Only snapshots in the `NORMAL` state can be deleted. To query the state of a snapshot, you can call the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) API and check the `SnapshotState` field in the response.\n* Batch operations are supported. If there is any snapshot that cannot be deleted, the operation will not be performed and a specific error code will be returned.",
@@ -65,6 +77,12 @@
       "input": "DescribeDiskAssociatedAutoSnapshotPolicyRequest",
       "name": "Querying a Cloud Disk Associated Scheduled Snapshot Policy   ",
       "output": "DescribeDiskAssociatedAutoSnapshotPolicyResponse"
+    },
+    "DescribeDiskBackups": {
+      "document": "This API is used to query the details of backup points.\n\nYou can filter results by backup point ID. You can also look for certain backup points by specifying the ID or type of the cloud disk for which the backup points are created. The relationship between different filters is logical `AND`. For more information on filters, see `Filter`.\nIf the parameter is empty, a certain number (as specified by `Limit` and 20 by default) of backup points will be returned.",
+      "input": "DescribeDiskBackupsRequest",
+      "name": "Queries the list of backup points",
+      "output": "DescribeDiskBackupsResponse"
     },
     "DescribeDiskConfigQuota": {
       "document": "This API (DescribeDiskConfigQuota) is used to query the cloud disk quota.",
@@ -126,6 +144,12 @@
       "name": "Reinitializes cloud disks",
       "output": "InitializeDisksResponse"
     },
+    "InquirePriceModifyDiskBackupQuota": {
+      "document": "This API is used to query the price of a cloud disk after its backup point quota is modified.",
+      "input": "InquirePriceModifyDiskBackupQuotaRequest",
+      "name": "Queries the price of a cloud disk after its backup point quota is modified",
+      "output": "InquirePriceModifyDiskBackupQuotaResponse"
+    },
     "InquirePriceModifyDiskExtraPerformance": {
       "document": "This API is used to query the price for adjusting the cloud disk’s extra performance.",
       "input": "InquirePriceModifyDiskExtraPerformanceRequest",
@@ -133,9 +157,9 @@
       "output": "InquirePriceModifyDiskExtraPerformanceResponse"
     },
     "InquiryPriceCreateDisks": {
-      "document": "This API (InquiryPriceCreateDisks) is used to inquire the price for cloud disk creation.\n\n* It supports inquiring the price for the creation of multiple cloud disks. The total price for the creation is returned.",
+      "document": "This API is used to query the price of creating cloud disks.\n\n* You can query the price of creating multiple cloud disks in a single request. In this case, the price returned will be the total price.",
       "input": "InquiryPriceCreateDisksRequest",
-      "name": "Inquires the price for creating a cloud disk",
+      "name": "Queries the price of creating cloud disks",
       "output": "InquiryPriceCreateDisksResponse"
     },
     "InquiryPriceResizeDisk": {
@@ -155,6 +179,12 @@
       "input": "ModifyDiskAttributesRequest",
       "name": "Modifies cloud disk attributes",
       "output": "ModifyDiskAttributesResponse"
+    },
+    "ModifyDiskBackupQuota": {
+      "document": "This API is used to modify the cloud disk backup point quota.",
+      "input": "ModifyDiskBackupQuotaRequest",
+      "name": "Modifies the cloud disk backup point quota",
+      "output": "ModifyDiskBackupQuotaResponse"
     },
     "ModifyDiskExtraPerformance": {
       "document": "This API is used to adjust the cloud disk’s extra performance.\n\n* Currently, only Tremendous SSD (CLOUD_TSSD) and Enhanced SSD (CLOUD_HSSD) support extra performance adjustment.",
@@ -199,6 +229,42 @@
     "serviceShortName": "cbs"
   },
   "objects": {
+    "ApplyDiskBackupRequest": {
+      "document": "ApplyDiskBackup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cloud disk backup point, which can be queried through the `DescribeDiskBackups` API.",
+          "example": "dbp-xxxxxxxx",
+          "member": "string",
+          "name": "DiskBackupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the original cloud disk of the backup point, which can be queried through the `DescribeDisks` API.",
+          "example": "disk-xxxxxxxx",
+          "member": "string",
+          "name": "DiskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyDiskBackupResponse": {
+      "document": "ApplyDiskBackup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ApplySnapshotRequest": {
       "document": "ApplySnapshot request structure.",
       "members": [
@@ -341,7 +407,7 @@
       "type": "object"
     },
     "AutoMountConfiguration": {
-      "document": "Describes how a newly purchased cloud disk is initialized and mounted to a CVM",
+      "document": "Describes how a newly purchased cloud disk is initialized and attached to a CVM instance.",
       "members": [
         {
           "default": "",
@@ -355,7 +421,7 @@
         },
         {
           "default": "",
-          "document": "Path to the mount point in the CVM",
+          "document": "Mount point in the instance.",
           "example": "[\"/mnt/datadisk0\"]",
           "member": "string",
           "name": "MountPoint",
@@ -365,7 +431,7 @@
         },
         {
           "default": "",
-          "document": "File system type. Supported: ext4 and xfs.",
+          "document": "File system type. Valid values: `ext4`, `xfs`.",
           "example": "ext4",
           "member": "string",
           "name": "FileSystemType",
@@ -685,7 +751,7 @@
       "members": [
         {
           "default": "",
-          "document": "The location of the instance. The availability zone and the project that the instance belongs to can be specified using this parameter. If the project is not specified, it will be created under the default project.",
+          "document": "Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone and project. If no project is specified, the default project will be used.",
           "example": "无",
           "member": "Placement",
           "name": "Placement",
@@ -694,7 +760,7 @@
         },
         {
           "default": "",
-          "document": "Cloud disk billing method. POSTPAID_BY_HOUR: pay as you go by hour<br><li>CDCPAID: Billed together with the bound dedicated cluster<br>For information about the pricing of each method, see the cloud disk [Pricing Overview](https://intl.cloud.tencent.com/document/product/362/2413?from_cn_redirect=1).",
+          "document": "Cloud disk billing mode. POSTPAID_BY_HOUR: Pay-as-you-go by hour<br><li>CDCPAID: Billed together with the bound dedicated cluster<br>For more information on the pricing in each mode, see [Pricing Overview](https://intl.cloud.tencent.com/document/product/362/2413?from_cn_redirect=1).",
           "example": "PREPAID",
           "member": "string",
           "name": "DiskChargeType",
@@ -703,7 +769,7 @@
         },
         {
           "default": "",
-          "document": "Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD",
+          "document": "Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD Cloud Storage<br><li>CLOUD_PREMIUM: Premium Cloud Disk<br><li>CLOUD_BSSD: Balanced SSD<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: ulTra SSD.",
           "example": "CLOUD_HSSD",
           "member": "string",
           "name": "DiskType",
@@ -712,7 +778,7 @@
         },
         {
           "default": "",
-          "document": "The displayed name of the cloud disk. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes.",
+          "document": "Cloud disk name. If it is not specified, \"Unnamed\" will be used by default. The maximum length is 60 bytes.",
           "example": "无",
           "member": "string",
           "name": "DiskName",
@@ -721,7 +787,7 @@
         },
         {
           "default": "",
-          "document": "Cloud disk binding tag.",
+          "document": "Tags bound to the cloud disk.",
           "example": "无",
           "member": "Tag",
           "name": "Tags",
@@ -730,7 +796,7 @@
         },
         {
           "default": "",
-          "document": "Snapshot ID. If this parameter is specified, the cloud disk is created based on the snapshot. The snapshot type must be a data disk snapshot. The snapshot can be queried in the DiskUsage field in the output parameter through the API [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1).",
+          "document": "Snapshot ID. If this parameter is specified, the cloud disk will be created based on the snapshot. The snapshot must be a data disk snapshot. To query the type of a snapshot, call the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) API and see the `DiskUsage` field in the response.",
           "example": "无",
           "member": "string",
           "name": "SnapshotId",
@@ -739,7 +805,7 @@
         },
         {
           "default": "",
-          "document": "If the number of cloud disks to be created is left empty, the default is 1. There is a limit to the maximum number of cloud disks that can be created for a single request. For more information, please see [CBS Use Limits](https://intl.cloud.tencent.com/doc/product/362/5145?from_cn_redirect=1).",
+          "document": "Number of cloud disks to be created. If it is not specified, `1` will be used by default. There is an upper limit on the maximum number of cloud disks that can be created in a single request. For more information, see [Use Limits](https://intl.cloud.tencent.com/doc/product/362/5145?from_cn_redirect=1).",
           "example": "1",
           "member": "uint64",
           "name": "DiskCount",
@@ -748,7 +814,7 @@
         },
         {
           "default": "",
-          "document": "Extra performance purchased for a cloud disk.<br>This optional parameter is only valid for Tremendous SSD (CLOUD_TSSD) and Enhanced SSD (CLOUD_HSSD).",
+          "document": "Extra performance purchased for a cloud disk.<br>This optional parameter is only valid for ulTra SSD (CLOUD_TSSD) and Enhanced SSD (CLOUD_HSSD).",
           "example": "100",
           "member": "uint64",
           "name": "ThroughputPerformance",
@@ -757,7 +823,7 @@
         },
         {
           "default": "",
-          "document": "Cloud hard disk size (in GB). <br><li> If `SnapshotId` is passed, `DiskSize` cannot be passed. In this case, the size of the cloud disk is the size of the snapshot. <br><li>To pass `SnapshotId` and `DiskSize` at the same time, the size of the disk must be larger than or equal to the size of the snapshot. <br><li>For information about the size range of cloud disks, see cloud disk [Product Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).",
+          "document": "Cloud disk size in GB. <br><li>`DiskSize` is not required if `SnapshotId` is specified. In this case, the size of the cloud disk will be equal to that of the snapshot. <br><li>If you specify both `SnapshotId` and `DiskSize`, the specified disk size cannot be smaller than the snapshot size. <br><li>For the value range of cloud disk size, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).",
           "example": "500",
           "member": "uint64",
           "name": "DiskSize",
@@ -766,7 +832,7 @@
         },
         {
           "default": "",
-          "document": "The default of optional parameter is False. When True is selected, the cloud disk will be created as a shareable cloud disk.",
+          "document": "Optional parameter. Default value: `False`. If `True` is specified, the new cloud disk will be shared.",
           "example": "无",
           "member": "bool",
           "name": "Shareable",
@@ -775,7 +841,7 @@
         },
         {
           "default": "",
-          "document": "A string to ensure the idempotency of the request, which is generated by the client. Each request shall have a unique string with a maximum of 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be ensured.",
+          "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.",
           "example": "无",
           "member": "string",
           "name": "ClientToken",
@@ -784,7 +850,7 @@
         },
         {
           "default": "",
-          "document": "This parameter is used to create an encrypted cloud disk. Its value is always ENCRYPT.",
+          "document": "This parameter is used to create encrypted cloud disks. It is fixed at `ENCRYPT`.",
           "example": "无",
           "member": "string",
           "name": "Encrypt",
@@ -802,7 +868,7 @@
         },
         {
           "default": "",
-          "document": "Whether to delete the associated non-permanent snapshots when a cloud disk is terminated. Valid values: `0` (do not delete); `1` (delete). Default value: `0`. To find out whether a snapshot is permanent, you can call the `DescribeSnapshots` API and check the `IsPermanent` field (`true`: permanent; `false`: non-permanent) in its response.",
+          "document": "Whether to delete the associated non-permanently reserved snapshots upon deletion of the source cloud disk. `0`: No (default value). `1`: Yes. To check whether a snapshot is permanently reserved, see the `IsPermanent` field returned by the `DescribeSnapshots` API.",
           "example": "0",
           "member": "int64",
           "name": "DeleteSnapshot",
@@ -811,12 +877,21 @@
         },
         {
           "default": "",
-          "document": "When a cloud disk is created, automatically initialize it and attach it to the specified mount point",
+          "document": "Specifies whether to automatically attach and initialize the newly created data disk.",
           "example": "无",
           "member": "AutoMountConfiguration",
           "name": "AutoMountConfiguration",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Specifies the cloud disk backup point quota.",
+          "example": "0",
+          "member": "uint64",
+          "name": "DiskBackupQuota",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -825,9 +900,11 @@
       "document": "CreateDisks response structure.",
       "members": [
         {
-          "document": "List of created cloud disk IDs. ",
+          "document": "List of IDs of the created cloud disks.",
+          "example": "[\"disk-lzrg2pwi\"]",
           "member": "string",
           "name": "DiskIdSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -845,7 +922,7 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the cloud disk, for which a snapshot needs to be created. It can be queried via the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1).",
+          "document": "ID of the cloud disk for which to create a snapshot, which can be queried through the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API.",
           "example": "disk-l7mxexxc",
           "member": "string",
           "name": "DiskId",
@@ -854,7 +931,7 @@
         },
         {
           "default": "",
-          "document": "Snapshot name. If it is left empty, the new snapshot name is \"Not named\" by default.",
+          "document": "Snapshot name. If it is not specified, \"Unnamed\" will be used by default.",
           "example": "test",
           "member": "string",
           "name": "SnapshotName",
@@ -863,12 +940,30 @@
         },
         {
           "default": "",
-          "document": "Expiration time of the snapshot. It must be in UTC ISO-8601 format, eg. 2022-01-08T09:47:55+00:00. The snapshot will be automatically deleted when it expires",
+          "document": "Expiration time of the snapshot. It must be in UTC ISO-8601 format, such as 2022-01-08T09:47:55+00:00. The snapshot will be automatically deleted when it expires.",
           "example": "2022-01-08T09:47:55+00:00",
           "member": "datetime_iso",
           "name": "Deadline",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the cloud disk backup point. When this parameter is specified, the snapshot will be created from the backup point.",
+          "example": "dbp-xxxxxxxx",
+          "member": "string",
+          "name": "DiskBackupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tags bound to the snapshot.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -878,8 +973,10 @@
       "members": [
         {
           "document": "ID of the new snapshot.",
+          "example": "snap-3xvkxyxp",
           "member": "string",
           "name": "SnapshotId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -908,6 +1005,33 @@
     },
     "DeleteAutoSnapshotPoliciesResponse": {
       "document": "DeleteAutoSnapshotPolicies response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDiskBackupsRequest": {
+      "document": "DeleteDiskBackups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the cloud disk backup point to be deleted.",
+          "example": "[\"dbp-xxxxxxxx\"]",
+          "member": "string",
+          "name": "DiskBackupIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDiskBackupsResponse": {
+      "document": "DeleteDiskBackups response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1062,6 +1186,96 @@
           "document": "List of scheduled snapshots bound to cloud disk.",
           "member": "AutoSnapshotPolicy",
           "name": "AutoSnapshotPolicySet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDiskBackupsRequest": {
+      "document": "DescribeDiskBackups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IDs of the backup points to be queried. `DiskBackupIds` and `Filters` cannot be specified at the same time.",
+          "example": "[\"dbp-xxxxxxxx\"]",
+          "member": "string",
+          "name": "DiskBackupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter. `DiskBackupIds` and `Filters` cannot be specified at the same time. Valid values: <br><li>disk-backup-id - Array of String - Required: No - (Filter) Filter by backup point ID in the format of `dbp-11112222`.\n<br><li>disk-id - Array of String - Required: No - (Filter) Filter by ID of the cloud disk for which backup points are created.\n<br><li>disk-usage - Array of String - Required: No - (Filter) Filter by type of the cloud disk for which backup points are created. (SYSTEM_DISK: System disk | DATA_DISK: Data disk)",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section of the API [Overview](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section of the API [Overview](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting order of cloud disk backup points. Valid values:<br><li>ASC: Ascending<br><li>DESC: Descending",
+          "example": "ASC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The field by which cloud disk backup points are sorted. Valid values:<br><li>CREATE_TIME: Sort by creation time<br>Backup points are sorted by creation time by default.",
+          "example": "CREATE_TIME",
+          "member": "string",
+          "name": "OrderField",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDiskBackupsResponse": {
+      "document": "DescribeDiskBackups response structure.",
+      "members": [
+        {
+          "document": "Number of eligible cloud disk backup points.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of details of cloud disk backup points.",
+          "example": "无",
+          "member": "DiskBackup",
+          "name": "DiskBackupSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1917,12 +2131,109 @@
       ],
       "usage": "out"
     },
-    "DiskChargePrepaid": {
-      "document": "The billing method of an instance",
+    "DiskBackup": {
+      "document": "Cloud disk backup point.",
       "members": [
         {
           "default": "",
-          "document": "The purchased usage period of a cloud disk (in months). Value range: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
+          "document": "Cloud disk backup point ID.",
+          "example": "dbp-xxxxxxxx",
+          "member": "string",
+          "name": "DiskBackupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the cloud disk with which the backup point is associated.",
+          "example": "disk-xxxxxxxx",
+          "member": "string",
+          "name": "DiskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud disk size in GB.",
+          "example": "50",
+          "member": "uint64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud disk type. Valid values:<br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk",
+          "example": "DATA_DISK",
+          "member": "string",
+          "name": "DiskUsage",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup point name.",
+          "example": "Untitled",
+          "member": "string",
+          "name": "DiskBackupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud disk backup point status. Valid values:<br><li>NORMAL: Normal<br><li>CREATING: Creating<br><li>ROLLBACKING: Rolling back",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "DiskBackupState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Cloud disk creation progress in percentage.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Percent",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time of the cloud disk backup point.",
+          "example": "2022-01-01T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the cloud disk is encrypted. Valid values: <br><li>false: Not encrypted <br><li>true: Encrypted",
+          "example": "false",
+          "member": "bool",
+          "name": "Encrypt",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DiskChargePrepaid": {
+      "document": "Billing mode of the instance",
+      "members": [
+        {
+          "default": "",
+          "document": "Subscription period of the cloud disk in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
+          "example": "1",
           "member": "uint64",
           "name": "Period",
           "required": true,
@@ -1931,7 +2242,8 @@
         },
         {
           "default": "",
-          "document": "Auto Renewal flag. Value range: <br><li>NOTIFY_AND_AUTO_RENEW: Notify expiry and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: Notify expiry but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify expiry nor renew automatically <br><br>Default value range: NOTIFY_AND_MANUAL_RENEW: Notify expiry but do not renew automatically.",
+          "document": "Auto-renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: Notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: Notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify upon expiration nor renew automatically <br><br>Default value: NOTIFY_AND_MANUAL_RENEW.",
+          "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
           "name": "RenewFlag",
           "required": false,
@@ -1940,7 +2252,8 @@
         },
         {
           "default": "",
-          "document": "This parameter is used when you align the expiration time of the cloud disk with that of the mounted server. It is the current expiration time of the server. In this case, the Period passed represents the renewal period of the server, and the cloud disk will be automatically renewed in alignment with the expiration time of the renewed server. Example value: 2018-03-30 20:15:03.",
+          "document": "You can specify this parameter when you need to ensure that a cloud disk and the CVM instance to which it is attached have the same expiration time. This parameter represents the current expiration time of the instance. In this case, if you specify `Period`, `Period` will represent how long you want to renew the instance, and the cloud disk will be renewed based on the new expiration time of the instance. For example, the value of this parameter can be `2018-03-30 20:15:03`.",
+          "example": "2018-03-30 20:15:03",
           "member": "datetime",
           "name": "CurInstanceDeadline",
           "required": false,
@@ -2244,6 +2557,51 @@
       ],
       "type": "object"
     },
+    "InquirePriceModifyDiskBackupQuotaRequest": {
+      "document": "InquirePriceModifyDiskBackupQuota request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cloud disk ID, which can be queried through the `DescribeDisks` API.",
+          "example": "disk-xxxxxxx",
+          "member": "string",
+          "name": "DiskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cloud disk backup point quota after the modification, i.e., the number of backup points that a cloud disk can have.",
+          "example": "1",
+          "member": "uint64",
+          "name": "DiskBackupQuota",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceModifyDiskBackupQuotaResponse": {
+      "document": "InquirePriceModifyDiskBackupQuota response structure.",
+      "members": [
+        {
+          "document": "Price of the cloud disk after its backup point quota is modified.",
+          "example": "无",
+          "member": "Price",
+          "name": "DiskPrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "InquirePriceModifyDiskExtraPerformanceRequest": {
       "document": "InquirePriceModifyDiskExtraPerformance request structure.",
       "members": [
@@ -2290,23 +2648,8 @@
       "members": [
         {
           "default": "",
-          "document": "Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD.",
-          "member": "string",
-          "name": "DiskType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Cloud disk size (in GB). For the value range of the cloud disk sizes, see cloud disk [Product Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).",
-          "member": "uint64",
-          "name": "DiskSize",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Cloud disk billing method. <br><li>POSTPAID_BY_HOUR: Pay-as-you-go on an hourly basis",
+          "document": "Cloud disk billing mode. <br><li>POSTPAID_BY_HOUR: Hourly pay-as-you-go.",
+          "example": "PREPAID",
           "member": "string",
           "name": "DiskChargeType",
           "required": true,
@@ -2314,23 +2657,26 @@
         },
         {
           "default": "",
-          "document": "Relevant parameter settings for the prepaid mode (i.e., monthly subscription). The monthly subscription cloud disk purchase attributes such as usage period and whether or not auto-renewal is set up can be specified using this parameter. <br>This parameter is required when creating a prepaid cloud disk. This parameter is not required when creating an hourly postpaid cloud disk.",
-          "member": "DiskChargePrepaid",
-          "name": "DiskChargePrepaid",
-          "required": false,
-          "type": "object"
+          "document": "Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD Cloud Storage<br><li>CLOUD_PREMIUM: Premium Cloud Disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: ulTra SSD.",
+          "example": "CLOUD_TSSD",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string"
         },
         {
           "default": "",
-          "document": "Quantity of cloud disks purchased. If left empty, default is 1.",
+          "document": "Cloud disk size in GB. For the value range, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).",
+          "example": "500",
           "member": "uint64",
-          "name": "DiskCount",
-          "required": false,
+          "name": "DiskSize",
+          "required": true,
           "type": "int"
         },
         {
           "default": "",
-          "document": "ID of project the cloud disk belongs to.",
+          "document": "ID of the project to which the cloud disk belongs.",
+          "example": "0",
           "member": "uint64",
           "name": "ProjectId",
           "required": false,
@@ -2338,9 +2684,37 @@
         },
         {
           "default": "",
-          "document": "Extra performance (in MB/sec) purchased for a cloud disk.<br>This parameter is only valid for Enhanced SSD (CLOUD_HSSD) and Tremendous SSD (CLOUD_TSSD).",
+          "document": "Number of cloud disks to be purchased. If it is not specified, `1` will be used by default.",
+          "example": "1",
+          "member": "uint64",
+          "name": "DiskCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Extra performance in MB/s purchased for a cloud disk.<br>This parameter is only valid for Enhanced SSD (CLOUD_HSSD) and ulTra SSD (CLOUD_TSSD).",
+          "example": "100",
           "member": "uint64",
           "name": "ThroughputPerformance",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Relevant parameter settings for the prepaid mode (i.e., monthly subscription). The monthly subscription cloud disk purchase attributes such as usage period and whether or not auto-renewal is set up can be specified using this parameter. <br>This parameter is required when creating a prepaid cloud disk. This parameter is not required when creating an hourly postpaid cloud disk.",
+          "example": "无",
+          "member": "DiskChargePrepaid",
+          "name": "DiskChargePrepaid",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Specifies the cloud disk backup point quota.",
+          "example": "0",
+          "member": "uint64",
+          "name": "DiskBackupQuota",
           "required": false,
           "type": "int"
         }
@@ -2351,9 +2725,11 @@
       "document": "InquiryPriceCreateDisks response structure.",
       "members": [
         {
-          "document": "Describes the price of purchasing new cloud disk.",
+          "document": "Describes the price of newly purchased cloud disks.",
+          "example": "无",
           "member": "Price",
           "name": "DiskPrice",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -2543,6 +2919,42 @@
     },
     "ModifyDiskAttributesResponse": {
       "document": "ModifyDiskAttributes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDiskBackupQuotaRequest": {
+      "document": "ModifyDiskBackupQuota request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cloud disk ID.",
+          "example": "disk-xxxxxxxx",
+          "member": "string",
+          "name": "DiskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cloud disk backup point quota after the adjustment",
+          "example": "1",
+          "member": "uint64",
+          "name": "DiskBackupQuota",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDiskBackupQuotaResponse": {
+      "document": "ModifyDiskBackupQuota response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

@@ -75,15 +75,15 @@
     "CreateInstances": [
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=CreateInstances\n&ZoneId=100002\n&TypeId=6\n&MemSize=1024\n&GoodsNum=1\n&Period=1\n&BillingMode=0\n&Password=**********\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstances\n<Common request parameters>\n\n{\n    \"TypeId\": \"6\",\n    \"Password\": \"**********\",\n    \"GoodsNum\": 1,\n    \"Period\": \"1\",\n    \"BillingMode\": \"0\",\n    \"MemSize\": \"1024\",\n    \"ZoneId\": \"100002\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2a836c00-175f-11eb-aeb3-db134c8d8fec\",\n        \"InstanceIds\": [\n            \"crs-kic39axx\"\n        ],\n        \"DealId\": \"22716\"\n    }\n}",
         "title": "Purchasing a pay-as-you-go TencentDB for Redis v4.0 instance on Memory Edition (standard architecture)"
       },
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=CreateInstances\n&ZoneId=200002\n&TypeId=9\n&MemSize=2048\n&GoodsNum=1\n&Period=3\n&BillingMode=1\n&VpcId=vpc-fmh*****\n&SubnetId=subnet-680c****\n&RedisShardNum=3\n&RedisReplicasNum=1\n&NoAuth=true\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstances\n<Common request parameters>\n\n{\n    \"TypeId\": \"9\",\n    \"VpcId\": \"vpc-fmh*****\",\n    \"GoodsNum\": 1,\n    \"RedisShardNum\": \"3\",\n    \"Period\": \"3\",\n    \"BillingMode\": \"1\",\n    \"NoAuth\": \"true\",\n    \"MemSize\": \"2048\",\n    \"SubnetId\": \"subnet-680c****\",\n    \"RedisReplicasNum\": \"1\",\n    \"ZoneId\": \"200002\"\n}",
         "output": "{\n    \"Response\": {\n        \"DealId\": \"154494263\",\n        \"InstanceIds\": [\n            \"crs-h9sn****\"\n        ],\n        \"RequestId\": \"d39baee1-e34f-4685-a810-5d27c510acb3\"\n    }\n}",
-        "title": "Purchasing a monthly subscribed TencentDB for Redis v5.0 instance on Memory Edition (cluster architecture) "
+        "title": "Purchasing a monthly subscribed TencentDB for Redis v5.0 instance on Memory Edition (cluster architecture)"
       }
     ],
     "CreateParamTemplate": [
@@ -137,9 +137,9 @@
     "DescribeDBSecurityGroups": [
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeDBSecurityGroups\n&InstanceId=crs-eb2w7dto\n&Product=redis\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"VIP\": \"10.10.0.1\",\n        \"VPort\": \"6379\",\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A1\",\n        \"Groups\": [\n            {\n                \"Outbound\": [],\n                \"SecurityGroupName\": \"Redis security group\",\n                \"Inbound\": [],\n                \"ProjectId\": 0,\n                \"SecurityGroupId\": \"sg-ajr1jzgj\",\n                \"SecurityGroupRemark\": \"\",\n                \"CreateTime\": \"2017-04-13 15:00:06\"\n            }\n        ]\n    }\n}",
-        "title": "Sample"
+        "input": "https://tencentdb.tencentcloudapi.com/?Action=DescribeDBSecurityGroups\r\n&InstanceId=crs-eb2w7dto\r\n&Product=redis\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A1\",\n        \"Groups\": [\n            {\n                \"Outbound\": [],\n                \"SecurityGroupName\": \"CDB\",\n                \"Inbound\": [],\n                \"ProjectId\": 0,\n                \"SecurityGroupId\": \"sg-ajr1jzgj\",\n                \"SecurityGroupRemark\": \"\",\n                \"CreateTime\": \"2017-04-13 15:00:06\"\n            }\n        ]\n    }\n}",
+        "title": "Example"
       }
     ],
     "DescribeInstanceAccount": [
@@ -337,9 +337,9 @@
     "DescribeProjectSecurityGroups": [
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeProjectSecurityGroups\n&ProjectId=11954\n&Product=redis\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A1\",\n        \"Groups\": [\n            {\n                \"Outbound\": [],\n                \"SecurityGroupName\": \"CDB\",\n                \"Inbound\": [],\n                \"ProjectId\": 0,\n                \"SecurityGroupId\": \"sg-ajr1jzgj\",\n                \"SecurityGroupRemark\": \"\",\n                \"CreateTime\": \"2017-04-13 15:00:06\"\n            }\n        ]\n    }\n}",
-        "title": "Sample request"
+        "input": "https://tencentdb.tencentcloudapi.com/?Action=DescribeProjectSecurityGroups\r\n&ProjectId=11954&Product=redis\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A1\",\n        \"Groups\": [\n            {\n                \"Outbound\": [],\n                \"SecurityGroupName\": \"CDB\",\n                \"Inbound\": [],\n                \"ProjectId\": 0,\n                \"SecurityGroupId\": \"sg-ajr1jzgj\",\n                \"SecurityGroupRemark\": \"\",\n                \"CreateTime\": \"2017-04-13 15:00:06\"\n            }\n        ]\n    }\n}",
+        "title": "Example"
       }
     ],
     "DescribeProxySlowLog": [
@@ -361,7 +361,7 @@
     "DescribeSlowLog": [
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeSlowLog\n&InstanceId=crs-asdasdas\n&BeginTime=2019-09-08 12:12:41\n&EndTime=2019-09-09 12:12:41\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSlowLog\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-asdasdas\",\n    \"EndTime\": \"2019-09-09 12:12:41\",\n    \"BeginTime\": \"2019-09-08 12:12:41\"\n}",
         "output": "{\n    \"Response\": {\n        \"InstanceSlowlogDetail\": [\n            {\n                \"Node\": \"833a2f6d8b402319aee8ad7f1c0fbbf7a6604337\",\n                \"Command\": \"hget\",\n                \"CommandLine\": \"hget hash_key classify_scope::default\",\n                \"Duration\": 45,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\",\n                \"Client\": \"\"\n            },\n            {\n                \"Node\": \"833a2f6d8b402319aee8ad7f1c0fbbf7a6604337\",\n                \"Command\": \"keys\",\n                \"CommandLine\": \"keys OtherResControler:orion.ovs.client.1514259512471:orion.ovs.entprise.9281083591:sence:*\",\n                \"Duration\": 41,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\",\n                \"Client\": \"\"\n            },\n            {\n                \"Node\": \"24a05f0d545da235f07a5bc5deebb937af8f721e\",\n                \"Command\": \"get\",\n                \"CommandLine\": \"get slot::fsm::status::orion.ovs.client.1508751991541::1db7ffcf9216bc1fd939e6c710514f6fb40fd4fe1525f\",\n                \"Duration\": 41,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\",\n                \"Client\": \"\"\n            }\n        ],\n        \"RequestId\": \"121d5b40-d2b8-11e9-8c40-ef686158cbd6\",\n        \"TotalCount\": 106980\n    }\n}",
         "title": "Sample request"
       }
@@ -417,9 +417,9 @@
     "DisassociateSecurityGroups": [
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=DisassociateSecurityGroups\n&SecurityGroupId=sg-ajr1jzgj\n&InstanceIds.0=crs-eb2w7dto\n&Product=redis\n&<Common request parameters>",
+        "input": "https://tencentdb.tencentcloudapi.com/?Action=DisassociateSecurityGroups\r\n&SecurityGroupId=sg-ajr1jzgj\r\n&InstanceIds.0=crs-eb2w7dto\r\n&Product=redis\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1a42feb9-82087f71-6a0031ac-699a92a1\"\n    }\n}",
-        "title": "Sample"
+        "title": "Example"
       }
     ],
     "EnableReplicaReadonly": [
@@ -481,9 +481,9 @@
     "ModifyDBInstanceSecurityGroups": [
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=ModifyDBInstanceSecurityGroups\n&InstanceId=crs-eb2w7dto\n&SecurityGroupIds.0=sg-ajr1jzgj\n&Product=redis\n&<Common request parameters>",
+        "input": "https://tencentdb.tencentcloudapi.com/?Action=ModifyDBInstanceSecurityGroups\r\n&InstanceId=crs-eb2w7dto\r\n&SecurityGroupIds.0=sg-ajr1jzgj\r\n&Product=redis\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1a42feb9-82087f71-6a0031ac-699a92a1\"\n    }\n}",
-        "title": "Sample"
+        "title": "Example"
       }
     ],
     "ModifyInstance": [
@@ -505,9 +505,9 @@
     "ModifyInstanceParams": [
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=ModifyInstanceParams\n&InstanceId=crs-5a4py64p\n&InstanceParams.0.Key=timeout\n&InstanceParams.0.Value=120\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceParams\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5a4py64p\",\n    \"InstanceParams\": [\n        {\n            \"Value\": \"120\",\n            \"Key\": \"timeout\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Changed\": false,\n        \"TaskId\": 327,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
-        "title": "Modifying instance parameters"
+        "title": "Modifying Instance Parameters"
       }
     ],
     "ModifyInstanceReadOnly": [
