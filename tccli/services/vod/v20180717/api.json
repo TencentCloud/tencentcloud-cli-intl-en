@@ -667,7 +667,7 @@
       "output": "RestoreMediaResponse"
     },
     "ReviewAudioVideo": {
-      "document": "This API is used to start a moderation task on a file stored in VOD to detect non-compliant content in images, text, and speech.\n\nIf event notifications are used, the event type is [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).\n",
+      "document": "This API is used to start a moderation task on a file stored in VOD to detect non-compliant content in images, text, speech, and voice.\n\nIf event notifications are used, the event type is [ReviewAudioVideoComplete](https://intl.cloud.tencent.com/document/product/266/81258?from_cn_redirect=1).\n",
       "input": "ReviewAudioVideoRequest",
       "name": "Starts a moderation task",
       "output": "ReviewAudioVideoResponse"
@@ -16401,6 +16401,7 @@
         {
           "default": "",
           "document": "Bitrate of video stream in bps.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
           "member": "int64",
           "name": "Bitrate",
           "required": true,
@@ -16410,6 +16411,7 @@
         {
           "default": "",
           "document": "Height of video stream in px.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1080",
           "member": "int64",
           "name": "Height",
           "required": true,
@@ -16419,6 +16421,7 @@
         {
           "default": "",
           "document": "Width of video stream in px.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "720",
           "member": "int64",
           "name": "Width",
           "required": true,
@@ -16428,6 +16431,7 @@
         {
           "default": "",
           "document": "Video stream encoder, such as h264.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "h264",
           "member": "string",
           "name": "Codec",
           "required": true,
@@ -16437,10 +16441,21 @@
         {
           "default": "",
           "document": "Frame rate in Hz.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "25",
           "member": "int64",
           "name": "Fps",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The codec tag. This parameter is valid only if `Codec` is `hevc`.",
+          "example": "hev1",
+          "member": "string",
+          "name": "CodecTag",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -24860,6 +24875,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The codec tag. This parameter is valid only if the H.265 codec is used. Valid values:\n<li>hvc1</li>\n<li>hev1</li>\nDefault value: hvc1.",
+          "example": "hev1",
+          "member": "string",
+          "name": "CodecTag",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -24963,6 +24988,16 @@
           "example": "ON",
           "member": "string",
           "name": "PreserveHDRSwitch",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The codec tag. This parameter is valid only if the H.265 codec is used. Valid values:\n<li>hvc1</li>\n<li>hev1</li>\nDefault value: hvc1.",
+          "example": "hev1",
+          "member": "string",
+          "name": "CodecTag",
           "required": false,
           "type": "string",
           "value_allowed_null": false
