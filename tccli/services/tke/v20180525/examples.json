@@ -65,7 +65,7 @@
     "CreateClusterEndpoint": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=CreateClusterEndpoint\n&ClusterId=cls-xxxxxxxx\n&SubnetId=subnet-xxxxxx\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateClusterEndpoint\n<Common request parameters>\n\n{\n    \"SubnetId\": \"subnet-xxxxxx\",\n    \"ClusterId\": \"cls-xxxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Creating a cluster access endpoint"
       }
@@ -175,9 +175,9 @@
     "DeleteClusterEndpoint": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=DeleteClusterEndpoint\r\n&ClusterId=cls-xxxxxxxx\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteClusterEndpoint\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-xxxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Disabling network access for a cluster"
+        "title": "Deleting a cluster access endpoint"
       }
     ],
     "DeleteClusterEndpointVip": [
@@ -271,8 +271,8 @@
     "DescribeAvailableTKEEdgeVersion": [
       {
         "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=DescribeAvailableTKEEdgeVersion\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Versions\": [\n            \"1.14.1\",\n            \"1.16.1\"\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAvailableTKEEdgeVersion\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-xxxxxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Versions\": [\n            \"1.14.1\",\n            \"1.16.1\"\n        ],\n        \"EdgeVersionLatest\": \"1.0.1\",\n        \"EdgeVersionCurrent\": \"1.0.1\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Checking the supported K8s versions"
       }
     ],

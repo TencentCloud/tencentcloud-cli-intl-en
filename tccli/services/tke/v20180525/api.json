@@ -43,7 +43,7 @@
       "output": "CreateClusterResponse"
     },
     "CreateClusterEndpoint": {
-      "document": "Create a cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)",
+      "document": "This API is used to create a cluster access endpoint.",
       "input": "CreateClusterEndpointRequest",
       "name": "Create a cluster access port",
       "output": "CreateClusterEndpointResponse"
@@ -121,7 +121,7 @@
       "output": "DeleteClusterAsGroupsResponse"
     },
     "DeleteClusterEndpoint": {
-      "document": "Delete the cluster access port (intranet / extranet access is enabled for independent clusters, and intranet access is supported for managed clusters)",
+      "document": "This API is used to delete a cluster access endpoint.",
       "input": "DeleteClusterEndpointRequest",
       "name": "Delete cluster access port",
       "output": "DeleteClusterEndpointResponse"
@@ -193,7 +193,7 @@
       "output": "DescribeAvailableClusterVersionResponse"
     },
     "DescribeAvailableTKEEdgeVersion": {
-      "document": "This API is used to query the K8s versions supported by TKE Edge.",
+      "document": "This API is used to check the edge component versions and K8s versions supported by TKE Edge.",
       "input": "DescribeAvailableTKEEdgeVersionRequest",
       "name": "Queries the K8s versions supported by TKE Edge.",
       "output": "DescribeAvailableTKEEdgeVersionResponse"
@@ -2593,7 +2593,7 @@
         },
         {
           "default": "",
-          "document": "The security group in use. Required only for public network access.",
+          "document": "The security group in use, which must be passed in when public access is enabled.",
           "example": "sg-xxx",
           "member": "string",
           "name": "SecurityGroup",
@@ -3482,6 +3482,24 @@
           "name": "ChargeType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Edge cluster version. It is the set of versions of all cluster components.",
+          "example": "1.0.1",
+          "member": "string",
+          "name": "EdgeVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Prefix of the image registry of an edge component",
+          "example": "reg.test.com/myedge",
+          "member": "string",
+          "name": "RegistryPrefix",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4128,7 +4146,17 @@
     },
     "DescribeAvailableTKEEdgeVersionRequest": {
       "document": "DescribeAvailableTKEEdgeVersion request structure.",
-      "members": [],
+      "members": [
+        {
+          "default": "",
+          "document": "You can enter the `ClusterId` to query the current and latest versions of all cluster components.",
+          "example": "cls-xxxxxxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        }
+      ],
       "type": "object"
     },
     "DescribeAvailableTKEEdgeVersionResponse": {
@@ -4136,10 +4164,30 @@
       "members": [
         {
           "document": "Version list",
+          "example": "[\"1.14.1\",\"1.16.1\"]",
           "member": "string",
           "name": "Versions",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "Latest version of the edge cluster\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1.0.1",
+          "member": "string",
+          "name": "EdgeVersionLatest",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Current version of the edge cluster\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1.0.1",
+          "member": "string",
+          "name": "EdgeVersionCurrent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

@@ -6,6 +6,12 @@
       "name": "Creates a GME application",
       "output": "CreateAppResponse"
     },
+    "DeleteRoomMember": {
+      "document": "This API is used to delete a room or remove members from the room.",
+      "input": "DeleteRoomMemberRequest",
+      "name": "Deletes a room or removes a member from the room",
+      "output": "DeleteRoomMemberResponse"
+    },
     "DescribeAppStatistics": {
       "document": "This API is used to get the usage statistics of a GME application, including those of voice chat, voice messaging and speech-to-text, phrase analysis, etc. The maximum query period is the past 30 days.",
       "input": "DescribeAppStatisticsRequest",
@@ -372,6 +378,93 @@
           "example": "无",
           "member": "CreateAppResp",
           "name": "Data",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteResult": {
+      "document": "Result of the operation to delete a room or remove members",
+      "members": [
+        {
+          "default": "",
+          "document": "Status code. `0`: Succeeded. Others: Failed\\",
+          "member": "int64",
+          "name": "Code",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description",
+          "member": "string",
+          "name": "ErrorMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DeleteRoomMemberRequest": {
+      "document": "DeleteRoomMember request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the target room",
+          "example": "100",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of the members to remove",
+          "example": "[\"1\\r\\n\",\"2\\r\\n\"]",
+          "member": "string",
+          "name": "Uids",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Operation type. `1`: Delete a room; `2`: Remove members",
+          "example": "2",
+          "member": "uint64",
+          "name": "DeleteType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "140014556",
+          "member": "uint64",
+          "name": "BizId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRoomMemberResponse": {
+      "document": "DeleteRoomMember response structure.",
+      "members": [
+        {
+          "document": "Result of the operation to delete a room or remove a member",
+          "example": "无",
+          "member": "DeleteResult",
+          "name": "DeleteResult",
           "required": true,
           "type": "object",
           "value_allowed_null": false

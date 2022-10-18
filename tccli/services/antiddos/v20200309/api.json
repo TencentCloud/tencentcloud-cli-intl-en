@@ -348,6 +348,12 @@
       "name": "Obtains layer-7 forwarding rules",
       "output": "DescribeNewL7RulesResponse"
     },
+    "DescribeNewL7RulesErrHealth": {
+      "document": "This API is used to getting the exception results of the health check on layer-7 forwarding rules.",
+      "input": "DescribeNewL7RulesErrHealthRequest",
+      "name": "Gets the exception results of the health check on layer-7 forwarding rules",
+      "output": "DescribeNewL7RulesErrHealthResponse"
+    },
     "DescribeOverviewDDoSEventList": {
       "document": "This API is used to obtain the list of DDoS attacks.",
       "input": "DescribeOverviewDDoSEventListRequest",
@@ -1072,6 +1078,16 @@
           "example": "1",
           "member": "uint64",
           "name": "IpCountNewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The version of attack defense package",
+          "example": "1",
+          "member": "uint64",
+          "name": "VitalityVersion",
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -5742,6 +5758,60 @@
           "name": "ConfigList",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNewL7RulesErrHealthRequest": {
+      "document": "DescribeNewL7RulesErrHealth request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)",
+          "example": "bgpip",
+          "member": "string",
+          "name": "Business",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of rule IDs",
+          "example": "无",
+          "member": "string",
+          "name": "RuleIdList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNewL7RulesErrHealthResponse": {
+      "document": "DescribeNewL7RulesErrHealth response structure.",
+      "members": [
+        {
+          "document": "List of rules with exceptions. `Key`: Rule ID, `Value`: Exception IPs and error message. ",
+          "example": "无",
+          "member": "KeyValue",
+          "name": "ErrHealths",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of rules with exceptions",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {

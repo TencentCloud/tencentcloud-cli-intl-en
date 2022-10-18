@@ -8,6 +8,14 @@
         "title": "Creating a GME app by using custom configuration"
       }
     ],
+    "DeleteRoomMember": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: gme.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRoomMember\n<Common request parameters>\n\n{\n    \"DeleteType\": \"2\",\n    \"RoomId\": \"100\",\n    \"BizId\": \"140014556\",\n    \"Uids\": [\n        \"2\",\n        \"1\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dfe39c29-ce97-44df-ba79-7d947d465694\",\n        \"DeleteResult\": {\n            \"Code\": 0,\n            \"ErrorMsg\": \"\"\n        }\n    }\n}",
+        "title": "Removing two members from the room"
+      }
+    ],
     "DescribeAppStatistics": [
       {
         "document": "",
