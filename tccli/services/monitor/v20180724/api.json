@@ -270,6 +270,12 @@
       "name": "Queries the list of exporter integrations",
       "output": "DescribeExporterIntegrationsResponse"
     },
+    "DescribeGrafanaChannels": {
+      "document": "This API is used to list all Grafana alert channels.",
+      "input": "DescribeGrafanaChannelsRequest",
+      "name": "Lists all Grafana alert channels",
+      "output": "DescribeGrafanaChannelsResponse"
+    },
     "DescribeGrafanaConfig": {
       "document": "This API is used to list Grafana settings, i.e., the `grafana.ini` file content.",
       "input": "DescribeGrafanaConfigRequest",
@@ -409,7 +415,7 @@
       "output": "EnableSSOCamCheckResponse"
     },
     "GetMonitorData": {
-      "document": "This API is used to get the monitoring data of Tencent Cloud services except TKE. To pull TKE’s monitoring data, please use the API [DescribeStatisticData](https://intl.cloud.tencent.com/document/product/248/51845?from_cn_redirect=1).\nYou can get the monitoring data of a Tencent Cloud service by passing in its namespace, object dimension description, and monitoring metrics.\nAPI call rate limit: 20 calls/second (1,200 calls/minute). A single request can get the data of up to 10 instances for up to 1,440 data points.\nIf you need to call a large number of APIs to pull metrics or objects at a time, some APIs may fail to be called due to the rate limit. We suggest you evenly arrange API calls at a time granularity.",
+      "document": "This API is used to get the monitoring data of Tencent Cloud services except TKE. To pull TKE’s monitoring data, use the [DescribeStatisticData](https://www.tencentcloud.com/document/product/248/39481) API.\nYou can get the monitoring data of a Tencent Cloud service by passing in its namespace, object dimension description, and monitoring metrics.\nAPI call rate limit: 20 calls/second (1,200 calls/minute). A single request can get the data of up to 10 instances for up to 1,440 data points.\nIf you need to call a large number of APIs to pull metrics or objects at a time, some APIs may fail to be called due to the rate limit. We suggest you evenly arrange API calls at a time granularity.\n\n>?\n>- Cloud Monitor has started billing the `GetMonitorData` API on September 1, 2022. Each root account has a free tier of one million call requests a month. If you want to call this API after the free tier is exceeded, you need to enable [pay-as-you-go billing for API requests](https://buy.cloud.tencent.com/APIRequestBuy). For billing rules, see [API billing documentation](https://intl.cloud.tencent.com/document/product/248/77914?from_cn_redirect=1).",
       "input": "GetMonitorDataRequest",
       "name": "Pulls metric monitoring data",
       "output": "GetMonitorDataResponse"
@@ -441,7 +447,7 @@
     "ModifyAlarmPolicyInfo": {
       "document": "This API is used to edit the basic information of a v2.0 alarm policy, including policy name and remarks.",
       "input": "ModifyAlarmPolicyInfoRequest",
-      "name": "Edits the basic information of alarm policy",
+      "name": "Modifies the basic information of an alarm policy",
       "output": "ModifyAlarmPolicyInfoResponse"
     },
     "ModifyAlarmPolicyNotice": {
@@ -675,6 +681,42 @@
         }
       ],
       "usage": "out"
+    },
+    "AlarmHierarchicalValue": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Remind",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Warn",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Serious",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "AlarmHistory": {
       "document": "Alarm record data",
@@ -1100,6 +1142,16 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Tags bound to a notification template\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1436,6 +1488,26 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the policy is associated with all objects\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "IsBindAll",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Policy tag\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1644,6 +1716,36 @@
           "name": "ProductId",
           "required": false,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum value\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "float",
+          "name": "ValueMax",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Minimum value\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "float",
+          "name": "ValueMin",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "AlarmHierarchicalValue",
+          "name": "HierarchicalValue",
+          "required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -2021,6 +2123,7 @@
         {
           "default": "",
           "document": "Alarm notification frequency.",
+          "example": "7200",
           "member": "int64",
           "name": "AlarmNotifyPeriod",
           "required": true,
@@ -2030,6 +2133,7 @@
         {
           "default": "",
           "document": "Predefined repeated notification policy. `0`: One-time alarm; `1`: exponential alarm; `2`: consecutive alarm.",
+          "example": "0",
           "member": "int64",
           "name": "AlarmNotifyType",
           "required": true,
@@ -2039,6 +2143,7 @@
         {
           "default": "",
           "document": "Detection method.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"1\"",
           "member": "string",
           "name": "CalcType",
           "required": true,
@@ -2048,6 +2153,7 @@
         {
           "default": "",
           "document": "Detection value.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "\"95\"",
           "member": "string",
           "name": "CalcValue",
           "required": true,
@@ -2056,7 +2162,8 @@
         },
         {
           "default": "",
-          "document": "Duration.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Duration in seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"300\"",
           "member": "string",
           "name": "ContinueTime",
           "required": true,
@@ -2066,6 +2173,7 @@
         {
           "default": "",
           "document": "Metric ID.",
+          "example": "33",
           "member": "int64",
           "name": "MetricID",
           "required": true,
@@ -2075,6 +2183,7 @@
         {
           "default": "",
           "document": "Displayed metric name.",
+          "example": "\"CPU利用率\"",
           "member": "string",
           "name": "MetricDisplayName",
           "required": true,
@@ -2084,6 +2193,7 @@
         {
           "default": "",
           "document": "Statistical period.",
+          "example": "60",
           "member": "int64",
           "name": "Period",
           "required": true,
@@ -2093,6 +2203,7 @@
         {
           "default": "",
           "document": "Rule ID.",
+          "example": "623123",
           "member": "int64",
           "name": "RuleID",
           "required": true,
@@ -2102,11 +2213,42 @@
         {
           "default": "",
           "document": "Metric unit.",
+          "example": "\"%\"",
           "member": "string",
           "name": "Unit",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is an advanced metric. Valid values: `0` (no), `1` (yes).",
+          "example": "0",
+          "member": "int64",
+          "name": "IsAdvanced",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the advance metric feature is enabled. Valid values: `0` (no), `1` (yes).",
+          "example": "0",
+          "member": "int64",
+          "name": "IsOpen",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Product ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ProductId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2207,6 +2349,15 @@
           "example": "无",
           "member": "CLSNotice",
           "name": "CLSNotices",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tags bound to a template",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
           "required": false,
           "type": "list"
         }
@@ -2360,6 +2511,24 @@
           "name": "GroupBy",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tags bound to a template",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Log alarm information",
+          "example": "无",
+          "member": "LogAlarmReq",
+          "name": "LogAlarmReqInfo",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2692,7 +2861,7 @@
       "document": "CreateGrafanaIntegration response structure.",
       "members": [
         {
-          "document": "",
+          "document": "Integration ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "integration-xxxxxxxx",
           "member": "string",
           "name": "IntegrationId",
@@ -2732,7 +2901,7 @@
         },
         {
           "default": "",
-          "document": "Organization ID",
+          "document": "Default value: `1`. This parameter has been deprecated. Please use `OrganizationIds` instead.",
           "example": "1",
           "member": "int64",
           "name": "OrgId",
@@ -2750,7 +2919,7 @@
         },
         {
           "default": "",
-          "document": "Array of extra organization IDs",
+          "document": "Array of extra organization IDs. This parameter has been deprecated. Please use `OrganizationIds` instead.",
           "example": "[]",
           "member": "string",
           "name": "ExtraOrgIds",
@@ -2759,7 +2928,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Array of all valid organization IDs. Default value: `1`.",
           "example": "[\"1\"]",
           "member": "string",
           "name": "OrganizationIds",
@@ -2773,7 +2942,7 @@
       "document": "CreateGrafanaNotificationChannel response structure.",
       "members": [
         {
-          "document": "",
+          "document": "Channel ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "channel-xxxxxxxx",
           "member": "string",
           "name": "ChannelId",
@@ -3329,7 +3498,7 @@
       "document": "CreateSSOAccount response structure.",
       "members": [
         {
-          "document": "",
+          "document": "The added user UIN",
           "example": "无",
           "member": "string",
           "name": "UserId",
@@ -4525,6 +4694,15 @@
           "name": "NoticeIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Filter templates by tag",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -4744,6 +4922,33 @@
           "example": "[\"ONECLICK\"]",
           "member": "string",
           "name": "OneClickPolicyType",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether the returned result filters policies associated with all objects. Valid values: `1` (Yes), `0` (No).",
+          "example": "1",
+          "member": "int64",
+          "name": "NotBindAll",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether the returned result filters policies associated with instance groups. Valid values: `1` (Yes), `0` (No).",
+          "example": "1",
+          "member": "int64",
+          "name": "NotInstanceGroup",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter policies by tag",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
           "required": false,
           "type": "list"
         }
@@ -5739,6 +5944,15 @@
           "name": "UpdateTimeOrder",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order based on the number of associated policies. Valid values: `asc` (ascending order), `desc` (descending order).",
+          "example": "desc",
+          "member": "string",
+          "name": "PolicyCountOrder",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5868,6 +6082,87 @@
           "example": "[]",
           "member": "IntegrationConfiguration",
           "name": "IntegrationSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGrafanaChannelsRequest": {
+      "document": "DescribeGrafanaChannels request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "my-instance",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of items to be queried",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Channel name",
+          "example": "my-channel",
+          "member": "string",
+          "name": "ChannelName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Channel ID.",
+          "example": "[\"crule-123\"]",
+          "member": "string",
+          "name": "ChannelIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Channel status",
+          "example": "1",
+          "member": "int64",
+          "name": "ChannelState",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGrafanaChannelsResponse": {
+      "document": "DescribeGrafanaChannels response structure.",
+      "members": [
+        {
+          "document": "Array of alert channels",
+          "example": "[]",
+          "member": "GrafanaChannel",
+          "name": "NotificationChannelSet",
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -6233,6 +6528,15 @@
           "member": "string",
           "name": "InstanceId",
           "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by plugin ID",
+          "example": "grafana-piechart",
+          "member": "string",
+          "name": "PluginId",
+          "required": false,
           "type": "string"
         }
       ],
@@ -8688,6 +8992,15 @@
           "name": "InstanceId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter by account UIN",
+          "example": "10000",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -9421,6 +9734,26 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "grafana-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "User’s root account UIN",
+          "example": "11111",
+          "member": "string",
+          "name": "Uin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -9450,6 +9783,72 @@
         }
       ],
       "usage": "both"
+    },
+    "GrafanaChannel": {
+      "document": "Grafana alert channel",
+      "members": [
+        {
+          "default": "",
+          "document": "Channel ID",
+          "example": "channel-id",
+          "member": "string",
+          "name": "ChannelId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Channel name",
+          "example": "channel-name",
+          "member": "string",
+          "name": "ChannelName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Array of alert channel template IDs",
+          "example": "[]",
+          "member": "string",
+          "name": "Receivers",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2021-03-11T16:54:33+08:00",
+          "member": "datetime_iso",
+          "name": "CreatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Update time",
+          "example": "2021-03-11T16:54:33+08:00",
+          "member": "datetime_iso",
+          "name": "UpdatedAt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "All valid organizations in an alert channel\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"1\", \"2\", \"3\"]",
+          "member": "string",
+          "name": "OrganizationIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "GrafanaInstanceInfo": {
       "document": "Instance type when the Grafana instance is queried",
@@ -9689,6 +10088,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Grafana redirection address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "GrafanaURL",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -9745,6 +10154,46 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default valid organization. This parameter has been deprecated. Please use `OrganizationIds` instead.",
+          "example": "1",
+          "member": "string",
+          "name": "OrgId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Extra valid organization. This parameter has been deprecated. Please use `OrganizationIds` instead.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"2\", \"3\"]",
+          "member": "string",
+          "name": "ExtraOrgIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Valid organization. This parameter has been deprecated. Please use `OrganizationIds` instead.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"1\", \"2\", \"3\"]",
+          "member": "string",
+          "name": "OrgIds",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "All valid organizations in an alert channel\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"1\", \"2\", \"3\"]",
+          "member": "string",
+          "name": "OrganizationIds",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -9801,7 +10250,7 @@
       "document": "InstallPlugins response structure.",
       "members": [
         {
-          "document": "",
+          "document": "ID of the installed plugin\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"grafana-piechart\"]",
           "member": "string",
           "name": "PluginIds",
@@ -9956,6 +10405,88 @@
         }
       ],
       "usage": "out"
+    },
+    "LogAlarmReq": {
+      "document": "Log alarm request information",
+      "members": [
+        {
+          "default": "",
+          "document": "APM instance ID",
+          "example": "fake-instanceId",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Search condition",
+          "example": "无",
+          "member": "LogFilterInfo",
+          "name": "Filter",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The switch to enable/disable alarm merging",
+          "example": "1",
+          "member": "string",
+          "name": "AlarmMerge",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Alarm merging time",
+          "example": "30",
+          "member": "string",
+          "name": "AlarmMergeTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "LogFilterInfo": {
+      "document": "Log alarm search condition structure",
+      "members": [
+        {
+          "default": "",
+          "document": "Field name",
+          "example": "k1",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Comparison operator",
+          "example": "eq",
+          "member": "string",
+          "name": "Operator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Field value",
+          "example": "val1",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ManagementCommand": {
       "document": "Prometheus agent management command line",
@@ -10547,6 +11078,15 @@
           "name": "GroupBy",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Log alarm creation request parameters",
+          "example": "无",
+          "member": "LogAlarmReq",
+          "name": "LogAlarmReqInfo",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -11906,6 +12446,26 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The alert rule limit\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "150",
+          "member": "int64",
+          "name": "AlertRuleLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The recording rule limit\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "150",
+          "member": "int64",
+          "name": "RecordingRuleLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -12326,6 +12886,7 @@
         {
           "default": "",
           "document": "Rule ID",
+          "example": "arule-xxx",
           "member": "string",
           "name": "RuleId",
           "required": true,
@@ -12335,6 +12896,7 @@
         {
           "default": "",
           "document": "Rule status code",
+          "example": "1",
           "member": "int64",
           "name": "RuleState",
           "required": true,
@@ -12343,7 +12905,8 @@
         },
         {
           "default": "",
-          "document": "Rule name",
+          "document": "Group name",
+          "example": "groupname",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -12353,6 +12916,7 @@
         {
           "default": "",
           "document": "Rule group",
+          "example": "groupname",
           "member": "string",
           "name": "Group",
           "required": true,
@@ -12362,6 +12926,7 @@
         {
           "default": "",
           "document": "Number of rules",
+          "example": "1",
           "member": "int64",
           "name": "Total",
           "required": true,
@@ -12371,6 +12936,7 @@
         {
           "default": "",
           "document": "Rule creation time",
+          "example": "\"\"",
           "member": "string",
           "name": "CreatedAt",
           "required": true,
@@ -12380,11 +12946,22 @@
         {
           "default": "",
           "document": "Rule update time",
+          "example": "\"\"",
           "member": "string",
           "name": "UpdatedAt",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "examplename",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -12560,6 +13137,32 @@
         }
       ],
       "type": "object"
+    },
+    "Tag": {
+      "document": "Tag",
+      "members": [
+        {
+          "default": "",
+          "document": "Tag key",
+          "example": "\"abc\"",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag value",
+          "example": "\"abc\"",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "TagInstance": {
       "document": "Instance tag information of the alarm policy",
@@ -13472,7 +14075,7 @@
         },
         {
           "default": "",
-          "document": "Array of extra organization IDs",
+          "document": "This parameter has been deprecated. Please use `OrganizationIds` instead.",
           "example": "[]",
           "member": "string",
           "name": "ExtraOrgIds",
@@ -13481,7 +14084,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Array of valid organization IDs",
           "example": "[\"1\", \"2\"]",
           "member": "string",
           "name": "OrganizationIds",

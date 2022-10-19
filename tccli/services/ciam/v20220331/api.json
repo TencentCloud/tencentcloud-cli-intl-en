@@ -24,6 +24,12 @@
       "name": "Deletes users in batches",
       "output": "DeleteUsersResponse"
     },
+    "DescribeUser": {
+      "document": "This API is used to query the user information with multiple conditions.",
+      "input": "DescribeUserRequest",
+      "name": "Queries user information",
+      "output": "DescribeUserResponse"
+    },
     "DescribeUserById": {
       "document": "This API is used to query a user by ID.",
       "input": "DescribeUserByIdRequest",
@@ -150,7 +156,7 @@
         },
         {
           "default": "",
-          "document": "Exported data type\n\n<li> **JSON** </li>  JSON\n<li> **NDJSON** </li>  New-line Delimited JSON\n<li> **CSV** </li>  Comma-Separated Values",
+          "document": "Exported data type\n\n<li> **NDJSON** </li>  New-line Delimited JSON\n<li> **CSV** </li>  Comma-Separated Values",
           "example": "xxx",
           "member": "string",
           "name": "Format",
@@ -291,6 +297,51 @@
           "name": "CustomizationAttributes",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Index field 1",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute1",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Index field 2",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute2",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Index field 3",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute3",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Index field 4",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute4",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Index field 5",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute5",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -375,7 +426,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether the content is passed through\n\n<li> **false** </li>Default. The returned information is desensitized.\n<li> **true** </li>Return the original content.",
           "example": "true",
           "member": "bool",
           "name": "Original",
@@ -395,6 +446,96 @@
           "name": "User",
           "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserRequest": {
+      "document": "DescribeUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User directory ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "UserStoreId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Pagination data",
+          "example": "无",
+          "member": "Pageable",
+          "name": "Pageable",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Query condition (`propertycode` and `propertykey`)",
+          "example": "无",
+          "member": "QueryUserFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether the plaintext is returned",
+          "example": "true",
+          "member": "bool",
+          "name": "Original",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Sorting configuration",
+          "example": "无",
+          "member": "Sort",
+          "name": "Sort",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserResponse": {
+      "document": "DescribeUser response structure.",
+      "members": [
+        {
+          "document": "The total number of returned results.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Pagination object\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Pageable",
+          "name": "Pageable",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "User List\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "User",
+          "name": "Content",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -782,6 +923,56 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Index field 1",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute1",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Index field 2",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute2",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Index field 3",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute3",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Index field 4",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute4",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Index field 5",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute5",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "in"
@@ -831,7 +1022,7 @@
         },
         {
           "default": "",
-          "document": "Data type of the task\n\n<li> **JSON** </li>  JSON\n<li> **NDJSON** </li>  New-line Delimited JSON\n<li> **CSV** </li>  Comma-Separated Values\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Data type of the task\n\n<li> **NDJSON** </li>  New-line Delimited JSON\n<li> **CSV** </li>  Comma-Separated Values\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
           "name": "Format",
@@ -1084,7 +1275,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether the content is passed through",
           "example": "true",
           "member": "bool",
           "name": "Original",
@@ -1147,7 +1338,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether the content is passed through",
           "example": "true",
           "member": "bool",
           "name": "Original",
@@ -1434,6 +1625,52 @@
       ],
       "usage": "both"
     },
+    "QueryUserFilter": {
+      "document": "Conditions to query the user information ",
+      "members": [
+        {
+          "default": "",
+          "document": "Property key",
+          "example": "xxx",
+          "member": "string",
+          "name": "PropertyKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Property value",
+          "example": "xxx",
+          "member": "string",
+          "name": "PropertyValue",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Logic value. `True` or `False`",
+          "example": "true",
+          "member": "bool",
+          "name": "Logic",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operator. Values: `>`, `<`, `=`, `>=`, `<=`, `!=` and `between`. ",
+          "example": "xxx",
+          "member": "string",
+          "name": "OperateLogic",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "ResetPasswordRequest": {
       "document": "ResetPassword request structure.",
       "members": [
@@ -1592,6 +1829,32 @@
       ],
       "type": "object"
     },
+    "Sort": {
+      "document": "Sorting of the result of user query",
+      "members": [
+        {
+          "default": "",
+          "document": "Key for sorting. See custom attributes",
+          "example": "xxx",
+          "member": "string",
+          "name": "PropertyKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "`ASC` or `DESC`",
+          "example": "xxx",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "UpdateUserRequest": {
       "document": "UpdateUser request structure.",
       "members": [
@@ -1684,6 +1947,51 @@
           "name": "CustomizationAttributes",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Index field 1",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute1",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Index field 2",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute2",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Index field 3",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute3",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Index field 4",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute4",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Index field 5",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute5",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2115,6 +2423,56 @@
           "name": "LockTime",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Index field 1\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute1",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Index field 2\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute2",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Index field 3\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute3",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Index field 4\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute4",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Index field 5\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "IndexedAttribute5",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],

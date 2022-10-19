@@ -1,17 +1,33 @@
 {
   "actions": {
+    "BindAutoSnapshotPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindAutoSnapshotPolicy\n<Common request parameters>\n\n{\n    \"AutoSnapshotPolicyId\": \"asp-12345\",\n    \"FileSystemIds\": \"cfs-12345\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"AutoSnapshotPolicyId\": \"asp-12345\"\n    }\n}",
+        "title": "Binding a file system to a snapshot policy"
+      }
+    ],
+    "CreateAutoSnapshotPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAutoSnapshotPolicy\n<Common request parameters>\n\n{\n    \"DayOfWeek\": \"\\\"1,2\\\"\",\n    \"Hour\": \"\\\"2,3\\\"\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"AutoSnapshotPolicyId\": \"asp-12345\"\n    }\n}",
+        "title": "Creating a file system snapshot policy"
+      }
+    ],
     "CreateCfsFileSystem": [
       {
         "document": "",
         "input": "https://cfs.tencentcloudapi.com/?Action=CreateCfsFileSystem\n&NetInterface=basic\n&Zone=ap-beijing-1\n&PGroupId=pgroupbasic\n&FsName=test_fs\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"CreationTime\": \"2017-11-23 20:51:34\",\n        \"CreationToken\": \"test_fs\",\n        \"FileSystemId\": \"cfs-ocakq8tt\",\n        \"LifeCycleState\": \"creating\",\n        \"SizeByte\": 0,\n        \"ZoneId\": 800001,\n        \"FsName\": \"test_fs\",\n        \"Encrypted\": false\n    }\n}",
-        "title": "Creating a file system"
+        "title": "Creating a file system instance"
       }
     ],
     "CreateCfsPGroup": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=CreateCfsPGroup\r\n&Name=test_pgroup\r\n&DescInfo=test_pgroup_desc\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCfsPGroup\n<Common request parameters>\n\n{\n    \"DescInfo\": \"test_pgroup_desc\",\n    \"Name\": \"test_pgroup\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"PGroupId\": \"pgroup-12345\",\n        \"Name\": \"test_pgroup\",\n        \"DescInfo\": \"test_pgroup_desc\",\n        \"BindCfsNum\": 0,\n        \"CDate\": \"2019-7-20 10:25:33\"\n    }\n}",
         "title": "Creating a permission group"
       }
@@ -19,23 +35,39 @@
     "CreateCfsRule": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=CreateCfsRule\r\n&PGroupId=pgroup-12345\r\n&RWPermission=rw\r\n&UserPermission=root_squash\r\n&AuthClientIp=10.1.1.10\r\n&Priority=9\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCfsRule\n<Common request parameters>\n\n{\n    \"RWPermission\": \"rw\",\n    \"AuthClientIp\": \"10.1.1.10\",\n    \"PGroupId\": \"pgroup-12345\",\n    \"Priority\": \"9\",\n    \"UserPermission\": \"root_squash\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"RuleId\": \"rule-12345\",\n        \"PGroupId\": \"pgroup-12345\",\n        \"AuthClientIp\": \"10.1.1.10\",\n        \"RWPermission\": \"rw\",\n        \"UserPermission\": \"root_squash\",\n        \"Priority\": 9\n    }\n}",
         "title": "Creating a permission group rule"
+      }
+    ],
+    "CreateCfsSnapshot": [
+      {
+        "document": "",
+        "input": "https://cfs.tencentcloudapi.com/?Action=CreateCfsSnapshot\n&FileSystemId=cfs-abcdefgh\n&SnapshotName=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"SnapshotId\": \"snapcfs-abababb\"\n    }\n}",
+        "title": "Creating a file system snapshot"
+      }
+    ],
+    "DeleteAutoSnapshotPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAutoSnapshotPolicy\n<Common request parameters>\n\n{\n    \"AutoSnapshotPolicyId\": \"asp-12345\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"AutoSnapshotPolicyId\": \"asp-12345\"\n    }\n}",
+        "title": "Deleting a policy"
       }
     ],
     "DeleteCfsFileSystem": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=DeleteCfsFileSystem\r\n&FileSystemId=cfs-12345\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {}\n}",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCfsFileSystem\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxx\"\n    }\n}",
         "title": "Deleting a file system"
       }
     ],
     "DeleteCfsPGroup": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=DeleteCfsPGroup\r\n&PGroupId=pgroup-12345\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCfsPGroup\n<Common request parameters>\n\n{\n    \"PGroupId\": \"pgroup-12345\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"PGroupId\": \"pgroup-12345\",\n        \"AppId\": 1250000000\n    }\n}",
         "title": "Deleting a permission group"
       }
@@ -43,31 +75,47 @@
     "DeleteCfsRule": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=DeleteCfsRule\r\n&PGroupId=pgroup-12345\r\n&RuleId=rule-12345\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCfsRule\n<Common request parameters>\n\n{\n    \"PGroupId\": \"pgroup-12345\",\n    \"RuleId\": \"rule-12345\"\n}",
         "output": "{\n    \"Response\": {\n        \"PGroupId\": \"pgroup-12345\",\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"RuleId\": \"rule-12345\"\n    }\n}",
         "title": "Deleting a permission group rule"
+      }
+    ],
+    "DeleteCfsSnapshot": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCfsSnapshot\n<Common request parameters>\n\n{\n    \"SnapshotId\": \"snapcfs-12345\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"SnapshotId\": \"snapcfs-12345\"\n    }\n}",
+        "title": "Deleting a snapshot"
       }
     ],
     "DeleteMountTarget": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=DeleteMountTarget\r\n&FileSystemId=cfs-12345\r\n&MountTargetId=mount-12345\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteMountTarget\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\",\n    \"MountTargetId\": \"mount-12345\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\"\n    }\n}",
         "title": "Deleting a mount target"
+      }
+    ],
+    "DescribeAutoSnapshotPolicies": [
+      {
+        "document": "",
+        "input": "https://cfs.tencentcloudapi.com/?Action=DescribeAutoSnapshotPolicies\n&AutoSnapshotPolicyId=asp-12345\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"TotalCount\": 1,\n        \"AutoSnapshotPolicies\": [\n            {\n                \"AutoSnapshotPolicyId\": \"asp-12345\",\n                \"PolicyName\": \"Unnamed\",\n                \"RegionName\": \"ap-guangzhou\",\n                \"CreationTime\": \"2021-08-26 15:19:46\",\n                \"AliveDays\": 1,\n                \"DayOfWeek\": \"1\",\n                \"Hour\": \"1\",\n                \"IsActivated\": 0,\n                \"AppId\": 1255558577,\n                \"FileSystemNums\": 0,\n                \"Status\": \"available\",\n                \"NextActiveTime\": \"2021-11-22 01:00:00\",\n                \"FileSystems\": []\n            }\n        ]\n    }\n}",
+        "title": "Querying a snapshot policy"
       }
     ],
     "DescribeAvailableZoneInfo": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=DescribeAvailableZoneInfo\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RegionZones\": [\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"RegionName\": \"gz\",\n                \"RegionStatus\": \"AVAILABLE\",\n                \"Zones\": [\n                    {\n                        \"Zone\": \"ap-guangzhou-2\",\n                        \"ZoneId\": 100002,\n                        \"ZoneCnName\": \"Guangzhou Zone 2\",\n                        \"Types\": [\n                            {\n                                \"Type\": \"SD\",\n                                \"Protocols\": [\n                                    {\n                                        \"Protocol\": \"NFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    }\n                                ]\n                            }\n                        ]\n                    },\n                    {\n                        \"Zone\": \"ap-guangzhou-3\",\n                        \"ZoneId\": 100003,\n                        \"ZoneCnName\": \"Guangzhou Zone 3\",\n                        \"Types\": [\n                            {\n                                \"Type\": \"SD\",\n                                \"Protocols\": [\n                                    {\n                                        \"Protocol\": \"NFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    }\n                                ]\n                            }\n                        ]\n                    },\n                    {\n                        \"Zone\": \"ap-guangzhou-4\",\n                        \"ZoneId\": 100004,\n                        \"ZoneCnName\": \"Guangzhou Zone 4\",\n                        \"Types\": [\n                            {\n                                \"Type\": \"SD\",\n                                \"Protocols\": [\n                                    {\n                                        \"Protocol\": \"NFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"a7493b9c-8650-409a-a950-8d4afa18b5ec\"\n    }\n}",
-        "title": "Querying the availability of a region"
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAvailableZoneInfo\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RegionZones\": [\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"RegionName\": \"gz\",\n                \"RegionCnName\": \"Guangzhou\",\n                \"RegionStatus\": \"AVAILABLE\",\n                \"Zones\": [\n                    {\n                        \"Zone\": \"ap-guangzhou-2\",\n                        \"ZoneId\": 100002,\n                        \"ZoneName\": \"Guangzhou Zone 2\",\n                        \"ZoneCnName\": \"Guangzhou Zone 2\",\n                        \"Types\": [\n                            {\n                                \"Type\": \"SD\",\n                                \"Prepayment\": true,\n                                \"Protocols\": [\n                                    {\n                                        \"Protocol\": \"NFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    }\n                                ]\n                            }\n                        ]\n                    },\n                    {\n                        \"Zone\": \"ap-guangzhou-3\",\n                        \"ZoneId\": 100003,\n                        \"ZoneName\": \"Guangzhou Zone 3\",\n                        \"ZoneCnName\": \"Guangzhou Zone 3\",\n                        \"Types\": [\n                            {\n                                \"Type\": \"SD\",\n                                \"Prepayment\": true,\n                                \"Protocols\": [\n                                    {\n                                        \"Protocol\": \"NFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    }\n                                ]\n                            }\n                        ]\n                    },\n                    {\n                        \"Zone\": \"ap-guangzhou-4\",\n                        \"ZoneId\": 100004,\n                        \"ZoneName\": \"Guangzhou Zone 4\",\n                        \"ZoneCnName\": \"Guangzhou Zone 4\",\n                        \"Types\": [\n                            {\n                                \"Type\": \"SD\",\n                                \"Prepayment\": true,\n                                \"Protocols\": [\n                                    {\n                                        \"Protocol\": \"NFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"a7493b9c-8650-409a-a950-8d4afa18b5ec\"\n    }\n}",
+        "title": "Querying the region availability"
       }
     ],
     "DescribeCfsFileSystemClients": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=DescribeCfsFileSystemClients\r\n&FileSystemId=cfs-12345\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCfsFileSystemClients\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"aaaa-bbbb-cccc-dddd\",\n        \"ClientList\": [\n            {\n                \"MountDirectory\": \"/mnt\",\n                \"ZoneName\": \"Guangzhou Zone 1\",\n                \"Zone\": \"ap-guangzhou-1\",\n                \"VpcId\": \"vpc-gvem39gr\",\n                \"ClientIp\": \"10.1.1.10\",\n                \"CfsVip\": \"10.1.1.11\"\n            }\n        ]\n    }\n}",
         "title": "Querying file system clients"
       }
@@ -83,15 +131,15 @@
     "DescribeCfsPGroups": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=DescribeCfsPGroups\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCfsPGroups\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"PGroupList\": [\n            {\n                \"PGroupId\": \"pgroup-12345\",\n                \"Name\": \"test\",\n                \"DescInfo\": \"test\",\n                \"BindCfsNum\": 0,\n                \"CDate\": \"2019-07-05 19:04:18\"\n            },\n            {\n                \"PGroupId\": \"pgroup-67890\",\n                \"Name\": \"test2\",\n                \"DescInfo\": \"test2\",\n                \"BindCfsNum\": 0,\n                \"CDate\": \"2019-07-06 10:57:29\"\n            },\n            {\n                \"PGroupId\": \"pgroup-54321\",\n                \"Name\": \"Test\",\n                \"DescInfo\": \"use for test\",\n                \"BindCfsNum\": 1,\n                \"CDate\": \"2019-07-03 16:06:38\"\n            },\n            {\n                \"PGroupId\": \"pgroupbasic\",\n                \"Name\": \"Default permission group\",\n                \"DescInfo\": \"Default permission group\",\n                \"BindCfsNum\": 5,\n                \"CDate\": \"2019-06-21 17:30:05\"\n            }\n        ]\n    }\n}",
-        "title": "Querying the permission group list"
+        "title": "Querying the list of permission groups"
       }
     ],
     "DescribeCfsRules": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=DescribeCfsRules\r\n&PGroupId=pgroup-12345\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCfsRules\n<Common request parameters>\n\n{\n    \"PGroupId\": \"pgroup-12345\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"RuleList\": [\n            {\n                \"RuleId\": \"rule-12345\",\n                \"AuthClientIp\": \"10.1.1.100\",\n                \"RWPermission\": \"rw\",\n                \"UserPermission\": \"root_squash\",\n                \"Priority\": 7\n            }\n        ]\n    }\n}",
         "title": "Querying permission group rules"
       }
@@ -99,39 +147,79 @@
     "DescribeCfsServiceStatus": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=DescribeCfsServiceStatus\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCfsServiceStatus\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"CfsServiceStatus\": \"none\"\n    }\n}",
         "title": "Querying the status of the CFS service"
+      }
+    ],
+    "DescribeCfsSnapshotOverview": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCfsSnapshotOverview\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"StatisticsList\": [\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"SnapshotNumber\": 6,\n                \"SnapshotSize\": 33\n            },\n            {\n                \"Region\": \"all\",\n                \"SnapshotNumber\": 10,\n                \"SnapshotSize\": 330\n            }\n        ],\n        \"RequestId\": \"b398b508-6ac6-4a05-9c20-388399bd1965\"\n    }\n}",
+        "title": "Querying the snapshot overview"
+      }
+    ],
+    "DescribeCfsSnapshots": [
+      {
+        "document": "",
+        "input": "https://cfs.tencentcloudapi.com/?Action=DescribeCfsSnapshots\n&FileSystemId=cfs-12345\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalSize\": 1,\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Snapshots\": [\n            {\n                \"Status\": 1,\n                \"SnapshotName\": \"xx\",\n                \"Percent\": 1,\n                \"FileSystemId\": \"xx\",\n                \"Size\": 1,\n                \"AppId\": 1,\n                \"SnapshotId\": \"xx\",\n                \"AliveDay\": 1,\n                \"CreationTime\": \"xx\",\n                \"DeleteTime\": \"xx\",\n                \"FsName\": \"xx\",\n                \"RegionName\": \"xx\"\n            }\n        ]\n    }\n}",
+        "title": "Querying a snapshot"
       }
     ],
     "DescribeMountTargets": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=DescribeMountTargets\r\n&FileSystemId=cfs-12345\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"NumberOfMountTargets\": 1,\n        \"RequestId\": \"12345-54321-12345\",\n        \"MountTargets\": [\n            {\n                \"MountTargetId\": \"mount-12345\",\n                \"VpcId\": \"vpc-12345\",\n                \"NetworkInterface\": \"vpc\",\n                \"SubnetName\": \"test\",\n                \"FileSystemId\": \"cfs-12345\",\n                \"VpcName\": \"12345\",\n                \"LifeCycleState\": \"available\",\n                \"SubnetId\": \"subnet-12345\",\n                \"IpAddress\": \"10.0.0.10\",\n                \"FSID\": \"12345\"\n            }\n        ]\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMountTargets\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\"\n}",
+        "output": "{\n    \"Response\": {\n        \"NumberOfMountTargets\": 1,\n        \"RequestId\": \"12345-54321-12345\",\n        \"MountTargets\": [\n            {\n                \"MountTargetId\": \"mount-12345\",\n                \"VpcId\": \"vpc-12345\",\n                \"CidrBlock\": \"xx\",\n                \"CcnID\": \"xx\",\n                \"NetworkInterface\": \"vpc\",\n                \"SubnetName\": \"test\",\n                \"FileSystemId\": \"cfs-12345\",\n                \"VpcName\": \"12345\",\n                \"LifeCycleState\": \"available\",\n                \"SubnetId\": \"subnet-12345\",\n                \"IpAddress\": \"10.0.0.10\",\n                \"FSID\": \"12345\"\n            }\n        ]\n    }\n}",
         "title": "Querying the mount targets of a file system"
+      }
+    ],
+    "DescribeSnapshotOperationLogs": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSnapshotOperationLogs\n<Common request parameters>\n\n{\n    \"SnapshotId\": \"snapcfs-12345\",\n    \"EndTime\": \"2021-08-12 20:50:45\",\n    \"StartTime\": \"2021-08-11 20:50:45\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"SnapshotId\": \"snapcfs-12345\",\n        \"SnapshotOperates\": [\n            {\n                \"Action\": \"UpdateCfsSnapshotAttribute\",\n                \"ActionTime\": \"2021-08-13 20:03:28\",\n                \"ActionName\": \"UpdateCfsSnapshotAttribute\",\n                \"Operator\": \"\",\n                \"Result\": 2\n            }\n        ]\n    }\n}",
+        "title": "Querying the operation logs of a snapshot"
       }
     ],
     "SignUpCfsService": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=SignUpCfsService\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SignUpCfsService\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"CfsServiceStatus\": \"creating\"\n    }\n}",
         "title": "Activating the CFS service"
+      }
+    ],
+    "UnbindAutoSnapshotPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnbindAutoSnapshotPolicy\n<Common request parameters>\n\n{\n    \"AutoSnapshotPolicyId\": \"asp-12345\",\n    \"FileSystemIds\": \"cfs-12345\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"AutoSnapshotPolicyId\": \"asp-12345\"\n    }\n}",
+        "title": "Unbinding a file system"
+      }
+    ],
+    "UpdateAutoSnapshotPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAutoSnapshotPolicy\n<Common request parameters>\n\n{\n    \"AutoSnapshotPolicyId\": \"asp-12345\",\n    \"PolicyName\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"AutoSnapshotPolicyId\": \"asp-12345\"\n    }\n}",
+        "title": "Updating the snapshot policy of a file system"
       }
     ],
     "UpdateCfsFileSystemName": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=UpdateCfsFileSystemName\r\n&FileSystemId=cfs-12345\r\n&CreationToken=test\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsFileSystemName\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"CreationToken\": \"test\",\n        \"FsName\": \"test\",\n        \"FileSystemId\": \"cfs-12345\"\n    }\n}",
-        "title": "Updating a file system name"
+        "title": "Renaming a file system"
       }
     ],
     "UpdateCfsFileSystemPGroup": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=UpdateCfsFileSystemPGroup\r\n&FileSystemId=cfs-12345\r\n&PGroupId=pgroup-12345\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsFileSystemPGroup\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\",\n    \"PGroupId\": \"pgroup-12345\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"PGroupId\": \"pgroup-12345\",\n        \"FileSystemId\": \"cfs-12345\"\n    }\n}",
         "title": "Updating the permission group of a file system"
       }
@@ -139,7 +227,7 @@
     "UpdateCfsFileSystemSizeLimit": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=UpdateCfsFileSystemSizeLimit\n&FileSystemId=cfs-12345\n&FsLimit=1000\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsFileSystemSizeLimit\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\",\n    \"FsLimit\": \"1000\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\"\n    }\n}",
         "title": "Updating the capacity limit of a file system"
       }
@@ -147,17 +235,25 @@
     "UpdateCfsPGroup": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=UpdateCfsPGroup\r\n&PGroupId=pgroup-12345\r\n&Name=test\r\n&DescInfo=test\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsPGroup\n<Common request parameters>\n\n{\n    \"PGroupId\": \"pgroup-12345\",\n    \"DescInfo\": \"test\",\n    \"Name\": \"test\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"PGroupId\": \"pgroup-12345\",\n        \"Name\": \"test\",\n        \"DescInfo\": \"test\"\n    }\n}",
-        "title": "Updating permission group information"
+        "title": "Updating the information of a permission group"
       }
     ],
     "UpdateCfsRule": [
       {
         "document": "",
-        "input": "https://cfs.tencentcloudapi.com/?Action=UpdateCfsRule\r\n&RuleId=rule-12345\r\n&PGroupId=pgroup-12345\r\n&AuthClientIp=10.0.0.10\r\n&RWPermission=rw\r\n&UserPermission=no_root_squash\r\n&Priority=7\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsRule\n<Common request parameters>\n\n{\n    \"RWPermission\": \"rw\",\n    \"Priority\": \"7\",\n    \"PGroupId\": \"pgroup-12345\",\n    \"RuleId\": \"rule-12345\",\n    \"AuthClientIp\": \"10.0.0.10\",\n    \"UserPermission\": \"no_root_squash\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"PGroupId\": \"pgroup-12345\",\n        \"RuleId\": \"rule-12345\",\n        \"AuthClientIp\": \"10.0.0.10\",\n        \"RWPermission\": \"rw\",\n        \"UserPermission\": \"no_root_squash\",\n        \"Priority\": 7\n    }\n}",
         "title": "Updating a permission group rule"
+      }
+    ],
+    "UpdateCfsSnapshotAttribute": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsSnapshotAttribute\n<Common request parameters>\n\n{\n    \"SnapshotId\": \"snapcfs-12345\",\n    \"SnapshotName\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"SnapshotId\": \"snapcfs-12345\"\n    }\n}",
+        "title": "Updating the content of a snapshot"
       }
     ]
   },

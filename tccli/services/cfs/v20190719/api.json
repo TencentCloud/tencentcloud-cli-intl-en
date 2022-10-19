@@ -1,5 +1,17 @@
 {
   "actions": {
+    "BindAutoSnapshotPolicy": {
+      "document": "This API is used to bind one or multiple file systems to a snapshot policy. A file system can be bound to only one policy.",
+      "input": "BindAutoSnapshotPolicyRequest",
+      "name": "Binds a file system to a snapshot policy",
+      "output": "BindAutoSnapshotPolicyResponse"
+    },
+    "CreateAutoSnapshotPolicy": {
+      "document": "This API is used to create a scheduled snapshot policy.",
+      "input": "CreateAutoSnapshotPolicyRequest",
+      "name": "Creates a scheduled snapshot policy",
+      "output": "CreateAutoSnapshotPolicyResponse"
+    },
     "CreateCfsFileSystem": {
       "document": "This API is used to create a file system.",
       "input": "CreateCfsFileSystemRequest",
@@ -17,6 +29,18 @@
       "input": "CreateCfsRuleRequest",
       "name": "Creates a permission group rule",
       "output": "CreateCfsRuleResponse"
+    },
+    "CreateCfsSnapshot": {
+      "document": "This API is used to create a file system snapshot.",
+      "input": "CreateCfsSnapshotRequest",
+      "name": "Creates a file system snapshot",
+      "output": "CreateCfsSnapshotResponse"
+    },
+    "DeleteAutoSnapshotPolicy": {
+      "document": "This API is used to delete a scheduled snapshot policy.",
+      "input": "DeleteAutoSnapshotPolicyRequest",
+      "name": "Deletes a snapshot policy",
+      "output": "DeleteAutoSnapshotPolicyResponse"
     },
     "DeleteCfsFileSystem": {
       "document": "This API is used to delete a file system.",
@@ -36,11 +60,23 @@
       "name": "Deletes a permission group rule",
       "output": "DeleteCfsRuleResponse"
     },
+    "DeleteCfsSnapshot": {
+      "document": "This API is used to delete a file system snapshot.",
+      "input": "DeleteCfsSnapshotRequest",
+      "name": "Deletes a file system snapshot",
+      "output": "DeleteCfsSnapshotResponse"
+    },
     "DeleteMountTarget": {
       "document": "This API is used to delete a mount target.",
       "input": "DeleteMountTargetRequest",
       "name": "Deletes a mount target",
       "output": "DeleteMountTargetResponse"
+    },
+    "DescribeAutoSnapshotPolicies": {
+      "document": "This API is used to query the list of scheduled snapshot policies of a file system.",
+      "input": "DescribeAutoSnapshotPoliciesRequest",
+      "name": "Queries the list of snapshot policies of a file system",
+      "output": "DescribeAutoSnapshotPoliciesResponse"
     },
     "DescribeAvailableZoneInfo": {
       "document": "This API is used to query the availability of a region.",
@@ -78,17 +114,47 @@
       "name": "Queries the status of the CFS service",
       "output": "DescribeCfsServiceStatusResponse"
     },
+    "DescribeCfsSnapshotOverview": {
+      "document": "This API is used to get the snapshot overview of a file system.",
+      "input": "DescribeCfsSnapshotOverviewRequest",
+      "name": "Gets the snapshot overview of a file system",
+      "output": "DescribeCfsSnapshotOverviewResponse"
+    },
+    "DescribeCfsSnapshots": {
+      "document": "This API is used to query the list of snapshots of a file system.",
+      "input": "DescribeCfsSnapshotsRequest",
+      "name": "Queries the list of snapshots",
+      "output": "DescribeCfsSnapshotsResponse"
+    },
     "DescribeMountTargets": {
       "document": "This API is used to query the mount targets of a file system.",
       "input": "DescribeMountTargetsRequest",
       "name": "Queries the mount targets of a file system",
       "output": "DescribeMountTargetsResponse"
     },
+    "DescribeSnapshotOperationLogs": {
+      "document": "This API is used to query the operation logs of a snapshot.",
+      "input": "DescribeSnapshotOperationLogsRequest",
+      "name": "Queries the operation logs of a snapshot",
+      "output": "DescribeSnapshotOperationLogsResponse"
+    },
     "SignUpCfsService": {
       "document": "This API is used to activate the CFS service.",
       "input": "SignUpCfsServiceRequest",
       "name": "Activates the CFS service",
       "output": "SignUpCfsServiceResponse"
+    },
+    "UnbindAutoSnapshotPolicy": {
+      "document": "This API is used to unbind a snapshot policy from a file system.",
+      "input": "UnbindAutoSnapshotPolicyRequest",
+      "name": "Unbinds a snapshot policy",
+      "output": "UnbindAutoSnapshotPolicyResponse"
+    },
+    "UpdateAutoSnapshotPolicy": {
+      "document": "This API is used to update a scheduled snapshot policy.",
+      "input": "UpdateAutoSnapshotPolicyRequest",
+      "name": "Updates a scheduled snapshot policy",
+      "output": "UpdateAutoSnapshotPolicyResponse"
     },
     "UpdateCfsFileSystemName": {
       "document": "This API is used to update a file system name.",
@@ -119,6 +185,12 @@
       "input": "UpdateCfsRuleRequest",
       "name": "Updates a permission group rule",
       "output": "UpdateCfsRuleResponse"
+    },
+    "UpdateCfsSnapshotAttribute": {
+      "document": "This API is used to update the name and retention period of a file system snapshot.",
+      "input": "UpdateCfsSnapshotAttributeRequest",
+      "name": "Updates the information of a file system snapshot",
+      "output": "UpdateCfsSnapshotAttributeResponse"
     }
   },
   "metadata": {
@@ -127,6 +199,142 @@
     "serviceShortName": "cfs"
   },
   "objects": {
+    "AutoSnapshotPolicyInfo": {
+      "document": "Snapshot policy information",
+      "members": [
+        {
+          "default": "",
+          "document": "Snapshot policy ID",
+          "example": "asp-xx",
+          "member": "string",
+          "name": "AutoSnapshotPolicyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot policy name",
+          "example": "xx",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot policy creation time",
+          "example": "xx",
+          "member": "string",
+          "name": "CreationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of bound file systems",
+          "example": "2",
+          "member": "uint64",
+          "name": "FileSystemNums",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The day of the week on which to regularly back up the snapshot",
+          "example": "['1','2']",
+          "member": "string",
+          "name": "DayOfWeek",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The hour of a day at which to regularly back up the snapshot",
+          "example": "['3','4']",
+          "member": "string",
+          "name": "Hour",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to activate the scheduled snapshot feature",
+          "example": "1",
+          "member": "uint64",
+          "name": "IsActivated",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Next time to trigger snapshot",
+          "example": "xx",
+          "member": "string",
+          "name": "NextActiveTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot policy status",
+          "example": "1",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account ID",
+          "example": "122445",
+          "member": "uint64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Retention period",
+          "example": "3",
+          "member": "uint64",
+          "name": "AliveDays",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region",
+          "example": "xx",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system information",
+          "example": "112",
+          "member": "FileSystemByPolicy",
+          "name": "FileSystems",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "AvailableProtoStatus": {
       "document": "Versioning - protocol details\n",
       "members": [
@@ -285,6 +493,114 @@
         }
       ],
       "usage": "out"
+    },
+    "BindAutoSnapshotPolicyRequest": {
+      "document": "BindAutoSnapshotPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Snapshot policy ID",
+          "example": "asp-xx",
+          "member": "string",
+          "name": "AutoSnapshotPolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of file systems",
+          "example": "cfs-abc,cfs-bdc.",
+          "member": "string",
+          "name": "FileSystemIds",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BindAutoSnapshotPolicyResponse": {
+      "document": "BindAutoSnapshotPolicy response structure.",
+      "members": [
+        {
+          "document": "Snapshot policy ID",
+          "example": "asp-xx",
+          "member": "string",
+          "name": "AutoSnapshotPolicyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAutoSnapshotPolicyRequest": {
+      "document": "CreateAutoSnapshotPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The day of the week on which to repeat the snapshot operation",
+          "example": "xx",
+          "member": "string",
+          "name": "DayOfWeek",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The time point when to repeat the snapshot operation",
+          "example": "xx",
+          "member": "string",
+          "name": "Hour",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Policy name",
+          "example": "xx",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Snapshot retention period",
+          "example": "3",
+          "member": "uint64",
+          "name": "AliveDays",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAutoSnapshotPolicyResponse": {
+      "document": "CreateAutoSnapshotPolicy response structure.",
+      "members": [
+        {
+          "document": "Snapshot policy ID",
+          "example": "asp-xx",
+          "member": "string",
+          "name": "AutoSnapshotPolicyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CreateCfsFileSystemRequest": {
       "document": "CreateCfsFileSystem request structure.",
@@ -671,6 +987,96 @@
       ],
       "type": "object"
     },
+    "CreateCfsSnapshotRequest": {
+      "document": "CreateCfsSnapshot request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "example": "cfs-gagaggag",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Snapshot name",
+          "example": "xx",
+          "member": "string",
+          "name": "SnapshotName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Snapshot tag",
+          "example": "[\"TagKey\":\"a\",\"TagValue\":1]",
+          "member": "TagInfo",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCfsSnapshotResponse": {
+      "document": "CreateCfsSnapshot response structure.",
+      "members": [
+        {
+          "document": "File system snapshot ID",
+          "example": "snapcfs-xx",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAutoSnapshotPolicyRequest": {
+      "document": "DeleteAutoSnapshotPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Snapshot policy ID",
+          "example": "asp-xx",
+          "member": "string",
+          "name": "AutoSnapshotPolicyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAutoSnapshotPolicyResponse": {
+      "document": "DeleteAutoSnapshotPolicy response structure.",
+      "members": [
+        {
+          "document": "Snapshot policy ID",
+          "example": "asp-xx",
+          "member": "string",
+          "name": "AutoSnapshotPolicyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteCfsFileSystemRequest": {
       "document": "DeleteCfsFileSystem request structure.",
       "members": [
@@ -785,6 +1191,42 @@
       ],
       "type": "object"
     },
+    "DeleteCfsSnapshotRequest": {
+      "document": "DeleteCfsSnapshot request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system snapshot ID",
+          "example": "snapcfs-xx",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCfsSnapshotResponse": {
+      "document": "DeleteCfsSnapshot response structure.",
+      "members": [
+        {
+          "document": "File system ID",
+          "example": "snapcfs-xx",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteMountTargetRequest": {
       "document": "DeleteMountTarget request structure.",
       "members": [
@@ -810,6 +1252,96 @@
     "DeleteMountTargetResponse": {
       "document": "DeleteMountTarget response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAutoSnapshotPoliciesRequest": {
+      "document": "DescribeAutoSnapshotPolicies request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Snapshot policy ID",
+          "example": "asp-xx",
+          "member": "string",
+          "name": "AutoSnapshotPolicyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Page offset",
+          "example": "2",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page length",
+          "example": "2",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filters",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Ascending or descending order",
+          "example": "ASC,DESC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting field",
+          "example": "xx",
+          "member": "string",
+          "name": "OrderField",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAutoSnapshotPoliciesResponse": {
+      "document": "DescribeAutoSnapshotPolicies response structure.",
+      "members": [
+        {
+          "document": "Total number of snapshot policies",
+          "example": "3",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Snapshot policy information",
+          "example": "无",
+          "member": "AutoSnapshotPolicyInfo",
+          "name": "AutoSnapshotPolicies",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -1013,6 +1545,140 @@
       ],
       "type": "object"
     },
+    "DescribeCfsSnapshotOverviewRequest": {
+      "document": "DescribeCfsSnapshotOverview request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeCfsSnapshotOverviewResponse": {
+      "document": "DescribeCfsSnapshotOverview response structure.",
+      "members": [
+        {
+          "document": "Statistics",
+          "example": "xx",
+          "member": "SnapshotStatistics",
+          "name": "StatisticsList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCfsSnapshotsRequest": {
+      "document": "DescribeCfsSnapshots request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system ID",
+          "example": "cfs-gagaggag",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Snapshot ID",
+          "example": "snapcfs-xx",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The starting position of paging",
+          "example": "10",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page length",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filters",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Order field",
+          "example": "xx",
+          "member": "string",
+          "name": "OrderField",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order (ascending or descending)",
+          "example": "ASC，DESC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCfsSnapshotsResponse": {
+      "document": "DescribeCfsSnapshots response structure.",
+      "members": [
+        {
+          "document": "Total number",
+          "example": "20",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Snapshot information description",
+          "example": "fsf",
+          "member": "SnapshotInfo",
+          "name": "Snapshots",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total size of snapshots",
+          "example": "333",
+          "member": "uint64",
+          "name": "TotalSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeMountTargetsRequest": {
       "document": "DescribeMountTargets request structure.",
       "members": [
@@ -1052,6 +1718,145 @@
         }
       ],
       "type": "object"
+    },
+    "DescribeSnapshotOperationLogsRequest": {
+      "document": "DescribeSnapshotOperationLogs request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system snapshot ID",
+          "example": "snapcfs-xx",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time",
+          "example": "2021-08-11 11:51:xx",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time",
+          "example": "2021-08-11 11:51:xx",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSnapshotOperationLogsResponse": {
+      "document": "DescribeSnapshotOperationLogs response structure.",
+      "members": [
+        {
+          "document": "Snapshot ID",
+          "example": "xx",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Operation log",
+          "example": "无",
+          "member": "SnapshotOperateLog",
+          "name": "SnapshotOperates",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "FileSystemByPolicy": {
+      "document": "Information of the file system bound to the snapshot policy",
+      "members": [
+        {
+          "default": "",
+          "document": "File system name",
+          "example": "xx",
+          "member": "string",
+          "name": "CreationToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system ID",
+          "example": "cfs-xx",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system size",
+          "example": "1",
+          "member": "uint64",
+          "name": "SizeByte",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage class",
+          "example": "HP",
+          "member": "string",
+          "name": "StorageType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total snapshot size",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalSnapshotSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system creation time",
+          "example": "2022-08-20 11:22:33",
+          "member": "string",
+          "name": "CreationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region ID of the file system",
+          "example": "100001",
+          "member": "uint64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "FileSystemClient": {
       "document": "Information on the file system client",
@@ -1319,6 +2124,32 @@
       ],
       "usage": "out"
     },
+    "Filter": {
+      "document": "Conditional filter",
+      "members": [
+        {
+          "default": "",
+          "document": "Value",
+          "example": "xx",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name",
+          "example": "xx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "MountInfo": {
       "document": "Mount target information",
       "members": [
@@ -1580,9 +2411,11 @@
       "document": "SignUpCfsService response structure.",
       "members": [
         {
-          "document": "Current status of the CFS service for this user. Valid values: none (not activated), creating (activating), created (activated)",
+          "document": "Current status of the CFS service for this user. Valid values: `creating` (activating); `created` (activated)",
+          "example": "creating",
           "member": "string",
           "name": "CfsServiceStatus",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1594,6 +2427,234 @@
         }
       ],
       "type": "object"
+    },
+    "SnapshotInfo": {
+      "document": "Snapshot information",
+      "members": [
+        {
+          "default": "",
+          "document": "Snapshot creation time",
+          "example": "xx",
+          "member": "string",
+          "name": "CreationTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot name",
+          "example": "xx",
+          "member": "string",
+          "name": "SnapshotName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot ID",
+          "example": "snapcfs-xx",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot status",
+          "example": "available ",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region name",
+          "example": "beijing",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system ID",
+          "example": "cfs-xx",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot size",
+          "example": "11",
+          "member": "uint64",
+          "name": "Size",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Retention period in days",
+          "example": "12",
+          "member": "uint64",
+          "name": "AliveDay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot progress",
+          "example": "1",
+          "member": "uint64",
+          "name": "Percent",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Account ID",
+          "example": "21211",
+          "member": "uint64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot deletion time",
+          "example": "xx",
+          "member": "string",
+          "name": "DeleteTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "File system name",
+          "example": "xx",
+          "member": "string",
+          "name": "FsName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Snapshot tag",
+          "example": "无",
+          "member": "TagInfo",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SnapshotOperateLog": {
+      "document": "Snapshot operation log",
+      "members": [
+        {
+          "default": "",
+          "document": "Operation type",
+          "example": "create",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operation time",
+          "example": "xx",
+          "member": "string",
+          "name": "ActionTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operation name",
+          "example": "xx",
+          "member": "string",
+          "name": "ActionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operator",
+          "example": "xx",
+          "member": "string",
+          "name": "Operator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Result",
+          "example": "xx",
+          "member": "uint64",
+          "name": "Result",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SnapshotStatistics": {
+      "document": "File system snapshot statistics",
+      "members": [
+        {
+          "default": "",
+          "document": "Region",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total number of snapshots",
+          "example": "2",
+          "member": "uint64",
+          "name": "SnapshotNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Total snapshot size",
+          "example": "33",
+          "member": "uint64",
+          "name": "SnapshotSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "TagInfo": {
       "document": "Tag information unit",
@@ -1618,6 +2679,132 @@
         }
       ],
       "usage": "in"
+    },
+    "UnbindAutoSnapshotPolicyRequest": {
+      "document": "UnbindAutoSnapshotPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of IDs of the file systems to be unbound, separated by comma",
+          "example": "cfs-abc,cfs-dbc",
+          "member": "string",
+          "name": "FileSystemIds",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the snapshot to be unbound",
+          "example": "asp-xx",
+          "member": "string",
+          "name": "AutoSnapshotPolicyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindAutoSnapshotPolicyResponse": {
+      "document": "UnbindAutoSnapshotPolicy response structure.",
+      "members": [
+        {
+          "document": "Snapshot policy ID",
+          "example": "asp-xx",
+          "member": "string",
+          "name": "AutoSnapshotPolicyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAutoSnapshotPolicyRequest": {
+      "document": "UpdateAutoSnapshotPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Snapshot policy ID",
+          "example": "asp-xx",
+          "member": "string",
+          "name": "AutoSnapshotPolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Snapshot policy name",
+          "example": "xx",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The day of the week on which to regularly back up the snapshot",
+          "example": "['0','1']",
+          "member": "string",
+          "name": "DayOfWeek",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The hour of a day at which to regularly back up the snapshot",
+          "example": "['0','1']",
+          "member": "string",
+          "name": "Hour",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Snapshot retention period",
+          "example": "20",
+          "member": "uint64",
+          "name": "AliveDays",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to activate the scheduled snapshot feature",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsActivated",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAutoSnapshotPolicyResponse": {
+      "document": "UpdateAutoSnapshotPolicy response structure.",
+      "members": [
+        {
+          "document": "Snapshot policy ID",
+          "example": "asp-xx",
+          "member": "string",
+          "name": "AutoSnapshotPolicyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UpdateCfsFileSystemNameRequest": {
       "document": "UpdateCfsFileSystemName request structure.",
@@ -1918,6 +3105,60 @@
           "member": "int64",
           "name": "Priority",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCfsSnapshotAttributeRequest": {
+      "document": "UpdateCfsSnapshotAttribute request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "File system snapshot ID",
+          "example": "snapcfs-xx",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File system snapshot name",
+          "example": "xx",
+          "member": "string",
+          "name": "SnapshotName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "File system snapshot retention period in days",
+          "example": "xx",
+          "member": "uint64",
+          "name": "AliveDays",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCfsSnapshotAttributeResponse": {
+      "document": "UpdateCfsSnapshotAttribute response structure.",
+      "members": [
+        {
+          "document": "File system snapshot ID",
+          "example": "snapcfs-xx",
+          "member": "string",
+          "name": "SnapshotId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {

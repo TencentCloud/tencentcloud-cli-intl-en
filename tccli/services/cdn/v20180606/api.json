@@ -1626,7 +1626,7 @@
         },
         {
           "default": "",
-          "document": "Action taken when threshold is reached\n`RESOLVE_DNS_TO_ORIGIN`: Requests will be forwarded to the origin server. This is only supported for domain names of external origin.\n`RETURN_404`: A 404 error will be returned for all requests.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Action taken when threshold is reached\n`RETURN_404`: A 404 error will be returned for all requests.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "RETURN_404",
           "member": "string",
           "name": "CounterMeasure",
@@ -5644,11 +5644,11 @@
       "usage": "both"
     },
     "HTTPHeader": {
-      "document": "",
+      "document": "HTTP request header",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Request header name",
           "example": "User-Agent",
           "member": "string",
           "name": "Name",
@@ -5658,7 +5658,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Request header value",
           "example": "TencentCDN",
           "member": "string",
           "name": "Value",
@@ -5856,7 +5856,7 @@
         },
         {
           "default": "",
-          "document": "HTTP2 configuration switch\n`on`: Enable\n`off`: Disable\nEnabling HTTPS acceleration for the first time will enable HTTP2 configuration by default.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Whether to enable HTTP2\n`on`: Enable\n`off`: Disable\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "rewrew",
           "member": "string",
           "name": "Http2",
@@ -8195,7 +8195,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Custom HTTP request headers (Up to 20). `Name`: Up to 128 characters. `Value`: Up to 1024 characters.",
           "example": "无",
           "member": "HTTPHeader",
           "name": "Headers",
@@ -9686,7 +9686,7 @@
       "usage": "both"
     },
     "ServerCert": {
-      "document": "HTTPS acceleration server certificate configuration:\n+ Supports deployment with certificates that are being hosted by the SSL Certificate Services\n+ Supports uploading certificates of PEM format for deployment\nNote: when uploading certificates of PEM format, the Base64 encoding is required.",
+      "document": "HTTPS acceleration server certificate configuration:\n+ Supports deployment with certificates that are being hosted by the SSL Certificate Services\n+ Supports uploading certificates of PEM format for deployment",
       "members": [
         {
           "default": "",
