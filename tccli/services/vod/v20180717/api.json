@@ -16079,7 +16079,7 @@
         },
         {
           "default": "",
-          "document": "Subtitle ID. Its length cannot exceed 16 characters. Uppercase and lowercase letters, numbers, underscores (_), and hyphens (-) are supported. It cannot be the same as the IDs of the existing subtitles in the media file.",
+          "document": "The subtitle ID. It can be up to 16 characters long, can contain letters, numbers, underscores (_), and hyphens (-), and cannot be identical to an existing subtitle ID.",
           "example": "无",
           "member": "string",
           "name": "Id",

@@ -892,7 +892,7 @@
         },
         {
           "default": "",
-          "document": "Whether to relay to Tencent Cloud’s CDN. 0 (default): No; 1: Yes. An optimized route will be assigned if you relay to Tencent Cloud’s CDN.",
+          "document": "Whether to relay to Tencent Cloud’s CDN. 0 (default): Third-party CDN; 1: Tencent Cloud’s CDN. Note: Relaying to a third-party CDN will incur fees. If you are relaying to Tencent Cloud’s CDN, to avoid incurring fees, be sure to set this parameter to `1`. For details, see the API document.",
           "example": "1",
           "member": "uint64",
           "name": "IsTencentCdn",
@@ -1809,7 +1809,7 @@
       "members": [
         {
           "default": "",
-          "document": "The third-party cloud storage information (not supported currently).",
+          "document": "The account information for third-party cloud storage. This parameter is not available currently. Please use `CloudVod` instead to save files to Tencent Cloud VOD.",
           "example": "无",
           "member": "CloudStorage",
           "name": "CloudStorage",
@@ -1819,7 +1819,7 @@
         },
         {
           "default": "",
-          "document": "The VOD information.",
+          "document": "The account information for saving files to Tencent Cloud VOD. This parameter is required. Currently, you can only save files to Tencent Cloud VOD.",
           "example": "无",
           "member": "CloudVod",
           "name": "CloudVod",

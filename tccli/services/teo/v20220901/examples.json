@@ -8,6 +8,22 @@
         "title": "Verifying a certificate"
       }
     ],
+    "CreateApplicationProxy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationProxy\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"ProxyName\": \"instancd-name\",\n    \"ProxyType\": \"instance\",\n    \"PlatType\": \"ip\",\n    \"SecurityType\": 1,\n    \"AccelerateType\": 1,\n    \"SessionPersistTime\": 3600,\n    \"Ipv6\": {\n        \"Switch\": \"on\"\n    },\n    \"ApplicationProxyRules\": [\n        {\n            \"Proto\": \"TCP\",\n            \"Port\": [\n                \"80\",\n                \"90\",\n                \"99-110\"\n            ],\n            \"OriginType\": \"custom\",\n            \"OriginValue\": [\n                \"1.1.1.1:80\"\n            ]\n        },\n        {\n            \"Proto\": \"UDP\",\n            \"Port\": [\n                \"999\",\n                \"888\",\n                \"99-110\"\n            ],\n            \"OriginType\": \"custom\",\n            \"OriginValue\": [\n                \"1.1.1.1:80\",\n                \"2.2.2.2:80\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"ProxyId\": \"proxy-537f5b41-162a-11ed-abaa-525400c5da15\"\n    }\n}",
+        "title": "Creating an application proxy"
+      }
+    ],
+    "CreateApplicationProxyRule": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationProxyRule\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"Proto\": \"TCP\",\n    \"Port\": [\n        \"80\",\n        \"90\",\n        \"99-110\"\n    ],\n    \"OriginType\": \"custom\",\n    \"OriginValue\": [\n        \"1.1.1.1:80\"\n    ],\n    \"ForwardClientIp\": \"TOA\",\n    \"SessionPersist\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3df3e931-3159-4337-adc7-7604e01e0fa9\",\n        \"RuleId\": \"rule-a8f0d49a-33d7-11ed-9b89-52540005c111\"\n    }\n}",
+        "title": "Creating an application proxy rule"
+      }
+    ],
     "CreateCredential": [
       {
         "document": "",
@@ -16,12 +32,54 @@
         "title": "Creating a credential"
       }
     ],
+    "CreateCustomErrorPage": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCustomErrorPage\n<Common request parameters>\n\n{\n    \"Content\": \"\",\n    \"Entity\": \"a.eotest.com\",\n    \"Name\": \"file1\",\n    \"ZoneId\": \"zone-285thql0vdhi\"\n}",
+        "output": "{\n    \"Response\": {\n        \"PageId\": 12,\n        \"RequestId\": \"awefojm-wfeniou98jw-wjif9\"\n    }\n}",
+        "title": "Creating a custom page"
+      }
+    ],
     "CreateDnsRecord": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDnsRecord\n<Common request parameters>\n\n{\n    \"Priority\": 1,\n    \"Name\": \"www.example.com\",\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"Content\": \"1.2.3.4\",\n    \"Mode\": \"dns\",\n    \"TTL\": 300,\n    \"Type\": \"A\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"DnsRecordId\": \"record-225rcy8bw85g\"\n    }\n}",
         "title": "Creating a DNS record"
+      }
+    ],
+    "CreateIpTableList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateIpTableList\n<Common request parameters>\n\n{\n    \"IpTableRules\": [\n        {\n            \"Action\": \"drop\",\n            \"MatchFrom\": \"ip\",\n            \"UpdateTime\": \"2020-09-22T00:00:00+00:00\",\n            \"MatchContent\": \"1.1.1.1\",\n            \"RuleID\": 0\n        }\n    ],\n    \"Entity\": \"a.eotest.com\",\n    \"ZoneId\": \"zone-285thql0vdhi\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"09ce3d28-1119-49cd-xxxx-27cb34dac669\"\n    }\n}",
+        "title": "Creating an IP blocklist/allowlist"
+      }
+    ],
+    "CreateLoadBalancing": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancing\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"Host\": \"test.tencent.com\",\n    \"Type\": \"dns_only\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"BackupOriginGroupId\": \"\",\n    \"TTL\": 600,\n    \"OriginType\": \"normal\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"LoadBalancingId\": \"lb-97c8396e-cb88-4c9c-98d9-38e86463d12e\"\n    }\n}",
+        "title": "创建仅DNS模式负载均衡"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancing\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"Host\": \"test.tencent.com\",\n    \"Type\": \"proxied\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"BackupOriginGroupId\": \"\",\n    \"OriginType\": \"normal\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"LoadBalancingId\": \"lb-97c8396e-cb88-4c9c-98d9-38e86463d12e\"\n    }\n}",
+        "title": "创建开启代理模式负载均衡"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancing\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"Host\": \"test.tencent.com\",\n    \"Type\": \"proxied\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"BackupOriginGroupId\": \"orgin-9cc50b24-7dc5-44f4-96ce-95825d53ff2f\",\n    \"OriginType\": \"normal\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"LoadBalancingId\": \"lb-97c8396e-cb88-4c9c-98d9-38e86463d12e\"\n    }\n}",
+        "title": "创建使用备用源站的负载均衡"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancing\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"Host\": \"test.tencent.com\",\n    \"Type\": \"proxied\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"BackupOriginGroupId\": \"orgin-9cc50b24-7dc5-44f4-96ce-95825d53ff2f\",\n    \"OriginType\": \"advanced\",\n    \"AdvancedOriginGroups\": [\n        {\n            \"OriginGroupConditions\": [\n                {\n                    \"Target\": \"url\",\n                    \"Operator\": \"equal\",\n                    \"Values\": [\n                        \"/image\"\n                    ]\n                }\n            ],\n            \"OriginGroupId\": \"orgin-9cc50b24-7dc5-44f4-96ce-95825d53ff2f\",\n            \"BackupOriginGroupId\": \"\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"LoadBalancingId\": \"lb-97c8396e-cb88-4c9c-98d9-38e86463d12e\"\n    }\n}",
+        "title": "创建使用高级源站配置的负载均衡"
       }
     ],
     "CreateLogSet": [
@@ -38,6 +96,50 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLogTopicTask\n<Common request parameters>\n\n{\n    \"LogSetRegion\": \"ap-guangzhou\",\n    \"ZoneName\": \"hello.club\",\n    \"ZoneId\": \"zone-28569s6od5na\",\n    \"EntityType\": \"application\",\n    \"Period\": 10,\n    \"TopicName\": \"test_topic\",\n    \"TaskName\": \"test_task\",\n    \"EntityList\": [\n        \"test\"\n    ],\n    \"LogSetId\": \"33a900b2-9860-4da0-be91-bcce94c290ce\"\n}",
         "output": "{\n    \"Response\": {\n        \"TopicId\": \"ace8680b-55b9-498b-a113-056ab68d1da1\",\n        \"RequestId\": \"40be710a-9706-4b22-865e-c9739111ef1a\"\n    }\n}",
         "title": "Creating a shipping task"
+      }
+    ],
+    "CreateOriginGroup": [
+      {
+        "document": "In this example, the origin group can be used for layer-4 proxy rules and load balancing. If it is used for layer-4 proxy rules, OriginType must be `self` and a port number must be contained.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupName\": \"origingroupforl4\",\n    \"ConfigurationType\": \"weight\",\n    \"OriginType\": \"self\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"1.2.3.4\",\n            \"Weight\": 50,\n            \"Port\": 80\n        },\n        {\n            \"Record\": \"1.2.3.5\",\n            \"Weight\": 50,\n            \"Port\": 80\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
+        "title": "Creating a customer origin group that performs origin-pull by weight"
+      },
+      {
+        "document": "In this example, the origin group can be used for load balancing and the origin-pull will be performed by round-robin.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupName\": \"origingroupforloadbalancing\",\n    \"ConfigurationType\": \"weight\",\n    \"OriginType\": \"self\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"1.2.3.4\"\n        },\n        {\n            \"Record\": \"1.2.3.5\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
+        "title": "Creating a customer origin group that performs origin-pull by weight (default port)"
+      },
+      {
+        "document": "In this example, the origin group can be used for load balancing.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupName\": \"origingroupforloadbalancing\",\n    \"ConfigurationType\": \"proto\",\n    \"OriginType\": \"self\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"1.2.3.4\",\n            \"Proto\": \"http\",\n            \"Port\": 80\n        },\n        {\n            \"Record\": \"1.2.3.5\",\n            \"Proto\": \"https\",\n            \"Port\": 443\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
+        "title": "Creating a customer origin group that performs origin-pull by protocol (specified protocol and port)"
+      },
+      {
+        "document": "In this example, the origin group can be used for load balancing.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupName\": \"origingroupforloadbalancing\",\n    \"ConfigurationType\": \"\",\n    \"OriginType\": \"third_party\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"your-name.s3.us-east-1.amazonaws.com\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
+        "title": "Creating a public AWS object storage origin group"
+      },
+      {
+        "document": "In this example, the origin group can be used for load balancing.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupName\": \"origingroupforloadbalancing\",\n    \"ConfigurationType\": \"\",\n    \"OriginType\": \"third_party\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"your-name.s3.us-east-1.amazonaws.com\",\n            \"Private\": true,\n            \"PrivateParameters\": [\n                {\n                    \"Name\": \"AccessKeyId\",\n                    \"Value\": \"your aws access key id\"\n                },\n                {\n                    \"Name\": \"SecretAccessKey\",\n                    \"Value\": \"your aws secret access key\"\n                }\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
+        "title": "Creating a private AWS object storage origin group"
+      },
+      {
+        "document": "In this example, the origin group can be used for load balancing.\nNote: To give EdgeOne access to COS products, you can complete authorization on the console.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupName\": \"origingroupforloadbalancing\",\n    \"ConfigurationType\": \"\",\n    \"OriginType\": \"cos\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"your-name.cos.ap-nanjing.myqcloud.com\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
+        "title": "Creating a public Tencent Cloud COS origin group"
+      },
+      {
+        "document": "In this example, the origin group can be used for load balancing.\nNote: To give EdgeOne access to COS products, you can complete authorization on the console.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupName\": \"origingroupforloadbalancing\",\n    \"ConfigurationType\": \"\",\n    \"OriginType\": \"cos\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"your-name.cos.ap-nanjing.myqcloud.com\",\n            \"Private\": true\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
+        "title": "Creating a private Tencent Cloud COS origin group"
       }
     ],
     "CreatePlanForZone": [
@@ -92,12 +194,50 @@
         "title": "Creating a OBJECT type"
       }
     ],
+    "CreateSecurityDropPage": [
+      {
+        "document": "In this example:\nThe URL is URL-encoded to create a block page.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSecurityDropPage\n<Common request parameters>\n\n{\n    \"Content\": \"https%3A%2F%2Fcloud.tencent.com%2Fabout\",\n    \"Entity\": \"www.example.com\",\n    \"Name\": \"hello.html\",\n    \"ZoneId\": \"zone-abcdefg\",\n    \"Type\": \"url\",\n    \"Module\": \"waf\"\n}",
+        "output": "{\n    \"Response\": {\n        \"PageId\": 1234546,\n        \"RequestId\": \"13j90e13-kf204fk0-wf0k0af\"\n    }\n}",
+        "title": "Creating a block page using a URL"
+      },
+      {
+        "document": "In this example:\nThe file is URL-encoded to create a block page.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSecurityDropPage\n<Common request parameters>\n\n{\n    \"Content\": \"%3Chtml%3E%0Ahello%20world%2C%20uuid%3A%20%3A%3AEO_REQ_ID%0A%3C%2Fhtml%3E\",\n    \"Entity\": \"www.example.com\",\n    \"Name\": \"hello.html\",\n    \"ZoneId\": \"zone-abcdefg\",\n    \"Type\": \"file\",\n    \"Module\": \"waf\"\n}",
+        "output": "{\n    \"Response\": {\n        \"PageId\": 1234546,\n        \"RequestId\": \"wwefoj-ewij23rkf-34t98jrg\"\n    }\n}",
+        "title": "Creating a block page using a file"
+      }
+    ],
+    "CreateSpeedTesting": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSpeedTesting\n<Common request parameters>\n\n{\n    \"Host\": \"www.example.com\",\n    \"ZoneId\": \"zone-adsfaces\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"084d5612-67a7-4aca-aac9-827aa3662b2d\"\n    }\n}",
+        "title": "Creating a site test task"
+      }
+    ],
     "CreateZone": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateZone\n<Common request parameters>\n\n{\n    \"JumpStart\": false,\n    \"Type\": \"full\",\n    \"ZoneName\": \"example.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"ZoneId\": \"zone-27q0p0bali16\",\n        \"RequestId\": \"2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
         "title": "Creating a site"
+      }
+    ],
+    "DeleteApplicationProxy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteApplicationProxy\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Deleting an application proxy"
+      }
+    ],
+    "DeleteApplicationProxyRule": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteApplicationProxyRule\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"RuleId\": \"rule-19389e5a-118b-11ed-9951-525400655ede\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Deleting an application proxy rule"
       }
     ],
     "DeleteDnsRecords": [
@@ -108,12 +248,28 @@
         "title": "Deleting DNS records in batches"
       }
     ],
+    "DeleteLoadBalancing": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLoadBalancing\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"LoadBalancingId\": \"lb-97c8396e-cb88-4c9c-98d9-38e86463d12e\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Deleting a CLB instance"
+      }
+    ],
     "DeleteLogTopicTask": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLogTopicTask\n<Common request parameters>\n\n{\n    \"TopicId\": \"ace8680b-55b9-498b-a113-056ab68d1da1\",\n    \"LogSetRegion\": \"ap-guangzhou\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"21c17abc-8b0c-425e-80cb-406ea9694d68\"\n    }\n}",
         "title": "Deleting a shipping task"
+      }
+    ],
+    "DeleteOriginGroup": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Deleting an origin group"
       }
     ],
     "DeleteRules": [
@@ -138,6 +294,14 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAddableEntityList\n<Common request parameters>\n\n{\n    \"EntityType\": \"domain\",\n    \"ZoneId\": \"zone-28v4ag8bprrm\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"EntityList\": [\n            \"sub.example.com\"\n        ],\n        \"RequestId\": \"8fbf8770-6bc2-48e1-a544-bf06eb8481e6\"\n    }\n}",
         "title": "Querying available L4 proxies"
+      }
+    ],
+    "DescribeApplicationProxies": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApplicationProxies\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a84ae15a-aca5-4c24-a4f4-c419cf2c18af\",\n        \"ApplicationProxies\": [\n            {\n                \"HostId\": \"\",\n                \"ProxyType\": \"instance\",\n                \"Area\": \"mainland\",\n                \"SessionPersistTime\": 1,\n                \"AccelerateType\": 1,\n                \"PlatType\": \"domain\",\n                \"ProxyId\": \"proxy-34c74aa7-9a9f-11ec-bcb0-52540015711d\",\n                \"ProxyName\": \"zone-f835533b8998f\",\n                \"ZoneId\": \"zone-21xfqlh4qjee\",\n                \"ZoneName\": \"123.com\",\n                \"ApplicationProxyRules\": [\n                    {\n                        \"OriginType\": \"custom\",\n                        \"OriginValue\": [\n                            \"81.69.174.153:80\"\n                        ],\n                        \"Port\": [\n                            \"80\"\n                        ],\n                        \"Proto\": \"TCP\",\n                        \"Status\": \"online\",\n                        \"ForwardClientIp\": \"off\",\n                        \"SessionPersist\": true,\n                        \"RuleId\": \"rule-34c74ab8-9a9f-11ec-bcb0-52540015711d\"\n                    },\n                    {\n                        \"OriginType\": \"custom\",\n                        \"OriginValue\": [\n                            \"81.69.174.153:553\"\n                        ],\n                        \"Port\": [\n                            \"553\"\n                        ],\n                        \"Proto\": \"UDP\",\n                        \"Status\": \"online\",\n                        \"ForwardClientIp\": \"off\",\n                        \"SessionPersist\": true,\n                        \"RuleId\": \"rule-4bc1d3d6-9aa0-11ec-bcb0-52540015711d\"\n                    }\n                ],\n                \"ScheduleValue\": [],\n                \"SecurityType\": 1,\n                \"Ipv6\": {\n                    \"Switch\": \"on\"\n                },\n                \"Status\": \"progress\",\n                \"BanStatus\": \"recover\",\n                \"UpdateTime\": \"2022-03-03T06:06:10Z\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying the list of application proxies"
       }
     ],
     "DescribeAvailablePlans": [
@@ -186,6 +350,14 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBotLog\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"ZoneIds\": [\n        \"zone-21xfqlh4qjee\"\n    ],\n    \"StartTime\": \"2020-09-22T00:00:00+00:00\",\n    \"Domains\": [\n        \"www.baidu.com\"\n    ],\n    \"EndTime\": \"2020-09-22T00:00:00+00:00\",\n    \"QueryCondition\": [\n        {\n            \"Operator\": \"equals\",\n            \"Value\": [\n                \"monitor\"\n            ],\n            \"Key\": \"action\"\n        }\n    ],\n    \"Area\": \"overseas\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 10,\n        \"Data\": [\n            {\n                \"AttackContent\": \"\",\n                \"AttackIp\": \"120.241.137.74\",\n                \"AttackTime\": 1660035802,\n                \"Domain\": \"cooper5.wshxin.cn\",\n                \"EventId\": \"91558071885490496\",\n                \"Label\": \"none\",\n                \"RequestMethod\": \"GET\",\n                \"RequestUri\": \"/\",\n                \"RuleDetailList\": [\n                    {\n                        \"Action\": \"drop\",\n                        \"Description\": \"Marketing\",\n                        \"RuleId\": 1003,\n                        \"RuleTypeName\": \"uabot\"\n                    }\n                ],\n                \"SipCountryCode\": \"CN\",\n                \"Ua\": \"SemrushBot\",\n                \"AttackType\": \"Bot\",\n                \"HttpLog\": \"\",\n                \"RuleId\": 1,\n                \"RiskLevel\": \"5\",\n                \"Maliciousness\": \"\",\n                \"DetectionMethod\": \"\",\n                \"DisposalMethod\": \"\",\n                \"Confidence\": \"\"\n            }\n        ],\n        \"RequestId\": \"40b7844d-e4d9-4072-824d-f3a8bc85b487\"\n    }\n}",
         "title": "Querying bot attack logs"
+      }
+    ],
+    "DescribeBotManagedRules": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBotManagedRules\n<Common request parameters>\n\n{\n    \"RuleType\": \"\",\n    \"Offset\": 2,\n    \"Entity\": \"a.eotest.com\",\n    \"Limit\": 1,\n    \"ZoneId\": \"zone-285thql0vdhi\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c1e7056d-ed79-4b24-b791-aaa3ccadc6ee\",\n        \"Count\": 2,\n        \"BotManagedRuleDetails\": [\n            {\n                \"Description\": \"Uncategorised\",\n                \"RuleId\": 1000,\n                \"RuleTypeName\": \"uabot\",\n                \"Status\": \"block\"\n            },\n            {\n                \"Description\": \"Feed checker\",\n                \"RuleId\": 1001,\n                \"RuleTypeName\": \"uabot\",\n                \"Status\": \"block\"\n            }\n        ],\n        \"Total\": 1500\n    }\n}",
+        "title": "Querying a list of bot managed rules"
       }
     ],
     "DescribeBotTopData": [
@@ -268,12 +440,20 @@
         "title": "Querying a large DDoS attack event"
       }
     ],
+    "DescribeDDoSPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDDoSPolicy\n<Common request parameters>\n\n{\n    \"PolicyId\": \"1456\",\n    \"ZoneId\": \"zone-285thql0vdhi\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7d20dbda-d747-4946-9ada-30ca22449d69\",\n        \"DDoSRule\": {\n            \"DDoSAcl\": {\n                \"DDoSAclRules\": [\n                    {\n                        \"Action\": \"forward\",\n                        \"DportEnd\": 80,\n                        \"DportStart\": 80,\n                        \"Protocol\": \"all\",\n                        \"SportEnd\": 65535,\n                        \"SportStart\": 1\n                    }\n                ],\n                \"Switch\": \"on\"\n            },\n            \"DDoSAllowBlock\": {\n                \"DDoSAllowBlockRules\": [\n                    {\n                        \"Ip\": \"2.2.2.2\",\n                        \"Type\": \"allow\",\n                        \"UpdateTime\": 1661828230\n                    }\n                ],\n                \"Switch\": \"on\"\n            },\n            \"DDoSAntiPly\": {\n                \"AbnormalConnectNum\": 0,\n                \"AbnormalSynNum\": 0,\n                \"AbnormalSynRatio\": 0,\n                \"ConnectTimeout\": 0,\n                \"DestinationConnectLimit\": 0,\n                \"DestinationCreateLimit\": 0,\n                \"DropIcmp\": \"on\",\n                \"DropOther\": \"off\",\n                \"DropTcp\": \"off\",\n                \"DropUdp\": \"off\",\n                \"EmptyConnectProtect\": \"off\",\n                \"SourceConnectLimit\": 0,\n                \"SourceCreateLimit\": 0,\n                \"UdpShard\": \"off\"\n            },\n            \"DDoSGeoIp\": {\n                \"RegionIds\": [],\n                \"Switch\": \"on\"\n            },\n            \"DDoSPacketFilter\": {\n                \"DDoSFeaturesFilters\": [\n                    {\n                        \"Action\": \"forward\",\n                        \"Depth\": 123,\n                        \"Depth2\": 1500,\n                        \"DportEnd\": 0,\n                        \"DportStart\": 0,\n                        \"IsNot\": 0,\n                        \"IsNot2\": 0,\n                        \"MatchBegin\": \"begin_l3\",\n                        \"MatchBegin2\": \"no_match\",\n                        \"MatchLogic\": \"none\",\n                        \"MatchType\": \"sunday\",\n                        \"MatchType2\": \"sunday\",\n                        \"Offset\": 23,\n                        \"Offset2\": 0,\n                        \"PacketMax\": 0,\n                        \"PacketMin\": 0,\n                        \"Protocol\": \"udp\",\n                        \"SportEnd\": 0,\n                        \"SportStart\": 0,\n                        \"Str\": \"123\",\n                        \"Str2\": \"\"\n                    }\n                ],\n                \"Switch\": \"on\"\n            },\n            \"DDoSSpeedLimit\": {\n                \"FluxLimit\": \"0 bps\",\n                \"PackageLimit\": \"0 pps\"\n            },\n            \"DDoSStatusInfo\": {\n                \"PlyLevel\": \"middle\"\n            },\n            \"Switch\": \"on\"\n        }\n    }\n}",
+        "title": "Querying the DDoS mitigation configuration"
+      }
+    ],
     "DescribeDefaultCertificates": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDefaultCertificates\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-fafcasdf\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"084d5612-67a7-4aca-aac9-827aa3662b2d\",\n        \"DefaultServerCertInfo\": [\n            {\n                \"Status\": \"deployed\",\n                \"CertId\": \"teo-285inl1otbtd\",\n                \"SubjectAltName\": [\n                    \"*.test.com\",\n                    \"test.com\"\n                ],\n                \"EffectiveTime\": \"2020-09-22T00:00:00+00:00\",\n                \"CommonName\": \"test.com\",\n                \"ExpireTime\": \"2020-09-22T00:00:00+00:00\",\n                \"Alias\": \"EdgeOne default\",\n                \"Message\": \"\",\n                \"Type\": \"default\"\n            }\n        ]\n    }\n}",
-        "title": "Obtaining the default certificate"
+        "title": "Obtaining default certificates"
       }
     ],
     "DescribeDnsData": [
@@ -340,6 +520,26 @@
         "title": "Querying the verification status of a site"
       }
     ],
+    "DescribeLoadBalancing": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLoadBalancing\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-20hzkd4rdmy0\"\n            ],\n            \"Fuzzy\": false\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"TotalCount\": 1,\n        \"Data\": [\n            {\n                \"Host\": \"test.tencent.com\",\n                \"LoadBalancingId\": \"lb-d21bfaf7-8d72-11ec-841d-00ff977fb3c8\",\n                \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n                \"BackupOriginGroupId\": \"\",\n                \"TTL\": 600,\n                \"Type\": \"proxied\",\n                \"UpdateTime\": \"2022-02-14T08:48:03Z\",\n                \"ZoneId\": \"zone-20hzkd4rdmy0\",\n                \"Status\": \"online\",\n                \"Cname\": \"test.tencent.com.acc.edgeonedy1.com\"\n            }\n        ]\n    }\n}",
+        "title": "Obtaining the list of load balancers of a site"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLoadBalancing\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-20hzkd4rdmy0\"\n            ],\n            \"Fuzzy\": false\n        },\n        {\n            \"Name\": \"load-balancing-id\",\n            \"Values\": [\n                \"lb-d21bfaf7-8d72-11ec-841d-00ff977fb3c8\"\n            ],\n            \"Fuzzy\": false\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"TotalCount\": 1,\n        \"Data\": [\n            {\n                \"Host\": \"test.tencent.com\",\n                \"LoadBalancingId\": \"lb-d21bfaf7-8d72-11ec-841d-00ff977fb3c8\",\n                \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n                \"BackupOriginGroupId\": \"\",\n                \"TTL\": 600,\n                \"Type\": \"proxied\",\n                \"UpdateTime\": \"2022-02-14T08:48:03Z\",\n                \"ZoneId\": \"zone-20hzkd4rdmy0\",\n                \"Status\": \"online\",\n                \"Cname\": \"test.tencent.com.acc.edgeonedy1.com\"\n            }\n        ]\n    }\n}",
+        "title": "Obtaining the details of a load balancer by ID"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLoadBalancing\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-20hzkd4rdmy0\"\n            ],\n            \"Fuzzy\": false\n        },\n        {\n            \"Name\": \"host\",\n            \"Values\": [\n                \"test\"\n            ],\n            \"Fuzzy\": true\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"TotalCount\": 1,\n        \"Data\": [\n            {\n                \"Host\": \"test.tencent.com\",\n                \"LoadBalancingId\": \"lb-d21bfaf7-8d72-11ec-841d-00ff977fb3c8\",\n                \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n                \"BackupOriginGroupId\": \"\",\n                \"TTL\": 600,\n                \"Type\": \"proxied\",\n                \"UpdateTime\": \"2022-02-14T08:48:03Z\",\n                \"ZoneId\": \"zone-20hzkd4rdmy0\",\n                \"Status\": \"online\",\n                \"Cname\": \"test.tencent.com.acc.edgeonedy1.com\"\n            }\n        ]\n    }\n}",
+        "title": "Obtaining the details of a load balancer by domain name in a fuzzy query"
+      }
+    ],
     "DescribeLogSets": [
       {
         "document": "",
@@ -362,6 +562,26 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogTopicTasks\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"ZoneId\": \"zone-28569s6od5na\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"40be710a-9706-4b22-865e-c9739111ef1a\",\n        \"TopicList\": [\n            {\n                \"Area\": \"mainland\",\n                \"CreateTime\": \"2022-08-31 10:41:11\",\n                \"Deleted\": \"no\",\n                \"Enabled\": true,\n                \"EntityType\": \"application\",\n                \"LogSetId\": \"33a900b2-9860-4da0-be91-bcce94c290ce\",\n                \"Period\": 10,\n                \"LogSetRegion\": \"ap-guangzhou\",\n                \"Target\": \"cls\",\n                \"TaskName\": \"test_task\",\n                \"TopicId\": \"0a396698-d589-42b6-a6a2-701777d3afe0\",\n                \"ZoneName\": \"hello.club\",\n                \"ZoneId\": \"zone-28569s6od5na\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Obtaining the list of shipping tasks"
+      }
+    ],
+    "DescribeOriginGroup": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginGroup\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-20hzkd4rdmy0\"\n            ],\n            \"Fuzzy\": false\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"TotalCount\": 1,\n        \"OriginGroups\": [\n            {\n                \"OriginGroupId\": \"origin-136db381-8d3d-11ec-89a4-00ff977fb3c8\",\n                \"OriginGroupName\": \"origin-name\",\n                \"ZoneId\": \"zone-20hzkd4rdmy0\",\n                \"ZoneName\": \"tencent.com\",\n                \"OriginRecords\": [\n                    {\n                        \"Area\": [],\n                        \"Port\": 80,\n                        \"Record\": \"1.2.3.4\",\n                        \"RecordId\": \"record-4b2dbd84-8d9a-11ec-9527-00ff977fb3c8\",\n                        \"Weight\": 100\n                    }\n                ],\n                \"ConfigurationType\": \"weight\",\n                \"OriginType\": \"self\",\n                \"UpdateTime\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the origin group list of a site"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginGroup\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-20hzkd4rdmy0\"\n            ],\n            \"Fuzzy\": false\n        },\n        {\n            \"Name\": \"origin-group-id\",\n            \"Values\": [\n                \"origin-136db381-8d3d-11ec-89a4-00ff977fb3c8\"\n            ],\n            \"Fuzzy\": false\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"TotalCount\": 1,\n        \"OriginGroups\": [\n            {\n                \"OriginGroupId\": \"origin-136db381-8d3d-11ec-89a4-00ff977fb3c8\",\n                \"OriginGroupName\": \"origin-name\",\n                \"ZoneId\": \"zone-20hzkd4rdmy0\",\n                \"ZoneName\": \"tencent.com\",\n                \"OriginRecords\": [\n                    {\n                        \"Area\": [],\n                        \"Port\": 80,\n                        \"Record\": \"1.2.3.4\",\n                        \"RecordId\": \"record-4b2dbd84-8d9a-11ec-9527-00ff977fb3c8\",\n                        \"Weight\": 100\n                    }\n                ],\n                \"ConfigurationType\": \"weight\",\n                \"OriginType\": \"self\",\n                \"UpdateTime\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the details of an origin group by ID"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginGroup\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-20hzkd4rdmy0\"\n            ],\n            \"Fuzzy\": false\n        },\n        {\n            \"Name\": \"origin-group-name\",\n            \"Values\": [\n                \"name\"\n            ],\n            \"Fuzzy\": true\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"TotalCount\": 1,\n        \"OriginGroups\": [\n            {\n                \"OriginGroupId\": \"origin-136db381-8d3d-11ec-89a4-00ff977fb3c8\",\n                \"OriginGroupName\": \"origin-name\",\n                \"ZoneId\": \"zone-20hzkd4rdmy0\",\n                \"ZoneName\": \"tencent.com\",\n                \"OriginRecords\": [\n                    {\n                        \"Area\": [],\n                        \"Port\": 80,\n                        \"Record\": \"1.2.3.4\",\n                        \"RecordId\": \"record-4b2dbd84-8d9a-11ec-9527-00ff977fb3c8\",\n                        \"Weight\": 100\n                    }\n                ],\n                \"ConfigurationType\": \"weight\",\n                \"OriginType\": \"self\",\n                \"UpdateTime\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the details of an origin group by name in a fuzzy query"
       }
     ],
     "DescribeOverviewL7Data": [
@@ -388,6 +608,14 @@
         "title": "Querying the cache purging history"
       }
     ],
+    "DescribeRateLimitIntelligenceRule": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRateLimitIntelligenceRule\n<Common request parameters>\n\n{\n    \"Entity\": \"www.example.com\",\n    \"ZoneId\": \"zone-w28fh20f\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RateLimitIntelligenceRuleDetails\": [\n            {\n                \"Status\": \"allow\",\n                \"RuleId\": 1,\n                \"EffectiveTime\": \"2020-09-22T00:00:00+00:00\",\n                \"MatchContent\": \"1.1.1.1\",\n                \"ExpireTime\": \"2020-09-22T00:00:00+00:00\",\n                \"Action\": \"monitor\"\n            }\n        ],\n        \"RequestId\": \"3jca0ffj2-3d29024f-2kdfcfsnr9\"\n    }\n}",
+        "title": "Querying an intelligent rate limiting rule"
+      }
+    ],
     "DescribeRules": [
       {
         "document": "",
@@ -404,12 +632,84 @@
         "title": "DescribeRulesSetting"
       }
     ],
+    "DescribeSecurityGroupManagedRules": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSecurityGroupManagedRules\n<Common request parameters>\n\n{\n    \"Offset\": \"2\",\n    \"Entity\": \"a.eotest.xyz\",\n    \"Limit\": 1,\n    \"ZoneId\": \"zone-285thql0vdhi\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4b8c24c5-3576-40e0-82f9-60628c9c2d47\",\n        \"Count\": 1,\n        \"Total\": 570,\n        \"WafGroupInfo\": {\n            \"Switch\": \"on\",\n            \"Act\": \"\",\n            \"Mode\": \"block\",\n            \"Level\": \"strict\"\n        }\n    }\n}",
+        "title": "Querying a managed rule group"
+      }
+    ],
+    "DescribeSecurityPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSecurityPolicy\n<Common request parameters>\n\n{\n    \"Entity\": \"www.example.com\",\n    \"ZoneId\": \"zone-xxqr76cy\"\n}",
+        "output": "{\n    \"Response\": {\n        \"SecurityConfig\": {\n            \"SwitchConfig\": {\n                \"WebSwitch\": \"on\"\n            }\n        },\n        \"RequestId\": \"wef982hjg0-334j39-348j3w\"\n    }\n}",
+        "title": "Querying the security protection configuration"
+      }
+    ],
+    "DescribeSecurityPolicyList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSecurityPolicyList\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-285thql0vdhi\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"45f43eef-60e0-4be2-b322-327eca853592\",\n        \"SecurityEntities\": [\n            {\n                \"Entity\": \"*.eosecdev.xyz\",\n                \"EntityType\": \"domain\",\n                \"ZoneId\": \"zone-285thql0vdhi\"\n            },\n            {\n                \"Entity\": \"a.eosecdev.xyz\",\n                \"EntityType\": \"domain\",\n                \"ZoneId\": \"zone-285thql0vdhi\"\n            },\n            {\n                \"Entity\": \"b.eosecdev.xyz\",\n                \"EntityType\": \"domain\",\n                \"ZoneId\": \"zone-285thql0vdhi\"\n            }\n        ]\n    }\n}",
+        "title": "Querying a list of security policies"
+      }
+    ],
+    "DescribeSecurityPolicyRegions": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSecurityPolicyRegions\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Count\": 0,\n        \"GeoIps\": [\n            {\n                \"Country\": \"China\",\n                \"RegionId\": 1814991,\n                \"Continent\": \"Asia\",\n                \"Province\": \"Chinese mainland\"\n            }\n        ],\n        \"RequestId\": \"hw01e23r-a38r9ja-23r89\"\n    }\n}",
+        "title": "Querying region information"
+      }
+    ],
+    "DescribeSecurityPortraitRules": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSecurityPortraitRules\n<Common request parameters>\n\n{\n    \"Entity\": \"a.eotest.com\",\n    \"ZoneId\": \"zone-285thql0vdhi\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Count\": 1,\n        \"PortraitManagedRuleDetails\": [\n            {\n                \"ClassificationId\": 0,\n                \"Description\": \"AttackerIP1\",\n                \"RuleId\": 1,\n                \"RuleTypeName\": \"botdb\",\n                \"Status\": \"block\"\n            }\n        ],\n        \"Total\": 1,\n        \"RequestId\": \"2f292f3rff-23ra3ra-a34fgag\"\n    }\n}",
+        "title": "Querying user profiling rules"
+      }
+    ],
+    "DescribeSecurityRuleId": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSecurityRuleId\n<Common request parameters>\n\n{\n    \"RuleType\": \"bot\",\n    \"RuleIdList\": [\n        \"1006\"\n    ],\n    \"Entity\": \"runtimewu.eosecdev.xyz\"\n}",
+        "output": "{\n    \"Response\": {\n        \"WafGroupRules\": [\n            {\n                \"Status\": \"allow\",\n                \"UpdateTime\": \"2022-09-01 00:00:00\",\n                \"Description\": \"Site Monitor\",\n                \"RuleId\": 1006,\n                \"RuleTypeId\": 0,\n                \"RuleLevelDesc\": \"Site Monitor\",\n                \"RuleTypeName\": \"Site Monitor\",\n                \"RuleTags\": [\n                    \"site\"\n                ],\n                \"RuleTypeDesc\": \"Site Monitor\"\n            }\n        ],\n        \"RequestId\": \"awj989f2j-afj9hf8-dj293d\"\n    }\n}",
+        "title": "Querying the details of a bot managed rule"
+      }
+    ],
     "DescribeSingleL7AnalysisData": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSingleL7AnalysisData\n<Common request parameters>\n\n{\n    \"EndTime\": \"2022-08-29T19:17:59+08:00\",\n    \"Interval\": \"day\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2022-07-31T00:00:00+08:00\",\n    \"MetricNames\": [\n        \"l7Flow_singleIpRequest\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4f9b86cc-d62b-4a69-a640-52f6f3cb628e\",\n        \"Data\": [\n            {\n                \"TypeKey\": \"251227260\",\n                \"TypeValue\": [\n                    {\n                        \"DetailData\": 65,\n                        \"MetricName\": \"l7Flow_singleIpRequest\"\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the L7 dimensional data"
+      }
+    ],
+    "DescribeSpeedTestingDetails": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSpeedTestingDetails\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-cdafdasdf\"\n}",
+        "output": "{\n    \"Response\": {\n        \"SpeedTestingDetailData\": {\n            \"ZoneName\": \"tencent.com\",\n            \"DistrictStatistics\": [\n                {\n                    \"Alpha2\": \"AF\",\n                    \"LoadTime\": 30\n                }\n            ],\n            \"ZoneId\": \"zone-cdafdasdf\"\n        },\n        \"RequestId\": \"084d5612-67a7-4aca-aac9-827aa3662b2d\"\n    }\n}",
+        "title": "Querying the site’s load speed across regions"
+      }
+    ],
+    "DescribeSpeedTestingMetricData": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSpeedTestingMetricData\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2805lqj66rf6\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f9a45aa8-01ab-40c0-ac2d-e61178fd2c51\",\n        \"SpeedTestingMetricData\": {\n            \"OriginSpeedTestingInfo\": [\n                {\n                    \"SpeedTestingStatistics\": {\n                        \"DocumentFinishTime\": 0,\n                        \"FirstMeaningfulPaint\": 0,\n                        \"LoadTime\": 0,\n                        \"OverallDownloadSpeed\": 0.0,\n                        \"FileDownloadTime\": 0,\n                        \"FirstContentfulPaint\": 0,\n                        \"ResponseTime\": 0,\n                        \"RenderTime\": 0,\n                        \"TcpConnectionTime\": 0\n                    },\n                    \"SpeedTestingConfig\": {\n                        \"Url\": \"https://www.tencent.com/\",\n                        \"Connectivity\": \"Cable\",\n                        \"UA\": \"Chrome,PC\",\n                        \"TaskType\": 0\n                    },\n                    \"TestId\": \"test-id\",\n                    \"StatusCode\": 0\n                }\n            ],\n            \"SpeedTestingStatus\": {\n                \"Tls\": true,\n                \"Url\": \"https://www.tencent.com/\",\n                \"CreatedOn\": \"2020-09-22T00:00:00+00:00\",\n                \"Connectivity\": \"Cable\",\n                \"UA\": \"Chrome,PC\",\n                \"StatusCode\": 0,\n                \"TimedOut\": true,\n                \"Reachable\": true\n            },\n            \"OriginLoadTime\": 0,\n            \"ZoneId\": \"zone-2805lqj66rf6\",\n            \"ProxyLoadTime\": 0,\n            \"ProxySpeedTestingInfo\": [\n                {\n                    \"SpeedTestingStatistics\": {\n                        \"DocumentFinishTime\": 0,\n                        \"FirstMeaningfulPaint\": 0,\n                        \"LoadTime\": 0,\n                        \"OverallDownloadSpeed\": 0.0,\n                        \"FileDownloadTime\": 0,\n                        \"FirstContentfulPaint\": 0,\n                        \"ResponseTime\": 0,\n                        \"RenderTime\": 0,\n                        \"TcpConnectionTime\": 0\n                    },\n                    \"SpeedTestingConfig\": {\n                        \"Url\": \"https://www.tencent.com/\",\n                        \"Connectivity\": \"Cable\",\n                        \"UA\": \"Chrome,PC\",\n                        \"TaskType\": 0\n                    },\n                    \"TestId\": \"test-dadfcsas\",\n                    \"StatusCode\": 0\n                }\n            ],\n            \"OptimizeAction\": [\n                {\n                    \"Connectivity\": \"Cable\",\n                    \"Ratio\": 0,\n                    \"Name\": \"name\",\n                    \"Value\": 0\n                }\n            ],\n            \"ZoneName\": \"zone.com\"\n        }\n    }\n}",
+        "title": "Querying the result of a site test"
+      }
+    ],
+    "DescribeSpeedTestingQuota": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSpeedTestingQuota\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-fiandfa\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f9a45aa8-01ab-40c0-ac2d-e61178fd2c51\",\n        \"SpeedTestingQuota\": {\n            \"AvailableTestRuns\": 0,\n            \"TotalTestRuns\": 100\n        }\n    }\n}",
+        "title": "Querying the quota limit on site tests"
       }
     ],
     "DescribeTimingL4Data": [
@@ -516,6 +816,14 @@
         "title": "Querying the top-ranked CC protection data"
       }
     ],
+    "DescribeZoneDDoSPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeZoneDDoSPolicy\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-xxqr76cy\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"68b3b15b-92e5-4136-9c27-4b892b1606fb\",\n        \"DDoSHosts\": [],\n        \"ShieldAreas\": []\n    }\n}",
+        "title": "Querying all DDoS mitigation configuration"
+      }
+    ],
     "DescribeZoneSetting": [
       {
         "document": "",
@@ -556,6 +864,76 @@
         "title": "Verifying site ownership"
       }
     ],
+    "ModifyAlarmConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAlarmConfig\n<Common request parameters>\n\n{\n    \"Threshold\": 0,\n    \"EntityList\": [\n        \"tencent.com\"\n    ],\n    \"IsDefault\": true,\n    \"ServiceType\": \"ddos\",\n    \"ZoneId\": \"zone-28569s6od5na\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"435afebf-6e98-4224-ac43-33ad9ac9ef09\"\n    }\n}",
+        "title": "Modifying the alarm configuration"
+      }
+    ],
+    "ModifyAlarmDefaultThreshold": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAlarmDefaultThreshold\n<Common request parameters>\n\n{\n    \"Threshold\": 100,\n    \"ServiceType\": \"ddos\",\n    \"ZoneId\": \"zone-28569s6od5na\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"46c32ba8-06d8-447e-a8e2-c39619535723\"\n    }\n}",
+        "title": "Modifying the default alarm threshold"
+      }
+    ],
+    "ModifyApplicationProxy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxy\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"ProxyId\": \"proxy-537f5b41-162a-11ed-abaa-525400c5da15\",\n    \"ProxyName\": \"test.com\",\n    \"ProxyType\": \"hostname\",\n    \"SessionPersistTime\": 3600,\n    \"Ipv6\": {\n        \"Switch\": \"on\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b03fe5dd-be04-444c-a2e1-49f1bf2f399a\"\n    }\n}",
+        "title": "Modifying an application proxy"
+      }
+    ],
+    "ModifyApplicationProxyRule": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyRule\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"RuleId\": \"rule-5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n    \"Proto\": \"TCP\",\n    \"Port\": [\n        \"80\",\n        \"90\",\n        \"99-110\"\n    ],\n    \"OriginType\": \"custom\",\n    \"OriginValue\": [\n        \"1.1.1.1:80\"\n    ],\n    \"ForwardClientIp\": \"TOA\",\n    \"SessionPersist\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Modifying an application proxy rule"
+      }
+    ],
+    "ModifyApplicationProxyRuleStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyRuleStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"RuleId\": \"rule-19389e5a-118b-11ed-9951-525400655ede\",\n    \"Status\": \"offline\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Modifying the status of an application proxy rule"
+      }
+    ],
+    "ModifyApplicationProxyStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"Status\": \"online\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Modifying the status of an application proxy"
+      }
+    ],
+    "ModifyDDoSPolicy": [
+      {
+        "document": "This example shows you how to add the IP 1.1.1.1 to the blocklist.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDDoSPolicy\n<Common request parameters>\n\n{\n    \"PolicyId\": 1,\n    \"ZoneId\": \"zone-27filz8zp3vi\",\n    \"DDoSRule\": {\n        \"DDoSAllowBlock\": {\n            \"DDoSAllowBlockRules\": [\n                {\n                    \"Ip\": \"1.1.1.1\",\n                    \"Type\": \"block\",\n                    \"UpdateTime\": 0\n                }\n            ]\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"cb1f63d0-9173-4a1e-adb9-bd1ee2642b58\"\n    }\n}",
+        "title": "Modifying the IP blocklist/allowlist"
+      },
+      {
+        "document": "This example shows you how to set the maximum number of new connections to the origin per second to 10,000.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDDoSPolicy\n<Common request parameters>\n\n{\n    \"PolicyId\": 1,\n    \"ZoneId\": \"zone-27filz8zp3vi\",\n    \"DDoSRule\": {\n        \"DDoSAntiPly\": {\n            \"AbnormalConnectNum\": 0,\n            \"AbnormalSynNum\": 0,\n            \"AbnormalSynRatio\": 0,\n            \"ConnectTimeout\": 0,\n            \"DestinationConnectLimit\": 0,\n            \"DestinationCreateLimit\": 0,\n            \"DropIcmp\": \"on\",\n            \"DropOther\": \"off\",\n            \"DropTcp\": \"off\",\n            \"DropUdp\": \"off\",\n            \"EmptyConnectProtect\": 0,\n            \"SourceConnectLimit\": 0,\n            \"SourceCreateLimit\": 10000,\n            \"UdpShard\": \"off\"\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"cb1f63d0-9173-4a1e-adb9-bd1ee2642b58\"\n    }\n}",
+        "title": "Modifying the connection protection settings"
+      }
+    ],
+    "ModifyDDoSPolicyHost": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDDoSPolicyHost\n<Common request parameters>\n\n{\n    \"AccelerateType\": \"on\",\n    \"SecurityType\": \"on\",\n    \"Host\": \"a.eotest.com\",\n    \"PolicyId\": 1,\n    \"ZoneId\": \"zone-fawj94jag\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"faw89a4j0ag-awhf9aj-faj82agnmoa\"\n    }\n}",
+        "title": "Enabling high availability for domain names"
+      }
+    ],
     "ModifyDefaultCertificate": [
       {
         "document": "",
@@ -585,7 +963,29 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyHostsCertificate\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-asdfasc\",\n    \"Hosts\": [\n        \"xxx.test.com\"\n    ],\n    \"ServerCertInfo\": [\n        {\n            \"CertId\": \"EO-sddafcasf\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"084d5612-67a7-4aca-aac9-827aa3662b2d\"\n    }\n}",
-        "title": "Modifying the certificate configuration of a domain name"
+        "title": "Modifying the certificate configuration for domain names"
+      }
+    ],
+    "ModifyLoadBalancing": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLoadBalancing\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"LoadBalancingId\": \"lb-97c8396e-cb88-4c9c-98d9-38e86463d12e\",\n    \"Type\": \"dns_only\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"BackupOriginGroupId\": \"\",\n    \"TTL\": 600\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Modifying a CLB instance"
+      }
+    ],
+    "ModifyLoadBalancingStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLoadBalancingStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"LoadBalancingId\": \"lb-97c8396e-cb88-4c9c-98d9-38e86463d12e\",\n    \"Status\": \"online\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Enabling a load balancer"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLoadBalancingStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"LoadBalancingId\": \"lb-97c8396e-cb88-4c9c-98d9-38e86463d12e\",\n    \"Status\": \"offline\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Disabling a load balancer"
       }
     ],
     "ModifyLogTopicTask": [
@@ -594,6 +994,14 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLogTopicTask\n<Common request parameters>\n\n{\n    \"TopicId\": \"0a396698-d589-42b6-a6a2-701777d3afe0\",\n    \"LogSetId\": \"33a900b2-9860-4da0-be91-bcce94c290ce\",\n    \"EntityType\": \"application\",\n    \"Period\": 11,\n    \"ZoneId\": \"zone-28569s6od5na\",\n    \"LogSetRegion\": \"ap-guangzhou\",\n    \"LogSetName\": \"new_log_set\",\n    \"TopicName\": \"new_topic_name\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"952c708d-abaf-464c-84cf-d1447887cf65\"\n    }\n}",
         "title": "Modifying a shipping task"
+      }
+    ],
+    "ModifyOriginGroup": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"OriginGroupName\": \"renameorigingroup\",\n    \"ConfigurationType\": \"weight\",\n    \"OriginType\": \"self\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"1.2.3.4\",\n            \"Weight\": 50,\n            \"Port\": 80\n        },\n        {\n            \"Record\": \"1.2.3.5\",\n            \"Weight\": 50,\n            \"Port\": 80\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Modifying an origin group"
       }
     ],
     "ModifyRule": [
@@ -610,6 +1018,22 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRulePriority\n<Common request parameters>\n\n{\n    \"RuleIds\": [\n        \"rule-jr7ammcu\",\n        \"rule-3bta0qmn\"\n    ],\n    \"ZoneId\": \"zone-26r78x31ny86\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ace05891-744c-40f8-94de-4e1c08d954c2\"\n    }\n}",
         "title": "ModifyRulePriority"
+      }
+    ],
+    "ModifySecurityPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySecurityPolicy\n<Common request parameters>\n\n{\n    \"Entity\": \"a.eotest.com\",\n    \"SecurityConfig\": {\n        \"WafConfig\": {\n            \"Switch\": \"on\",\n            \"WafRule\": {\n                \"Switch\": \"on\",\n                \"BlockRuleIDs\": [\n                    162502146\n                ]\n            },\n            \"Mode\": \"block\",\n            \"Level\": \"loose\"\n        }\n    },\n    \"ZoneId\": \"zone-fa89j239a\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"08b32010-ab25-42a4-b923-2e6c481dae23\"\n    }\n}",
+        "title": "Modifying the security configuration"
+      }
+    ],
+    "ModifySecurityWafGroupPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySecurityWafGroupPolicy\n<Common request parameters>\n\n{\n    \"Entity\": \"a.eotest.com\",\n    \"ZoneId\": \"zone-a81jffj923\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"08b32010-ab25-42a4-b923-2e6c481dae23\"\n    }\n}",
+        "title": "Modifying a managed rule"
       }
     ],
     "ModifyZone": [
