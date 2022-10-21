@@ -2853,7 +2853,7 @@
         },
         {
           "default": "",
-          "document": "When `Type=dns_only`, it indicates the amount of time that DNS records remain in the cache of a DNS server.\nValue range: 60-86400 (in seconds). If it’s not specified, the default value 600 will be used.",
+          "document": "When `Type=dns_only`, it indicates the amount of time that DNS records remain in the cache of a DNS server.\nValue range: 60-86400 (in seconds). If it's not specified, the default value 600 will be used.",
           "example": "600",
           "member": "uint64",
           "name": "TTL",
@@ -12910,7 +12910,7 @@
         },
         {
           "default": "",
-          "document": "When `Type=dns_only`, it indicates the amount of time that DNS records remain in the cache of a DNS server.\nValue range: 60-86400 (in seconds). If it’s not specified, the default value 600 will be used.",
+          "document": "When `Type=dns_only`, it indicates the amount of time that DNS records remain in the cache of a DNS server.\nValue range: 60-86400 (in seconds). If it's not specified, the default value 600 will be used.",
           "example": "600",
           "member": "uint64",
           "name": "TTL",

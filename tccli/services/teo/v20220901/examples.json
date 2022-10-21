@@ -59,27 +59,27 @@
     "CreateLoadBalancing": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancing\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"Host\": \"test.tencent.com\",\n    \"Type\": \"dns_only\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"BackupOriginGroupId\": \"\",\n    \"TTL\": 600,\n    \"OriginType\": \"normal\"\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancing\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"Host\": \"test.tencent.com\",\n    \"Type\": \"dns_only\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"BackupOriginGroupId\": \"\",\n    \"TTL\": 600\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"LoadBalancingId\": \"lb-97c8396e-cb88-4c9c-98d9-38e86463d12e\"\n    }\n}",
-        "title": "创建仅DNS模式负载均衡"
+        "title": "Creating an Only-DNS load balancer"
       },
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancing\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"Host\": \"test.tencent.com\",\n    \"Type\": \"proxied\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"BackupOriginGroupId\": \"\",\n    \"OriginType\": \"normal\"\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancing\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"Host\": \"test.tencent.com\",\n    \"Type\": \"proxied\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"BackupOriginGroupId\": \"\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"LoadBalancingId\": \"lb-97c8396e-cb88-4c9c-98d9-38e86463d12e\"\n    }\n}",
-        "title": "创建开启代理模式负载均衡"
+        "title": "Creating a proxied load balancer"
       },
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancing\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"Host\": \"test.tencent.com\",\n    \"Type\": \"proxied\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"BackupOriginGroupId\": \"orgin-9cc50b24-7dc5-44f4-96ce-95825d53ff2f\",\n    \"OriginType\": \"normal\"\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancing\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"Host\": \"test.tencent.com\",\n    \"Type\": \"proxied\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"BackupOriginGroupId\": \"orgin-9cc50b24-7dc5-44f4-96ce-95825d53ff2f\",\n    \"OriginType\": \"advanced\",\n    \"AdvancedOriginGroups\": [\n        {\n            \"OriginGroupConditions\": [\n                {\n                    \"Target\": \"url\",\n                    \"Operator\": \"equal\",\n                    \"Values\": [\n                        \"/image\"\n                    ]\n                }\n            ],\n            \"OriginGroupId\": \"orgin-9cc50b24-7dc5-44f4-96ce-95825d53ff2f\",\n            \"BackupOriginGroupId\": \"\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"LoadBalancingId\": \"lb-97c8396e-cb88-4c9c-98d9-38e86463d12e\"\n    }\n}",
-        "title": "创建使用备用源站的负载均衡"
+        "title": "Creating a load balancer when a secondary origin is used"
       },
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancing\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"Host\": \"test.tencent.com\",\n    \"Type\": \"proxied\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"BackupOriginGroupId\": \"orgin-9cc50b24-7dc5-44f4-96ce-95825d53ff2f\",\n    \"OriginType\": \"advanced\",\n    \"AdvancedOriginGroups\": [\n        {\n            \"OriginGroupConditions\": [\n                {\n                    \"Target\": \"url\",\n                    \"Operator\": \"equal\",\n                    \"Values\": [\n                        \"/image\"\n                    ]\n                }\n            ],\n            \"OriginGroupId\": \"orgin-9cc50b24-7dc5-44f4-96ce-95825d53ff2f\",\n            \"BackupOriginGroupId\": \"\"\n        }\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancing\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"Host\": \"test.tencent.com\",\n    \"Type\": \"proxied\",\n    \"OriginGroupId\": \"orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"BackupOriginGroupId\": \"orgin-9cc50b24-7dc5-44f4-96ce-95825d53ff2f\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"LoadBalancingId\": \"lb-97c8396e-cb88-4c9c-98d9-38e86463d12e\"\n    }\n}",
-        "title": "创建使用高级源站配置的负载均衡"
+        "title": "Creating a load balancer with advanced origin configuration"
       }
     ],
     "CreateLogSet": [

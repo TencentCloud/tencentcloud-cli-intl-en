@@ -12,8 +12,8 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloneDBInstance\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-2ot3acw1\",\n    \"AutoRenewFlag\": \"1\",\n    \"DBInstanceId\": \"postgres-abcd1234\",\n    \"RecoveryTargetTime\": \"2021-12-25 01:27:35\",\n    \"Storage\": \"10\",\n    \"Period\": \"1\",\n    \"AutoVoucher\": \"0\",\n    \"InstanceChargeType\": \"prepaid\",\n    \"SpecCode\": \"cdb.pg.z1.2g\",\n    \"SubnetId\": \"subnet-ppv9iw34\",\n    \"DBNodeSet\": [\n        {\n            \"Role\": \"Standby\",\n            \"Zone\": \"ap-guangzhou-3\"\n        },\n        {\n            \"Role\": \"Primary\",\n            \"Zone\": \"ap-guangzhou-3\"\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"DealName\": \"20211225711000768276461\",\n        \"BillId\": \"20211225711000768276471\"\n    }\n}",
-        "title": "Cloning instance"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"DealName\": \"20211225711000768276461\",\n        \"BillId\": \"20211225711000768276471\",\n        \"DBInstanceId\": \"postgres-xxxx\"\n    }\n}",
+        "title": "Cloning an instance"
       }
     ],
     "CloseDBExtranetAccess": [
@@ -43,29 +43,29 @@
     "CreateDBInstances": [
       {
         "document": "",
-        "input": "https://postgres.tencentcloudapi.com/?Action=CreateDBInstances\n&SpecCode=cdb.pg.z1.2g\n&Storage=10\n&InstanceCount=1\n&Period=1\n&InstanceChargeType=prepaid\n&Zone=ap-guangzhou-5\n&DBVersion=12.4\n&AutoVoucher=0\n&AutoRenewFlag=1\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDBInstances\n<Common request parameters>\n\n{\n    \"InstanceCount\": \"1\",\n    \"AutoRenewFlag\": \"1\",\n    \"Zone\": \"ap-guangzhou-5\",\n    \"DBVersion\": \"12.4\",\n    \"Storage\": 10,\n    \"Period\": \"1\",\n    \"SpecCode\": \"cdb.pg.z1.2g\",\n    \"InstanceChargeType\": \"prepaid\",\n    \"AutoVoucher\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"DealNames\": [\n            \"20180119110001\"\n        ],\n        \"DBInstanceIdSet\": [\n            \"postgres-xxxx\"\n        ],\n        \"BillId\": \"xxxxxxxxx\"\n    }\n}",
-        "title": "Creating TencentDB for PostgreSQL instance"
+        "title": "Creating a TencentDB for PostgreSQL instance"
       }
     ],
     "CreateInstances": [
       {
         "document": "This example shows you how to create an instance running the latest kernel of PostgreSQL 12.4.",
-        "input": "https://postgres.tencentcloudapi.com/?Action=CreateInstances\n&SpecCode=cdb.pg.z1.2g\n&Storage=10\n&InstanceCount=1\n&Period=1\n&InstanceChargeType=prepaid\n&Zone=ap-guangzhou-2\n&DBVersion=12.4\n&AutoVoucher=0\n&AutoRenewFlag=1\n&Charset=UTF8\n&AdminName=test2313\n&AdminPassword= xxxxxxx\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstances\n<Common request parameters>\n\n{\n    \"InstanceCount\": \"1\",\n    \"AutoRenewFlag\": \"1\",\n    \"AdminName\": \"test2313\",\n    \"Zone\": \"ap-guangzhou-2\",\n    \"AdminPassword\": \" xxxxxxx\",\n    \"DBVersion\": \"12.4\",\n    \"DBEngine\": \"postgresql\",\n    \"Storage\": \"10\",\n    \"Period\": \"1\",\n    \"SpecCode\": \"cdb.pg.z1.2g\",\n    \"InstanceChargeType\": \"prepaid\",\n    \"AutoVoucher\": \"0\",\n    \"Charset\": \"UTF8\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"DealNames\": [\n            \"20180119110001\"\n        ],\n        \"DBInstanceIdSet\": [\n            \"postgres-xxxxx\"\n        ],\n        \"BillId\": \"123\"\n    }\n}",
-        "title": "Creating PostgreSQL 12.4 instance"
+        "title": "Creating a PostgreSQL 12.4 instance"
       },
       {
         "document": "This example shows you how to create a multi-AZ deployed instance running the latest kernel of PostgreSQL 12.",
-        "input": "https://postgres.tencentcloudapi.com/?Action=CreateInstances\n&SpecCode=cdb.pg.z1.2g\n&Storage=10\n&InstanceCount=1\n&Period=1\n&InstanceChargeType=prepaid\n&Zone=ap-guangzhou-2\n&DBMajorVersion=12\n&AutoVoucher=0\n&AutoRenewFlag=1\n&Charset=UTF8\n&AdminName=test2313\n&AdminPassword= xxxxxxx\n&DBNodeSet.0.Role=Primary\n&DBNodeSet.0.Zone=ap-guangzhou-2\n&DBNodeSet.1.Role=Standby\n&DBNodeSet.1.Zone=ap-guangzhou-3\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstances\n<Common request parameters>\n\n{\n    \"InstanceCount\": \"1\",\n    \"AutoRenewFlag\": \"1\",\n    \"DBMajorVersion\": \"12\",\n    \"Zone\": \"ap-guangzhou-2\",\n    \"AdminPassword\": \" xxxxxxx\",\n    \"Charset\": \"UTF8\",\n    \"Storage\": \"10\",\n    \"Period\": \"1\",\n    \"SpecCode\": \"cdb.pg.z1.2g\",\n    \"InstanceChargeType\": \"prepaid\",\n    \"AutoVoucher\": \"0\",\n    \"DBNodeSet\": [\n        {\n            \"Role\": \"Standby\",\n            \"Zone\": \"ap-guangzhou-3\"\n        },\n        {\n            \"Role\": \"Primary\",\n            \"Zone\": \"ap-guangzhou-2\"\n        }\n    ],\n    \"AdminName\": \"test2313\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"DealNames\": [\n            \"20180119110001\"\n        ],\n        \"DBInstanceIdSet\": [\n            \"postgres-xxxxx\"\n        ],\n        \"BillId\": \"123\"\n    }\n}",
-        "title": "Creating instance running the latest kernel of PostgreSQL 12"
+        "title": "Creating an instance running the latest kernel of PostgreSQL 12"
       },
       {
         "document": "This example shows you how to create a PostgreSQL instance running kernel v12.4_r1.0.",
-        "input": "https://postgres.tencentcloudapi.com/?Action=CreateInstances\n&SpecCode=cdb.pg.z1.2g\n&Storage=10\n&InstanceCount=1\n&Period=1\n&InstanceChargeType=prepaid\n&Zone=ap-guangzhou-2\n&DBKernelVersion=v12.4_r1.0\n&AutoVoucher=0\n&AutoRenewFlag=1\n&Charset=UTF8\n&AdminName=test2313\n&AdminPassword= xxxxxxx\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstances\n<Common request parameters>\n\n{\n    \"InstanceCount\": \"1\",\n    \"AutoRenewFlag\": \"1\",\n    \"AdminName\": \"test2313\",\n    \"Zone\": \"ap-guangzhou-2\",\n    \"AdminPassword\": \" xxxxxxx\",\n    \"Charset\": \"UTF8\",\n    \"Storage\": \"10\",\n    \"Period\": \"1\",\n    \"SpecCode\": \"cdb.pg.z1.2g\",\n    \"DBKernelVersion\": \"v12.4_r1.0\",\n    \"DBEngine\": \"postgresql\",\n    \"InstanceChargeType\": \"prepaid\",\n    \"AutoVoucher\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"DealNames\": [\n            \"20180119110001\"\n        ],\n        \"DBInstanceIdSet\": [\n            \"postgres-xxxxx\"\n        ],\n        \"BillId\": \"123\"\n    }\n}",
-        "title": "Creating PostgreSQL instance running a specific version of kernel"
+        "title": "Creating a PostgreSQL instance running a specific kernel version"
       }
     ],
     "CreateReadOnlyDBInstance": [
@@ -369,8 +369,8 @@
     "InquiryPriceUpgradeDBInstance": [
       {
         "document": "",
-        "input": "https://postgres.tencentcloudapi.com/?Action=InquiryPriceUpgradeDBInstance\n&DBInstanceId=postgres-6fego161\n&Memory=4\n&Storage=500\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Price\": 1300,\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"OriginalPrice\": 1300\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceUpgradeDBInstance\n<Common request parameters>\n\n{\n    \"Storage\": \"500\",\n    \"DBInstanceId\": \"postgres-6fego161\",\n    \"Memory\": 4\n}",
+        "output": "{\n    \"Response\": {\n        \"Price\": 1300,\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"OriginalPrice\": 1300,\n        \"Currency\": \"CNY\"\n    }\n}",
         "title": "Querying the price for upgrading an instance"
       }
     ],

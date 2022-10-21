@@ -223,9 +223,9 @@
       "output": "DescribeZonesResponse"
     },
     "DestroyDBInstance": {
-      "document": "This API is used to eliminate an isolated instance by specifying the `DBInstanceId` parameter. The data of an eliminated instance will be deleted and cannot be recovered.",
+      "document": "This API is used to terminate an isolated instance by specifying the `DBInstanceId` parameter. The data of an terminated instance will be deleted and cannot be recovered.",
       "input": "DestroyDBInstanceRequest",
-      "name": "Eliminates an instance",
+      "name": "Terminates an instance",
       "output": "DestroyDBInstanceResponse"
     },
     "DisIsolateDBInstances": {
@@ -253,7 +253,7 @@
       "output": "InquiryPriceRenewDBInstanceResponse"
     },
     "InquiryPriceUpgradeDBInstance": {
-      "document": "This API is used to query the upgrade price of an instance.",
+      "document": "This API is used to query the fees of upgrading a specified database instance. Only pay-as-you-go instance is supported.",
       "input": "InquiryPriceUpgradeDBInstanceRequest",
       "name": "Queries the upgrade price of instance",
       "output": "InquiryPriceUpgradeDBInstanceResponse"
@@ -857,6 +857,15 @@
           "example": "无",
           "member": "string",
           "name": "BillId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "ID of the cloned instance, which will be returned only when the instance is pay-as-you-go.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DBInstanceId",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -1481,6 +1490,24 @@
           "name": "KMSRegion",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database engine. Valid values:\n1. `postgresql` (TencentDB for PostgreSQL)\n2. `mssql_compatible`（MSSQL compatible-TencentDB for PostgreSQL)\nDefault value: `postgresql`",
+          "example": "postgresql",
+          "member": "string",
+          "name": "DBEngine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Configuration information of database engine in the following format:\n{\"$key1\":\"$value1\", \"$key2\":\"$value2\"}\n\nValid values:\n1. mssql_compatible engine：\n`migrationMode`: Database mode. Valid values: `single-db` (single-database mode), `multi-db` (multi-database mode). Default value: `single-db`.\n`defaultLocale`: Default locale, which can’t be modified after the initialization. Default value: `en_US`. Valid values:\n\"af_ZA\", \"sq_AL\", \"ar_DZ\", \"ar_BH\", \"ar_EG\", \"ar_IQ\", \"ar_JO\", \"ar_KW\", \"ar_LB\", \"ar_LY\", \"ar_MA\", \"ar_OM\", \"ar_QA\", \"ar_SA\", \"ar_SY\", \"ar_TN\", \"ar_AE\", \"ar_YE\", \"hy_AM\", \"az_Cyrl_AZ\", \"az_Latn_AZ\", \"eu_ES\", \"be_BY\", \"bg_BG\", \"ca_ES\", \"zh_HK\", \"zh_MO\", \"zh_CN\", \"zh_SG\", \"zh_TW\", \"hr_HR\", \"cs_CZ\", \"da_DK\", \"nl_BE\", \"nl_NL\", \"en_AU\", \"en_BZ\", \"en_CA\", \"en_IE\", \"en_JM\", \"en_NZ\", \"en_PH\", \"en_ZA\", \"en_TT\", \"en_GB\", \"en_US\", \"en_ZW\", \"et_EE\", \"fo_FO\", \"fa_IR\", \"fi_FI\", \"fr_BE\", \"fr_CA\", \"fr_FR\", \"fr_LU\", \"fr_MC\", \"fr_CH\", \"mk_MK\", \"ka_GE\", \"de_AT\", \"de_DE\", \"de_LI\", \"de_LU\", \"de_CH\", \"el_GR\", \"gu_IN\", \"he_IL\", \"hi_IN\", \"hu_HU\", \"is_IS\", \"id_ID\", \"it_IT\", \"it_CH\", \"ja_JP\", \"kn_IN\", \"kok_IN\", \"ko_KR\", \"ky_KG\", \"lv_LV\", \"lt_LT\", \"ms_BN\", \"ms_MY\", \"mr_IN\", \"mn_MN\", \"nb_NO\", \"nn_NO\", \"pl_PL\", \"pt_BR\", \"pt_PT\", \"pa_IN\", \"ro_RO\", \"ru_RU\", \"sa_IN\", \"sr_Cyrl_RS\", \"sr_Latn_RS\", \"sk_SK\", \"sl_SI\", \"es_AR\", \"es_BO\", \"es_CL\", \"es_CO\", \"es_CR\", \"es_DO\", \"es_EC\", \"es_SV\", \"es_GT\", \"es_HN\", \"es_MX\", \"es_NI\", \"es_PA\", \"es_PY\",\"es_PE\", \"es_PR\", \"es_ES\", \"es_TRADITIONAL\", \"es_UY\", \"es_VE\", \"sw_KE\", \"sv_FI\", \"sv_SE\", \"tt_RU\", \"te_IN\", \"th_TH\", \"tr_TR\", \"uk_UA\", \"ur_IN\", \"ur_PK\", \"uz_Cyrl_UZ\", \"uz_Latn_UZ\", \"vi_VN\".\n`serverCollationName`: Name of collation rule, which can’t be modified after the initialization. Default value: `sql_latin1_general_cp1_ci_as`. Valid values:\n\"bbf_unicode_general_ci_as\", \"bbf_unicode_cp1_ci_as\", \"bbf_unicode_CP1250_ci_as\", \"bbf_unicode_CP1251_ci_as\", \"bbf_unicode_cp1253_ci_as\", \"bbf_unicode_cp1254_ci_as\", \"bbf_unicode_cp1255_ci_as\", \"bbf_unicode_cp1256_ci_as\", \"bbf_unicode_cp1257_ci_as\", \"bbf_unicode_cp1258_ci_as\", \"bbf_unicode_cp874_ci_as\", \"sql_latin1_general_cp1250_ci_as\", \"sql_latin1_general_cp1251_ci_as\", \"sql_latin1_general_cp1_ci_as\", \"sql_latin1_general_cp1253_ci_as\", \"sql_latin1_general_cp1254_ci_as\", \"sql_latin1_general_cp1255_ci_as\",\"sql_latin1_general_cp1256_ci_as\", \"sql_latin1_general_cp1257_ci_as\", \"sql_latin1_general_cp1258_ci_as\", \"chinese_prc_ci_as\", \"cyrillic_general_ci_as\", \"finnish_swedish_ci_as\", \"french_ci_as\", \"japanese_ci_as\", \"korean_wansung_ci_as\", \"latin1_general_ci_as\", \"modern_spanish_ci_as\", \"polish_ci_as\", \"thai_ci_as\", \"traditional_spanish_ci_as\", \"turkish_ci_as\", \"ukrainian_ci_as\", \"vietnamese_ci_as\".",
+          "example": "无",
+          "member": "string",
+          "name": "DBEngineConfig",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1533,15 +1560,6 @@
           "example": "SpecCode",
           "member": "string",
           "name": "SpecCode",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "PostgreSQL kernel version, which must be the same as that of the primary instance",
-          "example": "DBVersion",
-          "member": "string",
-          "name": "DBVersion",
           "required": true,
           "type": "string"
         },
@@ -1601,7 +1619,16 @@
         },
         {
           "default": "",
-          "document": "Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).",
+          "document": "(Disused) You don’t need to specify a version, as the kernel version is as the same as that of the instance.",
+          "example": "DBVersion",
+          "member": "string",
+          "name": "DBVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance billing mode. Valid value: `POSTPAID_BY_HOUR` (pay-as-you-go). If the source instance is pay-as-you-go, so is the read-only instance.",
           "example": "InstanceChargeType",
           "member": "string",
           "name": "InstanceChargeType",
@@ -2542,6 +2569,26 @@
           "name": "IsSupportTDE",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "postgresql",
+          "member": "string",
+          "name": "DBEngine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Configuration information of database engine\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DBEngineConfig",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -3726,8 +3773,18 @@
         {
           "default": "",
           "document": "AZ name",
+          "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database engines. Valid values:\n1. `postgresql` (TencentDB for PostgreSQL)\n2. `mssql_compatible` (MSSQL compatible-TencentDB for PostgreSQL)\nDefault value: `postgresql`",
+          "example": "postgresql",
+          "member": "string",
+          "name": "DBEngine",
           "required": false,
           "type": "string"
         }
@@ -4642,6 +4699,7 @@
         {
           "default": "",
           "document": "AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.",
+          "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -4650,6 +4708,7 @@
         {
           "default": "",
           "document": "Specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.",
+          "example": "cdb.pg.z1.2g",
           "member": "string",
           "name": "SpecCode",
           "required": true,
@@ -4658,6 +4717,7 @@
         {
           "default": "",
           "document": "Storage capacity size in GB.",
+          "example": "100",
           "member": "uint64",
           "name": "Storage",
           "required": true,
@@ -4666,6 +4726,7 @@
         {
           "default": "",
           "document": "Number of instances. Maximum value: 100. If you need to create more instances at a time, please contact customer service.",
+          "example": "1",
           "member": "uint64",
           "name": "InstanceCount",
           "required": true,
@@ -4674,6 +4735,7 @@
         {
           "default": "",
           "document": "Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.",
+          "example": "1",
           "member": "uint64",
           "name": "Period",
           "required": true,
@@ -4681,17 +4743,37 @@
         },
         {
           "default": "",
-          "document": "Billing ID, which can be obtained through the `Pid` field in the returned value of the `DescribeProductConfig` API.",
+          "document": "[Disused] Billing ID, which can be obtained through the `Pid` field in the returned value of the `DescribeProductConfig` API.",
+          "example": "11004",
           "member": "uint64",
           "name": "Pid",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
           "default": "",
           "document": "Instance billing type. Valid value: POSTPAID_BY_HOUR (pay-as-you-go)",
+          "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance type. Default value: `primary`. Valid values:\n`primary` (dual-server high-availability, one-primary-one-standby)\n`readonly` (read-only instance)",
+          "example": "primary",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "postgresql",
+          "member": "string",
+          "name": "DBEngine",
           "required": false,
           "type": "string"
         }
@@ -4702,7 +4784,7 @@
       "document": "InquiryPriceCreateDBInstances response structure.",
       "members": [
         {
-          "document": "Original price in 0.01 CNY.",
+          "document": "Published price in US Cent",
           "example": "27600",
           "member": "uint64",
           "name": "OriginalPrice",
@@ -4711,7 +4793,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Discounted price in 0.01 CNY.",
+          "document": "Discounted total amount in US Cent",
           "example": "27600",
           "member": "uint64",
           "name": "Price",
@@ -4720,7 +4802,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Currency, such as USD for US dollar.",
+          "document": "Currency, such as USD.",
           "example": "CNY",
           "member": "string",
           "name": "Currency",
@@ -4781,7 +4863,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Currency, such as USD for US dollar.",
+          "document": "Currency, such as USD.",
           "example": "CNY",
           "member": "string",
           "name": "Currency",
@@ -4849,7 +4931,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Actual amount payable",
+          "document": "Discounted total amount",
           "example": "1300",
           "member": "int64",
           "name": "Price",
@@ -4858,7 +4940,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Currency, such as USD for US dollar.",
+          "document": "Currency, such as USD.",
           "example": "CNY",
           "member": "string",
           "name": "Currency",
@@ -7023,7 +7105,7 @@
         },
         {
           "default": "",
-          "document": "Billing ID for this specification",
+          "document": "(Disused)",
           "example": "1",
           "member": "uint64",
           "name": "Pid",
