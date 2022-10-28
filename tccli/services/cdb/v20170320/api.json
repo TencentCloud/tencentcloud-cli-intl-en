@@ -1492,6 +1492,46 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The region where local backup resides",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Detailed information of remote backups",
+          "example": "无",
+          "member": "RemoteBackupInfo",
+          "name": "RemoteInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage method. Valid values: `0` (regular storage), `1`(archive storage). Default value: `0`.",
+          "example": "无",
+          "member": "int64",
+          "name": "CosStorageType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1833,6 +1873,56 @@
           "example": "2016-03-17 02:10:37",
           "member": "string",
           "name": "BinlogFinishTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The region where the binlog file resides",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup task status. Valid values: `SUCCESS` (backup succeeded), `FAILED` (backup failed), `RUNNING` (backup is in progress).",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The detailed information of remote binlog backups",
+          "example": "无",
+          "member": "RemoteBackupInfo",
+          "name": "RemoteInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage method. Valid values: `0` (regular storage), `1`(archive storage). Default value: `0`.",
+          "example": "无",
+          "member": "int64",
+          "name": "CosStorageType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -4346,6 +4436,42 @@
           "value_allowed_null": false
         },
         {
+          "document": "Whether to enable the archive backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.",
+          "example": "off",
+          "member": "string",
+          "name": "EnableBackupArchive",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The period (in days) of how long a data backup is retained before being archived, which falls between 180 days and the number of days from the time it is created until it expires.",
+          "example": "180",
+          "member": "int64",
+          "name": "BackupArchiveDays",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to enable the archive backup of logs. Valid values: `off` (disable), `on` (enable). Default value: `off`.",
+          "example": "off",
+          "member": "string",
+          "name": "EnableBinlogArchive",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The period (in days) of how long a log backup is retained before being archived, which falls between 180 days and the number of days from the time it is created until it expires.",
+          "example": "180",
+          "member": "int64",
+          "name": "BinlogArchiveDays",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -4435,31 +4561,57 @@
       "members": [
         {
           "document": "Total number of backups of a user in the current region (including data backups and log backups).",
+          "example": "15",
           "member": "int64",
           "name": "BackupCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Total capacity of backups of a user in the current region.",
+          "example": "90000",
           "member": "int64",
           "name": "BackupVolume",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Paid capacity of backups of a user in the current region, i.e., capacity that exceeds the free tier.",
+          "example": "20000",
           "member": "int64",
           "name": "BillingVolume",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Backup capacity in the free tier of a user in the current region.",
+          "example": "70000",
           "member": "int64",
           "name": "FreeVolume",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "Total capacity of backups of a user in the current region\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "1000",
+          "member": "int64",
+          "name": "RemoteBackupVolume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Archive backup capacity, which includes data backups and log backups.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "BackupArchiveVolume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4652,6 +4804,24 @@
           "example": "1",
           "member": "int64",
           "name": "RemoteBinlogCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Capacity of archive log backups in bytes",
+          "example": "1",
+          "member": "int64",
+          "name": "BinlogArchiveVolume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of archived log backups",
+          "example": "1",
+          "member": "int64",
+          "name": "BinlogArchiveCount",
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -5888,7 +6058,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Total capacity of remote backups in the current region",
+          "document": "Total capacity of remote backups",
           "example": "1000",
           "member": "int64",
           "name": "RemoteBackupVolume",
@@ -5897,10 +6067,28 @@
           "value_allowed_null": false
         },
         {
-          "document": "Total number of remote backups in the current region",
+          "document": "Total number of remote backups",
           "example": "2",
           "member": "int64",
           "name": "RemoteBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total capacity of archive backups in the current region",
+          "example": "1",
+          "member": "int64",
+          "name": "DataBackupArchiveVolume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of archive backups in the current region",
+          "example": "1",
+          "member": "int64",
+          "name": "DataBackupArchiveCount",
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -9172,6 +9360,42 @@
           "name": "StartBackupPeriodSaveDate",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the archive backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.",
+          "example": "off",
+          "member": "string",
+          "name": "EnableBackupArchive",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The period (in days) of how long a data backup is retained before being archived, which falls between 180 days and the number of days from the time it is created until it expires.",
+          "example": "30",
+          "member": "int64",
+          "name": "BackupArchiveDays",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The period (in days) of how long a log backup is retained before being archived, which falls between 180 days and the number of days from the time it is created until it expires.",
+          "example": "30",
+          "member": "int64",
+          "name": "BinlogArchiveDays",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the archive backup of the log. Valid values: `off` (disable), `on` (enable). Default value: `off`.",
+          "example": "off",
+          "member": "string",
+          "name": "EnableBinlogArchive",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -11159,6 +11383,72 @@
         }
       ],
       "type": "object"
+    },
+    "RemoteBackupInfo": {
+      "document": "Information of the remote backup",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the remote backup subtask",
+          "example": "123",
+          "member": "int64",
+          "name": "SubBackupId",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The region where the remote backup resides",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Backup task status. Valid values: `SUCCESS` (backup succeeded), `FAILED` (backup failed), `RUNNING` (backup is in progress).",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The start time of remote backup",
+          "example": "2016-03-17 02:00:37",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The end time of remote backup",
+          "example": "2016-03-17 02:00:37",
+          "member": "string",
+          "name": "FinishTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The download address",
+          "example": "https://XXX",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ResetRootAccountRequest": {
       "document": "ResetRootAccount request structure.",
