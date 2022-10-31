@@ -175,6 +175,8 @@ include tccli/services/trtc/v20190722/api.json
 include tccli/services/trtc/v20190722/examples.json
 include tccli/services/tts/v20190823/api.json
 include tccli/services/tts/v20190823/examples.json
+include tccli/services/vm/v20210922/api.json
+include tccli/services/vm/v20210922/examples.json
 include tccli/services/vm/v20201229/api.json
 include tccli/services/vm/v20201229/examples.json
 include tccli/services/vod/v20180717/api.json

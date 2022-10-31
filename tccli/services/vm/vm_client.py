@@ -11,6 +11,8 @@ from tccli.exceptions import ConfigurationError, ClientError, ParamError
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
+from tencentcloud.vm.v20210922 import vm_client as vm_client_v20210922
+from tencentcloud.vm.v20210922 import models as models_v20210922
 from tencentcloud.vm.v20201229 import vm_client as vm_client_v20201229
 from tencentcloud.vm.v20201229 import models as models_v20201229
 
@@ -218,11 +220,13 @@ def doCancelTask(args, parsed_globals):
 
 
 CLIENT_MAP = {
+    "v20210922": vm_client_v20210922,
     "v20201229": vm_client_v20201229,
 
 }
 
 MODELS_MAP = {
+    "v20210922": models_v20210922,
     "v20201229": models_v20201229,
 
 }
@@ -236,6 +240,7 @@ ACTION_MAP = {
 }
 
 AVAILABLE_VERSION_LIST = [
+    "v20210922",
     "v20201229",
 
 ]

@@ -233,7 +233,7 @@
     "CreateTranscodeTemplate": [
       {
         "document": "",
-        "input": "https://vod.tencentcloudapi.com/?Action=CreateTranscodeTemplate\n&Container=mp4\n&Name=Transcoding template 1\n&RemoveVideo=0\n&RemoveAudio=0\n&VideoTemplate.Codec=libx264\n&VideoTemplate.Fps=45\n&VideoTemplate.Bitrate=256\n&AudioTemplate.Codec=libfdk_aac\n&AudioTemplate.Bitrate=200\n&AudioTemplate.SampleRate=200\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTranscodeTemplate\n<Common request parameters>\n\n{\n    \"RemoveVideo\": \"0\",\n    \"Container\": \"mp4\",\n    \"Name\": \"Transcoding template 1\",\n    \"AudioTemplate\": {\n        \"SampleRate\": \"200\",\n        \"Codec\": \"libfdk_aac\",\n        \"Bitrate\": \"200\"\n    },\n    \"VideoTemplate\": {\n        \"Codec\": \"libx264\",\n        \"Bitrate\": \"256\",\n        \"Fps\": \"45\"\n    },\n    \"RemoveAudio\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"Definition\": 1008,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a transcoding template"
       }
@@ -861,7 +861,7 @@
     "ModifyAdaptiveDynamicStreamingTemplate": [
       {
         "document": "",
-        "input": "https://vod.tencentcloudapi.com/?Action=ModifyAdaptiveDynamicStreamingTemplate\n&Definition=10038\n&Name=Adaptive bitrate streaming template 2\n&Format=HLS\n&StreamInfos.0.Video.Codec=libx264\n&StreamInfos.0.Video.Bitrate=2000\n&StreamInfos.0.Video.Fps=25\n&StreamInfos.0.Audio.Codec=flac\n&StreamInfos.0.Audio.SampleRate=44100\n&StreamInfos.0.Audio.Bitrate=1000\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAdaptiveDynamicStreamingTemplate\n<Common request parameters>\n\n{\n    \"Definition\": \"10038\",\n    \"StreamInfos\": [\n        {\n            \"Audio\": {\n                \"SampleRate\": \"44100\",\n                \"Codec\": \"flac\",\n                \"Bitrate\": \"1000\"\n            },\n            \"Video\": {\n                \"Codec\": \"libx264\",\n                \"Bitrate\": \"2000\",\n                \"Fps\": \"25\"\n            }\n        }\n    ],\n    \"Name\": \"Adaptive bitrate streaming template 2\",\n    \"Format\": \"HLS\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying an adaptive bitrate streaming template"
       }
@@ -1027,7 +1027,7 @@
     "ModifyTranscodeTemplate": [
       {
         "document": "",
-        "input": "https://vod.tencentcloudapi.com/?Action=ModifyTranscodeTemplate\n&Definition=1008\n&Container=mp4\n&VideoTemplate.Codec=libx264\n&VideoTemplate.Fps=60\n&VideoTemplate.Bitrate=256\n&AudioTemplate.Codec=libfdk_aac\n&AudioTemplate.Bitrate=200\n&AudioTemplate.SampleRate=200\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyTranscodeTemplate\n<Common request parameters>\n\n{\n    \"Definition\": \"1008\",\n    \"Container\": \"mp4\",\n    \"VideoTemplate\": {\n        \"Codec\": \"libx264\",\n        \"Bitrate\": \"256\",\n        \"Fps\": \"60\"\n    },\n    \"AudioTemplate\": {\n        \"SampleRate\": \"200\",\n        \"Codec\": \"libfdk_aac\",\n        \"Bitrate\": \"200\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying a transcoding template"
       }

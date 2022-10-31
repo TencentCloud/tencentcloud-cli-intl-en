@@ -5759,6 +5759,7 @@
         {
           "default": "",
           "document": "Listener ID",
+          "example": "listener-015erzbt",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -5768,6 +5769,7 @@
         {
           "default": "",
           "document": "Listener name",
+          "example": "listener1",
           "member": "string",
           "name": "ListenerName",
           "required": true,
@@ -5777,6 +5779,7 @@
         {
           "default": "",
           "document": "Listener port",
+          "example": "80",
           "member": "uint64",
           "name": "Port",
           "required": true,
@@ -5786,6 +5789,7 @@
         {
           "default": "",
           "document": "Listener creation time; using UNIX timestamp.",
+          "example": "1658235563",
           "member": "uint64",
           "name": "CreateTime",
           "required": true,
@@ -5795,6 +5799,7 @@
         {
           "default": "",
           "document": "Listener protocol. Valid values: HTTP, HTTPS. The value `HTTP` is used for this structure",
+          "example": "HTTP",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -5804,11 +5809,32 @@
         {
           "default": "",
           "document": "Listener status:\n0: running;\n1: creating;\n2: terminating;\n3: adjusting origin server;\n4: modifying configuration.",
+          "example": "0",
           "member": "uint64",
           "name": "ListenerStatus",
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Connection ID of the listener. A null value is returned if the listener is associated with the connection group.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "link-bjkpdum1",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "lg-qz6ntod5",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -5954,6 +5980,26 @@
           "name": "Http3Supported",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Connection ID of the listener. A null value is returned if the listener is associated with the connection group.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "link-bjkpdum1",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "lg-qz6ntod5",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -9204,6 +9250,26 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Connection ID of the listener. A null value is returned if the listener is associated with the connection group.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "link-bjkpdum1",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "lg-qz6ntod5",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -9485,6 +9551,26 @@
           "example": "helloworld",
           "member": "string",
           "name": "RecvContext",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Connection ID of the listener. A null value is returned if the listener is associated with the connection group.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "link-bjkpdum1",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "lg-qz6ntod5",
+          "member": "string",
+          "name": "GroupId",
           "required": true,
           "type": "string",
           "value_allowed_null": true

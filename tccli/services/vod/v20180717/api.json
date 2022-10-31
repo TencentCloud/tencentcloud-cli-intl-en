@@ -109,7 +109,7 @@
       "output": "CreateSubAppIdResponse"
     },
     "CreateSuperPlayerConfig": {
-      "document": "This API is used to create a player configuration. Up to 100 configurations can be created.",
+      "document": "We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).\nThis API is used to create a player configuration. Up to 100 configurations can be created.",
       "input": "CreateSuperPlayerConfigRequest",
       "name": "Creates a player configuration",
       "output": "CreateSuperPlayerConfigResponse"
@@ -211,7 +211,7 @@
       "output": "DeleteSnapshotByTimeOffsetTemplateResponse"
     },
     "DeleteSuperPlayerConfig": {
-      "document": "This API is used to delete a player configuration.  \n*Note: Preset player configurations cannot be deleted.*",
+      "document": "We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).\nThis API is used to delete a player configuration.  \n*Note: Preset player configurations cannot be deleted.*",
       "input": "DeleteSuperPlayerConfigRequest",
       "name": "Deletes a player configuration",
       "output": "DeleteSuperPlayerConfigResponse"
@@ -403,7 +403,7 @@
       "output": "DescribeSubAppIdsResponse"
     },
     "DescribeSuperPlayerConfigs": {
-      "document": "This API is used to query player configurations. It supports pagination.",
+      "document": "We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).\nThis API is used to query player configurations. It supports pagination.",
       "input": "DescribeSuperPlayerConfigsRequest",
       "name": "Queries player configurations",
       "output": "DescribeSuperPlayerConfigsResponse"
@@ -565,7 +565,7 @@
       "output": "ModifySubAppIdStatusResponse"
     },
     "ModifySuperPlayerConfig": {
-      "document": "This API is used to modify a player configuration.",
+      "document": "We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).\nThis API is used to modify a player configuration.",
       "input": "ModifySuperPlayerConfigRequest",
       "name": "Modifies a player configuration",
       "output": "ModifySuperPlayerConfigResponse"
@@ -1192,6 +1192,16 @@
           "example": "无",
           "member": "string",
           "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The segment type. This parameter is valid only if `Format` is `HLS`.",
+          "example": "无",
+          "member": "string",
+          "name": "SegmentType",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7131,6 +7141,15 @@
           "name": "Comment",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The segment type. This parameter is valid only if `Format` is `HLS`. Valid values:\n<li>ts: TS segment</li>\n<li>fmp4: fMP4 segment</li>\nDefault: ts",
+          "example": "无",
+          "member": "string",
+          "name": "SegmentType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -8294,6 +8313,15 @@
           "name": "TEHDConfig",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The segment type. This parameter is valid only if `Container` is `hls`. Valid values:\n<li>ts: TS segment</li>\n<li>fmp4: fMP4 segment</li>\nDefault: ts",
+          "example": "无",
+          "member": "string",
+          "name": "SegmentType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -16769,6 +16797,15 @@
           "name": "Comment",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The segment type. This parameter is valid only if `Format` is `HLS`. Valid values:\n<li>ts: TS segment</li>\n<li>fmp4: fMP4 segment</li>",
+          "example": "无",
+          "member": "string",
+          "name": "SegmentType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -18061,6 +18098,15 @@
           "name": "TEHDConfig",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The segment type. This parameter is valid only if `Container` is `hls`. Valid values:\n<li>ts: TS segment</li>\n<li>fmp4: fMP4 segment</li>",
+          "example": "无",
+          "member": "string",
+          "name": "SegmentType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -22983,6 +23029,7 @@
         {
           "default": "",
           "document": "Start time of data time range in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). For example, if the time granularity is 1-day, `2018-12-01T00:00:00+08:00` represents the time range between December 1, 2018 (inclusive) and December 2, 2018 (not inclusive).\n<li>For data at hourly level, `2019-08-22T00:00:00+08:00` indicates the statistics between 00:00 and 01:00 AM on August 22, 2019.</li>\n<li>For data at daily level, `2019-08-22T00:00:00+08:00` indicates statistics on August 22, 2019.</li>",
+          "example": "无",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -22991,7 +23038,8 @@
         },
         {
           "default": "",
-          "document": "Data size.\n<li>Storage capacity in bytes.</li>\n<li>Transcoding duration in seconds.</li>\n<li>Traffic in bytes.</li>\n<li>Bandwidth in bps.</li>",
+          "document": "The data size.\n<li>Storage capacity in bytes.</li>\n<li>Transcoding duration in seconds.</li>\n<li>Traffic in bytes.</li>\n<li>Bandwidth in bps.</li>\n<li>Live stream clip duration in seconds.</li>",
+          "example": "60",
           "member": "int64",
           "name": "Value",
           "required": true,
@@ -24221,6 +24269,7 @@
         {
           "default": "",
           "document": "Unique ID of transcoding template.",
+          "example": "101",
           "member": "string",
           "name": "Definition",
           "required": true,
@@ -24230,6 +24279,7 @@
         {
           "default": "",
           "document": "Container. Valid values: mp4, flv, hls, mp3, flac, ogg.",
+          "example": "hls",
           "member": "string",
           "name": "Container",
           "required": true,
@@ -24239,6 +24289,7 @@
         {
           "default": "",
           "document": "Transcoding template name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -24248,6 +24299,7 @@
         {
           "default": "",
           "document": "Template description.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Comment",
           "required": true,
@@ -24257,6 +24309,7 @@
         {
           "default": "",
           "document": "Template type. Valid values:\n<li>Preset: preset template;</li>\n<li>Custom: custom template.</li>",
+          "example": "Preset",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -24266,6 +24319,7 @@
         {
           "default": "",
           "document": "Whether to remove video data. Valid values:\n<li>0: retain;</li>\n<li>1: remove.</li>",
+          "example": "0",
           "member": "int64",
           "name": "RemoveVideo",
           "required": true,
@@ -24275,6 +24329,7 @@
         {
           "default": "",
           "document": "Whether to remove audio data. Valid values:\n<li>0: retain;</li>\n<li>1: remove.</li>",
+          "example": "0",
           "member": "int64",
           "name": "RemoveAudio",
           "required": true,
@@ -24284,6 +24339,7 @@
         {
           "default": "",
           "document": "Video stream configuration parameter. This field is valid only when `RemoveVideo` is 0.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "VideoTemplateInfo",
           "name": "VideoTemplate",
           "required": true,
@@ -24293,6 +24349,7 @@
         {
           "default": "",
           "document": "Audio stream configuration parameter. This field is valid only when `RemoveAudio` is 0.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AudioTemplateInfo",
           "name": "AudioTemplate",
           "required": true,
@@ -24302,6 +24359,7 @@
         {
           "default": "",
           "document": "TESHD transcoding parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "TEHDConfig",
           "name": "TEHDConfig",
           "required": true,
@@ -24311,6 +24369,7 @@
         {
           "default": "",
           "document": "Container filter. Valid values:\n<li>Video: video container that can contain both video stream and audio stream;</li>\n<li>PureAudio: audio container that can contain only audio stream.</li>",
+          "example": "Video",
           "member": "string",
           "name": "ContainerType",
           "required": true,
@@ -24320,6 +24379,7 @@
         {
           "default": "",
           "document": "Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -24329,8 +24389,19 @@
         {
           "default": "",
           "document": "Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
           "member": "string",
           "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The segment type. This parameter is valid only if `Container` is `hls`",
+          "example": "ts",
+          "member": "string",
+          "name": "SegmentType",
           "required": true,
           "type": "string",
           "value_allowed_null": false
