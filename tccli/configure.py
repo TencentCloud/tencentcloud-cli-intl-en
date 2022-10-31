@@ -94,7 +94,7 @@ class BasicConfigure(BasicCommand):
 
 class ConfigureListCommand(BasicConfigure):
     NAME = 'list'
-    DESCRIPTION = 'list your profile(eg:secretId, secretKey, region, output).'
+    DESCRIPTION = 'list your profile(eg:secretId, secretKey, region, output, language).'
     USEAGE = 'tccli configure list [--profile profile-name]'
     EXAMPLES = "$ tccli configure list\n" \
                "credential:\n" \
@@ -310,7 +310,7 @@ class ConfigureRemoveCommand(BasicConfigure):
 
 class ConfigureCommand(BasicConfigure):
     NAME = "configure"
-    DESCRIPTION = "configure your profile(eg:secretId, secretKey, region, output)."
+    DESCRIPTION = "configure your profile(eg:secretId, secretKey, region, output, language)."
     USEAGE = "tccli configure [--profile profile-name]"
     AVAILABLESUBCOMMAND = ["set", 'get', 'list', 'remove']
     EXAMPLES = "To create a new configuration::\n" \
