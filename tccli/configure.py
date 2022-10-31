@@ -204,7 +204,7 @@ class ConfigureSetCommand(BasicConfigure):
                     config[varname] = 'json'
                 elif varname == OptionsDefine.Language and value not in ['zh-CN', 'en-US']:
                     print('Language must be zh-CN or en-US. Set as default: en-US')
-                    config[varname] = 'json'
+                    config[varname] = 'en-US'
                 else:
                     config[varname] = value
             else:
