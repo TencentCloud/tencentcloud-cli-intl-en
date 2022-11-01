@@ -9609,36 +9609,55 @@
       "members": [
         {
           "document": "Statistical period",
+          "example": "300",
           "member": "uint64",
           "name": "Period",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Metric name",
+          "example": "CPUUsage",
           "member": "string",
           "name": "MetricName",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Array of data points",
+          "example": "无",
           "member": "DataPoint",
           "name": "DataPoints",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "document": "Start time",
+          "example": "2019-03-24T10:50:00+08:00",
           "member": "datetime_iso",
           "name": "StartTime",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "End time",
+          "example": "2019-03-24T20:50:00+08:00",
           "member": "datetime_iso",
           "name": "EndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Returned message",
+          "example": "无",
+          "member": "string",
+          "name": "Msg",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12463,6 +12482,16 @@
           "example": "150",
           "member": "int64",
           "name": "RecordingRuleLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Migration status. 0: Not migrating; 1: Migrating from source instance; 2: Migrating to target instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "MigrationType",
           "required": true,
           "type": "int",
           "value_allowed_null": true
