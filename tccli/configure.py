@@ -319,15 +319,13 @@ class ConfigureCommand(BasicConfigure):
                "    TencentCloud API secretKey [None]: secretKey\n" \
                "    Default region name [ap-guangzhou]:\n" \
                "    Default output format [json]:\n" \
-               "    Default output language [en-US]:\n" \
                "\n\n" \
                "To update just the region name::\n" \
                "    $ tccli configure\n" \
                "    TencentCloud API secretId [****]:\n" \
                "    TencentCloud API secretKey [****]:\n" \
                "    Default region name [ap-guangzhou]: ap-beijing\n" \
-               "    Default output format [json]:\n" \
-               "    Default output language [en-US]:\n"
+               "    Default output format [json]:\n"
     SUBCOMMANDS = [
         {'name': 'list', 'command_class': ConfigureListCommand},
         {'name': 'get', 'command_class': ConfigureGetCommand},
@@ -340,7 +338,6 @@ class ConfigureCommand(BasicConfigure):
         ('secretKey', "TencentCloud API secretKey"),
         ('region', "Default region name"),
         ('output', "Default output format"),
-        ('language', "Default output language"),
     ]
 
     def __init__(self):
@@ -354,8 +351,7 @@ class ConfigureCommand(BasicConfigure):
 
         config = {
             OptionsDefine.Region: "ap-guangzhou",
-            OptionsDefine.Output: "json",
-            OptionsDefine.Language: "en-US"
+            OptionsDefine.Output: "json"
         }
 
         cred = {
@@ -388,12 +384,6 @@ class ConfigureCommand(BasicConfigure):
                         conf_data[index] = 'json'
                     else:
                         conf_data[index] = config[index]
-                elif index == OptionsDefine.Language and response not in ['zh-CN', 'en-US']:
-                    if config[index] not in ['zh-CN', 'en-US']:
-                        print('Language must be zh-CN or en-US. Set as default: en-US')
-                        conf_data[index] = 'en-US'
-                    else:
-                        conf_data[index] = config[index]
                 elif index == OptionsDefine.Region and not response:
                     if not config[index]:
                         print('Set region as default: %s' % config[index])
@@ -414,7 +404,6 @@ class ConfigureCommand(BasicConfigure):
             config = {
                 "region": "ap-guangzhou",
                 "output": "json",
-                "language": "en-US",
                 "array_count": 10,
                 "warning": "off"
             }
