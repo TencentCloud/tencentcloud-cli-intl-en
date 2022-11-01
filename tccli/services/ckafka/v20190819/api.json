@@ -249,7 +249,7 @@
   },
   "metadata": {
     "apiVersion": "2019-08-19",
-    "serviceNameCN": "消息队列 Ckafka",
+    "serviceNameCN": "消息队列 CKafka",
     "serviceShortName": "ckafka"
   },
   "objects": {
@@ -3051,7 +3051,7 @@
         },
         {
           "default": "",
-          "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20",
+          "document": "The number of results to be returned, which defaults to 20 if left empty. The maximum value is 50.",
           "example": "50",
           "member": "int64",
           "name": "Limit",

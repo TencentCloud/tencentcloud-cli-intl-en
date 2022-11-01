@@ -48,6 +48,12 @@
       "name": "Clears Redis instance",
       "output": "ClearInstanceResponse"
     },
+    "CloseSSL": {
+      "document": "This API is used to disable SSL.",
+      "input": "CloseSSLRequest",
+      "name": "Disables SSL",
+      "output": "CloseSSLResponse"
+    },
     "CreateInstanceAccount": {
       "document": "This API is used to create an instance sub-account.",
       "input": "CreateInstanceAccountRequest",
@@ -402,6 +408,12 @@
       "name": "Modifies parameter template",
       "output": "ModifyParamTemplateResponse"
     },
+    "OpenSSL": {
+      "document": "This API is used to enable SSL.",
+      "input": "OpenSSLRequest",
+      "name": "Enables SSL",
+      "output": "OpenSSLResponse"
+    },
     "ReleaseWanAddress": {
       "document": "This API is used to disable public network access.",
       "input": "ReleaseWanAddressRequest",
@@ -477,7 +489,7 @@
   },
   "metadata": {
     "apiVersion": "2018-04-12",
-    "serviceNameCN": "云数据库 Redis",
+    "serviceNameCN": "云数据库Redis",
     "serviceShortName": "redis"
   },
   "objects": {
@@ -636,7 +648,7 @@
       "members": [
         {
           "default": "",
-          "document": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.",
+          "document": "Database engine name, which is `redis` for this API.",
           "example": "redis",
           "member": "string",
           "name": "Product",
@@ -1025,6 +1037,42 @@
         {
           "document": "Task ID",
           "example": "16658",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloseSSLRequest": {
+      "document": "CloseSSL request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "crs-deindi7de",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloseSSLResponse": {
+      "document": "CloseSSL response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "example": "486489",
           "member": "int64",
           "name": "TaskId",
           "required": true,
@@ -3014,7 +3062,7 @@
       "members": [
         {
           "default": "",
-          "document": "Number of returned results. Default value: 20. Maximum value: 1000.",
+          "document": "Number of instances. Default value: 20. Maximum value: 1000.",
           "example": "1",
           "member": "uint64",
           "name": "Limit",
@@ -3032,7 +3080,7 @@
         },
         {
           "default": "",
-          "document": "Instance ID, such as crs-6ubhgouj",
+          "document": "Instance ID, such as crs-6ubhgouj.",
           "example": "无",
           "member": "string",
           "name": "InstanceId",
@@ -3041,7 +3089,7 @@
         },
         {
           "default": "",
-          "document": "Enumerated values: projectId, createtime, instancename, type, curDeadline",
+          "document": "Instance sorting criteria. The enumerated values are as listed below: <ul><li>projectId: Project ID. </li><li>createtime: Instance creation time. </li><li>instancename: Instance name. </li><li>type: Instance type. </li><li>curDeadline: Instance expiration time. </li></ul>",
           "example": "无",
           "member": "string",
           "name": "OrderBy",
@@ -3050,7 +3098,7 @@
         },
         {
           "default": "",
-          "document": "1: reverse; 0: sequential; reverse by default",
+          "document": "Instance sorting order. <ul><li>`1`: Descending. </li><li>`0`: Ascending. Default value: `1`.</li></ul>",
           "example": "无",
           "member": "int64",
           "name": "OrderType",
@@ -3059,7 +3107,7 @@
         },
         {
           "default": "",
-          "document": "Array of VPC IDs such as 47525. The array subscript starts from 0. If this parameter is not passed in, the classic network will be selected by default",
+          "document": "Array of VPC IDs such as 47525. If this parameter is not passed in or the array is empty, the classic network will be selected by default. This parameter is retained and can be ignored. It is set based on `UniqVpcIds` parameter format.",
           "example": "无",
           "member": "string",
           "name": "VpcIds",
@@ -3068,7 +3116,7 @@
         },
         {
           "default": "",
-          "document": "Array of subnet IDs such as 56854. The array subscript starts from 0.",
+          "document": "Array of VPC subnet IDs such as 56854. This parameter is retained and can be ignored. It is set based on `UniqSubnetIds` parameter format.",
           "example": "无",
           "member": "string",
           "name": "SubnetIds",
@@ -3077,21 +3125,21 @@
         },
         {
           "default": "",
-          "document": "Array of project IDs. The array subscript starts from 0.",
-          "example": "无",
-          "member": "int64",
-          "name": "ProjectIds",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "ID of the instance to be searched for.",
+          "document": "Keywords for fuzzy query. which can be used to fuzzy query an instance by its ID or name.",
           "example": "无",
           "member": "string",
           "name": "SearchKey",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Array of project IDs",
+          "example": "无",
+          "member": "int64",
+          "name": "ProjectIds",
+          "required": false,
+          "type": "list"
         },
         {
           "default": "",
@@ -3104,7 +3152,7 @@
         },
         {
           "default": "",
-          "document": "Array of VPC IDs such as vpc-sad23jfdfk. The array subscript starts from 0. If this parameter is not passed in, the classic network will be selected by default",
+          "document": "Array of VPC IDs such as vpc-sad23jfdfk. If this parameter is not passed in or or the array is empty, the classic network will be selected by default.",
           "example": "无",
           "member": "string",
           "name": "UniqVpcIds",
@@ -3113,7 +3161,7 @@
         },
         {
           "default": "",
-          "document": "Array of subnet IDs such as subnet-fdj24n34j2. The array subscript starts from 0.",
+          "document": "Array of VPC subnet IDs such as subnet-fdj24n34j2",
           "example": "无",
           "member": "string",
           "name": "UniqSubnetIds",
@@ -3122,7 +3170,7 @@
         },
         {
           "default": "",
-          "document": "Region ID, which has already been disused. The corresponding region can be queried through the common parameter `Region`.",
+          "document": "Array of region IDs (disused). The corresponding region can be queried through the common parameter `Region`.",
           "example": "无",
           "member": "int64",
           "name": "RegionIds",
@@ -3131,7 +3179,7 @@
         },
         {
           "default": "",
-          "document": "Instance status. 0: to be initialized; 1: in process; 2: running; -2: isolated; -3: to be deleted",
+          "document": "Instance status. <ul><li>`0`: Uninitialized. </li><li>`1`: In the process. </li><li>`2`: Running. </li><li>`-2`: Isolated. </li><li>`-3`: To be deleted. </li></ul>",
           "example": "无",
           "member": "int64",
           "name": "Status",
@@ -3140,7 +3188,7 @@
         },
         {
           "default": "",
-          "document": "Type edition. 1: Standalone Edition; 2: Master-Replica Edition; 3: Cluster Edition",
+          "document": "Instance architecture. <ul><li>`1`: Standalone edition. </li><li>`2`: Master-replica edition. </li><li>`3`: Cluster edition. </li></ul>",
           "example": "无",
           "member": "int64",
           "name": "TypeVersion",
@@ -3149,7 +3197,7 @@
         },
         {
           "default": "",
-          "document": "Engine information: Redis-2.8, Redis-4.0, CKV",
+          "document": "Storage engine information. Valid values: `Redis-2.8`, `Redis-4.0`, `Redis-5.0`, `Redis-6.0` or `CKV`.",
           "example": "无",
           "member": "string",
           "name": "EngineName",
@@ -3158,7 +3206,7 @@
         },
         {
           "default": "",
-          "document": "Renewal mode. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled",
+          "document": "Renewal mode. <ul><li>`0`: Manual renewal (default). </li><li>`1`: Auto-renewal. </li><li>`2`: No auto-renewal (set by user)</ul>",
           "example": "无",
           "member": "int64",
           "name": "AutoRenew",
@@ -3167,7 +3215,7 @@
         },
         {
           "default": "",
-          "document": "Billing mode. postpaid: pay-as-you-go; prepaid: monthly subscription",
+          "document": "Billing mode. Only pay-as-you-go billing is supported.",
           "example": "无",
           "member": "string",
           "name": "BillingMode",
@@ -3176,7 +3224,7 @@
         },
         {
           "default": "",
-          "document": "Instance type. 1: legacy Redis Cluster Edition, 2: Redis 2.8 Master-Replica Edition, 3: CKV Master-Replica Edition, 4: CKV Cluster Edition, 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Replica Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Replica Edition, 9: Redis 5.0 Cluster Edition",
+          "document": "Instance type. <ul><li>`1`: Legacy Redis cluster edition. </li><li>`2`: Redis 2.8 master-replica edition. </li><li>`3`: CKV master-replica edition. </li><li>`4`: CKV cluster edition. </li><li>`5`: Redis 2.8 standalone edition. </li><li>`6`: Redis 4.0 master-replica edition. </li><li>`7`: Redis 4.0 cluster edition. </li><li>8: Redis 5.0 master-replica edition. </li><li>`9`: Redis 5.0 cluster edition. </li></ul>",
           "example": "无",
           "member": "int64",
           "name": "Type",
@@ -3185,7 +3233,7 @@
         },
         {
           "default": "",
-          "document": "Search keywords, which can be instance ID, instance name, or complete IP.",
+          "document": "Array of the search keywords, which can query the instance by its ID, name, IP address.",
           "example": "无",
           "member": "string",
           "name": "SearchKeys",
@@ -3212,7 +3260,7 @@
         },
         {
           "default": "",
-          "document": "Filters resources by tag key and value. If this parameter is not specified or is an empty array, resources will not be filtered.",
+          "document": "Resources filter by tag key and value. If this parameter is not specified or is an empty array, resources will not be filtered.",
           "example": "无",
           "member": "InstanceTagInfo",
           "name": "InstanceTags",
@@ -3221,7 +3269,7 @@
         },
         {
           "default": "",
-          "document": "Filters resources by tag key. If this parameter is not specified or is an empty array, resources will not be filtered.",
+          "document": "Resources filter by tag key. If this parameter is not specified or is an empty array, resources will not be filtered.",
           "example": "无",
           "member": "string",
           "name": "TagKeys",
@@ -3230,7 +3278,7 @@
         },
         {
           "default": "",
-          "document": "Product editions to be filtered. Valid values: `local` (local disk edition), `cloud` (cloud disk edition), `cdc` (dedicated cluster edition). If this parameter is not passed in, the product will not be filtered by default.",
+          "document": "Instance product version. If this parameter is not passed in or the array is empty, the instances will not be filtered based this parameter by default. <ul><li>`local`: local disk edition. </li><li>`cloud`: Cloud disk edition. </li><li>`cdc`: Dedicated cluster edition. </li></ul>",
           "example": "[\"cdc\"]",
           "member": "string",
           "name": "ProductVersions",
@@ -3239,12 +3287,21 @@
         },
         {
           "default": "",
-          "document": "The specified instances for batch query",
+          "document": "Batch query of the specified instances ID. The number of results returned is based on `Limit`.",
           "example": "[\"crs-fljrtizn\",\"crs-0tbmwtop\",\"crs-i0n3dutj\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "AZ deployment mode. <ul><li>`singleaz`: Single-AZ. </li><li>`1`: Multi-AZ. </li></ul>",
+          "example": "multiaz",
+          "member": "string",
+          "name": "AzMode",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3253,7 +3310,7 @@
       "document": "DescribeInstances response structure.",
       "members": [
         {
-          "document": "Number of instances",
+          "document": "Total number of instances",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
@@ -3537,7 +3594,7 @@
       "members": [
         {
           "default": "",
-          "document": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb.",
+          "document": "Database engine name, which is `redis` for this API.",
           "example": "redis",
           "member": "string",
           "name": "Product",
@@ -3546,7 +3603,7 @@
         },
         {
           "default": "",
-          "document": "Project ID.",
+          "document": "Project ID",
           "example": "11954",
           "member": "uint64",
           "name": "ProjectId",
@@ -3555,7 +3612,7 @@
         },
         {
           "default": "",
-          "document": "Offset.",
+          "document": "Offset, which is an integral multiple of `Limit`.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -3564,7 +3621,7 @@
         },
         {
           "default": "",
-          "document": "Number of results to be pulled. Default value: 20",
+          "document": "The number of security groups to be pulled. Default value: `20`.",
           "example": "20",
           "member": "uint64",
           "name": "Limit",
@@ -4293,7 +4350,7 @@
       "members": [
         {
           "default": "",
-          "document": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.",
+          "document": "Database engine name, which is `redis` for this API.",
           "example": "redis",
           "member": "string",
           "name": "Product",
@@ -4302,7 +4359,7 @@
         },
         {
           "default": "",
-          "document": "Security group ID.",
+          "document": "Security group ID",
           "example": "sg-ajr1jzgj",
           "member": "string",
           "name": "SecurityGroupId",
@@ -5430,7 +5487,7 @@
         },
         {
           "default": "",
-          "document": "User `Appid`",
+          "document": "User's Appid",
           "example": "12345",
           "member": "int64",
           "name": "Appid",
@@ -5450,7 +5507,7 @@
         },
         {
           "default": "",
-          "document": "Region ID. 1: Guangzhou; 4: Shanghai; 5: Hong Kong (China); 6: Toronto; 7: Shanghai Finance; 8: Beijing; 9: Singapore; 11: Shenzhen Finance; 15: West US (Silicon Valley); 16: Chengdu; 17: Germany; 18: South Korea; 19: Chongqing; 21: India; 22: East US (Virginia); 23: Thailand; 24: Russia; 25: Japan",
+          "document": "Region ID. 1: Guangzhou; 4: Shanghai; 5: Hong Kong (China); 6: Toronto; 7: Shanghai Finance; 8: Beijing; 9: Singapore; 11: Shenzhen Finance; 15: West US (Silicon Valley); 16: Chengdu; 17: Germany; 18: South Korea; 19: Chongqing; 21: India; 22: East US (Virginia); 23: Thailand; 24: Russia; 25: Japan.",
           "example": "1",
           "member": "int64",
           "name": "RegionId",
@@ -5470,7 +5527,7 @@
         },
         {
           "default": "",
-          "document": "VPC ID, such as 75101",
+          "document": "VPC ID, such as 75101.",
           "example": "1",
           "member": "int64",
           "name": "VpcId",
@@ -5480,7 +5537,7 @@
         },
         {
           "default": "",
-          "document": "VPC subnet ID, such as 46315",
+          "document": "VPC subnet ID, such as 46315.",
           "example": "10",
           "member": "int64",
           "name": "SubnetId",
@@ -5490,7 +5547,7 @@
         },
         {
           "default": "",
-          "document": "Current instance status. 0: to be initialized; 1: instance in process; 2: instance running; -2: instance isolated; -3: instance to be deleted",
+          "document": "Current instance status. <ul><li>`0`: To be initialized. </li><li>`1`: In the process. </li><li>`2`: Running. </li><li>`-2`: Isolated. </li><li>`-3`: To be deleted. </li></ul>",
           "example": "2",
           "member": "int64",
           "name": "Status",
@@ -5510,7 +5567,7 @@
         },
         {
           "default": "",
-          "document": "Port number of the instance",
+          "document": "Port number of an instance",
           "example": "6379",
           "member": "int64",
           "name": "Port",
@@ -5550,7 +5607,7 @@
         },
         {
           "default": "",
-          "document": "Instance type. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture)",
+          "document": "Instance type. <ul><li>`1`: Redis 2.8 memory edition in cluster architecture. </li><li>`2`: Redis 2.8 memory edition in standard architecture. </li><li>`3`: CKV 3.2 memory edition in standard architecture. </li><li>`4`: CKV 3.2 memory edition in cluster architecture. </li><li>`5`: Redis 2.8 memory edition in standalone architecture. </li></li><li>`6`: Redis 4.0 memory edition in standard architecture. </li></li><li>`7`: Redis 4.0 memory edition in cluster architecture. </li></li><li>`8`: Redis 5.0 memory edition in standard architecture. </li></li><li>`9`: Redis 5.0 memory edition in cluster architecture. </li></ul>",
           "example": "7",
           "member": "int64",
           "name": "Type",
@@ -5560,7 +5617,7 @@
         },
         {
           "default": "",
-          "document": "Whether to set the auto-renewal flag for the instance. 1: yes; 0: no",
+          "document": "Whether to set the auto-renewal flag for an instance. <ul><li>`1`: Auto-renewal set. </li><li>`0`: Auto-renewal not set.</li></ul>",
           "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -5580,7 +5637,7 @@
         },
         {
           "default": "",
-          "document": "Engine: Redis Community Edition, Tencent Cloud CKV",
+          "document": "Engine: Redis community edition, Tencent Cloud CKV",
           "example": "社区版Redis",
           "member": "string",
           "name": "Engine",
@@ -5590,7 +5647,7 @@
         },
         {
           "default": "",
-          "document": "Instance type. Valid values: standalone (Standard Edition); cluster (Cluster Edition)",
+          "document": "Product type. <ul><li>`standalone`: Standard edition. </li><li>`cluster`: Cluster edition. </li></ul>",
           "example": "cluster",
           "member": "string",
           "name": "ProductType",
@@ -5600,7 +5657,7 @@
         },
         {
           "default": "",
-          "document": "VPC ID, such as vpc-fk33jsf43kgv",
+          "document": "VPC ID, such as vpc-fk33jsf43kgv.",
           "example": "vpc-fk33jsf43kgv",
           "member": "string",
           "name": "UniqVpcId",
@@ -5610,7 +5667,7 @@
         },
         {
           "default": "",
-          "document": "VPC subnet ID, such as subnet-fd3j6l35mm0",
+          "document": "VPC subnet ID, such as subnet-fd3j6l35mm0.",
           "example": "subnet-fd3j6l35mm0",
           "member": "string",
           "name": "UniqSubnetId",
@@ -5620,7 +5677,7 @@
         },
         {
           "default": "",
-          "document": "Billing mode. 0: pay-as-you-go; 1: monthly subscription",
+          "document": "Billing mode. Only pay-as-you-go billing is supported.",
           "example": "1",
           "member": "int64",
           "name": "BillingMode",
@@ -5630,7 +5687,7 @@
         },
         {
           "default": "",
-          "document": "Description of the instance status, such as \"instance running\"",
+          "document": "Description of an instance status, such as \"Running\".",
           "example": "实例运行中",
           "member": "string",
           "name": "InstanceTitle",
@@ -5640,7 +5697,7 @@
         },
         {
           "default": "",
-          "document": "Planned elimination time",
+          "document": "Scheduled deactivation time",
           "example": "2020-02-15 10:20:00",
           "member": "string",
           "name": "OfflineTime",
@@ -5650,7 +5707,7 @@
         },
         {
           "default": "",
-          "document": "Sub-status returned for the instance in process",
+          "document": "Sub-status returned for an instance in process",
           "example": "0",
           "member": "int64",
           "name": "SubStatus",
@@ -5730,7 +5787,7 @@
         },
         {
           "default": "",
-          "document": "Read weight of the replica node",
+          "document": "Read weight of a replica node",
           "example": "1",
           "member": "int64",
           "name": "SlaveReadWeight",
@@ -5740,7 +5797,7 @@
         },
         {
           "default": "",
-          "document": "Instance tag information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance tag information\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "InstanceTagInfo",
           "name": "InstanceTags",
@@ -5750,7 +5807,7 @@
         },
         {
           "default": "",
-          "document": "Project name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Project name\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "default",
           "member": "string",
           "name": "ProjectName",
@@ -5760,7 +5817,7 @@
         },
         {
           "default": "",
-          "document": "Whether the instance is password-free. true: yes; false: no.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether an instance is password-free. <ul><li>`true`: Yes. </li><li>`false`: No. </li></ul>\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "true",
           "member": "bool",
           "name": "NoAuth",
@@ -5770,7 +5827,7 @@
         },
         {
           "default": "",
-          "document": "Number of client connections\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Number of client connections\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "30000",
           "member": "int64",
           "name": "ClientLimit",
@@ -5780,7 +5837,7 @@
         },
         {
           "default": "",
-          "document": "DTS status (internal parameter, which can be ignored)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "DTS status (internal parameter, which can be ignored)\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "DtsStatus",
@@ -5790,7 +5847,7 @@
         },
         {
           "default": "",
-          "document": "Shard bandwidth cap in MB\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Upper shard bandwidth limit in MB\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "1800",
           "member": "int64",
           "name": "NetLimit",
@@ -5800,7 +5857,7 @@
         },
         {
           "default": "",
-          "document": "Password-free instance flag (internal parameter, which can be ignored)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Password-free instance flag (internal parameter, which can be ignored)\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "PasswordFree",
@@ -5810,17 +5867,7 @@
         },
         {
           "default": "",
-          "document": "Read-only instance flag (internal parameter, which can be ignored)\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "0",
-          "member": "int64",
-          "name": "ReadOnly",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "Internal parameter, which can be ignored.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Internal parameter, which can be ignored.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Vip6",
@@ -5830,7 +5877,17 @@
         },
         {
           "default": "",
-          "document": "Internal parameter, which can be ignored.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Read-only instance flag (internal parameter, which can be ignored)\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "ReadOnly",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Internal parameter, which can be ignored.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "string",
           "name": "RemainBandwidthDuration",
@@ -5840,7 +5897,7 @@
         },
         {
           "default": "",
-          "document": "Disk size of the Tendis instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "This parameter can be ignored for Redis instance.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "400",
           "member": "int64",
           "name": "DiskSize",
@@ -5850,7 +5907,7 @@
         },
         {
           "default": "",
-          "document": "Monitoring version. Valid values: 1m (monitoring at 1-minute granularity); 5s (monitoring at 5-second granularity)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Monitoring granularity type. <ul><li>`1m`: Monitoring at 1-minute granularity). </li><li>`5s`: Monitoring at 5-second granularity. </li></ul>\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "5s",
           "member": "string",
           "name": "MonitorVersion",
@@ -5860,7 +5917,7 @@
         },
         {
           "default": "",
-          "document": "Minimum value for the range of maximum connections to the client\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The minimum number of max client connections\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "1000",
           "member": "int64",
           "name": "ClientLimitMin",
@@ -5870,7 +5927,7 @@
         },
         {
           "default": "",
-          "document": "Maximum value for the range of maximum connections to the client\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The maximum number of max client connections\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "10000",
           "member": "int64",
           "name": "ClientLimitMax",
@@ -5880,7 +5937,7 @@
         },
         {
           "default": "",
-          "document": "Instance node details\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance node details\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "RedisNodeInfo",
           "name": "NodeSet",
@@ -5890,10 +5947,70 @@
         },
         {
           "default": "",
-          "document": "Instance region, such as ap-guangzhou\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Information of the region where the instance is deployed, such as `ap-guangzhou`.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public IP\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "gz-crs-xxx.sql.tencentcdb.com",
+          "member": "string",
+          "name": "WanAddress",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Polaris service address\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "txcloud-paas-crs-xxx",
+          "member": "string",
+          "name": "PolarisServer",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The current proxy version of an instance\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "5.5.0",
+          "member": "string",
+          "name": "CurrentProxyVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The current cache minor version of an instance\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "4.3.0",
+          "member": "string",
+          "name": "CurrentRedisVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Proxy version, which can be upgraded for the instance\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "5.6.0",
+          "member": "string",
+          "name": "UpgradeProxyVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cache minor version, which can be upgraded for the instance\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "6.0.0",
+          "member": "string",
+          "name": "UpgradeRedisVersion",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -6521,7 +6638,7 @@
       "members": [
         {
           "default": "",
-          "document": "Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.",
+          "document": "Database engine name, which is `redis` for this API.",
           "example": "redis",
           "member": "string",
           "name": "Product",
@@ -6530,7 +6647,7 @@
         },
         {
           "default": "",
-          "document": "ID list of the security groups to be modified, which is an array of one or more security group IDs.",
+          "document": "List of IDs of security groups to be modified, which is an array of one or more security group IDs.",
           "example": "[\"sg-ajr1jzgj\\n\"]",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -7047,6 +7164,42 @@
     "ModifyParamTemplateResponse": {
       "document": "ModifyParamTemplate response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenSSLRequest": {
+      "document": "OpenSSL request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "crs-deindi7de",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenSSLResponse": {
+      "document": "OpenSSL response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "example": "486489",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -9051,7 +9204,7 @@
         },
         {
           "default": "",
-          "document": "Whether to upgrade the proxy and Redis kernel. After the upgrade, the \"Read Local Nodes Only\" feature can be supported.",
+          "document": "Whether to support “Reading Local Nodes Only” feature after upgrading to multi-AZ deployment.\nul><li>`true`: The “Read Local Nodes Only” feature is supported. During the upgrade, you need to upgrade the proxy version and Redis kernel minor version simultaneously, which will involve data migration and may take hours to complete. </li><li>`false`: The “Read Local Nodes Only” feature is not supported. Upgrading to multi-AZ deployment will involve metadata migration only without affecting the service, which generally take less than three minutes to complete.</li></ul>",
           "example": "true",
           "member": "bool",
           "name": "UpgradeProxyAndRedisServer",

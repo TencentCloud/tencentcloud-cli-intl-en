@@ -170,6 +170,12 @@
         "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataFetchUrl\n<Common request parameters>\n\n{\n    \"EndTime\": \"1625454840\",\n    \"Type\": \"condition\",\n    \"ID\": \"1\",\n    \"StartTime\": \"1625444040\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d8b037d7-08ae-401d-84cf-071e7a133c00\",\n        \"Result\": \"{\\\"request_id\\\":\\\"d8b037d7-08ae-401d-84cf-071e7a133c00\\\",\\\"results\\\":[{\\\"statement_id\\\":0,\\\"total\\\":0},{\\\"statement_id\\\":1,\\\"total\\\":0}]}\"\n    }\n}",
         "title": "333"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataFetchUrl\n<Common request parameters>\n\n{\n    \"EndTime\": \"1658390700\",\n    \"Type\": \"allcount\",\n    \"ID\": \"1\",\n    \"StartTime\": \"1658304300\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d446c290-7034-47d3-8d72-46e7a692f5ac\",\n        \"Result\": \"{\\\"request_id\\\":\\\"d446c290-7034-47d3-8d72-46e7a692f5ac\\\",\\\"results\\\":[{\\\"statement_id\\\":0,\\\"total\\\":0},{\\\"statement_id\\\":1,\\\"total\\\":0}]}\"\n    }\n}",
+        "title": "1"
       }
     ],
     "DescribeDataFetchUrlInfo": [
@@ -199,17 +205,23 @@
     "DescribeDataPerformancePage": [
       {
         "document": "",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeDataPerformancePage\n&ID=1\n&StartTime=1625444040\n&EndTime=1625454840\n&Type=pagepv\n&Level=1\n&Isp=China Mobile\n&Area=China\n&NetType=2\n&Platform=2\n&Device=Samsung\n&VersionNum=Version\n&ExtFirst=Custom 1\n&ExtSecond=Custom 2\n&ExtThird=Custom 3\n&IsAbroad=1\n&Browser=ie\n&Os=apple\n&Engine=ie2\n&Brand=apple\n&From=index.html\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataPerformancePage\n<Common request parameters>\n\n{\n    \"ExtSecond\": \"Custom 2\",\n    \"Engine\": \"ie2\",\n    \"IsAbroad\": \"1\",\n    \"Area\": \"China\",\n    \"NetType\": \"2\",\n    \"Level\": \"1\",\n    \"Os\": \"apple\",\n    \"Brand\": \"apple\",\n    \"Isp\": \"China Mobile\",\n    \"VersionNum\": \"Version\",\n    \"Platform\": \"2\",\n    \"ExtThird\": \"Custom 3\",\n    \"ExtFirst\": \"Custom 1\",\n    \"StartTime\": \"1625444040\",\n    \"Device\": \"Samsung\",\n    \"From\": \"index.html\",\n    \"EndTime\": \"1625454840\",\n    \"Type\": \"pagepv\",\n    \"ID\": \"1\",\n    \"Browser\": \"ie\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting PerformancePage information"
+        "title": "Getting `PerformancePage` information"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataPerformancePage\n<Common request parameters>\n\n{\n    \"EndTime\": \"1658390700\",\n    \"Type\": \"allcount\",\n    \"ID\": \"1\",\n    \"StartTime\": \"1658304300\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ddec0dc8-3268-4571-9ac0-566ae7537495\",\n        \"Result\": \"{\\\"request_id\\\":\\\"ddec0dc8-3268-4571-9ac0-566ae7537495\\\",\\\"results\\\":[{\\\"statement_id\\\":0,\\\"total\\\":0},{\\\"statement_id\\\":1,\\\"total\\\":0},{\\\"statement_id\\\":2,\\\"total\\\":0},{\\\"statement_id\\\":3,\\\"total\\\":0}]}\"\n    }\n}",
+        "title": "22"
       }
     ],
     "DescribeDataPerformanceProject": [
       {
         "document": "",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeDataPerformanceProject\n&ID=1\n&StartTime=1625444040\n&EndTime=1625454840\n&Type=pagepv\n&Level=1\n&Isp=China Mobile\n&Area=China\n&NetType=2\n&Platform=2\n&Device=Samsung\n&VersionNum=Version\n&ExtFirst=Custom 1\n&ExtSecond=Custom 2\n&ExtThird=Custom 3\n&IsAbroad=1\n&Browser=ie\n&Os=apple\n&Engine=ie2\n&Brand=apple\n&From=index.html\n&CostType=avg\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataPerformanceProject\n<Common request parameters>\n\n{\n    \"ExtSecond\": \"Custom 2\",\n    \"Engine\": \"ie2\",\n    \"IsAbroad\": \"1\",\n    \"Area\": \"China\",\n    \"NetType\": \"2\",\n    \"CostType\": \"avg\",\n    \"Level\": \"1\",\n    \"Os\": \"apple\",\n    \"Brand\": \"apple\",\n    \"Isp\": \"China Mobile\",\n    \"VersionNum\": \"Version\",\n    \"Platform\": \"2\",\n    \"ExtThird\": \"Custom 3\",\n    \"ExtFirst\": \"Custom 1\",\n    \"StartTime\": \"1625444040\",\n    \"Device\": \"Samsung\",\n    \"From\": \"index.html\",\n    \"EndTime\": \"1625454840\",\n    \"Type\": \"pagepv\",\n    \"ID\": \"1\",\n    \"Browser\": \"ie\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting PerformanceProject information"
+        "title": "Getting `PerformanceProject` information"
       }
     ],
     "DescribeDataPvUrlInfo": [
@@ -301,9 +313,9 @@
     "DescribeLogList": [
       {
         "document": "",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeLogList\n&StartTime=\"1\"\n&EndTime=\"20\"\n&Query=\"xxx\"\n&Limit=10\n&Context=\"xxx\"\n&Sort=\"desc\"\n&ActionType=\"searchlog\"\n&ID=10\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogList\n<Common request parameters>\n\n{\n    \"Sort\": \"\\\"desc\\\"\",\n    \"StartTime\": \"\\\"1\\\"\",\n    \"ActionType\": \"\\\"searchlog\\\"\",\n    \"Limit\": \"10\",\n    \"Context\": \"\\\"xxx\\\"\",\n    \"Query\": \"\\\"xxx\\\"\",\n    \"EndTime\": \"\\\"20\\\"\",\n    \"ID\": \"10\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting log list"
+        "title": "Getting the log list"
       }
     ],
     "DescribeOfflineLogConfigs": [

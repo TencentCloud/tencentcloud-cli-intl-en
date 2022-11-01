@@ -109,9 +109,9 @@
       "output": "DescribeDataEventUrlResponse"
     },
     "DescribeDataFetchProject": {
-      "document": "This API is used to get the DescribeDataFetchProject information.",
+      "document": "This API is used to get the `DescribeDataFetchProject` information and has been deprecated. Use `DescribeDataFetchUrl` instead.",
       "input": "DescribeDataFetchProjectRequest",
-      "name": "Gets DescribeDataFetchProject information",
+      "name": "Gets the `DescribeDataFetchProject` information. This API has been deprecated. Use `DescribeDataFetchUrl` instead.",
       "output": "DescribeDataFetchProjectResponse"
     },
     "DescribeDataFetchUrl": {
@@ -147,7 +147,7 @@
     "DescribeDataPerformanceProject": {
       "document": "This API is used to get the PerformanceProject information.",
       "input": "DescribeDataPerformanceProjectRequest",
-      "name": "Gets PerformanceProject information",
+      "name": "Gets the `PerformanceProject` information. This API has been deprecated. Use `DescribeDataPerformancePage` instead.",
       "output": "DescribeDataPerformanceProjectResponse"
     },
     "DescribeDataPvUrlInfo": {
@@ -2325,6 +2325,15 @@
           "name": "Ret",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network status",
+          "example": "1",
+          "member": "string",
+          "name": "NetStatus",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2818,6 +2827,15 @@
           "example": "prod",
           "member": "string",
           "name": "Env",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network status",
+          "example": "1",
+          "member": "string",
+          "name": "NetStatus",
           "required": false,
           "type": "string"
         }
@@ -4884,7 +4902,7 @@
       "members": [
         {
           "default": "",
-          "document": "Sorting order. Valid values: desc, asc",
+          "document": "Sorting order (required). Valid values: `desc`, `asc`.",
           "example": "asc",
           "member": "string",
           "name": "Sort",
@@ -4893,7 +4911,7 @@
         },
         {
           "default": "",
-          "document": "searchlog  histogram",
+          "document": "This parameter is required. Valid values: `searchlog`, `histogram`.",
           "example": "searchlog",
           "member": "string",
           "name": "ActionType",
@@ -4902,7 +4920,7 @@
         },
         {
           "default": "",
-          "document": "Project ID",
+          "document": "Project ID (required)",
           "example": "100",
           "member": "int64",
           "name": "ID",
@@ -4911,7 +4929,7 @@
         },
         {
           "default": "",
-          "document": "Start time",
+          "document": "Start time (required)",
           "example": "2021-09-26 21:01:46",
           "member": "string",
           "name": "StartTime",
@@ -4920,7 +4938,7 @@
         },
         {
           "default": "",
-          "document": "Number of raw logs returned in a single query. Maximum value: 100",
+          "document": "The number of raw logs returned for a single query. This parameter is required. Maximum value: 100.",
           "example": "无",
           "member": "int64",
           "name": "Limit",
@@ -4938,7 +4956,7 @@
         },
         {
           "default": "",
-          "document": "Query statement, which can contain up to 4,096 characters.",
+          "document": "Query statement, which is required and can contain up to 4,096 characters.",
           "example": "id:100",
           "member": "string",
           "name": "Query",
@@ -4947,7 +4965,7 @@
         },
         {
           "default": "",
-          "document": "End time",
+          "document": "End time (required)",
           "example": "2021-09-26 21:01:46",
           "member": "string",
           "name": "EndTime",
