@@ -310,7 +310,7 @@ class ConfigureRemoveCommand(BasicConfigure):
 
 class ConfigureCommand(BasicConfigure):
     NAME = "configure"
-    DESCRIPTION = "configure your profile(eg:secretId, secretKey, region, output, language)."
+    DESCRIPTION = "configure your profile(eg:secretId, secretKey, region, output)."
     USEAGE = "tccli configure [--profile profile-name]"
     AVAILABLESUBCOMMAND = ["set", 'get', 'list', 'remove']
     EXAMPLES = "To create a new configuration::\n" \
