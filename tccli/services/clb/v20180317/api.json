@@ -252,6 +252,12 @@
       "name": "Queries quotas",
       "output": "DescribeQuotaResponse"
     },
+    "DescribeResources": {
+      "document": "This API is used to query the list of AZs and resources supported for the user in the current region.",
+      "input": "DescribeResourcesRequest",
+      "name": "Queries the list of AZs and resources supported for the user in the current region",
+      "output": "DescribeResourcesResponse"
+    },
     "DescribeRewrite": {
       "document": "This API (DescribeRewrite) is used to query the redirection relationship between the forwarding rules of a CLB instance by instance ID. If no listener ID or forwarding rule ID is specified, all redirection relationships in the instance will be returned.",
       "input": "DescribeRewriteRequest",
@@ -407,6 +413,12 @@
       "input": "ReplaceCertForLoadBalancersRequest",
       "name": "Replaces a certificate associated with a CLB instance",
       "output": "ReplaceCertForLoadBalancersResponse"
+    },
+    "SetCustomizedConfigForLoadBalancer": {
+      "document": "This API is used to create or manage a user-defined CLB configuration template.",
+      "input": "SetCustomizedConfigForLoadBalancerRequest",
+      "name": "Creates or manages user-defined CLB configuration template",
+      "output": "SetCustomizedConfigForLoadBalancerResponse"
     },
     "SetLoadBalancerClsLog": {
       "document": "This API is used to add, delete, and update the CLS topic of a CLB instance.",
@@ -3906,7 +3918,7 @@
       "members": [
         {
           "default": "",
-          "document": "CLB instance ID",
+          "document": "CLB instance IDs. There can be up to 20 IDs.",
           "example": "无",
           "member": "string",
           "name": "LoadBalancerIds",
@@ -4117,6 +4129,69 @@
           "member": "Quota",
           "name": "QuotaSet",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourcesRequest": {
+      "document": "DescribeResources request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Number of returned AZ resources. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Starting offset of the returned AZ resource list. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter to query the list of AZ resources as detailed below:\n<li> `zone` - String - Optional - Filter by AZ, such as \"ap-guangzhou-1\".</li>\n<li> `isp` -- String - Optional - Filter by the ISP. Values: `BGP`, `CMCC`, `CUCC` and `CTCC`.</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeResourcesResponse": {
+      "document": "DescribeResources response structure.",
+      "members": [
+        {
+          "document": "List of resources supported by the AZ",
+          "example": "无",
+          "member": "ZoneResource",
+          "name": "ZoneResourceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of entries in the AZ resource list.",
+          "example": "3",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -7574,6 +7649,32 @@
       ],
       "type": "object"
     },
+    "Resource": {
+      "document": "Resource details",
+      "members": [
+        {
+          "default": "",
+          "document": "Specific ISP resource information, Vaules: `CMCC`, `CUCC`, `CTCC`, `BGP`, and `INTERNAL`.",
+          "example": "CMCC",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ISP information, such as `CMCC`, `CUCC`, `CTCC`, `BGP`, and `INTERNAL`.",
+          "example": "CMCC",
+          "member": "string",
+          "name": "Isp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "RewriteLocationMap": {
       "document": "Redirection relationship between forwarding rules",
       "members": [
@@ -8240,6 +8341,78 @@
       ],
       "usage": "out"
     },
+    "SetCustomizedConfigForLoadBalancerRequest": {
+      "document": "SetCustomizedConfigForLoadBalancer request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Operation type: `ADD`, `DELETE`, `UPDATE`, `BIND`, `UNBIND`",
+          "example": "ADD",
+          "member": "string",
+          "name": "OperationType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This field is required except for creating custom configurations, such as \"pz-1234abcd\".",
+          "example": "pz-n651fsue",
+          "member": "string",
+          "name": "UconfigId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This field is required when creating or modifying custom configurations.",
+          "example": "client_max_body_size 222M;",
+          "member": "string",
+          "name": "ConfigContent",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This field is required when creating or renaming custom configurations.",
+          "example": "config_test",
+          "member": "string",
+          "name": "ConfigName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This field is required when binding/unbinding resources.",
+          "example": "[lb-55rh44i6]",
+          "member": "string",
+          "name": "LoadBalancerIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "SetCustomizedConfigForLoadBalancerResponse": {
+      "document": "SetCustomizedConfigForLoadBalancer response structure.",
+      "members": [
+        {
+          "document": "Configuration ID, such as \"pz-1234abcd\"",
+          "example": "pz-1234abcd",
+          "member": "string",
+          "name": "ConfigId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "SetLoadBalancerClsLogRequest": {
       "document": "SetLoadBalancerClsLog request structure.",
       "members": [
@@ -8896,6 +9069,72 @@
           "required": true,
           "type": "bool",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ZoneResource": {
+      "document": "List of AZs",
+      "members": [
+        {
+          "default": "",
+          "document": "Primary AZ, such as \"ap-guangzhou-1\".",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "MasterZone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of resources\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Resource",
+          "name": "ResourceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Secondary AZ, such as \"ap-guangzhou-2\". \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "SlaveZone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "IP version. Values: `IPv4`, `IPv6`, and `IPv6_Nat`.",
+          "example": "IPv4",
+          "member": "string",
+          "name": "IPVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region of the AZ, such as `ap-guangzhou`.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "ZoneRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the AZ is a `LocalZone`. Values: `true`, `false`.",
+          "example": "false",
+          "member": "bool",
+          "name": "LocalZone",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

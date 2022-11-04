@@ -801,6 +801,15 @@
           "name": "EnableHybridStorage",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable enhanced SSD",
+          "example": "无",
+          "member": "uint64",
+          "name": "DiskEnhance",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1958,6 +1967,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "/\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "/",
+          "member": "string",
+          "name": "ColdAction",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -2083,7 +2102,7 @@
         },
         {
           "default": "",
-          "document": "Instance status. 0: processing; 1: normal; -1: stopped; -2: terminating; -3: terminated",
+          "document": "Instance status. `0`: Processing; `1`: Normal; `-1`: `Stopped`; `-2`: Being terminated; `-3`: Terminated; `2`: Initializing during the cluster creation.",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -2790,6 +2809,26 @@
           "required": true,
           "type": "bool",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The process progress\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "ProcessPercent",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The alerting policy of Kibana over the public network. <li>`OPEN`: Enable the policy;</li><li>`CLOSE`: Disable the policy.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "OPEN",
+          "member": "string",
+          "name": "KibanaAlteringPublicAccess",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3205,6 +3244,16 @@
           "example": "0",
           "member": "int64",
           "name": "MemSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "/\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "DiskEnhance",
           "required": false,
           "type": "int",
           "value_allowed_null": true

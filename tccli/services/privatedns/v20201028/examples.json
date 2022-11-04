@@ -87,7 +87,7 @@
     "DescribeRequestData": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRequestData\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"Vpc\",\n            \"Values\": [\n                \"vpc-qxxxxx5\"\n            ]\n        }\n    ],\n    \"TimeRangeBegin\": \"2020-11-22 00:00:00\",\n    \"TimeRangeEnd\": \"2020-11-23 23:59:59\"\n}",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRequestData\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"Vpc\",\n            \"Values\": [\n                \"vpc-qxxxxx5\"\n            ]\n        },\n        {\n            \"Name\": \"ZoneId\",\n            \"Values\": [\n                \"vpc-asdfasdf\"\n            ]\n        },\n        {\n            \"Name\": \"Region\",\n            \"Values\": [\n                \"ap-guangzhou\"\n            ]\n        }\n    ],\n    \"TimeRangeBegin\": \"2020-11-22 00:00:00\",\n    \"TimeRangeEnd\": \"2020-11-23 23:59:59\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e7b6e0f8-df16-afcf-507dea8b6958343d\",\n        \"Data\": [\n            {\n                \"Resource\": \"all\",\n                \"Metric\": \"request_count\",\n                \"DataSet\": [\n                    {\n                        \"Date\": \"2020-11-22 00:00:00\",\n                        \"Value\": 0\n                    },\n                    {\n                        \"Date\": \"2020-11-22 01:00:00\",\n                        \"Value\": 0\n                    }\n                ]\n            }\n        ],\n        \"Interval\": \"hour\"\n    }\n}",
         "title": "Getting the DNS request volume of private domain"
       }
@@ -120,6 +120,14 @@
         "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPrivateZoneVpc\n<Common request parameters>\n\n{\n    \"ZoneId\": \"1\",\n    \"VpcSet\": [\n        {\n            \"Region\": \"ap-guangzhou\",\n            \"UniqVpcId\": \"vpc-xxxxxx\"\n        }\n    ],\n    \"AccountVpcSet\": [\n        {\n            \"Uin\": \"123456789\",\n            \"Region\": \"ap-guangzhou\",\n            \"UniqVpcId\": \"vpc-xxxxxx\",\n            \"VpcName\": \"vpcName\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5cd964e2-b5e6-8a35-9ce5a1085860c845\",\n        \"ZoneId\": \"1\",\n        \"VpcSet\": [\n            {\n                \"UniqVpcId\": \"vpc-xxxxxxx\",\n                \"Region\": \"ap-guangzhou\"\n            }\n        ],\n        \"AccountVpcSet\": [\n            {\n                \"Uin\": \"123456789\",\n                \"UniqVpcId\": \"vpc-xxxxxxx\",\n                \"Region\": \"ap-guangzhou\"\n            }\n        ]\n    }\n}",
         "title": "Modifying the VPCs associated with a private domain"
+      }
+    ],
+    "ModifyRecordsStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRecordsStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-mao3y9jo\",\n    \"RecordIds\": [\n        1,\n        2,\n        3\n    ],\n    \"Status\": \"enabled\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"660006f4-8531-46f0-a2ba-05daf4e7932e\",\n        \"ZoneId\": \"zone-mao3y9jo\",\n        \"RecordIds\": [\n            1,\n            2,\n            3\n        ],\n        \"Status\": \"enabled\"\n    }\n}",
+        "title": "Modifying the DNS record status"
       }
     ],
     "SubscribePrivateZoneService": [

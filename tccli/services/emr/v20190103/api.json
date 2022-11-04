@@ -2186,6 +2186,16 @@
           "required": true,
           "type": "bool",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is a manually deployed cluster\nNote: This field may return null, indicating that no valid value can be obtained. ",
+          "example": "false",
+          "member": "bool",
+          "name": "IsHandsCluster",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3797,7 +3807,7 @@
         },
         {
           "default": "",
-          "document": "Whether the hardware node is used in a federation. Valid values: `0` (no), `1` (yes).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether it is used in a federation. Valid values: `0` (no), `1` (yes).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "IsFederation",
@@ -4767,6 +4777,15 @@
           "name": "ScaleOutServiceConfAssign",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable auto-renewal. Valid values: `0` (no), `1` (yes).",
+          "example": "1",
+          "member": "int64",
+          "name": "AutoRenew",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"

@@ -78,6 +78,12 @@
       "name": "Modifies VPC associated with private domain",
       "output": "ModifyPrivateZoneVpcResponse"
     },
+    "ModifyRecordsStatus": {
+      "document": "This API is used to modify the DNS record status.",
+      "input": "ModifyRecordsStatusRequest",
+      "name": "Modifies the DNS record status",
+      "output": "ModifyRecordsStatusResponse"
+    },
     "SubscribePrivateZoneService": {
       "document": "This API is used to activate the Private DNS service.",
       "input": "SubscribePrivateZoneServiceRequest",
@@ -984,6 +990,7 @@
         {
           "default": "",
           "document": "Resource description",
+          "example": "无",
           "member": "string",
           "name": "Resource",
           "required": true,
@@ -993,6 +1000,7 @@
         {
           "default": "",
           "document": "Table name",
+          "example": "无",
           "member": "string",
           "name": "Metric",
           "required": true,
@@ -1002,11 +1010,22 @@
         {
           "default": "",
           "document": "Table data",
+          "example": "无",
           "member": "DatePoint",
           "name": "DataSet",
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The total number of requests within the query scope.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "100",
+          "member": "int64",
+          "name": "MetricCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1216,6 +1235,78 @@
           "name": "AccountVpcSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRecordsStatusRequest": {
+      "document": "ModifyRecordsStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The private domain ID",
+          "example": "zone-vcxs31di",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The DNS record IDs.",
+          "example": "[1,2,3]",
+          "member": "int64",
+          "name": "RecordIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "`enabled`: Enable; `disabled`: Disable.",
+          "example": "enabled",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRecordsStatusResponse": {
+      "document": "ModifyRecordsStatus response structure.",
+      "members": [
+        {
+          "document": "The private domain ID",
+          "example": "zone-sdf1fds3",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The DNS record IDs.",
+          "example": "[1,2,3]",
+          "member": "int64",
+          "name": "RecordIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "`enabled`: Enabled; `disabled`: Disabled.",
+          "example": "enabled",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
