@@ -682,12 +682,38 @@
       ],
       "usage": "out"
     },
-    "AlarmHierarchicalValue": {
-      "document": "",
+    "AlarmHierarchicalNotice": {
+      "document": "Notification template ID and the list of alarm notification levels. The values `Remind` and `Serious` indicate that the notification template only sends alarms at the `Remind` and `Serious` levels.",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Notification template ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "NoticeId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The list of alarm notification levels. The values `Remind` and `Serious` indicate that the notification template only sends alarms at the `Remind` and `Serious` levels.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"Remind\",\"Serious\"]",
+          "member": "string",
+          "name": "Classification",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AlarmHierarchicalValue": {
+      "document": "The configuration of alarm level threshold",
+      "members": [
+        {
+          "default": "",
+          "document": "Threshold for the `Remind` level\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Remind",
@@ -697,7 +723,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Threshold for the `Warn` level\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Warn",
@@ -707,7 +733,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Threshold for the `Serious` level\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Serious",
@@ -1740,7 +1766,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The configuration of alarm level threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AlarmHierarchicalValue",
           "name": "HierarchicalValue",
@@ -2529,6 +2555,24 @@
           "name": "LogAlarmReqInfo",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Notification rules for different alarm levels",
+          "example": "无",
+          "member": "AlarmHierarchicalNotice",
+          "name": "HierarchicalNotices",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "A dedicated field for migration policies. 0: Implement authentication logic; 1: Skip authentication logic.",
+          "example": "1",
+          "member": "int64",
+          "name": "MigrateFlag",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
