@@ -531,8 +531,8 @@
     "DescribeLiveTranscodeDetailInfo": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveTranscodeDetailInfo\n&DayTime=20190307\n&PageNum=1\n&PageSize=20\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"DataInfoList\": [\n            {\n                \"StreamName\": \"test\",\n                \"StartTime\": \"2019-03-01 01:00\",\n                \"EndTime\": \"2019-03-01 04:00\",\n                \"Duration\": 8,\n                \"ModuleCodec\": \"liveprocessor_H264\",\n                \"Bitrate\": 120,\n                \"Type\": \"Stream mix\",\n                \"PushDomain\": \"5000.livepush.com\",\n                \"Resolution\": \"480P\"\n            }\n        ],\n        \"PageNum\": 1,\n        \"PageSize\": 20,\n        \"TotalNum\": 1,\n        \"TotalPage\": 1,\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLiveTranscodeDetailInfo\n<Common request parameters>\n\n{\n    \"PageNum\": \"1\",\n    \"PageSize\": \"20\",\n    \"DayTime\": \"20190307\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DataInfoList\": [\n            {\n                \"StreamName\": \"test\",\n                \"StartTime\": \"2019-03-01 01:00\",\n                \"EndTime\": \"2019-03-01 04:00\",\n                \"Duration\": 8,\n                \"ModuleCodec\": \"liveprocessor_H264\",\n                \"Bitrate\": 120,\n                \"Type\": \"Stream mix\",\n                \"PushDomain\": \"5000.livepush.com\",\n                \"Resolution\": \"480P\",\n                \"MainlandOrOversea\": \"Mainland\"\n            }\n        ],\n        \"PageNum\": 1,\n        \"PageSize\": 20,\n        \"TotalNum\": 1,\n        \"TotalPage\": 1,\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -669,6 +669,14 @@
         "document": "",
         "input": "https://live.tencentcloudapi.com/?Action=DescribeVisitTopSumInfoList\n&StartTime=2019-03-01 00:00:00\n&EndTime=2019-03-01 04:00:00\n&PageSize=2\n&PageNum=2\n&TopIndex=StreamId\n&OrderParam=TotalFlux\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DataInfoList\": [\n            {\n                \"AvgFluxPerSecond\": 4.773,\n                \"Name\": \"CSZFMPP360\",\n                \"TotalRequest\": 36590,\n                \"TotalFlux\": 69023.772\n            },\n            {\n                \"AvgFluxPerSecond\": 4.634,\n                \"Name\": \"CSNXMPP360\",\n                \"TotalRequest\": 88629,\n                \"TotalFlux\": 67009.417\n            }\n        ],\n        \"OrderParam\": \"TotalFlux\",\n        \"PageNum\": 2,\n        \"PageSize\": 2,\n        \"RequestId\": \"k54e3deb-f318-4147-8a68-3c959642f9ec\",\n        \"TopIndex\": \"StreamId\",\n        \"TotalNum\": 1000,\n        \"TotalPage\": 500\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DropLiveStream": [
+      {
+        "document": "This example shows you how to pause pushing a stream.",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DropLiveStream\n<Common request parameters>\n\n{\n    \"AppName\": \"live\",\n    \"StreamName\": \"stream1\",\n    \"DomainName\": \"5000.livepush.myqcloud.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
         "title": "Sample request"
       }
     ],

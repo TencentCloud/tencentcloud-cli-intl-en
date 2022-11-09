@@ -36,6 +36,12 @@
       "name": "Creates a cluster",
       "output": "CreateClustersResponse"
     },
+    "DeleteBackup": {
+      "document": "This API is used to delete the manual backup for a cluster. It cannot be used to delete the automatic backup.",
+      "input": "DeleteBackupRequest",
+      "name": "Deletes the manual backup",
+      "output": "DeleteBackupResponse"
+    },
     "DescribeAccounts": {
       "document": "This API is used to query database management accounts.",
       "input": "DescribeAccountsRequest",
@@ -297,7 +303,7 @@
   },
   "metadata": {
     "apiVersion": "2019-01-07",
-    "serviceNameCN": "云原生数据库 TDSQL-C",
+    "serviceNameCN": "TDSQL-C MySQL 版",
     "serviceShortName": "cynosdb"
   },
   "objects": {
@@ -2952,6 +2958,42 @@
         }
       ],
       "usage": "both"
+    },
+    "DeleteBackupRequest": {
+      "document": "DeleteBackup request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbpg-45knmnra",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Backup file ID",
+          "example": "[\"4928\\r\\n\"]",
+          "member": "int64",
+          "name": "SnapshotIdList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBackupResponse": {
+      "document": "DeleteBackup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DescribeAccountsRequest": {
       "document": "DescribeAccounts request structure.",
@@ -5725,6 +5767,7 @@
         {
           "default": "",
           "document": "Search field. Valid values: \"InstanceId\", \"ProjectId\", \"InstanceName\", \"Vip\"",
+          "example": "\"projectId\"",
           "member": "string",
           "name": "Names",
           "required": true,
@@ -5734,6 +5777,7 @@
         {
           "default": "",
           "document": "Search string",
+          "example": "\"xxx\"",
           "member": "string",
           "name": "Values",
           "required": true,
@@ -5743,6 +5787,7 @@
         {
           "default": "",
           "document": "Whether to use exact match",
+          "example": "1",
           "member": "bool",
           "name": "ExactMatch",
           "required": false,
@@ -5752,8 +5797,19 @@
         {
           "default": "",
           "document": "Search field",
+          "example": "\"123\"",
           "member": "string",
           "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Operator",
+          "example": "无",
+          "member": "string",
+          "name": "Operator",
           "required": false,
           "type": "string",
           "value_allowed_null": false

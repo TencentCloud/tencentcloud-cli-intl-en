@@ -486,6 +486,12 @@
       "name": "Queries the information of top n domain names or stream IDs in certain period of time",
       "output": "DescribeVisitTopSumInfoListResponse"
     },
+    "DropLiveStream": {
+      "document": "This API is used to pause a live stream. The stream can be resumed if it is paused.\nNote: If you call this API to pause an inactive stream, the request will be considered successful.",
+      "input": "DropLiveStreamRequest",
+      "name": "Pauses a live stream",
+      "output": "DropLiveStreamResponse"
+    },
     "EnableLiveDomain": {
       "document": "This API is used to enable a disabled LVB domain name.",
       "input": "EnableLiveDomainRequest",
@@ -603,7 +609,7 @@
   },
   "metadata": {
     "apiVersion": "2018-08-01",
-    "serviceNameCN": "云直播",
+    "serviceNameCN": "云直播CSS",
     "serviceShortName": "live"
   },
   "objects": {
@@ -6649,6 +6655,51 @@
       ],
       "usage": "out"
     },
+    "DropLiveStreamRequest": {
+      "document": "DropLiveStream request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The stream name.",
+          "example": "stream1",
+          "member": "string",
+          "name": "StreamName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Your push domain.",
+          "example": "5000.livepush.myqcloud.com",
+          "member": "string",
+          "name": "DomainName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The push path, which should be the same as `AppName` in the push and playback URL. The default value is `live`.",
+          "example": "live",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DropLiveStreamResponse": {
+      "document": "DropLiveStream response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "EnableLiveDomainRequest": {
       "document": "EnableLiveDomain request structure.",
       "members": [
@@ -10064,6 +10115,7 @@
         {
           "default": "",
           "document": "Stream name.",
+          "example": "test",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -10073,6 +10125,7 @@
         {
           "default": "",
           "document": "Start time (Beijing time) in the format of `yyyy-mm-dd HH:MM`.",
+          "example": "2019-03-01 01:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -10082,6 +10135,7 @@
         {
           "default": "",
           "document": "End time (Beijing time) in the format of `yyyy-mm-dd HH:MM`.",
+          "example": "2019-03-01 01:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -10091,6 +10145,7 @@
         {
           "default": "",
           "document": "Transcoding duration in minutes.\nNote: given the possible interruptions during push, duration here is the sum of actual duration of transcoding instead of the interval between the start time and end time.",
+          "example": "8",
           "member": "uint64",
           "name": "Duration",
           "required": true,
@@ -10100,6 +10155,7 @@
         {
           "default": "",
           "document": "Codec with modules,\nExample:\nliveprocessor_H264: LVB transcoding - H264,\nliveprocessor_H265: LVB transcoding - H265,\ntopspeed_H264: top speed codec - H264,\ntopspeed_H265: top speed codec - H265.",
+          "example": "liveprocessor_H265",
           "member": "string",
           "name": "ModuleCodec",
           "required": true,
@@ -10109,6 +10165,7 @@
         {
           "default": "",
           "document": "Bitrate.",
+          "example": "1",
           "member": "uint64",
           "name": "Bitrate",
           "required": true,
@@ -10117,7 +10174,8 @@
         },
         {
           "default": "",
-          "document": "Type. Valid values: Transcode, MixStream, WaterMark.",
+          "document": "The task type. Valid values: Transcode, MixStream, WaterMark, Webrtc.",
+          "example": "Transcode",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -10127,6 +10185,7 @@
         {
           "default": "",
           "document": "Push domain name.",
+          "example": "5000.livepush.com",
           "member": "string",
           "name": "PushDomain",
           "required": true,
@@ -10136,8 +10195,19 @@
         {
           "default": "",
           "document": "Resolution.",
+          "example": "720p",
           "member": "string",
           "name": "Resolution",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The region. Valid values:\n`Mainland`: Inside the Chinese mainland.\n`Overseas`: Outside the Chinese mainland.",
+          "example": "Mainland",
+          "member": "string",
+          "name": "MainlandOrOversea",
           "required": true,
           "type": "string",
           "value_allowed_null": false

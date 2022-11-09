@@ -673,7 +673,7 @@
       "output": "ReviewAudioVideoResponse"
     },
     "SearchMedia": {
-      "document": "This API is used to search for media files by specific criteria. You can sort the results and specify the information to return.\n- Specify a list of file IDs (`FileIds`). Any file that matches one of the IDs will be returned.\n- Specify one or multiple keywords for `Names` or `Descriptions` for fuzzy search by filename or description.\n- Specify multiple filename prefixes (`NamePrefixes`).\n- Specify a list of categories (`ClassIds`). Any file that matches one of the categories will be returned. For example, assume that there are categories `Movies`, `TV Series`, and `Variety Shows`, and `Movies` has subcategories including `History`, `Action`, and `Romance`. If `ClassIds` is set to `Movies` and `TV Series`, all media files in `Movies` (including its subcategories) and `TV Series` will be returned. If `ClassIds` is set to `History` and `Action`, only the files in those two subcategories will be returned.\n- Specify a list of tags (`Tags`). Any file that matches one or more of the tags will be returned. For example, assume that there are tags `ACG`, `Drama`, and `YTPMV`. If `Tags` is set to `ACG` and `YTPMV`, any media file with either tag will be returned.\n- Specify the types (`Categories`) of media files. Any file that matches one of the types will be returned. There are three file types: `Video`, `Audio`, and `Image`. If `Categories` is set to `Video` and `Audio`, all audio and video files will be returned.\n- Specify the source types (`SourceTypes`). Any file that matches one of the source types specified will be returned. For example, if you set `SourceTypes` to `Record` (live recording) and `Upload` (upload), all recording files and uploaded files will be returned.\n- Specify the stream IDs (`StreamIds`) of live recording files.\n- Specify the video IDs (`Vids`) of live recording files.\n- Specify a time range for search by file creation time.\n- Specify the TRTC application IDs.\n- Specify the TRTC room IDs.\n- Specify one keyword for `Text` for fuzzy search by filename or description. (This is not recommended. Please use `Names`, `NamePrefixes` or `Descriptions` instead.)\n- Specify one source (`SourceType`). (This is not recommended. Please use `SourceTypes` instead.)\n- Specify one stream ID (`StreamId`). (This is not recommended. Please use `StreamIds` instead.)\n- Specify one video ID (`Vid`). (This is not recommended. Please use `Vids` instead.)\n- Specify the start (`StartTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- Specify the end (`EndTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- You can search by any combination of the parameters above. For example, you can search for media files with the tag \"Drama\" or \"Suspense\" in the category of \"Movies\" and \"TV Series\" created between 12:00:00, December 1, 2018 and 12:00:00, December 8, 2018. Note that for parameters whose data type is array, the search logic between their elements is \"OR\". The search logic between parameters is \"AND\".\n\n- You can sort the results by creation time and return them in multiple pages by specifying `Offset` and `Limit`.\n- You can use `Filters` to specify the types of file information to return (all types are returned by default). Valid values:\n    1. `basicInfo`: The file name, category, playback URL, thumbnail, etc.\n    2. `metaData`: The file size, duration, video stream information, audio stream information, etc.\n    3. `transcodeInfo`: The URLs, video stream parameters, and audio stream parameters of transcoding outputs.\n    4. `animatedGraphicsInfo`: The information of the animated images (such as GIF images) generated.\n    5. `sampleSnapshotInfo`: The information of the sampled screenshots generated.\n    6. `imageSpriteInfo`: The information of the image sprites generated.\n    7. `snapshotByTimeOffsetInfo`: The information of the time point screenshots generated.\n    8. `keyFrameDescInfo`: The video timestamp information.\n    9. `adaptiveDynamicStreamingInfo`: The specification, encryption type, format, etc.\n\n<div id=\"maxResultsDesc\">Limits for returned records:</div>\n- The <b><a href=\"#p_offset\">Offset</a> and <a href=\"#p_limit\">Limit</a> parameters determine the number of records per page. If neither parameter is passed, this API will return up to 10 records.</b>\n- <b>Up to 5,000 records can be returned. If a request returns too many records, we recommend you use more specific search criteria to narrow down the results.</b>",
+      "document": "This API is used to search for media files by specific criteria. You can sort the results and specify the information to return.\n- Specify a list of file IDs (`FileIds`). Any file that matches one of the IDs will be returned.\n- Specify one or multiple keywords for `Names` or `Descriptions` for fuzzy search by filename or description.\n- Specify multiple filename prefixes (`NamePrefixes`).\n- Specify a list of categories (`ClassIds`). Any file that matches one of the categories will be returned. For example, assume that there are categories `Movies`, `TV Series`, and `Variety Shows`, and `Movies` has subcategories including `History`, `Action`, and `Romance`. If `ClassIds` is set to `Movies` and `TV Series`, all media files in `Movies` (including its subcategories) and `TV Series` will be returned. If `ClassIds` is set to `History` and `Action`, only the files in those two subcategories will be returned.\n- Specify a list of tags (`Tags`). Any file that matches one or more of the tags will be returned. For example, assume that there are tags `ACG`, `Drama`, and `YTPMV`. If `Tags` is set to `ACG` and `YTPMV`, any media file with either tag will be returned.\n- Specify the types (`Categories`) of media files. Any file that matches one of the types will be returned. There are three file types: `Video`, `Audio`, and `Image`. If `Categories` is set to `Video` and `Audio`, all audio and video files will be returned.\n- Specify the source types (`SourceTypes`). Any file that matches one of the source types specified will be returned. For example, if you set `SourceTypes` to `Record` (live recording) and `Upload` (upload), all recording files and uploaded files will be returned.\n- Specify the stream IDs (`StreamIds`) of live recording files.\n- Specify a time range for search by file creation time.\n- Specify the TRTC application IDs.\n- Specify the TRTC room IDs.\n- Specify one keyword for `Text` for fuzzy search by filename or description. (This is not recommended. Please use `Names`, `NamePrefixes` or `Descriptions` instead.)\n- Specify one source (`SourceType`). (This is not recommended. Please use `SourceTypes` instead.)\n- Specify one stream ID (`StreamId`). (This is not recommended. Please use `StreamIds` instead.)\n- Specify the start (`StartTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- Specify the end (`EndTime`) of the time range to search by creation time. (This is not recommended. Please use `CreateTime` instead.)\n- You can search by any combination of the parameters above. For example, you can search for media files with the tag \"Drama\" or \"Suspense\" in the category of \"Movies\" and \"TV Series\" created between 12:00:00, December 1, 2018 and 12:00:00, December 8, 2018. Note that for parameters whose data type is array, the search logic between their elements is \"OR\". The search logic between parameters is \"AND\".\n\n- You can sort the results by creation time and return them in multiple pages by specifying `Offset` and `Limit`.\n- You can use `Filters` to specify the types of file information to return (all types are returned by default). Valid values:\n    1. `basicInfo`: The file name, category, playback URL, thumbnail, etc.\n    2. `metaData`: The file size, duration, video stream information, audio stream information, etc.\n    3. `transcodeInfo`: The URLs, video stream parameters, and audio stream parameters of transcoding outputs.\n    4. `animatedGraphicsInfo`: The information of the animated images (such as GIF images) generated.\n    5. `sampleSnapshotInfo`: The information of the sampled screenshots generated.\n    6. `imageSpriteInfo`: The information of the image sprites generated.\n    7. `snapshotByTimeOffsetInfo`: The information of the time point screenshots generated.\n    8. `keyFrameDescInfo`: The video timestamp information.\n    9. `adaptiveDynamicStreamingInfo`: The specification, encryption type, format, etc.\n\n<div id=\"maxResultsDesc\">Limits for returned records:</div>\n- The <b><a href=\"#p_offset\">Offset</a> and <a href=\"#p_limit\">Limit</a> parameters determine the number of records per page. If neither parameter is passed, this API will return up to 10 records.</b>\n- <b>Up to 5,000 records can be returned. If a request returns too many records, we recommend you use more specific search criteria to narrow down the results.</b>",
       "input": "SearchMediaRequest",
       "name": "Searches for media information",
       "output": "SearchMediaResponse"
@@ -5783,6 +5783,7 @@
         {
           "default": "",
           "document": "Source of media material for audio segment, which can be:\n<li>ID of VOD media files</li>\n<li>Download URL of other media files</li>\nNote: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).",
+          "example": "101",
           "member": "string",
           "name": "SourceMedia",
           "required": true,
@@ -5792,6 +5793,7 @@
         {
           "default": "",
           "document": "Start time of audio segment in material file in seconds. Default value: 0, which means to start capturing from the beginning position of the material.",
+          "example": "1",
           "member": "float",
           "name": "SourceMediaStartTime",
           "required": false,
@@ -5801,6 +5803,7 @@
         {
           "default": "",
           "document": "Audio segment duration in seconds. By default, the length of the material will be used, which means that the entire material will be captured.",
+          "example": "2",
           "member": "float",
           "name": "Duration",
           "required": false,
@@ -5809,7 +5812,18 @@
         },
         {
           "default": "",
+          "document": "The target audio duration, in seconds.\n<li>If `TargetDuration` is empty or `0`, the target duration is the same as `Duration`.</li>\n<li>If `TargetDuration` is a value greater than 0, the playback speed will be changed to make the final audio duration the same as the value of `TargetDuration`.</li>",
+          "example": "2",
+          "member": "float",
+          "name": "TargetDuration",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Operation on audio segment, such as volume adjustment.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AudioTransform",
           "name": "AudioOperations",
           "required": false,
@@ -14729,7 +14743,7 @@
       "members": [
         {
           "default": "",
-          "document": "Type of files to delete. If this parameter is left empty, it will be invalid. Valid values:\n<li>`OriginalFiles`: original files. You cannot initiate transcoding, publishing on WeChat, or other video processing operations after deleting the original files.</li>\n<li>`TranscodeFiles`: transcoded files</li>\n<li>`WechatPublishFiles`: files for publishing on WeChat</li>",
+          "document": "The type of files to delete. If this parameter is left empty, it will be invalid. Valid values:\n<li>`OriginalFiles`: The original file. After deleting an original file, you can no longer perform operations such as transcoding or WeChat publishing on the file ID.</li>\n<li>`TranscodeFiles`: Transcoding outputs</li>\n<li>`AdaptiveDynamicStreamingFiles`: Adaptive bitrate outputs</li>\n<li>`WechatPublishFiles`: The file for WeChat publishing</li>",
           "example": "TranscodeFiles",
           "member": "string",
           "name": "Type",
@@ -22144,15 +22158,6 @@
         },
         {
           "default": "",
-          "document": "Unique ID of LVB recording file. Any element in the set can be matched.\n<li>Array length limit: 10.</li>",
-          "example": "无",
-          "member": "string",
-          "name": "Vids",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
           "document": "Matches files created within the time period.\n<li>Includes specified start and end points in time.</li>",
           "example": "无",
           "member": "TimeRange",
@@ -22270,15 +22275,6 @@
         },
         {
           "default": "",
-          "document": "(This is not recommended. `Vids` should be used instead)\nUnique ID of LVB recording file.",
-          "example": "无",
-          "member": "string",
-          "name": "Vid",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "(This is not recommended. `CreateTime` should be used instead)\nStart time in the creation time range.\n<li>After or at the start time.</li>\n<li>If `CreateTime.After` also exists, it will be used first.</li>\n<li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>",
           "example": "无",
           "member": "string",
@@ -22292,6 +22288,24 @@
           "example": "无",
           "member": "string",
           "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This parameter is invalid now.",
+          "example": "无",
+          "member": "string",
+          "name": "Vids",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "This parameter is invalid now.",
+          "example": "无",
+          "member": "string",
+          "name": "Vid",
           "required": false,
           "type": "string"
         }
@@ -25082,6 +25096,7 @@
         {
           "default": "",
           "document": "Source of media material for video segment, which can be:\n<li>ID of VOD media files</li>\n<li>Download URL of other media files.</li>\nNote: when a download URL of other media files is used as the material source and access control (such as hotlink protection) is enabled, the URL needs to carry access control parameters (such as hotlink protection signature).",
+          "example": "123",
           "member": "string",
           "name": "SourceMedia",
           "required": true,
@@ -25091,6 +25106,7 @@
         {
           "default": "",
           "document": "Start time of video segment in material file in seconds. Default value: 0.",
+          "example": "1",
           "member": "float",
           "name": "SourceMediaStartTime",
           "required": false,
@@ -25100,6 +25116,7 @@
         {
           "default": "",
           "document": "Video segment duration in seconds. By default, the length of the video material will be used, which means that the entire material will be captured. If the source file is an image, `Duration` needs to be greater than 0.",
+          "example": "2",
           "member": "float",
           "name": "Duration",
           "required": false,
@@ -25108,7 +25125,18 @@
         },
         {
           "default": "",
+          "document": "The target video duration, in seconds.\n<li>If `TargetDuration` is empty or `0`, the target duration is the same as `Duration`.</li>\n<li>If `TargetDuration` is a value greater than 0, the playback speed will be changed to make the final video duration the same as the value of `TargetDuration`.</li>",
+          "example": "2",
+          "member": "float",
+          "name": "TargetDuration",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Video origin position. Valid values:\n<li> Center: the origin of coordinates is the center position, such as the center of canvas.</li>\nDefault value: Center.",
+          "example": "Center",
           "member": "string",
           "name": "CoordinateOrigin",
           "required": false,
@@ -25118,6 +25146,7 @@
         {
           "default": "",
           "document": "The horizontal position of the origin of the video segment relative to the origin of the canvas. % and px formats are supported:\n<li>If the string ends in %, the `XPos` of the video segment will be at the position of the specified percentage of the canvas width; for example, `10%` means that `XPos` is 10% of the canvas width.</li>\n<li>If the string ends in px, the `XPos` of the video segment will be in px; for example, `100px` means that `XPos` is 100 px.</li>\nDefault value: 0 px.",
+          "example": "10%",
           "member": "string",
           "name": "XPos",
           "required": false,
@@ -25127,6 +25156,7 @@
         {
           "default": "",
           "document": "The vertical position of the origin of the video segment relative to the origin of the canvas. % and px formats are supported:\n<li>If the string ends in %, the `YPos` of the video segment will be at the position of the specified percentage of the canvas height; for example, `10%` means that `YPos` is 10% of the canvas height.</li>\n<li>If the string ends in px, the `YPos` of the video segment will be in px; for example, `100px` means that `YPos` is 100 px.</li>\nDefault value: 0 px.",
+          "example": "10%",
           "member": "string",
           "name": "YPos",
           "required": false,
@@ -25136,6 +25166,7 @@
         {
           "default": "",
           "document": "Video segment width. % and px formats are supported:\n<li>If the string ends in %, the `Width` of the video segment will be the specified percentage of the canvas width; for example, `10%` means that `Width` is 10% of the canvas width.</li>\n<li>If the string ends in px, the `Width` of the video segment will be in px; for example, `100px` means that `Width` is 100 px.</li>\n<li>If both `Width` and `Height` are empty, then they will be the `Width` and `Height` of the video material, respectively.</li>\n<li>If `Width` is empty, but `Height` is not empty, `Width` will be proportionally scaled.</li>\n<li>If `Width` is not empty, but `Height` is empty, `Height` will be proportionally scaled.</li>",
+          "example": "10%",
           "member": "string",
           "name": "Width",
           "required": false,
@@ -25145,6 +25176,7 @@
         {
           "default": "",
           "document": "Video segment height. % and px formats are supported:\n<li>If the string ends in %, the `Height` of the video segment will be the specified percentage of the canvas height; for example, `10%` means that `Height` is 10% of the canvas height;\n</li><li>If the string ends in px, the `Height` of the video segment will be in px; for example, `100px` means that `Height` is 100 px.</li>\n<li>If both `Width` and `Height` are empty, then they will be the `Width` and `Height` of the video material, respectively.</li>\n<li>If `Width` is empty, but `Height` is not empty, `Width` will be proportionally scaled.</li>\n<li>If `Width` is not empty, but `Height` is empty, `Height` will be proportionally scaled.</li>",
+          "example": "10%",
           "member": "string",
           "name": "Height",
           "required": false,
@@ -25153,18 +25185,20 @@
         },
         {
           "default": "",
-          "document": "Operation on video image such as image rotation.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "ImageTransform",
-          "name": "ImageOperations",
+          "document": "Operation on audio such as muting.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AudioTransform",
+          "name": "AudioOperations",
           "required": false,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "default": "",
-          "document": "Operation on audio such as muting.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "member": "AudioTransform",
-          "name": "AudioOperations",
+          "document": "Operation on video image such as image rotation.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ImageTransform",
+          "name": "ImageOperations",
           "required": false,
           "type": "list",
           "value_allowed_null": false
