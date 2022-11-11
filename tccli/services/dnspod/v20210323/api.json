@@ -36,6 +36,12 @@
       "name": "Gets the information of a record",
       "output": "DescribeRecordResponse"
     },
+    "DescribeRecordList": {
+      "document": "This API is used to get DNS records of a domain.",
+      "input": "DescribeRecordListRequest",
+      "name": "Gets DNS records of a domain",
+      "output": "DescribeRecordListResponse"
+    },
     "ModifyDomainRemark": {
       "document": "This API is used to set the remarks of a domain.",
       "input": "ModifyDomainRemarkRequest",
@@ -356,6 +362,150 @@
           "name": "DomainInfo",
           "required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecordListRequest": {
+      "document": "DescribeRecordList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The domain for which DNS records are to be obtained.",
+          "example": "shenjianing.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The ID of the domain for which DNS records are to be obtained. If `DomainId` is passed in, the system will omit the parameter `Domain`.",
+          "example": "81345824",
+          "member": "uint64",
+          "name": "DomainId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The host header of a DNS record. If this parameter is passed in, only the DNS record corresponding to this host header will be returned.",
+          "example": "www",
+          "member": "string",
+          "name": "Subdomain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The type of DNS record, such as A, CNAME, NS, AAAA, explicit URL, implicit URL, CAA, or SPF record.",
+          "example": "A",
+          "member": "string",
+          "name": "RecordType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The split zone name.",
+          "example": "默认",
+          "member": "string",
+          "name": "RecordLine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The split zone ID. If `RecordLineId` is passed in, the system will omit the parameter `RecordLine`.",
+          "example": "0",
+          "member": "string",
+          "name": "RecordLineId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The group ID.",
+          "example": "23",
+          "member": "uint64",
+          "name": "GroupId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The keyword for searching for DNS records. Host headers and record values are supported.",
+          "example": "book",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The sorting field. Available values: `name`, `line`, `type`, `value`, `weight`, `mx`, and `ttl,updated_on`.",
+          "example": "type",
+          "member": "string",
+          "name": "SortField",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The sorting type. Valid values: `ASC` (ascending, default), `DESC` (descending).",
+          "example": "asc",
+          "member": "string",
+          "name": "SortType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The offset. Default value: `0`.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The limit. It defaults to 100 and can be up to 3,000.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecordListResponse": {
+      "document": "DescribeRecordList response structure.",
+      "members": [
+        {
+          "document": "The record count info.",
+          "example": "无",
+          "member": "RecordCountInfo",
+          "name": "RecordCountInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The record list result.",
+          "example": "无",
+          "member": "RecordListItem",
+          "name": "RecordList",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -928,6 +1078,42 @@
       ],
       "type": "object"
     },
+    "RecordCountInfo": {
+      "document": "Count info of the queried record list",
+      "members": [
+        {
+          "default": "",
+          "document": "The subdomain count.",
+          "example": "2",
+          "member": "uint64",
+          "name": "SubdomainCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The count of records returned in the list.",
+          "example": "2",
+          "member": "uint64",
+          "name": "ListCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The total record count.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "RecordInfo": {
       "document": "Record information",
       "members": [
@@ -1070,6 +1256,142 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RecordListItem": {
+      "document": "Record list elements",
+      "members": [
+        {
+          "default": "",
+          "document": "The record ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RecordId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The record value.",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The record status. Valid values: `ENABLE` (enabled), `DISABLE` (disabled).",
+          "example": "ENABLE",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The update time.",
+          "example": "2021-03-28 11:27:09",
+          "member": "datetime",
+          "name": "UpdatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The host name.",
+          "example": "www",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The record split zone.",
+          "example": "默认",
+          "member": "string",
+          "name": "Line",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The split zone ID.",
+          "example": "0",
+          "member": "string",
+          "name": "LineId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The record type.",
+          "example": "A",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The record weight, which is required for round-robin DNS records.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Weight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The monitoring status of the record. Valid values: `OK` (normal), `WARN` (warning), and `DOWN` (downtime). It is empty if no monitoring is set or the monitoring is suspended.",
+          "example": "OK",
+          "member": "string",
+          "name": "MonitorStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The record remarks.",
+          "example": "用于api",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The record cache time.",
+          "example": "600",
+          "member": "uint64",
+          "name": "TTL",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The MX value, applicable to the MX record only.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "uint64",
+          "name": "MX",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
