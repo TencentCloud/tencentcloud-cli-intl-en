@@ -67,7 +67,7 @@
     "DescribeAccountPrivileges": [
       {
         "document": "",
-        "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeAccountPrivileges\n&InstanceId=tdsql-fdpjf5zh\n&UserName=testuser1\n&Host=172.17.%\n&DbName=*\n&Type=*\n&<Common request parameters>",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeAccountPrivileges\r\n&InstanceId=tdsql-fdpjf5zh\r\n&UserName=testuser1\r\n&Host=172.17.%\r\n&DbName=*\r\n&Type=*\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3381c9e9-d87f-4e21-ba1d-596d6f697a7e\",\n        \"InstanceId\": \"tdsql-fdpjf5zh\",\n        \"UserName\": \"testuser1\",\n        \"Host\": \"172.17.%\",\n        \"Privileges\": [\n            \"SELECT\",\n            \"UPDATE\"\n        ]\n    }\n}",
         "title": "Querying the global permissions of TencentDB account"
       }
@@ -168,6 +168,14 @@
         "title": "Querying the information of primary and replica nodes of an instance"
       }
     ],
+    "DescribeLogFileRetentionPeriod": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeLogFileRetentionPeriod\r\n&InstanceId=tdsql-ige1a5k3\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"InstanceId\": \"tdsql-ige1a5k3\",\n        \"Days\": 30,\n        \"RequestId\": \"87e86e78-340f-48f3-a84b-a42517d7aa46\"\n    }\n}",
+        "title": "Viewing backup log retention days"
+      }
+    ],
     "DescribeOrders": [
       {
         "document": "",
@@ -254,6 +262,30 @@
         "input": "https://mariadb.tencentcloudapi.com/?Action=ModifyDBSyncMode\n&InstanceId=tdsql-avw0207d\n&SyncMode=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"901bd41c-08a2-4001-8364-5a63f32056ae\",\n        \"FlowId\": 3521\n    }\n}",
         "title": "Modifying the sync mode of TencentDB instance"
+      }
+    ],
+    "ModifyInstanceNetwork": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=ModifyInstanceNetwork\n&InstanceId=tdsql-jv8z8fhl\n&VpcId=vpc-xxxxxx\n&SubnetId=subnet-xxxxx\n&VipReleaseDelay=168\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14f6980a-7fe1-11ea-b896-525400542aa6\",\n        \"FlowId\": 1122\n    }\n}",
+        "title": "None"
+      }
+    ],
+    "ModifyInstanceVip": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=ModifyInstanceVip\n&InstanceId=tdsql-jv8z8fhl\n&VipReleaseDelay=168\n&Vip=10.0.0.2\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14f6980a-7fe1-11ea-b896-525400542aa6\",\n        \"FlowId\": 1122\n    }\n}",
+        "title": "Modifying instance VIP"
+      }
+    ],
+    "ModifyInstanceVport": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=ModifyInstanceVport\n&InstanceId=tdsql-rlye31jd\n&Vport=3307\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8ce27ff0-7fe1-11ea-8469-525400542aa6\"\n    }\n}",
+        "title": "Modifying instance Vport"
       }
     ],
     "ModifySyncTaskAttribute": [

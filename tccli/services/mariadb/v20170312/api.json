@@ -126,6 +126,12 @@
       "name": "Queries instance node information",
       "output": "DescribeInstanceNodeInfoResponse"
     },
+    "DescribeLogFileRetentionPeriod": {
+      "document": "This API is used to view the configured number of days for retention of database backup logs.",
+      "input": "DescribeLogFileRetentionPeriodRequest",
+      "name": "Views backup log retention days",
+      "output": "DescribeLogFileRetentionPeriodResponse"
+    },
     "DescribeOrders": {
       "document": "This API is used to query TencentDB order information. You can pass in an order ID to query the TencentDB instance associated with the order and the corresponding task process ID.",
       "input": "DescribeOrdersRequest",
@@ -191,6 +197,24 @@
       "input": "ModifyDBSyncModeRequest",
       "name": "Modifies sync mode",
       "output": "ModifyDBSyncModeResponse"
+    },
+    "ModifyInstanceNetwork": {
+      "document": "This API is used to modify instance network.",
+      "input": "ModifyInstanceNetworkRequest",
+      "name": "Modifies instance network",
+      "output": "ModifyInstanceNetworkResponse"
+    },
+    "ModifyInstanceVip": {
+      "document": "This API is used to modify instance VIP.",
+      "input": "ModifyInstanceVipRequest",
+      "name": "Modifies instance VIP",
+      "output": "ModifyInstanceVipResponse"
+    },
+    "ModifyInstanceVport": {
+      "document": "This API is used to modify instance Vport.",
+      "input": "ModifyInstanceVportRequest",
+      "name": "Modifies instance Vport",
+      "output": "ModifyInstanceVportResponse"
     },
     "ModifySyncTaskAttribute": {
       "document": "This API is used to modify sync task attributes (currently, only the task name can be modified).",
@@ -2989,6 +3013,46 @@
       ],
       "type": "object"
     },
+    "DescribeLogFileRetentionPeriodRequest": {
+      "document": "DescribeLogFileRetentionPeriod request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `tdsql-ow728lmc`.",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLogFileRetentionPeriodResponse": {
+      "document": "DescribeLogFileRetentionPeriod response structure.",
+      "members": [
+        {
+          "document": "Instance ID in the format of `tdsql-ow728lmc`.",
+          "member": "string",
+          "name": "InstanceId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Backup log retention days",
+          "member": "uint64",
+          "name": "Days",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeOrdersRequest": {
       "document": "DescribeOrders request structure.",
       "members": [
@@ -3668,6 +3732,186 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceNetworkRequest": {
+      "document": "ModifyInstanceNetwork request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tdsql-jv8z8fhl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VpcId, ID of the desired VPC network.",
+          "example": "vpc-xxxxxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "SubnetId, subnet ID of the desired VPC network.",
+          "example": "subnet-xxxxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The field is required to specify VIP.",
+          "example": "10.0.0.1",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The field is required to specify VIPv6.",
+          "example": "2001:0000: 1F 1F :0000:0000:0100: 11A 0:ADDF",
+          "member": "string",
+          "name": "Vipv6",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VIP retention period in hours. Value range: 0-168. Default value: `24`. `0` indicates that the VIP will be released immediately, but there will be 1-minute delay.",
+          "example": "168",
+          "member": "uint64",
+          "name": "VipReleaseDelay",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceNetworkResponse": {
+      "document": "ModifyInstanceNetwork response structure.",
+      "members": [
+        {
+          "document": "Async task ID, which can be used to query the task status through `DescribeFlow` API.",
+          "example": "1122",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceVipRequest": {
+      "document": "ModifyInstanceVip request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tdsql-jv8z8fhl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance VIP",
+          "example": "10.0.0.2",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IPv6 flag",
+          "example": "无",
+          "member": "uint64",
+          "name": "Ipv6Flag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "VIP retention period in hours. Value range: 0-168. Default value: `24`. `0` indicates that the VIP will be released immediately, but there will be 1-minute delay.",
+          "example": "168",
+          "member": "uint64",
+          "name": "VipReleaseDelay",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceVipResponse": {
+      "document": "ModifyInstanceVip response structure.",
+      "members": [
+        {
+          "document": "Async task flow ID",
+          "example": "1122",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceVportRequest": {
+      "document": "ModifyInstanceVport request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tdsql-2gk4nxyz",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance Vport",
+          "example": "3307",
+          "member": "uint64",
+          "name": "Vport",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceVportResponse": {
+      "document": "ModifyInstanceVport response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
