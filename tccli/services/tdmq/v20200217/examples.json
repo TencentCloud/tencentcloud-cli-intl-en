@@ -127,9 +127,9 @@
     "CreateSubscription": [
       {
         "document": "",
-        "input": "https://tdmq.tencentcloudapi.com/?Action=CreateSubscription\n&EnvironmentId=default\n&TopicName=cloud_test\n&SubscriptionName=cloud_sub\n&IsIdempotent=true\n&AutoCreatePolicyTopic=true\n&Remark=Create subscription\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSubscription\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"default\",\n    \"Remark\": \"Create a subscription\",\n    \"IsIdempotent\": \"true\",\n    \"TopicName\": \"cloud_test\",\n    \"SubscriptionName\": \"cloud_sub\",\n    \"AutoCreatePolicyTopic\": \"true\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"15288803-dadb-4499-9b5b-ff2f631ca68e\"\n    }\n}",
-        "title": "Creating subscription"
+        "title": "Creating a subscription"
       }
     ],
     "CreateTopic": [
@@ -362,6 +362,22 @@
         "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePublishers\n<Common request parameters>\n\n{\n    \"Sort\": {\n        \"Name\": \"xx\",\n        \"Order\": \"xx\"\n    },\n    \"ClusterId\": \"xx\",\n    \"Namespace\": \"xx\",\n    \"Topic\": \"xx\",\n    \"Limit\": 0,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"xx\"\n            ],\n            \"Name\": \"xx\"\n        }\n    ],\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"RequestId\": \"xx\",\n        \"Publishers\": [\n            {\n                \"ConnectedSince\": \"xx\",\n                \"MsgThroughputIn\": 0.0,\n                \"ClientVersion\": \"xx\",\n                \"ProducerId\": 0,\n                \"Partition\": 0,\n                \"AverageMsgSize\": 0.0,\n                \"ProducerName\": \"xx\",\n                \"Address\": \"xx\",\n                \"MsgRateIn\": 0.0\n            }\n        ]\n    }\n}",
         "title": "Obtaining producer list"
+      }
+    ],
+    "DescribeRabbitMQNodeList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRabbitMQNodeList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"amqp-testtesttest\",\n    \"Limit\": 1,\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"NodeList\": [\n            {\n                \"NodeName\": \"xx\"\n            }\n        ]\n    }\n}",
+        "title": "Getting the vhost list"
+      }
+    ],
+    "DescribeRabbitMQVipInstances": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRabbitMQVipInstances\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"xx\"\n            ],\n            \"Name\": \"xx\"\n        }\n    ],\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Instances\": [\n            {\n                \"Status\": 1,\n                \"PayMode\": 1,\n                \"Remark\": \"xx\",\n                \"AutoRenewFlag\": 1,\n                \"InstanceId\": \"xx\",\n                \"NodeCount\": 1,\n                \"ExpireTime\": 1,\n                \"InstanceVersion\": \"xx\",\n                \"MaxStorage\": 1,\n                \"MaxBandWidth\": 1,\n                \"SpecName\": \"xx\",\n                \"ConfigDisplay\": \"xx\",\n                \"InstanceName\": \"xx\",\n                \"MaxTps\": 1\n            }\n        ]\n    }\n}",
+        "title": "Getting the instance list"
       }
     ],
     "DescribeRocketMQCluster": [

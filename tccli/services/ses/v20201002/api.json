@@ -31,7 +31,7 @@
       "output": "CreateReceiverResponse"
     },
     "CreateReceiverDetail": {
-      "document": "This API is used to add recipient email addresses (up to 100,000 at a time) to a recipient group. This will be processed asynchronously. You can upload recipient email addresses only once. If the data volume is large, it may take some time to upload. You can check the recipient group to learn the upload status and upload quantity.",
+      "document": "This API is used to add recipient email addresses (up to 20,000 at a time) to a recipient group. This will be processed asynchronously. If the data volume is large, it may take some time to upload. You can check the recipient group for the upload status and upload quantity. This API has basically the same feature as that of `CreateReceiverDetailWithData` except that it doesn't support uploading template parameters for email sending. You need to first call the `CreateReceiver` API to create a recipient group, then call this API to pass in recipient addresses, and finally call the `BatchSendEmail` API to batch send emails. This API supports adding more recipient addresses during upload but not address deduplication, so you need to make sure that the recipient addresses are not duplicate by yourself. This API can request up to 20,000 recipient addresses at a time, but the recipient group can contain up to 50,000 addresses currently.",
       "input": "CreateReceiverDetailRequest",
       "name": "Adds recipient email addresses",
       "output": "CreateReceiverDetailResponse"
@@ -166,7 +166,7 @@
         },
         {
           "default": "",
-          "document": "Attachment content after Base64 encoding. A single attachment cannot exceed 4 MB. Note: Tencent Cloud APIs require that a request packet should not exceed 8 MB. If you are sending multiple attachments, the total size of these attachments cannot exceed 8 MB.",
+          "document": "Base64-encoded attachment content. You can send attachments of up to 4 MB in the total size. Note: The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.",
           "example": "dGhpcyBpcyBhIGV4YW1wbGU=",
           "member": "string",
           "name": "Content",
@@ -182,7 +182,7 @@
       "members": [
         {
           "default": "",
-          "document": "Sender address. Enter a sender address, for example, noreply@mail.qcloud.com. To display the sender name, enter the address in the following format:\nSender <email address>, for example:\nTencent Cloud team <noreply@mail.qcloud.com>",
+          "document": "Sender address. Enter a sender address such as `noreply@mail.qcloud.com`. To display the sender name, enter the address in the following format:\nsender &lt;email address&gt;. For example:\nTencent Cloud team &lt;noreply@mail.qcloud.com&gt;",
           "example": "abc@ef.com",
           "member": "string",
           "name": "FromEmailAddress",
@@ -561,6 +561,16 @@
           "member": "uint64",
           "name": "IntervalTime",
           "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to end the cycle. This parameter is used to update the task. Valid values: 0: No; 1: Yes.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TermCycle",
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         }
@@ -1528,7 +1538,7 @@
         },
         {
           "default": "",
-          "document": "Template when sending emails using a template.",
+          "document": "Template parameters for template-based sending. As `Simple` has been disused, `Template` is required.",
           "example": "无",
           "member": "Template",
           "name": "Template",
@@ -1546,7 +1556,7 @@
         },
         {
           "default": "",
-          "document": "Email attachments",
+          "document": "Parameters for the attachments to be sent. The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.",
           "example": "无",
           "member": "Attachment",
           "name": "Attachments",
@@ -1601,6 +1611,7 @@
         {
           "default": "",
           "document": "The `MessageId` field returned by the `SendEmail` API",
+          "example": "qcloudses-30-4123414323-date-20210101094334-syNARhMTbKI1",
           "member": "string",
           "name": "MessageId",
           "required": true,
@@ -1610,6 +1621,7 @@
         {
           "default": "",
           "document": "Recipient email address",
+          "example": "abc@ef.com",
           "member": "string",
           "name": "ToEmailAddress",
           "required": true,
@@ -1619,6 +1631,7 @@
         {
           "default": "",
           "document": "Sender email address",
+          "example": "abc@ef.com",
           "member": "string",
           "name": "FromEmailAddress",
           "required": true,
@@ -1627,7 +1640,8 @@
         },
         {
           "default": "",
-          "document": "Tencent Cloud processing status\n0: Successful.\n1001: Internal system exception.\n1002: Internal system exception.\n1003: Internal system exception.\n1003: Internal system exception.\n1004: Email sending timed out.\n1005: Internal system exception.\n1006: You have sent too many emails to the same address in a short period.\n1007: The email address is in the blocklist.\n1009: Internal system exception.\n1010: The daily email sending limit is exceeded.\n1011: You have no permission to send custom content. Use a template.\n2001: No results were found.\n3007: The template ID is invalid or the template is unavailable.\n3008: Template status exception.\n3009: You have no permission to use this template.\n3010: The format of the `TemplateData` field is incorrect. \n3014: The email cannot be sent because the sender domain is not verified.\n3020: The recipient email address is in the blocklist.\n3024: Failed to precheck the email address format.\n3030: Email sending is restricted temporarily due to high bounce rate.\n3033: The account has insufficient balance or overdue payment.",
+          "document": "Tencent Cloud processing status\n0: Successful.\n1001: Internal system exception.\n1002: Internal system exception.\n1003: Internal system exception.\n1003: Internal system exception.\n1004: Email sending timed out.\n1005: Internal system exception.\n1006: You have sent too many emails to the same address in a short period.\n1007: The email address is in the blocklist.\n1008: The sender domain is rejected by the recipient.\n1009: Internal system exception.\n1010: The daily email sending limit is exceeded.\n1011: You have no permission to send custom content. Use a template.\n1013: The sender domain is unsubscribed from by the recipient.\n2001: No results were found.\n3007: The template ID is invalid or the template is unavailable.\n3008: The sender domain is temporarily blocked by the recipient domain.\n3009: You have no permission to use this template.\n3010: The format of the `TemplateData` field is incorrect. \n3014: The email cannot be sent because the sender domain is not verified.\n3020: The recipient email address is in the blocklist.\n3024: Failed to precheck the email address format.\n3030: Email sending is restricted temporarily due to a high bounce rate.\n3033: The account has insufficient balance or overdue payment.",
+          "example": "0",
           "member": "int64",
           "name": "SendStatus",
           "required": true,
@@ -1637,6 +1651,7 @@
         {
           "default": "",
           "document": "Recipient processing status\n0: Tencent Cloud has accepted the request and added it to the send queue.\n1: The email is delivered successfully. `DeliverTime` indicates the time when the email is delivered successfully.\n2: The email is discarded. `DeliverMessage` indicates the reason for discarding.\n3: The recipient's ESP rejects the email, probably because the email address does not exist or due to other reasons.\n8: The email is delayed by the ESP. `DeliverMessage` indicates the reason for delay.",
+          "example": "0",
           "member": "int64",
           "name": "DeliverStatus",
           "required": true,
@@ -1646,6 +1661,7 @@
         {
           "default": "",
           "document": "Description of the recipient processing status",
+          "example": "无",
           "member": "string",
           "name": "DeliverMessage",
           "required": true,
@@ -1655,6 +1671,7 @@
         {
           "default": "",
           "document": "Timestamp when the request arrives at Tencent Cloud",
+          "example": "1609831698",
           "member": "int64",
           "name": "RequestTime",
           "required": true,
@@ -1664,6 +1681,7 @@
         {
           "default": "",
           "document": "Timestamp when Tencent Cloud delivers the email",
+          "example": "1609831698",
           "member": "int64",
           "name": "DeliverTime",
           "required": true,
@@ -1673,6 +1691,7 @@
         {
           "default": "",
           "document": "Whether the recipient has opened the email",
+          "example": "true",
           "member": "bool",
           "name": "UserOpened",
           "required": true,
@@ -1682,6 +1701,7 @@
         {
           "default": "",
           "document": "Whether the recipient has clicked the links in the email",
+          "example": "true",
           "member": "bool",
           "name": "UserClicked",
           "required": true,
@@ -1691,6 +1711,7 @@
         {
           "default": "",
           "document": "Whether the recipient has unsubscribed from the email sent by the sender",
+          "example": "true",
           "member": "bool",
           "name": "UserUnsubscribed",
           "required": true,
@@ -1700,6 +1721,7 @@
         {
           "default": "",
           "document": "Whether the recipient has reported the sender",
+          "example": "true",
           "member": "bool",
           "name": "UserComplainted",
           "required": true,

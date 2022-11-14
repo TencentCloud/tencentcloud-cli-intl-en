@@ -25,6 +25,8 @@ include tccli/services/cdn/v20180606/api.json
 include tccli/services/cdn/v20180606/examples.json
 include tccli/services/cfs/v20190719/api.json
 include tccli/services/cfs/v20190719/examples.json
+include tccli/services/cfw/v20190904/api.json
+include tccli/services/cfw/v20190904/examples.json
 include tccli/services/chdfs/v20201112/api.json
 include tccli/services/chdfs/v20201112/examples.json
 include tccli/services/ciam/v20220331/api.json

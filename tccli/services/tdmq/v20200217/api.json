@@ -264,6 +264,18 @@
       "name": "Obtains the list of producer information",
       "output": "DescribePublishersResponse"
     },
+    "DescribeRabbitMQNodeList": {
+      "document": "This API is used to query the list of TDMQ for RabbitMQ exclusive cluster nodes.",
+      "input": "DescribeRabbitMQNodeListRequest",
+      "name": "Queries the list of TDMQ for RabbitMQ exclusive cluster nodes",
+      "output": "DescribeRabbitMQNodeListResponse"
+    },
+    "DescribeRabbitMQVipInstances": {
+      "document": "This API is used to query the list of the purchased TDMQ for RabbitMQ exclusive instances.",
+      "input": "DescribeRabbitMQVipInstancesRequest",
+      "name": "Queries the list of the purchased TDMQ for RabbitMQ exclusive instances",
+      "output": "DescribeRabbitMQVipInstancesResponse"
+    },
     "DescribeRocketMQCluster": {
       "document": "This API is used to get the information of a specific RocketMQ cluster.",
       "input": "DescribeRocketMQClusterRequest",
@@ -453,7 +465,7 @@
   },
   "metadata": {
     "apiVersion": "2020-02-17",
-    "serviceNameCN": "分布式消息队列",
+    "serviceNameCN": "消息队列 TDMQ",
     "serviceShortName": "tdmq"
   },
   "objects": {
@@ -2609,7 +2621,7 @@
         },
         {
           "default": "",
-          "document": "Subscriber name, which can contain up to 150 letters, digits, hyphens, and underscores.",
+          "document": "Subscriber name, which can contain up to 128 characters.",
           "example": "cloud_sub",
           "member": "string",
           "name": "SubscriptionName",
@@ -4404,6 +4416,132 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQNodeListRequest": {
+      "document": "DescribeRabbitMQNodeList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "TDMQ for RabbitMQ cluster ID",
+          "example": "amqp-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The maximum entries per page",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQNodeListResponse": {
+      "document": "DescribeRabbitMQNodeList response structure.",
+      "members": [
+        {
+          "document": "The number of clusters",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Cluster list\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "RabbitMQPrivateNode",
+          "name": "NodeList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQVipInstancesRequest": {
+      "document": "DescribeRabbitMQVipInstances request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Query condition filter",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of queried items, which defaults to 20.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Start offset for query",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQVipInstancesResponse": {
+      "document": "DescribeRabbitMQVipInstances response structure.",
+      "members": [
+        {
+          "document": "The total number of unpaginated items",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Instance information list",
+          "example": "无",
+          "member": "RabbitMQVipInstance",
+          "name": "Instances",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -6594,6 +6732,168 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQPrivateNode": {
+      "document": "TDMQ for RabbitMQ node information",
+      "members": [
+        {
+          "default": "",
+          "document": "Node name\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "node-xx",
+          "member": "string",
+          "name": "NodeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQVipInstance": {
+      "document": "TDMQ for RabbitMQ exclusive instance information",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "amqp-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance name",
+          "example": "abc",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance version\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "4.9.3",
+          "member": "string",
+          "name": "InstanceVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance status. Valid values: `0` (Creating), `1` (Normal), `2` (Isolated), `3` (Terminated), `4` (Abnormal), `5` (Delivery failed).",
+          "example": "0",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of nodes",
+          "example": "5",
+          "member": "uint64",
+          "name": "NodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance specification name",
+          "example": "基础型",
+          "member": "string",
+          "name": "ConfigDisplay",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Peak TPS",
+          "example": "10000",
+          "member": "uint64",
+          "name": "MaxTps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Peak bandwidth in Mbps",
+          "example": "1200",
+          "member": "uint64",
+          "name": "MaxBandWidth",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage capacity in GB",
+          "example": "100",
+          "member": "uint64",
+          "name": "MaxStorage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance expiration time in milliseconds",
+          "example": "100000",
+          "member": "uint64",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Renewal mode. Valid values: `0` (Manual renewal, which is the default mode), `1` (Auto-renewal), `2` (Manual renewal, which is specified by users).",
+          "example": "0",
+          "member": "uint64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Payment mode. `0`: Postpaid; `1`: Prepaid.",
+          "example": "0",
+          "member": "uint64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Remarks\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance specification ID",
+          "example": "vip-basic-1",
+          "member": "string",
+          "name": "SpecName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
