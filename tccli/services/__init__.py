@@ -148,6 +148,9 @@ SERVICE_VERSIONS = {
     "ims": [
         "2020-12-29"
     ],
+    "intlpartnersmgt": [
+        "2022-09-28"
+    ],
     "iotcloud": [
         "2021-04-08"
     ],

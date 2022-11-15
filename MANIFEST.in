@@ -93,6 +93,8 @@ include tccli/services/iai/v20200303/api.json
 include tccli/services/iai/v20200303/examples.json
 include tccli/services/ims/v20201229/api.json
 include tccli/services/ims/v20201229/examples.json
+include tccli/services/intlpartnersmgt/v20220928/api.json
+include tccli/services/intlpartnersmgt/v20220928/examples.json
 include tccli/services/iotcloud/v20210408/api.json
 include tccli/services/iotcloud/v20210408/examples.json
 include tccli/services/ip/v20210409/api.json

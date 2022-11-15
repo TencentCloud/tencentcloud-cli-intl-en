@@ -924,11 +924,20 @@
         },
         {
           "document": "Template status. Valid values: `0` (approved); `1` (pending approval); `2` (rejected).",
-          "example": "0",
+          "example": "1",
           "member": "uint64",
           "name": "TemplateStatus",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Template name",
+          "example": "模板名称",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
