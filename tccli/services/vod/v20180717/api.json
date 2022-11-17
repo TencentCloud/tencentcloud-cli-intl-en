@@ -15289,6 +15289,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -15298,6 +15299,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -15307,6 +15309,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -15316,6 +15319,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -15324,7 +15328,18 @@
         },
         {
           "default": "",
+          "document": "The progress of the adaptive bitrate task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Input of adaptive bitrate streaming task.",
+          "example": "无",
           "member": "AdaptiveDynamicStreamingTaskInput",
           "name": "Input",
           "required": true,
@@ -15334,6 +15349,7 @@
         {
           "default": "",
           "document": "Output of adaptive bitrate streaming task.",
+          "example": "无",
           "member": "AdaptiveDynamicStreamingInfoItem",
           "name": "Output",
           "required": true,
@@ -23155,7 +23171,8 @@
       "members": [
         {
           "default": "",
-          "document": "Storage region.",
+          "document": "The storage region.",
+          "example": "无",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -23164,7 +23181,8 @@
         },
         {
           "default": "",
-          "document": "Description of the storage region.",
+          "document": "The description of the storage region.",
+          "example": "无",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -23174,6 +23192,7 @@
         {
           "default": "",
           "document": "Whether storage is enabled in the region. Valid values:\n<li>opened: Enabled</li>\n<li>unopened: Not enabled</li>",
+          "example": "opened",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -23183,10 +23202,21 @@
         {
           "default": "",
           "document": "Whether the region is the default storage region. Valid values: true, false.",
+          "example": "true",
           "member": "bool",
           "name": "IsDefault",
           "required": true,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the storage region is inside or outside the Chinese mainland. Valid values:\n<li>Chinese Mainland</li>\n<li>Outside Chinese Mainland</li>",
+          "example": "Chinese Mainland",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

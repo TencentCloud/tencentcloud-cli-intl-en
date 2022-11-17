@@ -80,6 +80,14 @@
         "title": "Deleting an ACL"
       }
     ],
+    "DeleteInstancePre": [
+      {
+        "document": "This example shows you how to delete a monthly subscribed (prepaid) instance.",
+        "input": "https://ckafka.tencentcloudapi.com/?Action=DeleteInstancePre\n&InstanceId=ckafka-xxxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"DeleteRouteTimestamp\": \"xx\",\n            \"ReturnMessage\": \"xx\",\n            \"ReturnCode\": \"xx\",\n            \"Data\": {\n                \"InstanceId\": \"xx\",\n                \"FlowId\": 0,\n                \"DealNames\": [\n                    \"1111111111\"\n                ]\n            }\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Deleting a monthly subscribed (prepaid) instance"
+      }
+    ],
     "DeleteRoute": [
       {
         "document": "",

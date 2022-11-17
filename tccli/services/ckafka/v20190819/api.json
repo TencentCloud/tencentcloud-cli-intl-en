@@ -60,6 +60,12 @@
       "name": "Deletes ACL",
       "output": "DeleteAclResponse"
     },
+    "DeleteInstancePre": {
+      "document": "This API is used to delete a monthly subscribed (prepaid) instance.",
+      "input": "DeleteInstancePreRequest",
+      "name": "Deletes a monthly subscribed (prepaid) instance",
+      "output": "DeleteInstancePreResponse"
+    },
     "DeleteRoute": {
       "document": "This API is used to delete a route.",
       "input": "DeleteRouteRequest",
@@ -1934,6 +1940,42 @@
           "document": "Returned result",
           "member": "JgwOperateResponse",
           "name": "Result",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstancePreRequest": {
+      "document": "DeleteInstancePre request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "ckafka-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstancePreResponse": {
+      "document": "DeleteInstancePre response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "example": "data",
+          "member": "CreateInstancePreResp",
+          "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },

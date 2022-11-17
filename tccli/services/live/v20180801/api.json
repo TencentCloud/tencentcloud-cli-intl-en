@@ -1835,7 +1835,7 @@
       "members": [
         {
           "default": "",
-          "document": "The source type. Valid values:\nPullLivePushLive: Live streaming\nPullVodPushLive: Video files",
+          "document": "The source type. Valid values:\nPullLivePushLive: Live streaming\nPullVodPushLive: Video files\nPullPicPushLive: Images",
           "example": "PullLivePushLive",
           "member": "string",
           "name": "SourceType",
@@ -2003,6 +2003,15 @@
           "name": "WatermarkList",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to use local mode when the source type is video files. The default is `0`.\n0: Do not use local mode\n1: Use local mode\nNote: If you enable local mode, MP4 files will be downloaded to local storage, and the local files will be used for push. This ensures more reliable push. Pushing a local file will incur additional fees.",
+          "example": "0",
+          "member": "int64",
+          "name": "VodLocalMode",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -7598,7 +7607,7 @@
         },
         {
           "default": "",
-          "document": "The backup source type.\nPullLivePushLive: Live streaming\nPullVodPushLive: Video files\nNotes:\n1. Backup sources are supported only if the primary source type is live streaming.\n2. When pull from the primary source is interrupted, the system will pull from the backup source.\n3. If the backup source is a video file, each time the video is finished, the system will check if the primary source is recovered and will switch back if it is.",
+          "document": "The backup source type.\nPullLivePushLive: Live streaming\nPullVodPushLive: Video files\nNotes:\n1. Backup sources are supported only if the primary source type is live streaming.\n2. Leaving this parameter empty will reset the backup source.\n3. When pull from the primary source is interrupted, the system will pull from the backup source.\n4. If the backup source is a video file, each time the video is finished, the system will check if the primary source is recovered and will switch back if it is.",
           "example": "PullLivePushLive",
           "member": "string",
           "name": "BackupSourceType",
@@ -7622,6 +7631,15 @@
           "name": "WatermarkList",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to use local mode when the source type is video files. The default is `0`.\n0: Do not use local mode\n1: Use local mode\nNote: If you enable local mode, MP4 files will be downloaded to local storage, and the local files will be used for push. This ensures more reliable push. Pushing a local file will incur additional fees.",
+          "example": "0",
+          "member": "int64",
+          "name": "VodLocalMode",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -8476,7 +8494,7 @@
         },
         {
           "default": "",
-          "document": "The source type. Valid values:\nPullLivePushLive: Live streaming\nPullVodPushLive: Video files",
+          "document": "The source type. Valid values:\nPullLivePushLive: Live streaming\nPullVodPushLive: Video files\nPullPicPushLive: Images",
           "example": "PullLivePushLive",
           "member": "string",
           "name": "SourceType",
@@ -8722,6 +8740,16 @@
           "name": "WatermarkList",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to use local mode when the source type is video files. The default is `0`.\n0: Do not use local mode\n1: Use local mode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "VodLocalMode",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

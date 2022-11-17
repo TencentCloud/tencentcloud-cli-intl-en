@@ -667,8 +667,8 @@
     "DescribeStorageRegions": [
       {
         "document": "",
-        "input": "https://vod.tencentcloudapi.com/?Action=DescribeStorageRegions\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"requestId\",\n        \"StorageRegionInfos\": [\n            {\n                \"Region\": \"ap-chongqing\",\n                \"Description\": \"Chongqing\",\n                \"Status\": \"opened\",\n                \"IsDefault\": true\n            }\n        ]\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStorageRegions\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"requestId\",\n        \"StorageRegionInfos\": [\n            {\n                \"Region\": \"ap-chongqing\",\n                \"Description\": \"Chongqing\",\n                \"Status\": \"opened\",\n                \"IsDefault\": true,\n                \"Area\": \"Chinese Mainland\"\n            }\n        ]\n    }\n}",
         "title": "Querying storage regions"
       }
     ],
