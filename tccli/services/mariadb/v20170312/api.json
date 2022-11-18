@@ -127,7 +127,7 @@
       "output": "DescribeInstanceNodeInfoResponse"
     },
     "DescribeLogFileRetentionPeriod": {
-      "document": "This API is used to view the configured number of days for retention of database backup logs.",
+      "document": "This API is used to view the backup log retention days.",
       "input": "DescribeLogFileRetentionPeriodRequest",
       "name": "Views backup log retention days",
       "output": "DescribeLogFileRetentionPeriodResponse"
@@ -167,6 +167,18 @@
       "input": "GrantAccountPrivilegesRequest",
       "name": "Sets account permissions",
       "output": "GrantAccountPrivilegesResponse"
+    },
+    "IsolateDBInstance": {
+      "document": "This API is used to isolate a monthly subscribed TencentDB instance, which will no longer be accessible via IP and port. The isolated instance can be started up in the recycle bin. If it is isolated due to overdue payments, top up your account as soon as possible.",
+      "input": "IsolateDBInstanceRequest",
+      "name": "Isolates a monthly subscribed TencentDB instance",
+      "output": "IsolateDBInstanceResponse"
+    },
+    "IsolateDedicatedDBInstance": {
+      "document": "This API is used to isolate a dedicated TencentDB instance.",
+      "input": "IsolateDedicatedDBInstanceRequest",
+      "name": "Isolates a dedicated TencentDB instance",
+      "output": "IsolateDedicatedDBInstanceResponse"
     },
     "ModifyAccountDescription": {
       "document": "This API is used to modify the remarks of a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts.",
@@ -227,6 +239,12 @@
       "input": "ResetAccountPasswordRequest",
       "name": "Resets account password",
       "output": "ResetAccountPasswordResponse"
+    },
+    "TerminateDedicatedDBInstance": {
+      "document": "This API is used to terminate the isolated dedicated TencentDB instance.",
+      "input": "TerminateDedicatedDBInstanceRequest",
+      "name": "Terminates the dedicated TencentDB instance",
+      "output": "TerminateDedicatedDBInstanceResponse"
     }
   },
   "metadata": {
@@ -3018,7 +3036,8 @@
       "members": [
         {
           "default": "",
-          "document": "Instance ID in the format of `tdsql-ow728lmc`.",
+          "document": "Instance ID in the format of `tdsql-ow728lmc`",
+          "example": "tdsql-ige1a5k3",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3031,16 +3050,20 @@
       "document": "DescribeLogFileRetentionPeriod response structure.",
       "members": [
         {
-          "document": "Instance ID in the format of `tdsql-ow728lmc`.",
+          "document": "Instance ID in the format of `tdsql-ow728lmc`",
+          "example": "tdsql-ige1a5k3",
           "member": "string",
           "name": "InstanceId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Backup log retention days",
+          "example": "30",
           "member": "uint64",
           "name": "Days",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3398,6 +3421,78 @@
     },
     "GrantAccountPrivilegesResponse": {
       "document": "GrantAccountPrivileges response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateDBInstanceRequest": {
+      "document": "IsolateDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `tdsql-dasjkhd`. It is the same as the instance ID displayed on the TencentDB console. You can use the `DescribeDBInstances` API to query the ID, which is the value of the `InstanceId` output parameter.",
+          "example": "tdsql-dasjkhd",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateDBInstanceResponse": {
+      "document": "IsolateDBInstance response structure.",
+      "members": [
+        {
+          "document": "IDs of isolated instances",
+          "example": "[]",
+          "member": "string",
+          "name": "SuccessInstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IDs of instances failed to be isolated",
+          "example": "[]",
+          "member": "string",
+          "name": "FailedInstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateDedicatedDBInstanceRequest": {
+      "document": "IsolateDedicatedDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `tdsql-ow728lmc`",
+          "example": "tdsql-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateDedicatedDBInstanceResponse": {
+      "document": "IsolateDedicatedDBInstance response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4599,6 +4694,42 @@
         }
       ],
       "usage": "in"
+    },
+    "TerminateDedicatedDBInstanceRequest": {
+      "document": "TerminateDedicatedDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `tdsql-ow728lmc`",
+          "example": "tdsql-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateDedicatedDBInstanceResponse": {
+      "document": "TerminateDedicatedDBInstance response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "11",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ViewPrivileges": {
       "document": "View permission information",

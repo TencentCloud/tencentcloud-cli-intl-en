@@ -192,6 +192,12 @@
       "name": "Initializes instance",
       "output": "InitDCDBInstancesResponse"
     },
+    "IsolateDedicatedDBInstance": {
+      "document": "This API is used to isolate a dedicated TencentDB instance.",
+      "input": "IsolateDedicatedDBInstanceRequest",
+      "name": "Isolates a dedicated TencentDB instance",
+      "output": "IsolateDedicatedDBInstanceResponse"
+    },
     "IsolateHourDCDBInstance": {
       "document": "This API is used to isolate pay-as-you-go TDSQL for MySQL instances.",
       "input": "IsolateHourDCDBInstanceRequest",
@@ -263,6 +269,12 @@
       "input": "SwitchDBInstanceHARequest",
       "name": "Starts a source-replica switch of instances",
       "output": "SwitchDBInstanceHAResponse"
+    },
+    "TerminateDedicatedDBInstance": {
+      "document": "This API is used to terminate the isolated dedicated TDSQL instance.",
+      "input": "TerminateDedicatedDBInstanceRequest",
+      "name": "Terminates the dedicated TDSQL instance",
+      "output": "TerminateDedicatedDBInstanceResponse"
     }
   },
   "metadata": {
@@ -3856,6 +3868,33 @@
       ],
       "type": "object"
     },
+    "IsolateDedicatedDBInstanceRequest": {
+      "document": "IsolateDedicatedDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `dcdbt-ow728lmc`",
+          "example": "tdsql-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateDedicatedDBInstanceResponse": {
+      "document": "IsolateDedicatedDBInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "IsolateHourDCDBInstanceRequest": {
       "document": "IsolateHourDCDBInstance request structure.",
       "members": [
@@ -5080,6 +5119,42 @@
         }
       ],
       "usage": "out"
+    },
+    "TerminateDedicatedDBInstanceRequest": {
+      "document": "TerminateDedicatedDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of `dcdbt-ow728lmc`",
+          "example": "tdsql-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateDedicatedDBInstanceResponse": {
+      "document": "TerminateDedicatedDBInstance response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "11",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     }
   },
   "version": "1.0"

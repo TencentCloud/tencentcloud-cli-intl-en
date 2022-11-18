@@ -171,7 +171,7 @@
     "DescribeLogFileRetentionPeriod": [
       {
         "document": "",
-        "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeLogFileRetentionPeriod\r\n&InstanceId=tdsql-ige1a5k3\r\n&<Common request parameters>",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=DescribeLogFileRetentionPeriod\n&InstanceId=tdsql-ige1a5k3\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"InstanceId\": \"tdsql-ige1a5k3\",\n        \"Days\": 30,\n        \"RequestId\": \"87e86e78-340f-48f3-a84b-a42517d7aa46\"\n    }\n}",
         "title": "Viewing backup log retention days"
       }
@@ -222,6 +222,22 @@
         "input": "https://mariadb.tencentcloudapi.com/?Action=GrantAccountPrivileges\n&InstanceId=tdsql-fdpjf5zh\n&UserName=testuser1\n&Host=172.17.%\n&DbName=*\n&Type=*\n&Privileges.0=select\n&Privileges.1=update\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"87201772-351f-4fb5-9164-fe757fbadb79\"\n    }\n}",
         "title": "Granting permissions to a TencentDB account"
+      }
+    ],
+    "IsolateDBInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IsolateDBInstance\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"tdsql-cq3ndzu7\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"FailedInstanceIds\": [],\n        \"RequestId\": \"15eec42b-2c7b-410b-8efc-46da52e217a9\",\n        \"SuccessInstanceIds\": [\n            \"tdsql-cq3ndzu7\"\n        ]\n    }\n}",
+        "title": "Isolating a monthly subscribed TencentDB instance"
+      }
+    ],
+    "IsolateDedicatedDBInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IsolateDedicatedDBInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql-xxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\"\n    }\n}",
+        "title": "None"
       }
     ],
     "ModifyAccountDescription": [
@@ -302,6 +318,14 @@
         "input": "https://mariadb.tencentcloudapi.com/?Action=ResetAccountPassword\n&InstanceId=tdsql-fdpjf5zh\n&UserName=testuser1\n&Host=172.17.%\n&Password=abcd8765_.\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7b1680d-db03-4f20-8684-a865ce7bcd38\"\n    }\n}",
         "title": "Modifying the password of a TencentDB account"
+      }
+    ],
+    "TerminateDedicatedDBInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TerminateDedicatedDBInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql-lyzax5rb\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 1,\n        \"RequestId\": \"5d6581df-7914-46e5-9693-0663617c756e\"\n    }\n}",
+        "title": "None"
       }
     ]
   },

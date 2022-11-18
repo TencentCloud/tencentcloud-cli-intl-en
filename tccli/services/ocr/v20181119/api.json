@@ -540,92 +540,118 @@
       "members": [
         {
           "document": "Name in Chinese",
+          "example": "申能",
           "member": "string",
           "name": "CnName",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Name in English",
+          "example": "SAN, Nan",
           "member": "string",
           "name": "EnName",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Telecode for the name in Chinese",
+          "example": "300000000000",
           "member": "string",
           "name": "TelexCode",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Gender. Valid values: Male, Female",
+          "example": "女F",
           "member": "string",
           "name": "Sex",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Date of birth",
+          "example": "01-01-2001",
           "member": "string",
           "name": "Birthday",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Permanent identity card.\n0: non-permanent;\n1: permanent;\n-1: unknown.",
+          "example": "1",
           "member": "int64",
           "name": "Permanent",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "document": "Identity card number",
+          "example": "C000000(E)",
           "member": "string",
           "name": "IdNum",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Document symbol, i.e., the symbol under the date of birth, such as \"***AZ\"",
+          "example": "***AZ",
           "member": "string",
           "name": "Symbol",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "First issue date",
+          "example": "(09-99)",
           "member": "string",
           "name": "FirstIssueDate",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Last receipt date",
+          "example": "23-09-10",
           "member": "string",
           "name": "CurrentIssueDate",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "document": "Authenticity check.\n0: unable to judge (because the image is blurred, incomplete, reflective, too dark, etc.);\n1: forged;\n2: authentic.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "FakeDetectResult",
+          "required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "document": "Base64-encoded identity photo\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
           "member": "string",
           "name": "HeadImage",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "Multiple alarm codes. If the ID card is spoofed, photocopied, or doctored, the corresponding alarm code will be returned.\n-9102: alarm for photocopied document\n-9103: alarm for spoofed document\n-9104: alarm for doctored document\n-9105: alarm for forged document",
+          "document": "Multiple alarm codes. If the ID card is spoofed, photocopied, or photoshopped, the corresponding alarm code will be returned.\n-9102: Alarm for photocopied document\n-9103: Alarm for spoofed document\n-9104: Alarm for photoshopped document",
+          "example": "[-9102,-9103]",
           "member": "int64",
           "name": "WarningCode",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -895,7 +921,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Alarm code\n-9103 Alarm for spoofed card\n-9102 Alarm for photocopied card\n-9106 Alarm for covered card",
+          "document": "Alarm codes\n-9103 Alarm for spoofed document\n-9102 Alarm for photocopied document (including black & white and color ones)\n-9106 Alarm for covered card",
           "example": "[]",
           "member": "int64",
           "name": "Warn",

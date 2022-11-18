@@ -27,9 +27,9 @@
     "HKIDCardOCR": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: HKIDCardOCR\n<Common request parameters>\n\n{\n    \"DetectFake\": \"true\",\n    \"ReturnHeadImage\": \"false\",\n    \"ImageUrl\": \"https://xx/a.jpg\"\n}",
-        "output": "{\n    \"Response\": {\n        \"CnName\": \"申能\",\n        \"EnName\": \"SAN, Nan\",\n        \"TelexCode\": \"300000000000\",\n        \"Sex\": \"女F\",\n        \"Birthday\": \"01-01-2001\",\n        \"Permanent\": 1,\n        \"IdNum\": \"C000000(E)\",\n        \"Symbol\": \"***AZ\",\n        \"FirstIssueDate\": \"(09-99)\",\n        \"CurrentIssueDate\": \"23-09-10\",\n        \"FakeDetectResult\": 1,\n        \"WarningCode\": [\n            -9102,\n            -9103\n        ],\n        \"HeadImage\": \"xx\",\n        \"RequestId\": \"fba1c9ad-aeb3-4418-9ecf-80ab1b5fc875\"\n    }\n}",
-        "title": "Recognizing a Hong Kong (China) identity card"
+        "input": "https://ocr.tencentcloudapi.com/?Action=HKIDCardOCR\r\n&ImageUrl=https://xx/a.jpg &DetectFake=true&ReturnHeadImage=false\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"CnName\": \"申能\",\n        \"EnName\": \"SAN, Nan\",\n        \"TelexCode\": \"300000000000\",\n        \"Sex\": \"女F\",\n        \"Birthday\": \"01-01-2001\",\n        \"Permanent\": 1,\n        \"IdNum\": \"C000000(E)\",\n        \"Symbol\": \"***AZ\",\n        \"FirstIssueDate\": \"(09-99)\",\n        \"CurrentIssueDate\": \"23-09-10\",\n        \"FakeDetectResult\": 1,\n        \"WarningCode\": [\n            -9102,\n            -9103\n        ],\n        \"RequestId\": \"fba1c9ad-aeb3-4418-9ecf-80ab1b5fc875\"\n    }\n}",
+        "title": "Recognizing Hong Kong (China) identity card"
       }
     ],
     "MLIDCardOCR": [

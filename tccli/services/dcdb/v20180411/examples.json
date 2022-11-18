@@ -256,6 +256,14 @@
         "title": "Initializing TencentDB instances in batches"
       }
     ],
+    "IsolateDedicatedDBInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dcdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IsolateDedicatedDBInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql-xxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "None"
+      }
+    ],
     "IsolateHourDCDBInstance": [
       {
         "document": "",
@@ -350,6 +358,14 @@
         "input": "https://dcdb.tencentcloudapi.com/?Action=SwitchDBInstanceHA\n&InstanceId=tdsql-f35wr6wj\n&Zone=ap-guangzhou-1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"FlowId\": 145623\n    }\n}",
         "title": "Sample request"
+      }
+    ],
+    "TerminateDedicatedDBInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dcdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TerminateDedicatedDBInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"dcdbt-lyzax5rb\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5d6581df-7914-46e5-9693-0663617c756e\",\n        \"FlowId\": 1\n    }\n}",
+        "title": "None"
       }
     ]
   },

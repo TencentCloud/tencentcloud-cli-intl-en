@@ -31,15 +31,15 @@
       "output": "QueryCreditByUinListResponse"
     },
     "QueryCustomersCredit": {
-      "document": "This API is used for a partner to query a customer's credit and basic information.",
+      "document": "This API is used for a partner to the credits and basic information of cutomers.",
       "input": "QueryCustomersCreditRequest",
-      "name": "Queries a customer's credit",
+      "name": "Queries the credits of customers",
       "output": "QueryCustomersCreditResponse"
     },
     "QueryDirectCustomersCredit": {
-      "document": "This API is used to query a customer’s credit.",
+      "document": "This API is used to query the credits of direct customers.",
       "input": "QueryDirectCustomersCreditRequest",
-      "name": "Queries a customer’s credit",
+      "name": "Queries the credits of direct customers",
       "output": "QueryDirectCustomersCreditResponse"
     },
     "QueryPartnerCredit": {
@@ -215,7 +215,7 @@
         },
         {
           "default": "",
-          "document": "Customer’s country/region code, which can be obtained via the `GetCountryCodes` API, such as “852”.",
+          "document": "Customer's country/region code, which can be obtained via the `GetCountryCodes` API, such as \"852\".",
           "example": "852",
           "member": "string",
           "name": "CountryCode",
@@ -224,7 +224,7 @@
         },
         {
           "default": "",
-          "document": "Customer’s ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.",
+          "document": "Customer's ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.",
           "example": "HK",
           "member": "string",
           "name": "Area",
@@ -653,7 +653,7 @@
       "type": "object"
     },
     "QueryDirectCustomersCreditData": {
-      "document": "A customer’s credit information",
+      "document": "The credit information of direct customers",
       "members": [
         {
           "default": "",
@@ -697,7 +697,7 @@
       "document": "QueryDirectCustomersCredit response structure.",
       "members": [
         {
-          "document": "Customer information list",
+          "document": "Direct customer information list",
           "example": "{...}",
           "member": "QueryDirectCustomersCreditData",
           "name": "Data",
