@@ -367,13 +367,13 @@
       "output": "ParseNotificationResponse"
     },
     "ProcessLiveStream": {
-      "document": "This API is used to initiate live stream processing tasks. Such tasks may include the following:\n\n* Intelligent content moderation (detection of pornographic content in images and speech, detection of sensitive information)\n* Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)\n\nLive stream processing event notifications are written into specified CMQ queues in real time. Users need to obtain event notification results from such CMQ queues. Output files of the processing tasks are written into destination buckets specified by users.",
+      "document": "This API is used to initiate live stream processing tasks. Such tasks may include the following:\n\n* Intelligent content moderation (detection of pornographic content in images and audio, detection of sensitive information)\n* Intelligent content recognition (face, full text, text keyword, and speech keyword recognition; real-time speech translation)\n\nLive stream processing notifications are written into the specified CMQ queue in real time. You need to obtain the processing results from the CMQ queue. The output files of processing tasks are saved to the specified bucket.",
       "input": "ProcessLiveStreamRequest",
       "name": "Initiates a live stream processing task",
       "output": "ProcessLiveStreamResponse"
     },
     "ProcessMedia": {
-      "document": "This API is used to initiate processing tasks for media files in COS. Such tasks may include the following:\n1. Video transcoding (with watermark)\n2. Animated image generating\n3. Time point screencapturing\n4. Sampled screencapturing\n5. Image sprite generating\n6. Adaptive bitrate streaming\n7. Intelligent content moderation (detection of pornographic and sensitive content)\n8. Intelligent content analysis (labeling, categorization, thumbnail generation, frame-specific labeling)\n9. Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)",
+      "document": "This API is used to initiate processing tasks for media specified by a URL or in COS. Such tasks may include the following:\n1. Video transcoding (general transcoding, Top Speed Codec, audio/video enhancement)\n2. Animated image generating\n3. Time point screencapturing\n4. Sampled screencapturing\n5. Image sprite generating\n6. Adaptive bitrate streaming\n7. Intelligent content moderation (detection of pornographic and sensitive content)\n8. Intelligent content analysis (labeling, categorization, thumbnail generation, labeling by frame, splitting, highlight generation, opening and closing segment recognition)\n9. Intelligent content recognition (face, full text, text keyword, full speech, speech keyword, speech translation, object recognition)",
       "input": "ProcessMediaRequest",
       "name": "Starts a media processing task",
       "output": "ProcessMediaResponse"
@@ -387,7 +387,7 @@
   },
   "metadata": {
     "apiVersion": "2019-06-12",
-    "serviceNameCN": "视频处理",
+    "serviceNameCN": "媒体处理",
     "serviceShortName": "mps"
   },
   "objects": {
@@ -1590,7 +1590,8 @@
       "members": [
         {
           "default": "",
-          "document": "Task type. Valid values:\n<li>FaceRecognition: Face recognition,</li>\n<li>AsrWordsRecognition: Speech keyword recognition,</li>\n<li>OcrWordsRecognition: Text keyword recognition,</li>\n<li>AsrFullTextRecognition: Full speech recognition,</li>\n<li>OcrFullTextRecognition: Full text recognition,</li>\n<li>HeadTailRecognition: Video opening and ending credits recognition,</li>\n<li>ObjectRecognition: Object recognition.</li>",
+          "document": "The task type. Valid values:\n<li>FaceRecognition: Face recognition</li>\n<li>AsrWordsRecognition: Speech keyword recognition</li>\n<li>OcrWordsRecognition: Text keyword recognition</li>\n<li>AsrFullTextRecognition: Full speech recognition</li>\n<li>OcrFullTextRecognition: Full text recognition</li>\n<li>TransTextRecognition: Speech translation</li>",
+          "example": "FaceRecognition",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -1600,6 +1601,7 @@
         {
           "default": "",
           "document": "Face recognition result, which is valid when `Type` is \n `FaceRecognition`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiRecognitionTaskFaceResult",
           "name": "FaceTask",
           "required": true,
@@ -1609,6 +1611,7 @@
         {
           "default": "",
           "document": "Speech keyword recognition result, which is valid when `Type` is\n `AsrWordsRecognition`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiRecognitionTaskAsrWordsResult",
           "name": "AsrWordsTask",
           "required": true,
@@ -1618,6 +1621,7 @@
         {
           "default": "",
           "document": "Full speech recognition result, which is valid when `Type` is\n `AsrFullTextRecognition`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiRecognitionTaskAsrFullTextResult",
           "name": "AsrFullTextTask",
           "required": true,
@@ -1627,6 +1631,7 @@
         {
           "default": "",
           "document": "Text keyword recognition result, which is valid when `Type` is\n `OcrWordsRecognition`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiRecognitionTaskOcrWordsResult",
           "name": "OcrWordsTask",
           "required": true,
@@ -1636,8 +1641,19 @@
         {
           "default": "",
           "document": "Full text recognition result, which is valid when `Type` is\n `OcrFullTextRecognition`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
           "member": "AiRecognitionTaskOcrFullTextResult",
           "name": "OcrFullTextTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The translation result. This parameter is valid only if `Type` is\n `TransTextRecognition`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "AiRecognitionTaskTransTextResult",
+          "name": "TransTextTask",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -2562,6 +2578,180 @@
           "name": "AreaCoordSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiRecognitionTaskTransTextResult": {
+      "document": "The translation result.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "NULL",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. An empty string indicates the task is successful; any other value indicates the task has failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "example": "NULL",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error code. `0` indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.",
+          "example": "NULL",
+          "member": "int64",
+          "name": "ErrCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The error message.",
+          "example": "NULL",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The input of the translation task.",
+          "example": "NULL",
+          "member": "AiRecognitionTaskTransTextResultInput",
+          "name": "Input",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The output of the translation task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "AiRecognitionTaskTransTextResultOutput",
+          "name": "Output",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AiRecognitionTaskTransTextResultInput": {
+      "document": "The translation input.",
+      "members": [
+        {
+          "default": "",
+          "document": "The translation template ID.",
+          "example": "123",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiRecognitionTaskTransTextResultOutput": {
+      "document": "The translation result.",
+      "members": [
+        {
+          "default": "",
+          "document": "The translated segments.",
+          "example": "NULL",
+          "member": "AiRecognitionTaskTransTextSegmentItem",
+          "name": "SegmentSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The subtitle URL.",
+          "example": "/xx.webvtt",
+          "member": "string",
+          "name": "SubtitlePath",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The subtitle storage location.",
+          "example": "NULL",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiRecognitionTaskTransTextSegmentItem": {
+      "document": "The translated segments.",
+      "members": [
+        {
+          "default": "",
+          "document": "The confidence score for a segment. Value range: 0-100.",
+          "example": "100",
+          "member": "float",
+          "name": "Confidence",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The start time offset (seconds) of a segment.",
+          "example": "17.45",
+          "member": "float",
+          "name": "StartTimeOffset",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The end time offset (seconds) of a segment.",
+          "example": "29.99",
+          "member": "float",
+          "name": "EndTimeOffset",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The text transcript.",
+          "example": "你好",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The translation.",
+          "example": "Hello",
+          "member": "string",
+          "name": "Trans",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -4358,6 +4548,7 @@
         {
           "default": "",
           "document": "Audio stream codec.\nWhen the outer `Container` parameter is `mp3`, the valid value is:\n<li>libmp3lame.</li>\nWhen the outer `Container` parameter is `ogg` or `flac`, the valid value is:\n<li>flac.</li>\nWhen the outer `Container` parameter is `m4a`, the valid values include:\n<li>libfdk_aac;</li>\n<li>libmp3lame;</li>\n<li>ac3.</li>\nWhen the outer `Container` parameter is `mp4` or `flv`, the valid values include:\n<li>libfdk_aac: More suitable for mp4;</li>\n<li>libmp3lame: More suitable for flv;</li>\n<li>mp2.</li>\nWhen the outer `Container` parameter is `hls`, the valid values include:\n<li>libfdk_aac;</li>\n<li>libmp3lame.</li>",
+          "example": "libmp3lame",
           "member": "string",
           "name": "Codec",
           "required": false,
@@ -4367,6 +4558,7 @@
         {
           "default": "",
           "document": "Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.",
+          "example": "0",
           "member": "uint64",
           "name": "Bitrate",
           "required": false,
@@ -4376,6 +4568,7 @@
         {
           "default": "",
           "document": "Audio stream sample rate. Valid values:\n<li>32,000</li>\n<li>44,100</li>\n<li>48,000</li>\nIn Hz.",
+          "example": "44100",
           "member": "uint64",
           "name": "SampleRate",
           "required": false,
@@ -4385,10 +4578,21 @@
         {
           "default": "",
           "document": "Audio channel system. Valid values:\n<li>1: Mono</li>\n<li>2: Dual</li>\n<li>6: Stereo</li>\nWhen the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound channel cannot be set to stereo.",
+          "example": "2",
           "member": "int64",
           "name": "AudioChannel",
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The audio tracks to retain. All audio tracks are retained by default.",
+          "example": "NULL",
+          "member": "int64",
+          "name": "StreamSelects",
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -5112,6 +5316,7 @@
         {
           "default": "",
           "document": "Sampling type. Valid values:\n<li>Percent: By percent.</li>\n<li>Time: By time interval.</li>",
+          "example": "Percent",
           "member": "string",
           "name": "SampleType",
           "required": true,
@@ -5120,6 +5325,7 @@
         {
           "default": "",
           "document": "Sampling interval.\n<li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>\n<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>",
+          "example": "10",
           "member": "uint64",
           "name": "SampleInterval",
           "required": true,
@@ -5128,6 +5334,7 @@
         {
           "default": "",
           "document": "Subimage row count of an image sprite.",
+          "example": "5",
           "member": "uint64",
           "name": "RowCount",
           "required": true,
@@ -5136,6 +5343,7 @@
         {
           "default": "",
           "document": "Subimage column count of an image sprite.",
+          "example": "10",
           "member": "uint64",
           "name": "ColumnCount",
           "required": true,
@@ -5144,6 +5352,7 @@
         {
           "default": "",
           "document": "Name of an image sprite generating template. Length limit: 64 characters.",
+          "example": "雪碧图模板1",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -5152,6 +5361,7 @@
         {
           "default": "",
           "document": "Subimage width of an image sprite in px. Value range: [128, 4,096].",
+          "example": "54",
           "member": "uint64",
           "name": "Width",
           "required": false,
@@ -5160,6 +5370,7 @@
         {
           "default": "",
           "document": "Subimage height of an image sprite in px. Value range: [128, 4,096].",
+          "example": "96",
           "member": "uint64",
           "name": "Height",
           "required": false,
@@ -5168,6 +5379,7 @@
         {
           "default": "",
           "document": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open.",
+          "example": "open",
           "member": "string",
           "name": "ResolutionAdaptive",
           "required": false,
@@ -5176,6 +5388,7 @@
         {
           "default": "",
           "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\nDefault value: black.",
+          "example": "black ",
           "member": "string",
           "name": "FillType",
           "required": false,
@@ -5184,8 +5397,18 @@
         {
           "default": "",
           "document": "Template description. Length limit: 256 characters.",
+          "example": "测试",
           "member": "string",
           "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The image format. Valid values: jpg (default), png, webp.",
+          "example": "jpg",
+          "member": "string",
+          "name": "Format",
           "required": false,
           "type": "string"
         }
@@ -5289,6 +5512,7 @@
         {
           "default": "",
           "document": "Sampled screencapturing type. Valid values:\n<li>Percent: By percent.</li>\n<li>Time: By time interval.</li>",
+          "example": "Percent",
           "member": "string",
           "name": "SampleType",
           "required": true,
@@ -5297,6 +5521,7 @@
         {
           "default": "",
           "document": "Sampling interval.\n<li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>\n<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>",
+          "example": "10",
           "member": "uint64",
           "name": "SampleInterval",
           "required": true,
@@ -5305,6 +5530,7 @@
         {
           "default": "",
           "document": "Name of a sampled screencapturing template. Length limit: 64 characters.",
+          "example": "采样截图模板1",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -5313,6 +5539,7 @@
         {
           "default": "",
           "document": "Image width in px. Value range: [128, 4,096].",
+          "example": "540",
           "member": "uint64",
           "name": "Width",
           "required": false,
@@ -5321,6 +5548,7 @@
         {
           "default": "",
           "document": "Image height in px. Value range: [128, 4,096].",
+          "example": "960",
           "member": "uint64",
           "name": "Height",
           "required": false,
@@ -5329,6 +5557,7 @@
         {
           "default": "",
           "document": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open.",
+          "example": "open",
           "member": "string",
           "name": "ResolutionAdaptive",
           "required": false,
@@ -5336,7 +5565,8 @@
         },
         {
           "default": "",
-          "document": "Image format. Valid values: jpg; png. Default value: jpg.",
+          "document": "The image format. Valid values: jpg (default), png, webp.",
+          "example": "jpg",
           "member": "string",
           "name": "Format",
           "required": false,
@@ -5345,6 +5575,7 @@
         {
           "default": "",
           "document": "Template description. Length limit: 256 characters.",
+          "example": "测试",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -5353,6 +5584,7 @@
         {
           "default": "",
           "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black.",
+          "example": "black ",
           "member": "string",
           "name": "FillType",
           "required": false,
@@ -5386,6 +5618,7 @@
         {
           "default": "",
           "document": "Name of a time point screencapturing template. Length limit: 64 characters.",
+          "example": "指定时间点截图模板1",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -5394,6 +5627,7 @@
         {
           "default": "",
           "document": "Image width in px. Value range: [128, 4,096].",
+          "example": "540",
           "member": "uint64",
           "name": "Width",
           "required": false,
@@ -5402,6 +5636,7 @@
         {
           "default": "",
           "document": "Image height in px. Value range: [128, 4,096].",
+          "example": "960",
           "member": "uint64",
           "name": "Height",
           "required": false,
@@ -5410,6 +5645,7 @@
         {
           "default": "",
           "document": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open.",
+          "example": "无",
           "member": "string",
           "name": "ResolutionAdaptive",
           "required": false,
@@ -5417,7 +5653,8 @@
         },
         {
           "default": "",
-          "document": "Image format. Valid values: jpg; png. Default value: jpg.",
+          "document": "The image format. Valid values: jpg (default), png, webp.",
+          "example": "jpg",
           "member": "string",
           "name": "Format",
           "required": false,
@@ -5426,6 +5663,7 @@
         {
           "default": "",
           "document": "Template description. Length limit: 256 characters.",
+          "example": "无",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -5434,6 +5672,7 @@
         {
           "default": "",
           "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black.",
+          "example": "无",
           "member": "string",
           "name": "FillType",
           "required": false,
@@ -8005,6 +8244,7 @@
         {
           "default": "",
           "document": "Unique ID of an image sprite generating template.",
+          "example": "0",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -8014,6 +8254,7 @@
         {
           "default": "",
           "document": "Template type. Valid values:\n<li>Preset: Preset template;</li>\n<li>Custom: Custom template.</li>",
+          "example": "“”",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -8023,6 +8264,7 @@
         {
           "default": "",
           "document": "Name of an image sprite generating template.",
+          "example": "“”",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -8032,6 +8274,7 @@
         {
           "default": "",
           "document": "Subimage width of an image sprite.",
+          "example": "0",
           "member": "uint64",
           "name": "Width",
           "required": true,
@@ -8041,6 +8284,7 @@
         {
           "default": "",
           "document": "Subimage height of an image sprite.",
+          "example": "0",
           "member": "uint64",
           "name": "Height",
           "required": true,
@@ -8050,6 +8294,7 @@
         {
           "default": "",
           "document": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open.",
+          "example": "“”",
           "member": "string",
           "name": "ResolutionAdaptive",
           "required": true,
@@ -8059,6 +8304,7 @@
         {
           "default": "",
           "document": "Sampling type.",
+          "example": "“”",
           "member": "string",
           "name": "SampleType",
           "required": true,
@@ -8068,6 +8314,7 @@
         {
           "default": "",
           "document": "Sampling interval.",
+          "example": "0",
           "member": "uint64",
           "name": "SampleInterval",
           "required": true,
@@ -8077,6 +8324,7 @@
         {
           "default": "",
           "document": "Subimage row count of an image sprite.",
+          "example": "0",
           "member": "uint64",
           "name": "RowCount",
           "required": true,
@@ -8086,6 +8334,7 @@
         {
           "default": "",
           "document": "Subimage column count of an image sprite.",
+          "example": "0",
           "member": "uint64",
           "name": "ColumnCount",
           "required": true,
@@ -8095,6 +8344,7 @@
         {
           "default": "",
           "document": "Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "“”",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -8104,6 +8354,7 @@
         {
           "default": "",
           "document": "Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "“”",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -8113,6 +8364,7 @@
         {
           "default": "",
           "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\nDefault value: black.",
+          "example": "“”",
           "member": "string",
           "name": "FillType",
           "required": true,
@@ -8122,8 +8374,19 @@
         {
           "default": "",
           "document": "Template description.",
+          "example": "“”",
           "member": "string",
           "name": "Comment",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The image format.",
+          "example": "“”",
+          "member": "string",
+          "name": "Format",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8277,7 +8540,8 @@
       "members": [
         {
           "default": "",
-          "document": "Result type. Valid values:\n<li>FaceRecognition: face recognition,</li>\n<li>AsrWordsRecognition: speech keyword recognition,</li>\n<li>OcrWordsRecognition: text keyword recognition,</li>\n<li>AsrFullTextRecognition: full speech recognition,</li>\n<li>OcrFullTextRecognition: full text recognition.</li>",
+          "document": "The result type. Valid values:\n<li>FaceRecognition: Face recognition</li>\n<li>AsrWordsRecognition: Speech keyword recognition</li>\n<li>OcrWordsRecognition: Text keyword recognition</li>\n<li>AsrFullTextRecognition: Full speech recognition</li>\n<li>OcrFullTextRecognition: Full text recognition</li>\n<li>TransTextRecognition: Speech translation</li>",
+          "example": "FaceRecognition",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -8287,6 +8551,7 @@
         {
           "default": "",
           "document": "Face recognition result, which is valid when `Type` is\n`FaceRecognition`.",
+          "example": "NULL",
           "member": "LiveStreamFaceRecognitionResult",
           "name": "FaceRecognitionResultSet",
           "required": true,
@@ -8296,6 +8561,7 @@
         {
           "default": "",
           "document": "Speech keyword recognition result, which is valid when `Type` is\n`AsrWordsRecognition`.",
+          "example": "NULL",
           "member": "LiveStreamAsrWordsRecognitionResult",
           "name": "AsrWordsRecognitionResultSet",
           "required": true,
@@ -8305,6 +8571,7 @@
         {
           "default": "",
           "document": "Text keyword recognition result, which is valid when `Type` is\n`OcrWordsRecognition`.",
+          "example": "NULL",
           "member": "LiveStreamOcrWordsRecognitionResult",
           "name": "OcrWordsRecognitionResultSet",
           "required": true,
@@ -8314,6 +8581,7 @@
         {
           "default": "",
           "document": "Full speech recognition result, which is valid when `Type` is\n`AsrFullTextRecognition`.",
+          "example": "NULL",
           "member": "LiveStreamAsrFullTextRecognitionResult",
           "name": "AsrFullTextRecognitionResultSet",
           "required": true,
@@ -8323,8 +8591,19 @@
         {
           "default": "",
           "document": "Full text recognition result, which is valid when `Type` is\n`OcrFullTextRecognition`.",
+          "example": "NULL",
           "member": "LiveStreamOcrFullTextRecognitionResult",
           "name": "OcrFullTextRecognitionResultSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The translation result. This parameter is valid only if `Type` is `TransTextRecognition`.",
+          "example": "NULL",
+          "member": "LiveStreamTransTextRecognitionResult",
+          "name": "TransTextRecognitionResultSet",
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -9095,6 +9374,62 @@
         }
       ],
       "usage": "both"
+    },
+    "LiveStreamTransTextRecognitionResult": {
+      "document": "The live stream translation result.",
+      "members": [
+        {
+          "default": "",
+          "document": "The text transcript.",
+          "example": "Hello",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The PTS (seconds) of the start of a segment.",
+          "example": "0.0",
+          "member": "float",
+          "name": "StartPtsTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The PTS (seconds) of the end of a segment.",
+          "example": "1.0",
+          "member": "float",
+          "name": "EndPtsTime",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The confidence score for a segment. Value range: 0-100.",
+          "example": "99",
+          "member": "float",
+          "name": "Confidence",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The translation.",
+          "example": "你好",
+          "member": "string",
+          "name": "Trans",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "LowLightEnhanceConfig": {
       "document": "Low-light enhancement configuration.",
@@ -11252,6 +11587,7 @@
         {
           "default": "",
           "document": "Unique ID of an image sprite generating template.",
+          "example": "10001",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -11260,6 +11596,7 @@
         {
           "default": "",
           "document": "Name of an image sprite generating template. Length limit: 64 characters.",
+          "example": "雪碧图模板1",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -11268,6 +11605,7 @@
         {
           "default": "",
           "document": "Subimage width of an image sprite in px. Value range: [128, 4,096].",
+          "example": "54",
           "member": "uint64",
           "name": "Width",
           "required": false,
@@ -11276,6 +11614,7 @@
         {
           "default": "",
           "document": "Subimage height of an image sprite in px. Value range: [128, 4,096].",
+          "example": "96",
           "member": "uint64",
           "name": "Height",
           "required": false,
@@ -11284,6 +11623,7 @@
         {
           "default": "",
           "document": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open.",
+          "example": "open",
           "member": "string",
           "name": "ResolutionAdaptive",
           "required": false,
@@ -11292,6 +11632,7 @@
         {
           "default": "",
           "document": "Sampling type. Valid values:\n<li>Percent: By percent.</li>\n<li>Time: By time interval.</li>",
+          "example": "Percent",
           "member": "string",
           "name": "SampleType",
           "required": false,
@@ -11300,6 +11641,7 @@
         {
           "default": "",
           "document": "Sampling interval.\n<li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>\n<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>",
+          "example": "10",
           "member": "uint64",
           "name": "SampleInterval",
           "required": false,
@@ -11308,6 +11650,7 @@
         {
           "default": "",
           "document": "Subimage row count of an image sprite.",
+          "example": "5",
           "member": "uint64",
           "name": "RowCount",
           "required": false,
@@ -11316,6 +11659,7 @@
         {
           "default": "",
           "document": "Subimage column count of an image sprite.",
+          "example": "10",
           "member": "uint64",
           "name": "ColumnCount",
           "required": false,
@@ -11324,6 +11668,7 @@
         {
           "default": "",
           "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\nDefault value: black.",
+          "example": "black ",
           "member": "string",
           "name": "FillType",
           "required": false,
@@ -11332,8 +11677,18 @@
         {
           "default": "",
           "document": "Template description. Length limit: 256 characters.",
+          "example": "\"\"",
           "member": "string",
           "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The image format. Valid values: jpg, png, webp.",
+          "example": "jpg",
+          "member": "string",
+          "name": "Format",
           "required": false,
           "type": "string"
         }
@@ -11438,6 +11793,7 @@
         {
           "default": "",
           "document": "Unique ID of a sampled screencapturing template.",
+          "example": "10001",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -11446,6 +11802,7 @@
         {
           "default": "",
           "document": "Name of a sampled screencapturing template. Length limit: 64 characters.",
+          "example": "采样截图模板1",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -11454,6 +11811,7 @@
         {
           "default": "",
           "document": "Image width in px. Value range: [128, 4,096].",
+          "example": "540",
           "member": "uint64",
           "name": "Width",
           "required": false,
@@ -11462,6 +11820,7 @@
         {
           "default": "",
           "document": "Image height in px. Value range: [128, 4,096].",
+          "example": "960",
           "member": "uint64",
           "name": "Height",
           "required": false,
@@ -11470,6 +11829,7 @@
         {
           "default": "",
           "document": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open.",
+          "example": "open",
           "member": "string",
           "name": "ResolutionAdaptive",
           "required": false,
@@ -11478,6 +11838,7 @@
         {
           "default": "",
           "document": "Sampled screencapturing type. Valid values:\n<li>Percent: By percent.</li>\n<li>Time: By time interval.</li>",
+          "example": "Percent",
           "member": "string",
           "name": "SampleType",
           "required": false,
@@ -11486,6 +11847,7 @@
         {
           "default": "",
           "document": "Sampling interval.\n<li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>\n<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>",
+          "example": "10",
           "member": "uint64",
           "name": "SampleInterval",
           "required": false,
@@ -11493,7 +11855,8 @@
         },
         {
           "default": "",
-          "document": "Image format. Valid values: jpg; png.",
+          "document": "The image format. Valid values: jpg, png, webp.",
+          "example": "jpg",
           "member": "string",
           "name": "Format",
           "required": false,
@@ -11502,6 +11865,7 @@
         {
           "default": "",
           "document": "Template description. Length limit: 256 characters.",
+          "example": "\"\"",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -11510,6 +11874,7 @@
         {
           "default": "",
           "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black.",
+          "example": "black ",
           "member": "string",
           "name": "FillType",
           "required": false,
@@ -11536,6 +11901,7 @@
         {
           "default": "",
           "document": "Unique ID of a time point screencapturing template.",
+          "example": "10001",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -11544,6 +11910,7 @@
         {
           "default": "",
           "document": "Name of a time point screencapturing template. Length limit: 64 characters.",
+          "example": "指定时间点截图模板1",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -11552,6 +11919,7 @@
         {
           "default": "",
           "document": "Image width in px. Value range: [128, 4,096].",
+          "example": "540",
           "member": "uint64",
           "name": "Width",
           "required": false,
@@ -11560,6 +11928,7 @@
         {
           "default": "",
           "document": "Image height in px. Value range: [128, 4,096].",
+          "example": "960",
           "member": "uint64",
           "name": "Height",
           "required": false,
@@ -11568,6 +11937,7 @@
         {
           "default": "",
           "document": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open.",
+          "example": "open",
           "member": "string",
           "name": "ResolutionAdaptive",
           "required": false,
@@ -11575,7 +11945,8 @@
         },
         {
           "default": "",
-          "document": "Image format. Valid values: jpg, png.",
+          "document": "The image format. Valid values: jpg, png, webp.",
+          "example": "jpg",
           "member": "string",
           "name": "Format",
           "required": false,
@@ -11584,6 +11955,7 @@
         {
           "default": "",
           "document": "Template description. Length limit: 256 characters.",
+          "example": "\"\"",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -11592,6 +11964,7 @@
         {
           "default": "",
           "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>\nDefault value: black.",
+          "example": "black ",
           "member": "string",
           "name": "FillType",
           "required": false,
@@ -12061,6 +12434,7 @@
         {
           "default": "",
           "document": "Container format. Valid values: mp4, flv, hls, mp3, flac, ogg, and m4a; mp3, flac, ogg, and m4a are formats of audio files.",
+          "example": "mp4",
           "member": "string",
           "name": "Container",
           "required": false,
@@ -12070,6 +12444,7 @@
         {
           "default": "",
           "document": "Whether to remove video data. Valid values:\n<li>0: retain</li>\n<li>1: remove</li>",
+          "example": "0",
           "member": "uint64",
           "name": "RemoveVideo",
           "required": false,
@@ -12079,6 +12454,7 @@
         {
           "default": "",
           "document": "Whether to remove audio data. Valid values:\n<li>0: retain</li>\n<li>1: remove</li>",
+          "example": "0",
           "member": "uint64",
           "name": "RemoveAudio",
           "required": false,
@@ -12088,6 +12464,7 @@
         {
           "default": "",
           "document": "Video stream configuration parameter.",
+          "example": "NULL",
           "member": "VideoTemplateInfoForUpdate",
           "name": "VideoTemplate",
           "required": false,
@@ -12097,6 +12474,7 @@
         {
           "default": "",
           "document": "Audio stream configuration parameter.",
+          "example": "NULL",
           "member": "AudioTemplateInfoForUpdate",
           "name": "AudioTemplate",
           "required": false,
@@ -12106,8 +12484,19 @@
         {
           "default": "",
           "document": "TESHD transcoding parameter.",
+          "example": "NULL",
           "member": "TEHDConfigForUpdate",
           "name": "TEHDConfig",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The subtitle settings.",
+          "example": "NULL",
+          "member": "SubtitleTemplate",
+          "name": "SubtitleTemplate",
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -12217,7 +12606,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The information of a video processing task. Information will be returned only if `EventType` is `WorkflowTask`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "WorkflowTask",
           "name": "WorkflowTaskEvent",
@@ -12226,7 +12615,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Video editing task information. This field has a value only when `TaskType` is `EditMediaTask`.",
+          "document": "The information of a video editing task. Information will be returned only if `EventType` is `EditMediaTask`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "EditMediaTask",
           "name": "EditMediaTaskEvent",
@@ -12253,7 +12642,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The information of a scheme. This parameter is valid only if `TaskType` is `ScheduleTask`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The information of a scheme. Information will be returned only if `EventType` is `ScheduleTask`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ScheduleTask",
           "name": "ScheduleTaskEvent",
@@ -13053,7 +13442,7 @@
         },
         {
           "default": "",
-          "document": "The scheme ID.\nNotes: 1. If output information is not specified for a scheme, the request parameters `OutputStorage` and `OutputDir` will be used.\n2. If a notification is not configured for a scheme, the request parameter `TaskNotifyConfig` will be used.\n3. The trigger configured for a scheme is for automatically starting a scheme. It stops working when you manually call this API to start a scheme.",
+          "document": "The scheme ID.\nNote 1: About `OutputStorage` and `OutputDir`\n<li>If an output storage and directory are specified for a subtask of the scheme, those output settings will be applied.</li>\n<li>If an output storage and directory are not specified for the subtasks of a scheme, the output parameters passed in the `ProcessMedia` API will be applied.</li>\nNote 2: If `TaskNotifyConfig` is specified, the specified settings will be used instead of the default callback settings of the scheme.\n\nNote 3: The trigger configured for a scheme is for automatically starting a scheme. It stops working when you manually call this API to start a scheme.",
           "example": "无",
           "member": "int64",
           "name": "ScheduleId",
@@ -14178,6 +14567,72 @@
         }
       ],
       "usage": "out"
+    },
+    "SubtitleTemplate": {
+      "document": "The subtitle settings.",
+      "members": [
+        {
+          "default": "",
+          "document": "The URL of the subtitles to add to the video.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Path",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The subtitle track to add to the video. If both `Path` and `StreamIndex` are specified, `Path` will be used. You need to specify at least one of the two parameters.",
+          "example": "3",
+          "member": "int64",
+          "name": "StreamIndex",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The font. Valid values:\n<li>hei.ttf</li>\n<li>song.ttf</li>\n<li>simkai.ttf</li>\n<li>arial.ttf (for English only)</li>\nThe default is `hei.ttf`.",
+          "example": "simhei.ttf",
+          "member": "string",
+          "name": "FontType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The font size (pixels). If this is not specified, the font size in the subtitle file will be used.",
+          "example": "5px",
+          "member": "string",
+          "name": "FontSize",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).",
+          "example": "0xRRGGBB",
+          "member": "string",
+          "name": "FontColor",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The text transparency. Value range: 0-1.\n<li>0: Completely transparent</li>\n<li>1: Completely opaque</li>\nDefault value: 1.",
+          "example": "1",
+          "member": "float",
+          "name": "FontAlpha",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "SuperResolutionConfig": {
       "document": "Super resolution configuration.",

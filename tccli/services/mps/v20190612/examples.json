@@ -23,13 +23,13 @@
     "CreateAIRecognitionTemplate": [
       {
         "document": "This example shows you how to create a custom video content recognition template with face recognition enabled. The default face library is used, and the face recognition filter score is 90.",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIRecognitionTemplate\n&Name=Intelligent content recognition template\n&Comment=Template 2\n&FaceConfigure.Switch=ON\n&FaceConfigure.FaceLibrary=Default\n&FaceConfigure.Score=90\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAIRecognitionTemplate\n<Common request parameters>\n\n{\n    \"Comment\": \"Template 2\",\n    \"FaceConfigure\": {\n        \"Switch\": \"ON\",\n        \"Score\": \"90\",\n        \"FaceLibrary\": \"Default\"\n    },\n    \"Name\": \"Intelligent recognition template\"\n}",
         "output": "{\n    \"Response\": {\n        \"Definition\": 31,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a template for multiple video content recognition tasks"
       },
       {
         "document": "This example shows you how to create a custom video content recognition template with face recognition enabled. The default and custom face libraries are used, and the face recognition filter score is 90.",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIRecognitionTemplate\n&Name=Intelligent content recognition template\n&Comment=Template 3\n&FaceConfigure.Switch=ON\n&FaceConfigure.FaceLibrary=All\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAIRecognitionTemplate\n<Common request parameters>\n\n{\n    \"Comment\": \"Template 3\",\n    \"FaceConfigure\": {\n        \"Switch\": \"ON\",\n        \"FaceLibrary\": \"All\"\n    },\n    \"Name\": \"Intelligent recognition template\"\n}",
         "output": "{\n    \"Response\": {\n        \"Definition\": 32,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a template for multiple recognition tasks, with the frame capturing interval specified"
       }
@@ -79,7 +79,7 @@
     "CreateImageSpriteTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateImageSpriteTemplate\n&Name=Image sprite generating template 1\n&Width=54\n&Height=96\n&SampleType=Percent\n&SampleInterval=10\n&RowCount=5\n&ColumnCount=10\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateImageSpriteTemplate\n<Common request parameters>\n\n{\n    \"ColumnCount\": \"10\",\n    \"Name\": \"Image sprite generating template 1\",\n    \"RowCount\": \"5\",\n    \"SampleType\": \"Percent\",\n    \"Height\": \"96\",\n    \"Width\": \"54\",\n    \"SampleInterval\": \"10\"\n}",
         "output": "{\n    \"Response\": {\n        \"Definition\": 1008,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating an image sprite generating template"
       }
@@ -95,7 +95,7 @@
     "CreateSampleSnapshotTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateSampleSnapshotTemplate\n&Name=Sampled screenshot template 1\n&Width=540\n&Height=960\n&SampleType=Percent\n&SampleInterval=10\n&Format=jpg\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSampleSnapshotTemplate\n<Common request parameters>\n\n{\n    \"Name\": \"Sampled screenshot template 1\",\n    \"Format\": \"jpg\",\n    \"SampleType\": \"Percent\",\n    \"Height\": \"960\",\n    \"Width\": \"540\",\n    \"SampleInterval\": \"10\"\n}",
         "output": "{\n    \"Response\": {\n        \"Definition\": 1008,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a sampled screenshot template"
       }
@@ -103,7 +103,7 @@
     "CreateSnapshotByTimeOffsetTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateSnapshotByTimeOffsetTemplate\n&Name=Time point screenshot template 1\n&Width=540\n&Height=960\n&Format=jpg\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSnapshotByTimeOffsetTemplate\n<Common request parameters>\n\n{\n    \"Width\": \"540\",\n    \"Format\": \"jpg\",\n    \"Name\": \"Time point screenshot template 1\",\n    \"Height\": \"960\"\n}",
         "output": "{\n    \"Response\": {\n        \"Definition\": 1008,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a time point screenshot template"
       }
@@ -111,7 +111,7 @@
     "CreateTranscodeTemplate": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTranscodeTemplate\n<Common request parameters>\n\n{\n    \"RemoveVideo\": \"0\",\n    \"Container\": \"mp4\",\n    \"Name\": \"Transcoding template 1\",\n    \"AudioTemplate\": {\n        \"SampleRate\": \"200\",\n        \"Codec\": \"libfdk_aac\",\n        \"Bitrate\": \"200\"\n    },\n    \"VideoTemplate\": {\n        \"Codec\": \"libx264\",\n        \"Bitrate\": \"256\",\n        \"Fps\": \"45\"\n    },\n    \"RemoveAudio\": \"0\"\n}",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTranscodeTemplate\n<Common request parameters>\n\n{\n    \"RemoveVideo\": 0,\n    \"Container\": \"mp4\",\n    \"Name\": \"test\",\n    \"AudioTemplate\": {\n        \"SampleRate\": 44100,\n        \"Codec\": \"libfdk_aac\",\n        \"Bitrate\": 200\n    },\n    \"VideoTemplate\": {\n        \"Codec\": \"libx264\",\n        \"Bitrate\": 256,\n        \"Fps\": \"45\"\n    },\n    \"RemoveAudio\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"Definition\": 1008,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a transcoding template"
       }
@@ -533,7 +533,7 @@
     "ModifyImageSpriteTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=ModifyImageSpriteTemplate\n&Definition=10001\n&Name=Image sprite generating template 1\n&Width=54\n&Height=96\n&SampleType=Percent\n&SampleInterval=10\n&RowCount=5\n&ColumnCount=10\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyImageSpriteTemplate\n<Common request parameters>\n\n{\n    \"ColumnCount\": \"10\",\n    \"Definition\": \"10001\",\n    \"Name\": \"Image sprite generating template 1\",\n    \"RowCount\": \"5\",\n    \"SampleType\": \"Percent\",\n    \"Height\": \"96\",\n    \"Width\": \"54\",\n    \"SampleInterval\": \"10\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying an image sprite generating template"
       }
@@ -567,7 +567,7 @@
     "ModifySampleSnapshotTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=ModifySampleSnapshotTemplate\n&Definition=10001\n&Name=Sampled screencapturing template 1\n&Width=540\n&Height=960\n&SampleType=Percent\n&SampleInterval=10\n&Format=jpg\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySampleSnapshotTemplate\n<Common request parameters>\n\n{\n    \"Definition\": \"10001\",\n    \"Name\": \"Sampled screenshot template 1\",\n    \"Format\": \"jpg\",\n    \"SampleType\": \"Percent\",\n    \"Height\": \"960\",\n    \"Width\": \"540\",\n    \"SampleInterval\": \"10\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying a sampled screenshot template"
       }
@@ -575,7 +575,7 @@
     "ModifySnapshotByTimeOffsetTemplate": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=ModifySnapshotByTimeOffsetTemplate\n&Definition=10001\n&Name=Time point screenshot template 1\n&Width=540\n&Height=960\n&Format=jpg\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySnapshotByTimeOffsetTemplate\n<Common request parameters>\n\n{\n    \"Definition\": \"10001\",\n    \"Format\": \"jpg\",\n    \"Height\": \"960\",\n    \"Name\": \"Time point screenshot template 1\",\n    \"Width\": \"540\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying a time point screenshot template"
       }
@@ -583,7 +583,7 @@
     "ModifyTranscodeTemplate": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyTranscodeTemplate\n<Common request parameters>\n\n{\n    \"Definition\": \"1008\",\n    \"Container\": \"mp4\",\n    \"VideoTemplate\": {\n        \"Codec\": \"libx264\",\n        \"Bitrate\": \"256\",\n        \"Fps\": \"60\"\n    },\n    \"AudioTemplate\": {\n        \"SampleRate\": \"200\",\n        \"Codec\": \"libfdk_aac\",\n        \"Bitrate\": \"200\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyTranscodeTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 1008,\n    \"Container\": \"mp4\",\n    \"VideoTemplate\": {\n        \"Codec\": \"libx264\",\n        \"Bitrate\": 256,\n        \"Fps\": 60\n    },\n    \"AudioTemplate\": {\n        \"SampleRate\": 48000,\n        \"Codec\": \"libfdk_aac\",\n        \"Bitrate\": 200\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying a transcoding template"
       }
@@ -615,7 +615,7 @@
     "ParseNotification": [
       {
         "document": "",
-        "input": "https://mps.tencentcloudapi.com/?Action=ParseNotification\n&Content={\"EventType\":\"ProcedureStateChanged\",XXX\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ParseNotification\n<Common request parameters>\n\n{\n    \"Content\": \"{\\\"EventType\\\":\\\"ProcedureStateChanged\\\",XXX\"\n}",
         "output": "{\n    \"Response\": {\n        \"EventType\": \"WorkflowTask\",\n        \"WorkflowTaskEvent\": {\n            \"TaskId\": \"1256768367-Procedure-475b7237438a39560b9879a4556cb177t1\",\n            \"Status\": \"FINISH\",\n            \"ErrCode\": 0,\n            \"Message\": \"\",\n            \"InputInfo\": {\n                \"Type\": \"COS\",\n                \"CosInputInfo\": {\n                    \"Bucket\": \"TopRankVideo-125xxx88\",\n                    \"Region\": \"ap-chongqing\",\n                    \"Object\": \"/movie/201907/WildAnimal.mov\"\n                }\n            },\n            \"MetaData\": {\n                \"AudioDuration\": 59.990001678467,\n                \"AudioStreamSet\": [\n                    {\n                        \"Bitrate\": 383854,\n                        \"Codec\": \"aac\",\n                        \"SamplingRate\": 48000\n                    }\n                ],\n                \"Bitrate\": 1021028,\n                \"Container\": \"mov,mp4,m4a,3gp,3g2,mj2\",\n                \"Duration\": 60,\n                \"Height\": 480,\n                \"Rotate\": 0,\n                \"Size\": 7700180,\n                \"VideoDuration\": 60,\n                \"VideoStreamSet\": [\n                    {\n                        \"Bitrate\": 637174,\n                        \"Codec\": \"h264\",\n                        \"Fps\": 23,\n                        \"Height\": 480,\n                        \"Width\": 640\n                    }\n                ],\n                \"Width\": 640\n            },\n            \"MediaProcessResultSet\": [\n                {\n                    \"Type\": \"Transcode\",\n                    \"TranscodeTask\": {\n                        \"Status\": \"SUCCESS\",\n                        \"ErrCode\": 0,\n                        \"Message\": \"SUCCESS\",\n                        \"Input\": {\n                            \"Definition\": 20,\n                            \"WatermarkSet\": null\n                        },\n                        \"Output\": {\n                            \"Path\": \"/movie/201907/WildAnimal_transcode_20.mp4\",\n                            \"Size\": 4189073,\n                            \"Container\": \"mov,mp4,m4a,3gp,3g2,mj2\",\n                            \"Height\": 480,\n                            \"Width\": 640,\n                            \"Bitrate\": 552218,\n                            \"Md5\": \"eff7031ad7877865f9a3240e9ab165ad\",\n                            \"Duration\": 60.04700088501,\n                            \"VideoStreamSet\": [\n                                {\n                                    \"Bitrate\": 503727,\n                                    \"Codec\": \"h264\",\n                                    \"Fps\": 24,\n                                    \"Height\": 480,\n                                    \"Width\": 640\n                                }\n                            ],\n                            \"AudioStreamSet\": [\n                                {\n                                    \"Bitrate\": 48491,\n                                    \"Codec\": \"aac\",\n                                    \"SamplingRate\": 44100\n                                }\n                            ],\n                            \"Definition\": 0\n                        }\n                    },\n                    \"AnimatedGraphicTask\": null,\n                    \"SnapshotByTimeOffsetTask\": null,\n                    \"SampleSnapshotTask\": null,\n                    \"ImageSpriteTask\": null\n                }\n            ]\n        },\n        \"RequestId\": \"335bdaa3-db0e-46ce-9946-51941d9cb0f5\",\n        \"ScheduleTaskEvent\": null,\n        \"EditMediaTaskEvent\": null,\n        \"SessionId\": \"\",\n        \"SessionContext\": \"\"\n    }\n}",
         "title": "Parsing an event notification"
       }
@@ -623,9 +623,9 @@
     "ProcessLiveStream": [
       {
         "document": "This example shows you how to initiate a content recognition task for a live stream whose URL is `http://www.abc.com/abc.m3u8`.",
-        "input": "https://mps.tencentcloudapi.com/?Action=ProcessLiveStream\n&Url=http://www.abc.com/abc.m3u8\n&TaskNotifyConfig.CmqModel=Queue\n&TaskNotifyConfig.CmqRegion=gz\n&TaskNotifyConfig.QueueName=queue-125717729292\n&AiRecognitionTask.Definition=10\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ProcessLiveStream\n<Common request parameters>\n\n{\n    \"Url\": \"http://www.abc.com/abc.m3u8\",\n    \"AiRecognitionTask\": {\n        \"Definition\": \"10\"\n    },\n    \"TaskNotifyConfig\": {\n        \"CmqRegion\": \"gz\",\n        \"CmqModel\": \"Queue\",\n        \"QueueName\": \"queue-125717729292\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ca61e3a-6b8e-4b4e-9256-fdc701190064ef0\",\n        \"TaskId\": \"125xxxxxx07-live-procedure-813dc41e6fdc22dcf24aa6e9c61cp92\"\n    }\n}",
-        "title": "Initiating a live stream moderation task"
+        "title": "Initiating a live stream recognition task"
       }
     ],
     "ProcessMedia": [

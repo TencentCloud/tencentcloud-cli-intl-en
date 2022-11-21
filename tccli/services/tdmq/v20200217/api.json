@@ -1543,6 +1543,16 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Valid values: `0` (Pulsar), `1` (RocketMQ).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "BrokerType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
