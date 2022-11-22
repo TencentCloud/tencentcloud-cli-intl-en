@@ -241,8 +241,8 @@
     "DescribeBinlogs": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBinlogs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-c1nl9rpv\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"BinlogFinishTime\": \"2020-11-12 21:13:12\",\n                \"BinlogStartTime\": \"2020-11-12 21:13:04\",\n                \"Date\": \"2020-11-12 21:13:35\",\n                \"InternetUrl\": \"https://*****\",\n                \"IntranetUrl\": \"https://*****\",\n                \"Name\": \"cdb73977_binlog_mysqlbin.000004\",\n                \"Size\": 505,\n                \"Status\": \"FINISHED\",\n                \"Region\": \"ap-guangzhou\",\n                \"CosStorageType\": 0,\n                \"RemoteInfo\": [],\n                \"Type\": \"binlog\",\n                \"InstanceId\": \"cdb-xxx\"\n            },\n            {\n                \"BinlogFinishTime\": \"2020-11-12 21:13:04\",\n                \"BinlogStartTime\": \"2020-11-02 11:38:49\",\n                \"Date\": \"2020-11-12 21:13:25\",\n                \"InternetUrl\": \"https://*****\",\n                \"IntranetUrl\": \"https://*****\",\n                \"Name\": \"cdb73977_binlog_mysqlbin.000003\",\n                \"Size\": 4537,\n                \"Status\": \"FINISHED\",\n                \"Region\": \"ap-guangzhou\",\n                \"CosStorageType\": 0,\n                \"RemoteInfo\": [],\n                \"Type\": \"binlog\",\n                \"InstanceId\": \"cdb-xxx\"\n            }\n        ],\n        \"RequestId\": \"2d8504a5-157d-4753-a060-6464b0e875e5\",\n        \"TotalCount\": 2\n    }\n}",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeBinlogs\r\n&InstanceId=cdb-c1nl9rpv\r\n&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TotalCount\": 1,\n        \"Items\": [\n            {\n                \"Name\": \"ivansqwutestdr_binmysqlbin.000006\",\n                \"IntranetUrl\": \"http://gz.xxxxxx\",\n                \"Date\": \"2017-04-26 20:46:32\",\n                \"InternetUrl\": \"http://gz.xxxxxx\",\n                \"Type\": \"binlog\",\n                \"Size\": 187\n            }\n        ]\n    }\n}",
         "title": "Querying binlog"
       }
     ],
@@ -567,9 +567,9 @@
     "InitDBInstances": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InitDBInstances\n<Common request parameters>\n\n{\n    \"NewPassword\": \"xx\",\n    \"Vport\": 0,\n    \"Parameters\": [\n        {\n            \"Name\": \"lower_case_table_names\",\n            \"Value\": \"1\"\n        },\n        {\n            \"Name\": \"character_set_server\",\n            \"Value\": \"utf8\"\n        }\n    ],\n    \"InstanceIds\": [\n        \"cdb-f35wr6wj\"\n    ]\n}",
+        "input": "https://cdb.tencentcloudapi.com/?Action=InitDBInstances\r\n&InstanceIds.0=cdb-f35wr6wj\r\n&NewPassword=Gx18ux23F^X\r\n&Parameters.0.name=lower_case_table_names\r\n&Parameters.0.value=1\r\n&Parameters.1.name=character_set_server\r\n&Parameters.1.value=utf8\r\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestIds\": [\n            \"8cd119d4-61ba-11e7-aeff-018cfa1f5560\"\n        ]\n    }\n}",
-        "title": "Initializing a new instance"
+        "title": "Initializing new instance"
       }
     ],
     "IsolateDBInstance": [

@@ -415,9 +415,9 @@
       "output": "DisassociateSecurityGroupsResponse"
     },
     "InitDBInstances": {
-      "document": "This API (InitDBInstances) is used to initialize instances, including their password, default character set, and instance port number.",
+      "document": "This API is used to initialize a TencentDB instance, including initial password, default character set, and instance port number. But it is disused and not recommended. You can now set the instance information by using the parameter `Password`, `ParamList`, and `Port` respectively in the `CreateDBInstance` and `CreateDBInstanceHour` APIs.",
       "input": "InitDBInstancesRequest",
-      "name": "Initializes new instances",
+      "name": "Initializes a new instance",
       "output": "InitDBInstancesResponse"
     },
     "IsolateDBInstance": {
@@ -11367,6 +11367,15 @@
           "member": "string",
           "name": "ProxyGroupId",
           "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Address ID of the proxy group",
+          "example": "无",
+          "member": "string",
+          "name": "ProxyAddressId",
+          "required": false,
           "type": "string"
         }
       ],
