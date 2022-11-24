@@ -369,7 +369,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRabbitMQNodeList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"amqp-testtesttest\",\n    \"Limit\": 1,\n    \"Offset\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"NodeList\": [\n            {\n                \"NodeName\": \"xx\"\n            }\n        ]\n    }\n}",
-        "title": "Getting the vhost list"
+        "title": "Querying the list of TDMQ for RabbitMQ exclusive cluster nodes"
       }
     ],
     "DescribeRabbitMQVipInstances": [

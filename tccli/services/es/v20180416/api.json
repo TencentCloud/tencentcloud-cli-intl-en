@@ -3785,6 +3785,7 @@
         {
           "default": "",
           "document": "Cluster instance ID",
+          "example": "es-xxxxxxxx",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3793,6 +3794,7 @@
         {
           "default": "",
           "document": "Node name list",
+          "example": "[\"159229897700074xxxx\\r\\n\"]",
           "member": "string",
           "name": "NodeNames",
           "required": true,
@@ -3801,8 +3803,27 @@
         {
           "default": "",
           "document": "Whether to force restart",
+          "example": "true",
           "member": "bool",
           "name": "ForceRestart",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The restart mode. Valid values: `in-place` (default), `blue-green`.",
+          "example": "\"in-place\"",
+          "member": "string",
+          "name": "RestartMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The node status, applicable in the blue/green mode. The blue/green restart is risky if the node is offline.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsOffline",
           "required": false,
           "type": "bool"
         }

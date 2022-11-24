@@ -107,7 +107,7 @@
     "RestartNodes": [
       {
         "document": "",
-        "input": "https://es.tencentcloudapi.com/?Action=RestartNodes\r\n&InstanceId=es-xxxxxxxx\r\n&NodeNames.0=159229897700074xxxx\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestartNodes\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxxxx\",\n    \"NodeNames\": [\n        \"159229897700074xxxx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c96a110c-7493-452d-a99b-683d07xxxxxx\"\n    }\n}",
         "title": "Restarting cluster nodes"
       }
