@@ -282,6 +282,12 @@
       "name": "Queries APIs bound with a plugin",
       "output": "DescribePluginApisResponse"
     },
+    "DescribePluginsByApi": {
+      "document": "This API is used to query all plug-ins bound with the API.",
+      "input": "DescribePluginsByApiRequest",
+      "name": "Queries all plug-ins bound with the API.",
+      "output": "DescribePluginsByApiResponse"
+    },
     "DescribeService": {
       "document": "This API is used to query the details of a service, such as its description, domain name, protocol, creation time, and releases.",
       "input": "DescribeServiceRequest",
@@ -549,7 +555,7 @@
   },
   "metadata": {
     "apiVersion": "2018-08-08",
-    "serviceNameCN": "API网关",
+    "serviceNameCN": "API 网关",
     "serviceShortName": "apigateway"
   },
   "objects": {
@@ -2154,6 +2160,108 @@
           "document": "Information of the API bound with the plugin",
           "member": "AttachedApiInfo",
           "name": "AttachedApis",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AttachedPluginInfo": {
+      "document": "Information of bound plug-ins",
+      "members": [
+        {
+          "default": "",
+          "document": "Plugin ID",
+          "example": "plugin-9l0d4sdf",
+          "member": "string",
+          "name": "PluginId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Environment information",
+          "example": "release",
+          "member": "string",
+          "name": "Environment",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Binding time",
+          "example": "2021-01-25T06:56:58Z",
+          "member": "string",
+          "name": "AttachedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Plugin name",
+          "example": "myplugin",
+          "member": "string",
+          "name": "PluginName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Plugin type",
+          "example": "IPControl",
+          "member": "string",
+          "name": "PluginType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Plugin description",
+          "example": "IPControl",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Plugin definition statement",
+          "example": "{\\\"blocks\\\":\\\"1.1.1.1\\\",\\\"type\\\":\\\"black_list\\\"}",
+          "member": "string",
+          "name": "PluginData",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AttachedPluginSummary": {
+      "document": "Information of bound plug-ins",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number of bound plug-ins",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Information of bound plug-ins",
+          "example": "无",
+          "member": "AttachedPluginInfo",
+          "name": "PluginSummary",
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -5335,6 +5443,7 @@
         {
           "default": "",
           "document": "Unique service ID of API.",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -5343,6 +5452,7 @@
         {
           "default": "",
           "document": "Offset. Default value: 0.",
+          "example": "xx",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -5351,6 +5461,7 @@
         {
           "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "xx",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -5358,7 +5469,8 @@
         },
         {
           "default": "",
-          "document": "API filter. Valid values: ApiId, ApiName, ApiPath, ApiType, AuthRelationApiId, AuthType, ApiBuniessType, NotUsagePlanId, Environment, Tags (whose values are the list of `$tag_key:tag_value`), TagKeys (whose values are the list of tag keys).",
+          "document": "API filter. Valid values: `ApiId`, `ApiName`, `ApiPath`, `ApiType`, `AuthRelationApiId`, `AuthType`, `ApiBuniessType`, `NotUsagePlanId`, `Environment`, `Tags` (whose values are the list of `$tag_key:tag_value`), `TagKeys` (whose values are the list of tag keys). Note that `NotUsagePlanId` and `Environment` must be used in the same time.",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -5778,6 +5890,78 @@
           "document": "Plugin details",
           "example": "无",
           "member": "Plugin",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePluginsByApiRequest": {
+      "document": "DescribePluginsByApi request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the API to query",
+          "example": "api-fa23vfd",
+          "member": "string",
+          "name": "ApiId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "ID of the service to query",
+          "example": "service-o5as3moe",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Environment information",
+          "example": "test",
+          "member": "string",
+          "name": "EnvironmentName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePluginsByApiResponse": {
+      "document": "DescribePluginsByApi response structure.",
+      "members": [
+        {
+          "document": "List of plug-ins bound with the API",
+          "example": "无",
+          "member": "AttachedPluginSummary",
           "name": "Result",
           "required": true,
           "type": "object",

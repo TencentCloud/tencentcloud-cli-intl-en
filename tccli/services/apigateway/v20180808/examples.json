@@ -329,7 +329,7 @@
     "DescribeApisStatus": [
       {
         "document": "",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeApisStatus\n&ServiceId=service-ody35h5e\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: apigateway.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApisStatus\n<Common request parameters>\n\n{\n    \"ServiceId\": \"service-ody35h5e\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"ApiIdStatusSet\": [\n                {\n                    \"RelationBuniessApiIds\": [\n                        \"xx\"\n                    ],\n                    \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                    \"Method\": \"xx\",\n                    \"VpcId\": 0,\n                    \"Tags\": [\n                        \"xx\"\n                    ],\n                    \"IsDebugAfterCharge\": false,\n                    \"ApiBusinessType\": \"xx\",\n                    \"ApiName\": \"xx\",\n                    \"Path\": \"xx\",\n                    \"AuthType\": \"xx\",\n                    \"ApiDesc\": \"xx\",\n                    \"OauthConfig\": {\n                        \"PublicKey\": \"xx\",\n                        \"LoginRedirectUrl\": \"xx\",\n                        \"TokenLocation\": \"xx\"\n                    },\n                    \"AuthRelationApiId\": \"xx\",\n                    \"Protocol\": \"xx\",\n                    \"ModifiedTime\": \"2020-09-22T00:00:00+00:00\",\n                    \"UniqVpcId\": \"xx\",\n                    \"ApiId\": \"xx\",\n                    \"ApiType\": \"xx\",\n                    \"ServiceId\": \"xx\"\n                }\n            ]\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying API status"
       }
@@ -386,6 +386,14 @@
         "input": "https://apigateway.tencentcloudapi.com/?Action=DescribePluginApis\n&PluginId=Plugin-23sdcda\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 2,\n            \"AttachedApis\": [\n                {\n                    \"ServiceId\": \"service-jzo37opy\",\n                    \"ServiceName\": \"clareplugin\",\n                    \"ServiceDesc\": \"\",\n                    \"ApiId\": \"api-1vkzehtw\",\n                    \"ApiName\": \"mock3\",\n                    \"ApiDesc\": \"\",\n                    \"Environment\": \"release\",\n                    \"AttachedTime\": \"2021-01-25T07:14:27Z\"\n                },\n                {\n                    \"ServiceId\": \"service-jzo37opy\",\n                    \"ServiceName\": \"clareplugin\",\n                    \"ServiceDesc\": \"\",\n                    \"ApiId\": \"api-buz84890\",\n                    \"ApiName\": \"mock\",\n                    \"ApiDesc\": \"\",\n                    \"Environment\": \"release\",\n                    \"AttachedTime\": \"2021-01-25T06:56:58Z\"\n                }\n            ]\n        },\n        \"RequestId\": \"f373cf5c-dddf-4263-98af-834fd0b773cf\"\n    }\n}",
         "title": "DescribePluginApis"
+      }
+    ],
+    "DescribePluginsByApi": [
+      {
+        "document": "",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribePluginsByApi\n&ApiId=api-fa23vfd\n&EnvironmentName=release\n&ServiceId=service-o5as3moe\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"PluginSummary\": [\n                {\n                    \"PluginId\": \"plugin-9l0d4sdf\",\n                    \"PluginName\": \"onlyname\",\n                    \"PluginType\": \"IPControl\",\n                    \"Description\": \"modifyDesc\",\n                    \"PluginData\": \"{\\\"blocks\\\":\\\"1.1.1.1\\\",\\\"type\\\":\\\"black_list\\\"}\",\n                    \"Environment\": \"release\",\n                    \"AttachedTime\": \"2021-01-25T06:56:58Z\"\n                }\n            ]\n        },\n        \"RequestId\": \"4effd8e7-abd0-4f95-a881-301d68d9985e\"\n    }\n}",
+        "title": "DescribeAvailablePluginApis"
       }
     ],
     "DescribeService": [

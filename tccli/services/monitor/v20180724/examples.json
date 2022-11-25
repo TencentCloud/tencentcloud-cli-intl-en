@@ -422,8 +422,8 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGrafanaNotificationChannels\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"ChannelState\": 0,\n    \"Limit\": 0,\n    \"Offset\": 0,\n    \"ChannelName\": \"xx\",\n    \"ChannelIDs\": [\n        \"xx\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"NotificationChannelSet\": [\n            {\n                \"ChannelId\": \"xx\",\n                \"UpdatedAt\": \"2020-09-22\",\n                \"ChannelName\": \"xx\",\n                \"CreatedAt\": \"2020-09-22T00:00:00+00:00\",\n                \"Receivers\": [\n                    \"xx\"\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Listing Grafana notification channels"
+        "output": "{\n    \"Response\": {\n        \"NotificationChannelSet\": [\n            {\n                \"ExtraOrgIds\": [\n                    \"xx\"\n                ],\n                \"OrgIds\": \"xx\",\n                \"Receivers\": [\n                    \"xx\"\n                ],\n                \"ChannelId\": \"xx\",\n                \"OrganizationIds\": [\n                \"OrgId\": \"xx\",\n                \"UpdatedAt\": \"2020-09-22\",\n                \"ChannelName\": \"xx\",\n                \"CreatedAt\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Listing Grafana alert channels"
       }
     ],
     "DescribeGrafanaWhiteList": [
@@ -793,7 +793,7 @@
     "UpdateExporterIntegration": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateExporterIntegration\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-1\",\n    \"KubeType\": 3,\n    \"ClusterId\": \"cls-xx\",\n    \"Kind\": \"blackbox-exporter\",\n    \"Content\": \"{\\\"name\\\":\\\"test\\\",\\\"kind\\\":\\\"blackbox-exporter\\\",\\\"spec\\\":{\\\"instanceSpec\\\":{\\\"module\\\":\\\"http_get\\\",\\\"urls\\\":[\\\"xx\\\"]}}}\"\n}",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateExporterIntegration\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-1\",\n    \"KubeType\": 3,\n    \"ClusterId\": \"\",\n    \"Kind\": \"blackbox-exporter\",\n    \"Content\": \"{\\\"name\\\":\\\"test\\\",\\\"kind\\\":\\\"blackbox-exporter\\\",\\\"spec\\\":{\\\"instanceSpec\\\":{\\\"module\\\":\\\"http_get\\\",\\\"urls\\\":[\\\"xx\\\"]}}}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"wpkysykx8k9tu1urmlyo54gq33f4kxwz\"\n    }\n}",
         "title": "Updating the exporter integration configuration"
       }
