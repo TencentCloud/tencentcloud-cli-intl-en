@@ -7639,6 +7639,15 @@
           "name": "ResolutionAdaptive",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The image format. Valid values:\n<li> jpg</li>\n<li> png</li>\n<li> webp</li>\nDefault: jpg",
+          "example": "jpg",
+          "member": "string",
+          "name": "Format",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -13246,6 +13255,7 @@
         {
           "default": "",
           "document": "Unique ID of an image sprite generating template.",
+          "example": "10000",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -13255,6 +13265,7 @@
         {
           "default": "",
           "document": "Template type. Valid values:\n<li>Preset: preset template;</li>\n<li>Custom: custom template.</li>",
+          "example": "Custom",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -13264,6 +13275,7 @@
         {
           "default": "",
           "document": "Name of an image sprite generating template.",
+          "example": "截图",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -13273,6 +13285,7 @@
         {
           "default": "",
           "document": "Maximum value of the width (or long side) of a subimage in an image sprite in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.",
+          "example": "1080",
           "member": "uint64",
           "name": "Width",
           "required": true,
@@ -13282,6 +13295,7 @@
         {
           "default": "",
           "document": "Maximum value of the height (or short side) of a subimage in an image sprite in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.",
+          "example": "1080",
           "member": "uint64",
           "name": "Height",
           "required": true,
@@ -13291,6 +13305,7 @@
         {
           "default": "",
           "document": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open.",
+          "example": "Open",
           "member": "string",
           "name": "ResolutionAdaptive",
           "required": true,
@@ -13300,6 +13315,7 @@
         {
           "default": "",
           "document": "Sampling type.",
+          "example": "Time",
           "member": "string",
           "name": "SampleType",
           "required": true,
@@ -13309,6 +13325,7 @@
         {
           "default": "",
           "document": "Sampling interval.",
+          "example": "10",
           "member": "uint64",
           "name": "SampleInterval",
           "required": true,
@@ -13318,6 +13335,7 @@
         {
           "default": "",
           "document": "Subimage row count of an image sprite.",
+          "example": "1",
           "member": "uint64",
           "name": "RowCount",
           "required": true,
@@ -13327,6 +13345,7 @@
         {
           "default": "",
           "document": "Subimage column count of an image sprite.",
+          "example": "1",
           "member": "uint64",
           "name": "ColumnCount",
           "required": true,
@@ -13336,6 +13355,7 @@
         {
           "default": "",
           "document": "Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -13345,6 +13365,7 @@
         {
           "default": "",
           "document": "Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -13354,6 +13375,7 @@
         {
           "default": "",
           "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\nDefault value: black.",
+          "example": "stretch",
           "member": "string",
           "name": "FillType",
           "required": true,
@@ -13363,8 +13385,19 @@
         {
           "default": "",
           "document": "Template description.",
+          "example": "desc",
           "member": "string",
           "name": "Comment",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The image format.",
+          "example": "jpg",
+          "member": "string",
+          "name": "Format",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -17268,6 +17301,15 @@
           "name": "Comment",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The image format. Valid values:\n<li> jpg</li>\n<li> png</li>\n<li> webp</li>",
+          "example": "jpg",
+          "member": "string",
+          "name": "Format",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -17379,7 +17421,7 @@
         },
         {
           "default": "",
-          "document": "Set of tags to be added. Up to 16 tags can be added to one media file, and one tag can contain up to 16 characters. In the same request, the parameters of `AddTags` must be different from those of `DeleteTags`.",
+          "document": "The tags to add. Each file can have up to 16 tags. A tag can contain at most 32 characters. You cannot include the same tag in `AddTags` and `DeleteTags` at the same time.",
           "example": "无",
           "member": "string",
           "name": "AddTags",
@@ -20418,7 +20460,7 @@
         },
         {
           "default": "",
-          "document": "URL of video cover to be pulled. Only gif, jpeg, and png formats are supported.",
+          "document": "The URL of the video to pull. Supported formats include GIF, JPEG (JPG), and PNG.",
           "example": "无",
           "member": "string",
           "name": "CoverUrl",
