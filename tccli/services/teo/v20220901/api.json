@@ -1,10 +1,22 @@
 {
   "actions": {
+    "BindZoneToPlan": {
+      "document": "This API is used to bind a site to a plan.",
+      "input": "BindZoneToPlanRequest",
+      "name": "Binds a site to a plan.",
+      "output": "BindZoneToPlanResponse"
+    },
     "CheckCertificate": {
       "document": "This API is used to verify a certificate.",
       "input": "CheckCertificateRequest",
       "name": "Verifies a certificate",
       "output": "CheckCertificateResponse"
+    },
+    "CreateAliasDomain": {
+      "document": "This API is used to create an alias domain name.",
+      "input": "CreateAliasDomainRequest",
+      "name": "Creates an alias domain name.",
+      "output": "CreateAliasDomainResponse"
     },
     "CreateApplicationProxy": {
       "document": "This API is used to create an application proxy.",
@@ -114,6 +126,12 @@
       "name": "Creates a site",
       "output": "CreateZoneResponse"
     },
+    "DeleteAliasDomain": {
+      "document": "This API is used to delete an alias domain name.",
+      "input": "DeleteAliasDomainRequest",
+      "name": "Deletes an alias domain name.",
+      "output": "DeleteAliasDomainResponse"
+    },
     "DeleteApplicationProxy": {
       "document": "This API is used to delete an application proxy.",
       "input": "DeleteApplicationProxyRequest",
@@ -168,6 +186,12 @@
       "name": "Queries available shipping entities",
       "output": "DescribeAddableEntityListResponse"
     },
+    "DescribeAliasDomains": {
+      "document": "This API is used to query the information of alias domain names.",
+      "input": "DescribeAliasDomainsRequest",
+      "name": "Queries the information of alias domain names.",
+      "output": "DescribeAliasDomainsResponse"
+    },
     "DescribeApplicationProxies": {
       "document": "This API is used to query the list of application proxies.",
       "input": "DescribeApplicationProxiesRequest",
@@ -179,12 +203,6 @@
       "input": "DescribeAvailablePlansRequest",
       "name": "Queries plan options available for purchase",
       "output": "DescribeAvailablePlansResponse"
-    },
-    "DescribeBillingData": {
-      "document": "This API is used to get the billing data.",
-      "input": "DescribeBillingDataRequest",
-      "name": "Gets the billing data",
-      "output": "DescribeBillingDataResponse"
     },
     "DescribeBotClientIpList": {
       "document": "This API is used to query the list of bot attackers.",
@@ -391,7 +409,7 @@
       "output": "DescribeSecurityGroupManagedRulesResponse"
     },
     "DescribeSecurityPolicy": {
-      "document": "This API is used to query the security protection configuration.",
+      "document": "This API is used to query the security protection configuration. You must either specify \"ZoneId+Entity\" or \"TemplateId\".",
       "input": "DescribeSecurityPolicyRequest",
       "name": "Queries the security protection configuration",
       "output": "DescribeSecurityPolicyResponse"
@@ -570,6 +588,18 @@
       "name": "Modifies the default alarm threshold.",
       "output": "ModifyAlarmDefaultThresholdResponse"
     },
+    "ModifyAliasDomain": {
+      "document": "This API is used to modify an alias domain name.",
+      "input": "ModifyAliasDomainRequest",
+      "name": "Modifies an alias domain name.",
+      "output": "ModifyAliasDomainResponse"
+    },
+    "ModifyAliasDomainStatus": {
+      "document": "This API is used to modify the status of an alias domain name.",
+      "input": "ModifyAliasDomainStatusRequest",
+      "name": "Modifies the status of an alias domain name.",
+      "output": "ModifyAliasDomainStatusResponse"
+    },
     "ModifyApplicationProxy": {
       "document": "This API is used to modify an application proxy.",
       "input": "ModifyApplicationProxyRequest",
@@ -701,6 +731,12 @@
       "input": "ModifyZoneStatusRequest",
       "name": "Changes the site status",
       "output": "ModifyZoneStatusResponse"
+    },
+    "ReclaimAliasDomain": {
+      "document": "To reclaim a site and its associated alias domain names, specify the \"ZoneId\" field; to reclaim an alias domain name that is already added, specify the \"ZoneName\" filed.",
+      "input": "ReclaimAliasDomainRequest",
+      "name": "Reclaims the alias domain name.",
+      "output": "ReclaimAliasDomainResponse"
     },
     "ReclaimZone": {
       "document": "This API is used to reclaim a site from other users after its ownership is verified.",
@@ -950,7 +986,7 @@
       "members": [
         {
           "default": "",
-          "document": "Common feature operation. Features of this type include:\n<li>`AccessUrlRedirect`: Access URL rewrite.</li>\n<li>`UpstreamUrlRedirect`: Origin-pull URL rewrite.</li>\n<li>`QUIC`: QUIC.</li>\n<li>`WebSocket`: WebSocket.</li>\n<li>`VideoSeek`: Video dragging.</li>\n<li>`Authentication`: Token authentication.</li>\n<li>`CacheKey`: Custom cache key.</li>\n<li>`Cache`: Node cache TTL.</li>\n<li>`MaxAge`: Browser cache TTL.</li>\n<li>`OfflineCache`: Offline cache.</li>\n<li>`SmartRouting`: Smart acceleration.</li>\n<li>`RangeOriginPull`: Range GETs.</li>\n<li>`UpstreamHttp2`: HTTP/2 forwarding.</li>\n<li>`HostHeader`: Host header rewrite.</li>\n<li>`ForceRedirect`: Force HTTPS.</li>\n<li>`OriginPullProtocol`: Origin-pull HTTPS.</li>\n<li>`CachePrefresh`: Cache prefresh.</li>\n<li>`Compression`: Smart compression.</li>\n<li>`Hsts`.</li>\n<li>`ClientIpHeader`.</li>\n<li>`TlsVersion`.</li>\n<li>`OcspStapling`.</li>\n<li>`Http2`: HTTP/2 access.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Common feature operation. Features of this type include:\n<li>`AccessUrlRedirect`: Access URL rewrite</li>\n<li>`UpstreamUrlRedirect`: Origin-pull URL rewrite</li>\n<li>`QUIC`: QUIC</li>\n<li>`WebSocket`: WebSocket</li>\n<li>`VideoSeek`: Video dragging</li>\n<li>`Authentication`: Token authentication</li>\n<li>`CacheKey`: Custom cache key</li>\n<li>`Cache`: Node cache TTL</li>\n<li>`MaxAge`: Browser cache TTL</li>\n<li>`OfflineCache`: Offline cache</li>\n<li>`SmartRouting`: Smart acceleration</li>\n<li>`RangeOriginPull`: Range GETs</li>\n<li>`UpstreamHttp2`: HTTP/2 forwarding</li>\n<li>`HostHeader`: Host header rewrite</li>\n<li>`ForceRedirect`: Force HTTPS</li>\n<li>`OriginPullProtocol`: Origin-pull HTTPS</li>\n<li>`CachePrefresh`: Cache prefresh</li>\n<li>`Compression`: Smart compression</li>\n<li>`Hsts`</li>\n<li>`ClientIpHeader`</li>\n<li>`TlsVersion`</li>\n<li>`OcspStapling`</li>\n<li>`Http2`: HTTP/2 access</li>\n<li>`UpstreamFollowRedirect: Follow origin redirect</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "NormalAction",
           "name": "NormalAction",
@@ -1018,11 +1054,11 @@
       "usage": "in"
     },
     "AdvancedOriginGroup": {
-      "document": "",
+      "document": "Advanced origin-pull configuration",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Matching condition. The \"Target\" field must be unique.",
           "example": "无",
           "member": "OriginGroupCondition",
           "name": "OriginGroupConditions",
@@ -1032,7 +1068,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "ID of the primary origin server.",
           "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
           "member": "string",
           "name": "OriginGroupId",
@@ -1042,7 +1078,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "ID of the secondary origin server.",
           "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
           "member": "string",
           "name": "BackupOriginGroupId",
@@ -1068,6 +1104,82 @@
         }
       ],
       "usage": "both"
+    },
+    "AliasDomain": {
+      "document": "Information of the alias domain name",
+      "members": [
+        {
+          "default": "",
+          "document": "The alias domain name.",
+          "example": "eo.tencent.com",
+          "member": "string",
+          "name": "AliasName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The site ID.",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The target domain name.",
+          "example": "a.example.com",
+          "member": "string",
+          "name": "TargetName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Status of the alias domain name. Values:\n<li>`active`: Activated</li>\n<li>`pending`: Deploying</li>\n<li>`conflict`: Reclaimed</li>\n<li>`stop`: Stopped</li>",
+          "example": "active",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The blocking mode. Values:\n<li>`0`: Not blocked</li>\n<li>`11`: Blocked due to regulatory compliance</li>\n<li>`14`: Blocked due to ICP filing not obtained</li>",
+          "example": "0",
+          "member": "int64",
+          "name": "ForbidMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time of the alias domain name.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Modification time of the alias domain name.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ApplicationProxy": {
       "document": "Application proxy instance",
@@ -1260,7 +1372,7 @@
         },
         {
           "default": "",
-          "document": "The port, which can be specified in the following formats:\nSingle port, such as 80.\nPort range, such as 81-82.\nNote that each rule can have up to 20 ports.",
+          "document": "The access port, which can be:\n<li>A single port, such as 80</li>\n<li>A port range, such as 81-82</li>\nNote that each rule can have up to 20 ports.",
           "example": "80",
           "member": "string",
           "name": "Port",
@@ -1280,8 +1392,8 @@
         },
         {
           "default": "",
-          "document": "Origin server information.\nWhen `OriginType=custom`, it indicates one or more origin servers. Example:\nOriginValue=[\"8.8.8.8:80\",\"9.9.9.9:80\"]\nOriginValue=[\"test.com:80\"];\nWhen `OriginType=origins`, it indicates an origin group ID. Example:\nOriginValue=[\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"]。",
-          "example": "[\"1.1.1.1:80\",\"2.2.2.2:80\"]",
+          "document": "Origin server information:\n<li>When `OriginType=custom`, it indicates one or more origin servers, such as [\"8.8.8.8\",\"9.9.9.9\"] or [\"test.com\"].</li>\n<li>When `OriginType=origins`, it indicates an origin group ID, such as [\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"].</li>",
+          "example": "[\"1.1.1.1\",\"2.2.2.2\"]",
           "member": "string",
           "name": "OriginValue",
           "required": true,
@@ -1327,6 +1439,16 @@
           "required": false,
           "type": "bool",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The origin port, which can be:\n<li>A single port, such as 80</li>\n<li>A port range, such as 81-82</li>",
+          "example": "80-90",
+          "member": "string",
+          "name": "OriginPort",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1367,31 +1489,41 @@
       ],
       "usage": "out"
     },
-    "BillingDataFilter": {
-      "document": "A parameter that filters DNS data",
+    "BindZoneToPlanRequest": {
+      "document": "BindZoneToPlan request structure.",
       "members": [
         {
           "default": "",
-          "document": "Parameter name. Valid values:\n`zone`: Site name\n`host`: Domain name\n`proxy`: L4 proxy\n`plan`: Plan type",
-          "example": "zone",
+          "document": "ID of the site to be bound.",
+          "example": "zone-xxxyyyzzz",
           "member": "string",
-          "name": "Type",
+          "name": "ZoneId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "default": "",
-          "document": "Parameter value",
-          "example": "1.com",
+          "document": "ID of the target plan.",
+          "example": "edgeone-qqqwwweee",
           "member": "string",
-          "name": "Value",
+          "name": "PlanId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
-      "usage": "in"
+      "type": "object"
+    },
+    "BindZoneToPlanResponse": {
+      "document": "BindZoneToPlan response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "BotConfig": {
       "document": "Bot security configuration",
@@ -2056,11 +2188,11 @@
       "type": "object"
     },
     "ClientIpCountry": {
-      "document": "",
+      "document": "Location information of the client IP carried in origin-pull. It is formatted as a two-letter ISO-3166-1 country/region code.",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Whether to enable configuration. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -2070,7 +2202,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Header name of ClientIpCountry. This field is valid only when `Switch=on`.\nIf it is left empty, the default value `EO-Client-IPCountry` will be used.",
           "example": "EO-Client-IPCountry",
           "member": "string",
           "name": "HeaderName",
@@ -2318,7 +2450,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Type of the shipping task. Values:\n<li>`cls`: Ship logs to CLS.</li>\n<li>`custom_endpoint`: Ship logs to custom APIs.</li>",
           "example": "cls",
           "member": "string",
           "name": "LogSetType",
@@ -2380,6 +2512,69 @@
         }
       ],
       "usage": "both"
+    },
+    "CreateAliasDomainRequest": {
+      "document": "CreateAliasDomain request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The site ID.",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The alias domain name.",
+          "example": "eo.tencent.com",
+          "member": "string",
+          "name": "AliasName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The target domain name.",
+          "example": "a.example.com",
+          "member": "string",
+          "name": "TargetName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Certificate configuration. Values:\n<li>`none`: Off</li>\n<li>`hosting`: Managed SSL certificate</li>\n<li>`apply`: Free certificate</li>Default value: none",
+          "example": "none",
+          "member": "string",
+          "name": "CertType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The certificate ID. This field is required when `CertType=hosting`.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "CertId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAliasDomainResponse": {
+      "document": "CreateAliasDomain response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CreateApplicationProxyRequest": {
       "document": "CreateApplicationProxy request structure.",
@@ -2521,7 +2716,7 @@
         },
         {
           "default": "",
-          "document": "The origin type. Values:\n<li>`custom`: Specified origins</li>\n<li>`origins`: Origin group</li>",
+          "document": "The access port, which can be:\n<li>A single port, such as 80</li>\n<li>A port range, such as 81-90</li>",
           "example": "[\"80\"]",
           "member": "string",
           "name": "Port",
@@ -2530,7 +2725,7 @@
         },
         {
           "default": "",
-          "document": "The origin type. Values:\n`custom`: Origin server, which is formatted as \"IP:Port\" or \"Domain name:Port\"\n`origins`: Origin group",
+          "document": "The origin type. Values:\n<li>`custom`: Specified origins</li>\n<li>`origins`: Origin group</li>",
           "example": "custom",
           "member": "string",
           "name": "OriginType",
@@ -2539,7 +2734,7 @@
         },
         {
           "default": "",
-          "document": "Origin server information:\nWhen `OriginType=custom`, it indicates one or more origin servers. Example:\nOriginValue=[\"8.8.8.8:80\",\"9.9.9.9:80\"]\nOriginValue=[\"test.com:80\"];\nWhen `OriginType=origins`, it indicates an origin group ID. Example:\nOriginValue=[\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"]。",
+          "document": "Origin server information:\n<li>When `OriginType=custom`, it indicates one or more origin servers, such as [\"8.8.8.8\",\"9.9.9.9\"] or [\"test.com\"].</li>\n<li>When `OriginType=origins`, it indicates an origin group ID, such as [\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"].</li>",
           "example": "[\"1.1.1.1:80\",\"2.2.2.2:80\"]",
           "member": "string",
           "name": "OriginValue",
@@ -2563,6 +2758,15 @@
           "name": "SessionPersist",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The origin port, which can be:\n<li>A single port, such as 80</li>\n<li>A port range, such as 81-82</li>",
+          "example": "80-90",
+          "member": "string",
+          "name": "OriginPort",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2862,7 +3066,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The origin-pull type. Values:\n<li>`normal`: Primary/Secondary origin-pull</li>\n<li>`advanced`: Advanced origin-pull (only used when `Type=proxied`)</li>If it is left empty, primary/secondary origin-pull is applied.",
           "example": "normal",
           "member": "string",
           "name": "OriginType",
@@ -2871,7 +3075,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Advanced origin-pull configuration. This field is valid when `OriginType=advanced`.",
           "example": "无",
           "member": "AdvancedOriginGroup",
           "name": "AdvancedOriginGroups",
@@ -3114,7 +3318,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The origin domain. This field can be specified only when `OriginType=self`.",
           "example": "www.tencent.com",
           "member": "string",
           "name": "HostHeader",
@@ -3159,7 +3363,7 @@
         },
         {
           "default": "",
-          "document": "Plan options available for purchase. Values:\n<li>`sta`: Standard plan for global areas except Chinese mainland;</li>\n<li>`sta_with_bot`: Standard plan for global areas except Chinese mainland, with extra bot management;</li>\n<li>`sta_cm`: Standard plan for Chinese mainland;</li>\n<li>`sta_cm_with_bot`: Standard plan for Chinese mainland, with extra bot management;</li>\n<li>`ent`: Enterprise plan for global areas except Chinese mainland;</li>\n<li>`ent_with_bot`: Enterprise plan for global areas except Chinese mainland, with extra bot management;</li>\n<li>`ent_cm`: Enterprise plan for Chinese mainland;</li>\n<li>`ent_cm_with_bot`: Enterprise plan for Chinese mainland, with extra bot management.</li>To get the available plan options for your account, view the output from <a href=\"https://tcloud4api.woa.com/document/product/1657/80124?!preview&!document=1\">DescribeAvailablePlans</a>.",
+          "document": "The plan option. Values:\n<li>`sta`: Standard plan that supports content delivery network outside the Chinese mainland.</li>\n<li>`sta_with_bot`: Standard plan that supports content delivery network outside the Chinese mainland and bot management.</li>\n<li>`sta_cm`: Standard plan that supports content delivery network inside the Chinese mainland.</li>\n<li>`sta_cm_with_bot`: Standard plan that supports content delivery network inside the Chinese mainland and bot management.</li>\n<li>`sta_global`: Standard plan that supports content delivery network over the globe.</li>\n<li>`sta_global_with_bot`: Standard plan that supports content delivery network over the globe and bot management.</li>\n<li>`ent`: Enterprise plan that supports content delivery network outside the Chinese mainland.</li>\n<li>`ent_with_bot`: Enterprise plan that supports content delivery network outside the Chinese mainland and bot management.</li>\n<li>`ent_cm`: Enterprise plan that supports content delivery network inside the Chinese mainland.</li>\n<li>`ent_cm_with_bot`: Enterprise plan that supports content delivery network inside the Chinese mainland and bot management.</li>\n<li>`ent_global`: Enterprise plan that supports content delivery network over the globe.</li>\n<li>`ent_global_with_bot`: Enterprise plan that supports content delivery network over the globe and bot management.</li>To get the available plan options for your account, view the output from <a href=\"https://tcloud4api.woa.com/document/product/1657/80124?!preview&!document=1\">DescribeAvailablePlans</a>.",
           "example": "sta",
           "member": "string",
           "name": "PlanType",
@@ -3285,7 +3489,7 @@
         },
         {
           "default": "",
-          "document": "Purging mode. Values:\n<li>`purge_url`: Purge URLs;</li>\n<li>`purge_prefix`: Purge prefixes;</li>\n<li>`purge_host`: Purge hostnames;</li>\n<li>`purge_all`: Purge all caches.</li>",
+          "document": "Mode of cache purging. Values:\n<li>`purge_url`: Purge by URL</li>\n<li>`purge_prefix`: Purge by prefix</li>\n<li>`purge_host`: Purge by hostname</li>\n<li>`purge_all`: Purge all caches</li>\n<li>`purge_cache_tag`: Purge by cache tag</li>",
           "example": "purge_url",
           "member": "string",
           "name": "Type",
@@ -3294,7 +3498,7 @@
         },
         {
           "default": "",
-          "document": "Target resource to be purged, which depends on the `Type` field.\n1. When `Type = purge_host`:\nHostnames are purged, such as www.example.com and foo.bar.example.com.\n2. When `Type = purge_prefix`:\nPrefixes are purged, such as http://www.example.com/example.\n3. When `Type = purge_url`:\nURLs are purged, such as https://www.example.com/example.jpg.\n4. When `Type = purge_all`: All types of resources are purged.\n`Targets` is not a required field.",
+          "document": "Target resource to be purged, which depends on the `Type` field.\n1. When `Type = purge_host`:\nEnter the hostname, such as www.example.com and foo.bar.example.com.\n2. When `Type = purge_prefix`:\nEnter the prefix, such as http://www.example.com/example.\n3. When `Type = purge_url`:\nEnter the URL, such as https://www.example.com/example.jpg.\n4. When `Type = purge_all`:\nThis field can be left empty.\n5. When `Type = purge_cache_tag`:\nEnter the cache tag, such as tag1.",
           "example": "[\"http://www.qq.com/1.txt\"]",
           "member": "string",
           "name": "Targets",
@@ -3425,6 +3629,15 @@
           "member": "Rule",
           "name": "Rules",
           "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Tag of the rule.",
+          "example": "[]",
+          "member": "string",
+          "name": "Tags",
+          "required": false,
           "type": "list"
         }
       ],
@@ -3606,6 +3819,24 @@
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to allow duplicate sites. Values:\n<li>`true`: Duplicate sites are allowed.</li>\n<li>`false`: Duplicate sites are not allowed.</li>If it is left empty, the default value `false` is used.",
+          "example": "false",
+          "member": "bool",
+          "name": "AllowDuplicates",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The site alias. It can be up to 20 characters consisting of digits, letters, hyphens (-) and underscores (_).",
+          "example": "zone-example",
+          "member": "string",
+          "name": "AliasZoneName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4764,7 +4995,7 @@
         },
         {
           "default": "",
-          "document": "Deployment status. Values:\n<li>`processing`: Deployment in progress;</li>\n<li>`deployed`: Deployed.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Deployment status. Values:\n<li>`processing`: Deployment in progress</li>\n<li>`deployed`: Deployed</li>\n<li>`failed`: Deployment failed</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "deployed",
           "member": "string",
           "name": "Status",
@@ -4784,7 +5015,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Certificate algorithm.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "RSA",
           "member": "string",
           "name": "SignAlgo",
@@ -4794,6 +5025,42 @@
         }
       ],
       "usage": "both"
+    },
+    "DeleteAliasDomainRequest": {
+      "document": "DeleteAliasDomain request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The site ID.",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The alias domain name to be deleted. If it is left empty, the delete operation is not performed.",
+          "example": "无",
+          "member": "string",
+          "name": "AliasNames",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAliasDomainResponse": {
+      "document": "DeleteAliasDomain response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DeleteApplicationProxyRequest": {
       "document": "DeleteApplicationProxy request structure.",
@@ -4962,7 +5229,7 @@
         },
         {
           "default": "",
-          "document": "Region of the logset.",
+          "document": "Region of the logset to be shipped. This field is only required when you configure CLS shipping tasks.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "LogSetRegion",
@@ -5137,6 +5404,78 @@
       ],
       "type": "object"
     },
+    "DescribeAliasDomainsRequest": {
+      "document": "DescribeAliasDomains request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The site ID.",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The page offset. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The paginated query limit. Default value: 20. Maximum value: 1000.",
+          "example": "1000",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`target-name`:<br>   Filter by <strong>target domain name</strong><br>   Type: String<br>   Required: No</li><li>`alias-name`:<br>   Filter by <strong>alias domain name</strong><br>   Type: String<br>   Required: No</li>Only `alias-name` supports fuzzy query.",
+          "example": "无",
+          "member": "AdvancedFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAliasDomainsResponse": {
+      "document": "DescribeAliasDomains response structure.",
+      "members": [
+        {
+          "document": "Total eligible alias domain names.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Information of the eligible alias domain names.",
+          "example": "无",
+          "member": "AliasDomain",
+          "name": "AliasDomains",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeApplicationProxiesRequest": {
       "document": "DescribeApplicationProxies request structure.",
       "members": [
@@ -5160,7 +5499,7 @@
         },
         {
           "default": "",
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries. <li>`proxy-id`:<br>   Filter by <strong>proxy ID</strong>, such as proxy-ev2sawbwfd<br>   Type: String<br>   Required: No<li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-vawer2vadg<br>   Type: String<br>   Required: No",
+          "document": "Filter criteria. Each filter criteria can have up to 20 entries. <li>`proxy-id`:<br>   Filter by <strong>proxy ID</strong>, such as proxy-ev2sawbwfd<br>   Type: String<br>   Required: No</li><li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-vawer2vadg<br>   Type: String<br>   Required: No</li>",
           "example": "[{\"Name\": \"proxy-id\", [\"proxy-124521xfqlh4qjee\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -5215,87 +5554,6 @@
           "name": "PlanInfo",
           "required": true,
           "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeBillingDataRequest": {
-      "document": "DescribeBillingData request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Start time.",
-          "example": "2014-08-03T12:00:00+08:00",
-          "member": "datetime_iso",
-          "name": "StartTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "End time.",
-          "example": "2014-08-03T12:00:00+08:00",
-          "member": "datetime_iso",
-          "name": "EndTime",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Time granularity. Values:\n<ul>\n<li>`min`: One minute</li>\n<li>`5min`: Five minutes</li>\n<li>`hour`: One hour</li>\n<li>`day`: One day</li>\n</ul>",
-          "example": "hour",
-          "member": "string",
-          "name": "Interval",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Metric item. Values:\n<ul>\n<li>`acc_flux`: Content acceleration traffic;</li>\n<li>`quic_request`: QUIC requests;</li>\n<li>`sec_flux`: Security traffic;</li>\n<li>`sec_request_clean`: Clean security requests.</li>\n</ul>",
-          "example": "sec_flux",
-          "member": "string",
-          "name": "MetricName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Filter item. Values:\n<ul>\n<li>`zone`: Site;</li>\n<li>`plan`: Service plan;</li>\n<li>`service`: L4 or L7;</li>\n<li>`tagKey`: Tag key;</li>\n<li>`tagValue`: Tag value.</li>\n</ul>",
-          "example": "无",
-          "member": "BillingDataFilter",
-          "name": "Filters",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeBillingDataResponse": {
-      "document": "DescribeBillingData response structure.",
-      "members": [
-        {
-          "document": "Data of the sampling point\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "DnsData",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Time granularity of sampling\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "min",
-          "member": "string",
-          "name": "Interval",
-          "required": true,
-          "type": "string",
           "value_allowed_null": true
         },
         {
@@ -5762,24 +6020,6 @@
       "members": [
         {
           "default": "",
-          "document": "The site ID.",
-          "example": "test.com",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The subdomain name.",
-          "example": "a.test.com",
-          "member": "string",
-          "name": "Entity",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "The page offset. Default value: 0",
           "example": "1",
           "member": "int64",
@@ -5798,10 +6038,37 @@
         },
         {
           "default": "",
+          "document": "The site ID. You must specify either \"ZoneId+Entity\" or \"TemplateId\".",
+          "example": "test.com",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The subdomain name/L4 proxy. You must specify either \"ZoneId+Entity\" or \"TemplateId\".",
+          "example": "a.test.com",
+          "member": "string",
+          "name": "Entity",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
           "document": "The rule type. Values:\n<li>`idcid`</li>\n<li>`sipbot`</li>\n<li>`uabot`</li>If no value or 0 is passed, all rule types will be selected.",
           "example": "sipbot",
           "member": "string",
           "name": "RuleType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The template ID. You must specify either \"ZoneId+Entity\" or \"TemplateId\".",
+          "example": "temp-n23na0",
+          "member": "string",
+          "name": "TemplateId",
           "required": false,
           "type": "string"
         }
@@ -6896,7 +7163,7 @@
       "members": [
         {
           "default": "",
-          "document": "Filter criteria. Each filter criteria can have up to 5 entries.\n<li>`zone-id`: <br>Filter by <strong>site ID</strong>. Format: zone-xxx",
+          "document": "Filter criteria. Each filter criteria can have up to 5 entries.\n<li>`zone-id`: <br>Filter by <strong>site ID</strong>, such as zone-xxx<br>   Type: String<br>   Required: No</li>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -7202,7 +7469,7 @@
         },
         {
           "default": "",
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`host`:<br>   Filter by <strong>domain name </strong><br>   Type: String<br>   Required: No",
+          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`host`:<br>   Filter by <strong>domain name </strong><br>   Type: String<br>   Required: No</li>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -7247,7 +7514,7 @@
       "members": [
         {
           "default": "",
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone-name`: <br>Filter by <strong>site name</strong><br>   Type: String<br>   Required: No",
+          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone-name`: <br>Filter by <strong>site name</strong><br>   Type: String<br>   Required: No</li>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -7328,7 +7595,7 @@
         },
         {
           "default": "",
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-1a8df68z<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported\n<li>`load-balancing-id`<br>   Filter by <strong>load balancer ID</strong>, such as lb-d21bfaf7-8d72-11ec-841d-00ff977fb3c8<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported\n<li>`host`:<br>   Filter by <strong>load balancing hostname</strong>, such as lb.tencent.com<br>   Type: String<br>   Required: No<br>   Fuzzy query: Supported (only one hostname allowed in a query)",
+          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-1a8df68z<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported\n</li><li>`load-balancing-id`<br>   Filter by <strong>load balancer ID</strong>, such as lb-d21bfaf7-8d72-11ec-841d-00ff977fb3c8<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported\n</li><li>`host`:<br>   Filter by <strong>load balancing hostname</strong>, such as lb.tencent.com<br>   Type: String<br>   Required: No<br>   Fuzzy query: Supported (only one hostname allowed in a query)</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -7760,7 +8027,7 @@
         },
         {
           "default": "",
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone-id`:<br>   Filter by the <strong>site ID</strong>, such as zone-1379afjk91u32h (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported<li>`job-id`:<br>   Filter by <strong>task ID</strong>, such as 1379afjk91u32h (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported<li>`target`:<br>   Filter by <strong>target resource</strong>, such as http://www.qq.com/1.txt (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported<li>`domains`:<br>   Filter by <strong>domain name</strong>, such as www.qq.com<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported<li>`statuses`:<br>   Filter by <strong>task status</strong><br>   Required: No<br>   Fuzzy query: Not supported<br>   Values:<br>   `processing`: The task is in progress.<br>   `success`: The task succeeded.<br>   `failed`: The task failed.<br>   `timeout`: The task timed out.",
+          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-1379afjk91u32h (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`job-id`:<br>   Filter by <strong>task ID</strong>, such as 1379afjk91u32h (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`target`:<br>   Filter by <strong>target resource</strong>, such as http://www.qq.com/1.txt (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`domains`:<br>   Filter by <strong>domain name</strong>, such as www.qq.com<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`statuses`:<br>   Filter by <strong>task status</strong><br>   Required: No<br>   Fuzzy query: Not supported<br>   Values:<br>   `processing`: The task is in progress.<br>   `success`: The task succeeded.<br>   `failed`: The task failed.<br>   `timeout`: The task timed out.</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -7805,7 +8072,7 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the site.",
+          "document": "Disused. Use \"zone-id\" in \"Filters\" instead.",
           "example": "jalfj2n42",
           "member": "string",
           "name": "ZoneId",
@@ -7850,7 +8117,7 @@
         },
         {
           "default": "",
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`job-id`:<br> Filter by the <strong>Task ID</strong>, such as 1379afjk91u32h. Only one ID can be specified.<br>Type: String<br>   Required: No<br>   Fuzzy query: Not supported<li>`target`:<br>   Filter by the <strong>resource address</strong>, such as http://www.qq.com/1.txt. Only one entry allowed.<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported<li>`domains`:<br>   Filter by the <strong>domain name</strong>, such as www.qq.com<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported<li>`statuses`:<br>   Filter by the <strong>task status</strong><br>   Required: No<br>   Fuzzy query: Not supported<br>   Values:<br>   `processing`: Tasks in progress<br>   `success`: Succeeded tasks<br>   `failed`: Failed tasks<br>   `timeout`: Timed-out tasks<li>`type`:<br>   Filter by the <strong>purging mode</strong>. Only one value allowed.<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported<br>   Values:<br>   `purge_url`: Purge URLs.<br>   `purge_prefix`: Purge prefixes.<br>   `purge_all`: Purge all caches.<br>   `purge_host`: Purge hostnames.",
+          "document": "Filter criteria. Each filter criteria can have up to 20 entries. <li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-xxx (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`job-id`:<br>   Filter by <strong>task ID</strong>, such as 1379afjk91u32h (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`target`:<br>   Filter by <strong>target resource</strong>, such as http://www.qq.com/1.txt and tag1<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`domains`:<br>   Filter by <strong>domain name</strong>, such as www.qq.com<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`statuses`:<br>   Filter by <strong>task status</strong><br>   Required: No<br>   Fuzzy query: Not supported<br>   Values:<br>   `processing`: The task is in progress.<br>   `success`: The task succeeded.<br>   `failed`: The task failed.<br>   `timeout`: The task timed out.<li>`type`:<br>   Filter by <strong>purging mode</strong> (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported<br>   Values:<br>   `purge_url`: Purge by URL.<br>   `purge_prefix`: Purge by prefix.<br>   `purge_all`: Purge all caches.<br>   `purge_host`: Purge by hostname.<br>   `purge_cache_tag`: Purge by cache tag.</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -8020,20 +8287,20 @@
       "members": [
         {
           "default": "",
-          "document": "The site ID.",
+          "document": "The site ID. You must specify either \"ZoneId+Entity\" or \"TemplateId\".",
           "example": "zone-xxx",
           "member": "string",
           "name": "ZoneId",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
           "default": "",
-          "document": "The subdomain name/layer-4 proxy.",
+          "document": "The subdomain name/L4 proxy. You must specify either \"ZoneId+Entity\" or \"TemplateId\".",
           "example": "test.com",
           "member": "string",
           "name": "Entity",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
@@ -8053,6 +8320,15 @@
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The template ID. You must specify either this field or ZoneId+Entity\".",
+          "example": "temp-n23na0",
+          "member": "string",
+          "name": "TemplateId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -8195,16 +8471,25 @@
           "example": "test.com",
           "member": "string",
           "name": "ZoneId",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
           "default": "",
-          "document": "The subdomain name/layer-4 proxy.",
+          "document": "The subdomain name/L4 proxy. You must specify either \"Entity\" or \"TemplateId\".",
           "example": "a.test.com",
           "member": "string",
           "name": "Entity",
-          "required": true,
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The template ID. You must specify either this field or \"Entity\".",
+          "example": "1",
+          "member": "string",
+          "name": "TemplateId",
+          "required": false,
           "type": "string"
         }
       ],
@@ -8236,20 +8521,29 @@
       "members": [
         {
           "default": "",
-          "document": "The site ID.",
+          "document": "The site ID. You must specify either \"ZoneId+Entity\" or \"TemplateId\".",
           "example": "test.com",
           "member": "string",
           "name": "ZoneId",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
           "default": "",
-          "document": "Subdomain name/Application name",
+          "document": "The subdomain name/L4 proxy. You must specify either \"ZoneId+Entity\" or \"TemplateId\".",
           "example": "a.test.com",
           "member": "string",
           "name": "Entity",
-          "required": true,
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The template ID. You must specify either this field or \"ZoneId+Entity\". ",
+          "example": "temp-j39jf04f41",
+          "member": "string",
+          "name": "TemplateId",
+          "required": false,
           "type": "string"
         }
       ],
@@ -10072,12 +10366,30 @@
         },
         {
           "default": "",
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone-name`:<br>   Filter by <strong>site name</strong><br>   Type: String<br>   Required: No<li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-xxx<br>   Type: String<br>   Required: No<li>`status`:<br>   Filter by <strong>site status</strong><br>   Type: String<br>   Required: No<li>`tag-key`:<br>   Filter by <strong>tag key</strong><br>   Type: String<br>   Required: No<li>`tag-value`:<br>   Filter by <strong>tag value</strong><br>   Type: String<br>   Required: No<li>`Fuzzy`:<br>   Filter by <strong>values in fuzzy query</strong> (only `zone-name` allowed). Values limit: 1<br>   Type: Boolean<br>   Required: No<br>   Default value: false",
+          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone-name`:<br>   Filter by <strong>site name</strong><br>   Type: String<br>   Required: No</li><li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-xxx<br>   Type: String<br>   Required: No</li><li>`status`:<br>   Filter by <strong>site status</strong><br>   Type: String<br>   Required: No</li><li>`tag-key`:<br>   Filter by <strong>tag key</strong><br>   Type: String<br>   Required: No</li><li>`tag-value`:<br>   Filter by <strong>tag value</strong><br>   Type: String<br>   Required: No</li>Only `zone-name` supports fuzzy query.",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The sorting field. Values:\n<li>`type`: Access mode</li>\n<li>`area`: Acceleration region</li>\n<li>`create-time`: Creation date</li>\n<li>`zone-name`: Site name</li>\n<li>`use-time`: Last used date</li>\n<li>`active-status`: Activation status</li>If it is left empty, the default value `create-time` is used.",
+          "example": "\"status\"",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The sorting direction. Values:\n<li>`asc`: From smallest to largest</li>\n<li>`desc`: From largest to smallest</li>If it is left empty, the default value `desc` is used.",
+          "example": "\"desc\"",
+          "member": "string",
+          "name": "Direction",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -10337,7 +10649,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether to carry the location information of the client IP during origin-pull.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "ClientIpCountry",
           "name": "ClientIpCountry",
@@ -10945,7 +11257,7 @@
       "members": [
         {
           "default": "",
-          "document": "The rule name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The rule name.",
           "example": "rule1",
           "member": "string",
           "name": "RuleName",
@@ -10955,7 +11267,7 @@
         },
         {
           "default": "",
-          "document": "The rule action. It only supports the value `skip`, which indicates skipping all managed rules.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The rule action. It only supports the value `skip`, which indicates skipping all managed rules.",
           "example": "skip",
           "member": "string",
           "name": "Action",
@@ -10965,7 +11277,7 @@
         },
         {
           "default": "",
-          "document": "The rule status. Values:\n<li>`on`: Enabled</li>\n<li>`off`: Disabled</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The rule status. Values:\n<li>`on`: Enabled</li>\n<li>`off`: Disabled</li>",
           "example": "on",
           "member": "string",
           "name": "RuleStatus",
@@ -10975,7 +11287,7 @@
         },
         {
           "default": "",
-          "document": "The rule ID, which is only used as an output parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The rule ID, which is automatically created and only used as an output parameter.",
           "example": "1",
           "member": "int64",
           "name": "RuleID",
@@ -10985,7 +11297,7 @@
         },
         {
           "default": "",
-          "document": "The update time, which is only used as an output parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The update time. If it is null, the current date and time is recorded.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "xxxx",
           "member": "datetime_iso",
           "name": "UpdateTime",
@@ -11015,7 +11327,7 @@
         },
         {
           "default": "",
-          "document": "The rule priority. Value range: 0-100.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The rule priority. Value range: 0-100. If it is null, it defaults to 0.",
           "example": "0",
           "member": "int64",
           "name": "RulePriority",
@@ -11031,7 +11343,7 @@
       "members": [
         {
           "default": "",
-          "document": "The field to match. Values:\n<li>`host`: Request domain name</li>\n<li>`sip`: Client IP</li>\n<li>`ua`: User-Agent</li>\n<li>`cookie`: Cookie</li>\n<li>`cgi`: CGI script</li>\n<li>`xff`: XFF header</li>\n<li>`url`: Request URL</li>\n<li>`accept`: Request content type</li>\n<li>`method`: Request method</li>\n<li>`header`: Request header</li>\n<li>`sip_proto`: Network layer protocol</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The field to match. Values:\n<li>`host`: Request domain name</li>\n<li>`sip`: Client IP</li>\n<li>`ua`: User-Agent</li>\n<li>`cookie`: Cookie</li>\n<li>`cgi`: CGI script</li>\n<li>`xff`: XFF header</li>\n<li>`url`: Request URL</li>\n<li>`accept`: Request content type</li>\n<li>`method`: Request method</li>\n<li>`header`: Request header</li>\n<li>`sip_proto`: Network layer protocol</li>",
           "example": "host",
           "member": "string",
           "name": "MatchFrom",
@@ -11041,7 +11353,7 @@
         },
         {
           "default": "",
-          "document": "The parameter of the field. When `MatchFrom = header`, the key contained in the header can be passed.",
+          "document": "The parameter of the field. Only when `MatchFrom = header`, the key contained in the header can be passed.",
           "example": "Accept-Encoding",
           "member": "string",
           "name": "MatchParam",
@@ -11051,7 +11363,7 @@
         },
         {
           "default": "",
-          "document": "The logical operator. Values:\n<li>`equal`: String equals</li>\n<li>`not_equal`: Value not equals</li>\n<li>`include`: String contains</li>\n<li>`not_include`: String not contains</li>\n<li>`match`: IP matches</li>\n<li>`not_match`: IP not matches</li>\n<li>`include_area`: Regions contain</li>\n<li>`is_empty`: Value left empty</li>\n<li>`not_exists`: Key fields not exist</li>\n<li>`regexp`: Regex matches</li>\n<li>`len_gt`: Value greater than</li>\n<li>`len_lt`: Value smaller than</li>\n<li>`len_eq`: Value equals</li>\n<li>`match_prefix`: Prefix matches</li>\n<li>`match_suffix`: Suffix matches</li>\n<li>`wildcard`: Wildcard</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The logical operator. Values:\n<li>`equal`: String equals</li>\n<li>`not_equal`: Value not equals</li>\n<li>`include`: String contains</li>\n<li>`not_include`: String not contains</li>\n<li>`match`: IP matches</li>\n<li>`not_match`: IP not matches</li>\n<li>`include_area`: Regions contain</li>\n<li>`is_empty`: Value left empty</li>\n<li>`not_exists`: Key fields not exist</li>\n<li>`regexp`: Regex matches</li>\n<li>`len_gt`: Value greater than</li>\n<li>`len_lt`: Value smaller than</li>\n<li>`len_eq`: Value equals</li>\n<li>`match_prefix`: Prefix matches</li>\n<li>`match_suffix`: Suffix matches</li>\n<li>`wildcard`: Wildcard</li>",
           "example": "match",
           "member": "string",
           "name": "Operator",
@@ -11061,7 +11373,7 @@
         },
         {
           "default": "",
-          "document": "The value of the parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The value of the parameter.",
           "example": "www.example.com",
           "member": "string",
           "name": "MatchContent",
@@ -11077,7 +11389,7 @@
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Exception mode. Values:\n<li>`complete`: Skip the exception rule for full requests.</li>\n<li>`partial`: Skip the exception rule for partial requests.</li>",
           "example": "complete",
           "member": "string",
           "name": "Type",
@@ -11087,7 +11399,7 @@
         },
         {
           "default": "",
-          "document": "The module that applies. Only WAF managed rules are supported currently.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The module to be activated. Values:\n<li>`waf`: Managed rules</li>\n<li>`cc`: Rate limiting rules</li>\n<li>`bot`: bot protection</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "[\"waf\"]",
           "member": "string",
           "name": "Modules",
@@ -11097,7 +11409,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Module settings of the exception rule. If it is null, the settings that were last configured will be used.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "PartialModule",
           "name": "PartialModules",
@@ -11107,7 +11419,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Condition settings of the exception rule. If it is null, the settings that were last configured will be used.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "SkipCondition",
           "name": "SkipConditions",
@@ -11133,7 +11445,7 @@
         },
         {
           "default": "",
-          "document": "List of resources failed to be processed.",
+          "document": "List of resources failed to be processed. ",
           "example": "[\"http://www.qq.com/1.txt\"]",
           "member": "string",
           "name": "Targets",
@@ -11145,11 +11457,11 @@
       "usage": "out"
     },
     "FileAscriptionInfo": {
-      "document": "",
+      "document": "Verification file, used to verify site ownership",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Directory of the verification file.",
           "example": "/.well-known/teo-verification/vd4ewuqa9n.txt",
           "member": "string",
           "name": "IdentifyPath",
@@ -11159,7 +11471,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Content of the verification file.",
           "example": "88v24mnnljwbhaohrpfx80f63duhdnjx",
           "member": "string",
           "name": "IdentifyContent",
@@ -11208,6 +11520,26 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sets the default cache time when the origin server does not return the Cache-Control header.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "DefaultCacheTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to enable cache when the origin server does not return the Cache-Control header.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "DefaultCache",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -11289,7 +11621,7 @@
       "members": [
         {
           "default": "",
-          "document": "HTTP header name",
+          "document": "HTTP header name.",
           "example": "User-Agent",
           "member": "string",
           "name": "Name",
@@ -11408,6 +11740,16 @@
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the certificate is managed by EdgeOne. Values:\n<li>`apply`: Managed by EdgeOne.</li>\n<li>`none`: Not managed by EdgeOne.</li>If it is left empty, the default value `none` is used.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplyType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -11437,7 +11779,7 @@
         },
         {
           "default": "",
-          "document": "The site ownership information.",
+          "document": "Details of the DNS record.",
           "example": "无",
           "member": "AscriptionInfo",
           "name": "Ascription",
@@ -11457,7 +11799,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Details of the verification file.",
           "example": "无",
           "member": "FileAscriptionInfo",
           "name": "FileAscription",
@@ -11487,7 +11829,7 @@
       "document": "IdentifyZone response structure.",
       "members": [
         {
-          "document": "The site ownership information.",
+          "document": "Details of the DNS record.",
           "example": "无",
           "member": "AscriptionInfo",
           "name": "Ascription",
@@ -11496,7 +11838,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "",
+          "document": "Details of the verification file.",
           "example": "无",
           "member": "FileAscriptionInfo",
           "name": "FileAscription",
@@ -11643,6 +11985,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The rule status. A null value indicates that the rule is enabled. Values:\n<li>`on`: Enabled</li>\n<li>`off`: Disabled</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "on",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -11900,7 +12252,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The origin-pull type. Values:\n<li>`normal`: Primary/Secondary origin-pull</li>\n<li>`advanced`: Advanced origin-pull</li>",
           "example": "normal",
           "member": "string",
           "name": "OriginType",
@@ -11910,7 +12262,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Advanced origin-pull configuration. This field is valid when `OriginType=advanced`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "AdvancedOriginGroup",
           "name": "AdvancedOriginGroups",
@@ -12266,6 +12618,114 @@
       ],
       "type": "object"
     },
+    "ModifyAliasDomainRequest": {
+      "document": "ModifyAliasDomain request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The site ID.",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The alias domain name.",
+          "example": "eo.tencent.com",
+          "member": "string",
+          "name": "AliasName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The target domain name.",
+          "example": "a.example.com",
+          "member": "string",
+          "name": "TargetName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Certificate configuration. Values:\n<li>`none`: Off</li>\n<li>`hosting`: Managed SSL certificate</li>\n<li>`apply`: Free certificate</li>The original configuration will apply if this field is not specified.",
+          "example": "none",
+          "member": "string",
+          "name": "CertType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The certificate ID. This field is required when `CertType=hosting`.",
+          "example": "xxx",
+          "member": "string",
+          "name": "CertId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAliasDomainResponse": {
+      "document": "ModifyAliasDomain response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAliasDomainStatusRequest": {
+      "document": "ModifyAliasDomainStatus request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The site ID.",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Status of the alias domain name. Values:\n<li>`false`: Enable the alias domain name.</li>\n<li>`true`: Disable the alias domain name.</li>",
+          "example": "true",
+          "member": "bool",
+          "name": "Paused",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The alias domain name you want to modify its status. If it is left empty, the modify operation is not performed.",
+          "example": "无",
+          "member": "string",
+          "name": "AliasNames",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAliasDomainStatusResponse": {
+      "document": "ModifyAliasDomainStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyApplicationProxyRequest": {
       "document": "ModifyApplicationProxy request structure.",
       "members": [
@@ -12379,7 +12839,7 @@
         },
         {
           "default": "",
-          "document": "The port, which can be specified in the following formats:\nSingle port, such as 80.\nPort range, such as 81-90. The original configuration will apply if this field is not specified.",
+          "document": "The access port, which can be:\n<li>A single port, such as 80</li>\n<li>A port range, such as 81-90</li>",
           "example": "[\"90\"]",
           "member": "string",
           "name": "Port",
@@ -12397,7 +12857,7 @@
         },
         {
           "default": "",
-          "document": "Origin server information:\nWhen `OriginType=custom`, it indicates one or more origin servers. Example:\nOriginValue=[\"8.8.8.8:80\",\"9.9.9.9:80\"]\nOriginValue=[\"test.com:80\"];\nWhen `OriginType=origins`, it indicates an origin group ID. Example:\nOriginValue=[\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"]\nThe original configuration will apply if this field is not specified.",
+          "document": "Origin server information:\n<li>When `OriginType=custom`, it indicates one or more origin servers, such as [\"8.8.8.8\",\"9.9.9.9\"] or [\"test.com\"].</li>\n<li>When `OriginType=origins`, it indicates an origin group ID, such as [\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"].</li>\n\nThe original configuration will apply if this field is not specified.",
           "example": "[\"1.1.1.1:80\",\"2.2.2.2:80\"]",
           "member": "string",
           "name": "OriginValue",
@@ -12415,12 +12875,21 @@
         },
         {
           "default": "",
-          "document": "Whether to enable session persistence. Values:\n<li>`true`: Enable</li>\n<li>`false`: Disable</li>The original configuration will apply if this field is not specified.",
+          "document": "Whether to enable session persistence. Values:\n<li>`true`: Enable</li>\n<li>`false`: Disable</li>If it is left empty, the default value `false` is used.",
           "example": "false",
           "member": "bool",
           "name": "SessionPersist",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The origin port, which can be:\n<li>A single port, such as 80</li>\n<li>A port range, such as 81-82</li>",
+          "example": "80-90",
+          "member": "string",
+          "name": "OriginPort",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -12844,6 +13313,15 @@
           "name": "ServerCertInfo",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether the certificate is managed by EdgeOne. Values:\n<li>`apply`: Managed by EdgeOne</li>\n<li>`none`: Not managed by EdgeOne</li>If it is left empty, the default value `apply` is used.",
+          "example": "apply",
+          "member": "string",
+          "name": "ApplyType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -12919,7 +13397,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The origin-pull type. Values:\n<li>`normal`: Primary/Secondary origin-pull</li>\n<li>`advanced`: Advanced origin-pull (only used when `Type=proxied`)</li>If it is left empty, primary/secondary origin-pull is applied.",
           "example": "normal",
           "member": "string",
           "name": "OriginType",
@@ -12928,7 +13406,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Advanced origin-pull configuration. This field is valid when `OriginType=advanced`.\nIf it is left empty, this configuration is not used.",
           "example": "无",
           "member": "AdvancedOriginGroup",
           "name": "AdvancedOriginGroups",
@@ -13171,7 +13649,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The origin domain. This field can be specified only when `OriginType=self`.\nIf it is left empty, the existing configuration is used.",
           "example": "www.tencent.com",
           "member": "string",
           "name": "HostHeader",
@@ -13276,6 +13754,15 @@
           "name": "Status",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tag of the rule.",
+          "example": "[]",
+          "member": "string",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -13315,21 +13802,30 @@
         },
         {
           "default": "",
-          "document": "The subdomain name/layer-4 proxy.",
-          "example": "a.test.com",
-          "member": "string",
-          "name": "Entity",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
           "document": "Security configuration.",
           "example": "无",
           "member": "SecurityConfig",
           "name": "SecurityConfig",
           "required": true,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The subdomain name/L4 proxy. You must specify either \"Entity\" or \"TemplateId\".",
+          "example": "a.test.com",
+          "member": "string",
+          "name": "Entity",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The template ID. You must specify either this field or \"Entity\".",
+          "example": "1",
+          "member": "string",
+          "name": "TemplateId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -13351,20 +13847,20 @@
       "members": [
         {
           "default": "",
-          "document": "The site ID.",
+          "document": "The site ID. You must specify either \"ZoneId+Entity\" or \"TemplateId\".",
           "example": "zone-xxx",
           "member": "string",
           "name": "ZoneId",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
           "default": "",
-          "document": "The subdomain name.",
+          "document": "The subdomain name. You must specify either \"ZoneId+Entity\" or \"TemplateId\". ",
           "example": "test.com",
           "member": "string",
           "name": "Entity",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
@@ -13420,6 +13916,15 @@
           "name": "WafGroups",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The template ID. You must specify either this field or \"ZoneId+Entity\".",
+          "example": "temp-a23j9ja1",
+          "member": "string",
+          "name": "TemplateId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -13501,6 +14006,15 @@
           "name": "VanityNameServers",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The site alias. It can be up to 20 characters consisting of digits, letters, hyphens (-) and underscores (_).",
+          "example": "zone-example",
+          "member": "string",
+          "name": "AliasZoneName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -13675,7 +14189,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether to carry the location information of the client IP during origin-pull.\nThe original configuration will apply if this field is not specified.",
           "example": "无",
           "member": "ClientIpCountry",
           "name": "ClientIpCountry",
@@ -13862,7 +14376,7 @@
         },
         {
           "default": "",
-          "document": "Origin-pull protocol configuration. Values:\n<li>`http`: Force HTTP for origin-pull.</li>\n<li>`follow`: Follow protocol.</li>\n<li>`https`: Force HTTPS for origin-pull. This only supports port 443 on the origin server.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Origin-pull protocol configuration. Values:\n<li>`http`: Force HTTP for origin-pull.</li>\n<li>`follow`: Follow protocol.</li>\n<li>`https`: Force HTTPS for origin-pull.</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "https",
           "member": "string",
           "name": "OriginPullProtocol",
@@ -13872,7 +14386,7 @@
         },
         {
           "default": "",
-          "document": "When OriginType is COS, you can specify if access to private buckets is allowed.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to allow private access to buckets when `OriginType=cos`. Values:\n<li>`on`: Allow private access.</li>\n<li>`off`: Allow public access.</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "off",
           "member": "string",
           "name": "CosPrivateAccess",
@@ -13968,7 +14482,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The origin domain when `OriginType=self`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "www.tencent.com",
           "member": "string",
           "name": "HostHeader",
@@ -13980,11 +14494,11 @@
       "usage": "out"
     },
     "OriginGroupCondition": {
-      "document": "",
+      "document": "Origin-pull condition",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Match type. Values:\n<li>`url`: Partial URL path under the current site, such as \"/example\" and \"/example/foo.jpg\". You can use an asterisk (*) to indicate all values and a question mark (?) to indicate any single character.\n</li>",
           "example": "url",
           "member": "string",
           "name": "Target",
@@ -13994,7 +14508,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The operator. Values:\n<li>`equal`: Equals</li>",
           "example": "equal",
           "member": "string",
           "name": "Operator",
@@ -14004,7 +14518,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Values of the match type.",
           "example": "无",
           "member": "string",
           "name": "Values",
@@ -14102,11 +14616,11 @@
       "usage": "both"
     },
     "PartialModule": {
-      "document": "",
+      "document": "Module settings of the exception rule",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "The module. Values:\n<li>`waf`: Managed rules</li>",
           "example": "waf",
           "member": "string",
           "name": "Module",
@@ -14116,7 +14630,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "List of managed rule IDs to be skipped.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "[1,2,3]",
           "member": "int64",
           "name": "Include",
@@ -14162,7 +14676,7 @@
         },
         {
           "default": "",
-          "document": "Plan option. Values:\n<li>`sta`: Standard plan that supports content delivery network outside Chinese mainland;</li>\n<li>`sta_with_bot`: Standard plan that supports content delivery network outside Chinese mainland and bot management;</li>\n<li>`sta_cm`: Standard plan that supports content delivery network inside Chinese mainland;</li>\n<li>`sta_cm_with_bot`: Standard plan that supports content delivery network inside Chinese mainland and bot management;</li>\n<li>`ent`: Enterprise plan that supports content delivery network outside Chinese mainland;</li>\n<li>`ent_with_bot`: Enterprise plan that supports content delivery network outside Chinese mainland and bot management;</li>\n<li>`ent_cm`: Enterprise plan that supports content delivery network inside Chinese mainland;</li>\n<li>`ent_cm_with_bot`: Enterprise plan that supports content delivery network inside Chinese mainland and bot management.</li>",
+          "document": "The plan option. Values:\n<li>`sta`: Standard plan that supports content delivery network outside the Chinese mainland.</li>\n<li>`sta_with_bot`: Standard plan that supports content delivery network outside the Chinese mainland and bot management.</li>\n<li>`sta_cm`: Standard plan that supports content delivery network inside the Chinese mainland.</li>\n<li>`sta_cm_with_bot`: Standard plan that supports content delivery network inside the Chinese mainland and bot management.</li>\n<li>`sta`: Standard plan that supports content delivery network over the globe.</li>\n<li>`sta_global_with_bot`: Standard plan that supports content delivery network over the globe and bot management.</li>\n<li>`ent`: Enterprise plan that supports content delivery network outside the Chinese mainland.</li>\n<li>`ent_with_bot`: Enterprise plan that supports content delivery network outside the Chinese mainland and bot management.</li>\n<li>`ent_cm`: Enterprise plan that supports content delivery network inside the Chinese mainland.</li>\n<li>`ent_cm_with_bot`: Enterprise plan that supports content delivery network inside the Chinese mainland and bot management.</li>\n<li>`ent_global`: Enterprise plan that supports content delivery network over the globe.</li>\n<li>`ent_global_with_bot`: Enterprise plan that supports content delivery network over the globe and bot management.</li>",
           "example": "sta_with_bot",
           "member": "string",
           "name": "PlanType",
@@ -14202,7 +14716,7 @@
         },
         {
           "default": "",
-          "document": "Acceleration region. Values:\n<li>`mainland`: Chinese mainland;</li>\n<li>`overseas`: Global (Chinese mainland not included).</li>",
+          "document": "The acceleration region. Values:\n<li>`mainland`: Chinese mainland</li>\n<li>`overseas`: Global (Chinese mainland not included)</li>\n<li>`global`: Global (Chinese mainland included)</li>",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -14336,7 +14850,7 @@
         },
         {
           "default": "",
-          "document": "The conditional operator. Values:\n<li>`equals`: Equal to;</li>\n<li>`notEquals`: Not equal to;</li>\n<li>`include`: Contain;</li>\n<li>`notInclude`: Not contain;</li>\n<li>`startWith`: Start with;</li>\n<li>`notStartWith`: Not start with;</li>\n<li>`endWith`: End with;</li>\n<li>`notEndWith`: Not end with.</li>",
+          "document": "The conditional operator. Values:\n<li>`equals`: Equals</li>\n<li>`notEquals`: Does not equal</li>\n<li>`include`: Contains</li>\n<li>`notInclude`: Does not contain</li>\n<li>`startWith`: Starts with</li>\n<li>`notStartWith`: Does not start with</li>\n<li>`endWith`: Ends with</li>\n<li>`notEndWith`: Does not end with</li>",
           "example": "equals",
           "member": "string",
           "name": "Operator",
@@ -14444,7 +14958,7 @@
         },
         {
           "default": "",
-          "document": "Quota type. Values:\n<li>`purge_prefix`: Purge prefixes;</li>\n<li>`purge_url`: Purge URLs;</li>\n<li>`purge_host`: Purge hostnames;</li>\n<li>`purge_all`: Purge all caches.</li>",
+          "document": "Type of cache purging/pre-warming. Values:\n<li>`purge_prefix`: Purge by prefix</li>\n<li>`purge_url`: Purge by URL</li>\n<li>`purge_host`: Purge by hostname</li>\n<li>`purge_all`: Purge all caches</li>\n<li>`purge_cache_tag`: Purge by cache tag</li><li>`prefetch_url`: Pre-warm by URL</li>",
           "example": "purge_url",
           "member": "string",
           "name": "Type",
@@ -14608,7 +15122,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The action. Values:\n<li>`alg`: JavaScript challenge</li>\n<li>`monitor`: Observe</li>If it is left empty, the default value `alg` is used.",
           "example": "alg",
           "member": "string",
           "name": "Action",
@@ -14634,7 +15148,7 @@
       "members": [
         {
           "default": "",
-          "document": "The mode. Values:\n<li>`sup_loose`: Super loose</li>\n<li>`loose`: Loose</li>\n<li>`emergency`: Emergency</li>\n<li>`normal`: Moderate</li>\n<li>`strict`: Strict</li>\n<li>`close`: Off</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The mode. Values:\n<li>`sup_loose`: Super loose</li>\n<li>`loose`: Loose</li>\n<li>`emergency`: Emergency</li>\n<li>`normal`: Moderate</li>\n<li>`strict`: Strict</li>\n<li>`close`: Off</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "loose",
           "member": "string",
           "name": "Mode",
@@ -14654,7 +15168,7 @@
         },
         {
           "default": "",
-          "document": "The action, which will be triggered when the specified threshold reaches.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The action. Values:\n<li>`alg`: JavaScript challenge</li>\n<li>`monitor`: Observe</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "alg",
           "member": "string",
           "name": "Action",
@@ -14664,7 +15178,7 @@
         },
         {
           "default": "",
-          "document": "The amount of time taken to perform the action. Value range: 0-172800 seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The blocking duration, in seconds. Value range: 0-172800.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "10",
           "member": "int64",
           "name": "PunishTime",
@@ -14760,7 +15274,7 @@
         },
         {
           "default": "",
-          "document": "The rule status. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>\n<li>Default value: on</li>",
+          "document": "The rule status. Values:\n<li>`on`: Enabled</li>\n<li>`off`: Disabled</li>Default value: on",
           "example": "on",
           "member": "string",
           "name": "RuleStatus",
@@ -14800,8 +15314,8 @@
         },
         {
           "default": "",
-          "document": "The filter. Values:\n<li>`host`: Domain name</li>\n<li>`sip`: Client IP</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"host\", \"sip\"",
+          "document": "The filter. Values:\n<li>`sip`: Client IP</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"sip\"",
           "member": "string",
           "name": "FreqFields",
           "required": false,
@@ -14817,9 +15331,55 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The statistical dimension. Values:\n<li>`source_to_eo`: Responses from the origin server to EdgeOne</li>\n<li>`client_to_eo`: Requests from the client to EdgeOne</li>\nNote: A null value indicates responses from the origin server to EdgeOne are recorded.",
+          "example": "source_to_eo",
+          "member": "string",
+          "name": "FreqScope",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
+    },
+    "ReclaimAliasDomainRequest": {
+      "document": "ReclaimAliasDomain request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The site ID.",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The site name.",
+          "example": "example.com",
+          "member": "string",
+          "name": "ZoneName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReclaimAliasDomainResponse": {
+      "document": "ReclaimAliasDomain response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ReclaimZoneRequest": {
       "document": "ReclaimZone request structure.",
@@ -14985,6 +15545,16 @@
       "members": [
         {
           "default": "",
+          "document": "Feature to be executed.",
+          "example": "[]",
+          "member": "Action",
+          "name": "Actions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
           "document": "Feature execution conditions.\nNote: If any condition in the array is met, the feature will run.",
           "example": "[]",
           "member": "RuleAndConditions",
@@ -14995,11 +15565,11 @@
         },
         {
           "default": "",
-          "document": "Feature to be executed.",
+          "document": "The nested rule.",
           "example": "[]",
-          "member": "Action",
-          "name": "Actions",
-          "required": true,
+          "member": "SubRuleItem",
+          "name": "SubRules",
+          "required": false,
           "type": "list",
           "value_allowed_null": false
         }
@@ -15149,7 +15719,7 @@
       "members": [
         {
           "default": "",
-          "document": "Operator. Valid values:\n<li>equal: Equal to.</li>\n<li>notequal: Not equal to.</li>",
+          "document": "Operator. Valid values:\n<li>`equals`: Equals</li>\n<li>`notEquals`: Does not equal</li>\n<li>`exist`: Exists</li>\n<li>`notexist`: Does not exist</li>",
           "example": "equal",
           "member": "string",
           "name": "Operator",
@@ -15159,7 +15729,7 @@
         },
         {
           "default": "",
-          "document": "Match type. Valid values:\n<li>`host`: All</li>\n<li>`filename`: File name</li>\n<li>`extension`: File extension</li>\n<li>`host`: HOST: .</li>\n<li>`full_url`: The full URL of the current site. It must contain the HTTP protocol, host, and path.</li>\n<li>`url`: The URL path of the current site.</li>",
+          "document": "Match type. Valid values:\n<li>`filename`: File name</li>\n<li>`extension`: File extension</li>\n<li>`host`: Host</li>\n<li>`full_url`: Full URL, which indicates the complete URL path under the current site and must contain the HTTP protocol, host, and path.</li>\n<li>`url`: Partial URL under the current site</li><li>`client_country`: Country/Region of the client</li>\n<li>`query_string`: Query string in the URL</li>\n<li>`request_header`: HTTP request header</li>",
           "example": "url",
           "member": "string",
           "name": "Target",
@@ -15169,13 +15739,43 @@
         },
         {
           "default": "",
-          "document": "Parameter values of the match type. Each match type has the following valid values:\n<li>`Target=extension`:  The extension of the file, such as `jpg` and `txt`.</li>\n<li>`Target=filename`: The file name without the extension.</li>\n<li>`Target=host`: Values can be `all` \nor a host, such as `www.maxx55.com`.</li>\n<li>`Target=url`: A URL request path under the current site, such as `/example`.</li>\n<li>`Target=full_url`: A complete URL request under the current site. It must contain the protocol, host, and path, such as `https://www.maxx55.cn/example`.</li>",
+          "document": "The parameter value of the match type. It can be an empty string only when `Target=query string/request header` and `Operator=exist/notexist`.\n<li>When `Target=extension`, enter the file extension, such as \"jpg\" and \"txt\".</li>\n<li>When `Target=filename`, enter the file name, such as \"foo\" in \"foo.jpg\".</li>\n<li>When `Target=all`, it indicates any site request.</li>\n<li>When `Target=host`, enter the host under the current site, such as \"www.maxx55.com\".</li>\n<li>When `Target=url`, enter the partial URL path under the current site, such as \"/example\".</li>\n<li>When `Target=full_url`, enter the complete URL  under the current site. It must contain the HTTP protocol, host, and path, such as \"https://www.maxx55.cn/example\".</li>\n<li>When `Target=client_country`, enter the ISO-3166 country/region code.</li>\n<li>When `Target=query_string`, enter the value of the query string, such as \"cn\" and \"1\" in \"lang=cn&version=1\".</li>\n<li>When `Target=request_header`, enter the HTTP request header value, such as \"zh-CN,zh;q=0.9\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.</li>",
           "example": "[\"www.maxx55.com\"]",
           "member": "string",
           "name": "Values",
-          "required": true,
+          "required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the parameter value is case insensitive. Default value: false.",
+          "example": "true",
+          "member": "bool",
+          "name": "IgnoreCase",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The parameter name of the match type. This field is required only when `Target=query_string/request_header`.\n<li>`query_string`: Name of the query string, such as \"lang\" and \"version\" in \"lang=cn&version=1\".</li>\n<li>`request_header`: Name of the HTTP request header, such as \"Accept-Language\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.</li>",
+          "example": "Accept-Language",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "IgnoreNameCase",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -15267,6 +15867,16 @@
           "name": "RulePriority",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag of the rule.",
+          "example": "[]",
+          "member": "string",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -15646,6 +16256,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The bot tag. Values:\n<li>`evil_bot`: Malicious bot</li>\n<li>`suspect_bot`: Suspected bot</li>\n<li>`good_bot`: Good bot</li>\n<li>`normal`: Normal request</li>\n<li>`none`: Uncategorized</li>",
+          "example": "evil_bot",
+          "member": "string",
+          "name": "BotLabel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -15696,7 +16316,7 @@
         {
           "default": "",
           "document": "Rule description.",
-          "example": "”针对出现在GET参数中的命令注入防护规则“",
+          "example": "针对出现在GET参数中的命令注入防护规则",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -15706,12 +16326,22 @@
         {
           "default": "",
           "document": "The rule type.",
-          "example": "\"命令/代码注入攻击防护\"",
+          "example": "命令/代码注入攻击防护",
           "member": "string",
           "name": "RuleTypeName",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The attack content.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "AttackContent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -15798,6 +16428,16 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Security template settings\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "TemplateConfig",
+          "name": "TemplateConfig",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -15879,7 +16519,7 @@
         },
         {
           "default": "",
-          "document": "Type of the certificate. Values:\n<li>`default`: Default certificate;</lil>\n<li>`upload`: Custom certificate;</li>\n<li>`managed`: Tencent Cloud-managed certificate.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Type of the certificate. Values:\n<li>`default`: Default certificate</lil>\n<li>`upload`: Specified certificate</li>\n<li>`managed`: Tencent Cloud-managed certificate</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "default",
           "member": "string",
           "name": "Type",
@@ -15913,6 +16553,16 @@
           "example": "RSA",
           "member": "string",
           "name": "SignAlgo",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Domain name of the certificate.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "tencent.cloud",
+          "member": "string",
+          "name": "CommonName",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -16059,11 +16709,11 @@
       "usage": "out"
     },
     "SkipCondition": {
-      "document": "",
+      "document": "Exception rule conditions, used to filter requests by specific fields",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "The field type. Values:\n<li>`header_fields`: HTTP request header</li>\n<li>`cookie`: HTTP request cookie</li>\n<li>`query_string`: Query string in the HTTP request URL</li>\n<li>`uri`: HTTP request URI</li>\n<li>`body_raw`: HTTP request body</li>\n<li>`body_json`: JSON HTTP request body</li>",
           "example": "body_json",
           "member": "string",
           "name": "Type",
@@ -16073,7 +16723,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The specific field. Values:\n<li>`args`: Query parameter in the URI, such as \"?name1=jack&age=12\"</li>\n<li>`path`: Partial path in the URI, such as \"/path/to/resource.jpg\"</li>\n<li>`full`: Full path in the URI, such as \"example.com/path/to/resource.jpg?name1=jack&age=12\"</li>\n<li>`upload_filename`: File path segment</li>\n<li>`keys`: All keys</li>\n<li>`values`: Values of all keys</li>\n<li>`key_value`: Key and its value</li>",
           "example": "keys",
           "member": "string",
           "name": "Selector",
@@ -16083,7 +16733,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The match method used to match the key. Values:\n<li>`equal`: Exact match</li>\n<li>`wildcard`: Wildcard match (only asterisks)</li>",
           "example": "equal",
           "member": "string",
           "name": "MatchFromType",
@@ -16093,7 +16743,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The value that matches the key.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "key",
           "member": "string",
           "name": "MatchFrom",
@@ -16103,7 +16753,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The match method used to match the content.\n<li>`equal`: Exact match</li>\n<li>`wildcard`: Wildcard match (only asterisks)</li>",
           "example": "equal",
           "member": "string",
           "name": "MatchContentType",
@@ -16113,7 +16763,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The value that matches the content.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "value",
           "member": "string",
           "name": "MatchContent",
@@ -16562,6 +17212,58 @@
       ],
       "usage": "out"
     },
+    "SubRule": {
+      "document": "Nested rule settings",
+      "members": [
+        {
+          "default": "",
+          "document": "The condition that determines if a feature should run.\nNote: If any condition in the array is met, the feature will run.",
+          "example": "[]",
+          "member": "RuleAndConditions",
+          "name": "Conditions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The feature to be executed.",
+          "example": "[]",
+          "member": "Action",
+          "name": "Actions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SubRuleItem": {
+      "document": "Rule engine nested rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Nested rule settings",
+          "example": "[]",
+          "member": "SubRule",
+          "name": "Rules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tag of the rule.",
+          "example": "[]",
+          "member": "string",
+          "name": "Tags",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "Sv": {
       "document": "Pricing query parameter",
       "members": [
@@ -16731,6 +17433,32 @@
         }
       ],
       "usage": "out"
+    },
+    "TemplateConfig": {
+      "document": "Security template settings",
+      "members": [
+        {
+          "default": "",
+          "document": "The template ID.",
+          "example": "1",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The template name.",
+          "example": "1",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "TimingDataItem": {
       "document": "Data items of the statistical curve",
@@ -17591,7 +18319,7 @@
         },
         {
           "default": "",
-          "document": "Whether CNAME flattening is enabled. Valid values:\n<li>`enabled`: Enabled.</li>\n<li>`disabled`: Disabled.</li>",
+          "document": "Whether CNAME acceleration is enabled. Values:\n<li>`enabled`: Enabled</li>\n<li>`disabled`: Disabled</li>",
           "example": "无",
           "member": "string",
           "name": "CnameSpeedUp",
@@ -17677,6 +18405,26 @@
           "name": "VanityNameServersIps",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Status of the proxy. Values:\n<li>`active`: Enabled</li>\n<li>`inactive`: Not activated</li>\n<li>`paused`: Disabled</li>",
+          "example": "active",
+          "member": "string",
+          "name": "ActiveStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The site alias. It can be up to 20 characters consisting of digits, letters, hyphens (-) and underscores (_).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zone-example",
+          "member": "string",
+          "name": "AliasZoneName",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -17867,7 +18615,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether to carry the location information of the client IP during origin-pull.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "ClientIpCountry",
           "name": "ClientIpCountry",
