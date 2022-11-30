@@ -569,7 +569,7 @@
     "RenewInstance": [
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=RenewInstance\n&Period=12\n&InstanceId=crs-5a4py64p\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RenewInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5a4py64p\",\n    \"Period\": \"12\"\n}",
         "output": "{\n    \"Response\": {\n        \"DealId\": \"6954225\",\n        \"RequestId\": \"495d8e9f-61bf-465e-aa4e-14be54a9095a\"\n    }\n}",
         "title": "Sample request"
       }
@@ -617,7 +617,7 @@
     "UpgradeInstance": [
       {
         "document": "",
-        "input": "https://redis.tencentcloudapi.com/?Action=UpgradeInstance\n&InstanceId=crs-5qlrlhux\n&MemSize=4096\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5qlr****\",\n    \"MemSize\": \"4096\",\n    \"RedisShardNum\": 5,\n    \"RedisReplicasNum\": 3\n}",
         "output": "{\n    \"Response\": {\n        \"DealId\": \"6954227\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
         "title": "Sample request"
       }

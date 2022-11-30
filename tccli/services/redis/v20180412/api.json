@@ -457,9 +457,9 @@
       "output": "SwitchProxyResponse"
     },
     "UpgradeInstance": {
-      "document": "This API is used to upgrade an instance.",
+      "document": "This API is used to modify the instance configuration.",
       "input": "UpgradeInstanceRequest",
-      "name": "Upgrades instance",
+      "name": "Modifies the instance configuration",
       "output": "UpgradeInstanceResponse"
     },
     "UpgradeInstanceVersion": {
@@ -7557,11 +7557,22 @@
       "members": [
         {
           "default": "",
-          "document": "Node ID\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Node ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "NodeId",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "AZ ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100002",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -8058,7 +8069,7 @@
       "members": [
         {
           "default": "",
-          "document": "Length of purchase in months",
+          "document": "Validity period in months",
           "example": "12",
           "member": "uint64",
           "name": "Period",
@@ -8072,6 +8083,15 @@
           "member": "string",
           "name": "InstanceId",
           "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The parameter used to determine whether to modify the billing mode. <ul><li>If you want to change the billing mode from pay-as-you-go to monthly subscription, specify this parameter as <b>prepaid</b>. </li><li>If the current instance is monthly subscribed, this parameter is not required. </li></ul>",
+          "example": "PREPAID",
+          "member": "string",
+          "name": "ModifyPayMode",
+          "required": false,
           "type": "string"
         }
       ],
@@ -8943,7 +8963,7 @@
       "members": [
         {
           "default": "",
-          "document": "Instance ID",
+          "document": "The ID of instance to be modified.",
           "example": "crs-5qlrlhux",
           "member": "string",
           "name": "InstanceId",
@@ -8952,7 +8972,7 @@
         },
         {
           "default": "",
-          "document": "Shard size in MB. This parameter cannot be passed in at the same time as `RedisShardNum`/`RedisReplicasNum`.",
+          "document": "New memory size of an instance shard. <ul><li>Unit: MB. </li><li>You can only modify one of the three parameters at a time: `MemSize`, `RedisShardNum`, and `RedisReplicasNum`. To modify one of them, you need to enter the other two, which are consistent with the original configuration specifications of the instance. </li></ul>",
           "example": "3096",
           "member": "uint64",
           "name": "MemSize",
@@ -8961,7 +8981,7 @@
         },
         {
           "default": "",
-          "document": "Number of shards. This parameter is not required by standard architecture instances and cannot be passed in at the same time as `RedisReplicasNum`/`MemSize`.",
+          "document": "New number of instance shards. <ul><li>This parameter is not required for standard architecture instances, but for cluster architecture instances. </li><li>For cluster architecture, you can only modify one of the three parameters at a time: `MemSize`, `RedisShardNum`, and `RedisReplicasNum`. To modify one of them, you need to enter the other two, which are consistent with the original configuration specifications of the instance. </li></ul>",
           "example": "3",
           "member": "uint64",
           "name": "RedisShardNum",
@@ -8970,7 +8990,7 @@
         },
         {
           "default": "",
-          "document": "Number of replicas. This parameter cannot be passed in at the same time as `RedisShardNum`/`MemSize`. To modify the number of replicas in a multi-AZ instance, `NodeSet` must be passed in.",
+          "document": "New replica quantity. <ul><li>You can only modify one of the three parameters at a time: `MemSize`, `RedisShardNum`, and `RedisReplicasNum`. To modify one of them, you need to enter the other two, which are consistent with the original configuration specifications of the instance. </li></ul>To modify the number of replicas in a multi-AZ instance, `NodeSet` must be passed in.</li></ul>",
           "example": "2",
           "member": "uint64",
           "name": "RedisReplicasNum",
@@ -8979,7 +8999,7 @@
         },
         {
           "default": "",
-          "document": "Additional information for adding replicas for multi-AZ instances. This parameter is not required for single-AZ instances but is required when adding replicas for multi-AZ instances. It contains the information of the replicas to be added, including replica AZ and type (`NodeType` is 1).",
+          "document": "Additional information for adding replicas for multi-AZ instances, including replica AZ and type (`NodeType` is `1`). This parameter is not required for single-AZ instances.",
           "example": "无",
           "member": "RedisNodeInfo",
           "name": "NodeSet",
