@@ -48,6 +48,12 @@
       "name": "Gets cost distribution over different tags",
       "output": "DescribeBillSummaryByTagResponse"
     },
+    "DescribeDosageCosDetailByDate": {
+      "document": "This API is used to query COS usage details.",
+      "input": "DescribeDosageCosDetailByDateRequest",
+      "name": "Queries COS usage details",
+      "output": "DescribeDosageCosDetailByDateResponse"
+    },
     "DescribeVoucherInfo": {
       "document": "This API is used to query vouchers.",
       "input": "DescribeVoucherInfoRequest",
@@ -63,7 +69,7 @@
   },
   "metadata": {
     "apiVersion": "2018-07-09",
-    "serviceNameCN": "计费相关",
+    "serviceNameCN": "费用中心",
     "serviceShortName": "billing"
   },
   "objects": {
@@ -1273,6 +1279,75 @@
       ],
       "usage": "out"
     },
+    "CosDetailSets": {
+      "document": "Information about the data structure of the returned COS usage details",
+      "members": [
+        {
+          "default": "",
+          "document": "Bucket name",
+          "member": "string",
+          "name": "BucketName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The start time of the usage",
+          "member": "string",
+          "name": "DosageBeginTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The end time of the usage",
+          "member": "string",
+          "name": "DosageEndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Sub-product name",
+          "member": "string",
+          "name": "SubProductCodeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Billable item name",
+          "member": "string",
+          "name": "BillingItemCodeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Usage",
+          "member": "string",
+          "name": "DosageValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Unit of the billable item",
+          "member": "string",
+          "name": "Unit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DescribeAccountBalanceRequest": {
       "document": "DescribeAccountBalance request structure.",
       "members": [],
@@ -1992,6 +2067,60 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDosageCosDetailByDateRequest": {
+      "document": "DescribeDosageCosDetailByDate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The start date of the usage query",
+          "example": "2020-09-01",
+          "member": "string",
+          "name": "StartDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end date of the usage query (end date must be in the same month as the start date)",
+          "example": "2020-09-30",
+          "member": "string",
+          "name": "EndDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Bucket name. You can use `Get Service` to query the list of all buckets under a requester account. For details, see [GET Service (List Buckets)](https://www.tencentcloud.com/document/product/436/8291).",
+          "example": "systemcover-1000027",
+          "member": "string",
+          "name": "BucketName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDosageCosDetailByDateResponse": {
+      "document": "DescribeDosageCosDetailByDate response structure.",
+      "members": [
+        {
+          "document": "Array of usage",
+          "example": "无",
+          "member": "CosDetailSets",
+          "name": "DetailSets",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

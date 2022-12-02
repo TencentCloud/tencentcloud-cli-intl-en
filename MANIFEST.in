@@ -65,6 +65,8 @@ include tccli/services/dms/v20200819/api.json
 include tccli/services/dms/v20200819/examples.json
 include tccli/services/dnspod/v20210323/api.json
 include tccli/services/dnspod/v20210323/examples.json
+include tccli/services/dts/v20211206/api.json
+include tccli/services/dts/v20211206/examples.json
 include tccli/services/dts/v20180330/api.json
 include tccli/services/dts/v20180330/examples.json
 include tccli/services/eb/v20210416/api.json
