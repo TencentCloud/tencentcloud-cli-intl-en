@@ -247,7 +247,7 @@
       "output": "DescribeInstanceAllResponse"
     },
     "DescribeInstanceAllNamespaces": {
-      "document": "This API is used to query the list of all instance namespaces.",
+      "document": "This API is used to query the list of all namespaces in an instance.",
       "input": "DescribeInstanceAllNamespacesRequest",
       "name": "Queries all instance namespaces",
       "output": "DescribeInstanceAllNamespacesResponse"
@@ -2512,6 +2512,15 @@
           "name": "Digest",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to use exact matching. Valid values: `true` (exact matching), `null` (fuzzy matching).",
+          "example": "false",
+          "member": "bool",
+          "name": "ExactMatch",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -2602,7 +2611,26 @@
     },
     "DescribeInstanceAllNamespacesRequest": {
       "document": "DescribeInstanceAllNamespaces request structure.",
-      "members": [],
+      "members": [
+        {
+          "default": "",
+          "document": "Number of entries per page",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Start position offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
       "type": "object"
     },
     "DescribeInstanceAllNamespacesResponse": {

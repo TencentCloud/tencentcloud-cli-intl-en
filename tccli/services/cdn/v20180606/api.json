@@ -255,7 +255,7 @@
   },
   "metadata": {
     "apiVersion": "2018-06-06",
-    "serviceNameCN": "内容分发网络",
+    "serviceNameCN": "内容分发网络 CDN",
     "serviceShortName": "cdn"
   },
   "objects": {
@@ -1538,6 +1538,22 @@
           "example": "-",
           "member": "string",
           "name": "BackupSecretKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AvifAdapter": {
+      "document": "AVIF adapter, used for image optimization",
+      "members": [
+        {
+          "default": "",
+          "document": "Switch. Valid values: `on`, `off`.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3244,7 +3260,7 @@
         },
         {
           "default": "",
-          "document": "The type of log to be downloaded.\naccess: access logs",
+          "document": "Specifies the type of logs to download (only access logs supported).\n`access`: Access logs.",
           "example": "access",
           "member": "string",
           "name": "LogType",
@@ -3258,7 +3274,7 @@
       "document": "DescribeCdnDomainLogs response structure.",
       "members": [
         {
-          "document": "Download link of the log package",
+          "document": "Download link of the log package.\nYou can open the link to download a .gz log package that contains all log files without extension.",
           "example": "无",
           "member": "DomainLog",
           "name": "DomainLogs",
@@ -5999,6 +6015,7 @@
         {
           "default": "",
           "document": "`WebpAdapter` configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on",
           "member": "WebpAdapter",
           "name": "WebpAdapter",
           "required": true,
@@ -6008,6 +6025,7 @@
         {
           "default": "",
           "document": "`TpgAdapter` configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on",
           "member": "TpgAdapter",
           "name": "TpgAdapter",
           "required": true,
@@ -6017,8 +6035,19 @@
         {
           "default": "",
           "document": "`GuetzliAdapter` configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on",
           "member": "GuetzliAdapter",
           "name": "GuetzliAdapter",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "AVIF adapter configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on",
+          "member": "AvifAdapter",
+          "name": "AvifAdapter",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -7084,6 +7113,42 @@
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "MaxAge status code\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "MaxAgeCodeRule",
+          "name": "MaxAgeCodeRule",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "MaxAgeCodeRule": {
+      "document": "MaxAge status code",
+      "members": [
+        {
+          "default": "",
+          "document": "Action to execute.\n`clear`: Clear the cache-control header.",
+          "example": "clear",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Specifies the HTTP status code in the range 400-599.",
+          "example": "[\"400-599\"]",
+          "member": "string",
+          "name": "StatusCodes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"

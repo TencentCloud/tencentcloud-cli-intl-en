@@ -187,7 +187,7 @@
       "output": "DescribeLaunchTemplatesResponse"
     },
     "DescribeRegions": {
-      "document": "(Suspended) This API is used to query the information of regions. Due to platform policy, the update of this API has been temporarily stopped. Please try the new one as described in https://intl.cloud.tencent.com/document/product/1278/55255?from_cn_redirect=1",
+      "document": "This API is suspended. To query the information of regions, use [DescribeZones](https://intl.cloud.tencent.com/document/product/1596/77929?from_cn_redirect=1).",
       "input": "DescribeRegionsRequest",
       "name": "Queries the list of regions",
       "output": "DescribeRegionsResponse"
@@ -2707,15 +2707,21 @@
       "members": [
         {
           "document": "Number of regions",
+          "example": "9",
           "member": "uint64",
           "name": "TotalCount",
-          "type": "int"
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "document": "List of regions",
+          "example": "无",
           "member": "RegionInfo",
           "name": "RegionSet",
-          "type": "list"
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3074,7 +3080,7 @@
         },
         {
           "default": "",
-          "document": "Enables the TAT service. If this parameter is not specified, the TAT service will not be enabled.",
+          "document": "Whether to enable the TAT service. If this parameter is not specified, the TAT service is enabled for public images and disabled for other images by default.",
           "example": "TRUE",
           "member": "RunAutomationServiceEnabled",
           "name": "AutomationService",
@@ -6419,7 +6425,7 @@
         },
         {
           "default": "",
-          "document": "ID of the project to which the instance belongs. To obtain the project IDs, you can call [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1) and look for the `projectId` fields in the response. If this parameter is not specified, the default project will be used.",
+          "document": "ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` returned by [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1). If this is left empty, the default project is used.",
           "example": "无",
           "member": "int64",
           "name": "ProjectId",
@@ -7135,6 +7141,15 @@
           "example": "test",
           "member": "string",
           "name": "HostName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16 KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).",
+          "example": "TXlVc2VyRGF0YQo",
+          "member": "string",
+          "name": "UserData",
           "required": false,
           "type": "string"
         }
@@ -7880,6 +7895,32 @@
       ],
       "usage": "out"
     },
+    "SyncImage": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "img-xxxxxxxx",
+          "member": "string",
+          "name": "ImageId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SyncImagesRequest": {
       "document": "SyncImages request structure.",
       "members": [
@@ -7925,6 +7966,15 @@
     "SyncImagesResponse": {
       "document": "SyncImages response structure.",
       "members": [
+        {
+          "document": "",
+          "example": "无",
+          "member": "SyncImage",
+          "name": "ImageSet",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
