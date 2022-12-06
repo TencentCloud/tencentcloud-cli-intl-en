@@ -587,7 +587,7 @@
         },
         {
           "default": "",
-          "document": "List of application CLBs. Up to 50 application CLBs can be bound to a security group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
+          "document": "List of application CLBs. Up to 100 application CLBs can be bound to a scaling group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
           "example": "无",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancers",
@@ -1339,7 +1339,7 @@
         },
         {
           "default": "",
-          "document": "List of application CLBs. Up to 50 CLBs are allowed. You cannot specify `loadBalancerIds` and `ForwardLoadBalancers` at the same time.",
+          "document": "List of application CLBs. Up to 100 CLBs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
           "example": "无",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancers",
@@ -3034,7 +3034,7 @@
         },
         {
           "default": "",
-          "document": "List of application CLB IDs. Up to 50 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.",
+          "document": "List of application CLB IDs. Up to 100 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.",
           "example": "无",
           "member": "ForwardLoadBalancerIdentification",
           "name": "ForwardLoadBalancerIdentifications",
@@ -3200,6 +3200,7 @@
         {
           "default": "",
           "document": "Enables the Cloud Security service. If this parameter is not specified, the Cloud Security service will be enabled by default.",
+          "example": "{\"Enabled\": True}",
           "member": "RunSecurityServiceEnabled",
           "name": "SecurityService",
           "required": false,
@@ -3209,8 +3210,29 @@
         {
           "default": "",
           "document": "Enables the Cloud Monitor service. If this parameter is not specified, the Cloud Monitor service will be enabled by default.",
+          "example": "{\"Enabled\": True}",
           "member": "RunMonitorServiceEnabled",
           "name": "MonitorService",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Deprecated parameter.",
+          "example": "{\"Enabled\": True}",
+          "member": "RunAutomationServiceEnabled",
+          "name": "AutomationService",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "{\"Enabled\": True}",
+          "member": "RunAutomationServiceEnabled",
+          "name": "AutomationToolsService",
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -4927,7 +4949,7 @@
         },
         {
           "default": "",
-          "document": "List of application CLBs to modify. Up to 50 CLBs allowed.",
+          "document": "List of application CLBs to modify. Up to 100 CLBs allowed.",
           "example": "无",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancers",
@@ -4981,7 +5003,7 @@
         },
         {
           "default": "",
-          "document": "List of application CLBs. Up to 50 CLBs are allowed. You cannot specify `loadBalancerIds` and `ForwardLoadBalancers` at the same time.",
+          "document": "List of application CLBs. Up to 100 CLBs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
           "example": "无",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancers",
@@ -5314,6 +5336,22 @@
         }
       ],
       "type": "object"
+    },
+    "RunAutomationServiceEnabled": {
+      "document": "Status of TAT service.",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable [TencentCloud Automation Tools](https://intl.cloud.tencent.com/document/product/1340?from_cn_redirect=1). Valid values:<br><li>`TRUE`: Enable<br><li>`FALSE`: Not enable.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "True",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "RunMonitorServiceEnabled": {
       "document": "This describes the information related to the Cloud Monitor service.",

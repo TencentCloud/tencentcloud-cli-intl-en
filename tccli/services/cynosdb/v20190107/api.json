@@ -4044,7 +4044,107 @@
     },
     "DescribeParamTemplatesRequest": {
       "document": "DescribeParamTemplates request structure.",
-      "members": [],
+      "members": [
+        {
+          "default": "",
+          "document": "Database engine version number",
+          "example": "无",
+          "member": "string",
+          "name": "EngineVersions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Template name",
+          "example": "无",
+          "member": "string",
+          "name": "TemplateNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Template ID",
+          "example": "无",
+          "member": "int64",
+          "name": "TemplateIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Database Type. Valid values: `NORMAL`, `SERVERLESS`.",
+          "example": "无",
+          "member": "string",
+          "name": "DbModes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset for query",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Limit on queries",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Product type of the queried template",
+          "example": "无",
+          "member": "string",
+          "name": "Products",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Template type",
+          "example": "无",
+          "member": "string",
+          "name": "TemplateTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Version type",
+          "example": "无",
+          "member": "string",
+          "name": "EngineTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The sorting order of the returned results",
+          "example": "无",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: `desc`, `asc `.",
+          "example": "无",
+          "member": "string",
+          "name": "OrderDirection",
+          "required": false,
+          "type": "string"
+        }
+      ],
       "type": "object"
     },
     "DescribeParamTemplatesResponse": {
@@ -5634,6 +5734,26 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database Type. Valid values: `NORMAL`, `SERVERLESS`.",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "DbMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter template details\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"\"}]",
+          "member": "TemplateParamInfo",
+          "name": "ParamInfoSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -6238,6 +6358,102 @@
         }
       ],
       "usage": "both"
+    },
+    "TemplateParamInfo": {
+      "document": "Parameter template details",
+      "members": [
+        {
+          "default": "",
+          "document": "Current value",
+          "example": "1024",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Default value",
+          "example": "2048",
+          "member": "string",
+          "name": "Default",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The collection of valid value types when parameter type is `enum`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[12,23,45]",
+          "member": "string",
+          "name": "EnumValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum value when parameter type is `float` or `integer`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "200",
+          "member": "string",
+          "name": "Max",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Minimum value when parameter type is `float` or `integer`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Min",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Parameter name",
+          "example": "binlog_back",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to restart the instance for the parameter to take effect",
+          "example": "1",
+          "member": "int64",
+          "name": "NeedReboot",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter description",
+          "example": "this is set bin log size",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter type. Valid value: `integer`, `float`, `string`, `enum`.",
+          "example": "float",
+          "member": "string",
+          "name": "ParamType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "TradePrice": {
       "document": "Billing details",

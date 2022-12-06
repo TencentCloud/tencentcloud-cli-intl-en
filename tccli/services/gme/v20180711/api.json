@@ -13,33 +13,33 @@
       "output": "DeleteRoomMemberResponse"
     },
     "DescribeAppStatistics": {
-      "document": "This API is used to get the usage statistics of a GME application, including those of voice chat, voice messaging and speech-to-text, phrase analysis, etc. The maximum query period is the past 30 days.",
+      "document": "This API is used to query the usage statistics of a GME application, including those of Voice Chat, Voice Message Service, Voice Analysis, etc. The maximum query period is the past 30 days.",
       "input": "DescribeAppStatisticsRequest",
-      "name": "Gets application usage statistics",
+      "name": "Queries application usage statistics",
       "output": "DescribeAppStatisticsResponse"
     },
     "DescribeApplicationData": {
-      "document": "This API (DescribeApplicationData) is used to query usage data details within 90 days.",
+      "document": "This API is used to query data details for up to the past 90 days.",
       "input": "DescribeApplicationDataRequest",
-      "name": "Obtains data details",
+      "name": "Queries data details",
       "output": "DescribeApplicationDataResponse"
     },
     "DescribeScanResultList": {
-      "document": "This API is used to query the speech detection result. Up to 100 tasks can be added in the task query list.\n<p style=\"color:red\">If the `Callback` field is not set when a speech detection task is submitted, this API will be needed to get the detection result.</p>",
+      "document": "This API is used to query the result of voice moderation tasks. Up to 100 tasks can be queried in one time.\n<p style=\"color:red\">If the `Callback` field is not set when a voice moderation task is submitted, this API is called to query the moderation result.</p>",
       "input": "DescribeScanResultListRequest",
-      "name": "Queries speech detection result",
+      "name": "Queries voice detection result",
       "output": "DescribeScanResultListResponse"
     },
     "ModifyAppStatus": {
-      "document": "This API is used to change the status of an application's primary switch.",
+      "document": "This API is used to change the status of an application.",
       "input": "ModifyAppStatusRequest",
-      "name": "Changes an application's status",
+      "name": "Changes application status",
       "output": "ModifyAppStatusResponse"
     },
     "ScanVoice": {
-      "document": "This API is used to submit a speech detection task. Up to 100 tasks can be added in the detection task list. Before using this API, please activate the speech analysis service in [Console > Service Configuration](https://console.cloud.tencent.com/gamegme/conf).\n</br></br>\n\n<h4><b>About the trial:</b></h4>\n<li>You can try out the speech analysis service free of charge in <a href=\"https://console.cloud.tencent.com/gamegme/tryout\">Console > Product Trial</a>.</li>\n</br>\n\n<h4><b>API feature description:</b></h4>\n<li>This API checks audio streams or files for non-compliant content.</li>\n<li>The detection result can be obtained by setting the callback address (`Callback`) or calling the `DescribeScanResultList` API for polling.</li>\n<li>The scenario can be specified, such as abusive or pornographic.</li>\n<li>Detection tasks can be submitted in batches. Up to 100 tasks can be added in the detection task list.</li>\n</br>\n<h4><b>Audio file limit description:</b></h4>\n<li>Audio file size limit: 100 MB</li>\n<li>Audio file duration limit: 30 minutes</li>\n<li>Supported audio file formats: .wav, .m4a, .amr, .mp3, .aac, .wma, .ogg</li>\n</br>\n<h4><b>Audio stream limit description:</b></h4>\n<li>Supported audio stream formats: .m3u8, .flv</li>\n<li>Supported audio stream transfer protocols: RTMP, HTTP, HTTPS</li>\n<li>Audio stream duration limit: 4 hours</li>\n<li>Audio/video stream separation and audio stream analysis are supported</li>\n</br>\n<h4 id=\"Label_Value\"><b>`Scenes` and `Label` parameter description:</b></h4>\n<p>When submitting a speech detection task, you need to specify the `Scenes` parameter. <font color=\"red\">You are currently required to set the `Scenes` parameter to `[\"default\"]`</font>. The detection result will contain the scenario specified at the time of request and detection result in the corresponding type.</p>\n<table>\n<thread>\n<tr>\n<th>Scenario</th>\n<th>Description</th>\n<th>Label</th>\n</tr>\n</thread>\n<tbody>\n<tr>\n<td>Speech detection</td>\n<td>Speech detection type</td>\n<td>\n<p>normal: normal</p>\n<p>porn: pornographic</p>\n<p>abuse: abusive</p>\n<p>ad: advertising</p>\n<p>contraband: prohibited</p>\n<p>customized: custom keyword library. This feature is only available to beta users. To try it out, please <a href=\"https://intl.cloud.tencent.com/apply/p/8809fjcik56?from_cn_redirect=1\">contact us</a>.</p>\n</td>\n</tr>\n</tbody>\n</table>\n</br>\n<h4 id=\"Callback_Declare\"><b>Callback description:</b></h4>\n<li>If the callback address parameter `Callback` (i.e., the URL of an HTTP(S) API) is specified in the request parameters, then the POST method should be supported and transferred data should be encoded with UTF-8.</li>\n<li>After the callback data is pushed, if the HTTP status code received is 200, the push is successful.</li>\n<li>HTTP header parameter description:</li>\n<table>\n<thread>\n<tr>\n<th>Item</th>\n<th>Type</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thread>\n<tbody>\n<tr>\n<td>Signatue</td>\n<td>string</td>\n<td>Yes</td>\n<td>Signature. For more information, please see <a href=\"#Callback_Signatue\">Signature generation description</a>.</td>\n</tr>\n</tbody>\n</table>\n<ul  id=\"Callback_Signatue\">\n\t<li>Signature generation description:</li>\n\t<ul>\n\t\t<li>The HMAC-SH1 algorithm should be used, and the result should be encoded with Base64;</li>\n\t\t<li>The original signature string is the entire JSON content of POST and body (the length is subject to `Content-Length`);</li>\n\t\t<li>The signature key is the `SecretKey` of the application, which can be viewed in the console.</li>\n\t</ul>\n</ul>\n\n<li>Below is a sample callback <font color=\"red\">(for more information on the fields, please see the structure:\n<a href=\"https://intl.cloud.tencent.com/document/api/607/35375?from_cn_redirect=1#DescribeScanResult\" target=\"_blank\">DescribeScanResult</a>)</font>:</li>\n<pre><code>{\n\t\"Code\": 0,\n\t\"DataId\": \"1400000000_test_data_id\",\n\t\"ScanFinishTime\": 1566720906,\n\t\"HitFlag\": true,\n\t\"Live\": false,\n\t\"Msg\": \"\",\n\t\"ScanPiece\": [{\n\t\t\"DumpUrl\": \"\",\n\t\t\"HitFlag\": true,\n\t\t\"MainType\": \"abuse\",\n\t\t\"RoomId\": \"123\",\n\t\t\"OpenId\": \"xxx\",\n\t\t\"Info\":\"\",\n\t\t\"Offset\": 0,\n\t\t\"Duration\": 3400,\n\t\t\"PieceStartTime\":1574684231,\n\t\t\"ScanDetail\": [{\n\t\t\t\"EndTime\": 1110,\n\t\t\t\"KeyWord\": \"xxx\",\n\t\t\t\"Label\": \"abuse\",\n\t\t\t\"Rate\": \"90.00\",\n\t\t\t\"StartTime\": 1110\n\t\t}, {\n\t\t\t\"EndTime\": 1380,\n\t\t\t\"KeyWord\": \"xxx\",\n\t\t\t\"Label\": \"abuse\",\n\t\t\t\"Rate\": \"90.00\",\n\t\t\t\"StartTime\": 930\n\t\t}, {\n\t\t\t\"EndTime\": 1560,\n\t\t\t\"KeyWord\": \"xxx\",\n\t\t\t\"Label\": \"abuse\",\n\t\t\t\"Rate\": \"90.00\",\n\t\t\t\"StartTime\": 930\n\t\t}, {\n\t\t\t\"EndTime\": 2820,\n\t\t\t\"KeyWord\": \"xxx\",\n\t\t\t\"Label\": \"abuse\",\n\t\t\t\"Rate\": \"90.00\",\n\t\t\t\"StartTime\": 2490\n\t\t}]\n\t}],\n\t\"ScanStartTime\": 1566720905,\n\t\"Scenes\": [\n\t\t\"default\"\n\t],\n\t\"Status\": \"Success\",\n\t\"TaskId\": \"xxx\",\n\t\"Url\": \"https://xxx/xxx.m4a\"\n}\n</code></pre>",
+      "document": "This API is used to submit a voice moderation task. Up to 100 tasks can be added in a task. Make sure you have activated Voice Analysis Service in [GME Console > Voice Content Moderation > Service Configuration](https://console.cloud.tencent.com/gamegme/conf).\n</br></br>\n\n<h4><b>Free trial:</b></h4>\n<li>You can try out the Voice Analysis Service free of charge in <a href=\"https://console.cloud.tencent.com/gamegme/tryout\">GME Console > Voice Content Moderation > Product Trial</a>.</li>\n</br>\n\n<h4><b>API feature description:</b></h4>\n<li>This API checks voice streams or files for non-compliant content.</li>\n<li>The detection result can be queried by setting the callback address (`Callback`) or calling the `DescribeScanResultList` API for polling.</li>\n<li>The scenario can be specified, such as abusive or pornographic.</li>\n<li>Detection tasks can be submitted in batches. Up to 100 tasks can be added in the detection task list.</li>\n</br>\n<h4><b>Audio file limit description:</b></h4>\n<li>Audio file size limit: 100 MB</li>\n<li>Audio file duration limit: 30 minutes</li>\n<li>Supported audio file formats: .wav, .m4a, .amr, .mp3, .aac, .wma, .ogg</li>\n</br>\n<h4><b>Voice stream limit description:</b></h4>\n<li>Supported voice stream formats: .m3u8, .flv</li>\n<li>Supported voice stream transfer protocols: RTMP, HTTP, HTTPS</li>\n<li>Voice stream duration limit: 4 hours</li>\n<li>Audio/video stream separation and audio stream analysis are supported</li>\n</br>\n<h4 id=\"Label_Value\"><b>`Scenes` and `Label` parameter description:</b></h4>\n<p>When submitting a voice detection task, you need to specify the `Scenes` parameter. <font color=\"red\">You are currently required to set the `Scenes` parameter to `[\"default\"]`</font>. The detection result will contain the scenario specified at the time of request and detection result in the corresponding type.</p>\n<table>\n<thread>\n<tr>\n<th>Scenario</th>\n<th>Description</th>\n<th>Label</th>\n</tr>\n</thread>\n<tbody>\n<tr>\n<td>Voice detection</td>\n<td>Voice detection type</td>\n<td>\n<p>`normal`: Normal</p>\n<p>`porn`: Pornographic</p>\n<p>`abuse`: Abusive</p>\n<p>`ad`: Advertising</p>\n<p>`contraband`: Prohibited</p>\n<p>`customized`: Custom keyword library. This feature is only available to beta users. To try it out, please <a href=\"https://intl.cloud.tencent.com/apply/p/8809fjcik56?from_cn_redirect=1\">contact us</a>.</p>\n</td>\n</tr>\n</tbody>\n</table>\n</br>\n<h4 id=\"Callback_Declare\"><b>Callback description:</b></h4>\n<li>If the callback address parameter `Callback` (i.e., the URL of an HTTP(S) API) is specified in the request parameters, then the POST method should be supported and transferred data should be encoded with UTF-8.</li>\n<li>After the callback data is pushed, if the HTTP status code received is 200, the push is successful.</li>\n<li>HTTP header parameter description:</li>\n<table>\n<thread>\n<tr>\n<th>Item</th>\n<th>Type</th>\n<th>Required</th>\n<th>Description</th>\n</tr>\n</thread>\n<tbody>\n<tr>\n<td>Signatue</td>\n<td>string</td>\n<td>Yes</td>\n<td>Signature. For more information, please see <a href=\"#Callback_Signatue\">Signature generation description</a>.</td>\n</tr>\n</tbody>\n</table>\n<ul  id=\"Callback_Signatue\">\n\t<li>Signature generation description:</li>\n\t<ul>\n\t\t<li>The HMAC-SH1 algorithm should be used, and the result should be encoded with Base64;</li>\n\t\t<li>The original signature string is the entire JSON content of POST and body (the length is subject to `Content-Length`);</li>\n\t\t<li>The signature key is the `SecretKey` of the application, which can be viewed in the console.</li>\n\t</ul>\n</ul>\n\n<li>Below is a sample callback <font color=\"red\">(for more information on the fields, please see the structure:\n<a href=\"https://intl.cloud.tencent.com/document/api/607/35375?from_cn_redirect=1#DescribeScanResult\" target=\"_blank\">DescribeScanResult</a>)</font>:</li>\n<pre><code>{\n\t\"Code\": 0,\n\t\"DataId\": \"1400000000_test_data_id\",\n\t\"ScanFinishTime\": 1566720906,\n\t\"HitFlag\": true,\n\t\"Live\": false,\n\t\"Msg\": \"\",\n\t\"ScanPiece\": [{\n\t\t\"DumpUrl\": \"\",\n\t\t\"HitFlag\": true,\n\t\t\"MainType\": \"abuse\",\n\t\t\"RoomId\": \"123\",\n\t\t\"OpenId\": \"xxx\",\n\t\t\"Info\":\"\",\n\t\t\"Offset\": 0,\n\t\t\"Duration\": 3400,\n\t\t\"PieceStartTime\":1574684231,\n\t\t\"ScanDetail\": [{\n\t\t\t\"EndTime\": 1110,\n\t\t\t\"KeyWord\": \"xxx\",\n\t\t\t\"Label\": \"abuse\",\n\t\t\t\"Rate\": \"90.00\",\n\t\t\t\"StartTime\": 1110\n\t\t}, {\n\t\t\t\"EndTime\": 1380,\n\t\t\t\"KeyWord\": \"xxx\",\n\t\t\t\"Label\": \"abuse\",\n\t\t\t\"Rate\": \"90.00\",\n\t\t\t\"StartTime\": 930\n\t\t}, {\n\t\t\t\"EndTime\": 1560,\n\t\t\t\"KeyWord\": \"xxx\",\n\t\t\t\"Label\": \"abuse\",\n\t\t\t\"Rate\": \"90.00\",\n\t\t\t\"StartTime\": 930\n\t\t}, {\n\t\t\t\"EndTime\": 2820,\n\t\t\t\"KeyWord\": \"xxx\",\n\t\t\t\"Label\": \"abuse\",\n\t\t\t\"Rate\": \"90.00\",\n\t\t\t\"StartTime\": 2490\n\t\t}]\n\t}],\n\t\"ScanStartTime\": 1566720905,\n\t\"Scenes\": [\n\t\t\"default\"\n\t],\n\t\"Status\": \"Success\",\n\t\"TaskId\": \"xxx\",\n\t\"Url\": \"https://xxx/xxx.m4a\"\n}\n</code></pre>",
       "input": "ScanVoiceRequest",
-      "name": "Submits speech detection task",
+      "name": "Submits voice detection task",
       "output": "ScanVoiceResponse"
     }
   },
@@ -54,7 +54,8 @@
       "members": [
         {
           "default": "",
-          "document": "Voice chat statistics\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Voice Chat statistics\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "{\"MainLandPcu\":0,\"MainLandDuration\":0,\"OverseaPcu\":0,\"OverseaDur",
           "member": "RealTimeSpeechStatisticsItem",
           "name": "RealtimeSpeechStatisticsItem",
           "required": true,
@@ -63,7 +64,8 @@
         },
         {
           "default": "",
-          "document": "Voice messaging statistics\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Voice Message statistics\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "{\"Dau\":1018}",
           "member": "VoiceMessageStatisticsItem",
           "name": "VoiceMessageStatisticsItem",
           "required": true,
@@ -72,7 +74,8 @@
         },
         {
           "default": "",
-          "document": "Phrase filtering statistics\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Phrase Filtering statistics\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "{\"Duration\" : 18000}",
           "member": "VoiceFilterStatisticsItem",
           "name": "VoiceFilterStatisticsItem",
           "required": true,
@@ -81,12 +84,53 @@
         },
         {
           "default": "",
-          "document": "Statistical period",
+          "document": "Reference period",
+          "example": "2022-10-01",
           "member": "date",
           "name": "Date",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Recording-to-Text usage statistics\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "{\"Data\":0}",
+          "member": "AudioTextStatisticsItem",
+          "name": "AudioTextStatisticsItem",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Stream-to-Text usage statistics\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "{\"Data\":0}",
+          "member": "StreamTextStatisticsItem",
+          "name": "StreamTextStatisticsItem",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Usage statistics of Voice-to-Text of outside-MLC requests\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "{\"Data\":0}",
+          "member": "OverseaTextStatisticsItem",
+          "name": "OverseaTextStatisticsItem",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Real-time Voice-to-Text usage statistics\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "{\"Data\":0}",
+          "member": "RealtimeTextStatisticsItem",
+          "name": "RealtimeTextStatisticsItem",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -105,7 +149,7 @@
         },
         {
           "default": "",
-          "document": "DAU data",
+          "document": "Number of DAU metrics",
           "member": "uint64",
           "name": "DauDataNum",
           "required": true,
@@ -114,7 +158,7 @@
         },
         {
           "default": "",
-          "document": "DAU in Chinese mainland",
+          "document": "DAUs in the Chinese mainland",
           "member": "StatisticsItem",
           "name": "DauDataMainland",
           "required": true,
@@ -123,7 +167,7 @@
         },
         {
           "default": "",
-          "document": "DAU outside Chinese mainland",
+          "document": "DAUs outside the Chinese mainland",
           "member": "StatisticsItem",
           "name": "DauDataOversea",
           "required": true,
@@ -132,7 +176,7 @@
         },
         {
           "default": "",
-          "document": "Total DAU",
+          "document": "Total DAUs",
           "member": "StatisticsItem",
           "name": "DauDataSum",
           "required": true,
@@ -141,7 +185,7 @@
         },
         {
           "default": "",
-          "document": "Number of voice chat metrics",
+          "document": "Number of Voice Chat metrics",
           "member": "uint64",
           "name": "DurationDataNum",
           "required": true,
@@ -150,7 +194,7 @@
         },
         {
           "default": "",
-          "document": "Duration of voice chat in Chinese mainland in minutes",
+          "document": "Duration of Voice Chat in the Chinese mainland (in minutes)",
           "member": "StatisticsItem",
           "name": "DurationDataMainland",
           "required": true,
@@ -159,7 +203,7 @@
         },
         {
           "default": "",
-          "document": "Duration of voice chat outside Chinese mainland in minutes",
+          "document": "Duration of Voice Chat outside the Chinese mainland (in minutes)",
           "member": "StatisticsItem",
           "name": "DurationDataOversea",
           "required": true,
@@ -168,7 +212,7 @@
         },
         {
           "default": "",
-          "document": "Total duration of voice chat in minutes",
+          "document": "Total duration of Voice Chat (in minutes)",
           "member": "StatisticsItem",
           "name": "DurationDataSum",
           "required": true,
@@ -177,7 +221,7 @@
         },
         {
           "default": "",
-          "document": "PCU data",
+          "document": "Number of PCU metrics",
           "member": "uint64",
           "name": "PcuDataNum",
           "required": true,
@@ -186,7 +230,7 @@
         },
         {
           "default": "",
-          "document": "PCU in Chinese mainland",
+          "document": "PCUs in the Chinese mainland",
           "member": "StatisticsItem",
           "name": "PcuDataMainland",
           "required": true,
@@ -195,7 +239,7 @@
         },
         {
           "default": "",
-          "document": "PCU outside Chinese mainland",
+          "document": "PCUs outside the Chinese mainland",
           "member": "StatisticsItem",
           "name": "PcuDataOversea",
           "required": true,
@@ -204,12 +248,28 @@
         },
         {
           "default": "",
-          "document": "Total PCU",
+          "document": "Total PCUs",
           "member": "StatisticsItem",
           "name": "PcuDataSum",
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AudioTextStatisticsItem": {
+      "document": "Recording-to-Text usage statistics",
+      "members": [
+        {
+          "default": "",
+          "document": "Statistical value (in seconds)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1.23",
+          "member": "float",
+          "name": "Data",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -220,6 +280,7 @@
         {
           "default": "",
           "document": "Application name",
+          "example": "simple_gme_application",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -227,7 +288,8 @@
         },
         {
           "default": "",
-          "document": "Tencent Cloud project ID. Default value: 0, which means the default project",
+          "document": "Tencent Cloud project ID. Default value: 0, which means that the default project is used.",
+          "example": "0",
           "member": "uint64",
           "name": "ProjectId",
           "required": false,
@@ -236,6 +298,7 @@
         {
           "default": "",
           "document": "List of engines to be supported. All values are selected by default.",
+          "example": "无",
           "member": "string",
           "name": "EngineList",
           "required": false,
@@ -244,6 +307,7 @@
         {
           "default": "",
           "document": "Service region list. All values are selected by default.",
+          "example": "无",
           "member": "string",
           "name": "RegionList",
           "required": false,
@@ -251,7 +315,8 @@
         },
         {
           "default": "",
-          "document": "Configuration information of voice chat",
+          "document": "Configuration information of Voice Chat",
+          "example": "无",
           "member": "RealtimeSpeechConf",
           "name": "RealtimeSpeechConf",
           "required": false,
@@ -259,7 +324,8 @@
         },
         {
           "default": "",
-          "document": "Configuration information of voice messaging and speech-to-text",
+          "document": "Configuration information of Voice Message Service",
+          "example": "无",
           "member": "VoiceMessageConf",
           "name": "VoiceMessageConf",
           "required": false,
@@ -267,7 +333,8 @@
         },
         {
           "default": "",
-          "document": "Configuration information of phrase analysis",
+          "document": "Configuration information of Voice Analysis Service",
+          "example": "无",
           "member": "VoiceFilterConf",
           "name": "VoiceFilterConf",
           "required": false,
@@ -276,6 +343,7 @@
         {
           "default": "",
           "document": "List of tags to be added",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -289,7 +357,7 @@
       "members": [
         {
           "default": "",
-          "document": "App ID, automatically generated by the backend.",
+          "document": "Application ID, automatically generated by the backend.",
           "example": "123456",
           "member": "uint64",
           "name": "BizId",
@@ -299,7 +367,7 @@
         },
         {
           "default": "",
-          "document": "App name, the input of `AppName`.",
+          "document": "Application name, the input of `AppName`.",
           "example": "abcd",
           "member": "string",
           "name": "AppName",
@@ -319,7 +387,7 @@
         },
         {
           "default": "",
-          "document": "App key, used to initialize GME SDK.",
+          "document": "Application key, used to initialize GME SDK.",
           "example": "sdsd",
           "member": "string",
           "name": "SecretKey",
@@ -339,7 +407,7 @@
         },
         {
           "default": "",
-          "document": "Configuration information of voice chat",
+          "document": "Configuration information of Voice Chat",
           "example": "{}",
           "member": "RealtimeSpeechConf",
           "name": "RealtimeSpeechConf",
@@ -349,7 +417,7 @@
         },
         {
           "default": "",
-          "document": "Configuration information of voice messaging and speech-to-text",
+          "document": "Configuration information of Voice Message Service",
           "example": "{}",
           "member": "VoiceMessageConf",
           "name": "VoiceMessageConf",
@@ -359,7 +427,7 @@
         },
         {
           "default": "",
-          "document": "Configuration information of phrase analysis",
+          "document": "Configuration information of Voice Analysis Service",
           "example": "{}",
           "member": "VoiceFilterConf",
           "name": "VoiceFilterConf",
@@ -484,6 +552,7 @@
         {
           "default": "",
           "document": "GME application ID",
+          "example": "140000001",
           "member": "uint64",
           "name": "BizId",
           "required": true,
@@ -491,7 +560,8 @@
         },
         {
           "default": "",
-          "document": "Data start date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13",
+          "document": "Data start date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13.",
+          "example": "2019-08-01",
           "member": "date",
           "name": "StartDate",
           "required": true,
@@ -499,7 +569,8 @@
         },
         {
           "default": "",
-          "document": "Data end date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13",
+          "document": "Data end date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13.",
+          "example": "2019-08-03",
           "member": "date",
           "name": "EndDate",
           "required": true,
@@ -507,7 +578,8 @@
         },
         {
           "default": "",
-          "document": "List of services to be queried. Valid values: RealTimeSpeech, VoiceMessage, VoiceFilter",
+          "document": "List of services to be queried. Valid values: `RealTimeSpeech`, `VoiceMessage`, `VoiceFilter`, `SpeechToText`.",
+          "example": "[\"RealTimeSpeech\\r\\n\",\"VoiceMessage\\r\\n\"]",
           "member": "string",
           "name": "Services",
           "required": true,
@@ -517,11 +589,11 @@
       "type": "object"
     },
     "DescribeAppStatisticsResp": {
-      "document": "Output parameters of app usage statistics",
+      "document": "Output parameters of application usage statistics",
       "members": [
         {
           "default": "",
-          "document": "App usage statistics",
+          "document": "Application usage statistics",
           "example": "[]",
           "member": "AppStatisticsItem",
           "name": "AppStatistics",
@@ -536,7 +608,7 @@
       "document": "DescribeAppStatistics response structure.",
       "members": [
         {
-          "document": "App usage statistics",
+          "document": "Application usage statistics",
           "example": "无",
           "member": "DescribeAppStatisticsResp",
           "name": "Data",
@@ -567,7 +639,7 @@
         },
         {
           "default": "",
-          "document": "Data start date in the format of yyyy-mm-dd, such as 2018-07-13",
+          "document": "Data start date in the format of yyyy-mm-dd, such as 2018-07-13.",
           "example": "2018-07-13",
           "member": "date",
           "name": "StartDate",
@@ -576,7 +648,7 @@
         },
         {
           "default": "",
-          "document": "Data end date in the format of yyyy-mm-dd, such as 2018-07-13",
+          "document": "Data end date in the format of yyyy-mm-dd, such as 2018-07-13.",
           "example": "2018-08-13",
           "member": "date",
           "name": "EndDate",
@@ -608,7 +680,7 @@
       "type": "object"
     },
     "DescribeScanResult": {
-      "document": "Returned speech detection result",
+      "document": "Returned voice detection result",
       "members": [
         {
           "default": "",
@@ -662,7 +734,7 @@
         },
         {
           "default": "",
-          "document": "Business return description\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Business return description\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "“”",
           "member": "string",
           "name": "Msg",
@@ -672,7 +744,7 @@
         },
         {
           "default": "",
-          "document": "Detection result, which will be returned if `Code` is 0\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Detection result, which will be returned if `Code` is 0\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "ScanPiece",
           "name": "ScanPiece",
@@ -692,7 +764,7 @@
         },
         {
           "default": "",
-          "document": "Speech detection scenario, which corresponds to the `Scene` at the time of request",
+          "document": "Voice detection scenario, which corresponds to the `Scene` at the time of request",
           "example": "[\"default\"]",
           "member": "string",
           "name": "Scenes",
@@ -702,7 +774,7 @@
         },
         {
           "default": "",
-          "document": "Speech detection task ID, which is assigned by the backend",
+          "document": "Voice detection task ID, which is assigned by the backend",
           "example": "abcdefgh",
           "member": "string",
           "name": "TaskId",
@@ -722,7 +794,7 @@
         },
         {
           "default": "",
-          "document": "Detection task execution result task. Valid values:\n<li>Start: task started</li>\n<li>Success: task ended successfully</li>\n<li>Error: exceptional</li>",
+          "document": "Detection task execution result status. Valid values:\n<li>Start: Task started</li>\n<li>Success: Task ended successfully</li>\n<li>Error: An exception occurs</li>",
           "example": "Success",
           "member": "string",
           "name": "Status",
@@ -748,7 +820,7 @@
       "members": [
         {
           "default": "",
-          "document": "Application ID, which is the `AppID` obtained when you create an application in the [console](https://console.cloud.tencent.com/gamegme)",
+          "document": "Application ID, which is obtained when you create an application in the [GME console](https://console.cloud.tencent.com/gamegme).",
           "member": "uint64",
           "name": "BizId",
           "required": true,
@@ -764,7 +836,7 @@
         },
         {
           "default": "",
-          "document": "Number of task results to be returned. Default value: 10. Maximum value: 500. This parameter will be ignored for large file tasks where all results will be returned",
+          "document": "Number of task results to be returned. Default value: 10. Maximum value: 500. This parameter will be ignored for large file tasks where all results will be returned.",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -777,7 +849,7 @@
       "document": "DescribeScanResultList response structure.",
       "members": [
         {
-          "document": "Result of the speech detection task to be queried\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Result of the voice detection task to be queried\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "DescribeScanResult",
           "name": "Data",
           "type": "list",
@@ -797,7 +869,8 @@
       "members": [
         {
           "default": "",
-          "document": "Application ID, which is generated and returned by the backend after application creation.",
+          "document": "Application ID, which is generated and returned by the backend after the application creation.",
+          "example": "140000001",
           "member": "uint64",
           "name": "BizId",
           "required": true,
@@ -805,7 +878,8 @@
         },
         {
           "default": "",
-          "document": "Application status. Valid values: open, close",
+          "document": "Application status. Valid values: `open`, `close`.",
+          "example": "close",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -819,7 +893,7 @@
       "members": [
         {
           "default": "",
-          "document": "GME app ID",
+          "document": "GME application ID",
           "example": "123456",
           "member": "uint64",
           "name": "BizId",
@@ -829,7 +903,7 @@
         },
         {
           "default": "",
-          "document": "App status. Valid values: `open`, `close`",
+          "document": "Application status. Valid values: `open`, `close`.",
           "example": "open",
           "member": "string",
           "name": "Status",
@@ -861,12 +935,28 @@
       ],
       "type": "object"
     },
-    "RealTimeSpeechStatisticsItem": {
-      "document": "Voice chat usage statistics",
+    "OverseaTextStatisticsItem": {
+      "document": "Usage statistics of Voice-to-Text of outside-MLC requests",
       "members": [
         {
           "default": "",
-          "document": "DAU in Mainland China",
+          "document": "Statistical value (in seconds)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1.23",
+          "member": "float",
+          "name": "Data",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RealTimeSpeechStatisticsItem": {
+      "document": "Voice Chat usage statistics",
+      "members": [
+        {
+          "default": "",
+          "document": "DAUs in the Chinese mainland",
           "member": "uint64",
           "name": "MainLandDau",
           "required": true,
@@ -875,7 +965,7 @@
         },
         {
           "default": "",
-          "document": "PCU in Mainland China",
+          "document": "PCUs in the Chinese mainland",
           "member": "uint64",
           "name": "MainLandPcu",
           "required": true,
@@ -884,7 +974,7 @@
         },
         {
           "default": "",
-          "document": "Total duration of use in Mainland China in minutes",
+          "document": "Total duration of use in the Chinese mainland (in minutes)",
           "member": "uint64",
           "name": "MainLandDuration",
           "required": true,
@@ -893,7 +983,7 @@
         },
         {
           "default": "",
-          "document": "DAU outside Mainland China",
+          "document": "DAUs outside the Chinese mainland",
           "member": "uint64",
           "name": "OverseaDau",
           "required": true,
@@ -902,7 +992,7 @@
         },
         {
           "default": "",
-          "document": "PCU outside Mainland China",
+          "document": "PCUs outside the Chinese mainland",
           "member": "uint64",
           "name": "OverseaPcu",
           "required": true,
@@ -911,7 +1001,7 @@
         },
         {
           "default": "",
-          "document": "Total duration of use outside Mainland China in minutes",
+          "document": "Total duration of use outside the Chinese mainland (in minutes)",
           "member": "uint64",
           "name": "OverseaDuration",
           "required": true,
@@ -922,11 +1012,11 @@
       "usage": "out"
     },
     "RealtimeSpeechConf": {
-      "document": "Configuration information of voice chat",
+      "document": "Configuration information of Voice Chat",
       "members": [
         {
           "default": "",
-          "document": "Voice chat status. Valid values: open, close",
+          "document": "Voice Chat status. Valid values: `open`, `close`.",
           "example": "open",
           "member": "string",
           "name": "Status",
@@ -936,7 +1026,7 @@
         },
         {
           "default": "",
-          "document": "Voice chat sound quality. Valid value: `high`",
+          "document": "Voice Chat sound quality. Valid value: `high`.",
           "example": "high",
           "member": "string",
           "name": "Quality",
@@ -947,12 +1037,28 @@
       ],
       "usage": "both"
     },
-    "ScanDetail": {
-      "document": "Speech detection details",
+    "RealtimeTextStatisticsItem": {
+      "document": "Real-time Voice-to-Text usage statistics",
       "members": [
         {
           "default": "",
-          "document": "Violation scenario. For more information, please see the definition of <a href=\"https://intl.cloud.tencent.com/document/product/607/37622?from_cn_redirect=1#Label_Value\">Label</a>",
+          "document": "Statistical value (in seconds)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1.23",
+          "member": "float",
+          "name": "Data",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ScanDetail": {
+      "document": "Voice detection details",
+      "members": [
+        {
+          "default": "",
+          "document": "Violation scenario. For more information, please see the definition of <a href=\"https://intl.cloud.tencent.com/document/product/607/37622?from_cn_redirect=1#Label_Value\">Label</a>.",
           "member": "string",
           "name": "Label",
           "required": true,
@@ -961,7 +1067,7 @@
         },
         {
           "default": "",
-          "document": "Confidence score in scenario. Value range: [0.00,100.00]. The higher the score, the more likely the content is non-compliant",
+          "document": "Confidence score in scenario. Value range: [0.00,100.00]. The higher the score, the more likely the content is non-compliant.",
           "member": "string",
           "name": "Rate",
           "required": true,
@@ -979,7 +1085,7 @@
         },
         {
           "default": "",
-          "document": "Start time offset in milliseconds from 0 of keyword in audio",
+          "document": "Start time offset of keyword from 0 in audio (in milliseconds)",
           "member": "uint64",
           "name": "StartTime",
           "required": true,
@@ -988,7 +1094,7 @@
         },
         {
           "default": "",
-          "document": "End time offset in milliseconds from 0 of keyword in audio",
+          "document": "End time offset of keyword from 0 in audio (in milliseconds)",
           "member": "uint64",
           "name": "EndTime",
           "required": true,
@@ -999,11 +1105,11 @@
       "usage": "out"
     },
     "ScanPiece": {
-      "document": "Speech detection result, which will be returned if `Code` is 0",
+      "document": "Voice detection result, which will be returned if `Code` is 0.",
       "members": [
         {
           "default": "",
-          "document": "Audio retention address, which will be returned for stream detection. The audio will be retained for 30 minutes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Audio retention address, which will be returned for stream detection. The audio will be retained for 30 minutes.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "DumpUrl",
           "required": true,
@@ -1021,7 +1127,7 @@
         },
         {
           "default": "",
-          "document": "Main non-compliant content type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Main non-compliant content type\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "MainType",
           "required": true,
@@ -1030,7 +1136,7 @@
         },
         {
           "default": "",
-          "document": "Speech detection details",
+          "document": "Voice detection details",
           "member": "ScanDetail",
           "name": "ScanDetail",
           "required": true,
@@ -1039,7 +1145,7 @@
         },
         {
           "default": "",
-          "document": "GME voice chat room ID, which is the `RoomId` passed through when the task was submitted\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "GME Voice Chat room ID, which is the `RoomId` passed through when the task was submitted.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "RoomId",
           "required": true,
@@ -1048,7 +1154,7 @@
         },
         {
           "default": "",
-          "document": "GME voice chat user ID, which is the `OpenId` passed through when the task was submitted\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "GME Voice Chat user ID, which is the `OpenId` passed through when the task was submitted.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "OpenId",
           "required": true,
@@ -1057,7 +1163,7 @@
         },
         {
           "default": "",
-          "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Remarks\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Info",
           "required": true,
@@ -1066,7 +1172,7 @@
         },
         {
           "default": "",
-          "document": "Offset time in milliseconds of segment in stream during stream detection\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Offset time of multipart in stream during stream detection (in milliseconds)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "Offset",
           "required": true,
@@ -1075,7 +1181,7 @@
         },
         {
           "default": "",
-          "document": "Segment duration during stream detection\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Multipart duration during stream detection\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "Duration",
           "required": true,
@@ -1084,7 +1190,7 @@
         },
         {
           "default": "",
-          "document": "Segment detection start time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Multipart detection start time\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "PieceStartTime",
           "required": true,
@@ -1099,7 +1205,7 @@
       "members": [
         {
           "default": "",
-          "document": "Application ID, which is the `AppID` obtained when you create an application in [Console > Service Management](https://console.cloud.tencent.com/gamegme)",
+          "document": "Application ID, which is obtained when you create an application in the [GME console - Service Management](https://console.cloud.tencent.com/gamegme).",
           "example": "1400000000",
           "member": "uint64",
           "name": "BizId",
@@ -1108,7 +1214,7 @@
         },
         {
           "default": "",
-          "document": "Speech detection scenario. The value of this parameter is currently required to be `default`. Preset scenarios: abusive, pornographic, advertising, and other prohibited scenarios. For specific values, please see the <a href=\"#Label_Value\">Label description</a> above.",
+          "document": "Voice detection scenario. It must be `default`. See the <a href=\"#Label_Value\">Label description</a> as the result.",
           "example": "[\"default\\n\"]",
           "member": "string",
           "name": "Scenes",
@@ -1117,7 +1223,7 @@
         },
         {
           "default": "",
-          "document": "Whether it is a live stream. false: audio file detection, true: audio stream detection.",
+          "document": "Whether it is a live stream. Values: `false` (voice file), `true` (live stream).",
           "example": "false",
           "member": "bool",
           "name": "Live",
@@ -1126,7 +1232,7 @@
         },
         {
           "default": "",
-          "document": "Speech detection task list. Up to 100 tasks can be added in the list. The structure contains:\n<li>DataId: unique data ID</li>\n<li>Url: URL-encoded data file URL, which is a pull address if the detected speech is a stream</li>",
+          "document": "Voice detection task list. Up to 100 tasks can be added in the list. \n<li>`DataId`: Unique data ID</li>\n<li>`Url`: URL-encoded data file URL, which is a pull address if the detected voice is a stream</li>",
           "example": "无",
           "member": "Task",
           "name": "Tasks",
@@ -1135,7 +1241,7 @@
         },
         {
           "default": "",
-          "document": "Async callback address for detection result. For more information, please see the <a href=\"#Callback_Declare\">callback description</a> above. (Note: if this field is empty, the detection result can only be obtained by calling the `DescribeScanResultList` API.)",
+          "document": "Async callback address for detection result. For more information, please see the <a href=\"#Callback_Declare\">Callback description</a> above. (Note: If this field is empty, the detection result can only be queried by calling the `DescribeScanResultList` API.)",
           "example": "https://0.0.0.0/user_callback",
           "member": "string",
           "name": "Callback",
@@ -1144,7 +1250,7 @@
         },
         {
           "default": "",
-          "document": "The language. `jp` represents Japanese",
+          "document": "Language. `jp`: Japanese",
           "example": "jp",
           "member": "string",
           "name": "Lang",
@@ -1158,9 +1264,11 @@
       "document": "ScanVoice response structure.",
       "members": [
         {
-          "document": "Speech detection return. The `Data` field is a JSON array where each element contains: <li>DataId: corresponding `DataId` in request.</li>\n<li>TaskID: detection task ID, which is used to poll the speech detection result.</li>",
+          "document": "Voice moderation result. <li>`DataId`: Corresponding `DataId` in request.</li>\n<li>`TaskID`: Moderation task ID, which is used to poll the voice detection result.</li>",
+          "example": "无",
           "member": "ScanVoiceResult",
           "name": "Data",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1174,7 +1282,7 @@
       "type": "object"
     },
     "ScanVoiceResult": {
-      "document": "Returned result of speech detection",
+      "document": "Result of voice moderation",
       "members": [
         {
           "default": "",
@@ -1198,7 +1306,7 @@
       "usage": "out"
     },
     "StatisticsItem": {
-      "document": "Usage data",
+      "document": "Usage data unit",
       "members": [
         {
           "default": "",
@@ -1211,7 +1319,7 @@
         },
         {
           "default": "",
-          "document": "Statistics",
+          "document": "Statistical value",
           "member": "uint64",
           "name": "Data",
           "required": true,
@@ -1221,12 +1329,28 @@
       ],
       "usage": "out"
     },
+    "StreamTextStatisticsItem": {
+      "document": "Stream-to-Text usage statistics",
+      "members": [
+        {
+          "default": "",
+          "document": "Usage of the service (in seconds)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1.23",
+          "member": "float",
+          "name": "Data",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "Tag": {
       "document": "Tag list",
       "members": [
         {
           "default": "",
-          "document": "Tag key\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Tag key\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "TagKey",
           "required": false,
@@ -1235,7 +1359,7 @@
         },
         {
           "default": "",
-          "document": "Tag value\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Tag value\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "TagValue",
           "required": false,
@@ -1246,7 +1370,7 @@
       "usage": "both"
     },
     "Task": {
-      "document": "Speech detection task list",
+      "document": "Voice detection task list",
       "members": [
         {
           "default": "",
@@ -1259,7 +1383,7 @@
         },
         {
           "default": "",
-          "document": "URL-encoded data file URL, which is a pull address if the detected speech is a stream",
+          "document": "URL-encoded data file URL, which is a pull address if the detected voice is a stream.",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -1268,7 +1392,7 @@
         },
         {
           "default": "",
-          "document": "GME voice chat room ID, which is entered during speech detection by GME voice chat",
+          "document": "GME Voice Chat room ID, which is entered during voice analysis by GME Voice Chat.",
           "member": "string",
           "name": "RoomId",
           "required": false,
@@ -1277,7 +1401,7 @@
         },
         {
           "default": "",
-          "document": "GME voice chat user ID, which is entered during speech detection by GME voice chat",
+          "document": "GME Voice Chat user ID, which is entered during voice analysis by GME Voice Chat.",
           "member": "string",
           "name": "OpenId",
           "required": false,
@@ -1288,11 +1412,11 @@
       "usage": "in"
     },
     "VoiceFilterConf": {
-      "document": "Configuration information of phrase filtering",
+      "document": "Configuration information of Phrase Filtering",
       "members": [
         {
           "default": "",
-          "document": "Phrase filtering status. Valid values: open, close",
+          "document": "Phrase Filtering status. Valid values: `open`, `close`.",
           "member": "string",
           "name": "Status",
           "required": false,
@@ -1303,11 +1427,12 @@
       "usage": "both"
     },
     "VoiceFilterStatisticsItem": {
-      "document": "Phrase filtering usage statistics",
+      "document": "Phrase Filtering usage statistics",
       "members": [
         {
           "default": "",
-          "document": "Total duration of phrase filtering",
+          "document": "Total duration of phrase filtering (in minutes)",
+          "example": "100",
           "member": "uint64",
           "name": "Duration",
           "required": true,
@@ -1318,11 +1443,11 @@
       "usage": "out"
     },
     "VoiceMessageConf": {
-      "document": "Configuration information of voice messaging and speech-to-text",
+      "document": "Configuration information of Voice Message Service",
       "members": [
         {
           "default": "",
-          "document": "Voice messaging and speech-to-text status. Valid values: open, close",
+          "document": "Voice Message Service status. Valid values: `open`, `close`.",
           "member": "string",
           "name": "Status",
           "required": false,
@@ -1331,7 +1456,7 @@
         },
         {
           "default": "",
-          "document": "Language supported for voice messaging and speech-to-text. Valid values: all (all languages), cnen (Chinese and English). Default value: cnen",
+          "document": "Language supported for Voice Message Service. Valid values: `all` (all languages), `cnen` (Chinese and English). Default value: `cnen`.",
           "member": "string",
           "name": "Language",
           "required": false,
@@ -1342,11 +1467,11 @@
       "usage": "both"
     },
     "VoiceMessageStatisticsItem": {
-      "document": "Voice messaging usage statistics",
+      "document": "Voice Message Service usage statistics",
       "members": [
         {
           "default": "",
-          "document": "DAU of voice messaging and speech-to-text",
+          "document": "DAUs of Voice Message Service",
           "member": "uint64",
           "name": "Dau",
           "required": true,
