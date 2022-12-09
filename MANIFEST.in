@@ -125,6 +125,8 @@ include tccli/services/msp/v20180319/api.json
 include tccli/services/msp/v20180319/examples.json
 include tccli/services/ocr/v20181119/api.json
 include tccli/services/ocr/v20181119/examples.json
+include tccli/services/organization/v20210331/api.json
+include tccli/services/organization/v20210331/examples.json
 include tccli/services/organization/v20181225/api.json
 include tccli/services/organization/v20181225/examples.json
 include tccli/services/postgres/v20170312/api.json

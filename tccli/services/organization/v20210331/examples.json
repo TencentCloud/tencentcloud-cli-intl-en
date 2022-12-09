@@ -1,0 +1,133 @@
+{
+  "actions": {
+    "AddOrganizationNode": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddOrganizationNode\n<Common request parameters>\n\n{\n    \"Name\": \"test\",\n    \"ParentNodeId\": 123\n}",
+        "output": "{\n    \"Response\": {\n        \"NodeId\": 1123,\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Adding an organization node"
+      }
+    ],
+    "BindOrganizationMemberAuthAccount": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindOrganizationMemberAuthAccount\n<Common request parameters>\n\n{\n    \"MemberUin\": 100000546922,\n    \"PolicyId\": 98081,\n    \"OrgSubAccountUins\": [\n        100000546921\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4c2f4b68-01b2-4841-a927-6ca8fe40649b\"\n    }\n}",
+        "title": "Binding an organization member to a sub-account of the organization admin"
+      }
+    ],
+    "CancelOrganizationMemberAuthAccount": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CancelOrganizationMemberAuthAccount\n<Common request parameters>\n\n{\n    \"MemberUin\": \"100000546922\",\n    \"PolicyId\": \"98081\",\n    \"OrgSubAccountUin\": \"100000546921\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"caecf1a4-72b7-48d6-8f5f-90d1c428d3f3\"\n    }\n}",
+        "title": "Unbinding an organization member from a sub-account of the organization admin"
+      }
+    ],
+    "CreateOrganizationMember": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOrganizationMember\n<Common request parameters>\n\n{\n    \"Remark\": \"test\",\n    \"Name\": \"test\",\n    \"NodeId\": \"27\",\n    \"AccountName\": \"test\",\n    \"PermissionIds\": [\n        1,\n        2\n    ],\n    \"PolicyType\": \"Finical\",\n    \"PayUin\": \"\",\n    \"IdentityRoleID\": [\n        1\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Uin\": 100001919,\n        \"RequestId\": \"1a556fac-cd38-4732-86ef-6283d6abddd7\"\n    }\n}",
+        "title": "Creating an organization member"
+      }
+    ],
+    "CreateOrganizationMemberPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOrganizationMemberPolicy\n<Common request parameters>\n\n{\n    \"PolicyName\": \"test\",\n    \"MemberUin\": \"100000546922\",\n    \"Description\": \"test\",\n    \"IdentityId\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"PolicyId\": 98081,\n        \"RequestId\": \"a1a10c6e-6723-408a-858b-2cb84e92776c\"\n    }\n}",
+        "title": "Creating an organization member access policy"
+      }
+    ],
+    "DeleteOrganizationMembers": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOrganizationMembers\n<Common request parameters>\n\n{\n    \"MemberUin\": [\n        10000023635\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Batch deleting organization members"
+      }
+    ],
+    "DeleteOrganizationNodes": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOrganizationNodes\n<Common request parameters>\n\n{\n    \"NodeId\": [\n        123\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Batch deleting organization nodes"
+      }
+    ],
+    "DescribeOrganization": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganization\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"CreateTime\": \"2021-04-15 21:07:54\",\n        \"JoinTime\": \"2021-04-15 21:07:54\",\n        \"HostUin\": 100000546922,\n        \"IsManager\": true,\n        \"NickName\": \"\",\n        \"OrgId\": 13,\n        \"OrgPermission\": [\n            {\n                \"Id\": 1,\n                \"Name\": \"Allow the root account to view the consumption information of sub-accounts\"\n            },\n            {\n                \"Id\": 2,\n                \"Name\": \"Allow the root account to view the financial information of sub-accounts\"\n            },\n            {\n                \"Id\": 3,\n                \"Name\": \"Allow the root account to allocate funds to sub-accounts\"\n            },\n            {\n                \"Id\": 4,\n                \"Name\": \"Allow the root account to consolidate the bills of sub-accounts\"\n            },\n            {\n                \"Id\": 5,\n                \"Name\": \"Allow the root account to issue invoices on behalf of sub-accounts\"\n            }\n        ],\n        \"OrgPolicyName\": \"Finance management\",\n        \"OrgPolicyType\": \"Financial\",\n        \"OrgType\": 1,\n        \"RootNodeId\": 1001,\n        \"IsAllowQuit\": \"Allow\",\n        \"PayUin\": \"\",\n        \"PayName\": \"\",\n        \"IsAssignManager\": false,\n        \"IsAuthManager\": false,\n        \"RequestId\": \"e5c09721-236b-4a55-a5d1-0513ac506245\"\n    }\n}",
+        "title": "Getting organization details"
+      }
+    ],
+    "DescribeOrganizationMemberAuthAccounts": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationMemberAuthAccounts\n<Common request parameters>\n\n{\n    \"MemberUin\": \"100000546922\",\n    \"Limit\": \"10\",\n    \"PolicyId\": \"98081\",\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2021-07-14 21:00:59\",\n                \"IdentityId\": 1,\n                \"IdentityRoleAliasName\": \"Login access\",\n                \"IdentityRoleName\": \"OrganizationAccessControlRole\",\n                \"OrgSubAccountUin\": 100000546921,\n                \"PolicyId\": 98081,\n                \"PolicyName\": \"test\",\n                \"UpdateTime\": \"2021-07-14 21:00:59\",\n                \"OrgSubAccountName\": \"test\"\n            }\n        ],\n        \"RequestId\": \"cf182a6b-8caa-4df9-b1d0-09ad41e8c434\",\n        \"Total\": 1\n    }\n}",
+        "title": "Getting the list of sub-accounts bound to an organization member"
+      }
+    ],
+    "DescribeOrganizationMemberAuthIdentities": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationMemberAuthIdentities\n<Common request parameters>\n\n{\n    \"MemberUin\": \"100000546922\",\n    \"Limit\": \"10\",\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2021-07-14 20:17:34\",\n                \"Description\": \"AdministratorAccess\",\n                \"IdentityId\": 1,\n                \"IdentityRoleAliasName\": \"Login access\",\n                \"IdentityRoleName\": \"OrganizationAccessControlRole\",\n                \"UpdateTime\": \"2021-07-14 20:17:34\"\n            }\n        ],\n        \"RequestId\": \"55fa3e27-1166-45e1-bdac-6198c3c38534\",\n        \"Total\": 1\n    }\n}",
+        "title": "Getting the list of manageable identities of an organization member"
+      }
+    ],
+    "DescribeOrganizationMemberPolicies": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationMemberPolicies\n<Common request parameters>\n\n{\n    \"MemberUin\": \"100000546922\",\n    \"Limit\": \"10\",\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2021-07-14 20:22:30\",\n                \"Description\": \"test\",\n                \"IdentityId\": 1,\n                \"IdentityRoleAliasName\": \"Login access\",\n                \"IdentityRoleName\": \"OrganizationAccessControlRole\",\n                \"PolicyId\": 27887,\n                \"PolicyName\": \"test3\",\n                \"UpdateTime\": \"2021-07-14 20:22:30\"\n            },\n            {\n                \"CreateTime\": \"2021-07-14 20:21:21\",\n                \"Description\": \"test\",\n                \"IdentityId\": 1,\n                \"IdentityRoleAliasName\": \"Login access\",\n                \"IdentityRoleName\": \"OrganizationAccessControlRole\",\n                \"PolicyId\": 98081,\n                \"PolicyName\": \"test\",\n                \"UpdateTime\": \"2021-07-14 20:21:21\"\n            }\n        ],\n        \"RequestId\": \"a1525f09-8a00-4b76-9db5-d47aea591dff\",\n        \"Total\": 2\n    }\n}",
+        "title": "Getting the list of authorization policies of an organization member"
+      }
+    ],
+    "DescribeOrganizationMembers": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationMembers\n<Common request parameters>\n\n{\n    \"Lang\": \"zh\",\n    \"Limit\": \"10\",\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2021-04-17 12:19:07\",\n                \"MemberType\": \"Invite\",\n                \"MemberUin\": 100000558815,\n                \"Name\": \"test2\",\n                \"NodeId\": 27,\n                \"NodeName\": \"\",\n                \"IsAllowQuit\": \"Denied\",\n                \"OrgPermission\": [\n                    {\n                        \"Id\": 1,\n                        \"Name\": \"Allow the root account to view the consumption information of sub-accounts\"\n                    },\n                    {\n                        \"Id\": 2,\n                        \"Name\": \"Allow the root account to view the financial information of sub-accounts\"\n                    }\n                ],\n                \"OrgPolicyName\": \"Finance management\",\n                \"OrgPolicyType\": \"Financial\",\n                \"Remark\": \"123\",\n                \"PayUin\": \"\",\n                \"PayName\": \"\",\n                \"OrgIdentity\": [],\n                \"BindStatus\": \"Unbound\",\n                \"PermissionStatus\": \"Confirmed\",\n                \"UpdateTime\": \"2021-04-17 12:19:07\"\n            },\n            {\n                \"CreateTime\": \"2021-04-16 11:49:39\",\n                \"MemberType\": \"Create\",\n                \"MemberUin\": 100000546922,\n                \"Name\": \"\",\n                \"NodeId\": 26,\n                \"NodeName\": \"\",\n                \"IsAllowQuit\": \"Denied\",\n                \"OrgPermission\": [\n                    {\n                        \"Id\": 1,\n                        \"Name\": \"Allow the root account to view the consumption information of sub-accounts\"\n                    },\n                    {\n                        \"Id\": 2,\n                        \"Name\": \"Allow the root account to view the financial information of sub-accounts\"\n                    },\n                    {\n                        \"Id\": 3,\n                        \"Name\": \"Allow the root account to allocate funds to sub-accounts\"\n                    },\n                    {\n                        \"Id\": 4,\n                        \"Name\": \"Allow the root account to consolidate the bills of sub-accounts\"\n                    },\n                    {\n                        \"Id\": 5,\n                        \"Name\": \"Allow the root account to issue invoices on behalf of sub-accounts\"\n                    }\n                ],\n                \"OrgPolicyName\": \"Finance management\",\n                \"OrgPolicyType\": \"Financial\",\n                \"Remark\": \"\",\n                \"PayUin\": \"\",\n                \"PayName\": \"\",\n                \"OrgIdentity\": [],\n                \"BindStatus\": \"Unbound\",\n                \"PermissionStatus\": \"Confirmed\",\n                \"UpdateTime\": \"2021-04-16 11:49:39\"\n            }\n        ],\n        \"RequestId\": \"a0fe0702-5757-4aa4-8872-74b70a4c1b7a\",\n        \"Total\": 2\n    }\n}",
+        "title": "Getting the member list"
+      }
+    ],
+    "DescribeOrganizationNodes": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationNodes\n<Common request parameters>\n\n{\n    \"Limit\": \"10\",\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2021-04-16 11:49:39\",\n                \"Name\": \"Root\",\n                \"NodeId\": 26,\n                \"ParentNodeId\": 0,\n                \"Remark\": \"\",\n                \"UpdateTime\": \"2021-04-16 11:49:39\"\n            },\n            {\n                \"CreateTime\": \"2021-04-16 14:59:57\",\n                \"Name\": \"test\",\n                \"NodeId\": 27,\n                \"ParentNodeId\": 26,\n                \"Remark\": \"test\",\n                \"UpdateTime\": \"2021-04-16 14:59:57\"\n            },\n            {\n                \"CreateTime\": \"2021-04-16 15:55:53\",\n                \"Name\": \"test1\",\n                \"NodeId\": 29,\n                \"ParentNodeId\": 27,\n                \"Remark\": \"1\",\n                \"UpdateTime\": \"2021-04-16 15:55:53\"\n            }\n        ],\n        \"RequestId\": \"becff4cb-fe62-4288-ac6c-4fba115b94b3\",\n        \"Total\": 3\n    }\n}",
+        "title": "Getting the node list"
+      }
+    ],
+    "ListOrganizationIdentity": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListOrganizationIdentity\n<Common request parameters>\n\n{\n    \"Limit\": \"10\",\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"IdentityId\": \"2021-07-15 21:08:38\",\n                \"IdentityAliasName\": \"test\",\n                \"Description\": \"\",\n                \"IdentityPolicy\": [\n                    {\n                        \"PolicyId\": 1,\n                        \"PolicyName\": \"AdministratorAccess\"\n                    }\n                ],\n                \"IdentityType\": 1,\n                \"UpdateTime\": \"2021-07-15 21:08:38\"\n            }\n        ],\n        \"RequestId\": \"1d744bef-fa56-40e9-8e3b-5a88b122ad5e\",\n        \"Total\": 1\n    }\n}",
+        "title": "Getting the list of access identities of an organization member"
+      }
+    ],
+    "MoveOrganizationNodeMembers": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: MoveOrganizationNodeMembers\n<Common request parameters>\n\n{\n    \"MemberUin\": [\n        100000023837\n    ],\n    \"NodeId\": 123\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Moving a member to the specified organization node"
+      }
+    ],
+    "UpdateOrganizationNode": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateOrganizationNode\n<Common request parameters>\n\n{\n    \"NodeId\": 123,\n    \"Name\": \"test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Updating an organization node"
+      }
+    ]
+  },
+  "version": "1.0"
+}

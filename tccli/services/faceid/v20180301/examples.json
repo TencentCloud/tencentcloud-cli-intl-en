@@ -75,9 +75,9 @@
     "LivenessCompare": [
       {
         "document": "",
-        "input": "https://faceid.tencentcloudapi.com/?Action=LivenessCompare\n&ImageBase64=<ImageBase64>\n&VideoBase64=<VideoBase64>\n&LivenessType=SILENT\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: LivenessCompare\n<Common request parameters>\n\n{\n    \"LivenessType\": \"SILENT\",\n    \"ImageBase64\": \"<ImageBase64>\",\n    \"VideoBase64\": \"<VideoBase64>\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": \"Success\",\n        \"Description\": \"Success\",\n        \"BestFrameBase64\": \"Imagebase64\",\n        \"BestFrameList\": [\n            \"Imagebase64\"\n        ],\n        \"Sim\": 89.88,\n        \"RequestId\": \"f904f4cf-75db-4f8f-a5ec-dc4f942c7f7a\"\n    }\n}",
-        "title": "Detecting silent liveness and comparing faces"
+        "title": "Detecting liveness in silent mode and comparing face"
       }
     ],
     "VideoLivenessCompare": [

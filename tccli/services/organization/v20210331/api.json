@@ -1,0 +1,1804 @@
+{
+  "actions": {
+    "AddOrganizationNode": {
+      "document": "This API is used to add an organization node.",
+      "input": "AddOrganizationNodeRequest",
+      "name": "Adds an organization node",
+      "output": "AddOrganizationNodeResponse"
+    },
+    "BindOrganizationMemberAuthAccount": {
+      "document": "This API is used to bind an organization member to a sub-account of the organization admin.",
+      "input": "BindOrganizationMemberAuthAccountRequest",
+      "name": "Binds an organization member to a sub-account of the organization admin",
+      "output": "BindOrganizationMemberAuthAccountResponse"
+    },
+    "CancelOrganizationMemberAuthAccount": {
+      "document": "This API is used to unbind an organization member from a sub-account of the organization admin.\n",
+      "input": "CancelOrganizationMemberAuthAccountRequest",
+      "name": "Unbinds an organization member from a sub-account of the organization admin",
+      "output": "CancelOrganizationMemberAuthAccountResponse"
+    },
+    "CreateOrganizationMember": {
+      "document": "This API is used to create an organization member.",
+      "input": "CreateOrganizationMemberRequest",
+      "name": "Creates an organization member",
+      "output": "CreateOrganizationMemberResponse"
+    },
+    "CreateOrganizationMemberPolicy": {
+      "document": "This API is used to create an organization member access policy.",
+      "input": "CreateOrganizationMemberPolicyRequest",
+      "name": "Creates an organization member access policy",
+      "output": "CreateOrganizationMemberPolicyResponse"
+    },
+    "DeleteOrganizationMembers": {
+      "document": "This API is used to batch delete organization members.",
+      "input": "DeleteOrganizationMembersRequest",
+      "name": "Batch deletes organization members",
+      "output": "DeleteOrganizationMembersResponse"
+    },
+    "DeleteOrganizationNodes": {
+      "document": "This API is used to batch delete organization nodes.",
+      "input": "DeleteOrganizationNodesRequest",
+      "name": "Batch deletes organization nodes",
+      "output": "DeleteOrganizationNodesResponse"
+    },
+    "DescribeOrganization": {
+      "document": "This API is used to get the organization information.",
+      "input": "DescribeOrganizationRequest",
+      "name": "Gets the organization information",
+      "output": "DescribeOrganizationResponse"
+    },
+    "DescribeOrganizationMemberAuthAccounts": {
+      "document": "This API is used to get the list of sub-accounts bound to an organization member.",
+      "input": "DescribeOrganizationMemberAuthAccountsRequest",
+      "name": "Gets the list of sub-accounts bound to an organization member",
+      "output": "DescribeOrganizationMemberAuthAccountsResponse"
+    },
+    "DescribeOrganizationMemberAuthIdentities": {
+      "document": "This API is used to get the list of manageable identities of an organization member.",
+      "input": "DescribeOrganizationMemberAuthIdentitiesRequest",
+      "name": "Gets the list of manageable identities of an organization member",
+      "output": "DescribeOrganizationMemberAuthIdentitiesResponse"
+    },
+    "DescribeOrganizationMemberPolicies": {
+      "document": "This API is used to get the list of authorization policies of an organization member.",
+      "input": "DescribeOrganizationMemberPoliciesRequest",
+      "name": "Gets the list of authorization policies of an organization member",
+      "output": "DescribeOrganizationMemberPoliciesResponse"
+    },
+    "DescribeOrganizationMembers": {
+      "document": "This API is used to get the list of organization members.",
+      "input": "DescribeOrganizationMembersRequest",
+      "name": "Gets the list of organization members",
+      "output": "DescribeOrganizationMembersResponse"
+    },
+    "DescribeOrganizationNodes": {
+      "document": "This API is used to get the list of organization nodes.",
+      "input": "DescribeOrganizationNodesRequest",
+      "name": "Gets the list of organization nodes",
+      "output": "DescribeOrganizationNodesResponse"
+    },
+    "ListOrganizationIdentity": {
+      "document": "This API is used to get the list of access identities of an organization member.",
+      "input": "ListOrganizationIdentityRequest",
+      "name": "Gets the list of access identities of an organization member",
+      "output": "ListOrganizationIdentityResponse"
+    },
+    "MoveOrganizationNodeMembers": {
+      "document": "This API is used to move a member to the specified organization node.",
+      "input": "MoveOrganizationNodeMembersRequest",
+      "name": "Moves a member to the specified organization node",
+      "output": "MoveOrganizationNodeMembersResponse"
+    },
+    "UpdateOrganizationNode": {
+      "document": "This API is used to update an organization node.",
+      "input": "UpdateOrganizationNodeRequest",
+      "name": "Updates an organization node",
+      "output": "UpdateOrganizationNodeResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2021-03-31",
+    "serviceNameCN": "集团账号管理",
+    "serviceShortName": "organization"
+  },
+  "objects": {
+    "AddOrganizationNodeRequest": {
+      "document": "AddOrganizationNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Parent node ID, which can be obtained through the `DescribeOrganizationNodes` API.",
+          "example": "1234",
+          "member": "uint64",
+          "name": "ParentNodeId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Node name, which can contain up to 40 letters, digits, and symbols `+@&._[]-`.",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remarks.",
+          "example": "test",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddOrganizationNodeResponse": {
+      "document": "AddOrganizationNode response structure.",
+      "members": [
+        {
+          "document": "Node ID.",
+          "example": "1001",
+          "member": "int64",
+          "name": "NodeId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BindOrganizationMemberAuthAccountRequest": {
+      "document": "BindOrganizationMemberAuthAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Member UIN.",
+          "example": "1000001",
+          "member": "int64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Policy ID, which can be obtained through the `DescribeOrganizationMemberPolicies` API.",
+          "example": "10",
+          "member": "int64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "List of sub-account UINs of the organization admin, which can contain up to five UINs.",
+          "example": "无",
+          "member": "int64",
+          "name": "OrgSubAccountUins",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "BindOrganizationMemberAuthAccountResponse": {
+      "document": "BindOrganizationMemberAuthAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelOrganizationMemberAuthAccountRequest": {
+      "document": "CancelOrganizationMemberAuthAccount request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Member UIN.",
+          "example": "1000001",
+          "member": "int64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Policy ID.",
+          "example": "10",
+          "member": "int64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Organization sub-account UIN.",
+          "example": "1000002",
+          "member": "int64",
+          "name": "OrgSubAccountUin",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelOrganizationMemberAuthAccountResponse": {
+      "document": "CancelOrganizationMemberAuthAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOrganizationMemberPolicyRequest": {
+      "document": "CreateOrganizationMemberPolicy request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Member UIN.",
+          "example": "1000001",
+          "member": "int64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Policy name, which can contain up to 128 letters, digits, and symbols `+=,.@_-`.",
+          "example": "test",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Member access identity ID, which can be obtained through the `DescribeOrganizationMemberAuthIdentities` API.",
+          "example": "11",
+          "member": "int64",
+          "name": "IdentityId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Description.",
+          "example": "test",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOrganizationMemberPolicyResponse": {
+      "document": "CreateOrganizationMemberPolicy response structure.",
+      "members": [
+        {
+          "document": "Policy ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOrganizationMemberRequest": {
+      "document": "CreateOrganizationMember request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Member name, which can contain up to 25 letters, digits, and symbols `+@&._[]-:,`.",
+          "example": "testAccount",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Relationship policy. Valid value: `Financial`.",
+          "example": "Finical",
+          "member": "string",
+          "name": "PolicyType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of member financial permission IDs. `7` indicates paying, which is the default value.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PermissionIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "ID of the node of the member's department, which can be obtained through the `DescribeOrganizationNodes` API.",
+          "example": "1001",
+          "member": "int64",
+          "name": "NodeId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Account name, which can contain up to 25 letters, digits, and symbols `+@&._[]-:,`.",
+          "example": "test",
+          "member": "string",
+          "name": "AccountName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remarks.",
+          "example": "test",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Member creation record ID, which is required during retry upon creation exception.",
+          "example": "12344",
+          "member": "int64",
+          "name": "RecordId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Payer UIN, which is required during paying for a member.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "PayUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of member access identity IDs, which can be obtained through the `ListOrganizationIdentity` API. `1` indicates supported, which is the default value.",
+          "example": "[1]",
+          "member": "uint64",
+          "name": "IdentityRoleID",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Verified entity relationship ID, which is required during creating members for different entities.",
+          "example": "0",
+          "member": "int64",
+          "name": "AuthRelationId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOrganizationMemberResponse": {
+      "document": "CreateOrganizationMember response structure.",
+      "members": [
+        {
+          "document": "Member UIN.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100019119",
+          "member": "int64",
+          "name": "Uin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationMembersRequest": {
+      "document": "DeleteOrganizationMembers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of UINs of the members to be deleted.",
+          "example": "无",
+          "member": "int64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationMembersResponse": {
+      "document": "DeleteOrganizationMembers response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationNodesRequest": {
+      "document": "DeleteOrganizationNodes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of node IDs.",
+          "example": "无",
+          "member": "int64",
+          "name": "NodeId",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationNodesResponse": {
+      "document": "DeleteOrganizationNodes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrganizationMemberAuthAccountsRequest": {
+      "document": "DescribeOrganizationMemberAuthAccounts request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of returned results.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Member UIN.",
+          "example": "1000001",
+          "member": "int64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Policy ID.",
+          "example": "11",
+          "member": "int64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrganizationMemberAuthAccountsResponse": {
+      "document": "DescribeOrganizationMemberAuthAccounts response structure.",
+      "members": [
+        {
+          "document": "List\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OrgMemberAuthAccount",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrganizationMemberAuthIdentitiesRequest": {
+      "document": "DescribeOrganizationMemberAuthIdentities request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of returned results. Maximum value: `50`.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Organization member UIN.",
+          "example": "1000001",
+          "member": "int64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrganizationMemberAuthIdentitiesResponse": {
+      "document": "DescribeOrganizationMemberAuthIdentities response structure.",
+      "members": [
+        {
+          "document": "List.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OrgMemberAuthIdentity",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrganizationMemberPoliciesRequest": {
+      "document": "DescribeOrganizationMemberPolicies request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of returned results. Maximum value: `50`.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Member UIN.",
+          "example": "1000001",
+          "member": "int64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Search keyword, which can be the policy name or description.",
+          "example": "test",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrganizationMemberPoliciesResponse": {
+      "document": "DescribeOrganizationMemberPolicies response structure.",
+      "members": [
+        {
+          "document": "List.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OrgMemberPolicy",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrganizationMembersRequest": {
+      "document": "DescribeOrganizationMembers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of returned results. Maximum value: `50`.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `en` (Tencent Cloud International); `zh` (Tencent Cloud).",
+          "example": "en",
+          "member": "string",
+          "name": "Lang",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Search by member name or ID.",
+          "example": "test",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Entity name.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "AuthName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Abbreviation of the trusted service, which is required during querying the trusted service admin.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Product",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrganizationMembersResponse": {
+      "document": "DescribeOrganizationMembers response structure.",
+      "members": [
+        {
+          "document": "Member list.",
+          "example": "无",
+          "member": "OrgMember",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrganizationNodesRequest": {
+      "document": "DescribeOrganizationNodes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Maximum number of returned results. Maximum value: `50`.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrganizationNodesResponse": {
+      "document": "DescribeOrganizationNodes response structure.",
+      "members": [
+        {
+          "document": "Total number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OrgNode",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrganizationRequest": {
+      "document": "DescribeOrganization request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Valid values: `en` (Tencent Cloud International); `zh` (Tencent Cloud).",
+          "example": "en",
+          "member": "string",
+          "name": "Lang",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Abbreviation of the trusted service, which is required during querying the trusted service admin.",
+          "example": "test",
+          "member": "string",
+          "name": "Product",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOrganizationResponse": {
+      "document": "DescribeOrganization response structure.",
+      "members": [
+        {
+          "document": "Organization ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1234",
+          "member": "int64",
+          "name": "OrgId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Creator UIN.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10001",
+          "member": "int64",
+          "name": "HostUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Creator name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "NickName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Organization type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "OrgType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether the member is the organization admin. Valid values: `true` (yes); `false` (no).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsManager",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Policy type. Valid values: `Financial` (finance management).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Finical",
+          "member": "string",
+          "name": "OrgPolicyType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Policy name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "财务策略",
+          "member": "string",
+          "name": "OrgPolicyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "List of member financial permissions.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OrgPermission",
+          "name": "OrgPermission",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Organization root node ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "int64",
+          "name": "RootNodeId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Organization creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-03-12 12:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Member joining time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-03-12 12:00:00",
+          "member": "string",
+          "name": "JoinTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether the member is allowed to leave. Valid values: `Allow`, `Denied`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Allow",
+          "member": "string",
+          "name": "IsAllowQuit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Payer UIN.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "PayUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Payer name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "PayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether the member is the trusted service admin. Valid values: `true` (yes); `false` (no).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsAssignManager",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Whether the member is the verified entity admin. Valid values: `true` (yes); `false` (no).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsAuthManager",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "IdentityPolicy": {
+      "document": "Organization identity policy",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Policy name",
+          "example": "AdministratorAccess",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ListOrganizationIdentityRequest": {
+      "document": "ListOrganizationIdentity request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Offset.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum number of returned results. Maximum value: `50`.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Search by name.",
+          "example": "test",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Search by identity ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "IdentityId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListOrganizationIdentityResponse": {
+      "document": "ListOrganizationIdentity response structure.",
+      "members": [
+        {
+          "document": "Total number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Item details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OrgIdentity",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "MemberIdentity": {
+      "document": "Member management identity",
+      "members": [
+        {
+          "default": "",
+          "document": "Identity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "IdentityId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Identity name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "IdentityAliasName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MoveOrganizationNodeMembersRequest": {
+      "document": "MoveOrganizationNodeMembers request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Organization node ID.",
+          "example": "123",
+          "member": "int64",
+          "name": "NodeId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Member UIN list.",
+          "example": "无",
+          "member": "int64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "MoveOrganizationNodeMembersResponse": {
+      "document": "MoveOrganizationNodeMembers response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OrgIdentity": {
+      "document": "Organization identity",
+      "members": [
+        {
+          "default": "",
+          "document": "Identity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "IdentityId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Identity name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "IdentityAliasName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Description.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Identity policy.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "IdentityPolicy",
+          "name": "IdentityPolicy",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Identity type. Valid values: `1` (preset); `2` (custom).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "IdentityType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Update time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-02-12 12:12:10",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "OrgMember": {
+      "document": "Organization member",
+      "members": [
+        {
+          "default": "",
+          "document": "Member UIN\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1000001",
+          "member": "int64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Member name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "tt",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Member type. Valid values: `Invite` (invited); `Create` (created).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Invite",
+          "member": "string",
+          "name": "MemberType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Relationship policy type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Finical",
+          "member": "string",
+          "name": "OrgPolicyType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Relationship policy name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "财务管理",
+          "member": "string",
+          "name": "OrgPolicyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Relationship policy permission\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OrgPermission",
+          "name": "OrgPermission",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1002",
+          "member": "int64",
+          "name": "NodeId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Node name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Root",
+          "member": "string",
+          "name": "NodeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "tt",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-03-12 12:12:22",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-03-12 12:12:22",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the member is allowed to leave. Valid values: `Allow`, `Denied`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Allow",
+          "member": "string",
+          "name": "IsAllowQuit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Payer UIN\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "PayUin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Payer name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "PayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Management identity\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MemberIdentity",
+          "name": "OrgIdentity",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Security information binding status. Valid values: `Unbound`, `Valid`, `Success`, `Failed`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Unbound",
+          "member": "string",
+          "name": "BindStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Member permission status. Valid values: `Confirmed`, `UnConfirmed`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Confirmed",
+          "member": "string",
+          "name": "PermissionStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "OrgMemberAuthAccount": {
+      "document": "Authorization relationship between the member and sub-account",
+      "members": [
+        {
+          "default": "",
+          "document": "Organization sub-account UIN.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1000001",
+          "member": "int64",
+          "name": "OrgSubAccountUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Policy ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "11",
+          "member": "int64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Policy name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Identity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "12",
+          "member": "int64",
+          "name": "IdentityId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Identity role name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test1",
+          "member": "string",
+          "name": "IdentityRoleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Identity role alias.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "策略管理",
+          "member": "string",
+          "name": "IdentityRoleAliasName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-02-12 12:12:10",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Update time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-02-12 12:12:10",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Sub-account name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "OrgSubAccountName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "OrgMemberAuthIdentity": {
+      "document": "Authorizable identity of the organization member",
+      "members": [
+        {
+          "default": "",
+          "document": "Identity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "111",
+          "member": "int64",
+          "name": "IdentityId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Identity role name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "IdentityRoleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Identity role alias.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "IdentityRoleAliasName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-02-12 12:12:10",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Update time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-02-12 12:12:10",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "OrgMemberPolicy": {
+      "document": "Authorized policy of the organization member",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Policy name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Identity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "IdentityId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Identity role name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "IdentityRoleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Identity role alias.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "IdentityRoleAliasName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Description.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-02-12 12:12:10",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Update time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-02-12 12:12:10",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "OrgNode": {
+      "document": "Department",
+      "members": [
+        {
+          "default": "",
+          "document": "Organization node ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1001",
+          "member": "int64",
+          "name": "NodeId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Parent node ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1000",
+          "member": "int64",
+          "name": "ParentNodeId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-03-12 12:12:11",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-03-12 12:12:11",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "OrgPermission": {
+      "document": "Relationship policy permission",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission name",
+          "example": "允许主账号对子账号合并出账单",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "UpdateOrganizationNodeRequest": {
+      "document": "UpdateOrganizationNode request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Node ID.",
+          "example": "1001",
+          "member": "uint64",
+          "name": "NodeId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Node name, which can contain up to 40 letters, digits, and symbols `+@&._[]-`.",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remarks.",
+          "example": "test",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateOrganizationNodeResponse": {
+      "document": "UpdateOrganizationNode response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

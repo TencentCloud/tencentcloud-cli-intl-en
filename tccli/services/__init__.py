@@ -195,6 +195,7 @@ SERVICE_VERSIONS = {
         "2018-11-19"
     ],
     "organization": [
+        "2021-03-31",
         "2018-12-25"
     ],
     "postgres": [
