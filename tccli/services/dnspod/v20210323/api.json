@@ -37,7 +37,7 @@
       "output": "DescribeRecordResponse"
     },
     "DescribeRecordList": {
-      "document": "This API is used to get DNS records of a domain.",
+      "document": "This API is used to get the DNS records of a domain.",
       "input": "DescribeRecordListRequest",
       "name": "Gets DNS records of a domain",
       "output": "DescribeRecordListResponse"
@@ -81,7 +81,7 @@
         },
         {
           "default": "",
-          "document": "Domain group ID",
+          "document": "The group ID of the domain. You can view the group information of this domain via the `DescribeDomainGroupList` API.",
           "example": "2",
           "member": "uint64",
           "name": "GroupId",
@@ -261,7 +261,7 @@
         },
         {
           "default": "",
-          "document": "Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.",
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "254142",
           "member": "uint64",
           "name": "DomainId",
@@ -297,7 +297,7 @@
         },
         {
           "default": "",
-          "document": "Record ID.",
+          "document": "The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.",
           "example": "162",
           "member": "uint64",
           "name": "RecordId",
@@ -306,7 +306,7 @@
         },
         {
           "default": "",
-          "document": "Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.",
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "1923",
           "member": "uint64",
           "name": "DomainId",
@@ -342,7 +342,7 @@
         },
         {
           "default": "",
-          "document": "Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.",
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "61",
           "member": "uint64",
           "name": "DomainId",
@@ -387,7 +387,7 @@
         },
         {
           "default": "",
-          "document": "The ID of the domain for which DNS records are to be obtained. If `DomainId` is passed in, the system will omit the parameter `Domain`.",
+          "document": "The ID of the domain whose DNS records are requested. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "81345824",
           "member": "uint64",
           "name": "DomainId",
@@ -414,7 +414,7 @@
         },
         {
           "default": "",
-          "document": "The split zone name.",
+          "document": "The name of the split zone for which DNS records are requested. You can view split zones allowed by this domain via the `DescribeRecordLineList` API.",
           "example": "默认",
           "member": "string",
           "name": "RecordLine",
@@ -423,7 +423,7 @@
         },
         {
           "default": "",
-          "document": "The split zone ID. If `RecordLineId` is passed in, the system will omit the parameter `RecordLine`.",
+          "document": "The ID of the split zone for which DNS records are requested. If `RecordLineId` is passed in, `RecordLine` is ignored. You can view split zones allowed by this domain via the `DescribeRecordLineList` API.",
           "example": "0",
           "member": "string",
           "name": "RecordLineId",
@@ -432,7 +432,7 @@
         },
         {
           "default": "",
-          "document": "The group ID.",
+          "document": "The group ID passed in to get DNS records in the group.",
           "example": "23",
           "member": "uint64",
           "name": "GroupId",
@@ -531,7 +531,7 @@
         },
         {
           "default": "",
-          "document": "Record ID.",
+          "document": "The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.",
           "example": "162",
           "member": "uint64",
           "name": "RecordId",
@@ -540,7 +540,7 @@
         },
         {
           "default": "",
-          "document": "Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.",
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "1923",
           "member": "uint64",
           "name": "DomainId",
@@ -867,7 +867,7 @@
         },
         {
           "default": "",
-          "document": "Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.",
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "1923",
           "member": "uint64",
           "name": "DomainId",
@@ -921,7 +921,7 @@
         },
         {
           "default": "",
-          "document": "Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.",
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "61",
           "member": "uint64",
           "name": "DomainId",
@@ -984,7 +984,7 @@
         },
         {
           "default": "",
-          "document": "Record ID.",
+          "document": "The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.",
           "example": "162",
           "member": "uint64",
           "name": "RecordId",
@@ -993,7 +993,7 @@
         },
         {
           "default": "",
-          "document": "Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.",
+          "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "1923",
           "member": "uint64",
           "name": "DomainId",

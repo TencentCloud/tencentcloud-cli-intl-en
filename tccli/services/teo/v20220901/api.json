@@ -3669,7 +3669,7 @@
       "members": [
         {
           "default": "",
-          "document": "The site ID.",
+          "document": "The site ID. You must specify either \"ZoneId+Entity\" or \"TemplateId\".",
           "example": "zone-xxxxx",
           "member": "string",
           "name": "ZoneId",
@@ -3678,7 +3678,7 @@
         },
         {
           "default": "",
-          "document": "The subdomain name.",
+          "document": "The subdomain name/L4 proxy. You must specify either \"ZoneId+Entity\" or \"TemplateId\".",
           "example": "www.example.com",
           "member": "string",
           "name": "Entity",
@@ -3719,6 +3719,15 @@
           "member": "string",
           "name": "Module",
           "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The template ID. You must specify either this field or \"ZoneId+Entity\".",
+          "example": "temp-j39jf04f41",
+          "member": "string",
+          "name": "TemplateId",
+          "required": false,
           "type": "string"
         }
       ],
@@ -3795,7 +3804,7 @@
         },
         {
           "default": "",
-          "document": "The access mode. Values:\n<li>`full`: Access through a name server.</li>\n<li>`partial`: Access through a CNAME record.</li>This field will be set to the default value `full` if not specified.",
+          "document": "The access mode. Values:\n<li>`full`: Access through a name server.</li>\n<li>`partial`: Access through a CNAME record. Note that you should verify your site with the IdentifyZone API before starting site access.</li>If it is left empty, the default value `full` is used.",
           "example": "full",
           "member": "string",
           "name": "Type",
@@ -15729,7 +15738,7 @@
         },
         {
           "default": "",
-          "document": "Match type. Valid values:\n<li>`filename`: File name</li>\n<li>`extension`: File extension</li>\n<li>`host`: Host</li>\n<li>`full_url`: Full URL, which indicates the complete URL path under the current site and must contain the HTTP protocol, host, and path.</li>\n<li>`url`: Partial URL under the current site</li><li>`client_country`: Country/Region of the client</li>\n<li>`query_string`: Query string in the URL</li>\n<li>`request_header`: HTTP request header</li>",
+          "document": "The match type. Values:\n<li>`filename`: File name</li>\n<li>`extension`: File extension</li>\n<li>`host`: Host</li>\n<li>`full_url`: Full URL, which indicates the complete URL path under the current site and must contain the HTTP protocol, host, and path.</li>\n<li>`url`: Partial URL under the current site</li><li>`client_country`: Country/Region of the client</li>\n<li>`query_string`: Query string in the request URL</li>\n<li>`request_header`: HTTP request header</li>",
           "example": "url",
           "member": "string",
           "name": "Target",
@@ -15739,7 +15748,7 @@
         },
         {
           "default": "",
-          "document": "The parameter value of the match type. It can be an empty string only when `Target=query string/request header` and `Operator=exist/notexist`.\n<li>When `Target=extension`, enter the file extension, such as \"jpg\" and \"txt\".</li>\n<li>When `Target=filename`, enter the file name, such as \"foo\" in \"foo.jpg\".</li>\n<li>When `Target=all`, it indicates any site request.</li>\n<li>When `Target=host`, enter the host under the current site, such as \"www.maxx55.com\".</li>\n<li>When `Target=url`, enter the partial URL path under the current site, such as \"/example\".</li>\n<li>When `Target=full_url`, enter the complete URL  under the current site. It must contain the HTTP protocol, host, and path, such as \"https://www.maxx55.cn/example\".</li>\n<li>When `Target=client_country`, enter the ISO-3166 country/region code.</li>\n<li>When `Target=query_string`, enter the value of the query string, such as \"cn\" and \"1\" in \"lang=cn&version=1\".</li>\n<li>When `Target=request_header`, enter the HTTP request header value, such as \"zh-CN,zh;q=0.9\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.</li>",
+          "document": "The parameter value of the match type. It can be an empty string only when `Target=query string/request header` and `Operator=exist/notexist`.\n<li>When `Target=extension`, enter the file extension, such as \"jpg\" and \"txt\".</li>\n<li>When `Target=filename`, enter the file name, such as \"foo\" in \"foo.jpg\".</li>\n<li>When `Target=all`, it indicates any site request.</li>\n<li>When `Target=host`, enter the host under the current site, such as \"www.maxx55.com\".</li>\n<li>When `Target=url`, enter the partial URL path under the current site, such as \"/example\".</li>\n<li>When `Target=full_url`, enter the complete URL under the current site. It must contain the HTTP protocol, host, and path, such as \"https://www.maxx55.cn/example\".</li>\n<li>When `Target=client_country`, enter the ISO-3166 country/region code.</li>\n<li>When `Target=query_string`, enter the value of the query string, such as \"cn\" and \"1\" in \"lang=cn&version=1\".</li>\n<li>When `Target=request_header`, enter the HTTP request header value, such as \"zh-CN,zh;q=0.9\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.</li>",
           "example": "[\"www.maxx55.com\"]",
           "member": "string",
           "name": "Values",
@@ -15769,7 +15778,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Whether the parameter name is case insensitive. Default value: `false`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
           "name": "IgnoreNameCase",
