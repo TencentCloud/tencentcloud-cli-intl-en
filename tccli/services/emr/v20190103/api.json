@@ -3,7 +3,7 @@
     "AddUsersForUserManager": {
       "document": "This API is available for clusters with OpenLDAP components configured.\nThis API is used to add user lists (user management).",
       "input": "AddUsersForUserManagerRequest",
-      "name": "Adds user lists (user management)",
+      "name": "Adds the user list",
       "output": "AddUsersForUserManagerResponse"
     },
     "CreateInstance": {
@@ -13,39 +13,39 @@
       "output": "CreateInstanceResponse"
     },
     "DescribeClusterNodes": {
-      "document": "This API is used to query the information of a hardware node.",
+      "document": "This API is used to query the information of nodes in a cluster.",
       "input": "DescribeClusterNodesRequest",
-      "name": "Queries hardware node information",
+      "name": "Queries the information of nodes in a cluster",
       "output": "DescribeClusterNodesResponse"
     },
     "DescribeEmrApplicationStatics": {
       "document": " This API is used to query the Yarn application statistics.",
       "input": "DescribeEmrApplicationStaticsRequest",
-      "name": "[Monitor] Queries application statistics",
+      "name": "Queries the statistics of YARN tasks",
       "output": "DescribeEmrApplicationStaticsResponse"
     },
     "DescribeInstances": {
-      "document": "This API is used to query EMR instances.",
+      "document": "This API is used to query the information of instances in a cluster.",
       "input": "DescribeInstancesRequest",
-      "name": "Queries EMR instances",
+      "name": "Queries the information of instances in a cluster",
       "output": "DescribeInstancesResponse"
     },
     "DescribeInstancesList": {
-      "document": "This API is used to query EMR cluster instances.",
+      "document": "This API is used to query the cluster list.",
       "input": "DescribeInstancesListRequest",
-      "name": "Queries EMR cluster instances",
+      "name": "Queries the cluster list",
       "output": "DescribeInstancesListResponse"
     },
     "DescribeResourceSchedule": {
-      "document": "This API is used to get data from the YARN Resource Scheduling page.",
+      "document": "This API is used to query the data of YARN Resource Scheduling.",
       "input": "DescribeResourceScheduleRequest",
-      "name": "Gets data from the YARN Resource Scheduling page",
+      "name": "Queries the data of YARN Resource Scheduling",
       "output": "DescribeResourceScheduleResponse"
     },
     "DescribeUsersForUserManager": {
       "document": "This API is available for clusters with OpenLDAP components configured.\nThis API is used to export users in batches. For a Kerberos cluster, set `NeedKeytabInfo` to `true` to obtain the download link of the Keytab file. If `SupportDownLoadKeyTab` is `true`, but `DownLoadKeyTabUrl` is null, the Keytab file is not ready yet (being generated) in the backend.",
       "input": "DescribeUsersForUserManagerRequest",
-      "name": "Queries the user list (user management)",
+      "name": "Queries the user list",
       "output": "DescribeUsersForUserManagerResponse"
     },
     "InquiryPriceCreateInstance": {
@@ -81,7 +81,7 @@
     "ModifyResourceScheduler": {
       "document": "This API is used to modify the YARN resource scheduler (the change will take effect after you click Apply).",
       "input": "ModifyResourceSchedulerRequest",
-      "name": "Modifies the YARN resource scheduler",
+      "name": "Changes the resource scheduler of YARN",
       "output": "ModifyResourceSchedulerResponse"
     },
     "ScaleOutInstance": {
@@ -890,7 +890,7 @@
       "members": [
         {
           "default": "",
-          "document": "Product ID. Different product IDs represent different EMR product versions. Valid values:\n<li>1: EMR v1.3.1</li>\n<li>2: EMR v2.0.1</li>\n<li>4: EMR v2.1.0</li>\n<li>7: EMR v3.0.0</li>\n<li>9: EMR v2.2.0</li>\n<li>11: ClickHouse v1.0.0</li>\n<li>13: Druid v1.0.0</li>\n<li>15: EMR v2.2.1</li>\n<li>16: EMR v2.3.0</li>\n<li>17: ClickHouse v1.1.0</li>\n<li>19: EMR v2.4.0</li>\n<li>20: EMR v2.5.0</li>\n<li>22: ClickHouse v1.2.0</li>\n<li>24: EMR TianQiong v1.0.0</li>\n<li>25: EMR v3.1.0</li>\n<li>26: Doris v1.0.0</li>\n<li>27: Kafka v1.0.0</li>\n<li>28: EMR v3.2.0</li>\n<li>29: EMR v2.5.1</li>\n<li>30: EMR v2.6.0</li>",
+          "document": "The product ID. Different product IDs represent different EMR product versions. Valid values:\n<li>16: EMR v2.3.0</li>\n<li>20: EMR v2.5.0</li>\n<li>25: EMR v3.1.0</li>\n<li>27: Kafka v1.0.0</li>\n<li>30: EMR v2.6.0</li>\n<li>33: EMR v3.2.1</li>\n<li>34: EMR v3.3.0</li>\n<li>36: StarRocks v1.0.0</li>\n<li>37: EMR v3.4.0</li>\n<li>38: EMR v2.7.0</li>\n<li>39: StarRocks v1.1.0</li>\n<li>41: Druid v1.1.0</li>",
           "example": "4",
           "member": "uint64",
           "name": "ProductId",
@@ -2939,6 +2939,7 @@
         {
           "default": "",
           "document": "Time unit of scaling. Valid values:\n<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>",
+          "example": "s",
           "member": "string",
           "name": "TimeUnit",
           "required": true,
@@ -2947,6 +2948,7 @@
         {
           "default": "",
           "document": "Duration of scaling, which needs to be used together with `TimeUnit`.\n<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>",
+          "example": "3600",
           "member": "uint64",
           "name": "TimeSpan",
           "required": true,
@@ -2955,6 +2957,7 @@
         {
           "default": "",
           "document": "Target node specification.",
+          "example": "无",
           "member": "UpdateInstanceSettings",
           "name": "UpdateSpec",
           "required": true,
@@ -2963,6 +2966,7 @@
         {
           "default": "",
           "document": "Instance billing mode. Valid values:\n<li>0: pay-as-you-go.</li>",
+          "example": "0",
           "member": "uint64",
           "name": "PayMode",
           "required": true,
@@ -2971,6 +2975,7 @@
         {
           "default": "",
           "document": "Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.",
+          "example": "无",
           "member": "Placement",
           "name": "Placement",
           "required": true,
@@ -2979,10 +2984,20 @@
         {
           "default": "",
           "document": "Currency.",
+          "example": "CNY",
           "member": "string",
           "name": "Currency",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The resource ID list for batch configuration change.",
+          "example": "[\"emr-vm-xxx\"]",
+          "member": "string",
+          "name": "ResourceIdList",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2992,30 +3007,47 @@
       "members": [
         {
           "document": "Original price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "3.04",
           "member": "float",
           "name": "OriginalCost",
+          "required": true,
           "type": "float",
           "value_allowed_null": true
         },
         {
           "document": "Discounted price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2.01",
           "member": "float",
           "name": "DiscountCost",
+          "required": true,
           "type": "float",
           "value_allowed_null": true
         },
         {
           "document": "Time unit of scaling. Valid values:\n<li>s: seconds.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "s",
           "member": "string",
           "name": "TimeUnit",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Duration of scaling.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "3600",
           "member": "int64",
           "name": "TimeSpan",
+          "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Pricing details\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PriceDetail",
+          "name": "PriceDetail",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -3032,7 +3064,8 @@
       "members": [
         {
           "default": "",
-          "document": "Password",
+          "document": "The login password of the instance, which contains 8 to 16 uppercase letters, lowercase letters, digits, and special characters (only !@%^*) and cannot start with a special character.",
+          "example": "无",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -3041,7 +3074,8 @@
         },
         {
           "default": "",
-          "document": "Public Key",
+          "document": "The key ID. After an instance is associated with a key, you can access it with the private key in the key pair. You can call [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `PublicKeyId`.",
+          "example": "无",
           "member": "string",
           "name": "PublicKeyId",
           "required": false,
@@ -3101,6 +3135,15 @@
           "example": "null",
           "member": "string",
           "name": "ErrorMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "json串",
+          "member": "string",
+          "name": "Data",
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -3834,6 +3877,26 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Enabling instance protection for this instance. Valid values: `true` (enable) and `false` (disable).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "DisableApiTermination",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The billing version. Valid values: `0` (original billing) and `1` (new billing)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TradeVersion",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3963,20 +4026,22 @@
       "members": [
         {
           "default": "",
-          "document": "ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the return value of the `DescribeProject` API. If 0 is entered, the default project will be used.",
-          "member": "int64",
-          "name": "ProjectId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "AZ where the instance resides, such as ap-guangzhou-1. You can call the `DescribeZones` API and see the `Zone` field to get the value of this parameter.",
+          "document": "The ID of the availability zone where the instance resides, such as `ap-guangzhou-1`. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain this ID from the `Zone` field in the response.",
+          "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The ID of the project to which the instance belongs. You can call the [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1) and obtain this ID from the `projectId` field in the response. If this is left empty, the ID of the default project is used.",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -4300,6 +4365,52 @@
         }
       ],
       "usage": "in"
+    },
+    "PriceDetail": {
+      "document": "Pricing details",
+      "members": [
+        {
+          "default": "",
+          "document": "The node ID",
+          "example": "emr-vm-xxxxxxxx",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The price formula",
+          "example": "无",
+          "member": "string",
+          "name": "Formula",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The original price",
+          "example": "4.3",
+          "member": "float",
+          "name": "OriginalCost",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The discount price",
+          "example": "3.2",
+          "member": "float",
+          "name": "DiscountCost",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "PriceResource": {
       "document": "Resource queried for price",

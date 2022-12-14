@@ -2666,6 +2666,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database connection protocol type. Valid values: `postgresql`, `mssql` (MSSQL-compatible)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "postgresql",
+          "member": "string",
+          "name": "ProtocolType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4845,7 +4855,7 @@
       "document": "InquiryPriceRenewDBInstance response structure.",
       "members": [
         {
-          "document": "Total cost before discount; for example, 24650 indicates 246.5 CNY",
+          "document": "Published price in cents. For example, 24650 indicates 246.5 USD.",
           "example": "253440",
           "member": "int64",
           "name": "OriginalPrice",
@@ -4854,7 +4864,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "Actual amount payable; for example, 24650 indicates 246.5 CNY",
+          "document": "Discounted total amount. For example, 24650 indicates 246.5 USD.",
           "example": "210355",
           "member": "int64",
           "name": "Price",
@@ -5925,7 +5935,7 @@
         },
         {
           "default": "",
-          "document": "Value unit of the parameter. If the parameter has no unit, this field will return an empty string.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Unit of the parameter value. If the parameter has no unit, this field will return null.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ms",
           "member": "string",
           "name": "Unit",
@@ -5955,22 +5965,22 @@
         },
         {
           "default": "",
-          "document": "Value range of the enum parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "[replica,logical]",
-          "member": "string",
-          "name": "EnumValue",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
           "document": "The maximum value of the `integer` or `real` parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "float",
           "name": "Max",
           "required": true,
           "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Value range of the enum parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[replica,logical]",
+          "member": "string",
+          "name": "EnumValue",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -6061,6 +6071,188 @@
           "name": "LastModifyTime",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Primary-standby constraint. Valid values: `0` (no constraint), `1` (The parameter value of the standby server must be greater than that of the primary server), `2` (The parameter value of the primary server must be greater than that of the standby server.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "StandbyRelated",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Associated parameter version information, which refers to the detailed parameter information of the kernel version.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ParamVersionRelation",
+          "name": "VersionRelationSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Associated parameter specification information, which refers to the detailed parameter information of the specifications.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ParamSpecRelation",
+          "name": "SpecRelationSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ParamSpecRelation": {
+      "document": "Parameter information of each specification",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "wal_level",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The specification that corresponds to the parameter information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2G",
+          "member": "string",
+          "name": "Memory",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The default parameter value under this specification\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Unit of the parameter value. If the parameter has no unit, this field will return null.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "s",
+          "member": "string",
+          "name": "Unit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The maximum value of the `integer` or `real` parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20000",
+          "member": "float",
+          "name": "Max",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The minimum value of the `integer` or `real` parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "float",
+          "name": "Min",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Value range of the enum parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[on;off]",
+          "member": "string",
+          "name": "EnumValue",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ParamVersionRelation": {
+      "document": "Parameter information of each version",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "wal_level",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The kernel version that corresponds to the parameter information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "v14.1_r1.2",
+          "member": "string",
+          "name": "DBKernelVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Default parameter value under the kernel version and specification of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Unit of the parameter value. If the parameter has no unit, this field will return null.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "s",
+          "member": "string",
+          "name": "Unit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The maximum value of the `integer` or `real` parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20000",
+          "member": "float",
+          "name": "Max",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The minimum value of the `integer` or `real` parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "float",
+          "name": "Min",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Value range of the enum parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[on;off]",
+          "member": "string",
+          "name": "EnumValue",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],

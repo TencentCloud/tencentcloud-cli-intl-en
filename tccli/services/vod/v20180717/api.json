@@ -66,6 +66,12 @@
       "name": "Creates intelligent video content recognition templates",
       "output": "CreateContentReviewTemplateResponse"
     },
+    "CreateImageProcessingTemplate": {
+      "document": "This API is used to create a custom image processing template. You can create up to 16 templates, and each template can contain up to three operations, for example, cropping, scaling, and cropping again.",
+      "input": "CreateImageProcessingTemplateRequest",
+      "name": "Creates an image processing template",
+      "output": "CreateImageProcessingTemplateResponse"
+    },
     "CreateImageSpriteTemplate": {
       "document": "This API is used to create a custom image sprite generating template. Up to 16 templates can be created.",
       "input": "CreateImageSpriteTemplateRequest",
@@ -173,6 +179,12 @@
       "input": "DeleteContentReviewTemplateRequest",
       "name": "Deletes intelligent video content recognition templates",
       "output": "DeleteContentReviewTemplateResponse"
+    },
+    "DeleteImageProcessingTemplate": {
+      "document": "This API is used to delete an image processing template.",
+      "input": "DeleteImageProcessingTemplateRequest",
+      "name": "Deletes an image processing template",
+      "output": "DeleteImageProcessingTemplateResponse"
     },
     "DeleteImageSpriteTemplate": {
       "document": "This API is used to delete an image sprite generating template.",
@@ -311,6 +323,12 @@
       "input": "DescribeDrmKeyProviderInfoRequest",
       "name": "Queries DRM key information",
       "output": "DescribeDrmKeyProviderInfoResponse"
+    },
+    "DescribeImageProcessingTemplates": {
+      "document": "This API is used to query image processing templates. You can specify the filters as well as the offset to start returning records from.",
+      "input": "DescribeImageProcessingTemplatesRequest",
+      "name": "Queries image processing templates",
+      "output": "DescribeImageProcessingTemplatesResponse"
     },
     "DescribeImageReviewUsageData": {
       "document": "This API is used to query your daily usage of the image recognition feature in a specified time period.\n   1. You can query statistics from the last 365 days.\n   2. The maximum query period is 90 days.\n   3. If the period specified is longer than one day, the statistics returned will be on a daily basis; otherwise, they will be on a 5-minute basis.\n",
@@ -607,7 +625,7 @@
       "output": "ParseStreamingManifestResponse"
     },
     "ProcessMedia": {
-      "document": "This API is used to initiate a media processing task on a VOD file. The task may include:\n1. Video transcoding (with watermark)\n2. Animated image generating\n3. Time point screenshot\n4. Sampled screenshot\n5. Image sprite generating\n6. Taking a screenshot to use as the thumbnail\n7. Adaptive bitrate streaming and encryption\n8. Intelligent recognition of pornographic, terrorism, and politically sensitive content\n9. Intelligent content analysis for labeling, categorization, thumbnail generation, or frame-specific labeling\n10. Recognition of opening and closing credits, faces, full text, text keywords, full speech, speech keywords, and objects\n\nIf event notifications are used, the event type is [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).\n\nA digital watermark has the following restrictions:\n<li>Digital watermarks can only be image watermarks.</li>\n<li>Digital watermarks must be looped.</li>\n<li>If you use digital watermarks, the output video must be in HLS format.</li>\n<li>Digital watermarks can only be displayed in the upper half of a video.</li>",
+      "document": "This API is used to initiate a media processing task on a VOD file. The task may include:\n1. Video transcoding (with watermark)\n2. Animated image generating\n3. Time point screenshot\n4. Sampled screenshot\n5. Image sprite generating\n6. Taking a screenshot to use as the thumbnail\n7. Adaptive bitrate streaming and encryption\n8. Detecting pornographic, terrorist, and politically sensitive content\n9. Content analysis for labeling, categorization, thumbnail generation, or frame-specific labeling\n10. Recognition of opening and closing segments, faces, full text, text keywords, full speech, speech keywords, and objects\n\nIf event notifications are used, the event type is [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).",
       "input": "ProcessMediaRequest",
       "name": "Processes a video",
       "output": "ProcessMediaResponse"
@@ -1382,6 +1400,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1391,6 +1410,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1400,6 +1420,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1409,6 +1430,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -1418,6 +1440,7 @@
         {
           "default": "",
           "document": "Input of intelligent categorization task.",
+          "example": "无",
           "member": "AiAnalysisTaskClassificationInput",
           "name": "Input",
           "required": true,
@@ -1427,11 +1450,22 @@
         {
           "default": "",
           "document": "Output of intelligent categorization task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiAnalysisTaskClassificationOutput",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of an intelligent categorization task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1493,6 +1527,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1502,6 +1537,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1511,6 +1547,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1520,6 +1557,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -1529,6 +1567,7 @@
         {
           "default": "",
           "document": "Input of intelligent cover generating task.",
+          "example": "无",
           "member": "AiAnalysisTaskCoverInput",
           "name": "Input",
           "required": true,
@@ -1538,11 +1577,22 @@
         {
           "default": "",
           "document": "Output of intelligent cover generating task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiAnalysisTaskCoverOutput",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of an intelligent thumbnail generation task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1604,6 +1654,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1613,6 +1664,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1622,6 +1674,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1631,6 +1684,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -1640,6 +1694,7 @@
         {
           "default": "",
           "document": "Input of intelligent frame-specific tagging task.",
+          "example": "无",
           "member": "AiAnalysisTaskFrameTagInput",
           "name": "Input",
           "required": true,
@@ -1649,11 +1704,22 @@
         {
           "default": "",
           "document": "Output of intelligent frame-specific tagging task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiAnalysisTaskFrameTagOutput",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of an intelligent labeling by frame task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1715,6 +1781,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1724,6 +1791,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1733,6 +1801,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1742,6 +1811,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -1751,6 +1821,7 @@
         {
           "default": "",
           "document": "Input for an intelligent highlight generating task.",
+          "example": "无",
           "member": "AiAnalysisTaskHighlightInput",
           "name": "Input",
           "required": true,
@@ -1760,11 +1831,22 @@
         {
           "default": "",
           "document": "Output of an intelligent highlight generating task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiAnalysisTaskHighlightOutput",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of an intelligent highlight generation task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1841,6 +1923,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1850,6 +1933,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -1859,6 +1943,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -1868,6 +1953,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -1877,6 +1963,7 @@
         {
           "default": "",
           "document": "Input of intelligent tagging task.",
+          "example": "无",
           "member": "AiAnalysisTaskTagInput",
           "name": "Input",
           "required": true,
@@ -1886,11 +1973,22 @@
         {
           "default": "",
           "document": "Output of intelligent tagging task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiAnalysisTaskTagOutput",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of an intelligent labeling task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2319,6 +2417,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -2328,6 +2427,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2337,6 +2437,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2346,6 +2447,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -2355,6 +2457,7 @@
         {
           "default": "",
           "document": "Input information of speech keyword recognition task.",
+          "example": "无",
           "member": "AiRecognitionTaskAsrWordsResultInput",
           "name": "Input",
           "required": true,
@@ -2364,11 +2467,22 @@
         {
           "default": "",
           "document": "Output information of speech keyword recognition task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiRecognitionTaskAsrWordsResultOutput",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of a speech keyword recognition task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2487,6 +2601,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -2496,6 +2611,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2505,6 +2621,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2514,6 +2631,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -2523,6 +2641,7 @@
         {
           "default": "",
           "document": "Input information of face recognition task.",
+          "example": "无",
           "member": "AiRecognitionTaskFaceResultInput",
           "name": "Input",
           "required": true,
@@ -2532,11 +2651,22 @@
         {
           "default": "",
           "document": "Output information of face recognition task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiRecognitionTaskFaceResultOutput",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of a face recognition task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2682,6 +2812,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -2691,6 +2822,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2700,6 +2832,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2709,6 +2842,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -2718,6 +2852,7 @@
         {
           "default": "",
           "document": "Input information of video opening and ending credits recognition task.",
+          "example": "无",
           "member": "AiRecognitionTaskHeadTailResultInput",
           "name": "Input",
           "required": true,
@@ -2727,11 +2862,22 @@
         {
           "default": "",
           "document": "Output information of video opening and ending credits recognition task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiRecognitionTaskHeadTailResultOutput",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of an opening/closing segment recognition task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2814,6 +2960,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -2823,6 +2970,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -2832,6 +2980,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -2841,6 +2990,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -2850,6 +3000,7 @@
         {
           "default": "",
           "document": "Input information of object recognition task.",
+          "example": "无",
           "member": "AiRecognitionTaskObjectResultInput",
           "name": "Input",
           "required": true,
@@ -2859,11 +3010,22 @@
         {
           "default": "",
           "document": "Output information of object recognition task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiRecognitionTaskObjectResultOutput",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of an object recognition task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2991,6 +3153,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -3000,6 +3163,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -3009,6 +3173,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3018,6 +3183,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -3027,6 +3193,7 @@
         {
           "default": "",
           "document": "Input information of full text recognition task.",
+          "example": "无",
           "member": "AiRecognitionTaskOcrFullTextResultInput",
           "name": "Input",
           "required": true,
@@ -3036,11 +3203,22 @@
         {
           "default": "",
           "document": "Output information of full text recognition task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiRecognitionTaskOcrFullTextResultOutput",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of a full text recognition task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3168,6 +3346,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -3177,6 +3356,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -3186,6 +3366,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3195,6 +3376,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -3204,6 +3386,7 @@
         {
           "default": "",
           "document": "Input information of text keyword recognition task.",
+          "example": "无",
           "member": "AiRecognitionTaskOcrWordsResultInput",
           "name": "Input",
           "required": true,
@@ -3213,11 +3396,22 @@
         {
           "default": "",
           "document": "Output information of text keyword recognition task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiRecognitionTaskOcrWordsResultOutput",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of a text keyword recognition task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3345,6 +3539,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -3354,6 +3549,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -3363,6 +3559,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -3372,6 +3569,7 @@
         {
           "default": "",
           "document": "Error message.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -3381,6 +3579,7 @@
         {
           "default": "",
           "document": "Input information of video splitting task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiRecognitionTaskSegmentResultInput",
           "name": "Input",
           "required": true,
@@ -3390,11 +3589,22 @@
         {
           "default": "",
           "document": "Output information of video splitting task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AiRecognitionTaskSegmentResultOutput",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of a video splitting task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4177,6 +4387,16 @@
           "required": true,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The progress of an ASR-based moderation task (politically sensitive content). Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4309,6 +4529,16 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of a moderation task (politically sensitive content). Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4375,6 +4605,16 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of an ASR-based moderation task (pornographic content). Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4441,6 +4681,16 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of an OCR-based moderation task (pornographic content). Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4507,6 +4757,16 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of a moderation task (pornographic content). Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4573,6 +4833,16 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of an ASR-based moderation task (banned content). Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4639,6 +4909,16 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of an OCR-based moderation task (banned content). Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4705,6 +4985,16 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of an OCR-based moderation task (terrorist content). Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4771,6 +5061,16 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of a moderation task (terrorist content). Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -7460,6 +7760,69 @@
       ],
       "type": "object"
     },
+    "CreateImageProcessingTemplateRequest": {
+      "document": "CreateImageProcessingTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "An array of image processing operations. The operations will be performed in the specified order.\n<li>Length limit: 3.</li>",
+          "example": "无",
+          "member": "ImageOperation",
+          "name": "Operations",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "123",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The name of the image processing template. Length limit: 64 characters.",
+          "example": "MyCenterCut",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The template description. Length limit: 256 characters.",
+          "example": "MyCenterCut",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateImageProcessingTemplateResponse": {
+      "document": "CreateImageProcessingTemplate response structure.",
+      "members": [
+        {
+          "document": "The template ID.",
+          "example": "1008",
+          "member": "uint64",
+          "name": "Definition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateImageSpriteTask2017": {
       "document": "The details of an image sprite task. This parameter is only valid for tasks initiated by the v2017 image sprite API.",
       "members": [
@@ -8796,6 +9159,42 @@
       ],
       "type": "object"
     },
+    "DeleteImageProcessingTemplateRequest": {
+      "document": "DeleteImageProcessingTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The template ID.",
+          "example": "1008",
+          "member": "uint64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "0",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteImageProcessingTemplateResponse": {
+      "document": "DeleteImageProcessingTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteImageSpriteTemplateRequest": {
       "document": "DeleteImageSpriteTemplate request structure.",
       "members": [
@@ -10042,6 +10441,209 @@
       ],
       "type": "object"
     },
+    "DescribeFileAttributesTask": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "123",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "PROCESSING",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Message",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "123",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "DescribeFileAttributesTaskOutput",
+          "name": "Output",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "123",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "345",
+          "member": "string",
+          "name": "SessionContext",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeFileAttributesTaskOutput": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "123",
+          "member": "string",
+          "name": "Md5",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeImageProcessingTemplatesRequest": {
+      "document": "DescribeImageProcessingTemplates request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "123",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The IDs of the templates to query. Length limit: 100.",
+          "example": "[1000]",
+          "member": "uint64",
+          "name": "Definitions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The template type. Valid values:\n<li>Preset</li>\n<li>Custom</li>",
+          "example": "Custom",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The offset. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of records to return. Default value: 10. Maximum value: 100.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImageProcessingTemplatesResponse": {
+      "document": "DescribeImageProcessingTemplates response structure.",
+      "members": [
+        {
+          "document": "The total number of records that meet the conditions.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The information of the queried image processing templates.",
+          "example": "无",
+          "member": "ImageProcessingTemplate",
+          "name": "ImageProcessingTemplateSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeImageReviewUsageDataRequest": {
       "document": "DescribeImageReviewUsageData request structure.",
       "members": [
@@ -11184,7 +11786,7 @@
       "document": "DescribeTaskDetail response structure.",
       "members": [
         {
-          "document": "The task type. Valid values:\n<li>Procedure: Video processing</li>\n<li>EditMedia: Video editing</li>\n<li>SplitMedia: Video splitting</li>\n<li>ComposeMedia: Media file production</li>\n<li>WechatPublish: WeChat publishing</li>\n<li>WechatMiniProgramPublish: Publishing videos on WeChat Mini Program</li>\n<li>PullUpload: Pulling media files for upload</li>\n<li>FastClipMedia: Quick clipping</li>\n<li>RemoveWatermarkTask: Watermark removal</li>\n<li> ReviewAudioVideo: Moderation</li>\n<li> ReduceMediaBitrate: Bitrate reduction</li>",
+          "document": "The task type. Valid values:\n<li>Procedure: Video processing</li>\n<li>EditMedia: Video editing</li>\n<li>SplitMedia: Video splitting</li>\n<li>ComposeMedia: Media file production</li>\n<li>WechatPublish: WeChat publishing</li>\n<li>WechatMiniProgramPublish: Publishing videos on WeChat Mini Program</li>\n<li>PullUpload: Pulling media files for upload</li>\n<li>FastClipMedia: Quick clipping</li>\n<li>RemoveWatermarkTask: Watermark removal</li>\n<li> ReviewAudioVideo: Moderation</li>",
           "example": "Procedure",
           "member": "string",
           "name": "TaskType",
@@ -11364,10 +11966,19 @@
           "value_allowed_null": true
         },
         {
-          "document": "The information of a bitrate reduction task. This parameter is valid only if `TaskType` is `ReduceMediaBitrate`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "This parameter is invalid now.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ReduceMediaBitrateTask",
           "name": "ReduceMediaBitrateTask",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "无",
+          "member": "DescribeFileAttributesTask",
+          "name": "DescribeFileAttributesTask",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -12484,10 +13095,20 @@
         },
         {
           "default": "",
-          "document": "The callback for the completion of bitrate reduction. This parameter is valid only if `EventType` is `ReduceMediaBitrateComplete`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "This parameter is invalid now.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "ReduceMediaBitrateTask",
           "name": "ReduceMediaBitrateCompleteEvent",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "null",
+          "member": "DescribeFileAttributesTask",
+          "name": "DescribeFileAttributesCompleteEvent",
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -13208,6 +13829,141 @@
       ],
       "usage": "in"
     },
+    "ImageCenterCut": {
+      "document": "Image cropping details.",
+      "members": [
+        {
+          "default": "",
+          "document": "The cropping type. Valid values:\n<li>Circle: Cropping to circle. `Radius` specifies the radius of the output image.</li>\n<li>Rectangle: Cropping to rectangle. `Width` and `Height` specify the width and height of the output image.</li>",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The width (pixels) of the output image. This parameter is valid if `Type` is `Rectangle`.",
+          "member": "int64",
+          "name": "Width",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The height (pixels) of the output image. This parameter is valid if `Type` is `Rectangle`.",
+          "member": "int64",
+          "name": "Height",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The radius of the output image. This parameter is valid if `Type` is `Circle`.",
+          "member": "int64",
+          "name": "Radius",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ImageOperation": {
+      "document": "An image operation.",
+      "members": [
+        {
+          "default": "",
+          "document": "The image processing type. Valid values:\n<li>`Scale`: Scaling</li>\n<li>`CenterCut`: Cropping</li>",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The scaling details. This parameter is valid only if `Type` is `Scale`.",
+          "member": "ImageScale",
+          "name": "Scale",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The cropping details. This parameter is valid only if `Type` is `CenterCut`.",
+          "member": "ImageCenterCut",
+          "name": "CenterCut",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ImageProcessingTemplate": {
+      "document": "An image processing template, which can contain at most three operations, for example, cropping, scaling, and cropping again.",
+      "members": [
+        {
+          "default": "",
+          "document": "The template ID.",
+          "member": "uint64",
+          "name": "Definition",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The template type. Valid values:\n<li>Preset</li>\n<li>Custom</li>",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The template name.",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The template description.",
+          "member": "string",
+          "name": "Comment",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "An array of image processing operations. The operations will be performed in the specified order.\n<li>Length limit: 3.</li>",
+          "member": "ImageOperation",
+          "name": "Operations",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The template creation time in [ISO date format](https://www.tencentcloud.com/document/product/266/11732?lang=en&pg=#iso-date-format).",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ImageReviewUsageDataItem": {
       "document": "The usage statistics for the image recognition feature.",
       "members": [
@@ -13233,6 +13989,57 @@
         }
       ],
       "usage": "out"
+    },
+    "ImageScale": {
+      "document": "Image scaling details.",
+      "members": [
+        {
+          "default": "",
+          "document": "The scaling type. Valid values:\n<li>`WidthFirst`: Specify the width and proportionally scale the height.</li>\n<li>`HeightFirst`: Specify the height and proportionally scale the width.</li>\n<li>`LongEdgeFirst`: Specify the long side (`LongEdge`) and proportionally scale the short side.</li>\n<li>`ShortEdgeFirst`: Specify the short side (`ShortEdge`) and proportionally scale the long side.</li>\n<li>Force: Specify both the height and width. The output image may be distorted.</li>",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The image height (pixels). This parameter is valid only if `Type` is `HeightFirst` or `Force`.",
+          "member": "uint64",
+          "name": "Height",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The image width (pixels). This parameter is valid only if `Type` is `WidthFirst` or `Force`.",
+          "member": "uint64",
+          "name": "Width",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The long side of the output image (pixels). This parameter is valid only if `Type` is `LongEdgeFirst`.",
+          "member": "uint64",
+          "name": "LongEdge",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The short side of the output image (pixels). This parameter is valid only if `Type` is `ShortEdgeFirst`.",
+          "member": "uint64",
+          "name": "ShortEdge",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "ImageSpriteTaskInput": {
       "document": "Input parameter type of image sprite generating task",
@@ -15398,6 +16205,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -15407,6 +16215,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -15416,6 +16225,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -15425,6 +16235,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -15434,6 +16245,7 @@
         {
           "default": "",
           "document": "Input of animated image generating task.",
+          "example": "无",
           "member": "AnimatedGraphicTaskInput",
           "name": "Input",
           "required": true,
@@ -15443,11 +16255,22 @@
         {
           "default": "",
           "document": "Output of animated image generating task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaAnimatedGraphicsItem",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of an animated image generation task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -15458,6 +16281,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -15467,6 +16291,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -15476,6 +16301,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -15485,6 +16311,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -15494,6 +16321,7 @@
         {
           "default": "",
           "document": "Input of cover generating task.",
+          "example": "无",
           "member": "CoverBySnapshotTaskInput",
           "name": "Input",
           "required": true,
@@ -15503,10 +16331,21 @@
         {
           "default": "",
           "document": "Output of cover generating task.",
+          "example": "无",
           "member": "CoverBySnapshotTaskOutput",
           "name": "Output",
           "required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The progress of a video screenshot (thumbnail) task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -15518,6 +16357,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -15527,6 +16367,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -15536,6 +16377,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -15545,6 +16387,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -15554,6 +16397,7 @@
         {
           "default": "",
           "document": "Input of image sprite generating task.",
+          "example": "无",
           "member": "ImageSpriteTaskInput",
           "name": "Input",
           "required": true,
@@ -15563,11 +16407,22 @@
         {
           "default": "",
           "document": "Output of image sprite generating task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaImageSpriteItem",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of an image sprite generation task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -15725,6 +16580,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -15734,6 +16590,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -15743,6 +16600,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -15752,6 +16610,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -15761,6 +16620,7 @@
         {
           "default": "",
           "document": "Input of sampled screencapturing task.",
+          "example": "无",
           "member": "SampleSnapshotTaskInput",
           "name": "Input",
           "required": true,
@@ -15770,11 +16630,22 @@
         {
           "default": "",
           "document": "Output of sampled screencapturing task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaSampleSnapshotItem",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of a sampled screenshot task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -15785,6 +16656,7 @@
         {
           "default": "",
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -15794,6 +16666,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -15803,6 +16676,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You’re not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -15812,6 +16686,7 @@
         {
           "default": "",
           "document": "Error message.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -15821,6 +16696,7 @@
         {
           "default": "",
           "document": "Input of time point screencapturing task.",
+          "example": "无",
           "member": "SnapshotByTimeOffsetTaskInput",
           "name": "Input",
           "required": true,
@@ -15830,11 +16706,22 @@
         {
           "default": "",
           "document": "Output of time point screencapturing task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaSnapshotByTimeOffsetItem",
           "name": "Output",
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The progress of a time point screenshot task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -19759,6 +20646,26 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The operator. Valid values:\n<li>`SYSTEM`: The task is triggered by the system.</li>",
+          "example": "无",
+          "member": "string",
+          "name": "Operator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The operation type. Valid values:\n<li>`TSC`: TSC-based smart bitrate reduction</li>",
+          "example": "无",
+          "member": "string",
+          "name": "OperationType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -20672,6 +21579,16 @@
           "name": "SessionId",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The progress of a pull and upload task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -22939,6 +23856,7 @@
         {
           "default": "",
           "document": "Task ID.",
+          "example": "12xx-SplitMedia-xx",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -22948,6 +23866,7 @@
         {
           "default": "",
           "document": "Task flow status. Valid values:\n<li>PROCESSING: processing</li>\n<li>FINISH: finished</li>",
+          "example": "PROCESSING",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -22957,6 +23876,7 @@
         {
           "default": "",
           "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
           "required": true,
@@ -22966,6 +23886,7 @@
         {
           "default": "",
           "document": "Error code. 0 indicates the task is successful; other values indicate failure. You're not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": true,
@@ -22975,6 +23896,7 @@
         {
           "default": "",
           "document": "Error information.",
+          "example": "\"\"",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -22984,6 +23906,7 @@
         {
           "default": "",
           "document": "List of video splitting task details.",
+          "example": "无",
           "member": "SplitMediaTaskSegmentInfo",
           "name": "FileInfoSet",
           "required": true,
@@ -22993,6 +23916,7 @@
         {
           "default": "",
           "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1000 characters.",
+          "example": "sessioncontext",
           "member": "string",
           "name": "SessionContext",
           "required": true,
@@ -23002,10 +23926,21 @@
         {
           "default": "",
           "document": "ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or set to an empty string, no deduplication will be performed.",
+          "example": "sessionid",
           "member": "string",
           "name": "SessionId",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The progress of a video splitting task. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

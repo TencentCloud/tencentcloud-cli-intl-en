@@ -142,6 +142,20 @@
         "title": "Creating an intelligent content recognition template to recognize pornographic content in images, with labels specified"
       }
     ],
+    "CreateImageProcessingTemplate": [
+      {
+        "document": "",
+        "input": "https://vod.tencentcloudapi.com/?Action=CreateImageProcessingTemplate\n&Operations.0.Type=Scale\n&Operations.0.Scale.Type=ShortEdgeFirst\n&Operations.0.Scale.ShortEdge=120\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 1008,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Creating a template that scales images to a specified short side"
+      },
+      {
+        "document": "",
+        "input": "https://vod.tencentcloudapi.com/?Action=CreateImageProcessingTemplate\n&Operations.0.Type=Scale\n&Operations.0.Scale.Type=ShortEdgeFirst\n&Operations.0.Scale.ShortEdge=240\n&Operations.1.Type=CenterCut\n&Operations.1.CenterCut.Type=Rectangle\n&Operations.1.CenterCut.Width=240\n&Operations.1.CenterCut.Height=240\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 1009,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Creating a template that converts images into 240 x 240 thumbnails"
+      }
+    ],
     "CreateImageSpriteTemplate": [
       {
         "document": "",
@@ -320,6 +334,14 @@
         "input": "https://vod.tencentcloudapi.com/?Action=DeleteContentReviewTemplate\n&Definition=30\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"35ae8d8e-dce3-42851-9d4b-559414529d931\"\n    }\n}",
         "title": "Deleting the intelligent content recognition template whose ID is 30"
+      }
+    ],
+    "DeleteImageProcessingTemplate": [
+      {
+        "document": "",
+        "input": "https://vod.tencentcloudapi.com/?Action=DeleteImageProcessingTemplate\n&Definition=1008\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Deleting an image processing template"
       }
     ],
     "DeleteImageSpriteTemplate": [
@@ -546,6 +568,14 @@
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDrmKeyProviderInfo\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-4594145287e1\",\n        \"SDMCInfo\": {\n            \"Uid\": \"123\",\n            \"SecretId\": \"testId\",\n            \"SecretKey\": \"testKey\",\n            \"FairPlayCertificateUrl\": \"https://xx/fairplay.cer\"\n        }\n    }\n}",
         "title": "Querying DRM key information"
+      }
+    ],
+    "DescribeImageProcessingTemplates": [
+      {
+        "document": "",
+        "input": "https://vod.tencentcloudapi.com/?Action=DescribeImageProcessingTemplates\n&Definitions.0=1008\n&Definitions.1=1009\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"ImageProcessingTemplateSet\": [\n            {\n                \"Definition\": 1008,\n                \"Comment\": \"\",\n                \"Name\": \"\",\n                \"Type\": \"Custom\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"Operations\": [\n                    {\n                        \"Type\": \"CenterCut\",\n                        \"CenterCut\": {\n                            \"Type\": \"Circle\",\n                            \"Radius\": 30\n                        }\n                    },\n                    {\n                        \"Type\": \"Scale\",\n                        \"Scale\": {\n                            \"Type\": \"ShortEdgeFirst\",\n                            \"ShortEdge\": 100\n                        }\n                    }\n                ]\n            },\n            {\n                \"Definition\": 1009,\n                \"Comment\": \"\",\n                \"Name\": \"\",\n                \"Type\": \"Custom\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"Operations\": [\n                    {\n                        \"Type\": \"Scale\",\n                        \"Scale\": {\n                            \"Type\": \"WidthFirst\",\n                            \"Width\": 200\n                        }\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Getting the information of multiple templates"
       }
     ],
     "DescribeImageReviewUsageData": [
@@ -1126,20 +1156,20 @@
     ],
     "ProcessMediaByUrl": [
       {
-        "document": "This example shows you how to initiate a content analysis task for a video whose URL is ```http://www.abc.com/abc.mp4```.",
-        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMediaByUrl\r\n&InputInfo.Url=http://www.abc.com/abc.mp4\r\n&InputInfo.Name=Major Country Diplomacy\r\n&InputInfo.Id=872988202\r\n&OutputInfo.Region=ap-guangzhou\r\n&OutputInfo.Bucket=myoutputbucket-1256244234\r\n&OutputInfo.Dir=/output/test/\r\n&AiAnalysisTask.Definition=10\r\n&<Common request parameters>",
+        "document": "This example shows you how to initiate an inappropriate information recognition task for a video whose URL is ```http://www.abc.com/abc.mp4```.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ProcessMediaByUrl\n<Common request parameters>\n\n{\n    \"InputInfo\": {\n        \"Url\": \"http://www.abc.com/abc.mp4\",\n        \"Name\": \"National Diplomacy\",\n        \"Id\": \"872988202\"\n    },\n    \"OutputInfo\": {\n        \"Region\": \"ap-guangzhou\",\n        \"Bucket\": \"myoutputbucket-1256244234\",\n        \"Dir\": \"/output/test/\"\n    },\n    \"AiContentReviewTask\": {\n        \"Definition\": \"10\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ca61e3a-6b8e-4b4e-9256-fdc701190064ef0\",\n        \"TaskId\": \"125xxxxxx07-procedurev2-893dc41e6fdc22dcf24aa6e9c61cp94\"\n    }\n}",
+        "title": "Initiating an inappropriate information recognition task"
+      },
+      {
+        "document": "This example shows you how to initiate a content analysis task for the video whose URL is ```http://www.abc.com/abc.mp4```.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ProcessMediaByUrl\n<Common request parameters>\n\n{\n    \"InputInfo\": {\n        \"Url\": \"http://www.abc.com/abc.mp4\",\n        \"Name\": \"National Diplomacy\",\n        \"Id\": \"872988202\"\n    },\n    \"OutputInfo\": {\n        \"Region\": \"ap-guangzhou\",\n        \"Bucket\": \"myoutputbucket-1256244234\",\n        \"Dir\": \"/output/test/\"\n    },\n    \"AiAnalysisTask\": {\n        \"Definition\": \"10\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ca61e3a-6b8e-4b4e-9256-fdc701190064ef0\",\n        \"TaskId\": \"125xxxxxx07-procedurev2-813dc41e6fdc22dcf24aa6e9c61cp92\"\n    }\n}",
         "title": "Initiating a content analysis task"
       },
       {
-        "document": "This example shows you how to initiate a content audit task for a video whose URL is ```http://www.abc.com/abc.mp4```.",
-        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMediaByUrl\r\n&InputInfo.Url=http://www.abc.com/abc.mp4\r\n&InputInfo.Name=Major Country Diplomacy\r\n&InputInfo.Id=872988202\r\n&OutputInfo.Region=ap-guangzhou\r\n&OutputInfo.Bucket=myoutputbucket-1256244234\r\n&OutputInfo.Dir=/output/test/\r\n&AiContentReviewTask.Definition=10\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ca61e3a-6b8e-4b4e-9256-fdc701190064ef0\",\n        \"TaskId\": \"125xxxxxx07-procedurev2-893dc41e6fdc22dcf24aa6e9c61cp94\"\n    }\n}",
-        "title": "Initiating a content audit task"
-      },
-      {
-        "document": "This example shows you how to initiate a content recognition task for a video whose URL is ```http://www.abc.com/abc.mp4```.",
-        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMediaByUrl\r\n&InputInfo.Url=http://www.abc.com/abc.mp4\r\n&InputInfo.Name=Major Country Diplomacy\r\n&InputInfo.Id=872988202\r\n&OutputInfo.Region=ap-guangzhou\r\n&OutputInfo.Bucket=myoutputbucket-1256244234\r\n&OutputInfo.Dir=/output/test/\r\n&AiRecognitionTask.Definition=10\r\n&<Common request parameters>",
+        "document": "This example shows you how to initiate a content recognition task for the video whose URL is ```http://www.abc.com/abc.mp4```.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ProcessMediaByUrl\n<Common request parameters>\n\n{\n    \"InputInfo\": {\n        \"Url\": \"http://www.abc.com/abc.mp4\",\n        \"Name\": \"National Diplomacy\",\n        \"Id\": \"872988202\"\n    },\n    \"OutputInfo\": {\n        \"Region\": \"ap-guangzhou\",\n        \"Bucket\": \"myoutputbucket-1256244234\",\n        \"Dir\": \"/output/test/\"\n    },\n    \"AiRecognitionTask\": {\n        \"Definition\": \"10\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ca61e3a-6b8e-4b4e-9256-fdc701190064fk3\",\n        \"TaskId\": \"125xxxxxx07-procedurev2-813dc41e6fdc22dcf24aa6e9c61f3t0\"\n    }\n}",
         "title": "Initiating a content recognition task"
       }
