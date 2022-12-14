@@ -78,6 +78,12 @@
       "name": "Deletes snapshot",
       "output": "DeleteSnapshotsResponse"
     },
+    "DescribeAllScenes": {
+      "document": "This API is used to query the list of scenes in all regions.",
+      "input": "DescribeAllScenesRequest",
+      "name": "Queries the list of scenes in all regions",
+      "output": "DescribeAllScenesResponse"
+    },
     "DescribeBlueprintInstances": {
       "document": "This API is used to query the information of an image instance.",
       "input": "DescribeBlueprintInstancesRequest",
@@ -221,6 +227,12 @@
       "input": "DescribeResetInstanceBlueprintsRequest",
       "name": "Queries the image information of reset instance",
       "output": "DescribeResetInstanceBlueprintsResponse"
+    },
+    "DescribeScenes": {
+      "document": "This API is used to query the list of scenes.",
+      "input": "DescribeScenesRequest",
+      "name": "Queries the list of scenes",
+      "output": "DescribeScenesResponse"
     },
     "DescribeSnapshots": {
       "document": "This API is used to query the list of snapshots.",
@@ -1444,6 +1456,16 @@
           "required": true,
           "type": "float",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "ID of the instance to which the data disk is mounted.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "lhins-abcdef",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1607,6 +1629,69 @@
       ],
       "usage": "out"
     },
+    "DescribeAllScenesRequest": {
+      "document": "DescribeAllScenes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of scene IDs",
+          "example": "[\"lhsc-123456\"]",
+          "member": "string",
+          "name": "SceneIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllScenesResponse": {
+      "document": "DescribeAllScenes response structure.",
+      "members": [
+        {
+          "document": "List of scenes",
+          "example": "无",
+          "member": "SceneInfo",
+          "name": "SceneInfoSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total count of scenes",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBlueprintInstancesRequest": {
       "document": "DescribeBlueprintInstances request structure.",
       "members": [
@@ -1656,7 +1741,6 @@
       "document": "DescribeBlueprints request structure.",
       "members": [
         {
-          "default": "",
           "document": "Image ID list.",
           "example": "[\"lhbp-aaaabbbb\"]",
           "member": "string",
@@ -1665,7 +1749,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
           "example": "0",
           "member": "int64",
@@ -1674,7 +1757,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
           "example": "1",
           "member": "int64",
@@ -1683,8 +1765,7 @@
           "type": "int"
         },
         {
-          "default": "",
-          "document": "Filter list\n<li>blueprint-id</li>Filter by **image ID**.\nType: String\nRequired: no\n<li>blueprint-type</li>Filter by **image type**.\nValid values: `APP_OS` (application image); `PURE_OS` (system image); `PRIVATE` (custom image) and `SHARED` (shared image)\nType: String\nRequired: no\n<li>platform-type</li>Filter by **image operating system**.\nValid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)\nType: String\nRequired: no\n<li>blueprint-name</li>Filter by **image name**.\nType: String\nRequired: no\n<li>blueprint-state</li>Filter by **image status**.\nType: String\nRequired: no\n<li>scene-id</li>Filter by **scene ID**.\nType: String\nRequired: no\n\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.",
+          "document": "Filter list\n<li>blueprint-id</li>Filter by the **image ID**.\nType: String\nRequired: no\n<li>blueprint-type</li>Filter by the **image type**.\nValid values: `APP_OS` (application image); `PURE_OS` (system image); `PRIVATE` (custom image) and `SHARED` (shared image)\nType: String\nRequired: no\n<li>platform-type</li>Filter by the **image operating system**.\nValid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)\nType: String\nRequired: no\n<li>blueprint-name</li>Filter by the **image name**.\nType: String\nRequired: no\n<li>blueprint-state</li>Filter by the **image status**.\nType: String\nRequired: no\n<li>scene-id</li>Filter by the **scene ID**.\nType: String\nRequired: no\n\nEach request can contain up to 10 `Filters`, each of which can contain up to 00 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.",
           "example": " [         {             \"Name\": \"blueprint-type\",             \"",
           "member": "Filter",
           "name": "Filters",
@@ -1801,7 +1882,7 @@
         },
         {
           "default": "",
-          "document": "Filter list.\n<li>bundle-id</li>Filter by **package ID**.\nType: String\nRequired: no\n<li>support-platform-type</li>Filter by **system type**.\nValid values: LINUX_UNIX (Linux/Unix), WINDOWS ( Windows)\nType: String\nRequired: no\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `BundleIds` and `Filters` at the same time.",
+          "document": "Filter list\n<li>bundle-id</li>Filter by the **bundle ID**.\nType: String\nRequired: No\n<li>support-platform-type</li>Filter by the **OS type**.\nValid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)\nType: String\nRequired: No\n<li>bundle-type</li>Filter by the **bundle type**.\nValid values: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle)\nType: String\nRequired: No\n<li>bundle-state</li>Filter by the **bundle status**.\nValid values: `ONLINE`, `OFFLINE`\nType: String\nRequired: No\nEach request can contain up to 10 `Filters`, and up to 5 `Filter.Values` for each filter. You cannot specify both `BundleIds` and `Filters` at the same time.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -2683,7 +2764,7 @@
         },
         {
           "default": "",
-          "document": "Filter list\n<li>key-id</li>Filter by **key pair ID**.\nType: String\nRequired: no\n<li>key-name</li>Filter by **key pair name**.\nType: String\nRequired: no\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. `KeyIds` and `Filters` cannot be specified at the same time.",
+          "document": "Filter list.\n<li>key-id</li>Filter by **key pair ID**.\nType: String\nRequired: no\n<li>key-name</li>Filter by the **key pair name**. Fuzzy match is supported.\nType: String\nRequired: no\nEach request can contain up to 10 `Filters` and up to 5 `Filter.Values` for each filter. `KeyIds` and `Filters` cannot be specified at the same time.",
           "example": "[{\"Name\":\"key-name\",\"Values\":[\"k1\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -2737,7 +2818,7 @@
         },
         {
           "default": "",
-          "document": "Filter list.\n<li>bundle-id</li>Filter by **package ID**.\nType: String\nRequired: no\n<li>support-platform-type</li>Filter by **system type**.\nValid values: LINUX_UNIX (Linux/Unix), WINDOWS ( Windows)\nType: String\nRequired: no\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`.",
+          "document": "Filter list\n<li>bundle-id</li>Filter by the **bundle ID**.\nType: String\nRequired: No\n<li>support-platform-type</li>Filter by the **OS type**.\nValid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)\nType: String\nRequired: No\n<li>bundle-type</li>Filter by the **bundle type**.\nValid values: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle)\nType: String\nRequired: No\n<li>bundle-state</li>Filter by the **bundle status**.\nValid values: `ONLINE`, `OFFLINE`\nType: String\nRequired: No\nEach request can contain up to 10 `Filters`, and each filter can have up to 5 `Filter.Values`.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -2891,6 +2972,69 @@
           "name": "ResetInstanceBlueprintSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeScenesRequest": {
+      "document": "DescribeScenes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "List of scene IDs",
+          "example": "[\"lhsc-123456\"]",
+          "member": "string",
+          "name": "SceneIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeScenesResponse": {
+      "document": "DescribeScenes response structure.",
+      "members": [
+        {
+          "document": "List of scenes",
+          "example": "无",
+          "member": "Scene",
+          "name": "SceneSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of scenes",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4290,8 +4434,7 @@
       "document": "InquirePriceRenewInstances request structure.",
       "members": [
         {
-          "default": "",
-          "document": "Instance to be renewed.",
+          "document": "IDs of the instances to be renewed. Each request can contain up to 50 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "example": "[\"lhins-11110001\\r\\n\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -4299,7 +4442,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.",
           "example": "无",
           "member": "InstanceChargePrepaid",
@@ -4308,8 +4450,7 @@
           "type": "object"
         },
         {
-          "default": "",
-          "document": "Whether to renew the data disk",
+          "document": "Whether to renew the data disk. Default: `false`.",
           "example": "false",
           "member": "bool",
           "name": "RenewDataDisk",
@@ -4317,8 +4458,7 @@
           "type": "bool"
         },
         {
-          "default": "",
-          "document": "Whether the data disk has the same expiration time as the instance",
+          "document": "Whether to align the data disk expiration with the instance expiration time. Default: `false`.",
           "example": "false",
           "member": "bool",
           "name": "AlignInstanceExpiredTime",
@@ -4332,11 +4472,10 @@
       "document": "InquirePriceRenewInstances response structure.",
       "members": [
         {
-          "document": "Price query information.",
+          "document": "Price information. It defaults to the price information of the first instance in the list.",
           "example": "无",
           "member": "Price",
           "name": "Price",
-          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4345,9 +4484,24 @@
           "example": "无",
           "member": "DataDiskPrice",
           "name": "DataDiskPriceSet",
-          "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "Price list of the instances to be renewed.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "InstancePriceDetail",
+          "name": "InstancePriceDetailSet",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total price",
+          "example": "无",
+          "member": "TotalPrice",
+          "name": "TotalPrice",
+          "type": "object",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4720,6 +4874,39 @@
           "required": true,
           "type": "float",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstancePriceDetail": {
+      "document": "Instance price details",
+      "members": [
+        {
+          "document": "Instance ID.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "lhins-xxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Price query information.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "example": "无",
+          "member": "InstancePrice",
+          "name": "InstancePrice",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "",
+          "example": "无",
+          "member": "DiscountDetail",
+          "name": "DiscountDetail",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -5631,6 +5818,78 @@
       ],
       "type": "object"
     },
+    "Scene": {
+      "document": "Scene information",
+      "members": [
+        {
+          "default": "",
+          "document": "Scene ID",
+          "example": "\"lhsc-123456\"",
+          "member": "string",
+          "name": "SceneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Display name of the scene",
+          "example": "\"\"",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Scene description",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SceneInfo": {
+      "document": "Scene information",
+      "members": [
+        {
+          "default": "",
+          "document": "Scene ID",
+          "example": "\"lhsc-123456\"",
+          "member": "string",
+          "name": "SceneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Display name of the scene",
+          "example": "\"\"",
+          "member": "string",
+          "name": "DisplayName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Scene description",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "Snapshot": {
       "document": "Snapshot information.",
       "members": [
@@ -6019,6 +6278,30 @@
         }
       ],
       "type": "object"
+    },
+    "TotalPrice": {
+      "document": "Total price information",
+      "members": [
+        {
+          "document": "Total original price\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "10.0",
+          "member": "float",
+          "name": "OriginalPrice",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total discounted price\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "9.0",
+          "member": "float",
+          "name": "DiscountPrice",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "TrafficPackage": {
       "document": "Traffic package details.",

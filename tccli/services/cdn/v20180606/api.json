@@ -79,7 +79,7 @@
       "output": "DescribeDomainsConfigResponse"
     },
     "DescribeIpStatus": {
-      "document": "This API is used to query the status of the edge nodes and intermediate nodes. Note: Edge nodes are only available for beta users now.\n\n>? If you have migrated your ECDN service to CDN, you can use the <a href=\"https://intl.cloud.tencent.com/document/api/228/41954?from_cn_redirect=1\">corresponding CDN API</a>.",
+      "document": "This API is used to query the IP details of edge nodes (available soon) and intermediate nodes. Note that there is a certain delay in data availability.\n\n>? If you have migrated your ECDN service to CDN, you can use the <a href=\"https://intl.cloud.tencent.com/document/api/228/41954?from_cn_redirect=1\">corresponding CDN API</a>.",
       "input": "DescribeIpStatusRequest",
       "name": "Queries the node status of the domain name",
       "output": "DescribeIpStatusResponse"
@@ -3605,6 +3605,24 @@
           "example": "true/false",
           "member": "bool",
           "name": "Segment",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "true/false",
+          "member": "bool",
+          "name": "ShowIpv6",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to abbreviate the IPv6 address.",
+          "example": "true/false",
+          "member": "bool",
+          "name": "AbbreviationIpv6",
           "required": false,
           "type": "bool"
         }
@@ -7416,11 +7434,12 @@
       "usage": "out"
     },
     "OriginPullOptimization": {
-      "document": "Cross-border origin-pull optimization configuration. This is disabled by default. (This feature is in beta and not generally available yet.)",
+      "document": "(Disused) Cross-border origin-pull optimization",
       "members": [
         {
           "default": "",
           "document": "Cross-border origin-pull optimization configuration switch\n`on`: Enable\n`off`: Disable",
+          "example": "on",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -7430,6 +7449,7 @@
         {
           "default": "",
           "document": "Cross-border types\nOVToCN: origin-pull from outside mainland China to inside mainland China\nCNToOV: origin-pull from inside mainland China to outside mainland China\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "OVToCN",
           "member": "string",
           "name": "OptimizationType",
           "required": false,
@@ -7445,6 +7465,7 @@
         {
           "default": "",
           "document": "The origin-pull connection timeout (in seconds). Valid range: 5-60.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "5",
           "member": "uint64",
           "name": "ConnectTimeout",
           "required": true,
@@ -7453,7 +7474,8 @@
         },
         {
           "default": "",
-          "document": "The origin-pull receipt timeout (in seconds). Valid range: 10-60.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "The origin-pull receipt timeout (in seconds). Valid range: 10-300.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "30",
           "member": "uint64",
           "name": "ReceiveTimeout",
           "required": true,
@@ -10569,7 +10591,7 @@
         },
         {
           "default": "",
-          "document": "Cross-border linkage optimization configuration",
+          "document": "(Disused) Cross-border linkage optimization\\",
           "example": "无",
           "member": "OriginPullOptimization",
           "name": "OriginPullOptimization",

@@ -67,8 +67,8 @@
     "DescribeCdnIp": [
       {
         "document": "",
-        "input": "https://cdn.tencentcloudapi.com/?Action=DescribeCdnIp\n&Ips.0=1.1.1.1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"156bde25-56b5-4dae-9638-b7b08b08e4f6\",\n        \"Ips\": [\n            {\n                \"City\": \"xx\",\n                \"Ip\": \"1.1.1.1\",\n                \"Platform\": \"no\",\n                \"Location\": \"unknown\",\n                \"Area\": \"unknown\",\n                \"History\": []\n            }\n        ]\n    }\n}",
+        "input": "https://cdn.tencentcloudapi.com/?Action=DescribeCdnIp\r\n&Ips.0=1.1.1.1\r\n&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"156bde25-56b5-4dae-9638-b7b08b08e4f6\",\n        \"Ips\": [\n            {\n                \"Ip\": \"1.1.1.1\",\n                \"Platform\": \"no\",\n                \"Location\": \"unknown\",\n                \"Area\": \"unknown\",\n                \"History\": []\n            }\n        ]\n    }\n}",
         "title": "Querying IP information"
       }
     ],
@@ -83,7 +83,7 @@
     "DescribeCertDomains": [
       {
         "document": "",
-        "input": "https://cdn.tencentcloudapi.com/?Action=DescribeCertDomains\n&Cert=XXXXX\n&<Common request parameters>",
+        "input": "https://cdn.tencentcloudapi.com/?Action=DescribeCertDomains\r\n&Cert=XXXXX\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxxx-xxxxx-xxxxx-xxxxx-xxxxx\",\n        \"Domains\": [\n            \"test.tencentyun.com\",\n            \"httpstest.tencentyun.com\"\n        ],\n        \"CertifiedDomains\": [\n            \"httpstest.tencentyun.com\"\n        ]\n    }\n}",
         "title": "Getting configurable domain names in an SSL certificate"
       }
@@ -235,16 +235,16 @@
     "ListClsLogTopics": [
       {
         "document": "",
-        "input": "https://cdn.tencentcloudapi.com/?Action=ListClsLogTopics\n&Channel=cdn\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"Logset\": {\n            \"AppId\": 1242424252,\n            \"Channel\": \"cdn\",\n            \"Region\": \"ap-shanghai\",\n            \"LogsetId\": \"44d5b2d4-092c-4a4a-971e-07d9e536ccc3\",\n            \"LogsetName\": \"cdn_logset\",\n            \"IsDefault\": 1,\n            \"LogsetSavePeriod\": 7,\n            \"CreateTime\": \"2020-09-22 00:00:00\",\n            \"RegionEn\": \"ap-shanghai\",\n            \"Deleted\": \"no\"\n        },\n        \"Topics\": [\n            {\n                \"TopicId\": \"def811bf-867e-405c-bbc2-2a3aea45be21\",\n                \"TopicName\": \"cdn_topic\",\n                \"Enabled\": 1,\n                \"CreateTime\": \"2020-09-22 00:00:00\",\n                \"Deleted\": \"no\"\n            },\n            {\n                \"TopicId\": \"e0f6809f-026f-4287-b33f-8041a82188cf\",\n                \"TopicName\": \"cdn_topic2\",\n                \"Enabled\": 1,\n                \"CreateTime\": \"2020-09-22 00:00:00\",\n                \"Deleted\": \"no\"\n            },\n            {\n                \"TopicId\": \"fcfb346d-100d-454c-adc6-bdf2a2af0515\",\n                \"TopicName\": \"cdn_topic1\",\n                \"Enabled\": 1,\n                \"CreateTime\": \"2020-09-22 00:00:00\",\n                \"Deleted\": \"no\"\n            }\n        ],\n        \"ExtraLogset\": [\n            {\n                \"Logset\": {\n                    \"AppId\": 1306270566,\n                    \"Channel\": \"cdn\",\n                    \"LogsetId\": \"de5965b4-b371-4a5e-86ad-f2d2f9988a4d\",\n                    \"LogsetName\": \"cloud_cdn_logset_oversea\",\n                    \"IsDefault\": 0,\n                    \"LogsetSavePeriod\": 7,\n                    \"CreateTime\": \"2021-10-20 17:22:21\",\n                    \"Region\": \"ap-singapore\",\n                    \"RegionEn\": \"ap-singapore\",\n                    \"Deleted\": \"no\"\n                },\n                \"Topics\": [\n                    {\n                        \"TopicId\": \"a9619e5a-2387-46bd-83c8-89b133f20f4a\",\n                        \"TopicName\": \"jory-test\",\n                        \"Enabled\": 1,\n                        \"CreateTime\": \"2021-10-27 15:17:10\",\n                        \"Deleted\": \"no\",\n                        \"Channel\": \"cdn\"\n                    },\n                    {\n                        \"TopicId\": \"58474924-8b34-4e26-aa03-b23202007ea6\",\n                        \"TopicName\": \"jory-oversea\",\n                        \"Enabled\": 1,\n                        \"CreateTime\": \"2021-10-26 21:06:24\",\n                        \"Deleted\": \"no\",\n                        \"Channel\": \"cdn\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
-        "title": "Querying the list of log topics"
+        "input": "https://cdn.tencentcloudapi.com/?Action=ListClsLogTopics\r\n&Channel=cdn\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2424\",\n        \"Logset\": {\n            \"AppId\": 1242424252,\n            \"Channel\": \"cdn\",\n            \"LogsetId\": \"44d5b2d4-092c-4a4a-971e-07d9e536ccc3\",\n            \"LogsetName\": \"cdn_logset\",\n            \"IsDefault\": 1,\n            \"LogsetSavePeriod\": 7\n        },\n        \"Topics\": [\n            {\n                \"TopicId\": \"def811bf-867e-405c-bbc2-2a3aea45be21\",\n                \"TopicName\": \"cdn_topic\",\n                \"Enabled\": 1\n            },\n            {\n                \"TopicId\": \"e0f6809f-026f-4287-b33f-8041a82188cf\",\n                \"TopicName\": \"cdn_topic2\",\n                \"Enabled\": 1\n            },\n            {\n                \"TopicId\": \"fcfb346d-100d-454c-adc6-bdf2a2af0515\",\n                \"TopicName\": \"cdn_topic1\",\n                \"Enabled\": 1\n            }\n        ]\n    }\n}",
+        "title": "Displaying a list of log topics"
       }
     ],
     "ListClsTopicDomains": [
       {
         "document": "",
-        "input": "https://cdn.tencentcloudapi.com/?Action=ListClsTopicDomains\n&Channel=cdn\n&LogsetId=6d04373b-ba59-4a4f-a96e-9fe53b59a536\n&TopicId=d2256449-c6ff-421b-93ef-aa3a7dde2de2\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TopicId\": \"d2256449-c6ff-421b-93ef-aa3a7dde2de2\",\n        \"UpdateTime\": \"2020-09-22 00:00:00\",\n        \"TopicName\": \"xx\",\n        \"DomainAreaConfigs\": [\n            {\n                \"Domain\": \"a.b.com\",\n                \"Area\": [\n                    \"mainland\"\n                ]\n            }\n        ],\n        \"RequestId\": \"57460798-8723-45e3-9c75-a0599ef9143a\",\n        \"AppId\": 12345678901,\n        \"LogsetId\": \"6d04373b-ba59-4a4f-a96e-9fe53b59a536\",\n        \"Channel\": \"cdn\"\n    }\n}",
+        "input": "https://cdn.tencentcloudapi.com/?Action=ListClsTopicDomains\r\n&Channel=cdn\r\n&LogsetId=6d04373b-ba59-4a4f-a96e-9fe53b59a536\r\n&TopicId=d2256449-c6ff-421b-93ef-aa3a7dde2de2\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"57460798-8723-45e3-9c75-a0599ef9143a\",\n        \"AppId\": 12345678901,\n        \"Channel\": \"cdn\",\n        \"LogsetId\": \"6d04373b-ba59-4a4f-a96e-9fe53b59a536\",\n        \"TopicId\": \"d2256449-c6ff-421b-93ef-aa3a7dde2de2\",\n        \"DomainAreaConfigs\": [\n            {\n                \"Domain\": \"a.b.com\",\n                \"Area\": [\n                    \"mainland\"\n                ]\n            }\n        ]\n    }\n}",
         "title": "Getting the list of domain names bound to topic"
       }
     ],

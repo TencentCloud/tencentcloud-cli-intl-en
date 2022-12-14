@@ -38,7 +38,7 @@
         },
         {
           "default": "",
-          "document": "This field returns the matched keywords. This parameter can include multiple returned values, which means multiple keywords are matched. If no keyword is returned but there is a `Score`, it means that the result of `Label` is determined by a semantic model.\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "document": "Returns the information of keywords hit in the text. When no value is returned and `Score` is not empty, it means the `Label` is determined by the semantic-based detection model.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Keywords",
@@ -94,6 +94,16 @@
           "name": "SubLabel",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Returns the keywords, label, sub-label and the score.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"Keyword\":\"约炮\",\"Score\":100,\"SubLabel\":\"Sexy\"}",
+          "member": "Tag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -197,6 +207,42 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Tag": {
+      "document": "Returns the keywords, label, sub-label and the score.",
+      "members": [
+        {
+          "default": "",
+          "document": "Returns the hit keywords.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "习近平",
+          "member": "string",
+          "name": "Keyword",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Returns the sub-tags.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ChinesePresident",
+          "member": "string",
+          "name": "SubLabel",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Returns the score for the sub-label\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "int64",
+          "name": "Score",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -346,6 +392,15 @@
           "value_allowed_null": true
         },
         {
+          "document": "Returns the context text.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "11",
+          "member": "string",
+          "name": "ContextText",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -445,6 +500,36 @@
           "name": "Desc",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Room ID of the group chat.",
+          "example": "无",
+          "member": "string",
+          "name": "RoomId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Receiver ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ReceiverId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Generation time of the message, in ms.",
+          "example": "无",
+          "member": "int64",
+          "name": "SendTime",
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
