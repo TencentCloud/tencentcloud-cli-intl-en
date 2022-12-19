@@ -187,9 +187,9 @@
       "output": "DescribeLogContextResponse"
     },
     "DescribeLogHistogram": {
-      "document": "This API is used to build a histogram.",
+      "document": "This API is used to get a log count histogram. ",
       "input": "DescribeLogHistogramRequest",
-      "name": "DescribeLogHistogram",
+      "name": "Gets a log count histogram",
       "output": "DescribeLogHistogramResponse"
     },
     "DescribeLogsets": {
@@ -991,6 +991,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the collection rule configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "default": "",
@@ -2001,7 +2011,7 @@
         },
         {
           "default": "",
-          "document": "Lifecycle in days. Value range: 1-3600 (3640 indicates permanent retention)",
+          "document": "Lifecycle in days. Value range: 1–3600 (STANDARD storage); 7–3600 (IA storage). `3640` indicates permanent retention.",
           "example": "30",
           "member": "int64",
           "name": "Period",
@@ -2975,7 +2985,7 @@
         },
         {
           "default": "",
-          "document": "Time interval in milliseconds",
+          "document": "Interval in milliseconds. Condition: (To – From) / Interval ≤ 200",
           "example": "10",
           "member": "int64",
           "name": "Interval",
@@ -3768,7 +3778,7 @@
         },
         {
           "default": "",
-          "document": "Syslog protocol. Valid values: `tcp`, `udp`.\nThis field can be used when you create/modify collection rule configurations.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Syslog protocol. Valid values: `tcp`, `udp`.\nThis field can be used when you create or modify collection rule configurations.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "tcp",
           "member": "string",
           "name": "Protocol",
@@ -3778,7 +3788,7 @@
         },
         {
           "default": "",
-          "document": "Listening address and port specified by the syslog collection. Format: [ip]:[port]. Example: 127.0.0.1:9000.\nThis field can be used when you create/modify collection rule configurations.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Listening address and port specified by the syslog collection. Format: [ip]:[port]. Example: 127.0.0.1:9000.\nThis field can be used when you create or modify collection rule configurations.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "127.0.0.1:9000",
           "member": "string",
           "name": "Address",
@@ -3788,7 +3798,7 @@
         },
         {
           "default": "",
-          "document": "`rfc3164`: Resolve logs by using the RFC3164 protocol during the syslog collection.\n`rfc5424`: Resolve logs by using the RFC5424 protocol during the syslog collection.\n`auto`: Automatically match either the RFC3164 or RFC5424 protocol.\nThis field can be used when you create/modify collection rule configurations.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "`rfc3164`: Resolve logs by using the RFC 3164 protocol during the syslog collection.\n`rfc5424`: Resolve logs by using the RFC 5424 protocol during the syslog collection.\n`auto`: Automatically match either the RFC 3164 or RFC 5424 protocol.\nThis field can be used when you create or modify collection rule configurations.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "RFC3164",
           "member": "string",
           "name": "ParseProtocol",
@@ -4396,6 +4406,16 @@
         },
         {
           "default": "",
+          "document": "Cloud product identifier. If the logset is created by another cloud product, this field returns the name of the cloud product, such as `CDN` or `TKE`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "TCB",
+          "member": "string",
+          "name": "AssumerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
           "document": "Tag bound to logset\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Tag",
@@ -4416,7 +4436,7 @@
         },
         {
           "default": "",
-          "document": "If `AssumerUin` is not empty, it indicates the service provider who creates the logset",
+          "document": "If `AssumerName` is not empty, it indicates the service provider who creates the logset.",
           "example": "TCB_QcsRole",
           "member": "string",
           "name": "RoleName",
@@ -5874,6 +5894,15 @@
           "name": "UseNewAnalysis",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Indicates whether to sample raw logs before statistical analysis (`Query` includes SQL statements).\n`0`: Auto-sample.\n`0–1`: Sample by the specified sample rate, such as `0.02`.\n`1`: Precise analysis without sampling.\nDefault value: `1`",
+          "example": "0.1",
+          "member": "float",
+          "name": "SamplingRate",
+          "required": false,
+          "type": "float"
         }
       ],
       "type": "object"
@@ -6346,6 +6375,16 @@
         },
         {
           "default": "",
+          "document": "Cloud product identifier. If the log topic is created by another cloud product, this field returns the name of the cloud product, such as `CDN` or `TKE`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "AssumerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
           "document": "Creation time",
           "example": "无",
           "member": "string",
@@ -6412,6 +6451,26 @@
           "name": "Period",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Cloud product sub-identifier. If the log topic is created by another cloud product, this field returns the name of the cloud product and its log type, such as `TKE-Audit` or `TKE-Event`. Some products only return the cloud product identifier (`AssumerName`), without this field.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "TKE-Audio",
+          "member": "string",
+          "name": "SubAssumerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Log topic description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx部门xx业务topic",
+          "member": "string",
+          "name": "Describes",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],

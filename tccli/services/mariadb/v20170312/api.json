@@ -138,6 +138,12 @@
       "name": "Queries order information",
       "output": "DescribeOrdersResponse"
     },
+    "DescribePrice": {
+      "document": "This API is used to query the instance price before you purchase it.",
+      "input": "DescribePriceRequest",
+      "name": "Queries the purchase price of an instance",
+      "output": "DescribePriceResponse"
+    },
     "DescribeProjectSecurityGroups": {
       "document": "This API is used to query the security group details of a project.",
       "input": "DescribeProjectSecurityGroupsRequest",
@@ -1589,6 +1595,78 @@
       ],
       "usage": "in"
     },
+    "DCNReplicaConfig": {
+      "document": "DCN configuration",
+      "members": [
+        {
+          "default": "",
+          "document": "DCN running status. Valid values: `START` (running), `STOP` (pause)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "START",
+          "member": "string",
+          "name": "RoReplicationMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Delayed replication type. Valid values: `DEFAULT` (no delay), `DUE_TIME` (specified replication time)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "DEFAULT",
+          "member": "string",
+          "name": "DelayReplicationType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specified time for delayed replication\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2006-01-02 15:04:05",
+          "member": "string",
+          "name": "DueTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of seconds to delay the replication\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ReplicationDelay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DCNReplicaStatus": {
+      "document": "DCN status information",
+      "members": [
+        {
+          "default": "",
+          "document": "DCN running status. Valid values: `START` (running), `STOP` (pause).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "START",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The current delay, which takes the delay value of the replica instance.",
+          "example": "1",
+          "member": "int64",
+          "name": "Delay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "Database": {
       "document": "Database information",
       "members": [
@@ -1872,6 +1950,36 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Configuration information of DCN replication. This field is null for a primary instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
+          "member": "DCNReplicaConfig",
+          "name": "ReplicaConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "DCN replication status. This field is null for the primary instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "暂无",
+          "member": "DCNReplicaStatus",
+          "name": "ReplicaStatus",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether KMS is enabled.",
+          "example": "暂无",
+          "member": "int64",
+          "name": "EncryptStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1882,6 +1990,7 @@
         {
           "default": "",
           "document": "Order number",
+          "example": "20221108006001219594201",
           "member": "string",
           "name": "DealName",
           "required": true,
@@ -1891,6 +2000,7 @@
         {
           "default": "",
           "document": "Account",
+          "example": "3078115006",
           "member": "string",
           "name": "OwnerUin",
           "required": true,
@@ -1900,6 +2010,7 @@
         {
           "default": "",
           "document": "Number of items",
+          "example": "1",
           "member": "int64",
           "name": "Count",
           "required": true,
@@ -1909,6 +2020,7 @@
         {
           "default": "",
           "document": "ID of the associated process, which can be used to query the process execution status.",
+          "example": "68000002",
           "member": "int64",
           "name": "FlowId",
           "required": true,
@@ -1917,7 +2029,8 @@
         },
         {
           "default": "",
-          "document": "This field is populated only for orders that create instances, indicating the ID of the created instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The ID of the created instance, which is required only for the order that creates an instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"tdsql-61vf76u9\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -1927,6 +2040,7 @@
         {
           "default": "",
           "document": "Payment mode. Valid values: 0 (postpaid), 1 (prepaid)",
+          "example": "0",
           "member": "int64",
           "name": "PayMode",
           "required": true,
@@ -3110,6 +3224,114 @@
           "name": "Deals",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePriceRequest": {
+      "document": "DescribePrice request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ ID of the purchased instance.",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Number of instance nodes, which can be obtained \n by querying the instance specification through the `DescribeDBInstanceSpecs` API.",
+          "example": "2",
+          "member": "int64",
+          "name": "NodeCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Memory size in GB, which can be obtained \n by querying the instance specification through the `DescribeDBInstanceSpecs` API.",
+          "example": "2000",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Storage capacity in GB. The maximum and minimum storage space can be obtained \n by querying instance specification through the `DescribeDBInstanceSpecs` API.",
+          "example": "10000",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Purchase period in months",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of instances to be purchased. Only one instance is queried for price by default.",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Billing type. Valid values: `postpaid` (pay-as-you-go), `prepaid` (monthly subscription).",
+          "example": "prepaid",
+          "member": "string",
+          "name": "Paymode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Price unit. Valid values:   \n`* pent` (cent), \n`* microPent` (microcent).",
+          "example": "pent",
+          "member": "string",
+          "name": "AmountUnit",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePriceResponse": {
+      "document": "DescribePrice response structure.",
+      "members": [
+        {
+          "document": "Original price  \n* Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description.\n* Currency: CNY (Chinese site), USD (international site)",
+          "example": "21120",
+          "member": "int64",
+          "name": "OriginalPrice",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The actual price may be different from the original price due to discounts. \n* Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description.\n* Currency: CNY (Chinese site), USD (international site)",
+          "example": "21120",
+          "member": "int64",
+          "name": "Price",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {

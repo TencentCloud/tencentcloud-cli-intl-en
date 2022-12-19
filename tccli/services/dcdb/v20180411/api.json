@@ -42,6 +42,12 @@
       "name": "Creates an account",
       "output": "CreateAccountResponse"
     },
+    "CreateDCDBInstance": {
+      "document": "This API is used to create a monthly subscribed TencentDB instance by passing in information such as instance specifications, database version number, and purchased duration.",
+      "input": "CreateDCDBInstanceRequest",
+      "name": "Creates a TDSQL instance",
+      "output": "CreateDCDBInstanceResponse"
+    },
     "CreateHourDCDBInstance": {
       "document": "This API is used to create pay-as-you-go TDSQL for MySQL instances.",
       "input": "CreateHourDCDBInstanceRequest",
@@ -203,6 +209,12 @@
       "input": "IsolateHourDCDBInstanceRequest",
       "name": "Isolates pay-as-you-go TDSQL for MySQL instances",
       "output": "IsolateHourDCDBInstanceResponse"
+    },
+    "KillSession": {
+      "document": "This API is used to kill the specified session.",
+      "input": "KillSessionRequest",
+      "name": "Kills the specified session",
+      "output": "KillSessionResponse"
     },
     "ModifyAccountDescription": {
       "document": "This API is used to modify the remarks of a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts.",
@@ -776,6 +788,240 @@
           "name": "ReadOnly",
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDCDBInstanceRequest": {
+      "document": "CreateDCDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "AZs to deploy shard nodes. You can specify up to two AZs. When the shard specification is 1-source-2-replica, two of the nodes are deployed in the first AZ.\nThe current purchasable AZ needs be pulled through `DescribeDCDBSaleInfo` API.",
+          "example": "[\"ap-guangzhou-2\\r\\n\",\"ap-guangzhou-2\\r\\n\"]",
+          "member": "string",
+          "name": "Zones",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Validity period in months",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Shard memory size in GB, which can be obtained \n by querying the instance specification through `DescribeShardSpec` API.",
+          "example": "2",
+          "member": "int64",
+          "name": "ShardMemory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Shard storage size in GB, which can be obtained\n by querying the instance specification through `DescribeShardSpec` API.",
+          "example": "10",
+          "member": "int64",
+          "name": "ShardStorage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of nodes in a single shard, which can be obtained\n by querying the instance specification through `DescribeShardSpec` API.",
+          "example": "3",
+          "member": "int64",
+          "name": "ShardNodeCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of shards in the instance. Value range: 2-8. You can increase up to 64 shards by upgrading your instance.",
+          "example": "2",
+          "member": "int64",
+          "name": "ShardCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of instances to be purchased",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Project ID, which can be obtained through the `DescribeProjects` API. If this parameter is not passed in, the instance will be associated with the default project.",
+          "example": "无",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "VPC ID. If this parameter is left empty or not passed in, the instance will be created on the classic network.",
+          "example": "无",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID, which is required when `VpcId` is specified.",
+          "example": "无",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database engine version. Valid values: 8.0.18, 10.1.9, 5.7.17.\n8.0.18 - MySQL 8.0.18；\n10.1.9: MariaDB 10.1.9;\n5.7.17: Percona 5.7.17.\nIf this parameter is left empty, `5.7.17` will be used.",
+          "example": "5.7.17",
+          "member": "string",
+          "name": "DbVersionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically use vouchers. This option is disabled by default.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Voucher ID list. Currently, you can specify only one voucher.",
+          "example": "无",
+          "member": "string",
+          "name": "VoucherIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Security group ID",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Custom name of the instance",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether IPv6 is supported",
+          "example": "无",
+          "member": "int64",
+          "name": "Ipv6Flag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Array of tag key-value pairs",
+          "example": "无",
+          "member": "ResourceTag",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of parameters. Valid values: `character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; `0`: case-sensitive; `1`: case-insensitive); `innodb_page_size` (InnoDB data page size; default size: 16 KB); `sync_mode` (sync mode; `0`: async; `1`: strong sync; `2`: downgradable strong sync; default value: `2`).",
+          "example": "无",
+          "member": "DBParamValue",
+          "name": "InitParams",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "DCN source region",
+          "example": "无",
+          "member": "string",
+          "name": "DcnRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "DCN source instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "DcnInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Renewal mode. Valid values: `0` (Manual renewal, which is the default mode), `1` (Auto-renewal), `2` (Manual renewal, which is specified by users). If no renewal is required, set it to `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Security group IDs in array. This parameter is compatible with the old parameter `SecurityGroupId`.",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDCDBInstanceResponse": {
+      "document": "CreateDCDBInstance response structure.",
+      "members": [
+        {
+          "document": "Long order ID, which is used to call the `DescribeOrders` API.\n The parameter can be used to either query order details or call the user account APIs to make another payment when this payment fails.",
+          "example": "20181103110163",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IDs of the instances you have purchased in this order. If no instance IDs are returned, you can query them with the `DescribeOrders` API. You can also use the `DescribeDBInstances` API to check whether an instance has been created successfully.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"dcdbt-avw0207d\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3929,6 +4175,69 @@
           "name": "FailedInstanceIds",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "KillSessionRequest": {
+      "document": "KillSession request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tdsqlshard-2gk4nxyz",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of session IDs",
+          "example": "[1111,2222]",
+          "member": "int64",
+          "name": "SessionId",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Shard ID. Either `ShardId` or `ShardSerialId` is required.",
+          "example": "shard-ljilb4st",
+          "member": "string",
+          "name": "ShardId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Shard sequence ID. Either `ShardId` or `ShardSerialId` is required.",
+          "example": "set_1468379419_1",
+          "member": "string",
+          "name": "ShardSerialId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "KillSessionResponse": {
+      "document": "KillSession response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "example": "11",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
