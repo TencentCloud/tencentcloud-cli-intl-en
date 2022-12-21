@@ -114,6 +114,12 @@
       "name": "Queries the list of instances",
       "output": "DescribeDCDBInstancesResponse"
     },
+    "DescribeDCDBPrice": {
+      "document": "This API is used to query the price of an instance before you purchase it.",
+      "input": "DescribeDCDBPriceRequest",
+      "name": "Queries the purchase price of an instance",
+      "output": "DescribeDCDBPriceResponse"
+    },
     "DescribeDCDBShards": {
       "document": "This API is used to query the information of shards of a TencentDB instance.",
       "input": "DescribeDCDBShardsRequest",
@@ -222,6 +228,12 @@
       "name": "Modifies account remarks",
       "output": "ModifyAccountDescriptionResponse"
     },
+    "ModifyAccountPrivileges": {
+      "document": "This API is used to modify the permissions of a TencentDB instance account.\n\n**Notes**\n- Only the SELECT permission (that is, set the permission parameter to `[\"SELECT\"]`) of the system database `mysql` can be granted.\n- An error will be reported if read-write permissions are granted to a read-only account.\n- If the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted table permissions, set `Privileges` to an empty array.",
+      "input": "ModifyAccountPrivilegesRequest",
+      "name": "Modifies the permissions of a TencentDB instance account",
+      "output": "ModifyAccountPrivilegesResponse"
+    },
     "ModifyDBInstanceName": {
       "document": "This API is used to modify instance name.",
       "input": "ModifyDBInstanceNameRequest",
@@ -295,6 +307,32 @@
     "serviceShortName": "dcdb"
   },
   "objects": {
+    "Account": {
+      "document": "TencentDB account information",
+      "members": [
+        {
+          "default": "",
+          "document": "Account name",
+          "example": "test",
+          "member": "string",
+          "name": "User",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Host address",
+          "example": "%",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "ActiveHourDCDBInstanceRequest": {
       "document": "ActiveHourDCDBInstance request structure.",
       "members": [
@@ -572,6 +610,52 @@
         }
       ],
       "type": "object"
+    },
+    "ColumnPrivilege": {
+      "document": "Column permission information",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "test",
+          "member": "string",
+          "name": "Database",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table name",
+          "example": "test",
+          "member": "string",
+          "name": "Table",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Column name",
+          "example": "test",
+          "member": "string",
+          "name": "Column",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission information",
+          "example": "[]",
+          "member": "string",
+          "name": "Privileges",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "ConstraintRange": {
       "document": "Range of constraint type values",
@@ -2143,6 +2227,32 @@
       ],
       "usage": "out"
     },
+    "DatabasePrivilege": {
+      "document": "Database permission",
+      "members": [
+        {
+          "default": "",
+          "document": "Permission information",
+          "example": "[]",
+          "member": "string",
+          "name": "Privileges",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "test",
+          "member": "string",
+          "name": "Database",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "DatabaseProcedure": {
       "document": "Database stored procedure information",
       "members": [
@@ -2370,6 +2480,16 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether KMS is enabled.",
+          "example": "暂无",
+          "member": "int64",
+          "name": "EncryptStatus",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2380,6 +2500,7 @@
         {
           "default": "",
           "document": "Order ID.",
+          "example": "20221108006001219915661",
           "member": "string",
           "name": "DealName",
           "required": true,
@@ -2389,6 +2510,7 @@
         {
           "default": "",
           "document": "Account",
+          "example": "3078115006",
           "member": "string",
           "name": "OwnerUin",
           "required": true,
@@ -2398,6 +2520,7 @@
         {
           "default": "",
           "document": "Number of items",
+          "example": "1",
           "member": "int64",
           "name": "Count",
           "required": true,
@@ -2407,6 +2530,7 @@
         {
           "default": "",
           "document": "The associated process ID, which can be used to query the process execution status.",
+          "example": "68000008",
           "member": "int64",
           "name": "FlowId",
           "required": true,
@@ -2415,7 +2539,8 @@
         },
         {
           "default": "",
-          "document": "The ID of the created instance, which is required only for the order that creates an instance.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "The ID of the created instance, which is required only for the order that creates an instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"tdsqlshard-c06stiq3\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -2425,6 +2550,7 @@
         {
           "default": "",
           "document": "Billing mode. Valid values: `0` (postpaid), `1` (prepaid).",
+          "example": "0",
           "member": "int64",
           "name": "PayMode",
           "required": true,
@@ -3289,6 +3415,123 @@
           "member": "DCDBInstanceInfo",
           "name": "Instances",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDCDBPriceRequest": {
+      "document": "DescribeDCDBPrice request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ ID of the purchased instance.",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of instances to be purchased. You can purchase 1-10 instances.",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Validity period in months",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of nodes in a single shard, which can be obtained\n by querying the instance specification through the `DescribeDBInstanceSpecs` API.",
+          "example": "3",
+          "member": "int64",
+          "name": "ShardNodeCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Shard memory size in GB, which can be obtained \n by querying the instance specification through the `DescribeDBInstanceSpecs` API.",
+          "example": "2",
+          "member": "int64",
+          "name": "ShardMemory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Shard storage size in GB, which can be obtained\n by querying the instance specification through the `DescribeDBInstanceSpecs` API.",
+          "example": "10",
+          "member": "int64",
+          "name": "ShardStorage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of shards in the instance. Value range: 2-8. Upgrade your instance to have up to 64 shards if you require more.",
+          "example": "2",
+          "member": "int64",
+          "name": "ShardCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Billing type. Valid values: `postpaid` (pay-as-you-go), `prepaid` (monthly subscription).",
+          "example": "prepaid",
+          "member": "string",
+          "name": "Paymode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Price unit. Valid values:   \n`* pent` (cent), \n`* microPent` (microcent).",
+          "example": "pent",
+          "member": "string",
+          "name": "AmountUnit",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDCDBPriceResponse": {
+      "document": "DescribeDCDBPrice response structure.",
+      "members": [
+        {
+          "document": "Original price  \n* Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description.\n* Currency: CNY (Chinese site), USD (international site)",
+          "example": "42240",
+          "member": "int64",
+          "name": "OriginalPrice",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The actual price may be different from the original price due to discounts. \n* Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description.\n* Currency: CNY (Chinese site), USD (international site)",
+          "example": "42240",
+          "member": "int64",
+          "name": "Price",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4332,6 +4575,96 @@
     "ModifyAccountDescriptionResponse": {
       "document": "ModifyAccountDescription response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccountPrivilegesRequest": {
+      "document": "ModifyAccountPrivileges request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of tdsql-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database account, including username and host address.",
+          "example": "无",
+          "member": "Account",
+          "name": "Accounts",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Global permission. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"PROCESS\", \"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"SHOW DATABASES\", \"CREATE TEMPORARY TABLES\", \"LOCK TABLES\", \"EXECUTE\", \"CREATE VIEW\", \"SHOW VIEW\", \"CREATE ROUTINE\", \"ALTER ROUTINE\", \"EVENT\", \"TRIGGER\".\nNote: If the parameter is left empty, no change will be made to the granted global permissions. To clear the granted global permissions, set the parameter to an empty array.",
+          "example": "无",
+          "member": "string",
+          "name": "GlobalPrivileges",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Database permission. Value range: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"DROP\", \"REFERENCES\", \"INDEX\", \"ALTER\", \"CREATE TEMPORARY TABLES\", \"LOCK TABLES\", \"EXECUTE\", \"CREATE VIEW\", \"SHOW VIEW\", \"CREATE ROUTINE\", \"ALTER ROUTINE\", \"EVENT\", \"TRIGGER\".\t\nNote: If the parameter is not passed in, no change will be made to the granted stored procedure permissions. To clear the granted database permissions, set `Privileges` to an empty array.",
+          "example": "无",
+          "member": "DatabasePrivilege",
+          "name": "DatabasePrivileges",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Database table permission. Valid values of `Privileges`: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`.\nNote: If the parameter is not passed in, no change will be made to the granted view permissions. To clear the granted table permissions, set `Privileges` to an empty array.",
+          "example": "无",
+          "member": "TablePrivilege",
+          "name": "TablePrivileges",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Column permission in the table. Valid values: \"SELECT\", \"INSERT\", \"UPDATE\", \"REFERENCES\".\nNote: If the parameter is not passed in, no change will be made to the granted column permissions. To clear the granted column permissions, set `Privileges` to an empty array.",
+          "example": "无",
+          "member": "ColumnPrivilege",
+          "name": "ColumnPrivileges",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Database view permission. Valid values of `Privileges`: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`.\nNote: If the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted view permissions, set `Privileges` to an empty array.",
+          "example": "无",
+          "member": "ViewPrivileges",
+          "name": "ViewPrivileges",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccountPrivilegesResponse": {
+      "document": "ModifyAccountPrivileges response structure.",
+      "members": [
+        {
+          "document": "Async task ID, which can be used in the [DescribeFlow](https://www.tencentcloud.com/document/product/237/16177) API to query the async task result.",
+          "example": "无",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -5429,6 +5762,42 @@
       ],
       "usage": "out"
     },
+    "TablePrivilege": {
+      "document": "Table permission",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "test",
+          "member": "string",
+          "name": "Database",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Table name",
+          "example": "test",
+          "member": "string",
+          "name": "Table",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission information",
+          "example": "['SELECT']",
+          "member": "string",
+          "name": "Privileges",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "TerminateDedicatedDBInstanceRequest": {
       "document": "TerminateDedicatedDBInstance request structure.",
       "members": [
@@ -5464,6 +5833,42 @@
         }
       ],
       "type": "object"
+    },
+    "ViewPrivileges": {
+      "document": "View permission information",
+      "members": [
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "test",
+          "member": "string",
+          "name": "Database",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "View name",
+          "example": "test",
+          "member": "string",
+          "name": "View",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Permission information",
+          "example": "[]",
+          "member": "string",
+          "name": "Privileges",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     }
   },
   "version": "1.0"

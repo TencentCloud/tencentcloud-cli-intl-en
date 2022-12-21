@@ -6,12 +6,6 @@
       "name": "Adds a maintenance time window",
       "output": "AddTimeWindowResponse"
     },
-    "ApplyCDBProxy": {
-      "document": "This API is used to create a database proxy group for a source instance.",
-      "input": "ApplyCDBProxyRequest",
-      "name": "Creates a database proxy group",
-      "output": "ApplyCDBProxyResponse"
-    },
     "AssociateSecurityGroups": {
       "document": "This API (AssociateSecurityGroups) is used to bind security groups to instances in batches.",
       "input": "AssociateSecurityGroupsRequest",
@@ -467,12 +461,6 @@
       "input": "ModifyBackupDownloadRestrictionRequest",
       "name": "Modifies backup download restrictions",
       "output": "ModifyBackupDownloadRestrictionResponse"
-    },
-    "ModifyCDBProxy": {
-      "document": "This API is used to configure read/write separation of database proxy.",
-      "input": "ModifyCDBProxyRequest",
-      "name": "Configures read/write separation of database proxy",
-      "output": "ModifyCDBProxyResponse"
     },
     "ModifyCDBProxyConnectionPool": {
       "document": "This API is used to configure the connection pool of database proxy. You can use the `DescribeProxyConnectionPoolConf` API to query the supported connection pool configurations.",
@@ -956,105 +944,6 @@
       ],
       "usage": "out"
     },
-    "ApplyCDBProxyRequest": {
-      "document": "ApplyCDBProxy request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Unique ID of the source instance",
-          "example": "cdb-sca12da",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "VPC ID",
-          "example": "vpc-j1sxc77p",
-          "member": "string",
-          "name": "UniqVpcId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "VPC subnet ID",
-          "example": "subnet-7v7ygzem",
-          "member": "string",
-          "name": "UniqSubnetId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Number of nodes in the proxy group",
-          "example": "2",
-          "member": "uint64",
-          "name": "ProxyCount",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Number of CPU cores",
-          "example": "2",
-          "member": "uint64",
-          "name": "Cpu",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Memory",
-          "example": "4000",
-          "member": "uint64",
-          "name": "Mem",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Security group",
-          "example": "无",
-          "member": "string",
-          "name": "SecurityGroup",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "Description (up to 256 characters)",
-          "example": "proxy代理",
-          "member": "string",
-          "name": "Desc",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ApplyCDBProxyResponse": {
-      "document": "ApplyCDBProxy response structure.",
-      "members": [
-        {
-          "document": "Async request ID\nNote: this field may return `null`, indicating that no valid value can be found.",
-          "example": "a92d-77ce-0ee2-17d99f604e64",
-          "member": "string",
-          "name": "AsyncRequestId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "AssociateSecurityGroupsRequest": {
       "document": "AssociateSecurityGroups request structure.",
       "members": [
@@ -1532,6 +1421,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the backup file is encrypted. Valid values: `on` (encrypted), `off` (unencrypted).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "on",
+          "member": "string",
+          "name": "EncryptionFlag",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2071,7 +1970,7 @@
         },
         {
           "default": "",
-          "document": "Instance type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance), `BASIC_V2` (basic v2 instance).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "UNIVERSAL",
           "member": "string",
           "name": "DeviceType",
@@ -9583,96 +9482,6 @@
       ],
       "type": "object"
     },
-    "ModifyCDBProxyRequest": {
-      "document": "ModifyCDBProxy request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Unique ID of the database proxy group",
-          "example": "无",
-          "member": "string",
-          "name": "ProxyGroupId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Whether to remove delayed read-only instances from the proxy group. Valid values: `true`, `false`. Default value: `false`.",
-          "example": "false",
-          "member": "bool",
-          "name": "IsKickout",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "document": "The minimum number of read-only instances allowed by the proxy group. Minimum value: 1; maximum value: The number of instances.",
-          "example": "2",
-          "member": "uint64",
-          "name": "MinCount",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Delay threshold. If `IsKickOut` is set to `true`, this parameter is required.",
-          "example": "2",
-          "member": "uint64",
-          "name": "MaxDelay",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Assignment mode of read/write weights. Valid values: `system` (auto-assigned), `custom`",
-          "example": "system",
-          "member": "string",
-          "name": "WeightMode",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Read-Only weight of an instance",
-          "example": "{}",
-          "member": "RoWeight",
-          "name": "RoWeightValues",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "default": "",
-          "document": "Whether to enable failover. If it is enabled, the connection address will route requests to the source instance in case of proxy failure. Valid values: `true`, `false`. Default value: `false`.",
-          "example": "false",
-          "member": "bool",
-          "name": "FailOver",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "default": "",
-          "document": "Whether to automatically add newly created read-only instances to the proxy group. Valid values: `true`, `false` Default value: `false`.",
-          "example": "false",
-          "member": "bool",
-          "name": "AutoAddRo",
-          "required": false,
-          "type": "bool"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyCDBProxyResponse": {
-      "document": "ModifyCDBProxy response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "ModifyCDBProxyVipVPortRequest": {
       "document": "ModifyCDBProxyVipVPort request structure.",
       "members": [
@@ -10034,7 +9843,7 @@
         },
         {
           "default": "",
-          "document": "List of parameters to be modified. Every element is a pair of `Name` (parameter name) and `CurrentValue` (new value).",
+          "document": "List of parameters to be modified. Every element is a combination of `Name` (parameter name) and `CurrentValue` (new value). Valid values for `Name` of version 8.0: `validate_password.policy`, `validate_password.lengt`, `validate_password.mixed_case_coun`, `validate_password.number_coun`, `validate_password.special_char_count`. Valid values for `Name` of version 5.6 and 5.7: `validate_password_polic`, `validate_password_lengt` `validate_password_mixed_case_coun`, `validate_password_number_coun`, `validate_password_special_char_coun`.",
           "example": "无",
           "member": "Parameter",
           "name": "ParamList",
@@ -12032,11 +11841,6 @@
         }
       ],
       "usage": "out"
-    },
-    "RoWeight": {
-      "document": "Instance weight",
-      "members": [],
-      "usage": "in"
     },
     "RoWeightValue": {
       "document": "RO instance weight value",
