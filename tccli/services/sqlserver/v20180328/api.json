@@ -2696,6 +2696,26 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the instance is deployed across AZs",
+          "example": "false",
+          "member": "bool",
+          "name": "IsDrZone",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Replica AZ information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{}",
+          "member": "SlaveZones",
+          "name": "SlaveZones",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3280,6 +3300,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "mssql-j8kv137v",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3288,6 +3309,7 @@
         {
           "default": "",
           "document": "Number of results per page. Value range: 1-100. Default value: 20",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -3296,10 +3318,38 @@
         {
           "default": "",
           "document": "Page number. Default value: 0",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Account ID",
+          "example": "test_sa",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting by `createTime`, `updateTime`, or `passTime`. Default value: `createTime` (desc).",
+          "example": "createTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting rule. Valid values: `desc` (descending order), `asc` (ascending order). Default value: `desc`.",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4274,6 +4324,7 @@
         {
           "default": "",
           "document": "Instance ID",
+          "example": "[\"mssql-njj2mtpl\\r\\n\"]",
           "member": "string",
           "name": "InstanceIdSet",
           "required": true,
@@ -4282,6 +4333,7 @@
         {
           "default": "",
           "document": "Number of results per page. Value range: 1-100. Default value: 20",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -4290,10 +4342,29 @@
         {
           "default": "",
           "document": "Page number. Default value: 0",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "test_db",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting rule. Valid values: `desc` (descending order), `asc` (ascending order). Default value: `desc`.",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -7550,6 +7621,32 @@
         }
       ],
       "type": "object"
+    },
+    "SlaveZones": {
+      "document": "Replica AZ information",
+      "members": [
+        {
+          "default": "",
+          "document": "Replica AZ region code",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "SlaveZone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Replica AZ",
+          "example": "广州一区",
+          "member": "string",
+          "name": "SlaveZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "SlowlogInfo": {
       "document": "Slow query log file information",

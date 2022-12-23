@@ -48,6 +48,14 @@
         "title": "Creating an account for a TencentDB instance"
       }
     ],
+    "CreateDBInstance": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=CreateDBInstance\n&Zones.0=ap-guangzhou-2\n&Zones.1=ap-guangzhou-2\n&Memory=2000\n&Storage=10000\n&NodeCount=1\n&Count=1\n&Period=1\n&AutoVoucher=true\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8c4fba95-01e4-61d9-4146-59fc5afdf962\",\n        \"DealName\": \"20171103110163\",\n        \"InstanceIds\": null\n    }\n}",
+        "title": "Creating a monthly subscribed TencentDB instance"
+      }
+    ],
     "CreateHourDBInstance": [
       {
         "document": "",
@@ -246,6 +254,14 @@
         "input": "POST / HTTP/1.1\nHost: mariadb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IsolateDedicatedDBInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql-xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\"\n    }\n}",
         "title": "None"
+      }
+    ],
+    "KillSession": [
+      {
+        "document": "",
+        "input": "https://mariadb.tencentcloudapi.com/?Action=KillSession\n&InstanceId=tdsql-2gk4nxyz\n&SessionId.0=1111\n&SessionId.1=2222\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14f6980a-7fe1-11ea-b896-525400542aa6\",\n        \"TaskId\": 11\n    }\n}",
+        "title": "Killing the specified session"
       }
     ],
     "ModifyAccountDescription": [

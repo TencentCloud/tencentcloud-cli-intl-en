@@ -36,6 +36,12 @@
       "name": "Creates account",
       "output": "CreateAccountResponse"
     },
+    "CreateDBInstance": {
+      "document": "This API is used to create a monthly subscribed TencentDB instance by passing in information such as instance specifications, database version number, validity period, and quantity.",
+      "input": "CreateDBInstanceRequest",
+      "name": "Creates a monthly subscribed instance",
+      "output": "CreateDBInstanceResponse"
+    },
     "CreateHourDBInstance": {
       "document": "This API is used to create pay-as-you-go instances.",
       "input": "CreateHourDBInstanceRequest",
@@ -185,6 +191,12 @@
       "input": "IsolateDedicatedDBInstanceRequest",
       "name": "Isolates a dedicated TencentDB instance",
       "output": "IsolateDedicatedDBInstanceResponse"
+    },
+    "KillSession": {
+      "document": "This API is used to kill the specified session.",
+      "input": "KillSessionRequest",
+      "name": "Kills the specified session.",
+      "output": "KillSessionResponse"
     },
     "ModifyAccountDescription": {
       "document": "This API is used to modify the remarks of a TencentDB account.\nNote: accounts with the same username but different hosts are different accounts.",
@@ -744,6 +756,222 @@
           "name": "ReadOnly",
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBInstanceRequest": {
+      "document": "CreateDBInstance request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "AZs to deploy instance nodes. You can specify up to two AZs (one as primary AZ and another as replica AZ). When the shard specification is 1-primary-2-replica, the primary and one of the replicas are deployed in the primary AZ.",
+          "example": "[\"ap-guangzhou-2\\r\\n\",\"ap-guangzhou-2\\r\\n\"]",
+          "member": "string",
+          "name": "Zones",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Number of nodes, which can be obtained \n by querying the instance specification through the `DescribeDBInstanceSpecs` API.",
+          "example": "1",
+          "member": "int64",
+          "name": "NodeCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Memory size in GB, which can be obtained \n by querying the instance specification through the `DescribeDBInstanceSpecs` API.",
+          "example": "2000",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Storage capacity in GB. The maximum and minimum storage space can be obtained \n by querying instance specification through the `DescribeDBInstanceSpecs` API.",
+          "example": "10000",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Validity period in months",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of instances to be purchased. Only one instance is queried for price by default.",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to automatically use vouchers. This option is disabled by default.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Voucher ID list. Currently, you can specify only one voucher.",
+          "example": "无",
+          "member": "string",
+          "name": "VoucherIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "VPC ID. If this parameter is not passed in, the instance will be created on the classic network.",
+          "example": "无",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC subnet ID, which is required when `VpcId` is specified.",
+          "example": "无",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID, which can be obtained through the `DescribeProjects` API. If this parameter is not passed in, the instance will be associated with the default project.",
+          "example": "无",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Database engine version. Valid values: `8.0.18`, `10.1.9`, `5.7.17`. Default value: `5.7.17`.",
+          "example": "无",
+          "member": "string",
+          "name": "DbVersionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Name of the instance, which can be customized.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of security group IDs",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Auto-renewal flag. Valid values: `1` (auto-renewal), `2` (no renewal upon expiration).",
+          "example": "无",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether IPv6 is supported.",
+          "example": "无",
+          "member": "int64",
+          "name": "Ipv6Flag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Array of tag key-value pairs",
+          "example": "无",
+          "member": "ResourceTag",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "List of parameters. Valid values: `character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; `0`: case-sensitive; `1`: case-insensitive); `innodb_page_size` (InnoDB data page size; default size: 16 KB); `sync_mode` (sync mode; `0`: async; `1`: strong sync; `2`: downgradable strong sync; default value: `2`).",
+          "example": "无",
+          "member": "DBParamValue",
+          "name": "InitParams",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "DCN source region",
+          "example": "无",
+          "member": "string",
+          "name": "DcnRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "DCN source instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "DcnInstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBInstanceResponse": {
+      "document": "CreateDBInstance response structure.",
+      "members": [
+        {
+          "document": "Order ID, which is used for calling the `DescribeOrders` API.\n The parameter can be used to either query order details or call the user account APIs to make another payment when this payment fails.",
+          "example": "20171103110163",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "IDs of the instances you have purchased in this order. If no instance IDs are returned, you can query them with the `DescribeOrders` API. You can also use the `DescribeDBInstances` API to check whether an instance has been created successfully.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3716,6 +3944,51 @@
     "IsolateDedicatedDBInstanceResponse": {
       "document": "IsolateDedicatedDBInstance response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "KillSessionRequest": {
+      "document": "KillSession request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "tdsql-2gk4nxyz",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of session IDs",
+          "example": "[1111,2222]",
+          "member": "int64",
+          "name": "SessionId",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "KillSessionResponse": {
+      "document": "KillSession response structure.",
+      "members": [
+        {
+          "document": "Task ID",
+          "example": "11",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
