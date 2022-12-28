@@ -135,7 +135,7 @@
     "DescribeInstances": {
       "document": "This API is used to query the list of instances.",
       "input": "DescribeInstancesRequest",
-      "name": "Queries instance list",
+      "name": "Queries the instance list",
       "output": "DescribeInstancesResponse"
     },
     "DescribeMaintainPeriod": {
@@ -276,11 +276,29 @@
       "name": "Deletes the replica AZ",
       "output": "RemoveClusterSlaveZoneResponse"
     },
+    "ResetAccountPassword": {
+      "document": "This API is used to reset the password of a TencentDB instance account.",
+      "input": "ResetAccountPasswordRequest",
+      "name": "Resets the password of a TencentDB instance account",
+      "output": "ResetAccountPasswordResponse"
+    },
     "ResumeServerless": {
       "document": "This API is used to resume a serverless cluster.",
       "input": "ResumeServerlessRequest",
       "name": "Resumes a serverless cluster",
       "output": "ResumeServerlessResponse"
+    },
+    "SearchClusterDatabases": {
+      "document": "This API is used to search the list of cluster databases.",
+      "input": "SearchClusterDatabasesRequest",
+      "name": "Searches the list of cluster databases",
+      "output": "SearchClusterDatabasesResponse"
+    },
+    "SearchClusterTables": {
+      "document": "This API is used to search the list of cluster data tables.",
+      "input": "SearchClusterTablesRequest",
+      "name": "Searches the list of cluster data tables",
+      "output": "SearchClusterTablesResponse"
     },
     "SetRenewFlag": {
       "document": "This API is used to set auto-renewal for an instance.",
@@ -293,6 +311,12 @@
       "input": "SwitchClusterZoneRequest",
       "name": "Switches to the replica AZ",
       "output": "SwitchClusterZoneResponse"
+    },
+    "SwitchProxyVpc": {
+      "document": "This API is used to modify the database proxy VPC.",
+      "input": "SwitchProxyVpcRequest",
+      "name": "Modifies the database proxy VPC",
+      "output": "SwitchProxyVpcResponse"
     },
     "UpgradeInstance": {
       "document": "This API is used to upgrade an instance.",
@@ -313,6 +337,7 @@
         {
           "default": "",
           "document": "Database account name",
+          "example": "xxx",
           "member": "string",
           "name": "AccountName",
           "required": true,
@@ -322,6 +347,7 @@
         {
           "default": "",
           "document": "Database account description",
+          "example": "xxx",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -331,6 +357,7 @@
         {
           "default": "",
           "document": "Creation time",
+          "example": "xxx",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -340,6 +367,7 @@
         {
           "default": "",
           "document": "Update time",
+          "example": "xxx",
           "member": "datetime",
           "name": "UpdateTime",
           "required": true,
@@ -349,10 +377,21 @@
         {
           "default": "",
           "document": "Host",
+          "example": "xxx",
           "member": "string",
           "name": "Host",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The max connections",
+          "example": "0",
+          "member": "int64",
+          "name": "MaxUserConnections",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -1368,7 +1407,7 @@
         },
         {
           "default": "",
-          "document": "Array of parameters",
+          "document": "Array of parameters. Valid values: `character_set_server` (utf8｜latin1｜gbk｜utf8mb4), `lower_case_table_names`. 0: case-sensitive; 1: case-insensitive).",
           "example": "无",
           "member": "ParamItem",
           "name": "ClusterParams",
@@ -1401,6 +1440,15 @@
           "name": "SlaveZone",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "无",
+          "member": "InstanceInitInfo",
+          "name": "InstanceInitInfos",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2476,6 +2524,56 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Physical zone",
+          "example": "无",
+          "member": "string",
+          "name": "PhysicalZone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Business type\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "BusinessType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ObjectTask",
+          "name": "Tasks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to freeze\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "yes",
+          "member": "string",
+          "name": "IsFreeze",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The resource tag\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "ResourceTags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3001,6 +3099,7 @@
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "cynosdbmysql-on5xw0ni",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -3009,6 +3108,7 @@
         {
           "default": "",
           "document": "List of accounts to be filtered",
+          "example": "[admin]",
           "member": "string",
           "name": "AccountNames",
           "required": false,
@@ -3016,11 +3116,39 @@
         },
         {
           "default": "",
-          "document": "Database type. Valid values: \n<li> MYSQL </li>",
+          "document": "Database type. Valid values: \n<li> MYSQL </li>\nThis parameter has been disused.",
+          "example": "MYSQL",
           "member": "string",
           "name": "DbType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "List of accounts to be filtered",
+          "example": "[0.0.0.0]",
+          "member": "string",
+          "name": "Hosts",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Maximum entries returned per page",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -3029,10 +3157,21 @@
       "document": "DescribeAccounts response structure.",
       "members": [
         {
-          "document": "Database account list",
+          "document": "Database account list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "Account",
           "name": "AccountSet",
+          "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Total number of accounts",
+          "example": "5",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -3258,6 +3397,15 @@
           "example": "无",
           "member": "string",
           "name": "BackupNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "ID list of the snapshot backup",
+          "example": "无",
+          "member": "int64",
+          "name": "SnapshotIdList",
           "required": false,
           "type": "list"
         }
@@ -3536,6 +3684,15 @@
           "name": "ClusterId",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Parameter name",
+          "example": "binlog",
+          "member": "string",
+          "name": "ParamName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3553,13 +3710,13 @@
           "value_allowed_null": false
         },
         {
-          "document": "Instance parameter list",
+          "document": "Instance parameter list\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ParamInfo",
           "name": "Items",
           "required": true,
           "type": "list",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4183,10 +4340,38 @@
         {
           "default": "",
           "document": "Project ID",
+          "example": "11954",
           "member": "int64",
           "name": "ProjectId",
-          "required": true,
+          "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Maximum entries returned per page",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Search by keyword",
+          "example": "无",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4196,9 +4381,20 @@
       "members": [
         {
           "document": "Security group details",
+          "example": "无",
           "member": "SecurityGroup",
           "name": "Groups",
+          "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The total number of groups",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4271,22 +4467,22 @@
       "document": "DescribeRollbackTimeRange response structure.",
       "members": [
         {
-          "document": "Start time of valid rollback time range (disused)",
+          "document": "Start time of valid rollback time range (disused)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2019-01-13 02:12:05",
           "member": "string",
           "name": "TimeRangeStart",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
-          "document": "End time of valid rollback time range (disused)",
+          "document": "End time of valid rollback time range (disused)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2019-01-20 02:10:12",
           "member": "string",
           "name": "TimeRangeEnd",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "document": "Time range available for rollback",
@@ -4700,6 +4896,52 @@
       ],
       "type": "object"
     },
+    "InstanceInitInfo": {
+      "document": "",
+      "members": [
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "rw",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "InstanceCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "InstanceSpec": {
       "document": "Details of purchasable instance specifications. `Cpu` and `Memory` determine the instance specification during instance creation. The value range of the storage capacity is [MinStorageSize,MaxStorageSize]",
       "members": [
@@ -4904,6 +5146,11 @@
         }
       ],
       "type": "object"
+    },
+    "ModifiableInfo": {
+      "document": "Details of whether the parameter can be modified",
+      "members": [],
+      "usage": "out"
     },
     "ModifyBackupConfigRequest": {
       "document": "ModifyBackupConfig request structure.",
@@ -5560,6 +5807,7 @@
         {
           "default": "",
           "document": "Current value",
+          "example": "无",
           "member": "string",
           "name": "CurrentValue",
           "required": true,
@@ -5569,6 +5817,7 @@
         {
           "default": "",
           "document": "Default value",
+          "example": "无",
           "member": "string",
           "name": "Default",
           "required": true,
@@ -5578,6 +5827,7 @@
         {
           "default": "",
           "document": "List of valid values when parameter type is `enum`, `string` or `bool`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "EnumValue",
           "required": true,
@@ -5587,6 +5837,7 @@
         {
           "default": "",
           "document": "Maximum value when parameter type is `float` or `integer`.",
+          "example": "无",
           "member": "string",
           "name": "Max",
           "required": true,
@@ -5596,6 +5847,7 @@
         {
           "default": "",
           "document": "Minimum value when parameter type is `float` or `integer`.",
+          "example": "无",
           "member": "string",
           "name": "Min",
           "required": true,
@@ -5605,6 +5857,7 @@
         {
           "default": "",
           "document": "Parameter name",
+          "example": "无",
           "member": "string",
           "name": "ParamName",
           "required": true,
@@ -5614,6 +5867,7 @@
         {
           "default": "",
           "document": "Whether to restart the instance for the modified parameters to take effect.",
+          "example": "无",
           "member": "int64",
           "name": "NeedReboot",
           "required": true,
@@ -5623,6 +5877,7 @@
         {
           "default": "",
           "document": "Parameter type: `integer`, `float`, `string`, `enum`, `bool`.",
+          "example": "无",
           "member": "string",
           "name": "ParamType",
           "required": true,
@@ -5632,6 +5887,7 @@
         {
           "default": "",
           "document": "Match type. Regex can be used when parameter type is `string`. Valid value: `multiVal`.",
+          "example": "无",
           "member": "string",
           "name": "MatchType",
           "required": true,
@@ -5641,6 +5897,7 @@
         {
           "default": "",
           "document": "Match values, which will be separated by semicolon when match type is `multiVal`.",
+          "example": "无",
           "member": "string",
           "name": "MatchValue",
           "required": true,
@@ -5650,11 +5907,52 @@
         {
           "default": "",
           "document": "Parameter description",
+          "example": "无",
           "member": "string",
           "name": "Description",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether it is global parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "IsGlobal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the parameter can be modified\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ModifiableInfo",
+          "name": "ModifiableInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether it is a function\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsFunc",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Function\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Func",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -5982,6 +6280,60 @@
       ],
       "type": "object"
     },
+    "ResetAccountPasswordRequest": {
+      "document": "ResetAccountPassword request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Database account name",
+          "example": "root",
+          "member": "string",
+          "name": "AccountName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New password of the database account",
+          "example": "abc@2018",
+          "member": "string",
+          "name": "AccountPassword",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cynosdbpg-on5xw0ni",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Host. Default value: `%`",
+          "example": "%",
+          "member": "string",
+          "name": "Host",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetAccountPasswordResponse": {
+      "document": "ResetAccountPassword response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ResumeServerlessRequest": {
       "document": "ResumeServerless request structure.",
       "members": [
@@ -6043,6 +6395,123 @@
         }
       ],
       "usage": "out"
+    },
+    "SearchClusterDatabasesRequest": {
+      "document": "SearchClusterDatabases request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The cluster ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "test",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to search exactly\nValid values: `0` (fuzzy search), `1` (exact search). \nDefault value: `0`.",
+          "example": "1",
+          "member": "int64",
+          "name": "MatchType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "SearchClusterDatabasesResponse": {
+      "document": "SearchClusterDatabases response structure.",
+      "members": [
+        {
+          "document": "Database List\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "string",
+          "name": "Databases",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SearchClusterTablesRequest": {
+      "document": "SearchClusterTables request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database name",
+          "example": "test",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data table name",
+          "example": "1",
+          "member": "string",
+          "name": "Table",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Data table type. Valid values:\n`view`: Only return to view,\n`base_table`: Only return to basic table,\n`all`: Return to view and table.",
+          "example": "all",
+          "member": "string",
+          "name": "TableType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SearchClusterTablesResponse": {
+      "document": "SearchClusterTables response structure.",
+      "members": [
+        {
+          "document": "Data table list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "DatabaseTables",
+          "name": "Tables",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "SecurityGroup": {
       "document": "Security group details",
@@ -6335,6 +6804,78 @@
       ],
       "type": "object"
     },
+    "SwitchProxyVpcRequest": {
+      "document": "SwitchProxyVpc request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "VPC ID in string",
+          "example": "xx",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID in string",
+          "example": "xx",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Valid hours of old IP",
+          "example": "xx",
+          "member": "int64",
+          "name": "OldIpReserveHours",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Database proxy group ID (required), which can be obtained through the `DescribeProxies` API.",
+          "example": "无",
+          "member": "string",
+          "name": "ProxyGroupId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchProxyVpcResponse": {
+      "document": "SwitchProxyVpc response structure.",
+      "members": [
+        {
+          "document": "Async task ID",
+          "example": "123",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Tag": {
       "document": "Information of tags associated with cluster, including `TagKey` and `TagValue`",
       "members": [
@@ -6595,6 +7136,15 @@
           "name": "DealMode",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Valid values: `NormalUpgrade` (Normal mode), `FastUpgrade` (QuickChange). If the system detects that the configuration modification process will cause a momentary disconnection, the process will be terminated.",
+          "example": "NormalUpgrade",
+          "member": "string",
+          "name": "UpgradeMode",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
