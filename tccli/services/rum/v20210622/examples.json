@@ -51,9 +51,15 @@
     "CreateWhitelist": [
       {
         "document": "",
-        "input": "https://rum.tencentcloudapi.com/?Action=CreateWhitelist\n&WhitelistUin=1123\n&Aid=222\n&Remark=Remarks\n&InstanceID=taw-123\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Msg\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Creating allowlist"
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateWhitelist\n<Common request parameters>\n\n{\n    \"InstanceID\": \"taw-123\",\n    \"Aid\": \"222\",\n    \"Remark\": \"Remarks\",\n    \"WhitelistUin\": \"1123\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Msg\": \"xx\",\n        \"ID\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Creating an allowlist"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateWhitelist\n<Common request parameters>\n\n{\n    \"InstanceID\": \"taw-123\",\n    \"Aid\": \"333\",\n    \"Remark\": \"222\",\n    \"WhitelistUin\": \"22323\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ID\": 77,\n        \"Msg\": \"success\",\n        \"RequestId\": \"fcaec326-8c68-4302-8624-c5b08b9f1893\"\n    }\n}",
+        "title": "12"
       }
     ],
     "DeleteInstance": [

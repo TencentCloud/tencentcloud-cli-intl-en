@@ -9318,7 +9318,7 @@
           "example": "Queue",
           "member": "string",
           "name": "CmqModel",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9328,7 +9328,7 @@
           "example": "sh",
           "member": "string",
           "name": "CmqRegion",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9354,7 +9354,7 @@
         },
         {
           "default": "",
-          "document": "Notification type, `CMQ` by default. If this parameter is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`.",
+          "document": "The notification type, `CMQ` by default. If this parameter is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`.\n\n<font color=\"red\">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>",
           "example": "URL",
           "member": "string",
           "name": "NotifyType",
@@ -10155,7 +10155,7 @@
       "members": [
         {
           "default": "",
-          "document": "The type of video processing input object, which supports COS and URL.",
+          "document": "The input type, which can be `COS` or `URL`.",
           "example": "NULL",
           "member": "string",
           "name": "Type",
@@ -13448,6 +13448,15 @@
           "name": "ScheduleId",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The task type.\n<li> `Online` (default): A task that is executed immediately.</li>\n<li> `Offline`: A task that is executed when the system is idle (within three days by default).</li>",
+          "example": "Online",
+          "member": "string",
+          "name": "TaskType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -14805,7 +14814,7 @@
           "example": "Queue ",
           "member": "string",
           "name": "CmqModel",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14815,7 +14824,7 @@
           "example": "sh",
           "member": "string",
           "name": "CmqRegion",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14851,7 +14860,7 @@
         },
         {
           "default": "",
-          "document": "The notification type. Valid values:\n<li>CMQ: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>\n<li>TDMQ-CMQ: Message queue</li>\n<li>URL: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>\n<li>SCF: We do not recommend this notification type, which you need to configure in the SCF console.</li>\nDefault value: `TDMQ-CMQ`.",
+          "document": "The notification type. Valid values:\n<li>`CMQ`: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>\n<li>`TDMQ-CMQ`: Message queue</li>\n<li>`URL`: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>\n<li>`SCF`: This notification type is not recommended. You need to configure it in the SCF console.</li>\n<font color=\"red\">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>",
           "example": "URL",
           "member": "string",
           "name": "NotifyType",

@@ -42,23 +42,11 @@
       "name": "Creates a custom error page",
       "output": "CreateCustomErrorPageResponse"
     },
-    "CreateDnsRecord": {
-      "document": "This API is used to create a DNS record.",
-      "input": "CreateDnsRecordRequest",
-      "name": "Creates a DNS record",
-      "output": "CreateDnsRecordResponse"
-    },
     "CreateIpTableList": {
       "document": "This API is used to create an IP blocklist/allowlist.",
       "input": "CreateIpTableListRequest",
       "name": "Creates an IP blocklist/allowlist.",
       "output": "CreateIpTableListResponse"
-    },
-    "CreateLoadBalancing": {
-      "document": "This API is used to create a CLB instance.",
-      "input": "CreateLoadBalancingRequest",
-      "name": "Creates a CLB instance.",
-      "output": "CreateLoadBalancingResponse"
     },
     "CreateLogSet": {
       "document": "This API is used to create a CLS logset.",
@@ -143,18 +131,6 @@
       "input": "DeleteApplicationProxyRuleRequest",
       "name": "Deletes an application proxy rule.",
       "output": "DeleteApplicationProxyRuleResponse"
-    },
-    "DeleteDnsRecords": {
-      "document": "This API is used to delete DNS records in batches.",
-      "input": "DeleteDnsRecordsRequest",
-      "name": "Deletes DNS records in batches",
-      "output": "DeleteDnsRecordsResponse"
-    },
-    "DeleteLoadBalancing": {
-      "document": "This API is used to delete a CLB instance.",
-      "input": "DeleteLoadBalancingRequest",
-      "name": "Deletes a CLB instance.",
-      "output": "DeleteLoadBalancingResponse"
     },
     "DeleteLogTopicTask": {
       "document": "This API is used to delete a shipping task.",
@@ -306,17 +282,17 @@
       "name": "Queries the list of default certificates",
       "output": "DescribeDefaultCertificatesResponse"
     },
+    "DescribeDistributionL4AccessData": {
+      "document": "This API is used to query the data of L4 connection duration over time.",
+      "input": "DescribeDistributionL4AccessDataRequest",
+      "name": "Queries the data of L4 connection duration over time",
+      "output": "DescribeDistributionL4AccessDataResponse"
+    },
     "DescribeDnsData": {
       "document": "This API is used to get DNS requests.",
       "input": "DescribeDnsDataRequest",
       "name": "Gets DNS requests",
       "output": "DescribeDnsDataResponse"
-    },
-    "DescribeDnsRecords": {
-      "document": "This API is used to query DNS records. Paging, sorting and filtering are supported.",
-      "input": "DescribeDnsRecordsRequest",
-      "name": "Queries DNS records",
-      "output": "DescribeDnsRecordsResponse"
     },
     "DescribeDnssec": {
       "document": "This API is used to query DNSSEC information.",
@@ -335,12 +311,6 @@
       "input": "DescribeIdentificationsRequest",
       "name": "Queries the verification information of a site.",
       "output": "DescribeIdentificationsResponse"
-    },
-    "DescribeLoadBalancing": {
-      "document": "This API is used to obtain a list of CLB instances.",
-      "input": "DescribeLoadBalancingRequest",
-      "name": "Obtains a list of CLB instances.",
-      "output": "DescribeLoadBalancingResponse"
     },
     "DescribeLogSets": {
       "document": "This API is used to get a list of logsets.",
@@ -369,7 +339,7 @@
     "DescribeOverviewL7Data": {
       "document": "This API is used to query the L7 traffic summary statistics recorded over time.",
       "input": "DescribeOverviewL7DataRequest",
-      "name": "Queries the L7 traffic summary statistics recorded over time.",
+      "name": "Queries the traffic data over time",
       "output": "DescribeOverviewL7DataResponse"
     },
     "DescribePrefetchTasks": {
@@ -441,7 +411,7 @@
     "DescribeSingleL7AnalysisData": {
       "document": "This API is used to query the list of L7 dimensional data.",
       "input": "DescribeSingleL7AnalysisDataRequest",
-      "name": "Queries the L7 dimensional data.",
+      "name": "Queries the calculated traffic analysis data ",
       "output": "DescribeSingleL7AnalysisDataResponse"
     },
     "DescribeSpeedTestingDetails": {
@@ -462,34 +432,40 @@
       "name": "Queries the quota limit on site tests.",
       "output": "DescribeSpeedTestingQuotaResponse"
     },
+    "DescribeTimingL4AccessData": {
+      "document": "This API is used to query the number of L4 connections over time.",
+      "input": "DescribeTimingL4AccessDataRequest",
+      "name": "Queries the number of L4 connections over time",
+      "output": "DescribeTimingL4AccessDataResponse"
+    },
     "DescribeTimingL4Data": {
       "document": "This API is used to query the list of L4 traffic data recorded over time.",
       "input": "DescribeTimingL4DataRequest",
-      "name": "Queries the L4 traffic data recorded over time.",
+      "name": "Queries the L4 traffic data over time",
       "output": "DescribeTimingL4DataResponse"
     },
     "DescribeTimingL7AnalysisData": {
       "document": "This API is used to query the L7 data recorded over time.",
       "input": "DescribeTimingL7AnalysisDataRequest",
-      "name": "Queries the L7 data recorded over time.",
+      "name": "Queries the traffic analysis data over time",
       "output": "DescribeTimingL7AnalysisDataResponse"
     },
     "DescribeTimingL7CacheData": {
       "document": "This API is used to query the time-series L7 cached data.",
       "input": "DescribeTimingL7CacheDataRequest",
-      "name": "Queries the L7 cached data recorded over time.",
+      "name": "Queries the cache analysis data over time",
       "output": "DescribeTimingL7CacheDataResponse"
     },
     "DescribeTopL7AnalysisData": {
       "document": "This API is used to query the top-ranked L7 traffic data.",
       "input": "DescribeTopL7AnalysisDataRequest",
-      "name": "Queries the top-ranked L7 data.",
+      "name": "Queries the traffic analysis data ",
       "output": "DescribeTopL7AnalysisDataResponse"
     },
     "DescribeTopL7CacheData": {
       "document": "This API is used to query the cached L7 top-ranked data.",
       "input": "DescribeTopL7CacheDataRequest",
-      "name": "Queries the top-ranked L7 cached data.",
+      "name": "Queries the ranked data of caching",
       "output": "DescribeTopL7CacheDataResponse"
     },
     "DescribeWebManagedRulesData": {
@@ -642,12 +618,6 @@
       "name": "Modifies the status of a default certificate",
       "output": "ModifyDefaultCertificateResponse"
     },
-    "ModifyDnsRecord": {
-      "document": "This API is used to modify DNS records.",
-      "input": "ModifyDnsRecordRequest",
-      "name": "Modifies DNS records",
-      "output": "ModifyDnsRecordResponse"
-    },
     "ModifyDnssec": {
       "document": "This API is used to modify the DNSSEC status of a site.",
       "input": "ModifyDnssecRequest",
@@ -659,18 +629,6 @@
       "input": "ModifyHostsCertificateRequest",
       "name": "Modifies the certificate of a domain name",
       "output": "ModifyHostsCertificateResponse"
-    },
-    "ModifyLoadBalancing": {
-      "document": "This API is used to modify a CLB instance.",
-      "input": "ModifyLoadBalancingRequest",
-      "name": "Modifies a CLB instance.",
-      "output": "ModifyLoadBalancingResponse"
-    },
-    "ModifyLoadBalancingStatus": {
-      "document": "This API is used to modify the status of a CLB instance.",
-      "input": "ModifyLoadBalancingStatusRequest",
-      "name": "Modifies the status of a CLB instance.",
-      "output": "ModifyLoadBalancingStatusResponse"
     },
     "ModifyLogTopicTask": {
       "document": "This API is used to modify a shipping task.",
@@ -1052,42 +1010,6 @@
         }
       ],
       "usage": "in"
-    },
-    "AdvancedOriginGroup": {
-      "document": "Advanced origin-pull configuration",
-      "members": [
-        {
-          "default": "",
-          "document": "Matching condition. The \"Target\" field must be unique.",
-          "example": "无",
-          "member": "OriginGroupCondition",
-          "name": "OriginGroupConditions",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "ID of the primary origin server.",
-          "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
-          "member": "string",
-          "name": "OriginGroupId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "ID of the secondary origin server.",
-          "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
-          "member": "string",
-          "name": "BackupOriginGroupId",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
     },
     "AiRule": {
       "document": "AI rule engine",
@@ -2872,96 +2794,6 @@
       ],
       "type": "object"
     },
-    "CreateDnsRecordRequest": {
-      "document": "CreateDnsRecord request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "The site ID of the DNS record.",
-          "example": "zone-225qgrnvbi9w",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The DNS record type. Values:\n<li>`A`: Point a domain name to an IPv4 address, such as 8.8.8.8.</li>\n<li>`AAAA`: Point a domain name to an IPv6 address.</li>\n<li>`MX`: It is used for email servers. The record value and priority parameters are provided by email service providers. If there are multiple MX records, the lower the priority value, the higher the priority.</li>\n<li>`CNAME`: Point a domain name to another domain name that can be resolved to an IP address.</li>\n<li>`TXT`: Identify and describe a domain name. It is usually used for domain verification and as SPF records (for anti-spam).</li>\n<li>`NS`: If you need to authorize a subdomain name to another DNS service provider for DNS resolution, you need to add an NS record. You cannot add an NS record for a root domain name.</li>\n<li>`CAA`: Specify CAs to issue certificates for sites.</li>\n<li>`SRV`: Identify a service used by a server. It is commonly used in Microsoft directory management.</li>",
-          "example": "A",
-          "member": "string",
-          "name": "Type",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The DNS record name.",
-          "example": "www.example.com",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The DNS record content.",
-          "example": "1.2.3.4",
-          "member": "string",
-          "name": "Content",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The proxy mode. Values:\n<li>`dns_only`: Only DNS</li>\n<li>`proxied`: Proxied</li>",
-          "example": "dns",
-          "member": "string",
-          "name": "Mode",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "TTL (in seconds). The smaller the value, the faster the record changes take effect. Default value: 300",
-          "example": "300",
-          "member": "int64",
-          "name": "TTL",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Specifies a value in the range 1–50 when you make changes to the MX records. A smaller value indicates higher priority. Note that the default value 0 will be used if this field is not specified.",
-          "example": "10",
-          "member": "int64",
-          "name": "Priority",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateDnsRecordResponse": {
-      "document": "CreateDnsRecord response structure.",
-      "members": [
-        {
-          "document": "The DNS record ID.",
-          "example": "record-225rcy8bw85g",
-          "member": "string",
-          "name": "DnsRecordId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "CreateIpTableListRequest": {
       "document": "CreateIpTableList request structure.",
       "members": [
@@ -2998,105 +2830,6 @@
     "CreateIpTableListResponse": {
       "document": "CreateIpTableList response structure.",
       "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateLoadBalancingRequest": {
-      "document": "CreateLoadBalancing request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "The site ID.",
-          "example": "zone-27q0p0bali16",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The load balancing hostname.",
-          "example": "test.tencent.com",
-          "member": "string",
-          "name": "Host",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The proxy mode. Values:\n<li>`dns_only`: Only DNS</li>\n<li>`proxied`: Proxied</li>",
-          "example": "cdn_only",
-          "member": "string",
-          "name": "Type",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The ID of the primary origin group.",
-          "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
-          "member": "string",
-          "name": "OriginGroupId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The ID of the secondary origin group (only available when `Type=proxied`). If not specified, it indicates that secondary origins are not used.",
-          "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
-          "member": "string",
-          "name": "BackupOriginGroupId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "When `Type=dns_only`, it indicates the amount of time that DNS records remain in the cache of a DNS server.\nValue range: 60-86400 (in seconds). If it's not specified, the default value 600 will be used.",
-          "example": "600",
-          "member": "uint64",
-          "name": "TTL",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "The origin-pull type. Values:\n<li>`normal`: Primary/Secondary origin-pull</li>\n<li>`advanced`: Advanced origin-pull (only used when `Type=proxied`)</li>If it is left empty, primary/secondary origin-pull is applied.",
-          "example": "normal",
-          "member": "string",
-          "name": "OriginType",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Advanced origin-pull configuration. This field is valid when `OriginType=advanced`.",
-          "example": "无",
-          "member": "AdvancedOriginGroup",
-          "name": "AdvancedOriginGroups",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateLoadBalancingResponse": {
-      "document": "CreateLoadBalancing response structure.",
-      "members": [
-        {
-          "document": "The load balancer ID.",
-          "example": "lb-97c8396e-cb88-4c9c-98d9-38e86463d12e",
-          "member": "string",
-          "name": "LoadBalancingId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -5152,78 +4885,6 @@
       ],
       "type": "object"
     },
-    "DeleteDnsRecordsRequest": {
-      "document": "DeleteDnsRecords request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "The site ID of the DNS record to be deleted.",
-          "example": "zone-25ryyvog1qih",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The ID of the DNS record to be deleted.",
-          "example": "record-25ryzh92h8qh",
-          "member": "string",
-          "name": "DnsRecordIds",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteDnsRecordsResponse": {
-      "document": "DeleteDnsRecords response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteLoadBalancingRequest": {
-      "document": "DeleteLoadBalancing request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "The site ID.",
-          "example": "zone-27q0p0bali16",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The load balancer ID.",
-          "example": "lb-97c8396e-cb88-4c9c-98d9-38e86463d12e",
-          "member": "string",
-          "name": "LoadBalancingId",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteLoadBalancingResponse": {
-      "document": "DeleteLoadBalancing response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DeleteLogTopicTaskRequest": {
       "document": "DeleteLogTopicTask request structure.",
       "members": [
@@ -6812,7 +6473,7 @@
         },
         {
           "default": "",
-          "document": "The statistical metric. Values:\n<li>`ddos_attackFlux_protocol`: Top-ranked protocols by DDoS attack traffic.</li>\n<li>`ddos_attackPackageNum_protocol`: Top-ranked protocols by DDoS attack packets.</li>\n<li>`ddos_attackNum_attackType`: Top-ranked attack types by DDoS attacks.</li>\n<li>`ddos_attackNum_sregion`: Top-ranked attack source regions by DDoS attacks.</li>\n<li>`ddos_attackFlux_sip`: Top-ranked attacker IPs by DDoS attack traffic.</li>\n<li>`ddos_attackFlux_sregion`: Top-ranked attack source regions by DDoS attack traffic.</li>",
+          "document": "The statistical metric. Values:\n<li>`ddos_attackFlux_protocol`: Rank protocols by the attack traffic.</li>\n<li>`ddos_attackPackageNum_protocol`: Rank protocols by the number of attack packets.</li>\n<li>`ddos_attackNum_attackType`: Rank attack types by the number of attacks.</li>\n<li>`ddos_attackNum_sregion`: Rank attacker regions by the number of attacks.</li>\n<li>`ddos_attackFlux_sip`: Rank attacker IPs by the number of attacks.</li>\n<li>`ddos_attackFlux_sregion`: Rank attacker regions by the number of attacks.</li>",
           "example": "ddos_attackSource_region",
           "member": "string",
           "name": "MetricName",
@@ -7230,6 +6891,105 @@
       ],
       "type": "object"
     },
+    "DescribeDistributionL4AccessDataRequest": {
+      "document": "DescribeDistributionL4AccessData request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Query start time",
+          "example": "2020-04-29T00:00:00Z",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query end time",
+          "example": "2020-04-30T00:00:00Z",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query metric. Vaules: \n<li>`l4Flow_connection_distribution`: Distribution of connection duration</li>",
+          "example": "[\"l4Flow_connections\"]",
+          "member": "string",
+          "name": "MetricNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "IDs of sites to be queried. All sites will be selected if this field is not specified.",
+          "example": "[\"zone-1234\"]",
+          "member": "string",
+          "name": "ZoneIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The query granularity. Values:\n<li>`min`: 1 minute</li>\n<li>`5min`: 5 minutes</li>\n<li>`hour`: 1 hour</li>\n<li>`day`: 1 day</li>If this field is not specified, the granularity is determined based on the query period. **Query period ≤ 1 hour**: 1-minute granularity; **1 hour < query period ≤ 2 days**: 5-minute granularity; **2 days < query period ≤ 7 days**: 1 hour granularity; **Query period > 7 days**: 1 day granularity.",
+          "example": "hour",
+          "member": "string",
+          "name": "Interval",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter conditions. See below for details: \n<li>`ruleId`:<br>   Filter by the <strong>forwarding rule ID</strong><br>   Type: String<br>   Required: No</li>\n<li>`proxyId`:<br>   Filter by the <strong>L4 proxy ID</strong><br>   Type: String<br>   Required: No</li>",
+          "example": "无",
+          "member": "QueryCondition",
+          "name": "QueryConditions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
+          "example": "mainland",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDistributionL4AccessDataResponse": {
+      "document": "DescribeDistributionL4AccessData response structure.",
+      "members": [
+        {
+          "document": "Total number of query results.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Distribution of connection duration\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TopDataRecord",
+          "name": "TopDataRecords",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDnsDataRequest": {
       "document": "DescribeDnsData request structure.",
       "members": [
@@ -7280,105 +7040,6 @@
           "example": "无",
           "member": "DnsData",
           "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeDnsRecordsRequest": {
-      "document": "DescribeDnsRecords request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "The site ID of the DNS record. All sites’ DNS records will be returned if this field is not specified.",
-          "example": "zone-20hyebgyfsko",
-          "member": "string",
-          "name": "ZoneId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`record-id`:<br>   Filter by <strong>DNS record ID</strong>, such as record-1a8df68z<br>   Type: String<br>Required: No\n<li>`record-name`:<br>   Filter by <strong>DNS record name</strong><br>   Type: String<br>Required: No\n<li>`record-type`:<br>   Filter by <strong>DNS record type</strong><br>   Type: String<br>Required: No<br>   Values:<br>   `A`: Point a domain name to an IPv4 address, such as 8.8.8.8.<br>   `AAAA`: Point a domain name to an IPv6 address.<br>   `CNAME`: Point a domain name to another domain name that can be resolved to an IP address.<br>   `TXT`: Identify and describe a domain name. It is usually used for domain verification and as SPF records (for anti-spam).<br>   `NS`: If you need to authorize a subdomain name to another DNS service provider for DNS resolution, you need to add an NS record. You cannot add an NS record for a root domain name.<br>   `CAA`: Specify CAs to issue certificates for sites.<br>   `SRV`: Identify a service used by a server. It is commonly used in Microsoft directory management.<br>  `MX`: Specify the mail server for receiving emails.\n<li>`mode`:<br>   Filter by <strong>proxy mode</strong><br>   Type: String<br>Required: No<br>   Values:<br>   `dns_only`: Only DNS<br>   `proxied`: Proxied\n<li>`ttl`:<br>   Filter by <strong>TTL</strong><br>   Type: String<br>Required: No",
-          "example": "无",
-          "member": "AdvancedFilter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "default": "",
-          "document": "The sorting order. Values:\n<li>`ASC`: Ascending order</li>\n<li>`desc`: Descending order</li> Default value: asc",
-          "example": "asc",
-          "member": "string",
-          "name": "Direction",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The match mode. Values:\n<li>`all`: Return all records that match the specified filter.</li>\n<li>`any`: Return any record that matches the specified filter.</li>Default value: all.",
-          "example": "all",
-          "member": "string",
-          "name": "Match",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The paginated query limit. Default value: 20. Maximum value: 1000.",
-          "example": "10",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "The page offset. Default value: 0",
-          "example": "0",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "The sorting criteria. Values:\n<li>`content`: DNS record content.</li>\n<li>`created_on`: Creation time of the DNS record.</li>\n<li>`mode`: Proxy mode.</li>\n<li>`record-name`: DNS record name.</li>\n<li>`ttl`: DNS TTL.</li>\n<li>`record-type`: DNS record type.</li>If this field is not specified, the DNS records are sorted based on `record-type` and `recrod-name`.",
-          "example": "record-name",
-          "member": "string",
-          "name": "Order",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeDnsRecordsResponse": {
-      "document": "DescribeDnsRecords response structure.",
-      "members": [
-        {
-          "document": "Total number of DNS records.",
-          "example": "1",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "List of DNS records",
-          "example": "无",
-          "member": "DnsRecord",
-          "name": "DnsRecords",
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -7568,69 +7229,6 @@
           "example": "无",
           "member": "Identification",
           "name": "Identifications",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeLoadBalancingRequest": {
-      "document": "DescribeLoadBalancing request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Offset for paginated queries. Default value: 0.",
-          "example": "0",
-          "member": "uint64",
-          "name": "Offset",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Limit on paginated queries. Value range: 1-1000. Default value: 10.",
-          "example": "10",
-          "member": "uint64",
-          "name": "Limit",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-1a8df68z<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported\n</li><li>`load-balancing-id`<br>   Filter by <strong>load balancer ID</strong>, such as lb-d21bfaf7-8d72-11ec-841d-00ff977fb3c8<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported\n</li><li>`host`:<br>   Filter by <strong>load balancing hostname</strong>, such as lb.tencent.com<br>   Type: String<br>   Required: No<br>   Fuzzy query: Supported (only one hostname allowed in a query)</li>",
-          "example": "无",
-          "member": "AdvancedFilter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeLoadBalancingResponse": {
-      "document": "DescribeLoadBalancing response structure.",
-      "members": [
-        {
-          "document": "Total number of records.",
-          "example": "10",
-          "member": "uint64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Load balancer information.",
-          "example": "[]",
-          "member": "LoadBalancing",
-          "name": "Data",
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -7946,21 +7544,21 @@
         },
         {
           "default": "",
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
-          "example": "\"mainland\"",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`tagKey`:<br>   Filter by <strong>tag key</strong><br>   Type: String<br>   Required: No</li>\n<li>`tagValue`<br>  Filter by <strong>tag value</strong><br>   Type: String<br>   Required: No</li>",
+          "document": "Filter conditions. See below for details: \n<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>\n<li>`tagValue`<br>  Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
+          "example": "\"mainland\"",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -8692,7 +8290,7 @@
         },
         {
           "default": "",
-          "document": "The key of the parameter QueryCondition, which is used to specify a filter. Values:\n<li>`country`: Country/Region;</li>\n<li>`domain`: Domain name;</li>\n<li>`protocol`: Protocol type;</li>\n<li>`tagKey`: Tag key;</li>\n<li>`tagValue`: Tag value.</li>",
+          "document": "Filter conditions. See below for details: \n<li>`country`:<br>   Filter by the <strong>country/region code</strong>. <a href=\"https://zh.wikipedia.org/wiki/ISO_3166-1\">ISO 3166</a> country codes are used.<br>   Type: String<br>   Required: No</li>\n<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>\n<li>`protocol`:<br>   Filter by the <strong>HTTP protocol</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>\n<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>\n<li>`tagValue`<br>  Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -8710,7 +8308,7 @@
         },
         {
           "default": "",
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
+          "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -8858,6 +8456,105 @@
       ],
       "type": "object"
     },
+    "DescribeTimingL4AccessDataRequest": {
+      "document": "DescribeTimingL4AccessData request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Query start time",
+          "example": "2020-04-29T00:00:00Z",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Query end time",
+          "example": "2020-04-30T00:00:00Z",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Metric to query. Values:\n<li>`l4Flow_connections`: Number of connections</li>",
+          "example": "[\"l4Flow_connections\"]",
+          "member": "string",
+          "name": "MetricNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "IDs of sites to be queried. All sites will be selected if this field is not specified.",
+          "example": "[\"zone-1234\"]",
+          "member": "string",
+          "name": "ZoneIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The query granularity. Values:\n<li>`min`: 1 minute</li>\n<li>`5min`: 5 minutes</li>\n<li>`hour`: 1 hour</li>\n<li>`day`: 1 day</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.",
+          "example": "hour",
+          "member": "string",
+          "name": "Interval",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Filter conditions. See below for details: \n<li>`ruleId`:<br>   Filter by the <strong>forwarding rule ID</strong><br>   Type: String<br>   Required: No</li>\n<li>`proxyId`:<br>   Filter by the <strong>L4 proxy ID</strong><br>   Type: String<br>   Required: No</li>",
+          "example": "无",
+          "member": "QueryCondition",
+          "name": "QueryConditions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
+          "example": "mainland",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTimingL4AccessDataResponse": {
+      "document": "DescribeTimingL4AccessData response structure.",
+      "members": [
+        {
+          "document": "Total number of query results.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of L4 connections over time\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TimingDataRecord",
+          "name": "TimingDataRecords",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTimingL4DataRequest": {
       "document": "DescribeTimingL4Data request structure.",
       "members": [
@@ -8917,7 +8614,7 @@
         },
         {
           "default": "",
-          "document": "The key of the parameter QueryCondition, which is used to specify a filter. Values:\n<li>`ruleId`: Filter by rule ID;</li>\n<li>`proxyId`: Filter by connection ID.</li>",
+          "document": "Filter conditions. See below for details: \n<li>`ruleId`:<br>   Filter by the <strong>forwarding rule ID</strong><br>   Type: String<br>   Required: No</li>\n<li>`proxyId`:<br>   Filter by the <strong>L4 proxy ID</strong><br>   Type: String<br>   Required: No</li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -8926,7 +8623,7 @@
         },
         {
           "default": "",
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
+          "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -9016,7 +8713,7 @@
         },
         {
           "default": "",
-          "document": "The key of the parameter QueryCondition, which is used to specify a filter. Values:\n<li>`country`: Country/Region;</li>\n<li>`domain`: Domain name;</li>\n<li>`protocol`: Protocol type;</li>\n<li>`resourceType`: Resource type;</li>\n<li>`statusCode`: Status code;</li>\n<li>`browserType`: Browser type;</li>\n<li>`deviceType`: Device type;</li>\n<li>`operatingSystemType`: OS type;</li>\n<li>`tlsVersion`: TLS version;</li>\n<li>`url`: URL address;</li>\n<li>`referer`: Refer header;</li>\n<li>`ipVersion`: IP version;</li>\n<li>`tagKey`: Tag key;</li>\n<li>`tagValue`: Tag value.</li>",
+          "document": "Filter conditions. See below for details: \n<li>`country`:<br>   Filter by the <strong>country/region code</strong>. <a href=\"https://zh.wikipedia.org/wiki/ISO_3166-1\">ISO 3166</a> country codes are used.<br>   Type: String<br>   Required: No</li>\n<li>`province`<br>   Filter by the <strong>province name</strong>. It’s only available when `Area` is `mainland`. <br>   Type: String<br>   Required: No</li>\n<li>`isp`<br>   Filter by the <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Type: String<br>   Required: No<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others</li>\n<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>\n<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. Separate multiple URLs with semicolons. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>\n<li>`referer`<br>   Filter by the <strong>Referer header</strong>, such as `example.com`. The query period cannot exceed 30 days.<br>   Type: String<br>   Required: No</li>\n<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>\n<li>`protocol`:<br>   Filter by the <strong>HTTP protocol</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>\n<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>\n<li>`browserType`<br>   Filter by the <strong>browser type</strong>. The query period cannot exceed 30 days. <br>   Type:  String<br>   Required:  No<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>\n<li>`deviceType`<br>   Filter by the <strong>device type</strong>. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>\n<li>`operatingSystemType`<br>   Filter by the <strong>operating system</strong>. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `Linux`：Linux OS;<br>   `MacOS`: OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>\n<li>`tlsVersion`<br>   Filter by the <strong>TLS version</strong>. The query period cannot exceed 30 days.<br>   Type: String<br>   Required: No<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>\n<li>`ipVersion`<br>   Filter by the <strong>IP version</strong>.<br>   Type: String<br>   Required: No<br>   Values:<br>   `4`: IPv4；<br>   `6`: IPv6.</li>\n<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>\n<li>`tagValue`<br>  Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -9025,7 +8722,7 @@
         },
         {
           "default": "",
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
+          "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -9106,7 +8803,7 @@
         },
         {
           "default": "",
-          "document": "The key of the parameter QueryCondition, which is used to specify a filter. Values:\n<li>`cacheType`: Cache type;</li>\n<li>`domain`: Host/domain name;</li>\n<li>`resourceType`: Resource type;</li>\n<li>`url`: URL address;</li>\n<li>`tagKey`: Tag key;</li>\n<li>`tagValue`: Tag value.</li>",
+          "document": "Filter conditions. See below for details: \n<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>\n<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>\n<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>\n<li>cacheType<br>  Filter by the <strong>cache hit result</strong>.<br> Type: String<br>   Required: No<br>   Values: <br>   `hit`: Cache hit; <br>   `dynamic`: Resource non-cacheable; <br>   `miss`: Cache miss</li>\n<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>\n<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>\n<li>`tagValue`<br>  Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -9124,7 +8821,7 @@
         },
         {
           "default": "",
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
+          "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -9214,7 +8911,7 @@
         },
         {
           "default": "",
-          "document": "The key of the parameter QueryCondition, which is used to specify a filter. Values:\n<li>`country`: Country/Region;</li>\n<li>`domain`: Domain name;</li>\n<li>`protocol`: Protocol type;</li>\n<li>`resourceType`: Resource type;</li>\n<li>`statusCode`: Status code;</li>\n<li>`browserType`: Browser type;</li>\n<li>`deviceType`: Device type;</li>\n<li>`operatingSystemType`: OS type;</li>\n<li>`tlsVersion`: TLS version;</li>\n<li>`url`: URL address;</li>\n<li>`referer`: Refer header;</li>\n<li>`ipVersion`: IP version;</li>\n<li>`tagKey`: Tag key;</li>\n<li>`tagValue`: Tag value.</li>",
+          "document": "Filter conditions. See below for details: \n<li>`country`:<br>   Filter by the <strong>country/region code</strong>. <a href=\"https://zh.wikipedia.org/wiki/ISO_3166-1\">ISO 3166</a> country codes are used.<br>   Type: String<br>   Required: No</li>\n<li>`province`<br>   Filter by the <strong>province name</strong>. It’s only available when `Area` is `mainland`. <br>   Type: String<br>   Required: No</li>\n<li>`isp`<br>   Filter by the <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Type: String<br>   Required: No<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others</li>\n<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>\n<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. Separate multiple URLs with semicolons. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>\n<li>`referer`<br>   Filter by the <strong>Referer header</strong>, such as `example.com`. The query period cannot exceed 30 days.<br>   Type: String<br>   Required: No</li>\n<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>\n<li>`protocol`:<br>   Filter by the <strong>HTTP protocol</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>\n<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>\n<li>`browserType`<br>   Filter by the <strong>browser type</strong>. The query period cannot exceed 30 days. <br>   Type:  String<br>   Required:  No<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>\n<li>`deviceType`<br>   Filter by the <strong>device type</strong>. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>\n<li>`operatingSystemType`<br>   Filter by the <strong>operating system</strong>. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `Linux`：Linux OS;<br>   `MacOS`: OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>\n<li>`tlsVersion`<br>   Filter by the <strong>TLS version</strong>. The query period cannot exceed 30 days.<br>   Type: String<br>   Required: No<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>\n<li>`ipVersion`<br>   Filter by the <strong>IP version</strong>.<br>   Type: String<br>   Required: No<br>   Values:<br>   `4`: IPv4；<br>   `6`: IPv6.</li>\n<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>\n<li>`tagValue`<br>  Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -9232,7 +8929,7 @@
         },
         {
           "default": "",
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
+          "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
           "example": "\"mainland\"",
           "member": "string",
           "name": "Area",
@@ -9322,7 +9019,7 @@
         },
         {
           "default": "",
-          "document": "The key of the parameter QueryCondition, which is used to specify a filter. Values:\n<li>`cacheType`: Cache type;</li>\n<li>`domain`: Host/domain name;</li>\n<li>`resourceType`: Resource type;</li>\n<li>`url`: URL address;</li>\n<li>`tagKey`: Tag key;</li>\n<li>`tagValue`: Tag value.</li>",
+          "document": "Filter conditions. See below for details: \n<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>\n<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>\n<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>\n<li>cacheType<br>  Filter by the <strong>cache hit result</strong>.<br> Type: String<br>   Required: No<br>   Values: <br>   `hit`: Cache hit; <br>   `dynamic`: Resource non-cacheable; <br>   `miss`: Cache miss</li>\n<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>\n<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>\n<li>`tagValue`<br>  Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -9340,7 +9037,7 @@
         },
         {
           "default": "",
-          "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
+          "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
           "example": "\"mainland\"",
           "member": "string",
           "name": "Area",
@@ -10721,162 +10418,6 @@
       ],
       "usage": "out"
     },
-    "DnsRecord": {
-      "document": "DNS record",
-      "members": [
-        {
-          "default": "",
-          "document": "The record ID.",
-          "example": "record-3d5dg39c",
-          "member": "string",
-          "name": "DnsRecordId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The DNS record type. Values:\n<li>`A`: Point a domain name to an IPv4 address, such as 8.8.8.8.</li>\n<li>`AAAA`: Point a domain name to an IPv6 address.</li>\n<li>`MX`: It is used for email servers. The record value and priority parameters are provided by email service providers. If there are multiple MX records, the lower the priority value, the higher the priority.</li>\n<li>`CNAME`: Point a domain name to another domain name that can be resolved to an IP address.</li>\n<li>`TXT`: Identify and describe a domain name. It is usually used for domain verification and as SPF records (for anti-spam).</li>\n<li>`NS`: If you need to authorize a subdomain name to another DNS service provider for DNS resolution, you need to add an NS record. You cannot add an NS record for a root domain name.</li>\n<li>`CAA`: Specify CAs to issue certificates for sites.</li>\n<li>`SRV`: Identify a service used by a server. It is commonly used in Microsoft directory management.</li>",
-          "example": "A",
-          "member": "string",
-          "name": "DnsRecordType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The record name.",
-          "example": "www.example.com",
-          "member": "string",
-          "name": "DnsRecordName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The record value.",
-          "example": "110.242.68.66",
-          "member": "string",
-          "name": "Content",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The proxy mode. Values:\n<li>`dns_only`: Only DNS</li>\n<li>`proxied`: Proxied</li>",
-          "example": "dns_only",
-          "member": "string",
-          "name": "Mode",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "TTL (in seconds). The smaller the value, the faster the record changes take effect.",
-          "example": "60",
-          "member": "int64",
-          "name": "TTL",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The MX record priority. The smaller the value, the higher the priority.",
-          "example": "0",
-          "member": "int64",
-          "name": "Priority",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The creation time.",
-          "example": "2020-09-22T00:00:00+00:00",
-          "member": "datetime_iso",
-          "name": "CreatedOn",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The modification time.",
-          "example": "2020-09-22T00:00:00+00:00",
-          "member": "datetime_iso",
-          "name": "ModifiedOn",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The lock status of the domain name.",
-          "example": "false",
-          "member": "bool",
-          "name": "Locked",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The site ID.",
-          "example": "zone-20hyebgyfsko",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The site name.",
-          "example": "example.com",
-          "member": "string",
-          "name": "ZoneName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The DNS record status. Values:\n<li>`active`: Activated</li>\n<li>`pending`: Deactivated</li>",
-          "example": "active",
-          "member": "string",
-          "name": "Status",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The CNAME address.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "xxx",
-          "member": "string",
-          "name": "Cname",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "default": "",
-          "document": "The service used by the domain name. Values:\n<li>`lb`: Load balancing</li>\n<li>`security`: Security protection</li>\n<li>`l4`: L4 proxy</li>",
-          "example": "lb",
-          "member": "string",
-          "name": "DomainStatus",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
     "DnssecInfo": {
       "document": "DNSSEC information",
       "members": [
@@ -11549,6 +11090,16 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Specifies whether to use the default caching policy when Cache-Control is not returned from the origin\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "on/off",
+          "member": "string",
+          "name": "DefaultCacheStrategy",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -11624,6 +11175,22 @@
         }
       ],
       "usage": "out"
+    },
+    "Grpc": {
+      "document": "Configuration of gRPC support",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether to enable gRPC support\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "Header": {
       "document": "HTTP header, used as input for the CreatePrefetchTask API",
@@ -12152,132 +11719,6 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "LoadBalancing": {
-      "document": "CLB information",
-      "members": [
-        {
-          "default": "",
-          "document": "The load balancer ID.",
-          "example": "lb-d21bfaf7-8d72-11ec-841d-00ff977fb3c8",
-          "member": "string",
-          "name": "LoadBalancingId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The site ID.",
-          "example": "zone-20hzkd4rdmy0",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Subdomain name. You can use @ to represent the root domain.",
-          "example": "test.tencent.com",
-          "member": "string",
-          "name": "Host",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The proxy mode. Values:\n<li>`dns_only`: Only DNS</li>\n<li>`proxied`: Proxied</li>",
-          "example": "dns_only",
-          "member": "string",
-          "name": "Type",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The cache time of DNS records when `Type=dns_only`.",
-          "example": "600",
-          "member": "uint64",
-          "name": "TTL",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The load balancer status. Values:\n<li>`online`: Deployed</li>\n<li>`process`: Deployment in progress</li>",
-          "example": "online",
-          "member": "string",
-          "name": "Status",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Schedules domain names.",
-          "example": "test.tencent.com.acc.edgeonedy1.com",
-          "member": "string",
-          "name": "Cname",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The ID of the primary origin group.",
-          "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
-          "member": "string",
-          "name": "OriginGroupId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The ID of the secondary origin group. If not specified, it indicates that secondary origins are not used.",
-          "example": "无",
-          "member": "string",
-          "name": "BackupOriginGroupId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The update time.",
-          "example": "2014-08-03T12:00:00+08:00",
-          "member": "datetime_iso",
-          "name": "UpdateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The origin-pull type. Values:\n<li>`normal`: Primary/Secondary origin-pull</li>\n<li>`advanced`: Advanced origin-pull</li>",
-          "example": "normal",
-          "member": "string",
-          "name": "OriginType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Advanced origin-pull configuration. This field is valid when `OriginType=advanced`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "无",
-          "member": "AdvancedOriginGroup",
-          "name": "AdvancedOriginGroups",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -13167,96 +12608,6 @@
       ],
       "type": "object"
     },
-    "ModifyDnsRecordRequest": {
-      "document": "ModifyDnsRecord request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "The record ID.",
-          "example": "record-21q7frcpseaw",
-          "member": "string",
-          "name": "DnsRecordId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The site ID.",
-          "example": "zone-20hyebgyfsko",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The DNS record type. Values:\n<li>`A`: Point a domain name to an IPv4 address, such as 8.8.8.8.</li>\n<li>`AAAA`: Point a domain name to an IPv6 address.</li>\n<li>`MX`: It is used for email servers. The record value and priority parameters are provided by email service providers. If there are multiple MX records, the lower the priority value, the higher the priority.</li>\n<li>`CNAME`: Point a domain name to another domain name that can be resolved to an IP address.</li>\n<li>`TXT`: Identify and describe a domain name. It is usually used for domain verification and as SPF records (for anti-spam).</li>\n<li>`NS`: If you need to authorize a subdomain name to another DNS service provider for DNS resolution, you need to add an NS record. You cannot add an NS record for a root domain name.</li>\n<li>`CAA`: Specify CAs to issue certificates for sites.</li>\n<li>`SRV`: Identify a service used by a server. It is commonly used in Microsoft directory management.</li>",
-          "example": "A",
-          "member": "string",
-          "name": "DnsRecordType",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The record name, which consists of the host record and site name. Note that the original configuration will be used if this field is not specified.",
-          "example": "a.example.com",
-          "member": "string",
-          "name": "DnsRecordName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The record content. Note that the original configuration will be used if this field is not specified.",
-          "example": "1.1.1.1",
-          "member": "string",
-          "name": "Content",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "TTL (in seconds). The smaller the value, the faster the record changes take effect. Default value: 300. Note that the original configuration will be used if this field is not specified.",
-          "example": "300",
-          "member": "int64",
-          "name": "TTL",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "Specifies a value in the range 1–50 when you make changes to the MX records. A smaller value indicates higher priority. Note that the default value 0 will be used if this field is not specified.",
-          "example": "1",
-          "member": "int64",
-          "name": "Priority",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "The proxy mode. Values:\n<li>`dns_only`: Only DNS</li>\n<li>`proxied`: Proxied</li></li>The original configuration will apply if this field is not specified.",
-          "example": "dns_only",
-          "member": "string",
-          "name": "Mode",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyDnsRecordResponse": {
-      "document": "ModifyDnsRecord response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "ModifyDnssecRequest": {
       "document": "ModifyDnssec request structure.",
       "members": [
@@ -13337,141 +12688,6 @@
     },
     "ModifyHostsCertificateResponse": {
       "document": "ModifyHostsCertificate response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyLoadBalancingRequest": {
-      "document": "ModifyLoadBalancing request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "The site ID.",
-          "example": "zone-27q0p0bali16",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The load balancer ID.",
-          "example": "lb-97c8396e-cb88-4c9c-98d9-38e86463d12e",
-          "member": "string",
-          "name": "LoadBalancingId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The proxy mode. Values:\n<li>`dns_only`: Only DNS</li>\n<li>`proxied`: Proxied</li>",
-          "example": "dns_only",
-          "member": "string",
-          "name": "Type",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The ID of the primary origin group.",
-          "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
-          "member": "string",
-          "name": "OriginGroupId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The ID of the secondary origin group (only available when `Type=proxied`). If not specified, it indicates that secondary origins are not used.",
-          "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
-          "member": "string",
-          "name": "BackupOriginGroupId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "When `Type=dns_only`, it indicates the amount of time that DNS records remain in the cache of a DNS server.\nValue range: 60-86400 (in seconds). If it's not specified, the default value 600 will be used.",
-          "example": "600",
-          "member": "uint64",
-          "name": "TTL",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "default": "",
-          "document": "The origin-pull type. Values:\n<li>`normal`: Primary/Secondary origin-pull</li>\n<li>`advanced`: Advanced origin-pull (only used when `Type=proxied`)</li>If it is left empty, primary/secondary origin-pull is applied.",
-          "example": "normal",
-          "member": "string",
-          "name": "OriginType",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Advanced origin-pull configuration. This field is valid when `OriginType=advanced`.\nIf it is left empty, this configuration is not used.",
-          "example": "无",
-          "member": "AdvancedOriginGroup",
-          "name": "AdvancedOriginGroups",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyLoadBalancingResponse": {
-      "document": "ModifyLoadBalancing response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyLoadBalancingStatusRequest": {
-      "document": "ModifyLoadBalancingStatus request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "The site ID.",
-          "example": "zone-27q0p0bali16",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The load balancer ID.",
-          "example": "lb-97c8396e-cb88-4c9c-98d9-38e86463d12e",
-          "member": "string",
-          "name": "LoadBalancingId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "The load balancer status. Values:\n<li>`online`: Enabled</li>\n<li>`offline`: Disabled</li>",
-          "example": "online",
-          "member": "string",
-          "name": "Status",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyLoadBalancingStatusResponse": {
-      "document": "ModifyLoadBalancingStatus response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -14204,6 +13420,15 @@
           "name": "ClientIpCountry",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Configuration of gRPC support\nThe original configuration will apply if this field is not specified.",
+          "example": "无",
+          "member": "Grpc",
+          "name": "Grpc",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -14501,42 +13726,6 @@
         }
       ],
       "usage": "out"
-    },
-    "OriginGroupCondition": {
-      "document": "Origin-pull condition",
-      "members": [
-        {
-          "default": "",
-          "document": "Match type. Values:\n<li>`url`: Partial URL path under the current site, such as \"/example\" and \"/example/foo.jpg\". You can use an asterisk (*) to indicate all values and a question mark (?) to indicate any single character.\n</li>",
-          "example": "url",
-          "member": "string",
-          "name": "Target",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "The operator. Values:\n<li>`equal`: Equals</li>",
-          "example": "equal",
-          "member": "string",
-          "name": "Operator",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "default": "",
-          "document": "Values of the match type.",
-          "example": "无",
-          "member": "string",
-          "name": "Values",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
     },
     "OriginRecord": {
       "document": "Origin group record",
@@ -18628,6 +17817,16 @@
           "example": "无",
           "member": "ClientIpCountry",
           "name": "ClientIpCountry",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Configuration of gRPC support\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "Grpc",
+          "name": "Grpc",
           "required": true,
           "type": "object",
           "value_allowed_null": true

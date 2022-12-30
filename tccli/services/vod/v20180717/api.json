@@ -324,6 +324,12 @@
       "name": "Queries DRM key information",
       "output": "DescribeDrmKeyProviderInfoResponse"
     },
+    "DescribeFileAttributes": {
+      "document": "This API is used to get file attributes asynchronously.\n- Currently, this API can only get the MD5 hash of a file.\n- If the file queried is in HLS or DASH format, the attributes of the index file will be returned.",
+      "input": "DescribeFileAttributesRequest",
+      "name": "Gets file attributes",
+      "output": "DescribeFileAttributesResponse"
+    },
     "DescribeImageProcessingTemplates": {
       "document": "This API is used to query image processing templates. You can specify the filters as well as the offset to start returning records from.",
       "input": "DescribeImageProcessingTemplatesRequest",
@@ -10441,12 +10447,93 @@
       ],
       "type": "object"
     },
-    "DescribeFileAttributesTask": {
-      "document": "",
+    "DescribeFileAttributesRequest": {
+      "document": "DescribeFileAttributes request structure.",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "The file ID.",
+          "example": "5285485487985270000",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "15400000001",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The session ID, which is used for de-duplication. If there was a request with the same session ID in the last three days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.",
+          "example": "demo",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.",
+          "example": "demo",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The task priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.",
+          "example": "1",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "A reserved parameter.",
+          "example": "1",
+          "member": "string",
+          "name": "ExtInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFileAttributesResponse": {
+      "document": "DescribeFileAttributes response structure.",
+      "members": [
+        {
+          "document": "The task ID.",
+          "example": "15400000001-GetMediaAttributes-bffb15f07530b57bc1aabb01fac74bca",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFileAttributesTask": {
+      "document": "The information of a task to get file attributes.",
+      "members": [
+        {
+          "default": "",
+          "document": "The task ID.",
           "example": "123",
           "member": "string",
           "name": "TaskId",
@@ -10456,7 +10543,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The task status. Valid values: PROCESSING, SUCCESS, FAIL.",
           "example": "PROCESSING",
           "member": "string",
           "name": "Status",
@@ -10466,7 +10553,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The error code. `0` indicates the task is successful. Other values indicate that the task failed.\n<li>`40000`: Invalid input parameter.</li>\n<li>`60000`: Source file error (e.g., video data is corrupted).</li>\n<li>`70000`: Internal server error. Please try again.</li>",
           "example": "0",
           "member": "int64",
           "name": "ErrCode",
@@ -10476,7 +10563,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The error code. An empty string indicates the task is successful; other values indicate that the task failed. For details, see [Video processing error codes](https://intl.cloud.tencent.com/document/product/266/39145?lang=en&pg=#video-processing).",
           "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
@@ -10486,7 +10573,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The error message.",
           "example": "\"\"",
           "member": "string",
           "name": "Message",
@@ -10496,7 +10583,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The task progress. Value range: 0-100.",
           "example": "0",
           "member": "int64",
           "name": "Progress",
@@ -10506,7 +10593,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The file ID",
           "example": "123",
           "member": "string",
           "name": "FileId",
@@ -10516,7 +10603,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The output of the task to get file attributes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DescribeFileAttributesTaskOutput",
           "name": "Output",
@@ -10526,7 +10613,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.",
           "example": "123",
           "member": "string",
           "name": "SessionId",
@@ -10536,7 +10623,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.",
           "example": "345",
           "member": "string",
           "name": "SessionContext",
@@ -10548,11 +10635,11 @@
       "usage": "out"
     },
     "DescribeFileAttributesTaskOutput": {
-      "document": "",
+      "document": "The output of a task to get file attributes.",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "The MD5 hash of the file.",
           "example": "123",
           "member": "string",
           "name": "Md5",
@@ -11786,7 +11873,7 @@
       "document": "DescribeTaskDetail response structure.",
       "members": [
         {
-          "document": "The task type. Valid values:\n<li>Procedure: Video processing</li>\n<li>EditMedia: Video editing</li>\n<li>SplitMedia: Video splitting</li>\n<li>ComposeMedia: Media file production</li>\n<li>WechatPublish: WeChat publishing</li>\n<li>WechatMiniProgramPublish: Publishing videos on WeChat Mini Program</li>\n<li>PullUpload: Pulling media files for upload</li>\n<li>FastClipMedia: Quick clipping</li>\n<li>RemoveWatermarkTask: Watermark removal</li>\n<li> ReviewAudioVideo: Moderation</li>",
+          "document": "The task type. Valid values:\n<li>`Procedure`: Video processing</li>\n<li>`EditMedia`: Video editing</li>\n<li>`SplitMedia`: Video splitting</li>\n<li>`ComposeMedia`: Media file production</li>\n<li>`WechatPublish`: WeChat publishing</li>\n<li>`WechatMiniProgramPublish`: Publishing videos on WeChat Mini Program</li>\n<li>`PullUpload`: Pulling media files for upload</li>\n<li>`FastClipMedia`: Quick clipping</li>\n<li>`RemoveWatermarkTask`: Watermark removal</li>\n<li>`DescribeFileAttributesTask`: Getting file attributes</li>\n<li> `ReviewAudioVideo`: Moderation</li>",
           "example": "Procedure",
           "member": "string",
           "name": "TaskType",
@@ -11975,7 +12062,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "The information of a task to get file attributes. This parameter is valid only if `TaskType` is `DescribeFileAttributes`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DescribeFileAttributesTask",
           "name": "DescribeFileAttributesTask",
@@ -12905,7 +12992,7 @@
         },
         {
           "default": "",
-          "document": "<b>Supported event types:</b>\n<li>NewFileUpload: Video uploaded.</li>\n<li>ProcedureStateChanged: Task flow status changed.</li>\n<li>FileDeleted: Video deleted.</li>\n<li>PullComplete: Finished video pulling.</li>\n<li>EditMediaComplete: Finished video editing.</li>\n<li>SplitMediaComplete: Finished video splitting.</li>\n<li>WechatPublishComplete: Published to WeChat.</li>\n<li>ComposeMediaComplete: Finished producing the media file.</li>\n<li>WechatMiniProgramPublishComplete: Finished publishing on WeChat Mini Program</li>\n<li>FastClipMediaComplete: Finished quick clipping.</li>\n<li>ReviewAudioVideoComplete: Finished moderation.</li>\n<li>ExtractTraceWatermarkComplete: Finished digital watermark extraction.</li>\n<b>v2017 task types:</b>\n<li>TranscodeComplete: Finished video transcoding.</li>\n<li>ConcatComplete: Finished video splicing.</li>\n<li>ClipComplete: Finished video clipping.</li>\n<li>CreateImageSpriteComplete: Finished image sprite generation.</li>\n<li>CreateSnapshotByTimeOffsetComplete: Finished time point screencapturing.</li>",
+          "document": "<b>Supported event types:</b>\n<li>`NewFileUpload`: Video uploaded.</li>\n<li>`ProcedureStateChanged`: Task flow status changed.</li>\n<li>`FileDeleted`: Video deleted.</li>\n<li>`PullComplete`: Finished video pulling.</li>\n<li>`EditMediaComplete`: Finished video editing.</li>\n<li>`SplitMediaComplete`: Finished video splitting.</li>\n<li>`WechatPublishComplete`: Published to WeChat.</li>\n<li>`ComposeMediaComplete`: Finished producing the media file.</li>\n<li>`WechatMiniProgramPublishComplete`: Finished publishing on WeChat Mini Program.</li>\n<li>`FastClipMediaComplete`: Finished quick clipping.</li>\n<li>`ReviewAudioVideoComplete`: Finished moderation.</li>\n<li>`ExtractTraceWatermarkComplete`: Finished digital watermark extraction.</li>\n<li>`DescribeFileAttributesComplete`: Finished getting file attributes.</li>\n<b>v2017 task types:</b>\n<li>`TranscodeComplete`: Finished video transcoding.</li>\n<li>`ConcatComplete`: Finished video splicing.</li>\n<li>`ClipComplete`: Finished video clipping.</li>\n<li>`CreateImageSpriteComplete`: Finished image sprite generation.</li>\n<li>`CreateSnapshotByTimeOffsetComplete`: Finished time point screencapturing.</li>",
           "example": "null",
           "member": "string",
           "name": "EventType",
@@ -13105,7 +13192,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The event of finishing getting file attributes. This parameter is valid only if `EventType` is `DescribeFileAttributesComplete`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "DescribeFileAttributesTask",
           "name": "DescribeFileAttributesCompleteEvent",
@@ -15883,6 +15970,7 @@
         {
           "default": "",
           "document": "Size of uploaded media file in bytes (which is the sum of size of m3u8 and ts files if the video is in HLS format).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "Size",
           "required": true,
@@ -15892,6 +15980,7 @@
         {
           "default": "",
           "document": "Container, such as m4a and mp4.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "mp4",
           "member": "string",
           "name": "Container",
           "required": true,
@@ -15901,6 +15990,7 @@
         {
           "default": "",
           "document": "Sum of the average bitrate of a video stream and that of an audio stream in bps.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "123",
           "member": "int64",
           "name": "Bitrate",
           "required": true,
@@ -15910,6 +16000,7 @@
         {
           "default": "",
           "document": "Maximum value of the height of a video stream in px.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1080",
           "member": "int64",
           "name": "Height",
           "required": true,
@@ -15919,6 +16010,7 @@
         {
           "default": "",
           "document": "Maximum value of the width of a video stream in px.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1080",
           "member": "int64",
           "name": "Width",
           "required": true,
@@ -15928,6 +16020,7 @@
         {
           "default": "",
           "document": "Video duration in seconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "30",
           "member": "float",
           "name": "Duration",
           "required": true,
@@ -15937,6 +16030,7 @@
         {
           "default": "",
           "document": "Selected angle during video recording in degrees.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "90",
           "member": "int64",
           "name": "Rotate",
           "required": true,
@@ -15946,6 +16040,7 @@
         {
           "default": "",
           "document": "Video stream information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaVideoStreamItem",
           "name": "VideoStreamSet",
           "required": true,
@@ -15955,6 +16050,7 @@
         {
           "default": "",
           "document": "Audio stream information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "MediaAudioStreamItem",
           "name": "AudioStreamSet",
           "required": true,
@@ -15964,6 +16060,7 @@
         {
           "default": "",
           "document": "Video duration in seconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "30.1",
           "member": "float",
           "name": "VideoDuration",
           "required": true,
@@ -15973,10 +16070,21 @@
         {
           "default": "",
           "document": "Audio duration in seconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "30.1",
           "member": "float",
           "name": "AudioDuration",
           "required": true,
           "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The MD5 hash of the file.\n<li><font color=red>Note</font>: To get the MD5 hash of a file, call the `DescribeFileAttributes` API. The information will be returned after the task is completed.</li>",
+          "example": "123",
+          "member": "string",
+          "name": "Md5",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -22500,6 +22608,15 @@
         },
         {
           "default": "",
+          "document": "The moderation template ID. Valid values:\n<li>`10` (default): The preset template, which can detect inappropriate information with labels including pornographic (`Porn`), terrorist (`Terror`), and politically sensitive (`Polity`).</li>",
+          "example": "无",
+          "member": "uint64",
+          "name": "Definition",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
           "document": "The priority of a task flow. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.",
           "example": "无",
           "member": "int64",
@@ -22660,6 +22777,26 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The URL of a suspected image (which will be deleted\n after `PicUrlExpireTime`).",
+          "example": "无",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The expiration time of the suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "无",
+          "member": "string",
+          "name": "PicUrlExpireTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -22761,6 +22898,16 @@
           "name": "FileId",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The moderation template ID.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Definition",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

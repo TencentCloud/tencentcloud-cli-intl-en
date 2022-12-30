@@ -741,6 +741,24 @@
           "name": "BuyingChannel",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "ResourcePackageType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "ResourcePackageNum",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -818,6 +836,15 @@
           "name": "Msg",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Allowlist ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "ID",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4956,7 +4983,7 @@
         },
         {
           "default": "",
-          "document": "Query statement, which is required and can contain up to 4,096 characters.",
+          "document": "Query statement, which is required and can contain up to 4,096 characters, such as \"id:120001 AND type:\\\"log\\\"\".",
           "example": "id:100",
           "member": "string",
           "name": "Query",

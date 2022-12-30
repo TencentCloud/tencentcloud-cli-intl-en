@@ -6,6 +6,12 @@
       "name": "Adds the user list",
       "output": "AddUsersForUserManagerResponse"
     },
+    "CreateCluster": {
+      "document": "This API is used to create an EMR cluster instance.",
+      "input": "CreateClusterRequest",
+      "name": "Creates EMR cluster instances",
+      "output": "CreateClusterResponse"
+    },
     "CreateInstance": {
       "document": "This API is used to create an EMR cluster instance.",
       "input": "CreateInstanceRequest",
@@ -83,6 +89,12 @@
       "input": "ModifyResourceSchedulerRequest",
       "name": "Changes the resource scheduler of YARN",
       "output": "ModifyResourceSchedulerResponse"
+    },
+    "ScaleOutCluster": {
+      "document": "This API is used to scale out a cluster.",
+      "input": "ScaleOutClusterRequest",
+      "name": "Scales out clusters",
+      "output": "ScaleOutClusterResponse"
     },
     "ScaleOutInstance": {
       "document": "This API is used to scale out instances.",
@@ -162,6 +174,92 @@
         }
       ],
       "type": "object"
+    },
+    "AllNodeResourceSpec": {
+      "document": "Resource description",
+      "members": [
+        {
+          "default": "",
+          "document": "The description of master nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "NodeResourceSpec",
+          "name": "MasterResourceSpec",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The description of core nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "NodeResourceSpec",
+          "name": "CoreResourceSpec",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The description of task nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "NodeResourceSpec",
+          "name": "TaskResourceSpec",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The description of common nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "NodeResourceSpec",
+          "name": "CommonResourceSpec",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of master nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "MasterCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of core nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "CoreCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of task nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "TaskCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The number of common nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "CommonCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "ApplicationStatics": {
       "document": "Yarn application statistics",
@@ -885,6 +983,213 @@
       ],
       "usage": "out"
     },
+    "CreateClusterRequest": {
+      "document": "CreateCluster request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The EMR version, such as `EMR-V2.3.0` that indicates the version 2.3.0 of EMR. You can query the EMR version [here](https://intl.cloud.tencent.com/document/product/589/66338?from_cn_redirect=1).",
+          "example": "EMR-V1.3.1",
+          "member": "string",
+          "name": "ProductVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable high availability for nodes. Valid values:\n<li>`true`: Enable</li>\n<li>`false`: Disable</li>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableSupportHAFlag",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The instance name.\n<li>Length limit: 6–36 characters.</li>\n<li>Can contain only Chinese characters, letters, digits, hyphens (-), and underscores (_).</li>",
+          "example": "emr测试",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The instance billing mode. Valid values:\n<li>`PREPAID`: The prepaid mode, namely monthly subscription.</li>\n<li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>",
+          "example": "PREPAID",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The instance login setting. This parameter allows you to set a login password or key for your purchased node.\n<li>If a key is set, the password will be used for login to the native component WebUI only.</li>\n<li>If no key is set, the password will be used for login to all purchased nodes and the native component WebUI.</li>",
+          "example": "无",
+          "member": "LoginSettings",
+          "name": "LoginSettings",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The configuration of cluster application scenario and supported components.",
+          "example": "无",
+          "member": "SceneSoftwareConfig",
+          "name": "SceneSoftwareConfig",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The details of the monthly subscription, including the instance period and auto-renewal. It is required if `InstanceChargeType` is `PREPAID`.",
+          "example": "无",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The ID of the security group to which the instance belongs, in the format of `sg-xxxxxxxx`. You can call the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API and obtain this parameter from the `SecurityGroupId` field in the response.",
+          "example": "sg-xxxxxxxxxx",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings.",
+          "example": "无",
+          "member": "ScriptBootstrapActionConfig",
+          "name": "ScriptBootstrapActionConfig",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "A unique random token, which is valid for 5 minutes and needs to be specified by the caller to prevent the client from repeatedly creating resources. An example value is `a9a90aa6-751a-41b6-aad6-fae360632808`.",
+          "example": "sdcdwxxxws",
+          "member": "string",
+          "name": "ClientToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable public IP access for master nodes. Valid values:\n<li>`NEED_MASTER_WAN`: Enable public IP for master nodes.</li>\n<li>`NOT_NEED_MASTER_WAN`: Disable.</li>The public IP is enabled for master nodes by default.",
+          "example": "无",
+          "member": "string",
+          "name": "NeedMasterWan",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable remote login over the public network. It is invalid if `SecurityGroupId` is passed in. It is disabled by default. Valid values:\n<li>`true`: Enable</li>\n<li>`false`: Disable</li>",
+          "example": "无",
+          "member": "bool",
+          "name": "EnableRemoteLoginFlag",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable Kerberos authentication. Valid values:\n<li>`true`: Enable</li>\n<li>`false` (default): Disable</li>",
+          "example": "无",
+          "member": "bool",
+          "name": "EnableKerberosFlag",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "[Custom software configuration](https://intl.cloud.tencent.com/document/product/589/35655?from_cn_redirect=1?from_cn_redirect=1)",
+          "example": "无",
+          "member": "string",
+          "name": "CustomConf",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The tag description list. This parameter is used to bind a tag to a resource instance.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The list of spread placement group IDs. Only one can be specified.\nYou can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1) API and obtain this parameter from the `DisasterRecoverGroupId` field in the response.",
+          "example": "[\"disa-xxxxx\"]",
+          "member": "string",
+          "name": "DisasterRecoverGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the cluster-level CBS encryption. Valid values:\n<li>`true`: Enable</li>\n<li>`false` (default): Disable</li>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableCbsEncryptFlag",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The metadatabase information. If `MetaType` is `EMR_NEW_META`, `MetaDataJdbcUrl`, `MetaDataUser`, `MetaDataPass`, and `UnifyMetaInstanceId` are not required.\nIf `MetaType` is `EMR_EXIT_META`, `UnifyMetaInstanceId` is required.\nIf `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `MetaDataPass` are required.",
+          "example": "无",
+          "member": "CustomMetaDBInfo",
+          "name": "MetaDBInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The shared component information.",
+          "example": "无",
+          "member": "DependService",
+          "name": "DependService",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The node resource specs. A spec is specified for each AZ, with the first spec for the primary AZ, the second for the backup AZ, and the third for the arbitrator AZ. If the multi-AZ mode is not enabled, only one spec is required.",
+          "example": "无",
+          "member": "ZoneResourceConfiguration",
+          "name": "ZoneResourceConfiguration",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateClusterResponse": {
+      "document": "CreateCluster response structure.",
+      "members": [
+        {
+          "document": "The instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "emr-xxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateInstanceRequest": {
       "document": "CreateInstance request structure.",
       "members": [
@@ -1200,6 +1505,62 @@
       ],
       "type": "object"
     },
+    "CustomMetaDBInfo": {
+      "document": "The user-created Hive-MetaDB instance information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The JDBC URL of the custom metadatabase instance. Example: jdbc:mysql://10.10.10.10:3306/dbname",
+          "example": "jdbc:mysql://ip:port/hive",
+          "member": "string",
+          "name": "MetaDataJdbcUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The custom metadatabase instance username.",
+          "example": "userName",
+          "member": "string",
+          "name": "MetaDataUser",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The custom metadatabase instance password.",
+          "example": "pwd",
+          "member": "string",
+          "name": "MetaDataPass",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The Hive-shared metadatabase type. Valid values:\n<li>`EMR_NEW_META`: The cluster creates a metadatabase by default.</li>\n<li>`EMR_EXIST_META`: The cluster uses a specified EMR-MetaDB instance.</li>\n<li>`USER_CUSTOM_META`: The cluster uses a custom metadatabase instance.</li>",
+          "example": "无",
+          "member": "string",
+          "name": "MetaType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The EMR-MetaDB instance.",
+          "example": "无",
+          "member": "string",
+          "name": "UnifyMetaInstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "CustomMetaInfo": {
       "document": "User-created Hive-MetaDB instance information",
       "members": [
@@ -1253,6 +1614,32 @@
           "member": "string",
           "name": "Value",
           "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "DependService": {
+      "document": "Shared component information",
+      "members": [
+        {
+          "default": "",
+          "document": "The shared component name.",
+          "example": "zookeeper",
+          "member": "string",
+          "name": "ServiceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The cluster to which the shared component belongs.",
+          "example": "emr-123",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1867,6 +2254,42 @@
         }
       ],
       "type": "object"
+    },
+    "DiskSpecInfo": {
+      "document": "Node disk information",
+      "members": [
+        {
+          "default": "",
+          "document": "The number of disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The system disk type. Valid values:\n<li>`CLOUD_SSD`: Cloud SSD</li>\n<li>`CLOUD_PREMIUM`: Premium cloud disk</li>\n<li>`CLOUD_BASIC`: Cloud HDD</li>\n<li>`LOCAL_BASIC`: Local disk</li>\n<li>`LOCAL_SSD`: Local SSD</li>\n\nThe data disk type. Valid values:\n<li>`CLOUD_SSD`: Cloud SSD</li>\n<li>`CLOUD_PREMIUM`: Premium cloud disk</li>\n<li>`CLOUD_BASIC`: Cloud HDD</li>\n<li>`LOCAL_BASIC`: Local disk</li>\n<li>`LOCAL_SSD`: Local SSD</li>\n<li>`CLOUD_HSSD`: Enhanced SSD</li>\n<li>`CLOUD_THROUGHPUT`: Throughput HDD</li>\n<li>CLOUD_TSSD: ulTra SSD</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "CLOUD_SSD",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The disk capacity in GB.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "DynamicPodSpec": {
       "document": "Pod floating specification",
@@ -3059,6 +3482,32 @@
       ],
       "type": "object"
     },
+    "InstanceChargePrepaid": {
+      "document": "The instance prepayment parameter. It applies only when the billing type is `PREPAID`.\n",
+      "members": [
+        {
+          "default": "",
+          "document": "The period of monthly subscription, which defaults to 1 and is expressed in month.\nValid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.",
+          "example": "无",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether to enable auto-renewal. Valid values:\n<li>`true`: Enable</li>\n<li>`false` (default): Disable</li>",
+          "example": "无",
+          "member": "bool",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "LoginSettings": {
       "document": "Login settings",
       "members": [
@@ -3901,6 +4350,62 @@
       ],
       "usage": "out"
     },
+    "NodeResourceSpec": {
+      "document": "Resource details",
+      "members": [
+        {
+          "default": "",
+          "document": "The spec type, such as `S2.MEDIUM8`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "S2.MEDIUM8",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The system disk, which can be up to 1 PCS.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DiskSpecInfo",
+          "name": "SystemDisk",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The list of tags to be bound.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The cloud data disk, which can be up to 15 PCS.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DiskSpecInfo",
+          "name": "DataDisk",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The local data disk.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DiskSpecInfo",
+          "name": "LocalDataDisk",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "OutterResource": {
       "document": "Resource details",
       "members": [
@@ -4046,6 +4551,168 @@
         }
       ],
       "usage": "in"
+    },
+    "PodNewParameter": {
+      "document": "The custom pod permission and parameter.",
+      "members": [
+        {
+          "default": "",
+          "document": "The TKE or EKS cluster ID.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom permissions\nExamples:\n{\n  \"apiVersion\": \"v1\",\n  \"clusters\": [\n    {\n      \"cluster\": {\n        \"certificate-authority-data\": \"xxxxxx==\",\n        \"server\": \"https://xxxxx.com\"\n      },\n      \"name\": \"cls-xxxxx\"\n    }\n  ],\n  \"contexts\": [\n    {\n      \"context\": {\n        \"cluster\": \"cls-xxxxx\",\n        \"user\": \"100014xxxxx\"\n      },\n      \"name\": \"cls-a44yhcxxxxxxxxxx\"\n    }\n  ],\n  \"current-context\": \"cls-a4xxxx-context-default\",\n  \"kind\": \"Config\",\n  \"preferences\": {},\n  \"users\": [\n    {\n      \"name\": \"100014xxxxx\",\n      \"user\": {\n        \"client-certificate-data\": \"xxxxxx\",\n        \"client-key-data\": \"xxxxxx\"\n      }\n    }\n  ]\n}",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Config",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom parameters\nExamples:\n{\n    \"apiVersion\": \"apps/v1\",\n    \"kind\": \"Deployment\",\n    \"metadata\": {\n      \"name\": \"test-deployment\",\n      \"labels\": {\n        \"app\": \"test\"\n      }\n    },\n    \"spec\": {\n      \"replicas\": 3,\n      \"selector\": {\n        \"matchLabels\": {\n          \"app\": \"test-app\"\n        }\n      },\n      \"template\": {\n        \"metadata\": {\n          \"annotations\": {\n            \"your-organization.com/department-v1\": \"test-example-v1\",\n            \"your-organization.com/department-v2\": \"test-example-v2\"\n          },\n          \"labels\": {\n            \"app\": \"test-app\",\n            \"environment\": \"production\"\n          }\n        },\n        \"spec\": {\n          \"nodeSelector\": {\n            \"your-organization/node-test\": \"test-node\"\n          },\n          \"containers\": [\n            {\n              \"name\": \"nginx\",\n              \"image\": \"nginx:1.14.2\",\n              \"ports\": [\n                {\n                  \"containerPort\": 80\n                }\n              ]\n            }\n          ],\n          \"affinity\": {\n            \"nodeAffinity\": {\n              \"requiredDuringSchedulingIgnoredDuringExecution\": {\n                \"nodeSelectorTerms\": [\n                  {\n                    \"matchExpressions\": [\n                      {\n                        \"key\": \"disk-type\",\n                        \"operator\": \"In\",\n                        \"values\": [\n                          \"ssd\",\n                          \"sas\"\n                        ]\n                      },\n                      {\n                        \"key\": \"cpu-num\",\n                        \"operator\": \"Gt\",\n                        \"values\": [\n                          \"6\"\n                        ]\n                      }\n                    ]\n                  }\n                ]\n              }\n            }\n          }\n        }\n      }\n    }\n  }",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Parameter",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "PodNewSpec": {
+      "document": "Resource descriptions for container resource scale-out",
+      "members": [
+        {
+          "default": "",
+          "document": "The identifier of an external resource provider, such as \"cls-a1cd23fa\".",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ResourceProviderIdentifier",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The type of the external resource provider, such as \"tke\". Currently, only \"tke\" is supported.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ResourceProviderType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The purpose of the resource, which means the node type and can only be \"TASK\".",
+          "example": "\"\"",
+          "member": "string",
+          "name": "NodeFlag",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of CPUs.",
+          "example": "\"\"",
+          "member": "uint64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The memory size in GB.",
+          "example": "\"\"",
+          "member": "uint64",
+          "name": "Memory",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The EKS cluster - CPU type. Valid values: `intel` and `amd`.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "CpuType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The data directory mounting information of the pod node.",
+          "example": "\"\"",
+          "member": "PodVolume",
+          "name": "PodVolumes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the dynamic spec is used. Valid values:\n<li>`true`: Yes</li>\n<li>`false` (default): No</li>",
+          "example": "\"\"",
+          "member": "bool",
+          "name": "EnableDynamicSpecFlag",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The dynamic spec.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "DynamicPodSpec",
+          "name": "DynamicPodSpec",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The unique VPC ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The unique VPC subnet ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The pod name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PodName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "PodParameter": {
       "document": "Custom pod permission and parameter",
@@ -4218,6 +4885,32 @@
         }
       ],
       "usage": "both"
+    },
+    "PodSpecInfo": {
+      "document": "Other pod information.",
+      "members": [
+        {
+          "default": "",
+          "document": "The specified information such as pod spec and source for scale-out with pod resources.",
+          "example": "无",
+          "member": "PodNewSpec",
+          "name": "PodSpec",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The custom pod permission and parameter.",
+          "example": "无",
+          "member": "PodNewParameter",
+          "name": "PodParameter",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "PodVolume": {
       "document": "Description of Pod storage.",
@@ -4661,6 +5354,222 @@
       ],
       "usage": "both"
     },
+    "ScaleOutClusterRequest": {
+      "document": "ScaleOutCluster request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The node billing mode. Valid values:\n<li>`PREPAID`：The prepaid mode, namely monthly subscription.</li>\n<li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>\n<li>`SPOTPAID`: The spot instance mode (for task nodes only).</li>",
+          "example": "\"\"",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The cluster instance ID.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The type and number of nodes to be added.",
+          "example": "无",
+          "member": "ScaleOutNodeConfig",
+          "name": "ScaleOutNodeConfig",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "A unique random token, which is valid for 5 minutes and needs to be specified by the caller to prevent the client from repeatedly creating resources. An example value is `a9a90aa6-751a-41b6-aad6-fae36063280`.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ClientToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The details of the monthly subscription, including the instance period and auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.",
+          "example": "无",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings.",
+          "example": "无",
+          "member": "ScriptBootstrapActionConfig",
+          "name": "ScriptBootstrapActionConfig",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The services to be deployed for new nodes. By default, new nodes will inherit all services deployed for the current node type. Deployed services include default optional services. This parameter only supports optional services. For example, if `HDFS`, `YARN`, and `Impala` have been deployed for existing task nodes, only `HDFS` and `YARN` are passed in with this parameter if `Impala` is not deployed during the task node scale-out with API.",
+          "example": "无",
+          "member": "int64",
+          "name": "SoftDeployInfo",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The processes to be deployed. All processes for services to be added are deployed by default. Deployed processes can be changed. For example, `HDFS`, `YARN`, and `Impala` have been deployed for current task nodes, and default services are `DataNode`, `NodeManager`, and `ImpalaServer`; if you want to change deployed processes, you can set this parameter to `DataNode,NodeManager,ImpalaServerCoordinator` or `DataNode,NodeManager,ImpalaServerExecutor`.",
+          "example": "无",
+          "member": "int64",
+          "name": "ServiceNodeInfo",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The list of spread placement group IDs. Only one can be specified.\nYou can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1) API and obtain this parameter from the `DisasterRecoverGroupId` field in the response.",
+          "example": "无",
+          "member": "string",
+          "name": "DisasterRecoverGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The list of tags bound to added nodes.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The type of resources to add. Valid values: `host` (general CVM resources) and `pod` (resources provided by a TKE or EKS cluster).",
+          "example": "无",
+          "member": "string",
+          "name": "HardwareSourceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The pod resource information.",
+          "example": "无",
+          "member": "PodSpecInfo",
+          "name": "PodSpecInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The server group name selected for ClickHouse cluster scale-out.",
+          "example": "无",
+          "member": "string",
+          "name": "ClickHouseClusterName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The server group type selected for ClickHouse cluster scale-out. Valid values: `new` (create a group) and `old` (select an existing group).",
+          "example": "无",
+          "member": "string",
+          "name": "ClickHouseClusterType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The YARN node label specified for scale-out.",
+          "example": "无",
+          "member": "string",
+          "name": "YarnNodeLabel",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to start services after scale-out.\n<li>`true`: Yes</li>\n<li>`false` (default): No</li>",
+          "example": "无",
+          "member": "bool",
+          "name": "EnableStartServiceFlag",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The spec settings.",
+          "example": "无",
+          "member": "NodeResourceSpec",
+          "name": "ResourceSpec",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The ID of the AZ where the instance resides, such as `ap-guangzhou-1`. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain this ID from the `Zone` field in the response.",
+          "example": "无",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The subnet, which defaults to the subnet used when the cluster is created.",
+          "example": "sub-xxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ScaleOutClusterResponse": {
+      "document": "ScaleOutCluster response structure.",
+      "members": [
+        {
+          "document": "The instance ID.",
+          "example": "emr-5n3l5c83",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The client token.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ClientToken",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The scale-out workflow ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ScaleOutInstanceRequest": {
       "document": "ScaleOutInstance request structure.",
       "members": [
@@ -4957,6 +5866,104 @@
         }
       ],
       "type": "object"
+    },
+    "ScaleOutNodeConfig": {
+      "document": "The type and number of nodes to be added.",
+      "members": [
+        {
+          "default": "",
+          "document": "Valid values of node type:\n  <li>MASTER</li>\n  <li>TASK</li>\n  <li>CORE</li>\n  <li>ROUTER</li>",
+          "example": "无",
+          "member": "string",
+          "name": "NodeFlag",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of nodes.",
+          "example": "无",
+          "member": "uint64",
+          "name": "NodeCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "SceneSoftwareConfig": {
+      "document": "The configuration of cluster application scenario and supported components.",
+      "members": [
+        {
+          "default": "",
+          "document": "The list of deployed components. The list of component options varies by `ProductVersion` (EMR version). For more information, see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).\nThe instance type, `hive` or `flink`.",
+          "example": "[\"hadoop-2.8.4\\n\",\"zookeeper-3.4.9\\n\",\"knox-1.2.0\\n\"]",
+          "member": "string",
+          "name": "Software",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The scenario name, which defaults to `Hadoop-Default`. For more details, see [here](https://intl.cloud.tencent.com/document/product/589/14624?from_cn_redirect=1). Valid values:\nHadoop-Kudu\nHadoop-Zookeeper\nHadoop-Presto\nHadoop-Hbase\nHadoop-Default",
+          "example": "Hadoop-Kudu",
+          "member": "string",
+          "name": "SceneName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ScriptBootstrapActionConfig": {
+      "document": "The bootstrap action.",
+      "members": [
+        {
+          "default": "",
+          "document": "The COS URL of the script, in the format of `https://beijing-111111.cos.ap-beijing.myqcloud.com/data/test.sh`. For the COS bucket list, see [Bucket List](https://console.cloud.tencent.com/cos/bucket).",
+          "example": "https://becklong-cos-1258469122.cos.ap-guangzhou.myqcloud.com/te",
+          "member": "string",
+          "name": "CosFileURI",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The execution time of the bootstrap action script. Valid values:\n<li>`resourceAfter`: After node initialization</li>\n<li>`clusterAfter`: After cluster start</li>\n<li>`clusterBefore`: Before cluster start</li>",
+          "example": "无",
+          "member": "string",
+          "name": "ExecutionMoment",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The execution script parameter. The parameter format must comply with standard shell specifications.",
+          "example": "无",
+          "member": "string",
+          "name": "Args",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The script file name.",
+          "example": "无",
+          "member": "string",
+          "name": "CosFileName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "SearchItem": {
       "document": "Search field",
@@ -5364,6 +6371,78 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VirtualPrivateCloud": {
+      "document": "VPC parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "The VPC ID.",
+          "example": "vpc-xxxxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The subnet ID.",
+          "example": "subnet-xxxxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ZoneResourceConfiguration": {
+      "document": "AZ configurations",
+      "members": [
+        {
+          "default": "",
+          "document": "The VPC configuration information. This parameter is used to specify the VPC ID, subnet ID and other information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VirtualPrivateCloud",
+          "name": "VirtualPrivateCloud",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Placement",
+          "name": "Placement",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The specs of all nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AllNodeResourceSpec",
+          "name": "AllNodeResourceSpec",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "For a single AZ, `ZoneTag` can be left out. For a double-AZ mode, `ZoneTag` is set to `master` and `standby` for the first and second AZs, respectively. If there are three AZs, `ZoneTag` is set to `master`, `standby`, and `third-party` for the first, second, and third AZs, respectively. Valid values:\n  <li>master</li>\n  <li>standby</li>\n  <li>third-party</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ZoneTag",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
