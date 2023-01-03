@@ -170,7 +170,7 @@
     ],
     "DescribeInstanceSpecs": [
       {
-        "document": "",
+        "document": "该接口（DescribeInstanceSpecs）用于查询可售卖实例规格信息",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceSpecs\n<Common request parameters>\n\n{\n    \"DbType\": \"MYSQL\"\n}",
         "output": "{\n    \"Response\": {\n        \"InstanceSpecSet\": [\n            {\n                \"MaxStorageSize\": 1,\n                \"ZoneStockInfos\": [\n                    {\n                        \"HasStock\": true,\n                        \"Zone\": \"xx\"\n                    }\n                ],\n                \"MachineType\": \"xx\",\n                \"HasStock\": true,\n                \"Memory\": 1,\n                \"MinStorageSize\": 1,\n                \"MaxIoBandWidth\": 0,\n                \"Cpu\": 1,\n                \"MaxIops\": 0\n            },\n            {\n                \"MaxStorageSize\": 1,\n                \"ZoneStockInfos\": [\n                    {\n                        \"HasStock\": true,\n                        \"Zone\": \"xx\"\n                    }\n                ],\n                \"MachineType\": \"xx\",\n                \"HasStock\": true,\n                \"Memory\": 1,\n                \"MinStorageSize\": 1,\n                \"MaxIoBandWidth\": 0,\n                \"Cpu\": 1,\n                \"MaxIops\": 0\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying purchasable instance specification information"

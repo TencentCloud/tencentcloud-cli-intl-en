@@ -1443,7 +1443,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Instance initialization configuration information, which is used to select instances with different specifications when purchasing a cluster.",
           "example": "无",
           "member": "InstanceInitInfo",
           "name": "InstanceInitInfos",
@@ -1854,7 +1854,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "CynosdbClusterDetail": {
       "document": "Cluster details",
@@ -4897,11 +4897,11 @@
       "type": "object"
     },
     "InstanceInitInfo": {
-      "document": "",
+      "document": "Instance initialization configuration information",
       "members": [
         {
           "default": "",
-          "document": "",
+          "document": "Instance CPU",
           "example": "1",
           "member": "int64",
           "name": "Cpu",
@@ -4911,7 +4911,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Instance memory",
           "example": "2",
           "member": "int64",
           "name": "Memory",
@@ -4921,7 +4921,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Instance type. Valid values:`rw`, `ro`.",
           "example": "rw",
           "member": "string",
           "name": "InstanceType",
@@ -4931,7 +4931,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Number of the instances. Value range: 1-15.",
           "example": "1",
           "member": "int64",
           "name": "InstanceCount",
