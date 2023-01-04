@@ -71,7 +71,7 @@
     "CreateLiveCallbackTemplate": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=CreateLiveCallbackTemplate\n&TemplateName=testName\n&Description=test\n&CallbackKey=adasda131312\n&StreamBeginNotifyUrl=http://www.yourdomain.com/api/notify?action=streamBegin\n&StreamEndNotifyUrl=http://www.yourdomain.com/api/notify?action=streamEnd\n&RecordNotifyUrl=http://www.yourdomain.com/api/notify?action=record\n&SnapshotNotifyUrl=http://www.yourdomain.com/api/notify?action=snapshot\n&PornCensorshipNotifyUrl=http://www.yourdomain.com/api/notify?action=porn\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLiveCallbackTemplate\n<Common request parameters>\n\n{\n    \"StreamBeginNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=streamBegin\",\n    \"StreamEndNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=streamEnd\",\n    \"TemplateName\": \"testName\",\n    \"RecordNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=record\",\n    \"SnapshotNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=snapshot\",\n    \"PornCensorshipNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=porn\",\n    \"CallbackKey\": \"adasda131312\",\n    \"Description\": \"test\"\n}",
         "output": "{\n    \"Response\": {\n        \"TemplateId\": 1000,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
@@ -275,8 +275,16 @@
     "DeleteRecordTask": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=DeleteRecordTask\r\n&TaskId=UZZUVbQ1FSQFlvKxYSBxUVGzB00UEFTZU5RlNURlhR1FDUVBFUWpCkNbUUBKb\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRecordTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"UZZUVbQ1FSQFlvKxYSBxUVGzB00UEFTZU5RlNURlhR1FDUVBFUWpCkNbUUBKb\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeAllStreamPlayInfoList": [
+      {
+        "document": "",
+        "input": "https://live.tencentcloudapi.com/?Action=DescribeAllStreamPlayInfoList\n&QueryTime=2019-12-12 10:00:00\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        &QueryTime=2019-12-12 10:00:00\n        \"DataInfoList\": [\n            {\n                \"Bandwidth\": 1.82,\n                \"Online\": 1,\n                \"PlayDomain\": \"domain.test1.com\",\n                \"Protocol\": \"HLS\",\n                \"Rate\": 0,\n                \"Request\": 19,\n                \"StreamName\": \"test1\",\n            },\n            {\n                \"Bandwidth\": 1.59,\n                \"Online\": 1,\n                \"PlayDomain\": \"domain.test2.com\",\n                \"Protocol\": \"Flv\",\n                \"Rate\": 0,\n                \"Request\": 10,\n                \"StreamName\": \"test2\"\n            },\n            {\n                \"Bandwidth\": 3.6,\n                \"Online\": 2,\n                \"PlayDomain\": \"domain.test3.com\",\n                \"Protocol\": \"Flv\",\n                \"Rate\": 0,\n                \"Request\": 12,\n                \"StreamName\": \"test3\"\n            }\n        ],\n        \"RequestId\": \"k54e3deb-f318-4147-8a68-3c959642f9ec\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -640,6 +648,14 @@
         "title": "Sample request"
       }
     ],
+    "DescribeStreamPushInfoList": [
+      {
+        "document": "",
+        "input": "https://live.tencentcloudapi.com/?Action=DescribeStreamPushInfoList\n&StartTime=2019-06-21 12:00:00\n&EndTime=2019-06-21 12:01:02\n&StreamName=abcd\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"DataInfoList\": [\n            {\n                \"StreamParam\": \"xx\",\n                \"ACodec\": \"AAC\",\n                \"AppName\": \"live\",\n                \"AudioFps\": 43,\n                \"AudioRate\": 131580,\n                \"AudioTs\": 5004,\n                \"BeginPushTime\": \"2019-06-21 00:29:12.252\",\n                \"ClientIp\": \"125.39.132.102\",\n                \"LocalTs\": 5000,\n                \"PushDomain\": \"123.livepush.myqcloud.com\",\n                \"Resolution\": \"368*640\",\n                \"Sequence\": \"10151483429474411508\",\n                \"Time\": \"2019-06-21 01:10:39.87\",\n                \"VCodec\": \"H264\",\n                \"VideoFps\": 24,\n                \"VideoRate\": 701528,\n                \"VideoTs\": 5032,\n                \"MateFps\": 30,\n                \"MetaAudioRate\": 22,\n                \"MetaVideoRate\": 4885,\n                \"Bandwidth\": 1.0,\n                \"Flux\": 1.0\n            }\n        ],\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "DescribeTopClientIpSumInfoList": [
       {
         "document": "",
@@ -707,7 +723,7 @@
     "ModifyLiveCallbackTemplate": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=ModifyLiveCallbackTemplate\n&TemplateId=1000\n&TemplateName=testName\n&Description=test\n&CallbackKey=adasdas23432423\n&StreamBeginNotifyUrl=http://www.yourdomain.com/api/notify?action=streamBegin\n&StreamEndNotifyUrl=http://www.yourdomain.com/api/notify?action=streamEnd\n&RecordNotifyUrl=http://www.yourdomain.com/api/notify?action=record\n&SnapshotNotifyUrl=http://www.yourdomain.com/api/notify?action=snapshot\n&PornCensorshipNotifyUrl=http://www.yourdomain.com/api/notify?action=porn\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLiveCallbackTemplate\n<Common request parameters>\n\n{\n    \"StreamBeginNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=streamBegin\",\n    \"StreamEndNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=streamEnd\",\n    \"TemplateName\": \"testName\",\n    \"RecordNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=record\",\n    \"SnapshotNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=snapshot\",\n    \"TemplateId\": \"1000\",\n    \"PornCensorshipNotifyUrl\": \"http://www.yourdomain.com/api/notify?action=porn\",\n    \"CallbackKey\": \"adasdas23432423\",\n    \"Description\": \"test\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
@@ -811,7 +827,7 @@
     "StopRecordTask": [
       {
         "document": "",
-        "input": "https://live.tencentcloudapi.com/?Action=StopRecordTask\n&TaskId=UZZUVbQ1FSQFlvKxYBxUVGzwcBB00UETZU5QRlNURlhR1FDUVBFUWpCUkbUUBKb\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopRecordTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"UZZUVbQ1FSQFlvKxYBxUVGzwcBB00UETZU5QRlNURlhR1FDUVBFUWpCUkbUUBKb\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }

@@ -330,6 +330,12 @@
       "name": "Queries the proxy configuration",
       "output": "DescribeProxyCustomConfResponse"
     },
+    "DescribeRemoteBackupConfig": {
+      "document": "This API is used to query the configuration information of a remote TencentDB instance backup.",
+      "input": "DescribeRemoteBackupConfigRequest",
+      "name": "Queries the configuration information of a remote TencentDB instance backup",
+      "output": "DescribeRemoteBackupConfigResponse"
+    },
     "DescribeRoGroups": {
       "document": "This API is used to query the information of all RO groups of a TencentDB instance.",
       "input": "DescribeRoGroupsRequest",
@@ -539,6 +545,12 @@
       "input": "ModifyParamTemplateRequest",
       "name": "Modifies a parameter template",
       "output": "ModifyParamTemplateResponse"
+    },
+    "ModifyRemoteBackupConfig": {
+      "document": "This API is used to modify the configuration information of a remote TencentDB instance backup.",
+      "input": "ModifyRemoteBackupConfigRequest",
+      "name": "Modifies the configuration information of a remote TencentDB instance backup",
+      "output": "ModifyRemoteBackupConfigResponse"
     },
     "ModifyRoGroupInfo": {
       "document": "This API is used to update the information of a TencentDB RO group, such as configuring a read-only instance removal policy in case of excessive delay, setting read weights of read-only instances, and setting the replication delay.",
@@ -2006,7 +2018,7 @@
       "members": [
         {
           "default": "",
-          "document": "Name of the purchasable instance",
+          "document": "Name of the purchasable instance. Valid values: `Z3` (High-availability instance. `DeviceType`:`UNIVERSAL`, `EXCLUSIVE`; `CVM` (basic instance. `DeviceType`: `BASIC`); `TKE` (basic v2 instance. `DeviceType`: `BASIC_V2`).",
           "example": "Z3",
           "member": "string",
           "name": "TypeName",
@@ -4371,6 +4383,42 @@
           "value_allowed_null": false
         },
         {
+          "document": "Whether to enable the standard storage policy for data backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.",
+          "example": "off",
+          "member": "string",
+          "name": "EnableBackupStandby",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The period (in days) of how long a data backup is retained before switching to standard storage, which falls between 30 days and the number of days from the time it is created until it expires. If the archive backup is enabled, this period cannot be greater than archive backup period.",
+          "example": "30",
+          "member": "int64",
+          "name": "BackupStandbyDays",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to enable the standard storage policy for log backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.",
+          "example": "off",
+          "member": "string",
+          "name": "EnableBinlogStandby",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The period (in days) of how long a log backup is retained before switching to standard storage, which falls between 30 days and the number of days from the time it is created until it expires. If the archive backup is enabled, this period cannot be greater than archive backup period.",
+          "example": "30",
+          "member": "int64",
+          "name": "BinlogStandbyDays",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -4508,6 +4556,15 @@
           "example": "1",
           "member": "int64",
           "name": "BackupArchiveVolume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Backup capacity of standard storage, which includes data backups and log backups.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "BackupStandbyVolume",
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -4721,6 +4778,24 @@
           "example": "1",
           "member": "int64",
           "name": "BinlogArchiveCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Log backup capacity of standard storage in bytes",
+          "example": "1",
+          "member": "int64",
+          "name": "BinlogStandbyVolume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Number of log backups of standard storage",
+          "example": "1",
+          "member": "int64",
+          "name": "BinlogStandbyCount",
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -5993,6 +6068,24 @@
           "value_allowed_null": false
         },
         {
+          "document": "Total backup capacity of standard storage in current region",
+          "example": "1",
+          "member": "int64",
+          "name": "DataBackupStandbyVolume",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of standard storage backups in current region",
+          "example": "1",
+          "member": "int64",
+          "name": "DataBackupStandbyCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -6748,6 +6841,78 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRemoteBackupConfigRequest": {
+      "document": "DescribeRemoteBackupConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "cdb-c1nl9rpv",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRemoteBackupConfigResponse": {
+      "document": "DescribeRemoteBackupConfig response structure.",
+      "members": [
+        {
+          "document": "Remote backup retention period in days",
+          "example": "1",
+          "member": "int64",
+          "name": "ExpireDays",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Remote data backup. Valid values:`off` (disable), `on` (enable).",
+          "example": "on",
+          "member": "string",
+          "name": "RemoteBackupSave",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Remote log backup. Valid values: `off` (disable), `on` (enable). Only when the parameter `RemoteBackupSave` is `on`, the `RemoteBinlogSave` parameter can be set to `on`.",
+          "example": "on",
+          "member": "string",
+          "name": "RemoteBinlogSave",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of configured remote backup regions",
+          "example": "[\"ap-guangzhou\"]",
+          "member": "string",
+          "name": "RemoteRegion",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of remote backup regions",
+          "example": "[\"ap-guangzhou\"]",
+          "member": "string",
+          "name": "RegionList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -9295,6 +9460,42 @@
           "name": "EnableBinlogArchive",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the standard storage policy for data backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.",
+          "example": "off",
+          "member": "string",
+          "name": "EnableBackupStandby",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The period (in days) of how long a data backup is retained before switching to standard storage, which falls between 30 days and the number of days from the time it is created until it expires. If the archive backup is enabled, this period cannot be greater than archive backup period.",
+          "example": "30",
+          "member": "int64",
+          "name": "BackupStandbyDays",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the standard storage policy for log backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.",
+          "example": "off",
+          "member": "string",
+          "name": "EnableBinlogStandby",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The period (in days) of how long a log backup is retained before switching to standard storage, which falls between 30 days and the number of days from the time it is created until it expires. If the archive backup is enabled, this period cannot be greater than archive backup period.",
+          "example": "30",
+          "member": "int64",
+          "name": "BinlogStandbyDays",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -10050,6 +10251,69 @@
     },
     "ModifyParamTemplateResponse": {
       "document": "ModifyParamTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRemoteBackupConfigRequest": {
+      "document": "ModifyRemoteBackupConfig request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
+          "example": "cdb-c1nl9rpv",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remote data backup. Valid values:`off` (disable), `on` (enable).",
+          "example": "on",
+          "member": "string",
+          "name": "RemoteBackupSave",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Remote log backup. Valid values: `off` (disable), `on` (enable). Only when the parameter `RemoteBackupSave` is `on`, the `RemoteBinlogSave` parameter can be set to `on`.",
+          "example": "on",
+          "member": "string",
+          "name": "RemoteBinlogSave",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The custom backup region list",
+          "example": "[\"ap-guangzhou\"]",
+          "member": "string",
+          "name": "RemoteRegion",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Remote backup retention period in days",
+          "example": "7",
+          "member": "int64",
+          "name": "ExpireDays",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRemoteBackupConfigResponse": {
+      "document": "ModifyRemoteBackupConfig response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

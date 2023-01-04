@@ -43,7 +43,7 @@
       "output": "CreateLiveCallbackRuleResponse"
     },
     "CreateLiveCallbackTemplate": {
-      "document": "After a callback template is created and a template ID is successfully returned, you need to call the [CreateLiveCallbackRule](https://intl.cloud.tencent.com/document/product/267/32638?from_cn_redirect=1) API and bind the template ID to the domain name/path.\n<br>Callback protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).\nNote: at least enter one callback URL.",
+      "document": "This API is used to create a callback template. Up to 50 templates can be created. After the template ID is returned, you need to call the [CreateLiveCallbackRule](https://intl.cloud.tencent.com/document/product/267/32638?from_cn_redirect=1) API to bind the template ID to a domain name/path.\n<br>For information about callback protocols, see [How to Receive Event Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).\nNote: You need to specify at least one callback URL.",
       "input": "CreateLiveCallbackTemplateRequest",
       "name": "Creates callback template",
       "output": "CreateLiveCallbackTemplateResponse"
@@ -191,6 +191,12 @@
       "input": "DeleteRecordTaskRequest",
       "name": "Deletes recording task (new)",
       "output": "DeleteRecordTaskResponse"
+    },
+    "DescribeAllStreamPlayInfoList": {
+      "document": "This API is used to get the playback data of all streams at a specified time point (accurate to the minute).",
+      "input": "DescribeAllStreamPlayInfoListRequest",
+      "name": "Gets the playback data of all streams at a specified time point",
+      "output": "DescribeAllStreamPlayInfoListResponse"
     },
     "DescribeConcurrentRecordStreamNum": {
       "document": "This API is used to query the number of concurrent recording channels, which is applicable to LCB and LVB.",
@@ -461,6 +467,12 @@
       "input": "DescribeStreamPlayInfoListRequest",
       "name": "Queries the playback information list of stream",
       "output": "DescribeStreamPlayInfoListResponse"
+    },
+    "DescribeStreamPushInfoList": {
+      "document": "This API is used to get the push data of a stream, including the audio/video frame rate, bitrate, elapsed time, and codec.",
+      "input": "DescribeStreamPushInfoListRequest",
+      "name": "Gets the push data of a stream",
+      "output": "DescribeStreamPushInfoListResponse"
     },
     "DescribeTopClientIpSumInfoList": {
       "document": "This API is used to query the information of the top n client IPs in a certain period of time (top 1,000 is supported currently).",
@@ -1089,6 +1101,16 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The push error callback URL.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "http://abc.com/abc",
+          "member": "string",
+          "name": "PushExceptionNotifyUrl",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1805,6 +1827,15 @@
           "example": "asdsad",
           "member": "string",
           "name": "StreamMixNotifyUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The push error callback URL.",
+          "example": "http://abc.com/abc",
+          "member": "string",
+          "name": "PushExceptionNotifyUrl",
           "required": false,
           "type": "string"
         }
@@ -3491,6 +3522,60 @@
     "DeleteRecordTaskResponse": {
       "document": "DeleteRecordTask response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllStreamPlayInfoListRequest": {
+      "document": "DescribeAllStreamPlayInfoList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The time point to query in the format of “yyyy-mm-dd HH:MM:00”(accurate to the minute). You can query data from the last month. Because there is a five-minute delay in the data, if you want to get the latest data, we recommend you pass in a time point five minutes earlier than the current time.",
+          "example": "2019-12-12 10:00:00",
+          "member": "string",
+          "name": "QueryTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The playback domains to query. If you leave this empty, all playback domains will be queried.",
+          "example": "[\"5000.playdomain.com\\n\"]",
+          "member": "string",
+          "name": "PlayDomains",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllStreamPlayInfoListResponse": {
+      "document": "DescribeAllStreamPlayInfoList response structure.",
+      "members": [
+        {
+          "document": "The time point queried, whose value is the same as that of the corresponding request parameter.",
+          "example": "2019-12-12 10:00:00",
+          "member": "string",
+          "name": "QueryTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The playback data.",
+          "example": "无",
+          "member": "MonitorStreamPlayInfo",
+          "name": "DataInfoList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -6087,6 +6172,78 @@
       ],
       "type": "object"
     },
+    "DescribeStreamPushInfoListRequest": {
+      "document": "DescribeStreamPushInfoList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The stream name.",
+          "example": "abcd",
+          "member": "string",
+          "name": "StreamName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The start time (UTC+8) in the format of “yyyy-mm-dd HH:MM:SS”.",
+          "example": "2019-06-21 12:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The end time (UTC+8) in the format of “yyyy-mm-dd HH:MM:SS”. You can query data from the past seven days for a period of preferably not longer than three hours.",
+          "example": "2019-06-21 12:01:02",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The push domain.",
+          "example": "abc",
+          "member": "string",
+          "name": "PushDomain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The push path, which should be the same as `AppName` in the push and playback URL. The default value is `live`.",
+          "example": "abc",
+          "member": "string",
+          "name": "AppName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPushInfoListResponse": {
+      "document": "DescribeStreamPushInfoList response structure.",
+      "members": [
+        {
+          "document": "Returned data list.",
+          "example": "无",
+          "member": "PushQualityData",
+          "name": "DataInfoList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTopClientIpSumInfoListRequest": {
       "document": "DescribeTopClientIpSumInfoList request structure.",
       "members": [
@@ -7165,6 +7322,7 @@
         {
           "default": "",
           "document": "Template ID returned by the `DescribeLiveCallbackTemplates` API.",
+          "example": "1000",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -7173,6 +7331,7 @@
         {
           "default": "",
           "document": "Template name.",
+          "example": "testName",
           "member": "string",
           "name": "TemplateName",
           "required": false,
@@ -7181,6 +7340,7 @@
         {
           "default": "",
           "document": "Description.",
+          "example": "test",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -7189,6 +7349,7 @@
         {
           "default": "",
           "document": "Stream starting callback URL.",
+          "example": "无",
           "member": "string",
           "name": "StreamBeginNotifyUrl",
           "required": false,
@@ -7197,6 +7358,7 @@
         {
           "default": "",
           "document": "Interruption callback URL.",
+          "example": "无",
           "member": "string",
           "name": "StreamEndNotifyUrl",
           "required": false,
@@ -7205,6 +7367,7 @@
         {
           "default": "",
           "document": "Recording callback URL.",
+          "example": "无",
           "member": "string",
           "name": "RecordNotifyUrl",
           "required": false,
@@ -7213,6 +7376,7 @@
         {
           "default": "",
           "document": "Screencapturing callback URL.",
+          "example": "无",
           "member": "string",
           "name": "SnapshotNotifyUrl",
           "required": false,
@@ -7221,6 +7385,7 @@
         {
           "default": "",
           "document": "Porn detection callback URL.",
+          "example": "无",
           "member": "string",
           "name": "PornCensorshipNotifyUrl",
           "required": false,
@@ -7229,8 +7394,18 @@
         {
           "default": "",
           "document": "Callback key. The callback URL is public. For the callback signature, please see the event message notification document.\n[Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).",
+          "example": "adasdas23432423",
           "member": "string",
           "name": "CallbackKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The push error callback URL.",
+          "example": "http://abc.com/abc",
+          "member": "string",
+          "name": "PushExceptionNotifyUrl",
           "required": false,
           "type": "string"
         }
@@ -8164,6 +8339,75 @@
       ],
       "type": "object"
     },
+    "MonitorStreamPlayInfo": {
+      "document": "The playback data.",
+      "members": [
+        {
+          "default": "",
+          "document": "The playback domain.",
+          "member": "string",
+          "name": "PlayDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The stream ID.",
+          "member": "string",
+          "name": "StreamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The playback bitrate. `0` indicates the original bitrate.",
+          "member": "uint64",
+          "name": "Rate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The playback protocol. Valid values: `Unknown`, `Flv`, `Hls`, `Rtmp`, `Huyap2p`.",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The bandwidth (Mbps).",
+          "member": "float",
+          "name": "Bandwidth",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of online users, which is represented by the number of TCP connections (data collected every minute).",
+          "member": "uint64",
+          "name": "Online",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The number of requests.",
+          "member": "uint64",
+          "name": "Request",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "PlayAuthKeyInfo": {
       "document": "Playback authentication key information.",
       "members": [
@@ -8574,7 +8818,7 @@
         },
         {
           "default": "",
-          "document": "The region of the source (please choose the nearest region).\nap-beijing: North China (Beijing)\nap-shanghai: East China (Shanghai)\nap-guangzhou: South China (Guangzhou)\nap-mumbai: India",
+          "document": "The region where the task was created.\n`ap-beijing`: North China (Beijing)\n`ap-shanghai`: East China (Shanghai)\n`ap-guangzhou`: South China (Guangzhou)\n`ap-mumbai`: India\n`ap-hongkong`: Hong Kong\n`eu-frankfurt`: Germany\n`ap-seoul`: Korea\n`ap-bangkok`: Thailand\n`ap-singapore`: Singapore\n`na-siliconvalley`: Western US\n`na-ashburn`: Eastern US\n`ap-tokyo`: Japan",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -8978,6 +9222,242 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PushQualityData": {
+      "document": "The push data of a stream.",
+      "members": [
+        {
+          "default": "",
+          "document": "The time of the data in the format of “%Y-%m-%d %H:%M:%S.%ms” (accurate to the millisecond).",
+          "example": "2021-03-01 00:00:00",
+          "member": "string",
+          "name": "Time",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The push domain.",
+          "example": "test.com",
+          "member": "string",
+          "name": "PushDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The push path.",
+          "example": "live",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The IP address of the push client.",
+          "example": "0.0.0.0",
+          "member": "string",
+          "name": "ClientIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The push start time in the format of “%Y-%m-%d %H:%M:%S.%ms” (accurate to the millisecond).",
+          "example": "2021-03-01 00:00:00",
+          "member": "string",
+          "name": "BeginPushTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The resolution.",
+          "example": "480*864",
+          "member": "string",
+          "name": "Resolution",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The video codec.",
+          "example": "H264",
+          "member": "string",
+          "name": "VCodec",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The audio codec.",
+          "example": "AAC",
+          "member": "string",
+          "name": "ACodec",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The push sequence number, which uniquely identifies a push.",
+          "example": "11111",
+          "member": "string",
+          "name": "Sequence",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The video frame rate.",
+          "example": "1",
+          "member": "uint64",
+          "name": "VideoFps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The video bitrate (bps).",
+          "example": "1",
+          "member": "uint64",
+          "name": "VideoRate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The audio frame rate.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AudioFps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The audio bitrate (bps).",
+          "example": "1",
+          "member": "uint64",
+          "name": "AudioRate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The local elapsed time (milliseconds). The greater the difference between the local elapsed time and audio/video elapsed time, the poorer the push quality and the more severe the upstream lag.",
+          "example": "10",
+          "member": "uint64",
+          "name": "LocalTs",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The video elapsed time (milliseconds).",
+          "example": "10",
+          "member": "uint64",
+          "name": "VideoTs",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The audio elapsed time (milliseconds).",
+          "example": "10",
+          "member": "uint64",
+          "name": "AudioTs",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The video bitrate (Kbps) in the metadata.",
+          "example": "1",
+          "member": "uint64",
+          "name": "MetaVideoRate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The audio bitrate (Kbps) in the metadata.",
+          "example": "1",
+          "member": "uint64",
+          "name": "MetaAudioRate",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The frame rate in the metadata.",
+          "example": "1",
+          "member": "uint64",
+          "name": "MateFps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The push parameter.",
+          "example": "&test=1",
+          "member": "string",
+          "name": "StreamParam",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The bandwidth (Mbps).",
+          "example": "0.1",
+          "member": "float",
+          "name": "Bandwidth",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The traffic (MB).",
+          "example": "0.1",
+          "member": "float",
+          "name": "Flux",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The IP address of the push client.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "192.1.1.1",
+          "member": "string",
+          "name": "ServerIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
