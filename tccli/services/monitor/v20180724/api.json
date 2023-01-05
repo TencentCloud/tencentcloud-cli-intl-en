@@ -366,6 +366,12 @@
       "name": "Lists Prometheus scrape tasks",
       "output": "DescribePrometheusScrapeJobsResponse"
     },
+    "DescribePrometheusZones": {
+      "document": "This API is used to list the AZs of Tencent Managed Service for Prometheus (TMP).",
+      "input": "DescribePrometheusZonesRequest",
+      "name": "Lists TMP AZs",
+      "output": "DescribePrometheusZonesResponse"
+    },
     "DescribeRecordingRules": {
       "document": "This API is used to query Prometheus recording rules by filter.",
       "input": "DescribeRecordingRulesRequest",
@@ -8935,6 +8941,42 @@
       ],
       "type": "object"
     },
+    "DescribePrometheusZonesRequest": {
+      "document": "DescribePrometheusZones request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Region ID",
+          "example": "1234",
+          "member": "int64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrometheusZonesResponse": {
+      "document": "DescribePrometheusZones response structure.",
+      "members": [
+        {
+          "document": "Region list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PrometheusZoneItem",
+          "name": "ZoneSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeRecordingRulesRequest": {
       "document": "DescribeRecordingRules request structure.",
       "members": [
@@ -12746,6 +12788,57 @@
         }
       ],
       "usage": "both"
+    },
+    "PrometheusZoneItem": {
+      "document": "Region information returned by `PrometheusZoneItem`",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ ID",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ status. Valid values: `0`(Unavailable), `1` (Available).",
+          "member": "int64",
+          "name": "ZoneState",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Region ID",
+          "member": "int64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "AZ name",
+          "member": "string",
+          "name": "ZoneName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "PutMonitorDataRequest": {
       "document": "PutMonitorData request structure.",

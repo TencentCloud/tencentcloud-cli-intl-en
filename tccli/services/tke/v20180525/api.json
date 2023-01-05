@@ -66,12 +66,6 @@
       "name": "Creates a node pool",
       "output": "CreateClusterNodePoolResponse"
     },
-    "CreateClusterNodePoolFromExistingAsg": {
-      "document": "This API is used to upgrade a scaling group to a node pool.",
-      "input": "CreateClusterNodePoolFromExistingAsgRequest",
-      "name": "Upgrades a scaling group to a node pool",
-      "output": "CreateClusterNodePoolFromExistingAsgResponse"
-    },
     "CreateClusterRouteTable": {
       "document": "This API is used to create a cluster route table.",
       "input": "CreateClusterRouteTableRequest",
@@ -336,6 +330,12 @@
       "name": "Queries the TKE Edge cluster node information",
       "output": "DescribeEdgeClusterInstancesResponse"
     },
+    "DescribeEdgeClusterUpgradeInfo": {
+      "document": "This API is used to query the upgrade information of an edge cluster, including the upgradeable components, the current upgrade status, and errors occur during the upgrade.",
+      "input": "DescribeEdgeClusterUpgradeInfoRequest",
+      "name": "Queries the upgrade information of an edge cluster",
+      "output": "DescribeEdgeClusterUpgradeInfoResponse"
+    },
     "DescribeEdgeLogSwitches": {
       "document": "This API is used to query the status of events, audits and logs.",
       "input": "DescribeEdgeLogSwitchesRequest",
@@ -539,6 +539,12 @@
       "input": "UpdateClusterVersionRequest",
       "name": "Upgrades cluster",
       "output": "UpdateClusterVersionResponse"
+    },
+    "UpdateEdgeClusterVersion": {
+      "document": "This API is used to upgrade an edge cluster component to a TKE Edge version.",
+      "input": "UpdateEdgeClusterVersionRequest",
+      "name": "Upgrades an edge cluster version",
+      "output": "UpdateEdgeClusterVersionResponse"
     },
     "UpgradeClusterInstances": {
       "document": "This API is used to upgrade one or more work nodes in the cluster. ",
@@ -1733,7 +1739,7 @@
       "members": [
         {
           "default": "",
-          "document": "Cluster operating system. Public image (enter the image ID) and custom image (enter the image name) are supported. For details, see https://intl.cloud.tencent.com/document/product/457/68289?from_cn_redirect=1",
+          "document": "Cluster operating system. Public image (enter the image name) and custom image (enter the image ID) are supported. For details, see https://intl.cloud.tencent.com/document/product/457/68289?from_cn_redirect=1",
           "example": "tlinux2.4x86_64",
           "member": "string",
           "name": "ClusterOs",
@@ -2726,47 +2732,6 @@
       ],
       "type": "object"
     },
-    "CreateClusterNodePoolFromExistingAsgRequest": {
-      "document": "CreateClusterNodePoolFromExistingAsg request structure.",
-      "members": [
-        {
-          "default": "",
-          "document": "Cluster ID",
-          "member": "string",
-          "name": "ClusterId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "",
-          "document": "Scaling group ID",
-          "member": "string",
-          "name": "AutoscalingGroupId",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateClusterNodePoolFromExistingAsgResponse": {
-      "document": "CreateClusterNodePoolFromExistingAsg response structure.",
-      "members": [
-        {
-          "document": "Node pool ID",
-          "member": "string",
-          "name": "NodePoolId",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "CreateClusterNodePoolRequest": {
       "document": "CreateClusterNodePool request structure.",
       "members": [
@@ -2781,7 +2746,7 @@
         },
         {
           "default": "",
-          "document": "AS group parameters",
+          "document": "AS group parameters. For details, see https://intl.cloud.tencent.com/document/product/377/20440?from_cn_redirect=1",
           "example": "{\\\"AutoScalingGroupName\\\":\\\"\\\",\\\"MaxSize\\\":1,\\\"MinSize\\\":0,\\\"Des",
           "member": "string",
           "name": "AutoScalingGroupPara",
@@ -2790,7 +2755,7 @@
         },
         {
           "default": "",
-          "document": "Running parameters",
+          "document": "Running parameters. For details, see https://intl.cloud.tencent.com/document/product/377/20447?from_cn_redirect=1",
           "example": "{\\\"LaunchConfigurationName\\\":\\\"\\\",\\\"InstanceType\\\":\\\"S3.SMALL1\\\"",
           "member": "string",
           "name": "LaunchConfigurePara",
@@ -4332,6 +4297,15 @@
           "value_allowed_null": true
         },
         {
+          "document": "OIDC authentication configurations\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "OIDCConfigAuthenticationOptions",
+          "name": "OIDCConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -5441,6 +5415,87 @@
           "name": "InstanceInfoSet",
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEdgeClusterUpgradeInfoRequest": {
+      "document": "DescribeEdgeClusterUpgradeInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xxxxxxxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target TKEEdge version",
+          "example": "1.0.1",
+          "member": "string",
+          "name": "EdgeVersion",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEdgeClusterUpgradeInfoResponse": {
+      "document": "DescribeEdgeClusterUpgradeInfo response structure.",
+      "members": [
+        {
+          "document": "Upgradeable cluster component\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "{\"x\":{\"ImageName\":\"x\",\"ImageVersion\":\"v1\"}}",
+          "member": "string",
+          "name": "ComponentVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Current version of the edge cluster\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "1.0.1",
+          "member": "string",
+          "name": "EdgeVersionCurrent",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Prefix of the image registry of an edge component (including domain name and namespace)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "reg.test.com/myedge",
+          "member": "string",
+          "name": "RegistryPrefix",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Cluster upgrade status. Valid values: `Running`, `Updating`, `Failed`\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "running",
+          "member": "string",
+          "name": "ClusterUpgradeStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Reason for `Updating` or `Failed`\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "tunnel: image pulling",
+          "member": "string",
+          "name": "ClusterUpgradeStatusReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -6704,6 +6759,16 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TKE edge cluster level\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "L5",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -6939,7 +7004,7 @@
         },
         {
           "default": "",
-          "document": "Enables the TAT service. If this parameter is not specified, the TAT service will not be enabled.",
+          "document": "Whether to enable the TAT service. If this parameter is not specified, the TAT service is enabled for public images and disabled for other images by default.",
           "example": "TRUE",
           "member": "RunAutomationServiceEnabled",
           "name": "AutomationService",
@@ -8096,6 +8161,7 @@
         {
           "default": "",
           "document": "Login password of the instance. <br><li>For Linux instances, the password must include 8-30 characters, and contain at least two of the following character sets: [a-z], [A-Z], [0-9] and [()\\`~!@#$%^&*-+=|{}[]:;',.?/]. <br><li>For Windows instances, the password must include 12-30 characters, and contain at least three of the following character sets: [a-z], [A-Z], [0-9] and [()\\`~!@#$%^&*-+=|{}[]:;',.?/]. <br><br>If it's not specified, the user needs to set the login password using the **Reset password** option in the CVM console or calling the API `ResetInstancesPassword` to complete the creation of the CVM instance(s).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "abc",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -8104,7 +8170,8 @@
         },
         {
           "default": "",
-          "document": "List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `KeyId`. A key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "document": "List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `KeyId`. You cannot specify a key and a password at the same time. Windows instances do not support keys.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "['abc']",
           "member": "string",
           "name": "KeyIds",
           "required": false,
@@ -8114,6 +8181,7 @@
         {
           "default": "",
           "document": "Whether to keep the original settings of an image. You cannot specify this parameter and `Password` or `KeyIds.N` at the same time. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>TRUE: keep the login settings of the image <br><li>FALSE: do not keep the login settings of the image <br><br>Default value: FALSE.\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "abc",
           "member": "string",
           "name": "KeepImageLogin",
           "required": false,
@@ -8392,6 +8460,15 @@
           "name": "ServiceAccounts",
           "required": false,
           "type": "object"
+        },
+        {
+          "default": "",
+          "document": "OIDC authentication configurations",
+          "example": "无",
+          "member": "OIDCConfigAuthenticationOptions",
+          "name": "OIDCConfig",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -8548,6 +8625,33 @@
         },
         {
           "default": "",
+          "document": "GPU driver version, CUDA version, cuDNN version and wether to enable MIG",
+          "example": "无",
+          "member": "GPUArgs",
+          "name": "GPUArgs",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Base64-encoded custom script",
+          "example": "dG91Y2ggL3RtcC9oZWxsbwo=",
+          "member": "string",
+          "name": "UserScript",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Ignore existing nodes when update `Label` and `Taint`",
+          "example": "true",
+          "member": "bool",
+          "name": "IgnoreExistedNode",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
           "document": "Node custom parameter",
           "example": "无",
           "member": "InstanceExtraArgs",
@@ -8581,6 +8685,15 @@
           "name": "DeletionProtection",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Specified value of dockerd --graph. Default value: /var/lib/docker",
+          "example": "/var/lib/docker",
+          "member": "string",
+          "name": "DockerGraphPath",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -8940,6 +9053,42 @@
         }
       ],
       "usage": "in"
+    },
+    "OIDCConfigAuthenticationOptions": {
+      "document": "OIDC authentication related configurations",
+      "members": [
+        {
+          "default": "",
+          "document": "Creating an identity provider\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoCreateOIDCConfig",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creating ClientId of the identity provider\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "[\"xxxx\",\"yyyy\"]",
+          "member": "string",
+          "name": "AutoCreateClientId",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creating the PodIdentityWebhook component\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoInstallPodIdentityWebhookAddon",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "PodLimitsByType": {
       "document": "The maximum number of Pods in VPC-CNI mode supported by a model",
@@ -10053,6 +10202,60 @@
     },
     "UpdateClusterVersionResponse": {
       "document": "UpdateClusterVersion response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateEdgeClusterVersionRequest": {
+      "document": "UpdateEdgeClusterVersion request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Cluster ID",
+          "example": "cls-xxxxxxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Target version",
+          "example": "1.0.2",
+          "member": "string",
+          "name": "EdgeVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Prefix of the image repository of a custom edge component",
+          "example": "reg.test.com/myedge",
+          "member": "string",
+          "name": "RegistryPrefix",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to skip precheck",
+          "example": "false",
+          "member": "bool",
+          "name": "SkipPreCheck",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateEdgeClusterVersionResponse": {
+      "document": "UpdateEdgeClusterVersion response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

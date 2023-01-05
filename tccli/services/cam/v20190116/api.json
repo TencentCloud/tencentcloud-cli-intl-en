@@ -36,6 +36,12 @@
       "name": "Verifies a custom multi-factor Token",
       "output": "ConsumeCustomMFATokenResponse"
     },
+    "CreateAccessKey": {
+      "document": "This API is used to create an access key for a CAM user.",
+      "input": "CreateAccessKeyRequest",
+      "name": "Creates an access key",
+      "output": "CreateAccessKeyResponse"
+    },
     "CreateGroup": {
       "document": "This API is used to create a user group.",
       "input": "CreateGroupRequest",
@@ -89,6 +95,12 @@
       "input": "CreateUserSAMLConfigRequest",
       "name": "Creates user SAML configurations",
       "output": "CreateUserSAMLConfigResponse"
+    },
+    "DeleteAccessKey": {
+      "document": "This API is used to delete an access key for a CAM user.\nCalling this API is a high-risk operation because the key cannot be recovered once deleted and Tencent Cloud will deny all requests that use this key. Proceed with caution.",
+      "input": "DeleteAccessKeyRequest",
+      "name": "Deletes an access key",
+      "output": "DeleteAccessKeyResponse"
     },
     "DeleteGroup": {
       "document": "This API is used to delete a user group.",
@@ -408,6 +420,12 @@
       "name": "Unbinds tags from a role",
       "output": "UntagRoleResponse"
     },
+    "UpdateAccessKey": {
+      "document": "This API is used to update an access key for a CAM user.",
+      "input": "UpdateAccessKeyRequest",
+      "name": "Updates an access key",
+      "output": "UpdateAccessKeyResponse"
+    },
     "UpdateAssumeRolePolicy": {
       "document": "This API (UpdateAssumeRolePolicy) is used to modify the trust policy of a role.",
       "input": "UpdateAssumeRolePolicyRequest",
@@ -490,6 +508,48 @@
         {
           "default": "",
           "document": "Key status. Valid values: Active (activated), Inactive (not activated)",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AccessKeyDetail": {
+      "document": "Access key",
+      "members": [
+        {
+          "default": "",
+          "document": "Access key ID",
+          "member": "string",
+          "name": "AccessKeyId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Access key, which is visible only when it is created. Keep it properly.",
+          "member": "string",
+          "name": "SecretAccessKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Key status. Valid values: `Active` (activated), `Inactive` (not activated).",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -1158,6 +1218,42 @@
       ],
       "type": "object"
     },
+    "CreateAccessKeyRequest": {
+      "document": "CreateAccessKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "UIN of the specified user. If this parameter is left empty, the access key will be created for the current user by default.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "TargetUin",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccessKeyResponse": {
+      "document": "CreateAccessKey response structure.",
+      "members": [
+        {
+          "document": "Access key\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AccessKeyDetail",
+          "name": "AccessKey",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateGroupRequest": {
       "document": "CreateGroup request structure.",
       "members": [
@@ -1665,6 +1761,42 @@
     },
     "CreateUserSAMLConfigResponse": {
       "document": "CreateUserSAMLConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAccessKeyRequest": {
+      "document": "DeleteAccessKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the specified access key that needs to be deleted",
+          "example": "AKIDtmV4QYS9dx4yhEZllY8VebL2c0Tlqorp",
+          "member": "string",
+          "name": "AccessKeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "UIN of the specified user. If this parameter is left empty, the access key will be deleted for the current user by default.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "TargetUin",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAccessKeyResponse": {
+      "document": "DeleteAccessKey response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2442,6 +2574,7 @@
         {
           "default": "",
           "document": "Policy ID. Either `PolicyId` or `PolicyName` must be entered",
+          "example": "1",
           "member": "uint64",
           "name": "PolicyId",
           "required": false,
@@ -2449,7 +2582,8 @@
         },
         {
           "default": "",
-          "document": "Role ID, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`",
+          "document": "Role ID, which is used to specify a role. The input parameter is either `DetachRoleId` or `DetachRoleName`.",
+          "example": "4611686018427397905",
           "member": "string",
           "name": "DetachRoleId",
           "required": false,
@@ -2457,7 +2591,8 @@
         },
         {
           "default": "",
-          "document": "Role name, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`",
+          "document": "Role name, which is used to specify a role. The input parameter is either `DetachRoleId` or `DetachRoleName`.",
+          "example": "QCS_RoleName",
           "member": "string",
           "name": "DetachRoleName",
           "required": false,
@@ -2466,6 +2601,7 @@
         {
           "default": "",
           "document": "Policy name. Either `PolicyId` or `PolicyName` must be entered",
+          "example": "QCS_PolicyName",
           "member": "string",
           "name": "PolicyName",
           "required": false,
@@ -5231,6 +5367,51 @@
     },
     "UntagRoleResponse": {
       "document": "UntagRole response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAccessKeyRequest": {
+      "document": "UpdateAccessKey request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the specified access key that needs to be updated",
+          "example": "AKIDtmV4QYS9dx4yhEZllY8VebL2c0Tlqorp",
+          "member": "string",
+          "name": "AccessKeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Key status. Valid values: `Active` (activated), `Inactive` (not activated).",
+          "example": "Active",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "UIN of the specified user. If this parameter is left empty, the access key will be updated for the current user by default.",
+          "example": "123456",
+          "member": "uint64",
+          "name": "TargetUin",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAccessKeyResponse": {
+      "document": "UpdateAccessKey response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

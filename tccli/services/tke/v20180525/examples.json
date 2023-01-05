@@ -100,14 +100,6 @@
         "title": "Creating a node pool"
       }
     ],
-    "CreateClusterNodePoolFromExistingAsg": [
-      {
-        "document": "",
-        "input": "https://tke.tencentcloudapi.com/?Action=CreateClusterNodePoolFromExistingAsg\n&ClusterId=cls-xxxxxx\n&AutoscalingGroupId=asg-xxxxxxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"NodePoolId\": \"np-xxxxxxxx\",\n        \"RequestId\": \"xxxxxxxx\"\n    }\n}",
-        "title": "Upgrading a scaling group to a node pool"
-      }
-    ],
     "CreateClusterRouteTable": [
       {
         "document": "",
@@ -296,8 +288,8 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterAuthenticationOptions\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-xxxxxxxx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\",\n        \"ServiceAccounts\": {\n            \"JWKSURI\": \"https://cls-xxxxxxxx.ccs.tencent-cloud.com/openid/v1/jwks\",\n            \"Issuer\": \"https://cls-xxxxxxxx.ccs.tencent-cloud.com\"\n        },\n        \"LatestOperationState\": \"Updating\"\n    }\n}",
-        "title": "Querying cluster authentication configuration."
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\",\n        \"ServiceAccounts\": {\n            \"JWKSURI\": \"https://cls-xxxxxxxx.ccs.tencent-cloud.com/openid/v1/jwks\",\n            \"Issuer\": \"https://cls-xxxxxxxx.ccs.tencent-cloud.com\"\n        },\n        \"OIDCConfig\": {\n            \"AutoCreateOIDCConfig\": true,\n            \"AutoInstallPodIdentityWebhookAddon\": true,\n            \"AutoCreateClientId\": [\n                \"xx\"\n            ]\n        },\n        \"LatestOperationState\": \"Updating\"\n    }\n}",
+        "title": "Querying cluster authentication configurations"
       }
     ],
     "DescribeClusterCommonNames": [
@@ -458,6 +450,14 @@
         "input": "https://tke.tencentcloudapi.com/?Action=DescribeEdgeClusterInstances\r\n&ClusterID=cls-xxxxx\r\n&Limit=5\r\n&Offset=0\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"187c16d5-1f53-4e88-b684-077f0c7369b2\",\n        \"TotalCount\": 2,\n        \"InstanceInfoSet\": [\n            \"info1\",\n            \"info2\"\n        ]\n    }\n}",
         "title": "Querying the edge compute cluster node information"
+      }
+    ],
+    "DescribeEdgeClusterUpgradeInfo": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEdgeClusterUpgradeInfo\n<Common request parameters>\n\n{\n    \"EdgeVersion\": \"1.0.2\",\n    \"ClusterId\": \"cls-xxxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"67a0dd10-ef28-49a1-8834-7a5fa7a9bac0\",\n        \"EdgeVersionCurrent\": \"1.1.0\",\n        \"ComponentVersion\": \"{\\\"hyperkube\\\":{},\\\"kube-proxy\\\":{},\\\"coredns\\\":{\\\"InitImageName\\\":\\\"\\\",\\\"InitImageVersion\\\":\\\"\\\",\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"1.6.7\\\"},\\\"flannel\\\":{\\\"InitImageName\\\":\\\"\\\",\\\"InitImageVersion\\\":\\\"\\\",\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"v0.12.0-edge-2.0\\\"},\\\"gpu-plugin\\\":{\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"v0.9.0\\\"},\\\"site-manager\\\":{\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"v0.6.0\\\"},\\\"application-grid-controller\\\":{\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"1.21.1\\\"},\\\"application-grid-wrapper\\\":{\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"1.20.3\\\"},\\\"tunnel\\\":{\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"v0.8.0\\\"},\\\"edge-health\\\":{\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"\\\"},\\\"edge-health-admission\\\":{\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"\\\"},\\\"event\\\":{\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"\\\"},\\\"griddaemon\\\":{\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"\\\"},\\\"metric-server\\\":{\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"\\\"},\\\"standalone-metrics\\\":{\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"\\\"},\\\"hpa-metrics-server\\\":{\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"\\\"},\\\"tke-monitor-agent\\\":{\\\"ImageName\\\":\\\"\\\",\\\"ImageVersion\\\":\\\"20220714-3b31e8d2\\\"}}\",\n        \"RegistryPrefix\": \"\",\n        \"ClusterUpgradeStatus\": \"updating\",\n        \"ClusterUpgradeStatusReason\": \"component application-grid-controller:Back-off pulling image \\\"ccr.ccs.tencentyun.com/tkeedge/application-grid-controller:1.21.1-x\\\"\"\n    }\n}",
+        "title": "Querying upgrade information of an edge cluster"
       }
     ],
     "DescribeEdgeLogSwitches": [
@@ -730,6 +730,14 @@
         "input": "https://tke.tencentcloudapi.com/?Action=UpdateClusterVersion\n&ClusterId=cls-xxxxxxxx\n&DstVersion=1.8.13\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Upgrading the cluster to the specified version"
+      }
+    ],
+    "UpdateEdgeClusterVersion": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateEdgeClusterVersion\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-xxxxxxxx\",\n    \"EdgeVersion\": \"1.0.1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
+        "title": "Upgrading an edge cluster"
       }
     ],
     "UpgradeClusterInstances": [

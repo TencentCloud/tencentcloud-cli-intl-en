@@ -1,5 +1,11 @@
 {
   "actions": {
+    "AddMachineGroupInfo": {
+      "document": "This API is used to add machine group information.",
+      "input": "AddMachineGroupInfoRequest",
+      "name": "Adds machine group information",
+      "output": "AddMachineGroupInfoResponse"
+    },
     "ApplyConfigToMachineGroup": {
       "document": "This API is used to apply the collection configuration to the specified machine group.",
       "input": "ApplyConfigToMachineGroupRequest",
@@ -125,6 +131,12 @@
       "input": "DeleteMachineGroupRequest",
       "name": "Deletes machine group",
       "output": "DeleteMachineGroupResponse"
+    },
+    "DeleteMachineGroupInfo": {
+      "document": "This API is used to delete machine group information.",
+      "input": "DeleteMachineGroupInfoRequest",
+      "name": "Deletes machine group information",
+      "output": "DeleteMachineGroupInfoResponse"
     },
     "DeleteShipper": {
       "document": "This API is used to delete a shipping rule.",
@@ -343,6 +355,42 @@
     "serviceShortName": "cls"
   },
   "objects": {
+    "AddMachineGroupInfoRequest": {
+      "document": "AddMachineGroupInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Machine group ID",
+          "example": "57f5808c-4a55-11eb-b378-0242ac130002",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Machine group type\nSupported types: `ip` and `label`",
+          "example": "无",
+          "member": "MachineGroupTypeInfo",
+          "name": "MachineGroupType",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "AddMachineGroupInfoResponse": {
+      "document": "AddMachineGroupInfo response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "AlarmAnalysisConfig": {
       "document": "Alarm configuration for the multidimensional analysis",
       "members": [
@@ -2323,6 +2371,42 @@
       ],
       "type": "object"
     },
+    "DeleteMachineGroupInfoRequest": {
+      "document": "DeleteMachineGroupInfo request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Machine group ID",
+          "example": "57f5808c-4a55-11eb-b378-0242ac130002",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Machine group type\nSupported types: `ip` and `label`",
+          "example": "无",
+          "member": "MachineGroupTypeInfo",
+          "name": "MachineGroupType",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMachineGroupInfoResponse": {
+      "document": "DeleteMachineGroupInfo response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteMachineGroupRequest": {
       "document": "DeleteMachineGroup request structure.",
       "members": [
@@ -3884,7 +3968,7 @@
         },
         {
           "default": "",
-          "document": "Separator of the full-text index. Each character represents a separator;\nSupports only English punctuation marks and (\\n\\t\\r);\nWe recommend you use (@&?|#()='\",;:<>[]{}/ \\n\\t\\r\\) as separators;",
+          "document": "Separator of the full-text index. Each character represents a separator.\nOnly symbols, \\n\\t\\r, and escape character \\ are supported.\nNote: \\n\\t\\r can be directly enclosed in double quotes as the input parameter without escaping.",
           "example": "xxx",
           "member": "string",
           "name": "Tokenizer",
@@ -6536,7 +6620,7 @@
         },
         {
           "default": "",
-          "document": "Separator of fields. Each character represents a separator;\nSupports only English punctuation marks and (\\n\\t\\r);\n`long` and `double` fields need to be null;\nWe recommend you use (@&?|#()='\",;:<>[]{}/ \\n\\t\\r\\\\) as separators for `text` fields;",
+          "document": "Separator of fields. Each character represents a separator.\nOnly symbols, \\n\\t\\r, and escape character \\ are supported.\n`long` and `double` fields need to be null.\nNote: \\n\\t\\r can be directly enclosed in double quotes as the input parameter without escaping.",
           "example": ".*",
           "member": "string",
           "name": "Tokenizer",

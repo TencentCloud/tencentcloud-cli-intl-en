@@ -11,9 +11,9 @@
     "BindingPolicyObject": [
       {
         "document": "",
-        "input": "https://monitor.tencentcloudapi.com/?Action=BindingPolicyObject\n&Module=monitor\n&GroupId=111111\n&Dimensions.0.Dimensions={\"unInstanceId\":\"ins-ot3cq4bi\"}\n&Dimensions.0.EventDimensions={\"uuid\":\"9d51a69e-0e4a-4120-ae58-9c073c851e24\"}\n&Dimensions.0.Region=gz\n&Dimensions.0.RegionId=1\n&<Common request parameters>",
+        "input": "https://monitor.tencentcloudapi.com/?Action=BindingPolicyObject\r\n&Module=monitor\r\n&GroupId=111111\r\n&Dimensions.0.Dimensions={\"unInstanceId\":\"ins-ot3cq4bi\"}\r\n&Dimensions.0.EventDimensions={\"uuid\":\"9d51a69e-0e4a-4120-ae58-9c073c851e24\"}\r\n&Dimensions.0.Region=gz\r\n&Dimensions.0.RegionId=1\r\n&<Common request parameter>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"78345016-ff97-4360-839a-82f3d96430e8\"\n    }\n}",
-        "title": "Binding policy object"
+        "title": "Binding a policy object"
       }
     ],
     "CleanGrafanaInstance": [
@@ -506,6 +506,14 @@
         "title": "Listing Prometheus scrape tasks"
       }
     ],
+    "DescribePrometheusZones": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePrometheusZones\n<Common request parameters>\n\n{\n    \"RegionId\": \"1234\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ZoneSet\": [\n            {\n                \"ZoneState\": 1,\n                \"ZoneName\": \"xx\"\n                \"RegionId\": 0,\n                \"Zone\": \"xx\",\n                \"ZoneId\": 160001\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Listing TMP AZs"
+      }
+    ],
     "DescribeRecordingRules": [
       {
         "document": "",
@@ -729,7 +737,7 @@
     "UnBindingAllPolicyObject": [
       {
         "document": "",
-        "input": "https://monitor.tencentcloudapi.com/?Action=UnBindingAllPolicyObject\n&Module=monitor\n&GroupId=11111\n&<Common request parameters>",
+        "input": "https://monitor.tencentcloudapi.com/?Action=UnBindingAllPolicyObject\r\n&Module=monitor\r\n&GroupId=11111\r\n&<Common request parameter>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0dbb66c2-b4d6-4c2c-90a9-617d80347ab5\"\n    }\n}",
         "title": "Deleting all bound objects"
       }
@@ -737,9 +745,9 @@
     "UnBindingPolicyObject": [
       {
         "document": "",
-        "input": "https://monitor.tencentcloudapi.com/?Action=UnBindingPolicyObject\n&Module=monitor\n&GroupId=11111\n&UniqueId.0=3dd5113208fd467b2e5d0c1111111111\n&<Common request parameters>",
+        "input": "https://monitor.tencentcloudapi.com/?Action=UnBindingPolicyObject\r\n&Module=monitor\r\n&GroupId=11111\r\n&UniqueId.0=3dd5113208fd467b2e5d0c1111111111\r\n&<Common request parameter>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0dbb66c2-1111-1111-1111-11111111111\"\n    }\n}",
-        "title": "Deleting object bound to policy"
+        "title": "Deleting an object that is bound to a policy"
       }
     ],
     "UnbindPrometheusManagedGrafana": [

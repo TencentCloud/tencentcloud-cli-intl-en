@@ -30,6 +30,12 @@
       "name": "Queries the details of tracking set",
       "output": "DescribeAuditResponse"
     },
+    "DescribeAuditTrack": {
+      "document": "This API is used to query the CloudAudit tracking set details.",
+      "input": "DescribeAuditTrackRequest",
+      "name": "Queries the CloudAudit tracking set details",
+      "output": "DescribeAuditTrackResponse"
+    },
     "DescribeAuditTracks": {
       "document": "This API is used to query the CloudAudit tracking set list.",
       "input": "DescribeAuditTracksRequest",
@@ -409,12 +415,85 @@
     },
     "CreateAuditTrackRequest": {
       "document": "CreateAuditTrack request structure.",
-      "members": [],
+      "members": [
+        {
+          "default": "",
+          "document": "Tracking set name, which can only contain 3-48 letters, digits, hyphens, and underscores.",
+          "example": "云审计",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)",
+          "example": "Read",
+          "member": "string",
+          "name": "ActionType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The product to which the tracking set event belongs. The value can be a single product such as `cos`, or `*` that indicates all products.",
+          "example": "*",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tracking set status (0: Not enabled; 1: Enabled)",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The list of API names of tracking set events. When `ResourceType` is `*`, the value of `EventNames` must be `*`. When `ResourceType` is a specified product, the value of `EventNames` can be `*`. When `ResourceType` is `cos` or `cls`, up to 10 APIs are supported.",
+          "example": "[*]",
+          "member": "string",
+          "name": "EventNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Storage type of shipped data. Valid values: `cos`, `cls`.",
+          "example": "cos",
+          "member": "Storage",
+          "name": "Storage",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)",
+          "example": "1",
+          "member": "uint64",
+          "name": "TrackForAllMembers",
+          "required": false,
+          "type": "int"
+        }
+      ],
       "type": "object"
     },
     "CreateAuditTrackResponse": {
       "document": "CreateAuditTrack response structure.",
       "members": [
+        {
+          "document": "Tracking set ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "TrackId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -462,7 +541,17 @@
     },
     "DeleteAuditTrackRequest": {
       "document": "DeleteAuditTrack request structure.",
-      "members": [],
+      "members": [
+        {
+          "default": "",
+          "document": "Tracking set ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "TrackId",
+          "required": true,
+          "type": "int"
+        }
+      ],
       "type": "object"
     },
     "DeleteAuditTrackResponse": {
@@ -621,14 +710,150 @@
       ],
       "type": "object"
     },
+    "DescribeAuditTrackRequest": {
+      "document": "DescribeAuditTrack request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Tracking set ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "TrackId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditTrackResponse": {
+      "document": "DescribeAuditTrack response structure.",
+      "members": [
+        {
+          "document": "Tracking set name",
+          "example": "云审计",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)",
+          "example": "Read",
+          "member": "string",
+          "name": "ActionType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The product to which the tracking set event belongs, such as `cos`, or `*` that indicates all products",
+          "example": "*",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Tracking set status (0: Not enabled; 1: Enabled)",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The list of API names of tracking set events (`*`: All)",
+          "example": "1",
+          "member": "string",
+          "name": "EventNames",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Storage type of shipped data. Valid values: `cos`, `cls`.",
+          "example": "cos",
+          "member": "Storage",
+          "name": "Storage",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Creation time of the tracking set",
+          "example": "2021-02-01 18:03",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TrackForAllMembers",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAuditTracksRequest": {
       "document": "DescribeAuditTracks request structure.",
-      "members": [],
+      "members": [
+        {
+          "default": "",
+          "document": "Page number",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of tracking sets per page",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        }
+      ],
       "type": "object"
     },
     "DescribeAuditTracksResponse": {
       "document": "DescribeAuditTracks response structure.",
       "members": [
+        {
+          "document": "Tracking set list",
+          "example": "*",
+          "member": "Tracks",
+          "name": "Tracks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of tracking sets",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -679,7 +904,7 @@
         },
         {
           "default": "",
-          "document": "Search criterion. Valid values: RequestId, EventName, ActionType (write/read), PrincipalId (sub-account), ResourceType, ResourceName, AccessKeyId, SensitiveAction, ApiErrorCode, and CamErrorCode.",
+          "document": "Search condition. Valid values: `RequestId`, `EventName`, `ActionType` (write/read), `PrincipalId` (sub-account), `ResourceType`, `ResourceName`, `AccessKeyId`, `SensitiveAction`, `ApiErrorCode`, `CamErrorCode`, and `Tags` (Format of AttributeValue: [{\"key\":\"*\",\"value\":\"*\"}])",
           "example": "[{\"AttributeKey:XX,\"AttributeValue\":xx}]",
           "member": "LookupAttribute",
           "name": "LookupAttributes",
@@ -702,8 +927,8 @@
       "document": "DescribeEvents response structure.",
       "members": [
         {
-          "document": "Whether the logset ends.",
-          "example": "False",
+          "document": "Whether the log list has come to an end. `true`: Yes. Pagination is not required.",
+          "example": "false",
           "member": "bool",
           "name": "ListOver",
           "required": true,
@@ -729,7 +954,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Total number of events.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "This parameter has been deprecated. Please use `ListOver` and `NextToken` for pagination, and read data of the next page when the value of `ListOver` is `false`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
@@ -1209,7 +1434,80 @@
     },
     "ModifyAuditTrackRequest": {
       "document": "ModifyAuditTrack request structure.",
-      "members": [],
+      "members": [
+        {
+          "default": "",
+          "document": "Tracking set ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "TrackId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Tracking set name, which can only contain 3-48 letters, digits, hyphens, and underscores.",
+          "example": "云审计",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)",
+          "example": "Read",
+          "member": "string",
+          "name": "ActionType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The product to which the tracking set event belongs. The value can be a single product such as `cos`, or `*` that indicates all products.",
+          "example": "*",
+          "member": "string",
+          "name": "ResourceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Tracking set status (0: Not enabled; 1: Enabled)",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The list of API names of tracking set events. When `ResourceType` is `*`, the value of `EventNames` must be `*`. When `ResourceType` is a specified product, the value of `EventNames` can be `*`. When `ResourceType` is `cos` or `cls`, up to 10 APIs are supported.",
+          "example": "1",
+          "member": "string",
+          "name": "EventNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Storage type of shipped data. Valid values: `cos`, `cls`.",
+          "example": "cos",
+          "member": "Storage",
+          "name": "Storage",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)",
+          "example": "1",
+          "member": "uint64",
+          "name": "TrackForAllMembers",
+          "required": false,
+          "type": "int"
+        }
+      ],
       "type": "object"
     },
     "ModifyAuditTrackResponse": {
@@ -1321,6 +1619,138 @@
         }
       ],
       "type": "object"
+    },
+    "Storage": {
+      "document": "Tracking set storage information",
+      "members": [
+        {
+          "default": "",
+          "document": "Storage type (Valid values: cos, cls)",
+          "example": "cos",
+          "member": "string",
+          "name": "StorageType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage region",
+          "example": "ap-shanghai",
+          "member": "string",
+          "name": "StorageRegion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage name. For COS, the storage name is the custom bucket name, which can contain up to 50 lowercase letters, digits, and hyphens. It cannot contain \"-APPID\" and cannot start or end with a hyphen. For CLS, the storage name is the log topic ID, which can contain 1-50 characters.",
+          "example": "audit",
+          "member": "string",
+          "name": "StorageName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage directory prefix. The COS log file prefix can only contain 3-40 letters and digits.",
+          "example": "audit",
+          "member": "string",
+          "name": "StoragePrefix",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Tracks": {
+      "document": "Tracking set list",
+      "members": [
+        {
+          "default": "",
+          "document": "Tracking set name",
+          "example": "cloudaudit",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)",
+          "example": "Read",
+          "member": "string",
+          "name": "ActionType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The product to which the tracking set event belongs, such as `cos`, or `*` that indicates all products",
+          "example": "cloudaudit",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tracking set status (0: Not enabled; 1: Enabled)",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The list of API names of tracking set events (`*`: All)",
+          "example": "[*]",
+          "member": "string",
+          "name": "EventNames",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Storage type of shipped data. Valid values: `cos`, `cls`.",
+          "example": "cos",
+          "member": "Storage",
+          "name": "Storage",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time of the tracking set",
+          "example": "2021-01-20 11:06:00",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Tracking set ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "TrackId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "UpdateAuditRequest": {
       "document": "UpdateAudit request structure.",
