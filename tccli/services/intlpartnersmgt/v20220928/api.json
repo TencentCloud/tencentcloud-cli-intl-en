@@ -15,7 +15,7 @@
     "GetCountryCodes": {
       "document": "This API is used to obtain country/region codes.",
       "input": "GetCountryCodesRequest",
-      "name": "Obtains country/region codes",
+      "name": "This API is used to obtain country/region codes.",
       "output": "GetCountryCodesResponse"
     },
     "QueryCreditAllocationHistory": {
@@ -47,6 +47,24 @@
       "input": "QueryPartnerCreditRequest",
       "name": "Queries a partner's credit",
       "output": "QueryPartnerCreditResponse"
+    },
+    "QueryVoucherAmountByUin": {
+      "document": "This API is used to query the voucher quota based on the customer UIN.",
+      "input": "QueryVoucherAmountByUinRequest",
+      "name": "Queries the voucher quota based on the customer UIN",
+      "output": "QueryVoucherAmountByUinResponse"
+    },
+    "QueryVoucherListByUin": {
+      "document": "This API is used to query the voucher list based on the customer UIN.",
+      "input": "QueryVoucherListByUinRequest",
+      "name": "Queries the voucher list based on the customer UIN",
+      "output": "QueryVoucherListByUinResponse"
+    },
+    "QueryVoucherPool": {
+      "document": "This API is used to query the voucher quota pool.",
+      "input": "QueryVoucherPoolRequest",
+      "name": "Queries the voucher quota pool",
+      "output": "QueryVoucherPoolResponse"
     }
   },
   "metadata": {
@@ -747,6 +765,267 @@
           "name": "RemainingCredit",
           "required": true,
           "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryVoucherAmountByUinItem": {
+      "document": "Customer voucher quota",
+      "members": [
+        {
+          "default": "",
+          "document": "Customer UIN",
+          "example": "123456789",
+          "member": "int64",
+          "name": "ClientUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Voucher quota",
+          "example": "1",
+          "member": "float",
+          "name": "TotalAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Voucher amount",
+          "example": "1",
+          "member": "float",
+          "name": "RemainAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "QueryVoucherAmountByUinRequest": {
+      "document": "QueryVoucherAmountByUin request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Customer UIN list",
+          "example": "[123]",
+          "member": "uint64",
+          "name": "ClientUins",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryVoucherAmountByUinResponse": {
+      "document": "QueryVoucherAmountByUin response structure.",
+      "members": [
+        {
+          "document": "Customer voucher quota information",
+          "example": "[]",
+          "member": "QueryVoucherAmountByUinItem",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryVoucherListByUinItem": {
+      "document": "Voucher information of a single customer",
+      "members": [
+        {
+          "default": "",
+          "document": "Customer UIN",
+          "example": "123456789",
+          "member": "int64",
+          "name": "ClientUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The total number of vouchers",
+          "example": "12",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Voucher details",
+          "example": "1",
+          "member": "QueryVoucherListByUinVoucherItem",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "QueryVoucherListByUinRequest": {
+      "document": "QueryVoucherListByUin request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Customer UIN list",
+          "example": "[123]",
+          "member": "uint64",
+          "name": "ClientUins",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Voucher status. If this parameter is not passed in, all status will be queried by default. Valid values: `Unused`, `Used`, `Expired`.",
+          "example": "Used",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryVoucherListByUinResponse": {
+      "document": "QueryVoucherListByUin response structure.",
+      "members": [
+        {
+          "document": "Customer voucher information",
+          "example": "[]",
+          "member": "QueryVoucherListByUinItem",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryVoucherListByUinVoucherItem": {
+      "document": "Customer voucher information",
+      "members": [
+        {
+          "default": "",
+          "document": "Voucher ID",
+          "example": "xxx",
+          "member": "string",
+          "name": "VoucherId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Voucher status",
+          "example": "Used",
+          "member": "string",
+          "name": "VoucherStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Voucher value",
+          "example": "1",
+          "member": "float",
+          "name": "TotalAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Balance",
+          "example": "1",
+          "member": "float",
+          "name": "RemainAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "QueryVoucherPoolRequest": {
+      "document": "QueryVoucherPool request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "QueryVoucherPoolResponse": {
+      "document": "QueryVoucherPool response structure.",
+      "members": [
+        {
+          "document": "Reseller name",
+          "example": "名字",
+          "member": "string",
+          "name": "AgentName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Reseller role type (1: Reseller; 2: Distributor; 3: Second-level reseller)",
+          "example": "20000",
+          "member": "int64",
+          "name": "AccountType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total quota",
+          "example": "10",
+          "member": "float",
+          "name": "TotalQuota",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Remaining quota",
+          "example": "10",
+          "member": "float",
+          "name": "RemainingQuota",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of issued vouchers",
+          "example": "1",
+          "member": "int64",
+          "name": "IssuedNum",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {

@@ -744,7 +744,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Type of prepaid resource pack (only required for prepaid mode)",
           "example": "1",
           "member": "uint64",
           "name": "ResourcePackageType",
@@ -753,7 +753,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "The number of prepaid resource packs (only required for prepaid mode)",
           "example": "1",
           "member": "uint64",
           "name": "ResourcePackageNum",
@@ -774,6 +774,15 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "ID of prepaid order\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20211011688006794751081",
+          "member": "string",
+          "name": "DealName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

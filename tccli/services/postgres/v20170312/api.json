@@ -42,6 +42,12 @@
       "name": "Creates instances (recommended)",
       "output": "CreateInstancesResponse"
     },
+    "CreateParameterTemplate": {
+      "document": "This API is used to create a parameter template.",
+      "input": "CreateParameterTemplateRequest",
+      "name": "Creates a parameter template",
+      "output": "CreateParameterTemplateResponse"
+    },
     "CreateReadOnlyDBInstance": {
       "document": "This API is used to create read-only replicas.",
       "input": "CreateReadOnlyDBInstanceRequest",
@@ -71,6 +77,12 @@
       "input": "DeleteDBInstanceNetworkAccessRequest",
       "name": "Deletes a network of an instance",
       "output": "DeleteDBInstanceNetworkAccessResponse"
+    },
+    "DeleteParameterTemplate": {
+      "document": "This API is used to delete a parameter template.",
+      "input": "DeleteParameterTemplateRequest",
+      "name": "Deletes a parameter template",
+      "output": "DeleteParameterTemplateResponse"
     },
     "DeleteReadOnlyGroup": {
       "document": "This API is used to delete an RO group.",
@@ -138,6 +150,12 @@
       "name": "Gets the list of modifiable parameters of an instance",
       "output": "DescribeDBInstanceParametersResponse"
     },
+    "DescribeDBInstanceSecurityGroups": {
+      "document": "This API is used to query the security group information of an instance.",
+      "input": "DescribeDBInstanceSecurityGroupsRequest",
+      "name": "Queries the security group information of an instance",
+      "output": "DescribeDBInstanceSecurityGroupsResponse"
+    },
     "DescribeDBInstances": {
       "document": "This API is used to query the details of one or more instances.",
       "input": "DescribeDBInstancesRequest",
@@ -162,6 +180,12 @@
       "name": "Pulls database list",
       "output": "DescribeDatabasesResponse"
     },
+    "DescribeDefaultParameters": {
+      "document": "This API is used to query all parameters supported by a database version and engine.",
+      "input": "DescribeDefaultParametersRequest",
+      "name": "Queries the list of default parameters",
+      "output": "DescribeDefaultParametersResponse"
+    },
     "DescribeEncryptionKeys": {
       "document": "This API is used to get instance key list.",
       "input": "DescribeEncryptionKeysRequest",
@@ -173,6 +197,18 @@
       "input": "DescribeOrdersRequest",
       "name": "Gets order information",
       "output": "DescribeOrdersResponse"
+    },
+    "DescribeParameterTemplateAttributes": {
+      "document": "This API is used to query the details of a parameter template, including basic information and parameter information.",
+      "input": "DescribeParameterTemplateAttributesRequest",
+      "name": "Queries the details of a parameter template",
+      "output": "DescribeParameterTemplateAttributesResponse"
+    },
+    "DescribeParameterTemplates": {
+      "document": "This API is used to query the list of parameter templates.",
+      "input": "DescribeParameterTemplatesRequest",
+      "name": "Queries the list of parameter templates",
+      "output": "DescribeParameterTemplatesResponse"
     },
     "DescribeParamsEvent": {
       "document": "This API is used to get the details of parameter modification events.",
@@ -300,6 +336,12 @@
       "name": "Modifies the RO group of an instance",
       "output": "ModifyDBInstanceReadOnlyGroupResponse"
     },
+    "ModifyDBInstanceSecurityGroups": {
+      "document": "This API is used to modify the security group of an instance.",
+      "input": "ModifyDBInstanceSecurityGroupsRequest",
+      "name": "Modifies the security group of an instance",
+      "output": "ModifyDBInstanceSecurityGroupsResponse"
+    },
     "ModifyDBInstanceSpec": {
       "document": "This API is used to modify instance specifications including memory and disk size.",
       "input": "ModifyDBInstanceSpecRequest",
@@ -311,6 +353,12 @@
       "input": "ModifyDBInstancesProjectRequest",
       "name": "Transfers instance to another project",
       "output": "ModifyDBInstancesProjectResponse"
+    },
+    "ModifyParameterTemplate": {
+      "document": "This API is used to modify the parameter template name and description, and add or delete parameter template parameters.",
+      "input": "ModifyParameterTemplateRequest",
+      "name": "Modifies the parameter template information",
+      "output": "ModifyParameterTemplateResponse"
     },
     "ModifyReadOnlyGroupConfig": {
       "document": "This API is used to modify RO group configuration.",
@@ -1551,6 +1599,69 @@
       ],
       "type": "object"
     },
+    "CreateParameterTemplateRequest": {
+      "document": "CreateParameterTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Template name, which can contain 1-60 letters, digits, and symbols (-_./()[]()+=:@).",
+          "example": "test_template",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The major database version number, such as 11, 12, 13.",
+          "example": "13",
+          "member": "string",
+          "name": "DBMajorVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database engine, such as postgresql, mssql_compatible.",
+          "example": "postgresql",
+          "member": "string",
+          "name": "DBEngine",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Parameter template description, which can contain 1-60 letters, digits, and symbols (-_./()[]()+=:@).",
+          "example": "test",
+          "member": "string",
+          "name": "TemplateDescription",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateParameterTemplateResponse": {
+      "document": "CreateParameterTemplate response structure.",
+      "members": [
+        {
+          "document": "Parameter template ID, which uniquely identifies a parameter template.",
+          "example": "497857b4-4676-5583-8359-b697fe5968d9",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateReadOnlyDBInstanceRequest": {
       "document": "CreateReadOnlyDBInstance request structure.",
       "members": [
@@ -2769,6 +2880,33 @@
       ],
       "type": "object"
     },
+    "DeleteParameterTemplateRequest": {
+      "document": "DeleteParameterTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter template ID, which uniquely identifies the parameter template to be operated.",
+          "example": "423984bb-97fe-5693-a74f-63cc8dfb6c5d",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteParameterTemplateResponse": {
+      "document": "DeleteParameterTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteReadOnlyGroupNetworkAccessRequest": {
       "document": "DeleteReadOnlyGroupNetworkAccess request structure.",
       "members": [
@@ -3378,6 +3516,51 @@
       ],
       "type": "object"
     },
+    "DescribeDBInstanceSecurityGroupsRequest": {
+      "document": "DescribeDBInstanceSecurityGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID. Either this parameter or `ReadOnlyGroupId` must be passed in. If both parameters are passed in, `ReadOnlyGroupId` will be ignored.",
+          "example": "postgres-apzvwncr",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "RO group ID. Either this parameter or `DBInstanceId` must be passed in. To query the security groups associated with the RO groups, only pass in `ReadOnlyGroupId`.",
+          "example": "pgrogrp-nqwpkjbu",
+          "member": "string",
+          "name": "ReadOnlyGroupId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstanceSecurityGroupsResponse": {
+      "document": "DescribeDBInstanceSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "Information of security groups in array",
+          "example": "无",
+          "member": "SecurityGroup",
+          "name": "SecurityGroupSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBInstancesRequest": {
       "document": "DescribeDBInstances request structure.",
       "members": [
@@ -3656,6 +3839,60 @@
       ],
       "type": "object"
     },
+    "DescribeDefaultParametersRequest": {
+      "document": "DescribeDefaultParameters request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The major database version number, such as 11, 12, 13.",
+          "example": "13",
+          "member": "string",
+          "name": "DBMajorVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Database engine, such as postgresql, mssql_compatible.",
+          "example": "postgresql",
+          "member": "string",
+          "name": "DBEngine",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDefaultParametersResponse": {
+      "document": "DescribeDefaultParameters response structure.",
+      "members": [
+        {
+          "document": "Number of parameters",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Parameter information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ParamInfo",
+          "name": "ParamInfoSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeEncryptionKeysRequest": {
       "document": "DescribeEncryptionKeys request structure.",
       "members": [
@@ -3720,6 +3957,177 @@
           "document": "Order array",
           "member": "PgDeal",
           "name": "Deals",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeParameterTemplateAttributesRequest": {
+      "document": "DescribeParameterTemplateAttributes request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter template ID",
+          "example": "423984bb-97fe-5693-a74f-63cc8dfb6c5d",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeParameterTemplateAttributesResponse": {
+      "document": "DescribeParameterTemplateAttributes response structure.",
+      "members": [
+        {
+          "document": "Parameter template ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "423984bb-97fe-5693-a74f-63cc8dfb6c5d",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Number of parameters contained in the parameter template\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Parameter information contained in the parameter template\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ParamInfo",
+          "name": "ParamInfoSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Parameter template name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Database version applicable to a parameter template\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "13",
+          "member": "string",
+          "name": "DBMajorVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Database engine applicable to a parameter template\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "postgresql",
+          "member": "string",
+          "name": "DBEngine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Parameter template description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "use to test",
+          "member": "string",
+          "name": "TemplateDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeParameterTemplatesRequest": {
+      "document": "DescribeParameterTemplates request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Filter conditions. Valid values: `TemplateName`, `TemplateId`, `DBMajorVersion`, `DBEngine`.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of results returned per page. Value range: 0-100. Default: `20`.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Data offset",
+          "example": "10",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Sorting metric. Valid values: `CreateTime`, `TemplateName`, `DBMajorVersion`.",
+          "example": "CreateTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting order. Valid values: `asc` (ascending order),`desc` (descending order).",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeParameterTemplatesResponse": {
+      "document": "DescribeParameterTemplates response structure.",
+      "members": [
+        {
+          "document": "The total number of eligible parameter templates",
+          "example": "20",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Parameter template list",
+          "example": "无",
+          "member": "ParameterTemplate",
+          "name": "ParameterTemplateSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5286,6 +5694,51 @@
       ],
       "type": "object"
     },
+    "ModifyDBInstanceSecurityGroupsRequest": {
+      "document": "ModifyDBInstanceSecurityGroups request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "The list of security groups to be associated with the instance or RO groups",
+          "example": "[\"sg-91jbmkp1\"]",
+          "member": "string",
+          "name": "SecurityGroupIdSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Instance ID. Either this parameter or `ReadOnlyGroupId` must be passed in. If both parameters are passed in, `ReadOnlyGroupId` will be ignored.",
+          "example": "postgres-apzvwncr",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "RO group ID. Either this parameter or `DBInstanceId` must be passed in. To modify  the security groups associated with the RO groups, only pass in `ReadOnlyGroupId`.",
+          "example": "pgrogrp-nqwpkjbu",
+          "member": "string",
+          "name": "ReadOnlyGroupId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSecurityGroupsResponse": {
+      "document": "ModifyDBInstanceSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyDBInstanceSpecRequest": {
       "document": "ModifyDBInstanceSpec request structure.",
       "members": [
@@ -5437,6 +5890,69 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyParameterTemplateRequest": {
+      "document": "ModifyParameterTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter template ID, which uniquely identifies a parameter template and cannot be modified.",
+          "example": "497857b4-4676-5583-8359-b697fe5968d9",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Parameter template name, which can contain 1-60 letters, digits, and symbols (-_./()[]()+=:@). If this field is empty, the original parameter template name will be used.",
+          "example": "test_template",
+          "member": "string",
+          "name": "TemplateName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Parameter template description, which can contain 1-60 letters, digits, and symbols (-_./()[]()+=:@). If this parameter is not passed in, the original parameter template description will be used.",
+          "example": "test",
+          "member": "string",
+          "name": "TemplateDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The set of parameters to be modified or added. A parameter cannot be put to `ModifyParamEntrySet` and `DeleteParamSet` at the same time, that is, it cannot be modified/added and deleted at the same time.",
+          "example": "无",
+          "member": "ParamEntry",
+          "name": "ModifyParamEntrySet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "The set of parameters to be deleted in the template. A parameter cannot be put to `ModifyParamEntrySet` and `DeleteParamSet` at the same time, that is, it cannot be modified/added and deleted at the same time.",
+          "example": "[\"wal_level\"]",
+          "member": "string",
+          "name": "DeleteParamSet",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyParameterTemplateResponse": {
+      "document": "ModifyParameterTemplate response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -6258,6 +6774,62 @@
       ],
       "usage": "out"
     },
+    "ParameterTemplate": {
+      "document": "Basic information of a parameter template",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter template ID",
+          "example": "6e89c045-935f-5d5f-8512-08d7f6cf2210",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter template name",
+          "example": "test",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database version applicable to a parameter template",
+          "example": "13",
+          "member": "string",
+          "name": "DBMajorVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Database engine applicable to a parameter template",
+          "example": "postgresql",
+          "member": "string",
+          "name": "DBEngine",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Parameter template description",
+          "example": "test",
+          "member": "string",
+          "name": "TemplateDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "PgDeal": {
       "document": "Order details",
       "members": [
@@ -6313,6 +6885,62 @@
           "name": "DBInstanceIdSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PolicyRule": {
+      "document": "Rule information for security group",
+      "members": [
+        {
+          "default": "",
+          "document": "Policy, Valid values: `ACCEPT`, `DROP`.",
+          "example": "ACCEPT",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Source or destination IP or IP range, such as 172.16.0.0/12.",
+          "example": "0.0.0.0/0",
+          "member": "string",
+          "name": "CidrIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Port",
+          "example": "ALL",
+          "member": "string",
+          "name": "PortRange",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Network protocol. UDP and TCP are supported.",
+          "example": "icmp",
+          "member": "string",
+          "name": "IpProtocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The rule description",
+          "example": "放通Ping服务",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -6829,6 +7457,82 @@
         }
       ],
       "type": "object"
+    },
+    "SecurityGroup": {
+      "document": "Security group information",
+      "members": [
+        {
+          "default": "",
+          "document": "Project ID",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Creation time",
+          "example": "2022-10-20 21:38:20",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Inbound rule",
+          "example": "无",
+          "member": "PolicyRule",
+          "name": "Inbound",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Outbound rule",
+          "example": "无",
+          "member": "PolicyRule",
+          "name": "Outbound",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group ID",
+          "example": "sg-mpkb1net",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group name",
+          "example": "securitygroup",
+          "member": "string",
+          "name": "SecurityGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Security group remarks",
+          "example": "安全组",
+          "member": "string",
+          "name": "SecurityGroupDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ServerlessDBAccount": {
       "document": "PostgreSQL for Serverless instance account description",

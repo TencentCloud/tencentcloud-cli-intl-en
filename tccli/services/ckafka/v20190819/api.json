@@ -30,6 +30,12 @@
       "name": "Creates a consumer group",
       "output": "CreateConsumerResponse"
     },
+    "CreateInstancePost": {
+      "document": "This API is used to create a pay-as-you-go instance.",
+      "input": "CreateInstancePostRequest",
+      "name": "Creates a pay-as-you-go instance",
+      "output": "CreateInstancePostResponse"
+    },
     "CreatePartition": {
       "document": "This API is used to add a partition in a topic.",
       "input": "CreatePartitionRequest",
@@ -215,6 +221,12 @@
       "input": "FetchMessageListByOffsetRequest",
       "name": "Queries the message list based on an offset",
       "output": "FetchMessageListByOffsetResponse"
+    },
+    "InquireCkafkaPrice": {
+      "document": "This API is used to purchase a CKafka instance or query the instance renewal price.",
+      "input": "InquireCkafkaPriceRequest",
+      "name": "Queries the price of a CKafka instance",
+      "output": "InquireCkafkaPriceResponse"
     },
     "ModifyGroupOffsets": {
       "document": "This API is used to set the consumer group (Groups) offset.",
@@ -1430,6 +1442,87 @@
           "member": "JgwOperateResponse",
           "name": "Result",
           "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstancePostRequest": {
+      "document": "CreateInstancePost request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance name, which is a string of up to 64 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Instance bandwidth",
+          "member": "int64",
+          "name": "BandWidth",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "VPC ID. If this parameter is left empty, the classic network will be used by default.",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Subnet ID, which is required for a VPC but not for the classic network.",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The maximum retention period for instance logs in minutes. Default value: 1,440 minutes (1 day). Max value: 12960 minutes (90 days). This parameter is optional.",
+          "member": "int64",
+          "name": "MsgRetentionTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "AZ",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Cluster ID, which can be selected when you create an instance.",
+          "member": "int64",
+          "name": "ClusterId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstancePostResponse": {
+      "document": "CreateInstancePost response structure.",
+      "members": [
+        {
+          "document": "Returned result",
+          "member": "JgwOperateResponse",
+          "name": "Result",
           "type": "object",
           "value_allowed_null": false
         },
@@ -3836,6 +3929,526 @@
       ],
       "usage": "out"
     },
+    "InquireCkafkaPriceRequest": {
+      "document": "InquireCkafkaPrice request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "`standard`: Standard Edition; `profession`: Pro Edition",
+          "example": "profession",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Billing mode for instance purchase/renewal. If this parameter is left empty when you purchase an instance, the fees for one month under the monthly subscription mode will be displayed by default.",
+          "example": "{\"InstanceChargeType\":\"PREPAID\", \"InstanceChargePeriod\": 1}",
+          "member": "InstanceChargeParam",
+          "name": "InstanceChargeParam",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "The number of instances to be purchased or renewed. If this parameter is left empty, the default value is `1`.",
+          "example": "1",
+          "member": "int64",
+          "name": "InstanceNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Private network bandwidth in MB/sec, which is required when you purchase an instance.",
+          "example": "40",
+          "member": "int64",
+          "name": "Bandwidth",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Disk type and size, which is required when you purchase an instance.",
+          "example": "{\"DiskType\":\"SSD\", \"DiskSize\": 500}",
+          "member": "InquiryDiskParam",
+          "name": "InquiryDiskParam",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "Message retention period in hours, which is required when you purchase an instance.",
+          "example": "1",
+          "member": "int64",
+          "name": "MessageRetention",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of instance topics to be purchased, which is required when you purchase an instance.",
+          "example": "40",
+          "member": "int64",
+          "name": "Topic",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The number of instance partitions to be purchased, which is required when you purchase an instance.",
+          "example": "40",
+          "member": "int64",
+          "name": "Partition",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The region for instance purchase, which can be obtained via the `DescribeCkafkaZone` API.",
+          "example": "[100001]",
+          "member": "int64",
+          "name": "ZoneIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Operation type flag. `purchase`: Making new purchases; `renew`: Renewing an instance. The default value is `purchase` if this parameter is left empty.",
+          "example": "purchase",
+          "member": "string",
+          "name": "CategoryAction",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "This field is not required.",
+          "example": "sv_ckafka_instance_s2_1",
+          "member": "string",
+          "name": "BillType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Billing mode for public network bandwidth, which is required when you purchase public network bandwidth. Currently, public network bandwidth is only supported for Pro Edition.",
+          "example": "\"\"",
+          "member": "InquiryPublicNetworkParam",
+          "name": "PublicNetworkParam",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "ID of the instance to be renewed, which is required when you renew an instance.",
+          "example": "ckafka-xxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquireCkafkaPriceResp": {
+      "document": "Values returned by the `InquireCkafkaPrice` API",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance price\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "InquiryPrice",
+          "name": "InstancePrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network bandwidth price\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "InquiryPrice",
+          "name": "PublicNetworkBandwidthPrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InquireCkafkaPriceResponse": {
+      "document": "InquireCkafkaPrice response structure.",
+      "members": [
+        {
+          "document": "Output parameters",
+          "example": "xxx",
+          "member": "InquireCkafkaPriceResp",
+          "name": "Result",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryBasePrice": {
+      "document": "Response parameters for instance price query",
+      "members": [
+        {
+          "default": "",
+          "document": "Original unit price\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "UnitPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Discounted unit price\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "UnitPriceDiscount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Original price in total\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "OriginalPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Discounted price in total\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "DiscountPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Discount (%)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.0",
+          "member": "float",
+          "name": "Discount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of purchased items\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "GoodsNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Currency for payment\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "CNY",
+          "member": "string",
+          "name": "Currency",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Dedicated disk response parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "SSD",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Validity period\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Unit of the validity period (`m`: Month; `h`: Hour)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Purchase quantity\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "int64",
+          "name": "Value",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InquiryDetailPrice": {
+      "document": "Prices of different purchased items",
+      "members": [
+        {
+          "default": "",
+          "document": "Price of additional private network bandwidth\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "InquiryBasePrice",
+          "name": "BandwidthPrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Disk price\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "InquiryBasePrice",
+          "name": "DiskPrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Price of additional partitions\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "InquiryBasePrice",
+          "name": "PartitionPrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Price of additional topics\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "InquiryBasePrice",
+          "name": "TopicPrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Instance package price\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "InquiryBasePrice",
+          "name": "InstanceTypePrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InquiryDiskParam": {
+      "document": "Disk purchase parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Disk type. Valid values: `SSD` (SSD), `CLOUD_SSD` (SSD cloud disk), `CLOUD_PREMIUM` (Premium cloud disk), `CLOUD_BASIC` (Cloud disk).",
+          "example": "SSD",
+          "member": "string",
+          "name": "DiskType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Size of the purchased disk in GB",
+          "example": "1",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "InquiryPrice": {
+      "document": "Response parameters for instance price query",
+      "members": [
+        {
+          "default": "",
+          "document": "Original unit price\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "UnitPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Discounted unit price\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "UnitPriceDiscount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Original price in total\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "OriginalPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Discounted price in total\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "DiscountPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Discount (%)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.0",
+          "member": "float",
+          "name": "Discount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Number of purchased items\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "GoodsNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Currency for payment\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "CNY",
+          "member": "string",
+          "name": "Currency",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Dedicated disk response parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "SSD",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Validity period\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Unit of the validity period (`m`: Month; `h`: Hour)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Purchase quantity\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "int64",
+          "name": "Value",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Prices of different purchased items\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "InquiryDetailPrice",
+          "name": "DetailPrices",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InquiryPublicNetworkParam": {
+      "document": "Public network bandwidth parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Public network bandwidth billing mode (`BANDWIDTH_PREPAID`: Monthly subscription; `BANDWIDTH_POSTPAID_BY_HOUR`: Bill-by-hour)",
+          "example": "BANDWIDTH_PREPAID",
+          "member": "string",
+          "name": "PublicNetworkChargeType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public network bandwidth in MB",
+          "example": "0",
+          "member": "int64",
+          "name": "PublicNetworkMonthly",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "Instance": {
       "document": "Instance object",
       "members": [
@@ -4233,6 +4846,32 @@
         }
       ],
       "usage": "out"
+    },
+    "InstanceChargeParam": {
+      "document": "Instance billing parameters",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance billing mode (`PREPAID`: Monthly subscription; `POSTPAID_BY_HOUR`: Pay-as-you-go)",
+          "example": "PREPAID",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Validity period, which is only required for the monthly subscription billing mode",
+          "example": "1",
+          "member": "int64",
+          "name": "InstanceChargePeriod",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "InstanceConfigDO": {
       "document": "Instance configuration entity",
