@@ -138,6 +138,12 @@
       "name": "Verifies DNS configuration",
       "output": "UpdateEmailIdentityResponse"
     },
+    "UpdateEmailSmtpPassWord": {
+      "document": "This API is used to set the SMTP password. Initially, no SMTP password is set for your email address, so emails cannot be sent over SMTP. To send emails over SMTP, you must set the SMTP password. The set password can be changed subsequently.",
+      "input": "UpdateEmailSmtpPassWordRequest",
+      "name": "Sets the SMTP password",
+      "output": "UpdateEmailSmtpPassWordResponse"
+    },
     "UpdateEmailTemplate": {
       "document": "This API is used to update an email template. An updated template must be approved again before it can be used.",
       "input": "UpdateEmailTemplateRequest",
@@ -2085,6 +2091,42 @@
           "type": "list",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateEmailSmtpPassWordRequest": {
+      "document": "UpdateEmailSmtpPassWord request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "SMTP password. Length limit: 64.",
+          "example": "123",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Email address. Length limit: 128.",
+          "example": "123@abc.com",
+          "member": "string",
+          "name": "EmailAddress",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateEmailSmtpPassWordResponse": {
+      "document": "UpdateEmailSmtpPassWord response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

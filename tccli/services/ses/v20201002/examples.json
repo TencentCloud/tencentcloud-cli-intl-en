@@ -208,6 +208,14 @@
         "title": "Verifying DNS configuration"
       }
     ],
+    "UpdateEmailSmtpPassWord": [
+      {
+        "document": "This example shows you how to set or modify the SMTP password.",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateEmailSmtpPassWord\n<Common request parameters>\n\n{\n    \"Password\": \"123\",\n    \"EmailAddress\": \"abc@ef.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
+        "title": "Setting the SMTP password"
+      }
+    ],
     "UpdateEmailTemplate": [
       {
         "document": "",
