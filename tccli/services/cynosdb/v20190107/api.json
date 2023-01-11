@@ -18,11 +18,23 @@
       "name": "Adds instance in cluster",
       "output": "AddInstancesResponse"
     },
+    "CloseAuditService": {
+      "document": "This API is used to disable the audit service for a TDSQL-C for MySQL instance.",
+      "input": "CloseAuditServiceRequest",
+      "name": "Disables the audit service for an instance",
+      "output": "CloseAuditServiceResponse"
+    },
     "CreateAccounts": {
       "document": "This API is used to create an account.",
       "input": "CreateAccountsRequest",
       "name": "Creates an account",
       "output": "CreateAccountsResponse"
+    },
+    "CreateAuditRuleTemplate": {
+      "document": "This API is used to create an audit rule template.",
+      "input": "CreateAuditRuleTemplateRequest",
+      "name": "Creates an audit rule template",
+      "output": "CreateAuditRuleTemplateResponse"
     },
     "CreateBackup": {
       "document": "This API is used to create manual backup.",
@@ -36,6 +48,12 @@
       "name": "Creates a cluster",
       "output": "CreateClustersResponse"
     },
+    "DeleteAuditRuleTemplates": {
+      "document": "This API is used to delete an audit rule template.",
+      "input": "DeleteAuditRuleTemplatesRequest",
+      "name": "Deletes an audit rule template",
+      "output": "DeleteAuditRuleTemplatesResponse"
+    },
     "DeleteBackup": {
       "document": "This API is used to delete the manual backup for a cluster. It cannot be used to delete the automatic backup.",
       "input": "DeleteBackupRequest",
@@ -47,6 +65,18 @@
       "input": "DescribeAccountsRequest",
       "name": "Queries database management accounts",
       "output": "DescribeAccountsResponse"
+    },
+    "DescribeAuditRuleTemplates": {
+      "document": "This API is used to query audit rule templates.",
+      "input": "DescribeAuditRuleTemplatesRequest",
+      "name": "Queries audit rule templates",
+      "output": "DescribeAuditRuleTemplatesResponse"
+    },
+    "DescribeAuditRuleWithInstanceIds": {
+      "document": "This API is used to get the audit rule templates of an instance.",
+      "input": "DescribeAuditRuleWithInstanceIdsRequest",
+      "name": "Gets the audit rule templates of an instance",
+      "output": "DescribeAuditRuleWithInstanceIdsResponse"
     },
     "DescribeBackupConfig": {
       "document": "This API is used to get the backup configuration information of the specified cluster, including the full backup time range and backup file retention period.",
@@ -85,7 +115,7 @@
       "output": "DescribeBinlogsResponse"
     },
     "DescribeClusterDetail": {
-      "document": "This API is used to display cluster details.",
+      "document": "This API is used to show the details of an instance.",
       "input": "DescribeClusterDetailRequest",
       "name": "Displays cluster details",
       "output": "DescribeClusterDetailResponse"
@@ -204,6 +234,18 @@
       "name": "Isolates instance",
       "output": "IsolateInstanceResponse"
     },
+    "ModifyAuditRuleTemplates": {
+      "document": "This API is used to modify an audit rule template.",
+      "input": "ModifyAuditRuleTemplatesRequest",
+      "name": "Modifies an audit rule template",
+      "output": "ModifyAuditRuleTemplatesResponse"
+    },
+    "ModifyAuditService": {
+      "document": "This API is used to modify the audit configurations of an instance, such as audit log retention period and audit rule.",
+      "input": "ModifyAuditServiceRequest",
+      "name": "Modifies the audit service of an instance",
+      "output": "ModifyAuditServiceResponse"
+    },
     "ModifyBackupConfig": {
       "document": "This API is used to modify the backup configuration of the specified cluster.",
       "input": "ModifyBackupConfigRequest",
@@ -263,6 +305,12 @@
       "input": "OfflineInstanceRequest",
       "name": "Deactivates instance",
       "output": "OfflineInstanceResponse"
+    },
+    "OpenAuditService": {
+      "document": "This API is used to enable the audit service for a TDSQL-C for MySQL instance.",
+      "input": "OpenAuditServiceRequest",
+      "name": "Enables the audit service for an instance",
+      "output": "OpenAuditServiceResponse"
     },
     "PauseServerless": {
       "document": "This API is used to pause a serverless cluster.",
@@ -331,6 +379,52 @@
     "serviceShortName": "cynosdb"
   },
   "objects": {
+    "Ability": {
+      "document": "Features supported by the cluster",
+      "members": [
+        {
+          "default": "",
+          "document": "Whether secondary AZ is supported",
+          "example": "yes",
+          "member": "string",
+          "name": "IsSupportSlaveZone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The reason why secondary AZ is not supported\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "NonsupportSlaveZoneReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether read-only instance is supported",
+          "example": "yes",
+          "member": "string",
+          "name": "IsSupportRo",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "The reason why read-only instance is not supported\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "NonsupportRoReason",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "Account": {
       "document": "Database account information",
       "members": [
@@ -606,6 +700,24 @@
           "name": "DealMode",
           "required": false,
           "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Parameter template ID",
+          "example": "0",
+          "member": "int64",
+          "name": "ParamTemplateId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Parameter list, which is valid only if `InstanceParams` is passed in to `ParamTemplateId`.",
+          "example": "无",
+          "member": "ModifyParamItem",
+          "name": "InstanceParams",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -669,6 +781,78 @@
           "name": "Port",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AuditRuleFilters": {
+      "document": "Filter of rule audit",
+      "members": [
+        {
+          "default": "",
+          "document": "Audit rule",
+          "example": "无",
+          "member": "RuleFilters",
+          "name": "RuleFilters",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "AuditRuleTemplateInfo": {
+      "document": "Details of an audit rule template",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule template ID",
+          "example": "cynosdb-art-dnpg9p3r",
+          "member": "string",
+          "name": "RuleTemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Rule template name",
+          "example": "规则模版名称",
+          "member": "string",
+          "name": "RuleTemplateName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filter of the rule template",
+          "example": "无",
+          "member": "RuleFilters",
+          "name": "RuleFilters",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Description of a rule template\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "规则模版描述",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Creation time of a rule template",
+          "example": "2022-11-15 11:11:11",
+          "member": "string",
+          "name": "CreateAt",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -892,12 +1076,40 @@
       ],
       "usage": "out"
     },
+    "CloseAuditServiceRequest": {
+      "document": "CloseAuditService request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "cynosdbmysql-ins-6990cckk",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloseAuditServiceResponse": {
+      "document": "CloseAuditService response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ClusterInstanceDetail": {
       "document": "Cluster instance information",
       "members": [
         {
           "default": "",
           "document": "Instance ID",
+          "example": "无",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -907,6 +1119,7 @@
         {
           "default": "",
           "document": "Instance name",
+          "example": "无",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -916,6 +1129,7 @@
         {
           "default": "",
           "document": "Engine type",
+          "example": "无",
           "member": "string",
           "name": "InstanceType",
           "required": true,
@@ -925,6 +1139,7 @@
         {
           "default": "",
           "document": "Instance status",
+          "example": "无",
           "member": "string",
           "name": "InstanceStatus",
           "required": true,
@@ -934,6 +1149,7 @@
         {
           "default": "",
           "document": "Instance status description",
+          "example": "无",
           "member": "string",
           "name": "InstanceStatusDesc",
           "required": true,
@@ -943,6 +1159,7 @@
         {
           "default": "",
           "document": "Number of CPU cores",
+          "example": "无",
           "member": "int64",
           "name": "InstanceCpu",
           "required": true,
@@ -952,6 +1169,7 @@
         {
           "default": "",
           "document": "Memory",
+          "example": "无",
           "member": "int64",
           "name": "InstanceMemory",
           "required": true,
@@ -961,10 +1179,21 @@
         {
           "default": "",
           "document": "Disk",
+          "example": "无",
           "member": "int64",
           "name": "InstanceStorage",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Instance role",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceRole",
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -997,6 +1226,60 @@
     "CreateAccountsResponse": {
       "document": "CreateAccounts response structure.",
       "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAuditRuleTemplateRequest": {
+      "document": "CreateAuditRuleTemplate request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Audit rule",
+          "example": "无",
+          "member": "RuleFilters",
+          "name": "RuleFilters",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Rule template name",
+          "example": "这是规则模版名称",
+          "member": "string",
+          "name": "RuleTemplateName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Rule template description.",
+          "example": "规则模版自白。",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAuditRuleTemplateResponse": {
+      "document": "CreateAuditRuleTemplate response structure.",
+      "members": [
+        {
+          "document": "The generated rule template ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cynosdb-art-l1mlbo59",
+          "member": "string",
+          "name": "RuleTemplateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -1595,263 +1878,343 @@
         },
         {
           "default": "",
-          "document": "User `uin`",
+          "document": "User UIN\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "111111",
           "member": "string",
           "name": "Uin",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Engine type",
+          "document": "Engine type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "MYSQL",
           "member": "string",
           "name": "DbType",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "User `appid`",
+          "document": "User `appid`\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "111111",
           "member": "int64",
           "name": "AppId",
           "required": true,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Cluster status description",
+          "document": "Cluster status description\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "运行中",
           "member": "string",
           "name": "StatusDesc",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Cluster creation time",
+          "document": "Cluster creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-05-08 14:29:25",
           "member": "string",
           "name": "CreateTime",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Billing mode. 0: pay-as-you-go; 1: monthly subscription",
+          "document": "Billing mode. `0`: Pay-as-you-go; `1`: Monthly subscription.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "PayMode",
           "required": true,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "End time",
+          "document": "End time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2021-06-08 14:29:25",
           "member": "string",
           "name": "PeriodEndTime",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Cluster read-write VIP",
+          "document": "Cluster read-write VIP\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1.1.1.1",
           "member": "string",
           "name": "Vip",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Cluster read-write vport",
+          "document": "Cluster read-write vport\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "3306",
           "member": "int64",
           "name": "Vport",
           "required": true,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Project ID",
+          "document": "Project ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "ProjectID",
           "required": true,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "VPC ID",
+          "document": "VPC ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "vpc-xxxxxxxx",
           "member": "string",
           "name": "VpcId",
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Subnet ID",
+          "document": "Subnet ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "subnet-xxxxxxxx",
           "member": "string",
           "name": "SubnetId",
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "TDSQL-C kernel version",
+          "document": "TDSQL-C kernel version\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2.0.12",
           "member": "string",
           "name": "CynosVersion",
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Storage capacity",
+          "document": "Storage capacity\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
           "member": "int64",
           "name": "StorageLimit",
           "required": false,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Renewal flag",
+          "document": "Renewal flag\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "RenewFlag",
           "required": false,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Task in progress",
+          "document": "Task in progress\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ProcessingTask",
           "member": "string",
           "name": "ProcessingTask",
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Array of tasks in cluster",
+          "document": "Array of tasks in the cluster\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ObjectTask",
           "name": "Tasks",
           "required": false,
           "type": "list",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Array of tags bound to cluster",
+          "document": "Array of tags bound to the cluster\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Tag",
           "name": "ResourceTags",
           "required": false,
           "type": "list",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Database type (`NORMAL` or `SERVERLESS`)",
+          "document": "Database type. Valid values: `NORMAL`, `SERVERLESS`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "SERVERLESS",
           "member": "string",
           "name": "DbMode",
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Serverless cluster status when the database type is `SERVERLESS`. Valid values:\nresume\npause",
+          "document": "Serverless cluster status when the database type is `SERVERLESS`. Valid values:\n`resume`\n`pause`\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "resume",
           "member": "string",
           "name": "ServerlessStatus",
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Prepaid cluster storage",
+          "document": "Prepaid cluster storage capacity\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
           "member": "int64",
           "name": "Storage",
           "required": false,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Cluster storage ID used in prepaid storage modification",
+          "document": "Cluster storage ID used in prepaid storage modification\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "cynosmysql-xxxxxxxx",
           "member": "string",
           "name": "StorageId",
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Billing mode of cluster storage. Valid values: `0` (postpaid), `1` (prepaid)",
+          "document": "Billing mode of cluster storage. Valid values: `0` (pay-as-you-go), `1` (monthly subscription).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "StoragePayMode",
           "required": false,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "The minimum storage corresponding to the compute specifications of the cluster",
+          "document": "The minimum storage corresponding to the compute specification of the cluster\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "int64",
           "name": "MinStorageSize",
           "required": false,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "The maximum storage corresponding to the compute specifications of the cluster",
+          "document": "The maximum storage corresponding to the compute specification of the cluster\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
           "member": "int64",
           "name": "MaxStorageSize",
           "required": false,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "default": "",
-          "document": "Network information of the cluster",
+          "document": "Network information of the cluster\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NetAddr",
           "name": "NetAddrs",
           "required": false,
           "type": "list",
-          "value_allowed_null": false
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Physical AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PhysicalZone",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Primary AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MasterZone",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether there is a secondary AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "HasSlaveZone",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Secondary AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SlaveZones",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Business type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "BusinessType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to freeze\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IsFreeze",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Order source\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OrderSource",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Capability\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Ability",
+          "name": "Ability",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -2098,6 +2461,226 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Binlog switch. Valid values: `ON`, `OFF`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "OFF",
+          "member": "string",
+          "name": "LogBin",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "PITR type. Valid values: `normal`, `redo_pitr`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "normal",
+          "member": "string",
+          "name": "PitrType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Physical AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "PhysicalZone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Storage ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123",
+          "member": "string",
+          "name": "StorageId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Storage capacity in GB\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "Storage",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum storage specification in GB\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "MaxStorageSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Minimum storage specification in GB\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5",
+          "member": "int64",
+          "name": "MinStorageSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Storage billing mode. Valid values: `1` (monthly subscription), `0` (pay-as-you-go).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "StoragePayMode",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Database type. Valid values: `normal`, `serverless`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "normal",
+          "member": "string",
+          "name": "DbMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum storage space\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3000",
+          "member": "int64",
+          "name": "StorageLimit",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Features supported by the cluster\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Ability",
+          "name": "Ability",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "TDSQL-C version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2.0.21",
+          "member": "string",
+          "name": "CynosVersion",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Business type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "BusinessType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether there is a secondary AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "yes",
+          "member": "string",
+          "name": "HasSlaveZone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to freeze\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "no",
+          "member": "string",
+          "name": "IsFreeze",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ObjectTask",
+          "name": "Tasks",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Primary AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "MasterZone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Secondary AZ list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "SlaveZones",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Proxy status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ProxyStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to skip the transaction\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "no",
+          "member": "string",
+          "name": "IsSkipTrade",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether to enable password complexity\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IsOpenPasswordComplexity",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Network type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "tcp",
+          "member": "string",
+          "name": "NetworkStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2895,137 +3478,212 @@
       "members": [
         {
           "default": "",
-          "document": "appId",
+          "document": "User `appId`",
+          "example": "无",
           "member": "int64",
           "name": "AppId",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Cluster ID",
+          "example": "无",
           "member": "string",
           "name": "ClusterId",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Creation time",
+          "example": "无",
           "member": "datetime",
           "name": "CreatedTime",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Deletion time",
+          "example": "无",
           "member": "datetime",
           "name": "DeletedTime",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Instance group ID",
+          "example": "无",
           "member": "string",
           "name": "InstanceGrpId",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Status",
+          "example": "无",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Instance group type. ha: HA group; ro: RO group",
+          "example": "无",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Update time",
+          "example": "无",
           "member": "datetime",
           "name": "UpdatedTime",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Private IP",
+          "example": "无",
           "member": "string",
           "name": "Vip",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Private port",
+          "example": "无",
           "member": "int64",
           "name": "Vport",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Public domain name",
+          "example": "无",
           "member": "string",
           "name": "WanDomain",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Public IP",
+          "example": "无",
           "member": "string",
           "name": "WanIP",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Public port",
+          "example": "无",
           "member": "int64",
           "name": "WanPort",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Public network status",
+          "example": "无",
           "member": "string",
           "name": "WanStatus",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "default": "",
           "document": "Information of instances contained in instance group",
+          "example": "无",
           "member": "CynosdbInstance",
           "name": "InstanceSet",
-          "required": true,
+          "required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "VPC ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Subnet ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Information of the old IP\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OldAddrInfo",
+          "name": "OldAddrInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Task in progress",
+          "example": "无",
+          "member": "string",
+          "name": "ProcessingTasks",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Task list",
+          "example": "无",
+          "member": "ObjectTask",
+          "name": "Tasks",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "biz_net_service table ID",
+          "example": "无",
+          "member": "int64",
+          "name": "NetServiceId",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -3057,6 +3715,33 @@
       ],
       "usage": "both"
     },
+    "DeleteAuditRuleTemplatesRequest": {
+      "document": "DeleteAuditRuleTemplates request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Audit rule template ID",
+          "example": "cynosdb-art-l1mlbo59",
+          "member": "string",
+          "name": "RuleTemplateIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAuditRuleTemplatesResponse": {
+      "document": "DeleteAuditRuleTemplates response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteBackupRequest": {
       "document": "DeleteBackup request structure.",
       "members": [
@@ -3071,11 +3756,20 @@
         },
         {
           "default": "",
-          "document": "Backup file ID",
+          "document": "Backup file ID. This field is used by legacy versions and thus not recommended.",
           "example": "[\"4928\\r\\n\"]",
           "member": "int64",
           "name": "SnapshotIdList",
-          "required": true,
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Backup file ID. This field is recommended.",
+          "example": "[\"1000\\r\\n\"]",
+          "member": "int64",
+          "name": "BackupIds",
+          "required": false,
           "type": "list"
         }
       ],
@@ -3173,6 +3867,123 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditRuleTemplatesRequest": {
+      "document": "DescribeAuditRuleTemplates request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Rule template ID",
+          "example": "cynosdb-art-nuzwpha1",
+          "member": "string",
+          "name": "RuleTemplateIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Rule template name",
+          "example": "测试template",
+          "member": "string",
+          "name": "RuleTemplateNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Number of results returned per request. Default value: `20`.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Offset. Default value: `0`.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditRuleTemplatesResponse": {
+      "document": "DescribeAuditRuleTemplates response structure.",
+      "members": [
+        {
+          "document": "Number of eligible instances",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "List of rule template details\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AuditRuleTemplateInfo",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditRuleWithInstanceIdsRequest": {
+      "document": "DescribeAuditRuleWithInstanceIds request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID. Currently, only one single instance can be queried.",
+          "example": "[\"cynosdbmysql-ins-6990cckk\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditRuleWithInstanceIdsResponse": {
+      "document": "DescribeAuditRuleWithInstanceIds response structure.",
+      "members": [
+        {
+          "document": "None",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Audit rule information of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "InstanceAuditRule",
+          "name": "Items",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4896,6 +5707,42 @@
       ],
       "type": "object"
     },
+    "InstanceAuditRule": {
+      "document": "Audit rule details of the instance, which is an output parameter of the `DescribeAuditRuleWithInstanceIds` API.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID.",
+          "example": "cynosdbmysql-ins-6990cckk",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the audit is rule audit. Valid values: `true` (rule audit), `false` (full audit).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "AuditRule",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Audit rule details, which is valid only when `AuditRule` is `true`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AuditRuleFilters",
+          "name": "AuditRuleFilters",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "InstanceInitInfo": {
       "document": "Instance initialization configuration information",
       "members": [
@@ -5034,6 +5881,16 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Quantity in stock\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "StockCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -5151,6 +6008,132 @@
       "document": "Details of whether the parameter can be modified",
       "members": [],
       "usage": "out"
+    },
+    "ModifyAuditRuleTemplatesRequest": {
+      "document": "ModifyAuditRuleTemplates request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Audit rule template ID",
+          "example": "cynosdb-art-l1mlbo59",
+          "member": "string",
+          "name": "RuleTemplateIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Audit rule after modification",
+          "example": "无",
+          "member": "RuleFilters",
+          "name": "RuleFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "New name of the rule template",
+          "example": "新规则模版名称",
+          "member": "string",
+          "name": "RuleTemplateName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "New description of the rule template",
+          "example": "新规则模版描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAuditRuleTemplatesResponse": {
+      "document": "ModifyAuditRuleTemplates response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAuditServiceRequest": {
+      "document": "ModifyAuditService request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "cynosdbmysql-ins-6990cckk",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log retention period",
+          "example": "30",
+          "member": "uint64",
+          "name": "LogExpireDay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Frequent log retention period",
+          "example": "7",
+          "member": "uint64",
+          "name": "HighLogExpireDay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "The parameter used to change the audit rule of the instance to full audit",
+          "example": "true",
+          "member": "bool",
+          "name": "AuditAll",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Rule audit",
+          "example": "无",
+          "member": "AuditRuleFilters",
+          "name": "AuditRuleFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Rule template ID",
+          "example": "无",
+          "member": "string",
+          "name": "RuleTemplateIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAuditServiceResponse": {
+      "document": "ModifyAuditService response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifyBackupConfigRequest": {
       "document": "ModifyBackupConfig request structure.",
@@ -5548,6 +6531,42 @@
       ],
       "type": "object"
     },
+    "ModifyParamItem": {
+      "document": "Information of the modified instance parameter",
+      "members": [
+        {
+          "default": "",
+          "document": "Parameter name",
+          "example": "无",
+          "member": "string",
+          "name": "ParamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Current parameter value",
+          "example": "无",
+          "member": "string",
+          "name": "CurrentValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Old parameter value, which is used only in output parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "OldValue",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "NetAddr": {
       "document": "Network information",
       "members": [
@@ -5630,16 +6649,37 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public IP\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "WanIP",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Public network status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "WanStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
     },
     "NewAccount": {
-      "document": "\bNewly created account",
+      "document": "The newly created x08 account",
       "members": [
         {
           "default": "",
-          "document": "Account name",
+          "document": "Account name, which can contain 1-16 letters, digits, and underscores. It must begin with a letter and end with a letter or digit.",
+          "example": "0",
           "member": "string",
           "name": "AccountName",
           "required": true,
@@ -5648,7 +6688,8 @@
         },
         {
           "default": "",
-          "document": "Password",
+          "document": "Password, which can contain 8-64 characters.",
+          "example": "0",
           "member": "string",
           "name": "AccountPassword",
           "required": true,
@@ -5658,6 +6699,7 @@
         {
           "default": "",
           "document": "Host",
+          "example": "0",
           "member": "string",
           "name": "Host",
           "required": true,
@@ -5667,10 +6709,21 @@
         {
           "default": "",
           "document": "Description",
+          "example": "0",
           "member": "string",
           "name": "Description",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Maximum number of user connections, which cannot be above 10,240.",
+          "example": "0",
+          "member": "int64",
+          "name": "MaxUserConnections",
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -5792,6 +6845,105 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OldAddrInfo": {
+      "document": "Database address",
+      "members": [
+        {
+          "default": "",
+          "document": "IP\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Port\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Vport",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Expected valid hours of old IPs\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ReturnTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "OpenAuditServiceRequest": {
+      "document": "OpenAuditService request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Instance ID",
+          "example": "cynosdbmysql-ins-6990cckk",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Log retention period",
+          "example": "30",
+          "member": "uint64",
+          "name": "LogExpireDay",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Frequent log retention period",
+          "example": "7",
+          "member": "uint64",
+          "name": "HighLogExpireDay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Audit rule. If both this parameter and `RuleTemplateIds` are left empty, full audit will be applied.",
+          "example": "无",
+          "member": "AuditRuleFilters",
+          "name": "AuditRuleFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Rule template ID. If both this parameter and `AuditRuleFilters` are left empty, full audit will be applied.",
+          "example": "[\"cynosdb-art-l1mlbo59\"]",
+          "member": "string",
+          "name": "RuleTemplateIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenAuditServiceResponse": {
+      "document": "OpenAuditService response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -6395,6 +7547,42 @@
         }
       ],
       "usage": "out"
+    },
+    "RuleFilters": {
+      "document": "Filter of the audit rule",
+      "members": [
+        {
+          "default": "",
+          "document": "Filter parameter name of the audit rule. Valid values: `host` (client IP), `user` (database account), `dbName` (database name), `sqlType` (SQL type), `sql` (SQL statement).",
+          "example": "sqlType",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filter match type of the audit rule. Valid values: `INC` (including), `EXC` (excluding), `EQS` (equal to), `NEQ` (not equal to).",
+          "example": "INC",
+          "member": "string",
+          "name": "Compare",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Filter match value of the audit rule",
+          "example": "UPDATE",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "SearchClusterDatabasesRequest": {
       "document": "SearchClusterDatabases request structure.",
@@ -7203,6 +8391,16 @@
           "name": "HasStock",
           "required": true,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Quantity in stock",
+          "example": "1",
+          "member": "int64",
+          "name": "StockCount",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

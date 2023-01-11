@@ -5520,7 +5520,7 @@
         },
         {
           "default": "",
-          "document": "Timestamp",
+          "document": "Public network bandwidth",
           "example": "无",
           "member": "int64",
           "name": "PublicNetwork",

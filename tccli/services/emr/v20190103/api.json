@@ -1015,7 +1015,7 @@
         },
         {
           "default": "",
-          "document": "The instance billing mode. Valid values:\n<li>`PREPAID`: The prepaid mode, namely monthly subscription.</li>\n<li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>",
+          "document": "The instance billing mode. Valid values:\n<li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>",
           "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
@@ -2619,6 +2619,72 @@
           "required": true,
           "type": "bool",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Client component information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"hdfs-2.8.5\",true]",
+          "member": "SoftDependInfo",
+          "name": "OutSideSoftInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "EmrPrice": {
+      "document": "EMR inquiry description",
+      "members": [
+        {
+          "default": "",
+          "document": "The published price.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OriginalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The discounted price.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DiscountCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The unit of the billable item.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "s",
+          "member": "string",
+          "name": "Unit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The queried spec.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PriceResource",
+          "name": "PriceSpec",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether spot instances are supported.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "SupportSpotPaid",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3068,30 +3134,47 @@
       "members": [
         {
           "document": "Original price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "float",
           "name": "OriginalCost",
+          "required": true,
           "type": "float",
           "value_allowed_null": true
         },
         {
           "document": "Discounted price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "float",
           "name": "DiscountCost",
+          "required": true,
           "type": "float",
           "value_allowed_null": true
         },
         {
           "document": "Time unit of instance purchase duration. Valid values:\n<li>s: seconds.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "TimeUnit",
+          "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "document": "Purchase duration of instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "int64",
           "name": "TimeSpan",
+          "required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The price list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ZoneDetailPriceResult",
+          "name": "PriceList",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -3345,6 +3428,15 @@
           "name": "PriceSpec",
           "required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The inquiry results corresponding to the specs specified by the input parameter `MultipleResources`, with the result of the first spec returned by other output parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "EmrPrice",
+          "name": "MultipleEmrPrice",
+          "required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -3843,6 +3935,32 @@
         }
       ],
       "usage": "both"
+    },
+    "NodeDetailPriceResult": {
+      "document": "Price details by node, used for creating the cluster price list",
+      "members": [
+        {
+          "default": "",
+          "document": "The node type. Valid values: `master`, `core`, `task`, `common`, `router`, `mysql`\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "master",
+          "member": "string",
+          "name": "NodeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Price details by node part",
+          "example": "无",
+          "member": "PartDetailPriceItem",
+          "name": "PartDetailPrice",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "NodeHardwareInfo": {
       "document": "Node hardware information",
@@ -4493,6 +4611,72 @@
       ],
       "usage": "out"
     },
+    "PartDetailPriceItem": {
+      "document": "Price details by node part, used for creating the cluster price list",
+      "members": [
+        {
+          "default": "",
+          "document": "The type. Valid values: `node` (node); `rootDisk` (system disk); `dataDisk` and `metaDB` (cloud data disk)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "node",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rate (original)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "float",
+          "name": "Price",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Rate (discounted)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "float",
+          "name": "RealCost",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Total price (discounted)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "float",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Discount\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "7.5",
+          "member": "float",
+          "name": "Policy",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Quantity\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "GoodsNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "PersistentVolumeContext": {
       "document": "Description of Pod `PVC` storage method",
       "members": [
@@ -4541,7 +4725,7 @@
         },
         {
           "default": "",
-          "document": "The ID of the project to which the instance belongs. You can call the [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1) and obtain this ID from the `projectId` field in the response. If this is left empty, the ID of the default project is used.",
+          "document": "Project ID of the instance. If no ID is passed in, the default project ID is used.",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -5359,7 +5543,7 @@
       "members": [
         {
           "default": "",
-          "document": "The node billing mode. Valid values:\n<li>`PREPAID`：The prepaid mode, namely monthly subscription.</li>\n<li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>\n<li>`SPOTPAID`: The spot instance mode (for task nodes only).</li>",
+          "document": "The node billing mode. Valid values:\n<li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>\n<li>`SPOTPAID`: The spot instance mode (for task nodes only).</li>",
           "example": "\"\"",
           "member": "string",
           "name": "InstanceChargeType",
@@ -6015,6 +6199,32 @@
       ],
       "usage": "both"
     },
+    "SoftDependInfo": {
+      "document": "Client component dependencies",
+      "members": [
+        {
+          "default": "",
+          "document": "The component name.",
+          "example": "hdfs-2.8.5",
+          "member": "string",
+          "name": "SoftName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the component is required.",
+          "example": "true",
+          "member": "bool",
+          "name": "Required",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SubnetInfo": {
       "document": "Subnet information",
       "members": [
@@ -6400,6 +6610,32 @@
         }
       ],
       "usage": "both"
+    },
+    "ZoneDetailPriceResult": {
+      "document": "Price details by AZ, used for creating the cluster price list",
+      "members": [
+        {
+          "default": "",
+          "document": "AZ ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100002",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Price details by node",
+          "example": "无",
+          "member": "NodeDetailPriceResult",
+          "name": "NodeDetailPrice",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ZoneResourceConfiguration": {
       "document": "AZ configurations",
