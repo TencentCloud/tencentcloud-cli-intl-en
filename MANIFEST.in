@@ -103,6 +103,8 @@ include tccli/services/ip/v20210409/api.json
 include tccli/services/ip/v20210409/examples.json
 include tccli/services/kms/v20190118/api.json
 include tccli/services/kms/v20190118/examples.json
+include tccli/services/lcic/v20220817/api.json
+include tccli/services/lcic/v20220817/examples.json
 include tccli/services/lighthouse/v20200324/api.json
 include tccli/services/lighthouse/v20200324/examples.json
 include tccli/services/live/v20180801/api.json

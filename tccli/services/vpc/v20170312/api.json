@@ -103,7 +103,7 @@
       "output": "AuditCrossBorderComplianceResponse"
     },
     "CheckAssistantCidr": {
-      "document": "This API (CheckAssistantCidr) is used to check overlapping of a secondary CIDR block with inventory routing, peering connection (opposite VPC CIDR block), and any other resources. If an overlap is present, the overlapped resources are returned. (To use this API that is in Beta, please submit a ticket.)\n* Check whether the secondary CIDR block overlaps with a primary or secondary CIDR block of the current VPC.\n* Check whether the secondary CIDR block overlaps with the routing destination of the current VPC.\n* Check whether the secondary CIDR block is peer-connected to the current VPC, and whether it overlaps with a main or secondary CIDR block of the opposite VPC.",
+      "document": "This API is used to check whether the secondary CIDR block conflicts with existing routes, peering connections (peer VPC CIDR blocks), and other resources. \n* Check whether the secondary CIDR block overlaps with the primary/secondary CIDR block of the current VPC.\n* Check whether the secondary CIDR block overlaps with the routing destination of the current VPC.\n* If the current VPC is used in a peering connection, check whether the secondary CIDR block overlaps with the primary/secondary CIDR block of the peer VPC.",
       "input": "CheckAssistantCidrRequest",
       "name": "Checks secondary CIDR block overlaps",
       "output": "CheckAssistantCidrResponse"
@@ -139,7 +139,7 @@
       "output": "CreateAndAttachNetworkInterfaceResponse"
     },
     "CreateAssistantCidr": {
-      "document": "This API is used to batch create secondary CIDR blocks. This API is in beta test. To use it, please submit a ticket.",
+      "document": "This API is used to batch create secondary CIDR blocks.",
       "input": "CreateAssistantCidrRequest",
       "name": "Creates a secondary CIDR block",
       "output": "CreateAssistantCidrResponse"
@@ -151,7 +151,7 @@
       "output": "CreateBandwidthPackageResponse"
     },
     "CreateCcn": {
-      "document": "This API is used to create a Cloud Connect Network (CCN).<br />\n* You can bind a tag when creating a CCN instance. The tag list in the response indicates the tags that have been successfully added.\nEach account can only create a limited number of CCN instances. For more information, see product documentation. To create more instances, contact the online customer service.",
+      "document": "This API is used to create a CCN instance.\n* You can add tags to a CCN instance upon the creation. The tags are added successfully if they are listed in the response.\n* There is a quota of CCN instances for each account. For more information, see product documentation. To increase the quota, please submit a ticket.",
       "input": "CreateCcnRequest",
       "name": "Creates a CCN",
       "output": "CreateCcnResponse"
@@ -259,7 +259,7 @@
       "output": "CreateSecurityGroupResponse"
     },
     "CreateSecurityGroupPolicies": {
-      "document": "This API is used to create security group policies.\n\nFor parameters of SecurityGroupPolicySet,\n<ul>\n<li>`Version`: The version number of a security group policy, which automatically increases by one each time you update the security policy, to prevent expiration of the updated routing policies. If it is left empty, any conflicts will be ignored.</li>\n<li>When creating the `Egress` and `Ingress` polices,<ul>\n<li>`Protocol`: `TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE`, or `ALL`.</li>\n<li>`CidrBlock`: A CIDR block in the correct format. </li>For \n<li>`Ipv6CidrBlock`: An IPv6 CIDR block in the correct format. In a classic network, if an `Ipv6CidrBlock` contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`SecurityGroupId`: ID of the security group. It can be the ID of security group to be modified, or the ID of other security group in the same project. All private IPs of all CVMs under the security group will be covered. If this field is used, the policy will automatically change according to the CVM associated with the group ID while being used to match network messages. You don’t need to change it manually.</li>\n<li>`Port`: A single port number such as 80, or a port range in the format of \"8000-8010\". This parameter is only available when the `Protocol` is `TCP` or `UDP`. Otherwise, `Protocol` and `Port` are mutually exclusive.</li>\n<li>`Action`: `ACCEPT` or `DROP`.</li>\n<li>`CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are mutually exclusive. `Protocol` + `Port` and `ServiceTemplate` are mutually exclusive.</li>\n<li>You can only create policies in one direction in each request. To specify the `PolicyIndex` parameter, use the same index number in policies. If you want to insert a rule before the first rule, enter 0; if you want to add a rule after the last rule, leave it empty.</li>\n</ul></li></ul>",
+      "document": "This API is used to create security group policies (`SecurityGroupPolicy`).\n\nFor parameters of `SecurityGroupPolicySet`,\n<ul>\n<li>`Version`: The version number of a security group policy, which automatically increases by one each time you update the security policy, to prevent expiration of the updated routing policies. If it is left empty, any conflicts will be ignored.</li>\n<li>When creating the `Egress` and `Ingress` polices,<ul>\n<li>`Protocol`: Allows `TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE` and `ALL`.</li>\n<li>`CidrBlock`: For the classic network, the `CidrBlock` can contain private IPs of Tencent Cloud resources that are not under your account. It does not mean that you can access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`Ipv6CidrBlock`: For the classic network, `Ipv6CidrBlock` can contain private IPv6 addresses of Tencent Cloud resources that are not under your account. It does not mean that you can access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.</li>\n<li>`SecurityGroupId`: ID of the security group to create policies. </li>\n<li>`Port`: A single port (“80”) or a port range (\"8000-8010\"). This parameter is only available when `Protocol` is `TCP` or `UDP`.</li>\n<li>`Action`: `ACCEPT` or `DROP`.</li>\n<li><code>CidrBlock</code>, <code>Ipv6CidrBlock</code>, <code>SecurityGroupId</code>, and <code>AddressTemplate</code> are mutually exclusive. <code>Protocol</code> + <code>Port</code> and <code>ServiceTemplate</code> are mutually exclusive. <code>IPv6CidrBlock</code> and <code>ICMP</code> are mutually exclusive; to use them, enter <code>ICMPV6</code>.</li>\n<li>You can only create policies in one direction in each request. To specify the `PolicyIndex` parameter, use the same index number in policies. If you want to insert a rule before the first rule, enter 0; if you want to add a rule after the last rule, leave it empty.</li>\n</ul></li></ul>",
       "input": "CreateSecurityGroupPoliciesRequest",
       "name": "Adds policies to a security group",
       "output": "CreateSecurityGroupPoliciesResponse"
@@ -295,7 +295,7 @@
       "output": "CreateSubnetsResponse"
     },
     "CreateVpc": {
-      "document": "This API is used to create a VPC instance.\n* The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), and that of the largest IP address range is 16 (65,536 IP addresses). For more information on how to plan VPC IP ranges, see [Network Planning](https://intl.cloud.tencent.com/document/product/215/30313?from_cn_redirect=1).\n* The number of VPC instances that can be created in a region is limited. For more information, see <a href=\"https://intl.cloud.tencent.com/doc/product/215/537?from_cn_redirect=1\" title=\"VPC Use Limits\">VPC Use Limits</a>. To request more resources, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).\n* You can bind tags when creating a VPC instance. The tag list in the response indicates the tags that have been successfully added.",
+      "document": "This API is used to create a VPC instance.\n* The subnet mask of the smallest IP address range that can be created is 28 (16 IP addresses), that of the largest IP address ranges 10.0.0.0/12 and 172.16.0.0/12 is 12 (1,048,576 IP addresses), and that of the largest IP address range 192.168.0.0/16 is 16 (65,536 IP addresses). For more information on how to plan VPC IP ranges, see [Network Planning](https://intl.cloud.tencent.com/document/product/215/30313?from_cn_redirect=1).\n* The number of VPC instances that can be created in a region is limited. For more information, see <a href=\"https://intl.cloud.tencent.com/doc/product/215/537?from_cn_redirect=1\" title=\"VPC Use Limits\">VPC Use Limits</a>. To request more resources, [submit a ticket](https://console.cloud.tencent.com/workorder/category).\n* You can bind tags when creating a VPC instance. The tag list in the response indicates the tags that have been successfully added.",
       "input": "CreateVpcRequest",
       "name": "Creates a VPC",
       "output": "CreateVpcResponse"
@@ -349,7 +349,7 @@
       "output": "DeleteAddressTemplateGroupResponse"
     },
     "DeleteAssistantCidr": {
-      "document": "This API is used to delete secondary CIDR blocks. This API is in beta test. To use it, please submit a ticket.",
+      "document": "This API is used to delete a secondary CIDR block.",
       "input": "DeleteAssistantCidrRequest",
       "name": "Deletes a secondary CIDR block",
       "output": "DeleteAssistantCidrResponse"
@@ -559,7 +559,7 @@
       "output": "DescribeAddressesResponse"
     },
     "DescribeAssistantCidr": {
-      "document": "This API (DescribeAssistantCidr) is used to query a list of secondary CIDR blocks. (To use this API that is in Beta, please submit a ticket.)",
+      "document": "This API is used to query the list of secondary CIDR blocks.",
       "input": "DescribeAssistantCidrRequest",
       "name": "Queries a list of secondary CIDR blocks",
       "output": "DescribeAssistantCidrResponse"
@@ -809,6 +809,12 @@
       "input": "DescribeTaskResultRequest",
       "name": "Queries the async job execution results",
       "output": "DescribeTaskResultResponse"
+    },
+    "DescribeTrafficPackages": {
+      "document": "This API is used to query the details of shared traffic packages.",
+      "input": "DescribeTrafficPackagesRequest",
+      "name": "Queries the list of shared traffic packages",
+      "output": "DescribeTrafficPackagesResponse"
     },
     "DescribeVpcEndPoint": {
       "document": "This API is used to query the endpoint list.",
@@ -1069,7 +1075,7 @@
       "output": "ModifyAddressesBandwidthResponse"
     },
     "ModifyAssistantCidr": {
-      "document": "This API is used to modify (add or delete) secondary CIDR blocks in batch. This API is in beta test. To use it, please submit a ticket.",
+      "document": "This API is used to batch modify (add or delete) secondary CIDR blocks.",
       "input": "ModifyAssistantCidrRequest",
       "name": "Modifies secondary CIDR blocks",
       "output": "ModifyAssistantCidrResponse"
@@ -1368,11 +1374,23 @@
       "name": "Adjusts the bandwidth cap of a VPN gateway",
       "output": "ResetVpnGatewayInternetMaxBandwidthResponse"
     },
+    "ReturnNormalAddresses": {
+      "document": "This API is used to unbind and release public IPs. \nNote: Starting from Dec 15, 2022, CAM authorization is required for a sub-account to call this API. For more details, see [Authorization Guide](https://intl.cloud.tencent.com/document/product/598/34545?from_cn_redirect=1).",
+      "input": "ReturnNormalAddressesRequest",
+      "name": "Unbinds and releases public IPs",
+      "output": "ReturnNormalAddressesResponse"
+    },
     "SetCcnRegionBandwidthLimits": {
       "document": "This API (SetCcnRegionBandwidthLimits) is used to set the outbound bandwidth cap for CCNs in each region. This API can only set the outbound bandwidth cap for regions in the network instances that have already been associated.",
       "input": "SetCcnRegionBandwidthLimitsRequest",
       "name": "Sets the outbound bandwidth cap of each CCN region",
       "output": "SetCcnRegionBandwidthLimitsResponse"
+    },
+    "SetVpnGatewaysRenewFlag": {
+      "document": "This API is used to specify whether to enable auto-renewal for the VPN gateway.",
+      "input": "SetVpnGatewaysRenewFlagRequest",
+      "name": "Specifies whether to enable auto-renewal for the VPN gateway",
+      "output": "SetVpnGatewaysRenewFlagResponse"
     },
     "TransformAddress": {
       "document": "This API is used to convert a common public IP into an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).\n* Tencent Cloud limits the number of times that a user can unbind EIPs and reassign public IPs in each region per day. For more information, see product introduction of [Elastic IP](https://intl.cloud.tencent.com/document/product/213/5733?from_cn_redirect=1). The preceding quota can be obtained through the API [DescribeAddressQuota](https://intl.cloud.tencent.com/document/product/215/16701).",
@@ -1648,7 +1666,7 @@
         },
         {
           "default": "",
-          "document": "EIP resource type. Valid values: `CalcIP` (device IP), `WanIP` (public network IP), `EIP` (elastic IP) and `AnycastEIP` (accelerated EIP).",
+          "document": "IP type. Valid values: `CalcIP` (device IP), `WanIP` (public network IP), `EIP` (general elastic IP), `AnycastEIP` (accelerated EIP), and `AntiDDoSEIP` (Anti DDoS EIP).",
           "example": "EIP",
           "member": "string",
           "name": "AddressType",
@@ -2104,6 +2122,15 @@
           "name": "AddressName",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Network egress. It defaults to `center_egress1`.",
+          "example": "无",
+          "member": "string",
+          "name": "Egress",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2362,7 +2389,7 @@
         },
         {
           "default": "",
-          "document": "The ID of the instance to be bound, such as `ins-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API.",
+          "document": "The ID of the instance to be bound, such as `ins-11112222`, `lb-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API.",
           "example": "ins-1bmpb9tu",
           "member": "string",
           "name": "InstanceId",
@@ -5737,12 +5764,21 @@
         },
         {
           "default": "",
-          "document": "Whether it is of the type `PassService`. Valid values: true: yes; false: no. Default value: false",
+          "document": "(Disused) Whether it’s a PaaS service",
           "example": "True",
           "member": "bool",
           "name": "IsPassService",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Mounted PaaS service type. Values: `CLB` (default), `CDB`, `CRS`",
+          "example": "CLB,CDB,CRS",
+          "member": "string",
+          "name": "ServiceType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5819,6 +5855,7 @@
         {
           "default": "",
           "document": "The VPC name. The maximum length is 60 bytes.",
+          "example": "TestVPC",
           "member": "string",
           "name": "VpcName",
           "required": true,
@@ -5826,7 +5863,8 @@
         },
         {
           "default": "",
-          "document": "VPC CIDR blocks, which must fall within the following three private network IP ranges: 10.0.0.0/16, 172.16.0.0/16 and 192.168.0.0/16.",
+          "document": "VPC CIDR block, which must fall within the following three private network IP ranges: 10.0.0.0/12, 172.16.0.0/12, and 192.168.0.0/16.",
+          "example": "10.8.0.0/16",
           "member": "string",
           "name": "CidrBlock",
           "required": true,
@@ -5835,6 +5873,7 @@
         {
           "default": "",
           "document": "Whether multicast is enabled. `true`: Enabled. `false`: Not enabled.",
+          "example": "true",
           "member": "string",
           "name": "EnableMulticast",
           "required": false,
@@ -5843,6 +5882,7 @@
         {
           "default": "",
           "document": "DNS address. A maximum of 4 addresses is supported.",
+          "example": "无",
           "member": "string",
           "name": "DnsServers",
           "required": false,
@@ -5851,6 +5891,7 @@
         {
           "default": "",
           "document": "Domain name of DHCP",
+          "example": "无",
           "member": "string",
           "name": "DomainName",
           "required": false,
@@ -5859,6 +5900,7 @@
         {
           "default": "",
           "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -8095,6 +8137,7 @@
         {
           "default": "",
           "document": "Offset",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -8103,6 +8146,7 @@
         {
           "default": "",
           "document": "The returned quantity",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -8111,6 +8155,7 @@
         {
           "default": "",
           "document": "Filter conditions:\n<li>ccn-id - String - (Filter condition) The CCN instance ID.</li>\n<li>instance-type - String - (Filter condition) The associated instance type.</li>\n<li>instance-region - String - (Filter condition) The associated instance region.</li>\n<li>instance-type - String - (Filter condition) The instance ID of the associated instance.</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -8119,6 +8164,7 @@
         {
           "default": "",
           "document": "The ID of the CCN instance",
+          "example": "ccn-245ecr35",
           "member": "string",
           "name": "CcnId",
           "required": false,
@@ -8127,6 +8173,7 @@
         {
           "default": "",
           "document": "The order field supports `CcnId`, `InstanceType`, `InstanceId`, `InstanceName`, `InstanceRegion`, `AttachedTime`, and `State`.",
+          "example": "CcnId",
           "member": "string",
           "name": "OrderField",
           "required": false,
@@ -8135,6 +8182,7 @@
         {
           "default": "",
           "document": "Order methods. Ascending: `ASC`, Descending: `DESC`.",
+          "example": "ASC",
           "member": "string",
           "name": "OrderDirection",
           "required": false,
@@ -8285,6 +8333,7 @@
         {
           "default": "",
           "document": "The CCN instance ID, such as `ccn-f49l6u0z`. Each request can have a maximum of 100 instances. `CcnIds` and `Filters` cannot be specified at the same time",
+          "example": "ccn-f49l6u0z",
           "member": "string",
           "name": "CcnIds",
           "required": false,
@@ -8293,6 +8342,7 @@
         {
           "default": "",
           "document": "Filter conditions. `CcnIds` and `Filters` cannot be specified at the same time.\n<li>ccn-id - String - (Filter condition) The unique ID of the CCN, such as `vpc-f49l6u0z`.</li>\n<li>ccn-name - String - (Filter condition) The CCN name.</li>\n<li>ccn-description - String - (Filter condition) CCN description.</li>\n<li>state - String - (Filter condition) The instance status. 'ISOLATED': Isolated (the account is in arrears and the service is suspended.) 'AVAILABLE': Running.</li>\n<li>tag-key - String - Required: no - (Filter condition) Filters by tag key.</li>\n<li>`tag:tag-key` - String - Required: no - (Filter condition) Filters by tag key pair. For this parameter, `tag-key` will be replaced with a specific tag key. For more information, see this example: **Querying the list of CCNs bound to tags**.</li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -8301,6 +8351,7 @@
         {
           "default": "",
           "document": "Offset",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -8309,6 +8360,7 @@
         {
           "default": "",
           "document": "The returned quantity",
+          "example": "20",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -8317,6 +8369,7 @@
         {
           "default": "",
           "document": "Order fields support `CcnId`, `CcnName`, `CreateTime`, `State`, and `QosLevel`",
+          "example": "CcnName",
           "member": "string",
           "name": "OrderField",
           "required": false,
@@ -8325,6 +8378,7 @@
         {
           "default": "",
           "document": "Order methods. Ascending: `ASC`, Descending: `DESC`.",
+          "example": "ASC",
           "member": "string",
           "name": "OrderDirection",
           "required": false,
@@ -10066,7 +10120,7 @@
         },
         {
           "default": "",
-          "document": "Filter. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.\n<li>`vpc-id` - String - VPC instance ID, such as `vpc-f49l6u0z`.</li>\n<li>`subnet-id` - String - Subnet instance ID, such as `subnet-f49l6u0z`.</li>\n<li>`network-interface-id` - String - ENI instance ID, such as `eni-5k56k7k7`.</li>\n<li>`attachment.instance-id` - String - ID of the bound CVM instance, such as `ins-3nqpdn3i`.</li>\n<li>`groups.security-group-id` - String - ID of the bound security group, such as `sg-f9ekbxeq`.</li>\n<li>`network-interface-name` - String - ENI instance name.</li>\n<li>`network-interface-description` - String - ENI instance description.</li>\n<li>`address-ip` - String - Private IPv4 address. A single IP will be fuzzily matched with the suffix, while multiple IPs will be exactly matched. It can be used with `ip-exact-match` to query and exactly match a single IP.</li>\n<li>`ip-exact-match` - Boolean - Exact match by private IPv4 address. The first value will be returned if multiple values are found.</li>\n<li>`tag-key` - String - Optional - Filter by tag key. See Example 2 for the detailed usage.</li>\n<li>`tag:tag-key` - String - Optional - Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 3 for the detailed usage.</li>\n<li>`is-primary` - Boolean - Optional - Filter based on whether it is a primary ENI. If the value is `true`, filter only the primary ENI. If the value is `false`, filter only the secondary ENI. If this parameter is not specified, filter the both.</li>\n<li>`eni-type` - String - Optional - Filter by ENI type. \"0\" - secondary ENI, \"1\" - primary ENI, \"2\": relayed ENI</li>",
+          "document": "Filter. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.\n<li>`vpc-id` - String - VPC ID, such as `vpc-f49l6u0z`.</li>\n<li>`subnet-id` - String - Subnet ID, such as `subnet-f49l6u0z`.</li>\n<li>`network-interface-id` - String - ENI ID, such as `eni-5k56k7k7`.</li>\n<li>`attachment.instance-id` - String - ID of the bound CVM, such as `ins-3nqpdn3i`.</li>\n<li>`groups.security-group-id` - String - IDs of associated security groups, such as `sg-f9ekbxeq`.</li>\n<li>`network-interface-name` - String - ENI instance name.</li>\n<li>`network-interface-description` - String - ENI instance description.</li>\n<li>`address-ip` - String - Private IPv4 address. A single IP will be fuzzily matched with the suffix, while multiple IPs will be exactly matched. It can be used with `ip-exact-match` to query and exactly match a single IP.</li>\n<li>`ip-exact-match` - Boolean - Exact match by private IPv4 address. The first value will be returned if multiple values are found.</li>\n<li>`tag-key` - String - Optional - Filter by the tag key. See Example 2 for the detailed usage.</li>\n<li>`tag:tag-key` - String - Optional - Filter by the tag key pair. Use a specific tag key to replace `tag-key`. See Example 2 for the detailed usage.</li>\n<li>`is-primary` - Boolean - Optional - Filter based on whether it is a primary ENI. Values: `true`, `false`. If this parameter is not specified, filter the both.</li>\n<li>`eni-type` - String - Optional - Filter by the ENI type. Values: `0` (Secondary ENI), `1` (Primary ENI), `2` (Relayed ENI)</li>\n<li>`eni-qos` - String - Optional - Filter by the ENI service level. Values: `AG` (Bronze), `AU` (Silver)</li>\n<li>`address-ipv6` - String - Optional - Filter by the private IPv6 address. Multiple IPv6 addresses can be used for query. If this field is used together with `address-ip`, their intersection will be used.</li>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -10235,7 +10289,7 @@
         },
         {
           "default": "",
-          "document": "Filter conditions. `SecurityGroupId` and `Filters` cannot be specified at the same time.\n<li>security-group-id - String - Security group ID.</li>\n<li>ip - String - IP. IPV4 and IPV6 fuzzy matching is supported.</li>\n<li>address-module - String - IP address or address group template ID.</li>\n<li>service-module - String - Protocol port or port group template ID.</li>\n<li>protocol-type - String - Protocol supported by the security group policy. Valid values: `TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE`, `ALL`.</li>\n<li>port - String - Optional - Protocol port. Fuzzy matching is supported. Query all ports when the protocol value is `ALL`.</li>\n<li>poly - String - Protocol policy. Valid values: `ALL` (means \"all policies\"), `ACCEPT` (means \"allow\") and `DROP` (means \"reject\").</li>\n<li>direction - String - Protocol rule. Valid values: `ALL` (means \"all rules\"), `INBOUND`(means \"inbound rules\") and `OUTBOUND` (means \"outbound rules\").</li>\n<li>description - String - Protocol description. Fuzzy matching is supported in this filter condition.</li>",
+          "document": "Filters\n<li>`security-group-id` - String - Security group ID in the rule.</li>\n<li>`ip` - String - IP. IPV4 and IPV6 fuzzy matching is supported.</li>\n<li>`address-module` - String - IP address or address group template ID.</li>\n<li>`service-module` - String - Protocol port or port group template ID.</li>\n<li>`protocol-type` - String - Protocol supported by the security group policy. Valid values: `TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE`, `ALL`.</li>\n<li>`port` - String - Optional - Port. Fuzzy matching is supported. Query all ports when the protocol value is `ALL`.</li>\n<li>`poly` - String - Policy type. Valid values: `ALL`, `ACCEPT` and `DROP`.</li>\n<li>`direction` - String - Direction of the rule. Valid values: `ALL`, `INBOUND` and `OUTBOUND`.</li>\n<li>`description` - String - Policy description. Fuzzy matching is supported.</li>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -10585,6 +10639,78 @@
           "member": "string",
           "name": "Result",
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTrafficPackagesRequest": {
+      "document": "DescribeTrafficPackages request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Traffic package IDs. Multiple values can be used.",
+          "example": "无",
+          "member": "string",
+          "name": "TrafficPackageIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Each request can have up to 10 `Filters`. `TrafficPackageIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:\n<li> `traffic-package_id` - String - Optional - Filter by the traffic package ID.</li>\n<li> `traffic-package-name` - String - Optional - Filter by the traffic package name. Fuzzy match is not supported.</li>\n<li> `status` - String - Optional - Filter by the traffic package status. Values: [AVAILABLE|EXPIRED|EXHAUSTED].</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Pagination parameter",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Pagination parameter",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTrafficPackagesResponse": {
+      "document": "DescribeTrafficPackages response structure.",
+      "members": [
+        {
+          "document": "Number of eligible traffic packages",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Traffic package information",
+          "example": "无",
+          "member": "TrafficPackage",
+          "name": "TrafficPackageSet",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -12472,6 +12598,7 @@
         {
           "default": "",
           "document": "Endpoint service ID",
+          "example": "无",
           "member": "string",
           "name": "EndPointServiceId",
           "required": true,
@@ -12481,6 +12608,7 @@
         {
           "default": "",
           "document": "VPC ID",
+          "example": "vpc-gjui0b5t",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -12490,6 +12618,7 @@
         {
           "default": "",
           "document": "APP ID",
+          "example": "251007979",
           "member": "string",
           "name": "ServiceOwner",
           "required": true,
@@ -12499,6 +12628,7 @@
         {
           "default": "",
           "document": "Endpoint service name",
+          "example": "无",
           "member": "string",
           "name": "ServiceName",
           "required": true,
@@ -12508,6 +12638,7 @@
         {
           "default": "",
           "document": "Real server VIP",
+          "example": "10.1.1.1",
           "member": "string",
           "name": "ServiceVip",
           "required": true,
@@ -12517,6 +12648,7 @@
         {
           "default": "",
           "document": "Real server ID in the format of `lb-xxx`.",
+          "example": "lb-xxx",
           "member": "string",
           "name": "ServiceInstanceId",
           "required": true,
@@ -12526,6 +12658,7 @@
         {
           "default": "",
           "document": "Whether to automatically accept",
+          "example": "True",
           "member": "bool",
           "name": "AutoAcceptFlag",
           "required": true,
@@ -12535,6 +12668,7 @@
         {
           "default": "",
           "document": "Number of associated endpoints\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "uint64",
           "name": "EndPointCount",
           "required": true,
@@ -12544,6 +12678,7 @@
         {
           "default": "",
           "document": "Array of endpoints\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "EndPoint",
           "name": "EndPointSet",
           "required": true,
@@ -12553,8 +12688,19 @@
         {
           "default": "",
           "document": "Creation time",
+          "example": "无",
           "member": "string",
           "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Mounted PaaS service type. Values: `CLB`, `CDB`, `CRS`",
+          "example": "CLB,CDB,CRS",
+          "member": "string",
+          "name": "ServiceType",
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -14238,21 +14384,12 @@
         },
         {
           "default": "",
-          "document": "The billing mode of the bandwidth package.",
+          "document": "The billing mode of the bandwidth package. Values: \n`TOP5_POSTPAID_BY_MONTH`: Bill by the top 5 bandwidth value of the current month in a postpaid manner",
           "example": "TOP5_POSTPAID_BY_MONTH",
           "member": "string",
           "name": "ChargeType",
           "required": false,
           "type": "string"
-        },
-        {
-          "default": "",
-          "document": "When a monthly-subscribed bandwidth package is returned, whether to convert it to a pay-as-you-go bandwidth packages. Default value: `No`",
-          "example": "True",
-          "member": "bool",
-          "name": "MigrateOnRefund",
-          "required": false,
-          "type": "bool"
         }
       ],
       "type": "object"
@@ -16083,6 +16220,16 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the NAT gateway is blocked. Values: `NORMAL`, `RESTRICTED`\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "RestrictState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -16752,7 +16899,7 @@
           "example": "-",
           "member": "string",
           "name": "NetworkInterfaceId",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16762,7 +16909,7 @@
           "example": "-",
           "member": "string",
           "name": "NetworkInterfaceName",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16782,7 +16929,7 @@
           "example": "-",
           "member": "string",
           "name": "SubnetId",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16792,7 +16939,7 @@
           "example": "-",
           "member": "string",
           "name": "VpcId",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16822,7 +16969,7 @@
           "example": "-",
           "member": "string",
           "name": "MacAddress",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16832,7 +16979,7 @@
           "example": "-",
           "member": "string",
           "name": "State",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -16842,7 +16989,7 @@
           "example": "-",
           "member": "PrivateIpAddressSpecification",
           "name": "PrivateIpAddressSet",
-          "required": true,
+          "required": false,
           "type": "list",
           "value_allowed_null": false
         },
@@ -16882,7 +17029,7 @@
           "example": "-",
           "member": "Ipv6Address",
           "name": "Ipv6AddressSet",
-          "required": true,
+          "required": false,
           "type": "list",
           "value_allowed_null": false
         },
@@ -16892,7 +17039,7 @@
           "example": "-",
           "member": "Tag",
           "name": "TagSet",
-          "required": true,
+          "required": false,
           "type": "list",
           "value_allowed_null": false
         },
@@ -16902,7 +17049,7 @@
           "example": "-",
           "member": "uint64",
           "name": "EniType",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16912,7 +17059,7 @@
           "example": "-",
           "member": "string",
           "name": "Business",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": true
         },
@@ -16922,7 +17069,7 @@
           "example": "cluster-gbo27yc4",
           "member": "string",
           "name": "CdcId",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": true
         },
@@ -16932,12 +17079,32 @@
           "example": "0",
           "member": "uint64",
           "name": "AttachType",
-          "required": true,
+          "required": false,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The ID of resource to retain the ENI primary IP. It’s used as the request parameters for deleting an ENI.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "cls-j85c20d4-reserved",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Service level\n<li>`DEFAULT`: Default level</lil>\n<li>`PT`: Gold</li>\n<li>`AU`: Silver</li>\n<li>`AG`: Bronze</li>\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "AG",
+          "member": "string",
+          "name": "QosLevel",
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "NetworkInterfaceAttachment": {
       "document": "Binding relationship of the ENI",
@@ -18171,6 +18338,33 @@
       ],
       "usage": "out"
     },
+    "ReturnNormalAddressesRequest": {
+      "document": "ReturnNormalAddresses request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "1",
+          "example": "[\"101.35.139.183\"]",
+          "member": "string",
+          "name": "AddressIps",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ReturnNormalAddressesResponse": {
+      "document": "ReturnNormalAddresses response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Route": {
       "document": "Routing policy object",
       "members": [
@@ -18196,7 +18390,7 @@
         },
         {
           "default": "",
-          "document": "Next hop address. You simply need to specify the gateway ID of a different next hop type, and the system will automatically match the next hop address.\nImportant note: When the GatewayType is EIP, the GatewayId has a fixed value `0`",
+          "document": "Next hop address. You simply need to specify the gateway ID of a different next hop type, and the system will automatically match the next hop address.",
           "example": "-",
           "member": "string",
           "name": "GatewayId",
@@ -18951,6 +19145,51 @@
       ],
       "type": "object"
     },
+    "SetVpnGatewaysRenewFlagRequest": {
+      "document": "SetVpnGatewaysRenewFlag request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "VPN gateway IDs",
+          "example": "['vpngw-m6hhy6or']",
+          "member": "string",
+          "name": "VpnGatewayIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Status of auto-renewal\nValues: `0` (Follow original), `1` (Enable auto-renewal), `2` (Disable auto-renewal) ",
+          "example": "2",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "VPNGW type: `IPSEC`, `SSL`",
+          "example": "IPSEC",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetVpnGatewaysRenewFlagResponse": {
+      "document": "SetVpnGatewaysRenewFlag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "SourceIpTranslationNatRule": {
       "document": "SNAT rule of a NAT Gateway",
       "members": [
@@ -19280,6 +19519,112 @@
       ],
       "usage": "both"
     },
+    "TrafficPackage": {
+      "document": "Information of a traffic package",
+      "members": [
+        {
+          "default": "",
+          "document": "Unique traffic package ID",
+          "example": "tfp-yj123h6i",
+          "member": "string",
+          "name": "TrafficPackageId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Traffic package name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "未命名",
+          "member": "string",
+          "name": "TrafficPackageName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Traffic package size in GB",
+          "example": "10.0",
+          "member": "float",
+          "name": "TotalAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Traffic package balance in GB",
+          "example": "10.0",
+          "member": "float",
+          "name": "RemainingAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Traffic package status. Valid values: `AVAILABLE`, `EXPIRED`, `EXHAUSTED`, `REFUNDED`, `DELETED`",
+          "example": "AVAILABLE",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Traffic package creation time",
+          "example": "2022-08-31T11:42:37Z",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Traffic package expiration time",
+          "example": "2022-09-30T11:42:36Z",
+          "member": "datetime_iso",
+          "name": "Deadline",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Used traffic in GB",
+          "example": "0.0",
+          "member": "float",
+          "name": "UsedAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Traffic package tag\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "Tag",
+          "name": "TagSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Traffic package type (idle-time or full-time)",
+          "example": "FULL_TIME",
+          "member": "string",
+          "name": "DeductType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "TransformAddressRequest": {
       "document": "TransformAddress request structure.",
       "members": [
@@ -19298,6 +19643,24 @@
     "TransformAddressResponse": {
       "document": "TransformAddress response structure.",
       "members": [
+        {
+          "document": "",
+          "example": "37888307",
+          "member": "uint64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "",
+          "example": "eip-fk2gmm9s",
+          "member": "string",
+          "name": "AddressId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

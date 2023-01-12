@@ -1,0 +1,1137 @@
+{
+  "actions": {
+    "BindDocumentToRoom": {
+      "document": "This API is used to bind a document to a room.",
+      "input": "BindDocumentToRoomRequest",
+      "name": "Binds a document to a room.",
+      "output": "BindDocumentToRoomResponse"
+    },
+    "CreateDocument": {
+      "document": "This API is used to create a document to be used in a room.",
+      "input": "CreateDocumentRequest",
+      "name": "Creates a document.",
+      "output": "CreateDocumentResponse"
+    },
+    "CreateRoom": {
+      "document": "This API is used to create a room.",
+      "input": "CreateRoomRequest",
+      "name": "Creates a room.",
+      "output": "CreateRoomResponse"
+    },
+    "CreateSupervisor": {
+      "document": "This API is used to create a spectator.",
+      "input": "CreateSupervisorRequest",
+      "name": "Creates a spectator.",
+      "output": "CreateSupervisorResponse"
+    },
+    "DeleteRoom": {
+      "document": "This API is used to delete a room.",
+      "input": "DeleteRoomRequest",
+      "name": "Deletes a room.",
+      "output": "DeleteRoomResponse"
+    },
+    "DescribeRoom": {
+      "document": "This API is used to get room information.",
+      "input": "DescribeRoomRequest",
+      "name": "Gets room information.",
+      "output": "DescribeRoomResponse"
+    },
+    "DescribeRoomStatistics": {
+      "document": "This API is used to obtain the statistics of a room. It can be called only after the room is ended.",
+      "input": "DescribeRoomStatisticsRequest",
+      "name": "Obtains the statistics of a room.",
+      "output": "DescribeRoomStatisticsResponse"
+    },
+    "DescribeUser": {
+      "document": "This API is used to obtain user profile.",
+      "input": "DescribeUserRequest",
+      "name": "Obtains user profile.",
+      "output": "DescribeUserResponse"
+    },
+    "LoginOriginId": {
+      "document": "This API is used to log in with an origin account, which is the `originId` entered during registration.",
+      "input": "LoginOriginIdRequest",
+      "name": "Logs in with an origin account.",
+      "output": "LoginOriginIdResponse"
+    },
+    "LoginUser": {
+      "document": "This API is used to log in.",
+      "input": "LoginUserRequest",
+      "name": "Logs in.",
+      "output": "LoginUserResponse"
+    },
+    "ModifyApp": {
+      "document": "This API is used to modify an application.",
+      "input": "ModifyAppRequest",
+      "name": "Modifies an application.",
+      "output": "ModifyAppResponse"
+    },
+    "RegisterUser": {
+      "document": "This API is used to register a user.",
+      "input": "RegisterUserRequest",
+      "name": "Registers a user.",
+      "output": "RegisterUserResponse"
+    },
+    "SetAppCustomContent": {
+      "document": "This API is used to set or update the custom content of an application, including the application icon and custom code. After you update JS and CSS content, you also need to call this API for the updates to take effect.",
+      "input": "SetAppCustomContentRequest",
+      "name": "Sets the custom content of an application.",
+      "output": "SetAppCustomContentResponse"
+    },
+    "UnbindDocumentFromRoom": {
+      "document": "This API is used to unbind a document from a room.",
+      "input": "UnbindDocumentFromRoomRequest",
+      "name": "Unbinds a document from a room.",
+      "output": "UnbindDocumentFromRoomResponse"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2022-08-17",
+    "serviceNameCN": "低代码互动课堂",
+    "serviceShortName": "lcic"
+  },
+  "objects": {
+    "AppCustomContent": {
+      "document": "Custom application content",
+      "members": [
+        {
+          "default": "",
+          "document": "Multiple scenarios can be set for an application.",
+          "example": "abc",
+          "member": "string",
+          "name": "Scene",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Logo URL",
+          "example": "abc",
+          "member": "string",
+          "name": "LogoUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Homepage URL, which can be used for redirection",
+          "example": "abc",
+          "member": "string",
+          "name": "HomeUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom JS URL",
+          "example": "abc",
+          "member": "string",
+          "name": "JsUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Custom CSS URL",
+          "example": "abc",
+          "member": "string",
+          "name": "CssUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "BindDocumentToRoomRequest": {
+      "document": "BindDocumentToRoom request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Room ID",
+          "example": "1234657",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Document ID",
+          "example": "abc",
+          "member": "string",
+          "name": "DocumentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Binding type. The default value is `0`. The backend passes through this parameter to clients so that the clients can implement business logic based on this parameter.",
+          "example": "0",
+          "member": "uint64",
+          "name": "BindType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "BindDocumentToRoomResponse": {
+      "document": "BindDocumentToRoom response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDocumentRequest": {
+      "document": "CreateDocument request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "LCIC SdkAppId",
+          "example": "123467",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Document URL\t",
+          "example": "无",
+          "member": "string",
+          "name": "DocumentUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Document name\t",
+          "example": "abc",
+          "member": "string",
+          "name": "DocumentName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Document owner ID\t",
+          "example": "abc",
+          "member": "string",
+          "name": "Owner",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Transcoding type. Valid values: `0`: No transcoding required (default); `1`: Documents that need to be transcoded: ppt, pptx, pdf, doc, docx; `2`: Videos that need to be transcoded: mp4, 3pg, mpeg, avi, flv, wmv, rm, h264, etc.; `2`: Audio that needs to be transcoded: mp3, wav, wma, aac, flac, opus",
+          "example": "1",
+          "member": "uint64",
+          "name": "TranscodeType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Permission. Valid values: `0`: Private document (default); `1`: Public document",
+          "example": "1",
+          "member": "uint64",
+          "name": "Permission",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Document extension",
+          "example": "doc",
+          "member": "string",
+          "name": "DocumentType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Document size, in bytes",
+          "example": "123",
+          "member": "uint64",
+          "name": "DocumentSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDocumentResponse": {
+      "document": "CreateDocument response structure.",
+      "members": [
+        {
+          "document": "Document ID",
+          "example": "abc",
+          "member": "string",
+          "name": "DocumentId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRoomRequest": {
+      "document": "CreateRoom request structure.",
+      "members": [
+        {
+          "document": "Room name",
+          "example": "房间名称",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Reserved room start time, in UNIX timestamp format",
+          "example": "1659600138",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Reserved room end time, in UNIX timestamp format",
+          "example": "1659600138",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "LCIC SdkAppId",
+          "example": "123467",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD",
+          "example": "1",
+          "member": "uint64",
+          "name": "Resolution",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Maximum number of mic-on users (excluding teachers). Value range: [0, 16]\t",
+          "example": "1",
+          "member": "uint64",
+          "name": "MaxMicNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only; `coteaching`: Dual-teacher",
+          "example": "abc",
+          "member": "string",
+          "name": "SubType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "document": "Teacher ID, which is the `UserId` obtained by the `RegisterUser` API.",
+          "example": "1jmPi2qddazF5PTgJtGYss9bg4T",
+          "member": "string",
+          "name": "TeacherId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "document": "Whether to automatically turn the mic on when the user enters a room. Valid values: `0`: No (default value); `1`: Yes.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AutoMic",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Whether to enable the high audio quality mode. Valid values: `0`: No (default value); `1`: Yes.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AudioQuality",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Whether to disable auto recording. Valid values: `0`: No (default); `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.",
+          "example": "1",
+          "member": "uint64",
+          "name": "DisableRecord",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "document": "Teacher assistant IDs, which are the `UserId` obtained by the `RegisterUser` API.",
+          "example": "无",
+          "member": "string",
+          "name": "Assistants",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "document": "Recording layout",
+          "example": "1",
+          "member": "uint64",
+          "name": "RecordLayout",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRoomResponse": {
+      "document": "CreateRoom response structure.",
+      "members": [
+        {
+          "document": "Room ID",
+          "example": "301234567",
+          "member": "uint64",
+          "name": "RoomId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSupervisorRequest": {
+      "document": "CreateSupervisor request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "CreateSupervisorResponse": {
+      "document": "CreateSupervisor response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRoomRequest": {
+      "document": "DeleteRoom request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Room ID",
+          "example": "3123456789",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRoomResponse": {
+      "document": "DeleteRoom response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRoomRequest": {
+      "document": "DescribeRoom request structure.",
+      "members": [
+        {
+          "document": "Room ID\t",
+          "example": "301234567",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRoomResponse": {
+      "document": "DescribeRoom response structure.",
+      "members": [
+        {
+          "document": "Room name\t",
+          "example": "房间名称",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Reserved room start time, in UNIX timestamp format\t",
+          "example": "1659600138",
+          "member": "uint64",
+          "name": "StartTime",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Reserved room end time, in UNIX timestamp format\t",
+          "example": "1659600138",
+          "member": "uint64",
+          "name": "EndTime",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Teacher ID\t",
+          "example": "1jmPi2qddazF5PTgJtGYss9bg4T",
+          "member": "string",
+          "name": "TeacherId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "LCIC SdkAppId\t",
+          "example": "123467",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD\t",
+          "example": "1",
+          "member": "uint64",
+          "name": "Resolution",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Maximum number of mic-on users (excluding teachers). Value range: [0, 16]\t",
+          "example": "1",
+          "member": "uint64",
+          "name": "MaxMicNumber",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to automatically turn the mic on when the user enters a room. Valid values: `0`: No (default value); `1`: Yes.\t",
+          "example": "1",
+          "member": "uint64",
+          "name": "AutoMic",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to enable the high audio quality mode. Valid values: `0`: No (default value); `1`: Yes.\t",
+          "example": "1",
+          "member": "uint64",
+          "name": "AudioQuality",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only; `coteaching`: Dual-teacher\t",
+          "example": "video",
+          "member": "string",
+          "name": "SubType",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Whether to disable auto recording. Valid values: `0`: No (default); `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.\t",
+          "example": "1",
+          "member": "uint64",
+          "name": "DisableRecord",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Assistant ID list\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Assistants",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Recording URL. This parameter exists only after a room is ended.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "abc",
+          "member": "string",
+          "name": "RecordUrl",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRoomStatisticsRequest": {
+      "document": "DescribeRoomStatistics request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Room ID",
+          "example": "1234657",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Current page in pagination, which starts from 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Number of data entries to return per page. Maximum value: 1000",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRoomStatisticsResponse": {
+      "document": "DescribeRoomStatistics response structure.",
+      "members": [
+        {
+          "document": "Peak number of online members",
+          "example": "1",
+          "member": "uint64",
+          "name": "PeakMemberNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Accumulated number of online members",
+          "example": "1",
+          "member": "uint64",
+          "name": "MemberNumber",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Total number of records, including members who entered the room and members who should attend the class but did not",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Member record list",
+          "example": "无",
+          "member": "MemberRecord",
+          "name": "MemberRecords",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserRequest": {
+      "document": "DescribeUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID\t",
+          "example": "abc",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserResponse": {
+      "document": "DescribeUser response structure.",
+      "members": [
+        {
+          "document": "The application ID.\t",
+          "example": "1",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "User ID\t",
+          "example": "2CvDgjRNjylAsBZB4iZc0F6koXe",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Username\t",
+          "example": "abc",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "URL of user profile photo.\t",
+          "example": "abc",
+          "member": "string",
+          "name": "Avatar",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "LoginOriginIdRequest": {
+      "document": "LoginOriginId request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "LCIC SdkAppId",
+          "example": "1234657",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "User's ID in the customer system, which should be unique under the same application",
+          "example": "userid",
+          "member": "string",
+          "name": "OriginId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "LoginOriginIdResponse": {
+      "document": "LoginOriginId response structure.",
+      "members": [
+        {
+          "document": "User ID",
+          "example": "2CvDgjRNjylAsBZB4iZc0F6koXe",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Login status token returned after successful login or registration. The token is valid for seven days.",
+          "example": "abae3faef12345",
+          "member": "string",
+          "name": "Token",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "LoginUserRequest": {
+      "document": "LoginUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID obtained during registration",
+          "example": "abc",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "LoginUserResponse": {
+      "document": "LoginUser response structure.",
+      "members": [
+        {
+          "document": "User ID",
+          "example": "2CvDgjRNjylAsBZB4iZc0F6koXe",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Login status token returned after successful login or registration. The token is valid for seven days.",
+          "example": "abc",
+          "member": "string",
+          "name": "Token",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "MemberRecord": {
+      "document": "Member record information",
+      "members": [
+        {
+          "default": "",
+          "document": "User ID",
+          "example": "abc",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Username",
+          "example": "abc",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Online duration, in seconds",
+          "example": "1",
+          "member": "uint64",
+          "name": "PresentTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the camera is enabled",
+          "example": "1",
+          "member": "uint64",
+          "name": "Camera",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the mic is enabled",
+          "example": "1",
+          "member": "uint64",
+          "name": "Mic",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Whether the user is muted",
+          "example": "1",
+          "member": "uint64",
+          "name": "Silence",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of questions answered by the user",
+          "example": "1",
+          "member": "uint64",
+          "name": "AnswerQuestions",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of hand raising times",
+          "example": "1",
+          "member": "uint64",
+          "name": "HandUps",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "First time that the user entered the room, in UNIX timestamp format",
+          "example": "1234657",
+          "member": "uint64",
+          "name": "FirstJoinTimestamp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Last time that the user left the room, in UNIX timestamp format",
+          "example": "1234657",
+          "member": "uint64",
+          "name": "LastQuitTimestamp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Number of rewards received",
+          "example": "1",
+          "member": "uint64",
+          "name": "Rewords",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyAppRequest": {
+      "document": "ModifyApp request structure.",
+      "members": [
+        {
+          "document": "LCIC SdkAppId",
+          "example": "123467",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "document": "Callback URL. Currently, only port 80 and port 443 are supported.",
+          "example": "abc",
+          "member": "string",
+          "name": "Callback",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAppResponse": {
+      "document": "ModifyApp response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RegisterUserRequest": {
+      "document": "RegisterUser request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "LCIC SdkAppId\t",
+          "example": "123467",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Username\t",
+          "example": "nickname",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User's ID in the customer system, which should be unique under the same application\t",
+          "example": "id12345",
+          "member": "string",
+          "name": "OriginId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "User's profile photo\t",
+          "example": "abc",
+          "member": "string",
+          "name": "Avatar",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RegisterUserResponse": {
+      "document": "RegisterUser response structure.",
+      "members": [
+        {
+          "document": "User ID\t",
+          "example": "2CvDgjRNjylAsBZB4iZc0F6koXe",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "Login status token returned after successful login or registration. The token is valid for seven days.\t",
+          "example": "abae3faef12345",
+          "member": "string",
+          "name": "Token",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetAppCustomContentRequest": {
+      "document": "SetAppCustomContent request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Custom content",
+          "example": "无",
+          "member": "AppCustomContent",
+          "name": "CustomContent",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Application ID",
+          "example": "1234657",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "SetAppCustomContentResponse": {
+      "document": "SetAppCustomContent response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindDocumentFromRoomRequest": {
+      "document": "UnbindDocumentFromRoom request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Room ID\t",
+          "example": "1234657",
+          "member": "uint64",
+          "name": "RoomId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Document ID\t",
+          "example": "abc",
+          "member": "string",
+          "name": "DocumentId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindDocumentFromRoomResponse": {
+      "document": "UnbindDocumentFromRoom response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}
