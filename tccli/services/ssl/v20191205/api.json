@@ -87,7 +87,7 @@
   },
   "metadata": {
     "apiVersion": "2019-12-05",
-    "serviceNameCN": "证书",
+    "serviceNameCN": "SSL 证书",
     "serviceShortName": "ssl"
   },
   "objects": {
@@ -201,6 +201,24 @@
           "name": "OldCertificateId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Benefit package ID, which is used to expand the free certificate package",
+          "example": "无",
+          "member": "string",
+          "name": "PackageId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to delete the automatic domain name verification record after issuance, which is no by default. This parameter can be passed in only for domain names of the DNS_AUTO verification type.",
+          "example": "无",
+          "member": "bool",
+          "name": "DeleteDnsAutoRecord",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -394,7 +412,7 @@
         },
         {
           "default": "",
-          "document": "Status value. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: OV/EV certificate, information to be submitted; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Status. `0`: Reviewing; `1`: Approved; `2`: Unapproved; `3`: Expired; `4`: DNS record added for domain names of the DNS_AUTO verification type; `5`: Enterprise-grade certificate, pending submission; `6`: Canceling order; `7`: Canceled; `8`: Information submitted, pending confirmation letter upload; `9`: Revoking certificate; `10`: Revoked; `11`: Reissuing; `12`: Pending revocation confirmation letter upload; `13`: Pending information submission for the free certificate; `14`: Refunded.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
           "name": "Status",
@@ -610,6 +628,86 @@
           "name": "Tags",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the expiration notification was ignored\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsIgnore",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether the certificate is a Chinese SM certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsSM",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Certificate algorithm\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "EncryptAlgorithm",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Encryption algorithm of the uploaded CA certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CAEncryptAlgorithms",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Expiration time of the uploaded CA certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CAEndTimes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Generic name of the uploaded CA certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CACommonNames",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Prereview information of the certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PreAuditInfo",
+          "name": "PreAuditInfo",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Whether auto-renewal is enabled.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -932,7 +1030,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Domain names associated with the certificate (including the primary domain name)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Multiple domain names included in the certificate (excluding the primary domain name, which uses the `Domain` field)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "SubjectAltName",
@@ -941,7 +1039,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Whether the customer is a VIP customer\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether the certificate is a paid one.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "bool",
           "name": "IsVip",
@@ -986,7 +1084,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "Whether the certificate can be reissued\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether the certificate can be renewed.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "bool",
           "name": "RenewAble",
@@ -1010,6 +1108,60 @@
           "name": "Tags",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Root certificate.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RootCertificates",
+          "name": "RootCert",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Chinese SM encryption certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "EncryptCert",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Private key of Chinese SM encryption\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "EncryptPrivateKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "SHA1 fingerprint of the signature certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CertFingerprint",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "SHA1 fingerprint of the encryption certificate (for Chinese SM certificates only)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "EncryptCertFingerprint",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "Certificate algorithm\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "EncryptAlgorithm",
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         },
         {
@@ -1421,7 +1573,7 @@
         },
         {
           "default": "",
-          "document": "Number of certificates on each page. The default value is 20.",
+          "document": "Number of entries per page. Default value: `20`. Maximum value: `1000`.",
           "example": "11",
           "member": "uint64",
           "name": "Limit",
@@ -1466,7 +1618,7 @@
         },
         {
           "default": "",
-          "document": "Certificate status",
+          "document": "Certificate status. `0`: Reviewing; `1`: Approved; `2`: Unapproved; `3`: Expired; `4`: DNS record added; `5`: Enterprise-grade certificate, pending submission; `6`: Canceling order; `7`: Canceled; `8`: Information submitted, pending confirmation letter upload; `9`: Revoking certificate; `10`: Revoked; `11`: Reissuing; `12`: Pending revocation confirmation letter upload; `13`: Pending information submission for the free certificate.",
           "example": "1",
           "member": "uint64",
           "name": "CertificateStatus",
@@ -1479,6 +1631,51 @@
           "example": "1",
           "member": "uint64",
           "name": "Deployable",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to filter uploaded hosted certificates. `1`: Yes; `0`: No.",
+          "example": "1",
+          "member": "int64",
+          "name": "Upload",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to filter renewable certificates. `1`: Yes; `0`: No.",
+          "example": "1",
+          "member": "int64",
+          "name": "Renew",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Filter by source. `upload`: Uploaded certificate; `buy`: Tencent Cloud certificate. If this parameter is left empty, all certificates will be queried.",
+          "example": "upload",
+          "member": "string",
+          "name": "FilterSource",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Whether to filter Chinese SM certificates. `1`: Yes; `0`: No.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsSM",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Whether to filter expiring certificates. `1`: Yes; `0`: No.",
+          "example": "0",
+          "member": "uint64",
+          "name": "FilterExpiring",
           "required": false,
           "type": "int"
         }
@@ -1788,6 +1985,42 @@
       ],
       "usage": "out"
     },
+    "PreAuditInfo": {
+      "document": "List of prereview information",
+      "members": [
+        {
+          "default": "",
+          "document": "Total number of years of the certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalPeriod",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Current year of the certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "NowPeriod",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Certificate prereview manager ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ManagerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "ProjectInfo": {
       "document": "Content of the `ProjectInfo` parameter. `ProjectInfo` is an element of `Certificates` array which is returned by `DescribeCertificates`.",
       "members": [
@@ -1920,6 +2153,42 @@
         }
       ],
       "type": "object"
+    },
+    "RootCertificates": {
+      "document": "Root certificate",
+      "members": [
+        {
+          "default": "",
+          "document": "Chinese SM signature certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "asd",
+          "member": "string",
+          "name": "Sign",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Chinese SM encryption certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "asd",
+          "member": "string",
+          "name": "Encrypt",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Standard certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "asc",
+          "member": "string",
+          "name": "Standard",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "SubmitCertificateInformationRequest": {
       "document": "SubmitCertificateInformation request structure.",

@@ -1703,6 +1703,15 @@
           "name": "HpcClusterId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.",
+          "example": "无",
+          "member": "IPv6InternetAccessible",
+          "name": "IPv6InternetAccessible",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -3195,7 +3204,7 @@
       "type": "object"
     },
     "EnhancedService": {
-      "document": "This describes the conditions of enhancement services for the instance and their settings, such as the Agent of Cloud Security or Cloud Monitor.",
+      "document": "This describes the conditions and configurations of the enhanced services of the instance, such as cloud security, cloud monitor, TencentCloud Automation Tools, and other instance agents.",
       "members": [
         {
           "default": "",
@@ -3229,7 +3238,7 @@
         },
         {
           "default": "",
-          "document": "",
+          "document": "Enable TAT service. If this parameter is not specified, the default logic is the same as that of the CVM instance. Note: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "{\"Enabled\": True}",
           "member": "RunAutomationServiceEnabled",
           "name": "AutomationToolsService",
@@ -3419,6 +3428,42 @@
           "example": "ORIGINAL",
           "member": "string",
           "name": "HostNameStyle",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "IPv6InternetAccessible": {
+      "document": "This describes the IPv6 address public network accessibility of the instance created by a launch configuration and declares the public network usage billing method of the IPv6 address and the maximum bandwidth.",
+      "members": [
+        {
+          "default": "",
+          "document": "Network billing mode. Valid values: TRAFFIC_POSTPAID_BY_HOUR, BANDWIDTH_PACKAGE. Default value: TRAFFIC_POSTPAID_BY_HOUR. For the current account type, see [Account Type Description](https://intl.cloud.tencent.com/document/product/1199/49090?from_cn_redirect=1#judge).\n<br><li> IPv6 supports `TRAFFIC_POSTPAID_BY_HOUR` under a bill-by-IP account.\n<br><li> IPv6 supports `BANDWIDTH_PACKAGE` under a bill-by-CVM account.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "TRAFFIC_POSTPAID_BY_HOUR",
+          "member": "string",
+          "name": "InternetChargeType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Maximum outbound bandwidth of the public network, in Mbps. <br>The default value is 0, and no public network bandwidth is allocated to IPv6. The maximum bandwidth varies with the model, availability zone and billing mode. For more information, see [Public Network Bandwidth Cap](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "InternetMaxBandwidthOut",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "bwp-jfio9i0p",
+          "member": "string",
+          "name": "BandwidthPackageId",
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4046,6 +4091,16 @@
           "name": "HpcClusterId",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "IPv6 public network bandwidth configuration.",
+          "example": "无",
+          "member": "IPv6InternetAccessible",
+          "name": "IPv6InternetAccessible",
+          "required": true,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -4820,6 +4875,15 @@
           "name": "HpcClusterId",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.",
+          "example": "无",
+          "member": "IPv6InternetAccessible",
+          "name": "IPv6InternetAccessible",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -6182,6 +6246,15 @@
           "name": "DiskTypePolicy",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.",
+          "example": "无",
+          "member": "IPv6InternetAccessible",
+          "name": "IPv6InternetAccessible",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
