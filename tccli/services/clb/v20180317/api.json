@@ -1067,6 +1067,52 @@
       ],
       "usage": "out"
     },
+    "CertInfo": {
+      "document": "Certificate information",
+      "members": [
+        {
+          "default": "",
+          "document": "ID of the certificate. If it's not specified, `CertContent` and `CertKey` are required. For a server certificate, you also need to specify `CertName`. ",
+          "example": "zFzZAAIr",
+          "member": "string",
+          "name": "CertId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Name of the uploaded certificate. It's required if `CertId` is not specified.",
+          "example": "tes-cert",
+          "member": "string",
+          "name": "CertName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Public key of the uploaded certificate. It's required if `CertId` is not specified.",
+          "example": " -----BEGIN CERTIFICATE-----",
+          "member": "string",
+          "name": "CertContent",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Private key of the uploaded server certificate. It's required if `CertId` is not specified.",
+          "example": "-----BEGIN RSA PRIVATE KEY----- ",
+          "member": "string",
+          "name": "CertKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "CertificateInput": {
       "document": "Certificate information",
       "members": [
@@ -1898,7 +1944,7 @@
         },
         {
           "default": "",
-          "document": "Certificate information. This parameter is applicable only to TCP_SSL listeners and HTTPS listeners with the SNI feature not enabled.",
+          "document": "Certificate information. This parameter is only applicable to TCP_SSL listeners and HTTPS listeners with the SNI feature not enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. ",
           "example": "无",
           "member": "CertificateInput",
           "name": "Certificate",
@@ -1976,6 +2022,33 @@
           "name": "DeregisterTargetRst",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "Certificate information. You can specify multiple server-side certificates with different algorithm types. This parameter is only applicable to HTTPS listeners with the SNI feature not enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. ",
+          "example": "无",
+          "member": "MultiCertInfo",
+          "name": "MultiCertInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "-1",
+          "member": "int64",
+          "name": "MaxConn",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "-1",
+          "member": "int64",
+          "name": "MaxCps",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -3972,7 +4045,7 @@
         },
         {
           "default": "",
-          "document": "Public IP of the real server bound to a CLB.",
+          "document": "Public IPs of the backend services bound with the load balancer. Only the public IPs of CVMs are supported now.",
           "example": "无",
           "member": "string",
           "name": "BackendPublicIps",
@@ -3981,7 +4054,7 @@
         },
         {
           "default": "",
-          "document": "Private IP of the real server bound to a CLB.",
+          "document": "Private IPs of the backend services bound with the load balancer. Only the private IPs of CVMs are supported now.",
           "example": "无",
           "member": "string",
           "name": "BackendPrivateIps",
@@ -6697,7 +6770,7 @@
         },
         {
           "default": "",
-          "document": "Domain name certificate information. Note: This is only applicable to SNI-enabled listeners.",
+          "document": "Certificate information of the domain name. It is only applicable to listeners with SNI enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. ",
           "example": "无",
           "member": "CertificateInput",
           "name": "Certificate",
@@ -6739,6 +6812,15 @@
           "name": "NewDomains",
           "required": false,
           "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Certificate information of the domain name. It is only applicable to listeners with SNI enabled. You can specify multiple server-side certificates with different algorithm types. `Certificate` and `MultiCertInfo` cannot be specified at the same time. ",
+          "example": "无",
+          "member": "MultiCertInfo",
+          "name": "MultiCertInfo",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -6859,7 +6941,7 @@
         },
         {
           "default": "",
-          "document": "Certificate information. This parameter is applicable only to HTTPS and TCP_SSL listeners.",
+          "document": "Certificate information. This parameter is only applicable to HTTPS/TCP_SSL listeners. `Certificate` and `MultiCertInfo` cannot be specified at the same time. ",
           "example": "无",
           "member": "CertificateInput",
           "name": "Certificate",
@@ -6919,6 +7001,33 @@
           "name": "SessionType",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Certificate information. You can specify multiple server-side certificates with different algorithm types. This parameter is only applicable to HTTPS listeners with the SNI feature not enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. ",
+          "example": "无",
+          "member": "MultiCertInfo",
+          "name": "MultiCertInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "-1",
+          "member": "int64",
+          "name": "MaxConn",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "",
+          "example": "-1",
+          "member": "int64",
+          "name": "MaxCps",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -7437,6 +7546,32 @@
       ],
       "type": "object"
     },
+    "MultiCertInfo": {
+      "document": "Information of multiple certificates bound with the load balancer listener or rule.",
+      "members": [
+        {
+          "default": "",
+          "document": "Authentication type. Values: `UNIDIRECTIONAL` (one-way authentication), `MUTUAL` (two-way authentication)",
+          "example": "UNIDIRECTIONAL",
+          "member": "string",
+          "name": "SSLMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "List of listener or rule certificates. One-way and two-way authentication are supported. Only one certificate can be specified for one algorithm. If `SSLMode` is `MUTUAL` (two-way authentication), at least one CA certificate is required. ",
+          "example": "见起类型示例",
+          "member": "CertInfo",
+          "name": "CertList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "Quota": {
       "document": "Quota description. All quotas are in the current region.",
       "members": [
@@ -7930,7 +8065,7 @@
         },
         {
           "default": "",
-          "document": "Certificate information",
+          "document": "Certificate information. `Certificate` and `MultiCertInfo` cannot be specified at the same time. ",
           "example": "{\"SSLMode\": \"UNIDIRECTIONAL\", \"CertId\": \"fF6AGfxE\"}",
           "member": "CertificateInput",
           "name": "Certificate",
@@ -8026,6 +8161,16 @@
           "name": "Domains",
           "required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "default": "",
+          "document": "Certificate information. You can specify multiple server-side certificates with different algorithm types. `Certificate` and `MultiCertInfo` cannot be specified at the same time. ",
+          "example": "无",
+          "member": "MultiCertInfo",
+          "name": "MultiCertInfo",
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],

@@ -246,6 +246,22 @@
         "title": "Retrying a sync task"
       }
     ],
+    "SkipCheckItem": [
+      {
+        "document": "当校验不通过时、用户需要跳过校验失败项时、可通过这个接口完成跳过；也可通过这个接口设置是否迁移外键依赖。",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SkipCheckItem\n<Common request parameters>\n\n{\n    \"JobId\": \"dts-1ewjspuw\",\n    \"StepIds\": [\n        \"OptimizeCheck\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"46b45da1-3e8e-4ef2-8de8-b1bffa027385\"\n    }\n}",
+        "title": "Skipping migration check items"
+      }
+    ],
+    "SkipSyncCheckItem": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SkipSyncCheckItem\n<Common request parameters>\n\n{\n    \"JobId\": \"sync-4ddgid2\",\n    \"StepIds\": [\n        \"OptimizeCheck\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"46b45da1-3e8e-4ef2-8de8-b1bffa027385\"\n    }\n}",
+        "title": "Skipping sync check items"
+      }
+    ],
     "StartCompare": [
       {
         "document": "",
