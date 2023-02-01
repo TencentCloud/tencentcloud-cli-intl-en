@@ -3,15 +3,15 @@
     "AddUser": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=AddUser\n&Name=test124\n&Remark=test\n&ConsoleLogin=1\n&UseApi=1\n&Password=test123456\n&NeedResetPassword=0\n&PhoneNum=10086\n&CountryCode=86\n&Email=123%40qq.com\n&<common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddUser\n<Common request parameters>\n\n{\n    \"Remark\": \"test\",\n    \"Name\": \"test124\",\n    \"CountryCode\": \"86\",\n    \"NeedResetPassword\": \"0\",\n    \"PhoneNum\": \"10086\",\n    \"UseApi\": \"1\",\n    \"ConsoleLogin\": \"1\",\n    \"Password\": \"test123456\",\n    \"Email\": \"123%40qq.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"Uid\": 5648765,\n        \"Uin\": 100000546533,\n        \"Name\": \"test124\",\n        \"Password\": \"test123456\",\n        \"SecretId\": \"faweffewagwaegawe\",\n        \"SecretKey\": \"fawef23rjhiuaefhuaifhiuawef\",\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
-        "title": "Adding sub-users"
+        "title": "Adding a sub-user"
       }
     ],
     "AddUserToGroup": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=AddUserToGroup\n&Info.0.Uid=1001408\n&Info.0.GroupId=2020\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddUserToGroup\n<Common request parameters>\n\n{\n    \"Info\": [\n        {\n            \"Uid\": \"1001408\",\n            \"GroupId\": \"2020\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"47c4a570-17fa-44a3-8ff6-fe006170c104\"\n    }\n}",
         "title": "Adding a user to a user group"
       }
@@ -59,9 +59,9 @@
     "CreateGroup": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=CreateGroup\r\n&GroupName=test1\r\n&Remark=test2\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGroup\n<Common request parameters>\n\n{\n    \"GroupName\": \"test1\",\n    \"Remark\": \"test2\"\n}",
         "output": "{\n    \"Response\": {\n        \"GroupId\": 2020,\n        \"RequestId\": \"f36a5d34-0d51-4b91-b9fc-af5d02571656\"\n    }\n}",
-        "title": "Creating user group"
+        "title": "Creating a user group"
       }
     ],
     "CreateOIDCConfig": [
@@ -139,9 +139,9 @@
     "DeleteGroup": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=DeleteGroup\r\n&GroupId=2020\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteGroup\n<Common request parameters>\n\n{\n    \"GroupId\": \"2020\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1fadd33e-6f57-4404-a912-bc00680b89d2\"\n    }\n}",
-        "title": "Deleting user group"
+        "title": "Deleting a user group"
       }
     ],
     "DeleteOIDCConfig": [
@@ -203,17 +203,17 @@
     "DeleteUser": [
       {
         "document": "This example shows you how to delete a sub-user.",
-        "input": "https://cam.tencentcloudapi.com/?Action=DeleteUser\n&Name=test124\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteUser\n<Common request parameters>\n\n{\n    \"Name\": \"test124\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
-        "title": "Deleting sub-users"
+        "title": "Deleting a sub-user"
       }
     ],
     "DeleteUserPermissionsBoundary": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=DeleteUserPermissionsBoundary\r\n&TargetUin=1234567\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteUserPermissionsBoundary\n<Common request parameters>\n\n{\n    \"TargetUin\": \"1234567\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4097a057-19c9-45bd-ad12-b4225a75c085\"\n    }\n}",
-        "title": "Deleting a user permission boundary"
+        "title": "Deleting a user permissions boundary"
       }
     ],
     "DescribeOIDCConfig": [
@@ -235,7 +235,7 @@
     "DescribeSafeAuthFlagColl": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=DescribeSafeAuthFlagColl\n&SubUin=1234567\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSafeAuthFlagColl\n<Common request parameters>\n\n{\n    \"SubUin\": \"1234567\"\n}",
         "output": "{\n    \"Response\": {\n        \"LoginFlag\": {\n            \"Phone\": 1,\n            \"Token\": 0,\n            \"Stoken\": 0,\n            \"Wechat\": 0,\n            \"Custom\": 0\n        },\n        \"ActionFlag\": {\n            \"Phone\": 0,\n            \"Token\": 0,\n            \"Stoken\": 0,\n            \"Wechat\": 0,\n            \"Custom\": 0\n        },\n        \"OffsiteFlag\": {\n            \"VerifyFlag\": 0,\n            \"NotifyPhone\": 1,\n            \"NotifyEmail\": 1,\n            \"NotifyWechat\": 1,\n            \"Tips\": 0\n        },\n        \"RequestId\": \"9626da03-4645-4c54-ba90-74836284af0c\"\n    }\n}",
         "title": "Querying security settings"
       }
@@ -369,9 +369,9 @@
     "GetSecurityLastUsed": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetSecurityLastUsed\n<Common request parameters>\n\n{\n    \"SecretIdList\": [\n        \"xxxxxxxxx\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"SecretIdLastUsedRows\": [\n            {\n                \"SecretId\": \"xxxxxxxxx\",\n                \"LastUsedDate\": \"2021-03-20\"\n            }\n        ],\n        \"RequestId\": \"15a763ee-c2da-446a-9b21-25632d7cecb5\"\n    }\n}",
-        "title": "Getting a key's recent usage details"
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetSecurityLastUsed\n<Common request parameters>\n\n{\n    \"SecretIdList\": [\n        \" AKID3zjFYeZGjxylS0MXUDiy1pPo15yqjXGp\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"SecretIdLastUsedRows\": [\n            {\n                \"SecretId\": \"AKID3zjFYeZGjxylS0MXUDiy1pPo15yqjXGp\",\n                \"LastUsedDate\": \"2022-12-19\",\n                \"LastSecretUsedDate\": 1671681023555\n            }\n        ],\n        \"RequestId\": \"b790d4ca-5692-42ae-8a8c-d15c6ed976db\"\n    }\n}",
+        "title": "Querying the most recent time the key was accessed"
       }
     ],
     "GetServiceLinkedRoleDeletionStatus": [
@@ -385,9 +385,9 @@
     "GetUser": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=GetUser\n&Name=test124\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetUser\n<Common request parameters>\n\n{\n    \"Name\": \"test124\"\n}",
         "output": "{\n    \"Response\": {\n        \"Uin\": 100000546533,\n        \"Name\": \"test124\",\n        \"Uid\": 1001774,\n        \"Remark\": \"test\",\n        \"ConsoleLogin\": 1,\n        \"PhoneNum\": \"10086\",\n        \"CountryCode\": \"86\",\n        \"Email\": \"123@qq.com\",\n        \"RequestId\": \"33674182-e53d-416b-b6ce-bd7e7536b5d6\"\n    }\n}",
-        "title": "Querying sub-users"
+        "title": "Querying a sub-user"
       }
     ],
     "GetUserAppId": [
@@ -465,17 +465,17 @@
     "ListGroupsForUser": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=ListGroupsForUser\r\n&Uid=1001408\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListGroupsForUser\n<Common request parameters>\n\n{\n    \"Uid\": \"1001408\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalNum\": 1,\n        \"GroupInfo\": [\n            {\n                \"GroupId\": 2020,\n                \"GroupName\": \"test1\",\n                \"CreateTime\": \"2019-04-03 15:11:34\",\n                \"Remark\": \"test2\"\n            }\n        ],\n        \"RequestId\": \"a614c392-3079-4dab-b819-0ab0563a32f0\"\n    }\n}",
-        "title": "Listing user groups associated with user"
+        "title": "Listing user groups associated with a user"
       }
     ],
     "ListPolicies": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=ListPolicies\r\n&Rp=1\r\n&Page=10\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"ServiceTypeList\": [],\n        \"List\": [\n            {\n                \"PolicyId\": 16313162,\n                \"PolicyName\": \"QcloudAccessForCDNRole\",\n                \"AddTime\": \"2019-04-19 10:55:31\",\n                \"Type\": 2,\n                \"Description\": \"Tencent Cloud Content Delivery Network (CDN) permissions include CRUD operations for CLS logsets and log topics as well as searching for, downloading, and uploading logs.\",\n                \"CreateMode\": 2,\n                \"Attachments\": 0,\n                \"ServiceType\": \"cooperator\",\n                \"IsAttached\": 1,\n                \"Deactived\": 1,\n                \"DeactivedDetail\": [\n                    \"cvm\"\n                ],\n                \"IsServiceLinkedPolicy\": 1\n            }\n        ],\n        \"TotalNum\": 239,\n        \"RequestId\": \"ae2bd2b7-1d55-4b0a-8154-e02407a2b390\"\n    }\n}",
-        "title": "Viewing policy list"
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListPolicies\n<Common request parameters>\n\n{\n    \"Rp\": \"1\",\n    \"Page\": \"10\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ServiceTypeList\": [\n            \"xx\"\n        ],\n        \"List\": [\n            {\n                \"PolicyId\": 16313162,\n                \"PolicyName\": \"QcloudAccessForCDNRole\",\n                \"AddTime\": \"2019-04-19 10:55:31\",\n                \"Type\": 2,\n                \"Description\": \"Tencent Cloud Content Delivery Network (CDN) permissions include CRUD operations for CLS logsets and log topics as well as searching for, downloading, and uploading logs.\",\n                \"CreateMode\": 2,\n                \"Attachments\": 0,\n                \"ServiceType\": \"cooperator\",\n                \"IsAttached\": 1,\n                \"Deactived\": 1,\n                \"DeactivedDetail\": [\n                    \"cvm\"\n                ],\n                \"IsServiceLinkedPolicy\": 1\n                \"UpdateTime\": \"2019-04-19 10:55:31\",\n                \"AttachEntityCount\": 0,\n                \"AttachEntityBoundaryCount\": 0\n            }\n        ],\n        \"TotalNum\": 239,\n        \"RequestId\": \"ae2bd2b7-1d55-4b0a-8154-e02407a2b390\"\n    }\n}",
+        "title": "Querying the policy list"
       }
     ],
     "ListPolicyVersions": [
@@ -521,17 +521,17 @@
     "PutUserPermissionsBoundary": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=PutUserPermissionsBoundary\r\n&TargetUin=1234567\r\n&PolicyId=1234567\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PutUserPermissionsBoundary\n<Common request parameters>\n\n{\n    \"TargetUin\": \"1234567\",\n    \"PolicyId\": \"1234567\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4097a057-19c9-45bd-ad12-b4225a75c085\"\n    }\n}",
-        "title": "Setting user permission boundary"
+        "title": "Setting a user permissions boundary"
       }
     ],
     "RemoveUserFromGroup": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=RemoveUserFromGroup\n&Info.0.Uid=1001408\n&Info.0.GroupId=2020\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveUserFromGroup\n<Common request parameters>\n\n{\n    \"Info\": [\n        {\n            \"Uid\": \"1001408\",\n            \"GroupId\": \"2020\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1fadd33e-6f57-4404-a912-bc00680b89d2\"\n    }\n}",
-        "title": "Deleting users from user groups"
+        "title": "Deleting a user from a user group"
       }
     ],
     "SetDefaultPolicyVersion": [
@@ -545,9 +545,9 @@
     "SetMfaFlag": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetMfaFlag\n<Common request parameters>\n\n{\n    \"LoginFlag\": {\n        \"Phone\": 1,\n        \"Stoken\": 1,\n        \"Wechat\": 1\n    },\n    \"OpUin\": 1,\n    \"ActionFlag\": {\n        \"Phone\": 1,\n        \"Stoken\": 1,\n        \"Wechat\": 1\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetMfaFlag\n<Common request parameters>\n\n{\n    \"OpUin\": 123,\n    \"LoginFlag\": {\n        \"Wechat\": 1\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"cf75531d-b72d-4dcb-b0ed-d1c029a37f38\"\n    }\n}",
-        "title": "Setting authentication mode for login protection to WeChat"
+        "title": "Setting login protection method to WeChat verification"
       }
     ],
     "TagRole": [
@@ -585,9 +585,9 @@
     "UpdateGroup": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=UpdateGroup\r\n&GroupId=2020\r\n&GroupName=2020test\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGroup\n<Common request parameters>\n\n{\n    &GroupName=2020test\n    \"GroupId\": \"2020\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1fadd33e-6f57-4404-a912-bc00680b89d2\"\n    }\n}",
-        "title": "Updating user group"
+        "title": "Updating a user group"
       }
     ],
     "UpdateOIDCConfig": [
@@ -633,9 +633,9 @@
     "UpdateUser": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=UpdateUser\r\n&Name=test124\r\n&Remark=test\r\n&ConsoleLogin=1\r\n&Password=test123456\r\n&NeedResetPassword=0\r\n&PhoneNum=10086\r\n&CountryCode=86\r\n&Email=123%40qq.com\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateUser\n<Common request parameters>\n\n{\n    \"Remark\": \"test\",\n    \"Name\": \"test124\",\n    \"CountryCode\": \"86\",\n    \"NeedResetPassword\": \"0\",\n    \"PhoneNum\": \"10086\",\n    \"ConsoleLogin\": \"1\",\n    \"Password\": \"test123456\",\n    \"Email\": \"123%40qq.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
-        "title": "Updating sub-user"
+        "title": "Updating a sub-user"
       }
     ],
     "UpdateUserOIDCConfig": [

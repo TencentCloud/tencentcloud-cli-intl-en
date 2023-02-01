@@ -18,7 +18,7 @@
     ],
     "CreateProject": [
       {
-        "document": "",
+        "document": "Creating RUM project",
         "input": "https://rum.tencentcloudapi.com/?Action=CreateProject\n&Name='Test project'\n&Desc='Project description'\n&InstanceID=\"taw-123\"\n&Type=web\n&URL='http://www.qq.com'\n&Repo='http://github.com/xxx'\n&Rate=\"10\"\n&EnableURLGroup=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ID\": 1,\n        \"Key\": \"RlOmCVbPrKd4\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
         "title": "Creating RUM project"
@@ -34,7 +34,7 @@
     ],
     "CreateStarProject": [
       {
-        "document": "",
+        "document": "Adding starred project",
         "input": "https://rum.tencentcloudapi.com/?Action=CreateStarProject\n&ID=1\n&InstanceID=taw-123\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Msg\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
         "title": "Adding starred project"
@@ -64,10 +64,10 @@
     ],
     "DeleteInstance": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rum-abcd1234\"\n}",
+        "document": "删除 RUM 业务系统",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteInstance\n<common request parameters>\n\n{\n    \"InstanceId\": \"rum-abcd1234\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2c56dbc9-2b99-437a-9a5e-51ed6dcba7e5\"\n    }\n}",
-        "title": "Deleting instance"
+        "title": "删除 RUM 业务系统"
       }
     ],
     "DeleteLogExport": [
@@ -96,7 +96,7 @@
     ],
     "DeleteProject": [
       {
-        "document": "",
+        "document": "Deleting RUM project",
         "input": "https://rum.tencentcloudapi.com/?Action=DeleteProject\n&ID=6\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Msg\": \"success\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
         "title": "Deleting RUM project"
@@ -112,7 +112,7 @@
     ],
     "DeleteStarProject": [
       {
-        "document": "",
+        "document": "Deleting starred project",
         "input": "https://rum.tencentcloudapi.com/?Action=DeleteStarProject\n&ID=1\n&InstanceID=taw-123\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Msg\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
         "title": "Deleting starred project"
@@ -350,13 +350,7 @@
     ],
     "DescribeProjectLimits": [
       {
-        "document": "",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeProjectLimits\n&ProjectID=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"ProjectLimitSet\": [\n            {\n                \"ProjectInterface\": \"xx\",\n                \"ProjectID\": 0,\n                \"ReportRate\": 0,\n                \"ReportType\": 0,\n                \"ID\": 0\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Getting the list of project reporting rates"
-      },
-      {
-        "document": "",
+        "document": "Getting sample list",
         "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProjectLimits\n<Common request parameters>\n\n{\n    \"ProjectID\": \"8\"\n}",
         "output": "{\n    \"Response\": {\n        \"ProjectLimitSet\": [\n            {\n                \"ID\": 17,\n                \"ProjectID\": 8,\n                \"ProjectInterface\": \"web\",\n                \"ReportRate\": 10,\n                \"ReportType\": 1\n            }\n        ],\n        \"RequestId\": \"6f867613-843d-410a-8000-c74477ca48a8\"\n    }\n}",
         "title": "Getting sample list"
@@ -364,13 +358,13 @@
     ],
     "DescribeProjects": [
       {
-        "document": "",
+        "document": "Getting RUM project list by filter",
         "input": "https://rum.tencentcloudapi.com/?Action=DescribeProjects\n&Offset=1\n&Limit=20\n&Filters.0.Name='Name'\n&Filters.0.Values.0='Test project name'\n&Filters.0.Values.1='Test project name 2'\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"ProjectSet\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
         "title": "Getting RUM project list by filter"
       },
       {
-        "document": "",
+        "document": "Getting RUM project list",
         "input": "https://rum.tencentcloudapi.com/?Action=DescribeProjects\n&Offset=1\n&Limit=20\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"ProjectSet\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
         "title": "Getting RUM project list"
@@ -394,15 +388,57 @@
     ],
     "DescribeReleaseFiles": [
       {
-        "document": "",
-        "input": "https://rum.tencentcloudapi.com/?Action=DescribeReleaseFiles\n&ProjectID=1\n&<Common request parameters>",
+        "document": "获取应用对应sourcemap文件列表",
+        "input": "https://rum.tencentcloudapi.com/?Action=DescribeReleaseFiles\n&ProjectID=1\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Files\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
-        "title": "Getting release file list"
+        "title": "获取应用对应sourcemap文件列表"
+      }
+    ],
+    "DescribeRumGroupLog": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRumGroupLog\n<Common request parameters>\n\n{\n    \"OrderBy\": \"\\\"desc\\\"\",\n    \"StartTime\": \"\\\"1\\\"\",\n    \"Limit\": \"10\",\n    \"Query\": \"\\\"xxx\\\"\",\n    \"EndTime\": \"\\\"20\\\"\",\n    \"ID\": \"10\",\n    \"Page\": \"1\",\n    \"GroupField\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
+        "title": "Getting the log list"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRumGroupLog\n<Common request parameters>\n\n{\n    \"OrderBy\": \"asc\",\n    \"ID\": \"1\",\n    \"Limit\": \"1\",\n    \"GroupField\": \"\",\n    \"StartTime\": \"1\",\n    \"Query\": \"1\",\n    \"EndTime\": \"1\",\n    \"Page\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81a43a52-d00f-462a-82da-89841117f4ca\",\n        \"Result\": \"\"\n    }\n}",
+        "title": "2312"
+      }
+    ],
+    "DescribeRumLogList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRumLogList\n<Common request parameters>\n\n{\n    \"OrderBy\": \"\\\"desc\\\"\",\n    \"StartTime\": \"\\\"1\\\"\",\n    \"Limit\": \"10\",\n    \"Query\": \"\\\"xxx\\\"\",\n    \"EndTime\": \"\\\"20\\\"\",\n    \"ID\": \"10\",\n    \"Page\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
+        "title": "Getting the log list"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRumLogList\n<Common request parameters>\n\n{\n    \"OrderBy\": \"asc\",\n    \"ID\": \"1\",\n    \"Limit\": \"1\",\n    \"StartTime\": \"1665994920000\",\n    \"Query\": \"id:1\",\n    \"EndTime\": \"1\",\n    \"Page\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"72ef03a0-01a8-443e-908a-8573fbeaafcd\",\n        \"Result\": \"\"\n    }\n}",
+        "title": "1"
+      }
+    ],
+    "DescribeRumStatsLogList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRumStatsLogList\n<Common request parameters>\n\n{\n    \"StartTime\": \"\\\"1\\\"\",\n    \"Limit\": \"10\",\n    \"Query\": \"\\\"xxx\\\"\",\n    \"EndTime\": \"\\\"20\\\"\",\n    \"ID\": \"10\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"xxxx\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
+        "title": "Getting the log list"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRumStatsLogList\n<Common request parameters>\n\n{\n    \"Query\": \"1\",\n    \"EndTime\": \"1\",\n    \"Limit\": \"1\",\n    \"ID\": \"1\",\n    \"StartTime\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7987e9a1-cece-4468-b104-cd239f2f6cd6\",\n        \"Result\": \"\"\n    }\n}",
+        "title": "1212"
       }
     ],
     "DescribeScores": [
       {
-        "document": "",
+        "document": "Getting homepage score",
         "input": "https://rum.tencentcloudapi.com/?Action=DescribeScores\n&ID=1\n&StartTime=2020011920\n&EndTime=2022051914\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ScoreSet\": [],\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
         "title": "Getting homepage score"
@@ -442,7 +478,7 @@
     ],
     "ModifyProject": [
       {
-        "document": "",
+        "document": "Modifying RUM project",
         "input": "https://rum.tencentcloudapi.com/?Action=ModifyProject\n&ID=6\n&Name='Test project'\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ID\": 1,\n        \"Msg\": \"success\",\n        \"RequestId\": \"65a8fec7-2b39-4b11-893f-3715279d235f\"\n    }\n}",
         "title": "Modifying RUM project"
@@ -472,10 +508,18 @@
     ],
     "StopInstance": [
       {
-        "document": "",
+        "document": "Stopping instance",
         "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rum-abcd1234\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2c56dbc9-2b99-437a-9a5e-51ed6dcba7e5\"\n    }\n}",
         "title": "Stopping instance"
+      }
+    ],
+    "StopProject": [
+      {
+        "document": "Stopping a project",
+        "input": "POST / HTTP/1.1\nHost: rum.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopProject\n<Common request parameters>\n\n{\n    \"ProjectId\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2c56dbc9-2b99-437a-9a5e-51ed6dcba7e5\"\n    }\n}",
+        "title": "Stopping a project"
       }
     ]
   },

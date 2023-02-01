@@ -264,6 +264,24 @@
       "name": "Gets the list of sourcemap files of project",
       "output": "DescribeReleaseFilesResponse"
     },
+    "DescribeRumGroupLog": {
+      "document": "This API is used to get the log aggregation information under a project.",
+      "input": "DescribeRumGroupLogRequest",
+      "name": "Gets RUM log aggregation information",
+      "output": "DescribeRumGroupLogResponse"
+    },
+    "DescribeRumLogList": {
+      "document": "This API is used to get the list of logs in a project (created by an instance).",
+      "input": "DescribeRumLogListRequest",
+      "name": "Gets the RUM log list",
+      "output": "DescribeRumLogListResponse"
+    },
+    "DescribeRumStatsLogList": {
+      "document": "This API is used to get the list of logs in a project every minute.",
+      "input": "DescribeRumStatsLogListRequest",
+      "name": "Gets the RUM log list every minute",
+      "output": "DescribeRumStatsLogListResponse"
+    },
     "DescribeScores": {
       "document": "This API is used to get the list of homepage scores.",
       "input": "DescribeScoresRequest",
@@ -317,6 +335,12 @@
       "input": "StopInstanceRequest",
       "name": "Stops instance",
       "output": "StopInstanceResponse"
+    },
+    "StopProject": {
+      "document": "This API is used to stop a project from reporting data.",
+      "input": "StopProjectRequest",
+      "name": "Stops a project from reporting data",
+      "output": "StopProjectResponse"
     }
   },
   "metadata": {
@@ -5464,6 +5488,267 @@
       ],
       "type": "object"
     },
+    "DescribeRumGroupLogRequest": {
+      "document": "DescribeRumGroupLog request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sorting order (required). Valid values: `desc`, `asc`.",
+          "example": "asc",
+          "member": "string",
+          "name": "OrderBy",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time (required)",
+          "example": "1665993060000",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number",
+          "example": "无",
+          "member": "int64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Query statement, which is required and can contain up to 4,096 characters.",
+          "example": "id:100",
+          "member": "string",
+          "name": "Query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time (required)",
+          "example": "1665996660000",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID (required)",
+          "example": "100",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Aggregate field",
+          "example": "date",
+          "member": "string",
+          "name": "GroupField",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRumGroupLogResponse": {
+      "document": "DescribeRumGroupLog response structure.",
+      "members": [
+        {
+          "document": "Response string",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRumLogListRequest": {
+      "document": "DescribeRumLogList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Sorting order (required). Valid values: `desc`, `asc`.",
+          "example": "asc",
+          "member": "string",
+          "name": "OrderBy",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Start time (required)",
+          "example": "1665993060000",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Page number",
+          "example": "无",
+          "member": "int64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Query statement, which is required and can contain up to 4,096 characters.",
+          "example": "id:100",
+          "member": "string",
+          "name": "Query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time (required)",
+          "example": "1665996660000",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID (required)",
+          "example": "100",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRumLogListResponse": {
+      "document": "DescribeRumLogList response structure.",
+      "members": [
+        {
+          "document": "Response string",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRumStatsLogListRequest": {
+      "document": "DescribeRumStatsLogList request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Start time (required)",
+          "example": "1665993060000",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "default": "",
+          "document": "Query statement, which is required and can contain up to 4,096 characters.",
+          "example": "id:100",
+          "member": "string",
+          "name": "Query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "End time (required)",
+          "example": "1665996660000",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Project ID (required)",
+          "example": "100",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRumStatsLogListResponse": {
+      "document": "DescribeRumStatsLogList response structure.",
+      "members": [
+        {
+          "document": "Response string",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeScoresRequest": {
       "document": "DescribeScores request structure.",
       "members": [
@@ -6699,6 +6984,32 @@
     },
     "StopInstanceResponse": {
       "document": "StopInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopProjectRequest": {
+      "document": "StopProject request structure.",
+      "members": [
+        {
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "StopProjectResponse": {
+      "document": "StopProject response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

@@ -1,9 +1,9 @@
 {
   "actions": {
     "AddUser": {
-      "document": "This API is used to add sub-users.",
+      "document": "This API is used to create a sub-user.",
       "input": "AddUserRequest",
-      "name": "Adds sub-Users",
+      "name": "Creates a sub-user",
       "output": "AddUserResponse"
     },
     "AddUserToGroup": {
@@ -4856,6 +4856,16 @@
           "name": "LastUsedDate",
           "required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "default": "",
+          "document": "The most recent date the key was accessed\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1671435009849",
+          "member": "uint64",
+          "name": "LastSecretUsedDate",
+          "required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

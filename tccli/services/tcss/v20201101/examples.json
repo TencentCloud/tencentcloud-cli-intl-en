@@ -164,6 +164,22 @@
         "title": "Creating a task to confirm a network policy in the container network"
       }
     ],
+    "CreateAbnormalProcessRulesExportJob": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcss.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAbnormalProcessRulesExportJob\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"522d7714-ef53-4940-b0ed-46d59a3cf0fd\",\n        \"JobId\": \"\"\n    }\n}",
+        "title": "Exporting abnormal process rules"
+      }
+    ],
+    "CreateAccessControlsRuleExportJob": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcss.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccessControlsRuleExportJob\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"522d7714-ef53-4940-b0ed-46d59a3cf0fd\",\n        \"JobId\": \"\"\n    }\n}",
+        "title": "Exporting K8s API abnormal request rules"
+      }
+    ],
     "CreateAssetImageRegistryScanTask": [
       {
         "document": "",
@@ -1184,7 +1200,7 @@
     ],
     "DescribeCompliancePeriodTaskList": [
       {
-        "document": "基线设置 查询定时任务列表",
+        "document": "This example shows you how to query scheduled tasks.",
         "input": "POST / HTTP/1.1\nHost: tcss.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCompliancePeriodTaskList\n<Common request parameters>\n\n{\n    \"AssetType\": \"ASSET_CONTAINER\",\n    \"Offset\": 0,\n    \"Limit\": 2\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxxx\",\n        \"TotalCount\": 1,\n        \"PeriodTaskSet\": [\n            {\n                \"PeriodTaskId\": 123,\n                \"AssetType\": \"xxxx\",\n                \"PeriodRule\": {\n                    \"ExecutionTime\": \"xx\",\n                    \"Frequency\": 1\n                },\n                \"LastTriggerTime\": \"YYYY-MM-DD HH:mm:SS\",\n                \"TotalPolicyItemCount\": 123,\n                \"BenchmarkStandardSet\": [\n                    {\n                        \"StandardId\": 12345,\n                        \"Name\": \"CIS Docker\",\n                        \"Description\": \"CIS Docker\",\n                        \"PolicyItemCount\": 123,\n                        \"Enabled\": true\n                    }\n                ]\n            }\n        ]\n    }\n}",
         "title": "Querying the list of scheduled tasks"

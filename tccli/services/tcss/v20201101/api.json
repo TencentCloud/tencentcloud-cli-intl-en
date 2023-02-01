@@ -114,6 +114,18 @@
       "name": "Creates a task to confirm a network policy in the container network",
       "output": "ConfirmNetworkFirewallPolicyResponse"
     },
+    "CreateAbnormalProcessRulesExportJob": {
+      "document": "This API is used to export abnormal process rules.",
+      "input": "CreateAbnormalProcessRulesExportJobRequest",
+      "name": "Exports abnormal process rules",
+      "output": "CreateAbnormalProcessRulesExportJobResponse"
+    },
+    "CreateAccessControlsRuleExportJob": {
+      "document": "This API is used to export file tampering detection rules.",
+      "input": "CreateAccessControlsRuleExportJobRequest",
+      "name": "Exports file tampering detection rules",
+      "output": "CreateAccessControlsRuleExportJobResponse"
+    },
     "CreateAssetImageRegistryScanTask": {
       "document": "This API is used to create an image scan task for an image repository.",
       "input": "CreateAssetImageRegistryScanTaskRequest",
@@ -7260,6 +7272,132 @@
         }
       ],
       "usage": "out"
+    },
+    "CreateAbnormalProcessRulesExportJobRequest": {
+      "document": "CreateAbnormalProcessRulesExportJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Filter conditions\n<li>`RuleType` - String  - Optional - Rule type</li>\n<li>`Status` - String - Optional - Status</li>",
+          "example": "无",
+          "member": "RunTimeFilters",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Sorting order",
+          "example": "xxx",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting field",
+          "example": "xxx",
+          "member": "string",
+          "name": "By",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Fields to export",
+          "example": "无",
+          "member": "string",
+          "name": "ExportField",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAbnormalProcessRulesExportJobResponse": {
+      "document": "CreateAbnormalProcessRulesExportJob response structure.",
+      "members": [
+        {
+          "document": "ID of the exportation task. You can query the task progress by using this ID in the console.",
+          "example": "无",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccessControlsRuleExportJobRequest": {
+      "document": "CreateAccessControlsRuleExportJob request structure.",
+      "members": [
+        {
+          "default": "",
+          "document": "Filter conditions\n<li>`RuleType` - String  - Optional - Rule type</li>\n<li>`Status` - String - Optional - Status</li>",
+          "example": "无",
+          "member": "RunTimeFilters",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Sorting order",
+          "example": "xxx",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Sorting field",
+          "example": "xxx",
+          "member": "string",
+          "name": "By",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "default": "",
+          "document": "Fields to export",
+          "example": "无",
+          "member": "string",
+          "name": "ExportField",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccessControlsRuleExportJobResponse": {
+      "document": "CreateAccessControlsRuleExportJob response structure.",
+      "members": [
+        {
+          "document": "ID of the exportation task. You can query the task progress by using this ID in the console.",
+          "example": "无",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CreateAssetImageRegistryScanTaskOneKeyRequest": {
       "document": "CreateAssetImageRegistryScanTaskOneKey request structure.",

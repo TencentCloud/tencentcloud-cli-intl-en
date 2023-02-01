@@ -2385,6 +2385,24 @@
           "name": "Remark",
           "required": false,
           "type": "string"
+        },
+        {
+          "default": "",
+          "document": "Group type (`TCP`, `HTTP`)",
+          "example": "TCP",
+          "member": "string",
+          "name": "GroupType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of retries for a group",
+          "example": "16",
+          "member": "uint64",
+          "name": "RetryMaxTimes",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -4719,7 +4737,6 @@
       "document": "DescribeRocketMQGroups request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID.",
           "example": "rocketmq-xxxxx",
           "member": "string",
@@ -4728,7 +4745,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Namespace.",
           "example": "prod",
           "member": "string",
@@ -4737,7 +4753,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Offset.",
           "example": "0",
           "member": "uint64",
@@ -4746,7 +4761,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The max number of returned results.",
           "example": "20",
           "member": "uint64",
@@ -4755,7 +4769,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Topic name, which can be used to query all subscription groups under the topic",
           "example": "test",
           "member": "string",
@@ -4764,7 +4777,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Consumer group query by consumer group name. Fuzzy query is supported",
           "example": "test",
           "member": "string",
@@ -4773,7 +4785,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Sort by specified field. Valid values: `tps`, `accumulative`.",
           "example": "tps",
           "member": "string",
@@ -4782,7 +4793,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Sort in ascending or descending order. Valid values: `asc`, `desc`.",
           "example": "asc",
           "member": "string",
@@ -4791,13 +4801,20 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Subscription group name. After it is specified, the information of only this subscription group will be returned.",
           "example": "test",
           "member": "string",
           "name": "FilterOneGroup",
           "required": false,
           "type": "string"
+        },
+        {
+          "document": "Group type",
+          "example": "[\"TCP\"]",
+          "member": "string",
+          "name": "Types",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -6178,6 +6195,15 @@
           "name": "BroadcastEnable",
           "required": false,
           "type": "bool"
+        },
+        {
+          "default": "",
+          "document": "The maximum number of retries",
+          "example": "16",
+          "member": "uint64",
+          "name": "RetryMaxTimes",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -7493,7 +7519,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Billing status (`1`: Normal; `2`: Service suspended; `3`: Terminated)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -7502,7 +7528,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Service suspension time in milliseconds\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10000000",
           "member": "int64",
           "name": "IsolateTime",
@@ -7511,7 +7537,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "HTTP-based public network access address\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "HttpPublicEndpoint",
@@ -7520,7 +7546,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "HTTP-based VPC access address\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "HttpVpcEndpoint",
@@ -7581,134 +7607,139 @@
       "document": "RocketMQ consumer group information",
       "members": [
         {
-          "default": "",
           "document": "Consumer group name.",
           "example": "test",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of online consumers.",
           "example": "1",
           "member": "uint64",
           "name": "ConsumerNum",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Consumption TPS.",
           "example": "100",
           "member": "uint64",
           "name": "TPS",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The total number of heaped messages.",
           "example": "100",
           "member": "int64",
           "name": "TotalAccumulative",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "0: Cluster consumption mode; 1: Broadcast consumption mode; -1: Unknown.",
           "example": "0",
           "member": "int64",
           "name": "ConsumptionMode",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to allow consumption.",
           "example": "true",
           "member": "bool",
           "name": "ReadEnabled",
-          "required": true,
+          "required": false,
           "type": "bool",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of partitions in a retry topic.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "uint64",
           "name": "RetryPartitionNum",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time in milliseconds.",
           "example": "10000",
           "member": "uint64",
           "name": "CreateTime",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Modification time in milliseconds.",
           "example": "修改时间",
           "member": "uint64",
           "name": "UpdateTime",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Client protocol.",
           "example": "tcp",
           "member": "string",
           "name": "ClientProtocol",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Description.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "备注",
           "member": "string",
           "name": "Remark",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Consumer type. Enumerated values: `ACTIVELY` or `PASSIVELY`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ACTIVELY",
           "member": "string",
           "name": "ConsumerType",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable broadcast consumption.",
           "example": "false",
           "member": "bool",
           "name": "BroadcastEnabled",
-          "required": true,
+          "required": false,
           "type": "bool",
           "value_allowed_null": false
+        },
+        {
+          "document": "Group type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "TCP",
+          "member": "string",
+          "name": "GroupType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The number of retries\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "16",
+          "member": "uint64",
+          "name": "RetryMaxTimes",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -7783,7 +7814,6 @@
       "document": "RocketMQ topic information",
       "members": [
         {
-          "default": "",
           "document": "Topic name.",
           "example": "test",
           "member": "string",
@@ -7793,7 +7823,24 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
+          "document": "Topic type. Enumerated values: `Normal`, `GlobalOrder`, `PartitionedOrder`, `Transaction`, `Retry`, and `DeadLetter`.",
+          "example": "Default",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The number of subscription groups",
+          "example": "无",
+          "member": "uint64",
+          "name": "GroupNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
           "document": "Description.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "备注",
           "member": "string",
@@ -7803,7 +7850,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The number of read/write partitions.",
           "example": "1",
           "member": "uint64",
@@ -7813,7 +7859,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time in milliseconds.",
           "example": "100000",
           "member": "uint64",
@@ -7823,7 +7868,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time in milliseconds.",
           "example": "100000",
           "member": "uint64",
